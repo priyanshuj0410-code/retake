@@ -446,8 +446,23 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
   await demoBadge(page)
   const done = new Set<string>()
   let sessionCode = ''
+  const grounds = new Map<string, string>()
   for (let guard = 0; guard < 400; guard++) {
     const m = (await marker(page)) ?? ''
+    const surface = await page.locator('.page').first().getAttribute('data-surface')
+    if (surface && !grounds.has(surface)) {
+      grounds.set(surface, await css(page, '.page', 'background-color'))
+      await page.emulateMedia({ colorScheme: 'dark' })
+      const dark = await css(page, '.page', 'background-color')
+      await page.emulateMedia({ colorScheme: 'light' })
+      rec(
+        'Page',
+        `${surface} surface: its own ground, re-pointed in dark`,
+        dark !== grounds.get(surface),
+        `${grounds.get(surface)} / ${dark}`,
+      )
+      await stress(page, 'Page', '.page__title, .page__act')
+    }
     if (!done.has('disabled') && (await page.locator('.button--primary:disabled').count())) {
       done.add('disabled')
       await buttonDisabled(page)
@@ -530,6 +545,12 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
   await field(page, base)
   await notice(page, base, sessionCode)
   await link(page, base)
+  rec(
+    'Page',
+    'three surfaces, three grounds',
+    new Set(grounds.values()).size === 3 && grounds.size === 3,
+    JSON.stringify([...grounds]),
+  )
   await page.emulateMedia({ reducedMotion: 'reduce', forcedColors: 'none' })
   return out.slice()
 }
