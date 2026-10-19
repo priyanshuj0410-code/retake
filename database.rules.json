@@ -55,19 +55,35 @@
         ".read": "auth != null",
         ".write": "auth != null && !data.exists() && newData.child('s').val() == 'enrolled'",
         ".validate": "newData.hasChildren(['firm', 'batch', 'tdate', 'arm', 'from', 'to', 'month', 'sex', 's'])",
-        "firm": { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "firm": { ".validate": "newData.isString() && newData.val().matches(/^[a-z0-9-]{1,40}$/)" },
         "batch": { ".validate": "newData.isString() && newData.val().length <= 20" },
         "tdate": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)" },
         "from": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)" },
         "to": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)" },
-        "month": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}$/)" },
-        "arm": { ".validate": "newData.val() == 'before' || newData.val() == 'after'" },
+        "month": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}$/) && newData.parent().child('tdate').val().beginsWith(newData.val())" },
+        "arm": {
+          /* Blocked by firm and month: the first enrolment of a block takes either arm and leaves
+             the other owed in eval-alloc; the next takes the owed arm and clears it, in the same
+             write. So within every firm-month the arms differ by at most one player. */
+          ".validate": "(newData.val() == 'before' || newData.val() == 'after') && ((!root.child('eval-alloc/' + newData.parent().child('firm').val() + '/' + newData.parent().child('month').val()).exists() && newData.parent().parent().parent().child('eval-alloc/' + newData.parent().child('firm').val() + '/' + newData.parent().child('month').val()).exists() && newData.parent().parent().parent().child('eval-alloc/' + newData.parent().child('firm').val() + '/' + newData.parent().child('month').val()).val() != newData.val()) || (root.child('eval-alloc/' + newData.parent().child('firm').val() + '/' + newData.parent().child('month').val()).val() == newData.val() && !newData.parent().parent().parent().child('eval-alloc/' + newData.parent().child('firm').val() + '/' + newData.parent().child('month').val()).exists()))"
+        },
         "sex": { ".validate": "newData.val() == 'woman' || newData.val() == 'man' || newData.val() == 'another' || newData.val() == 'prefer-not'" },
         "s": {
           ".write": "auth != null && ((data.val() == 'enrolled' && newData.val() == 'started' && newData.parent().parent().parent().child('eval-claims/' + auth.uid + '/enrol').val() == $e) || (data.val() == 'started' && newData.val() == 'done' && root.child('eval-claims/' + auth.uid + '/enrol').val() == $e && !newData.parent().parent().parent().child('eval-claims/' + auth.uid).exists()))",
           ".validate": "newData.val() == 'enrolled' || newData.val() == 'started' || newData.val() == 'done'"
         },
         "$other": { ".validate": false }
+      }
+    },
+    "eval-alloc": {
+      /* The arm a firm-month block still owes: 'before', 'after' or nothing. No count, no time,
+         nothing about any player. Set by a block's first enrolment, cleared by its second. */
+      "$firm": {
+        "$month": {
+          ".read": "auth != null",
+          ".write": "auth != null && ((!data.exists() && newData.exists()) || (data.exists() && !newData.exists()))",
+          ".validate": "newData.val() == 'before' || newData.val() == 'after'"
+        }
       }
     },
     "eval-claims": {

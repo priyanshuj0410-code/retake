@@ -39,6 +39,8 @@ export interface Enrolment {
   s: 'enrolled' | 'started' | 'done'
 }
 
+export type EnrolmentBase = Pick<Enrolment, 'firm' | 'batch' | 'tdate' | 'sex'>
+
 export interface Store {
   readonly kind: 'local' | 'emulator' | 'firebase'
   /** Spends a one-time token: issued to started. A started or done token is refused. */
@@ -54,7 +56,12 @@ export interface Store {
   /** The scoring explanation: null until the deployment's release date. */
   explanation(dep: DeploymentId): Promise<Explanation | null>
   schedule(firm: string): Promise<Schedule | null>
-  enrol(enrolKey: string, e: Enrolment): Promise<void>
+  /**
+   * Enrols a player: draws the timing arm from the firm-month's block (blocked randomisation,
+   * src/engine/firm.ts) with the uniform `u`, writes the enrolment and the block's new state in
+   * one write, and returns the enrolment with its arm and window.
+   */
+  enrol(enrolKey: string, base: EnrolmentBase, u: number): Promise<Enrolment>
   /** Demo only: issue tokens the way a panel provider's links would carry them. */
   issueTokens(dep: DeploymentId, n: number, langs: LangSet): Promise<string[]>
 }

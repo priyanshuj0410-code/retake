@@ -13,7 +13,6 @@ import {
   validCode,
 } from '../engine/codes'
 import { cryptoRng } from '../engine/rng'
-import { drawWindow } from '../engine/firm'
 import { store, iso } from '../store'
 import { DEMO_SCHEDULE } from '../store/local'
 import type { Enrolment, Explanation, LangSet } from '../store/types'
@@ -116,21 +115,13 @@ export function Enrol({ firm }: { firm: string }) {
       if (!schedule || !batch || !sex) return
       const b = schedule.batches.find((x) => x.id === batch)
       if (!b) return
-      const w = drawWindow(cryptoRng(), b.date)
-      const e: Enrolment = {
-        firm,
-        batch,
-        tdate: b.date,
-        arm: w.arm,
-        from: w.from,
-        to: w.to,
-        month: w.month,
-        sex,
-        s: 'enrolled',
-      }
       const code = newEnrolmentCode()
       try {
-        await store.enrol(await enrolmentKey(code), e)
+        const e = await store.enrol(
+          await enrolmentKey(code),
+          { firm, batch, tdate: b.date, sex },
+          cryptoRng().next(),
+        )
         setDone({ code, e })
         setStep('done')
       } catch (x) {

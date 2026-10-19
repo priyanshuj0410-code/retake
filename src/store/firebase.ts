@@ -19,8 +19,10 @@ import {
 import type { DeploymentId } from '../engine/config'
 import type { CodeKeys } from '../engine/codes'
 import type { Submission } from '../engine/records'
+import { nextArm, windowFor, type Arm } from '../engine/firm'
 import type {
   Enrolment,
+  EnrolmentBase,
   Explanation,
   LangSet,
   Release,
@@ -162,9 +164,30 @@ export class FirebaseStore implements Store {
     return this.read<Schedule>(`eval-schedule/${firm}`)
   }
 
-  async enrol(enrolKey: string, e: Enrolment) {
+  async enrol(enrolKey: string, base: EnrolmentBase, u: number) {
     await this.uid()
-    await update(ref(this.db), { [`eval-enrol/${enrolKey}`]: e })
+    const month = base.tdate.slice(0, 7)
+    const block = `eval-alloc/${base.firm}/${month}`
+    /* The rules accept the write only if the arm follows the block's state as it is at write
+       time, so two enrolments racing in one block cannot both take the same arm: the loser
+       re-reads and retries. */
+    for (let attempt = 0; attempt < 6; attempt++) {
+      const owed = await this.read<Arm>(block)
+      const next = nextArm(owed, u)
+      const e: Enrolment = {
+        ...base,
+        arm: next.arm,
+        ...windowFor(next.arm, base.tdate),
+        s: 'enrolled',
+      }
+      try {
+        await update(ref(this.db), { [`eval-enrol/${enrolKey}`]: e, [block]: next.owed })
+        return e
+      } catch (x) {
+        if (!String(x).includes('PERMISSION_DENIED') || attempt === 5) throw x
+      }
+    }
+    throw new Error('enrolment could not be allocated')
   }
 
   async issueTokens(): Promise<string[]> {

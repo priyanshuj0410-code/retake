@@ -352,16 +352,95 @@ async function main() {
     sex: 'woman',
     s: 'enrolled',
   }
+  const TB = 'AT-2 firm play window blocked by firm and month (emulator rules)'
+  const block = 'eval-alloc/demo-firm/2026-11'
   record(
     TR,
-    'an enrolment is created once',
-    (await call(as('e1'), 'PUT', `eval-enrol/${ek}`, enrol)).allowed &&
-      !(await call(as('e2'), 'PUT', `eval-enrol/${ek}`, { ...enrol, sex: 'man' })).allowed,
+    'an enrolment is created once (with its block state, in one write)',
+    (await patch(as('e1'), { [`eval-enrol/${ek}`]: enrol, [block]: 'before' })).allowed &&
+      !(await patch(as('e2'), { [`eval-enrol/${ek}`]: { ...enrol, sex: 'man' }, [block]: null }))
+        .allowed,
   )
   record(
     TR,
     'an enrolment with an extra field is refused',
-    !(await call(as('e1'), 'PUT', `eval-enrol/${randomKey()}`, { ...enrol, email: 'x' })).allowed,
+    !(
+      await patch(as('e1'), {
+        [`eval-enrol/${randomKey()}`]: { ...enrol, arm: 'before', email: 'x' },
+        [block]: null,
+      })
+    ).allowed,
+  )
+  const before = { ...enrol, arm: 'before', from: '2026-11-09', to: '2026-11-15' }
+  record(
+    TB,
+    'the second enrolment of a block cannot take the arm the first took',
+    !(await patch(as('e3'), { [`eval-enrol/${randomKey()}`]: enrol, [block]: null })).allowed,
+  )
+  record(
+    TB,
+    'the second enrolment cannot leave the block state behind',
+    !(await patch(as('e3'), { [`eval-enrol/${randomKey()}`]: before })).allowed,
+  )
+  record(
+    TB,
+    'the second enrolment takes the owed arm and clears the block',
+    (await patch(as('e3'), { [`eval-enrol/${randomKey()}`]: before, [block]: null })).allowed &&
+      (await call('owner', 'GET', block)).value === null,
+  )
+  record(
+    TB,
+    "a block's first enrolment must leave the other arm owed",
+    !(await patch(as('e4'), { [`eval-enrol/${randomKey()}`]: enrol, [block]: 'after' })).allowed &&
+      !(await patch(as('e4'), { [`eval-enrol/${randomKey()}`]: enrol })).allowed,
+  )
+  await call('owner', 'PUT', block, 'after')
+  record(
+    TB,
+    'the block state cannot be flipped from one arm to the other',
+    !(await call(as('e5'), 'PUT', block, 'before')).allowed,
+  )
+  await call('owner', 'DELETE', block)
+  record(
+    TB,
+    "an enrolment's month must be its training date's month",
+    !(
+      await patch(as('e6'), {
+        [`eval-enrol/${randomKey()}`]: { ...enrol, month: '2026-12' },
+        ['eval-alloc/demo-firm/2026-12']: 'before',
+      })
+    ).allowed,
+  )
+  /* Twenty enrolments in one block through the rules: the arms alternate in pairs. */
+  let diff = 0
+  let worst = 0
+  for (let i = 0; i < 20; i++) {
+    const owed = (await call(as(`p${i}`), 'GET', 'eval-alloc/demo-firm/2027-01')).value as
+      string | null
+    const arm = owed ?? (i % 3 === 0 ? 'after' : 'before')
+    const w =
+      arm === 'after'
+        ? { from: '2027-01-11', to: '2027-01-17' }
+        : { from: '2027-01-03', to: '2027-01-09' }
+    const r = await patch(as(`p${i}`), {
+      [`eval-enrol/${randomKey()}`]: {
+        ...enrol,
+        tdate: '2027-01-10',
+        month: '2027-01',
+        arm,
+        ...w,
+        sex: ['woman', 'man', 'prefer-not'][i % 3],
+      },
+      ['eval-alloc/demo-firm/2027-01']: owed ? null : arm === 'after' ? 'before' : 'after',
+    })
+    if (r.allowed) diff += arm === 'after' ? 1 : -1
+    worst = Math.max(worst, Math.abs(diff))
+  }
+  record(
+    TB,
+    '20 enrolments in one block through the rules: the arms never differ by more than one',
+    worst <= 1,
+    `largest difference ${worst}`,
   )
   record(
     TR,

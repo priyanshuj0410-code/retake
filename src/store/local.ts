@@ -8,8 +8,10 @@ import { config, DEPLOYMENTS, type DeploymentId } from '../engine/config'
 import type { CodeKeys } from '../engine/codes'
 import { randomKey } from '../engine/rng'
 import type { Submission } from '../engine/records'
+import { nextArm, windowFor, type Arm } from '../engine/firm'
 import type {
   Enrolment,
+  EnrolmentBase,
   Explanation,
   LangSet,
   Release,
@@ -62,6 +64,7 @@ export class LocalStore implements Store {
       'eval-demo',
       'eval-codes',
       'eval-enrol',
+      'eval-alloc',
       'eval-schedule',
     ])
       this.tree[n] ??= {}
@@ -173,10 +176,23 @@ export class LocalStore implements Store {
     return (this.tree['eval-schedule'][firm] as Schedule | undefined) ?? null
   }
 
-  async enrol(enrolKey: string, e: Enrolment) {
+  async enrol(enrolKey: string, base: EnrolmentBase, u: number) {
     if (this.tree['eval-enrol'][enrolKey] !== undefined)
       throw new Error('refused: enrolment exists')
+    const month = base.tdate.slice(0, 7)
+    const block = `${base.firm}/${month}`
+    const owed = (this.tree['eval-alloc'][block] as Arm | undefined) ?? null
+    const next = nextArm(owed, u)
+    const e: Enrolment = {
+      ...base,
+      arm: next.arm,
+      ...windowFor(next.arm, base.tdate),
+      s: 'enrolled',
+    }
     this.tree['eval-enrol'][enrolKey] = { ...e }
+    if (next.owed) this.tree['eval-alloc'][block] = next.owed
+    else delete this.tree['eval-alloc'][block]
     this.save()
+    return e
   }
 }

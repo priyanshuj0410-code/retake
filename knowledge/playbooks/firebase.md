@@ -17,8 +17,8 @@ Stereotype's. What the storage can and cannot guarantee is in
 ## 1. What this repo holds and never does
 
 - **The rules piece:** `database.rules.json`, naming only the `eval-` nodes: `eval-config`,
-  `eval-schedule`, `eval-explain`, `eval-tokens`, `eval-claims`, `eval-enrol`, `eval-codes`,
-  `eval-play`, `eval-xw`, `eval-demo`. No grant at the root.
+  `eval-schedule`, `eval-explain`, `eval-tokens`, `eval-claims`, `eval-enrol`, `eval-alloc`,
+  `eval-codes`, `eval-play`, `eval-xw`, `eval-demo`. No grant at the root.
 - **The deploy guard:** `firebase.json` runs `scripts/deploy-guard.sh` before any rules
   deploy, and it always refuses. Deployed from here, this piece alone would replace every
   other app's rules (Spot's, The Keepers').
@@ -47,7 +47,7 @@ run.
      "name": "Equal Lens Evaluator",
      "repo": "priyanshuj0410-code/equal-lens-evaluator",
      "rules": "database.rules.json",
-     "nodes": ["eval-config", "eval-schedule", "eval-explain", "eval-tokens", "eval-claims", "eval-enrol", "eval-codes", "eval-play", "eval-xw", "eval-demo"]
+     "nodes": ["eval-config", "eval-schedule", "eval-explain", "eval-tokens", "eval-claims", "eval-enrol", "eval-alloc", "eval-codes", "eval-play", "eval-xw", "eval-demo"]
    }
    ```
 
@@ -55,7 +55,7 @@ run.
    push it there first (the build reads each piece from its repo's `main`).
 
 3. **Add a row to section 2** of The Equal Lens playbook: app, repo, Realtime Database and
-   Anonymous sign-in, the ten `eval-` nodes, the web app id, status "Registered, not live".
+   Anonymous sign-in, the eleven `eval-` nodes, the web app id, status "Registered, not live".
 
 4. **Build and check**, from `~/"The Equal Lens"/firebase`:
 
@@ -86,7 +86,7 @@ run.
 ## 3. Owner jobs after each deployment closes
 
 - After `deleteUntil`: delete `eval-codes`, rekey every `eval-play/<hash>` to a random key,
-  delete `eval-enrol` and any leftover `eval-claims`, log the date and counts only (PO-21).
+  delete `eval-enrol`, `eval-alloc` and any leftover `eval-claims`, log the date and counts only (PO-21).
 - Delete the anonymous Auth users the deployment created.
 - Export the records for the research team; release results only through
   `src/release/release.ts` (cells of 50 or more).

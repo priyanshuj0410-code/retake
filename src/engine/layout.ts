@@ -360,14 +360,12 @@ export function rematchesOf(rng: Rng, formA: Presented[], n: number, family?: Fa
   const eligible = rng.shuffle(
     formA.filter((p) => !p.baseline && !p.filler && (!family || p.family === family)),
   )
-  return eligible
-    .slice(0, n)
-    .map((src) => ({
-      ...src,
-      rematch: true,
-      chars: src.chars.map((c) => ({ ...c })),
-      start: src.start.slice().reverse(),
-    }))
+  return eligible.slice(0, n).map((src) => ({
+    ...src,
+    rematch: true,
+    chars: src.chars.map((c) => ({ ...c })),
+    start: src.start.slice().reverse(),
+  }))
 }
 
 export const displayName = (c: Character) => (c.surname ? `${c.name} ${c.surname}` : c.name)

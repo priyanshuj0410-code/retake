@@ -7,7 +7,7 @@
  * no draw depends on an earlier answer except the registered note and route rules.
  */
 import { config, type DeploymentId } from '../src/engine/config'
-import { drawWindow } from '../src/engine/firm'
+import { LocalStore } from '../src/store/local'
 import { BANDS, TYPES, bankFor, type Presented } from '../src/engine/layout'
 import { seeded } from '../src/engine/rng'
 import { Runner } from '../src/engine/runner'
@@ -387,24 +387,66 @@ export async function run() {
     ),
   )
 
-  /* The firm's play window. */
-  const wr = seeded(77)
-  const ws = Array.from({ length: N }, () => drawWindow(wr, '2026-11-16'))
+  /* The firm's play window, blocked by firm and month: N enrolments into the demo store across
+     four firms and six training months, interleaved at random, with the sex item answered at
+     random. Within every firm-month the arms differ by at most one player after every single
+     enrolment, the arms are 1:1 overall and at each block's first draw, and the arm is
+     independent of the sex label. */
+  const fr = seeded(77)
+  const fstore = new LocalStore(() => Date.parse('2026-10-20T10:00:00Z'))
+  const firms = ['f1', 'f2', 'f3', 'f4']
+  const months = ['2026-11', '2026-12', '2027-01', '2027-02', '2027-03', '2027-04']
+  const sexes = ['woman', 'man', 'another', 'prefer-not']
+  const blocks = new Map<string, { before: number; after: number }>()
+  const bySex = sexes.map(() => [0, 0])
+  const firstDraw = [0, 0]
+  let worst = 0
+  let datesOk = true
+  for (let i = 0; i < N; i++) {
+    const firm = fr.pick(firms)
+    const month = fr.pick(months)
+    const tdate = `${month}-${String(1 + fr.int(28)).padStart(2, '0')}`
+    const sexIdx = fr.int(sexes.length)
+    const key = `${firm}/${month}`
+    const fresh = fstore.tree['eval-alloc'][key] === undefined
+    const e = await fstore.enrol(
+      `e${i}`,
+      { firm, batch: 'b', tdate, sex: sexes[sexIdx] },
+      fr.next(),
+    )
+    const c = blocks.get(key) ?? { before: 0, after: 0 }
+    c[e.arm] += 1
+    blocks.set(key, c)
+    worst = Math.max(worst, Math.abs(c.after - c.before))
+    bySex[sexIdx][e.arm === 'after' ? 0 : 1] += 1
+    if (fresh) firstDraw[e.arm === 'after' ? 0 : 1] += 1
+    const t = Date.parse(`${tdate}T00:00:00Z`)
+    const d = (x: string) => Math.round((Date.parse(`${x}T00:00:00Z`) - t) / 86_400_000)
+    if (e.arm === 'before' ? d(e.from) !== -7 || d(e.to) !== -1 : d(e.from) !== 1 || d(e.to) !== 7)
+      datesOk = false
+  }
+  record(
+    T,
+    `firm play window: within every firm-month block the arms differ by at most one player, after every enrolment (${blocks.size} blocks, ${N} enrolments)`,
+    worst <= 1,
+    `largest difference ${worst}`,
+  )
+  const tot = [...blocks.values()].reduce((a, c) => [a[0] + c.after, a[1] + c.before], [0, 0])
+  pTest('firm play window: before and after 1:1 overall', gof(tot, [0.5, 0.5]))
   pTest(
-    'firm play window: before and after 1:1',
-    gof(
-      [ws.filter((w) => w.arm === 'after').length, ws.filter((w) => w.arm === 'before').length],
-      [config.firmWindows.afterShare, 1 - config.firmWindows.afterShare],
-    ),
+    "firm play window: each block's first draw before or after 1:1",
+    gof(firstDraw, [config.firmWindows.afterShare, 1 - config.firmWindows.afterShare]),
+  )
+  pTest('firm play window: the arm is independent of the sex label', independence(bySex))
+  record(T, 'firm windows are 7 to 1 days before or 1 to 7 days after the training date', datesOk)
+  const firmSrc = (await import('node:fs')).readFileSync(
+    new URL('../src/engine/firm.ts', import.meta.url),
+    'utf8',
   )
   record(
     T,
-    'firm windows are 7 to 1 days before or 1 to 7 days after training',
-    ws.every((w) =>
-      w.arm === 'before'
-        ? w.from === '2026-11-09' && w.to === '2026-11-15'
-        : w.from === '2026-11-17' && w.to === '2026-11-23',
-    ),
+    'firm play window: the allocation reads no sex label and no answer',
+    !/sex|answer/i.test(firmSrc.replace(/\/\*[\s\S]*?\*\//g, '')),
   )
 
   /* No draw depends on an earlier answer: the same seed played with opposite answers meets the
