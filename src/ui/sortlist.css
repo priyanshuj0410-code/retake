@@ -9,7 +9,7 @@
 }
 .sort__row {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   gap: var(--gap-m);
   align-items: center;
   background: var(--c-raised);
@@ -17,12 +17,22 @@
   border-radius: var(--radius-l);
   padding: var(--gap-m);
   box-shadow: var(--flat);
-  transition: box-shadow var(--motion);
+  transition:
+    box-shadow var(--motion),
+    border-color var(--motion),
+    transform var(--motion);
   touch-action: pan-y;
 }
+/* Lifted while dragged; removing the class is the settle. */
 .sort__row--dragging {
   box-shadow: var(--lift);
   border-color: var(--c-accent);
+  transform: scale(var(--lifted));
+  position: relative;
+  z-index: 1;
+}
+.sort__row--dragging .sort__handle {
+  cursor: grabbing;
 }
 .sort__rank {
   font-family: var(--font-display);
@@ -34,6 +44,8 @@
 }
 .sort__body {
   min-width: 0;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .sort__moves {
   display: flex;
@@ -50,6 +62,19 @@
   font-size: var(--text-lead);
   font-family: var(--font-display);
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--motion),
+    transform var(--motion);
+}
+.sort__move:not([aria-disabled='true']):active {
+  transform: scale(var(--press));
+}
+@media (hover: hover) {
+  .sort__move:not([aria-disabled='true']):hover {
+    background: var(--c-raised);
+  }
 }
 .sort__move[aria-disabled='true'] {
   border-color: var(--c-rule);

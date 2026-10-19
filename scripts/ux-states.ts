@@ -51,13 +51,18 @@ async function stress(page: Page, component: string, sel: string) {
     clone.querySelectorAll(sel).forEach((el) => {
       const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT)
       for (let n = walk.nextNode(); n; n = walk.nextNode())
-        if (n.textContent?.trim())
+        /* Icon buttons and rank numerals never hold words; everything else can. */
+        if (
+          n.textContent?.trim() &&
+          !n.parentElement?.closest('button[aria-label], [aria-hidden="true"], [role="img"]')
+        )
           n.textContent = `${n.textContent} Zimmedaariyonwaalaaprabandhakpratinidhi Bahutlambaanaam`
     })
     main.after(clone)
-    const wide = [...clone.querySelectorAll(sel)].filter(
-      (el) => el.getBoundingClientRect().right > document.documentElement.clientWidth + 1,
-    ).length
+    const wide = [...clone.querySelectorAll(`${sel}, ${sel} *`)]
+      .filter((el) => el.getBoundingClientRect().right > document.documentElement.clientWidth + 1)
+      .map((el) => `${el.tagName}.${el.className}`)
+      .slice(0, 4)
     const scroll = document.documentElement.scrollWidth - document.documentElement.clientWidth
     clone.remove()
     return { wide, scroll }
@@ -66,7 +71,7 @@ async function stress(page: Page, component: string, sel: string) {
   rec(
     component,
     'long content at 320 px',
-    over.wide === 0 && over.scroll <= 0,
+    over.wide.length === 0 && over.scroll <= 0,
     JSON.stringify(over),
   )
 }
@@ -196,6 +201,89 @@ async function rows(page: Page, component: string, kind: 'radio' | 'checkbox') {
   await stress(page, component, '.choice')
 }
 
+/** Holds a drag on the first row: lifted while held, settled after release. */
+async function holdDrag(page: Page) {
+  const h = page.locator('.sort__handle').first()
+  const b = (await h.boundingBox())!
+  await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2)
+  await page.mouse.down()
+  await page.waitForTimeout(220)
+  const held = await page
+    .locator('.sort__row')
+    .first()
+    .evaluate((e) => ({
+      cls: e.classList.contains('sort__row--dragging'),
+      scale: getComputedStyle(e).transform,
+      shadow: getComputedStyle(e).boxShadow,
+    }))
+  /* Drag down past the next row: the rows swap, and the others slide. */
+  const rowH = (await page.locator('.sort__row').nth(1).boundingBox())!.height
+  await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2 + rowH + 20, { steps: 6 })
+  const sliding = await page
+    .locator('.sort__row')
+    .evaluateAll((rs) => rs.filter((r) => r.getAnimations().length > 0).length)
+  await page.mouse.up()
+  await page.waitForTimeout(400)
+  const rowsAfter = await page
+    .locator('.sort__row')
+    .evaluateAll((rs) =>
+      rs.map((r) => `${r.className}|${getComputedStyle(r).transform}|${r.getAnimations().length}`),
+    )
+  const settled = rowsAfter.every((r) => !r.includes('dragging') && r.includes('|none|'))
+  return { held: { ...held, scale: scaleOf(held.scale) }, sliding, settled, rowsAfter }
+}
+
+async function sortList(page: Page) {
+  const C = 'SortList'
+  const enabled = '.sort__move:not([aria-disabled="true"])'
+  await hover(page, C, enabled, 'background-color')
+  await pressed(page, C, enabled)
+  const live = await holdDrag(page)
+  rec(
+    C,
+    'dragging: lifted (class, scale up, shadow)',
+    live.held.cls && live.held.scale > 1 && live.held.shadow !== 'none',
+    JSON.stringify(live.held),
+  )
+  rec(C, 'reorder: displaced rows slide (FLIP)', live.sliding > 0, `${live.sliding} rows animating`)
+  rec(C, 'settle on drop: no lift left', live.settled, live.rowsAfter.join(' ; '))
+  await motion(page, false)
+  const still = await holdDrag(page)
+  await motion(page, true)
+  rec(
+    C,
+    'reduced motion: no lift scale, no slide',
+    still.held.scale === 1 && still.sliding === 0,
+    JSON.stringify({ ...still.held, sliding: still.sliding }),
+  )
+  /* The limit: Enter on the first row's up button keeps focus and says where the row is. */
+  const reached = await tabTo(page, '.sort__move', 0)
+  await page.keyboard.press('Enter')
+  const after = await page.evaluate(() => ({
+    kept: document.activeElement === document.querySelectorAll('.sort__move')[0],
+    live: document.querySelector('.sort__live')?.textContent ?? '',
+  }))
+  rec(
+    C,
+    'aria-disabled at a limit: focus kept, position said again',
+    reached && after.kept && /1/.test(after.live),
+    JSON.stringify(after),
+  )
+  rec(
+    C,
+    'live wording: "<name>, position n of k" in lower case',
+    /^[^,]+, position \d of \d\s?$/.test(after.live),
+    after.live,
+  )
+  await focusRing(page, C, '.sort__move', 1)
+  await forced(page, true)
+  const off = await css(page, '.sort__move[aria-disabled="true"]', 'color')
+  const on = await css(page, enabled, 'color')
+  await forced(page, false)
+  rec(C, 'forced colours: the limit button is distinct', off !== on, `${off} vs ${on}`)
+  await stress(page, C, '.sort')
+}
+
 /* ---------- the run ---------- */
 
 export async function statesPass(page: Page, base: string): Promise<StateResult[]> {
@@ -233,6 +321,18 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
     ) {
       done.add('Checks')
       await rows(page, 'Checks', 'checkbox')
+    }
+    if (!done.has('Character') && (await page.locator('.character').count())) {
+      done.add('Character')
+      await stress(page, 'Character', '.character')
+      await forced(page, true)
+      const fig = await css(page, '.character__figure', 'forced-color-adjust')
+      await forced(page, false)
+      rec('Character', 'forced colours: the figure keeps its own colours', fig === 'none', fig)
+    }
+    if (!done.has('SortList') && (await page.locator('.sort').count())) {
+      done.add('SortList')
+      await sortList(page)
     }
     if (m === 'wrap:submit') {
       await step(page, { submit: true })

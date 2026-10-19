@@ -8,7 +8,7 @@
     "demoBadge": { "en": "Demo: fictional content, no real participants", "hinglish": "Demo: kalpanik content, koi asli participant nahin" },
     "moveUp": { "en": "Move up", "hinglish": "Upar karein" },
     "moveDown": { "en": "Move down", "hinglish": "Neeche karein" },
-    "position": { "en": "Position {n} of {k}", "hinglish": "{k} mein se {n} number par" },
+    "position": { "en": "position {n} of {k}", "hinglish": "{k} mein se {n} number par" },
     "add": { "en": "Add one", "hinglish": "Ek badhayein" },
     "remove": { "en": "Remove one", "hinglish": "Ek ghatayein" },
     "left": { "en": "{n} left to share", "hinglish": "{n} baantna baaki" },

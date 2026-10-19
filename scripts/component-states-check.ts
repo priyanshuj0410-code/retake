@@ -6,7 +6,7 @@
  */
 import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { Button, Checks, Choice } from '../src/ui'
+import { Button, Checks, Choice, SortList } from '../src/ui'
 import { record } from './lib/check'
 
 const T = 'X-9 component states (markup)'
@@ -57,5 +57,39 @@ export async function run() {
     T,
     'Checks: every ticked row carries choice__option--checked',
     (checks.match(/choice__option--checked/g) ?? []).length === 2,
+  )
+  const person = (name: string) => ({
+    figure: '',
+    figureLabel: 'x',
+    name,
+    cues: [],
+    description: '',
+  })
+  const sort = html(
+    h(SortList, {
+      items: [person('A'), person('B'), person('C')],
+      order: [2, 0, 1],
+      onChange: () => {},
+      labels: {
+        up: (n) => `Up: ${n}`,
+        down: (n) => `Down: ${n}`,
+        moved: (n, p, k) => `${n}, position ${p} of ${k}`,
+        label: 'Team',
+      },
+    }),
+  )
+  record(
+    T,
+    'SortList: only the first up and the last down are aria-disabled, and none is disabled',
+    (sort.match(/aria-disabled="true"/g) ?? []).length === 2 &&
+      /aria-disabled="true" aria-label="Up: C"|aria-label="Up: C"[^>]*aria-disabled="true"/.test(
+        sort,
+      ) &&
+      !/ disabled=""/.test(sort),
+  )
+  record(
+    T,
+    'SortList: rows are keyed by item for the reorder movement',
+    (sort.match(/data-item="/g) ?? []).length === 3,
   )
 }
