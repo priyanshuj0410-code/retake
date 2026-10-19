@@ -15,7 +15,10 @@ export interface Release {
 
 export interface Explanation {
   dep: DeploymentId
-  sections: { heading: { en: string; hinglish: string }; body: { en: string; hinglish: string }[] }[]
+  sections: {
+    heading: { en: string; hinglish: string }
+    body: { en: string; hinglish: string }[]
+  }[]
 }
 
 export interface Schedule {

@@ -10,11 +10,32 @@ import { formatCode } from '../engine/codes'
 import { characterView, fill } from '../engine/text'
 import { randomiserStatement, type Runner } from '../engine/runner'
 import { isOutOfFiction, type Step } from '../engine/session'
-import { Allocate, Button, Checks, Choice, Code, List, Notice, Page, SortList, Statement, Text } from '../ui'
+import {
+  Allocate,
+  Button,
+  Checks,
+  Choice,
+  Code,
+  List,
+  Notice,
+  Page,
+  SortList,
+  Statement,
+  Text,
+} from '../ui'
 
 const S = screens
 
-export function StepView({ runner, step, ui, demo, onDone, submitState, onSubmit, onWithdraw }: {
+export function StepView({
+  runner,
+  step,
+  ui,
+  demo,
+  onDone,
+  submitState,
+  onSubmit,
+  onWithdraw,
+}: {
   runner: Runner
   step: Step
   ui: Lang
@@ -29,31 +50,78 @@ export function StepView({ runner, step, ui, demo, onDone, submitState, onSubmit
   const oof = isOutOfFiction(step) ? L(S.common.outOfFiction) : undefined
   const surface = step.act === 'inbox' ? 'sober' : oof ? 'oof' : 'game'
   const act = L((S.common.acts as Record<string, T>)[step.act])
-  const page = { surface, act, oof, demo: demo ? L(S.common.demoBadge) : undefined, stepKey: key, lang: ui === 'hinglish' ? 'hi-Latn' : 'en-GB' } as const
+  const page = {
+    surface,
+    act,
+    oof,
+    demo: demo ? L(S.common.demoBadge) : undefined,
+    stepKey: key,
+    lang: ui === 'hinglish' ? 'hi-Latn' : 'en-GB',
+    screen: `${step.act}:${step.kind}${step.kind === 'intro' ? `:${step.which}` : step.kind === 'people' ? `:${step.p.card.type}` : ''}`,
+  } as const
 
   switch (step.kind) {
     case 'tutorial':
       return (
-        <Page {...page} title={L(S.tutorial.title)} actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}>
+        <Page
+          {...page}
+          title={L(S.tutorial.title)}
+          actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}
+        >
           <List items={S.tutorial.body.map(L)} />
         </Page>
       )
     case 'people':
       return <PeopleStep key={key} step={step} ui={ui} page={page} onDone={onDone} />
     case 'ordinary':
-      return <OrdinaryStep key={key} runner={runner} step={step} ui={ui} page={page} onDone={onDone} />
+      return (
+        <OrdinaryStep key={key} runner={runner} step={step} ui={ui} page={page} onDone={onDone} />
+      )
     case 'intro':
       return <IntroStep key={key} step={step} ui={ui} page={page} onDone={onDone} />
     case 'screening': {
       const item = screeningItems.find((i) => i.id === step.id)
       if (!item) return null
-      const options = item.format === 'direct' ? S.survey.scale.map((t, i) => ({ id: String(i), text: L(t) })) : (item.options ?? []).map((o) => ({ id: o.id, text: L(o.text) }))
-      return <ChoiceStep key={key} page={page} legend={L(item.text)} options={options} next={L(S.common.next)} onDone={onDone} />
+      const options =
+        item.format === 'direct'
+          ? S.survey.scale.map((t, i) => ({ id: String(i), text: L(t) }))
+          : (item.options ?? []).map((o) => ({ id: o.id, text: L(o.text) }))
+      return (
+        <ChoiceStep
+          key={key}
+          page={page}
+          legend={L(item.text)}
+          options={options}
+          next={L(S.common.next)}
+          onDone={onDone}
+        />
+      )
     }
     case 'survey':
-      return <ChoiceStep key={key} page={page} legend={L(step.item.text)} options={S.survey.scale.map((t, i) => ({ id: String(i), text: L(t) }))} next={L(S.common.next)} onDone={(v) => onDone(Number(v))} />
+      return (
+        <ChoiceStep
+          key={key}
+          page={page}
+          legend={L(step.item.text)}
+          options={S.survey.scale.map((t, i) => ({ id: String(i), text: L(t) }))}
+          next={L(S.common.next)}
+          onDone={(v) => onDone(Number(v))}
+        />
+      )
     case 'xw-direct':
-      return <ChoiceStep key={key} page={page} legend={L(step.item.text)} options={[{ id: 'yes', text: L(S.common.yes) }, { id: 'no', text: L(S.common.no) }]} next={L(S.common.next)} onDone={(v) => onDone(v === 'yes')} />
+      return (
+        <ChoiceStep
+          key={key}
+          page={page}
+          legend={L(step.item.text)}
+          options={[
+            { id: 'yes', text: L(S.common.yes) },
+            { id: 'no', text: L(S.common.no) },
+          ]}
+          next={L(S.common.next)}
+          onDone={(v) => onDone(v === 'yes')}
+        />
+      )
     case 'xw': {
       const b = randomiserStatement(runner.session.draws.xwSub, ui)
       return (
@@ -62,26 +130,52 @@ export function StepView({ runner, step, ui, demo, onDone, submitState, onSubmit
           page={page}
           before={
             <>
-              {step.fictional ? <Text kind="muted">{L(xw.practice.fictionalRandomiser)}</Text> : null}
-              <Statement a={L(step.item.text)} b={b} labelA={L(S.offTheRecord.statementA)} labelB={L(S.offTheRecord.statementB)} />
+              {step.fictional ? (
+                <Text kind="muted">{L(xw.practice.fictionalRandomiser)}</Text>
+              ) : null}
+              <Statement
+                a={L(step.item.text)}
+                b={b}
+                labelA={L(S.offTheRecord.statementA)}
+                labelB={L(S.offTheRecord.statementB)}
+              />
             </>
           }
           legend={L(S.offTheRecord.which)}
-          options={[{ id: 'same', text: L(xw.answers.same) }, { id: 'different', text: L(xw.answers.different) }]}
+          options={[
+            { id: 'same', text: L(xw.answers.same) },
+            { id: 'different', text: L(xw.answers.different) },
+          ]}
           next={L(S.common.next)}
           onDone={onDone}
         />
       )
     }
     case 'm1h-direct':
-      return <ChoiceStep key={key} page={page} legend={L(step.item.text)} options={[{ id: 'true', text: L(S.offTheRecord.true) }, { id: 'false', text: L(S.offTheRecord.false) }]} next={L(S.common.next)} onDone={(v) => onDone(v === 'true')} />
+      return (
+        <ChoiceStep
+          key={key}
+          page={page}
+          legend={L(step.item.text)}
+          options={[
+            { id: 'true', text: L(S.offTheRecord.true) },
+            { id: 'false', text: L(S.offTheRecord.false) },
+          ]}
+          next={L(S.common.next)}
+          onDone={(v) => onDone(v === 'true')}
+        />
+      )
     case 'inbox':
       return <InboxStep key={key} step={step} page={page} onDone={onDone} />
     case 'note': {
       const n = notesById.get(step.note)
       if (!n) return null
       return (
-        <Page {...page} title={L(S.note.title)} actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}>
+        <Page
+          {...page}
+          title={L(S.note.title)}
+          actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}
+        >
           <Text kind="lead">{L(n.statistic)}</Text>
           <Text kind="small">
             {L(S.note.sourceLabel)}: {L(n.source)}
@@ -91,12 +185,27 @@ export function StepView({ runner, step, ui, demo, onDone, submitState, onSubmit
       )
     }
     case 'recall':
-      return <ChoiceStep key={key} page={page} legend={L(S.recall.question)} options={S.recall.options.map((o) => ({ id: o.id, text: L(o.text) }))} next={L(S.common.next)} onDone={onDone} />
+      return (
+        <ChoiceStep
+          key={key}
+          page={page}
+          legend={L(S.recall.question)}
+          options={S.recall.options.map((o) => ({ id: o.id, text: L(o.text) }))}
+          next={L(S.common.next)}
+          onDone={onDone}
+        />
+      )
     case 'probe':
       return <ProbeStep key={key} page={page} ui={ui} onDone={onDone} />
     case 'result':
       return (
-        <Page {...page} surface="game" oof={undefined} title={L(S.wrap.result.title)} actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}>
+        <Page
+          {...page}
+          surface="game"
+          oof={undefined}
+          title={L(S.wrap.result.title)}
+          actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}
+        >
           <Text kind="lead">{L(runner.seasonBand().text)}</Text>
           <Text>{L(S.wrap.result.peopleLine)}</Text>
         </Page>
@@ -104,11 +213,28 @@ export function StepView({ runner, step, ui, demo, onDone, submitState, onSubmit
     case 'prior': {
       const p = S.wrap.prior.find((x) => x.id === step.id)
       if (!p) return null
-      return <ChoiceStep key={key} page={page} legend={L(p.text)} options={[{ id: 'yes', text: L(S.common.yes) }, { id: 'no', text: L(S.common.no) }, { id: 'not-sure', text: L(S.common.notSure) }]} next={L(S.common.next)} onDone={onDone} />
+      return (
+        <ChoiceStep
+          key={key}
+          page={page}
+          legend={L(p.text)}
+          options={[
+            { id: 'yes', text: L(S.common.yes) },
+            { id: 'no', text: L(S.common.no) },
+            { id: 'not-sure', text: L(S.common.notSure) },
+          ]}
+          next={L(S.common.next)}
+          onDone={onDone}
+        />
+      )
     }
     case 'debrief':
       return (
-        <Page {...page} title={L(S.wrap.debrief.title)} actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}>
+        <Page
+          {...page}
+          title={L(S.wrap.debrief.title)}
+          actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}
+        >
           <List items={S.wrap.debrief.points.map(L)} />
         </Page>
       )
@@ -133,7 +259,9 @@ export function StepView({ runner, step, ui, demo, onDone, submitState, onSubmit
           }
         >
           <Text>{L(S.wrap.submit.body)}</Text>
-          {submitState === 'failed' ? <Notice kind="error">{L(S.wrap.submit.failed)}</Notice> : null}
+          {submitState === 'failed' ? (
+            <Notice kind="error">{L(S.wrap.submit.failed)}</Notice>
+          ) : null}
         </Page>
       )
   }
@@ -141,17 +269,48 @@ export function StepView({ runner, step, ui, demo, onDone, submitState, onSubmit
 
 type PageBase = Omit<React.ComponentProps<typeof Page>, 'children' | 'actions' | 'title'>
 
-function ChoiceStep({ page, legend, options, next, onDone, before }: { page: PageBase; legend: string; options: { id: string; text: string }[]; next: string; onDone: (v: string) => void; before?: React.ReactNode }) {
+function ChoiceStep({
+  page,
+  legend,
+  options,
+  next,
+  onDone,
+  before,
+}: {
+  page: PageBase
+  legend: string
+  options: { id: string; text: string }[]
+  next: string
+  onDone: (v: string) => void
+  before?: React.ReactNode
+}) {
   const [v, setV] = useState<string | null>(null)
   return (
-    <Page {...page} actions={<Button onClick={() => v !== null && onDone(v)} disabled={v === null}>{next}</Button>}>
+    <Page
+      {...page}
+      actions={
+        <Button onClick={() => v !== null && onDone(v)} disabled={v === null}>
+          {next}
+        </Button>
+      }
+    >
       {before}
       <Choice legend={legend} options={options} value={v} onChange={setV} />
     </Page>
   )
 }
 
-function PeopleStep({ step, ui, page, onDone }: { step: Extract<Step, { kind: 'people' }>; ui: Lang; page: PageBase; onDone: (v: unknown) => void }) {
+function PeopleStep({
+  step,
+  ui,
+  page,
+  onDone,
+}: {
+  step: Extract<Step, { kind: 'people' }>
+  ui: Lang
+  page: PageBase
+  onDone: (v: unknown) => void
+}) {
   const p = step.p
   const lang = p.lang
   const Lc = (t: T) => t[lang]
@@ -166,13 +325,31 @@ function PeopleStep({ step, ui, page, onDone }: { step: Extract<Step, { kind: 'p
   const firstIdx = alloc ? units.indexOf(Math.max(...units)) : order[0]
   if (answered) {
     return (
-      <Page {...page} lang={lang === 'hinglish' ? 'hi-Latn' : 'en-GB'} title={Lc(p.card.title)} actions={<Button onClick={() => onDone(alloc ? { units } : { order })}>{L(screens.common.next)}</Button>}>
+      <Page
+        {...page}
+        lang={lang === 'hinglish' ? 'hi-Latn' : 'en-GB'}
+        title={Lc(p.card.title)}
+        actions={
+          <Button onClick={() => onDone(alloc ? { units } : { order })}>
+            {L(screens.common.next)}
+          </Button>
+        }
+      >
         <Text kind="lead">{fill(Lc(p.card.continuation), { first: views[firstIdx].name })}</Text>
       </Page>
     )
   }
   return (
-    <Page {...page} lang={lang === 'hinglish' ? 'hi-Latn' : 'en-GB'} title={Lc(p.card.title)} actions={<Button onClick={() => setAnswered(true)} disabled={!complete}>{L(screens.common.confirm)}</Button>}>
+    <Page
+      {...page}
+      lang={lang === 'hinglish' ? 'hi-Latn' : 'en-GB'}
+      title={Lc(p.card.title)}
+      actions={
+        <Button onClick={() => setAnswered(true)} disabled={!complete}>
+          {L(screens.common.confirm)}
+        </Button>
+      }
+    >
       <Text>{alloc ? `${Lc(p.card.prompt)}` : Lc(p.card.prompt)}</Text>
       {alloc ? (
         <Allocate
@@ -209,36 +386,87 @@ function PeopleStep({ step, ui, page, onDone }: { step: Extract<Step, { kind: 'p
   )
 }
 
-function OrdinaryStep({ runner, step, ui, page, onDone }: { runner: Runner; step: Extract<Step, { kind: 'ordinary' }>; ui: Lang; page: PageBase; onDone: (v: unknown) => void }) {
+function OrdinaryStep({
+  runner,
+  step,
+  ui,
+  page,
+  onDone,
+}: {
+  runner: Runner
+  step: Extract<Step, { kind: 'ordinary' }>
+  ui: Lang
+  page: PageBase
+  onDone: (v: unknown) => void
+}) {
   const L = (t: T) => t[ui]
   const [v, setV] = useState<string | null>(null)
   const [answered, setAnswered] = useState(false)
   const [recall] = useState(() => runner.recallName())
   if (answered) {
     return (
-      <Page {...page} title={L(step.d.title)} actions={<Button onClick={() => onDone(v)}>{L(screens.common.next)}</Button>}>
+      <Page
+        {...page}
+        title={L(step.d.title)}
+        actions={<Button onClick={() => onDone(v)}>{L(screens.common.next)}</Button>}
+      >
         <Text kind="lead">{fill(L(step.d.continuation), { recall })}</Text>
       </Page>
     )
   }
   return (
-    <Page {...page} title={L(step.d.title)} actions={<Button onClick={() => setAnswered(true)} disabled={v === null}>{L(screens.common.confirm)}</Button>}>
+    <Page
+      {...page}
+      title={L(step.d.title)}
+      actions={
+        <Button onClick={() => setAnswered(true)} disabled={v === null}>
+          {L(screens.common.confirm)}
+        </Button>
+      }
+    >
       <Text>{fill(L(step.d.body), { recall })}</Text>
-      <Choice legend={L(step.d.title)} options={step.d.options.map((o) => ({ id: o.id, text: L(o.text) }))} value={v} onChange={setV} />
+      <Choice
+        legend={L(step.d.title)}
+        options={step.d.options.map((o) => ({ id: o.id, text: L(o.text) }))}
+        value={v}
+        onChange={setV}
+      />
     </Page>
   )
 }
 
-function IntroStep({ step, ui, page, onDone }: { step: Extract<Step, { kind: 'intro' }>; ui: Lang; page: PageBase; onDone: (v: unknown) => void }) {
+function IntroStep({
+  step,
+  ui,
+  page,
+  onDone,
+}: {
+  step: Extract<Step, { kind: 'intro' }>
+  ui: Lang
+  page: PageBase
+  onDone: (v: unknown) => void
+}) {
   const L = (t: T) => t[ui]
   const go = <Button onClick={() => onDone(null)}>{L(screens.common.continue)}</Button>
   switch (step.which) {
     case 'screening':
-      return <Page {...page} title={L(screens.common.acts.screening)} actions={go}><Text>{L(screens.screening.intro)}</Text></Page>
+      return (
+        <Page {...page} title={L(screens.common.acts.screening)} actions={go}>
+          <Text>{L(screens.screening.intro)}</Text>
+        </Page>
+      )
     case 'survey':
-      return <Page {...page} title={L(screens.common.acts.survey)} actions={go}><Text>{L(screens.survey.intro)}</Text></Page>
+      return (
+        <Page {...page} title={L(screens.common.acts.survey)} actions={go}>
+          <Text>{L(screens.survey.intro)}</Text>
+        </Page>
+      )
     case 'direct':
-      return <Page {...page} title={L(screens.common.acts.direct)} actions={go}><Text>{L(screens.direct.intro)}</Text></Page>
+      return (
+        <Page {...page} title={L(screens.common.acts.direct)} actions={go}>
+          <Text>{L(screens.direct.intro)}</Text>
+        </Page>
+      )
     case 'otr':
       return (
         <Page {...page} title={L(screens.offTheRecord.title)} actions={go}>
@@ -247,7 +475,11 @@ function IntroStep({ step, ui, page, onDone }: { step: Extract<Step, { kind: 'in
         </Page>
       )
     case 'xw-direct':
-      return <Page {...page} title={L(screens.offTheRecord.practiceTitle)} actions={go}><Text>{L(screens.offTheRecord.directIntro)}</Text></Page>
+      return (
+        <Page {...page} title={L(screens.offTheRecord.practiceTitle)} actions={go}>
+          <Text>{L(screens.offTheRecord.directIntro)}</Text>
+        </Page>
+      )
     case 'xw-practice':
       return (
         <Page {...page} title={L(screens.offTheRecord.practiceTitle)} actions={go}>
@@ -263,10 +495,20 @@ function IntroStep({ step, ui, page, onDone }: { step: Extract<Step, { kind: 'in
         </Page>
       )
     case 'm1h-direct':
-      return <Page {...page} title={L(screens.offTheRecord.title)} actions={go}><Text>{L(screens.offTheRecord.directM1h)}</Text></Page>
+      return (
+        <Page {...page} title={L(screens.offTheRecord.title)} actions={go}>
+          <Text>{L(screens.offTheRecord.directM1h)}</Text>
+        </Page>
+      )
     case 'inbox':
       return (
-        <Page {...page} surface="sober" oof={undefined} title={L(screens.inbox.noteTitle)} actions={go}>
+        <Page
+          {...page}
+          surface="sober"
+          oof={undefined}
+          title={L(screens.inbox.noteTitle)}
+          actions={go}
+        >
           <Text>{L(screens.inbox.note)}</Text>
           <Text kind="small">{L(screens.inbox.route)}</Text>
         </Page>
@@ -274,7 +516,15 @@ function IntroStep({ step, ui, page, onDone }: { step: Extract<Step, { kind: 'in
   }
 }
 
-function InboxStep({ step, page, onDone }: { step: Extract<Step, { kind: 'inbox' }>; page: PageBase; onDone: (v: unknown) => void }) {
+function InboxStep({
+  step,
+  page,
+  onDone,
+}: {
+  step: Extract<Step, { kind: 'inbox' }>
+  page: PageBase
+  onDone: (v: unknown) => void
+}) {
   const lang = step.lang
   const L = (t: T) => t[lang]
   const inc = inboxBank.find((i) => i.id === step.id)
@@ -285,29 +535,85 @@ function InboxStep({ step, page, onDone }: { step: Extract<Step, { kind: 'inbox'
     <Page
       {...page}
       lang={lang === 'hinglish' ? 'hi-Latn' : 'en-GB'}
-      actions={<Button onClick={() => label !== null && action !== null && onDone({ label: Number(label), action })} disabled={label === null || action === null}>{L(screens.common.next)}</Button>}
+      actions={
+        <Button
+          onClick={() =>
+            label !== null && action !== null && onDone({ label: Number(label), action })
+          }
+          disabled={label === null || action === null}
+        >
+          {L(screens.common.next)}
+        </Button>
+      }
     >
       <Text kind="lead">{L(inc.text)}</Text>
-      <Choice legend={L(screens.inbox.question)} options={screens.inbox.scale.map((t, i) => ({ id: String(i), text: L(t) }))} value={label} onChange={setLabel} />
-      <Choice legend={L(screens.inbox.nextQuestion)} options={screens.inbox.actions.map((a) => ({ id: a.id, text: L(a.text) }))} value={action} onChange={setAction} />
+      <Choice
+        legend={L(screens.inbox.question)}
+        options={screens.inbox.scale.map((t, i) => ({ id: String(i), text: L(t) }))}
+        value={label}
+        onChange={setLabel}
+      />
+      <Choice
+        legend={L(screens.inbox.nextQuestion)}
+        options={screens.inbox.actions.map((a) => ({ id: a.id, text: L(a.text) }))}
+        value={action}
+        onChange={setAction}
+      />
       <Text kind="small">{L(screens.inbox.route)}</Text>
     </Page>
   )
 }
 
-function ProbeStep({ page, ui, onDone }: { page: PageBase; ui: Lang; onDone: (v: unknown) => void }) {
+function ProbeStep({
+  page,
+  ui,
+  onDone,
+}: {
+  page: PageBase
+  ui: Lang
+  onDone: (v: unknown) => void
+}) {
   const L = (t: T) => t[ui]
   const [v, setV] = useState<string[]>([])
   return (
-    <Page {...page} actions={<Button onClick={() => onDone(v)} disabled={v.length === 0}>{L(screens.common.next)}</Button>}>
-      <Checks legend={L(screens.wrap.probe.question)} hint={L(screens.wrap.probe.hint)} options={screens.wrap.probe.options.map((o) => ({ id: o.id, text: L(o.text) }))} value={v} onChange={setV} />
+    <Page
+      {...page}
+      actions={
+        <Button onClick={() => onDone(v)} disabled={v.length === 0}>
+          {L(screens.common.next)}
+        </Button>
+      }
+    >
+      <Checks
+        legend={L(screens.wrap.probe.question)}
+        hint={L(screens.wrap.probe.hint)}
+        options={screens.wrap.probe.options.map((o) => ({ id: o.id, text: L(o.text) }))}
+        value={v}
+        onChange={setV}
+      />
     </Page>
   )
 }
 
-const fmtDate = (ms: number, lang: Lang) => new Date(ms).toLocaleDateString(lang === 'hinglish' ? 'en-IN' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' })
+const fmtDate = (ms: number, lang: Lang) =>
+  new Date(ms).toLocaleDateString(lang === 'hinglish' ? 'en-IN' : 'en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'Asia/Kolkata',
+  })
 
-function CodeStep({ runner, page, ui, onDone }: { runner: Runner; page: PageBase; ui: Lang; onDone: (v: unknown) => void }) {
+function CodeStep({
+  runner,
+  page,
+  ui,
+  onDone,
+}: {
+  runner: Runner
+  page: PageBase
+  ui: Lang
+  onDone: (v: unknown) => void
+}) {
   const L = (t: T) => t[ui]
   const [ready, setReady] = useState(runner.keys !== null)
   const [saved, setSaved] = useState(false)
@@ -321,27 +627,66 @@ function CodeStep({ runner, page, ui, onDone }: { runner: Runner; page: PageBase
   const releaseAt = Date.parse(`${config.release.releaseAt[runner.dep]}T00:00:00+05:30`)
   const until = releaseAt + config.release.withdrawalDaysAfterRelease * 86_400_000
   return (
-    <Page {...page} title={L(screens.wrap.code.title)} actions={<Button onClick={() => onDone(null)} disabled={!ready || !saved}>{L(screens.common.continue)}</Button>}>
+    <Page
+      {...page}
+      title={L(screens.wrap.code.title)}
+      actions={
+        <Button onClick={() => onDone(null)} disabled={!ready || !saved}>
+          {L(screens.common.continue)}
+        </Button>
+      }
+    >
       <Text>{L(screens.wrap.code.body)}</Text>
-      {ready && runner.code ? <Code value={formatCode(runner.code)} label={L(screens.wrap.code.title)} /> : <Notice>…</Notice>}
-      <Text>{fill(L(screens.wrap.code.release), { date: fmtDate(releaseAt, ui), until: fmtDate(until, ui) })}</Text>
-      <Checks legend={L(screens.wrap.code.title)} options={[{ id: 'saved', text: L(screens.wrap.code.saved) }]} value={saved ? ['saved'] : []} onChange={(ids) => setSaved(ids.includes('saved'))} />
+      {ready && runner.code ? (
+        <Code value={formatCode(runner.code)} label={L(screens.wrap.code.title)} />
+      ) : (
+        <Notice>…</Notice>
+      )}
+      <Text>
+        {fill(L(screens.wrap.code.release), {
+          date: fmtDate(releaseAt, ui),
+          until: fmtDate(until, ui),
+        })}
+      </Text>
+      <Checks
+        legend={L(screens.wrap.code.title)}
+        options={[{ id: 'saved', text: L(screens.wrap.code.saved) }]}
+        value={saved ? ['saved'] : []}
+        onChange={(ids) => setSaved(ids.includes('saved'))}
+      />
     </Page>
   )
 }
 
-function DemographicsStep({ runner, page, ui, onDone }: { runner: Runner; page: PageBase; ui: Lang; onDone: (v: unknown) => void }) {
+function DemographicsStep({
+  runner,
+  page,
+  ui,
+  onDone,
+}: {
+  runner: Runner
+  page: PageBase
+  ui: Lang
+  onDone: (v: unknown) => void
+}) {
   const L = (t: T) => t[ui]
   const items = screens.wrap.demographics.items.filter((i) => runner.dep !== 'firm' || i.firm)
   const [v, setV] = useState<Record<string, string>>({})
   return (
-    <Page {...page} title={L(screens.wrap.demographics.title)} actions={<Button onClick={() => onDone(v)}>{L(screens.common.continue)}</Button>}>
+    <Page
+      {...page}
+      title={L(screens.wrap.demographics.title)}
+      actions={<Button onClick={() => onDone(v)}>{L(screens.common.continue)}</Button>}
+    >
       <Text>{L(screens.wrap.demographics.body)}</Text>
       {items.map((it) => (
         <Choice
           key={it.id}
           legend={L(it.text)}
-          options={[...it.options.map((o) => ({ id: o.id, text: L(o.text) })), { id: 'prefer-not', text: L(screens.common.skip) }]}
+          options={[
+            ...it.options.map((o) => ({ id: o.id, text: L(o.text) })),
+            { id: 'prefer-not', text: L(screens.common.skip) },
+          ]}
           value={v[it.id] ?? null}
           onChange={(id) => setV({ ...v, [it.id]: id })}
         />

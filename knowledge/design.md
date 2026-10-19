@@ -86,7 +86,9 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 |---|---|---|
 | `Page` | `src/ui/Page.tsx` | One screen: surface, act label, the out-of-fiction line, heading that takes focus on arrival, body, one action row |
 | `Button` | `src/ui/Button.tsx` | `primary` (violet fill), `secondary` (violet outline), `quiet` (text). 48 px tall, full width on phones |
-| `Text` | `src/ui/Text.tsx` | Paragraph, `lead`, `small`, `muted` |
+| `Text` | `src/ui/Text.tsx` | Paragraph, `lead`, `small`, `muted`, `strong` |
+| `Heading` | `src/ui/Text.tsx` | A section heading inside a page (explanation sections, demo tables) |
+| `Link` | `src/ui/Link.tsx` | A text link with a 48 px target (the calendar file, demo links) |
 | `List` | `src/ui/List.tsx` | A plain bulleted list of text points (consent, tutorial, debrief) |
 | `Character` | `src/ui/Character.tsx` | One colleague: emoji figure (or species), name, cue lines (surname is part of the name; "Born in"; badge), description |
 | `SortList` | `src/ui/SortList.tsx` | Drag-to-sort list of `Character`s with up and down buttons on every row |

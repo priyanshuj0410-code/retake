@@ -13,7 +13,15 @@ const N = Number(process.argv[2] ?? 1500)
 const sum = new Map<string, { s: number; n: number }>()
 for (let i = 0; i < N; i++) {
   for (const dep of DEPLOYMENTS) {
-    const p = await playDemo(500_000 + i, dep, ['en'], dep === 'firm' ? { timingArm: 'before', batchMonth: '2026-11', sex: 'prefer-not' } : undefined, 1)
+    const p = await playDemo(
+      500_000 + i,
+      dep,
+      ['en'],
+      dep === 'firm'
+        ? { timingArm: 'before', batchMonth: '2026-11', sex: 'prefer-not' }
+        : undefined,
+      1,
+    )
     for (const a of p.runner.answers.people.values()) {
       if (!a.p.baseline) continue
       const s = characterScores(a.p.card, a)
@@ -29,5 +37,10 @@ for (let i = 0; i < N; i++) {
 const out: Record<string, number> = { _note: 0 } as Record<string, number>
 delete out._note
 for (const [d, e] of [...sum].sort()) out[d] = Math.round((e.s / e.n) * 1e4) / 1e4
-writeFileSync(new URL('../content/merit-reference.json', import.meta.url), JSON.stringify(out, null, 1) + '\n')
-console.log(`merit-reference: ${sum.size} descriptions from ${N} demo players per deployment (DEMO; P1 replaces it)`)
+writeFileSync(
+  new URL('../content/merit-reference.json', import.meta.url),
+  JSON.stringify(out, null, 1) + '\n',
+)
+console.log(
+  `merit-reference: ${sum.size} descriptions from ${N} demo players per deployment (DEMO; P1 replaces it)`,
+)

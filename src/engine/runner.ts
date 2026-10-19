@@ -8,10 +8,27 @@ import type { Lang } from '../content/types'
 import { config, type DeploymentId, type NoteId } from './config'
 import { deriveKeys, newCode, type CodeKeys } from './codes'
 import { m3Label, type ConductCard } from './m3'
-import { buildSubmission, emptyAnswers, type Answers, type ItemRecord, type PlayMeta, type Submission } from './records'
+import {
+  buildSubmission,
+  emptyAnswers,
+  type Answers,
+  type ItemRecord,
+  type PlayMeta,
+  type Submission,
+} from './records'
 import type { Rng } from './rng'
 import { characterScores } from './score'
-import { createSession, phase2, routeAndNote, screeningScore, splitOf, type Route, type Session, type Split, type Step } from './session'
+import {
+  createSession,
+  phase2,
+  routeAndNote,
+  screeningScore,
+  splitOf,
+  type Route,
+  type Session,
+  type Split,
+  type Step,
+} from './session'
 
 export interface FirmLabels {
   timingArm: 'before' | 'after'
@@ -93,7 +110,13 @@ export class Runner {
         this.record({ k: 'screen', i: s.id, v: String(value) })
         break
       case 'survey':
-        this.record({ k: s.admin === 'direct' ? 'direct' : 'survey', i: s.item.id, v: Number(value), ...(s.admin === 'direct' ? {} : { a: s.admin }), ...(s.second ? { r: true } : {}) })
+        this.record({
+          k: s.admin === 'direct' ? 'direct' : 'survey',
+          i: s.item.id,
+          v: Number(value),
+          ...(s.admin === 'direct' ? {} : { a: s.admin }),
+          ...(s.second ? { r: true } : {}),
+        })
         break
       case 'xw-direct':
         this.answers.xwDirect[s.item.id] = Boolean(value)
@@ -126,7 +149,8 @@ export class Runner {
     }
     const wasScreening = s.kind === 'screening'
     this.index += 1
-    if (wasScreening && (this.current === undefined || this.current.kind !== 'screening')) this.extend()
+    if (wasScreening && (this.current === undefined || this.current.kind !== 'screening'))
+      this.extend()
   }
 
   /** A name the player staffed earlier, for an unscored ordinary decision's {recall}. */
@@ -174,7 +198,10 @@ export class Runner {
       .filter((a) => a.p.family === 'conduct' && a.p.form === 'A' && !a.p.baseline && !a.p.rematch)
       .map((a) => {
         const s = characterScores(a.p.card, a)
-        return { stratum: a.p.stratum, chars: a.p.chars.map((c, i) => ({ d: c.d, woman: c.sex === 'woman', s: s[i] })) }
+        return {
+          stratum: a.p.stratum,
+          chars: a.p.chars.map((c, i) => ({ d: c.d, woman: c.sex === 'woman', s: s[i] })),
+        }
       })
     /* The label is computed here, attached below, and nothing that produced it is kept. */
     return m3Label(this.rng, conduct)
@@ -182,7 +209,8 @@ export class Runner {
 
   submission(): Submission {
     if (!this.keys) throw new Error('no code yet')
-    const langs: PlayMeta['langs'] = this.langs.length > 1 ? 'both' : (this.langs[0] as 'en' | 'hinglish')
+    const langs: PlayMeta['langs'] =
+      this.langs.length > 1 ? 'both' : (this.langs[0] as 'en' | 'hinglish')
     const meta: PlayMeta = {
       dep: this.dep,
       v: config.version,
@@ -199,8 +227,15 @@ export class Runner {
       meta.batchMonth = this.firm.batchMonth
       meta.sex = this.firm.sex
     }
-    return buildSubmission({ keys: this.keys, meta, answers: this.answers, xwLabel: this.xwLabel(), xwSub: this.session.draws.xwSub })
+    return buildSubmission({
+      keys: this.keys,
+      meta,
+      answers: this.answers,
+      xwLabel: this.xwLabel(),
+      xwSub: this.session.draws.xwSub,
+    })
   }
 }
 
-export const randomiserStatement = (sub: 'low' | 'high', lang: Lang) => xw.randomiserQuestion[sub][lang]
+export const randomiserStatement = (sub: 'low' | 'high', lang: Lang) =>
+  xw.randomiserQuestion[sub][lang]

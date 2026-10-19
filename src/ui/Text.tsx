@@ -1,7 +1,17 @@
 import type { ReactNode } from 'react'
 import './text.css'
 
-export function Text({ kind, children, id, lang }: { kind?: 'lead' | 'small' | 'muted' | 'strong'; children: ReactNode; id?: string; lang?: string }) {
+export function Text({
+  kind,
+  children,
+  id,
+  lang,
+}: {
+  kind?: 'lead' | 'small' | 'muted' | 'strong'
+  children: ReactNode
+  id?: string
+  lang?: string
+}) {
   return (
     <p className={kind ? `text text--${kind}` : 'text'} id={id} lang={lang}>
       {children}

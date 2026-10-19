@@ -15,7 +15,17 @@ import { config, type DeploymentId, type NoteId, type R1Arm } from './config'
 import { present, rematchOf, selectCards, type Presented } from './layout'
 import type { Rng } from './rng'
 
-export type Act = 'firstWeek' | 'season' | 'screening' | 'survey' | 'offTheRecord' | 'inbox' | 'note' | 'after' | 'wrap' | 'direct'
+export type Act =
+  | 'firstWeek'
+  | 'season'
+  | 'screening'
+  | 'survey'
+  | 'offTheRecord'
+  | 'inbox'
+  | 'note'
+  | 'after'
+  | 'wrap'
+  | 'direct'
 
 export type XwPurpose = 'practice' | 'anchor' | 'zero' | 'control' | 'm1h' | 'm3' | 'rc' | 'neutral'
 
@@ -23,7 +33,20 @@ export type Step =
   | { kind: 'tutorial'; act: Act }
   | { kind: 'people'; act: Act; p: Presented; n: number }
   | { kind: 'ordinary'; act: Act; d: OrdinaryDecision }
-  | { kind: 'intro'; act: Act; which: 'screening' | 'survey' | 'direct' | 'otr' | 'inbox' | 'xw-direct' | 'xw-practice' | 'xw-items' | 'm1h-direct' }
+  | {
+      kind: 'intro'
+      act: Act
+      which:
+        | 'screening'
+        | 'survey'
+        | 'direct'
+        | 'otr'
+        | 'inbox'
+        | 'xw-direct'
+        | 'xw-practice'
+        | 'xw-items'
+        | 'm1h-direct'
+    }
   | { kind: 'screening'; act: Act; id: string }
   | { kind: 'survey'; act: Act; item: SurveyItem; admin: 1 | 2 | 'direct'; second: boolean }
   | { kind: 'xw-direct'; act: Act; item: CrosswiseItem }
@@ -68,9 +91,12 @@ export interface Session {
 const surveySequence = (rng: Rng, items: SurveyItem[]): { item: SurveyItem; second: boolean }[] => {
   for (;;) {
     const first = rng.shuffle(items).map((item) => ({ item, second: false }))
-    const repeats = rng.shuffle(items.filter((i) => i.repeat)).map((item) => ({ item, second: true }))
+    const repeats = rng
+      .shuffle(items.filter((i) => i.repeat))
+      .map((item) => ({ item, second: true }))
     /* The repeats are asked apart: never straight after their first asking. */
-    if (repeats.length === 0 || first[first.length - 1].item.id !== repeats[0].item.id) return [...first, ...repeats]
+    if (repeats.length === 0 || first[first.length - 1].item.id !== repeats[0].item.id)
+      return [...first, ...repeats]
   }
 }
 
@@ -79,7 +105,8 @@ function interleave(people: Step[], queue: OrdinaryDecision[], act: Act): Step[]
   const out: Step[] = []
   people.forEach((s, i) => {
     out.push(s)
-    if ((i + 1) % config.ordinaryPerPeopleCards === 0 && queue.length > 0) out.push({ kind: 'ordinary', act, d: queue.shift() as OrdinaryDecision })
+    if ((i + 1) % config.ordinaryPerPeopleCards === 0 && queue.length > 0)
+      out.push({ kind: 'ordinary', act, d: queue.shift() as OrdinaryDecision })
   })
   return out
 }
@@ -87,7 +114,13 @@ function interleave(people: Step[], queue: OrdinaryDecision[], act: Act): Step[]
 export function createSession(rng: Rng, dep: DeploymentId, langs: Lang[]): Session {
   const d = config.deployments[dep]
   const arm: R1Arm = d.r1 ? rng.weighted(d.r1) : 'FULL'
-  const draws: Draws = { arm, uRoute: rng.next(), uNote: rng.next(), uRc: rng.next(), xwSub: rng.next() < config.crosswise.lowSubsampleShare ? 'low' : 'high' }
+  const draws: Draws = {
+    arm,
+    uRoute: rng.next(),
+    uNote: rng.next(),
+    uRc: rng.next(),
+    xwSub: rng.next() < config.crosswise.lowSubsampleShare ? 'low' : 'high',
+  }
   const fillers = new Set(arm === 'FULL' ? [] : (d.r1Fillers ?? []))
   const conductBank = d.conductBank ?? 'A'
 
@@ -105,17 +138,28 @@ export function createSession(rng: Rng, dep: DeploymentId, langs: Lang[]): Sessi
   }
   const usedB = new Set(formA.map((p) => p.card.id))
   const bankB = d.formBBank ?? 'B'
-  const slotsB = selectCards(rng, d.formB, bankB, 'B', new Set()).filter((s) => !usedB.has(s.card.id))
-  const formB = rng.shuffle(present(rng, slotsB, { form: 'B', langs, arm: 'FULL', fillers: new Set() }))
+  const slotsB = selectCards(rng, d.formB, bankB, 'B', new Set()).filter(
+    (s) => !usedB.has(s.card.id),
+  )
+  const formB = rng.shuffle(
+    present(rng, slotsB, { form: 'B', langs, arm: 'FULL', fillers: new Set() }),
+  )
 
   const tutorialDecisions = ordinaryBank.filter((o) => o.tutorial).slice(0, config.tutorialOrdinary)
   const ordinaryQueue = ordinaryBank.filter((o) => !o.tutorial)
 
   const inboxN = Math.min(d.inbox, inboxBank.length)
-  const harassment = rng.shuffle(inboxBank.filter((i) => i.kind === 'harassment')).slice(0, Math.ceil(inboxN / 2))
-  const nearMiss = rng.shuffle(inboxBank.filter((i) => i.kind === 'near-miss')).slice(0, Math.floor(inboxN / 2))
+  const harassment = rng
+    .shuffle(inboxBank.filter((i) => i.kind === 'harassment'))
+    .slice(0, Math.ceil(inboxN / 2))
+  const nearMiss = rng
+    .shuffle(inboxBank.filter((i) => i.kind === 'near-miss'))
+    .slice(0, Math.floor(inboxN / 2))
   const chosen = rng.shuffle([...harassment, ...nearMiss])
-  const inboxLangs = langs.length > 1 ? rng.shuffle(chosen.map((_, i) => (i % 2 === 0 ? 'en' : 'hinglish') as Lang)) : chosen.map(() => langs[0])
+  const inboxLangs =
+    langs.length > 1
+      ? rng.shuffle(chosen.map((_, i) => (i % 2 === 0 ? 'en' : 'hinglish') as Lang))
+      : chosen.map(() => langs[0])
   const inbox = chosen.map((c, i) => ({ id: c.id, lang: inboxLangs[i] }))
 
   const surveyOrder = {
@@ -126,7 +170,12 @@ export function createSession(rng: Rng, dep: DeploymentId, langs: Lang[]): Sessi
 
   const phase1: Step[] = [{ kind: 'tutorial', act: 'firstWeek' }]
   for (const t of tutorialDecisions) phase1.push({ kind: 'ordinary', act: 'firstWeek', d: t })
-  const peopleA: Step[] = formA.map((p, i) => ({ kind: 'people', act: i < 4 ? 'firstWeek' : 'season', p, n: i }))
+  const peopleA: Step[] = formA.map((p, i) => ({
+    kind: 'people',
+    act: i < 4 ? 'firstWeek' : 'season',
+    p,
+    n: i,
+  }))
   phase1.push(...interleave(peopleA, ordinaryQueue, 'season'))
   if (d.screening) {
     phase1.push({ kind: 'intro', act: 'screening', which: 'screening' })
@@ -156,7 +205,10 @@ export function splitOf(score: number): Split {
 }
 
 /** The registered route and note rules, applied with the uniforms drawn at the start. */
-export function routeAndNote(s: Session, split: Split | null): { route: Route; note: NoteId | null; rc: boolean } {
+export function routeAndNote(
+  s: Session,
+  split: Split | null,
+): { route: Route; note: NoteId | null; rc: boolean } {
   const d = config.deployments[s.dep]
   const pickNote = (w: Partial<Record<NoteId, number>> | undefined): NoteId | null => {
     if (!w) return null
@@ -170,49 +222,92 @@ export function routeAndNote(s: Session, split: Split | null): { route: Route; n
     return entries[entries.length - 1][0]
   }
   if (Object.keys(d.notes).length === 0) return { route: 'standard', note: null, rc: false }
-  if (s.draws.arm !== 'FULL') return { route: 'partial', note: pickNote(d.notes.partial), rc: false }
+  if (s.draws.arm !== 'FULL')
+    return { route: 'partial', note: pickNote(d.notes.partial), rc: false }
   const rc = d.offTheRecord === 'm3' && s.draws.uRc < config.rc.share
-  if (d.offTheRecord === 'm1h' && split === 'high' && s.draws.uRoute < config.m1h.share) return { route: 'm1h', note: pickNote(d.notes.m1h), rc }
+  if (d.offTheRecord === 'm1h' && split === 'high' && s.draws.uRoute < config.m1h.share)
+    return { route: 'm1h', note: pickNote(d.notes.m1h), rc }
   return { route: 'standard', note: pickNote(split ? d.notes[split] : undefined), rc }
 }
 
 /** Phase two: everything after the screening block. */
-export function phase2(s: Session, route: Route, note: NoteId | null, rc: boolean, rng: Rng): Step[] {
+export function phase2(
+  s: Session,
+  route: Route,
+  note: NoteId | null,
+  rc: boolean,
+  rng: Rng,
+): Step[] {
   const d = config.deployments[s.dep]
   const out: Step[] = []
   if (d.surveyFirstHalf) {
     out.push({ kind: 'intro', act: 'survey', which: 'survey' })
-    for (const [i, item] of s.surveyOrder.first.entries()) out.push({ kind: 'survey', act: 'survey', item, admin: 1, second: i >= surveyItems.length })
+    for (const [i, item] of s.surveyOrder.first.entries())
+      out.push({ kind: 'survey', act: 'survey', item, admin: 1, second: i >= surveyItems.length })
   }
 
   const skipSecond = d.offTheRecord === 'm1h' && d.m1hSkipsSecondHalf && route === 'm1h'
-  const runOtr = d.offTheRecord === 'm3' || (d.offTheRecord === 'm1h' && (route === 'm1h' || !d.m1hSkipsSecondHalf))
+  const runOtr =
+    d.offTheRecord === 'm3' ||
+    (d.offTheRecord === 'm1h' && (route === 'm1h' || !d.m1hSkipsSecondHalf))
   if (runOtr) {
     out.push({ kind: 'intro', act: 'offTheRecord', which: 'otr' })
     out.push({ kind: 'intro', act: 'offTheRecord', which: 'xw-direct' })
-    for (const item of xw.practice.direct) out.push({ kind: 'xw-direct', act: 'offTheRecord', item })
+    for (const item of xw.practice.direct)
+      out.push({ kind: 'xw-direct', act: 'offTheRecord', item })
     out.push({ kind: 'intro', act: 'offTheRecord', which: 'xw-practice' })
     const practice = [...xw.practice.direct, ...xw.practice.crosswise].slice(0, 3)
-    for (const item of practice) out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'practice', fictional: true })
+    for (const item of practice)
+      out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'practice', fictional: true })
     out.push({ kind: 'intro', act: 'offTheRecord', which: 'xw-items' })
-    out.push({ kind: 'xw', act: 'offTheRecord', item: xw.anchor, purpose: 'anchor', fictional: false })
-    out.push({ kind: 'xw', act: 'offTheRecord', item: xw.knownZero, purpose: 'zero', fictional: false })
+    out.push({
+      kind: 'xw',
+      act: 'offTheRecord',
+      item: xw.anchor,
+      purpose: 'anchor',
+      fictional: false,
+    })
+    out.push({
+      kind: 'xw',
+      act: 'offTheRecord',
+      item: xw.knownZero,
+      purpose: 'zero',
+      fictional: false,
+    })
     /* Every route is filled to the same number of screens with neutral privacy items. */
     const neutral = rng.shuffle(xw.neutral)
-    const pad = (n: number) => neutral.splice(0, n).map((item) => ({ kind: 'xw', act: 'offTheRecord', item, purpose: 'neutral', fictional: false }) as Step)
+    const pad = (n: number) =>
+      neutral
+        .splice(0, n)
+        .map(
+          (item) =>
+            ({
+              kind: 'xw',
+              act: 'offTheRecord',
+              item,
+              purpose: 'neutral',
+              fictional: false,
+            }) as Step,
+        )
     if (d.offTheRecord === 'm1h') {
       const longest = xw.m1hControls.length + xw.m1hStatements.length
       if (route === 'm1h') {
-        for (const item of xw.m1hControls) out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'control', fictional: false })
-        for (const item of xw.m1hStatements) out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'm1h', fictional: false })
+        for (const item of xw.m1hControls)
+          out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'control', fictional: false })
+        for (const item of xw.m1hStatements)
+          out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'm1h', fictional: false })
         out.push({ kind: 'intro', act: 'offTheRecord', which: 'm1h-direct' })
-        for (const item of xw.m1hStatements) out.push({ kind: 'm1h-direct', act: 'offTheRecord', item })
+        for (const item of xw.m1hStatements)
+          out.push({ kind: 'm1h-direct', act: 'offTheRecord', item })
       } else {
         out.push(...pad(longest))
       }
     } else {
-      for (const item of xw.m3Items) out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'm3', fictional: false })
-      if (rc) for (const item of xw.rcItems) out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'rc', fictional: false })
+      for (const item of xw.m3Items)
+        out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'm3', fictional: false })
+      if (rc)
+        for (const item of xw.rcItems)
+          out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'rc', fictional: false })
       else out.push(...pad(xw.rcItems.length))
     }
   }
@@ -224,18 +319,31 @@ export function phase2(s: Session, route: Route, note: NoteId | null, rc: boolea
 
   if (note && !skipSecond) {
     out.push({ kind: 'note', act: 'note', note })
-    const peopleB: Step[] = s.formB.map((p, i) => ({ kind: 'people', act: 'after', p, n: 1000 + i }))
+    const peopleB: Step[] = s.formB.map((p, i) => ({
+      kind: 'people',
+      act: 'after',
+      p,
+      n: 1000 + i,
+    }))
     out.push(...interleave(peopleB, s.ordinaryQueue, 'after'))
     if (d.surveySecondHalf) {
       out.push({ kind: 'intro', act: 'after', which: 'survey' })
-      for (const [i, item] of s.surveyOrder.second.entries()) out.push({ kind: 'survey', act: 'after', item, admin: 2, second: i >= surveyItems.length })
+      for (const [i, item] of s.surveyOrder.second.entries())
+        out.push({ kind: 'survey', act: 'after', item, admin: 2, second: i >= surveyItems.length })
     }
     out.push({ kind: 'recall', act: 'after' })
   }
 
   if (d.directBlock) {
     out.push({ kind: 'intro', act: 'direct', which: 'direct' })
-    for (const [i, item] of s.surveyOrder.direct.entries()) out.push({ kind: 'survey', act: 'direct', item, admin: 'direct', second: i >= directItems.length })
+    for (const [i, item] of s.surveyOrder.direct.entries())
+      out.push({
+        kind: 'survey',
+        act: 'direct',
+        item,
+        admin: 'direct',
+        second: i >= directItems.length,
+      })
   }
 
   out.push({ kind: 'probe', act: 'wrap' }, { kind: 'result', act: 'wrap' })
@@ -248,6 +356,15 @@ export function phase2(s: Session, route: Route, note: NoteId | null, rc: boolea
 }
 
 /** Out-of-fiction screens open with "This part is not part of the game" (rule 8). */
-export const OUT_OF_FICTION: Act[] = ['screening', 'survey', 'offTheRecord', 'note', 'direct', 'wrap']
+export const OUT_OF_FICTION: Act[] = [
+  'screening',
+  'survey',
+  'offTheRecord',
+  'note',
+  'direct',
+  'wrap',
+]
 export const isOutOfFiction = (step: Step) =>
-  OUT_OF_FICTION.includes(step.act) || (step.act === 'after' && (step.kind === 'survey' || step.kind === 'recall' || step.kind === 'intro'))
+  OUT_OF_FICTION.includes(step.act) ||
+  (step.act === 'after' &&
+    (step.kind === 'survey' || step.kind === 'recall' || step.kind === 'intro'))

@@ -33,13 +33,24 @@ export function releaseCell<V>(c: Cell<V>, min = MIN()): Cell<V> | null {
  * merged category; if the pool is still below the minimum it is suppressed. `combine` gives
  * the merged category's value from its members.
  */
-export function releaseCategories<V>(cells: Cell<V>[], combine: (cs: Cell<V>[]) => V | undefined, min = MIN(), mergedLabel = 'Other categories (merged)'): Released<V> {
+export function releaseCategories<V>(
+  cells: Cell<V>[],
+  combine: (cs: Cell<V>[]) => V | undefined,
+  min = MIN(),
+  mergedLabel = 'Other categories (merged)',
+): Released<V> {
   const big = cells.filter((c) => c.n >= min)
   const small = cells.filter((c) => c.n < min)
   const out: Released<V> = { released: big.map((c) => ({ ...c })), suppressed: [] }
   if (small.length > 0) {
     const n = small.reduce((s, c) => s + c.n, 0)
-    if (n >= min && small.length > 1) out.released.push({ label: mergedLabel, n, value: combine(small), merged: small.map((c) => c.label) })
+    if (n >= min && small.length > 1)
+      out.released.push({
+        label: mergedLabel,
+        n,
+        value: combine(small),
+        merged: small.map((c) => c.label),
+      })
     else out.suppressed.push(...small.map((c) => c.label))
   }
   return out
@@ -56,7 +67,11 @@ export interface FirmCell<V = number> {
 }
 
 /** Sex by batch-month, merging small batches within the firm-month and the timing arm only. */
-export function releaseFirm<V>(cells: FirmCell<V>[], combine: (cs: FirmCell<V>[]) => V | undefined, min = MIN()): Released<V> {
+export function releaseFirm<V>(
+  cells: FirmCell<V>[],
+  combine: (cs: FirmCell<V>[]) => V | undefined,
+  min = MIN(),
+): Released<V> {
   const groups = new Map<string, FirmCell<V>[]>()
   for (const c of cells) {
     const k = [c.firm, c.month, c.timingArm, c.sex].join('|')
@@ -65,11 +80,18 @@ export function releaseFirm<V>(cells: FirmCell<V>[], combine: (cs: FirmCell<V>[]
   const out: Released<V> = { released: [], suppressed: [] }
   for (const [k, cs] of groups) {
     const label = (c: FirmCell<V>) => `${c.firm} ${c.month} ${c.batch} ${c.timingArm} ${c.sex}`
-    for (const c of cs.filter((c) => c.n >= min)) out.released.push({ label: label(c), n: c.n, value: c.value })
+    for (const c of cs.filter((c) => c.n >= min))
+      out.released.push({ label: label(c), n: c.n, value: c.value })
     const small = cs.filter((c) => c.n < min)
     if (small.length === 0) continue
     const n = small.reduce((s, c) => s + c.n, 0)
-    if (n >= min && small.length > 1) out.released.push({ label: `${k.replaceAll('|', ' ')} (batches merged)`, n, value: combine(small), merged: small.map(label) })
+    if (n >= min && small.length > 1)
+      out.released.push({
+        label: `${k.replaceAll('|', ' ')} (batches merged)`,
+        n,
+        value: combine(small),
+        merged: small.map(label),
+      })
     else out.suppressed.push(...small.map(label))
   }
   return out

@@ -14,24 +14,39 @@ export interface PageProps {
   children?: ReactNode
   actions?: ReactNode
   lang?: string
+  /** A marker for the checks and screenshots: data-screen. */
+  screen?: string
 }
 
-export function Page({ surface, act, oof, title, demo, stepKey, children, actions, lang }: PageProps) {
+export function Page({
+  surface,
+  act,
+  oof,
+  title,
+  demo,
+  stepKey,
+  children,
+  actions,
+  lang,
+  screen,
+}: PageProps) {
   const focusRef = useRef<HTMLHeadingElement & HTMLDivElement>(null)
   useEffect(() => {
     focusRef.current?.focus()
     window.scrollTo(0, 0)
   }, [stepKey])
   return (
-    <div className="page" data-surface={surface} lang={lang}>
+    <div className="page" data-surface={surface} lang={lang} data-screen={screen ?? stepKey}>
       <div className="page__inner">
         {demo ? <DemoBadge text={demo} /> : null}
         {act || oof ? (
-          <div className="page__bar">
-            {act ? <p className="page__act">{act}</p> : null}
-          </div>
+          <div className="page__bar">{act ? <p className="page__act">{act}</p> : null}</div>
         ) : null}
-        <main className="page__body" ref={title ? undefined : focusRef} tabIndex={title ? undefined : -1}>
+        <main
+          className="page__body"
+          ref={title ? undefined : focusRef}
+          tabIndex={title ? undefined : -1}
+        >
           {oof ? <p className="page__oof">{oof}</p> : null}
           {title ? (
             <h1 className="page__title" ref={focusRef} tabIndex={-1}>

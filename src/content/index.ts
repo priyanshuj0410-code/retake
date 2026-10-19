@@ -12,9 +12,22 @@ import notes from '../../content/notes.json'
 import identity from '../../content/identity.json'
 import disclosure from '../../content/disclosure.json'
 import screens from '../../content/screens.json'
-import type { CrosswiseItem, InboxIncident, NoteText, OrdinaryDecision, PeopleCard, ScreeningItem, SurveyItem, T } from './types'
+import type {
+  CrosswiseItem,
+  InboxIncident,
+  NoteText,
+  OrdinaryDecision,
+  PeopleCard,
+  ScreeningItem,
+  SurveyItem,
+  T,
+} from './types'
 
-export const cards = [...(opportunity as PeopleCard[]), ...(npt as PeopleCard[]), ...(conduct as PeopleCard[])]
+export const cards = [
+  ...(opportunity as PeopleCard[]),
+  ...(npt as PeopleCard[]),
+  ...(conduct as PeopleCard[]),
+]
 export const cardById = new Map(cards.map((c) => [c.id, c]))
 export const ordinaryBank = ordinary as OrdinaryDecision[]
 export const inboxBank = inbox as InboxIncident[]

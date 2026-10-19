@@ -7,7 +7,12 @@ export interface SortListProps {
   /** order[p] is the index in items shown at position p. */
   order: number[]
   onChange: (order: number[]) => void
-  labels: { up: (name: string) => string; down: (name: string) => string; moved: (name: string, pos: number, of: number) => string; label: string }
+  labels: {
+    up: (name: string) => string
+    down: (name: string) => string
+    moved: (name: string, pos: number, of: number) => string
+    label: string
+  }
 }
 
 /** Drag a row by its body, or use its up and down buttons; every move is announced. */
@@ -61,18 +66,39 @@ export function SortList({ items, order, onChange, labels }: SortListProps) {
     <>
       <ol className="sort" ref={listRef} aria-label={labels.label}>
         {order.map((idx, pos) => (
-          <li key={idx} className={dragging === pos ? 'sort__row sort__row--dragging' : 'sort__row'}>
+          <li
+            key={idx}
+            className={dragging === pos ? 'sort__row sort__row--dragging' : 'sort__row'}
+          >
             <span className="sort__rank" aria-hidden="true">
               {pos + 1}
             </span>
-            <div className="sort__body sort__handle" onPointerDown={down(pos)} onPointerMove={moveDrag} onPointerUp={up} onPointerCancel={up}>
+            <div
+              className="sort__body sort__handle"
+              onPointerDown={down(pos)}
+              onPointerMove={moveDrag}
+              onPointerUp={up}
+              onPointerCancel={up}
+            >
               <Character c={items[idx]} />
             </div>
             <div className="sort__moves">
-              <button type="button" className="sort__move" onClick={() => move(pos, pos - 1)} disabled={pos === 0} aria-label={labels.up(items[idx].name)}>
+              <button
+                type="button"
+                className="sort__move"
+                onClick={() => move(pos, pos - 1)}
+                disabled={pos === 0}
+                aria-label={labels.up(items[idx].name)}
+              >
                 ↑
               </button>
-              <button type="button" className="sort__move" onClick={() => move(pos, pos + 1)} disabled={pos === order.length - 1} aria-label={labels.down(items[idx].name)}>
+              <button
+                type="button"
+                className="sort__move"
+                onClick={() => move(pos, pos + 1)}
+                disabled={pos === order.length - 1}
+                aria-label={labels.down(items[idx].name)}
+              >
                 ↓
               </button>
             </div>

@@ -8,7 +8,15 @@ import { config, DEPLOYMENTS, type DeploymentId } from '../engine/config'
 import type { CodeKeys } from '../engine/codes'
 import { randomKey } from '../engine/rng'
 import type { Submission } from '../engine/records'
-import type { Enrolment, Explanation, LangSet, Release, Schedule, StartResult, Store } from './types'
+import type {
+  Enrolment,
+  Explanation,
+  LangSet,
+  Release,
+  Schedule,
+  StartResult,
+  Store,
+} from './types'
 
 export type Tree = Record<string, Record<string, unknown>>
 
@@ -46,7 +54,17 @@ export class LocalStore implements Store {
     this.persist = persist
     this.explanationSource = explanationSource
     this.tree = persist?.load() ?? {}
-    for (const n of ['eval-config', 'eval-tokens', 'eval-play', 'eval-xw', 'eval-demo', 'eval-codes', 'eval-enrol', 'eval-schedule']) this.tree[n] ??= {}
+    for (const n of [
+      'eval-config',
+      'eval-tokens',
+      'eval-play',
+      'eval-xw',
+      'eval-demo',
+      'eval-codes',
+      'eval-enrol',
+      'eval-schedule',
+    ])
+      this.tree[n] ??= {}
     for (const dep of DEPLOYMENTS) this.tree['eval-config'][dep] = releaseOf(dep)
     this.tree['eval-schedule'][DEMO_SCHEDULE.firm] = DEMO_SCHEDULE
   }
@@ -67,7 +85,8 @@ export class LocalStore implements Store {
   }
 
   async start(token: string): Promise<StartResult> {
-    const t = this.tree['eval-tokens'][token] as { dep: DeploymentId; langs: LangSet; s: string } | undefined
+    const t = this.tree['eval-tokens'][token] as
+      { dep: DeploymentId; langs: LangSet; s: string } | undefined
     if (!t) return { ok: false, reason: 'unknown' }
     if (t.s !== 'issued') return { ok: false, reason: 'used' }
     t.s = 'started'
@@ -80,16 +99,31 @@ export class LocalStore implements Store {
     const e = this.tree['eval-enrol'][enrolKey] as Enrolment | undefined
     if (!e) return { ok: false as const, reason: 'unknown' as const }
     if (e.s !== 'enrolled') return { ok: false as const, reason: 'used' as const }
-    if (today < e.from || today > e.to) return { ok: false as const, reason: 'window' as const, enrolment: e }
+    if (today < e.from || today > e.to)
+      return { ok: false as const, reason: 'window' as const, enrolment: e }
     e.s = 'started'
     this.claim = { enrol: enrolKey }
     this.save()
-    return { ok: true as const, dep: 'firm' as const, langs: 'choose' as LangSet, enrolment: { ...e } }
+    return {
+      ok: true as const,
+      dep: 'firm' as const,
+      langs: 'choose' as LangSet,
+      enrolment: { ...e },
+    }
   }
 
   async submit(codeKey: string, dep: DeploymentId, sub: Submission | null) {
     if (!this.claim) throw new Error('refused: no open session (a spent token cannot submit)')
-    for (const [node, key] of [['eval-codes', codeKey], ...(sub ? [['eval-play', sub.play.key], ...sub.crosswise.map((c) => ['eval-xw', c.key]), ...sub.demographics.map((d) => ['eval-demo', d.key])] : [])] as [string, string][])
+    for (const [node, key] of [
+      ['eval-codes', codeKey],
+      ...(sub
+        ? [
+            ['eval-play', sub.play.key],
+            ...sub.crosswise.map((c) => ['eval-xw', c.key]),
+            ...sub.demographics.map((d) => ['eval-demo', d.key]),
+          ]
+        : []),
+    ] as [string, string][])
       if (this.tree[node][key] !== undefined) throw new Error(`refused: ${node} key exists`)
     this.tree['eval-codes'][codeKey] = dep
     if (sub) {
@@ -105,7 +139,8 @@ export class LocalStore implements Store {
 
   async withdraw(keys: CodeKeys) {
     const dep = this.tree['eval-codes'][keys.code] as DeploymentId | undefined
-    if (dep && this.now() > releaseOf(dep).deleteUntil) throw new Error('refused: withdrawal closed')
+    if (dep && this.now() > releaseOf(dep).deleteUntil)
+      throw new Error('refused: withdrawal closed')
     let n = 0
     const del = (node: string, k: string) => {
       if (this.tree[node][k] !== undefined) {
@@ -139,7 +174,8 @@ export class LocalStore implements Store {
   }
 
   async enrol(enrolKey: string, e: Enrolment) {
-    if (this.tree['eval-enrol'][enrolKey] !== undefined) throw new Error('refused: enrolment exists')
+    if (this.tree['eval-enrol'][enrolKey] !== undefined)
+      throw new Error('refused: enrolment exists')
     this.tree['eval-enrol'][enrolKey] = { ...e }
     this.save()
   }

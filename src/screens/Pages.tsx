@@ -1,10 +1,19 @@
 /** The pages around the sessions: the demo home, firm enrolment, the explanation and withdrawal. */
 import { useState } from 'react'
-import { registeredSentences, screens } from '../content'
+import { screens } from '../content'
+import { Disclosure } from './Disclosure'
 import type { T } from '../content/types'
 import { config, DEPLOYMENTS, type DeploymentId } from '../engine/config'
-import { deriveKeys, enrolmentKey, formatCode, newEnrolmentCode, normaliseCode, validCode } from '../engine/codes'
+import {
+  deriveKeys,
+  enrolmentKey,
+  formatCode,
+  newEnrolmentCode,
+  normaliseCode,
+  validCode,
+} from '../engine/codes'
 import { cryptoRng } from '../engine/rng'
+import { drawWindow } from '../engine/firm'
 import { store, iso } from '../store'
 import { DEMO_SCHEDULE } from '../store/local'
 import type { Enrolment, Explanation, LangSet } from '../store/types'
@@ -29,7 +38,8 @@ export function Home({ go }: { go: (hash: string) => void }) {
   return (
     <Page surface="oof" stepKey="home" demo={demoBadge} title="Equal Lens Evaluator: prototype v0">
       <Text>
-        This page exists only in demo mode. In a study, a panel provider sends each player a one-time link, and a firm sends one generic enrolment link; no player sees this page.
+        This page exists only in demo mode. In a study, a panel provider sends each player a
+        one-time link, and a firm sends one generic enrolment link; no player sees this page.
       </Text>
       <Choice
         legend="Language set the link carries"
@@ -59,7 +69,9 @@ export function Home({ go }: { go: (hash: string) => void }) {
         Demo results from seeded players
       </Button>
       {msg ? <Notice kind="error">{msg}</Notice> : null}
-      <Text kind="small">Store: {store.kind}. Add ?now=YYYY-MM-DD to the address to try the release and window dates.</Text>
+      <Text kind="small">
+        Store: {store.kind}. Add ?now=YYYY-MM-DD to the address to try the release and window dates.
+      </Text>
     </Page>
   )
 }
@@ -72,16 +84,13 @@ export function Enrol({ firm }: { firm: string }) {
   const [err, setErr] = useState<string | null>(null)
   const schedule = firm === DEMO_SCHEDULE.firm ? DEMO_SCHEDULE : null
   if (step === 'four')
+    return <Disclosure langs={['en', 'hinglish']} onContinue={() => setStep('consent')} />
+  if (step === 'declined')
     return (
-      <Page surface="oof" stepKey="enrol-four" actions={<Button onClick={() => setStep('consent')}>{L(S.common.continue)}</Button>}>
-        <div lang="en-GB" data-disclosure="en">
-          {registeredSentences.en.map((s) => (
-            <Text key={s}>{s}</Text>
-          ))}
-        </div>
+      <Page surface="oof" stepKey="enrol-declined" oof={L(S.common.outOfFiction)}>
+        <Text kind="lead">{L(S.consent.declined)}</Text>
       </Page>
     )
-  if (step === 'declined') return <Page surface="oof" stepKey="enrol-declined" oof={L(S.common.outOfFiction)}><Text kind="lead">{L(S.consent.declined)}</Text></Page>
   if (step === 'consent')
     return (
       <Page
@@ -107,13 +116,18 @@ export function Enrol({ firm }: { firm: string }) {
       if (!schedule || !batch || !sex) return
       const b = schedule.batches.find((x) => x.id === batch)
       if (!b) return
-      const rng = cryptoRng()
-      const after = rng.next() < config.firmWindows.afterShare
-      const t = Date.parse(`${b.date}T12:00:00+05:30`)
-      const [lo, hi] = after ? config.firmWindows.afterDays : config.firmWindows.beforeDays
-      const from = after ? iso(t + lo * DAY) : iso(t - lo * DAY)
-      const to = after ? iso(t + hi * DAY) : iso(t - hi * DAY)
-      const e: Enrolment = { firm, batch, tdate: b.date, arm: after ? 'after' : 'before', from, to, month: b.date.slice(0, 7), sex, s: 'enrolled' }
+      const w = drawWindow(cryptoRng(), b.date)
+      const e: Enrolment = {
+        firm,
+        batch,
+        tdate: b.date,
+        arm: w.arm,
+        from: w.from,
+        to: w.to,
+        month: w.month,
+        sex,
+        s: 'enrolled',
+      }
       const code = newEnrolmentCode()
       try {
         await store.enrol(await enrolmentKey(code), e)
@@ -124,9 +138,33 @@ export function Enrol({ firm }: { firm: string }) {
       }
     }
     return (
-      <Page surface="oof" stepKey="enrol-form" oof={L(S.common.outOfFiction)} demo={demoBadge} title={schedule?.name ?? firm} actions={<Button onClick={() => void submit()} disabled={!sex || !batch}>{L(S.common.continue)}</Button>}>
-        <Choice legend={L(S.firm.sexItem)} options={S.firm.sexOptions.map((o) => ({ id: o.id, text: L(o.text) }))} value={sex} onChange={setSex} />
-        <Choice legend={L(S.firm.batch)} options={(schedule?.batches ?? []).map((b) => ({ id: b.id, text: `${b.label}: ${b.date}` }))} value={batch} onChange={setBatch} />
+      <Page
+        surface="oof"
+        stepKey="enrol-form"
+        oof={L(S.common.outOfFiction)}
+        demo={demoBadge}
+        title={schedule?.name ?? firm}
+        actions={
+          <Button onClick={() => void submit()} disabled={!sex || !batch}>
+            {L(S.common.continue)}
+          </Button>
+        }
+      >
+        <Choice
+          legend={L(S.firm.sexItem)}
+          options={S.firm.sexOptions.map((o) => ({ id: o.id, text: L(o.text) }))}
+          value={sex}
+          onChange={setSex}
+        />
+        <Choice
+          legend={L(S.firm.batch)}
+          options={(schedule?.batches ?? []).map((b) => ({
+            id: b.id,
+            text: `${b.label}: ${b.date}`,
+          }))}
+          value={batch}
+          onChange={setBatch}
+        />
         {err ? <Notice kind="error">{err}</Notice> : null}
       </Page>
     )
@@ -147,21 +185,38 @@ export function Enrol({ firm }: { firm: string }) {
   ].join('\r\n')
   const href = `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`
   return (
-    <Page surface="oof" stepKey="enrol-done" oof={L(S.common.outOfFiction)} demo={demoBadge} title={L(S.consent.firm.title)}>
-      <Notice kind="ok">{L(S.firm.enrolled).replace('{from}', done.e.from).replace('{to}', done.e.to)}</Notice>
+    <Page
+      surface="oof"
+      stepKey="enrol-done"
+      oof={L(S.common.outOfFiction)}
+      demo={demoBadge}
+      title={L(S.consent.firm.title)}
+    >
+      <Notice kind="ok">
+        {L(S.firm.enrolled).replace('{from}', done.e.from).replace('{to}', done.e.to)}
+      </Notice>
       <Text>{L(S.firm.enrolmentCode)}</Text>
       <Code value={formatCode(done.code)} label={L(S.firm.enrolmentCode)} />
       <Link href={href} download="team-season.ics">
         {L(S.firm.calendar)}
       </Link>
-      {config.demo ? <Link href={`#/firm/${done.code}?now=${done.e.from}`}>Demo: open the play link on the first day of the window</Link> : null}
+      {config.demo ? (
+        <Link href={`#/firm/${done.code}?now=${done.e.from}`}>
+          Demo: open the play link on the first day of the window
+        </Link>
+      ) : null}
     </Page>
   )
 }
 
 export function Explain() {
   const [code, setCode] = useState('')
-  const [state, setState] = useState<{ kind: 'idle' | 'bad' | 'notYet' | 'open'; dep?: DeploymentId; date?: string; ex?: Explanation }>({ kind: 'idle' })
+  const [state, setState] = useState<{
+    kind: 'idle' | 'bad' | 'notYet' | 'open'
+    dep?: DeploymentId
+    date?: string
+    ex?: Explanation
+  }>({ kind: 'idle' })
   const open = async () => {
     const c = normaliseCode(code)
     if (!validCode(c)) return setState({ kind: 'bad' })
@@ -174,7 +229,13 @@ export function Explain() {
   }
   if (state.kind === 'open' && state.ex)
     return (
-      <Page surface="oof" stepKey="explain-open" oof={L(S.common.outOfFiction)} demo={demoBadge} title={L(S.explain.title)}>
+      <Page
+        surface="oof"
+        stepKey="explain-open"
+        oof={L(S.common.outOfFiction)}
+        demo={demoBadge}
+        title={L(S.explain.title)}
+      >
         {state.ex.sections.map((sec) => (
           <section key={sec.heading.en}>
             <Heading>{sec.heading.en}</Heading>
@@ -186,10 +247,19 @@ export function Explain() {
       </Page>
     )
   return (
-    <Page surface="oof" stepKey="explain" oof={L(S.common.outOfFiction)} demo={demoBadge} title={L(S.explain.title)} actions={<Button onClick={() => void open()}>{L(S.explain.open)}</Button>}>
+    <Page
+      surface="oof"
+      stepKey="explain"
+      oof={L(S.common.outOfFiction)}
+      demo={demoBadge}
+      title={L(S.explain.title)}
+      actions={<Button onClick={() => void open()}>{L(S.explain.open)}</Button>}
+    >
       <Field label={L(S.explain.enter)} value={code} onChange={setCode} />
       {state.kind === 'bad' ? <Notice kind="error">{L(S.explain.badCode)}</Notice> : null}
-      {state.kind === 'notYet' ? <Notice>{L(S.explain.notYet).replace('{date}', state.date ?? '')}</Notice> : null}
+      {state.kind === 'notYet' ? (
+        <Notice>{L(S.explain.notYet).replace('{date}', state.date ?? '')}</Notice>
+      ) : null}
     </Page>
   )
 }
@@ -212,11 +282,28 @@ export function Withdraw() {
   }
   const closedOn = DEPLOYMENTS.map((d) => config.release.releaseAt[d])[0]
   return (
-    <Page surface="oof" stepKey="withdraw" oof={L(S.common.outOfFiction)} demo={demoBadge} title={L(S.withdraw.title)} actions={state === 'done' ? undefined : <Button onClick={() => void go()}>{L(S.withdraw.button)}</Button>}>
+    <Page
+      surface="oof"
+      stepKey="withdraw"
+      oof={L(S.common.outOfFiction)}
+      demo={demoBadge}
+      title={L(S.withdraw.title)}
+      actions={
+        state === 'done' ? undefined : (
+          <Button onClick={() => void go()}>{L(S.withdraw.button)}</Button>
+        )
+      }
+    >
       <Text>{L(S.withdraw.body)}</Text>
-      {state === 'done' ? <Notice kind="ok">{L(S.withdraw.done)}</Notice> : <Field label={L(S.explain.enter)} value={code} onChange={setCode} />}
+      {state === 'done' ? (
+        <Notice kind="ok">{L(S.withdraw.done)}</Notice>
+      ) : (
+        <Field label={L(S.explain.enter)} value={code} onChange={setCode} />
+      )}
       {state === 'bad' ? <Notice kind="error">{L(S.explain.badCode)}</Notice> : null}
-      {state === 'closed' ? <Notice kind="error">{L(S.withdraw.closed).replace('{date}', closedOn)}</Notice> : null}
+      {state === 'closed' ? (
+        <Notice kind="error">{L(S.withdraw.closed).replace('{date}', closedOn)}</Notice>
+      ) : null}
     </Page>
   )
 }

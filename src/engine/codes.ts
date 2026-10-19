@@ -30,7 +30,8 @@ export function newCode(): string {
 
 export const normaliseCode = (s: string) => s.toUpperCase().replace(/[^0-9A-Z]/g, '')
 export const formatCode = (c: string) => c.match(/.{1,4}/g)?.join('-') ?? c
-export const validCode = (c: string) => c.length === config.code.length && [...c].every((ch) => config.code.alphabet.includes(ch))
+export const validCode = (c: string) =>
+  c.length === config.code.length && [...c].every((ch) => config.code.alphabet.includes(ch))
 
 export interface CodeKeys {
   code: string
@@ -39,13 +40,30 @@ export interface CodeKeys {
   demo: string[]
 }
 
-const hex = (b: ArrayBuffer) => Array.from(new Uint8Array(b), (x) => x.toString(16).padStart(2, '0')).join('')
+const hex = (b: ArrayBuffer) =>
+  Array.from(new Uint8Array(b), (x) => x.toString(16).padStart(2, '0')).join('')
 
-export async function deriveKeys(code: string, iterations = config.code.kdfIterations): Promise<CodeKeys> {
-  const base = await crypto.subtle.importKey('raw', enc.encode(normaliseCode(code)), 'PBKDF2', false, ['deriveBits'])
-  const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: enc.encode(SALT), iterations, hash: 'SHA-256' }, base, 256)
-  const key = await crypto.subtle.importKey('raw', bits, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'])
-  const h = async (label: string) => hex(await crypto.subtle.sign('HMAC', key, enc.encode(label))).slice(0, 32)
+export async function deriveKeys(
+  code: string,
+  iterations = config.code.kdfIterations,
+): Promise<CodeKeys> {
+  const base = await crypto.subtle.importKey(
+    'raw',
+    enc.encode(normaliseCode(code)),
+    'PBKDF2',
+    false,
+    ['deriveBits'],
+  )
+  const bits = await crypto.subtle.deriveBits(
+    { name: 'PBKDF2', salt: enc.encode(SALT), iterations, hash: 'SHA-256' },
+    base,
+    256,
+  )
+  const key = await crypto.subtle.importKey('raw', bits, { name: 'HMAC', hash: 'SHA-256' }, false, [
+    'sign',
+  ])
+  const h = async (label: string) =>
+    hex(await crypto.subtle.sign('HMAC', key, enc.encode(label))).slice(0, 32)
   return {
     code: await h('code'),
     play: await h('play'),
@@ -57,6 +75,9 @@ export async function deriveKeys(code: string, iterations = config.code.kdfItera
 /** A firm enrolment code: random, kept only in the player's calendar file. */
 export const newEnrolmentCode = () => newCode()
 export async function enrolmentKey(code: string): Promise<string> {
-  const d = await crypto.subtle.digest('SHA-256', enc.encode(`equal-lens-evaluator/enrol/v0:${normaliseCode(code)}`))
+  const d = await crypto.subtle.digest(
+    'SHA-256',
+    enc.encode(`equal-lens-evaluator/enrol/v0:${normaliseCode(code)}`),
+  )
   return hex(d).slice(0, 32)
 }

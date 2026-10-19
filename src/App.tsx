@@ -24,7 +24,10 @@ export function App() {
   const startFirm = useCallback(async () => {
     const r = await store.startEnrolment(await enrolmentKey(arg ?? ''), today())
     if (!r.ok || !r.enrolment) return r
-    return { ...r, firm: { timingArm: r.enrolment.arm, batchMonth: r.enrolment.month, sex: r.enrolment.sex } }
+    return {
+      ...r,
+      firm: { timingArm: r.enrolment.arm, batchMonth: r.enrolment.month, sex: r.enrolment.sex },
+    }
   }, [arg])
   switch (kind) {
     case 'play':

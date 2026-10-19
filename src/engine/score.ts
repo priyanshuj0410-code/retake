@@ -7,7 +7,10 @@
 import type { PeopleCard } from '../content/types'
 
 /** `order` lists character indices from the top slot down; `units` gives each character's units. */
-export function characterScores(card: PeopleCard, answer: { order?: number[]; units?: number[] }): number[] {
+export function characterScores(
+  card: PeopleCard,
+  answer: { order?: number[]; units?: number[] },
+): number[] {
   if (card.type === 'allocation') {
     const units = answer.units ?? [0, 0, 0, 0]
     const total = units.reduce((a, b) => a + b, 0) || 1

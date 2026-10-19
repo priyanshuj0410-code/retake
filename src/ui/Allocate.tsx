@@ -8,7 +8,13 @@ export interface AllocateProps {
   units: number[]
   pool: number
   onChange: (units: number[]) => void
-  labels: { add: (name: string) => string; remove: (name: string) => string; left: (n: number) => string; done: string; unit: string }
+  labels: {
+    add: (name: string) => string
+    remove: (name: string) => string
+    left: (n: number) => string
+    done: string
+    unit: string
+  }
 }
 
 export function Allocate({ items, order, units, pool, onChange, labels }: AllocateProps) {
@@ -21,7 +27,10 @@ export function Allocate({ items, order, units, pool, onChange, labels }: Alloca
   }
   return (
     <>
-      <p className={left === 0 ? 'alloc__left alloc__left--done' : 'alloc__left'} aria-live="polite">
+      <p
+        className={left === 0 ? 'alloc__left alloc__left--done' : 'alloc__left'}
+        aria-live="polite"
+      >
         {left === 0 ? labels.done : labels.left(left)}
       </p>
       <ul className="alloc">
@@ -31,13 +40,28 @@ export function Allocate({ items, order, units, pool, onChange, labels }: Alloca
               <Character c={items[i]} />
             </div>
             <div className="alloc__controls">
-              <button type="button" className="alloc__step" onClick={() => set(i, -1)} disabled={units[i] === 0} aria-label={labels.remove(items[i].name)}>
+              <button
+                type="button"
+                className="alloc__step"
+                onClick={() => set(i, -1)}
+                disabled={units[i] === 0}
+                aria-label={labels.remove(items[i].name)}
+              >
                 −
               </button>
-              <span className="alloc__count" aria-label={`${items[i].name}: ${units[i]} ${labels.unit}`}>
+              <span
+                className="alloc__count"
+                aria-label={`${items[i].name}: ${units[i]} ${labels.unit}`}
+              >
                 {units[i]}
               </span>
-              <button type="button" className="alloc__step" onClick={() => set(i, 1)} disabled={left === 0} aria-label={labels.add(items[i].name)}>
+              <button
+                type="button"
+                className="alloc__step"
+                onClick={() => set(i, 1)}
+                disabled={left === 0}
+                aria-label={labels.add(items[i].name)}
+              >
                 +
               </button>
             </div>

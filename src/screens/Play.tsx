@@ -4,8 +4,8 @@
  * every sitting is the four registered sentences and nothing else; in demo mode a separate
  * demo notice comes before it.
  */
-import { useEffect, useState } from 'react'
-import { registeredSentences, screens } from '../content'
+import { useEffect, useRef, useState } from 'react'
+import { screens } from '../content'
 import type { Lang, T } from '../content/types'
 import { config, type DeploymentId } from '../engine/config'
 import { cryptoRng } from '../engine/rng'
@@ -13,31 +13,22 @@ import { Runner, type FirmLabels } from '../engine/runner'
 import { store } from '../store'
 import type { LangSet, StartResult } from '../store/types'
 import { Button, Choice, List, Notice, Page, Text } from '../ui'
+import { Disclosure } from './Disclosure'
 import { StepView } from './StepView'
 
 const S = screens
 
 type Pre = 'demo' | 'disclosure' | 'consent' | 'language' | 'declined'
 
-export function Disclosure({ langs, onContinue }: { langs: Lang[]; onContinue: () => void }) {
-  /* Exactly the four registered sentences, in each language the player may play in, and the
-     Continue button. Nothing else: no heading, no act label, no demo badge, no logo. */
-  return (
-    <Page surface="oof" stepKey="disclosure" actions={<Button onClick={onContinue}>{S.common.continue[langs[0]]}</Button>}>
-      {langs.map((l) => (
-        <div key={l} lang={l === 'hinglish' ? 'hi-Latn' : 'en-GB'} data-disclosure={l}>
-          {registeredSentences[l].map((s) => (
-            <Text key={s}>{s}</Text>
-          ))}
-        </div>
-      ))}
-    </Page>
-  )
-}
-
-export function Play({ start, firm }: { start: () => Promise<StartResult & { firm?: FirmLabels }>; firm: boolean }) {
+export function Play({
+  start,
+  firm,
+}: {
+  start: () => Promise<StartResult & { firm?: FirmLabels }>
+  firm: boolean
+}) {
   const demo = config.demo
-  const [entry, setEntry] = useState<StartResult & { firm?: FirmLabels } | null>(null)
+  const [entry, setEntry] = useState<(StartResult & { firm?: FirmLabels }) | null>(null)
   const [pre, setPre] = useState<Pre>(demo ? 'demo' : 'disclosure')
   const [langs, setLangs] = useState<Lang[] | null>(null)
   const [runner, setRunner] = useState<Runner | null>(null)
@@ -45,9 +36,12 @@ export function Play({ start, firm }: { start: () => Promise<StartResult & { fir
   const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'failed'>('idle')
   const [finished, setFinished] = useState<'submitted' | 'withdrawn' | null>(null)
 
+  /* The token is spent once per mount, even where React runs an effect twice. */
+  const started = useRef<ReturnType<typeof start> | null>(null)
   useEffect(() => {
     let live = true
-    void start().then((r) => live && setEntry(r))
+    started.current ??= start()
+    void started.current.then((r) => live && setEntry(r))
     return () => {
       live = false
     }
@@ -61,9 +55,21 @@ export function Play({ start, firm }: { start: () => Promise<StartResult & { fir
     return () => window.removeEventListener('beforeunload', warn)
   }, [runner, finished])
 
-  if (!entry) return <Page surface="oof" stepKey="loading"><Text>…</Text></Page>
+  if (!entry)
+    return (
+      <Page surface="oof" stepKey="loading">
+        <Text>…</Text>
+      </Page>
+    )
   if (!entry.ok) {
-    const msg = entry.reason === 'used' ? S.entry.refused : entry.reason === 'offline' ? S.entry.offline : entry.reason === 'window' ? S.firm.closed : S.entry.unknown
+    const msg =
+      entry.reason === 'used'
+        ? S.entry.refused
+        : entry.reason === 'offline'
+          ? S.entry.offline
+          : entry.reason === 'window'
+            ? S.firm.closed
+            : S.entry.unknown
     return (
       <Page surface="oof" stepKey="refused">
         <Notice kind="error">{msg.en}</Notice>
@@ -73,7 +79,8 @@ export function Play({ start, firm }: { start: () => Promise<StartResult & { fir
   }
   const dep: DeploymentId = entry.dep
   const langSet: LangSet = entry.langs
-  const offered: Lang[] = langSet === 'both' || langSet === 'choose' ? ['en', 'hinglish'] : [langSet]
+  const offered: Lang[] =
+    langSet === 'both' || langSet === 'choose' ? ['en', 'hinglish'] : [langSet]
   const ui: Lang = langs && langs.length === 1 ? langs[0] : offered[0]
   const L = (t: T) => t[ui]
 
@@ -85,11 +92,24 @@ export function Play({ start, firm }: { start: () => Promise<StartResult & { fir
   if (!runner) {
     if (pre === 'demo')
       return (
-        <Page surface="oof" stepKey="demo" title={L(S.demoNotice.title)} actions={<Button onClick={() => setPre('disclosure')}>{L(S.common.continue)}</Button>}>
+        <Page
+          surface="oof"
+          stepKey="demo"
+          title={L(S.demoNotice.title)}
+          actions={<Button onClick={() => setPre('disclosure')}>{L(S.common.continue)}</Button>}
+        >
           <Text>{L(S.demoNotice.body)}</Text>
         </Page>
       )
-    if (pre === 'disclosure') return <Disclosure langs={offered} onContinue={() => (firm ? (langSet === 'choose' ? setPre('language') : begin(offered)) : setPre('consent'))} />
+    if (pre === 'disclosure')
+      return (
+        <Disclosure
+          langs={offered}
+          onContinue={() =>
+            firm ? (langSet === 'choose' ? setPre('language') : begin(offered)) : setPre('consent')
+          }
+        />
+      )
     if (pre === 'declined')
       return (
         <Page surface="oof" stepKey="declined" oof={L(S.common.outOfFiction)}>
@@ -106,7 +126,9 @@ export function Play({ start, firm }: { start: () => Promise<StartResult & { fir
           title={L(S.consent.panel.title)}
           actions={
             <>
-              <Button onClick={() => (langSet === 'choose' ? setPre('language') : begin(offered))}>{L(S.consent.panel.agree)}</Button>
+              <Button onClick={() => (langSet === 'choose' ? setPre('language') : begin(offered))}>
+                {L(S.consent.panel.agree)}
+              </Button>
               <Button kind="secondary" onClick={() => setPre('declined')}>
                 {L(S.consent.panel.decline)}
               </Button>
@@ -121,8 +143,16 @@ export function Play({ start, firm }: { start: () => Promise<StartResult & { fir
 
   if (finished)
     return (
-      <Page surface="oof" stepKey="finished" oof={L(S.common.outOfFiction)} demo={demo ? L(S.common.demoBadge) : undefined} title={L(S.wrap.submit.title)}>
-        <Notice kind="ok">{finished === 'submitted' ? L(S.wrap.submit.submitted) : L(S.wrap.submit.withdrawn)}</Notice>
+      <Page
+        surface="oof"
+        stepKey="finished"
+        oof={L(S.common.outOfFiction)}
+        demo={demo ? L(S.common.demoBadge) : undefined}
+        title={L(S.wrap.submit.title)}
+      >
+        <Notice kind="ok">
+          {finished === 'submitted' ? L(S.wrap.submit.submitted) : L(S.wrap.submit.withdrawn)}
+        </Notice>
       </Page>
     )
 
@@ -157,7 +187,19 @@ export function Play({ start, firm }: { start: () => Promise<StartResult & { fir
   )
 }
 
-function LanguageStep({ ui, demo, langSet, offered, onChoose }: { ui: Lang; demo: boolean; langSet: LangSet; offered: Lang[]; onChoose: (l: Lang[]) => void }) {
+function LanguageStep({
+  ui,
+  demo,
+  langSet,
+  offered,
+  onChoose,
+}: {
+  ui: Lang
+  demo: boolean
+  langSet: LangSet
+  offered: Lang[]
+  onChoose: (l: Lang[]) => void
+}) {
   const L = (t: T) => t[ui]
   const [v, setV] = useState<string | null>(null)
   void langSet
@@ -168,9 +210,25 @@ function LanguageStep({ ui, demo, langSet, offered, onChoose }: { ui: Lang; demo
       stepKey="language"
       oof={L(S.common.outOfFiction)}
       demo={demo ? L(S.common.demoBadge) : undefined}
-      actions={<Button onClick={() => v && onChoose(v === 'both' ? ['en', 'hinglish'] : [v as Lang])} disabled={!v}>{L(S.common.continue)}</Button>}
+      actions={
+        <Button
+          onClick={() => v && onChoose(v === 'both' ? ['en', 'hinglish'] : [v as Lang])}
+          disabled={!v}
+        >
+          {L(S.common.continue)}
+        </Button>
+      }
     >
-      <Choice legend={L(S.language.title)} options={[{ id: 'en', text: L(S.language.en) }, { id: 'hinglish', text: L(S.language.hinglish) }, { id: 'both', text: L(S.language.both) }]} value={v} onChange={setV} />
+      <Choice
+        legend={L(S.language.title)}
+        options={[
+          { id: 'en', text: L(S.language.en) },
+          { id: 'hinglish', text: L(S.language.hinglish) },
+          { id: 'both', text: L(S.language.both) },
+        ]}
+        value={v}
+        onChange={setV}
+      />
     </Page>
   )
 }

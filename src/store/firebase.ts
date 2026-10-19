@@ -8,11 +8,26 @@
  */
 import { initializeApp, type FirebaseApp } from 'firebase/app'
 import { connectAuthEmulator, getAuth, signInAnonymously, type Auth } from 'firebase/auth'
-import { connectDatabaseEmulator, get, getDatabase, ref, update, type Database } from 'firebase/database'
+import {
+  connectDatabaseEmulator,
+  get,
+  getDatabase,
+  ref,
+  update,
+  type Database,
+} from 'firebase/database'
 import type { DeploymentId } from '../engine/config'
 import type { CodeKeys } from '../engine/codes'
 import type { Submission } from '../engine/records'
-import type { Enrolment, Explanation, LangSet, Release, Schedule, StartResult, Store } from './types'
+import type {
+  Enrolment,
+  Explanation,
+  LangSet,
+  Release,
+  Schedule,
+  StartResult,
+  Store,
+} from './types'
 
 export interface FirebaseSettings {
   apiKey: string
@@ -30,12 +45,17 @@ export class FirebaseStore implements Store {
 
   constructor(s: FirebaseSettings) {
     this.kind = s.emulator ? 'emulator' : 'firebase'
-    this.app = initializeApp({ apiKey: s.apiKey, projectId: s.projectId, databaseURL: s.databaseURL }, `eval-${Math.random()}`)
+    this.app = initializeApp(
+      { apiKey: s.apiKey, projectId: s.projectId, databaseURL: s.databaseURL },
+      `eval-${Math.random()}`,
+    )
     this.db = getDatabase(this.app)
     this.auth = getAuth(this.app)
     if (s.emulator) {
       connectDatabaseEmulator(this.db, s.emulator.host, s.emulator.dbPort)
-      connectAuthEmulator(this.auth, `http://${s.emulator.host}:${s.emulator.authPort}`, { disableWarnings: true })
+      connectAuthEmulator(this.auth, `http://${s.emulator.host}:${s.emulator.authPort}`, {
+        disableWarnings: true,
+      })
     }
   }
 
@@ -53,10 +73,15 @@ export class FirebaseStore implements Store {
   async start(token: string): Promise<StartResult> {
     try {
       const uid = await this.uid()
-      const t = await this.read<{ dep: DeploymentId; langs: LangSet; s: string }>(`eval-tokens/${token}`)
+      const t = await this.read<{ dep: DeploymentId; langs: LangSet; s: string }>(
+        `eval-tokens/${token}`,
+      )
       if (!t) return { ok: false, reason: 'unknown' }
       if (t.s !== 'issued') return { ok: false, reason: 'used' }
-      await update(ref(this.db), { [`eval-tokens/${token}/s`]: 'started', [`eval-claims/${uid}`]: { tok: token } })
+      await update(ref(this.db), {
+        [`eval-tokens/${token}/s`]: 'started',
+        [`eval-claims/${uid}`]: { tok: token },
+      })
       this.claimed = { tok: token }
       return { ok: true, dep: t.dep, langs: t.langs }
     } catch (e) {
@@ -70,8 +95,12 @@ export class FirebaseStore implements Store {
       const e = await this.read<Enrolment>(`eval-enrol/${enrolKey}`)
       if (!e) return { ok: false as const, reason: 'unknown' as const }
       if (e.s !== 'enrolled') return { ok: false as const, reason: 'used' as const }
-      if (today < e.from || today > e.to) return { ok: false as const, reason: 'window' as const, enrolment: e }
-      await update(ref(this.db), { [`eval-enrol/${enrolKey}/s`]: 'started', [`eval-claims/${uid}`]: { enrol: enrolKey } })
+      if (today < e.from || today > e.to)
+        return { ok: false as const, reason: 'window' as const, enrolment: e }
+      await update(ref(this.db), {
+        [`eval-enrol/${enrolKey}/s`]: 'started',
+        [`eval-claims/${uid}`]: { enrol: enrolKey },
+      })
       this.claimed = { enrol: enrolKey }
       return { ok: true as const, dep: 'firm' as const, langs: 'choose' as LangSet, enrolment: e }
     } catch {
@@ -82,7 +111,10 @@ export class FirebaseStore implements Store {
   async submit(codeKey: string, dep: DeploymentId, sub: Submission | null) {
     const uid = await this.uid()
     if (!this.claimed) throw new Error('refused: no open session')
-    const w: Record<string, unknown> = { [`eval-codes/${codeKey}`]: dep, [`eval-claims/${uid}`]: null }
+    const w: Record<string, unknown> = {
+      [`eval-codes/${codeKey}`]: dep,
+      [`eval-claims/${uid}`]: null,
+    }
     if (this.claimed.tok) w[`eval-tokens/${this.claimed.tok}/s`] = 'done'
     if (this.claimed.enrol) w[`eval-enrol/${this.claimed.enrol}/s`] = 'done'
     if (sub) {
@@ -113,7 +145,9 @@ export class FirebaseStore implements Store {
   }
 
   async release(dep: DeploymentId) {
-    return (await this.read<Release>(`eval-config/${dep}`)) ?? { releaseAt: Infinity, deleteUntil: 0 }
+    return (
+      (await this.read<Release>(`eval-config/${dep}`)) ?? { releaseAt: Infinity, deleteUntil: 0 }
+    )
   }
 
   async explanation(dep: DeploymentId) {
@@ -134,6 +168,8 @@ export class FirebaseStore implements Store {
   }
 
   async issueTokens(): Promise<string[]> {
-    throw new Error('tokens are issued by the panel provider or scripts/seed-emulator.ts, never by a device')
+    throw new Error(
+      'tokens are issued by the panel provider or scripts/seed-emulator.ts, never by a device',
+    )
   }
 }

@@ -53,8 +53,6 @@
   --fs-24: 24px;
   --fs-28: 28px;
   --fs-32: 32px;
-  --fw-400: 400;
-  --fw-500: 500;
   --fw-600: 600;
   --fw-700: 700;
   --lh-120: 1.2;
@@ -68,7 +66,6 @@
   --s-3: 12px;
   --s-4: 16px;
   --s-5: 24px;
-  --s-6: 32px;
   --s-7: 48px;
   --r-8: 8px;
   --r-12: 12px;
@@ -79,7 +76,6 @@
   --px-48: 48px;
   --px-40: 40px;
   --px-640: 640px;
-  --px-960: 960px;
   --dur-160: 160ms;
   --dur-0: 0ms;
   --shadow-lift: 0 6px 18px rgb(34 20 54 / 0.18);
@@ -116,7 +112,6 @@
   --text-h2: var(--fs-20);
   --text-h1: var(--fs-24);
   --text-code: var(--fs-28);
-  --weight-body: var(--fw-400);
   --weight-strong: var(--fw-700);
   --weight-label: var(--fw-600);
   --weight-display: var(--fw-600);
@@ -131,7 +126,6 @@
   --gap-m: var(--s-3);
   --gap-l: var(--s-4);
   --gap-xl: var(--s-5);
-  --gap-2xl: var(--s-6);
   --gap-3xl: var(--s-7);
   --radius-s: var(--r-8);
   --radius-m: var(--r-12);
@@ -142,7 +136,6 @@
   --target: var(--px-48);
   --icon: var(--px-40);
   --measure: var(--px-640);
-  --wide: var(--px-960);
   --motion: var(--dur-160);
   --lift: var(--shadow-lift);
   --flat: var(--shadow-none);

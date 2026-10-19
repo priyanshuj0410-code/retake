@@ -61,7 +61,18 @@ export function sfc32(a: number, b: number, c: number, d: number): Rng {
   return rng
 }
 
-export const seeded = (seed: number) => sfc32(0x9e3779b9, 0x243f6a88, 0xb7e15162, seed >>> 0)
+/** A seeded generator for the checks: the seed is spread over the whole state by splitmix32, so neighbouring seeds give unrelated streams. */
+export function seeded(seed: number): Rng {
+  let x = seed >>> 0
+  const mix = () => {
+    x = (x + 0x9e3779b9) | 0
+    let z = x
+    z = Math.imul(z ^ (z >>> 16), 0x85ebca6b)
+    z = Math.imul(z ^ (z >>> 13), 0xc2b2ae35)
+    return (z ^ (z >>> 16)) >>> 0
+  }
+  return sfc32(mix(), mix(), mix(), mix())
+}
 
 export function cryptoRng(): Rng {
   const s = new Uint32Array(4)

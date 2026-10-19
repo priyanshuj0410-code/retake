@@ -29,7 +29,8 @@ export interface DemoTraits {
   fairness: number
 }
 
-const gauss = (rng: Rng) => Math.sqrt(-2 * Math.log(1 - rng.next())) * Math.cos(2 * Math.PI * rng.next())
+const gauss = (rng: Rng) =>
+  Math.sqrt(-2 * Math.log(1 - rng.next())) * Math.cos(2 * Math.PI * rng.next())
 
 export function traits(rng: Rng): DemoTraits {
   return {
@@ -73,7 +74,12 @@ function decideCard(rng: Rng, p: Presented, t: DemoTraits) {
   return { order: [0, 1, 2, 3].sort((a, b) => u[b] - u[a]) }
 }
 
-const scaleAnswer = (rng: Rng, fair: number, keying: 'agree-fair' | 'disagree-fair', points = 5) => {
+const scaleAnswer = (
+  rng: Rng,
+  fair: number,
+  keying: 'agree-fair' | 'disagree-fair',
+  points = 5,
+) => {
   const x = Math.min(1, Math.max(0, fair + 0.2 * gauss(rng)))
   const pos = Math.round(x * (points - 1))
   return keying === 'agree-fair' ? pos : points - 1 - pos
@@ -85,7 +91,13 @@ export interface DemoPlayer {
 }
 
 /** Plays one whole demo session. `iterations` lowers the code's key-derivation cost for bulk generation. */
-export async function playDemo(seed: number, dep: DeploymentId, langs: Lang[], firm?: FirmLabels, iterations = 1000): Promise<DemoPlayer> {
+export async function playDemo(
+  seed: number,
+  dep: DeploymentId,
+  langs: Lang[],
+  firm?: FirmLabels,
+  iterations = 1000,
+): Promise<DemoPlayer> {
   const rng = seeded(seed)
   const t = traits(rng)
   const runner = new Runner(seeded(seed * 7919 + 13), dep, langs, firm)
@@ -106,7 +118,11 @@ export async function playDemo(seed: number, dep: DeploymentId, langs: Lang[], f
       case 'screening': {
         const item = s.id
         const isVignette = item === 'scr-04' || item === 'scr-08'
-        runner.answer(isVignette ? rng.pick(['a', 'b', 'c', 'd']) : String(scaleAnswer(rng, fairness, rng.next() < 0.5 ? 'agree-fair' : 'disagree-fair')))
+        runner.answer(
+          isVignette
+            ? rng.pick(['a', 'b', 'c', 'd'])
+            : String(scaleAnswer(rng, fairness, rng.next() < 0.5 ? 'agree-fair' : 'disagree-fair')),
+        )
         break
       }
       case 'survey':
@@ -125,7 +141,17 @@ export async function playDemo(seed: number, dep: DeploymentId, langs: Lang[], f
         const inc = inboxBank.find((i) => i.id === s.id)
         const yes = inc?.kind === 'harassment' ? 0.85 : 0.3
         const label = rng.next() < yes ? rng.int(3) : 3 + rng.int(3)
-        runner.answer({ label, action: rng.pick(['talk-affected', 'talk-other', 'committee', 'manager', 'note', 'nothing']) })
+        runner.answer({
+          label,
+          action: rng.pick([
+            'talk-affected',
+            'talk-other',
+            'committee',
+            'manager',
+            'note',
+            'nothing',
+          ]),
+        })
         break
       }
       case 'note':
@@ -143,8 +169,18 @@ export async function playDemo(seed: number, dep: DeploymentId, langs: Lang[], f
         break
       case 'demographics': {
         const d: Record<string, string> = {}
-        if (dep !== 'firm') d.gender = rng.pick(['woman', 'man', 'woman', 'man', 'another', 'prefer-not'])
-        d.religion = rng.pick(['hindu', 'hindu', 'hindu', 'hindu', 'muslim', 'christian', 'sikh', 'prefer-not'])
+        if (dep !== 'firm')
+          d.gender = rng.pick(['woman', 'man', 'woman', 'man', 'another', 'prefer-not'])
+        d.religion = rng.pick([
+          'hindu',
+          'hindu',
+          'hindu',
+          'hindu',
+          'muslim',
+          'christian',
+          'sikh',
+          'prefer-not',
+        ])
         d.region = rng.pick(['north', 'south', 'east', 'west', 'north-east', 'central'])
         runner.answer(d)
         break

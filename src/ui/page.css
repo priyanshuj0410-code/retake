@@ -1,4 +1,4 @@
-/* @owns page page__inner page__bar page__act page__oof page__title page__body page__actions page__skip */
+/* @owns page page__inner page__bar page__act page__oof page__title page__body page__actions */
 .page {
   background: var(--c-bg);
   color: var(--c-text);
@@ -59,13 +59,4 @@
   flex-direction: column;
   gap: var(--gap-m);
   margin-top: var(--gap-s);
-}
-.page__skip {
-  position: absolute;
-  left: var(--gap-s);
-  top: var(--gap-s);
-  transform: translateY(-200%);
-}
-.page__skip:focus {
-  transform: none;
 }

@@ -1,6 +1,14 @@
 import './table.css'
 
-export function Table({ head, rows, caption }: { head: string[]; rows: { cells: string[]; suppressed?: boolean }[]; caption: string }) {
+export function Table({
+  head,
+  rows,
+  caption,
+}: {
+  head: string[]
+  rows: { cells: string[]; suppressed?: boolean }[]
+  caption: string
+}) {
   return (
     <div className="table__wrap">
       <table className="table">
@@ -18,7 +26,10 @@ export function Table({ head, rows, caption }: { head: string[]; rows: { cells: 
           {rows.map((r, i) => (
             <tr key={i}>
               {r.cells.map((c, j) => (
-                <td className={r.suppressed ? 'table__cell table__cell--suppressed' : 'table__cell'} key={j}>
+                <td
+                  className={r.suppressed ? 'table__cell table__cell--suppressed' : 'table__cell'}
+                  key={j}
+                >
                   {c}
                 </td>
               ))}

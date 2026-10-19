@@ -59,26 +59,39 @@ export function m3Label(rng: Rng, cards: ConductCard[]): M3Label {
   const P = config.engagement.permutations
 
   /* Engagement: beta against its within-card permutation null, observed value counted. */
-  const obsBeta = beta(cards.map((c) => ({ m: c.chars.map((x) => m(x.d)), s: c.chars.map((x) => x.s) })))
+  const obsBeta = beta(
+    cards.map((c) => ({ m: c.chars.map((x) => m(x.d)), s: c.chars.map((x) => x.s) })),
+  )
   let atLeast = 1
   for (let r = 0; r < P; r++) {
-    const b = beta(cards.map((c) => ({ m: rng.shuffle(c.chars.map((x) => m(x.d))), s: c.chars.map((x) => x.s) })))
+    const b = beta(
+      cards.map((c) => ({
+        m: rng.shuffle(c.chars.map((x) => m(x.d))),
+        s: c.chars.map((x) => x.s),
+      })),
+    )
     if (b >= obsBeta) atLeast += 1
   }
   if (atLeast / (P + 1) > config.engagement.alpha) return 'not-engaged'
 
   /* L and its one-sided floors G, from within-card, within-stratum permutations of the labels. */
   const strata = [...new Set(cards.map((c) => c.stratum))]
-  const weight = new Map(strata.map((k) => [k, cards.filter((c) => c.stratum === k).length / cards.length]))
+  const weight = new Map(
+    strata.map((k) => [k, cards.filter((c) => c.stratum === k).length / cards.length]),
+  )
   const observed = cards.map((c) => c.chars.map((x) => x.woman))
   const perms: boolean[][][] = [observed]
-  for (let r = 0; r < config.m3.permutations; r++) perms.push(cards.map((c) => rng.shuffle(c.chars.map((x) => x.woman))))
+  for (let r = 0; r < config.m3.permutations; r++)
+    perms.push(cards.map((c) => rng.shuffle(c.chars.map((x) => x.woman))))
   const against = perms.map((lab) => {
     const dl = deltas(cards, lab)
     return new Map(strata.map((k) => [k, Math.max(0, -(dl.get(k) ?? 0))]))
   })
-  const G = new Map(strata.map((k) => [k, against.reduce((s, a) => s + (a.get(k) ?? 0), 0) / against.length]))
-  const L = (a: Map<string, number>) => strata.reduce((s, k) => s + (weight.get(k) ?? 0) * ((a.get(k) ?? 0) - (G.get(k) ?? 0)), 0)
+  const G = new Map(
+    strata.map((k) => [k, against.reduce((s, a) => s + (a.get(k) ?? 0), 0) / against.length]),
+  )
+  const L = (a: Map<string, number>) =>
+    strata.reduce((s, k) => s + (weight.get(k) ?? 0) * ((a.get(k) ?? 0) - (G.get(k) ?? 0)), 0)
   const values = against.map(L)
   const obsL = values[0]
   const sorted = values.slice().sort((a, b) => a - b)

@@ -1,7 +1,17 @@
 import './statement.css'
 
 /** A crosswise pair: the sensitive statement A and the randomiser statement B. */
-export function Statement({ a, b, labelA, labelB }: { a: string; b: string; labelA: string; labelB: string }) {
+export function Statement({
+  a,
+  b,
+  labelA,
+  labelB,
+}: {
+  a: string
+  b: string
+  labelA: string
+  labelB: string
+}) {
   return (
     <div className="statement">
       <div className="statement__box">

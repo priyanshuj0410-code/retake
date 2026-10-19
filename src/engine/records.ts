@@ -110,9 +110,19 @@ export interface Answers {
   demographics: Record<string, string>
 }
 
-export const emptyAnswers = (): Answers => ({ people: new Map(), items: [], xw: [], xwDirect: {}, demographics: {} })
+export const emptyAnswers = (): Answers => ({
+  people: new Map(),
+  items: [],
+  xw: [],
+  xwDirect: {},
+  demographics: {},
+})
 
-export function cardRecord(p: Presented, n: number, answer: { order?: number[]; units?: number[] }): CardRecord {
+export function cardRecord(
+  p: Presented,
+  n: number,
+  answer: { order?: number[]; units?: number[] },
+): CardRecord {
   const s = characterScores(p.card, answer)
   const startPos = p.start.map((_, pos) => pos)
   const st = [0, 0, 0, 0]
@@ -130,7 +140,14 @@ export function cardRecord(p: Presented, n: number, answer: { order?: number[]; 
     rm: p.rematch,
     n,
     chars: p.chars.map((c, i) => {
-      const r: CharRecord = { d: c.d, sex: c.sex, nm: c.name, rel: c.religion, st: st[i], s: Math.round(s[i] * 1e4) / 1e4 }
+      const r: CharRecord = {
+        d: c.d,
+        sex: c.sex,
+        nm: c.name,
+        rel: c.religion,
+        st: st[i],
+        s: Math.round(s[i] * 1e4) / 1e4,
+      }
       if (c.surname) r.sn = c.surname
       if (c.caste) r.caste = c.caste
       if (c.born) {
@@ -154,7 +171,11 @@ export function buildSubmission(args: {
   xwSub: 'low' | 'high'
 }): Submission {
   const { keys, meta, answers } = args
-  if (answers.xw.filter((x) => x.purpose !== 'neutral' && x.purpose !== 'practice').length > keys.xw.length) throw new Error('more crosswise records than keys')
+  if (
+    answers.xw.filter((x) => x.purpose !== 'neutral' && x.purpose !== 'practice').length >
+    keys.xw.length
+  )
+    throw new Error('more crosswise records than keys')
   const cards: Record<string, CardRecord> = {}
   for (const [n, a] of answers.people) cards[randomKey()] = cardRecord(a.p, n, a)
   const items: Record<string, ItemRecord> = {}
@@ -162,12 +183,27 @@ export function buildSubmission(args: {
   const xwKeys = shuffleKeys(keys.xw)
   const crosswise = answers.xw
     .filter((x) => x.purpose !== 'neutral' && x.purpose !== 'practice')
-    .map((x, idx) => ({ key: xwKeys[idx], value: { dep: meta.dep, i: x.i, a: x.a, sub: args.xwSub, lab: args.xwLabel } as CrosswiseRecord }))
+    .map((x, idx) => ({
+      key: xwKeys[idx],
+      value: {
+        dep: meta.dep,
+        i: x.i,
+        a: x.a,
+        sub: args.xwSub,
+        lab: args.xwLabel,
+      } as CrosswiseRecord,
+    }))
   const demoKeys = shuffleKeys(keys.demo)
   const demographics = Object.entries(answers.demographics)
     .filter(([, a]) => a !== '')
     .map(([i, a], idx) => ({ key: demoKeys[idx], value: { dep: meta.dep, i, a } }))
-  return { codeKey: keys.code, dep: meta.dep, play: { key: keys.play, value: { meta: { ...meta, v: config.version }, cards, items } }, crosswise, demographics }
+  return {
+    codeKey: keys.code,
+    dep: meta.dep,
+    play: { key: keys.play, value: { meta: { ...meta, v: config.version }, cards, items } },
+    crosswise,
+    demographics,
+  }
 }
 
 /** The keys a session uses are a random subset in a random order, so even the key index carries no order. */
