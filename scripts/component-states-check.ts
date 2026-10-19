@@ -6,7 +6,7 @@
  */
 import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { Allocate, Button, Checks, Choice, SortList } from '../src/ui'
+import { Allocate, Button, Checks, Choice, Field, SortList } from '../src/ui'
 import { record } from './lib/check'
 
 const T = 'X-9 component states (markup)'
@@ -122,5 +122,19 @@ export async function run() {
     T,
     'Allocate: nothing shared aria-disables every minus and says what is left',
     (empty.match(/aria-disabled="true"/g) ?? []).length === 2 && /4 left to share/.test(empty),
+  )
+  const field = (invalid: boolean) =>
+    html(h(Field, { label: 'Code', value: 'X', onChange: () => {}, invalid, errorId: 'err' }))
+  record(
+    T,
+    'Field: invalid sets aria-invalid and aria-describedby; valid sets neither',
+    /aria-invalid="true"/.test(field(true)) &&
+      /aria-describedby="err"/.test(field(true)) &&
+      !/aria-invalid|aria-describedby/.test(field(false)),
+  )
+  record(
+    T,
+    'Field: a one-field form, so Enter submits natively',
+    /^<form class="field"/.test(field(false)),
   )
 }

@@ -328,6 +328,46 @@ async function allocate(page: Page) {
   await stress(page, C, '.alloc')
 }
 
+async function field(page: Page, base: string) {
+  const C = 'Field'
+  await page.goto(`${base}#/explain`)
+  await page.reload()
+  const input = page.getByRole('textbox')
+  await input.waitFor()
+  await page.mouse.move(0, 0)
+  const rest = await input.evaluate((e) => getComputedStyle(e).borderColor)
+  await input.hover()
+  await page.waitForTimeout(220)
+  const over = await input.evaluate((e) => getComputedStyle(e).borderColor)
+  rec(C, 'hover changes border-color', rest !== over, `${rest} -> ${over}`)
+  await focusRing(page, C, '.field__input')
+  await page.waitForTimeout(220)
+  const focus = await input.evaluate((e) => getComputedStyle(e).borderColor)
+  rec(C, 'focus: accent border as well as the ring', focus !== rest, focus)
+  await input.fill('NOT-A-CODE')
+  await input.press('Enter')
+  await page.getByRole('alert').waitFor()
+  await page.waitForTimeout(220)
+  const bad = await input.evaluate((e) => ({
+    invalid: e.getAttribute('aria-invalid'),
+    describedBy: document
+      .getElementById(e.getAttribute('aria-describedby') ?? '')
+      ?.getAttribute('role'),
+    border: getComputedStyle(e).borderColor,
+    alertBorder: getComputedStyle(document.querySelector('[role=alert]') as Element).borderColor,
+  }))
+  rec(
+    C,
+    'Enter submits; invalid is aria-invalid, described by the alert, error border',
+    bad.invalid === 'true' && bad.describedBy === 'alert' && bad.border === bad.alertBorder,
+    JSON.stringify(bad),
+  )
+  await input.press('Backspace')
+  const cleared = await input.evaluate((e) => e.getAttribute('aria-invalid'))
+  rec(C, 'typing again clears the invalid state', cleared === null, String(cleared))
+  await stress(page, C, '.field')
+}
+
 /* ---------- the run ---------- */
 
 export async function statesPass(page: Page, base: string): Promise<StateResult[]> {
@@ -403,6 +443,7 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
       })
       .catch(() => {})
   }
+  await field(page, base)
   await page.emulateMedia({ reducedMotion: 'reduce', forcedColors: 'none' })
   return out.slice()
 }
