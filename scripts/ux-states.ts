@@ -368,6 +368,27 @@ async function field(page: Page, base: string) {
   await stress(page, C, '.field')
 }
 
+async function notice(page: Page, base: string, code: string) {
+  const C = 'Notice'
+  await page.goto(`${base}#/withdraw`)
+  await page.reload()
+  await page.getByRole('textbox').fill('NOT-A-CODE')
+  await page.getByRole('button', { name: 'Delete my records' }).click()
+  await page.getByRole('alert').waitFor()
+  const err = await css(page, '.notice--error', 'content', '::before')
+  rec(C, 'error: a glyph as well as the colour', /!/.test(err), err)
+  await page.getByRole('textbox').fill(code)
+  await page.getByRole('button', { name: 'Delete my records' }).click()
+  await page.locator('.notice--ok').waitFor()
+  const ok = await css(page, '.notice--ok', 'content', '::before')
+  rec(C, 'done: a tick as well as the colour', /✓/.test(ok), ok)
+  await forced(page, true)
+  const edge = await css(page, '.notice--ok', 'border-left-width')
+  await forced(page, false)
+  rec(C, 'forced colours: the heavier edge stays', parseFloat(edge) >= 3, edge)
+  await stress(page, C, '.notice')
+}
+
 /* ---------- the run ---------- */
 
 export async function statesPass(page: Page, base: string): Promise<StateResult[]> {
@@ -387,6 +408,7 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
   await page.waitForSelector('[data-screen="demo"]')
   await button(page)
   const done = new Set<string>()
+  let sessionCode = ''
   for (let guard = 0; guard < 400; guard++) {
     const m = (await marker(page)) ?? ''
     if (!done.has('disabled') && (await page.locator('.button--primary:disabled').count())) {
@@ -430,6 +452,7 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
       const status = (await page.locator('.code__status').textContent()) ?? ''
       const clip = await page.evaluate(() => navigator.clipboard.readText()).catch(() => '')
       const shown = ((await page.locator('.code').textContent()) ?? '').trim()
+      sessionCode = shown
       rec('Code', 'copy: the clipboard holds the code', clip === shown, `${clip} vs ${shown}`)
       rec('Code', 'copy: a status line says it was copied', /^Copied/.test(status), status)
       await stress(page, 'Code', '.code')
@@ -464,6 +487,7 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
       .catch(() => {})
   }
   await field(page, base)
+  await notice(page, base, sessionCode)
   await page.emulateMedia({ reducedMotion: 'reduce', forcedColors: 'none' })
   return out.slice()
 }
