@@ -1,0 +1,23 @@
+/* @owns html body */
+html {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: var(--gap-none);
+  background: var(--c-bg);
+  min-height: 100vh;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+:focus-visible {
+  outline: var(--border-focus) solid var(--c-focus);
+  outline-offset: var(--border);
+}

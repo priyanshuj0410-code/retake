@@ -1,0 +1,86 @@
+{
+  "randomiser": {"en":"Think of one person whose birthday you know, such as a parent or a friend. Use the same person for every question in this part.","hinglish":"Ek aise vyakti ke baare mein sochiye jiska janamdin aapko pata hai, jaise mata ya pita ya koi dost. Is hisse ke har sawaal ke liye wahi vyakti rakhiye."},
+  "randomiserQuestion": {
+    "low": {"en":"This person's birthday is in January, February or March.","hinglish":"Is vyakti ka janamdin January, February ya March mein hai."},
+    "high": {"en":"This person's birthday is between April and December.","hinglish":"Is vyakti ka janamdin April se December ke beech hai."}
+  },
+  "answers": {
+    "same": {"en":"Both statements are true, or both are false","hinglish":"Dono kathan sahi hain, ya dono galat hain"},
+    "different": {"en":"Exactly one statement is true","hinglish":"Sirf ek kathan sahi hai"}
+  },
+  "instructions": {"en":"You will see two statements at a time. Tell us only whether both are true or both are false, or whether exactly one is true. Nobody can tell which statement is true for you, not even us.","hinglish":"Aapko ek baar mein do kathan dikhenge. Hamein sirf itna bataiye ki dono sahi hain ya dono galat hain, ya sirf ek sahi hai. Koi nahi jaan sakta ki aapke liye kaun sa kathan sahi hai, hum bhi nahi."},
+  "practice": {
+    "fictionalRandomiser": {"en":"For practice, imagine the person's birthday is in February.","hinglish":"Abhyas ke liye maan lijiye ki us vyakti ka janamdin February mein hai."},
+    "direct": [
+      {"id":"xw-pd-1","text":{"en":"I have travelled by train in the last year.","hinglish":"Maine pichhle saal mein train se safar kiya hai."}},
+      {"id":"xw-pd-2","text":{"en":"I have watched a film in a cinema in the last year.","hinglish":"Maine pichhle saal mein cinema mein film dekhi hai."}}
+    ],
+    "crosswise": [
+      {"id":"xw-pc-1","text":{"en":"I have eaten rice in the past week.","hinglish":"Maine pichhle hafte chawal khaye hain."}},
+      {"id":"xw-pc-2","text":{"en":"I wear a watch on most days.","hinglish":"Main zyadatar dinon mein ghadi pehnta ya pehnti hoon."}},
+      {"id":"xw-pc-3","text":{"en":"There is a plant in my home.","hinglish":"Mere ghar mein ek paudha hai."}}
+    ]
+  },
+  "anchor": {"id":"xw-anchor","text":{"en":"I have never used a mobile phone.","hinglish":"Maine kabhi mobile phone istemaal nahi kiya."}},
+  "knownZero": {"id":"xw-zero","text":{"en":"I was born on 30 February.","hinglish":"Main 30 February ko paida hua ya hui thi."}},
+  "m1hControls": [
+    {"id":"xw-ctl-1","text":{"en":"I have read a book in the past month.","hinglish":"Maine pichhle mahine mein koi kitab padhi hai."}},
+    {"id":"xw-ctl-2","text":{"en":"I own a pair of running shoes.","hinglish":"Mere paas daudne ke joote hain."}}
+  ],
+  "m1hStatements": [
+    {"id":"xw-h-01","text":{"en":"I think men make better team leaders than women.","hinglish":"Mujhe lagta hai ki purush mahilaon se behtar team leader banate hain."}},
+    {"id":"xw-h-02","text":{"en":"I would be glad to have a woman as my manager.","hinglish":"Mujhe khushi hogi agar meri manager koi mahila ho."}},
+    {"id":"xw-h-03","text":{"en":"I would feel uncomfortable if my manager were a woman.","hinglish":"Agar meri manager koi mahila hoti to mujhe asahaj lagta."}},
+    {"id":"xw-h-04","text":{"en":"I would trust a woman to handle our most important client.","hinglish":"Main hamare sabse zaroori client ko sambhalne ke liye kisi mahila par bharosa karunga ya karungi."}},
+    {"id":"xw-h-05","text":{"en":"I would prefer to hire a man over a woman for a job with long hours.","hinglish":"Lambe ghanton wali naukri ke liye main mahila ki jagah purush ko rakhna pasand karunga ya karungi."}},
+    {"id":"xw-h-06","text":{"en":"I believe women should be considered for senior posts as readily as men.","hinglish":"Mera maanna hai ki senior padon ke liye mahilaon par utni hi tatparta se vichar hona chahiye jitni purushon par."}},
+    {"id":"xw-h-07","text":{"en":"I believe a man should be paid more than a woman because he usually supports a family.","hinglish":"Mera maanna hai ki purush ko mahila se zyada vetan milna chahiye kyunki woh aam taur par parivar ka kharch uthata hai."}},
+    {"id":"xw-h-08","text":{"en":"I would speak up if a woman in my team were passed over for a rise because of her sex.","hinglish":"Agar meri team ki kisi mahila ko uske ling ki wajah se vetan vriddhi se vanchit kiya jaaye to main awaaz uthaunga ya uthaungi."}},
+    {"id":"xw-h-09","text":{"en":"I think women are too emotional to take hard business decisions.","hinglish":"Mujhe lagta hai ki mahilayein kathin vyapari faisle lene ke liye bahut bhavuk hoti hain."}},
+    {"id":"xw-h-10","text":{"en":"I think a woman with strong sales results deserves the biggest territory.","hinglish":"Mujhe lagta hai ki mazboot sales nateeje wali mahila sabse bade kshetra ki haqdar hai."}},
+    {"id":"xw-h-11","text":{"en":"I would not choose a woman to handle a major client.","hinglish":"Main kisi bade client ko sambhalne ke liye mahila ko nahi chunuga ya chunungi."}},
+    {"id":"xw-h-12","text":{"en":"I would back a woman colleague who asked for a pay rise on the strength of her results.","hinglish":"Jo mahila sahkarmi apne nateejon ke dam par vetan badhane ki maang kare, main uska saath dunga ya dungi."}}
+  ],
+  "m3Items": [
+    {"id":"xw-m3-1","text":{"en":"In the past year, I have made a joke about a colleague's looks at work.","hinglish":"Pichhle saal mein maine kaam par kisi sahkarmi ke roop ke baare mein mazaak kiya hai."}},
+    {"id":"xw-m3-2","text":{"en":"In the past year, I have sent a colleague a late-night message that was not about work.","hinglish":"Pichhle saal mein maine kisi sahkarmi ko raat der gaye aisa message bheja hai jo kaam ke baare mein nahi tha."}},
+    {"id":"xw-m3-3","text":{"en":"In the past year, I have asked a colleague out again after the colleague said no.","hinglish":"Pichhle saal mein sahkarmi ke mana karne ke baad maine use dobara bahar chalne ko poocha hai."}},
+    {"id":"xw-m3-4","text":{"en":"In the past year, I have commented on a colleague's body in front of others at work.","hinglish":"Pichhle saal mein maine kaam par doosron ke saamne kisi sahkarmi ke sharir par tippani ki hai."}},
+    {"id":"xw-m3-5","text":{"en":"In the past year, I have stood or sat closer to a colleague than they seemed comfortable with.","hinglish":"Pichhle saal mein main kisi sahkarmi ke itne paas khada hua ya baitha hoon jitne mein woh sehaj nahi lag raha tha."}},
+    {"id":"xw-m3-6","text":{"en":"In the past year, I have shared a joke with a sexual meaning in a work group chat.","hinglish":"Pichhle saal mein maine kaam ke group chat mein sexual matlab wala mazaak bheja hai."}},
+    {"id":"xw-m3-7","text":{"en":"In the past year, I have touched a colleague's arm or shoulder at work without asking.","hinglish":"Pichhle saal mein maine kaam par bina poochhe kisi sahkarmi ki baanh ya kandhe ko chhua hai."}},
+    {"id":"xw-m3-8","text":{"en":"In the past year, I have kept teasing a colleague about a relationship after being asked to stop.","hinglish":"Pichhle saal mein rukne ko kaha jaane ke baad bhi maine kisi sahkarmi ko uske rishte ke baare mein chhedna jaari rakha hai."}}
+  ],
+  "rcItems": [
+    {"id":"xw-rc-1","text":{"en":"The last digit of my phone number is even.","hinglish":"Mere phone number ka aakhri ank sam (even) hai."}},
+    {"id":"xw-rc-2","text":{"en":"I was born in a month with an even number: February, April, June, August, October or December.","hinglish":"Main sam sankhya wale mahine mein paida hua ya hui hoon: February, April, June, August, October ya December."}},
+    {"id":"xw-rc-3","text":{"en":"The day of the month on which I was born is an odd number.","hinglish":"Mahine ki jis tarikh ko main paida hua ya hui, woh vishham (odd) sankhya hai."}},
+    {"id":"xw-rc-4","text":{"en":"The last digit of my year of birth is even.","hinglish":"Mere janm varsh ka aakhri ank sam (even) hai."}}
+  ],
+  "neutral": [
+    {"id":"xw-n-01","text":{"en":"I usually drink tea rather than coffee in the morning.","hinglish":"Main subah aam taur par coffee ki jagah chai peeta ya peeti hoon."}},
+    {"id":"xw-n-02","text":{"en":"I prefer a window seat when I travel.","hinglish":"Safar karte samay mujhe khidki wali seat pasand hai."}},
+    {"id":"xw-n-03","text":{"en":"I usually wake up before 7 am.","hinglish":"Main aam taur par subah 7 baje se pehle uthta ya uthti hoon."}},
+    {"id":"xw-n-04","text":{"en":"I have watched a cricket match in the past month.","hinglish":"Maine pichhle mahine mein cricket match dekha hai."}},
+    {"id":"xw-n-05","text":{"en":"I prefer to cook at home rather than eat out.","hinglish":"Mujhe bahar khane ki jagah ghar par pakana pasand hai."}},
+    {"id":"xw-n-06","text":{"en":"I carry an umbrella when the sky looks cloudy.","hinglish":"Aasmaan mein baadal dikhein to main chhaata saath rakhta ya rakhti hoon."}},
+    {"id":"xw-n-07","text":{"en":"I prefer reading on paper to reading on a screen.","hinglish":"Mujhe screen par padhne se zyada kagaz par padhna pasand hai."}},
+    {"id":"xw-n-08","text":{"en":"I listen to music while travelling to work or study.","hinglish":"Kaam ya padhai par jaate samay main sangeet sunta ya sunti hoon."}},
+    {"id":"xw-n-09","text":{"en":"I check the weather forecast on most days.","hinglish":"Main zyadatar dinon mein mausam ka poorvanuman dekhta ya dekhti hoon."}},
+    {"id":"xw-n-10","text":{"en":"I take the stairs rather than the lift when I can.","hinglish":"Jab ho sake main lift ki jagah seedhiyan leta ya leti hoon."}},
+    {"id":"xw-n-11","text":{"en":"I prefer to shop in a market rather than online.","hinglish":"Mujhe online ki jagah bazaar mein kharidari karna pasand hai."}},
+    {"id":"xw-n-12","text":{"en":"I write a list when I go grocery shopping.","hinglish":"Kirana kharidne jaate samay main suchi likhta ya likhti hoon."}},
+    {"id":"xw-n-13","text":{"en":"I eat a favourite street snack at least once a month.","hinglish":"Main mahine mein kam se kam ek baar apna pasandida street snack khata ya khati hoon."}},
+    {"id":"xw-n-14","text":{"en":"I usually finish a meal with something sweet.","hinglish":"Main aam taur par khaane ke baad kuch meetha khata ya khati hoon."}},
+    {"id":"xw-n-15","text":{"en":"I prefer a quiet evening at home to going out.","hinglish":"Mujhe bahar jaane ki jagah ghar par shant shaam bitana pasand hai."}},
+    {"id":"xw-n-16","text":{"en":"I charge my phone overnight.","hinglish":"Main apna phone raat bhar charge par lagata ya lagati hoon."}},
+    {"id":"xw-n-17","text":{"en":"I have looked after a plant in the past year.","hinglish":"Maine pichhle saal mein kisi paudhe ki dekhbhal ki hai."}},
+    {"id":"xw-n-18","text":{"en":"I prefer to walk rather than take a rickshaw for short distances.","hinglish":"Chhoti doori ke liye mujhe rickshaw ki jagah paidal chalna pasand hai."}},
+    {"id":"xw-n-19","text":{"en":"I watch videos on my phone before going to sleep.","hinglish":"Sone se pehle main apne phone par video dekhta ya dekhti hoon."}},
+    {"id":"xw-n-20","text":{"en":"I usually eat dinner after 9 pm.","hinglish":"Main aam taur par raat 9 baje ke baad khana khata ya khati hoon."}},
+    {"id":"xw-n-21","text":{"en":"I prefer the monsoon to the summer.","hinglish":"Mujhe garmi ki jagah barsaat ka mausam pasand hai."}},
+    {"id":"xw-n-22","text":{"en":"I sometimes take a photograph of my food.","hinglish":"Main kabhi kabhi apne khaane ki tasveer leta ya leti hoon."}},
+    {"id":"xw-n-23","text":{"en":"I keep notes on my phone for things I need to remember.","hinglish":"Jo cheezein yaad rakhni hoti hain, unke liye main apne phone par notes rakhta ya rakhti hoon."}},
+    {"id":"xw-n-24","text":{"en":"I usually set more than one alarm in the morning.","hinglish":"Main aam taur par subah ke liye ek se zyada alarm lagata ya lagati hoon."}}
+  ]
+}

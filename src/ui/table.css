@@ -1,0 +1,27 @@
+/* @owns table table__wrap table__cell table__head table__cell--suppressed */
+.table__wrap {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: var(--text-label);
+}
+.table__head {
+  font-family: var(--font-display);
+  font-weight: var(--weight-label);
+  text-align: left;
+  border-bottom: var(--border) solid var(--c-rule);
+  padding: var(--gap-s);
+  color: var(--c-text);
+}
+.table__cell {
+  border-bottom: var(--border-thin) solid var(--c-rule);
+  padding: var(--gap-s);
+  color: var(--c-body);
+}
+.table__cell--suppressed {
+  color: var(--c-muted);
+  font-style: italic;
+}

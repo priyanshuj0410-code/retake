@@ -1,0 +1,76 @@
+{
+  "_note": "The identity layer's cue pools. ILLUSTRATIVE and NOT YET PRE-TESTED: P1 (the identity-layer pre-test) rates every first name, surname and city in English, Hindi and Hinglish in region-weighted batches, excludes implausible first-name and city pairs, rates every city for a race or ethnicity reading, matches cities on size, and registers the final pools. Until then nothing here may be used with participants.",
+  "status": "not yet pre-tested",
+  "sex": {
+    "focal": "woman",
+    "comparison": "man"
+  },
+  "firstNames": {
+    "hindu": {
+      "woman": ["Priya", "Anjali", "Kavita", "Meera", "Sunita", "Pooja", "Neha", "Rekha", "Divya", "Shalini", "Swati", "Nandini"],
+      "man": ["Rahul", "Amit", "Vikram", "Suresh", "Arjun", "Rohan", "Manoj", "Sanjay", "Deepak", "Nikhil", "Ajay", "Gaurav"]
+    },
+    "muslim": {
+      "woman": ["Ayesha", "Farah", "Zainab", "Nazia", "Rukhsar", "Sana", "Shabnam", "Huma", "Nargis", "Yasmin", "Rubina", "Tabassum"],
+      "man": ["Imran", "Faisal", "Arif", "Salman", "Tariq", "Junaid", "Irfan", "Asif", "Javed", "Nadeem", "Shahid", "Wasim"]
+    }
+  },
+  "religion": {
+    "focal": "muslim",
+    "comparison": "hindu",
+    "default": "hindu",
+    "_note": "Cards that do not carry the religion pair draw every first name from the default pool, so religion does not vary on them."
+  },
+  "neutralNames": ["Chiku", "Momo", "Pixel", "Tikki", "Biscuit", "Nimbu", "Jugnu", "Pebble", "Toffee", "Bubbly", "Kiwi", "Dot"],
+  "surnames": {
+    "_note": "Caste or community codes, coherent with the first name's religion. Only Hindu first names carry the caste pair in this layout, so only Hindu surname codes are listed. Which code is which, and every surname in it, is P1's decision.",
+    "focal": "sc-coded",
+    "comparison": "upper-caste-coded",
+    "hindu": {
+      "sc-coded": ["Paswan", "Jatav", "Ahirwar", "Valmiki", "Kardam", "Bharti"],
+      "upper-caste-coded": ["Sharma", "Iyer", "Chaturvedi", "Banerjee", "Trivedi", "Mukherjee"]
+    }
+  },
+  "birthplace": {
+    "_note": "A registered region pair matched on city size, worded 'Born in', never on a character that carries a surname. The pair and the cities are illustrative.",
+    "focal": "south",
+    "comparison": "north",
+    "south": ["Coimbatore", "Madurai", "Kochi", "Mysuru", "Vijayawada", "Tiruchirappalli"],
+    "north": ["Ludhiana", "Kanpur", "Agra", "Meerut", "Varanasi", "Bareilly"],
+    "label": { "en": "Born in {city}", "hinglish": "{city} mein janme" }
+  },
+  "tones": {
+    "_note": "Skin tone of the human emoji: colourism, a proxy for the race ground. Human cards only. Focal is the darker pair.",
+    "focal": "darker",
+    "comparison": "lighter",
+    "darker": ["🏾", "🏿"],
+    "lighter": ["🏻", "🏼"],
+    "constant": "🏽"
+  },
+  "figures": {
+    "woman": "👩",
+    "man": "👨"
+  },
+  "species": {
+    "_note": "One species per card. Unicode 6.0 animals only, so old Android phones draw them. Species are not neutral: P1 and A1 decide one species per card or species as a factor.",
+    "list": [
+      { "id": "elephant", "emoji": "🐘", "name": { "en": "elephant", "hinglish": "haathi" } },
+      { "id": "tiger", "emoji": "🐯", "name": { "en": "tiger", "hinglish": "baagh" } },
+      { "id": "panda", "emoji": "🐼", "name": { "en": "panda", "hinglish": "panda" } },
+      { "id": "koala", "emoji": "🐨", "name": { "en": "koala", "hinglish": "koala" } },
+      { "id": "bear", "emoji": "🐻", "name": { "en": "bear", "hinglish": "bhaalu" } },
+      { "id": "rabbit", "emoji": "🐰", "name": { "en": "rabbit", "hinglish": "khargosh" } },
+      { "id": "penguin", "emoji": "🐧", "name": { "en": "penguin", "hinglish": "penguin" } },
+      { "id": "frog", "emoji": "🐸", "name": { "en": "frog", "hinglish": "medhak" } }
+    ]
+  },
+  "badge": {
+    "_note": "R1's pre-tested merit-irrelevant attribute (here a team badge colour, not yet pre-tested). It varies on every FULL card and is the only varying attribute on PARTIAL-A cards.",
+    "focal": "green",
+    "comparison": "blue",
+    "label": {
+      "green": { "en": "Green badge", "hinglish": "Green badge" },
+      "blue": { "en": "Blue badge", "hinglish": "Blue badge" }
+    }
+  }
+}

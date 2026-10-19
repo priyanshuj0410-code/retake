@@ -1,0 +1,29 @@
+/* @owns text text--lead text--small text--muted text--strong heading */
+.text {
+  margin: var(--gap-none);
+  color: var(--c-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+.text--lead {
+  font-size: var(--text-lead);
+  color: var(--c-text);
+}
+.text--small {
+  font-size: var(--text-small);
+}
+.text--muted {
+  color: var(--c-muted);
+}
+.text--strong {
+  font-weight: var(--weight-strong);
+  color: var(--c-text);
+}
+.heading {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: var(--weight-display);
+  line-height: var(--leading-tight);
+  color: var(--c-text);
+  margin: var(--gap-m) var(--gap-none) var(--gap-none);
+}

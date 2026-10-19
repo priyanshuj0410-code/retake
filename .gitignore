@@ -1,0 +1,11 @@
+node_modules
+dist
+.plane_current_issue
+.env*
+*.log
+node_modules/
+out/
+scripts/scratch/
+firebase-debug.log
+database-debug.log
+.DS_Store

@@ -1,0 +1,42 @@
+{
+  "name": "equal-lens-evaluator",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@11.4.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:emu": "VITE_STORE=emulator vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.ts\"",
+    "preview": "vite preview",
+    "check": "tsc -b && oxlint && tsx scripts/check-all.ts && pnpm rules",
+    "check:fast": "tsc -b && oxlint && tsx scripts/check-all.ts",
+    "rules": "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" firebase emulators:exec --only database,auth --project demo-eval 'tsx scripts/rules-check.ts'",
+    "length": "tsx scripts/session-length.ts",
+    "seed": "tsx scripts/seed-emulator.ts",
+    "emulators": "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" firebase emulators:start --only database,auth --project demo-eval",
+    "shots": "tsx scripts/shots.ts"
+  },
+  "dependencies": {
+    "firebase": "^12.18.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "oxlint": "^1.79.0",
+    "playwright-core": "^1.63.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.13",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.2"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": ["@firebase/util", "protobufjs"]
+  }
+}

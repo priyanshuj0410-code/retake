@@ -1,0 +1,12 @@
+/* @owns list list__item */
+.list {
+  margin: var(--gap-none);
+  padding-left: var(--gap-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+}
+.list__item {
+  color: var(--c-body);
+  line-height: var(--leading-body);
+}

@@ -1,0 +1,11 @@
+/* @owns demo */
+.demo {
+  background: var(--c-demo);
+  color: var(--c-on-demo);
+  font-family: var(--font-display);
+  font-size: var(--text-small);
+  font-weight: var(--weight-label);
+  padding: var(--gap-xs) var(--gap-m);
+  border-radius: var(--radius-s);
+  margin: var(--gap-none);
+}

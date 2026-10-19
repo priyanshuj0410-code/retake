@@ -1,0 +1,70 @@
+/* @owns sort sort__row sort__row--dragging sort__rank sort__body sort__moves sort__move sort__handle sort__live */
+.sort {
+  list-style: none;
+  margin: var(--gap-none);
+  padding: var(--gap-none);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+}
+.sort__row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--gap-m);
+  align-items: center;
+  background: var(--c-raised);
+  border: var(--border) solid var(--c-border);
+  border-radius: var(--radius-l);
+  padding: var(--gap-m);
+  box-shadow: var(--flat);
+  transition: box-shadow var(--motion);
+  touch-action: pan-y;
+}
+.sort__row--dragging {
+  box-shadow: var(--lift);
+  border-color: var(--c-accent);
+}
+.sort__rank {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-lead);
+  color: var(--c-accent);
+  min-width: var(--gap-xl);
+  text-align: center;
+}
+.sort__body {
+  min-width: 0;
+}
+.sort__moves {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+}
+.sort__move {
+  min-width: var(--target);
+  min-height: var(--target);
+  border-radius: var(--radius-s);
+  border: var(--border) solid var(--c-accent);
+  background: var(--c-surface);
+  color: var(--c-accent);
+  font-size: var(--text-lead);
+  font-family: var(--font-display);
+  cursor: pointer;
+}
+.sort__move:disabled {
+  border-color: var(--c-rule);
+  color: var(--c-rule);
+  cursor: default;
+}
+.sort__handle {
+  cursor: grab;
+  touch-action: none;
+}
+.sort__live {
+  position: absolute;
+  width: var(--border-thin);
+  height: var(--border-thin);
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

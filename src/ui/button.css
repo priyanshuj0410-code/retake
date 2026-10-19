@@ -1,0 +1,42 @@
+/* @owns button button--primary button--secondary button--quiet */
+.button {
+  min-height: var(--target);
+  width: 100%;
+  border-radius: var(--radius-m);
+  font-family: var(--font-display);
+  font-size: var(--text-label);
+  font-weight: var(--weight-label);
+  padding: var(--gap-m) var(--gap-l);
+  border: var(--border) solid var(--c-accent);
+  cursor: pointer;
+  transition: background-color var(--motion);
+}
+.button--primary {
+  background: var(--c-accent);
+  color: var(--c-on-accent);
+}
+.button--primary:active {
+  background: var(--c-accent-press);
+}
+.button--primary:disabled {
+  background: var(--c-rule);
+  border-color: var(--c-rule);
+  color: var(--c-muted);
+  cursor: not-allowed;
+}
+.button--secondary {
+  background: var(--c-surface);
+  color: var(--c-accent);
+}
+.button--quiet {
+  background: transparent;
+  border-color: transparent;
+  color: var(--c-accent);
+  text-decoration: underline;
+}
+@media (min-width: 600px) {
+  .button {
+    width: auto;
+    align-self: flex-start;
+  }
+}

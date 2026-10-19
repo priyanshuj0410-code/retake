@@ -1,0 +1,22 @@
+/* @owns field field__label field__input */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+}
+.field__label {
+  font-family: var(--font-display);
+  font-weight: var(--weight-label);
+  color: var(--c-text);
+}
+.field__input {
+  min-height: var(--target);
+  font-family: var(--font-mono);
+  font-size: var(--text-lead);
+  padding: var(--gap-s) var(--gap-m);
+  border: var(--border) solid var(--c-border);
+  border-radius: var(--radius-m);
+  background: var(--c-surface);
+  color: var(--c-text);
+  width: 100%;
+}

@@ -1,0 +1,422 @@
+[
+  {
+    "id": "opp-A-01", "family": "opportunity", "form": "A", "type": "ranking", "band": "male-typed",
+    "role": { "en": "Site logistics lead", "hinglish": "Site logistics lead" },
+    "title": { "en": "Who should lead the warehouse site move?", "hinglish": "Warehouse site move ko lead kaun karega?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-A-01-d1", "text": { "en": "Coordinated three site moves with zero lost stock; handover notes were sparse, so the receiving team asked many follow-ups.", "hinglish": "Teen site moves coordinate kiye, stock ka nuksan zero; handover notes kam the, isliye receiving team ke follow-up sawaal bahut aaye." } },
+      { "id": "opp-A-01-d2", "text": { "en": "Built the transport schedule that cut truck waiting time by a third; occasionally books vendors without confirming backup options.", "hinglish": "Transport schedule banaya jisse truck waiting time ek tihai kam hua; kabhi kabhi backup option confirm kiye bina vendor book." } },
+      { "id": "opp-A-01-d3", "text": { "en": "Strong on safety checklists and dock audits; slower to adapt when the delivery plan changes at short notice.", "hinglish": "Safety checklist aur dock audit mein mazboot; delivery plan achanak badalne par naye plan mein dhalna thoda dheema." } },
+      { "id": "opp-A-01-d4", "text": { "en": "Managed the largest single move last year on budget and on time; updates to senior managers were brief and infrequent.", "hinglish": "Pichhle saal sabse bada move budget aur samay par poora karaya; senior managers ko updates chhote aur kam bheje." } }
+    ],
+    "continuation": { "en": "{first} starts on the site map for the new warehouse on Monday.", "hinglish": "{first} ka kaam Monday se naye warehouse ke site map par shuru." }
+  },
+  {
+    "id": "opp-A-02", "family": "opportunity", "form": "A", "type": "ranking", "band": "male-typed",
+    "role": { "en": "Server-room migration lead", "hinglish": "Server-room migration lead" },
+    "title": { "en": "Who leads the server-room migration weekend?", "hinglish": "Server-room migration weekend ka lead kaun hoga?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-A-02-d1", "text": { "en": "Documented every rack and cable before the last migration; sign-offs from other teams took longer than planned.", "hinglish": "Pichhle migration se pehle har rack aur cable document kiya; doosri teams se sign-off mein plan se zyada waqt laga." } },
+      { "id": "opp-A-02-d2", "text": { "en": "Wrote the rollback script that saved the last cutover; test coverage on the new storage layer is still thin.", "hinglish": "Rollback script likhi jisne pichhla cutover bachaya; naye storage layer par test coverage abhi kam hai." } },
+      { "id": "opp-A-02-d3", "text": { "en": "Led a clean overnight migration for two applications; handed over the monitoring dashboards a day after go-live.", "hinglish": "Do applications ka overnight migration saaf-suthra chalaya; monitoring dashboards go-live ke ek din baad saunpe." } },
+      { "id": "opp-A-02-d4", "text": { "en": "Steady on vendor coordination and downtime notices; less experience with the virtual machine tools now being adopted.", "hinglish": "Vendor coordination aur downtime notices mein sthir; ab apnaye ja rahe virtual machine tools ka anubhav kam." } }
+    ],
+    "continuation": { "en": "{first} books the maintenance window with the facilities desk.", "hinglish": "{first} ka kaam: facilities desk se maintenance window book karna." }
+  },
+  {
+    "id": "opp-A-03", "family": "opportunity", "form": "A", "type": "ranking", "band": "male-typed",
+    "role": { "en": "Plant safety walk-through lead", "hinglish": "Plant safety walk-through lead" },
+    "title": { "en": "Who runs the monthly plant safety walk-through?", "hinglish": "Monthly plant safety walk-through kaun chalayega?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-A-03-d1", "text": { "en": "Closed eleven open safety actions within a quarter; walk-through reports run long and are read by few.", "hinglish": "Ek quarter mein gyarah khule safety actions band kiye; walk-through reports lambi hoti hain aur kam log padhte hain." } },
+      { "id": "opp-A-03-d2", "text": { "en": "Trained floor supervisors on lockout procedures; sometimes schedules walk-throughs during shift handovers, when supervisors are busy.", "hinglish": "Floor supervisors ko lockout procedures ki training di; kabhi kabhi walk-through shift handover ke waqt rakha, jab supervisors vyast hote hain." } },
+      { "id": "opp-A-03-d3", "text": { "en": "Spots equipment faults early and logs each one promptly; follow-up with the maintenance team often waits for a reminder.", "hinglish": "Equipment ki kharabi jaldi pakadna aur turant log karna; maintenance team ke saath follow-up aksar reminder ke intezaar mein." } },
+      { "id": "opp-A-03-d4", "text": { "en": "Wrote the revised fire-drill plan adopted site-wide; limited exposure to the chemical storage areas covered in the audit.", "hinglish": "Sanshodhit fire-drill plan likha jo poori site par apnaya gaya; audit mein shamil chemical storage areas ka anubhav seemit." } }
+    ],
+    "continuation": { "en": "{first} circulates the walk-through route by Friday.", "hinglish": "{first} ka kaam: Friday tak walk-through ka route sabko bhejna." }
+  },
+  {
+    "id": "opp-A-04", "family": "opportunity", "form": "A", "type": "allocation", "band": "male-typed",
+    "role": { "en": "Industrial field sales", "hinglish": "Industrial field sales" },
+    "title": { "en": "How should field sales training days be shared?", "hinglish": "Field sales training ke din kaise baante jaayen?" },
+    "prompt": { "en": "Share all 10 days between them.", "hinglish": "Sabhi 10 din inme baant dijiye." },
+    "unit": { "en": "days of training budget", "hinglish": "training budget ke din" },
+    "pool": 10,
+    "descriptions": [
+      { "id": "opp-A-04-d1", "text": { "en": "Renewed four industrial accounts last quarter; pipeline notes are updated late and lack next steps.", "hinglish": "Pichhle quarter chaar industrial accounts renew karaye; pipeline notes der se update hote hain aur next steps nahi likhe hote." } },
+      { "id": "opp-A-04-d2", "text": { "en": "Opened two new distributor relationships this year; discounts offered were sometimes deeper than the pricing guide allows.", "hinglish": "Is saal do naye distributor sambandh shuru kiye; diye gaye discount kabhi kabhi pricing guide ki seema se zyada gehre." } },
+      { "id": "opp-A-04-d3", "text": { "en": "Reliable on site visits and quotation accuracy; has not yet closed a deal above the team's average size.", "hinglish": "Site visits aur quotation ki sahi jankari mein bharosemand; team ke average se bade deal abhi tak band nahi hue." } },
+      { "id": "opp-A-04-d4", "text": { "en": "Strong technical product knowledge, praised by plant engineers; quarterly call targets missed twice in a row.", "hinglish": "Technical product knowledge mazboot, plant engineers ne saraha; quarterly call targets lagatar do baar chhoote." } }
+    ],
+    "continuation": { "en": "{first} books the first workshop slot for next month.", "hinglish": "{first} ka kaam: agle mahine ka pehla workshop slot book karna." }
+  },
+  {
+    "id": "opp-A-05", "family": "opportunity", "form": "A", "type": "allocation", "band": "male-typed",
+    "role": { "en": "Heavy-machinery procurement negotiation", "hinglish": "Heavy-machinery procurement negotiation" },
+    "title": { "en": "Who gets the hours on the crane contract talks?", "hinglish": "Crane contract talks ke ghante kise milenge?" },
+    "prompt": { "en": "Share all 12 hours between them.", "hinglish": "Sabhi 12 ghante inme baant dijiye." },
+    "unit": { "en": "hours of stretch-project time", "hinglish": "stretch project ke ghante" },
+    "pool": 12,
+    "descriptions": [
+      { "id": "opp-A-05-d1", "text": { "en": "Negotiated a three-year supply deal with a six percent saving; contract summaries reach the finance team late.", "hinglish": "Teen saal ka supply deal six percent bachat ke saath tay kiya; contract summary finance team tak der se pahunchti hai." } },
+      { "id": "opp-A-05-d2", "text": { "en": "Keeps clear records of every quotation round; concessions are sometimes granted before checking budget limits.", "hinglish": "Har quotation round ka saaf record rakhna; budget seema jaanche bina kabhi kabhi riyayat de di jaati hai." } },
+      { "id": "opp-A-05-d3", "text": { "en": "Knows the maintenance history of every machine on site; less practised at presenting the case to senior leaders.", "hinglish": "Site ki har machine ka maintenance itihas maloom; senior leaders ke saamne case rakhne ka abhyas kam." } },
+      { "id": "opp-A-05-d4", "text": { "en": "Brought three alternative suppliers into the last tender; negotiation notes are thin, making handovers harder.", "hinglish": "Pichhle tender mein teen vikalpik suppliers jode; negotiation notes patle, jisse handover mushkil." } }
+    ],
+    "continuation": { "en": "{first} joins the first call with the crane supplier on Tuesday.", "hinglish": "{first} ka kaam: Tuesday ko crane supplier ke saath pehli call mein shamil hona." }
+  },
+  {
+    "id": "opp-A-06", "family": "opportunity", "form": "A", "type": "allocation", "band": "male-typed",
+    "role": { "en": "Warehouse dispatch", "hinglish": "Warehouse dispatch" },
+    "title": { "en": "How should the dispatch bonus pool be shared?", "hinglish": "Dispatch bonus pool kaise baanta jaaye?" },
+    "prompt": { "en": "Share all 12 points between them.", "hinglish": "Sabhi 12 points inme baant dijiye." },
+    "unit": { "en": "bonus points", "hinglish": "bonus points" },
+    "pool": 12,
+    "descriptions": [
+      { "id": "opp-A-06-d1", "text": { "en": "Cut dispatch errors by a quarter through barcode checks; sometimes slow to respond to urgent changes from the sales desk.", "hinglish": "Barcode checks se dispatch errors ek chauthai kam kiye; sales desk ke zaroori badlavon par jawab kabhi kabhi dheema." } },
+      { "id": "opp-A-06-d2", "text": { "en": "Loaded the year-end rush without a single delayed truck; paperwork closes a few days after the deadline.", "hinglish": "Saal ke ant ki bheed mein ek bhi truck late nahi; kagzi karyavahi deadline ke kuch din baad band hoti hai." } },
+      { "id": "opp-A-06-d3", "text": { "en": "Reorganised the loading bays, saving about forty minutes per shift; training of new loaders is still informal.", "hinglish": "Loading bays dobara vyavasthit kiye, har shift lagbhag chalis minute bache; naye loaders ki training abhi anaupcharik." } },
+      { "id": "opp-A-06-d4", "text": { "en": "Consistent on-time record across the quarter; improvement suggestions beyond the assigned routine are rare.", "hinglish": "Poore quarter mein samay par dispatch ka sthir record; tay kaam se aage sudhar ke sujhav kam aate hain." } }
+    ],
+    "continuation": { "en": "{first} is named in the dispatch notice on Thursday.", "hinglish": "{first} ka naam Thursday ke dispatch notice mein." }
+  },
+  {
+    "id": "opp-A-07", "family": "opportunity", "form": "A", "type": "ranking", "band": "integrated",
+    "role": { "en": "Client presentation", "hinglish": "Client presentation" },
+    "title": { "en": "Who presents to the client next week?", "hinglish": "Agle hafte client ko presentation kaun dega?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-A-07-d1", "text": { "en": "Presented to this client twice with strong feedback; slides tend to carry more text than the room can absorb.", "hinglish": "Is client ko do baar presentation diya, achha feedback mila; slides par kabhi kabhi zyada text hota hai." } },
+      { "id": "opp-A-07-d2", "text": { "en": "Clear and quick with numbers in questions; limited experience presenting to a full leadership panel.", "hinglish": "Sawalon mein numbers par saaf aur tez; poore leadership panel ke saamne presentation ka anubhav seemit." } },
+      { "id": "opp-A-07-d3", "text": { "en": "Prepared the proposal content and knows every detail; delivery pace can run past the allotted time.", "hinglish": "Proposal ka poora content tayyar kiya aur har vivaran maloom; bolne ki raftaar kabhi tay samay se aage chali jaati hai." } },
+      { "id": "opp-A-07-d4", "text": { "en": "Calm with difficult questions and keeps to time; has not yet worked on this client's product line.", "hinglish": "Mushkil sawalon mein shaant aur samay ka dhyan; is client ki product line par abhi tak kaam nahi kiya." } }
+    ],
+    "continuation": { "en": "{first} rehearses the opening with the account team on Monday.", "hinglish": "{first} ka kaam: Monday ko account team ke saath opening ka rehearsal." }
+  },
+  {
+    "id": "opp-A-08", "family": "opportunity", "form": "A", "type": "ranking", "band": "integrated",
+    "role": { "en": "Quarterly budget review", "hinglish": "Quarterly budget review" },
+    "title": { "en": "Who should lead the quarterly budget review?", "hinglish": "Quarterly budget review kaun lead karega?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-A-08-d1", "text": { "en": "Reconciled three cost centres with no open variances; commentary on overspends is brief and sometimes missing.", "hinglish": "Teen cost centres reconcile kiye, koi variance khula nahi; overspend par tippani chhoti aur kabhi kabhi gayab." } },
+      { "id": "opp-A-08-d2", "text": { "en": "Built the forecasting model now used by two departments; the assumptions sheet is hard for others to follow.", "hinglish": "Forecasting model banaya jo ab do departments istemal karte hain; assumptions sheet doosron ke liye samajhna mushkil." } },
+      { "id": "opp-A-08-d3", "text": { "en": "Flags budget risks early and in writing; little experience with the new procurement system.", "hinglish": "Budget jokhim jaldi aur likhit roop mein batana; naye procurement system ka anubhav kam." } },
+      { "id": "opp-A-08-d4", "text": { "en": "Led last quarter's review and finished on schedule; two cost lines were categorised wrongly and corrected later.", "hinglish": "Pichhli quarter ki review lead ki aur samay par poori; do cost lines ki category galat thi, baad mein sudhaari." } }
+    ],
+    "continuation": { "en": "{first} sets up the review folder before the finance meeting.", "hinglish": "{first} ka kaam: finance meeting se pehle review folder tayyar karna." }
+  },
+  {
+    "id": "opp-A-09", "family": "opportunity", "form": "A", "type": "ranking", "band": "integrated",
+    "role": { "en": "Data dashboard design", "hinglish": "Data dashboard design" },
+    "title": { "en": "Whose dashboard design goes forward?", "hinglish": "Kiska dashboard design aage badhega?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-A-09-d1", "text": { "en": "Proposed a six-indicator dashboard with fast load times; the refresh process relies on a manual export.", "hinglish": "Chhah saaf indicators wala dashboard sujhaya jo tezi se load hota hai; refresh process manual export par tika hai." } },
+      { "id": "opp-A-09-d2", "text": { "en": "Proposed drill-down by product line and quarter; the layout feels crowded on smaller screens.", "hinglish": "Product line aur quarter ke hisaab se drill-down sujhaya; chhoti screens par layout bhara-bhara lagta hai." } },
+      { "id": "opp-A-09-d3", "text": { "en": "Proposed a minimal one-page view already running in a pilot; leaves out the historical trends managers ask for.", "hinglish": "Ek-page ka minimal view sujhaya jo pilot mein pehle se chal raha; jo purane trends managers maangte hain, wo shamil nahi." } },
+      { "id": "opp-A-09-d4", "text": { "en": "Proposed automated weekly alerts built on existing data feeds; not yet tested against the finance team's figures.", "hinglish": "Maujooda data feeds par aadharit automatic saptahik alerts sujhaye; finance team ke figures ke saath abhi test nahi." } }
+    ],
+    "continuation": { "en": "{first} shares the dashboard mock-up with the sales leads.", "hinglish": "{first} ka kaam: dashboard mock-up sales leads ke saath share karna." }
+  },
+  {
+    "id": "opp-A-10", "family": "opportunity", "form": "A", "type": "allocation", "band": "integrated",
+    "role": { "en": "Vendor audit", "hinglish": "Vendor audit" },
+    "title": { "en": "How should audit shadowing hours be shared?", "hinglish": "Audit shadowing ke ghante kaise baante jaayen?" },
+    "prompt": { "en": "Share all 8 hours between them.", "hinglish": "Sabhi 8 ghante inme baant dijiye." },
+    "unit": { "en": "hours of vendor audit shadowing", "hinglish": "vendor audit shadowing ke ghante" },
+    "pool": 8,
+    "descriptions": [
+      { "id": "opp-A-10-d1", "text": { "en": "Ran two vendor audits last year; thorough notes, though the second report came a week late.", "hinglish": "Pichhle saal do vendor audits chalaye; notes vistrit, par doosri report ek hafte der se aayi." } },
+      { "id": "opp-A-10-d2", "text": { "en": "Quick to spot invoice mismatches; audit questions are sometimes too technical for vendor contacts.", "hinglish": "Invoice mismatch jaldi pakadna; audit ke sawal kabhi kabhi vendor contacts ke liye zyada technical." } },
+      { "id": "opp-A-10-d3", "text": { "en": "Built the supplier scorecard now used by the team; has not yet led a site audit alone.", "hinglish": "Supplier scorecard banaya jo ab team istemal karti hai; site audit abhi akele lead nahi kiya." } },
+      { "id": "opp-A-10-d4", "text": { "en": "Reliable at preparing audit evidence packs; follow-up on corrective actions has lagged twice this year.", "hinglish": "Audit evidence packs tayyar karne mein bharosemand; corrective actions ka follow-up is saal do baar pichhda." } }
+    ],
+    "continuation": { "en": "{first} receives the audit calendar for next month.", "hinglish": "{first} ko agle mahine ka audit calendar milta hai." }
+  },
+  {
+    "id": "opp-A-11", "family": "opportunity", "form": "A", "type": "allocation", "band": "integrated",
+    "role": { "en": "Project coordination", "hinglish": "Project coordination" },
+    "title": { "en": "How should launch credit be shared?", "hinglish": "Launch ka credit kaise baanta jaaye?" },
+    "prompt": { "en": "Share all 10 points between them.", "hinglish": "Sabhi 10 points inme baant dijiye." },
+    "unit": { "en": "credit points for the launch", "hinglish": "launch ke credit points" },
+    "pool": 10,
+    "descriptions": [
+      { "id": "opp-A-11-d1", "text": { "en": "Kept the launch plan on track across five teams; escalations went to managers rather than being resolved directly.", "hinglish": "Paanch teams ke beech launch plan patri par rakha; escalation managers ko gaye, seedha hal nahi hue." } },
+      { "id": "opp-A-11-d2", "text": { "en": "Wrote the release checklist adopted by the whole team; stakeholder updates ran irregularly in the final month.", "hinglish": "Release checklist likhi jo poori team apnati hai; aakhri mahine stakeholder updates aniyamit." } },
+      { "id": "opp-A-11-d3", "text": { "en": "Solved the vendor delay that threatened the launch date; documentation of the fix was left unfinished.", "hinglish": "Launch date ko khatre mein daalne wali vendor deri ka hal nikala; hal ka documentation adhoora chhoda." } },
+      { "id": "opp-A-11-d4", "text": { "en": "Ran the daily check-ins and kept every task owner clear; missed the first testing milestone by two days.", "hinglish": "Rozana check-in chalaye aur har task owner saaf rakha; pehla testing milestone do din se chhoota." } }
+    ],
+    "continuation": { "en": "{first} is listed first in the launch summary.", "hinglish": "{first} ka naam launch summary mein sabse upar." }
+  },
+  {
+    "id": "opp-A-12", "family": "opportunity", "form": "A", "type": "allocation", "band": "integrated",
+    "role": { "en": "Customer survey analysis", "hinglish": "Customer survey analysis" },
+    "title": { "en": "How should analytics training days be shared?", "hinglish": "Analytics training ke din kaise baante jaayen?" },
+    "prompt": { "en": "Share all 9 days between them.", "hinglish": "Sabhi 9 din inme baant dijiye." },
+    "unit": { "en": "days of analytics training", "hinglish": "analytics training ke din" },
+    "pool": 9,
+    "descriptions": [
+      { "id": "opp-A-12-d1", "text": { "en": "Cleaned and analysed the customer survey in record time; charts lack labels for some segments.", "hinglish": "Customer survey record samay mein saaf aur analyse kiya; kuch segments ke charts par label nahi." } },
+      { "id": "opp-A-12-d2", "text": { "en": "Introduced a simple coding method for open comments; the response summary ran longer than the brief.", "hinglish": "Khule comments ke liye saral coding vidhi shuru ki; response summary brief se lambi rahi." } },
+      { "id": "opp-A-12-d3", "text": { "en": "Found a sampling gap that changed the survey findings; presenting results is still developing.", "hinglish": "Sampling ki ek kami pakdi jisse survey ke nishkarsh badle; results prastut karna abhi vikasit ho raha." } },
+      { "id": "opp-A-12-d4", "text": { "en": "Delivers accurate monthly reports without reminders; methods beyond spreadsheets are rarely attempted.", "hinglish": "Bina reminder ke sahi monthly reports dena; spreadsheets se aage ke tareeke kam aazmaye." } }
+    ],
+    "continuation": { "en": "{first} picks a course date from the training calendar.", "hinglish": "{first} ka kaam: training calendar se course ki tareekh chunna." }
+  },
+  {
+    "id": "opp-A-13", "family": "opportunity", "form": "A", "type": "ranking", "band": "female-typed",
+    "role": { "en": "HR onboarding programme", "hinglish": "HR onboarding programme" },
+    "title": { "en": "Who should run the new-joiner onboarding programme?", "hinglish": "Naye joiners ka onboarding programme kaun chalayega?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-A-13-d1", "text": { "en": "Redesigned the first-week schedule, cutting new-joiner queries by a third; feedback forms went out late.", "hinglish": "Pehle hafte ka schedule naye sire se banaya, new-joiner sawal ek tihai kam; feedback forms der se gaye." } },
+      { "id": "opp-A-13-d2", "text": { "en": "Keeps joining paperwork complete, with no errors in the last audit; sessions can feel scripted.", "hinglish": "Joining kagzaat poore, pichhle audit mein koi galti nahi; sessions kabhi kabhi ratte-ratte se lagte hain." } },
+      { "id": "opp-A-13-d3", "text": { "en": "Organised buddy pairing for forty joiners; has not yet handled onboarding for a larger batch.", "hinglish": "Chalis joiners ke liye buddy pairing sambhali; isse bade batch ka onboarding abhi nahi sambhala." } },
+      { "id": "opp-A-13-d4", "text": { "en": "Engaging in welcome sessions; follow-up checks at thirty days were dropped last cycle.", "hinglish": "Welcome sessions saaf aur dilchasp; tees din ke follow-up check pichhle cycle mein chhod diye." } }
+    ],
+    "continuation": { "en": "{first} sends the week-one schedule to the joining batch.", "hinglish": "{first} ka kaam: joining batch ko pehle hafte ka schedule bhejna." }
+  },
+  {
+    "id": "opp-A-14", "family": "opportunity", "form": "A", "type": "ranking", "band": "female-typed",
+    "role": { "en": "Employee wellness week coordination", "hinglish": "Employee wellness week coordination" },
+    "title": { "en": "Who coordinates the employee wellness week?", "hinglish": "Employee wellness week ka coordination kaun karega?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-A-14-d1", "text": { "en": "Booked eight sessions within budget for last year's event; attendance tracking was done by hand and arrived late.", "hinglish": "Pichhle saal ke event ke aath sessions budget ke andar book kiye; attendance haath se darj hui aur der se mili." } },
+      { "id": "opp-A-14-d2", "text": { "en": "Negotiated discounted rates with three external speakers; confirmation emails to staff were sent only once.", "hinglish": "Teen bahari speakers se rate mein chhoot tay ki; staff ko confirmation email sirf ek baar bheji." } },
+      { "id": "opp-A-14-d3", "text": { "en": "Designed a simple sign-up form that doubled registrations; no backup plan prepared for speaker cancellations.", "hinglish": "Saral sign-up form banaya jisse registration dugne hue; speaker cancel hone par koi backup plan nahi." } },
+      { "id": "opp-A-14-d4", "text": { "en": "Managed the venue, schedule and feedback summary for two events; lead time for bookings is often short.", "hinglish": "Do events ka venue, schedule aur feedback summary sambhala; booking ka lead time aksar chhota." } }
+    ],
+    "continuation": { "en": "{first} confirms the speaker list with the venue desk.", "hinglish": "{first} ka kaam: venue desk se speaker list confirm karna." }
+  },
+  {
+    "id": "opp-A-15", "family": "opportunity", "form": "A", "type": "ranking", "band": "female-typed",
+    "role": { "en": "Front-desk client experience", "hinglish": "Front-desk client experience" },
+    "title": { "en": "Who should take the front-desk client experience role?", "hinglish": "Front-desk client experience ka role kise milna chahiye?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-A-15-d1", "text": { "en": "Cut average visitor waiting time with a new check-in flow; complaint logs are updated only weekly.", "hinglish": "Naye check-in flow se visitor ka intezaar samay ghataya; shikayat log sirf saptahik update hota hai." } },
+      { "id": "opp-A-15-d2", "text": { "en": "Handled escalated visitor issues calmly; records of those cases are sometimes incomplete.", "hinglish": "Badhe hue visitor muddon ko shaanti se nipta; un cases ke record kabhi kabhi adhoore." } },
+      { "id": "opp-A-15-d3", "text": { "en": "Trained three colleagues on the booking system; slower with the visitor badge printing workflow.", "hinglish": "Teen sahyogiyon ko booking system ki training di; visitor badge printing workflow mein dheema." } },
+      { "id": "opp-A-15-d4", "text": { "en": "Consistently positive client survey ratings; has not yet covered the evening reception shift.", "hinglish": "Client survey mein lagataar sakaratmak ratings; shaam ki reception shift abhi nahi sambhali." } }
+    ],
+    "continuation": { "en": "{first} shadows the current desk team on Wednesday.", "hinglish": "{first} ka kaam: Wednesday ko maujooda desk team ke saath shadowing." }
+  },
+  {
+    "id": "opp-A-16", "family": "opportunity", "form": "A", "type": "allocation", "band": "female-typed",
+    "role": { "en": "Training-content design", "hinglish": "Training-content design" },
+    "title": { "en": "How should course-design days be shared?", "hinglish": "Course-design ke din kaise baante jaayen?" },
+    "prompt": { "en": "Share all 10 days between them.", "hinglish": "Sabhi 10 din inme baant dijiye." },
+    "unit": { "en": "days of course-design time", "hinglish": "course-design ke din" },
+    "pool": 10,
+    "descriptions": [
+      { "id": "opp-A-16-d1", "text": { "en": "Built a quiz module with high completion rates; slide designs are inconsistent across units.", "hinglish": "Aisa quiz module banaya jiski completion dar unchi; units mein slide design ek jaisa nahi." } },
+      { "id": "opp-A-16-d2", "text": { "en": "Wrote clear facilitator notes for four courses; pilot testing with learners was skipped on the latest one.", "hinglish": "Chaar courses ke saaf facilitator notes likhe; latest course ka learners ke saath pilot test chhoota." } },
+      { "id": "opp-A-16-d3", "text": { "en": "Converted a long manual into short lessons; assessment questions need stronger answer keys.", "hinglish": "Lambe manual ko chhote lessons mein badla; assessment sawalon ke answer keys mazboot chahiye." } },
+      { "id": "opp-A-16-d4", "text": { "en": "Updated the compliance course on schedule; learner feedback has not yet been gathered.", "hinglish": "Compliance course samay par update kiya; learner feedback abhi tak nahi liya gaya." } }
+    ],
+    "continuation": { "en": "{first} opens the shared course folder on Monday.", "hinglish": "{first} ka kaam: Monday ko shared course folder kholna." }
+  },
+  {
+    "id": "opp-A-17", "family": "opportunity", "form": "A", "type": "allocation", "band": "female-typed",
+    "role": { "en": "Internal communications newsletter", "hinglish": "Internal communications newsletter" },
+    "title": { "en": "How should newsletter editing hours be shared?", "hinglish": "Newsletter editing ke ghante kaise baante jaayen?" },
+    "prompt": { "en": "Share all 8 hours between them.", "hinglish": "Sabhi 8 ghante inme baant dijiye." },
+    "unit": { "en": "hours of editing time", "hinglish": "editing ke ghante" },
+    "pool": 8,
+    "descriptions": [
+      { "id": "opp-A-17-d1", "text": { "en": "Edited six issues without a single factual correction; deadlines were met only after repeated nudges.", "hinglish": "Chhah issues edit kiye, tathya sudhaar ek bhi nahi; deadlines baar baar yaad dilane ke baad poori hui." } },
+      { "id": "opp-A-17-d2", "text": { "en": "Introduced a short leadership update column that readers rate highly; layouts need stronger consistency.", "hinglish": "Chhota leadership update column shuru kiya jise readers unchi rating dete hain; layout mein ekrupta chahiye." } },
+      { "id": "opp-A-17-d3", "text": { "en": "Fast writer, turning interview notes into drafts within a day; proofreading passes are brief.", "hinglish": "Tez lekhan: interview notes ek din mein draft; proofreading ke daur chhote." } },
+      { "id": "opp-A-17-d4", "text": { "en": "Built a reader survey that raised open rates; story ideas come mostly from the same two departments.", "hinglish": "Reader survey banaya jisse open rates badhe; story ideas zyadatar wahi do departments se." } }
+    ],
+    "continuation": { "en": "{first} drafts the lead story for the next issue.", "hinglish": "{first} ka kaam: agle issue ki lead story ka draft likhna." }
+  },
+  {
+    "id": "opp-A-18", "family": "opportunity", "form": "A", "type": "allocation", "band": "female-typed",
+    "role": { "en": "Recruitment coordination", "hinglish": "Recruitment coordination" },
+    "title": { "en": "How should the hiring-drive bonus be shared?", "hinglish": "Hiring-drive ka bonus kaise baanta jaaye?" },
+    "prompt": { "en": "Share all 12 points between them.", "hinglish": "Sabhi 12 points inme baant dijiye." },
+    "unit": { "en": "bonus points", "hinglish": "bonus points" },
+    "pool": 12,
+    "descriptions": [
+      { "id": "opp-A-18-d1", "text": { "en": "Scheduled interviews for twenty-two candidates with no clashes; candidate update messages were sometimes delayed.", "hinglish": "Bayees candidates ke interview bina takrao ke schedule kiye; candidate update messages kabhi kabhi der se." } },
+      { "id": "opp-A-18-d2", "text": { "en": "Created a screening checklist that shortened shortlisting time; offer letters need a second check for errors.", "hinglish": "Screening checklist banai jisse shortlisting ka samay ghata; offer letters mein galti ke liye doosri jaanch chahiye." } },
+      { "id": "opp-A-18-d3", "text": { "en": "Maintained a tidy candidate tracker through the whole drive; process improvements were seldom suggested.", "hinglish": "Poore drive mein candidate tracker saaf rakha; process mein sudhar ke sujhav kam diye." } },
+      { "id": "opp-A-18-d4", "text": { "en": "Brought in strong applicants through a referral campaign; interview feedback forms were submitted late.", "hinglish": "Referral campaign se mazboot applicants laye; interview feedback forms der se jama hue." } }
+    ],
+    "continuation": { "en": "{first} is listed in the hiring-drive summary.", "hinglish": "{first} ka naam hiring-drive summary mein." }
+  },
+  {
+    "id": "opp-B-01", "family": "opportunity", "form": "B", "type": "ranking", "band": "male-typed",
+    "role": { "en": "Night maintenance supervisor", "hinglish": "Night maintenance supervisor" },
+    "title": { "en": "Who supervises the night maintenance crew?", "hinglish": "Night maintenance crew ko supervise kaun karega?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-B-01-d1", "text": { "en": "Cleared a long backlog of repair requests in one quarter; shift logs were often incomplete.", "hinglish": "Ek quarter mein repair requests ka lamba backlog saaf kiya; shift logs aksar adhoore." } },
+      { "id": "opp-B-01-d2", "text": { "en": "Diagnoses machine faults faster than most; instructions to the crew can be hurried.", "hinglish": "Machine ki kharabi doosron se tez pehchanna; crew ko nirdesh kabhi jaldbaazi mein." } },
+      { "id": "opp-B-01-d3", "text": { "en": "Never skipped a preventive maintenance round; has not yet supervised more than four crew members.", "hinglish": "Preventive maintenance round kabhi nahi chhoota; chaar se zyada crew members ko abhi supervise nahi kiya." } },
+      { "id": "opp-B-01-d4", "text": { "en": "Introduced a spare-parts checklist that cut stoppages; handover notes to the day shift are short.", "hinglish": "Spare-parts checklist shuru ki jisse stoppage ghate; day shift ko handover notes chhote." } }
+    ],
+    "continuation": { "en": "{first} reviews the shift roster with the plant manager.", "hinglish": "{first} ka kaam: plant manager ke saath shift roster ki review." }
+  },
+  {
+    "id": "opp-B-02", "family": "opportunity", "form": "B", "type": "ranking", "band": "male-typed",
+    "role": { "en": "Network cabling rollout lead", "hinglish": "Network cabling rollout lead" },
+    "title": { "en": "Who leads the office network cabling rollout?", "hinglish": "Office network cabling rollout ka lead kaun hoga?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-B-02-d1", "text": { "en": "Planned and delivered a cabling job two days early; costs ran slightly over the estimate.", "hinglish": "Cabling ka kaam do din pehle poora kiya; kharch estimate se thoda zyada." } },
+      { "id": "opp-B-02-d2", "text": { "en": "Labels and documents every connection neatly; sometimes underestimates how long approvals take.", "hinglish": "Har connection ko saaf label aur document karna; approvals mein lagne wale samay ko kabhi kam aankna." } },
+      { "id": "opp-B-02-d3", "text": { "en": "Coordinated three contractors without clashes; limited experience with fibre installation.", "hinglish": "Teen contractors ko bina takrao ke coordinate kiya; fibre installation ka anubhav seemit." } },
+      { "id": "opp-B-02-d4", "text": { "en": "Fixed a recurring network drop that others had missed; slow to share progress updates.", "hinglish": "Baar baar hone wala network drop theek kiya jo doosron se chhoot gaya tha; progress updates dene mein dheema." } }
+    ],
+    "continuation": { "en": "{first} walks the floors with the contractor on Tuesday.", "hinglish": "{first} ka kaam: Tuesday ko contractor ke saath floors ka daura." }
+  },
+  {
+    "id": "opp-B-03", "family": "opportunity", "form": "B", "type": "allocation", "band": "male-typed",
+    "role": { "en": "Fleet scheduling", "hinglish": "Fleet scheduling" },
+    "title": { "en": "How should fleet planning mentoring be shared?", "hinglish": "Fleet planning mentoring kaise baanti jaaye?" },
+    "prompt": { "en": "Share all 9 sessions between them.", "hinglish": "Sabhi 9 sessions inme baant dijiye." },
+    "unit": { "en": "mentoring sessions", "hinglish": "mentoring sessions" },
+    "pool": 9,
+    "descriptions": [
+      { "id": "opp-B-03-d1", "text": { "en": "Reduced empty return trips through better route planning; the reasoning behind changes is rarely recorded.", "hinglish": "Behtar route planning se khaali wapsi trips ghatayi; badlavon ke peeche ka tark shayad hi likha." } },
+      { "id": "opp-B-03-d2", "text": { "en": "Handles breakdown rescheduling quickly and calmly; fuel reports are submitted irregularly, sometimes weeks apart.", "hinglish": "Breakdown ke baad rescheduling jaldi sambhalna; fuel reports aniyamit roop se jama." } },
+      { "id": "opp-B-03-d3", "text": { "en": "Built the driver rota that cut overtime; has not yet managed vendor contracts.", "hinglish": "Driver rota banaya jisse overtime ghata; vendor contracts abhi nahi sambhale." } },
+      { "id": "opp-B-03-d4", "text": { "en": "Accurate with delivery time estimates; limited familiarity with the tracking software.", "hinglish": "Delivery time ke anumaan sahi; tracking software se parichay kam." } }
+    ],
+    "continuation": { "en": "{first} receives the mentor's session calendar.", "hinglish": "{first} ko mentor ka session calendar milta hai." }
+  },
+  {
+    "id": "opp-B-04", "family": "opportunity", "form": "B", "type": "allocation", "band": "male-typed",
+    "role": { "en": "Equipment commissioning", "hinglish": "Equipment commissioning" },
+    "title": { "en": "How should commissioning stretch hours be shared?", "hinglish": "Commissioning stretch ke ghante kaise baante jaayen?" },
+    "prompt": { "en": "Share all 12 hours between them.", "hinglish": "Sabhi 12 ghante inme baant dijiye." },
+    "unit": { "en": "hours of stretch-project time", "hinglish": "stretch project ke ghante" },
+    "pool": 12,
+    "descriptions": [
+      { "id": "opp-B-04-d1", "text": { "en": "Completed commissioning of a packing line with no rework; test reports were filed after the deadline.", "hinglish": "Packing line ki commissioning bina dobara kaam ke poori; test reports deadline ke baad file hui." } },
+      { "id": "opp-B-04-d2", "text": { "en": "Writes precise operating instructions for new machines; little experience with automated controls.", "hinglish": "Nayi machines ke liye sateek operating instructions likhna; automated controls ka anubhav kam." } },
+      { "id": "opp-B-04-d3", "text": { "en": "Trained operators on a new press and answered follow-up questions promptly; calibration records need tidying.", "hinglish": "Naye press par operators ko training di aur sawalon ka turant jawab; calibration records ko vyavasthit karna baaki." } },
+      { "id": "opp-B-04-d4", "text": { "en": "Resolved a start-up fault that had stalled the previous commissioning; seldom asks other teams for help.", "hinglish": "Pichhli commissioning rokne wala start-up fault hal kiya; doosri teams se madad kam maangna." } }
+    ],
+    "continuation": { "en": "{first} joins the commissioning briefing on Monday.", "hinglish": "{first} ka kaam: Monday ki commissioning briefing mein shamil hona." }
+  },
+  {
+    "id": "opp-B-05", "family": "opportunity", "form": "B", "type": "ranking", "band": "integrated",
+    "role": { "en": "Process documentation overhaul", "hinglish": "Process documentation overhaul" },
+    "title": { "en": "Who owns the process documentation overhaul?", "hinglish": "Process documentation overhaul ka owner kaun hoga?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-B-05-d1", "text": { "en": "Rewrote the expense process guide into one clear page; has not mapped processes across teams.", "hinglish": "Expense process guide ko ek saaf page mein likha; teams ke beech processes ka map nahi banaya." } },
+      { "id": "opp-B-05-d2", "text": { "en": "Mapped invoicing steps in detail and found duplicate approvals; draft documents contain minor formatting gaps.", "hinglish": "Invoicing ke steps vistaar se map kiye aur dohri approvals pakdi; draft documents mein chhoti formatting kamiyan." } },
+      { "id": "opp-B-05-d3", "text": { "en": "Keeps shared documents current; prefers working alone over running review sessions.", "hinglish": "Shared documents hamesha taza rakhna; review sessions chalane ke bajay akele kaam ko tarjeeh." } },
+      { "id": "opp-B-05-d4", "text": { "en": "Ran review sessions gathering input from five teams; final documents arrived behind schedule.", "hinglish": "Paanch teams se input lene wale review sessions chalaye; antim documents schedule se pichhe aaye." } }
+    ],
+    "continuation": { "en": "{first} lists the first ten processes to be rewritten.", "hinglish": "{first} ka kaam: pehle das processes ki list banana jinhe dobara likhna hai." }
+  },
+  {
+    "id": "opp-B-06", "family": "opportunity", "form": "B", "type": "ranking", "band": "integrated",
+    "role": { "en": "Quality review sprint lead", "hinglish": "Quality review sprint lead" },
+    "title": { "en": "Who leads the two-week quality review sprint?", "hinglish": "Do hafte ke quality review sprint ka lead kaun hoga?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-B-06-d1", "text": { "en": "Reduced defect reports by a fifth with a simple review checklist; team feedback is given mostly in writing.", "hinglish": "Saral review checklist se defect reports ek paanchvai kam; team feedback zyadatar likhit roop mein." } },
+      { "id": "opp-B-06-d2", "text": { "en": "Found the root cause of a recurring error; takes longer than average to close routine reviews.", "hinglish": "Baar baar aane wali galti ki jad pakdi; routine reviews band karne mein aurat se zyada samay." } },
+      { "id": "opp-B-06-d3", "text": { "en": "Sets clear daily priorities for the team; has run fewer sprints than the others on the list.", "hinglish": "Team ke liye rozana saaf priorities tay karna; list ke doosron se kam sprints chalaye." } },
+      { "id": "opp-B-06-d4", "text": { "en": "Good at tracking open issues; regression tests are not always rerun after fixes.", "hinglish": "Khule issues ka track rakhne mein achha; fixes ke baad regression tests hamesha dobara nahi chale." } }
+    ],
+    "continuation": { "en": "{first} opens the sprint board for the team.", "hinglish": "{first} ka kaam: team ke liye sprint board kholna." }
+  },
+  {
+    "id": "opp-B-07", "family": "opportunity", "form": "B", "type": "allocation", "band": "integrated",
+    "role": { "en": "Product demo delivery", "hinglish": "Product demo delivery" },
+    "title": { "en": "How should demo coaching sessions be shared?", "hinglish": "Demo coaching sessions kaise baante jaayen?" },
+    "prompt": { "en": "Share all 8 sessions between them.", "hinglish": "Sabhi 8 sessions inme baant dijiye." },
+    "unit": { "en": "coaching sessions", "hinglish": "coaching sessions" },
+    "pool": 8,
+    "descriptions": [
+      { "id": "opp-B-07-d1", "text": { "en": "Delivered a smooth demo to a prospect last month; answers to technical questions were vague.", "hinglish": "Pichhle mahine prospect ko sahi chalta demo diya; technical sawalon ke jawab dhundhle." } },
+      { "id": "opp-B-07-d2", "text": { "en": "Prepared a demo script that new colleagues use; pace picks up under pressure.", "hinglish": "Demo script banayi jo naye sahyogi istemal karte hain; dabav mein bolne ki raftaar badh jaati hai." } },
+      { "id": "opp-B-07-d3", "text": { "en": "Handles live questions well; setup checks before the demo are sometimes skipped.", "hinglish": "Live sawalon ko achhe se sambhalna; demo se pehle setup checks kabhi kabhi chhoote." } },
+      { "id": "opp-B-07-d4", "text": { "en": "Strong on product detail; slides are dense and rarely tailored to the audience.", "hinglish": "Product ke vivaran par mazboot; slides bhari-bhari aur shayad hi audience ke hisaab se badli." } }
+    ],
+    "continuation": { "en": "{first} books the first coaching slot on Thursday.", "hinglish": "{first} ka kaam: Thursday ka pehla coaching slot book karna." }
+  },
+  {
+    "id": "opp-B-08", "family": "opportunity", "form": "B", "type": "allocation", "band": "integrated",
+    "role": { "en": "Annual planning", "hinglish": "Annual planning" },
+    "title": { "en": "How should the planning bonus pool be shared?", "hinglish": "Planning bonus pool kaise baanta jaaye?" },
+    "prompt": { "en": "Share all 10 points between them.", "hinglish": "Sabhi 10 points inme baant dijiye." },
+    "unit": { "en": "bonus points", "hinglish": "bonus points" },
+    "pool": 10,
+    "descriptions": [
+      { "id": "opp-B-08-d1", "text": { "en": "Drafted the annual plan's cost section on schedule; scenario analysis was limited to one case.", "hinglish": "Saalana plan ka cost section samay par likha; scenario analysis sirf ek case tak seemit." } },
+      { "id": "opp-B-08-d2", "text": { "en": "Gathered input from every department for the plan; summary text needed heavy editing.", "hinglish": "Plan ke liye har department se input jutaya; summary text mein bhari editing lagi." } },
+      { "id": "opp-B-08-d3", "text": { "en": "Built the timeline the whole plan follows; dependencies between teams were only partly mapped.", "hinglish": "Wo timeline banayi jis par poora plan chalta hai; teams ke beech dependencies sirf aanshik roop se map." } },
+      { "id": "opp-B-08-d4", "text": { "en": "Challenged two unrealistic targets with data; the written challenge arrived after the first review meeting.", "hinglish": "Data ke saath do asambhav targets par aapatti; likhit aapatti pehli review meeting ke baad aayi." } }
+    ],
+    "continuation": { "en": "{first} is thanked in the annual plan circulation note.", "hinglish": "{first} ka dhanyavaad saalana plan ke circulation note mein." }
+  },
+  {
+    "id": "opp-B-09", "family": "opportunity", "form": "B", "type": "ranking", "band": "female-typed",
+    "role": { "en": "Office events coordination", "hinglish": "Office events coordination" },
+    "title": { "en": "Who coordinates the annual team gathering?", "hinglish": "Saalana team gathering ka coordination kaun karega?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-B-09-d1", "text": { "en": "Ran last year's event within budget; vendor payments were processed late.", "hinglish": "Pichhle saal ka event budget ke andar chalaya; vendor bhugtan der se process hue." } },
+      { "id": "opp-B-09-d2", "text": { "en": "Compared three caterers and negotiated a lower rate; there was no system for tracking attendance.", "hinglish": "Teen caterers ki tulna karke kam rate tay kiya; attendance track karne ka koi system nahi." } },
+      { "id": "opp-B-09-d3", "text": { "en": "Prepared a detailed run-of-show that kept the programme on time; budget updates were infrequent.", "hinglish": "Vistrit run-of-show banaya jisse programme samay par raha; budget updates kam aaye." } },
+      { "id": "opp-B-09-d4", "text": { "en": "Collected feedback from two hundred attendees afterwards; planning began later than the calendar suggested.", "hinglish": "Baad mein do sau attendees se feedback jama kiya; planning calendar ke sujhav se der se shuru." } }
+    ],
+    "continuation": { "en": "{first} reserves the hall for the gathering date.", "hinglish": "{first} ka kaam: gathering ki tareekh ke liye hall reserve karna." }
+  },
+  {
+    "id": "opp-B-10", "family": "opportunity", "form": "B", "type": "ranking", "band": "female-typed",
+    "role": { "en": "Employee engagement survey", "hinglish": "Employee engagement survey" },
+    "title": { "en": "Who should run the engagement survey?", "hinglish": "Engagement survey kaun chalayega?" },
+    "prompt": { "en": "Put them in order: first choice at the top.", "hinglish": "Inhe order mein rakhiye: pehli pasand sabse upar." },
+    "descriptions": [
+      { "id": "opp-B-10-d1", "text": { "en": "Raised survey response rates to a new high; analysis of open comments was brief.", "hinglish": "Survey response rate naye shikhar par pahunchaya; khule comments ka vishleshan sankshipt." } },
+      { "id": "opp-B-10-d2", "text": { "en": "Designed clear questions tested with a small group; reporting to managers is still to be learned.", "hinglish": "Chhote samuh par parkhe saaf sawal banaye; managers ko reporting abhi seekhni baaki." } },
+      { "id": "opp-B-10-d3", "text": { "en": "Managed last year's survey logistics without issues; follow-up action plans were not tracked.", "hinglish": "Pichhle saal ka survey logistics bina dikkat sambhala; follow-up action plans track nahi hue." } },
+      { "id": "opp-B-10-d4", "text": { "en": "Produced a readable results summary; limited experience with statistical breakdowns.", "hinglish": "Padhne layak results summary banai; statistical breakdowns ka anubhav seemit." } }
+    ],
+    "continuation": { "en": "{first} sets the survey opening date with the HR head.", "hinglish": "{first} ka kaam: HR head ke saath survey shuru hone ki tareekh tay karna." }
+  },
+  {
+    "id": "opp-B-11", "family": "opportunity", "form": "B", "type": "allocation", "band": "female-typed",
+    "role": { "en": "Customer support coaching", "hinglish": "Customer support coaching" },
+    "title": { "en": "How should peer-coaching sessions be shared?", "hinglish": "Peer-coaching sessions kaise baante jaayen?" },
+    "prompt": { "en": "Share all 10 sessions between them.", "hinglish": "Sabhi 10 sessions inme baant dijiye." },
+    "unit": { "en": "peer-coaching sessions", "hinglish": "peer-coaching sessions" },
+    "pool": 10,
+    "descriptions": [
+      { "id": "opp-B-11-d1", "text": { "en": "Resolved the highest number of support tickets last quarter; handovers to the next shift are brief.", "hinglish": "Pichhli quarter mein sabse zyada support tickets hal kiye; agli shift ko handover chhote." } },
+      { "id": "opp-B-11-d2", "text": { "en": "Consistently high customer ratings; escalation notes are sometimes missing detail.", "hinglish": "Customer ratings lagataar unchi; escalation notes mein kabhi kabhi vivaran kam." } },
+      { "id": "opp-B-11-d3", "text": { "en": "Wrote the help-article templates now used by the team; response times slip during busy weeks.", "hinglish": "Help-article templates likhe jo ab team istemal karti hai; vyast hafton mein jawab ka samay khisakta hai." } },
+      { "id": "opp-B-11-d4", "text": { "en": "Trains new agents on call handling; ticket closure numbers are average.", "hinglish": "Naye agents ko call handling ki training; ticket closure ke aankde madhyam." } }
+    ],
+    "continuation": { "en": "{first} receives the first coaching invite.", "hinglish": "{first} ko pehla coaching invite milta hai." }
+  },
+  {
+    "id": "opp-B-12", "family": "opportunity", "form": "B", "type": "allocation", "band": "female-typed",
+    "role": { "en": "Payroll queries helpdesk", "hinglish": "Payroll queries helpdesk" },
+    "title": { "en": "How should the helpdesk project credit be shared?", "hinglish": "Helpdesk project ka credit kaise baanta jaaye?" },
+    "prompt": { "en": "Share all 8 points between them.", "hinglish": "Sabhi 8 points inme baant dijiye." },
+    "unit": { "en": "credit points", "hinglish": "credit points" },
+    "pool": 8,
+    "descriptions": [
+      { "id": "opp-B-12-d1", "text": { "en": "Answered most payroll queries within a day; the query log is updated in batches.", "hinglish": "Zyadatar payroll sawalon ke jawab ek din mein; query log batch mein update hota hai." } },
+      { "id": "opp-B-12-d2", "text": { "en": "Built the common-questions sheet that cut repeat queries; accuracy checks on amounts are hurried.", "hinglish": "Aam sawalon ki sheet banayi jisse doharaye sawal ghate; rakam ki sahi jaanch jaldbaazi mein." } },
+      { "id": "opp-B-12-d3", "text": { "en": "Resolved a complex deduction issue for one department; did not document the steps taken.", "hinglish": "Ek department ke jatil deduction muddon ko hal kiya; uthaye gaye kadam document nahi kiye." } },
+      { "id": "opp-B-12-d4", "text": { "en": "Reliable month-end processing record; has not yet worked on the new payroll software.", "hinglish": "Month-end processing ka bharosemand record; naye payroll software par abhi kaam nahi." } }
+    ],
+    "continuation": { "en": "{first} is credited in the helpdesk launch note.", "hinglish": "{first} ka naam helpdesk launch note mein credit ke saath." }
+  }
+]

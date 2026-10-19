@@ -1,0 +1,45 @@
+/* @owns choice choice__legend choice__option choice__input choice__text */
+.choice {
+  border: none;
+  margin: var(--gap-none);
+  padding: var(--gap-none);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+  min-width: 0;
+}
+.choice__legend {
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: var(--weight-display);
+  line-height: var(--leading-tight);
+  color: var(--c-text);
+  padding: var(--gap-none);
+  margin-bottom: var(--gap-m);
+}
+.choice__option {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-m);
+  min-height: var(--target);
+  padding: var(--gap-m) var(--gap-l);
+  border: var(--border) solid var(--c-border);
+  border-radius: var(--radius-m);
+  background: var(--c-surface);
+  cursor: pointer;
+}
+.choice__option:has(.choice__input:checked) {
+  border-color: var(--c-accent);
+  background: var(--c-raised);
+}
+.choice__input {
+  width: var(--gap-xl);
+  height: var(--gap-xl);
+  accent-color: var(--c-accent);
+  flex: none;
+  margin: var(--gap-none);
+}
+.choice__text {
+  color: var(--c-text);
+  line-height: var(--leading-ui);
+}

@@ -1,0 +1,7 @@
+# pnpm 11 fails a non-interactive install when a dependency's build script is
+# neither approved nor refused. Neither of these is needed for the browser
+# Firebase SDK, so both are refused explicitly and Vercel installs cleanly.
+allowBuilds:
+  '@firebase/util': false
+  esbuild: true
+  protobufjs: false

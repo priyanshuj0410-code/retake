@@ -1,0 +1,269 @@
+/* Equal Lens Evaluator: the tokens. The only stylesheet allowed to hold a raw value.
+   Two tiers: PRIMITIVE (what a value is) and SEMANTIC (what it is for). Stylesheets read
+   semantic tokens only. Then the modes: dark, and the three surfaces, re-point semantic
+   tokens; no component knows which surface it is on. knowledge/design.md explains each. */
+
+/* @tier primitive */
+:root {
+  --violet: #553286;
+  --violet-deep: #42266b;
+  --ink: #221436;
+  --body: #574b70;
+  --soft: #6b5a8c;
+  --paper: #fbf9ff;
+  --warm: #faf8f4;
+  --mist: #e7e0f1;
+  --line: #e7def4;
+  --tint: #f4f0fa;
+  --white: #ffffff;
+  --sun: #ffc94d;
+  --sun-ink: #3a2a00;
+  --teal-deep: #0f6e56;
+  --coral-deep: #c2553f;
+  --grey-50: #f5f5f4;
+  --grey-100: #ebebea;
+  --grey-300: #c9c8c6;
+  --grey-700: #44423f;
+  --grey-900: #1d1c1a;
+
+  --night: #160e24;
+  --night-raised: #24183a;
+  --night-line: #3d2e5a;
+  --night-warm: #1c1712;
+  --night-warm-line: #3b3328;
+  --night-grey: #1b1b1a;
+  --night-grey-raised: #262624;
+  --night-grey-line: #3c3b39;
+  --moon: #f4f0fa;
+  --moon-soft: #c9bce0;
+  --lilac: #c4adeb;
+  --lilac-deep: #ab90da;
+  --teal-light: #5fd3b3;
+  --coral-light: #ff9d85;
+
+  --face-display: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --face-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --face-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-17: 17px;
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-24: 24px;
+  --fs-28: 28px;
+  --fs-32: 32px;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+  --lh-120: 1.2;
+  --lh-140: 1.4;
+  --lh-150: 1.5;
+  --ls-wide: 0.06em;
+
+  --s-0: 0;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --r-8: 8px;
+  --r-12: 12px;
+  --r-16: 16px;
+  --bw-1: 1px;
+  --bw-2: 2px;
+  --bw-3: 3px;
+  --px-48: 48px;
+  --px-40: 40px;
+  --px-640: 640px;
+  --px-960: 960px;
+  --dur-160: 160ms;
+  --dur-0: 0ms;
+  --shadow-lift: 0 6px 18px rgb(34 20 54 / 0.18);
+  --shadow-none: none;
+}
+
+/* @tier semantic */
+:root {
+  --c-bg: var(--paper);
+  --c-surface: var(--white);
+  --c-raised: var(--tint);
+  --c-text: var(--ink);
+  --c-body: var(--body);
+  --c-muted: var(--soft);
+  --c-rule: var(--mist);
+  --c-border: var(--line);
+  --c-accent: var(--violet);
+  --c-accent-press: var(--violet-deep);
+  --c-on-accent: var(--white);
+  --c-focus: var(--violet);
+  --c-ok: var(--teal-deep);
+  --c-error: var(--coral-deep);
+  --c-demo: var(--sun);
+  --c-on-demo: var(--sun-ink);
+  --c-label: var(--violet);
+
+  --font-display: var(--face-display);
+  --font-body: var(--face-body);
+  --font-mono: var(--face-mono);
+  --text-small: var(--fs-14);
+  --text-label: var(--fs-16);
+  --text-body: var(--fs-18);
+  --text-lead: var(--fs-20);
+  --text-h2: var(--fs-20);
+  --text-h1: var(--fs-24);
+  --text-code: var(--fs-28);
+  --weight-body: var(--fw-400);
+  --weight-strong: var(--fw-700);
+  --weight-label: var(--fw-600);
+  --weight-display: var(--fw-600);
+  --leading-tight: var(--lh-120);
+  --leading-body: var(--lh-150);
+  --leading-ui: var(--lh-140);
+  --tracking-label: var(--ls-wide);
+
+  --gap-none: var(--s-0);
+  --gap-xs: var(--s-1);
+  --gap-s: var(--s-2);
+  --gap-m: var(--s-3);
+  --gap-l: var(--s-4);
+  --gap-xl: var(--s-5);
+  --gap-2xl: var(--s-6);
+  --gap-3xl: var(--s-7);
+  --radius-s: var(--r-8);
+  --radius-m: var(--r-12);
+  --radius-l: var(--r-16);
+  --border-thin: var(--bw-1);
+  --border: var(--bw-2);
+  --border-focus: var(--bw-3);
+  --target: var(--px-48);
+  --icon: var(--px-40);
+  --measure: var(--px-640);
+  --wide: var(--px-960);
+  --motion: var(--dur-160);
+  --lift: var(--shadow-lift);
+  --flat: var(--shadow-none);
+}
+
+@media (min-width: 600px) {
+  :root {
+    --text-body: var(--fs-17);
+    --text-h1: var(--fs-28);
+    --text-code: var(--fs-32);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion: var(--dur-0);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --c-bg: var(--night);
+    --c-surface: var(--night-raised);
+    --c-raised: var(--night-raised);
+    --c-text: var(--moon);
+    --c-body: var(--moon);
+    --c-muted: var(--moon-soft);
+    --c-rule: var(--night-line);
+    --c-border: var(--night-line);
+    --c-accent: var(--lilac);
+    --c-accent-press: var(--lilac-deep);
+    --c-on-accent: var(--night);
+    --c-focus: var(--lilac);
+    --c-ok: var(--teal-light);
+    --c-error: var(--coral-light);
+    --c-label: var(--lilac);
+  }
+}
+
+:root[data-theme='dark'] {
+  --c-bg: var(--night);
+  --c-surface: var(--night-raised);
+  --c-raised: var(--night-raised);
+  --c-text: var(--moon);
+  --c-body: var(--moon);
+  --c-muted: var(--moon-soft);
+  --c-rule: var(--night-line);
+  --c-border: var(--night-line);
+  --c-accent: var(--lilac);
+  --c-accent-press: var(--lilac-deep);
+  --c-on-accent: var(--night);
+  --c-focus: var(--lilac);
+  --c-ok: var(--teal-light);
+  --c-error: var(--coral-light);
+  --c-label: var(--lilac);
+}
+
+/* The surfaces (knowledge/design.md, section 3). */
+[data-surface='oof'] {
+  --c-bg: var(--warm);
+  --c-raised: var(--warm);
+  --c-label: var(--body);
+}
+[data-surface='sober'] {
+  --c-bg: var(--grey-50);
+  --c-surface: var(--white);
+  --c-raised: var(--grey-100);
+  --c-text: var(--grey-900);
+  --c-body: var(--grey-700);
+  --c-muted: var(--grey-700);
+  --c-rule: var(--grey-300);
+  --c-border: var(--grey-300);
+  --c-accent: var(--grey-900);
+  --c-accent-press: var(--grey-700);
+  --c-on-accent: var(--white);
+  --c-focus: var(--grey-900);
+  --c-label: var(--grey-700);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) [data-surface='oof'] {
+    --c-bg: var(--night-warm);
+    --c-raised: var(--night-warm);
+    --c-rule: var(--night-warm-line);
+    --c-border: var(--night-warm-line);
+    --c-label: var(--moon-soft);
+  }
+  :root:not([data-theme='light']) [data-surface='sober'] {
+    --c-bg: var(--night-grey);
+    --c-surface: var(--night-grey-raised);
+    --c-raised: var(--night-grey-raised);
+    --c-text: var(--grey-100);
+    --c-body: var(--grey-100);
+    --c-muted: var(--grey-300);
+    --c-rule: var(--night-grey-line);
+    --c-border: var(--night-grey-line);
+    --c-accent: var(--grey-100);
+    --c-accent-press: var(--grey-300);
+    --c-on-accent: var(--grey-900);
+    --c-focus: var(--grey-100);
+    --c-label: var(--grey-300);
+  }
+}
+:root[data-theme='dark'] [data-surface='oof'] {
+  --c-bg: var(--night-warm);
+  --c-raised: var(--night-warm);
+  --c-rule: var(--night-warm-line);
+  --c-border: var(--night-warm-line);
+  --c-label: var(--moon-soft);
+}
+:root[data-theme='dark'] [data-surface='sober'] {
+  --c-bg: var(--night-grey);
+  --c-surface: var(--night-grey-raised);
+  --c-raised: var(--night-grey-raised);
+  --c-text: var(--grey-100);
+  --c-body: var(--grey-100);
+  --c-muted: var(--grey-300);
+  --c-rule: var(--night-grey-line);
+  --c-border: var(--night-grey-line);
+  --c-accent: var(--grey-100);
+  --c-accent-press: var(--grey-300);
+  --c-on-accent: var(--grey-900);
+  --c-focus: var(--grey-100);
+  --c-label: var(--grey-300);
+}

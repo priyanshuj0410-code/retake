@@ -1,0 +1,279 @@
+{
+  "_note": "Every screen's words outside the card banks. The Hinglish is a DRAFT, not yet pre-tested. Consent says nothing about what is measured or how it is scored (candidates v12, 3.10); the four sentences stay the only sentences about measurement.",
+  "common": {
+    "continue": { "en": "Continue", "hinglish": "Aage badhein" },
+    "next": { "en": "Next", "hinglish": "Aage" },
+    "confirm": { "en": "Confirm", "hinglish": "Pakka karein" },
+    "outOfFiction": { "en": "This part is not part of the game.", "hinglish": "Yeh hissa game ka hissa nahin hai." },
+    "demoBadge": { "en": "Demo: fictional content, no real participants", "hinglish": "Demo: kalpanik content, koi asli participant nahin" },
+    "moveUp": { "en": "Move up", "hinglish": "Upar karein" },
+    "moveDown": { "en": "Move down", "hinglish": "Neeche karein" },
+    "position": { "en": "Position {n} of {k}", "hinglish": "{k} mein se {n} number par" },
+    "add": { "en": "Add one", "hinglish": "Ek badhayein" },
+    "remove": { "en": "Remove one", "hinglish": "Ek ghatayein" },
+    "left": { "en": "{n} left to share", "hinglish": "{n} baantna baaki" },
+    "allShared": { "en": "All shared", "hinglish": "Sab baant diya" },
+    "skip": { "en": "Prefer not to say", "hinglish": "Nahin batana chahenge" },
+    "yes": { "en": "Yes", "hinglish": "Haan" },
+    "no": { "en": "No", "hinglish": "Nahin" },
+    "notSure": { "en": "Not sure", "hinglish": "Pakka nahin" },
+    "dragHint": { "en": "Drag a card, or use the arrows.", "hinglish": "Card ko kheenchiye, ya arrows use kijiye." },
+    "acts": {
+      "start": { "en": "Start", "hinglish": "Shuruaat" },
+      "firstWeek": { "en": "First week", "hinglish": "Pehla hafta" },
+      "season": { "en": "Your season", "hinglish": "Aapka season" },
+      "screening": { "en": "A few questions", "hinglish": "Kuch sawaal" },
+      "survey": { "en": "Questions", "hinglish": "Sawaal" },
+      "offTheRecord": { "en": "Off the Record", "hinglish": "Off the Record" },
+      "inbox": { "en": "Committee Inbox", "hinglish": "Committee Inbox" },
+      "note": { "en": "Mid-season note", "hinglish": "Mid-season note" },
+      "after": { "en": "Rounds after the note", "hinglish": "Note ke baad ke rounds" },
+      "wrap": { "en": "Season wrap", "hinglish": "Season wrap" },
+      "direct": { "en": "Questions", "hinglish": "Sawaal" }
+    }
+  },
+  "demoNotice": {
+    "title": { "en": "Demo mode", "hinglish": "Demo mode" },
+    "body": {
+      "en": "This is a prototype. Every colleague, incident and statistic in it is fictional, the names and cities are illustrative and not yet pre-tested, and no real participant plays it before ethics approval. Answers go to a test store only.",
+      "hinglish": "Yeh ek prototype hai. Ismein har colleague, incident aur statistic kalpanik hai, naam aur shehar sirf udaharan hain aur abhi pre-test nahin hue, aur ethics approval se pehle koi asli participant ise nahin khelta. Jawab sirf test store mein jaate hain."
+    }
+  },
+  "language": {
+    "title": { "en": "Choose your language", "hinglish": "Apni bhasha chunein" },
+    "en": { "en": "English", "hinglish": "English" },
+    "hinglish": { "en": "Hinglish", "hinglish": "Hinglish" },
+    "both": { "en": "Both, mixed", "hinglish": "Dono, mila jula" }
+  },
+  "consent": {
+    "panel": {
+      "title": { "en": "Before you start", "hinglish": "Shuru karne se pehle" },
+      "points": [
+        { "en": "This is a game season you play once, on your own device. You make decisions about fictional colleagues and ordinary work decisions.", "hinglish": "Yeh ek game season hai jo aap ek baar, apne device par khelte hain. Aap fictional colleagues aur roz ke kaam ke decisions lete hain." },
+        { "en": "Some short parts are outside the game, including questions in a privacy-protecting format and, partway through, a note that may ask you to answer in a particular way.", "hinglish": "Kuch chhote hisse game se bahar hain, jaise privacy bachane wale format mein sawaal, aur beech mein ek note jo aapse kisi khaas tarah jawab dene ko keh sakta hai." },
+        { "en": "No score is ever shown to you or to anyone. Your answers carry no name and no contact details. The privacy-protected answers are stored apart from the rest.", "hinglish": "Koi score kabhi aapko ya kisi aur ko nahin dikhaya jaata. Aapke jawabon mein na naam hai na contact. Privacy wale jawab baaki se alag rakhe jaate hain." },
+        { "en": "At the end you receive a withdrawal code. After all play in the study closes, a page explaining the study opens with that code, and you can withdraw with it until two weeks after the page opens.", "hinglish": "Aakhir mein aapko ek withdrawal code milta hai. Study ka saara khel band hone ke baad, us code se study samjhane wala page khulta hai, aur page khulne ke do hafte baad tak aap usi code se withdraw kar sakte hain." },
+        { "en": "Taking part is voluntary, and you can stop at any time.", "hinglish": "Hissa lena aapki marzi hai, aur aap kabhi bhi ruk sakte hain." },
+        { "en": "If anything in the game brings up a real situation at work, you can contact your Internal Committee, your district's Local Committee, or the SHe-Box portal of the Ministry of Women and Child Development.", "hinglish": "Agar game mein koi baat kaam ki kisi asli sthiti ki yaad dilaye, to aap apni Internal Committee, apne zile ki Local Committee, ya Ministry of Women and Child Development ke SHe-Box portal se sampark kar sakte hain." }
+      ],
+      "agree": { "en": "I agree to take part", "hinglish": "Main hissa lene ke liye sehmat hoon" },
+      "decline": { "en": "I do not want to take part", "hinglish": "Main hissa nahin lena chahta ya chahti" }
+    },
+    "firm": {
+      "title": { "en": "Before you enrol", "hinglish": "Enrol karne se pehle" },
+      "points": [
+        { "en": "This is a game season you play once, on your own device, in a play window the tool gives you. You make decisions about fictional colleagues and ordinary work decisions.", "hinglish": "Yeh ek game season hai jo aap ek baar, apne device par, tool ki di hui play window mein khelte hain. Aap fictional colleagues aur roz ke kaam ke decisions lete hain." },
+        { "en": "No score is ever shown to you or to anyone. Your answers carry no name and no contact details. The optional background questions at the end are stored apart from the rest.", "hinglish": "Koi score kabhi aapko ya kisi aur ko nahin dikhaya jaata. Aapke jawabon mein na naam hai na contact. Aakhir ke optional background sawaal baaki se alag rakhe jaate hain." },
+        { "en": "Your employer never learns who took part or any individual answer. The question about your sex is optional.", "hinglish": "Aapke employer ko kabhi pata nahin chalta ki kisne hissa liya ya kisi ka koi jawab. Aapke sex ka sawaal optional hai." },
+        { "en": "At the end you receive a withdrawal code. After all play in the study closes, a page explaining the study opens with that code, and you can withdraw with it until two weeks after the page opens.", "hinglish": "Aakhir mein aapko ek withdrawal code milta hai. Study ka saara khel band hone ke baad, us code se study samjhane wala page khulta hai, aur page khulne ke do hafte baad tak aap usi code se withdraw kar sakte hain." },
+        { "en": "Taking part is voluntary, and you can stop at any time.", "hinglish": "Hissa lena aapki marzi hai, aur aap kabhi bhi ruk sakte hain." },
+        { "en": "If anything in the game brings up a real situation at work, you can contact your Internal Committee, your district's Local Committee, or the SHe-Box portal of the Ministry of Women and Child Development.", "hinglish": "Agar game mein koi baat kaam ki kisi asli sthiti ki yaad dilaye, to aap apni Internal Committee, apne zile ki Local Committee, ya Ministry of Women and Child Development ke SHe-Box portal se sampark kar sakte hain." }
+      ],
+      "agree": { "en": "I agree to take part", "hinglish": "Main hissa lene ke liye sehmat hoon" },
+      "decline": { "en": "I do not want to take part", "hinglish": "Main hissa nahin lena chahta ya chahti" }
+    },
+    "declined": { "en": "Thank you. Nothing has been stored. You can close this page.", "hinglish": "Shukriya. Kuch bhi store nahin hua. Aap yeh page band kar sakte hain." }
+  },
+  "tutorial": {
+    "title": { "en": "Run your team's season", "hinglish": "Apni team ka season chalaiye" },
+    "body": [
+      { "en": "Each week brings decisions: budgets, vendors, schedules, and decisions about your colleagues.", "hinglish": "Har hafte decisions aate hain: budget, vendors, schedule, aur aapke colleagues ke baare mein decisions." },
+      { "en": "To put colleagues in order, drag a card, or use the up and down arrows on it.", "hinglish": "Colleagues ko order mein rakhne ke liye card ko kheenchiye, ya us par upar aur neeche ke arrows use kijiye." },
+      { "en": "To share something out, use the plus and minus buttons until everything is shared.", "hinglish": "Kuch baantne ke liye plus aur minus buttons use kijiye jab tak sab baant na jaaye." },
+      { "en": "Take as long as you like. Nothing in the game is timed.", "hinglish": "Jitna samay chahiye utna lijiye. Game mein kuch bhi time se bandha nahin hai." }
+    ]
+  },
+  "card": {
+    "teamLabel": { "en": "Your team", "hinglish": "Aapki team" },
+    "allocationTotal": { "en": "{pool} {unit} to share", "hinglish": "Baantne ke liye {pool} {unit}" }
+  },
+  "screening": {
+    "intro": { "en": "A few short questions about women and men at work. Answer each as you see it.", "hinglish": "Kaam par auraton aur aadmiyon ke baare mein kuch chhote sawaal. Har ek ka jawab apni samajh se dijiye." }
+  },
+  "survey": {
+    "intro": { "en": "Some statements about decisions at work. How far do you agree with each?", "hinglish": "Kaam ke decisions ke baare mein kuch baatein. Aap har ek se kitna sehmat hain?" },
+    "scale": [
+      { "en": "Strongly disagree", "hinglish": "Bilkul asehmat" },
+      { "en": "Disagree", "hinglish": "Asehmat" },
+      { "en": "Neither agree nor disagree", "hinglish": "Na sehmat na asehmat" },
+      { "en": "Agree", "hinglish": "Sehmat" },
+      { "en": "Strongly agree", "hinglish": "Bilkul sehmat" }
+    ]
+  },
+  "direct": {
+    "intro": { "en": "Some statements about reports of harassment at work. How far do you agree with each?", "hinglish": "Kaam par harassment ki reports ke baare mein kuch baatein. Aap har ek se kitna sehmat hain?" }
+  },
+  "offTheRecord": {
+    "title": { "en": "Off the Record", "hinglish": "Off the Record" },
+    "practiceTitle": { "en": "Practice", "hinglish": "Practice" },
+    "directIntro": { "en": "First, two everyday questions. Answer yes or no.", "hinglish": "Pehle, roz ke do sawaal. Haan ya nahin mein jawab dijiye." },
+    "practiceIntro": { "en": "Now the same format with a made-up person.", "hinglish": "Ab wahi format ek kalpanik vyakti ke saath." },
+    "itemsIntro": { "en": "Now the real questions, with your own person in mind.", "hinglish": "Ab asli sawaal, apne chune hue vyakti ko dhyan mein rakhkar." },
+    "which": { "en": "Which of these holds for you?", "hinglish": "Aapke liye inmein se kya sahi hai?" },
+    "statementA": { "en": "Statement A", "hinglish": "Kathan A" },
+    "statementB": { "en": "Statement B", "hinglish": "Kathan B" },
+    "directM1h": { "en": "Now the same statements, answered directly. Is each one true for you?", "hinglish": "Ab wahi kathan, seedhe jawab ke saath. Kya har ek aapke liye sahi hai?" },
+    "true": { "en": "True for me", "hinglish": "Mere liye sahi" },
+    "false": { "en": "Not true for me", "hinglish": "Mere liye sahi nahin" }
+  },
+  "inbox": {
+    "noteTitle": { "en": "Before the Committee Inbox", "hinglish": "Committee Inbox se pehle" },
+    "note": { "en": "Content note: the next cards describe incidents of sexual harassment and conduct close to it at work. They are written plainly and without graphic detail. There are no points in this part. If anything here brings up a real situation, your Internal Committee is the route to raise it, and you can stop at any time.", "hinglish": "Content note: agle cards mein kaam par sexual harassment aur usse milte jhulte vyavhaar ki ghatnaayein hain. Woh seedhe shabdon mein, bina graphic detail ke likhi hain. Is hisse mein koi points nahin hain. Agar yahan koi baat kisi asli sthiti ki yaad dilaye, to use uthane ka raasta aapki Internal Committee hai, aur aap kabhi bhi ruk sakte hain." },
+    "question": { "en": "Is this sexual harassment?", "hinglish": "Kya yeh sexual harassment hai?" },
+    "scale": [
+      { "en": "Sure it is", "hinglish": "Pakka hai" },
+      { "en": "Think it is", "hinglish": "Lagta hai, hai" },
+      { "en": "Lean towards yes", "hinglish": "Shayad haan" },
+      { "en": "Lean towards no", "hinglish": "Shayad nahin" },
+      { "en": "Think it is not", "hinglish": "Lagta hai, nahin hai" },
+      { "en": "Sure it is not", "hinglish": "Pakka nahin hai" }
+    ],
+    "nextQuestion": { "en": "What would you do next?", "hinglish": "Aap aage kya karenge?" },
+    "actions": [
+      { "id": "talk-affected", "text": { "en": "Speak privately with the colleague affected", "hinglish": "Prabhavit colleague se akele mein baat karein" } },
+      { "id": "talk-other", "text": { "en": "Speak with the colleague whose conduct it was", "hinglish": "Jis colleague ka vyavhaar tha, usse baat karein" } },
+      { "id": "committee", "text": { "en": "Raise it with the Internal Committee", "hinglish": "Internal Committee ke saamne uthayein" } },
+      { "id": "manager", "text": { "en": "Tell your own manager", "hinglish": "Apne manager ko batayein" } },
+      { "id": "note", "text": { "en": "Note it down and watch for it again", "hinglish": "Likh lein aur dobara hone par dhyan dein" } },
+      { "id": "nothing", "text": { "en": "Take no action", "hinglish": "Koi action na lein" } }
+    ],
+    "route": { "en": "Under the Sexual Harassment of Women at Workplace Act, 2013, complaints go to the employer's Internal Committee, or to the district's Local Committee where there is none.", "hinglish": "Sexual Harassment of Women at Workplace Act, 2013 ke tahat shikayat employer ki Internal Committee ke paas jaati hai, ya jahan woh na ho, zile ki Local Committee ke paas." }
+  },
+  "note": {
+    "title": { "en": "A note before the next part", "hinglish": "Agle hisse se pehle ek note" },
+    "sourceLabel": { "en": "Source", "hinglish": "Source" }
+  },
+  "recall": {
+    "question": { "en": "What did the note before this part say?", "hinglish": "Is hisse se pehle wale note mein kya likha tha?" },
+    "options": [
+      { "id": "a", "text": { "en": "A figure about views on gender at work, then: answer as you would", "hinglish": "Kaam par gender par vichaaron ka ek aankda, phir: waise jawab dijiye jaise aap dete hain" } },
+      { "id": "b", "text": { "en": "A figure about commuting, then: answer as you would", "hinglish": "Aane jaane ka ek aankda, phir: waise jawab dijiye jaise aap dete hain" } },
+      { "id": "c", "text": { "en": "A figure about commuting, then: answer as the ideal employee would", "hinglish": "Aane jaane ka ek aankda, phir: waise jawab dijiye jaise ek ideal employee deta" } },
+      { "id": "none", "text": { "en": "I do not remember", "hinglish": "Mujhe yaad nahin" } }
+    ]
+  },
+  "wrap": {
+    "probe": {
+      "question": { "en": "Spot the pattern: which of these did you notice changing between the characters?", "hinglish": "Pattern pehchaniye: characters ke beech inmein se kya badalta hua aapne dekha?" },
+      "hint": { "en": "Choose any number.", "hinglish": "Jitne chahein chunein." },
+      "options": [
+        { "id": "sex", "text": { "en": "Whether a character was a woman or a man", "hinglish": "Character aurat tha ya aadmi" } },
+        { "id": "first-names", "text": { "en": "First names, beyond that", "hinglish": "Uske alawa pehle naam" } },
+        { "id": "surnames", "text": { "en": "Surnames", "hinglish": "Surnames" } },
+        { "id": "skin", "text": { "en": "Skin colour", "hinglish": "Twacha ka rang" } },
+        { "id": "birthplace", "text": { "en": "The 'Born in' line", "hinglish": "'Janme' wali line" } },
+        { "id": "animal-human", "text": { "en": "Animal or human", "hinglish": "Jaanwar ya insaan" } },
+        { "id": "badge", "text": { "en": "Badge colours", "hinglish": "Badge ke rang" } },
+        { "id": "descriptions", "text": { "en": "The descriptions", "hinglish": "Descriptions" } },
+        { "id": "nothing", "text": { "en": "Nothing", "hinglish": "Kuch nahin" } },
+        { "id": "not-sure", "text": { "en": "Not sure", "hinglish": "Pakka nahin" } }
+      ]
+    },
+    "result": {
+      "title": { "en": "Your season", "hinglish": "Aapka season" },
+      "bands": [
+        { "min": -100, "text": { "en": "A hard season. Several budget and vendor calls cost the team, and next quarter starts with catching up.", "hinglish": "Mushkil season. Kai budget aur vendor faislon se team ka nuksan hua, aur agla quarter peeche se shuru hoga." } },
+        { "min": 8, "text": { "en": "A steady season. The team delivered most of what it planned, with a few costly calls along the way.", "hinglish": "Theek thaak season. Team ne zyaadatar plan pura kiya, raaste mein kuch mehnge faisle hue." } },
+        { "min": 16, "text": { "en": "A strong season. Your budget, vendor and schedule calls kept the team ahead of plan.", "hinglish": "Shaandaar season. Aapke budget, vendor aur schedule ke faislon ne team ko plan se aage rakha." } }
+      ],
+      "peopleLine": { "en": "Your people decisions shaped the story; the season was decided by the budget, vendor and schedule calls.", "hinglish": "Aapke logon ke faislon ne kahaani banayi; season budget, vendor aur schedule ke faislon se tay hua." }
+    },
+    "prior": [
+      { "id": "told", "text": { "en": "Before today, had anyone told you how this test reads attitudes?", "hinglish": "Aaj se pehle, kya kisi ne aapko bataya tha ki yeh test attitudes kaise padhta hai?" } },
+      { "id": "heard", "text": { "en": "Had you heard about this game before today?", "hinglish": "Kya aapne aaj se pehle is game ke baare mein suna tha?" } },
+      { "id": "played", "firmOnly": true, "text": { "en": "Have you played this game before?", "hinglish": "Kya aapne yeh game pehle khela hai?" } }
+    ],
+    "debrief": {
+      "title": { "en": "What this session measured", "hinglish": "Is session ne kya mapa" },
+      "points": [
+        { "en": "The session measured attitudes towards religion, race, caste, sex and place of birth, through the decisions you made about fictional colleagues.", "hinglish": "Is session ne fictional colleagues ke baare mein aapke decisions ke zariye religion, race, caste, sex aur place of birth ke prati attitudes mape." },
+        { "en": "Results are read for groups only. Nobody receives a result about you.", "hinglish": "Nateeje sirf groups ke liye padhe jaate hain. Kisi ko aapke baare mein koi nateeja nahin milta." },
+        { "en": "If anything here brings up a real situation at work, you can contact your Internal Committee, your district's Local Committee, or the SHe-Box portal.", "hinglish": "Agar yahan koi baat kaam ki kisi asli sthiti ki yaad dilaye, to aap apni Internal Committee, apne zile ki Local Committee, ya SHe-Box portal se sampark kar sakte hain." }
+      ]
+    },
+    "code": {
+      "title": { "en": "Your withdrawal code", "hinglish": "Aapka withdrawal code" },
+      "body": { "en": "This code is shown once. Save it: write it down or take a screenshot. Your answers carry this code, not your name.", "hinglish": "Yeh code sirf ek baar dikhaya jaata hai. Ise save kijiye: likh lijiye ya screenshot le lijiye. Aapke jawabon par yeh code hai, aapka naam nahin." },
+      "release": { "en": "From {date}, a page explaining the study opens with this code. You can withdraw with it until {until}.", "hinglish": "{date} se is code se study samjhane wala page khulega. Aap {until} tak isse withdraw kar sakte hain." },
+      "saved": { "en": "I have saved my code", "hinglish": "Maine apna code save kar liya hai" }
+    },
+    "demographics": {
+      "title": { "en": "About you (optional)", "hinglish": "Aapke baare mein (optional)" },
+      "body": { "en": "Each question is optional. These answers are stored apart from everything else, carry only the answer, and are read only for groups of 50 or more.", "hinglish": "Har sawaal optional hai. Yeh jawab baaki sab se alag rakhe jaate hain, inmein sirf jawab hota hai, aur sirf 50 ya usse zyaada ke groups ke liye padhe jaate hain." },
+      "items": [
+        { "id": "gender", "firm": false, "text": { "en": "Your gender", "hinglish": "Aapka gender" }, "options": [
+          { "id": "woman", "text": { "en": "Woman", "hinglish": "Aurat" } },
+          { "id": "man", "text": { "en": "Man", "hinglish": "Aadmi" } },
+          { "id": "another", "text": { "en": "Another", "hinglish": "Anya" } }
+        ] },
+        { "id": "religion", "firm": true, "text": { "en": "Your religion", "hinglish": "Aapka dharm" }, "options": [
+          { "id": "hindu", "text": { "en": "Hindu", "hinglish": "Hindu" } },
+          { "id": "muslim", "text": { "en": "Muslim", "hinglish": "Muslim" } },
+          { "id": "christian", "text": { "en": "Christian", "hinglish": "Christian" } },
+          { "id": "sikh", "text": { "en": "Sikh", "hinglish": "Sikh" } },
+          { "id": "buddhist", "text": { "en": "Buddhist", "hinglish": "Buddhist" } },
+          { "id": "jain", "text": { "en": "Jain", "hinglish": "Jain" } },
+          { "id": "another", "text": { "en": "Another, or none", "hinglish": "Anya, ya koi nahin" } }
+        ] },
+        { "id": "caste", "firm": true, "text": { "en": "Your caste or community category", "hinglish": "Aapki caste ya community category" }, "options": [
+          { "id": "sc", "text": { "en": "Scheduled Caste", "hinglish": "Scheduled Caste" } },
+          { "id": "st", "text": { "en": "Scheduled Tribe", "hinglish": "Scheduled Tribe" } },
+          { "id": "obc", "text": { "en": "Other Backward Class", "hinglish": "Other Backward Class" } },
+          { "id": "general", "text": { "en": "General", "hinglish": "General" } }
+        ] },
+        { "id": "region", "firm": true, "text": { "en": "The region you grew up in", "hinglish": "Aap kis region mein bade hue" }, "options": [
+          { "id": "north", "text": { "en": "North", "hinglish": "North" } },
+          { "id": "south", "text": { "en": "South", "hinglish": "South" } },
+          { "id": "east", "text": { "en": "East", "hinglish": "East" } },
+          { "id": "west", "text": { "en": "West", "hinglish": "West" } },
+          { "id": "north-east", "text": { "en": "North-east", "hinglish": "North-east" } },
+          { "id": "central", "text": { "en": "Central", "hinglish": "Central" } },
+          { "id": "outside", "text": { "en": "Outside India", "hinglish": "Bharat ke bahar" } }
+        ] }
+      ]
+    },
+    "submit": {
+      "title": { "en": "Submit or withdraw", "hinglish": "Submit ya withdraw" },
+      "body": { "en": "Submit sends your answers under your code. Withdraw deletes them now and sends nothing; your code still opens the explanation page when it is released.", "hinglish": "Submit aapke jawab aapke code ke saath bhejta hai. Withdraw unhe abhi mita deta hai aur kuch nahin bhejta; release hone par aapka code tab bhi explanation page kholta hai." },
+      "submit": { "en": "Submit my answers", "hinglish": "Mere jawab submit karein" },
+      "withdraw": { "en": "Withdraw now", "hinglish": "Abhi withdraw karein" },
+      "submitted": { "en": "Thank you. Your answers are in. Keep your code: it opens the explanation page and lets you withdraw later.", "hinglish": "Shukriya. Aapke jawab pahunch gaye. Apna code rakhiye: isse explanation page khulta hai aur aap baad mein withdraw kar sakte hain." },
+      "withdrawn": { "en": "Thank you. Nothing from this session was stored. Keep your code if you want to read the explanation page when it is released.", "hinglish": "Shukriya. Is session ka kuch bhi store nahin hua. Release hone par explanation page padhna ho to apna code rakhiye." },
+      "failed": { "en": "Your answers could not be sent. Check your connection and try again; nothing is lost while this page is open.", "hinglish": "Aapke jawab bheje nahin ja sake. Connection check karke dobara koshish kijiye; yeh page khula rehne tak kuch nahin khota." }
+    }
+  },
+  "entry": {
+    "refused": { "en": "This link has already been used. Each link starts one session only, and a session cannot be replayed.", "hinglish": "Yeh link pehle hi use ho chuka hai. Har link sirf ek session shuru karta hai, aur session dobara nahin khela ja sakta." },
+    "unknown": { "en": "This link is not valid.", "hinglish": "Yeh link valid nahin hai." },
+    "offline": { "en": "The study could not be reached. Check your connection and open the link again.", "hinglish": "Study tak pahuncha nahin ja saka. Connection check karke link dobara kholiye." }
+  },
+  "firm": {
+    "sexItem": { "en": "Your sex (optional)", "hinglish": "Aapka sex (optional)" },
+    "sexOptions": [
+      { "id": "woman", "text": { "en": "Woman", "hinglish": "Aurat" } },
+      { "id": "man", "text": { "en": "Man", "hinglish": "Aadmi" } },
+      { "id": "another", "text": { "en": "Another", "hinglish": "Anya" } },
+      { "id": "prefer-not", "text": { "en": "Prefer not to say", "hinglish": "Nahin batana chahenge" } }
+    ],
+    "batch": { "en": "Your training batch, from your firm's published schedule", "hinglish": "Aapka training batch, aapki firm ke published schedule se" },
+    "enrolled": { "en": "You are enrolled. Your play window is {from} to {to}. Add it to your calendar: the file holds your play link.", "hinglish": "Aap enrol ho gaye. Aapki play window {from} se {to} tak hai. Ise calendar mein jodiye: file mein aapka play link hai." },
+    "calendar": { "en": "Save to calendar", "hinglish": "Calendar mein save karein" },
+    "enrolmentCode": { "en": "Your enrolment link code", "hinglish": "Aapka enrolment link code" },
+    "notYet": { "en": "Your play window has not opened yet. It opens on {from}.", "hinglish": "Aapki play window abhi nahin khuli. Yeh {from} ko khulegi." },
+    "closed": { "en": "Your play window has closed.", "hinglish": "Aapki play window band ho chuki hai." }
+  },
+  "explain": {
+    "title": { "en": "How the study read attitudes", "hinglish": "Study ne attitudes kaise padhe" },
+    "enter": { "en": "Enter your withdrawal code", "hinglish": "Apna withdrawal code daaliye" },
+    "open": { "en": "Open the explanation", "hinglish": "Explanation kholiye" },
+    "notYet": { "en": "This page opens on {date}, after all play in the study has closed.", "hinglish": "Yeh page {date} ko khulega, jab study ka saara khel band ho jaayega." },
+    "badCode": { "en": "That code was not recognised. Check it and try again.", "hinglish": "Yeh code pehchana nahin gaya. Check karke dobara koshish kijiye." }
+  },
+  "withdraw": {
+    "title": { "en": "Withdraw from the study", "hinglish": "Study se withdraw karein" },
+    "body": { "en": "Entering your code deletes every record that carries it, in every store. This cannot be undone.", "hinglish": "Code daalne se us code wale saare records, har store se, mit jaate hain. Ise wapas nahin kiya ja sakta." },
+    "button": { "en": "Delete my records", "hinglish": "Mere records mitaiye" },
+    "done": { "en": "Your records have been deleted.", "hinglish": "Aapke records mita diye gaye." },
+    "closed": { "en": "Withdrawal closed on {date}, when every code was destroyed.", "hinglish": "Withdrawal {date} ko band hua, jab saare codes nasht kar diye gaye." }
+  }
+}

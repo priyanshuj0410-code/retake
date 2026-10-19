@@ -1,0 +1,15 @@
+/* @owns notice notice--error notice--ok */
+.notice {
+  margin: var(--gap-none);
+  padding: var(--gap-m) var(--gap-l);
+  border-radius: var(--radius-m);
+  border: var(--border) solid var(--c-border);
+  background: var(--c-surface);
+  color: var(--c-text);
+}
+.notice--error {
+  border-color: var(--c-error);
+}
+.notice--ok {
+  border-color: var(--c-ok);
+}

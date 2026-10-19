@@ -1,0 +1,18 @@
+{
+  "_note": "The up-front disclosure. The English strings are registered verbatim (candidates v12, 3.10) and scripts/disclosure-check.ts compares them byte for byte. The Hinglish strings are a DRAFT: not yet pre-tested for neutrality or comprehension (PO-12); the cognitive interviews replace them.",
+  "registered": {
+    "en": [
+      "The test measures attitudes towards religion, race, caste, sex, or place of birth.",
+      "You will make decisions about fictional colleagues.",
+      "Attitudes are read, for groups only.",
+      "Decisions that do not follow the descriptions at all are read as not engaged."
+    ],
+    "hinglish": [
+      "Yeh test religion, race, caste, sex, ya place of birth ke prati attitudes measure karta hai.",
+      "Aap fictional colleagues ke baare mein decisions lenge.",
+      "Attitudes sirf groups ke liye padhe jaate hain.",
+      "Jo decisions descriptions ko bilkul follow nahin karte, unhe not engaged maana jaata hai."
+    ]
+  },
+  "pretested": { "en": true, "hinglish": false }
+}
