@@ -1,6 +1,6 @@
 /* Equal Lens Evaluator: the tokens. The only stylesheet allowed to hold a raw value.
    Two tiers: PRIMITIVE (what a value is) and SEMANTIC (what it is for). Stylesheets read
-   semantic tokens only. Then the modes: dark, and the three surfaces, re-point semantic
+   semantic tokens only. Then the three surfaces re-point semantic
    tokens; no component knows which surface it is on. knowledge/design.md explains each. */
 
 /* @tier primitive */
@@ -23,19 +23,6 @@
   --grey-700: #44423f;
   --grey-900: #1d1c1a;
 
-  --night: #160e24;
-  --night-raised: #24183a;
-  --night-line: #3d2e5a;
-  --night-grey: #1b1b1a;
-  --night-grey-raised: #262624;
-  --night-grey-line: #3c3b39;
-  --moon: #f4f0fa;
-  --moon-soft: #c9bce0;
-  --lilac: #c4adeb;
-  --lilac-deep: #ab90da;
-  --teal-light: #5fd3b3;
-  --coral-light: #ff9d85;
-
   --face-display: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --face-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --face-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
@@ -47,19 +34,12 @@
   --comic-tint: #efe8f8;
   --comic-rule: #8f879c;
   --comic-caption: #ffe27a;
-  --comic-night: #141118;
-  --comic-night-panel: #221b2e;
-  --comic-night-line: #e9e3f2;
-  --comic-night-soft: #cfc6de;
   --face-comic-display: 'Big Shoulders Display', Impact, 'Arial Narrow', sans-serif;
   --face-comic-text: 'Literata', Georgia, 'Times New Roman', serif;
   --shadow-ink: 4px 4px 0 #121212;
   --shadow-ink-small: 3px 3px 0 #121212;
   --shadow-violet: 5px 5px 0 #553286;
   --shadow-violet-small: 4px 4px 0 #553286;
-  --shadow-lilac: 4px 4px 0 #c4adeb;
-  --shadow-lilac-small: 3px 3px 0 #c4adeb;
-  --shadow-lilac-wide: 5px 5px 0 #c4adeb;
   --rot-neg-8: -8deg;
   --upper: uppercase;
   --no-case: none;
@@ -72,12 +52,6 @@
   --cool-soft: #4c5468;
   --cool-rule: #c9ced8;
   --cool-hero: #e3e6ec;
-  --cool-night: #14171d;
-  --cool-night-raised: #1c2028;
-  --cool-night-line: #3a4252;
-  --cool-moon: #e6e9ef;
-  --cool-moon-soft: #aab2c2;
-  --cool-night-hero: #232833;
 
   --fs-14: 14px;
   --fs-16: 16px;
@@ -139,6 +113,9 @@
 /* @tier semantic */
 :root {
   --c-bg: var(--paper);
+  /* One light theme, on purpose (EVAL-6): the comic register and the plain register were
+     designed as a single light look, so the OS dark setting does not change them. */
+  color-scheme: light;
   --c-surface: var(--white);
   --c-raised: var(--tint);
   --c-text: var(--ink);
@@ -263,54 +240,6 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --c-bg: var(--night);
-    --c-surface: var(--night-raised);
-    --c-raised: var(--night-raised);
-    --c-text: var(--moon);
-    --c-body: var(--moon);
-    --c-muted: var(--moon-soft);
-    --c-rule: var(--night-line);
-    --c-border: var(--night-line);
-    --c-accent: var(--lilac);
-    --c-accent-press: var(--lilac-deep);
-    --c-on-accent: var(--night);
-    --c-focus: var(--lilac);
-    --c-ok: var(--teal-light);
-    --c-error: var(--coral-light);
-    --c-label: var(--lilac);
-    --c-action: var(--lilac);
-    --c-on-action: var(--night);
-    --c-action-press: var(--lilac-deep);
-    --c-stamp: var(--lilac);
-    --c-on-stamp: var(--night);
-  }
-}
-
-:root[data-theme='dark'] {
-  --c-bg: var(--night);
-  --c-surface: var(--night-raised);
-  --c-raised: var(--night-raised);
-  --c-text: var(--moon);
-  --c-body: var(--moon);
-  --c-muted: var(--moon-soft);
-  --c-rule: var(--night-line);
-  --c-border: var(--night-line);
-  --c-accent: var(--lilac);
-  --c-accent-press: var(--lilac-deep);
-  --c-on-accent: var(--night);
-  --c-focus: var(--lilac);
-  --c-ok: var(--teal-light);
-  --c-error: var(--coral-light);
-  --c-label: var(--lilac);
-  --c-action: var(--lilac);
-  --c-on-action: var(--night);
-  --c-action-press: var(--lilac-deep);
-  --c-stamp: var(--lilac);
-  --c-on-stamp: var(--night);
-}
-
 /* The surfaces (knowledge/design.md, section 3). Each surface re-points the semantic tokens,
    type included, so no component knows which surface it is on. The game is the comic register,
    out of fiction the cool plain register; the two never share a ground, a face or an accent. */
@@ -391,142 +320,6 @@
   --c-on-action: var(--white);
   --c-action-press: var(--grey-700);
   --c-ink-line: var(--grey-300);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) [data-surface='game'] {
-    --c-bg: var(--comic-night);
-    --c-surface: var(--comic-night);
-    --c-raised: var(--comic-night-panel);
-    --c-text: var(--moon);
-    --c-body: var(--moon);
-    --c-muted: var(--comic-night-soft);
-    --c-rule: var(--night-line);
-    --c-border: var(--comic-night-line);
-    --c-label: var(--lilac);
-    --c-panel: var(--comic-night-panel);
-    --c-ink-line: var(--comic-night-line);
-    --c-stamp: var(--lilac);
-    --c-on-stamp: var(--night);
-    --c-level-lean: var(--lilac);
-    --c-level-none: var(--moon);
-    --c-level-unread: var(--comic-night-soft);
-    --shadow-panel: var(--shadow-lilac);
-    --shadow-caption: var(--shadow-lilac-small);
-    --shadow-chosen: var(--shadow-lilac-wide);
-    --c-action: var(--moon);
-    --c-on-action: var(--comic-night);
-    --c-action-press: var(--lilac);
-    --shadow-action: var(--shadow-lilac-small);
-  }
-  :root:not([data-theme='light']) [data-surface='oof'] {
-    --c-bg: var(--cool-night);
-    --c-surface: var(--cool-night-raised);
-    --c-raised: var(--cool-night);
-    --c-text: var(--cool-moon);
-    --c-body: var(--cool-moon);
-    --c-muted: var(--cool-moon-soft);
-    --c-rule: var(--cool-night-line);
-    --c-border: var(--cool-night-line);
-    --c-accent: var(--cool-moon);
-    --c-accent-press: var(--white);
-    --c-on-accent: var(--cool-night);
-    --c-focus: var(--cool-moon);
-    --c-label: var(--cool-moon-soft);
-    --c-hero: var(--cool-night-hero);
-    --c-level-lean: var(--cool-moon);
-    --c-level-none: var(--cool-moon);
-    --c-level-unread: var(--cool-moon-soft);
-    --c-action: var(--cool-moon);
-    --c-on-action: var(--cool-night);
-    --c-action-press: var(--white);
-    --c-ink-line: var(--cool-night-line);
-  }
-  :root:not([data-theme='light']) [data-surface='sober'] {
-    --c-bg: var(--night-grey);
-    --c-surface: var(--night-grey-raised);
-    --c-raised: var(--night-grey-raised);
-    --c-text: var(--grey-100);
-    --c-body: var(--grey-100);
-    --c-muted: var(--grey-300);
-    --c-rule: var(--night-grey-line);
-    --c-border: var(--night-grey-line);
-    --c-accent: var(--grey-100);
-    --c-accent-press: var(--grey-300);
-    --c-on-accent: var(--grey-900);
-    --c-focus: var(--grey-100);
-    --c-label: var(--grey-300);
-    --c-action: var(--grey-100);
-    --c-on-action: var(--grey-900);
-    --c-action-press: var(--grey-300);
-    --c-ink-line: var(--night-grey-line);
-  }
-}
-:root[data-theme='dark'] [data-surface='game'] {
-  --c-bg: var(--comic-night);
-  --c-surface: var(--comic-night);
-  --c-raised: var(--comic-night-panel);
-  --c-text: var(--moon);
-  --c-body: var(--moon);
-  --c-muted: var(--comic-night-soft);
-  --c-rule: var(--night-line);
-  --c-border: var(--comic-night-line);
-  --c-label: var(--lilac);
-  --c-panel: var(--comic-night-panel);
-  --c-ink-line: var(--comic-night-line);
-  --c-stamp: var(--lilac);
-  --c-on-stamp: var(--night);
-  --c-level-lean: var(--lilac);
-  --c-level-none: var(--moon);
-  --c-level-unread: var(--comic-night-soft);
-  --shadow-panel: var(--shadow-lilac);
-  --shadow-caption: var(--shadow-lilac-small);
-  --shadow-chosen: var(--shadow-lilac-wide);
-  --c-action: var(--moon);
-  --c-on-action: var(--comic-night);
-  --c-action-press: var(--lilac);
-  --shadow-action: var(--shadow-lilac-small);
-}
-:root[data-theme='dark'] [data-surface='oof'] {
-  --c-bg: var(--cool-night);
-  --c-surface: var(--cool-night-raised);
-  --c-raised: var(--cool-night);
-  --c-text: var(--cool-moon);
-  --c-body: var(--cool-moon);
-  --c-muted: var(--cool-moon-soft);
-  --c-rule: var(--cool-night-line);
-  --c-border: var(--cool-night-line);
-  --c-accent: var(--cool-moon);
-  --c-accent-press: var(--white);
-  --c-on-accent: var(--cool-night);
-  --c-focus: var(--cool-moon);
-  --c-label: var(--cool-moon-soft);
-  --c-hero: var(--cool-night-hero);
-  --c-level-lean: var(--cool-moon);
-  --c-level-none: var(--cool-moon);
-  --c-level-unread: var(--cool-moon-soft);
-  --c-action: var(--cool-moon);
-  --c-on-action: var(--cool-night);
-  --c-action-press: var(--white);
-  --c-ink-line: var(--cool-night-line);
-}
-:root[data-theme='dark'] [data-surface='sober'] {
-  --c-bg: var(--night-grey);
-  --c-surface: var(--night-grey-raised);
-  --c-raised: var(--night-grey-raised);
-  --c-text: var(--grey-100);
-  --c-body: var(--grey-100);
-  --c-muted: var(--grey-300);
-  --c-rule: var(--night-grey-line);
-  --c-border: var(--night-grey-line);
-  --c-accent: var(--grey-100);
-  --c-accent-press: var(--grey-300);
-  --c-on-accent: var(--grey-900);
-  --c-focus: var(--grey-100);
-  --c-label: var(--grey-300);
-  --c-action: var(--grey-100);
-  --c-on-action: var(--grey-900);
-  --c-action-press: var(--grey-300);
-  --c-ink-line: var(--night-grey-line);
 }
 
 /* Forced colours (Windows high contrast and similar): the system paints most colours. Inactive

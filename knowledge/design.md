@@ -27,7 +27,12 @@ mix**. The **game register** is an editorial comic: ink-ruled panels on white pa
 tint, yellow narration captions, violet rank stamps, halftone-shaded portraits, Big Shoulders
 Display for display and Literata for the story (section 4c). The **plain register** (out of
 fiction) is cool grey and ink in Nunito Sans and Poppins, with no panels, captions, stamps or
-violet. Panel games and the firm session sit on the same surfaces and inherit the same tokens.
+violet. **One light theme, on purpose:** both registers were designed as a single light look,
+so `color-scheme: light` is set and there are no dark overrides; the OS dark setting changes
+nothing (`pnpm ux` checks each surface's ground is the same under dark). The demo landing goes
+straight into the season story; the old card games (panel games 1 and 2, the firm session and
+its enrolment) open only on the Vite dev server in demo mode, from the developer menu at
+`#/dev`, which no player-facing page links to (`devRoutes`), and are kept for the checks.
 
 ## 1. Rules the code is held to
 
@@ -44,7 +49,7 @@ violet. Panel games and the firm session sit on the same surfaces and inherit th
 - a component or screen (`src/ui/*.tsx`, `src/screens/*.tsx`) writes a colour: the SVG
   pictures fill from art classes, never from hex in the markup (EVAL-6).
 
-`pnpm check` runs X-15 (`scripts/pending-check.ts`, EVAL-6): no content string a player can see
+`pnpm check` runs X-16 (`scripts/pending-check.ts`, EVAL-6): no content string a player can see
 says "PENDING" (markers live in underscore keys such as `_pending`, `_watchPending`), no string
 or JSX text in `src/` says it, the dev-only `DevNotes` panel renders nothing outside the Vite dev
 server, and the season disclosure's sentence 3 placeholder may exist only while `config.demo` is
@@ -81,15 +86,12 @@ Primitives (in `tokens.css` only):
 | `--teal-deep` | `#0F6E56` | "All shared" state |
 | `--coral-deep` | `#C2553F` | Errors and refusals |
 | `--grey-*` | neutral greys | The Committee Inbox's sober surface |
-| dark set | `--night`, `--night-raised`, `--night-line`, `--moon`, `--moon-soft`, `--lilac` | Dark mode |
 | `--comic-paper`, `--comic-ink` | `#FFFFFF`, `#121212` | Game register: the page and every panel rule (18.7:1) |
 | `--comic-soft` | `#3D3846` | Game register: secondary text (11.4:1 on paper) |
 | `--comic-tint` | `#EFE8F8` | Game register: the panel fill |
 | `--comic-caption` | `#FFE27A` | Game register: narration captions and cast name plates, always with ink text (14.6:1) |
 | `--comic-rule` | `#8F879C` | Game register: inactive rules |
-| `--comic-night`, `--comic-night-panel`, `--comic-night-line`, `--comic-night-soft` | `#141118`, `#221B2E`, `#E9E3F2`, `#CFC6DE` | Game register, dark mode: panels ruled in light line, captions stay yellow with ink |
 | `--cool`, `--cool-ink`, `--cool-soft`, `--cool-rule`, `--cool-hero` | `#F3F5F8`, `#1D2230`, `#4C5468`, `#C9CED8`, `#E3E6EC` | Plain register (out of fiction): ground, ink (14.5:1), secondary (6.9:1), rules, the result hero band |
-| `--cool-night` set | `#14171D`, `#1C2028`, `#3A4252`, `#E6E9EF`, `#AAB2C2`, `#232833` | Plain register, dark mode |
 | `--shadow-ink`, `--shadow-violet` (and small, lilac) | offset shadows, 3 to 5 px, no blur | Game register: panels, captions, the chosen card, the primary button |
 
 Type: Poppins 500/600/700 (`--face-display`) for headings, labels, buttons and numbers;
@@ -126,8 +128,8 @@ ring stays, and a checked option row gets a `Highlight` outline. Transparent bor
 demo strip, and the heavier left edge on notices, keep their shapes. The emoji figure keeps
 its own colours (`forced-color-adjust: none`), since the skin tone is the cue.
 
-Dark mode follows `prefers-color-scheme` and `data-theme`; every semantic token is re-pointed,
-none is overridden in a component. The surfaces re-point type and shape too (EVAL-6): on the
+There is no dark mode (EVAL-6, a deliberate single light theme); every semantic token is
+re-pointed by surface only, none is overridden in a component. The surfaces re-point type and shape too (EVAL-6): on the
 game `--radius-card`, `--radius-m` and `--radius-s` are 0 (square panels), `--edge` is 3 px,
 `--shadow-panel`, `--shadow-caption`, `--shadow-chosen` and `--shadow-action` are offset ink or
 violet shadows, `--c-action` (the primary button) is ink with a violet shadow; out of fiction
@@ -170,7 +172,7 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 | `Notice` | `src/ui/Notice.tsx` | A boxed message: `info`, `error` (`role=alert`, "!"), `ok` (`role=status`, a tick); takes an `id` for a field's description |
 | `DemoBadge` | `src/ui/DemoBadge.tsx` | A quiet outlined chip, "Demo: fictional content", at the top of every screen except the disclosure; never the loudest thing on the screen (EVAL-6) |
 | `Table` | `src/ui/Table.tsx` | The demo results table in a named, focusable scroll region, with suppressed cells marked and an `empty` line |
-| `Portrait` | `src/ui/Portrait.tsx` | A face (section 4c): the generated WebP headshot when `public/portraits/manifest.json` lists it (people by slot, sex and tone, mascots by animal), on the panel's tint and halftone backdrop, with `width`/`height`, lazy loading except `eager` faces above the fold; otherwise the drawn SVG person or mascot animal (`look`), `role="img"` with an accurate `aria-label` ("woman, darker skin tone, glasses", "panda"), sizes `panel` (fills its card), `row` (72 px) and `then` (64 px); after the reveal the mascot as a 30 per cent inset in the corner |
+| `Portrait` | `src/ui/Portrait.tsx` | A face (section 4c): the generated WebP headshot when `public/portraits/manifest.json` lists it (cast by slot, sex and tone, one-offs by `o{slot}-{sex}`, mascots by animal), on the panel's tint and halftone backdrop, with `width`/`height`, lazy loading except `eager` faces above the fold; otherwise the drawn SVG person or mascot animal (`look`), `role="img"` with an accurate `aria-label` ("woman, darker skin tone, glasses", "panda"), sizes `panel` (fills its card), `row` (72 px) and `then` (64 px); after the reveal the mascot as a 30 per cent inset in the corner |
 | `Colleague` | `src/ui/Colleague.tsx` | A season colleague: `Portrait` panel on top (`cell`) or a 72 px face beside the words (`row`), name in display caps, cue lines ("Born in"), this job's notes. All spans, so it can sit inside a button |
 | `Beat` | `src/ui/Beat.tsx` | The top of a story screen: the last decision's consequence as a small `Then` panel, then the scene as a `Panel` with its narration in a `Caption` and the question as the display `h1`, which names the rest with `aria-describedby` |
 | `TapOrder` | `src/ui/TapOrder.tsx` | Tap-to-order ranking as portrait panels, two across on phones and four from 600 px: tapped cards are stamped 1st, 2nd, 3rd (`Stamp`) with a violet offset shadow; the last fills itself and the order commits (k - 1 taps). Tap a stamped card to take it back; "Clear the stamps" lifts them all; every tap announced politely |
@@ -199,7 +201,7 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 ## 4a. States of every component
 
 "Yes" is a state the component has and `pnpm ux` or X-9 checks; "n/a" does not apply. Every
-interactive state is also present in dark mode and on all three surfaces (the tokens re-point;
+interactive state is also present on all three surfaces (the tokens re-point;
 no component knows its surface). Full before and after matrices:
 [reviews/component-states-2026-10-19.md](reviews/component-states-2026-10-19.md).
 
@@ -268,19 +270,18 @@ valence, and the season's end lists the jobs each colleague led, with no outcome
   notes the player put first, never by who carried them; nothing marks a choice right, wrong or
   fair.
 - **The result page** is out of fiction (the plain register) and comes after submit, top to
-  bottom (the owner's NPQE structure, our evidence and stance, 19 Oct 2026, re-ordered by
-  EVAL-6 to lead with one number): a plain "Your answers are in" notice (no tick, no green);
-  the `ResultHero` for sex ("38 of 46 equal pairs where you put the man ahead", the dot grid,
-  the band, its sentence, `Spectrum` and the reasons); "Your other readings" as a
-  `ReadingList` (religion, skin tone, surname, birthplace), so a player with no sex reading
-  still sees the readings they do have (owner decision 5); the disarming opening (everyone's
-  decisions lean somewhere; a view from outside; ask whether the point that feels off could
-  still be true); then "Your decisions, area by area", one `Fold` per area (hiring and
-  promotion, complaints and conduct, sharing resources; the first open), each with a short narrative, "Where your
+  bottom in the owner's set order (19 Oct 2026, EVAL-6): the disarming opening first, in two or
+  three sentences (everyone's decisions lean somewhere; a view from outside; ask whether the
+  point that feels off could still be true); then the `ResultHero` for sex ("38 of 46 equal
+  pairs where you put the man ahead", the dot grid, the band, its sentence, `Spectrum` and the
+  reasons); "Your other readings" as a `ReadingList` (religion, skin tone, surname,
+  birthplace), so a player with no sex reading still sees the readings they do have (owner
+  decision 5); then "Your decisions, area by area", one `Fold` per area (hiring and promotion,
+  complaints and conduct, sharing resources; the first open), each with a short narrative, "Where your
   decisions followed the record" and "Your blind spots" as `PointCard`s (a blind spot ends with
   the actual decisive pairs), "Where it may come from" (prompts only, nothing asked or stored)
   and "How to keep watch" (habits, free, no effect claimed; sources pending in a content note); the Internal
-  Committee line; keeping it (an optional profile, the retake as a date); the `ShareCard`; and
+  Committee line; the plain "Your answers are in" notice (no tick, no green); keeping it (an optional profile, the retake as a date); the `ShareCard`; and
   an optional stay-in-touch form (name and email both optional, two separate unticked boxes,
   stored apart from answers and profile). It says "attitude rating", never "bias", and never
   moralises; a card appears only where the decisions support it, so the bands can land
@@ -314,11 +315,13 @@ countdown.
 and mascots are meant to come from generated WebP headshots made by a separate agent:
 `public/portraits/{slot}-{sex}-{tone}.webp` (the cast slot, 0 to 7, women 0 to 3 and men 4 to
 7; one pre-rendered image per skin tone, `l1`, `l2`, `d1`, `d2`) and
-`public/portraits/mascot-{animal}.webp`, with `manifest.json` listing what exists (a list of file
+`public/portraits/o{slot}-{sex}.webp` for one-off characters (their slot, 100 and up; one image
+each, as one-offs all share the medium tone), and `public/portraits/mascot-{animal}.webp`, with
+`manifest.json` listing what exists (a list of file
 names, or `{ "files": [...] }`). `src/ui/portraitImages.ts` fetches the manifest once from the
 app's own origin; `Portrait` shows an image only when the manifest lists it, so a missing file
 never shows a broken picture, and falls back to the drawing otherwise (no manifest, an unlisted
-slot or tone, or one-offs at the medium tone). The comic frame stays: the ink border and the
+slot or tone). The comic frame stays: the ink border and the
 tint and halftone backdrop sit around the image, which is drawn with `object-fit: cover`.
 Images carry `width="200" height="220"`, `loading="lazy"` except the faces above the fold (the
 first two cards, the first four cast tiles, the consequence face), and the portrait's label
@@ -463,7 +466,7 @@ was") and takes a capital when it opens a sentence, both done by the generator
 The season story's words follow the same rules, held by `scripts/story-check.ts`: no "fair"
 and no "bias" in any story text, descriptions carry no pronoun, consequences use only `{name}`
 and `{g:}`, and every number v18 will fix is marked PENDING v18 in `content/config.json`
-(`season.pendingV18`). **No player-facing string says PENDING** (X-15, EVAL-6): markers live in
+(`season.pendingV18`). **No player-facing string says PENDING** (X-16, EVAL-6): markers live in
 underscore keys of the content and reach the research team only through the dev-only
 `DevNotes` panel. The one exception is the season disclosure's sentence 3, the owner-wording
 placeholder, which shows in demo builds only.

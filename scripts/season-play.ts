@@ -86,12 +86,7 @@ export async function playSeason(
   onScreen?: (marker: string) => Promise<void>,
 ) {
   if (/#\/play\//.test(base)) await page.goto(base)
-  else {
-    await page.goto(base)
-    await page.waitForSelector('[data-screen="home"]')
-    await page.getByRole('radio', { name: /^The player chooses/ }).check()
-    await page.getByRole('button', { name: 'Team season: pick a story' }).click()
-  }
+  /* The demo landing goes straight into the season (EVAL-6). */ else await page.goto(base)
   await page.waitForSelector('[data-screen="demo"]', { timeout: 30000 })
   for (let guard = 0; guard < 200; guard++) {
     await page.waitForSelector('[data-screen]')
@@ -112,6 +107,9 @@ export async function playSeason(
       return main?.textContent ?? ''
     })
     if (/PENDING/.test(said) && m !== 'disclosure') leaks.push(m)
+    /* No season screen falls back to the old card components (emoji figures, steppers, drag rows). */
+    if (await page.locator('.character, .alloc__step, .sort__row').count())
+      leaks.push(`${m}: old card component`)
     if (onScreen) await onScreen(m)
     else if (!shot.has(name)) {
       shot.add(name)

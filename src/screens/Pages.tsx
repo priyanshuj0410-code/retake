@@ -1,5 +1,5 @@
 /** The pages around the sessions: the demo home, firm enrolment, the explanation and withdrawal. */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { screens } from '../content'
 import { Disclosure } from './Disclosure'
 import { Consent } from './PreScreens'
@@ -24,6 +24,30 @@ const L = (t: T) => t.en
 const demoBadge = config.demo ? L(S.common.demoBadge) : undefined
 const DAY = 86_400_000
 
+/**
+ * The demo landing (EVAL-6): straight into the season story. It issues a one-time season link
+ * with the player's choice of language and opens it, so the first screen is the season's own.
+ */
+export function SeasonLanding({ go }: { go: (hash: string) => void }) {
+  const [msg, setMsg] = useState<string | null>(null)
+  useEffect(() => {
+    let live = true
+    store
+      .issueTokens('season', 1, 'choose')
+      .then(([t]) => live && go(`#/play/${t}`))
+      .catch((e: unknown) => live && setMsg(String(e)))
+    return () => {
+      live = false
+    }
+  }, [go])
+  return (
+    <Page surface="oof" stepKey="landing" demo={demoBadge}>
+      {msg ? <Notice kind="error">{msg}</Notice> : <Notice>…</Notice>}
+    </Page>
+  )
+}
+
+/** The developer menu (`#/dev`, Vite dev server in demo mode only): the old card games for the checks. */
 export function Home({ go }: { go: (hash: string) => void }) {
   const [langs, setLangs] = useState<LangSet>('choose')
   const [msg, setMsg] = useState<string | null>(null)

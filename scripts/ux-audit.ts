@@ -110,7 +110,7 @@ async function audit(page: Page, screen: string, inPage = false) {
     return h ? a === h : a?.tagName === 'MAIN'
   }, inPage)
   if (!focus) focusFails.push(screen)
-  /* Copy hygiene (EVAL-6, X-15): no rendered player copy says PENDING; the dev-only notes and
+  /* Copy hygiene (EVAL-6, X-16): no rendered player copy says PENDING; the dev-only notes and
      the demo disclosure's owner-wording placeholder aside. */
   const said = await page.evaluate(() => {
     const main = document.querySelector('main')?.cloneNode(true) as HTMLElement | undefined
@@ -352,7 +352,7 @@ async function play(
 }
 
 async function startFromHome(page: Page, lang: RegExp, game: RegExp) {
-  await page.goto(BASE)
+  await page.goto(`${BASE}#/dev`)
   await page.getByRole('radio', { name: lang }).check()
   await page.getByRole('button', { name: game }).click()
   await page.waitForSelector('[data-screen="demo"]')
@@ -374,7 +374,7 @@ async function main() {
   page.on('pageerror', (e) => problems.push(`page error: ${e.message}`))
   let states: StateResult[] = []
   try {
-    await page.goto(BASE)
+    await page.goto(`${BASE}#/dev`)
     await page.waitForSelector('[data-screen="home"]')
     await audit(page, 'home')
 
@@ -396,7 +396,7 @@ async function main() {
     await startFromHome(page, /^English only/, /^Panel, game 2$/)
     await play(page, 'g2en', new Set(), { withdraw: true })
 
-    await page.goto(BASE)
+    await page.goto(`${BASE}#/dev`)
     await page.getByRole('button', { name: /^Firm session/ }).click()
     await page.waitForSelector('[data-screen="disclosure"]')
     await audit(page, 'firm enrol-disclosure')

@@ -298,11 +298,24 @@ function content() {
     'no "how accurate was this?" self-rating on the result page',
     !/accurate|accuracy/i.test(JSON.stringify(storyContent.rating)),
   )
+  record(
+    T,
+    'no season screen falls back to the old card components (emoji Character, Allocate steppers, SortList drag rows)',
+    !/\b(Character|Allocate|SortList)\b/.test(readFileSync(`${ROOT}src/screens/Story.tsx`, 'utf8')),
+  )
+  record(
+    T,
+    'the disarming opening is short: two or three sentences in each language',
+    (['en', 'hinglish'] as const).every((l) => {
+      const n = (RT.opening[l].match(/[.!?](\s|$)/g) ?? []).length
+      return n >= 2 && n <= 3
+    }),
+  )
   const story = readFileSync(`${ROOT}src/screens/Story.tsx`, 'utf8')
   const order = [
+    'RT.opening',
     '<ResultHero',
     'RT.otherTitle',
-    'RT.opening',
     'RT.areasTitle',
     'RT.followedTitle',
     'RT.blindTitle',
@@ -316,7 +329,7 @@ function content() {
   const at = order.map((s) => story.indexOf(s, story.indexOf('export function StoryResult')))
   record(
     T,
-    "the result page renders its sections in order: the one number (EVAL-6), the other readings, the owner's opening, then the areas and the rest",
+    "the result page renders its sections in the owner's order: the short disarming opening first, then the one number with its dots and band, the other readings, the folded areas and the rest",
     at.every((x, i) => x > 0 && (i === 0 || x > at[i - 1])),
     at.join(','),
   )

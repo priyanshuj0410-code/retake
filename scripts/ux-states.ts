@@ -399,7 +399,7 @@ async function notice(page: Page, base: string, code: string) {
 
 async function link(page: Page, base: string) {
   const C = 'Link'
-  await page.goto(base)
+  await page.goto(`${base}#/dev`)
   await page.reload()
   await page.getByRole('button', { name: /^Firm session/ }).click()
   await page.waitForSelector('[data-screen="disclosure"]')
@@ -436,7 +436,7 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
   await page
     .context()
     .grantPermissions(['clipboard-read', 'clipboard-write'], { origin: new URL(base).origin })
-  await page.goto(base)
+  await page.goto(`${base}#/dev`)
   await stress(page, 'Text', '.text')
   await stress(page, 'Heading', '.heading')
   await page.getByRole('radio', { name: /^English only/ }).check()
@@ -457,8 +457,8 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
       await page.emulateMedia({ colorScheme: 'light' })
       rec(
         'Page',
-        `${surface} surface: its own ground, re-pointed in dark`,
-        dark !== grounds.get(surface),
+        `${surface} surface: its own ground, pinned light (EVAL-6: one light theme, the OS dark setting changes nothing)`,
+        dark === grounds.get(surface),
         `${grounds.get(surface)} / ${dark}`,
       )
       await stress(page, 'Page', '.page__title, .page__act')

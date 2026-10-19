@@ -55,6 +55,7 @@ test off before any pilot datum: that sign-off is not part of this build.
 | X-13 The attitude rating | `scripts/story-check.ts` | Seeded players: false leans at about alpha or fewer, a strong lean read in 80 per cent or more, content-blind players not read; decisive pairs only after the reveal and on equal notes; caste and birthplace compared only within their pools |
 | X-14 Season records | `scripts/story-check.ts`, `scripts/rules-check.ts`, `scripts/e2e.ts` | One record per decision, the whitelist, no time field, Back keeps only the final answer; the emulator's rules accept a whole season, a profile box, a research link and contact details, and refuse any other field; a browser plays a season on the emulator |
 | X-15 The optional profile | `scripts/story-check.ts` | Ciphertext only in the store, the recovery code opens it and a wrong one does not, research opt-in and opt-out, delete withdraws the seasons, the change and retake rules, contact details stored apart |
+| X-16 No PENDING in player copy (EVAL-6) | `scripts/pending-check.ts`, and `pnpm ux` per rendered screen | No content string a player can see, and no string in `src/`, says PENDING; the dev-only notes render nothing outside the dev server; the disclosure's sentence 3 placeholder only while `config.demo` is true |
 
 ## The predecessor's crosswise build checks
 

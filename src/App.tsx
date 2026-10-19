@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
-import { config } from './engine/config'
+import { config, devRoutes } from './engine/config'
 import { enrolmentKey } from './engine/codes'
 import { store, today } from './store'
 import { Play } from './screens/Play'
-import { Enrol, Explain, Home, Withdraw } from './screens/Pages'
+import { Enrol, Explain, Home, SeasonLanding, Withdraw } from './screens/Pages'
 import { Results } from './screens/Results'
 import { Profile } from './screens/Profile'
 import { Notice, Page } from './ui'
@@ -30,13 +30,20 @@ export function App() {
       firm: { timingArm: r.enrolment.arm, batchMonth: r.enrolment.month, sex: r.enrolment.sex },
     }
   }, [arg])
+  const closed = (
+    <Page surface="oof" stepKey="none">
+      <Notice>Open the link you were sent to play.</Notice>
+    </Page>
+  )
   switch (kind) {
     case 'play':
       return <Play key={path} start={startToken} firm={false} />
     case 'firm':
-      return <Play key={path} start={startFirm} firm />
+      return devRoutes() ? <Play key={path} start={startFirm} firm /> : closed
     case 'enrol':
-      return <Enrol firm={arg ?? ''} />
+      return devRoutes() ? <Enrol firm={arg ?? ''} /> : closed
+    case 'dev':
+      return devRoutes() ? <Home go={go} /> : closed
     case 'explain':
       return <Explain />
     case 'withdraw':
@@ -46,12 +53,6 @@ export function App() {
     case 'results':
       return config.demo ? <Results /> : null
     default:
-      return config.demo ? (
-        <Home go={go} />
-      ) : (
-        <Page surface="oof" stepKey="none">
-          <Notice>Open the link you were sent to play.</Notice>
-        </Page>
-      )
+      return config.demo ? <SeasonLanding go={go} /> : closed
   }
 }

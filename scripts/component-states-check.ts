@@ -159,6 +159,23 @@ export async function run() {
     'Portrait: eager faces (above the fold) load at once',
     /loading="eager"/.test(face(true)) && !/loading="lazy"/.test(face(true)),
   )
+  const applicant = {
+    kind: 'person' as const,
+    sex: 'man' as const,
+    slot: 103,
+    oneOff: true,
+    tone: 'm' as const,
+    hair: 'crew' as const,
+  }
+  setPortraitFiles(['o103-man.webp'])
+  const oneOff = html(h(Portrait, { look: applicant, label: 'man, medium skin tone' }))
+  setPortraitFiles(['o104-man.webp'])
+  record(
+    T,
+    'Portrait: a one-off takes o{slot}-{sex}.webp when the manifest lists it, else is drawn',
+    /src="\/portraits\/o103-man\.webp"/.test(oneOff) &&
+      !/<img/.test(html(h(Portrait, { look: applicant, label: 'man, medium skin tone' }))),
+  )
   setPortraitFiles(['1-woman-d1.webp'])
   record(
     T,

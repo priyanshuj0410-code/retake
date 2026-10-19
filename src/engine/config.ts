@@ -102,3 +102,10 @@ export const formatDate = (ms: number, lang: 'en' | 'hinglish') =>
     year: 'numeric',
     timeZone: 'Asia/Kolkata',
   })
+
+/**
+ * The old card games (panel games 1 and 2, the firm session and its enrolment) and the demo
+ * menu that starts them are kept for the checks only (EVAL-6, owner decision 19 Oct 2026): they
+ * open on the Vite dev server in demo mode, and no player-facing page links to them.
+ */
+export const devRoutes = (): boolean => !!import.meta.env?.DEV && config.demo

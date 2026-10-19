@@ -37,19 +37,19 @@ Direction C from the review sheet (`ui-directions.html`, 19 Oct 2026). Design ru
 | 7 | Game and out of fiction look the same; the demo badge loudest; a green tick by the rating | The plain register: cool grey, ink buttons, 1 px rules, no violet, no panels; the demo note is a quiet outlined chip; the result opens with a plain notice, no tick |
 | 8 | Density: empty halves, long scrolls, a survey legend repeated 12 times, a 8,284 px result, the button moving | Strips and splashes fill the short screens; the survey key is one sticky header; the result areas fold (first open), so the 390 px result is about 5,500 px with one area open; on the page-turn screens the action row stays at the foot of the screen; decisions have no button at all (they commit on the tap) |
 | 9 | The result has no shape | "38 of 46 equal pairs where you put the man ahead", a dot grid, the band and its sentence, the bar and reasons, then "Your other readings" as a plain list; no colour reads good or bad |
-| 10 | "PENDING v18" in player copy; emoji episode art | Every pending marker moved to underscore keys and the dev-only `DevNotes` panel; X-15 and `pnpm ux` fail on any rendered PENDING (the demo disclosure placeholder aside); the season cards use drawn covers (warehouse, newsroom, clinic) |
+| 10 | "PENDING v18" in player copy; emoji episode art | Every pending marker moved to underscore keys and the dev-only `DevNotes` panel; X-16 and `pnpm ux` fail on any rendered PENDING (the demo disclosure placeholder aside); the season cards use drawn covers (warehouse, newsroom, clinic) |
 
 ### Verification (EVAL-6)
 
-- `pnpm check` green: tsc and oxlint; 296 of 296 build checks (design-check with the art tier
+- `pnpm check` green: tsc and oxlint; 299 of 299 build checks (design-check with the art tier
   and the no-colour-in-markup rule, X-9 with the stamps, the empty split and every portrait
-  branch, X-10 with the strips and drawn covers, X-15 no PENDING in player copy); `pnpm ux` 170
+  branch, X-10 with the strips and drawn covers, X-16 no PENDING in player copy); `pnpm ux` 170
   screens at 412, 320 and 1280 px, light and dark: 0 contrast fails, 0 targets under size, 0
   axe violations, 0 heading or focus fails, keyboard paths for tap-to-order, the split and the
-  grid all pass, 87 of 87 component states, 0 rendered PENDING; `pnpm rules` 43 of 43;
+  grid all pass, 87 of 87 component states (each surface's ground unchanged under OS dark), 0 rendered PENDING; `pnpm rules` 43 of 43;
   `pnpm e2e` passes, the season playing to the result on the emulator.
-- The whole season played with Playwright at 390 and 1440 px (light), 390 px dark and 390 px at
-  2x: no page errors, no PENDING on any rendered screen but the demo disclosure placeholder.
+- The whole season played with Playwright at 390 and 1440 px and 390 px at 2x, and at 390 px
+  with the OS in dark mode to prove the light pin (`comic-build/v2/`): no page errors, no PENDING on any rendered screen but the demo disclosure placeholder.
   The 390 px result is about 5,500 px with the first area open (8,284 px before).
 - Halftone: the face shading and panel corners read as an even tint at 1x and 2x with no moire;
   no text sits on halftone (captions and plates have solid grounds; white on the splash violet
@@ -67,25 +67,25 @@ Direction C from the review sheet (`ui-directions.html`, 19 Oct 2026). Design ru
    old small emoji. P1 should rate the portraits as it rates names, and a pilot should run before
    data. Within a one-off tied pair the two looks differ at random (hairstyle, glasses, facial
    hair from a hash of the id): unrelated to the cue across players, but visible within a pair.
-2. **Result order.** The owner's NPQE order opened with the disarming paragraph; it now follows
-   the hero and the other readings, because the brief asks the page to lead with one number.
-   The owner may want it back above the number.
+2. **Result order (owner decision).** The owner set the order: the disarming opening first,
+   cut to three sentences, then "38 of 46" with the dots and the band, the other readings and
+   the folded areas. `story-check` holds the order and the two-to-three-sentence limit.
 3. **Hinglish drafts.** The new strings (the hero line and its dots, "Clear the stamps", the strip
    captions split from the old interludes, "Page n / k") are builder drafts for the cognitive
    interviews.
-4. **Sentence 3.** The season disclosure still shows `PENDING owner wording`; X-15 now fails if
+4. **Sentence 3.** The season disclosure still shows `PENDING owner wording`; X-16 now fails if
    `config.demo` is set to false while it is the placeholder, so it cannot reach a live build.
-5. **The panel games and the firm session** sit on the same surfaces, so they take the comic type
-   and palette and the plain register too; their emoji `Character` cards are unchanged.
+5. **Old card games retired from the menu (owner request).** The demo landing goes straight
+   into the season; panel games 1 and 2 and the firm session open only on the dev server at
+   `#/dev`, kept for the checks. A player link to one outside the dev server is refused. One light
+   theme: the dark overrides are gone and `color-scheme: light` is set (owner request).
 6. **Generated portraits (owner decision during the build).** `Portrait` now shows
    `public/portraits/{slot}-{sex}-{tone}.webp` and `mascot-{animal}.webp` when
    `public/portraits/manifest.json` lists them, on the same comic frame, and draws the SVG
    otherwise. The images have not landed yet; the path was tested with temporary placeholder
-   WebPs (removed). Two gaps for the image agent: one-offs use slots 100 and up at the medium
-   tone, which the four-shade scheme does not cover, so they stay drawn unless those files are
-   made (a drawn one-off beside generated cast is a visible change of style); and the slot is
-   the cast slot, whose look the drawing deals by place within sex (looks.ts), so an image set
-   should keep each slot's look constant across its four tones.
+   WebPs (removed). One-offs look up `o{slot}-{sex}.webp` (slot 100 and up) the same way.
+   For the image agent: the cast slot's look is dealt by place within sex (looks.ts), so an
+   image set should keep each slot's look constant across its four tones.
 7. **Comic register for a workplace study** may read as less serious (the review sheet's own
    trade-off); worth a line in the P1 interviews.
 

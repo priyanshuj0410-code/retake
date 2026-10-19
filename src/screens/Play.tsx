@@ -7,7 +7,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { screens } from '../content'
 import type { Lang } from '../content/types'
-import { config, type DeploymentId } from '../engine/config'
+import { config, devRoutes, type DeploymentId } from '../engine/config'
 import { cryptoRng } from '../engine/rng'
 import { Runner, type FirmLabels } from '../engine/runner'
 import { store } from '../store'
@@ -103,6 +103,13 @@ export function Play({
   const ui: Lang = langs && langs.length === 1 ? langs[0] : offered[0]
 
   const isSeason = dep === 'season'
+  /* The old card games open only on the dev server (EVAL-6); a player link to one is refused. */
+  if (!isSeason && !devRoutes())
+    return (
+      <Page surface="oof" stepKey="closed">
+        <Notice>Open the link you were sent to play.</Notice>
+      </Page>
+    )
   const begin = (chosen: Lang[]) => {
     setLangs(chosen)
     if (isSeason) setPre('pick')

@@ -61,7 +61,7 @@ export function personLook(c: CastMember, cast: CastMember[]): PersonLook {
     const glasses = (h >>> 4) % 3 === 0
     const facial =
       c.sex === 'man' ? ([undefined, 'beard', 'moustache'] as const)[(h >>> 8) % 3] : undefined
-    return { kind: 'person', sex: c.sex, slot: c.slot, tone, hair, glasses, facial }
+    return { kind: 'person', sex: c.sex, slot: c.slot, oneOff: true, tone, hair, glasses, facial }
   }
   const same = cast.filter((x) => x.sex === c.sex)
   const style = (c.sex === 'woman' ? WOMEN : MEN)[Math.max(0, same.indexOf(c)) % 4]

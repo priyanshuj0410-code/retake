@@ -13,7 +13,7 @@ import { config } from '../src/engine/config'
 import { DevNotes } from '../src/ui'
 import { record } from './lib/check'
 
-const T = 'X-15 no PENDING in player copy'
+const T = 'X-16 no PENDING in player copy'
 const ROOT = new URL('..', import.meta.url).pathname
 /** Content files that are not player copy: planning values and their notes. */
 const NOT_COPY = new Set(['config.json'])

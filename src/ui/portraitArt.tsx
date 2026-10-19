@@ -19,6 +19,8 @@ export type Look =
       sex: 'woman' | 'man'
       /** The character's slot, the key of a generated image (cast 0 to 7, one-offs 100 up). */
       slot?: number
+      /** A one-off character (applicant, complainant, other team): its image is o{slot}-{sex}. */
+      oneOff?: boolean
       tone: Tone
       hair: Hair
       facial?: 'beard' | 'moustache'

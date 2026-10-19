@@ -783,7 +783,7 @@ export function StoryResult({
       demo={demo ? L(S.common.demoBadge) : undefined}
       lang={langAttr(ui)}
     >
-      <Notice>{L(finished === 'submitted' ? RT.submitted : RT.withdrawn)}</Notice>
+      <Text kind="lead">{L(RT.opening)}</Text>
       <ResultHero
         group={L(RT.cues.sex.label)}
         figure={m.hero ?? undefined}
@@ -811,7 +811,6 @@ export function StoryResult({
           .filter((c) => c.cue !== 'sex')
           .map((c) => ({ id: c.cue, label: c.label, level: c.level, zone: c.zone }))}
       />
-      <Text kind="lead">{L(RT.opening)}</Text>
       <Text kind="small">{L(RT.intro)}</Text>
       <Heading>{L(RT.areasTitle)}</Heading>
       {m.domains.map((d, n) => (
@@ -857,6 +856,7 @@ export function StoryResult({
         </Fold>
       ))}
       <Notice>{L(RT.committee)}</Notice>
+      <Notice>{L(finished === 'submitted' ? RT.submitted : RT.withdrawn)}</Notice>
       <KeepIt runner={runner} zone={h.zone} towards={h.towards} weight={h.weight} pairs={h.pairs} />
       <Heading>{L(RT.shareTitle)}</Heading>
       <Text kind="small">{L(RT.shareBody)}</Text>
