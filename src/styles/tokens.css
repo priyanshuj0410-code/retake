@@ -78,6 +78,8 @@
   --px-640: 640px;
   --dur-160: 160ms;
   --dur-0: 0ms;
+  --scale-98: 0.98;
+  --scale-100: 1;
   --shadow-lift: 0 6px 18px rgb(34 20 54 / 0.18);
   --shadow-none: none;
 }
@@ -137,6 +139,7 @@
   --icon: var(--px-40);
   --measure: var(--px-640);
   --motion: var(--dur-160);
+  --press: var(--scale-98);
   --lift: var(--shadow-lift);
   --flat: var(--shadow-none);
 }
@@ -152,6 +155,7 @@
 @media (prefers-reduced-motion: reduce) {
   :root {
     --motion: var(--dur-0);
+    --press: var(--scale-100);
   }
 }
 
@@ -259,4 +263,14 @@
   --c-on-accent: var(--grey-900);
   --c-focus: var(--grey-100);
   --c-label: var(--grey-300);
+}
+
+/* Forced colours (Windows high contrast and similar): the system paints most colours. Inactive
+   controls and rules take GrayText and focus and selection take Highlight, on every surface. */
+@media (forced-colors: active) {
+  :root,
+  [data-surface] {
+    --c-rule: GrayText !important;
+    --c-focus: Highlight !important;
+  }
 }

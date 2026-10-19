@@ -15,6 +15,7 @@ import { chromium, type Page } from 'playwright-core'
 import { createServer } from 'vite'
 import { screeningItems, screens as S } from '../src/content'
 import { marker, step } from './lib/autoplay'
+import { statesPass, type StateResult } from './ux-states'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const LABEL = process.argv[2] ?? 'latest'
@@ -295,6 +296,7 @@ async function main() {
   })
   const page = await context.newPage()
   page.on('pageerror', (e) => problems.push(`page error: ${e.message}`))
+  let states: StateResult[] = []
   try {
     await page.goto(BASE)
     await page.waitForSelector('[data-screen="home"]')
@@ -376,6 +378,7 @@ async function main() {
     await page.goto(`${BASE}#/play/not-a-token`)
     await page.getByRole('alert').waitFor()
     await audit(page, 'link refused')
+    states = await statesPass(page, BASE)
   } finally {
     await browser.close()
     await server.close()
@@ -407,6 +410,7 @@ async function main() {
     focusNotOnHeading: focusFails.length,
     keyboardFails: keyboard.filter((k) => !k.ok).length,
     problems: problems.length,
+    stateFails: states.filter((r) => !r.ok).length,
     textSlips: textSlips.length,
     recallLeaks: recallLeaks.length,
   }
@@ -429,6 +433,7 @@ async function main() {
         problems,
         textSlips,
         recallLeaks,
+        states,
         walkthroughs: walk,
         screens: perVariant,
       },
@@ -449,6 +454,9 @@ async function main() {
     for (const r of rs)
       for (const a of r.axe) axeIds.set(a.split(' ')[0], (axeIds.get(a.split(' ')[0]) ?? 0) + 1)
   console.log(`axe rules: ${[...axeIds].map(([k, n]) => `${k} ${n}`).join(', ') || 'none'}`)
+  for (const r of states.filter((x) => !x.ok))
+    console.log(`state FAIL ${r.component}: ${r.state} (${r.detail})`)
+  console.log(`states: ${states.filter((x) => x.ok).length}/${states.length} passed`)
   console.log(`ux: ${screens.length} screens x ${VARIANTS.length} variants -> ${OUT}`)
   if (failing) process.exit(1)
 }

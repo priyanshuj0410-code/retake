@@ -18,6 +18,7 @@ const modules = [
   './game-rules-check',
   './design-check',
   './bundle-check',
+  './component-states-check',
 ]
 for (const m of modules) {
   try {

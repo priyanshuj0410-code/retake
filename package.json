@@ -21,7 +21,8 @@
     "e2e": "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" firebase emulators:exec --only database,auth --project demo-eval 'tsx --tsconfig tsconfig.app.json scripts/e2e.ts'",
     "merit-reference": "tsx --tsconfig tsconfig.app.json scripts/merit-reference.ts",
     "walkthrough": "tsx --tsconfig tsconfig.app.json --import ./scripts/lib/ignore-css.mjs scripts/walkthrough.ts",
-    "ux": "tsx --tsconfig tsconfig.app.json scripts/ux-audit.ts"
+    "ux": "tsx --tsconfig tsconfig.app.json scripts/ux-audit.ts",
+    "ux:states": "tsx --tsconfig tsconfig.app.json scripts/ux-states.ts"
   },
   "dependencies": {
     "firebase": "^12.18.0",
