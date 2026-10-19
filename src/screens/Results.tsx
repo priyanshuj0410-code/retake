@@ -125,6 +125,7 @@ export function Results() {
           <section key={t.caption}>
             <Table
               caption={t.caption}
+              empty="No group is large enough to report yet."
               head={['Group', 'People', 'Value']}
               rows={[
                 ...r.released.map((c) => ({

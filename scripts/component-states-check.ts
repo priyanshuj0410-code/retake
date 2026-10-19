@@ -6,7 +6,7 @@
  */
 import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { Allocate, Button, Checks, Choice, Code, Field, List, SortList } from '../src/ui'
+import { Allocate, Button, Checks, Choice, Code, Field, List, SortList, Table } from '../src/ui'
 import { record } from './lib/check'
 
 const T = 'X-9 component states (markup)'
@@ -146,4 +146,22 @@ export async function run() {
     /<button[^>]*>Copy<\/button><p class="code__status" role="status"><\/p>/.test(code),
   )
   record(T, 'List: empty renders nothing', html(h(List, { items: [] })) === '')
+  const table = (rows: { cells: string[]; suppressed?: boolean }[]) =>
+    html(h(Table, { head: ['Group', 'n'], rows, caption: 'Results', empty: 'No groups yet' }))
+  record(
+    T,
+    'Table: the scroll box is a named, focusable region',
+    /<div class="table__wrap" role="region" aria-label="Results" tabindex="0">/.test(table([])),
+  )
+  record(
+    T,
+    'Table: no rows says so across every column',
+    /colSpan="2"|colspan="2"/.test(table([])) && /No groups yet/.test(table([])),
+  )
+  record(
+    T,
+    'Table: a suppressed row is marked in every cell',
+    (table([{ cells: ['a', 'b'], suppressed: true }]).match(/table__cell--suppressed/g) ?? [])
+      .length === 2,
+  )
 }
