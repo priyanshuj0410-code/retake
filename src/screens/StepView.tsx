@@ -9,7 +9,7 @@ import { formatDate, releaseOf } from '../engine/config'
 import { formatCode } from '../engine/codes'
 import { characterView, fill } from '../engine/text'
 import { randomiserStatement, type Runner } from '../engine/runner'
-import { isOutOfFiction, type Step } from '../engine/session'
+import { isOutOfFiction, recallOptions, type Step } from '../engine/session'
 import {
   Allocate,
   Button,
@@ -190,7 +190,7 @@ export function StepView({
           key={key}
           page={page}
           legend={L(S.recall.question)}
-          options={S.recall.options.map((o) => ({ id: o.id, text: L(o.text) }))}
+          options={recallOptions(runner.note).map((o) => ({ id: o.id, text: L(o.text) }))}
           next={L(S.common.next)}
           onDone={onDone}
         />

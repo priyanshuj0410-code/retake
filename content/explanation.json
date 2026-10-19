@@ -85,12 +85,8 @@
             "hinglish": "Pehli, kis player ko kaun sa note mila, aur kya player ne privacy format ke extra kathan diye, yeh pehle cards ke baad ke chhote sawaalon ke jawabon par nirbhar tha. Pehle batane se players un jawabon ko mod sakte the. Har group ke andar note random chuna gaya."
           },
           {
-            "en": "Second, consent said only that a note might ask you to answer in a particular way. It did not quote the notes, because quoting the one that asks for a particular way of answering would have shaped everyone's play. These were the three notes, word for word:",
-            "hinglish": "Doosri, consent ne sirf itna kaha ki ek note aapse kisi khaas tarah jawab dene ko keh sakta hai. Usne notes quote nahin kiye, kyunki khaas tarah jawab maangne wale note ko quote karne se sab ka khel badal jaata. Yeh teen notes the, shabdash:"
-          },
-          {
-            "en": "Note a: [PLACEHOLDER: a sourced statistic on how many Indian employees support equal chances for women and men at work goes here.] Source: [PLACEHOLDER: source to be confirmed] For the next part, the rounds and the questions after them, answer as you would.",
-            "hinglish": "Note a: [PLACEHOLDER: a sourced statistic on how many Indian employees support equal chances for women and men at work goes here.] Source: [PLACEHOLDER: source to be confirmed] For the next part, the rounds and the questions after them, answer as you would."
+            "en": "Second, consent said only that a note might ask you to answer in a particular way. It did not quote the notes, because quoting the one that asks for a particular way of answering would have shaped everyone's play. These were the two notes, word for word:",
+            "hinglish": "Doosri, consent ne sirf itna kaha ki ek note aapse kisi khaas tarah jawab dene ko keh sakta hai. Usne notes quote nahin kiye, kyunki khaas tarah jawab maangne wale note ko quote karne se sab ka khel badal jaata. Yeh do notes the, shabdash:"
           },
           {
             "en": "Note b: [PLACEHOLDER: a sourced statistic on how many Indian employees travel to work by public transport each day goes here.] Source: [PLACEHOLDER: source to be confirmed] For the next part, the rounds and the questions after them, answer as you would.",
@@ -210,8 +206,8 @@
             "hinglish": "Pehli, kis player ko kaun sa note mila, aur kya player ne privacy format ke extra kathan diye, yeh dono random chune gaye. Is game mein yeh aapke kisi jawab par nirbhar nahin the."
           },
           {
-            "en": "Second, consent said only that a note might ask you to answer in a particular way. It did not quote the notes, because quoting the one that asks for a particular way of answering would have shaped everyone's play. These were the three notes, word for word:",
-            "hinglish": "Doosri, consent ne sirf itna kaha ki ek note aapse kisi khaas tarah jawab dene ko keh sakta hai. Usne notes quote nahin kiye, kyunki khaas tarah jawab maangne wale note ko quote karne se sab ka khel badal jaata. Yeh teen notes the, shabdash:"
+            "en": "Second, consent said only that a note might ask you to answer in a particular way. It did not quote the notes. In this game both notes asked you to answer as you would. These were the two notes, word for word:",
+            "hinglish": "Doosri, consent ne sirf itna kaha ki ek note aapse kisi khaas tarah jawab dene ko keh sakta hai. Usne notes quote nahin kiye. Is game mein dono notes ne aapse waise hi jawab dene ko kaha jaise aap dete hain. Yeh do notes the, shabdash:"
           },
           {
             "en": "Note a: [PLACEHOLDER: a sourced statistic on how many Indian employees support equal chances for women and men at work goes here.] Source: [PLACEHOLDER: source to be confirmed] For the next part, the rounds and the questions after them, answer as you would.",
@@ -220,10 +216,6 @@
           {
             "en": "Note b: [PLACEHOLDER: a sourced statistic on how many Indian employees travel to work by public transport each day goes here.] Source: [PLACEHOLDER: source to be confirmed] For the next part, the rounds and the questions after them, answer as you would.",
             "hinglish": "Note b: [PLACEHOLDER: a sourced statistic on how many Indian employees travel to work by public transport each day goes here.] Source: [PLACEHOLDER: source to be confirmed] For the next part, the rounds and the questions after them, answer as you would."
-          },
-          {
-            "en": "Note c: [PLACEHOLDER: a sourced statistic on how many Indian employees travel to work by public transport each day goes here.] Source: [PLACEHOLDER: source to be confirmed] For the next part, the rounds and the questions after them, answer as the ideal employee would.",
-            "hinglish": "Note c: [PLACEHOLDER: a sourced statistic on how many Indian employees travel to work by public transport each day goes here.] Source: [PLACEHOLDER: source to be confirmed] For the next part, the rounds and the questions after them, answer as the ideal employee would."
           }
         ]
       },

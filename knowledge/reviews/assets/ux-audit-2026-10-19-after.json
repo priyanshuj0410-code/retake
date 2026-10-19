@@ -5,13 +5,14 @@
   "focusNotOnHeading": 0,
   "keyboardFails": 0,
   "problems": 0,
-  "textSlips": 0
+  "textSlips": 0,
+  "recallLeaks": 0
  },
  "counts": {
   "412-light": {
    "contrastFails": 0,
    "underTarget": 0,
-   "targets": 507,
+   "targets": 501,
    "noName": 0,
    "headingSkips": 0,
    "noH1": 0,
@@ -26,7 +27,7 @@
   "412-dark": {
    "contrastFails": 0,
    "underTarget": 0,
-   "targets": 507,
+   "targets": 501,
    "noName": 0,
    "headingSkips": 0,
    "noH1": 0,
@@ -41,7 +42,7 @@
   "320-light": {
    "contrastFails": 0,
    "underTarget": 0,
-   "targets": 507,
+   "targets": 501,
    "noName": 0,
    "headingSkips": 0,
    "noH1": 0,
@@ -56,7 +57,7 @@
   "320-dark": {
    "contrastFails": 0,
    "underTarget": 0,
-   "targets": 507,
+   "targets": 501,
    "noName": 0,
    "headingSkips": 0,
    "noH1": 0,
@@ -71,7 +72,7 @@
   "1280-light": {
    "contrastFails": 0,
    "underTarget": 0,
-   "targets": 507,
+   "targets": 501,
    "noName": 0,
    "headingSkips": 0,
    "noH1": 0,
@@ -86,7 +87,7 @@
   "1280-dark": {
    "contrastFails": 0,
    "underTarget": 0,
-   "targets": 507,
+   "targets": 501,
    "noName": 0,
    "headingSkips": 0,
    "noH1": 0,
@@ -109,12 +110,12 @@
   {
    "card": "g1 firstWeek:people:ranking",
    "ok": true,
-   "detail": "tab reaches move button true; Enter moves row true; announced \"Pooja Sharma, Position 2 of 4\"; focus kept at the end of the list true"
+   "detail": "tab reaches move button true; Enter moves row true; announced \"Toffee, Position 2 of 4\"; focus kept at the end of the list true"
   },
   {
    "card": "g2 firstWeek:people:ranking",
    "ok": true,
-   "detail": "tab reaches move button true; Enter moves row true; announced \"Rekha, 4 mein se 2 number par\"; focus kept at the end of the list true"
+   "detail": "tab reaches move button true; Enter moves row true; announced \"Shabnam, 4 mein se 2 number par\"; focus kept at the end of the list true"
   },
   {
    "card": "g2 after:people:allocation",
@@ -124,7 +125,7 @@
   {
    "card": "g2en firstWeek:people:ranking",
    "ok": true,
-   "detail": "tab reaches move button true; Enter moves row true; announced \"Sunita, Position 2 of 4\"; focus kept at the end of the list true"
+   "detail": "tab reaches move button true; Enter moves row true; announced \"Meera, Position 2 of 4\"; focus kept at the end of the list true"
   },
   {
    "card": "g2en after:people:allocation",
@@ -132,65 +133,66 @@
    "detail": "tab reaches plus true; all shared by Space true; focus kept when the plus is spent true"
   },
   {
+   "card": "firm firstWeek:people:ranking",
+   "ok": true,
+   "detail": "tab reaches move button true; Enter moves row true; announced \"Irfan, 4 mein se 2 number par\"; focus kept at the end of the list true"
+  },
+  {
    "card": "firm firstWeek:people:allocation",
    "ok": true,
    "detail": "tab reaches plus true; all shared by Space true; focus kept when the plus is spent true"
-  },
-  {
-   "card": "firm firstWeek:people:ranking",
-   "ok": true,
-   "detail": "tab reaches move button true; Enter moves row true; announced \"Arjun, 4 mein se 2 number par\"; focus kept at the end of the list true"
   }
  ],
  "problems": [],
  "textSlips": [],
+ "recallLeaks": [],
  "walkthroughs": [
   {
    "session": "g1",
    "screens": 78,
-   "result": "Your season A hard season. Several budget and vendor calls cost the team, and next quarter starts with catching up. Continue",
+   "result": "Your season A hard season. The team fell behind plan, and next quarter starts with catching up. Continue",
    "codeScreen": "From 1 March 2027, a page explaining the study opens with this code.",
    "finished": "submitted"
   },
   {
    "session": "g1",
    "screens": 78,
-   "result": "Your season A hard season. Several budget and vendor calls cost the team, and next quarter starts with catching up. Continue",
+   "result": "Your season A hard season. The team fell behind plan, and next quarter starts with catching up. Continue",
    "codeScreen": "From 1 March 2027, a page explaining the study opens with this code.",
    "finished": "submitted"
   },
   {
    "session": "g1",
    "screens": 163,
-   "result": "Your season A hard season. Several budget and vendor calls cost the team, and next quarter starts with catching up. Continue",
+   "result": "Your season A hard season. The team fell behind plan, and next quarter starts with catching up. Continue",
    "codeScreen": "From 1 March 2027, a page explaining the study opens with this code.",
    "finished": "submitted"
   },
   {
    "session": "g1",
    "screens": 127,
-   "result": "Your season A hard season. Several budget and vendor calls cost the team, and next quarter starts with catching up. Continue",
+   "result": "Your season A hard season. The team fell behind plan, and next quarter starts with catching up. Continue",
    "codeScreen": "From 1 March 2027, a page explaining the study opens with this code.",
    "finished": "submitted"
   },
   {
    "session": "g2",
    "screens": 135,
-   "result": "Aapka season Mushkil season. Kai budget aur vendor faislon se team ka nuksan hua, aur agla quarter peeche se shuru hoga. Aage badhein",
+   "result": "Aapka season Mushkil season. Team plan se peeche reh gayi, aur agla quarter peeche se shuru hoga. Aage badhein",
    "codeScreen": "Yeh hissa game ka hissa nahin hai. Aapka withdrawal code Yeh code sirf ek baar dikhaya jaata hai. Ise save kijiye: likh lijiye ya screenshot le lijiye. Aapke jawabon par yeh code hai, aapka naam nahin. … 1 March 2027 se is code se study samjhane wala page khulega. Aap 15 March 2027 tak isse withdraw kar sakte hain.",
    "finished": "submitted"
   },
   {
    "session": "g2en",
    "screens": 135,
-   "result": "Your season A hard season. Several budget and vendor calls cost the team, and next quarter starts with catching up. Continue",
+   "result": "Your season A hard season. The team fell behind plan, and next quarter starts with catching up. Continue",
    "codeScreen": "From 1 March 2027, a page explaining the study opens with this code.",
    "finished": "withdrawn"
   },
   {
    "session": "firm",
    "screens": 137,
-   "result": "Aapka season Mushkil season. Kai budget aur vendor faislon se team ka nuksan hua, aur agla quarter peeche se shuru hoga. Aage badhein",
+   "result": "Aapka season Mushkil season. Team plan se peeche reh gayi, aur agla quarter peeche se shuru hoga. Aage badhein",
    "codeScreen": "Yeh hissa game ka hissa nahin hai. Aapka withdrawal code Yeh code sirf ek baar dikhaya jaata hai. Ise save kijiye: likh lijiye ya screenshot le lijiye. Aapke jawabon par yeh code hai, aapka naam nahin. … 1 June 2027 se is code se study samjhane wala page khulega. Aap 15 June 2027 tak isse withdraw kar sakte hain.",
    "finished": "submitted"
   },
@@ -319,7 +321,7 @@
    },
    {
     "screen": "g1 firstWeek:people:allocation",
-    "title": "Who gets the hours on the crane contract talks? · Team season",
+    "title": "Client visits ka lunch kaun order karega · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -337,7 +339,7 @@
    },
    {
     "screen": "g1 firstWeek:people:allocation",
-    "title": "Who gets the hours on the crane contract talks? · Team season",
+    "title": "Client visits ka lunch kaun order karega · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -355,14 +357,14 @@
    },
    {
     "screen": "g1 firstWeek:people:ranking",
-    "title": "Warehouse site move ko lead kaun karega? · Team season",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 34,
+    "text": 30,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -373,7 +375,7 @@
    },
    {
     "screen": "g1 firstWeek:people:ranking",
-    "title": "Warehouse site move ko lead kaun karega? · Team season",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -408,8 +410,8 @@
     "axe": []
    },
    {
-    "screen": "g1 season:people:allocation",
-    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
+    "screen": "g1 season:people:ranking",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -426,8 +428,8 @@
     "axe": []
    },
    {
-    "screen": "g1 season:people:ranking",
-    "title": "Who should lead the quarterly budget review? · Team season",
+    "screen": "g1 season:people:allocation",
+    "title": "Who handles the intern paperwork · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -643,7 +645,7 @@
    },
    {
     "screen": "g1 survey:survey",
-    "title": "A complaint made by a woman should be believed without checking the facts. · Team season",
+    "title": "When two colleagues are equally strong, the woman should get the lead role. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -679,7 +681,7 @@
    },
    {
     "screen": "g1 after:people:ranking",
-    "title": "Four accounts from the Diwali party · Team season",
+    "title": "Four accounts from the sales conference · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -697,7 +699,7 @@
    },
    {
     "screen": "g1 after:people:allocation",
-    "title": "How should fleet planning mentoring be shared? · Team season",
+    "title": "How should peer-coaching sessions be shared? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -751,7 +753,7 @@
    },
    {
     "screen": "g1 after:survey",
-    "title": "A woman and a man doing the same job at the same level should be paid the same. · Team season",
+    "title": "When two colleagues are equally strong, the woman should get the lead role. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -771,12 +773,12 @@
     "screen": "g1 after:recall",
     "title": "What did the note before this part say? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -913,7 +915,7 @@
    },
    {
     "screen": "g1 offTheRecord:m1h-direct",
-    "title": "I have watched a cricket match in the past month. · Team season",
+    "title": "I usually finish a meal with something sweet. · Team season",
     "hOverflow": 0,
     "targets": 3,
     "underTarget": [],
@@ -1021,7 +1023,7 @@
    },
    {
     "screen": "g2 firstWeek:people:ranking",
-    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
+    "title": "Ek mushkil mahine ke baare mein chaar reports · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -1039,7 +1041,7 @@
    },
    {
     "screen": "g2 firstWeek:people:ranking",
-    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
+    "title": "Ek mushkil mahine ke baare mein chaar reports · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -1075,7 +1077,7 @@
    },
    {
     "screen": "g2 season:people:ranking",
-    "title": "Quarter-end review ke chaar accounts · Team season",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -1254,26 +1256,8 @@
     "axe": []
    },
    {
-    "screen": "g2 after:people:allocation",
-    "title": "Newsletter editing ke ghante kaise baante jaayen? · Team season",
-    "hOverflow": 0,
-    "targets": 9,
-    "underTarget": [],
-    "noName": [],
-    "h1": 1,
-    "headingSkips": 0,
-    "text": 38,
-    "textUnder12": [],
-    "contrastFails": [],
-    "skipLink": false,
-    "needsSkip": false,
-    "liveRegion": true,
-    "needsLive": true,
-    "axe": []
-   },
-   {
-    "screen": "g2 after:people:allocation",
-    "title": "Newsletter editing ke ghante kaise baante jaayen? · Team season",
+    "screen": "g2 after:people:ranking",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -1290,8 +1274,26 @@
     "axe": []
    },
    {
-    "screen": "g2 after:people:ranking",
-    "title": "Front-desk client experience ka role kise milna chahiye? · Team season",
+    "screen": "g2 after:people:allocation",
+    "title": "Dispatch bonus pool kaise baanta jaaye? · Team season",
+    "hOverflow": 0,
+    "targets": 9,
+    "underTarget": [],
+    "noName": [],
+    "h1": 1,
+    "headingSkips": 0,
+    "text": 34,
+    "textUnder12": [],
+    "contrastFails": [],
+    "skipLink": false,
+    "needsSkip": false,
+    "liveRegion": true,
+    "needsLive": true,
+    "axe": []
+   },
+   {
+    "screen": "g2 after:people:allocation",
+    "title": "Dispatch bonus pool kaise baanta jaaye? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -1345,7 +1347,7 @@
    },
    {
     "screen": "g2 after:survey",
-    "title": "Mushkil stretch assignments us vyakti ko milne chahiye jo unke liye sabse achhe se taiyaar ho, kisi ek ling ko dusre par tarjeeh dekar nahi. · Team season",
+    "title": "Do barabar kabil sahkarmiyon ko lead role ka mauka barabar milna chahiye, chahe unka ling kuch bhi ho. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -1365,12 +1367,12 @@
     "screen": "g2 after:recall",
     "title": "Is hisse se pehle wale note mein kya likha tha? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -1615,7 +1617,7 @@
    },
    {
     "screen": "g2en firstWeek:people:ranking",
-    "title": "Four accounts from the quarter-end review · Team season",
+    "title": "Four reports about a rough month · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -1633,7 +1635,7 @@
    },
    {
     "screen": "g2en firstWeek:people:ranking",
-    "title": "Four accounts from the quarter-end review · Team season",
+    "title": "Four reports about a rough month · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -1669,7 +1671,7 @@
    },
    {
     "screen": "g2en season:people:ranking",
-    "title": "Four reports reach you this week · Team season",
+    "title": "Four accounts from the quarter-end review · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -1849,7 +1851,7 @@
    },
    {
     "screen": "g2en after:people:allocation",
-    "title": "How should the hiring-drive bonus be shared? · Team season",
+    "title": "How should the dispatch bonus pool be shared? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -1867,7 +1869,7 @@
    },
    {
     "screen": "g2en after:people:allocation",
-    "title": "How should the hiring-drive bonus be shared? · Team season",
+    "title": "How should the dispatch bonus pool be shared? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -1885,7 +1887,7 @@
    },
    {
     "screen": "g2en after:people:ranking",
-    "title": "Who coordinates the employee wellness week? · Team season",
+    "title": "Who should take the front-desk client experience role? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -1939,7 +1941,7 @@
    },
    {
     "screen": "g2en after:survey",
-    "title": "The most visible credit for a team's success should go first to the men on the team. · Team season",
+    "title": "A woman's complaint about a man should be treated with more doubt than any other complaint. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -1959,12 +1961,12 @@
     "screen": "g2en after:recall",
     "title": "What did the note before this part say? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -2280,8 +2282,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:allocation",
-    "title": "Course-design ke din kaise baante jaayen? · Team season",
+    "screen": "firm firstWeek:people:ranking",
+    "title": "Warehouse site move ko lead kaun karega? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -2298,8 +2300,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:allocation",
-    "title": "Course-design ke din kaise baante jaayen? · Team season",
+    "screen": "firm firstWeek:people:ranking",
+    "title": "Warehouse site move ko lead kaun karega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -2316,8 +2318,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:ranking",
-    "title": "Naye joiners ka onboarding programme kaun chalayega? · Team season",
+    "screen": "firm firstWeek:people:allocation",
+    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -2334,8 +2336,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:ranking",
-    "title": "Naye joiners ka onboarding programme kaun chalayega? · Team season",
+    "screen": "firm firstWeek:people:allocation",
+    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -2371,7 +2373,7 @@
    },
    {
     "screen": "firm season:people:allocation",
-    "title": "Crane contract talks ke ghante kise milenge? · Team season",
+    "title": "Hiring-drive ka bonus kaise baanta jaaye? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -2389,7 +2391,7 @@
    },
    {
     "screen": "firm season:people:ranking",
-    "title": "Quarterly budget review kaun lead karega? · Team season",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -2461,7 +2463,7 @@
    },
    {
     "screen": "firm direct:survey",
-    "title": "Jo mahila purush sahkarmiyon ke saath dostana hai, use maan lena chahiye ki woh ise galat samjhenge. · Team season",
+    "title": "Employers ko utpeedan ki report karne wale vyakti ko bolne ke liye kisi bhi saza se bachana chahiye. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -2666,7 +2668,7 @@
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 26,
+    "text": 25,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -2859,7 +2861,7 @@
    },
    {
     "screen": "g1 firstWeek:people:allocation",
-    "title": "Who gets the hours on the crane contract talks? · Team season",
+    "title": "Client visits ka lunch kaun order karega · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -2877,7 +2879,7 @@
    },
    {
     "screen": "g1 firstWeek:people:allocation",
-    "title": "Who gets the hours on the crane contract talks? · Team season",
+    "title": "Client visits ka lunch kaun order karega · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -2895,14 +2897,14 @@
    },
    {
     "screen": "g1 firstWeek:people:ranking",
-    "title": "Warehouse site move ko lead kaun karega? · Team season",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 34,
+    "text": 30,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -2913,7 +2915,7 @@
    },
    {
     "screen": "g1 firstWeek:people:ranking",
-    "title": "Warehouse site move ko lead kaun karega? · Team season",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -2948,8 +2950,8 @@
     "axe": []
    },
    {
-    "screen": "g1 season:people:allocation",
-    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
+    "screen": "g1 season:people:ranking",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -2966,8 +2968,8 @@
     "axe": []
    },
    {
-    "screen": "g1 season:people:ranking",
-    "title": "Who should lead the quarterly budget review? · Team season",
+    "screen": "g1 season:people:allocation",
+    "title": "Who handles the intern paperwork · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -3183,7 +3185,7 @@
    },
    {
     "screen": "g1 survey:survey",
-    "title": "A complaint made by a woman should be believed without checking the facts. · Team season",
+    "title": "When two colleagues are equally strong, the woman should get the lead role. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -3219,7 +3221,7 @@
    },
    {
     "screen": "g1 after:people:ranking",
-    "title": "Four accounts from the Diwali party · Team season",
+    "title": "Four accounts from the sales conference · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -3237,7 +3239,7 @@
    },
    {
     "screen": "g1 after:people:allocation",
-    "title": "How should fleet planning mentoring be shared? · Team season",
+    "title": "How should peer-coaching sessions be shared? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -3291,7 +3293,7 @@
    },
    {
     "screen": "g1 after:survey",
-    "title": "A woman and a man doing the same job at the same level should be paid the same. · Team season",
+    "title": "When two colleagues are equally strong, the woman should get the lead role. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -3311,12 +3313,12 @@
     "screen": "g1 after:recall",
     "title": "What did the note before this part say? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -3453,7 +3455,7 @@
    },
    {
     "screen": "g1 offTheRecord:m1h-direct",
-    "title": "I have watched a cricket match in the past month. · Team season",
+    "title": "I usually finish a meal with something sweet. · Team season",
     "hOverflow": 0,
     "targets": 3,
     "underTarget": [],
@@ -3561,7 +3563,7 @@
    },
    {
     "screen": "g2 firstWeek:people:ranking",
-    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
+    "title": "Ek mushkil mahine ke baare mein chaar reports · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -3579,7 +3581,7 @@
    },
    {
     "screen": "g2 firstWeek:people:ranking",
-    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
+    "title": "Ek mushkil mahine ke baare mein chaar reports · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -3615,7 +3617,7 @@
    },
    {
     "screen": "g2 season:people:ranking",
-    "title": "Quarter-end review ke chaar accounts · Team season",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -3794,26 +3796,8 @@
     "axe": []
    },
    {
-    "screen": "g2 after:people:allocation",
-    "title": "Newsletter editing ke ghante kaise baante jaayen? · Team season",
-    "hOverflow": 0,
-    "targets": 9,
-    "underTarget": [],
-    "noName": [],
-    "h1": 1,
-    "headingSkips": 0,
-    "text": 38,
-    "textUnder12": [],
-    "contrastFails": [],
-    "skipLink": false,
-    "needsSkip": false,
-    "liveRegion": true,
-    "needsLive": true,
-    "axe": []
-   },
-   {
-    "screen": "g2 after:people:allocation",
-    "title": "Newsletter editing ke ghante kaise baante jaayen? · Team season",
+    "screen": "g2 after:people:ranking",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -3830,8 +3814,26 @@
     "axe": []
    },
    {
-    "screen": "g2 after:people:ranking",
-    "title": "Front-desk client experience ka role kise milna chahiye? · Team season",
+    "screen": "g2 after:people:allocation",
+    "title": "Dispatch bonus pool kaise baanta jaaye? · Team season",
+    "hOverflow": 0,
+    "targets": 9,
+    "underTarget": [],
+    "noName": [],
+    "h1": 1,
+    "headingSkips": 0,
+    "text": 34,
+    "textUnder12": [],
+    "contrastFails": [],
+    "skipLink": false,
+    "needsSkip": false,
+    "liveRegion": true,
+    "needsLive": true,
+    "axe": []
+   },
+   {
+    "screen": "g2 after:people:allocation",
+    "title": "Dispatch bonus pool kaise baanta jaaye? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -3885,7 +3887,7 @@
    },
    {
     "screen": "g2 after:survey",
-    "title": "Mushkil stretch assignments us vyakti ko milne chahiye jo unke liye sabse achhe se taiyaar ho, kisi ek ling ko dusre par tarjeeh dekar nahi. · Team season",
+    "title": "Do barabar kabil sahkarmiyon ko lead role ka mauka barabar milna chahiye, chahe unka ling kuch bhi ho. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -3905,12 +3907,12 @@
     "screen": "g2 after:recall",
     "title": "Is hisse se pehle wale note mein kya likha tha? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -4155,7 +4157,7 @@
    },
    {
     "screen": "g2en firstWeek:people:ranking",
-    "title": "Four accounts from the quarter-end review · Team season",
+    "title": "Four reports about a rough month · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -4173,7 +4175,7 @@
    },
    {
     "screen": "g2en firstWeek:people:ranking",
-    "title": "Four accounts from the quarter-end review · Team season",
+    "title": "Four reports about a rough month · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -4209,7 +4211,7 @@
    },
    {
     "screen": "g2en season:people:ranking",
-    "title": "Four reports reach you this week · Team season",
+    "title": "Four accounts from the quarter-end review · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -4389,7 +4391,7 @@
    },
    {
     "screen": "g2en after:people:allocation",
-    "title": "How should the hiring-drive bonus be shared? · Team season",
+    "title": "How should the dispatch bonus pool be shared? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -4407,7 +4409,7 @@
    },
    {
     "screen": "g2en after:people:allocation",
-    "title": "How should the hiring-drive bonus be shared? · Team season",
+    "title": "How should the dispatch bonus pool be shared? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -4425,7 +4427,7 @@
    },
    {
     "screen": "g2en after:people:ranking",
-    "title": "Who coordinates the employee wellness week? · Team season",
+    "title": "Who should take the front-desk client experience role? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -4479,7 +4481,7 @@
    },
    {
     "screen": "g2en after:survey",
-    "title": "The most visible credit for a team's success should go first to the men on the team. · Team season",
+    "title": "A woman's complaint about a man should be treated with more doubt than any other complaint. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -4499,12 +4501,12 @@
     "screen": "g2en after:recall",
     "title": "What did the note before this part say? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -4820,8 +4822,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:allocation",
-    "title": "Course-design ke din kaise baante jaayen? · Team season",
+    "screen": "firm firstWeek:people:ranking",
+    "title": "Warehouse site move ko lead kaun karega? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -4838,8 +4840,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:allocation",
-    "title": "Course-design ke din kaise baante jaayen? · Team season",
+    "screen": "firm firstWeek:people:ranking",
+    "title": "Warehouse site move ko lead kaun karega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -4856,8 +4858,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:ranking",
-    "title": "Naye joiners ka onboarding programme kaun chalayega? · Team season",
+    "screen": "firm firstWeek:people:allocation",
+    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -4874,8 +4876,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:ranking",
-    "title": "Naye joiners ka onboarding programme kaun chalayega? · Team season",
+    "screen": "firm firstWeek:people:allocation",
+    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -4911,7 +4913,7 @@
    },
    {
     "screen": "firm season:people:allocation",
-    "title": "Crane contract talks ke ghante kise milenge? · Team season",
+    "title": "Hiring-drive ka bonus kaise baanta jaaye? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -4929,7 +4931,7 @@
    },
    {
     "screen": "firm season:people:ranking",
-    "title": "Quarterly budget review kaun lead karega? · Team season",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -5001,7 +5003,7 @@
    },
    {
     "screen": "firm direct:survey",
-    "title": "Jo mahila purush sahkarmiyon ke saath dostana hai, use maan lena chahiye ki woh ise galat samjhenge. · Team season",
+    "title": "Employers ko utpeedan ki report karne wale vyakti ko bolne ke liye kisi bhi saza se bachana chahiye. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -5206,7 +5208,7 @@
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 26,
+    "text": 25,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -5399,7 +5401,7 @@
    },
    {
     "screen": "g1 firstWeek:people:allocation",
-    "title": "Who gets the hours on the crane contract talks? · Team season",
+    "title": "Client visits ka lunch kaun order karega · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -5417,7 +5419,7 @@
    },
    {
     "screen": "g1 firstWeek:people:allocation",
-    "title": "Who gets the hours on the crane contract talks? · Team season",
+    "title": "Client visits ka lunch kaun order karega · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -5435,14 +5437,14 @@
    },
    {
     "screen": "g1 firstWeek:people:ranking",
-    "title": "Warehouse site move ko lead kaun karega? · Team season",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 34,
+    "text": 30,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -5453,7 +5455,7 @@
    },
    {
     "screen": "g1 firstWeek:people:ranking",
-    "title": "Warehouse site move ko lead kaun karega? · Team season",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -5488,8 +5490,8 @@
     "axe": []
    },
    {
-    "screen": "g1 season:people:allocation",
-    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
+    "screen": "g1 season:people:ranking",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -5506,8 +5508,8 @@
     "axe": []
    },
    {
-    "screen": "g1 season:people:ranking",
-    "title": "Who should lead the quarterly budget review? · Team season",
+    "screen": "g1 season:people:allocation",
+    "title": "Who handles the intern paperwork · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -5723,7 +5725,7 @@
    },
    {
     "screen": "g1 survey:survey",
-    "title": "A complaint made by a woman should be believed without checking the facts. · Team season",
+    "title": "When two colleagues are equally strong, the woman should get the lead role. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -5759,7 +5761,7 @@
    },
    {
     "screen": "g1 after:people:ranking",
-    "title": "Four accounts from the Diwali party · Team season",
+    "title": "Four accounts from the sales conference · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -5777,7 +5779,7 @@
    },
    {
     "screen": "g1 after:people:allocation",
-    "title": "How should fleet planning mentoring be shared? · Team season",
+    "title": "How should peer-coaching sessions be shared? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -5831,7 +5833,7 @@
    },
    {
     "screen": "g1 after:survey",
-    "title": "A woman and a man doing the same job at the same level should be paid the same. · Team season",
+    "title": "When two colleagues are equally strong, the woman should get the lead role. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -5851,12 +5853,12 @@
     "screen": "g1 after:recall",
     "title": "What did the note before this part say? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -5993,7 +5995,7 @@
    },
    {
     "screen": "g1 offTheRecord:m1h-direct",
-    "title": "I have watched a cricket match in the past month. · Team season",
+    "title": "I usually finish a meal with something sweet. · Team season",
     "hOverflow": 0,
     "targets": 3,
     "underTarget": [],
@@ -6101,7 +6103,7 @@
    },
    {
     "screen": "g2 firstWeek:people:ranking",
-    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
+    "title": "Ek mushkil mahine ke baare mein chaar reports · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -6119,7 +6121,7 @@
    },
    {
     "screen": "g2 firstWeek:people:ranking",
-    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
+    "title": "Ek mushkil mahine ke baare mein chaar reports · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -6155,7 +6157,7 @@
    },
    {
     "screen": "g2 season:people:ranking",
-    "title": "Quarter-end review ke chaar accounts · Team season",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -6334,26 +6336,8 @@
     "axe": []
    },
    {
-    "screen": "g2 after:people:allocation",
-    "title": "Newsletter editing ke ghante kaise baante jaayen? · Team season",
-    "hOverflow": 0,
-    "targets": 9,
-    "underTarget": [],
-    "noName": [],
-    "h1": 1,
-    "headingSkips": 0,
-    "text": 38,
-    "textUnder12": [],
-    "contrastFails": [],
-    "skipLink": false,
-    "needsSkip": false,
-    "liveRegion": true,
-    "needsLive": true,
-    "axe": []
-   },
-   {
-    "screen": "g2 after:people:allocation",
-    "title": "Newsletter editing ke ghante kaise baante jaayen? · Team season",
+    "screen": "g2 after:people:ranking",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -6370,8 +6354,26 @@
     "axe": []
    },
    {
-    "screen": "g2 after:people:ranking",
-    "title": "Front-desk client experience ka role kise milna chahiye? · Team season",
+    "screen": "g2 after:people:allocation",
+    "title": "Dispatch bonus pool kaise baanta jaaye? · Team season",
+    "hOverflow": 0,
+    "targets": 9,
+    "underTarget": [],
+    "noName": [],
+    "h1": 1,
+    "headingSkips": 0,
+    "text": 34,
+    "textUnder12": [],
+    "contrastFails": [],
+    "skipLink": false,
+    "needsSkip": false,
+    "liveRegion": true,
+    "needsLive": true,
+    "axe": []
+   },
+   {
+    "screen": "g2 after:people:allocation",
+    "title": "Dispatch bonus pool kaise baanta jaaye? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -6425,7 +6427,7 @@
    },
    {
     "screen": "g2 after:survey",
-    "title": "Mushkil stretch assignments us vyakti ko milne chahiye jo unke liye sabse achhe se taiyaar ho, kisi ek ling ko dusre par tarjeeh dekar nahi. · Team season",
+    "title": "Do barabar kabil sahkarmiyon ko lead role ka mauka barabar milna chahiye, chahe unka ling kuch bhi ho. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -6445,12 +6447,12 @@
     "screen": "g2 after:recall",
     "title": "Is hisse se pehle wale note mein kya likha tha? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -6695,7 +6697,7 @@
    },
    {
     "screen": "g2en firstWeek:people:ranking",
-    "title": "Four accounts from the quarter-end review · Team season",
+    "title": "Four reports about a rough month · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -6713,7 +6715,7 @@
    },
    {
     "screen": "g2en firstWeek:people:ranking",
-    "title": "Four accounts from the quarter-end review · Team season",
+    "title": "Four reports about a rough month · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -6749,7 +6751,7 @@
    },
    {
     "screen": "g2en season:people:ranking",
-    "title": "Four reports reach you this week · Team season",
+    "title": "Four accounts from the quarter-end review · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -6929,7 +6931,7 @@
    },
    {
     "screen": "g2en after:people:allocation",
-    "title": "How should the hiring-drive bonus be shared? · Team season",
+    "title": "How should the dispatch bonus pool be shared? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -6947,7 +6949,7 @@
    },
    {
     "screen": "g2en after:people:allocation",
-    "title": "How should the hiring-drive bonus be shared? · Team season",
+    "title": "How should the dispatch bonus pool be shared? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -6965,7 +6967,7 @@
    },
    {
     "screen": "g2en after:people:ranking",
-    "title": "Who coordinates the employee wellness week? · Team season",
+    "title": "Who should take the front-desk client experience role? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -7019,7 +7021,7 @@
    },
    {
     "screen": "g2en after:survey",
-    "title": "The most visible credit for a team's success should go first to the men on the team. · Team season",
+    "title": "A woman's complaint about a man should be treated with more doubt than any other complaint. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -7039,12 +7041,12 @@
     "screen": "g2en after:recall",
     "title": "What did the note before this part say? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -7360,8 +7362,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:allocation",
-    "title": "Course-design ke din kaise baante jaayen? · Team season",
+    "screen": "firm firstWeek:people:ranking",
+    "title": "Warehouse site move ko lead kaun karega? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -7378,8 +7380,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:allocation",
-    "title": "Course-design ke din kaise baante jaayen? · Team season",
+    "screen": "firm firstWeek:people:ranking",
+    "title": "Warehouse site move ko lead kaun karega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -7396,8 +7398,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:ranking",
-    "title": "Naye joiners ka onboarding programme kaun chalayega? · Team season",
+    "screen": "firm firstWeek:people:allocation",
+    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -7414,8 +7416,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:ranking",
-    "title": "Naye joiners ka onboarding programme kaun chalayega? · Team season",
+    "screen": "firm firstWeek:people:allocation",
+    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -7451,7 +7453,7 @@
    },
    {
     "screen": "firm season:people:allocation",
-    "title": "Crane contract talks ke ghante kise milenge? · Team season",
+    "title": "Hiring-drive ka bonus kaise baanta jaaye? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -7469,7 +7471,7 @@
    },
    {
     "screen": "firm season:people:ranking",
-    "title": "Quarterly budget review kaun lead karega? · Team season",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -7541,7 +7543,7 @@
    },
    {
     "screen": "firm direct:survey",
-    "title": "Jo mahila purush sahkarmiyon ke saath dostana hai, use maan lena chahiye ki woh ise galat samjhenge. · Team season",
+    "title": "Employers ko utpeedan ki report karne wale vyakti ko bolne ke liye kisi bhi saza se bachana chahiye. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -7746,7 +7748,7 @@
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 26,
+    "text": 25,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -7939,7 +7941,7 @@
    },
    {
     "screen": "g1 firstWeek:people:allocation",
-    "title": "Who gets the hours on the crane contract talks? · Team season",
+    "title": "Client visits ka lunch kaun order karega · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -7957,7 +7959,7 @@
    },
    {
     "screen": "g1 firstWeek:people:allocation",
-    "title": "Who gets the hours on the crane contract talks? · Team season",
+    "title": "Client visits ka lunch kaun order karega · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -7975,14 +7977,14 @@
    },
    {
     "screen": "g1 firstWeek:people:ranking",
-    "title": "Warehouse site move ko lead kaun karega? · Team season",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 34,
+    "text": 30,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -7993,7 +7995,7 @@
    },
    {
     "screen": "g1 firstWeek:people:ranking",
-    "title": "Warehouse site move ko lead kaun karega? · Team season",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -8028,8 +8030,8 @@
     "axe": []
    },
    {
-    "screen": "g1 season:people:allocation",
-    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
+    "screen": "g1 season:people:ranking",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -8046,8 +8048,8 @@
     "axe": []
    },
    {
-    "screen": "g1 season:people:ranking",
-    "title": "Who should lead the quarterly budget review? · Team season",
+    "screen": "g1 season:people:allocation",
+    "title": "Who handles the intern paperwork · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -8263,7 +8265,7 @@
    },
    {
     "screen": "g1 survey:survey",
-    "title": "A complaint made by a woman should be believed without checking the facts. · Team season",
+    "title": "When two colleagues are equally strong, the woman should get the lead role. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -8299,7 +8301,7 @@
    },
    {
     "screen": "g1 after:people:ranking",
-    "title": "Four accounts from the Diwali party · Team season",
+    "title": "Four accounts from the sales conference · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -8317,7 +8319,7 @@
    },
    {
     "screen": "g1 after:people:allocation",
-    "title": "How should fleet planning mentoring be shared? · Team season",
+    "title": "How should peer-coaching sessions be shared? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -8371,7 +8373,7 @@
    },
    {
     "screen": "g1 after:survey",
-    "title": "A woman and a man doing the same job at the same level should be paid the same. · Team season",
+    "title": "When two colleagues are equally strong, the woman should get the lead role. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -8391,12 +8393,12 @@
     "screen": "g1 after:recall",
     "title": "What did the note before this part say? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -8533,7 +8535,7 @@
    },
    {
     "screen": "g1 offTheRecord:m1h-direct",
-    "title": "I have watched a cricket match in the past month. · Team season",
+    "title": "I usually finish a meal with something sweet. · Team season",
     "hOverflow": 0,
     "targets": 3,
     "underTarget": [],
@@ -8641,7 +8643,7 @@
    },
    {
     "screen": "g2 firstWeek:people:ranking",
-    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
+    "title": "Ek mushkil mahine ke baare mein chaar reports · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -8659,7 +8661,7 @@
    },
    {
     "screen": "g2 firstWeek:people:ranking",
-    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
+    "title": "Ek mushkil mahine ke baare mein chaar reports · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -8695,7 +8697,7 @@
    },
    {
     "screen": "g2 season:people:ranking",
-    "title": "Quarter-end review ke chaar accounts · Team season",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -8874,26 +8876,8 @@
     "axe": []
    },
    {
-    "screen": "g2 after:people:allocation",
-    "title": "Newsletter editing ke ghante kaise baante jaayen? · Team season",
-    "hOverflow": 0,
-    "targets": 9,
-    "underTarget": [],
-    "noName": [],
-    "h1": 1,
-    "headingSkips": 0,
-    "text": 38,
-    "textUnder12": [],
-    "contrastFails": [],
-    "skipLink": false,
-    "needsSkip": false,
-    "liveRegion": true,
-    "needsLive": true,
-    "axe": []
-   },
-   {
-    "screen": "g2 after:people:allocation",
-    "title": "Newsletter editing ke ghante kaise baante jaayen? · Team season",
+    "screen": "g2 after:people:ranking",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -8910,8 +8894,26 @@
     "axe": []
    },
    {
-    "screen": "g2 after:people:ranking",
-    "title": "Front-desk client experience ka role kise milna chahiye? · Team season",
+    "screen": "g2 after:people:allocation",
+    "title": "Dispatch bonus pool kaise baanta jaaye? · Team season",
+    "hOverflow": 0,
+    "targets": 9,
+    "underTarget": [],
+    "noName": [],
+    "h1": 1,
+    "headingSkips": 0,
+    "text": 34,
+    "textUnder12": [],
+    "contrastFails": [],
+    "skipLink": false,
+    "needsSkip": false,
+    "liveRegion": true,
+    "needsLive": true,
+    "axe": []
+   },
+   {
+    "screen": "g2 after:people:allocation",
+    "title": "Dispatch bonus pool kaise baanta jaaye? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -8965,7 +8967,7 @@
    },
    {
     "screen": "g2 after:survey",
-    "title": "Mushkil stretch assignments us vyakti ko milne chahiye jo unke liye sabse achhe se taiyaar ho, kisi ek ling ko dusre par tarjeeh dekar nahi. · Team season",
+    "title": "Do barabar kabil sahkarmiyon ko lead role ka mauka barabar milna chahiye, chahe unka ling kuch bhi ho. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -8985,12 +8987,12 @@
     "screen": "g2 after:recall",
     "title": "Is hisse se pehle wale note mein kya likha tha? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -9235,7 +9237,7 @@
    },
    {
     "screen": "g2en firstWeek:people:ranking",
-    "title": "Four accounts from the quarter-end review · Team season",
+    "title": "Four reports about a rough month · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -9253,7 +9255,7 @@
    },
    {
     "screen": "g2en firstWeek:people:ranking",
-    "title": "Four accounts from the quarter-end review · Team season",
+    "title": "Four reports about a rough month · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -9289,7 +9291,7 @@
    },
    {
     "screen": "g2en season:people:ranking",
-    "title": "Four reports reach you this week · Team season",
+    "title": "Four accounts from the quarter-end review · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -9469,7 +9471,7 @@
    },
    {
     "screen": "g2en after:people:allocation",
-    "title": "How should the hiring-drive bonus be shared? · Team season",
+    "title": "How should the dispatch bonus pool be shared? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -9487,7 +9489,7 @@
    },
    {
     "screen": "g2en after:people:allocation",
-    "title": "How should the hiring-drive bonus be shared? · Team season",
+    "title": "How should the dispatch bonus pool be shared? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -9505,7 +9507,7 @@
    },
    {
     "screen": "g2en after:people:ranking",
-    "title": "Who coordinates the employee wellness week? · Team season",
+    "title": "Who should take the front-desk client experience role? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -9559,7 +9561,7 @@
    },
    {
     "screen": "g2en after:survey",
-    "title": "The most visible credit for a team's success should go first to the men on the team. · Team season",
+    "title": "A woman's complaint about a man should be treated with more doubt than any other complaint. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -9579,12 +9581,12 @@
     "screen": "g2en after:recall",
     "title": "What did the note before this part say? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -9900,8 +9902,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:allocation",
-    "title": "Course-design ke din kaise baante jaayen? · Team season",
+    "screen": "firm firstWeek:people:ranking",
+    "title": "Warehouse site move ko lead kaun karega? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -9918,8 +9920,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:allocation",
-    "title": "Course-design ke din kaise baante jaayen? · Team season",
+    "screen": "firm firstWeek:people:ranking",
+    "title": "Warehouse site move ko lead kaun karega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -9936,8 +9938,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:ranking",
-    "title": "Naye joiners ka onboarding programme kaun chalayega? · Team season",
+    "screen": "firm firstWeek:people:allocation",
+    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -9954,8 +9956,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:ranking",
-    "title": "Naye joiners ka onboarding programme kaun chalayega? · Team season",
+    "screen": "firm firstWeek:people:allocation",
+    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -9991,7 +9993,7 @@
    },
    {
     "screen": "firm season:people:allocation",
-    "title": "Crane contract talks ke ghante kise milenge? · Team season",
+    "title": "Hiring-drive ka bonus kaise baanta jaaye? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -10009,7 +10011,7 @@
    },
    {
     "screen": "firm season:people:ranking",
-    "title": "Quarterly budget review kaun lead karega? · Team season",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -10081,7 +10083,7 @@
    },
    {
     "screen": "firm direct:survey",
-    "title": "Jo mahila purush sahkarmiyon ke saath dostana hai, use maan lena chahiye ki woh ise galat samjhenge. · Team season",
+    "title": "Employers ko utpeedan ki report karne wale vyakti ko bolne ke liye kisi bhi saza se bachana chahiye. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -10286,7 +10288,7 @@
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 26,
+    "text": 25,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -10479,7 +10481,7 @@
    },
    {
     "screen": "g1 firstWeek:people:allocation",
-    "title": "Who gets the hours on the crane contract talks? · Team season",
+    "title": "Client visits ka lunch kaun order karega · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -10497,7 +10499,7 @@
    },
    {
     "screen": "g1 firstWeek:people:allocation",
-    "title": "Who gets the hours on the crane contract talks? · Team season",
+    "title": "Client visits ka lunch kaun order karega · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -10515,14 +10517,14 @@
    },
    {
     "screen": "g1 firstWeek:people:ranking",
-    "title": "Warehouse site move ko lead kaun karega? · Team season",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 34,
+    "text": 30,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -10533,7 +10535,7 @@
    },
    {
     "screen": "g1 firstWeek:people:ranking",
-    "title": "Warehouse site move ko lead kaun karega? · Team season",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -10568,8 +10570,8 @@
     "axe": []
    },
    {
-    "screen": "g1 season:people:allocation",
-    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
+    "screen": "g1 season:people:ranking",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -10586,8 +10588,8 @@
     "axe": []
    },
    {
-    "screen": "g1 season:people:ranking",
-    "title": "Who should lead the quarterly budget review? · Team season",
+    "screen": "g1 season:people:allocation",
+    "title": "Who handles the intern paperwork · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -10803,7 +10805,7 @@
    },
    {
     "screen": "g1 survey:survey",
-    "title": "A complaint made by a woman should be believed without checking the facts. · Team season",
+    "title": "When two colleagues are equally strong, the woman should get the lead role. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -10839,7 +10841,7 @@
    },
    {
     "screen": "g1 after:people:ranking",
-    "title": "Four accounts from the Diwali party · Team season",
+    "title": "Four accounts from the sales conference · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -10857,7 +10859,7 @@
    },
    {
     "screen": "g1 after:people:allocation",
-    "title": "How should fleet planning mentoring be shared? · Team season",
+    "title": "How should peer-coaching sessions be shared? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -10911,7 +10913,7 @@
    },
    {
     "screen": "g1 after:survey",
-    "title": "A woman and a man doing the same job at the same level should be paid the same. · Team season",
+    "title": "When two colleagues are equally strong, the woman should get the lead role. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -10931,12 +10933,12 @@
     "screen": "g1 after:recall",
     "title": "What did the note before this part say? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -11073,7 +11075,7 @@
    },
    {
     "screen": "g1 offTheRecord:m1h-direct",
-    "title": "I have watched a cricket match in the past month. · Team season",
+    "title": "I usually finish a meal with something sweet. · Team season",
     "hOverflow": 0,
     "targets": 3,
     "underTarget": [],
@@ -11181,7 +11183,7 @@
    },
    {
     "screen": "g2 firstWeek:people:ranking",
-    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
+    "title": "Ek mushkil mahine ke baare mein chaar reports · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -11199,7 +11201,7 @@
    },
    {
     "screen": "g2 firstWeek:people:ranking",
-    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
+    "title": "Ek mushkil mahine ke baare mein chaar reports · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -11235,7 +11237,7 @@
    },
    {
     "screen": "g2 season:people:ranking",
-    "title": "Quarter-end review ke chaar accounts · Team season",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -11414,26 +11416,8 @@
     "axe": []
    },
    {
-    "screen": "g2 after:people:allocation",
-    "title": "Newsletter editing ke ghante kaise baante jaayen? · Team season",
-    "hOverflow": 0,
-    "targets": 9,
-    "underTarget": [],
-    "noName": [],
-    "h1": 1,
-    "headingSkips": 0,
-    "text": 38,
-    "textUnder12": [],
-    "contrastFails": [],
-    "skipLink": false,
-    "needsSkip": false,
-    "liveRegion": true,
-    "needsLive": true,
-    "axe": []
-   },
-   {
-    "screen": "g2 after:people:allocation",
-    "title": "Newsletter editing ke ghante kaise baante jaayen? · Team season",
+    "screen": "g2 after:people:ranking",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -11450,8 +11434,26 @@
     "axe": []
    },
    {
-    "screen": "g2 after:people:ranking",
-    "title": "Front-desk client experience ka role kise milna chahiye? · Team season",
+    "screen": "g2 after:people:allocation",
+    "title": "Dispatch bonus pool kaise baanta jaaye? · Team season",
+    "hOverflow": 0,
+    "targets": 9,
+    "underTarget": [],
+    "noName": [],
+    "h1": 1,
+    "headingSkips": 0,
+    "text": 34,
+    "textUnder12": [],
+    "contrastFails": [],
+    "skipLink": false,
+    "needsSkip": false,
+    "liveRegion": true,
+    "needsLive": true,
+    "axe": []
+   },
+   {
+    "screen": "g2 after:people:allocation",
+    "title": "Dispatch bonus pool kaise baanta jaaye? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -11505,7 +11507,7 @@
    },
    {
     "screen": "g2 after:survey",
-    "title": "Mushkil stretch assignments us vyakti ko milne chahiye jo unke liye sabse achhe se taiyaar ho, kisi ek ling ko dusre par tarjeeh dekar nahi. · Team season",
+    "title": "Do barabar kabil sahkarmiyon ko lead role ka mauka barabar milna chahiye, chahe unka ling kuch bhi ho. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -11525,12 +11527,12 @@
     "screen": "g2 after:recall",
     "title": "Is hisse se pehle wale note mein kya likha tha? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -11775,7 +11777,7 @@
    },
    {
     "screen": "g2en firstWeek:people:ranking",
-    "title": "Four accounts from the quarter-end review · Team season",
+    "title": "Four reports about a rough month · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -11793,7 +11795,7 @@
    },
    {
     "screen": "g2en firstWeek:people:ranking",
-    "title": "Four accounts from the quarter-end review · Team season",
+    "title": "Four reports about a rough month · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -11829,7 +11831,7 @@
    },
    {
     "screen": "g2en season:people:ranking",
-    "title": "Four reports reach you this week · Team season",
+    "title": "Four accounts from the quarter-end review · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -12009,7 +12011,7 @@
    },
    {
     "screen": "g2en after:people:allocation",
-    "title": "How should the hiring-drive bonus be shared? · Team season",
+    "title": "How should the dispatch bonus pool be shared? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -12027,7 +12029,7 @@
    },
    {
     "screen": "g2en after:people:allocation",
-    "title": "How should the hiring-drive bonus be shared? · Team season",
+    "title": "How should the dispatch bonus pool be shared? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -12045,7 +12047,7 @@
    },
    {
     "screen": "g2en after:people:ranking",
-    "title": "Who coordinates the employee wellness week? · Team season",
+    "title": "Who should take the front-desk client experience role? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -12099,7 +12101,7 @@
    },
    {
     "screen": "g2en after:survey",
-    "title": "The most visible credit for a team's success should go first to the men on the team. · Team season",
+    "title": "A woman's complaint about a man should be treated with more doubt than any other complaint. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -12119,12 +12121,12 @@
     "screen": "g2en after:recall",
     "title": "What did the note before this part say? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -12440,8 +12442,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:allocation",
-    "title": "Course-design ke din kaise baante jaayen? · Team season",
+    "screen": "firm firstWeek:people:ranking",
+    "title": "Warehouse site move ko lead kaun karega? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -12458,8 +12460,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:allocation",
-    "title": "Course-design ke din kaise baante jaayen? · Team season",
+    "screen": "firm firstWeek:people:ranking",
+    "title": "Warehouse site move ko lead kaun karega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -12476,8 +12478,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:ranking",
-    "title": "Naye joiners ka onboarding programme kaun chalayega? · Team season",
+    "screen": "firm firstWeek:people:allocation",
+    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -12494,8 +12496,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:ranking",
-    "title": "Naye joiners ka onboarding programme kaun chalayega? · Team season",
+    "screen": "firm firstWeek:people:allocation",
+    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -12531,7 +12533,7 @@
    },
    {
     "screen": "firm season:people:allocation",
-    "title": "Crane contract talks ke ghante kise milenge? · Team season",
+    "title": "Hiring-drive ka bonus kaise baanta jaaye? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -12549,7 +12551,7 @@
    },
    {
     "screen": "firm season:people:ranking",
-    "title": "Quarterly budget review kaun lead karega? · Team season",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -12621,7 +12623,7 @@
    },
    {
     "screen": "firm direct:survey",
-    "title": "Jo mahila purush sahkarmiyon ke saath dostana hai, use maan lena chahiye ki woh ise galat samjhenge. · Team season",
+    "title": "Employers ko utpeedan ki report karne wale vyakti ko bolne ke liye kisi bhi saza se bachana chahiye. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -12826,7 +12828,7 @@
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 26,
+    "text": 25,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -13019,7 +13021,7 @@
    },
    {
     "screen": "g1 firstWeek:people:allocation",
-    "title": "Who gets the hours on the crane contract talks? · Team season",
+    "title": "Client visits ka lunch kaun order karega · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -13037,7 +13039,7 @@
    },
    {
     "screen": "g1 firstWeek:people:allocation",
-    "title": "Who gets the hours on the crane contract talks? · Team season",
+    "title": "Client visits ka lunch kaun order karega · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -13055,14 +13057,14 @@
    },
    {
     "screen": "g1 firstWeek:people:ranking",
-    "title": "Warehouse site move ko lead kaun karega? · Team season",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 34,
+    "text": 30,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -13073,7 +13075,7 @@
    },
    {
     "screen": "g1 firstWeek:people:ranking",
-    "title": "Warehouse site move ko lead kaun karega? · Team season",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -13108,8 +13110,8 @@
     "axe": []
    },
    {
-    "screen": "g1 season:people:allocation",
-    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
+    "screen": "g1 season:people:ranking",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -13126,8 +13128,8 @@
     "axe": []
    },
    {
-    "screen": "g1 season:people:ranking",
-    "title": "Who should lead the quarterly budget review? · Team season",
+    "screen": "g1 season:people:allocation",
+    "title": "Who handles the intern paperwork · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -13343,7 +13345,7 @@
    },
    {
     "screen": "g1 survey:survey",
-    "title": "A complaint made by a woman should be believed without checking the facts. · Team season",
+    "title": "When two colleagues are equally strong, the woman should get the lead role. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -13379,7 +13381,7 @@
    },
    {
     "screen": "g1 after:people:ranking",
-    "title": "Four accounts from the Diwali party · Team season",
+    "title": "Four accounts from the sales conference · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -13397,7 +13399,7 @@
    },
    {
     "screen": "g1 after:people:allocation",
-    "title": "How should fleet planning mentoring be shared? · Team season",
+    "title": "How should peer-coaching sessions be shared? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -13451,7 +13453,7 @@
    },
    {
     "screen": "g1 after:survey",
-    "title": "A woman and a man doing the same job at the same level should be paid the same. · Team season",
+    "title": "When two colleagues are equally strong, the woman should get the lead role. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -13471,12 +13473,12 @@
     "screen": "g1 after:recall",
     "title": "What did the note before this part say? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -13613,7 +13615,7 @@
    },
    {
     "screen": "g1 offTheRecord:m1h-direct",
-    "title": "I have watched a cricket match in the past month. · Team season",
+    "title": "I usually finish a meal with something sweet. · Team season",
     "hOverflow": 0,
     "targets": 3,
     "underTarget": [],
@@ -13721,7 +13723,7 @@
    },
    {
     "screen": "g2 firstWeek:people:ranking",
-    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
+    "title": "Ek mushkil mahine ke baare mein chaar reports · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -13739,7 +13741,7 @@
    },
    {
     "screen": "g2 firstWeek:people:ranking",
-    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
+    "title": "Ek mushkil mahine ke baare mein chaar reports · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -13775,7 +13777,7 @@
    },
    {
     "screen": "g2 season:people:ranking",
-    "title": "Quarter-end review ke chaar accounts · Team season",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -13954,26 +13956,8 @@
     "axe": []
    },
    {
-    "screen": "g2 after:people:allocation",
-    "title": "Newsletter editing ke ghante kaise baante jaayen? · Team season",
-    "hOverflow": 0,
-    "targets": 9,
-    "underTarget": [],
-    "noName": [],
-    "h1": 1,
-    "headingSkips": 0,
-    "text": 38,
-    "textUnder12": [],
-    "contrastFails": [],
-    "skipLink": false,
-    "needsSkip": false,
-    "liveRegion": true,
-    "needsLive": true,
-    "axe": []
-   },
-   {
-    "screen": "g2 after:people:allocation",
-    "title": "Newsletter editing ke ghante kaise baante jaayen? · Team season",
+    "screen": "g2 after:people:ranking",
+    "title": "Agle hafte client ko presentation kaun dega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -13990,8 +13974,26 @@
     "axe": []
    },
    {
-    "screen": "g2 after:people:ranking",
-    "title": "Front-desk client experience ka role kise milna chahiye? · Team season",
+    "screen": "g2 after:people:allocation",
+    "title": "Dispatch bonus pool kaise baanta jaaye? · Team season",
+    "hOverflow": 0,
+    "targets": 9,
+    "underTarget": [],
+    "noName": [],
+    "h1": 1,
+    "headingSkips": 0,
+    "text": 34,
+    "textUnder12": [],
+    "contrastFails": [],
+    "skipLink": false,
+    "needsSkip": false,
+    "liveRegion": true,
+    "needsLive": true,
+    "axe": []
+   },
+   {
+    "screen": "g2 after:people:allocation",
+    "title": "Dispatch bonus pool kaise baanta jaaye? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -14045,7 +14047,7 @@
    },
    {
     "screen": "g2 after:survey",
-    "title": "Mushkil stretch assignments us vyakti ko milne chahiye jo unke liye sabse achhe se taiyaar ho, kisi ek ling ko dusre par tarjeeh dekar nahi. · Team season",
+    "title": "Do barabar kabil sahkarmiyon ko lead role ka mauka barabar milna chahiye, chahe unka ling kuch bhi ho. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -14065,12 +14067,12 @@
     "screen": "g2 after:recall",
     "title": "Is hisse se pehle wale note mein kya likha tha? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -14315,7 +14317,7 @@
    },
    {
     "screen": "g2en firstWeek:people:ranking",
-    "title": "Four accounts from the quarter-end review · Team season",
+    "title": "Four reports about a rough month · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -14333,7 +14335,7 @@
    },
    {
     "screen": "g2en firstWeek:people:ranking",
-    "title": "Four accounts from the quarter-end review · Team season",
+    "title": "Four reports about a rough month · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -14369,7 +14371,7 @@
    },
    {
     "screen": "g2en season:people:ranking",
-    "title": "Four reports reach you this week · Team season",
+    "title": "Four accounts from the quarter-end review · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -14549,7 +14551,7 @@
    },
    {
     "screen": "g2en after:people:allocation",
-    "title": "How should the hiring-drive bonus be shared? · Team season",
+    "title": "How should the dispatch bonus pool be shared? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -14567,7 +14569,7 @@
    },
    {
     "screen": "g2en after:people:allocation",
-    "title": "How should the hiring-drive bonus be shared? · Team season",
+    "title": "How should the dispatch bonus pool be shared? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -14585,7 +14587,7 @@
    },
    {
     "screen": "g2en after:people:ranking",
-    "title": "Who coordinates the employee wellness week? · Team season",
+    "title": "Who should take the front-desk client experience role? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -14639,7 +14641,7 @@
    },
    {
     "screen": "g2en after:survey",
-    "title": "The most visible credit for a team's success should go first to the men on the team. · Team season",
+    "title": "A woman's complaint about a man should be treated with more doubt than any other complaint. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -14659,12 +14661,12 @@
     "screen": "g2en after:recall",
     "title": "What did the note before this part say? · Team season",
     "hOverflow": 0,
-    "targets": 5,
+    "targets": 3,
     "underTarget": [],
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 9,
+    "text": 7,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,
@@ -14980,8 +14982,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:allocation",
-    "title": "Course-design ke din kaise baante jaayen? · Team season",
+    "screen": "firm firstWeek:people:ranking",
+    "title": "Warehouse site move ko lead kaun karega? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -14998,8 +15000,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:allocation",
-    "title": "Course-design ke din kaise baante jaayen? · Team season",
+    "screen": "firm firstWeek:people:ranking",
+    "title": "Warehouse site move ko lead kaun karega? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -15016,8 +15018,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:ranking",
-    "title": "Naye joiners ka onboarding programme kaun chalayega? · Team season",
+    "screen": "firm firstWeek:people:allocation",
+    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
     "hOverflow": 0,
     "targets": 9,
     "underTarget": [],
@@ -15034,8 +15036,8 @@
     "axe": []
    },
    {
-    "screen": "firm firstWeek:people:ranking",
-    "title": "Naye joiners ka onboarding programme kaun chalayega? · Team season",
+    "screen": "firm firstWeek:people:allocation",
+    "title": "Audit shadowing ke ghante kaise baante jaayen? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -15071,7 +15073,7 @@
    },
    {
     "screen": "firm season:people:allocation",
-    "title": "Crane contract talks ke ghante kise milenge? · Team season",
+    "title": "Hiring-drive ka bonus kaise baanta jaaye? · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -15089,7 +15091,7 @@
    },
    {
     "screen": "firm season:people:ranking",
-    "title": "Quarterly budget review kaun lead karega? · Team season",
+    "title": "Is hafte aapke paas chaar reports aayi hain · Team season",
     "hOverflow": 0,
     "targets": 1,
     "underTarget": [],
@@ -15161,7 +15163,7 @@
    },
    {
     "screen": "firm direct:survey",
-    "title": "Jo mahila purush sahkarmiyon ke saath dostana hai, use maan lena chahiye ki woh ise galat samjhenge. · Team season",
+    "title": "Employers ko utpeedan ki report karne wale vyakti ko bolne ke liye kisi bhi saza se bachana chahiye. · Team season",
     "hOverflow": 0,
     "targets": 6,
     "underTarget": [],
@@ -15366,7 +15368,7 @@
     "noName": [],
     "h1": 1,
     "headingSkips": 0,
-    "text": 26,
+    "text": 25,
     "textUnder12": [],
     "contrastFails": [],
     "skipLink": false,

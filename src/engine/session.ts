@@ -9,7 +9,15 @@
  * depend on the screening split (the registered route rules), so phase two is built only
  * once the split is known; every random number it uses was drawn at the start.
  */
-import { inboxBank, ordinaryBank, screeningItems, surveyItems, directItems, xw } from '../content'
+import {
+  inboxBank,
+  ordinaryBank,
+  screeningItems,
+  screens,
+  surveyItems,
+  directItems,
+  xw,
+} from '../content'
 import type { CrosswiseItem, Lang, OrdinaryDecision, SurveyItem } from '../content/types'
 import { config, type DeploymentId, type NoteId, type R1Arm } from './config'
 import { present, rematchesOf, selectCards, type Presented } from './layout'
@@ -380,3 +388,11 @@ export const isOutOfFiction = (step: Step) =>
   OUT_OF_FICTION.includes(step.act) ||
   (step.act === 'after' &&
     (step.kind === 'survey' || step.kind === 'recall' || step.kind === 'intro'))
+
+/**
+ * The recall item's options for a player: the note that player saw, and "I do not remember".
+ * No arm is offered a note it did not see (owner decision O1, ux audit 2026-10-19). This departs
+ * from the registered item (candidates v12 3.10 and later), which listed every note to every arm.
+ */
+export const recallOptions = (note: NoteId | null) =>
+  screens.recall.options.filter((o) => o.id === note || o.id === 'none')

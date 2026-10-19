@@ -15,8 +15,9 @@ import {
   surveyItems,
   xw,
 } from '../src/content'
-import { config, DEPLOYMENTS } from '../src/engine/config'
+import { config, DEPLOYMENTS, type NoteId } from '../src/engine/config'
 import { BANDS, STRATA, TYPES, bankFor } from '../src/engine/layout'
+import { recallOptions } from '../src/engine/session'
 import { fill } from '../src/engine/text'
 import { record } from './lib/check'
 
@@ -212,6 +213,50 @@ export async function run() {
     'the Inbox states the Internal Committee route',
     /Internal Committee/.test(screens.inbox.route.en) &&
       /Internal Committee/.test(screens.inbox.note.en),
+  )
+
+  /* No screen offers or quotes a note its player did not see (owner decisions O1, O2), and no
+     result line names what decides the season (B1, O3). */
+  const NUM = { en: ['', 'one', 'two', 'three'], hinglish: ['', 'ek', 'do', 'teen'] }
+  const explanations = JSON.parse(readFileSync(join(ROOT, 'content/explanation.json'), 'utf8')) as {
+    dep: string
+    sections: { body: { en: string; hinglish: string }[] }[]
+  }[]
+  for (const dep of DEPLOYMENTS) {
+    const shown = new Set(
+      Object.values(config.deployments[dep].notes ?? {}).flatMap((arms) => Object.keys(arms)),
+    )
+    const recallOk = [...shown].every((n) => {
+      const ids = recallOptions(n as NoteId).map((o) => o.id)
+      return ids.includes(n) && ids.every((id) => id === n || id === 'none')
+    })
+    record(
+      T,
+      `${dep}: the recall item offers each arm only its own note`,
+      recallOk,
+      [...shown].join(','),
+    )
+    const body = explanations.find((e) => e.dep === dep)?.sections.flatMap((x) => x.body) ?? []
+    const quoted = body.map((b) => b.en.match(/^Note ([a-z]):/)?.[1]).filter((x) => !!x)
+    const counted =
+      quoted.length === 0 ||
+      (body.some((b) => b.en.includes(`These were the ${NUM.en[quoted.length]} notes`)) &&
+        body.some((b) => b.hinglish.includes(`Yeh ${NUM.hinglish[quoted.length]} notes`)))
+    record(
+      T,
+      `${dep}: the explanation quotes only notes this game shows, and counts them right`,
+      quoted.every((n) => shown.has(n as string)) && counted,
+      `shown ${[...shown].join(',') || 'none'}; quoted ${quoted.join(',') || 'none'}`,
+    )
+  }
+  const BASIS = /budget|vendor|schedule|people|decision|calls|score|faisl|logon/i
+  const resultLines = screens.wrap.result.bands.flatMap((b) => [b.text.en, b.text.hinglish])
+  record(
+    T,
+    'no season result line names what decides the season',
+    resultLines.every((l) => !BASIS.test(l)) &&
+      Object.keys(screens.wrap.result).every((k) => k === 'title' || k === 'bands'),
+    resultLines.filter((l) => BASIS.test(l)).join(' | '),
   )
 
   /* Every gendered text, filled the three ways the generator fills it: no "they was", and no

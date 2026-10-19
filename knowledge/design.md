@@ -159,7 +159,11 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 British spelling; no em or en dashes; sentence case; second person; short sentences.
 Buttons name what happens ("Submit my answers", "Delete my records"). The word "fair" is never
 used in anything shown before the explanation page, and no screen before it says how
-attitudes are scored. `scripts/content-check.ts` checks the dashes and American spellings, and fills every gendered
+attitudes are scored. The season result is a plain band line ("A strong season. The team
+stayed ahead of plan.") and never names what decides the season. The recall item offers only
+the note the player saw and "I do not remember", and each explanation quotes only the notes its
+game shows (owner decisions O1 to O3, [ux audit](reviews/ux-audit-2026-10-19.md)); both are held
+by `content-check`. `scripts/content-check.ts` checks the dashes and American spellings, and fills every gendered
 text as a man, a woman and neutral: a gendered word carries its verb ("they were", never "they
 was") and takes a capital when it opens a sentence, both done by the generator
 (`src/engine/text.ts`), never string by string. Every release and withdrawal date comes from

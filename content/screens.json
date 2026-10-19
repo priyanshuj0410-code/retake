@@ -172,9 +172,9 @@
     "result": {
       "title": { "en": "Your season", "hinglish": "Aapka season" },
       "bands": [
-        { "min": -100, "text": { "en": "A hard season. Several budget and vendor calls cost the team, and next quarter starts with catching up.", "hinglish": "Mushkil season. Kai budget aur vendor faislon se team ka nuksan hua, aur agla quarter peeche se shuru hoga." } },
-        { "min": 8, "text": { "en": "A steady season. The team delivered most of what it planned, with a few costly calls along the way.", "hinglish": "Theek thaak season. Team ne zyaadatar plan pura kiya, raaste mein kuch mehnge faisle hue." } },
-        { "min": 16, "text": { "en": "A strong season. Your budget, vendor and schedule calls kept the team ahead of plan.", "hinglish": "Shaandaar season. Aapke budget, vendor aur schedule ke faislon ne team ko plan se aage rakha." } }
+        { "min": -100, "text": { "en": "A hard season. The team fell behind plan, and next quarter starts with catching up.", "hinglish": "Mushkil season. Team plan se peeche reh gayi, aur agla quarter peeche se shuru hoga." } },
+        { "min": 8, "text": { "en": "A steady season. The team delivered most of what it planned.", "hinglish": "Theek thaak season. Team ne zyaadatar plan pura kiya." } },
+        { "min": 16, "text": { "en": "A strong season. The team stayed ahead of plan.", "hinglish": "Shaandaar season. Team plan se aage rahi." } }
       ]
     },
     "prior": [

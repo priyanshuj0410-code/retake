@@ -64,6 +64,8 @@ const screens: string[] = []
 const walk: Record<string, unknown>[] = []
 const SLIP = /\bthey (was|is|has|does)\b|[.!?] [a-z]/
 const textSlips: string[] = []
+/** Recall screens that offered a note other than the one the player saw (owner decision O1). */
+const recallLeaks: string[] = []
 const SHOTS = new Set([
   'firm firstWeek:people:ranking',
   'firm firstWeek:people:allocation',
@@ -193,6 +195,7 @@ async function play(
 ) {
   let code = ''
   let sawScreening = false
+  let noteText = ''
   const log: Record<string, unknown> = { session: prefix, screens: 0 }
   for (let guard = 0; guard < 400; guard++) {
     const m = (await marker(page)) ?? 'unknown'
@@ -204,6 +207,17 @@ async function play(
         `${prefix} ${m}: ${text.slice(Math.max(0, (slip.index ?? 0) - 40), (slip.index ?? 0) + 30)}`,
       )
     if (m === 'wrap:result') log.result = text
+    if (m.startsWith('note:')) noteText = text
+    if (m.startsWith('after:recall')) {
+      const offered = (
+        await page
+          .getByRole('radio')
+          .evaluateAll((rs) => rs.map((r) => r.closest('label')?.textContent ?? ''))
+      ).filter((t) => !/^(I do not remember|Mujhe yaad nahin)$/.test(t.trim()))
+      const ideal = (t: string) => /ideal employee/.test(t)
+      if (offered.length !== 1 || ideal(offered[0]) !== ideal(noteText))
+        recallLeaks.push(`${prefix}: offered ${offered.join(' / ')}`)
+    }
     if (m === 'wrap:code')
       log.codeScreen =
         text.match(/From .*?\.(?= )|.* tak isse withdraw kar sakte hain\./)?.[0] ?? text
@@ -384,6 +398,7 @@ async function main() {
     keyboardFails: keyboard.filter((k) => !k.ok).length,
     problems: problems.length,
     textSlips: textSlips.length,
+    recallLeaks: recallLeaks.length,
   }
   const failing =
     Object.values(counts).some((c) =>
@@ -403,6 +418,7 @@ async function main() {
         keyboard,
         problems,
         textSlips,
+        recallLeaks,
         walkthroughs: walk,
         screens: perVariant,
       },
