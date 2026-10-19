@@ -20,7 +20,9 @@ export interface AllocateProps {
 export function Allocate({ items, order, units, pool, onChange, labels }: AllocateProps) {
   const used = units.reduce((a, b) => a + b, 0)
   const left = pool - used
+  /* The steppers are aria-disabled, not disabled, so focus stays on a spent plus. */
   const set = (i: number, d: number) => {
+    if ((d > 0 && left === 0) || units[i] + d < 0) return
     const next = units.slice()
     next[i] = Math.max(0, next[i] + d)
     onChange(next)
@@ -44,7 +46,7 @@ export function Allocate({ items, order, units, pool, onChange, labels }: Alloca
                 type="button"
                 className="alloc__step"
                 onClick={() => set(i, -1)}
-                disabled={units[i] === 0}
+                aria-disabled={units[i] === 0}
                 aria-label={labels.remove(items[i].name)}
               >
                 −
@@ -59,7 +61,7 @@ export function Allocate({ items, order, units, pool, onChange, labels }: Alloca
                 type="button"
                 className="alloc__step"
                 onClick={() => set(i, 1)}
-                disabled={left === 0}
+                aria-disabled={left === 0}
                 aria-label={labels.add(items[i].name)}
               >
                 +

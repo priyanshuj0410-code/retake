@@ -6,15 +6,29 @@ import { displayName } from './layout'
 
 export const tr = (t: T, lang: Lang) => t[lang]
 
+const PLURAL: Record<string, string> = { was: ' were', is: ' are', has: ' have', does: ' do' }
+
 export function fill(
   s: string,
   vars: Record<string, string | number> = {},
   sex?: Character['sex'],
 ): string {
+  /* A gendered word takes the verb that follows it with it ("they were", never "they was"), and
+     a capital when it opens a sentence ("laughed. She asked"), whichever form is chosen. */
   let out = s.replace(
-    /\{g:([^}|]*)\|([^}|]*)(?:\|([^}|]*))?\}/g,
-    (_, man: string, woman: string, neutral?: string) =>
-      sex === 'woman' ? woman : sex === 'man' ? man : (neutral ?? man),
+    /\{g:([^}|]*)\|([^}|]*)(?:\|([^}|]*))?\}( (?:was|is|has|does)\b)?/g,
+    (
+      _,
+      man: string,
+      woman: string,
+      neutral: string | undefined,
+      verb: string | undefined,
+      at: number,
+    ) => {
+      let w = sex === 'woman' ? woman : sex === 'man' ? man : (neutral ?? man)
+      if (verb) w += w === 'they' ? PLURAL[verb.trim()] : verb
+      return /(^|[.!?]\s+)$/.test(s.slice(0, at)) ? w.charAt(0).toUpperCase() + w.slice(1) : w
+    },
   )
   for (const [k, v] of Object.entries(vars)) out = out.split(`{${k}}`).join(String(v))
   return out

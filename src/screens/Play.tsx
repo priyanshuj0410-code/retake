@@ -72,7 +72,11 @@ export function Play({
             ? S.firm.closed
             : S.entry.unknown
     return (
-      <Page surface="oof" stepKey="refused">
+      <Page
+        surface="oof"
+        stepKey="refused"
+        title={`${S.entry.title.en} / ${S.entry.title.hinglish}`}
+      >
         <Notice kind="error">{msg.en}</Notice>
         <Text lang="hi-Latn">{msg.hinglish}</Text>
       </Page>

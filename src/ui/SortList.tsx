@@ -15,7 +15,8 @@ export interface SortListProps {
   }
 }
 
-/** Drag a row by its body, or use its up and down buttons; every move is announced. */
+/** Drag a row by its body, or use its up and down buttons; every move is announced. A button
+    at the end of the list is aria-disabled, not disabled, so keyboard focus stays on it. */
 export function SortList({ items, order, onChange, labels }: SortListProps) {
   const [live, setLive] = useState('')
   const [dragging, setDragging] = useState<number | null>(null)
@@ -87,7 +88,7 @@ export function SortList({ items, order, onChange, labels }: SortListProps) {
                 type="button"
                 className="sort__move"
                 onClick={() => move(pos, pos - 1)}
-                disabled={pos === 0}
+                aria-disabled={pos === 0}
                 aria-label={labels.up(items[idx].name)}
               >
                 ↑
@@ -96,7 +97,7 @@ export function SortList({ items, order, onChange, labels }: SortListProps) {
                 type="button"
                 className="sort__move"
                 onClick={() => move(pos, pos + 1)}
-                disabled={pos === order.length - 1}
+                aria-disabled={pos === order.length - 1}
                 aria-label={labels.down(items[idx].name)}
               >
                 ↓

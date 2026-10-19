@@ -127,8 +127,8 @@ export function createSession(rng: Rng, dep: DeploymentId, langs: Lang[]): Sessi
   const slotsA = selectCards(rng, d.formA, 'A', conductBank, fillers)
   let formA = rng.shuffle(present(rng, slotsA, { form: 'A', langs, arm, fillers }))
   /* Rematches: cue-carrying form A cards that return late in form A with the same characters
-     and their starting order flipped, never next to their first showing. Scored by no claim
-     (plan v2: none in the panel games; two conduct cards in the firm, for S5's guard). */
+     and their starting order flipped, never next to their first showing. They are S5's
+     consistency guard (plan v2: none in the panel games; two conduct cards in the firm). */
   const nRematch = d.formA.rematch ?? 0
   if (nRematch > 0) {
     const early = formA.slice(0, Math.max(1, formA.length - 3))

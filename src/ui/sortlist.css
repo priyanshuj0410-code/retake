@@ -51,7 +51,7 @@
   font-family: var(--font-display);
   cursor: pointer;
 }
-.sort__move:disabled {
+.sort__move[aria-disabled='true'] {
   border-color: var(--c-rule);
   color: var(--c-rule);
   cursor: default;

@@ -4,7 +4,9 @@
  * across timing arms; keeps "prefer not to say" as its own cell; releases the employer's sex
  * result only for groups of 50 or more; merges or suppresses small demographic categories.
  */
-import { config } from '../src/engine/config'
+import { readFileSync, readdirSync, statSync } from 'node:fs'
+import { join } from 'node:path'
+import { config, formatDate, releaseOf } from '../src/engine/config'
 import {
   employerSexResult,
   releaseCategories,
@@ -18,7 +20,30 @@ const T = 'AT-7 release only in cells of 50 or more'
 const mean = <V>(cs: { n: number; value?: V }[]) =>
   cs.reduce((s, c) => s + Number(c.value ?? 0) * c.n, 0) / cs.reduce((s, c) => s + c.n, 0)
 
+const ROOT = new URL('..', import.meta.url).pathname
+const walk = (d: string): string[] =>
+  readdirSync(d).flatMap((n) =>
+    statSync(join(d, n)).isDirectory() ? walk(join(d, n)) : [join(d, n)],
+  )
+
 export async function run() {
+  /* One source for every withdrawal and release date (ux audit 2026-10-19, m-e). */
+  const direct = walk(join(ROOT, 'src'))
+    .filter((f) => /\.tsx?$/.test(f) && !f.endsWith('engine/config.ts'))
+    .filter((f) => /release\.releaseAt|withdrawalDaysAfterRelease/.test(readFileSync(f, 'utf8')))
+  record(
+    'X-7 one source for release and withdrawal dates',
+    'only engine/config.ts reads the release dates; everything else calls releaseOf',
+    direct.length === 0,
+    direct.map((f) => f.replace(ROOT, '')).join(', '),
+  )
+  const g1 = releaseOf('panel-g1')
+  record(
+    'X-7 one source for release and withdrawal dates',
+    'withdrawal closes withdrawalDaysAfterRelease days after release',
+    g1.deleteUntil - g1.releaseAt === config.release.withdrawalDaysAfterRelease * 86_400_000,
+    `${formatDate(g1.releaseAt, 'en')} to ${formatDate(g1.deleteUntil, 'en')}`,
+  )
   record(T, 'the registered minimum is 50', config.release.minCell === 50)
   record(T, 'a cell of 49 is refused', releaseCell({ label: 'x', n: 49, value: 0.1 }) === null)
   record(T, 'a cell of 50 is released', releaseCell({ label: 'x', n: 50, value: 0.1 })?.n === 50)

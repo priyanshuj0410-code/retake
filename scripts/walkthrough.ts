@@ -14,7 +14,7 @@ import { createElement as h, type ReactElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { notesById, screens, screeningItems } from '../src/content'
 import type { Lang } from '../src/content/types'
-import { config, type DeploymentId } from '../src/engine/config'
+import { config, formatDate, releaseOf, type DeploymentId } from '../src/engine/config'
 import { windowFor } from '../src/engine/firm'
 import { estimate, longest } from '../src/engine/length'
 import { seeded } from '../src/engine/rng'
@@ -186,7 +186,7 @@ function describe(
         varies: `${what} Varies per player: which cards come from the bank, human or animal, every name and cue, the starting order and, for bilinguals, the language. This is one seeded example.`,
         after: `After Confirm the same screen shows: "${fill(p.card.continuation.en, { first })}" (a fixed line, the same whatever the cues).`,
         note: p.rematch
-          ? 'A rematch: the same characters return with their starting order flipped. Scored by no claim.'
+          ? "A rematch: the same characters return with their starting order flipped. Used for S5's consistency guard."
           : undefined,
       }
     }
@@ -743,7 +743,9 @@ function outside(): Section {
     b.nodes,
     'A1',
     'Before the release date',
-    h(Explain, { preview: { kind: 'notYet', date: config.release.releaseAt['panel-g1'] } }),
+    h(Explain, {
+      preview: { kind: 'notYet', date: formatDate(releaseOf('panel-g1').releaseAt, 'en') },
+    }),
     0,
   )
   b.page(

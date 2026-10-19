@@ -11,7 +11,7 @@
     "lint": "oxlint",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.ts\"",
     "preview": "vite preview",
-    "check": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json --import ./scripts/lib/ignore-css.mjs scripts/check-all.ts && pnpm rules && pnpm e2e",
+    "check": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json --import ./scripts/lib/ignore-css.mjs scripts/check-all.ts && pnpm ux && pnpm rules && pnpm e2e",
     "check:fast": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json --import ./scripts/lib/ignore-css.mjs scripts/check-all.ts",
     "rules": "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" firebase emulators:exec --only database,auth --project demo-eval 'tsx --tsconfig tsconfig.app.json scripts/rules-check.ts'",
     "length": "tsx --tsconfig tsconfig.app.json scripts/session-length.ts",
@@ -20,7 +20,8 @@
     "shots": "tsx --tsconfig tsconfig.app.json scripts/shots.ts",
     "e2e": "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" firebase emulators:exec --only database,auth --project demo-eval 'tsx --tsconfig tsconfig.app.json scripts/e2e.ts'",
     "merit-reference": "tsx --tsconfig tsconfig.app.json scripts/merit-reference.ts",
-    "walkthrough": "tsx --tsconfig tsconfig.app.json --import ./scripts/lib/ignore-css.mjs scripts/walkthrough.ts"
+    "walkthrough": "tsx --tsconfig tsconfig.app.json --import ./scripts/lib/ignore-css.mjs scripts/walkthrough.ts",
+    "ux": "tsx --tsconfig tsconfig.app.json scripts/ux-audit.ts"
   },
   "dependencies": {
     "firebase": "^12.18.0",
@@ -32,6 +33,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.1.0",
+    "axe-core": "4.10.3",
     "oxlint": "^1.79.0",
     "playwright-core": "^1.63.0",
     "prettier": "^3.9.6",

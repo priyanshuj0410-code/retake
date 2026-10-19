@@ -9,11 +9,14 @@ export interface Option {
 /** One answer from a list: native radio inputs, so keyboards and screen readers work as they do everywhere. */
 export function Choice({
   legend,
+  heading,
   options,
   value,
   onChange,
 }: {
   legend: string
+  /** The question is the screen's heading: the legend holds the page's h1. */
+  heading?: boolean
   options: Option[]
   value: string | null
   onChange: (id: string) => void
@@ -21,7 +24,9 @@ export function Choice({
   const name = useId()
   return (
     <fieldset className="choice">
-      <legend className="choice__legend">{legend}</legend>
+      <legend className="choice__legend">
+        {heading ? <h1 className="choice__heading">{legend}</h1> : legend}
+      </legend>
       {options.map((o) => (
         <label className="choice__option" key={o.id}>
           <input
@@ -42,12 +47,14 @@ export function Choice({
 /** Any number of answers: native checkboxes. Shares Choice's stylesheet. */
 export function Checks({
   legend,
+  heading,
   hint,
   options,
   value,
   onChange,
 }: {
   legend: string
+  heading?: boolean
   hint?: string
   options: Option[]
   value: string[]
@@ -55,7 +62,9 @@ export function Checks({
 }) {
   return (
     <fieldset className="choice">
-      <legend className="choice__legend">{legend}</legend>
+      <legend className="choice__legend">
+        {heading ? <h1 className="choice__heading">{legend}</h1> : legend}
+      </legend>
       {hint ? <span className="choice__text">{hint}</span> : null}
       {options.map((o) => (
         <label className="choice__option" key={o.id}>

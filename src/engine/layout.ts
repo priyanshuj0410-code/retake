@@ -354,7 +354,7 @@ export function present(rng: Rng, slots: Slot[], opts: PresentOptions): Presente
 
 /**
  * Rematches: `n` distinct cue-carrying form A cards (of one family, where given) that return
- * with the same characters and their starting order flipped. Scored by no claim.
+ * with the same characters and their starting order flipped. They are S5's consistency guard.
  */
 export function rematchesOf(rng: Rng, formA: Presented[], n: number, family?: Family): Presented[] {
   const eligible = rng.shuffle(

@@ -59,3 +59,22 @@ export interface Config {
 }
 
 export const config = raw as unknown as Config
+
+const DAY = 86_400_000
+
+/** A deployment's release and the end of its withdrawal window, both from `config.release`:
+    the one source of every date the code screen, the explanation and withdrawal pages, the
+    stores and the database rules show or enforce. */
+export const releaseOf = (dep: DeploymentId) => {
+  const releaseAt = Date.parse(`${config.release.releaseAt[dep]}T00:00:00+05:30`)
+  return { releaseAt, deleteUntil: releaseAt + config.release.withdrawalDaysAfterRelease * DAY }
+}
+
+/** A date as players read it: "15 March 2027", India time. */
+export const formatDate = (ms: number, lang: 'en' | 'hinglish') =>
+  new Date(ms).toLocaleDateString(lang === 'hinglish' ? 'en-IN' : 'en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'Asia/Kolkata',
+  })

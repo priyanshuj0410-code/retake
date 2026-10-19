@@ -5,7 +5,7 @@
 import { useEffect, useState } from 'react'
 import { inboxBank, notesById, screeningItems, screens, xw } from '../content'
 import type { Lang, T } from '../content/types'
-import { config } from '../engine/config'
+import { formatDate, releaseOf } from '../engine/config'
 import { formatCode } from '../engine/codes'
 import { characterView, fill } from '../engine/text'
 import { randomiserStatement, type Runner } from '../engine/runner'
@@ -207,7 +207,6 @@ export function StepView({
           actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}
         >
           <Text kind="lead">{L(runner.seasonBand().text)}</Text>
-          <Text>{L(S.wrap.result.peopleLine)}</Text>
         </Page>
       )
     case 'prior': {
@@ -295,7 +294,7 @@ function ChoiceStep({
       }
     >
       {before}
-      <Choice legend={legend} options={options} value={v} onChange={setV} />
+      <Choice legend={legend} options={options} value={v} onChange={setV} heading />
     </Page>
   )
 }
@@ -327,6 +326,7 @@ function PeopleStep({
     return (
       <Page
         {...page}
+        stepKey={`${page.stepKey}:answered`}
         lang={lang === 'hinglish' ? 'hi-Latn' : 'en-GB'}
         title={Lc(p.card.title)}
         actions={
@@ -407,6 +407,7 @@ function OrdinaryStep({
     return (
       <Page
         {...page}
+        stepKey={`${page.stepKey}:answered`}
         title={L(step.d.title)}
         actions={<Button onClick={() => onDone(v)}>{L(screens.common.next)}</Button>}
       >
@@ -548,6 +549,7 @@ function InboxStep({
     >
       <Text kind="lead">{L(inc.text)}</Text>
       <Choice
+        heading
         legend={L(screens.inbox.question)}
         options={screens.inbox.scale.map((t, i) => ({ id: String(i), text: L(t) }))}
         value={label}
@@ -585,6 +587,7 @@ function ProbeStep({
       }
     >
       <Checks
+        heading
         legend={L(screens.wrap.probe.question)}
         hint={L(screens.wrap.probe.hint)}
         options={screens.wrap.probe.options.map((o) => ({ id: o.id, text: L(o.text) }))}
@@ -594,14 +597,6 @@ function ProbeStep({
     </Page>
   )
 }
-
-const fmtDate = (ms: number, lang: Lang) =>
-  new Date(ms).toLocaleDateString(lang === 'hinglish' ? 'en-IN' : 'en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'Asia/Kolkata',
-  })
 
 function CodeStep({
   runner,
@@ -624,8 +619,7 @@ function CodeStep({
       live = false
     }
   }, [runner])
-  const releaseAt = Date.parse(`${config.release.releaseAt[runner.dep]}T00:00:00+05:30`)
-  const until = releaseAt + config.release.withdrawalDaysAfterRelease * 86_400_000
+  const { releaseAt, deleteUntil: until } = releaseOf(runner.dep)
   return (
     <Page
       {...page}
@@ -644,8 +638,8 @@ function CodeStep({
       )}
       <Text>
         {fill(L(screens.wrap.code.release), {
-          date: fmtDate(releaseAt, ui),
-          until: fmtDate(until, ui),
+          date: formatDate(releaseAt, ui),
+          until: formatDate(until, ui),
         })}
       </Text>
       <Checks

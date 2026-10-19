@@ -4,7 +4,7 @@ import { screens } from '../content'
 import { Disclosure } from './Disclosure'
 import { Consent } from './PreScreens'
 import type { T } from '../content/types'
-import { config, DEPLOYMENTS, type DeploymentId } from '../engine/config'
+import { config, formatDate, releaseOf, type DeploymentId } from '../engine/config'
 import {
   deriveKeys,
   enrolmentKey,
@@ -217,7 +217,8 @@ export function Explain({ preview }: { preview?: ExplainState }) {
     const dep = await store.codeKnown(keys.code)
     if (!dep) return setState({ kind: 'bad' })
     const ex = await store.explanation(dep)
-    if (!ex) return setState({ kind: 'notYet', dep, date: config.release.releaseAt[dep] })
+    if (!ex)
+      return setState({ kind: 'notYet', dep, date: formatDate(releaseOf(dep).releaseAt, 'en') })
     setState({ kind: 'open', dep, ex })
   }
   if (state.kind === 'open' && state.ex)
@@ -260,6 +261,7 @@ export function Explain({ preview }: { preview?: ExplainState }) {
 export function Withdraw({ preview }: { preview?: 'idle' | 'bad' | 'done' | 'closed' }) {
   const [code, setCode] = useState('')
   const [state, setState] = useState<'idle' | 'bad' | 'done' | 'closed'>(preview ?? 'idle')
+  const [closedOn, setClosedOn] = useState('')
   const go = async () => {
     const c = normaliseCode(code)
     if (!validCode(c)) return setState('bad')
@@ -270,14 +272,14 @@ export function Withdraw({ preview }: { preview?: 'idle' | 'bad' | 'done' | 'clo
       await store.withdraw(keys)
       setState('done')
     } catch {
+      setClosedOn(formatDate(releaseOf(dep).deleteUntil, 'en'))
       setState('closed')
     }
   }
-  const closedOn = DEPLOYMENTS.map((d) => config.release.releaseAt[d])[0]
   return (
     <Page
       surface="oof"
-      stepKey="withdraw"
+      stepKey={state === 'done' ? 'withdraw-done' : 'withdraw'}
       oof={L(S.common.outOfFiction)}
       demo={demoBadge}
       title={L(S.withdraw.title)}

@@ -175,8 +175,7 @@
         { "min": -100, "text": { "en": "A hard season. Several budget and vendor calls cost the team, and next quarter starts with catching up.", "hinglish": "Mushkil season. Kai budget aur vendor faislon se team ka nuksan hua, aur agla quarter peeche se shuru hoga." } },
         { "min": 8, "text": { "en": "A steady season. The team delivered most of what it planned, with a few costly calls along the way.", "hinglish": "Theek thaak season. Team ne zyaadatar plan pura kiya, raaste mein kuch mehnge faisle hue." } },
         { "min": 16, "text": { "en": "A strong season. Your budget, vendor and schedule calls kept the team ahead of plan.", "hinglish": "Shaandaar season. Aapke budget, vendor aur schedule ke faislon ne team ko plan se aage rakha." } }
-      ],
-      "peopleLine": { "en": "Your people decisions shaped the story; the season was decided by the budget, vendor and schedule calls.", "hinglish": "Aapke logon ke faislon ne kahaani banayi; season budget, vendor aur schedule ke faislon se tay hua." }
+      ]
     },
     "prior": [
       { "id": "told", "text": { "en": "Before today, had anyone told you how this test reads attitudes?", "hinglish": "Aaj se pehle, kya kisi ne aapko bataya tha ki yeh test attitudes kaise padhta hai?" } },
@@ -243,6 +242,7 @@
     }
   },
   "entry": {
+    "title": { "en": "This link cannot open a game", "hinglish": "Yeh link game nahin khol sakta" },
     "refused": { "en": "This link has already been used. Each link starts one session only, and a session cannot be replayed.", "hinglish": "Yeh link pehle hi use ho chuka hai. Har link sirf ek session shuru karta hai, aur session dobara nahin khela ja sakta." },
     "unknown": { "en": "This link is not valid.", "hinglish": "Yeh link valid nahin hai." },
     "offline": { "en": "The study could not be reached. Check your connection and open the link again.", "hinglish": "Study tak pahuncha nahin ja saka. Connection check karke link dobara kholiye." }

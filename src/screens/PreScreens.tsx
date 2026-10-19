@@ -117,6 +117,7 @@ export function LanguageStep({
       }
     >
       <Choice
+        heading
         legend={L(S.language.title)}
         options={[
           { id: 'en', text: L(S.language.en) },

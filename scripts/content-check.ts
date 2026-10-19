@@ -17,6 +17,7 @@ import {
 } from '../src/content'
 import { config, DEPLOYMENTS } from '../src/engine/config'
 import { BANDS, STRATA, TYPES, bankFor } from '../src/engine/layout'
+import { fill } from '../src/engine/text'
 import { record } from './lib/check'
 
 const T = 'X-2 content banks and writing rules'
@@ -211,6 +212,33 @@ export async function run() {
     'the Inbox states the Internal Committee route',
     /Internal Committee/.test(screens.inbox.route.en) &&
       /Internal Committee/.test(screens.inbox.note.en),
+  )
+
+  /* Every gendered text, filled the three ways the generator fills it: no "they was", and no
+     sentence restarting in lower case. */
+  const gendered: string[] = []
+  const collect = (v: unknown): void => {
+    if (typeof v === 'string') {
+      if (v.includes('{g:')) gendered.push(v)
+    } else if (v && typeof v === 'object') Object.values(v).forEach(collect)
+  }
+  for (const f of walk(join(ROOT, 'content')).filter((f) => f.endsWith('.json')))
+    collect(JSON.parse(readFileSync(f, 'utf8')))
+  const slips: string[] = []
+  for (const s of gendered)
+    for (const sex of ['man', 'woman', undefined] as const) {
+      const out = fill(s, { name: 'Asha' }, sex)
+      const m = out.match(/\bthey (was|is|has|does)\b|[.!?] [a-z]/)
+      if (m)
+        slips.push(
+          `${sex ?? 'neutral'}: ${out.slice(Math.max(0, (m.index ?? 0) - 30), (m.index ?? 0) + 20)}`,
+        )
+    }
+  record(
+    T,
+    `gendered texts agree and capitalise in all three forms (${gendered.length} texts)`,
+    gendered.length > 0 && slips.length === 0,
+    slips.slice(0, 5).join(' | '),
   )
 
   /* Writing rules over every content file and every string in src. */

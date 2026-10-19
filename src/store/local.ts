@@ -4,7 +4,7 @@
  * prototype run with no backend at all, and the checks run without the emulator. Nothing in
  * it leaves the device. The real rules are tested against the emulator (scripts/rules-check.ts).
  */
-import { config, DEPLOYMENTS, type DeploymentId } from '../engine/config'
+import { DEPLOYMENTS, releaseOf as releaseOfConfig, type DeploymentId } from '../engine/config'
 import type { CodeKeys } from '../engine/codes'
 import { randomKey } from '../engine/rng'
 import type { Submission } from '../engine/records'
@@ -23,11 +23,7 @@ import type {
 
 export type Tree = Record<string, Record<string, unknown>>
 
-const DAY = 86_400_000
-export const releaseOf = (dep: DeploymentId): Release => {
-  const releaseAt = Date.parse(`${config.release.releaseAt[dep]}T00:00:00+05:30`)
-  return { releaseAt, deleteUntil: releaseAt + config.release.withdrawalDaysAfterRelease * DAY }
-}
+export const releaseOf = (dep: DeploymentId): Release => releaseOfConfig(dep)
 
 export const DEMO_SCHEDULE: Schedule = {
   firm: 'demo-firm',

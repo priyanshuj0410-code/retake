@@ -1,4 +1,4 @@
-/* @owns choice choice__legend choice__option choice__input choice__text */
+/* @owns choice choice__legend choice__heading choice__option choice__input choice__text */
 .choice {
   border: none;
   margin: var(--gap-none);
@@ -16,6 +16,13 @@
   color: var(--c-text);
   padding: var(--gap-none);
   margin-bottom: var(--gap-m);
+}
+.choice__heading {
+  font: inherit;
+  margin: var(--gap-none);
+}
+.choice__heading:focus {
+  outline: none;
 }
 .choice__option {
   display: flex;

@@ -36,7 +36,7 @@
   font-size: var(--text-lead);
   cursor: pointer;
 }
-.alloc__step:disabled {
+.alloc__step[aria-disabled='true'] {
   border-color: var(--c-rule);
   color: var(--c-rule);
   cursor: default;
