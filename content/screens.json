@@ -6,6 +6,8 @@
     "confirm": { "en": "Confirm", "hinglish": "Pakka karein" },
     "outOfFiction": { "en": "This part is not part of the game.", "hinglish": "Yeh hissa game ka hissa nahin hai." },
     "fullDetails": { "en": "Read the full details", "hinglish": "Poori jaankari padhiye" },
+    "updateReady": { "en": "Update ready. Your season is kept.", "hinglish": "Naya version taiyaar hai. Aapka season bacha rehta hai." },
+    "update": { "en": "Update", "hinglish": "Update karein" },
     "prototype": { "en": "Prototype. Fictional people and stories; your answers stay in this browser.", "hinglish": "Prototype. Kaalpanik log aur kahaniyan; aapke jawab isi browser mein rehte hain." },
     "moveUp": { "en": "Move up", "hinglish": "Upar karein" },
     "moveDown": { "en": "Move down", "hinglish": "Neeche karein" },

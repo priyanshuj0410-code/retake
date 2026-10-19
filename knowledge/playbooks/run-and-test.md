@@ -6,6 +6,8 @@ plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
   - https://app.plane.so/the-equal-lens/browse/EVAL-4/
   - https://app.plane.so/the-equal-lens/browse/EVAL-5/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-6/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-7/
 ---
 
 # Running and testing the evaluator
@@ -28,8 +30,9 @@ browser run use the installed Google Chrome through `playwright-core`.
 | `pnpm dev` | The demo build on the **demo store**: everything in the browser's own storage, no backend. The home page issues demo tokens, so each button starts a fresh one-time session. |
 | `pnpm emulators`, then `pnpm seed`, then `pnpm dev:emu` | The same app on the **Firebase emulator** (`demo-eval`), with the real rules. `pnpm seed [n]` writes release dates, the demo firm, the explanation and tokens, prints play links, and with `n` writes `n` demo players' records. |
 
-Demo-only aids, all under `config.demo: true`: the home page; the demo notice before the
-disclosure; the "Demo" strip on every screen after it; `?now=YYYY-MM-DD` on the address to
+Demo-only aids, all under `config.demo: true`: the home page (`#/dev`); one quiet prototype
+line on the landing screen (the demo notice and the "Demo" strip were removed, EVAL-6);
+`?now=YYYY-MM-DD` on the address to
 pretend a date (try `#/explain?now=2027-03-02` to open the explanation after release, or the
 firm play link the enrolment page offers); `#/results` plays 120 or 400 seeded demo players and
 shows their numbers through the release rule.
@@ -49,6 +52,18 @@ plays a running dev server; `POLICY=order` taps in the order shown). The branch'
 runs with `pnpm dev --port 5184`. Content: `content/story.json` (stories, episodes, beats,
 screens, result and profile words); planning values: `content/config.json` `season`, every one
 PENDING v18. Review: [game-redesign-2026-10-19](../reviews/game-redesign-2026-10-19.md).
+
+## 2b. Reload, offline and install (EVAL-6, EVAL-7)
+
+A season in progress is saved on the device after every answer (`src/store/progress.ts`,
+localStorage key `eval-progress:play/<token>`), so a refresh resumes it; clear site data to start
+over. The production build is an installable PWA: `pnpm build && pnpm preview`, open it once,
+and it plays offline (the service worker precaches the shell, fonts and portraits; none runs on
+`pnpm dev`). A new deploy shows "Update ready" and waits for a tap. `pnpm pwa` builds into
+`out/pwa-dist/`, serves it on port 5199 and checks installability, the offline resume and the
+update prompt in Chrome. `pnpm icons` redraws `public/icons/`. Deploy: Vercel serves `dist/`
+as is; `sw.js` must not be cached long by the host (it is fetched with the browser's update
+check, which bypasses the HTTP cache for up to 24 hours by default).
 
 ## 3. Where the content lives (replace it here, never in code)
 

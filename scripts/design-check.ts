@@ -257,4 +257,20 @@ export async function run() {
     faint.length === 0,
     faint.join(', '),
   )
+
+  /* The installed app's colours are tokens (EVAL-7): the manifest and the theme-color meta. */
+  const man = JSON.parse(read('public/manifest.webmanifest')) as {
+    theme_color: string
+    background_color: string
+  }
+  const tokenHex = (n: string) => def(tokens, n)?.toLowerCase()
+  const html = read('index.html')
+  record(
+    T,
+    'the manifest and theme-color meta use token colours (--violet, --note-paper)',
+    man.theme_color.toLowerCase() === tokenHex('--violet') &&
+      man.background_color.toLowerCase() === tokenHex('--note-paper') &&
+      html.includes(`name="theme-color" content="${man.theme_color}"`),
+    `${man.theme_color} ${man.background_color}`,
+  )
 }

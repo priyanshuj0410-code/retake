@@ -9,6 +9,7 @@ plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-4/
   - https://app.plane.so/the-equal-lens/browse/EVAL-5/
   - https://app.plane.so/the-equal-lens/browse/EVAL-6/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-7/
 ---
 
 # Equal Lens Evaluator design system
@@ -234,6 +235,7 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 | `ReadingList` | `src/ui/ReadingList.tsx` | Readings as a plain list, label then level, every level in the same ink and weight ("Leans towards men" looks exactly like "No lean read"); only "Not enough to say" is quieter. No colour reads as good or bad |
 | `ResultHero` | `src/ui/ResultHero.tsx` | The top of the result: one number to remember ("38 of 46 equal pairs where you put the man ahead"), the same pairs as a dot grid (`role="img"`, filled: the man ahead, ring: the woman ahead, dashed: neither), the band and its sentence, then the bar and reasons as children; ink on grey only. Without a sex reading it shows the band line alone |
 | `Fold` | `src/ui/Fold.tsx` | A section that folds: native `details` with the `h2` in the summary and a drawn marker; the result's areas, the first open; the opened explanation's sections, all closed |
+| `UpdateReady` | `src/ui/UpdateReady.tsx` | "Update ready. Your season is kept." with an Update button, a fixed bar at the foot of the screen on paper with the ink rule above it (`role="status"`), shown when a new version of the installed app is waiting (EVAL-7); it never reloads on its own |
 | `Details` | `src/ui/Details.tsx` | "Read the full details": a native `details`, closed, with a quiet display-face summary (a `--control` target, 56 px on the note pitch) and the complete text behind a screen's short points (consent, the content note, the result band). Nothing is cut; Enter or Space toggles it |
 | `DevNotes` | `src/ui/DevNotes.tsx` | Pending markers for the research team, folded, `data-dev`, rendered only by the Vite dev server (`import.meta.env.DEV`); never player copy |
 | `PointCard` | `src/ui/PointCard.tsx` | One finding in a decision area: the pattern's name, the counts, and for a blind spot the player's own decisive pairs as a list (never a made-up inner voice) |
@@ -561,6 +563,24 @@ reopens the same screen with the same answers and the same draw (the season's se
 cues, episodes, cards and mascot pairing are redrawn identically). The one-time link refuses a
 reload only once the session is submitted or withdrawn; a reload of the result shows the same
 result. `pnpm e2e` reloads at week one, mid-episode and the result.
+
+## 6a. The installed app (EVAL-7)
+
+Team season is a PWA. `public/manifest.webmanifest`: name and short name "Team season",
+`display: standalone`, `start_url` and `scope` "./", `theme_color` `--violet` (#553286) and
+`background_color` `--note-paper` (#FBF6EC), held to the tokens by X-4. Icons are drawn by
+`pnpm icons` (`scripts/icons.ts`) in the comic register and never show a face: a square
+ink-ruled panel on caption yellow holding the violet round stamp, tilted 8 degrees, with "TS"
+in Big Shoulders; 192 and 512 px, a maskable 512 px with the art inside the central 60 per cent,
+`apple-touch-icon` at 180 px and a 32 px favicon. `index.html` carries the iOS meta tags.
+The service worker (`scripts/pwa/sw.js`, written into the build with its precache list by
+`scripts/pwa/plugin.ts`; none on the dev server) precaches the shell, hashed assets, fonts,
+icons and every portrait; `index.html` is network-first, everything else cache-first; it never
+touches another origin, so nothing from Firebase is cached, and it never touches localStorage,
+where the season in progress lives. A new version waits for the player's tap on `UpdateReady`;
+nothing reloads mid-season on its own. `pnpm pwa` (X-18) checks installability (Chrome's own
+check, the one Lighthouse reads), the precache, an offline reload that resumes the season, and
+the update prompt.
 
 ## 7. Old phones
 

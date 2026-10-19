@@ -6,11 +6,31 @@ import { Play } from './screens/Play'
 import { Enrol, Explain, Home, SeasonLanding, Withdraw } from './screens/Pages'
 import { Results } from './screens/Results'
 import { Profile } from './screens/Profile'
-import { Notice, Page } from './ui'
+import { Notice, Page, UpdateReady } from './ui'
+import { onUpdateReady } from './pwa'
+import { screens } from './content'
 
 const route = () => location.hash.replace(/^#/, '').split('?')[0] || '/'
 
 export function App() {
+  const [update, setUpdate] = useState<(() => void) | null>(null)
+  useEffect(() => onUpdateReady((apply) => setUpdate(() => apply)), [])
+  const screen = <Screen />
+  return (
+    <>
+      {screen}
+      {update ? (
+        <UpdateReady
+          text={screens.common.updateReady.en}
+          button={screens.common.update.en}
+          onUpdate={update}
+        />
+      ) : null}
+    </>
+  )
+}
+
+function Screen() {
   const [path, setPath] = useState(route)
   useEffect(() => {
     const on = () => setPath(route())
