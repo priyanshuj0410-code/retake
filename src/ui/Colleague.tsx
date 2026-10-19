@@ -5,7 +5,7 @@ export interface ColleagueView {
   figure: string
   /** Words for a screen reader: "woman, darker skin tone" or "panda". */
   figureLabel: string
-  /** The week-one mascot, kept small beside the person after the reveal. */
+  /** The mascot of the first decisions, kept small beside the person after the reveal. */
   badge?: string
   name: string
   cues: string[]

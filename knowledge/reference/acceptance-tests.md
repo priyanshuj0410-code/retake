@@ -17,8 +17,8 @@ change the check or the configuration and this table together.
 
 `pnpm check` runs, in order: `tsc -b`, `oxlint`, `scripts/check-all.ts` (every test on the demo
 store and the content), `pnpm rules` (the rules in the emulator) and `pnpm e2e` (a browser
-session on the emulator). Last run, 19 Oct 2026: **242 of 242 checks pass** (199 in
-`check-all`, 36 in `rules`, 7 in `e2e`). The plan asks that an independent reviewer signs each
+session on the emulator). Last run, 19 Oct 2026 (branch `eval-game-redesign`): **336 of 336 checks pass** (280 in
+`check-all`, 43 in `rules`, 13 in `e2e`). The plan asks that an independent reviewer signs each
 test off before any pilot datum: that sign-off is not part of this build.
 
 | # | Registered test | Script | What the script does | Not covered |
@@ -47,6 +47,12 @@ test off before any pilot datum: that sign-off is not part of this build.
 | X-7 One source for dates | `scripts/release-check.ts` | Only `src/engine/config.ts` reads the release dates; the withdrawal window closes the configured days after release ([ux audit](../reviews/ux-audit-2026-10-19.md), B2) |
 | X-8 Accessibility | `scripts/ux-audit.ts` (`pnpm ux`) | Every screen type at 412, 320 and 1280 px, light and dark: contrast, targets, names, one `h1`, titles, reflow, live regions, axe-core, focus on arrival, keyboard ranking and allocation ([ux audit](../reviews/ux-audit-2026-10-19.md)) |
 | X-9 Component states | `scripts/component-states-check.ts`; `scripts/ux-states.ts` (in `pnpm ux`); the code-field block in `scripts/e2e.ts` | Each component's states in markup, in the browser (hover, focus, press, checked, limits, drag, slide, settle, invalid, done, copy, long content, forced colours, reduced motion) and against the emulator ([component states](../reviews/component-states-2026-10-19.md)) |
+| X-10 Season story: content | `scripts/story-check.ts` | Three seasons (one built, two PENDING v17), about 50 decisions in 4 or 5 episodes of 8 to 12, the tie structure of every beat, no pronoun in descriptions, consequences only by `{name}`, no "fair" or "bias", every PENDING v17 key present, bands (none called unbiased), the share card for every band, the result sections in the owner's order, neutral level colours, the profile's words |
+| X-11 Season story: cast and draws | `scripts/story-check.ts` | 200 seeded seasons: four women and four men, eight animals and mascots, religion and tone balanced within sex, surname or birthplace never both, rival pairs; tied notes always to the tied colleagues; rival pairs meet equally often (within one) |
+| X-12 Consequences follow the notes only | `scripts/story-check.ts` | 200 casts, one notes-only player: identical consequences and season points; the key is the merit tier |
+| X-13 The attitude rating | `scripts/story-check.ts` | Seeded players: false leans at about alpha or fewer, a strong lean read in 80 per cent or more, content-blind players not read; decisive pairs only after the reveal and on equal notes; caste and birthplace compared only within their pools |
+| X-14 Season records | `scripts/story-check.ts`, `scripts/rules-check.ts`, `scripts/e2e.ts` | One record per decision, the whitelist, no time field, Back keeps only the final answer; the emulator's rules accept a whole season, a profile box, a research link and contact details, and refuse any other field; a browser plays a season on the emulator |
+| X-15 The optional profile | `scripts/story-check.ts` | Ciphertext only in the store, the recovery code opens it and a wrong one does not, research opt-in and opt-out, delete withdraws the seasons, the change and retake rules, contact details stored apart |
 
 ## The predecessor's crosswise build checks
 

@@ -4,6 +4,7 @@ title: Running and testing the evaluator
 description: How to run the prototype in demo mode (no backend, or the Firebase emulator), where every piece of content lives for researchers to replace, how to change card counts, and how to run the checks and screenshots.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-4/
 ---
 
 # Running and testing the evaluator
@@ -34,6 +35,19 @@ shows their numbers through the release rule.
 
 Routes: `#/play/<token>` (panel games), `#/enrol/<firm>` and `#/firm/<enrolment code>` (the
 firm), `#/explain`, `#/withdraw`.
+
+## 2a. The season story (EVAL-4)
+
+On the demo home page, "Team season: pick a story" issues a `season` token and plays the
+redesigned game: the season picker, five episodes, the result page, the optional profile.
+"Your profile" opens `#/profile`; "Open the demo profile" there writes and opens a demo profile
+with two made-up past seasons (recovery code `DEMQ-PRQF-2XE7`; `pnpm seed` writes it to the
+emulator too and prints season links). `pnpm season` plays one whole season in Chrome at
+390 px through the accessible roles and prints the decision and click totals (`BASE=http://localhost:5184/`
+plays a running dev server; `POLICY=order` taps in the order shown). The branch's dev server
+runs with `pnpm dev --port 5184`. Content: `content/story.json` (stories, episodes, beats,
+screens, result and profile words); planning values: `content/config.json` `season`, every one
+PENDING v17. Review: [game-redesign-2026-10-19](../reviews/game-redesign-2026-10-19.md).
 
 ## 3. Where the content lives (replace it here, never in code)
 

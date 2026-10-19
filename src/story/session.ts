@@ -7,7 +7,7 @@
  * south and a Muslim born in the north (no character with a surname carries a birthplace, as
  * in the card games). The darker skin tone goes to one Hindu and one Muslim of each sex, so
  * religion and tone are balanced within sex. Names, surnames, cities and tone emoji are drawn
- * from content/identity.json. In week one each colleague is a different animal mascot with a
+ * from content/identity.json. Before the reveal each colleague is a different animal mascot with a
  * made-up mascot name; the reveal maps each mascot to its person. Each woman is paired at
  * random with one man as rivals: the pairs whose notes are tied when the season sets one
  * against the other.

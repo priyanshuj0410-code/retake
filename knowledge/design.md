@@ -33,7 +33,7 @@ brand mascot; see section 4b.)
 
 `pnpm check` also runs `pnpm ux` (`scripts/ux-audit.ts`, from the audit in
 [reviews/ux-audit-2026-10-19.md](reviews/ux-audit-2026-10-19.md)), which plays every screen
-type of both panel games and the firm session and fails on any of: text below AA contrast
+type of both panel games, the firm session and the season story (its result and profile pages too) and fails on any of: text below AA contrast
 against its real background, a target under 44 px on phones or 24 px on desktop, a control
 without a name, a heading skip, a screen without one `h1` or its own document title, sideways
 scroll at 320 px, a ranking or allocation card without a live region, text under 12 px, any
@@ -104,7 +104,7 @@ the whole structure of the visual system:
 
 | Surface | Where | Look |
 |---|---|---|
-| **Game** (`surface="game"`) | First week, your season, rounds after the note, ordinary decisions, the season result; in the season story: the picker, the opening, every decision, the reveal, the season's end | Paper ground, violet act label (the story's week title), character cards on tint with a 2 px line border |
+| **Game** (`surface="game"`) | First week, your season, rounds after the note, ordinary decisions, the season result; in the season story: the picker, the opening, every decision, the reveal, the season's end | Paper ground, violet act label (the story's episode title), character cards on tint with a 2 px line border |
 | **Out of fiction** (`surface="oof"`) | Disclosure, consent, screening block, survey, Off the Record, mid-season note, recall, direct block, the wrap's questions, debrief, code, withdrawal, explanation; in the season story: the statements grid, the wrap, the attitude-rating result and the profile | Warm paper ground, a hairline rule across the top, and the line "This part is not part of the game." as the first thing on the screen, in the body face, never violet |
 | **Sober** (`surface="sober"`) | The Committee Inbox and its content note | Neutral grey ground, no violet, no illustration, no points, the Internal Committee route stated on every card |
 
@@ -133,7 +133,7 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 | `Notice` | `src/ui/Notice.tsx` | A boxed message: `info`, `error` (`role=alert`, "!"), `ok` (`role=status`, a tick); takes an `id` for a field's description |
 | `DemoBadge` | `src/ui/DemoBadge.tsx` | The sun-coloured "Demo" strip at the top of every screen except the disclosure |
 | `Table` | `src/ui/Table.tsx` | The demo results table in a named, focusable scroll region, with suppressed cells marked and an `empty` line |
-| `Portrait` | `src/ui/Portrait.tsx` | A colleague's face, large (72 px box, 56 px emoji; never under 64 px on phones) or small (48 px, the roster): the animal mascot in week one, the human figure with its tone after the reveal, with the mascot as a corner badge |
+| `Portrait` | `src/ui/Portrait.tsx` | A colleague's face, large (72 px box, 56 px emoji; never under 64 px on phones) or small (48 px, the roster): the animal mascot before the reveal, the human figure with its tone after the reveal, with the mascot as a corner badge |
 | `Colleague` | `src/ui/Colleague.tsx` | A season colleague: `Portrait`, name (surname part of it), cue lines ("Born in"), this job's notes. All spans, so it can sit inside a button |
 | `Beat` | `src/ui/Beat.tsx` | The top of a story screen: the last decision's consequence (violet rule at left) with the answer restated, the scene, and the question as the `h1`, which names the rest with `aria-describedby` |
 | `TapOrder` | `src/ui/TapOrder.tsx` | Tap-to-order ranking: whole-card buttons take numbers 1, 2, 3 in the order tapped; the last fills itself and the order commits (k - 1 taps). Tap a numbered card to take it back; Undo takes back the last tap; every tap announced politely |
@@ -198,7 +198,7 @@ way in; the warehouse is built, the newsroom and the clinic are PENDING v17). It
   `PickOne`, `QuickSplit`, `Options`), the next screen opens with its consequence (`Beat`), and a
   quiet "Back: change my last decision" reopens it. Nothing counts down; no auto-advance waits.
 - **A fixed cast.** Eight colleagues for the whole season, large portraits (`Portrait`, never
-  under 64 px on phones). In week one each is a different animal mascot with a made-up name; the
+  under 64 px on phones). In the first decisions each is a different animal mascot with a made-up name; the
   reveal maps each mascot to its person, and the mascot stays as a corner badge. Each builds a
   track record (`Roster`), kept off the decision cards so equal notes stay equal.
 - **Consequences follow the notes only.** The consequence line is keyed by the merit tier of the

@@ -1,4 +1,4 @@
-/** What the story screens show of a colleague: the week-one mascot or, after the reveal, the person. */
+/** What the story screens show of a colleague: the mascot before the reveal or, after it, the person. */
 import { identity } from '../content'
 import type { Lang, T } from '../content/types'
 import { fill } from '../engine/text'

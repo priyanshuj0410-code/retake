@@ -4,6 +4,7 @@ title: Data and privacy on the shared Firebase project
 description: How the evaluator stores records on the-equal-lens's Realtime Database, which of the registered storage protections the app enforces, and what Firebase cannot guarantee for the unlinked-record and mixing-pool design, stated plainly with what the app does about each.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-4/
 ---
 
 # Data and privacy on the shared Firebase project
@@ -34,6 +35,15 @@ All under the one database, all prefixed `eval-`, held by `database.rules.json`
 | `eval-play/<hash>` | the person-level record: cards, survey, screening, Inbox, ordinary decisions, wrap | the device, once, at submit | nobody through the rules |
 | `eval-xw/<hash>` | one crosswise answer: item, answer, subsample, label | the device, once, at submit | nobody through the rules |
 | `eval-demo/<hash>` | one optional demographic answer: item, answer | the device, once, at submit | nobody through the rules |
+| `eval-profile/<hash>` | the optional pseudonymous season profile (EVAL-4): `{iv, ct}`, AES-GCM ciphertext encrypted on the device under a key derived from the player's recovery code; holds the display name, each saved season's band and numbers, day and withdrawal code | the code holder, any time | the code holder (the key is a 128-bit secret; nobody can list profiles) |
+| `eval-long/<hash>` | the longitudinal research link of a profile that opted in: `{plays}`, the play keys of its saved seasons (consent PENDING v17) | the code holder; opting out deletes it | nobody through the rules |
+| `eval-contact/<random>` | optional stay-in-touch details after a season result: `{nm?, em?, follow, research}`, linked to no record, code or profile | the device, once | nobody through the rules |
+
+The season story's records use `eval-play` like the card games, with `dep` `season`. A
+profile's `<hash>` is derived from its recovery code (PBKDF2, then HMAC: `src/story/profile.ts`),
+never from the withdrawal code. The contact node is new personal data (a name and an email):
+it needs a DPDP basis, a retention period and a deletion route before any participant, which
+this prototype does not yet have.
 
 Each `<hash>` is derived from the player's withdrawal code (PBKDF2 then HMAC, a different
 label per store and per record: `src/engine/codes.ts`). The code is shown once and stored

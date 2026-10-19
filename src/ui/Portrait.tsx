@@ -1,8 +1,8 @@
 import './portrait.css'
 
 /**
- * A colleague's face, large: a human figure with its skin tone, or (in week one) an animal
- * mascot. After the reveal a small badge keeps the week-one mascot beside the person, so the
+ * A colleague's face, large: a human figure with its skin tone, or (before the reveal) an animal
+ * mascot. After the reveal a small badge keeps the mascot beside the person, so the
  * player can follow who was who. The label is what a screen reader says for the picture.
  */
 export function Portrait({
