@@ -13,7 +13,7 @@
     "en": "Five episodes in a busy warehouse, from the hiring sprint to the season close.",
     "hinglish": "Ek vyast warehouse mein paanch episodes, hiring sprint se season ke ant tak."
    },
-   "emoji": "📦",
+   "art": "warehouse",
    "company": {
     "en": "Kite Logistics",
     "hinglish": "Kite Logistics"
@@ -4557,10 +4557,29 @@
      },
      "interlude": {
       "after": "wh-w2-temps",
-      "text": {
-       "en": "Wednesday. Forty new pickers arrive at once, and the canteen runs out of chairs. The team carries crates in to sit on.",
-       "hinglish": "Wednesday. Chaalis naye pickers ek saath aate hain, aur canteen mein kursiyan kam pad jaati hain. Team baithne ke liye crates le aati hai."
-      }
+      "panels": [
+       {
+        "art": "crowd",
+        "text": {
+         "en": "Wednesday. Forty new pickers arrive at once,",
+         "hinglish": "Wednesday. Chaalis naye pickers ek saath aate hain,"
+        }
+       },
+       {
+        "art": "table",
+        "text": {
+         "en": "and the canteen runs out of chairs.",
+         "hinglish": "aur canteen mein kursiyan kam pad jaati hain."
+        }
+       },
+       {
+        "art": "crates",
+        "text": {
+         "en": "The team carries crates in to sit on.",
+         "hinglish": "Team baithne ke liye crates le aati hai."
+        }
+       }
+      ]
      }
     },
     {
@@ -4574,10 +4593,29 @@
      },
      "interlude": {
       "after": "wh-e2-cm1",
-      "text": {
-       "en": "Midweek. The complaints keep coming, and the team chat goes quiet. Someone pins a note: one thing at a time.",
-       "hinglish": "Hafte ke beech. Shikayatein aati rehti hain, aur team chat shaant ho jaati hai. Koi ek note pin karta hai: ek waqt par ek kaam."
-      }
+      "panels": [
+       {
+        "art": "letters",
+        "text": {
+         "en": "Midweek. The complaints keep coming,",
+         "hinglish": "Hafte ke beech. Shikayatein aati rehti hain,"
+        }
+       },
+       {
+        "art": "chat",
+        "text": {
+         "en": "and the team chat goes quiet.",
+         "hinglish": "aur team chat shaant ho jaati hai."
+        }
+       },
+       {
+        "art": "note",
+        "text": {
+         "en": "Someone pins a note: one thing at a time.",
+         "hinglish": "Koi ek note pin karta hai: ek waqt par ek kaam."
+        }
+       }
+      ]
      }
     },
     {
@@ -4591,10 +4629,29 @@
      },
      "interlude": {
       "after": "wh-e3-vo3",
-      "text": {
-       "en": "Thursday. The finance team sends the new budget in red ink. The coffee machine breaks. Nobody mentions it.",
-       "hinglish": "Thursday. Finance team naya budget laal syahi mein bhejti hai. Coffee machine kharab ho jaati hai. Koi kuch nahin kehta."
-      }
+      "panels": [
+       {
+        "art": "ledger",
+        "text": {
+         "en": "Thursday. The finance team sends the new budget in red ink.",
+         "hinglish": "Thursday. Finance team naya budget laal syahi mein bhejti hai."
+        }
+       },
+       {
+        "art": "coffee",
+        "text": {
+         "en": "The coffee machine breaks.",
+         "hinglish": "Coffee machine kharab ho jaati hai."
+        }
+       },
+       {
+        "art": "glance",
+        "text": {
+         "en": "Nobody mentions it.",
+         "hinglish": "Koi kuch nahin kehta."
+        }
+       }
+      ]
      }
     },
     {
@@ -4608,10 +4665,22 @@
      },
      "interlude": {
       "after": "wh-e4-app4",
-      "text": {
-       "en": "The promotion list goes up on Friday. The team pretends not to look at the notice board.",
-       "hinglish": "Promotion list Friday ko lagti hai. Team notice board na dekhne ka naatak karti hai."
-      }
+      "panels": [
+       {
+        "art": "board",
+        "text": {
+         "en": "The promotion list goes up on Friday.",
+         "hinglish": "Promotion list Friday ko lagti hai."
+        }
+       },
+       {
+        "art": "backs",
+        "text": {
+         "en": "The team pretends not to look at the notice board.",
+         "hinglish": "Team notice board na dekhne ka naatak karti hai."
+        }
+       }
+      ]
      }
     },
     {
@@ -4625,10 +4694,22 @@
      },
      "interlude": {
       "after": "wh-w5-early",
-      "text": {
-       "en": "Sale day. The first truck leaves at six. By noon the dashboard shows twice the usual orders.",
-       "hinglish": "Sale day. Pehla truck chhah baje nikalta hai. Dopahar tak dashboard aam se dugne orders dikhata hai."
-      }
+      "panels": [
+       {
+        "art": "truck",
+        "text": {
+         "en": "Sale day. The first truck leaves at six.",
+         "hinglish": "Sale day. Pehla truck chhah baje nikalta hai."
+        }
+       },
+       {
+        "art": "dashboard",
+        "text": {
+         "en": "By noon the dashboard shows twice the usual orders.",
+         "hinglish": "Dopahar tak dashboard aam se dugne orders dikhata hai."
+        }
+       }
+      ]
      }
     }
    ],
@@ -4640,28 +4721,30 @@
   {
    "id": "newsroom",
    "built": false,
-   "emoji": "📰",
+   "art": "newsroom",
    "title": {
     "en": "The newsroom",
     "hinglish": "Newsroom"
    },
    "premise": {
-    "en": "Five episodes on a city newspaper's night desk, from the first edition to election night. PENDING v18",
-    "hinglish": "Ek shehar ke akhbaar ki night desk par ek season, pehle edition se election ki raat tak. PENDING v18"
-   }
+    "en": "Five episodes on a city newspaper's night desk, from the first edition to election night.",
+    "hinglish": "Ek shehar ke akhbaar ki night desk par ek season, pehle edition se election ki raat tak."
+   },
+   "_pending": "PENDING v18: this season is not built; v18 decides when it opens."
   },
   {
    "id": "clinic",
    "built": false,
-   "emoji": "🩺",
+   "art": "clinic",
    "title": {
     "en": "The clinic",
     "hinglish": "Clinic"
    },
    "premise": {
-    "en": "Five episodes running a busy city clinic through the monsoon fever rush. PENDING v18",
-    "hinglish": "Monsoon bukhaar ke daur mein ek vyast shehri clinic chalane ka season. PENDING v18"
-   }
+    "en": "Five episodes running a busy city clinic through the monsoon fever rush.",
+    "hinglish": "Monsoon bukhaar ke daur mein ek vyast shehri clinic chalane ka season."
+   },
+   "_pending": "PENDING v18: this season is not built; v18 decides when it opens."
   }
  ],
  "screens": {
@@ -4674,8 +4757,8 @@
    "hinglish": "Ek kahani jo aapko padhti hai: paanch chhote episodes, lagbhag 80 decisions jo gine jaate hain, aur aakhir mein woh aapke baare mein kya kehte hain. Lagbhag 26 minute. Tool aapka season chunta hai; baaki kahaniyan aapki rating ke baad khulti hain."
   },
   "pickLater": {
-   "en": "After your rating. PENDING v18",
-   "hinglish": "Aapki rating ke baad. PENDING v18"
+   "en": "After your rating.",
+   "hinglish": "Aapki rating ke baad."
   },
   "play": {
    "en": "Play {title}",
@@ -4698,8 +4781,8 @@
    "hinglish": "Order mein tap kijiye, pehli pasand pehle."
   },
   "rankUndo": {
-   "en": "Undo last tap",
-   "hinglish": "Pichhla tap hatayein"
+   "en": "Clear the stamps",
+   "hinglish": "Stamps hatayein"
   },
   "rankChoose": {
    "en": "Choose as number {n}:",
@@ -4762,8 +4845,8 @@
    "hinglish": "Aapne chuna: {text}."
   },
   "rosterTitle": {
-   "en": "Your team so far",
-   "hinglish": "Ab tak aapki team"
+   "en": "Your team",
+   "hinglish": "Aapki team"
   },
   "rosterEmpty": {
    "en": "No tasks yet",
@@ -5023,6 +5106,44 @@
   "probeDone": {
    "en": "Done",
    "hinglish": "Ho gaya"
+  },
+  "rankCleared": {
+   "en": "Stamps cleared. Choose number 1.",
+   "hinglish": "Stamps hat gaye. Number 1 chuniye."
+  },
+  "rankStamps": [
+   {
+    "en": "1st",
+    "hinglish": "1st"
+   },
+   {
+    "en": "2nd",
+    "hinglish": "2nd"
+   },
+   {
+    "en": "3rd",
+    "hinglish": "3rd"
+   },
+   {
+    "en": "4th",
+    "hinglish": "4th"
+   }
+  ],
+  "pageOf": {
+   "en": "Page {n} of {k}",
+   "hinglish": "Page {n} / {k}"
+  },
+  "mascotsTitle": {
+   "en": "The team chat",
+   "hinglish": "Team chat"
+  },
+  "stripLabel": {
+   "en": "What happens next, in pictures",
+   "hinglish": "Aage kya hota hai, tasveeron mein"
+  },
+  "devTitle": {
+   "en": "Research team notes (dev build only)",
+   "hinglish": "Research team notes (sirf dev build)"
   }
  },
  "rating": {
@@ -5231,10 +5352,6 @@
    "en": "This device cannot share or copy. You can select the card's words instead.",
    "hinglish": "Yeh device share ya copy nahin kar sakta. Aap card ke shabd select kar sakte hain."
   },
-  "pending": {
-   "en": "Demo: the thresholds behind every reading are planning values, PENDING v18.",
-   "hinglish": "Demo: har reading ke peeche ki seemaayein planning values hain, PENDING v18."
-  },
   "committee": {
    "en": "If anything in this season brings up a real situation at work, you can contact your Internal Committee under the Sexual Harassment of Women at Workplace Act, 2013, your district's Local Committee, or the SHe-Box portal.",
    "hinglish": "Agar is season ki koi baat kaam ki kisi asli sthiti ki yaad dilaye, to aap Sexual Harassment of Women at Workplace Act, 2013 ke tahat apni Internal Committee, apne zile ki Local Committee, ya SHe-Box portal se sampark kar sakte hain."
@@ -5308,8 +5425,8 @@
    "hinglish": "Nazar kaise rakhein"
   },
   "watchBody": {
-   "en": "Habits some workplaces use for their own decisions, free to use. Sources PENDING v18; no effect is claimed here.",
-   "hinglish": "Kuch workplaces apne faislon ke liye yeh aadatein apnate hain, muft. Sources PENDING v18; yahan kisi asar ka daava nahin."
+   "en": "Habits some workplaces use for their own decisions, free to use. No effect is claimed here.",
+   "hinglish": "Kuch workplaces apne faislon ke liye yeh aadatein apnate hain, muft. Yahan kisi asar ka daava nahin."
   },
   "noBlind": {
    "en": "Nothing stood out here this season. With only a few decisions in this area, that is an absence of evidence, not a clean bill.",
@@ -5502,8 +5619,8 @@
    "hinglish": "Mujhe follow-up material aur retake reminders bhejiye"
   },
   "contactResearch": {
-   "en": "I agree to be contacted for longitudinal research (consent text PENDING v18)",
-   "hinglish": "Main lambi research ke liye sampark kiye jaane par sehmat hoon (consent text PENDING v18)"
+   "en": "I agree to be contacted for longitudinal research",
+   "hinglish": "Main lambi research ke liye sampark kiye jaane par sehmat hoon"
   },
   "contactSend": {
    "en": "Send my details",
@@ -5524,6 +5641,32 @@
   "domainReading": {
    "en": "Women and men in this area: {zone}",
    "hinglish": "Is kshetra mein mahila aur purush: {zone}"
+  },
+  "_devPending": {
+   "en": "Demo: the thresholds behind every reading are planning values, PENDING v18.",
+   "hinglish": "Demo: har reading ke peeche ki seemaayein planning values hain, PENDING v18."
+  },
+  "_watchPending": "PENDING v18: the sources for these habits.",
+  "_contactResearchPending": "PENDING v18: the consent text for longitudinal contact.",
+  "heroNumber": {
+   "en": "{k} of {n}",
+   "hinglish": "{n} mein se {k}"
+  },
+  "heroLine": {
+   "en": "equal pairs where you put the {one} ahead",
+   "hinglish": "barabar jodiyan jahan aapne {one} ko aage rakha"
+  },
+  "heroDots": {
+   "en": "{n} equal pairs: {m} with the man ahead, shown filled; {e} with neither ahead, shown dashed; {w} with the woman ahead, shown as rings.",
+   "hinglish": "{n} barabar jodiyan: {m} mein purush aage, bhare hue; {e} mein koi aage nahin, dashed; {w} mein mahila aage, khaali gol."
+  },
+  "otherTitle": {
+   "en": "Your other readings",
+   "hinglish": "Aapki baaki readings"
+  },
+  "areasTitle": {
+   "en": "Your decisions, area by area",
+   "hinglish": "Aapke decisions, kshetra ke hisaab se"
   }
  },
  "profile": {
@@ -5628,10 +5771,6 @@
    "en": "Change read: from {from} to {to}, your decisions moved towards {group}.",
    "hinglish": "Badlaav padha gaya: {from} se {to} tak, aapke decisions {group} ki taraf gaye."
   },
-  "changePending": {
-   "en": "Demo: the rule for reading a change is a planning value, PENDING v18.",
-   "hinglish": "Demo: badlaav padhne ka niyam ek planning value hai, PENDING v18."
-  },
   "retakeTitle": {
    "en": "Retake",
    "hinglish": "Dobara kheliye"
@@ -5645,22 +5784,18 @@
    "hinglish": "Retake shuru karein (demo)"
   },
   "noStoryLeft": {
-   "en": "Every built season has been played on this profile. The other seasons are PENDING v18.",
-   "hinglish": "Is profile par har bana hua season khela ja chuka hai. Baaki seasons PENDING v18 hain."
+   "en": "Every season open to you has been played on this profile. The other seasons open later.",
+   "hinglish": "Is profile par har khula season khela ja chuka hai. Baaki seasons baad mein khulenge."
   },
   "played": {
    "en": "Played on your profile",
    "hinglish": "Aapki profile par khela gaya"
   },
   "researchTitle": {
-   "en": "Longitudinal research (optional, PENDING v18)",
-   "hinglish": "Lambi research (vaikalpik, PENDING v18)"
+   "en": "Longitudinal research (optional)",
+   "hinglish": "Lambi research (vaikalpik)"
   },
   "researchConsent": [
-   {
-    "en": "PENDING v18: this consent text is a draft for the owner and the ethics review.",
-    "hinglish": "PENDING v18: yeh consent text owner aur ethics review ke liye draft hai."
-   },
    {
     "en": "If you agree, the study team may link the seasons saved on this profile, to study how decisions change over time. They still never learn your name or contact details.",
     "hinglish": "Agar aap sehmat hain, to study team is profile par save hue seasons ko jod sakti hai, yeh samajhne ke liye ki decisions samay ke saath kaise badalte hain. Unhe phir bhi aapka naam ya contact kabhi pata nahin chalta."
@@ -5709,6 +5844,11 @@
   "lock": {
    "en": "Close my profile on this device",
    "hinglish": "Is device par meri profile band karein"
-  }
+  },
+  "_devChangePending": {
+   "en": "Demo: the rule for reading a change is a planning value, PENDING v18.",
+   "hinglish": "Demo: badlaav padhne ka niyam ek planning value hai, PENDING v18."
+  },
+  "_researchConsentPending": "PENDING v18: this consent text is a draft for the owner and the ethics review."
  }
 }

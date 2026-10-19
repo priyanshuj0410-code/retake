@@ -1,7 +1,7 @@
 import { Colleague, type ColleagueView } from './Colleague'
 import './tapcard.css'
 
-/** One colleague of two or more: a tap on a card commits the choice at once (no Next). */
+/** One colleague of two or more, as portrait panels side by side: a tap commits the choice at once (no Next). */
 export function PickOne({
   items,
   onPick,
@@ -20,7 +20,7 @@ export function PickOne({
         <li key={c.name}>
           <button type="button" className="tapcard" onClick={() => onPick(i)}>
             <span className="tapcard__sr">{label}</span>
-            <Colleague c={c} />
+            <Colleague c={c} eager />
           </button>
         </li>
       ))}

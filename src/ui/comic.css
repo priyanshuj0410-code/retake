@@ -1,0 +1,202 @@
+/* @owns panel panel--paper caption stamp stamp--empty splash splash__dots splash__dot splash__kicker splash__title splash__body then then__words then__text then__answer strip strip__panel strip__panel--wide strip__caption castgrid castgrid--sheet castgrid--reveal castgrid__tile castgrid__caption castgrid__name castgrid__line */
+/* The comic register (knowledge/design.md, section 4c): panels ruled in ink, yellow captions,
+   violet stamps. Game surface only. */
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+  padding: var(--gap-m);
+  border: var(--edge) solid var(--c-ink-line);
+  background: var(--c-panel);
+}
+.panel--paper {
+  background: var(--c-surface);
+}
+.caption {
+  align-self: flex-start;
+  margin: var(--gap-none);
+  padding: var(--gap-s) var(--gap-m);
+  background: var(--c-caption);
+  color: var(--c-on-caption);
+  border: var(--border) solid var(--c-on-caption);
+  box-shadow: var(--shadow-caption);
+  font-family: var(--font-story);
+  font-size: var(--text-label);
+  line-height: var(--leading-ui);
+  overflow-wrap: anywhere;
+}
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--stamp);
+  height: var(--stamp);
+  border-radius: var(--radius-full);
+  border: var(--edge) solid var(--c-ink-line);
+  background: var(--c-stamp);
+  color: var(--c-on-stamp);
+  font-family: var(--font-comic);
+  font-weight: var(--weight-strong);
+  font-size: var(--text-lead);
+  line-height: var(--leading-tight);
+  transform: rotate(var(--tilt));
+}
+.stamp--empty {
+  background: var(--c-surface);
+  border-style: dashed;
+  border-color: var(--c-muted);
+  transform: none;
+}
+.splash {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+  padding: var(--gap-l) var(--gap-m);
+  border: var(--edge) solid var(--c-ink-line);
+  background: var(--c-splash);
+  color: var(--c-on-splash);
+}
+.splash__dots {
+  position: absolute;
+  inset: var(--gap-none);
+  width: 100%;
+  height: 100%;
+}
+.splash__dot {
+  fill: var(--c-on-splash);
+}
+.splash__kicker,
+.splash__title,
+.splash__body {
+  position: relative;
+  margin: var(--gap-none);
+  overflow-wrap: anywhere;
+}
+.splash__kicker {
+  font-family: var(--font-comic);
+  font-weight: var(--weight-strong);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-display);
+  text-transform: var(--case-display);
+}
+.splash__title {
+  font-family: var(--font-comic);
+  font-weight: var(--weight-strong);
+  font-size: var(--text-splash);
+  line-height: var(--leading-tight);
+  text-transform: var(--case-display);
+}
+.splash__title:focus {
+  outline: none;
+}
+.splash__body {
+  font-family: var(--font-story);
+  font-style: italic;
+  line-height: var(--leading-ui);
+}
+.then {
+  display: flex;
+  gap: var(--gap-m);
+  align-items: center;
+  padding: var(--gap-s);
+  border: var(--edge) solid var(--c-ink-line);
+  background: var(--c-surface);
+}
+.then__words {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  min-width: 0;
+}
+.then__text {
+  font-family: var(--font-story);
+  font-style: italic;
+  font-size: var(--text-label);
+  line-height: var(--leading-ui);
+  color: var(--c-text);
+  overflow-wrap: anywhere;
+}
+.then__answer {
+  font-size: var(--text-small);
+  line-height: var(--leading-ui);
+  color: var(--c-muted);
+  overflow-wrap: anywhere;
+}
+.strip {
+  display: grid;
+  grid-template-columns: var(--cols-two);
+  gap: var(--gap-s);
+}
+.strip__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: var(--gap-none);
+  border: var(--edge) solid var(--c-ink-line);
+  background: var(--c-panel);
+  min-width: 0;
+}
+.strip__panel--wide {
+  grid-column: var(--span-row);
+}
+.strip__caption {
+  align-self: stretch;
+  margin: var(--gap-s) var(--gap-s) var(--gap-none);
+}
+.castgrid {
+  list-style: none;
+  margin: var(--gap-none);
+  padding: var(--gap-none);
+  display: grid;
+  gap: var(--gap-s);
+}
+.castgrid--sheet {
+  grid-template-columns: var(--cols-four);
+}
+.castgrid--reveal {
+  grid-template-columns: var(--cols-two);
+}
+@media (min-width: 600px) {
+  .castgrid--reveal {
+    grid-template-columns: var(--cols-four);
+  }
+}
+.castgrid__tile {
+  display: flex;
+  flex-direction: column;
+  border: var(--edge) solid var(--c-ink-line);
+  background: var(--c-surface);
+  min-width: 0;
+}
+.castgrid__caption {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  margin: var(--gap-none);
+  padding: var(--gap-xs) var(--gap-s) var(--gap-s);
+  border-top: var(--edge) solid var(--c-on-caption);
+  background: var(--c-caption);
+  color: var(--c-on-caption);
+  font-size: var(--text-small);
+  line-height: var(--leading-ui);
+  overflow-wrap: anywhere;
+}
+.castgrid__name {
+  font-family: var(--font-comic);
+  font-weight: var(--weight-strong);
+  font-size: var(--text-lead);
+  line-height: var(--leading-tight);
+  text-transform: var(--case-display);
+  letter-spacing: var(--tracking-display);
+}
+.castgrid--sheet .castgrid__name {
+  font-size: var(--text-label);
+}
+.castgrid__line {
+  font-family: var(--font-story);
+}

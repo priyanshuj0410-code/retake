@@ -110,6 +110,14 @@ async function audit(page: Page, screen: string, inPage = false) {
     return h ? a === h : a?.tagName === 'MAIN'
   }, inPage)
   if (!focus) focusFails.push(screen)
+  /* Copy hygiene (EVAL-6, X-15): no rendered player copy says PENDING; the dev-only notes and
+     the demo disclosure's owner-wording placeholder aside. */
+  const said = await page.evaluate(() => {
+    const main = document.querySelector('main')?.cloneNode(true) as HTMLElement | undefined
+    main?.querySelectorAll('[data-dev]').forEach((e) => e.remove())
+    return main?.textContent ?? ''
+  })
+  if (/PENDING/.test(said) && !NO_HEADING.test(screen)) problems.push(`${screen}: says PENDING`)
   for (const v of VARIANTS) {
     await page.setViewportSize({ width: v.w, height: v.h })
     await page.emulateMedia({ colorScheme: v.scheme, reducedMotion: 'reduce' })

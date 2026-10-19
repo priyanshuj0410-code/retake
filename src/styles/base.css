@@ -6,6 +6,8 @@ html {
   font-size: var(--text-body);
   line-height: var(--leading-body);
   -webkit-text-size-adjust: 100%;
+  /* Room under focused controls for the action row that stays at the foot of the screen. */
+  scroll-padding-bottom: var(--action-room);
 }
 body {
   margin: var(--gap-none);

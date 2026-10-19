@@ -1,15 +1,17 @@
+import { PanelArt, type ArtKey } from './PanelArt'
 import './storypick.css'
 
 export interface StoryOption {
   id: string
-  emoji: string
+  /** The season's drawn cover panel. */
+  art: ArtKey
   title: string
   premise: string
-  /** A season that is not built yet: shown, not playable. */
+  /** A season that is not playable yet: shown, with when it opens. */
   later?: string
 }
 
-/** Pick one season story: one tap on a built season starts it; seasons not built yet are aria-disabled. */
+/** Pick one season story: one tap on the drawn season starts it; the others are aria-disabled. */
 export function StoryPick({
   options,
   onPick,
@@ -29,8 +31,8 @@ export function StoryPick({
             aria-disabled={!!o.later}
             onClick={() => (o.later ? undefined : onPick(o.id))}
           >
-            <span className="storypick__emoji" aria-hidden="true">
-              {o.emoji}
+            <span className="storypick__art">
+              <PanelArt art={o.art} />
             </span>
             <span className="storypick__text">
               <span className="storypick__title">{o.title}</span>

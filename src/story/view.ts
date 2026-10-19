@@ -2,16 +2,11 @@
 import { identity } from '../content'
 import type { Lang, T } from '../content/types'
 import { fill } from '../engine/text'
-import type { ColleagueView, RosterItem } from '../ui'
+import type { CastTile, ColleagueView } from '../ui'
 import { SS } from './content'
+import { lookLabel, mascotLook, personLook } from './looks'
 import type { StoryRunner } from './runner'
 import type { CastMember } from './session'
-
-const toneWords: Record<string, string> = {
-  darker: 'darker skin tone',
-  lighter: 'lighter skin tone',
-  constant: 'medium skin tone',
-}
 
 export function colleagueView(
   r: StoryRunner,
@@ -20,9 +15,10 @@ export function colleagueView(
   description?: string,
 ): ColleagueView {
   const L = (t: T) => t[r.lang]
-  if (!revealed)
+  const mascot = mascotLook(c)
+  if (!revealed && mascot)
     return {
-      figure: c.animal,
+      look: mascot,
       figureLabel: L(c.animalName),
       name: c.mascot,
       cues: [],
@@ -30,33 +26,37 @@ export function colleagueView(
     }
   const cues: string[] = []
   if (c.born) cues.push(fill(L(identity.birthplace.label), { city: c.born.city }))
+  const look = personLook(c, r.cast)
   return {
-    figure: (c.sex === 'woman' ? identity.figures.woman : identity.figures.man) + c.toneEmoji,
-    figureLabel: `${c.sex}, ${toneWords[c.tone]}`,
-    badge: c.animal || undefined,
+    look,
+    figureLabel: lookLabel(c, look),
+    inset: mascot,
     name: r.displayName(c.slot, true),
     cues,
     description,
   }
 }
 
-/** The cast with their running track records, as the roster shows them. */
-export function rosterItems(
+/** The cast as panels: mascots before the reveal, people (with the mascot inset) after it. */
+export function castTiles(
   r: StoryRunner,
   revealed: boolean,
-  extra?: (c: CastMember) => string[],
-): RosterItem[] {
-  const L = (t: T) => t[r.lang]
-  const records = r.records()
+  lines: (c: CastMember) => string[] = () => [],
+): CastTile[] {
   return r.cast.map((c) => {
     const v = colleagueView(r, c, revealed)
-    const rec = records.get(c.slot) ?? []
-    const lines = [
-      ...(extra ? extra(c) : v.cues),
-      ...(rec.length ? [rec.map((e) => L(e.role)).join(', ')] : [L(SS.rosterEmpty)]),
-    ]
-    return { figure: v.figure, figureLabel: v.figureLabel, badge: v.badge, name: v.name, lines }
+    return { look: v.look, label: v.figureLabel, inset: v.inset, name: v.name, lines: lines(c) }
   })
+}
+
+/** The jobs each colleague led this season, for the season's end. */
+export function trackLines(r: StoryRunner): (c: CastMember) => string[] {
+  const L = (t: T) => t[r.lang]
+  const records = r.records()
+  return (c) => {
+    const rec = records.get(c.slot) ?? []
+    return [rec.length ? rec.map((e) => L(e.role)).join(', ') : L(SS.rosterEmpty)]
+  }
 }
 
 export const langAttr = (l: Lang) => (l === 'hinglish' ? 'hi-Latn' : 'en-GB')

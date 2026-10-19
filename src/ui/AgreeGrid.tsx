@@ -4,8 +4,9 @@ import './agree.css'
 /**
  * Agree or disagree statements on one screen, as a compact grid. Each statement is its own
  * fieldset (the statement is the legend) with five native radios in one row, numbered 1 to 5;
- * each radio's name carries its full point ("1, Strongly disagree"), and the key above the
- * grid gives the words once. At 320 px the five points still fit one row at 44 px or more.
+ * each radio's name carries its full point ("1, Strongly disagree"), and the key gives the words
+ * once, in a header that stays at the top of the screen while the statements scroll under it
+ * (never repeated under each row). At 320 px the five points still fit one row at 44 px or more.
  * Keyboard: Tab between statements, arrows within one, as native radios do.
  */
 export function AgreeGrid({
@@ -55,10 +56,6 @@ export function AgreeGrid({
               </label>
             ))}
           </div>
-          <span className="agree__ends" aria-hidden="true">
-            <span>{scale[0]}</span>
-            <span>{scale[scale.length - 1]}</span>
-          </span>
         </fieldset>
       ))}
     </div>

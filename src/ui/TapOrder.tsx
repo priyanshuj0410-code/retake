@@ -1,11 +1,17 @@
 import { useState } from 'react'
 import { Colleague, type ColleagueView } from './Colleague'
 import { Button } from './Button'
+import { Stamp } from './Comic'
 import './tapcard.css'
 
 export interface TapOrderLabels {
   hint: string
-  undo: string
+  /** The quiet action that lifts every stamp: "Clear the stamps". */
+  clear: string
+  /** Said when the stamps are cleared: "Stamps cleared. Choose number 1." */
+  cleared: string
+  /** The words on a stamp: "1st". */
+  stamp: (n: number) => string
   /** Hidden words before an unnumbered card: "Choose as number 2:". */
   choose: (n: number) => string
   /** Hidden words before a numbered card: "Number 1, tap to take back:". */
@@ -16,11 +22,12 @@ export interface TapOrderLabels {
 }
 
 /**
- * Tap-to-order ranking: tap the colleagues in order of preference and each takes the next
- * number. With one left it takes the last number itself and the order commits (k - 1 taps for
- * k cards, no Confirm). Tapping a numbered card takes it back with every number after it;
- * Undo takes back the last tap. Every tap is announced in a polite live region. Cards are
- * native buttons, so Tab, Enter and Space work, and each card's name says its state.
+ * Tap-to-order ranking as portrait panels: tap the colleagues in order of preference and each
+ * is stamped with the next rank. With one left it takes the last rank itself and the order
+ * commits (k - 1 taps for k cards, no Confirm). Tapping a stamped card takes it back with
+ * every rank after it; "Clear the stamps" lifts them all. Every tap is announced in a polite
+ * live region. Cards are native buttons, so Tab, Enter and Space work, and each card's name
+ * says its state.
  */
 export function TapOrder({
   items,
@@ -50,12 +57,9 @@ export function TapOrder({
     setChosen(next)
     setLive(`${labels.said(items[i].name, next.length)} ${labels.next(next.length + 1)}`)
   }
-  const undo = () => {
-    const last = chosen[chosen.length - 1]
-    if (last === undefined) return
-    const next = chosen.slice(0, -1)
-    setChosen(next)
-    setLive(labels.taken(items[last].name, next.length + 1))
+  const clear = () => {
+    setChosen([])
+    setLive(labels.cleared)
   }
   return (
     <>
@@ -70,13 +74,15 @@ export function TapOrder({
                 aria-pressed={at >= 0}
                 onClick={() => tap(i)}
               >
-                <span className="tapcard__mark" aria-hidden="true">
-                  {at >= 0 ? at + 1 : ''}
-                </span>
                 <span className="tapcard__sr">
                   {at >= 0 ? labels.chosen(at + 1) : labels.choose(chosen.length + 1)}
                 </span>
-                <Colleague c={c} />
+                <Colleague c={c} eager={i < 2} />
+                {at >= 0 ? (
+                  <span className="tapcard__stamp">
+                    <Stamp>{labels.stamp(at + 1)}</Stamp>
+                  </span>
+                ) : null}
               </button>
             </li>
           )
@@ -86,8 +92,8 @@ export function TapOrder({
         {live}
       </p>
       {chosen.length > 0 ? (
-        <Button kind="secondary" onClick={undo}>
-          {labels.undo}
+        <Button kind="quiet" onClick={clear}>
+          {labels.clear}
         </Button>
       ) : null}
     </>

@@ -20,6 +20,7 @@ const modules = [
   './bundle-check',
   './component-states-check',
   './story-check',
+  './pending-check',
 ]
 for (const m of modules) {
   try {

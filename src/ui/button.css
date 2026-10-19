@@ -4,8 +4,10 @@
   width: 100%;
   border-radius: var(--radius-m);
   font-family: var(--font-display);
-  font-size: var(--text-label);
+  font-size: var(--text-action);
   font-weight: var(--weight-label);
+  text-transform: var(--case-display);
+  letter-spacing: var(--tracking-action);
   padding: var(--gap-m) var(--gap-l);
   border: var(--border) solid var(--c-accent);
   cursor: pointer;
@@ -27,14 +29,17 @@
   cursor: not-allowed;
 }
 .button--primary {
-  background: var(--c-accent);
-  color: var(--c-on-accent);
+  background: var(--c-action);
+  border-color: var(--c-action);
+  color: var(--c-on-action);
+  box-shadow: var(--shadow-action);
 }
 .button--primary:active:not(:disabled) {
-  background: var(--c-accent-press);
-  border-color: var(--c-accent-press);
+  background: var(--c-action-press);
+  border-color: var(--c-action-press);
 }
 .button--primary:disabled {
+  box-shadow: var(--flat);
   background: var(--c-rule);
   border-color: var(--c-rule);
   color: var(--c-muted);
@@ -52,8 +57,8 @@
 }
 @media (hover: hover) {
   .button--primary:hover:not(:disabled) {
-    background: var(--c-accent-press);
-    border-color: var(--c-accent-press);
+    background: var(--c-action-press);
+    border-color: var(--c-action-press);
   }
   .button--secondary:hover:not(:disabled) {
     background: var(--c-raised);

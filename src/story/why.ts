@@ -57,6 +57,12 @@ export interface ResultModel {
   /** Where the player sits on the bar, 0 (always the men) to 1 (always the women), and the shaded middle. */
   bar: { at: number; from: number; to: number; left: string; right: string; label: string } | null
   strength: string | null
+  /** The one number to remember: k of n equal woman-and-man pairs went one way, and the dots. */
+  hero: {
+    big: string
+    line: string
+    dots: { filled: number; rings: number; dashed: number; label: string }
+  } | null
   why: string[]
   cards: CueCard[]
   domains: DomainSection[]
@@ -100,7 +106,22 @@ export function resultModel(run: StoryRunner): ResultModel {
 
   let bar: ResultModel['bar'] = null
   let strength: string | null = null
+  let hero: ResultModel['hero'] = null
   if (n > 0 && bandKey !== 'unengaged') {
+    const lead = manAhead >= womanAhead
+    const even = n - manAhead - womanAhead
+    hero = {
+      big: fill(L(RT.heroNumber), { k: lead ? manAhead : womanAhead, n }),
+      line: fill(L(RT.heroLine), {
+        one: L(lead ? sexWords.comparisonOne : sexWords.focalOne),
+      }),
+      dots: {
+        filled: manAhead,
+        rings: womanAhead,
+        dashed: even,
+        label: fill(L(RT.heroDots), { n, m: manAhead, w: womanAhead, e: even }),
+      },
+    }
     const at = (1 + h.weight) / 2
     bar = {
       at,
@@ -308,7 +329,7 @@ export function resultModel(run: StoryRunner): ResultModel {
     cast: run.cast.length,
     band,
   })
-  return { rating, band, body, bar, strength, why, cards, domains, share: shareText }
+  return { rating, band, body, bar, strength, hero, why, cards, domains, share: shareText }
 }
 
 /** One saved season as the profile's timeline shows it: its band, worded as on the result page. */

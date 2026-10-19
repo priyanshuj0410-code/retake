@@ -16,7 +16,11 @@ import { chromium, type Page } from 'playwright-core'
 import { createServer } from 'vite'
 
 const ROOT = new URL('..', import.meta.url).pathname
-const OUT = join(ROOT, 'out/season')
+const OUT = process.env.OUT ?? join(ROOT, 'out/season')
+const WIDTH = Number(process.env.WIDTH ?? 390)
+const HEIGHT = Number(process.env.HEIGHT ?? 844)
+/** Rendered player copy that says PENDING (the dev-only notes and the demo disclosure placeholder aside). */
+export const leaks: string[] = []
 
 let clicks = 0
 let decisions = 0
@@ -102,6 +106,12 @@ export async function playSeason(
     ).trim()
     const c0 = clicks
     const name = m.replace(/^story:/, '')
+    const said = await page.evaluate(() => {
+      const main = document.querySelector('main')?.cloneNode(true) as HTMLElement | undefined
+      main?.querySelectorAll('[data-dev]').forEach((e) => e.remove())
+      return main?.textContent ?? ''
+    })
+    if (/PENDING/.test(said) && m !== 'disclosure') leaks.push(m)
     if (onScreen) await onScreen(m)
     else if (!shot.has(name)) {
       shot.add(name)
@@ -214,7 +224,10 @@ async function main() {
     base = 'http://localhost:5197/'
   }
   const browser = await chromium.launch({ channel: 'chrome' })
-  const page = await browser.newPage({ viewport: { width: 390, height: 844 } })
+  const page = await browser.newPage({
+    viewport: { width: WIDTH, height: HEIGHT },
+    deviceScaleFactor: Number(process.env.DPR ?? 1),
+  })
   const errors: string[] = []
   page.on('pageerror', (e) => errors.push(e.message))
   try {
@@ -241,9 +254,12 @@ async function main() {
       }, {}),
       errors,
     }
-    writeFileSync(join(OUT, 'run.json'), JSON.stringify({ summary, screens, result }, null, 1))
-    console.log(JSON.stringify(summary, null, 1))
-    if (errors.length) process.exitCode = 1
+    writeFileSync(
+      join(OUT, 'run.json'),
+      JSON.stringify({ summary, screens, result, leaks }, null, 1),
+    )
+    console.log(JSON.stringify({ ...summary, leaks }, null, 1))
+    if (errors.length || leaks.length) process.exitCode = 1
   } finally {
     await browser.close()
     await server?.close()

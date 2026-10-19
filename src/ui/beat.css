@@ -1,39 +1,19 @@
-/* @owns beat beat__then beat__consequence beat__answer beat__scene beat__question */
+/* @owns beat beat__question */
 .beat {
   display: flex;
   flex-direction: column;
   gap: var(--gap-m);
 }
-.beat__then {
-  border-left: var(--border-focus) solid var(--c-accent);
-  padding: var(--gap-xs) var(--gap-none) var(--gap-xs) var(--gap-m);
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-xs);
-}
-.beat__consequence {
-  margin: var(--gap-none);
-  font-size: var(--text-lead);
-  line-height: var(--leading-ui);
-  color: var(--c-text);
-}
-.beat__answer {
-  margin: var(--gap-none);
-  font-size: var(--text-small);
-  color: var(--c-muted);
-}
-.beat__scene {
-  margin: var(--gap-none);
-  color: var(--c-body);
-  line-height: var(--leading-body);
-}
 .beat__question {
   margin: var(--gap-none);
   font-family: var(--font-display);
-  font-size: var(--text-h1);
-  font-weight: var(--weight-display);
+  font-size: var(--text-display);
+  font-weight: var(--weight-strong);
   line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  text-transform: var(--case-display);
   color: var(--c-text);
+  overflow-wrap: anywhere;
 }
 .beat__question:focus {
   outline: none;

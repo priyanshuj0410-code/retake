@@ -24,7 +24,15 @@ export async function run() {
   )
   const prim = new Set([...primBlock.matchAll(/(--[\w-]+)\s*:/g)].map((m) => m[1]))
   const allDefined = new Set([...tokens.matchAll(/(--[\w-]+)\s*:/g)].map((m) => m[1]))
-  const semantic = new Set([...allDefined].filter((t) => !prim.has(t)))
+  /* The art tier (EVAL-6): raw colours for the drawn pictures, read only by the art sheets. */
+  const rawTokens = read('src/styles/tokens.css')
+  const artBlock = rawTokens.includes('/* @tier art */')
+    ? strip(rawTokens.slice(rawTokens.indexOf('/* @tier art */')))
+    : ''
+  const art = new Set([...artBlock.matchAll(/(--[\w-]+)\s*:/g)].map((m) => m[1]))
+  const semantic = new Set([...allDefined].filter((t) => !prim.has(t) && !art.has(t)))
+  const ART_SHEETS = new Set(['src/ui/portrait.css', 'src/ui/panelart.css'])
+  const artBad: string[] = []
 
   const sheets = [
     ...readdirSync(join(ROOT, 'src/ui'))
@@ -55,7 +63,9 @@ export async function run() {
     }
     for (const m of css.matchAll(/var\((--[\w-]+)/g)) {
       reads.add(m[1])
-      if (!semantic.has(m[1]))
+      if (art.has(m[1])) {
+        if (!ART_SHEETS.has(s)) artBad.push(`${s}: ${m[1]}`)
+      } else if (!semantic.has(m[1]))
         tierBad.push(`${s}: ${m[1]}${allDefined.has(m[1]) ? ' (primitive)' : ' (undefined)'}`)
     }
   }
@@ -75,6 +85,28 @@ export async function run() {
     tierBad.slice(0, 6).join(' | '),
   )
   void media
+  record(
+    T,
+    "art tokens (the pictures' raw colours) are read by portrait.css and panelart.css only, and the art tier holds only colours",
+    art.size > 0 &&
+      artBad.length === 0 &&
+      [...artBlock.matchAll(/--[\w-]+\s*:\s*([^;]+);/g)].every((m) =>
+        /^#[0-9a-f]{6}$/i.test(m[1].trim()),
+      ),
+    artBad.slice(0, 6).join(' | '),
+  )
+  /* No component or screen writes a colour: the SVG pictures take theirs from classes. */
+  const tsx = [
+    ...readdirSync(join(ROOT, 'src/ui')).map((f) => `src/ui/${f}`),
+    ...readdirSync(join(ROOT, 'src/screens')).map((f) => `src/screens/${f}`),
+  ].filter((f) => f.endsWith('.tsx'))
+  const coloured = tsx.filter((f) => /#[0-9a-f]{3,8}\b|rgba?\(|hsla?\(/i.test(read(f)))
+  record(
+    T,
+    'no colour is written in a component or screen (pictures fill from art classes)',
+    coloured.length === 0,
+    coloured.join(', '),
+  )
   for (const m of tokens.matchAll(/var\((--[\w-]+)/g)) reads.add(m[1])
   const unread = [...allDefined].filter((t) => !reads.has(t))
   record(T, 'every token is read somewhere', unread.length === 0, unread.join(', '))

@@ -1,4 +1,4 @@
-/* @owns storypick storypick__card storypick__emoji storypick__text storypick__title storypick__premise storypick__later */
+/* @owns storypick storypick__card storypick__art storypick__text storypick__title storypick__premise storypick__later */
 .storypick {
   list-style: none;
   margin: var(--gap-none);
@@ -9,14 +9,14 @@
 }
 .storypick__card {
   display: flex;
-  gap: var(--gap-l);
-  align-items: flex-start;
+  gap: var(--gap-m);
+  align-items: stretch;
   width: 100%;
   min-height: var(--target);
-  padding: var(--gap-l);
-  border: var(--border) solid var(--c-border);
-  border-radius: var(--radius-l);
-  background: var(--c-raised);
+  padding: var(--gap-none);
+  border: var(--edge) solid var(--c-ink-line);
+  border-radius: var(--radius-card);
+  background: var(--c-surface);
   color: var(--c-text);
   font: inherit;
   text-align: left;
@@ -24,39 +24,47 @@
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   transition:
-    border-color var(--motion),
+    box-shadow var(--motion),
     transform var(--motion);
+}
+.storypick__card:not([aria-disabled='true']) {
+  box-shadow: var(--shadow-panel);
 }
 .storypick__card:not([aria-disabled='true']):active {
   transform: scale(var(--press));
 }
 .storypick__card[aria-disabled='true'] {
-  background: var(--c-bg);
+  background: var(--c-raised);
   cursor: default;
 }
 @media (hover: hover) {
   .storypick__card:not([aria-disabled='true']):hover {
-    border-color: var(--c-accent);
+    box-shadow: var(--shadow-chosen);
   }
 }
-.storypick__emoji {
-  font-size: var(--portrait-small-face);
-  line-height: var(--leading-tight);
-  forced-color-adjust: none;
+.storypick__art {
+  flex: none;
+  width: var(--card-min);
+  border-right: var(--edge) solid var(--c-ink-line);
 }
 .storypick__text {
   display: flex;
   flex-direction: column;
   gap: var(--gap-xs);
   min-width: 0;
+  padding: var(--gap-m) var(--gap-m) var(--gap-m) var(--gap-none);
 }
 .storypick__title {
   font-family: var(--font-display);
-  font-weight: var(--weight-display);
-  font-size: var(--text-lead);
+  font-weight: var(--weight-strong);
+  font-size: var(--text-display);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  text-transform: var(--case-display);
   color: var(--c-text);
 }
 .storypick__premise {
+  font-size: var(--text-small);
   color: var(--c-body);
   line-height: var(--leading-ui);
 }

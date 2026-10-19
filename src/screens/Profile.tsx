@@ -10,7 +10,7 @@ import type { T } from '../content/types'
 import { config, formatDate } from '../engine/config'
 import { normaliseCode, validCode } from '../engine/codes'
 import { store } from '../store'
-import { PF, RT, storyById } from '../story/content'
+import { PF, RT, SS, storyById } from '../story/content'
 import {
   changeOf,
   currentProfile,
@@ -25,7 +25,7 @@ import {
 } from '../story/profile'
 import { stories } from '../story/content'
 import { bandOf } from '../story/why'
-import { Button, Checks, Field, Heading, List, Notice, Page, Text, Timeline } from '../ui'
+import { Button, Checks, DevNotes, Field, Heading, List, Notice, Page, Text, Timeline } from '../ui'
 
 const S = screens
 const L = (t: T) => t.en
@@ -168,7 +168,6 @@ export function Profile({ go }: { go: (h: string) => void }) {
               )
           : L(PF.noChange)}
       </Text>
-      {config.demo ? <Text kind="small">{L(PF.changePending)}</Text> : null}
       <Heading>{L(PF.retakeTitle)}</Heading>
       <Text>{L(PF.retakeBody)}</Text>
       {next !== null ? (
@@ -187,6 +186,10 @@ export function Profile({ go }: { go: (h: string) => void }) {
         options={[{ id: 'yes', text: L(S.common.yes) }]}
         value={p.data.research ? ['yes'] : []}
         onChange={(ids) => void setResearch(ids.includes('yes')).then(refresh)}
+      />
+      <DevNotes
+        title={L(SS.devTitle)}
+        notes={[L(PF._devChangePending), PF._researchConsentPending as unknown as string]}
       />
       <Text kind="small">{L(p.data.research ? PF.researchOn : PF.researchOff)}</Text>
       <Heading>{L(PF.deleteTitle)}</Heading>

@@ -1,0 +1,28 @@
+/* @owns readinglist readinglist__row readinglist__label readinglist__level readinglist__level--unread */
+.readinglist {
+  margin: var(--gap-none);
+  display: flex;
+  flex-direction: column;
+  border-top: var(--border-thin) solid var(--c-rule);
+}
+.readinglist__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--gap-xs) var(--gap-m);
+  padding: var(--gap-s) var(--gap-none);
+  border-bottom: var(--border-thin) solid var(--c-rule);
+}
+.readinglist__label {
+  color: var(--c-muted);
+}
+.readinglist__level {
+  margin: var(--gap-none);
+  font-weight: var(--weight-strong);
+  color: var(--c-level-none);
+  overflow-wrap: anywhere;
+}
+.readinglist__level--unread {
+  font-weight: var(--weight-label);
+  color: var(--c-level-unread);
+}

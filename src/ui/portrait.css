@@ -1,41 +1,121 @@
-/* @owns portrait portrait--small portrait__face portrait__badge */
+/* @owns portrait portrait--row portrait--then portrait__art portrait__photo portrait__inset pt-l pt-bg pt-dot-ink pt-dot-violet pt-hair pt-cloth pt-clothd pt-badge pt-lanyard pt-skin pt-skinsh pt-eye pt-glass pt-s-hair pt-s-feat pt-s-lip pt-s-lanyard pt-s-line pt-fur pt-fur-b pt-light pt-dark pt-acc pt-acc-b pt-white pt-s-dark */
+/* The portrait system (knowledge/design.md, section 4c). Art tokens are read here and in
+   panelart.css only. The picture keeps its own colours in forced-colours mode: tone is a cue. */
 .portrait {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: none;
-  width: var(--portrait);
-  height: var(--portrait);
-  border-radius: var(--radius-l);
-  background: var(--c-surface);
-  border: var(--border) solid var(--c-border);
+  display: block;
+  width: 100%;
   forced-color-adjust: none;
 }
-.portrait__face {
-  font-size: var(--portrait-face);
-  line-height: var(--leading-tight);
+.portrait--row {
+  flex: none;
+  width: var(--portrait);
+  border: var(--border) solid var(--c-ink-line);
 }
-.portrait--small {
-  width: var(--portrait-small);
-  height: var(--portrait-small);
-  border-radius: var(--radius-m);
+.portrait--then {
+  flex: none;
+  width: var(--face-then);
+  border: var(--border) solid var(--c-ink-line);
 }
-.portrait--small .portrait__face {
-  font-size: var(--portrait-small-face);
+.portrait__art {
+  display: block;
+  width: 100%;
+  height: auto;
 }
-.portrait__badge {
+.portrait__photo {
   position: absolute;
-  right: var(--gap-none);
-  bottom: var(--gap-none);
-  transform: translate(var(--gap-xs), var(--gap-xs));
-  width: var(--mascot-badge);
-  height: var(--mascot-badge);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--text-small);
-  border-radius: var(--radius-s);
-  background: var(--c-surface);
-  border: var(--border-thin) solid var(--c-border);
+  inset: var(--gap-none);
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.portrait__inset {
+  position: absolute;
+  overflow: hidden;
+  left: var(--gap-s);
+  top: var(--gap-s);
+  width: var(--inset);
+  border: var(--border) solid var(--art-line);
+  background: var(--art-paper);
+}
+.pt-l {
+  stroke: var(--art-line);
+  stroke-linejoin: round;
+}
+.pt-bg {
+  fill: var(--art-bg);
+}
+.pt-dot-ink {
+  fill: var(--art-line);
+}
+.pt-dot-violet {
+  fill: var(--art-violet);
+}
+.pt-hair {
+  fill: var(--art-hair);
+}
+.pt-cloth {
+  fill: var(--art-cloth);
+}
+.pt-clothd {
+  fill: var(--art-cloth-dark);
+}
+.pt-badge {
+  fill: var(--art-badge);
+}
+.pt-lanyard {
+  fill: var(--art-lanyard);
+}
+.pt-skin {
+  fill: var(--art-skin);
+}
+.pt-skinsh {
+  fill: var(--art-skin-shade);
+}
+.pt-eye {
+  fill: var(--art-line);
+}
+.pt-glass {
+  fill: var(--art-paper);
+  stroke: var(--art-line);
+}
+.pt-s-hair {
+  stroke: var(--art-hair);
+}
+.pt-s-feat {
+  stroke: var(--art-feature);
+}
+.pt-s-lip {
+  stroke: var(--art-lip);
+}
+.pt-s-lanyard {
+  stroke: var(--art-lanyard);
+}
+.pt-s-line {
+  stroke: var(--art-line);
+}
+.pt-fur {
+  fill: var(--art-fur);
+}
+.pt-fur-b {
+  fill: var(--art-fur2);
+}
+.pt-light {
+  fill: var(--art-light);
+}
+.pt-dark {
+  fill: var(--art-dark);
+}
+.pt-acc {
+  fill: var(--art-acc);
+}
+.pt-acc-b {
+  fill: var(--art-acc2);
+}
+.pt-white {
+  fill: var(--art-paper);
+}
+.pt-s-dark {
+  stroke: var(--art-dark);
 }

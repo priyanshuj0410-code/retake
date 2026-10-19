@@ -1,14 +1,13 @@
 /* @owns demo */
+/* A quiet chip: the demo note must not be the loudest thing on the screen. */
 .demo {
-  background: var(--c-demo);
-  color: var(--c-on-demo);
-  font-family: var(--font-display);
+  align-self: flex-start;
+  color: var(--c-muted);
+  font-family: var(--font-body);
   font-size: var(--text-small);
-  font-weight: var(--weight-label);
-  padding: var(--gap-xs) var(--gap-m);
+  padding: var(--gap-xs) var(--gap-s);
   border-radius: var(--radius-s);
   margin: var(--gap-none);
   overflow-wrap: anywhere;
-  /* Invisible normally; forced colours paint it, so the strip keeps its edge there. */
-  border: var(--border-thin) solid transparent;
+  border: var(--border-thin) solid var(--c-rule);
 }

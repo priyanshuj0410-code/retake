@@ -46,10 +46,17 @@ function content() {
   const beats = wh?.beats ?? []
   record(
     T,
-    'three seasons offered, the warehouse built, the newsroom and the clinic stubbed',
+    'three seasons offered, each with a drawn cover panel (no emoji); the warehouse built, the newsroom and the clinic stubbed with their pending marker in a _pending note, never in the premise',
     stories.length === 3 &&
       !!wh?.built &&
-      stories.filter((s) => !s.built).every((s) => /PENDING v18/.test(s.premise.en)),
+      stories.every((s) => ['warehouse', 'newsroom', 'clinic'].includes(s.art)) &&
+      stories
+        .filter((s) => !s.built)
+        .every(
+          (s) =>
+            /PENDING v18/.test((s as unknown as { _pending?: string })._pending ?? '') &&
+            !/PENDING/.test(JSON.stringify(s.premise)),
+        ),
   )
   const ppl = beats.filter(isPeople)
   const rating = ppl.filter((b) => !b.mascot && b.form !== 'B')
@@ -228,7 +235,7 @@ function content() {
   const doms = Object.values(RT.domains)
   record(
     T,
-    "the result page has the owner's areas (hiring and promotion, complaints and conduct, sharing resources), each with 3 or 4 reflection prompts and 3 or 4 habits (sources PENDING v18, no effect claimed), and the Internal Committee line",
+    "the result page has the owner's areas (hiring and promotion, complaints and conduct, sharing resources), each with 3 or 4 reflection prompts and 3 or 4 habits (no effect claimed; sources pending in a _watchPending note), and the Internal Committee line",
     doms.length === 3 &&
       doms.every(
         (d) =>
@@ -237,8 +244,8 @@ function content() {
           d.watch.length >= 3 &&
           d.watch.length <= 4,
       ) &&
-      /PENDING v18/.test(RT.watchBody.en) &&
-      /no effect is claimed/.test(RT.watchBody.en) &&
+      /PENDING v18/.test(RT._watchPending as unknown as string) &&
+      /No effect is claimed/.test(RT.watchBody.en) &&
       /Internal Committee/.test(RT.committee.en),
   )
   const eps = wh?.episodes ?? []
@@ -263,14 +270,26 @@ function content() {
   )
   record(
     T,
+    'every interlude is a strip of 2 or 3 drawn panels, each with a caption in both languages',
+    eps.every(
+      (e) =>
+        !!e.interlude &&
+        e.interlude.panels.length >= 2 &&
+        e.interlude.panels.length <= 3 &&
+        e.interlude.panels.every((p) => !!p.art && !!p.text.en && !!p.text.hinglish),
+    ),
+  )
+  record(
+    T,
     'the complaint episode says sexual harassment goes to the Internal Committee, not a team lead',
     eps.some((e) => /Internal Committee/.test(e.premise.en)),
   )
   record(
     T,
-    'reading levels use neutral colour tokens, never green or red',
-    !/teal|coral|green|red\b|--c-ok|--c-error/.test(
-      readFileSync(`${ROOT}src/ui/readinggrid.css`, 'utf8') +
+    'reading levels, the hero and its dots use neutral colour tokens, never green or red',
+    !/teal|coral|green|red\b|--c-ok|--c-error|--violet|--c-accent/.test(
+      readFileSync(`${ROOT}src/ui/readinglist.css`, 'utf8') +
+        readFileSync(`${ROOT}src/ui/resulthero.css`, 'utf8') +
         readFileSync(`${ROOT}src/ui/pointcard.css`, 'utf8'),
     ),
   )
@@ -281,8 +300,10 @@ function content() {
   )
   const story = readFileSync(`${ROOT}src/screens/Story.tsx`, 'utf8')
   const order = [
+    '<ResultHero',
+    'RT.otherTitle',
     'RT.opening',
-    'RT.readingsTitle',
+    'RT.areasTitle',
     'RT.followedTitle',
     'RT.blindTitle',
     'RT.originTitle',
@@ -295,15 +316,15 @@ function content() {
   const at = order.map((s) => story.indexOf(s, story.indexOf('export function StoryResult')))
   record(
     T,
-    "the result page renders its sections in the owner's order",
+    "the result page renders its sections in order: the one number (EVAL-6), the other readings, the owner's opening, then the areas and the rest",
     at.every((x, i) => x > 0 && (i === 0 || x > at[i - 1])),
     at.join(','),
   )
   record(
     T,
-    'the profile offers a separate research consent marked PENDING v18, the delete-everything action, and "No change read yet"',
-    /PENDING v18/.test(PF.researchTitle.en) &&
-      PF.researchConsent.some((c) => /PENDING v18/.test(c.en)) &&
+    'the profile offers a separate research consent (pending v18 in a _researchConsentPending note, not on screen), the delete-everything action, and "No change read yet"',
+    !/PENDING/.test(JSON.stringify([PF.researchTitle, PF.researchConsent])) &&
+      /PENDING v18/.test(PF._researchConsentPending as unknown as string) &&
       PF.deleteButton.en === 'Delete my profile and all my records' &&
       PF.noChange.en === 'No change read yet.',
   )

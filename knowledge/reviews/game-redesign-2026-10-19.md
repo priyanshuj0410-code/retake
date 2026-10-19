@@ -1,10 +1,11 @@
 ---
 type: review
 title: Game redesign, 19 Oct 2026
-description: The season-story redesign of the evaluator (EVAL-4) and its rebuild to the owner's 80-decision layout (EVAL-5) - why, what changed, the full 390 px Playwright play with counted and asked decisions, clicks, screens and time against the old build, the screen list, what is PENDING v18, and what to flag.
+description: The season-story redesign of the evaluator (EVAL-4) and its rebuild to the owner's 80-decision layout (EVAL-5) - why, what changed, the full 390 px Playwright play with counted and asked decisions, clicks, screens and time against the old build, the screen list, what is PENDING v18, and what to flag; then the owner's Direction C (comic panels) built in (EVAL-6), defect by defect.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-4/
   - https://app.plane.so/the-equal-lens/browse/EVAL-5/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-6/
 ---
 
 # Game redesign, 19 Oct 2026 (EVAL-4, rebuilt for 80 decisions in EVAL-5)
@@ -14,6 +15,79 @@ Branch `eval-game-redesign` (worktree `../equal-lens-evaluator-game`). Design ru
 Layout source: the Sex Ed workspace's
 `Paper Analysis/Hypotheses/workplace-gender-training-v2/scenario-80-decisions-2026-10-19.md`
 (Game 1's low branch, the demo route).
+
+## Direction C, comic panels (EVAL-6)
+
+The owner played the 80-decision build at 390 px, could not judge it for the look, and chose
+Direction C from the review sheet (`ui-directions.html`, 19 Oct 2026). Design rules:
+[design.md](../design.md) sections 2, 3, 4, 4a, 4b and the new 4c. Plane:
+[EVAL-6](https://app.plane.so/the-equal-lens/browse/EVAL-6/). Screenshots of the full play at
+390 and 1440 px (light), 390 px dark and 390 px at 2x: the session scratchpad's `comic-build/`.
+
+### Every defect in the diagnosis, and what fixed it
+
+| # | Defect | Fix |
+|---|---|---|
+| 1 | A research form with a story pasted on; the episode opener a heading and a button | Every game screen is built from comic panels: a violet halftone `Splash` opens the season, each episode, the reveal and the season's end; the scene sits in a `Panel` with a yellow `Caption` and the question in 30 px display caps; interludes are drawn strips |
+| 2 | The cast missing: emoji faces that vary by phone, one haircut for all women, Javed blond, mascots as stock emoji | An SVG portrait system (one geometry, five tones, eight hair and face looks dealt against religion and tone, every hair the same dark brown, one uniform) and eight drawn mascot animals; one-offs from the same system, fixed by id; no attire layer |
+| 3 | The reveal has no reveal (a 1,224 px settings list) | The mascot sheet on the opening, then the reveal as a grid of portrait panels with the mascot inset and "Kiwi the bear is Huma." on a yellow plate; four across from 600 px |
+| 4 | Hierarchy backwards; admin recap in story position; empty "Your team so far" | The consequence is a small `Then` panel (64 px face, 16 px italic, the recap at 14 px inside it) above a larger scene panel; the collapsed roster is gone from every decision, interlude and episode screen |
+| 5 | No game feel: radio rings, a pre-filled violet "0" | Rank stamps on portrait cards with "Clear the stamps"; the split starts with empty dashed stamps and no pressed chip; the episode pips and "Page n of N" in the top bar (progress, never a countdown) |
+| 6 | Type with no voice | Big Shoulders Display 800 and Literata 400, 600 and italic, self hosted latin subsets |
+| 7 | Game and out of fiction look the same; the demo badge loudest; a green tick by the rating | The plain register: cool grey, ink buttons, 1 px rules, no violet, no panels; the demo note is a quiet outlined chip; the result opens with a plain notice, no tick |
+| 8 | Density: empty halves, long scrolls, a survey legend repeated 12 times, a 8,284 px result, the button moving | Strips and splashes fill the short screens; the survey key is one sticky header; the result areas fold (first open), so the 390 px result is about 5,500 px with one area open; on the page-turn screens the action row stays at the foot of the screen; decisions have no button at all (they commit on the tap) |
+| 9 | The result has no shape | "38 of 46 equal pairs where you put the man ahead", a dot grid, the band and its sentence, the bar and reasons, then "Your other readings" as a plain list; no colour reads good or bad |
+| 10 | "PENDING v18" in player copy; emoji episode art | Every pending marker moved to underscore keys and the dev-only `DevNotes` panel; X-15 and `pnpm ux` fail on any rendered PENDING (the demo disclosure placeholder aside); the season cards use drawn covers (warehouse, newsroom, clinic) |
+
+### Verification (EVAL-6)
+
+- `pnpm check` green: tsc and oxlint; 296 of 296 build checks (design-check with the art tier
+  and the no-colour-in-markup rule, X-9 with the stamps, the empty split and every portrait
+  branch, X-10 with the strips and drawn covers, X-15 no PENDING in player copy); `pnpm ux` 170
+  screens at 412, 320 and 1280 px, light and dark: 0 contrast fails, 0 targets under size, 0
+  axe violations, 0 heading or focus fails, keyboard paths for tap-to-order, the split and the
+  grid all pass, 87 of 87 component states, 0 rendered PENDING; `pnpm rules` 43 of 43;
+  `pnpm e2e` passes, the season playing to the result on the emulator.
+- The whole season played with Playwright at 390 and 1440 px (light), 390 px dark and 390 px at
+  2x: no page errors, no PENDING on any rendered screen but the demo disclosure placeholder.
+  The 390 px result is about 5,500 px with the first area open (8,284 px before).
+- Halftone: the face shading and panel corners read as an even tint at 1x and 2x with no moire;
+  no text sits on halftone (captions and plates have solid grounds; white on the splash violet
+  is 9.6:1, 6.2:1 at a dot's centre).
+- The generated-image path was checked in the browser with temporary placeholder WebPs and a
+  manifest (removed): images sat inside the ink frame on the tint and halftone, mascots by animal,
+  tones by shade. An empty `public/portraits/manifest.json` ships so the lookup never 404s.
+- An early run of `pnpm ux` found the action row, pinned to the foot of every screen, covering a
+  move button on game 2's ranking card (axe target-size); the row is now pinned only on the
+  story's page-turn screens (opening, episode, reveal, interlude, season's end).
+
+### To flag (EVAL-6)
+
+1. **The portraits change the stimulus.** Drawn faces make sex and tone cues stronger than the
+   old small emoji. P1 should rate the portraits as it rates names, and a pilot should run before
+   data. Within a one-off tied pair the two looks differ at random (hairstyle, glasses, facial
+   hair from a hash of the id): unrelated to the cue across players, but visible within a pair.
+2. **Result order.** The owner's NPQE order opened with the disarming paragraph; it now follows
+   the hero and the other readings, because the brief asks the page to lead with one number.
+   The owner may want it back above the number.
+3. **Hinglish drafts.** The new strings (the hero line and its dots, "Clear the stamps", the strip
+   captions split from the old interludes, "Page n / k") are builder drafts for the cognitive
+   interviews.
+4. **Sentence 3.** The season disclosure still shows `PENDING owner wording`; X-15 now fails if
+   `config.demo` is set to false while it is the placeholder, so it cannot reach a live build.
+5. **The panel games and the firm session** sit on the same surfaces, so they take the comic type
+   and palette and the plain register too; their emoji `Character` cards are unchanged.
+6. **Generated portraits (owner decision during the build).** `Portrait` now shows
+   `public/portraits/{slot}-{sex}-{tone}.webp` and `mascot-{animal}.webp` when
+   `public/portraits/manifest.json` lists them, on the same comic frame, and draws the SVG
+   otherwise. The images have not landed yet; the path was tested with temporary placeholder
+   WebPs (removed). Two gaps for the image agent: one-offs use slots 100 and up at the medium
+   tone, which the four-shade scheme does not cover, so they stay drawn unless those files are
+   made (a drawn one-off beside generated cast is a visible change of style); and the slot is
+   the cast slot, whose look the drawing deals by place within sex (looks.ts), so an image set
+   should keep each slot's look constant across its four tones.
+7. **Comic register for a workplace study** may read as less serious (the review sheet's own
+   trade-off); worth a line in the P1 interviews.
 
 ## The 80-decision rebuild (EVAL-5)
 
@@ -351,7 +425,7 @@ every new screen (eligibility, interludes, the screening and survey grids, the n
 the probe, the wrap items) at six variants: no contrast, target, name, heading, overflow, axe
 or focus failure; keyboard paths pass; 87 of 87 component states.
 
-## PENDING v18 (marked in `content/config.json` `season.pendingV18`, `content/story.json`, on screen in demo mode)
+## PENDING v18 (marked in `content/config.json` `season.pendingV18` and underscore keys of `content/story.json`; since EVAL-6 never on screen, only in the dev-only notes panel)
 
 - The layout: cast size (8), episodes (5), the 80 counted decisions and their split (4 + 4 +
   15 + 57, 19 per domain), the faking test's items (screening scr-01, 02, 03, 06; survey sv-01,

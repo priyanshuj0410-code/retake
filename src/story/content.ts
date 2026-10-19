@@ -4,6 +4,7 @@
  */
 import raw from '../../content/story.json'
 import type { T } from '../content/types'
+import type { ArtKey } from '../ui'
 
 export type Tier = 1 | 2 | 3
 
@@ -69,12 +70,18 @@ export type Beat = PeopleBeat | OrdinaryBeat
 export interface Story {
   id: string
   built: boolean
-  emoji: string
+  /** The season card's drawn cover panel. */
+  art: ArtKey
   title: T
   premise: T
   company?: T
   intro?: T[]
-  episodes?: { title: T; premise: T; interlude?: { after: string; text: T } }[]
+  episodes?: {
+    title: T
+    premise: T
+    /** The interlude as a strip of two or three drawn panels, each with its caption. */
+    interlude?: { after: string; panels: { art: ArtKey; text: T }[] }
+  }[]
   mascots?: T
   reveal?: { title: T; body: T; line: T; go: T }
   beats?: Beat[]
@@ -87,6 +94,7 @@ export interface StoryContent {
     outcome: Record<string, T>
     bands: { min: number; text: T }[]
     surveyKey: T[]
+    rankStamps: T[]
     debrief: T[]
     consent: T[]
   }

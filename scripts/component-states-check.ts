@@ -15,12 +15,14 @@ import {
   Code,
   Field,
   List,
+  Portrait,
   QuickSplit,
   SortList,
   StoryPick,
   Table,
   TapOrder,
 } from '../src/ui'
+import { setPortraitFiles } from '../src/ui/portraitImages'
 import { record } from './lib/check'
 
 const T = 'X-9 component states (markup)'
@@ -72,16 +74,23 @@ export async function run() {
     'Checks: every ticked row carries choice__option--checked',
     (checks.match(/choice__option--checked/g) ?? []).length === 2,
   )
-  const person = (name: string) => ({
+  const character = (name: string) => ({
     figure: '',
     figureLabel: 'x',
     name,
     cues: [],
     description: '',
   })
+  const person = (name: string) => ({
+    look: { kind: 'animal' as const, animal: 'panda' as const },
+    figureLabel: 'panda',
+    name,
+    cues: [],
+    description: '',
+  })
   const sort = html(
     h(SortList, {
-      items: [person('A'), person('B'), person('C')],
+      items: [character('A'), character('B'), character('C')],
       order: [2, 0, 1],
       onChange: () => {},
       labels: {
@@ -107,6 +116,56 @@ export async function run() {
     (sort.match(/data-item="/g) ?? []).length === 3,
   )
 
+  /* Portraits (EVAL-6): the generated WebP when the manifest lists it, else the drawn SVG. */
+  const woman = {
+    kind: 'person' as const,
+    sex: 'woman' as const,
+    slot: 0,
+    tone: 'd1' as const,
+    hair: 'bun' as const,
+  }
+  const face = (eager?: boolean) =>
+    html(
+      h(Portrait, {
+        look: woman,
+        label: 'woman, darker skin tone',
+        inset: { kind: 'animal', animal: 'panda' },
+        eager,
+      }),
+    )
+  setPortraitFiles(null)
+  const drawn = face()
+  record(
+    T,
+    'Portrait: with no manifest, the drawn SVG in the comic frame, role="img" with its label, no <img>',
+    /role="img" aria-label="woman, darker skin tone"/.test(drawn) &&
+      /<svg class="portrait__art"[^>]*data-tone="d1"/.test(drawn) &&
+      !/<img/.test(drawn),
+  )
+  setPortraitFiles(['0-woman-d1.webp', 'portraits/mascot-panda.webp'])
+  const photo = face()
+  record(
+    T,
+    'Portrait: a listed image (slot, sex, tone; mascot by animal) sits on the backdrop with width, height, lazy loading and the same label',
+    /<img class="portrait__photo" src="\/portraits\/0-woman-d1\.webp" alt="woman, darker skin tone" aria-label="woman, darker skin tone" width="200" height="220" loading="lazy"/.test(
+      photo,
+    ) &&
+      /src="\/portraits\/mascot-panda\.webp"/.test(photo) &&
+      /data-tone="d1"/.test(photo) &&
+      !/class="pt-skin/.test(photo),
+  )
+  record(
+    T,
+    'Portrait: eager faces (above the fold) load at once',
+    /loading="eager"/.test(face(true)) && !/loading="lazy"/.test(face(true)),
+  )
+  setPortraitFiles(['1-woman-d1.webp'])
+  record(
+    T,
+    'Portrait: a tone or slot the manifest does not list falls back to the drawn SVG',
+    !/<img/.test(face()) && /class="pt-skin/.test(face()),
+  )
+  setPortraitFiles(null)
   /* The season story's inputs (EVAL-4). */
   const tap = html(
     h(TapOrder, {
@@ -114,7 +173,9 @@ export async function run() {
       onDone: () => {},
       labels: {
         hint: 'Tap in order',
-        undo: 'Undo',
+        clear: 'Clear the stamps',
+        cleared: 'Stamps cleared.',
+        stamp: (n) => `${n}st`,
         choose: (n) => `Choose as number ${n}:`,
         chosen: (n) => `Number ${n}:`,
         said: (x, n) => `${x} ${n}`,
@@ -125,12 +186,14 @@ export async function run() {
   )
   record(
     T,
-    'TapOrder: every card is a button, none pressed yet, each named "Choose as number 1", a polite live region, no Undo before a tap',
+    'TapOrder: every card is a portrait-panel button, none pressed or stamped yet, each named "Choose as number 1", a polite live region, no "Clear the stamps" before a tap',
     (tap.match(/<button[^>]*class="tapcard"/g) ?? []).length === 4 &&
       (tap.match(/aria-pressed="false"/g) ?? []).length === 4 &&
       (tap.match(/Choose as number 1:/g) ?? []).length === 4 &&
+      (tap.match(/role="img" aria-label="panda"/g) ?? []).length === 4 &&
+      !/class="stamp/.test(tap) &&
       /aria-live="polite"/.test(tap) &&
-      !/>Undo</.test(tap),
+      !/>Clear the stamps</.test(tap),
   )
   const split = html(
     h(QuickSplit, {
@@ -143,9 +206,11 @@ export async function run() {
   )
   record(
     T,
-    'QuickSplit: a row of 0 to cap chips per colleague, 0 pressed, none disabled while 6 are left, the count live',
+    'QuickSplit: a row of 0 to cap chips per colleague, none pressed and every stamp an empty ring at the start (it never looks answered), none disabled while 6 are left, the count live',
     (split.match(/class="split__chip[ "]/g) ?? []).length === 10 &&
-      (split.match(/aria-pressed="true"/g) ?? []).length === 2 &&
+      (split.match(/aria-pressed="true"/g) ?? []).length === 0 &&
+      (split.match(/class="stamp stamp--empty"/g) ?? []).length === 2 &&
+      !/>Start again</.test(split) &&
       !/aria-disabled="true"/.test(split) &&
       /aria-live="polite">6 left/.test(split),
   )
@@ -172,8 +237,8 @@ export async function run() {
   const pick = html(
     h(StoryPick, {
       options: [
-        { id: 'a', emoji: 'x', title: 'A', premise: 'p' },
-        { id: 'b', emoji: 'y', title: 'B', premise: 'p', later: 'PENDING v18' },
+        { id: 'a', art: 'warehouse', title: 'A', premise: 'p' },
+        { id: 'b', art: 'newsroom', title: 'B', premise: 'p', later: 'After your rating.' },
       ],
       onPick: () => {},
       label: 'Pick',
@@ -181,15 +246,16 @@ export async function run() {
   )
   record(
     T,
-    'StoryPick: a season not built is aria-disabled with its PENDING line, never disabled',
+    'StoryPick: a drawn cover panel per season (no emoji); a season not open is aria-disabled with its line, never disabled',
     (pick.match(/aria-disabled="true"/g) ?? []).length === 1 &&
-      /PENDING v18/.test(pick) &&
+      (pick.match(/<svg class="panelart"/g) ?? []).length === 2 &&
+      /After your rating\./.test(pick) &&
       !/ disabled=""/.test(pick),
   )
   const alloc = (units: number[]) =>
     html(
       h(Allocate, {
-        items: [person('A'), person('B')],
+        items: [character('A'), character('B')],
         order: [0, 1],
         units,
         pool: 4,

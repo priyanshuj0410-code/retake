@@ -21,11 +21,22 @@ import {
   playedStories,
 } from '../story/profile'
 import type { StoryRunner } from '../story/runner'
-import { colleagueView, langAttr, rosterItems } from '../story/view'
+import { castTiles, colleagueView, langAttr, trackLines } from '../story/view'
 import { resultModel } from '../story/why'
 import {
   AgreeGrid,
   Beat,
+  type BeatThen,
+  Caption,
+  CastGrid,
+  DevNotes,
+  Fold,
+  Panel,
+  ReadingList,
+  ResultHero,
+  Splash,
+  Strip,
+  Then,
   Button,
   Checks,
   Choice,
@@ -40,8 +51,6 @@ import {
   PickOne,
   QuickSplit,
   PointCard,
-  ReadingGrid,
-  Roster,
   ShareCard,
   Spectrum,
   StoryPick,
@@ -133,7 +142,7 @@ export function StoryPicker({
   const played = playedStories()
   const options = stories.map((s) => ({
     id: s.id,
-    emoji: s.emoji,
+    art: s.art,
     title: L(s.title),
     premise: L(s.premise),
     later: s.id === drawn?.id ? undefined : played.has(s.id) ? L(PF.played) : L(SS.pickLater),
@@ -187,7 +196,8 @@ export function StoryView({
   const episodes = story.episodes ?? []
   const key = `s${runner.index}`
   const prev = runner.steps[runner.index - 1]
-  const then = prev?.kind === 'beat' ? runner.consequence(prev.i) : null
+  const consequence = prev?.kind === 'beat' ? runner.consequence(prev.i) : null
+  const then = thenView(runner, consequence)
   const inStory =
     step.kind === 'intro' ||
     step.kind === 'episode' ||
@@ -207,7 +217,11 @@ export function StoryView({
     fill(L(SS.episodeOf), { n, k: episodes.length, title: L(episodes[n - 1].title) })
   const page = {
     surface: inStory ? 'game' : 'oof',
-    act: inStory ? act(episodeNow) : L(S.common.acts.wrap),
+    act: inStory ? act(episodeNow) : undefined,
+    track: inStory ? { n: episodeNow, k: episodes.length } : undefined,
+    progress: inStory
+      ? fill(L(SS.pageOf), { n: runner.index + 1, k: runner.steps.length })
+      : undefined,
     oof: inStory ? undefined : L(S.common.outOfFiction),
     demo: demo ? L(S.common.demoBadge) : undefined,
     stepKey: key,
@@ -220,20 +234,21 @@ export function StoryView({
         {L(SS.back)}
       </Button>
     ) : null
-  const firstBeat = runner.steps.findIndex((s) => s.kind === 'beat')
-  const revealedNow =
-    step.kind === 'beat'
-      ? runner.revealed(step.i)
-      : step.kind !== 'intro' && !(step.kind === 'episode' && runner.index < firstBeat)
-  const roster = <Roster title={L(SS.rosterTitle)} items={rosterItems(runner, revealedNow)} />
 
   switch (step.kind) {
     case 'intro':
       return (
-        <Page {...page} actions={<Button onClick={() => onDone(null)}>{L(SS.start)}</Button>}>
-          <Beat question={fill(L(SS.startTitle), { company: L(story.company as T) })} />
-          <List items={(story.intro ?? []).map(L)} />
-          {story.mascots ? <Text kind="strong">{L(story.mascots)}</Text> : null}
+        <Page {...page} pin actions={<Button onClick={() => onDone(null)}>{L(SS.start)}</Button>}>
+          <Splash title={fill(L(SS.startTitle), { company: L(story.company as T) })} />
+          <Panel tone="paper">
+            <List items={(story.intro ?? []).map(L)} />
+          </Panel>
+          {story.mascots ? <Caption>{L(story.mascots)}</Caption> : null}
+          <CastGrid
+            kind="sheet"
+            label={L(SS.mascotsTitle)}
+            items={castTiles(runner, false, (c) => [L(c.animalName)])}
+          />
         </Page>
       )
     case 'episode': {
@@ -241,18 +256,19 @@ export function StoryView({
       return (
         <Page
           {...page}
+          pin
           actions={
             <Button onClick={() => onDone(null)}>{fill(L(SS.episodeGo), { n: step.n })}</Button>
           }
         >
-          <Beat
-            then={then?.text}
-            answer={then?.summary}
-            scene={L(ep.premise)}
-            question={fill(L(SS.episodeShort), { n: step.n }) + ': ' + L(ep.title)}
+          {then ? <Then id={`${key}-then`} {...then} /> : null}
+          <Splash
+            kicker={fill(L(SS.episodeShort), { n: step.n })}
+            title={L(ep.title)}
+            body={L(ep.premise)}
+            describedBy={then ? `${key}-then` : undefined}
           />
           {back}
-          {step.n > 1 ? roster : null}
         </Page>
       )
     }
@@ -260,18 +276,17 @@ export function StoryView({
       const rv = story.reveal
       if (!rv) return null
       return (
-        <Page {...page} actions={<Button onClick={() => onDone(null)}>{L(rv.go)}</Button>}>
-          <Beat
-            then={then?.text}
-            answer={then?.summary}
-            scene={L(rv.body)}
-            question={L(rv.title)}
-          />
-          <Roster
-            open
-            large
+        <Page {...page} pin actions={<Button onClick={() => onDone(null)}>{L(rv.go)}</Button>}>
+          {then ? <Then id={`${key}-then`} {...then} /> : null}
+          <Splash
             title={L(rv.title)}
-            items={rosterItems(runner, true, (c) => [
+            body={L(rv.body)}
+            describedBy={then ? `${key}-then` : undefined}
+          />
+          <CastGrid
+            kind="reveal"
+            label={L(rv.title)}
+            items={castTiles(runner, true, (c) => [
               fill(L(rv.line), {
                 mascot: c.mascot,
                 animal: L(c.animalName),
@@ -288,11 +303,20 @@ export function StoryView({
       return (
         <Page
           {...page}
+          pin
           actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}
         >
-          <Beat then={then?.text} answer={then?.summary} question={L(SS.seasonTitle)} />
-          <Text kind="lead">{L(runner.seasonBand().text)}</Text>
-          <Roster open title={L(SS.rosterTitle)} items={rosterItems(runner, true)} />
+          {then ? <Then id={`${key}-then`} {...then} /> : null}
+          <Splash
+            title={L(SS.seasonTitle)}
+            body={L(runner.seasonBand().text)}
+            describedBy={then ? `${key}-then` : undefined}
+          />
+          <CastGrid
+            kind="reveal"
+            label={L(SS.rosterTitle)}
+            items={castTiles(runner, true, trackLines(runner))}
+          />
           {back}
         </Page>
       )
@@ -305,18 +329,24 @@ export function StoryView({
           page={page}
           then={then}
           back={back}
-          roster={roster}
           onDone={onDone}
         />
       )
     case 'interlude': {
       const ep = episodes[step.n - 1]
+      const panels = ep.interlude?.panels ?? []
       return (
-        <Page {...page} actions={<Button onClick={() => onDone(null)}>{L(SS.interludeGo)}</Button>}>
-          <Beat then={then?.text} answer={then?.summary} question={L(ep.title)} />
-          <Text kind="lead">{L(ep.interlude?.text ?? ep.premise)}</Text>
+        <Page
+          {...page}
+          pin
+          actions={<Button onClick={() => onDone(null)}>{L(SS.interludeGo)}</Button>}
+        >
+          <Beat then={then} question={L(ep.title)} />
+          <Strip
+            label={L(SS.stripLabel)}
+            panels={panels.map((p) => ({ art: p.art, text: L(p.text) }))}
+          />
           {back}
-          {roster}
         </Page>
       )
     }
@@ -447,34 +477,35 @@ export function StoryView({
 
 type PageBase = Omit<React.ComponentProps<typeof Page>, 'children' | 'actions' | 'title'>
 
+/** The consequence panel's words and face: whoever led the last decision, as they were shown. */
+function thenView(
+  runner: StoryRunner,
+  c: ReturnType<StoryRunner['consequence']>,
+): BeatThen | undefined {
+  if (!c) return undefined
+  const v = c.lead ? colleagueView(runner, runner.person(c.lead.slot), c.lead.revealed) : null
+  return { text: c.text, answer: c.summary, look: v?.look, label: v?.figureLabel }
+}
+
 function BeatStep({
   runner,
   i,
   page,
   then,
   back,
-  roster,
   onDone,
 }: {
   runner: StoryRunner
   i: number
   page: PageBase
-  then: { text: string; summary: string } | null
+  then: BeatThen | undefined
   back: React.ReactNode
-  roster: React.ReactNode
   onDone: (v: unknown) => void
 }) {
   const ui = runner.lang
   const L = (t: T) => t[ui]
   const b = runner.season.beats[i]
-  const head = (
-    <Beat
-      then={then?.text}
-      answer={then?.summary}
-      scene={L(b.beat.scene)}
-      question={L(b.beat.question)}
-    />
-  )
+  const head = <Beat then={then} scene={L(b.beat.scene)} question={L(b.beat.question)} />
   if (b.kind === 'ordinary') {
     const opts = b.order.map((id) => {
       const o = b.beat.options.find((x) => x.id === id)
@@ -489,7 +520,6 @@ function BeatStep({
           onPick={(id) => onDone({ option: id })}
         />
         {back}
-        {roster}
       </Page>
     )
   }
@@ -506,7 +536,9 @@ function BeatStep({
         onDone={(order) => onDone({ order })}
         labels={{
           hint: L(SS.rankHint),
-          undo: L(SS.rankUndo),
+          clear: L(SS.rankUndo),
+          cleared: L(SS.rankCleared),
+          stamp: (n) => L(SS.rankStamps[n - 1] ?? { en: String(n), hinglish: String(n) }),
           choose: (n) => fill(L(SS.rankChoose), { n }),
           chosen: (n) => fill(L(SS.rankChosen), { n }),
           said: (name, n) => fill(L(SS.rankSaid), { name, n }),
@@ -554,7 +586,6 @@ function BeatStep({
       )}
       {input}
       {back}
-      {roster}
     </Page>
   )
 }
@@ -752,37 +783,41 @@ export function StoryResult({
       demo={demo ? L(S.common.demoBadge) : undefined}
       lang={langAttr(ui)}
     >
-      <Notice kind="ok">{L(finished === 'submitted' ? RT.submitted : RT.withdrawn)}</Notice>
+      <Notice>{L(finished === 'submitted' ? RT.submitted : RT.withdrawn)}</Notice>
+      <ResultHero
+        group={L(RT.cues.sex.label)}
+        figure={m.hero ?? undefined}
+        band={m.band}
+        body={m.body}
+      >
+        {m.bar ? (
+          <Spectrum
+            at={m.bar.at}
+            from={m.bar.from}
+            to={m.bar.to}
+            left={m.bar.left}
+            right={m.bar.right}
+            label={m.bar.label}
+            zoneLabel={m.strength ?? L(RT.noLeanZone)}
+          />
+        ) : null}
+        {m.bar ? <Text kind="muted">{L(RT.noLeanZone)}</Text> : null}
+        {m.why.length ? <List items={m.why} /> : null}
+      </ResultHero>
+      <Heading>{L(RT.otherTitle)}</Heading>
+      <ReadingList
+        label={L(RT.otherTitle)}
+        items={m.cards
+          .filter((c) => c.cue !== 'sex')
+          .map((c) => ({ id: c.cue, label: c.label, level: c.level, zone: c.zone }))}
+      />
       <Text kind="lead">{L(RT.opening)}</Text>
       <Text kind="small">{L(RT.intro)}</Text>
-      <Heading>{L(RT.readingsTitle)}</Heading>
-      <ReadingGrid
-        label={L(RT.readingsTitle)}
-        items={m.cards.map((c) => ({ ...c, id: c.cue }))}
-        first={
-          <>
-            {m.bar ? (
-              <Spectrum
-                at={m.bar.at}
-                from={m.bar.from}
-                to={m.bar.to}
-                left={m.bar.left}
-                right={m.bar.right}
-                label={m.bar.label}
-                zoneLabel={m.strength ?? L(RT.noLeanZone)}
-              />
-            ) : null}
-            {m.bar ? <Text kind="muted">{L(RT.noLeanZone)}</Text> : null}
-            <Text>{m.body}</Text>
-            {m.why.length ? <List items={m.why} /> : null}
-          </>
-        }
-      />
-      {m.domains.map((d) => (
-        <section key={d.domain} aria-label={d.title}>
-          <Heading>{d.title}</Heading>
+      <Heading>{L(RT.areasTitle)}</Heading>
+      {m.domains.map((d, n) => (
+        <Fold key={d.domain} title={d.title} open={n === 0}>
           <Text>{d.narrative}</Text>
-          <ReadingGrid
+          <ReadingList
             label={d.title}
             items={[
               {
@@ -790,9 +825,6 @@ export function StoryResult({
                 label: L(RT.cueShort.sex),
                 level: d.reading.level,
                 zone: d.reading.zone,
-                meaning: fill(L(RT.meaning[d.reading.zone]), {
-                  group: d.reading.zone === 'lean' ? d.reading.group : '',
-                }),
               },
             ]}
           />
@@ -822,7 +854,7 @@ export function StoryResult({
           <Heading level={3}>{L(RT.watchTitle)}</Heading>
           <Text kind="small">{L(RT.watchBody)}</Text>
           <List items={d.watch} />
-        </section>
+        </Fold>
       ))}
       <Notice>{L(RT.committee)}</Notice>
       <KeepIt runner={runner} zone={h.zone} towards={h.towards} weight={h.weight} pairs={h.pairs} />
@@ -836,7 +868,14 @@ export function StoryResult({
         failed={L(RT.shareFailed)}
       />
       <StayInTouch ui={ui} />
-      {demo ? <Text kind="small">{L(RT.pending)}</Text> : null}
+      <DevNotes
+        title={L(SS.devTitle)}
+        notes={[
+          RT._devPending as unknown as T,
+          RT._watchPending as unknown as T,
+          RT._contactResearchPending as unknown as T,
+        ].map((x) => (typeof x === 'string' ? x : L(x)))}
+      />
     </Page>
   )
 }

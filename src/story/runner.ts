@@ -251,8 +251,14 @@ export class StoryRunner {
     return 0
   }
 
-  /** The consequence of beat i's answer, as the next screen tells it, and a line restating the answer. */
-  consequence(i: number): { text: string; summary: string } | null {
+  /**
+   * The consequence of beat i's answer, as the next screen tells it, a line restating the
+   * answer, and who led it (their slot, and whether they were shown as a person), for the face
+   * in the consequence panel.
+   */
+  consequence(
+    i: number,
+  ): { text: string; summary: string; lead?: { slot: number; revealed: boolean } } | null {
     const b = this.season.beats[i]
     const a = this.answers.get(i)
     if (!a) return null
@@ -278,7 +284,11 @@ export class StoryRunner {
       summary = fill(L(SS.yourSplit), {
         list: b.chars.map((_, pos) => `${name(pos)} ${a.units[pos]}`).join(', '),
       })
-    return { text, summary }
+    return {
+      text,
+      summary,
+      ...(lead === 'even' ? {} : { lead: { slot: b.chars[lead].slot, revealed: shown } }),
+    }
   }
 
   /** Each colleague's track record: the jobs they led, with how each went (by the notes they carried). */

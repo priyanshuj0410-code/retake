@@ -1,4 +1,6 @@
-/* @owns split split__row split__chips split__chip split__chip--on split__left */
+/* @owns split split__row split__who split__chips split__chip split__chip--on split__left */
+/* The split as comic panels: each colleague's row carries a stamp that starts as an empty ring
+   and fills with the number given, and a row of number chips with none pressed at the start. */
 .split {
   list-style: none;
   margin: var(--gap-none);
@@ -12,9 +14,15 @@
   flex-direction: column;
   gap: var(--gap-m);
   padding: var(--gap-m);
-  border: var(--border) solid var(--c-border);
-  border-radius: var(--radius-l);
-  background: var(--c-raised);
+  border: var(--edge) solid var(--c-ink-line);
+  border-radius: var(--radius-card);
+  background: var(--c-surface);
+}
+.split__who {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--gap-m);
 }
 .split__chips {
   display: flex;
@@ -25,9 +33,9 @@
   min-width: var(--target);
   min-height: var(--target);
   border-radius: var(--radius-s);
-  border: var(--border) solid var(--c-accent);
+  border: var(--border) solid var(--c-ink-line);
   background: var(--c-surface);
-  color: var(--c-accent);
+  color: var(--c-text);
   font-family: var(--font-display);
   font-size: var(--text-lead);
   font-weight: var(--weight-display);
@@ -42,11 +50,13 @@
   transform: scale(var(--press));
 }
 .split__chip--on {
-  background: var(--c-accent);
-  color: var(--c-on-accent);
+  background: var(--c-stamp);
+  border-color: var(--c-stamp);
+  color: var(--c-on-stamp);
 }
 .split__chip[aria-disabled='true'] {
   border-color: var(--c-rule);
+  border-style: dashed;
   color: var(--c-muted);
   cursor: default;
 }
@@ -58,6 +68,9 @@
 .split__left {
   margin: var(--gap-none);
   font-family: var(--font-display);
-  font-weight: var(--weight-label);
+  font-size: var(--text-lead);
+  font-weight: var(--weight-strong);
+  letter-spacing: var(--tracking-display);
+  text-transform: var(--case-display);
   color: var(--c-text);
 }

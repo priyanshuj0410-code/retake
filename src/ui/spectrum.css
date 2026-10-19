@@ -25,7 +25,7 @@
   position: absolute;
   top: var(--gap-none);
   bottom: var(--gap-none);
-  background: var(--c-rule);
+  background: var(--c-surface);
   border-left: var(--border) dashed var(--c-muted);
   border-right: var(--border) dashed var(--c-muted);
 }

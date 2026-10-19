@@ -1,0 +1,43 @@
+/* @owns panelart pa-l pa-tint pa-paper pa-crate pa-fig pa-violet pa-ink pa-cap pa-dot pa-s-ink pa-s-violet */
+/* The drawn scenes (knowledge/design.md, section 4c). Art tokens are read here and in
+   portrait.css only. */
+.panelart {
+  display: block;
+  width: 100%;
+  height: auto;
+  forced-color-adjust: none;
+}
+.pa-l {
+  stroke: var(--art-line);
+  stroke-linejoin: round;
+}
+.pa-tint {
+  fill: var(--art-bg);
+}
+.pa-paper {
+  fill: var(--art-paper);
+}
+.pa-crate {
+  fill: var(--art-crate);
+}
+.pa-fig {
+  fill: var(--art-figure);
+}
+.pa-violet {
+  fill: var(--art-violet);
+}
+.pa-ink {
+  fill: var(--art-line);
+}
+.pa-cap {
+  fill: var(--art-caption);
+}
+.pa-dot {
+  fill: var(--art-violet);
+}
+.pa-s-ink {
+  stroke: var(--art-line);
+}
+.pa-s-violet {
+  stroke: var(--art-violet);
+}

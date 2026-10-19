@@ -1,7 +1,10 @@
-/* @owns page page__inner page__head page__bar page__act page__oof page__title page__body page__actions */
+/* @owns page page__inner page__head page__bar page__act page__track page__pip page__pip--on page__progress page__oof page__title page__body page__actions page__actions--pinned */
 .page {
   background: var(--c-bg);
   color: var(--c-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
   min-height: 100vh;
   padding: var(--gap-l) var(--gap-l) var(--gap-3xl);
 }
@@ -15,30 +18,56 @@
 .page__head {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-l);
+  gap: var(--gap-m);
 }
+/* The top bar: the episode in words, its track as pips, and the page count. Progress only. */
 .page__bar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: baseline;
-  gap: var(--gap-m);
-  border-bottom: var(--border-thin) solid var(--c-rule);
+  align-items: center;
+  gap: var(--gap-s) var(--gap-m);
+  border-bottom: var(--edge) solid var(--c-ink-line);
   padding-bottom: var(--gap-s);
 }
 .page__act {
+  flex: 1 1 auto;
   font-family: var(--font-display);
-  font-size: var(--text-small);
-  font-weight: var(--weight-label);
+  font-size: var(--text-label);
+  font-weight: var(--weight-strong);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  color: var(--c-label);
+  color: var(--c-text);
   margin: var(--gap-none);
   overflow-wrap: anywhere;
 }
+.page__track {
+  display: inline-flex;
+  gap: var(--gap-xs);
+}
+.page__pip {
+  display: block;
+  width: var(--gap-l);
+  height: var(--gap-s);
+  border: var(--border) solid var(--c-ink-line);
+  background: var(--c-surface);
+}
+.page__pip--on {
+  background: var(--c-stamp);
+}
+.page__progress {
+  margin: var(--gap-none);
+  font-size: var(--text-small);
+  color: var(--c-muted);
+  white-space: nowrap;
+}
+/* Out of fiction: the line sits under a heavy rule, in the plain face, never in a game colour. */
 .page__oof {
   margin: var(--gap-none);
-  font-size: var(--text-label);
-  color: var(--c-body);
+  padding-top: var(--gap-s);
+  border-top: var(--edge-oof) solid var(--c-text);
+  font-size: var(--text-small);
+  color: var(--c-muted);
   font-weight: var(--weight-label);
 }
 .page__title {
@@ -46,6 +75,7 @@
   font-size: var(--text-h1);
   font-weight: var(--weight-display);
   line-height: var(--leading-tight);
+  text-transform: var(--case-display);
   margin: var(--gap-none);
   color: var(--c-text);
   overflow-wrap: anywhere;
@@ -66,4 +96,14 @@
   flex-direction: column;
   gap: var(--gap-m);
   margin-top: var(--gap-s);
+}
+/* Pinned (the story's turn-the-page screens): the action row stays at the foot of the screen
+   while the page scrolls, so "Continue" is in the same place on every one of them. */
+.page__actions--pinned {
+  position: sticky;
+  bottom: var(--gap-none);
+  z-index: 1;
+  padding: var(--gap-s) var(--gap-none) var(--gap-m);
+  background: var(--c-bg);
+  border-top: var(--border-thin) solid var(--c-rule);
 }

@@ -1,22 +1,36 @@
-/* @owns colleague colleague__who colleague__name colleague__cue colleague__desc */
+/* @owns colleague colleague--row colleague__face colleague__who colleague__name colleague__cue colleague__desc */
 .colleague {
   display: flex;
-  gap: var(--gap-m);
-  align-items: flex-start;
+  flex-direction: column;
   min-width: 0;
   text-align: left;
+}
+.colleague__face {
+  display: block;
+  border-bottom: var(--edge) solid var(--c-ink-line);
+}
+.colleague--row {
+  flex-direction: row;
+  gap: var(--gap-m);
+  align-items: flex-start;
 }
 .colleague__who {
   display: flex;
   flex-direction: column;
   gap: var(--gap-xs);
   min-width: 0;
+  padding: var(--gap-s) var(--gap-s) var(--gap-m);
+}
+.colleague--row .colleague__who {
+  padding: var(--gap-none);
 }
 .colleague__name {
   font-family: var(--font-display);
-  font-weight: var(--weight-label);
+  font-weight: var(--weight-strong);
   font-size: var(--text-lead);
   line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  text-transform: var(--case-display);
   color: var(--c-text);
   overflow-wrap: anywhere;
 }
@@ -26,7 +40,7 @@
   overflow-wrap: anywhere;
 }
 .colleague__desc {
-  font-size: var(--text-label);
+  font-size: var(--text-small);
   line-height: var(--leading-ui);
   color: var(--c-body);
   overflow-wrap: anywhere;

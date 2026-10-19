@@ -11,13 +11,10 @@
   --body: #574b70;
   --soft: #6b5a8c;
   --paper: #fbf9ff;
-  --warm: #faf8f4;
   --mist: #e7e0f1;
   --line: #e7def4;
   --tint: #f4f0fa;
   --white: #ffffff;
-  --sun: #ffc94d;
-  --sun-ink: #3a2a00;
   --teal-deep: #0f6e56;
   --coral-deep: #c2553f;
   --grey-50: #f5f5f4;
@@ -29,8 +26,6 @@
   --night: #160e24;
   --night-raised: #24183a;
   --night-line: #3d2e5a;
-  --night-warm: #1c1712;
-  --night-warm-line: #3b3328;
   --night-grey: #1b1b1a;
   --night-grey-raised: #262624;
   --night-grey-line: #3c3b39;
@@ -44,6 +39,45 @@
   --face-display: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --face-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --face-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* The game register, comic panels (EVAL-6): paper, ink, a lilac tint, the caption yellow. */
+  --comic-paper: #ffffff;
+  --comic-ink: #121212;
+  --comic-soft: #3d3846;
+  --comic-tint: #efe8f8;
+  --comic-rule: #8f879c;
+  --comic-caption: #ffe27a;
+  --comic-night: #141118;
+  --comic-night-panel: #221b2e;
+  --comic-night-line: #e9e3f2;
+  --comic-night-soft: #cfc6de;
+  --face-comic-display: 'Big Shoulders Display', Impact, 'Arial Narrow', sans-serif;
+  --face-comic-text: 'Literata', Georgia, 'Times New Roman', serif;
+  --shadow-ink: 4px 4px 0 #121212;
+  --shadow-ink-small: 3px 3px 0 #121212;
+  --shadow-violet: 5px 5px 0 #553286;
+  --shadow-violet-small: 4px 4px 0 #553286;
+  --shadow-lilac: 4px 4px 0 #c4adeb;
+  --shadow-lilac-small: 3px 3px 0 #c4adeb;
+  --shadow-lilac-wide: 5px 5px 0 #c4adeb;
+  --rot-neg-8: -8deg;
+  --upper: uppercase;
+  --no-case: none;
+  --ls-display: 0.04em;
+
+  /* The plain register, out of fiction (EVAL-6): cool grey and ink, no game colour. */
+  --cool: #f3f5f8;
+  --cool-ink: #1d2230;
+  --cool-ink-press: #000000;
+  --cool-soft: #4c5468;
+  --cool-rule: #c9ced8;
+  --cool-hero: #e3e6ec;
+  --cool-night: #14171d;
+  --cool-night-raised: #1c2028;
+  --cool-night-line: #3a4252;
+  --cool-moon: #e6e9ef;
+  --cool-moon-soft: #aab2c2;
+  --cool-night-hero: #232833;
 
   --fs-14: 14px;
   --fs-16: 16px;
@@ -77,11 +111,21 @@
   --px-40: 40px;
   --px-640: 640px;
   --px-72: 72px;
-  --px-36: 36px;
-  --px-24: 24px;
   --px-128: 128px;
   --grid-all: 1 / -1;
-  --fs-56: 56px;
+  --fs-30: 30px;
+  --fs-38: 38px;
+  --fs-54: 54px;
+  --bw-4: 4px;
+  --px-64: 64px;
+  --px-52: 52px;
+  --px-300: 300px;
+  --pct-30: 30%;
+  --pct-50: 50%;
+  --grid-2: repeat(2, minmax(0, 1fr));
+  --grid-4: repeat(4, minmax(0, 1fr));
+  --grid-12: repeat(12, minmax(0, 1fr));
+  --grid-cards: repeat(auto-fill, minmax(128px, 1fr));
   --pct-neg-50: -50%;
   --dur-160: 160ms;
   --dur-0: 0ms;
@@ -108,8 +152,6 @@
   --c-focus: var(--violet);
   --c-ok: var(--teal-deep);
   --c-error: var(--coral-deep);
-  --c-demo: var(--sun);
-  --c-on-demo: var(--sun-ink);
   --c-label: var(--violet);
 
   --font-display: var(--face-display);
@@ -154,16 +196,51 @@
 
   /* The season story (knowledge/design.md, section 4b). */
   --portrait: var(--px-72);
-  --portrait-face: var(--fs-56);
-  --portrait-small: var(--px-48);
-  --portrait-small-face: var(--fs-32);
-  --mascot-badge: var(--px-24);
-  --rank-badge: var(--px-36);
   --text-band: var(--fs-32);
   --bar: var(--s-3);
   --centre: var(--pct-neg-50);
   --card-min: var(--px-128);
   --span-row: var(--grid-all);
+  /* The comic components (section 4c). Out of the game the same names point at plain values. */
+  --c-panel: var(--tint);
+  --c-ink-line: var(--line);
+  --c-caption: var(--comic-caption);
+  --c-on-caption: var(--comic-ink);
+  --c-stamp: var(--violet);
+  --c-on-stamp: var(--white);
+  --c-splash: var(--violet);
+  --c-on-splash: var(--white);
+  --c-hero: var(--cool-hero);
+  --font-comic: var(--face-comic-display);
+  --font-story: var(--face-comic-text);
+  --text-display: var(--fs-30);
+  --text-splash: var(--fs-38);
+  --text-hero: var(--fs-54);
+  --edge: var(--bw-2);
+  --edge-oof: var(--bw-4);
+  --shadow-panel: var(--shadow-none);
+  --shadow-caption: var(--shadow-none);
+  --shadow-chosen: var(--shadow-none);
+  --case-display: var(--no-case);
+  --tracking-display: var(--ls-wide);
+  --radius-card: var(--r-16);
+  --stamp: var(--px-52);
+  --tilt: var(--rot-neg-8);
+  --face-then: var(--px-64);
+  --inset: var(--pct-30);
+  --dots: var(--px-300);
+  --radius-full: var(--pct-50);
+  --cols-two: var(--grid-2);
+  --cols-four: var(--grid-4);
+  --cols-cards: var(--grid-cards);
+  --dot-columns: var(--grid-12);
+  --text-action: var(--fs-16);
+  --tracking-action: normal;
+  --c-action: var(--violet);
+  --c-on-action: var(--white);
+  --c-action-press: var(--violet-deep);
+  --shadow-action: var(--shadow-none);
+  --action-room: var(--px-128);
   /* Reading levels: neutral on purpose, never green or red (section 4b). */
   --c-level-lean: var(--c-accent);
   --c-level-none: var(--c-text);
@@ -203,6 +280,11 @@
     --c-ok: var(--teal-light);
     --c-error: var(--coral-light);
     --c-label: var(--lilac);
+    --c-action: var(--lilac);
+    --c-on-action: var(--night);
+    --c-action-press: var(--lilac-deep);
+    --c-stamp: var(--lilac);
+    --c-on-stamp: var(--night);
   }
 }
 
@@ -222,13 +304,74 @@
   --c-ok: var(--teal-light);
   --c-error: var(--coral-light);
   --c-label: var(--lilac);
+  --c-action: var(--lilac);
+  --c-on-action: var(--night);
+  --c-action-press: var(--lilac-deep);
+  --c-stamp: var(--lilac);
+  --c-on-stamp: var(--night);
 }
 
-/* The surfaces (knowledge/design.md, section 3). */
+/* The surfaces (knowledge/design.md, section 3). Each surface re-points the semantic tokens,
+   type included, so no component knows which surface it is on. The game is the comic register,
+   out of fiction the cool plain register; the two never share a ground, a face or an accent. */
+[data-surface='game'] {
+  --font-display: var(--face-comic-display);
+  --font-body: var(--face-comic-text);
+  --text-body: var(--fs-17);
+  --text-h1: var(--fs-30);
+  --text-action: var(--fs-20);
+  --tracking-action: var(--ls-display);
+  --edge: var(--bw-3);
+  --case-display: var(--upper);
+  --tracking-display: var(--ls-display);
+  --radius-card: var(--s-0);
+  --radius-m: var(--s-0);
+  --radius-s: var(--s-0);
+  --c-bg: var(--comic-paper);
+  --c-surface: var(--comic-paper);
+  --c-raised: var(--comic-tint);
+  --c-text: var(--comic-ink);
+  --c-body: var(--comic-ink);
+  --c-muted: var(--comic-soft);
+  --c-rule: var(--comic-rule);
+  --c-border: var(--comic-ink);
+  --c-label: var(--violet);
+  --c-panel: var(--comic-tint);
+  --c-ink-line: var(--comic-ink);
+  --c-level-lean: var(--violet);
+  --c-level-none: var(--comic-ink);
+  --c-level-unread: var(--comic-soft);
+  --shadow-panel: var(--shadow-ink);
+  --shadow-caption: var(--shadow-ink-small);
+  --shadow-chosen: var(--shadow-violet);
+  --c-action: var(--comic-ink);
+  --c-on-action: var(--comic-paper);
+  --c-action-press: var(--violet-deep);
+  --shadow-action: var(--shadow-violet-small);
+}
 [data-surface='oof'] {
-  --c-bg: var(--warm);
-  --c-raised: var(--warm);
-  --c-label: var(--body);
+  --c-bg: var(--cool);
+  --c-surface: var(--white);
+  --c-raised: var(--cool);
+  --c-text: var(--cool-ink);
+  --c-body: var(--cool-ink);
+  --c-muted: var(--cool-soft);
+  --c-rule: var(--cool-rule);
+  --c-border: var(--cool-rule);
+  --c-accent: var(--cool-ink);
+  --c-accent-press: var(--cool-ink-press);
+  --c-on-accent: var(--white);
+  --c-focus: var(--cool-ink);
+  --edge: var(--bw-1);
+  --c-label: var(--cool-soft);
+  --c-hero: var(--cool-hero);
+  --c-level-lean: var(--cool-ink);
+  --c-level-none: var(--cool-ink);
+  --c-level-unread: var(--cool-soft);
+  --c-action: var(--cool-ink);
+  --c-on-action: var(--white);
+  --c-action-press: var(--cool-ink-press);
+  --c-ink-line: var(--cool-rule);
 }
 [data-surface='sober'] {
   --c-bg: var(--grey-50);
@@ -244,14 +387,59 @@
   --c-on-accent: var(--white);
   --c-focus: var(--grey-900);
   --c-label: var(--grey-700);
+  --c-action: var(--grey-900);
+  --c-on-action: var(--white);
+  --c-action-press: var(--grey-700);
+  --c-ink-line: var(--grey-300);
 }
 @media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) [data-surface='game'] {
+    --c-bg: var(--comic-night);
+    --c-surface: var(--comic-night);
+    --c-raised: var(--comic-night-panel);
+    --c-text: var(--moon);
+    --c-body: var(--moon);
+    --c-muted: var(--comic-night-soft);
+    --c-rule: var(--night-line);
+    --c-border: var(--comic-night-line);
+    --c-label: var(--lilac);
+    --c-panel: var(--comic-night-panel);
+    --c-ink-line: var(--comic-night-line);
+    --c-stamp: var(--lilac);
+    --c-on-stamp: var(--night);
+    --c-level-lean: var(--lilac);
+    --c-level-none: var(--moon);
+    --c-level-unread: var(--comic-night-soft);
+    --shadow-panel: var(--shadow-lilac);
+    --shadow-caption: var(--shadow-lilac-small);
+    --shadow-chosen: var(--shadow-lilac-wide);
+    --c-action: var(--moon);
+    --c-on-action: var(--comic-night);
+    --c-action-press: var(--lilac);
+    --shadow-action: var(--shadow-lilac-small);
+  }
   :root:not([data-theme='light']) [data-surface='oof'] {
-    --c-bg: var(--night-warm);
-    --c-raised: var(--night-warm);
-    --c-rule: var(--night-warm-line);
-    --c-border: var(--night-warm-line);
-    --c-label: var(--moon-soft);
+    --c-bg: var(--cool-night);
+    --c-surface: var(--cool-night-raised);
+    --c-raised: var(--cool-night);
+    --c-text: var(--cool-moon);
+    --c-body: var(--cool-moon);
+    --c-muted: var(--cool-moon-soft);
+    --c-rule: var(--cool-night-line);
+    --c-border: var(--cool-night-line);
+    --c-accent: var(--cool-moon);
+    --c-accent-press: var(--white);
+    --c-on-accent: var(--cool-night);
+    --c-focus: var(--cool-moon);
+    --c-label: var(--cool-moon-soft);
+    --c-hero: var(--cool-night-hero);
+    --c-level-lean: var(--cool-moon);
+    --c-level-none: var(--cool-moon);
+    --c-level-unread: var(--cool-moon-soft);
+    --c-action: var(--cool-moon);
+    --c-on-action: var(--cool-night);
+    --c-action-press: var(--white);
+    --c-ink-line: var(--cool-night-line);
   }
   :root:not([data-theme='light']) [data-surface='sober'] {
     --c-bg: var(--night-grey);
@@ -267,14 +455,59 @@
     --c-on-accent: var(--grey-900);
     --c-focus: var(--grey-100);
     --c-label: var(--grey-300);
+    --c-action: var(--grey-100);
+    --c-on-action: var(--grey-900);
+    --c-action-press: var(--grey-300);
+    --c-ink-line: var(--night-grey-line);
   }
 }
+:root[data-theme='dark'] [data-surface='game'] {
+  --c-bg: var(--comic-night);
+  --c-surface: var(--comic-night);
+  --c-raised: var(--comic-night-panel);
+  --c-text: var(--moon);
+  --c-body: var(--moon);
+  --c-muted: var(--comic-night-soft);
+  --c-rule: var(--night-line);
+  --c-border: var(--comic-night-line);
+  --c-label: var(--lilac);
+  --c-panel: var(--comic-night-panel);
+  --c-ink-line: var(--comic-night-line);
+  --c-stamp: var(--lilac);
+  --c-on-stamp: var(--night);
+  --c-level-lean: var(--lilac);
+  --c-level-none: var(--moon);
+  --c-level-unread: var(--comic-night-soft);
+  --shadow-panel: var(--shadow-lilac);
+  --shadow-caption: var(--shadow-lilac-small);
+  --shadow-chosen: var(--shadow-lilac-wide);
+  --c-action: var(--moon);
+  --c-on-action: var(--comic-night);
+  --c-action-press: var(--lilac);
+  --shadow-action: var(--shadow-lilac-small);
+}
 :root[data-theme='dark'] [data-surface='oof'] {
-  --c-bg: var(--night-warm);
-  --c-raised: var(--night-warm);
-  --c-rule: var(--night-warm-line);
-  --c-border: var(--night-warm-line);
-  --c-label: var(--moon-soft);
+  --c-bg: var(--cool-night);
+  --c-surface: var(--cool-night-raised);
+  --c-raised: var(--cool-night);
+  --c-text: var(--cool-moon);
+  --c-body: var(--cool-moon);
+  --c-muted: var(--cool-moon-soft);
+  --c-rule: var(--cool-night-line);
+  --c-border: var(--cool-night-line);
+  --c-accent: var(--cool-moon);
+  --c-accent-press: var(--white);
+  --c-on-accent: var(--cool-night);
+  --c-focus: var(--cool-moon);
+  --c-label: var(--cool-moon-soft);
+  --c-hero: var(--cool-night-hero);
+  --c-level-lean: var(--cool-moon);
+  --c-level-none: var(--cool-moon);
+  --c-level-unread: var(--cool-moon-soft);
+  --c-action: var(--cool-moon);
+  --c-on-action: var(--cool-night);
+  --c-action-press: var(--white);
+  --c-ink-line: var(--cool-night-line);
 }
 :root[data-theme='dark'] [data-surface='sober'] {
   --c-bg: var(--night-grey);
@@ -290,6 +523,10 @@
   --c-on-accent: var(--grey-900);
   --c-focus: var(--grey-100);
   --c-label: var(--grey-300);
+  --c-action: var(--grey-100);
+  --c-on-action: var(--grey-900);
+  --c-action-press: var(--grey-300);
+  --c-ink-line: var(--night-grey-line);
 }
 
 /* Forced colours (Windows high contrast and similar): the system paints most colours. Inactive
@@ -300,4 +537,128 @@
     --c-rule: GrayText !important;
     --c-focus: Highlight !important;
   }
+}
+
+/* @tier art */
+/* The drawn art (section 4c): the portraits, the mascots and the panel scenes. Raw colours
+   for pictures only, read by portrait.css and panelart.css and by nothing else (design-check).
+   One dark brown for every head of hair, one uniform for everyone, one expression. Skin tones
+   and animals are chosen by data-tone and data-animal on the picture. */
+:root {
+  --art-line: #121212;
+  --art-bg: #efe8f8;
+  --art-violet: #553286;
+  --art-paper: #ffffff;
+  --art-hair: #2a1d19;
+  --art-cloth: #553286;
+  --art-cloth-dark: #3d2460;
+  --art-lanyard: #e2b13c;
+  --art-badge: #f7f4ee;
+  --art-crate: #e8c48a;
+  --art-figure: #bdb6c8;
+  --art-caption: #ffe27a;
+  --art-skin: #bc8459;
+  --art-skin-shade: #9d6c48;
+  --art-feature: #613f2a;
+  --art-lip: #895d3f;
+  --art-fur: #9a6a45;
+  --art-fur2: #c99a72;
+  --art-light: #e8cdb0;
+  --art-dark: #2a1c14;
+  --art-acc: #9a6a45;
+  --art-acc2: #9a6a45;
+}
+[data-tone='l1'] {
+  --art-skin: #edc6a2;
+  --art-skin-shade: #c29e80;
+  --art-feature: #745846;
+  --art-lip: #a9886e;
+}
+[data-tone='l2'] {
+  --art-skin: #d9a47b;
+  --art-skin-shade: #b38462;
+  --art-feature: #6c4b37;
+  --art-lip: #9c7255;
+}
+[data-tone='m'] {
+  --art-skin: #bc8459;
+  --art-skin-shade: #9d6c48;
+  --art-feature: #613f2a;
+  --art-lip: #895d3f;
+}
+[data-tone='d1'] {
+  --art-skin: #9a6440;
+  --art-skin-shade: #835335;
+  --art-feature: #553221;
+  --art-lip: #73482e;
+}
+[data-tone='d2'] {
+  --art-skin: #6b4329;
+  --art-skin-shade: #5f3a24;
+  --art-feature: #432618;
+  --art-lip: #543320;
+}
+[data-animal='bear'] {
+  --art-fur: #9a6a45;
+  --art-fur2: #c99a72;
+  --art-light: #e8cdb0;
+  --art-dark: #2a1c14;
+  --art-acc: #9a6a45;
+  --art-acc2: #9a6a45;
+}
+[data-animal='panda'] {
+  --art-fur: #f7f5f0;
+  --art-fur2: #f7f5f0;
+  --art-light: #f7f5f0;
+  --art-dark: #1f1f24;
+  --art-acc: #1f1f24;
+  --art-acc2: #1f1f24;
+}
+[data-animal='frog'] {
+  --art-fur: #5fa463;
+  --art-fur2: #5fa463;
+  --art-light: #d5e8b5;
+  --art-dark: #1d2a1c;
+  --art-acc: #e8a0a0;
+  --art-acc2: #e8a0a0;
+}
+[data-animal='koala'] {
+  --art-fur: #9ea5ae;
+  --art-fur2: #9ea5ae;
+  --art-light: #e9e4e0;
+  --art-dark: #2e2b30;
+  --art-acc: #9ea5ae;
+  --art-acc2: #9ea5ae;
+}
+[data-animal='elephant'] {
+  --art-fur: #a3a9b4;
+  --art-fur2: #8e95a2;
+  --art-light: #faf6ee;
+  --art-dark: #23262c;
+  --art-acc: #d9aeb4;
+  --art-acc2: #d9aeb4;
+}
+[data-animal='penguin'] {
+  --art-fur: #26303b;
+  --art-fur2: #26303b;
+  --art-light: #ffffff;
+  --art-dark: #26303b;
+  --art-acc: #f2a23a;
+  --art-acc2: #f2b8b0;
+}
+[data-animal='rabbit'] {
+  --art-fur: #d8d2cc;
+  --art-fur2: #d8d2cc;
+  --art-light: #f5f2ee;
+  --art-dark: #2b2626;
+  --art-acc: #edb8c0;
+  --art-acc2: #d9879a;
+}
+[data-animal='tiger'] {
+  --art-fur: #e8893a;
+  --art-fur2: #e8893a;
+  --art-light: #fbf2e6;
+  --art-dark: #2a1a12;
+  --art-acc: #5a2e2a;
+  --art-acc2: #5a2e2a;
 }

@@ -36,3 +36,30 @@
   font-weight: 700;
   font-display: swap;
 }
+/* The game register (EVAL-6): Big Shoulders Display for display and Literata for the story,
+   the same way: self hosted latin subsets, OFL, swap. */
+@font-face {
+  font-family: 'Big Shoulders Display';
+  src: url('/fonts/big-shoulders-display-800.woff2') format('woff2');
+  font-weight: 600 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Literata';
+  src: url('/fonts/literata-400.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Literata';
+  src: url('/fonts/literata-600.woff2') format('woff2');
+  font-weight: 600 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Literata';
+  src: url('/fonts/literata-400-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
