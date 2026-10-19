@@ -5,6 +5,7 @@ description: The tokens, surfaces, components and interaction patterns of the ev
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
   - https://app.plane.so/the-equal-lens/browse/EVAL-2/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-3/
 ---
 
 # Equal Lens Evaluator design system
@@ -35,7 +36,10 @@ against its real background, a target under 44 px on phones or 24 px on desktop,
 without a name, a heading skip, a screen without one `h1` or its own document title, sideways
 scroll at 320 px, a ranking or allocation card without a live region, text under 12 px, any
 axe-core violation, focus not on the new screen's heading, or a ranking or allocation card
-that cannot be finished by keyboard with focus kept.
+that cannot be finished by keyboard with focus kept. After the audit, `pnpm ux` runs the
+component states pass (`scripts/ux-states.ts`, `pnpm ux:states` alone), which checks every
+state in section 4a in the browser, and `pnpm check` runs X-9 (`scripts/component-states-check.ts`),
+which renders each component in each state and checks the markup that carries it.
 
 ## 2. Tokens
 
@@ -68,9 +72,25 @@ is Hinglish in Latin script. The scale is 14, 16, 18, 20, 24, 28 px; body is 18 
 Space is a 4 then 8 px grid (`--s-1` to `--s-7`). Radii 8, 12, 16. Every touch target is at
 least 48 by 48 px (`--target`).
 
-Motion: one duration (160 ms) for state changes, and none at all under
-`prefers-reduced-motion`. **Nothing in the product counts down, pulses or times out.** No
-timer exists anywhere (the exam rule; `scripts/no-timers.ts`).
+Motion: one duration (`--motion`, 160 ms) for every state change, and two scales:
+`--press` (0.98, a pressed control) and `--lifted` (1.02, a card being dragged), with the
+`--lift` shadow. Under `prefers-reduced-motion` the duration is 0 and both scales are 1, so
+nothing moves, scales or slides. The reorder slide (FLIP) reads `--motion` at run time, so it
+follows the same rule. **Nothing in the product counts down, pulses, loops or times out.** No
+timer exists anywhere (the exam rule; `scripts/no-timers.ts`), and no key handler: Enter on
+the code field submits a native one-field form.
+
+| Token | Value | Use |
+|---|---|---|
+| `--scale-98`, `--scale-100`, `--scale-102` | 0.98, 1, 1.02 | Primitives for the two scales |
+| `--press` | `--scale-98` (1 reduced) | Buttons, option rows, move buttons, steppers while pressed |
+| `--lifted` | `--scale-102` (1 reduced) | The ranking card being dragged |
+
+Forced colours (`forced-colors: active`): `--c-rule` becomes `GrayText` and `--c-focus`
+becomes `Highlight` on every surface. Inactive controls therefore read as inactive, the focus
+ring stays, and a checked option row gets a `Highlight` outline. Transparent borders on the
+demo strip, and the heavier left edge on notices, keep their shapes. The emoji figure keeps
+its own colours (`forced-color-adjust: none`), since the skin tone is the cue.
 
 Dark mode follows `prefers-color-scheme` and `data-theme`; every semantic token is re-pointed,
 none is overridden in a component.
@@ -94,23 +114,53 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 
 | Component | Source | What it is |
 |---|---|---|
-| `Page` | `src/ui/Page.tsx` | One screen: a `<header>` landmark (demo badge, act label, the hairline), `<main>` with the out-of-fiction line, the `h1`, body and one action row. On arrival focus moves to the `h1` (the title, or a question's `h1` inside its legend) and the document title becomes "`h1` · Team season" |
-| `Button` | `src/ui/Button.tsx` | `primary` (violet fill), `secondary` (violet outline), `quiet` (text). 48 px tall, full width on phones |
-| `Text` | `src/ui/Text.tsx` | Paragraph, `lead`, `small`, `muted`, `strong` |
+| `Page` | `src/ui/Page.tsx` | One screen: a `<header>` landmark (demo badge, act label, the hairline), `<main>` with the out-of-fiction line, the `h1`, body and one action row. On arrival focus moves to the `h1` (the title, or a question's `h1` inside its legend) and the document title becomes "`h1` · Team season". Long titles wrap |
+| `Button` | `src/ui/Button.tsx` | `primary` (violet fill), `secondary` (violet outline), `quiet` (text). 48 px tall, full width on phones. Hover on pointer devices, `--press` while pressed, disabled for every kind |
+| `Text` | `src/ui/Text.tsx` | Paragraph, `lead`, `small`, `muted`, `strong`; long words break |
 | `Heading` | `src/ui/Text.tsx` | A section heading inside a page (explanation sections, demo tables) |
-| `Link` | `src/ui/Link.tsx` | A text link with a 48 px target (the calendar file, demo links) |
-| `List` | `src/ui/List.tsx` | A plain bulleted list of text points (consent, tutorial, debrief) |
-| `Character` | `src/ui/Character.tsx` | One colleague: emoji figure (or species), name, cue lines (surname is part of the name; "Born in"; badge), description |
-| `SortList` | `src/ui/SortList.tsx` | Drag-to-sort list of `Character`s with up and down buttons on every row |
-| `Allocate` | `src/ui/Allocate.tsx` | Share a fixed pool between `Character`s with minus and plus steppers and a remaining count |
-| `Choice` | `src/ui/Choice.tsx` | Single choice as full-width radio rows (scales, vignettes, menus). `heading` puts the question in the screen's `h1`, inside the legend, on screens whose question is the page |
-| `Checks` | `src/ui/Choice.tsx` | Any-number choice as full-width checkbox rows (the noticing probe); takes `heading` too |
+| `Link` | `src/ui/Link.tsx` | A text link with a 48 px target (the calendar file, demo links); thin offset underline that thickens on hover, pressed colour |
+| `List` | `src/ui/List.tsx` | A plain bulleted list of text points (consent, tutorial, debrief); muted markers; empty renders nothing |
+| `Character` | `src/ui/Character.tsx` | One colleague: emoji figure (or species), name, cue lines (surname is part of the name; "Born in"; badge), description. Text column shrinks and wraps at 320 px |
+| `SortList` | `src/ui/SortList.tsx` | Drag-to-sort list of `Character`s with up and down buttons on every row. The dragged card lifts and settles; displaced rows slide (FLIP); a button at a limit is `aria-disabled` and says the position again |
+| `Allocate` | `src/ui/Allocate.tsx` | Share a fixed pool between `Character`s with minus and plus steppers and a remaining count. A stepper at its limit is `aria-disabled` and says the remaining line again; "All shared" arrives with a tick |
+| `Choice` | `src/ui/Choice.tsx` | Single choice as full-width radio rows (scales, vignettes, menus). `heading` puts the question in the screen's `h1`, inside the legend, on screens whose question is the page. The checked row carries `choice__option--checked` (no `:has()`) |
+| `Checks` | `src/ui/Choice.tsx` | Any-number choice as full-width checkbox rows (the noticing probe, the code saved box); takes `heading` too |
 | `Statement` | `src/ui/Statement.tsx` | A crosswise pair: statement A and statement B in two labelled boxes |
-| `Code` | `src/ui/Code.tsx` | The withdrawal code in large monospace groups of four |
-| `Field` | `src/ui/Field.tsx` | A labelled text input (code entry) |
-| `Notice` | `src/ui/Notice.tsx` | A boxed message: `info`, `error`, `demo` |
+| `Code` | `src/ui/Code.tsx` | The withdrawal code in large monospace groups of four; one tap selects it all; with `copy`, a copy button and a status line |
+| `Field` | `src/ui/Field.tsx` | A labelled text input (code entry) in a one-field form: Enter submits; `invalid` and `errorId` set `aria-invalid` and `aria-describedby` |
+| `Notice` | `src/ui/Notice.tsx` | A boxed message: `info`, `error` (`role=alert`, "!"), `ok` (`role=status`, a tick); takes an `id` for a field's description |
 | `DemoBadge` | `src/ui/DemoBadge.tsx` | The sun-coloured "Demo" strip at the top of every screen except the disclosure |
-| `Table` | `src/ui/Table.tsx` | The demo results table, with suppressed cells marked |
+| `Table` | `src/ui/Table.tsx` | The demo results table in a named, focusable scroll region, with suppressed cells marked and an `empty` line |
+
+## 4a. States of every component
+
+"Yes" is a state the component has and `pnpm ux` or X-9 checks; "n/a" does not apply. Every
+interactive state is also present in dark mode and on all three surfaces (the tokens re-point;
+no component knows its surface). Full before and after matrices:
+[reviews/component-states-2026-10-19.md](reviews/component-states-2026-10-19.md).
+
+| Component | Hover | Focus | Pressed | Checked | Disabled or limit | Error | Done | Drag | Long text at 320 | Forced colours | Reduced motion |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Button | Yes (pointer) | Ring | `--press` | n/a | `disabled`, all kinds | n/a | n/a | n/a | Wraps | Ring, GrayText disabled | No scale |
+| Choice | Border | Ring on the radio, row border | `--press` | Class, 160 ms | n/a | n/a | n/a | n/a | Wraps | Highlight outline | No scale, no transition |
+| Checks | Border | Ring on the box | `--press` | Class, 160 ms | n/a | n/a | n/a | n/a | Wraps | Highlight outline | As Choice |
+| SortList | Move buttons | Ring | `--press` | n/a | `aria-disabled`, says position | n/a | n/a | Lift, slide, settle | Wraps | GrayText at a limit | No lift, no slide |
+| Allocate | Steppers | Ring | `--press` | n/a | `aria-disabled`, says remaining | n/a | Tick, ok colour | n/a | Wraps | GrayText at a limit | No scale, no fade |
+| Character | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps | Figure keeps colour | n/a |
+| Statement | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps | Borders kept | n/a |
+| Field | Border | Ring and accent border | n/a | n/a | n/a | `aria-invalid`, described, cleared on edit | n/a | n/a | Wraps | Ring; dashed when invalid | No fade |
+| Code | n/a | Copy button ring | Copy button | n/a | n/a | n/a | "Copied" line | n/a | Wraps | Border kept | n/a |
+| Notice | n/a | n/a | n/a | n/a | n/a | "!" and edge | Tick and edge | n/a | Wraps | Edge kept | n/a |
+| DemoBadge | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps | Edge painted | n/a |
+| Link | Thicker underline | Ring | Pressed colour | n/a | n/a | n/a | n/a | n/a | Wraps | Ring | No fade |
+| List | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps; empty renders nothing | System colours | n/a |
+| Text, Heading | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Long words break | System colours | n/a |
+| Table | n/a | Region ring | n/a | n/a | n/a | n/a | n/a | n/a | Scrolls in its region; empty line | System colours | n/a |
+| Page | n/a | Heading on arrival | n/a | n/a | n/a | n/a | n/a | n/a | Title wraps | Hairline kept | Instant scroll |
+
+**No state judges an answer.** Checked rows, a placed card and "All shared" confirm that an
+action happened; nothing is marked right, wrong, good or fair, nothing celebrates, and the
+tick on "All shared" and on done notices confirms completion of an action only.
 
 ## 5. Interaction patterns, checked against real products (Lazyweb, 19 Oct 2026)
 
@@ -136,6 +186,19 @@ mid-season note uses one identical layout: statistic, source line, instruction s
   The evaluator must not: **no answer is ever marked right or wrong**, and the scoring
   explanation opens only after all play closes. The debrief page is plain sections of prose
   with headings, in the out-of-fiction register, opened with the code.
+
+- **Micro-interactions (Lazyweb, 19 Oct 2026, EVAL-3).** Reorder lists (Raycast, Vinyls,
+  Real Sports) keep handles and the whole list visible; we add the lift and a short slide
+  of the displaced rows so the move is seen, not inferred. Steppers with a ceiling (Grubhub's
+  item quantity, Michelin's guest count) grey the spent control and keep the value in view;
+  ours stay focusable and say the remaining line again. Inline code errors (Acorns, MSCHF,
+  Mill's promo code) sit under the field and colour its border; ours also mark the field
+  `aria-invalid`, point to the message and clear as soon as the code is edited. Tap-to-copy
+  (Believe's wallet address, CapCut's 2FA code) confirms in place; we take the in-place
+  confirmation and leave out CapCut's countdown. Questionnaires (Rays, Elevate, Lose It)
+  highlight the chosen row; ours does, without any sign of which row is better. Split screens
+  (Chime, Navan's remaining budget) keep the remainder visible; ours ticks when nothing is
+  left, as a fact about the action.
 
 ## 5a. Accessibility rules set by the October audit
 
