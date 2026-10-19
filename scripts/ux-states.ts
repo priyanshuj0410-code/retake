@@ -397,6 +397,32 @@ async function notice(page: Page, base: string, code: string) {
   await stress(page, C, '.notice')
 }
 
+async function link(page: Page, base: string) {
+  const C = 'Link'
+  await page.goto(base)
+  await page.reload()
+  await page.getByRole('button', { name: /^Firm session/ }).click()
+  await page.waitForSelector('[data-screen="disclosure"]')
+  await step(page)
+  await step(page)
+  await page.waitForSelector('[data-screen="enrol-form"]')
+  await step(page)
+  await page.waitForSelector('[data-screen="enrol-done"]')
+  await hover(page, C, '.link', 'text-decoration-thickness')
+  await focusRing(page, C, '.link')
+  const l = page.locator('.link').first()
+  const b = (await l.boundingBox())!
+  const rest = await l.evaluate((e) => getComputedStyle(e).color)
+  await page.mouse.move(b.x + 4, b.y + b.height / 2)
+  await page.mouse.down()
+  await page.waitForTimeout(220)
+  const down = await l.evaluate((e) => getComputedStyle(e).color)
+  await page.mouse.move(0, 0)
+  await page.mouse.up()
+  rec(C, 'pressed: the pressed colour', rest !== down, `${rest} -> ${down}`)
+  await stress(page, C, '.link')
+}
+
 /* ---------- the run ---------- */
 
 export async function statesPass(page: Page, base: string): Promise<StateResult[]> {
@@ -497,6 +523,7 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
   }
   await field(page, base)
   await notice(page, base, sessionCode)
+  await link(page, base)
   await page.emulateMedia({ reducedMotion: 'reduce', forcedColors: 'none' })
   return out.slice()
 }
