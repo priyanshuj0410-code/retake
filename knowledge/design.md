@@ -155,7 +155,7 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 
 | Component | Source | What it is |
 |---|---|---|
-| `Page` | `src/ui/Page.tsx` | One screen: a `<header>` landmark (the quiet demo chip; on game screens the top bar with the act label, the episode pips, `aria-hidden` because the label says it in words, and "Page n of N"), `<main>` with the out-of-fiction line, the `h1`, body and one action row; with `pin` (the story's page-turn screens only) the row stays at the foot of the screen, with `scroll-padding-bottom` so focus is never under it. On arrival focus moves to the `h1` and the document title becomes "`h1` · Team season". Long titles wrap |
+| `Page` | `src/ui/Page.tsx` | One screen: a `<header>` landmark (the quiet demo chip; on game screens the top bar with the act label, the episode pips, `aria-hidden` because the label says it in words, and "Page n of N"), `<main>` with the out-of-fiction line, the `h1`, body and one action row; with `pin` (the story's short page-turn screens only: episode and interlude) the row stays at the foot of the screen, with `scroll-padding-bottom` so focus is never under it. On arrival focus moves to the `h1` and the document title becomes "`h1` · Team season". Long titles wrap |
 | `Button` | `src/ui/Button.tsx` | `primary` (violet fill), `secondary` (violet outline), `quiet` (text). 48 px tall, full width on phones. Hover on pointer devices, `--press` while pressed, disabled for every kind |
 | `Text` | `src/ui/Text.tsx` | Paragraph, `lead`, `small`, `muted`, `strong`; long words break |
 | `Heading` | `src/ui/Text.tsx` | A section heading inside a page (explanation sections, demo tables); `level={3}` for a sub-heading inside a section (the result page's areas) |
@@ -193,7 +193,7 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 | `Caption` | `src/ui/Comic.tsx` | Game register: a yellow narration box with an ink border and offset shadow; ink text on yellow at 14.6:1 |
 | `Stamp` | `src/ui/Comic.tsx` | Game register: a 52 px round violet stamp tilted 8 degrees (a rank, a share); empty it is a dashed ring with nothing in it. `aria-hidden`: the button's name says the state |
 | `Splash` | `src/ui/Comic.tsx` | Game register: the violet halftone panel that opens a season, an episode, the reveal and the season's end, with the screen's `h1` in 38 px display caps and an italic line |
-| `Then` | `src/ui/Comic.tsx` | Game register: what came of the last decision, a small paper panel with the 64 px face of whoever led it, the line in 16 px italic and the answer restated at 14 px; always smaller than the new scene |
+| `Then` | `src/ui/Comic.tsx` | Game register: what came of the last decision, a small paper panel with the 64 px face of whoever led it and the story line in 16 px italic only (no recap of the answer; Back reopens it); always smaller than the new scene |
 | `Strip` | `src/ui/Comic.tsx` | Game register: an interlude as two or three panels, the first full width, each a yellow caption over a drawn scene (`PanelArt`); a named group |
 | `CastGrid` | `src/ui/Comic.tsx` | Game register: the cast as portrait panels over yellow name plates; `sheet` (four across, the week-one mascots) and `reveal` (two across on phones, four from 600 px: the reveal with the mascot inset and "Kiwi the bear is Huma.", the season's end with the jobs led) |
 | `PanelArt` | `src/ui/PanelArt.tsx` | Game register: the drawn scenes (crowd, table, crates, letters, chat, note, ledger, coffee, glance, board, backs, truck, dashboard; the season covers warehouse, newsroom, clinic), light inline SVG, decorative, no faces |
@@ -258,8 +258,8 @@ valence, and the season's end lists the jobs each colleague led, with no outcome
 - **One decision per screen, and no Next.** Every decision commits on its tap (`TapOrder`,
   `PickOne`, `QuickSplit`, `Options`), the next screen opens with its consequence (`Beat`), and a
   quiet "Back: change my last decision" reopens it. Nothing counts down; no auto-advance waits.
-  The consequence is a small `Then` panel above the new scene and always smaller than it; the
-  answer restated sits inside it at 14 px. No roster sits under a decision (EVAL-6 removed the
+  The consequence is a small `Then` panel above the new scene and always smaller than it, the
+  story line only: no admin recap of the answer. No roster sits under a decision (EVAL-6 removed the
   collapsed "Your team so far" heading that read as broken).
 - **A fixed cast.** Eight colleagues for the whole season, drawn portraits (`Portrait`, never
   under 64 px on phones). In the first decisions each is a different animal mascot with a made-up

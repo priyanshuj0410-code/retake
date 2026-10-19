@@ -238,7 +238,7 @@ export function StoryView({
   switch (step.kind) {
     case 'intro':
       return (
-        <Page {...page} pin actions={<Button onClick={() => onDone(null)}>{L(SS.start)}</Button>}>
+        <Page {...page} actions={<Button onClick={() => onDone(null)}>{L(SS.start)}</Button>}>
           <Splash title={fill(L(SS.startTitle), { company: L(story.company as T) })} />
           <Panel tone="paper">
             <List items={(story.intro ?? []).map(L)} />
@@ -276,7 +276,7 @@ export function StoryView({
       const rv = story.reveal
       if (!rv) return null
       return (
-        <Page {...page} pin actions={<Button onClick={() => onDone(null)}>{L(rv.go)}</Button>}>
+        <Page {...page} actions={<Button onClick={() => onDone(null)}>{L(rv.go)}</Button>}>
           {then ? <Then id={`${key}-then`} {...then} /> : null}
           <Splash
             title={L(rv.title)}
@@ -303,7 +303,6 @@ export function StoryView({
       return (
         <Page
           {...page}
-          pin
           actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}
         >
           {then ? <Then id={`${key}-then`} {...then} /> : null}
@@ -484,7 +483,7 @@ function thenView(
 ): BeatThen | undefined {
   if (!c) return undefined
   const v = c.lead ? colleagueView(runner, runner.person(c.lead.slot), c.lead.revealed) : null
-  return { text: c.text, answer: c.summary, look: v?.look, label: v?.figureLabel }
+  return { text: c.text, look: v?.look, label: v?.figureLabel }
 }
 
 function BeatStep({

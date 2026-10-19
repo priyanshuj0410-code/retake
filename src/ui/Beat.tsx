@@ -5,7 +5,6 @@ import './beat.css'
 
 export interface BeatThen {
   text: string
-  answer?: string
   look?: Look
   label?: string
 }

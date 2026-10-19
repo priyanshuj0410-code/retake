@@ -1,4 +1,4 @@
-/* @owns panel panel--paper caption stamp stamp--empty splash splash__dots splash__dot splash__kicker splash__title splash__body then then__words then__text then__answer strip strip__panel strip__panel--wide strip__caption castgrid castgrid--sheet castgrid--reveal castgrid__tile castgrid__caption castgrid__name castgrid__line */
+/* @owns panel panel--paper caption stamp stamp--empty splash splash__dots splash__dot splash__kicker splash__title splash__body then then__words then__text strip strip__panel strip__panel--wide strip__caption castgrid castgrid--sheet castgrid--reveal castgrid__tile castgrid__caption castgrid__name castgrid__line */
 /* The comic register (knowledge/design.md, section 4c): panels ruled in ink, yellow captions,
    violet stamps. Game surface only. */
 .panel {
@@ -118,12 +118,6 @@
   font-size: var(--text-label);
   line-height: var(--leading-ui);
   color: var(--c-text);
-  overflow-wrap: anywhere;
-}
-.then__answer {
-  font-size: var(--text-small);
-  line-height: var(--leading-ui);
-  color: var(--c-muted);
   overflow-wrap: anywhere;
 }
 .strip {

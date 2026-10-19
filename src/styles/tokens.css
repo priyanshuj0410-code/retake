@@ -95,6 +95,7 @@
   --px-52: 52px;
   --px-300: 300px;
   --pct-30: 30%;
+  --pct-45: 45%;
   --pct-50: 50%;
   --grid-2: repeat(2, minmax(0, 1fr));
   --grid-4: repeat(4, minmax(0, 1fr));
@@ -205,6 +206,7 @@
   --tilt: var(--rot-neg-8);
   --face-then: var(--px-64);
   --inset: var(--pct-30);
+  --inset-small: var(--pct-45);
   --dots: var(--px-300);
   --radius-full: var(--pct-50);
   --cols-two: var(--grid-2);

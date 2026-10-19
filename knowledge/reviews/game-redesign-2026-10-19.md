@@ -57,6 +57,7 @@ Direction C from the review sheet (`ui-directions.html`, 19 Oct 2026). Design ru
 - The generated-image path was checked in the browser with temporary placeholder WebPs and a
   manifest (removed): images sat inside the ink frame on the tint and halftone, mascots by animal,
   tones by shade. An empty `public/portraits/manifest.json` ships so the lookup never 404s.
+- Mascot insets are the SVG mascots (or the manifest's `mascot-{animal}.webp`), never system emoji; `pnpm season` and `pnpm ux` now fail on any pictographic character on a season screen or text inside a portrait. In the 72 px split rows and the 64 px consequence face the inset is 45 per cent wide in the bottom corner, over the uniform, so the animal stays legible without covering the face. The consequence panel shows the story line only; the order recap is gone from player view (Back still reopens the decision). Only the short page-turn screens (episode, interlude) pin their button; the reveal, the opening and the season's end do not, so nothing sits under it at rest.
 - An early run of `pnpm ux` found the action row, pinned to the foot of every screen, covering a
   move button on game 2's ranking card (axe target-size); the row is now pinned only on the
   story's page-turn screens (opening, episode, reveal, interlude, season's end).

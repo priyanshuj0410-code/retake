@@ -39,6 +39,14 @@
   border: var(--border) solid var(--art-line);
   background: var(--art-paper);
 }
+.portrait--row .portrait__inset,
+.portrait--then .portrait__inset {
+  left: auto;
+  top: auto;
+  right: var(--gap-none);
+  bottom: var(--gap-none);
+  width: var(--inset-small);
+}
 .pt-l {
   stroke: var(--art-line);
   stroke-linejoin: round;

@@ -74,18 +74,17 @@ export function Splash({
 
 /**
  * What came of the last decision: a small panel, deliberately smaller than the new scene, with
- * the face of whoever led it (or none) and the answer restated in small type.
+ * the face of whoever led it (or none) and the story line only: no recap of the answer
+ * (Back on the screen reopens the decision).
  */
 export function Then({
   id,
   text,
-  answer,
   look,
   label,
 }: {
   id?: string
   text: string
-  answer?: string
   look?: Look
   label?: string
 }) {
@@ -94,7 +93,6 @@ export function Then({
       {look ? <Portrait look={look} label={label ?? ''} size="then" eager /> : null}
       <span className="then__words">
         <span className="then__text">{text}</span>
-        {answer ? <span className="then__answer">{answer}</span> : null}
       </span>
     </div>
   )

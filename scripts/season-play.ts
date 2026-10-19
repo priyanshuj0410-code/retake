@@ -107,6 +107,16 @@ export async function playSeason(
       return main?.textContent ?? ''
     })
     if (/PENDING/.test(said) && m !== 'disclosure') leaks.push(m)
+    /* Faces and mascots are drawn or generated images, never system emoji, so they do not vary
+       by phone font: no pictographic character on a season screen, and no text in a portrait. */
+    const emoji = await page.evaluate(() => {
+      const main = document.querySelector('main')
+      const portraits = [...document.querySelectorAll('.portrait')].some(
+        (e) => (e.textContent ?? '').trim() !== '',
+      )
+      return /\p{Extended_Pictographic}/u.test(main?.textContent ?? '') || portraits
+    })
+    if (emoji && m.startsWith('story:')) leaks.push(`${m}: emoji`)
     /* No season screen falls back to the old card components (emoji figures, steppers, drag rows). */
     if (await page.locator('.character, .alloc__step, .sort__row').count())
       leaks.push(`${m}: old card component`)

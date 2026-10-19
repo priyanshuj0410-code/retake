@@ -16,7 +16,7 @@ import { createServer } from 'vite'
 import { screeningItems, screens as S } from '../src/content'
 import { marker, step } from './lib/autoplay'
 import { statesPass, type StateResult } from './ux-states'
-import { playSeason } from './season-play'
+import { leaks, playSeason } from './season-play'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const LABEL = process.argv[2] ?? 'latest'
@@ -424,6 +424,7 @@ async function main() {
       if (m === 'story:screening') await gridByKeyboard(page, `season ${m}`)
     })
     await audit(page, 'season story:result')
+    for (const l of leaks) problems.push(`season ${l}`)
     await page.goto(`${BASE}#/profile`)
     await page.reload()
     await page.waitForSelector('[data-screen="profile-locked"]')
