@@ -200,6 +200,7 @@
     "lowSubsampleShare": 0.5
   },
   "firmWindows": {
+    "_note": "Blocked by firm and training month: permuted blocks, size drawn per block from blockSizes, each block half before and half after.",
     "beforeDays": [
       7,
       1
@@ -208,7 +209,10 @@
       1,
       7
     ],
-    "afterShare": 0.5
+    "blockSizes": [
+      2,
+      4
+    ]
   },
   "code": {
     "length": 12,

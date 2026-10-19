@@ -1,3 +1,4 @@
+import type { Rng } from '../engine/rng'
 import type { DeploymentId } from '../engine/config'
 import type { CodeKeys } from '../engine/codes'
 import type { Submission } from '../engine/records'
@@ -58,10 +59,10 @@ export interface Store {
   schedule(firm: string): Promise<Schedule | null>
   /**
    * Enrols a player: draws the timing arm from the firm-month's block (blocked randomisation,
-   * src/engine/firm.ts) with the uniform `u`, writes the enrolment and the block's new state in
+   * src/engine/firm.ts) with `rng`, writes the enrolment and the block's new state in
    * one write, and returns the enrolment with its arm and window.
    */
-  enrol(enrolKey: string, base: EnrolmentBase, u: number): Promise<Enrolment>
+  enrol(enrolKey: string, base: EnrolmentBase, rng: Rng): Promise<Enrolment>
   /** Demo only: issue tokens the way a panel provider's links would carry them. */
   issueTokens(dep: DeploymentId, n: number, langs: LangSet): Promise<string[]>
 }

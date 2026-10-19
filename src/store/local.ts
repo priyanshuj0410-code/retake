@@ -8,7 +8,8 @@ import { config, DEPLOYMENTS, type DeploymentId } from '../engine/config'
 import type { CodeKeys } from '../engine/codes'
 import { randomKey } from '../engine/rng'
 import type { Submission } from '../engine/records'
-import { nextArm, windowFor, type Arm } from '../engine/firm'
+import { formatPending, nextArm, parsePending, windowFor } from '../engine/firm'
+import type { Rng } from '../engine/rng'
 import type {
   Enrolment,
   EnrolmentBase,
@@ -176,13 +177,12 @@ export class LocalStore implements Store {
     return (this.tree['eval-schedule'][firm] as Schedule | undefined) ?? null
   }
 
-  async enrol(enrolKey: string, base: EnrolmentBase, u: number) {
+  async enrol(enrolKey: string, base: EnrolmentBase, rng: Rng) {
     if (this.tree['eval-enrol'][enrolKey] !== undefined)
       throw new Error('refused: enrolment exists')
     const month = base.tdate.slice(0, 7)
     const block = `${base.firm}/${month}`
-    const owed = (this.tree['eval-alloc'][block] as Arm | undefined) ?? null
-    const next = nextArm(owed, u)
+    const next = nextArm(parsePending(this.tree['eval-alloc'][block] as string | undefined), rng)
     const e: Enrolment = {
       ...base,
       arm: next.arm,
@@ -190,7 +190,8 @@ export class LocalStore implements Store {
       s: 'enrolled',
     }
     this.tree['eval-enrol'][enrolKey] = { ...e }
-    if (next.owed) this.tree['eval-alloc'][block] = next.owed
+    const state = formatPending(next.pending)
+    if (state) this.tree['eval-alloc'][block] = state
     else delete this.tree['eval-alloc'][block]
     this.save()
     return e

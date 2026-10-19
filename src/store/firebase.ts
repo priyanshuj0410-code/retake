@@ -19,7 +19,8 @@ import {
 import type { DeploymentId } from '../engine/config'
 import type { CodeKeys } from '../engine/codes'
 import type { Submission } from '../engine/records'
-import { nextArm, windowFor, type Arm } from '../engine/firm'
+import { formatPending, nextArm, parsePending, windowFor } from '../engine/firm'
+import type { Rng } from '../engine/rng'
 import type {
   Enrolment,
   EnrolmentBase,
@@ -164,7 +165,7 @@ export class FirebaseStore implements Store {
     return this.read<Schedule>(`eval-schedule/${firm}`)
   }
 
-  async enrol(enrolKey: string, base: EnrolmentBase, u: number) {
+  async enrol(enrolKey: string, base: EnrolmentBase, rng: Rng) {
     await this.uid()
     const month = base.tdate.slice(0, 7)
     const block = `eval-alloc/${base.firm}/${month}`
@@ -172,8 +173,7 @@ export class FirebaseStore implements Store {
        time, so two enrolments racing in one block cannot both take the same arm: the loser
        re-reads and retries. */
     for (let attempt = 0; attempt < 6; attempt++) {
-      const owed = await this.read<Arm>(block)
-      const next = nextArm(owed, u)
+      const next = nextArm(parsePending(await this.read<string>(block)), rng)
       const e: Enrolment = {
         ...base,
         arm: next.arm,
@@ -181,7 +181,10 @@ export class FirebaseStore implements Store {
         s: 'enrolled',
       }
       try {
-        await update(ref(this.db), { [`eval-enrol/${enrolKey}`]: e, [block]: next.owed })
+        await update(ref(this.db), {
+          [`eval-enrol/${enrolKey}`]: e,
+          [block]: formatPending(next.pending),
+        })
         return e
       } catch (x) {
         if (!String(x).includes('PERMISSION_DENIED') || attempt === 5) throw x

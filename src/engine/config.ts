@@ -49,7 +49,7 @@ export interface Config {
   engagement: { alpha: number; permutations: number }
   rc: { share: number }
   crosswise: { lowSubsampleShare: number }
-  firmWindows: { beforeDays: [number, number]; afterDays: [number, number]; afterShare: number }
+  firmWindows: { beforeDays: [number, number]; afterDays: [number, number]; blockSizes: number[] }
   code: { length: number; alphabet: string; kdfIterations: number }
   release: {
     minCell: number

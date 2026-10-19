@@ -120,7 +120,7 @@ export function Enrol({ firm }: { firm: string }) {
         const e = await store.enrol(
           await enrolmentKey(code),
           { firm, batch, tdate: b.date, sex },
-          cryptoRng().next(),
+          cryptoRng(),
         )
         setDone({ code, e })
         setStep('done')

@@ -8,6 +8,7 @@
  */
 import { config, type DeploymentId } from '../src/engine/config'
 import { LocalStore } from '../src/store/local'
+import { parsePending, type Arm } from '../src/engine/firm'
 import { BANDS, TYPES, bankFor, type Presented } from '../src/engine/layout'
 import { seeded } from '../src/engine/rng'
 import { Runner } from '../src/engine/runner'
@@ -387,57 +388,119 @@ export async function run() {
     ),
   )
 
-  /* The firm's play window, blocked by firm and month: N enrolments into the demo store across
-     four firms and six training months, interleaved at random, with the sex item answered at
-     random. Within every firm-month the arms differ by at most one player after every single
-     enrolment, the arms are 1:1 overall and at each block's first draw, and the arm is
-     independent of the sex label. */
+  /* The firm's play window, blocked by firm and month in permuted blocks of random size:
+     N enrolments into the demo store across four firms and six training months, interleaved at
+     random, with the sex item answered at random. */
   const fr = seeded(77)
   const fstore = new LocalStore(() => Date.parse('2026-10-20T10:00:00Z'))
   const firms = ['f1', 'f2', 'f3', 'f4']
   const months = ['2026-11', '2026-12', '2027-01', '2027-02', '2027-03', '2027-04']
   const sexes = ['woman', 'man', 'another', 'prefer-not']
-  const blocks = new Map<string, { before: number; after: number }>()
+  const blocks = new Map<string, { before: number; after: number; last: Arm | null }>()
   const bySex = sexes.map(() => [0, 0])
-  const firstDraw = [0, 0]
+  const sizes = new Map<number, number>()
+  let completions = 0
+  let unbalancedAtCompletion = 0
   let worst = 0
   let datesOk = true
+  let changed = 0
+  let pairs = 0
   for (let i = 0; i < N; i++) {
     const firm = fr.pick(firms)
     const month = fr.pick(months)
     const tdate = `${month}-${String(1 + fr.int(28)).padStart(2, '0')}`
     const sexIdx = fr.int(sexes.length)
     const key = `${firm}/${month}`
-    const fresh = fstore.tree['eval-alloc'][key] === undefined
-    const e = await fstore.enrol(
-      `e${i}`,
-      { firm, batch: 'b', tdate, sex: sexes[sexIdx] },
-      fr.next(),
-    )
-    const c = blocks.get(key) ?? { before: 0, after: 0 }
+    const pendingBefore = parsePending(fstore.tree['eval-alloc'][key] as string | undefined)
+    const e = await fstore.enrol(`e${i}`, { firm, batch: 'b', tdate, sex: sexes[sexIdx] }, fr)
+    if (pendingBefore.length === 0) {
+      const size = parsePending(fstore.tree['eval-alloc'][key] as string | undefined).length + 1
+      sizes.set(size, (sizes.get(size) ?? 0) + 1)
+    }
+    const c = blocks.get(key) ?? { before: 0, after: 0, last: null }
     c[e.arm] += 1
+    if (c.last) {
+      pairs += 1
+      if (c.last !== e.arm) changed += 1
+    }
+    c.last = e.arm
     blocks.set(key, c)
     worst = Math.max(worst, Math.abs(c.after - c.before))
+    if (fstore.tree['eval-alloc'][key] === undefined) {
+      completions += 1
+      if (c.after !== c.before) unbalancedAtCompletion += 1
+    }
     bySex[sexIdx][e.arm === 'after' ? 0 : 1] += 1
-    if (fresh) firstDraw[e.arm === 'after' ? 0 : 1] += 1
     const t = Date.parse(`${tdate}T00:00:00Z`)
     const d = (x: string) => Math.round((Date.parse(`${x}T00:00:00Z`) - t) / 86_400_000)
     if (e.arm === 'before' ? d(e.from) !== -7 || d(e.to) !== -1 : d(e.from) !== 1 || d(e.to) !== 7)
       datesOk = false
   }
+  const allowed = config.firmWindows.blockSizes
   record(
     T,
-    `firm play window: within every firm-month block the arms differ by at most one player, after every enrolment (${blocks.size} blocks, ${N} enrolments)`,
-    worst <= 1,
+    `firm play window: every block's size is drawn from {${allowed.join(', ')}}`,
+    [...sizes.keys()].every((k) => allowed.includes(k)),
+    JSON.stringify(Object.fromEntries(sizes)),
+  )
+  pTest(
+    'firm play window: block sizes equally likely',
+    gof(
+      allowed.map((k) => sizes.get(k) ?? 0),
+      allowed.map(() => 1 / allowed.length),
+    ),
+  )
+  record(
+    T,
+    `firm play window: within every firm-month the arms are equal at every block's completion (${completions} completions)`,
+    unbalancedAtCompletion === 0 && completions > 0,
+    `${unbalancedAtCompletion} unbalanced`,
+  )
+  record(
+    T,
+    'firm play window: between completions the arms never differ by more than half the largest block',
+    worst <= Math.max(...allowed) / 2,
     `largest difference ${worst}`,
   )
   const tot = [...blocks.values()].reduce((a, c) => [a[0] + c.after, a[1] + c.before], [0, 0])
   pTest('firm play window: before and after 1:1 overall', gof(tot, [0.5, 0.5]))
-  pTest(
-    "firm play window: each block's first draw before or after 1:1",
-    gof(firstDraw, [config.firmWindows.afterShare, 1 - config.firmWindows.afterShare]),
-  )
   pTest('firm play window: the arm is independent of the sex label', independence(bySex))
+  /* Concealment: how often a player's arm differs from the previous colleague's in the same
+     firm-month, against the rate of the pure design (permuted blocks of sizes drawn uniformly
+     from blockSizes), simulated here independently of src/. Fixed pairs would make every
+     second arm certain. */
+  const ref = seeded(4242)
+  let refChanged = 0
+  let refPairs = 0
+  let prev: string | null = null
+  for (let k = 0; k < 400_000;) {
+    const size = allowed[ref.int(allowed.length)]
+    const b = ref.shuffle([...Array(size)].map((_, i) => (i < size / 2 ? 'a' : 'b')))
+    for (const x of b) {
+      if (prev !== null) {
+        refPairs += 1
+        if (x !== prev) refChanged += 1
+      }
+      prev = x
+      k += 1
+    }
+  }
+  const pObs = changed / pairs
+  const pRef = refChanged / refPairs
+  const z = (pObs - pRef) / Math.sqrt((pRef * (1 - pRef)) / pairs)
+  record(
+    T,
+    "firm play window: the previous colleague's arm predicts the next no better than permuted blocks of random size do",
+    Math.abs(z) < 2.576,
+    `P(arm differs from the previous) ${pObs.toFixed(3)} against the design's ${pRef.toFixed(3)} (z ${z.toFixed(2)}); fixed pairs would give a certain second arm`,
+  )
+  const states = Object.values(fstore.tree['eval-alloc'])
+  record(
+    T,
+    'firm play window: the pending state holds only the remaining arms (no identity, token, count or time)',
+    states.every((v) => typeof v === 'string' && /^(before|after)(,(before|after)){0,2}$/.test(v)),
+    `${states.length} open blocks`,
+  )
   record(T, 'firm windows are 7 to 1 days before or 1 to 7 days after the training date', datesOk)
   const firmSrc = (await import('node:fs')).readFileSync(
     new URL('../src/engine/firm.ts', import.meta.url),

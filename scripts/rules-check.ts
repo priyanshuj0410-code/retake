@@ -11,7 +11,8 @@
  */
 import { playDemo } from '../src/demo/players'
 import type { Submission } from '../src/engine/records'
-import { randomKey } from '../src/engine/rng'
+import { formatPending, nextArm, parsePending, windowFor } from '../src/engine/firm'
+import { randomKey, seeded } from '../src/engine/rng'
 import { record, results, summary } from './lib/check'
 
 const HOST = process.env.FIREBASE_DATABASE_EMULATOR_HOST
@@ -354,51 +355,60 @@ async function main() {
   }
   const TB = 'AT-2 firm play window blocked by firm and month (emulator rules)'
   const block = 'eval-alloc/demo-firm/2026-11'
+  const before = { ...enrol, arm: 'before', from: '2026-11-09', to: '2026-11-15' }
+  const put = (who: string, e: unknown, state: string | null | undefined, key = randomKey()) =>
+    patch(
+      as(who),
+      state === undefined
+        ? { [`eval-enrol/${key}`]: e }
+        : { [`eval-enrol/${key}`]: e, [block]: state },
+    )
+  record(
+    TB,
+    'a block cannot start without leaving its balanced remainder pending',
+    !(await put('e0', enrol, undefined)).allowed &&
+      !(await put('e0', enrol, 'after')).allowed &&
+      !(await put('e0', enrol, 'after,before,after')).allowed,
+  )
   record(
     TR,
     'an enrolment is created once (with its block state, in one write)',
-    (await patch(as('e1'), { [`eval-enrol/${ek}`]: enrol, [block]: 'before' })).allowed &&
-      !(await patch(as('e2'), { [`eval-enrol/${ek}`]: { ...enrol, sex: 'man' }, [block]: null }))
-        .allowed,
+    (await put('e1', enrol, 'before,before,after', ek)).allowed &&
+      !(await put('e2', { ...enrol, sex: 'man' }, 'before,after', ek)).allowed,
   )
   record(
     TR,
     'an enrolment with an extra field is refused',
-    !(
-      await patch(as('e1'), {
-        [`eval-enrol/${randomKey()}`]: { ...enrol, arm: 'before', email: 'x' },
-        [block]: null,
-      })
-    ).allowed,
-  )
-  const before = { ...enrol, arm: 'before', from: '2026-11-09', to: '2026-11-15' }
-  record(
-    TB,
-    'the second enrolment of a block cannot take the arm the first took',
-    !(await patch(as('e3'), { [`eval-enrol/${randomKey()}`]: enrol, [block]: null })).allowed,
+    !(await put('e1', { ...before, email: 'x' }, 'before,after')).allowed,
   )
   record(
     TB,
-    'the second enrolment cannot leave the block state behind',
-    !(await patch(as('e3'), { [`eval-enrol/${randomKey()}`]: before })).allowed,
+    'a later enrolment cannot take an arm other than the next pending one',
+    !(await put('e3', enrol, 'before,after')).allowed,
   )
   record(
     TB,
-    'the second enrolment takes the owed arm and clears the block',
-    (await patch(as('e3'), { [`eval-enrol/${randomKey()}`]: before, [block]: null })).allowed &&
-      (await call('owner', 'GET', block)).value === null,
+    'a later enrolment cannot leave the pending state unchanged',
+    !(await put('e3', before, 'before,before,after')).allowed &&
+      !(await put('e3', before, undefined)).allowed,
   )
   record(
     TB,
-    "a block's first enrolment must leave the other arm owed",
-    !(await patch(as('e4'), { [`eval-enrol/${randomKey()}`]: enrol, [block]: 'after' })).allowed &&
-      !(await patch(as('e4'), { [`eval-enrol/${randomKey()}`]: enrol })).allowed,
+    'a later enrolment takes the next pending arm and shortens the state',
+    (await put('e3', before, 'before,after')).allowed &&
+      (await call('owner', 'GET', block)).value === 'before,after',
   )
-  await call('owner', 'PUT', block, 'after')
   record(
     TB,
-    'the block state cannot be flipped from one arm to the other',
-    !(await call(as('e5'), 'PUT', block, 'before')).allowed,
+    'the pending state cannot be rewritten to other arms',
+    !(await call(as('e5'), 'PUT', block, 'after,before')).allowed,
+  )
+  record(
+    TB,
+    'the pending state holds only arms: anything else is refused',
+    !(await call('owner', 'GET', 'eval-alloc/x/2026-11')).value &&
+      !(await call(as('e5'), 'PUT', 'eval-alloc/demo-firm/2027-05', 'before,after,uid-123'))
+        .allowed,
   )
   await call('owner', 'DELETE', block)
   record(
@@ -411,36 +421,46 @@ async function main() {
       })
     ).allowed,
   )
-  /* Twenty enrolments in one block through the rules: the arms alternate in pairs. */
+  /* Forty enrolments in one firm-month through the rules, allocated as the app allocates. */
+  const brng = seeded(99)
   let diff = 0
-  let worst = 0
-  for (let i = 0; i < 20; i++) {
-    const owed = (await call(as(`p${i}`), 'GET', 'eval-alloc/demo-firm/2027-01')).value as
-      string | null
-    const arm = owed ?? (i % 3 === 0 ? 'after' : 'before')
-    const w =
-      arm === 'after'
-        ? { from: '2027-01-11', to: '2027-01-17' }
-        : { from: '2027-01-03', to: '2027-01-09' }
+  let completions = 0
+  let unbalanced = 0
+  let refused = 0
+  const sizes = new Set<number>()
+  for (let i = 0; i < 40; i++) {
+    const path = 'eval-alloc/demo-firm/2027-01'
+    const pending = parsePending((await call(as(`p${i}`), 'GET', path)).value as string | null)
+    const next = nextArm(pending, brng)
+    if (next.newBlock) sizes.add(next.newBlock)
+    const w = windowFor(next.arm, '2027-01-10')
     const r = await patch(as(`p${i}`), {
       [`eval-enrol/${randomKey()}`]: {
         ...enrol,
         tdate: '2027-01-10',
         month: '2027-01',
-        arm,
-        ...w,
+        arm: next.arm,
+        from: w.from,
+        to: w.to,
         sex: ['woman', 'man', 'prefer-not'][i % 3],
       },
-      ['eval-alloc/demo-firm/2027-01']: owed ? null : arm === 'after' ? 'before' : 'after',
+      [path]: formatPending(next.pending),
     })
-    if (r.allowed) diff += arm === 'after' ? 1 : -1
-    worst = Math.max(worst, Math.abs(diff))
+    if (!r.allowed) refused += 1
+    else diff += next.arm === 'after' ? 1 : -1
+    if (next.pending.length === 0) {
+      completions += 1
+      if (diff !== 0) unbalanced += 1
+    }
   }
   record(
     TB,
-    '20 enrolments in one block through the rules: the arms never differ by more than one',
-    worst <= 1,
-    `largest difference ${worst}`,
+    '40 enrolments in one firm-month through the rules: every one accepted, the arms equal at every block completion, block sizes from {2, 4}',
+    refused === 0 &&
+      unbalanced === 0 &&
+      completions > 0 &&
+      [...sizes].every((k) => k === 2 || k === 4),
+    `${completions} completions, sizes ${[...sizes].join(',')}, ${refused} refused`,
   )
   record(
     TR,
