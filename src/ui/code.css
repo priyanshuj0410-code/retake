@@ -1,4 +1,4 @@
-/* @owns code */
+/* @owns code code__status */
 .code {
   font-family: var(--font-mono);
   font-size: var(--text-code);
@@ -12,4 +12,18 @@
   text-align: center;
   margin: var(--gap-none);
   overflow-wrap: anywhere;
+  user-select: all;
+  -webkit-user-select: all;
+}
+.code::selection {
+  background: var(--c-raised);
+  color: var(--c-text);
+}
+.code__status {
+  margin: var(--gap-none);
+  color: var(--c-body);
+  font-size: var(--text-label);
+}
+.code__status:empty {
+  display: none;
 }

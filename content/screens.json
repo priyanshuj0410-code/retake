@@ -197,6 +197,8 @@
       "title": { "en": "Your withdrawal code", "hinglish": "Aapka withdrawal code" },
       "body": { "en": "This code is shown once. Save it: write it down or take a screenshot. Your answers carry this code, not your name.", "hinglish": "Yeh code sirf ek baar dikhaya jaata hai. Ise save kijiye: likh lijiye ya screenshot le lijiye. Aapke jawabon par yeh code hai, aapka naam nahin." },
       "release": { "en": "From {date}, a page explaining the study opens with this code. You can withdraw with it until {until}.", "hinglish": "{date} se is code se study samjhane wala page khulega. Aap {until} tak isse withdraw kar sakte hain." },
+      "copy": { "en": "Copy the code", "hinglish": "Code copy karein" },
+      "copied": { "en": "Copied. Save it somewhere you will find it.", "hinglish": "Copy ho gaya. Ise aisi jagah save kijiye jahan aap ise dhoondh sakein." },
       "saved": { "en": "I have saved my code", "hinglish": "Maine apna code save kar liya hai" }
     },
     "demographics": {

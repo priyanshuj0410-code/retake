@@ -635,7 +635,11 @@ function CodeStep({
     >
       <Text>{L(screens.wrap.code.body)}</Text>
       {ready && runner.code ? (
-        <Code value={formatCode(runner.code)} label={L(screens.wrap.code.title)} />
+        <Code
+          value={formatCode(runner.code)}
+          label={L(screens.wrap.code.title)}
+          copy={{ button: L(screens.wrap.code.copy), done: L(screens.wrap.code.copied) }}
+        />
       ) : (
         <Notice>…</Notice>
       )}

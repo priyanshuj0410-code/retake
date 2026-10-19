@@ -6,7 +6,7 @@
  */
 import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { Allocate, Button, Checks, Choice, Field, SortList } from '../src/ui'
+import { Allocate, Button, Checks, Choice, Code, Field, SortList } from '../src/ui'
 import { record } from './lib/check'
 
 const T = 'X-9 component states (markup)'
@@ -136,5 +136,13 @@ export async function run() {
     T,
     'Field: a one-field form, so Enter submits natively',
     /^<form class="field"/.test(field(false)),
+  )
+  const code = html(
+    h(Code, { value: 'ABCD-EFGH', label: 'Code', copy: { button: 'Copy', done: 'Copied' } }),
+  )
+  record(
+    T,
+    'Code: with copy, a button and an always-present status region (empty until copied)',
+    /<button[^>]*>Copy<\/button><p class="code__status" role="status"><\/p>/.test(code),
   )
 }

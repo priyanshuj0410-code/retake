@@ -378,6 +378,9 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
     reducedMotion: 'no-preference',
     forcedColors: 'none',
   })
+  await page
+    .context()
+    .grantPermissions(['clipboard-read', 'clipboard-write'], { origin: new URL(base).origin })
   await page.goto(base)
   await page.getByRole('radio', { name: /^English only/ }).check()
   await page.getByRole('button', { name: /^Panel, game 2$/ }).click()
@@ -413,6 +416,23 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
       const fig = await css(page, '.character__figure', 'forced-color-adjust')
       await forced(page, false)
       rec('Character', 'forced colours: the figure keeps its own colours', fig === 'none', fig)
+    }
+    if (!done.has('Code') && m.endsWith(':code')) {
+      done.add('Code')
+      await page.locator('.code').waitFor({ timeout: 20000 })
+      const sel = await css(page, '.code', 'user-select')
+      rec('Code', 'one tap selects the whole code', sel === 'all', sel)
+      await page.getByRole('button', { name: /^(Copy the code|Code copy karein)$/ }).click()
+      await page
+        .locator('.code__status:not(:empty)')
+        .waitFor({ timeout: 5000 })
+        .catch(() => {})
+      const status = (await page.locator('.code__status').textContent()) ?? ''
+      const clip = await page.evaluate(() => navigator.clipboard.readText()).catch(() => '')
+      const shown = ((await page.locator('.code').textContent()) ?? '').trim()
+      rec('Code', 'copy: the clipboard holds the code', clip === shown, `${clip} vs ${shown}`)
+      rec('Code', 'copy: a status line says it was copied', /^Copied/.test(status), status)
+      await stress(page, 'Code', '.code')
     }
     if (!done.has('Statement') && (await page.locator('.statement').count())) {
       done.add('Statement')
