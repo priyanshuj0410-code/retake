@@ -4,6 +4,7 @@ title: Acceptance tests and the checks that run them
 description: Each prototype acceptance test registered in research plan v1, section 9, mapped to the script that runs it under pnpm check, what the script does, and what it does not cover. Also the build's own checks.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-2/
 ---
 
 # Acceptance tests and the checks that run them
@@ -37,11 +38,13 @@ test off before any pilot datum: that sign-off is not part of this build.
 | Check | Script | What it holds |
 |---|---|---|
 | X-1 Session length | `scripts/session-length.ts` (`pnpm length` prints the table) | Each game's longest route fits 30 minutes at 25 s a card, on plan-scripts/cap_fit.py's timing model; the firm enrolment sitting too |
-| X-2 Content and writing | `scripts/content-check.ts` | Card banks large enough for every configured session; continuations are fixed templates; the survey's balanced keying and repeat pairs; the three notes' equal format and length; placeholders and "not yet pre-tested" markers present; British spelling; no em or en dash anywhere |
+| X-2 Content and writing | `scripts/content-check.ts` | Every gendered text filled as a man, a woman and neutral without an agreement or capital slip; card banks large enough for every configured session; continuations are fixed templates; the survey's balanced keying and repeat pairs; the three notes' equal format and length; placeholders and "not yet pre-tested" markers present; British spelling; no em or en dash anywhere |
 | X-3 Game rules | `scripts/game-rules-check.ts` | People decisions never change the season result; unscored ordinary decisions appear; one act order; out-of-fiction screens flagged |
 | X-4 Design system | `scripts/design-check.ts` | [design.md](../design.md)'s rules |
 | X-5 The explanation is not in the app | `scripts/bundle-check.ts` | Builds the app and finds no sentence of the scoring explanation in it |
 | X-6 Rules refusals | `scripts/rules-check.ts` | No device reads a record or lists tokens or codes; no write without an open session, no overwrite, nothing outside `eval-` nodes; owner-only dates; firm enrolment created and spent once |
+| X-7 One source for dates | `scripts/release-check.ts` | Only `src/engine/config.ts` reads the release dates; the withdrawal window closes the configured days after release ([ux audit](../reviews/ux-audit-2026-10-19.md), B2) |
+| X-8 Accessibility | `scripts/ux-audit.ts` (`pnpm ux`) | Every screen type at 412, 320 and 1280 px, light and dark: contrast, targets, names, one `h1`, titles, reflow, live regions, axe-core, focus on arrival, keyboard ranking and allocation ([ux audit](../reviews/ux-audit-2026-10-19.md)) |
 
 ## The predecessor's crosswise build checks
 

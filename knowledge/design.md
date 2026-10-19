@@ -4,6 +4,7 @@ title: Equal Lens Evaluator design system
 description: The tokens, surfaces, components and interaction patterns of the evaluator prototype. Every UI choice in src/ comes from here, and scripts/design-check.ts holds the code to it.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-2/
 ---
 
 # Equal Lens Evaluator design system
@@ -26,6 +27,15 @@ what is right.
 - a screen (`src/screens/`) writes a `className` or a `style`: screens compose `src/ui` only;
 - a class used in `src/ui` is defined by no stylesheet, or one defined is never used;
 - a component exported from `src/ui` is missing from section 4 of this file.
+
+`pnpm check` also runs `pnpm ux` (`scripts/ux-audit.ts`, from the audit in
+[reviews/ux-audit-2026-10-19.md](reviews/ux-audit-2026-10-19.md)), which plays every screen
+type of both panel games and the firm session and fails on any of: text below AA contrast
+against its real background, a target under 44 px on phones or 24 px on desktop, a control
+without a name, a heading skip, a screen without one `h1` or its own document title, sideways
+scroll at 320 px, a ranking or allocation card without a live region, text under 12 px, any
+axe-core violation, focus not on the new screen's heading, or a ranking or allocation card
+that cannot be finished by keyboard with focus kept.
 
 ## 2. Tokens
 
@@ -84,7 +94,7 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 
 | Component | Source | What it is |
 |---|---|---|
-| `Page` | `src/ui/Page.tsx` | One screen: surface, act label, the out-of-fiction line, heading that takes focus on arrival, body, one action row |
+| `Page` | `src/ui/Page.tsx` | One screen: a `<header>` landmark (demo badge, act label, the hairline), `<main>` with the out-of-fiction line, the `h1`, body and one action row. On arrival focus moves to the `h1` (the title, or a question's `h1` inside its legend) and the document title becomes "`h1` · Team season" |
 | `Button` | `src/ui/Button.tsx` | `primary` (violet fill), `secondary` (violet outline), `quiet` (text). 48 px tall, full width on phones |
 | `Text` | `src/ui/Text.tsx` | Paragraph, `lead`, `small`, `muted`, `strong` |
 | `Heading` | `src/ui/Text.tsx` | A section heading inside a page (explanation sections, demo tables) |
@@ -93,8 +103,8 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 | `Character` | `src/ui/Character.tsx` | One colleague: emoji figure (or species), name, cue lines (surname is part of the name; "Born in"; badge), description |
 | `SortList` | `src/ui/SortList.tsx` | Drag-to-sort list of `Character`s with up and down buttons on every row |
 | `Allocate` | `src/ui/Allocate.tsx` | Share a fixed pool between `Character`s with minus and plus steppers and a remaining count |
-| `Choice` | `src/ui/Choice.tsx` | Single choice as full-width radio rows (scales, vignettes, menus) |
-| `Checks` | `src/ui/Checks.tsx` | Any-number choice as full-width checkbox rows (the noticing probe) |
+| `Choice` | `src/ui/Choice.tsx` | Single choice as full-width radio rows (scales, vignettes, menus). `heading` puts the question in the screen's `h1`, inside the legend, on screens whose question is the page |
+| `Checks` | `src/ui/Choice.tsx` | Any-number choice as full-width checkbox rows (the noticing probe); takes `heading` too |
 | `Statement` | `src/ui/Statement.tsx` | A crosswise pair: statement A and statement B in two labelled boxes |
 | `Code` | `src/ui/Code.tsx` | The withdrawal code in large monospace groups of four |
 | `Field` | `src/ui/Field.tsx` | A labelled text input (code entry) |
@@ -127,12 +137,33 @@ mid-season note uses one identical layout: statistic, source line, instruction s
   explanation opens only after all play closes. The debrief page is plain sections of prose
   with headings, in the out-of-fiction register, opened with the code.
 
+## 5a. Accessibility rules set by the October audit
+
+- **One `h1` per screen**, and focus on it when the screen arrives. A screen whose question is
+  the page puts the question in the `h1` inside the legend (`Choice heading`). A state change
+  that is a new screen (a card's continuation, the recall item's continuation, a finished
+  withdrawal) is a new `stepKey`, so focus moves with it. The disclosure alone has no heading,
+  as registered.
+- **A control at its limit is `aria-disabled`, never `disabled`**, when the person is likely
+  to be on it: the up and down buttons at the ends of the ranking list and the allocation
+  steppers. A `disabled` button drops keyboard focus to the page; an `aria-disabled` one keeps
+  it and does nothing. Inactive glyphs stay faint, which WCAG 1.4.3 allows.
+- **No skip link**: nothing focusable comes before `<main>`, and focus already lands on the
+  heading. If anything focusable is ever added to the header, add a skip link with it; `pnpm
+  ux` fails until then.
+- Results shown on the same screen (a bad code, the explanation's release date) are `status`
+  or `alert` notices and leave focus on the button that asked.
+
 ## 6. Writing on screens
 
 British spelling; no em or en dashes; sentence case; second person; short sentences.
 Buttons name what happens ("Submit my answers", "Delete my records"). The word "fair" is never
 used in anything shown before the explanation page, and no screen before it says how
-attitudes are scored. `scripts/copy-check.ts` checks the dashes and the banned words.
+attitudes are scored. `scripts/content-check.ts` checks the dashes and American spellings, and fills every gendered
+text as a man, a woman and neutral: a gendered word carries its verb ("they were", never "they
+was") and takes a capital when it opens a sentence, both done by the generator
+(`src/engine/text.ts`), never string by string. Every release and withdrawal date comes from
+`releaseOf` in `src/engine/config.ts` and is shown as "15 March 2027" (`formatDate`).
 
 ## 7. Old phones
 

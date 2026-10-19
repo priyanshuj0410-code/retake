@@ -4,6 +4,7 @@ title: Equal Lens Evaluator knowledge
 description: Index of this repo's knowledge base. The evaluator is The Equal Lens's single-session game-form decision task for the workplace gender-training study, built as the MIT Solve 2027 prototype.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-2/
 ---
 
 # Equal Lens Evaluator knowledge
@@ -21,6 +22,8 @@ The app is the research instrument specified in the Sex Ed workspace's gated des
   - [firebase.md](playbooks/firebase.md): the rules piece, the owner's apps.json registration, what this repo never does.
 - `reference/`:
   - [acceptance-tests.md](reference/acceptance-tests.md): every registered acceptance test mapped to its check.
+- `reviews/`:
+  - [ux-audit-2026-10-19.md](reviews/ux-audit-2026-10-19.md): the ship-readiness UX audit, its fixes, owner decisions and raw results (`reviews/assets/`).
 
 ## Status (19 Oct 2026)
 
