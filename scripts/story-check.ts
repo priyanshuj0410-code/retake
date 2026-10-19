@@ -27,6 +27,7 @@ import { castTiles, colleagueView } from '../src/story/view'
 import { resultModel } from '../src/story/why'
 import { store } from '../src/store'
 import type { LocalStore } from '../src/store/local'
+import { progress } from '../src/store/progress'
 import { timeFields } from './no-timers'
 import { record } from './lib/check'
 
@@ -39,6 +40,7 @@ export async function run() {
   slotsAndFaces()
   levels()
   backAndEdits()
+  chapters()
   consequences()
   rating()
   await records()
@@ -573,6 +575,162 @@ function levels() {
   )
 }
 
+/** The season in five chapters and a finale, story in the card, pairs, the map (EVAL-8, PENDING v21). */
+function chapters() {
+  const T = 'X-19 chapters, story in the card, one-tap pairs (EVAL-8)'
+  const wh = storyById('warehouse')
+  if (!wh) return
+  const ch = config.season.chapters
+  const r = new StoryRunner(seeded(11), wh, ['en'])
+  const kinds = r.steps.map((s) => s.kind)
+  const fin = r.chapters + 1
+  const saved = r.steps.flatMap((s, k) => (s.kind === 'saved' ? [r.chapterOf[k]] : []))
+  record(
+    T,
+    `${ch.count} story chapters, each ending on a payoff strip then a save screen, then a finale`,
+    r.chapters === ch.count &&
+      JSON.stringify(saved) === JSON.stringify([...Array(ch.count).keys()].map((i) => i + 1)) &&
+      r.steps.every((s, k) => s.kind !== 'saved' || r.steps[k - 1]?.kind === 'payoff'),
+    saved.join(','),
+  )
+  const finale = r.steps.filter((_, k) => r.chapterOf[k] === fin).map((s) => s.kind)
+  const order = [
+    'screening',
+    'fsurvey',
+    'note',
+    'beat',
+    'fsurvey',
+    'recall',
+    'probe',
+    'wrap',
+    'demographics',
+    'close',
+  ]
+  const squash = finale.filter((x, k) => x !== finale[k - 1] || x !== 'beat')
+  record(
+    T,
+    'the finale: screening, survey, note, form B, survey again, recall, the wrap on one screen, then debrief, code and submit on one screen; no save screen inside it',
+    JSON.stringify(squash) === JSON.stringify(order),
+    squash.join(','),
+  )
+  const formAInFinale = r.steps.some(
+    (s, k) =>
+      s.kind === 'beat' &&
+      r.chapterOf[k] === fin &&
+      !(
+        r.season.beats[s.i].kind === 'people' &&
+        (r.season.beats[s.i].beat as { form?: string }).form === 'B'
+      ),
+  )
+  const formBBefore = r.steps.some(
+    (s, k) =>
+      s.kind === 'beat' &&
+      r.chapterOf[k] <= r.chapters &&
+      (r.season.beats[s.i].beat as { form?: string }).form === 'B',
+  )
+  record(
+    T,
+    'every form-A card comes before the finale, and every form-B card is in it',
+    !formAInFinale && !formBBefore,
+  )
+  record(
+    T,
+    'no episode splash, interlude, separate prior item, debrief, code or submit screen remains',
+    !kinds.some((k) => ['episode', 'interlude', 'prior', 'debrief', 'code', 'submit'].includes(k)),
+  )
+  const ordinary = r.season.beats.filter((b) => b.kind === 'ordinary').map((b) => b.beat.id)
+  record(
+    T,
+    `ordinary decisions back to the registered ${ch.ordinaryKept.length}: ${ch.ordinaryKept.join(', ')}`,
+    JSON.stringify(ordinary) === JSON.stringify(ch.ordinaryKept),
+    ordinary.join(', '),
+  )
+  const long = (wh.episodes ?? []).filter(
+    (e) =>
+      !e.opening ||
+      e.opening.en.split(/\s+/).length > ch.captionWords ||
+      e.opening.hinglish.split(/\s+/).length > ch.captionWords + 5,
+  )
+  record(
+    T,
+    `every chapter's opening, folded into its first card's caption, is ${ch.captionWords} words or fewer`,
+    long.length === 0,
+    long.map((e) => e.title.en).join(', '),
+  )
+  const splits = r.season.beats.filter((b) => b.kind === 'people' && b.beat.kind === 'split')
+  record(
+    T,
+    `every share is a one-tap pair of tied colleagues (${splits.length} cards)`,
+    splits.length > 0 &&
+      splits.every(
+        (b) => b.kind === 'people' && b.chars.length === 2 && b.chars[0].tier === b.chars[1].tier,
+      ),
+  )
+  /* Payoffs: the same for every player and never contingent on answers: the strip names only
+     the two configured cast slots, and the screen fills nothing else into it. */
+  const panels = (wh.episodes ?? []).flatMap((e) => e.payoff)
+  const view = readFileSync(`${ROOT}src/screens/Story.tsx`, 'utf8')
+  const payoffCase = view.slice(view.indexOf("case 'payoff'"), view.indexOf("case 'saved'"))
+  record(
+    T,
+    'each chapter ends on a three-panel payoff strip naming the same two cast slots for every player, never an answer',
+    panels.length === 3 * (wh.episodes ?? []).length &&
+      panels.every((p) => !/\{(?!a\}|b\})[^}]*\}/.test(p.text.en + p.text.hinglish)) &&
+      /config\.season\.chapters\.payoffSlots/.test(payoffCase) &&
+      !/answers|consequence|lead\(|records\(/.test(payoffCase),
+  )
+  /* Sittings: a count on the record, 1 to the configured maximum, never a time. */
+  const q = new StoryRunner(seeded(12), wh, ['en'])
+  for (let i = 0; i < 20; i++) q.newSitting()
+  record(
+    T,
+    `the sittings count is capped at ${ch.sittingsMax}, starts at 1, and survives a reload (snapshot)`,
+    q.sittings === ch.sittingsMax &&
+      new StoryRunner(seeded(12), wh, ['en']).sittings === 1 &&
+      (() => {
+        const z = new StoryRunner(seeded(12), wh, ['en'])
+        z.restore(q.snapshot())
+        return z.sittings === ch.sittingsMax
+      })(),
+  )
+  /* The save expires unsent after the configured days (the time stays on the device). */
+  progress.put('x19', { entry: 1, finished: null })
+  const day = 86_400_000
+  const kept =
+    progress.fresh('x19', ch.saveDays, Date.now() + (ch.saveDays - 1) * day).value !== null
+  const gone = progress.fresh('x19', ch.saveDays, Date.now() + (ch.saveDays + 1) * day)
+  record(
+    T,
+    `a save resumes within ${ch.saveDays} days and is deleted unsent after them`,
+    kept && gone.expired && gone.value === null && progress.get('x19') === null,
+  )
+  /* Back never leaves a chapter's story run: none from the first form-B card into the note. */
+  const f = new StoryRunner(seeded(13), wh, ['en'])
+  f.index = f.steps.findIndex((s, k) => s.kind === 'beat' && f.chapterOf[k] === fin)
+  record(
+    T,
+    'Back from the first finale card is not offered (it would cross the note)',
+    f.backTarget === null,
+  )
+  /* The map: the current chapter's cards only. */
+  const m = new StoryRunner(seeded(14), wh, ['en'])
+  const c1 = m.chapterCards(1)
+  m.index = m.steps.findIndex((s) => s.kind === 'saved')
+  const c1done = m.chapterCards(1)
+  m.index += 1
+  const c2 = m.chapterCards()
+  record(
+    T,
+    'the map counts the current chapter only: chapter 1 from none to all, then chapter 2 from none',
+    c1.done === 0 &&
+      c1done.done === c1.total &&
+      c2.done === 0 &&
+      c2.total > 0 &&
+      m.chapterAt() === 2,
+    `${JSON.stringify(c1)} ${JSON.stringify(c1done)} ${JSON.stringify(c2)}`,
+  )
+}
+
 /** Back and edits (owner, 19 Oct 2026): the saved answer comes back, the final one is scored, the edit is counted. */
 function backAndEdits() {
   const T = 'X-12 consequences follow the notes only'
@@ -850,7 +1008,6 @@ function records() {
     const wh = storyById('warehouse')
     if (!wh) return
     const b = new StoryRunner(seeded(3), wh, ['en'])
-    b.answer(null)
     b.answer(null)
     b.answer({ order: [0, 1, 2, 3] })
     b.back()

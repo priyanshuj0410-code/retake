@@ -34,18 +34,11 @@ export function decide(rng: Rng, r: StoryRunner, p: PeoplePresented, t: SeasonTr
   const order = [...Array(k).keys()].sort((a, b) => u[b] - u[a])
   if (p.beat.kind === 'rank') return { order }
   if (p.beat.kind === 'pick') return { pick: order[0] }
-  const units = Array<number>(k).fill(0)
+  /* A share is a one-tap pair (EVAL-8): the whole pool to one colleague, or split evenly when
+     the two are close. */
   const pool = p.beat.pool ?? 6
-  const cap = config.season.splitCap
-  /* Most to the most wanted (or, for unwanted work, to the best placed), within the cap. */
-  const plan = [Math.min(cap, Math.ceil(pool / 2)), Math.floor(pool / 3), 0]
-  let left = pool
-  order.forEach((pos, rk) => {
-    const give = Math.min(left, rk === k - 1 ? left : (plan[rk] ?? 0), cap)
-    units[pos] = give
-    left -= give
-  })
-  return { units }
+  if (k === 2 && Math.abs(u[0] - u[1]) < 0.2) return { units: [pool / 2, pool / 2] }
+  return { units: p.chars.map((_, pos) => (pos === order[0] ? pool : 0)) }
 }
 
 /** Plays a whole season to the submit screen, with every answer a seeded player gives. */
@@ -54,7 +47,7 @@ export function playSeason(seed: number, t: SeasonTraits, storyId = 'warehouse')
   const story = storyById(storyId)
   if (!story) throw new Error(`no story ${storyId}`)
   const r = new StoryRunner(rng, story, ['en'])
-  for (let guard = 0; guard < 400 && r.current && r.current.kind !== 'submit'; guard++) {
+  for (let guard = 0; guard < 400 && r.current && r.current.kind !== 'close'; guard++) {
     const s = r.current
     if (s.kind === 'beat') {
       const b = r.season.beats[s.i]
@@ -66,7 +59,7 @@ export function playSeason(seed: number, t: SeasonTraits, storyId = 'warehouse')
       r.answer(Object.fromEntries(config.season.faking.screening.map((id) => [id, rng.int(5)])))
     else if (s.kind === 'recall') r.answer(r.note)
     else if (s.kind === 'probe') r.answer(['sex'])
-    else if (s.kind === 'prior') r.answer('no')
+    else if (s.kind === 'wrap') r.answer({ told: 'no', origin: 'chose', replay: 'no' })
     else if (s.kind === 'demographics') r.answer({})
     else r.answer(null)
   }

@@ -79,8 +79,12 @@ export interface Story {
   episodes?: {
     title: T
     premise: T
-    /** The interlude as a strip of two or three drawn panels, each with its caption. */
+    /** The interlude as a strip of two or three drawn panels, each with its caption (retired by the chapters, EVAL-8). */
     interlude?: { after: string; panels: { art: ArtKey; text: T }[] }
+    /** The chapter's opening line, the first card's top caption: 25 words or fewer (PENDING v21). */
+    opening: T
+    /** The chapter's payoff strip: three panels following two colleagues ({a}, {b}), the same for every player. */
+    payoff: { art: ArtKey; text: T }[]
   }[]
   mascots?: T
   reveal?: { title: T; body: T; line: T; go: T }

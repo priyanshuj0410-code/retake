@@ -1,11 +1,12 @@
 ---
 type: review
 title: Game redesign, 19 Oct 2026
-description: The season-story redesign of the evaluator (EVAL-4) and its rebuild to the owner's 80-decision layout (EVAL-5) - why, what changed, the full 390 px Playwright play with counted and asked decisions, clicks, screens and time against the old build, the screen list, what is PENDING v18, and what to flag; then the owner's Direction C (comic panels) built in (EVAL-6), defect by defect.
+description: The season-story redesign of the evaluator (EVAL-4) and its rebuild to the owner's 80-decision layout (EVAL-5) - why, what changed, the full 390 px Playwright play with counted and asked decisions, clicks, screens and time against the old build, the screen list, what is PENDING v18, and what to flag; then the owner's Direction C (comic panels) built in (EVAL-6), defect by defect, and the season in five chapters and a finale (EVAL-8).
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-4/
   - https://app.plane.so/the-equal-lens/browse/EVAL-5/
   - https://app.plane.so/the-equal-lens/browse/EVAL-6/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-8/
 ---
 
 # Game redesign, 19 Oct 2026 (EVAL-4, rebuilt for 80 decisions in EVAL-5)
@@ -144,7 +145,21 @@ Direction C from the review sheet (`ui-directions.html`, 19 Oct 2026). Design ru
     pattern that catches "[PLACEHOLDER", any bracketed upper-case or TODO-like marker, PENDING, TBD,
     `{{ }}`; only the statistic and source of a marked placeholder note are exempt in content, and
     every rendered screen is read with the same pattern by `pnpm ux`.
-14. **Comic register for a workplace study** may read as less serious (the review sheet's own
+14. **Chapters, story in the card, pairs, the map (EVAL-8, owner approval 20 Oct 2026).**
+    Concepts A, B1, C and D from `engagement-concepts.html`. Five chapters and a finale; every count
+    and threshold is in `content/config.json` `season.chapters`, PENDING v21, never in player copy.
+    Research flags for v21: (a) shares are one-tap pairs with "Share them evenly", stored as units
+    (the pool to one, or half each), so the scoring code is unchanged, but the allocation construct
+    is now who-gets-it, and the 19 retired third colleagues drop their clear pairs; each retired
+    third's one-off slot is still drawn (never shown) so one-off looks and portraits keep their
+    numbering; (b) `meta.sit` (sittings, 1 to 6) is new on the submitted record: the rules piece
+    here accepts it, and **the shared ruleset in The Equal Lens repo's firebase/ must take the same
+    change before this ships**, with the `edit` item from item 11; (c) the save keeps a device-only
+    timestamp for its 7-day expiry, never sent; (d) the no-save window from the first survey to
+    recall means a reload there replays the first survey and the note; (e) ordinary decisions are
+    two, so the season band varies less; (f) the payoff lines and the chapter openings need the same
+    valence pre-test as the consequence lines (PO-18, PO-39).
+15. **Comic register for a workplace study** may read as less serious (the review sheet's own
    trade-off); worth a line in the P1 interviews.
 
 ## The 80-decision rebuild (EVAL-5)

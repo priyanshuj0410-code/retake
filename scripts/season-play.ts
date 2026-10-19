@@ -152,8 +152,8 @@ export async function playSeason(
       m === 'demo' ||
       m === 'disclosure' ||
       m === 'story:intro' ||
-      m === 'story:episode' ||
-      m === 'story:interlude' ||
+      m === 'story:payoff' ||
+      m === 'story:saved' ||
       m === 'story:reveal' ||
       m === 'story:note'
     )
@@ -163,6 +163,12 @@ export async function playSeason(
         await page.getByRole('group', { name }).getByRole('radio', { name: 'Yes' }).check()
         clicks += 1
         asked += 1
+      }
+      /* The language choice shares the screen when the link lets the player choose (EVAL-8). */
+      const lang = page.getByRole('radio', { name: 'English', exact: true })
+      if (await lang.count()) {
+        await lang.check()
+        clicks += 1
       }
       await click(page, button('Continue'))
     } else if (m === 'consent') await click(page, button('I agree to take part'))
@@ -189,11 +195,10 @@ export async function playSeason(
     } else if (m === 'story:beat:split') {
       decisions += 1
       asked += 1
-      const rows = page.locator('.split__row')
-      const order = await preference(page, '.split__row')
-      await click(page, rows.nth(order[0]).getByRole('button', { name: /: 4$/ }))
-      await click(page, rows.nth(order[1]).getByRole('button', { name: /: 2$/ }))
-      await click(page, button('Lock in this split'))
+      /* A one-tap pair (EVAL-8): the preferred colleague, then Lock in. */
+      const order = await preference(page, '.tapcard')
+      await click(page, page.locator('.tapcard').nth(order[0]))
+      await click(page, button('Lock in this choice'))
     } else if (m === 'story:screening' || m === 'story:fsurvey') await grid(true)
     else if (m === 'story:recall') {
       decisions += 1
@@ -204,18 +209,24 @@ export async function playSeason(
       await page.getByRole('checkbox', { name: /woman or a man/ }).check()
       clicks += 1
       await click(page, button('Done'))
-    } else if (m === 'story:season' || m === 'story:debrief' || m === 'story:demographics')
+    } else if (m === 'story:season' || m === 'story:demographics')
       await click(page, button('Continue'))
-    else if (m === 'story:prior') {
-      asked += 1
-      const no = button('No', { exact: true })
-      await click(page, (await no.count()) ? no : page.locator('.options__option').first())
-    } else if (m === 'story:code') {
+    else if (m === 'story:wrap') {
+      /* The wrap's three items on one screen, one Done (EVAL-8). */
+      const groups = page.locator('fieldset')
+      const n = await groups.count()
+      for (let i = 0; i < n; i++) {
+        const no = groups.nth(i).getByRole('radio', { name: 'No', exact: true })
+        await ((await no.count()) ? no : groups.nth(i).getByRole('radio').first()).check()
+        clicks += 1
+        asked += 1
+      }
+      await click(page, button('Done'))
+    } else if (m === 'story:close') {
+      /* Debrief, code and submit on one screen (EVAL-8). */
       await page.locator('.code').waitFor({ timeout: 20000 })
       await page.getByRole('checkbox').check()
       clicks += 1
-      await click(page, button('Continue'))
-    } else if (m === 'story:submit') {
       await click(page, button('Submit my answers'))
       /* Submit derives the code's keys and writes once: wait for the result, or say why not. */
       await page

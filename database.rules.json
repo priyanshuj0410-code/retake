@@ -125,6 +125,7 @@
           "timingArm": { ".validate": "newData.val() == 'before' || newData.val() == 'after'" },
           "batchMonth": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}$/)" },
           "sex": { ".validate": "newData.val() == 'woman' || newData.val() == 'man' || newData.val() == 'another' || newData.val() == 'prefer-not'" },
+          "sit": { ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 6 && newData.val() % 1 == 0" },
           "$other": { ".validate": false }
         },
         "cards": {

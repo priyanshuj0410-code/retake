@@ -228,24 +228,34 @@ async function tapOrderByKeyboard(page: Page, screen: string) {
   })
 }
 
-/** The quick split by keyboard: Tab to a number, Enter sets it, the count left is announced, focus kept. */
-async function splitByKeyboard(page: Page, screen: string) {
+/** The one-tap pair by keyboard (EVAL-8): Tab to a card, Enter chooses it (pressed, announced,
+    focus kept), "Lock in this choice" appears, and nothing advances; Enter on "Share them evenly"
+    moves the choice there. */
+async function pairByKeyboard(page: Page, screen: string) {
   await page.locator('h1').first().focus()
   let reached = false
   for (let i = 0; i < 20 && !reached; i++) {
     await page.keyboard.press('Tab')
     reached = await page.evaluate(
-      () => document.activeElement === document.querySelectorAll('.split__chip')[1],
+      () => document.activeElement?.classList.contains('tapcard') ?? false,
     )
   }
+  const before = await page.locator('[data-screen]').first().getAttribute('data-screen')
   if (reached) await page.keyboard.press('Enter')
-  const left = (await page.locator('.split__left').textContent()) ?? ''
-  const kept = await page.evaluate(() => document.activeElement?.classList.contains('split__chip'))
-  if (reached) await page.getByRole('button', { name: 'Start again' }).click()
+  const pressed = await page.locator('.tapcard[aria-pressed="true"]').count()
+  const live = (await page.locator('.tapcard__sr[aria-live]').textContent()) ?? ''
+  const kept = await page.evaluate(() => document.activeElement?.classList.contains('tapcard'))
+  const lock = await page.getByRole('button', { name: 'Lock in this choice' }).count()
+  const still = (await page.locator('[data-screen]').first().getAttribute('data-screen')) === before
+  await page.locator('.pair__even').focus()
+  await page.keyboard.press('Enter')
+  const even =
+    (await page.locator('.pair__even[aria-pressed="true"]').count()) === 1 &&
+    (await page.locator('.tapcard[aria-pressed="true"]').count()) === 0
   keyboard.push({
     card: screen,
-    ok: reached && /5/.test(left) && !!kept,
-    detail: `tab reaches a number ${reached}; Enter shares one ("${left}"); focus kept ${kept}`,
+    ok: reached && pressed === 1 && live.length > 0 && !!kept && lock === 1 && still && even,
+    detail: `tab reaches a card ${reached}; Enter chooses it ${pressed === 1}; announced "${live}"; focus kept ${kept}; lock-in shown ${lock === 1}; no auto-advance ${still}; evenly takes the choice ${even}`,
   })
 }
 
@@ -435,7 +445,7 @@ async function main() {
       seasonSeen.add(m)
       await audit(page, `season ${m}`)
       if (m === 'story:beat:rank') await tapOrderByKeyboard(page, `season ${m}`)
-      if (m === 'story:beat:split') await splitByKeyboard(page, `season ${m}`)
+      if (m === 'story:beat:split') await pairByKeyboard(page, `season ${m}`)
       if (m === 'story:screening') await gridByKeyboard(page, `season ${m}`)
     })
     await audit(page, 'season story:result')

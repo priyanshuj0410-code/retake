@@ -26,21 +26,19 @@ import {
 
 export type StoryStep =
   | { kind: 'intro' }
-  | { kind: 'episode'; n: number }
   | { kind: 'beat'; i: number }
   | { kind: 'reveal' }
-  | { kind: 'interlude'; n: number }
   | { kind: 'season' }
+  | { kind: 'payoff'; n: number }
+  | { kind: 'saved'; n: number }
   | { kind: 'screening' }
   | { kind: 'fsurvey'; admin: 1 | 2 }
   | { kind: 'note' }
   | { kind: 'recall' }
   | { kind: 'probe' }
-  | { kind: 'prior'; id: string }
-  | { kind: 'debrief' }
-  | { kind: 'code' }
+  | { kind: 'wrap' }
   | { kind: 'demographics' }
-  | { kind: 'submit' }
+  | { kind: 'close' }
 
 /** rank: order of positions (indices into the beat's chars), first choice first; pick: one index; split: units per char; ordinary: option id. */
 export type BeatAnswer =
@@ -64,18 +62,12 @@ export interface RunnerState {
   prior: Record<string, string>
   demographics: Record<string, string>
   code: string | null
+  sittings?: number
 }
 
-export const IN_STORY: StoryStep['kind'][] = [
-  'intro',
-  'episode',
-  'beat',
-  'reveal',
-  'interlude',
-  'season',
-]
+export const IN_STORY: StoryStep['kind'][] = ['intro', 'beat', 'reveal', 'season', 'payoff']
 
-/** The wrap's single-choice items: prior knowledge, origin and replay (candidates v17 3.5). */
+/** The wrap's single-choice items: prior knowledge, origin and replay (candidates v17 3.5), on one screen with one Done (EVAL-8). */
 const faking = config.season.faking
 
 export const WRAP_ITEMS = ['told', 'origin', 'replay'] as const
@@ -97,6 +89,11 @@ export class StoryRunner {
   /** Game 1's low branch, the demo route: the note drawn 1:1 at entry (b honest retake, c faking). */
   readonly note: NoteId
   readonly recallOrder: string[]
+  /** Each step's chapter, 1 to `chapters`, and `chapters + 1` for the finale. */
+  readonly chapterOf: number[]
+  readonly chapters: number
+  /** How many sittings the season took (1 to 6; a count only, no times; PENDING v21). */
+  sittings = 1
   demographics: Record<string, string> = {}
   code: string | null = null
   keys: CodeKeys | null = null
@@ -115,29 +112,44 @@ export class StoryRunner {
       ...rng.shuffle(recallOptions(this.note).filter((o) => o.id !== 'none')).map((o) => o.id),
       'none',
     ]
+    /* Five story chapters and a finale (EVAL-8, concept C; PENDING v21). Each chapter is one
+       episode's form-A cards, its opening folded into the first card's caption (concept A), and
+       ends on a payoff strip and a save screen. The finale holds the faking test (screening, the
+       first survey, the note, form B, the second survey, recall), the wrap and the rating. */
     const beats = this.season.beats
-    const firstB = beats.findIndex((b) => b.kind === 'people' && b.beat.form === 'B')
-    const lastB = beats.map((b) => b.kind === 'people' && b.beat.form === 'B').lastIndexOf(true)
-    const interludes = new Map(
-      (story.episodes ?? []).flatMap((e, n) => (e.interlude ? [[e.interlude.after, n + 1]] : [])),
-    )
+    const chapters = story.episodes?.length ?? 1
     const steps: StoryStep[] = [{ kind: 'intro' }]
+    const chapterOf: number[] = [1]
+    const push = (st: StoryStep, n: number) => {
+      steps.push(st)
+      chapterOf.push(n)
+    }
+    for (let n = 1; n <= chapters; n++) {
+      beats.forEach((b, i) => {
+        if (b.beat.episode !== n || (b.kind === 'people' && b.beat.form === 'B')) return
+        const prev = beats[i - 1]?.beat
+        if (prev?.mascot && !b.beat.mascot) push({ kind: 'reveal' }, n)
+        push({ kind: 'beat', i }, n)
+      })
+      if (n === chapters) push({ kind: 'season' }, n)
+      if (story.episodes?.[n - 1]?.payoff?.length) push({ kind: 'payoff', n }, n)
+      push({ kind: 'saved', n }, n)
+    }
+    const fin = chapters + 1
+    push({ kind: 'screening' }, fin)
+    push({ kind: 'fsurvey', admin: 1 }, fin)
+    push({ kind: 'note' }, fin)
     beats.forEach((b, i) => {
-      const prev = beats[i - 1]?.beat
-      if (prev?.mascot && !b.beat.mascot) steps.push({ kind: 'reveal' })
-      if (prev?.episode !== b.beat.episode) steps.push({ kind: 'episode', n: b.beat.episode })
-      /* Game 1's low branch: after the last form-A card, the screening block, the first survey
-         administration and the note; then form B; then the second administration and recall. */
-      if (i === firstB)
-        steps.push({ kind: 'screening' }, { kind: 'fsurvey', admin: 1 }, { kind: 'note' })
-      steps.push({ kind: 'beat', i })
-      const n = interludes.get(b.beat.id)
-      if (n) steps.push({ kind: 'interlude', n })
-      if (i === lastB) steps.push({ kind: 'fsurvey', admin: 2 }, { kind: 'recall' })
+      if (b.kind === 'people' && b.beat.form === 'B') push({ kind: 'beat', i }, fin)
     })
-    steps.push({ kind: 'probe' }, { kind: 'season' })
-    for (const id of WRAP_ITEMS) steps.push({ kind: 'prior', id })
-    steps.push({ kind: 'demographics' }, { kind: 'debrief' }, { kind: 'code' }, { kind: 'submit' })
+    push({ kind: 'fsurvey', admin: 2 }, fin)
+    push({ kind: 'recall' }, fin)
+    push({ kind: 'probe' }, fin)
+    push({ kind: 'wrap' }, fin)
+    push({ kind: 'demographics' }, fin)
+    push({ kind: 'close' }, fin)
+    this.chapterOf = chapterOf
+    this.chapters = chapters
     this.steps = steps
   }
 
@@ -172,13 +184,17 @@ export class StoryRunner {
     const single = 2 + 1 + WRAP_ITEMS.length
     const story = this.season.story
     return (
-      cards.reduce((s, b) => s + (tm[b.beat.kind] ?? tm.rank), 0) +
+      cards.reduce(
+        (s, b) => s + ((b.beat.kind === 'split' ? tm.pair : tm[b.beat.kind]) ?? tm.rank),
+        0,
+      ) +
       ordinary * tm.ordinary +
       grid * tm.gridItem +
       single * tm.single +
       tm.probe +
       tm.note +
       tm.overhead +
+      /* Each chapter's end: the payoff strip and the save screen (EVAL-8). */
       (story.episodes?.length ?? 0) * (tm.episode + tm.interlude) +
       tm.intro +
       tm.season +
@@ -232,7 +248,7 @@ export class StoryRunner {
     if (s.kind === 'screening') this.screening = { ...(value as Record<string, number>) }
     if (s.kind === 'recall') this.recall = String(value)
     if (s.kind === 'probe') this.probe = [...(value as string[])]
-    if (s.kind === 'prior') this.prior[s.id] = String(value)
+    if (s.kind === 'wrap') this.prior = { ...(value as Record<string, string>) }
     if (s.kind === 'demographics') this.demographics = { ...(value as Record<string, string>) }
     this.index += 1
     this.onChange?.()
@@ -250,6 +266,7 @@ export class StoryRunner {
       prior: this.prior,
       demographics: this.demographics,
       code: this.code,
+      sittings: this.sittings,
     })
   }
 
@@ -267,13 +284,38 @@ export class StoryRunner {
     this.prior = s.prior
     this.demographics = s.demographics
     this.code = s.code
+    this.sittings = s.sittings ?? 1
+  }
+
+  /** The chapter (or the finale, `chapters + 1`) a step belongs to. */
+  chapterAt(index = this.index) {
+    return this.chapterOf[index] ?? this.chapters + 1
+  }
+
+  /** The card steps of chapter n (for the map's dots): how many there are and how many are done. */
+  chapterCards(n = this.chapterAt()) {
+    const idx = this.steps.flatMap((st, k) =>
+      st.kind === 'beat' && this.chapterOf[k] === n ? [k] : [],
+    )
+    return { total: idx.length, done: idx.filter((k) => k < this.index).length }
+  }
+
+  /** A new sitting: the season was reopened from this device at a save point (PENDING v21). */
+  newSitting() {
+    this.sittings = Math.min(this.sittings + 1, config.season.chapters.sittingsMax)
   }
 
   /** The beat step before the current one inside the story, which Back reopens; null where Back is not offered. */
   get backTarget(): number | null {
     const s = this.current
     if (!s || !IN_STORY.includes(s.kind)) return null
-    for (let i = this.index - 1; i >= 0; i--) if (this.steps[i].kind === 'beat') return i
+    /* Back stays inside the story run it is in: it never crosses a save screen, the note or any
+       other out-of-fiction step (EVAL-8). */
+    for (let i = this.index - 1; i >= 0; i--) {
+      const k = this.steps[i].kind
+      if (k === 'beat') return i
+      if (!IN_STORY.includes(k)) return null
+    }
     return null
   }
 
@@ -454,6 +496,7 @@ export class StoryRunner {
       /* The demo route is Game 1's low branch (config.season.route, PENDING v18). */
       split: 'low',
       note: this.note,
+      sit: this.sittings,
     }
     const cards: Record<string, CardRecord> = {}
     const items: Record<string, ItemRecord> = {}

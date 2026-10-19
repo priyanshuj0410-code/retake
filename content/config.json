@@ -282,7 +282,8 @@
       "debrief": 20,
       "code": 25,
       "demographics": 15,
-      "submit": 5
+      "submit": 5,
+      "pair": 12
     },
     "change": {
       "_note": "PENDING v17. The profile reads a change between two saved seasons only when the headline weight moved by at least minDiff (on the -1 to +1 scale). A planning value: v17 sets the rule, ideally from the retake arm's test-retest agreement.",
@@ -338,6 +339,24 @@
     "domains": {
       "_note": "PENDING v18. Each domain panel reads sex on its own 19 cards with the same floor, at minPairs or more decisive pairs.",
       "minPairs": 8
+    },
+    "chapters": {
+      "_pending": "PENDING v21: every value here is a planning value until research plan v21 registers the chapter structure (owner approval, 20 Oct 2026, concepts A, B1, C and D). Never shown with this marker; the screens show the numbers only.",
+      "count": 5,
+      "finale": true,
+      "saveDays": 7,
+      "sittingsMax": 6,
+      "captionWords": 25,
+      "ordinaryKept": [
+        "wh-w1-snacks",
+        "wh-w6-leftover"
+      ],
+      "payoffSlots": [
+        0,
+        1
+      ],
+      "noSaveFrom": "fsurvey1",
+      "noSaveUntil": "recall"
     }
   }
 }

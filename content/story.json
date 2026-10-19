@@ -4580,7 +4580,34 @@
         }
        }
       ]
-     }
+     },
+     "opening": {
+      "en": "Peak season is coming. You start from head office, then staff up the warehouse.",
+      "hinglish": "Peak season aa raha hai. Aap head office se shuru karte hain, phir warehouse ke liye log jodte hain."
+     },
+     "payoff": [
+      {
+       "art": "crates",
+       "text": {
+        "en": "Friday. {a} unpacks the new scanners.",
+        "hinglish": "Shukravaar. {a} naye scanners kholte hain."
+       }
+      },
+      {
+       "art": "table",
+       "text": {
+        "en": "{b} sets out next week's rota.",
+        "hinglish": "{b} agle hafte ka rota banate hain."
+       }
+      },
+      {
+       "art": "crowd",
+       "text": {
+        "en": "On Monday the new pickers start.",
+        "hinglish": "Somvaar ko naye pickers aate hain."
+       }
+      }
+     ]
     },
     {
      "title": {
@@ -4616,7 +4643,34 @@
         }
        }
       ]
-     }
+     },
+     "opening": {
+      "en": "A week of everyday disputes reaches you. Sexual harassment complaints never go to a team lead; they go to the Internal Committee.",
+      "hinglish": "Roz ke jhagdon ka ek hafta aap tak aata hai. Sexual harassment ki shikayatein team lead ke paas nahin, Internal Committee ke paas jaati hain."
+     },
+     "payoff": [
+      {
+       "art": "chat",
+       "text": {
+        "en": "Monday. {a} answers the team chat from the dock.",
+        "hinglish": "Somvaar. {a} dock se team chat ka jawab dete hain."
+       }
+      },
+      {
+       "art": "note",
+       "text": {
+        "en": "{b} pins up the new shift notes.",
+        "hinglish": "{b} naye shift notes lagaate hain."
+       }
+      },
+      {
+       "art": "coffee",
+       "text": {
+        "en": "At four, both stop for tea.",
+        "hinglish": "Chaar baje dono chai ke liye rukte hain."
+       }
+      }
+     ]
     },
     {
      "title": {
@@ -4652,7 +4706,34 @@
         }
        }
       ]
-     }
+     },
+     "opening": {
+      "en": "Costs rise and a supplier pulls out. Every rupee and every hour counts.",
+      "hinglish": "Kharche badhte hain aur ek supplier peeche hat jaata hai. Har rupaya aur har ghanta keemti hai."
+     },
+     "payoff": [
+      {
+       "art": "ledger",
+       "text": {
+        "en": "{a} checks the new budget line by line.",
+        "hinglish": "{a} naya budget line by line dekhte hain."
+       }
+      },
+      {
+       "art": "letters",
+       "text": {
+        "en": "{b} answers the supplier's letters.",
+        "hinglish": "{b} supplier ke letters ka jawab dete hain."
+       }
+      },
+      {
+       "art": "glance",
+       "text": {
+        "en": "The week ends quietly.",
+        "hinglish": "Hafta chupchaap khatm hota hai."
+       }
+      }
+     ]
     },
     {
      "title": {
@@ -4681,7 +4762,34 @@
         }
        }
       ]
-     }
+     },
+     "opening": {
+      "en": "The company runs its promotion round, and your picks for the big jobs count.",
+      "hinglish": "Company apna promotion round chalati hai, aur bade kaamon ke liye aapki pasand maayne rakhti hai."
+     },
+     "payoff": [
+      {
+       "art": "board",
+       "text": {
+        "en": "{a} pins the training dates on the board.",
+        "hinglish": "{a} training ki dates board par lagaate hain."
+       }
+      },
+      {
+       "art": "backs",
+       "text": {
+        "en": "{b} walks the night shift round the floor.",
+        "hinglish": "{b} night shift ko floor dikhaate hain."
+       }
+      },
+      {
+       "art": "coffee",
+       "text": {
+        "en": "At six the two swap notes over tea.",
+        "hinglish": "Chhe baje dono chai par notes badalte hain."
+       }
+      }
+     ]
     },
     {
      "title": {
@@ -4710,7 +4818,34 @@
         }
        }
       ]
-     }
+     },
+     "opening": {
+      "en": "Sale week arrives, then the reckoning: who presents, who goes to the expo, and who takes on what comes next.",
+      "hinglish": "Sale week aata hai, phir hisaab: kaun present karega, kaun expo jaayega, aur aage ka kaam kaun lega."
+     },
+     "payoff": [
+      {
+       "art": "truck",
+       "text": {
+        "en": "Sale week is over. {a} waves off the last truck.",
+        "hinglish": "Sale week khatm. {a} aakhri truck ko vida karte hain."
+       }
+      },
+      {
+       "art": "dashboard",
+       "text": {
+        "en": "{b} closes the season's orders.",
+        "hinglish": "{b} season ke orders band karte hain."
+       }
+      },
+      {
+       "art": "warehouse",
+       "text": {
+        "en": "The warehouse goes quiet for the night.",
+        "hinglish": "Raat ko warehouse shaant ho jaata hai."
+       }
+      }
+     ]
     }
    ],
    "mascots": {
@@ -5178,6 +5313,110 @@
   "splitLock": {
    "en": "Lock in this split",
    "hinglish": "Yeh bantwara pakka karein"
+  },
+  "chapterOf": {
+   "en": "Chapter {n} of {k}: {title}",
+   "hinglish": "Chapter {n} / {k}: {title}"
+  },
+  "finaleAct": {
+   "en": "Finale and rating",
+   "hinglish": "Finale aur rating"
+  },
+  "mapLabel": {
+   "en": "Your season map",
+   "hinglish": "Aapke season ka map"
+  },
+  "mapNow": {
+   "en": "Chapter {n} of {k}, {title}: {done} of {cards} cards done",
+   "hinglish": "Chapter {n} / {k}, {title}: {cards} mein se {done} cards ho gaye"
+  },
+  "mapFinale": {
+   "en": "The finale: {done} of {cards} cards done",
+   "hinglish": "Finale: {cards} mein se {done} cards ho gaye"
+  },
+  "savedTitle": {
+   "en": "Chapter {n} done",
+   "hinglish": "Chapter {n} poora"
+  },
+  "savedHeading": {
+   "en": "Saved on this phone",
+   "hinglish": "Is phone par save ho gaya"
+  },
+  "savedBody": {
+   "en": "Your answers stay on this phone for {days} days. Nothing is sent until the end.",
+   "hinglish": "Aapke jawab {days} din tak isi phone par rehte hain. Aakhir tak kuch nahin bheja jaata."
+  },
+  "savedNext": {
+   "en": "Next: {title}.",
+   "hinglish": "Aage: {title}."
+  },
+  "savedGo": {
+   "en": "Start chapter {n}",
+   "hinglish": "Chapter {n} shuru karein"
+  },
+  "savedGoFinale": {
+   "en": "Start the finale",
+   "hinglish": "Finale shuru karein"
+  },
+  "savedStop": {
+   "en": "Stop here, carry on later",
+   "hinglish": "Yahin rukiye, baad mein jaari rakhiye"
+  },
+  "savedRating": {
+   "en": "Your rating comes after the finale.",
+   "hinglish": "Aapki rating finale ke baad aati hai."
+  },
+  "stoppedBody": {
+   "en": "Open this same link on this phone within {days} days to carry on. After that, this phone deletes the save without sending it.",
+   "hinglish": "Jaari rakhne ke liye {days} din ke andar isi phone par yahi link kholiye. Uske baad yeh phone save ko bina bheje mita deta hai."
+  },
+  "stoppedGo": {
+   "en": "Carry on now",
+   "hinglish": "Abhi jaari rakhiye"
+  },
+  "expired": {
+   "en": "Your saved season was more than {days} days old, so this phone deleted it without sending anything. This link has been used.",
+   "hinglish": "Aapka save kiya season {days} din se purana tha, isliye is phone ne use bina kuch bheje mita diya. Yeh link use ho chuka hai."
+  },
+  "payoffLabel": {
+   "en": "How the chapter ends",
+   "hinglish": "Chapter kaise khatm hota hai"
+  },
+  "payoffGo": {
+   "en": "Continue",
+   "hinglish": "Aage badhein"
+  },
+  "pairHint": {
+   "en": "Tap who gets them, or share them evenly.",
+   "hinglish": "Tap kijiye kise milenge, ya barabar baantiye."
+  },
+  "pairEven": {
+   "en": "Share them evenly",
+   "hinglish": "Barabar baantiye"
+  },
+  "pairLock": {
+   "en": "Lock in this choice",
+   "hinglish": "Yeh choice pakka karein"
+  },
+  "pairChosen": {
+   "en": "Chosen: {name}",
+   "hinglish": "Chuna gaya: {name}"
+  },
+  "pairChosenEven": {
+   "en": "Chosen: share them evenly",
+   "hinglish": "Chuna gaya: barabar baantna"
+  },
+  "wrapTitle": {
+   "en": "Three last questions",
+   "hinglish": "Teen aakhri sawaal"
+  },
+  "wrapDone": {
+   "en": "Done",
+   "hinglish": "Ho gaya"
+  },
+  "submitTitle": {
+   "en": "Send your answers",
+   "hinglish": "Apne jawab bhejiye"
   }
  },
  "rating": {

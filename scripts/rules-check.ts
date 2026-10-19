@@ -180,6 +180,34 @@ async function main() {
       res.allowed,
       JSON.stringify(res.value).slice(0, 200),
     )
+    /* The sittings count (EVAL-8): a whole number from 1 to 6, nothing else. */
+    const sitOk: boolean[] = []
+    for (const [n, sit] of [
+      [0, 6],
+      [1, 7],
+      [2, 1.5],
+      [3, 0],
+    ] as const) {
+      const tk = randomKey()
+      await call('owner', 'PUT', `eval-tokens/${tk}`, { dep: 'season', langs: 'en', s: 'issued' })
+      const rr = playSeason(80 + n, fairPlayer)
+      await rr.prepareCode(1000)
+      const sb = rr.submission()
+      sb.play.value.meta.sit = sit
+      const who = `season-sit-${n}`
+      await patch(as(who), {
+        [`eval-tokens/${tk}/s`]: 'started',
+        [`eval-claims/${who}`]: { tok: tk },
+      })
+      sitOk.push((await patch(as(who), submitWrites(sb, sb.codeKey, who, { tok: tk }))).allowed)
+    }
+    record(
+      TS,
+      'meta.sit (sittings) is accepted at 1 to 6 and refused at 7, 1.5 and 0',
+      sub.play.value.meta.sit === 1 &&
+        JSON.stringify(sitOk) === JSON.stringify([true, false, false, false]),
+      JSON.stringify(sitOk),
+    )
     const pk = randomKey()
     const box = { iv: 'aaaaaaaaaaaaaaaa', ct: 'Y2lwaGVydGV4dA==' }
     record(

@@ -52,7 +52,7 @@ import {
   Options,
   Page,
   PickOne,
-  QuickSplit,
+  PairShare,
   PointCard,
   ShareCard,
   Spectrum,
@@ -70,15 +70,19 @@ const S = screens
 export function Eligibility({
   ui,
   footnote,
+  languages,
   onDone,
 }: {
   ui: Lang
   /** The prototype line, on this landing screen only. */
   footnote?: string
-  onDone: (ok: boolean) => void
+  /** The language choice on the same screen, when the link lets the player choose (EVAL-8). */
+  languages?: boolean
+  onDone: (ok: boolean, langs?: Lang[]) => void
 }) {
   const L = (t: T) => t[ui]
   const [v, setV] = useState<Record<string, string>>({})
+  const [lang, setLang] = useState<string | null>(null)
   const items = SS.eligible as unknown as { id: string; text: T }[]
   return (
     <Page
@@ -91,8 +95,13 @@ export function Eligibility({
       title={L(SS.eligibleTitle)}
       actions={
         <Button
-          onClick={() => onDone(items.every((i) => v[i.id] === 'yes'))}
-          disabled={items.some((i) => !v[i.id])}
+          onClick={() =>
+            onDone(
+              items.every((i) => v[i.id] === 'yes'),
+              lang ? (lang === 'both' ? ['en', 'hinglish'] : [lang as Lang]) : undefined,
+            )
+          }
+          disabled={items.some((i) => !v[i.id]) || (languages === true && !lang)}
         >
           {L(S.common.continue)}
         </Button>
@@ -110,6 +119,37 @@ export function Eligibility({
           onChange={(id) => setV({ ...v, [it.id]: id })}
         />
       ))}
+      {languages ? (
+        <Choice
+          legend={L(S.language.title)}
+          options={[
+            { id: 'en', text: L(S.language.en) },
+            { id: 'hinglish', text: L(S.language.hinglish) },
+            { id: 'both', text: L(S.language.both) },
+          ]}
+          value={lang}
+          onChange={setLang}
+        />
+      ) : null}
+    </Page>
+  )
+}
+
+/** "Stop here, carry on later": the season stays saved on this device for the configured days. */
+export function StoryStopped({ ui, onCarryOn }: { ui: Lang; onCarryOn: () => void }) {
+  const L = (t: T) => t[ui]
+  return (
+    <Page
+      surface="oof"
+      stepKey="stopped"
+      screen="story:stopped"
+      oof={L(S.common.outOfFiction)}
+      lang={langAttr(ui)}
+      title={L(SS.savedHeading)}
+      actions={<Button onClick={onCarryOn}>{L(SS.stoppedGo)}</Button>}
+    >
+      <Text>{fill(L(SS.stoppedBody), { days: config.season.chapters.saveDays })}</Text>
+      <Text kind="small">{L(SS.savedRating)}</Text>
     </Page>
   )
 }
@@ -177,6 +217,7 @@ export function StoryView({
   submitState,
   onDone,
   onBack,
+  onStop,
   onSubmit,
   onWithdraw,
 }: {
@@ -184,6 +225,8 @@ export function StoryView({
   submitState: 'idle' | 'sending' | 'failed'
   onDone: (v: unknown) => void
   onBack: () => void
+  /** "Stop here, carry on later" at a chapter end: the season stays saved on this device. */
+  onStop: () => void
   onSubmit: () => void
   onWithdraw: () => void
 }) {
@@ -199,25 +242,45 @@ export function StoryView({
   const then = thenView(runner, consequence)
   const inStory =
     step.kind === 'intro' ||
-    step.kind === 'episode' ||
     step.kind === 'beat' ||
     step.kind === 'reveal' ||
-    step.kind === 'interlude' ||
+    step.kind === 'payoff' ||
     step.kind === 'season'
-  const episodeNow =
-    step.kind === 'beat'
-      ? runner.season.beats[step.i].beat.episode
-      : step.kind === 'episode' || step.kind === 'interlude'
-        ? step.n
-        : step.kind === 'reveal' || step.kind === 'intro'
-          ? 1
-          : episodes.length
-  const act = (n: number) =>
-    fill(L(SS.episodeOf), { n, k: episodes.length, title: L(episodes[n - 1].title) })
+  /* The season map (EVAL-8, concept D): six stops and the current chapter's card dots, on the
+     story's screens, the chapter-end save screens and the finale's cards. */
+  const k = runner.chapters
+  const chapter = runner.chapterAt()
+  const finale = chapter > k
+  const stopTitle = (n: number) => (n > k ? L(SS.finaleAct) : L(episodes[n - 1].title))
+  const cards = runner.chapterCards(chapter)
+  const showMap = inStory || step.kind === 'saved'
+  const map = showMap
+    ? {
+        stops: [...Array(k + 1).keys()].map((i) => ({
+          title: stopTitle(i + 1),
+          state: (i + 1 < chapter ? 'done' : i + 1 === chapter ? 'now' : 'next') as
+            'done' | 'now' | 'next',
+        })),
+        cards,
+        label: finale
+          ? fill(L(SS.mapFinale), { done: cards.done, cards: cards.total })
+          : fill(L(SS.mapNow), {
+              n: chapter,
+              k,
+              title: stopTitle(chapter),
+              done: cards.done,
+              cards: cards.total,
+            }),
+      }
+    : undefined
   const page = {
     surface: inStory ? 'game' : 'oof',
-    act: inStory ? act(episodeNow) : undefined,
-    track: inStory ? { n: episodeNow, k: episodes.length } : undefined,
+    act: showMap
+      ? finale
+        ? L(SS.finaleAct)
+        : fill(L(SS.chapterOf), { n: chapter, k, title: stopTitle(chapter) })
+      : undefined,
+    map,
     oof: inStory ? undefined : L(S.common.outOfFiction),
     stepKey: key,
     lang: langAttr(ui),
@@ -246,27 +309,6 @@ export function StoryView({
           />
         </Page>
       )
-    case 'episode': {
-      const ep = episodes[step.n - 1]
-      return (
-        <Page
-          {...page}
-          pin
-          actions={
-            <Button onClick={() => onDone(null)}>{fill(L(SS.episodeGo), { n: step.n })}</Button>
-          }
-        >
-          {then ? <Then id={`${key}-then`} {...then} /> : null}
-          <Splash
-            kicker={fill(L(SS.episodeShort), { n: step.n })}
-            title={L(ep.title)}
-            body={L(ep.premise)}
-            describedBy={then ? `${key}-then` : undefined}
-          />
-          {back}
-        </Page>
-      )
-    }
     case 'reveal': {
       const rv = story.reveal
       if (!rv) return null
@@ -331,24 +373,6 @@ export function StoryView({
           onDone={onDone}
         />
       )
-    case 'interlude': {
-      const ep = episodes[step.n - 1]
-      const panels = ep.interlude?.panels ?? []
-      return (
-        <Page
-          {...page}
-          pin
-          actions={<Button onClick={() => onDone(null)}>{L(SS.interludeGo)}</Button>}
-        >
-          <Beat then={then} question={L(ep.title)} />
-          <Strip
-            label={L(SS.stripLabel)}
-            panels={panels.map((p) => ({ art: p.art, text: L(p.text) }))}
-          />
-          {back}
-        </Page>
-      )
-    }
     case 'screening':
       return (
         <GridStep
@@ -413,67 +437,68 @@ export function StoryView({
       )
     case 'probe':
       return <ProbeStep key={key} ui={ui} page={page} onDone={onDone} />
-    case 'prior': {
-      const item =
-        step.id === 'origin'
-          ? SS.origin
-          : step.id === 'replay'
-            ? SS.replay
-            : {
-                text: S.wrap.prior.find((x) => x.id === step.id)?.text,
-                options: [
-                  { id: 'yes', text: S.common.yes },
-                  { id: 'no', text: S.common.no },
-                  { id: 'not-sure', text: S.common.notSure },
-                ],
-              }
-      const q = item as unknown as { text: T; options: { id: string; text: T }[] }
-      if (!q.text) return null
+    case 'payoff': {
+      const ep = episodes[step.n - 1]
+      const [sa, sb] = config.season.chapters.payoffSlots
+      const names = { a: runner.displayName(sa, true), b: runner.displayName(sb, true) }
       return (
-        <Page {...page} title={L(q.text)}>
-          <Options
-            label={L(q.text)}
-            options={q.options.map((o) => ({ id: o.id, text: L(o.text) }))}
-            onPick={onDone}
+        <Page
+          {...page}
+          pin
+          actions={<Button onClick={() => onDone(null)}>{L(SS.payoffGo)}</Button>}
+        >
+          <Beat then={then} question={L(ep.title)} />
+          <Strip
+            label={L(SS.payoffLabel)}
+            panels={ep.payoff.map((p) => ({ art: p.art, text: fill(L(p.text), names) }))}
           />
+          {back}
         </Page>
       )
     }
-    case 'debrief':
+    case 'saved': {
+      const last = step.n >= runner.chapters
+      const days = config.season.chapters.saveDays
       return (
         <Page
           {...page}
-          title={L(SS.debriefTitle)}
-          actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}
-        >
-          <List items={SS.debrief.map(L)} />
-        </Page>
-      )
-    case 'code':
-      return <CodeStep key={key} runner={runner} page={page} onDone={onDone} />
-    case 'demographics':
-      return <DemographicsStep key={key} ui={ui} page={page} onDone={onDone} />
-    case 'submit':
-      return (
-        <Page
-          {...page}
-          title={L(S.wrap.submit.title)}
+          title={fill(L(SS.savedTitle), { n: step.n })}
           actions={
             <>
-              <Button onClick={onSubmit} disabled={submitState === 'sending'}>
-                {L(S.wrap.submit.submit)}
+              <Button onClick={() => onDone(null)}>
+                {last ? L(SS.savedGoFinale) : fill(L(SS.savedGo), { n: step.n + 1 })}
               </Button>
-              <Button kind="secondary" onClick={onWithdraw} disabled={submitState === 'sending'}>
-                {L(S.wrap.submit.withdraw)}
+              <Button kind="quiet" onClick={onStop}>
+                {L(SS.savedStop)}
               </Button>
             </>
           }
         >
-          <Text>{L(S.wrap.submit.body)}</Text>
-          {submitState === 'failed' ? (
-            <Notice kind="error">{L(S.wrap.submit.failed)}</Notice>
-          ) : null}
+          <Heading>{L(SS.savedHeading)}</Heading>
+          <Text>{fill(L(SS.savedBody), { days })}</Text>
+          <Text>
+            {fill(L(SS.savedNext), {
+              title: last ? L(SS.finaleAct) : L(episodes[step.n].title),
+            })}
+          </Text>
+          <Text kind="small">{L(SS.savedRating)}</Text>
         </Page>
+      )
+    }
+    case 'wrap':
+      return <WrapStep key={key} ui={ui} page={page} onDone={onDone} />
+    case 'demographics':
+      return <DemographicsStep key={key} ui={ui} page={page} onDone={onDone} />
+    case 'close':
+      return (
+        <CloseStep
+          key={key}
+          runner={runner}
+          page={page}
+          submitState={submitState}
+          onSubmit={onSubmit}
+          onWithdraw={onWithdraw}
+        />
       )
   }
 }
@@ -508,7 +533,15 @@ function BeatStep({
   const ui = runner.lang
   const L = (t: T) => t[ui]
   const b = runner.season.beats[i]
-  const head = <Beat then={then} scene={L(b.beat.scene)} question={L(b.beat.question)} />
+  /* The chapter's opening is folded into its first card's caption (EVAL-8, concept A). */
+  const chapter = runner.chapterAt()
+  const firstOfChapter =
+    chapter <= runner.chapters &&
+    runner.steps.findIndex((st, k) => st.kind === 'beat' && runner.chapterOf[k] === chapter) ===
+      runner.index
+  const opening = firstOfChapter ? runner.season.story.episodes?.[chapter - 1]?.opening : undefined
+  const scene = opening ? `${L(opening)} ${L(b.beat.scene)}` : L(b.beat.scene)
+  const head = <Beat then={then} scene={scene} question={L(b.beat.question)} />
   if (b.kind === 'ordinary') {
     const opts = b.order.map((id) => {
       const o = b.beat.options.find((x) => x.id === id)
@@ -563,33 +596,40 @@ function BeatStep({
         onPick={(pick) => onDone({ pick })}
       />
     )
-  else
+  else {
+    /* A share as a one-tap pair (EVAL-8, B1): the whole pool to one, or evenly; stored as units,
+       so scoring and records are unchanged. */
+    const pool = b.beat.pool ?? 6
+    const initial =
+      saved && 'units' in saved
+        ? saved.units[0] === saved.units[1]
+          ? ('even' as const)
+          : saved.units.indexOf(Math.max(...saved.units))
+        : undefined
     input = (
-      <QuickSplit
+      <PairShare
         items={items}
-        pool={b.beat.pool ?? 6}
-        cap={config.season.splitCap}
-        onDone={(units) => onDone({ units })}
-        initial={saved && 'units' in saved ? saved.units : undefined}
+        initial={initial}
+        onDone={(c) =>
+          onDone({
+            units: items.map((_, pos) => (c === 'even' ? pool / 2 : pos === c ? pool : 0)),
+          })
+        }
         labels={{
-          left: (n) => fill(L(SS.splitLeft), { n }),
-          chip: (name, k) => fill(L(SS.splitChip), { name, k }),
-          clear: L(SS.splitClear),
-          lock: L(SS.splitLock),
+          hint: L(SS.pairHint),
+          even: L(SS.pairEven),
+          lock: L(SS.pairLock),
+          chosen: (name) => fill(L(SS.pairChosen), { name }),
+          chosenEven: L(SS.pairChosenEven),
         }}
       />
     )
+  }
   return (
     <Page {...page}>
       {head}
       {b.beat.kind === 'split' ? (
-        <Text kind="small">
-          {fill(L(SS.splitPool), {
-            pool: b.beat.pool ?? 6,
-            unit: b.beat.unit ? L(b.beat.unit) : '',
-            cap: config.season.splitCap,
-          })}
-        </Text>
+        <Text kind="small">{L(SS.pairHint)}</Text>
       ) : (
         <Text kind="small">{L(b.beat.kind === 'rank' ? SS.rankHint : SS.pickHint)}</Text>
       )}
@@ -673,14 +713,75 @@ function ProbeStep({
   )
 }
 
-function CodeStep({
-  runner,
+/**
+ * The wrap's three items on one screen with one Done (EVAL-8): prior knowledge, how they came
+ * to play, and replay. Done waits until all three are answered.
+ */
+function WrapStep({
+  ui,
   page,
   onDone,
 }: {
-  runner: StoryRunner
+  ui: Lang
   page: PageBase
   onDone: (v: unknown) => void
+}) {
+  const L = (t: T) => t[ui]
+  const [v, setV] = useState<Record<string, string>>({})
+  const told = S.wrap.prior.find((x) => x.id === 'told')
+  const items = [
+    {
+      id: 'told',
+      text: told?.text ?? SS.wrapTitle,
+      options: [
+        { id: 'yes', text: S.common.yes },
+        { id: 'no', text: S.common.no },
+        { id: 'not-sure', text: S.common.notSure },
+      ],
+    },
+    SS.origin as unknown as { id: string; text: T; options: { id: string; text: T }[] },
+    SS.replay as unknown as { id: string; text: T; options: { id: string; text: T }[] },
+  ]
+  return (
+    <Page
+      {...page}
+      title={L(SS.wrapTitle)}
+      actions={
+        <Button onClick={() => onDone(v)} disabled={items.some((it) => !v[it.id])}>
+          {L(SS.wrapDone)}
+        </Button>
+      }
+    >
+      {items.map((it) => (
+        <Choice
+          key={it.id}
+          legend={L(it.text)}
+          options={it.options.map((o) => ({ id: o.id, text: L(o.text) }))}
+          value={v[it.id] ?? null}
+          onChange={(id) => setV({ ...v, [it.id]: id })}
+        />
+      ))}
+    </Page>
+  )
+}
+
+/**
+ * Debrief, code and submit on one screen (EVAL-8): what the season measured, the withdrawal
+ * code with its release dates and the "I have saved it" box, then Submit or Withdraw, which
+ * wait for the code and the box.
+ */
+function CloseStep({
+  runner,
+  page,
+  submitState,
+  onSubmit,
+  onWithdraw,
+}: {
+  runner: StoryRunner
+  page: PageBase
+  submitState: 'idle' | 'sending' | 'failed'
+  onSubmit: () => void
+  onWithdraw: () => void
 }) {
   const ui = runner.lang
   const L = (t: T) => t[ui]
@@ -694,34 +795,49 @@ function CodeStep({
     }
   }, [runner])
   const { releaseAt, deleteUntil } = releaseOf('season')
+  const wait = !ready || !saved || submitState === 'sending'
   return (
     <Page
       {...page}
-      title={L(S.wrap.code.title)}
+      title={L(SS.debriefTitle)}
       actions={
-        <Button onClick={() => onDone(null)} disabled={!ready || !saved}>
-          {L(S.common.continue)}
-        </Button>
+        <>
+          <Button onClick={onSubmit} disabled={wait}>
+            {L(S.wrap.submit.submit)}
+          </Button>
+          <Button kind="secondary" onClick={onWithdraw} disabled={wait}>
+            {L(S.wrap.submit.withdraw)}
+          </Button>
+        </>
       }
     >
-      <Text>{L(S.wrap.code.body)}</Text>
-      {ready && runner.code ? (
-        <Code value={formatCode(runner.code)} label={L(S.wrap.code.title)} />
-      ) : (
-        <Notice>…</Notice>
-      )}
-      <Text>
-        {fill(L(S.wrap.code.release), {
-          date: formatDate(releaseAt, ui),
-          until: formatDate(deleteUntil, ui),
-        })}
-      </Text>
-      <Checks
-        legend={L(S.wrap.code.saved)}
-        options={[{ id: 'saved', text: L(S.common.yes) }]}
-        value={saved ? ['saved'] : []}
-        onChange={(ids) => setSaved(ids.includes('saved'))}
-      />
+      <List items={SS.debrief.map(L)} />
+      <Group label={L(S.wrap.code.title)}>
+        <Heading>{L(S.wrap.code.title)}</Heading>
+        <Text>{L(S.wrap.code.body)}</Text>
+        {ready && runner.code ? (
+          <Code value={formatCode(runner.code)} label={L(S.wrap.code.title)} />
+        ) : (
+          <Notice>…</Notice>
+        )}
+        <Text>
+          {fill(L(S.wrap.code.release), {
+            date: formatDate(releaseAt, ui),
+            until: formatDate(deleteUntil, ui),
+          })}
+        </Text>
+        <Checks
+          legend={L(S.wrap.code.saved)}
+          options={[{ id: 'saved', text: L(S.common.yes) }]}
+          value={saved ? ['saved'] : []}
+          onChange={(ids) => setSaved(ids.includes('saved'))}
+        />
+      </Group>
+      <Group label={L(SS.submitTitle)}>
+        <Heading>{L(SS.submitTitle)}</Heading>
+        <Text>{L(S.wrap.submit.body)}</Text>
+        {submitState === 'failed' ? <Notice kind="error">{L(S.wrap.submit.failed)}</Notice> : null}
+      </Group>
     </Page>
   )
 }

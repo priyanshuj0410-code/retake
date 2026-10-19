@@ -1,0 +1,43 @@
+/* @owns pair__even pair__even--on */
+/* "Share them evenly": a full-width option under the pair, resting light like a card, and with
+   the stamped weight (--ink-heavy, the chosen shadow) once chosen. */
+.pair__even {
+  width: 100%;
+  min-height: var(--control);
+  padding: var(--gap-m) var(--gap-l);
+  border: var(--edge) solid var(--c-ink-line);
+  border-radius: var(--radius-m);
+  background: var(--c-surface);
+  color: var(--c-text);
+  font-family: var(--font-display);
+  font-size: var(--text-action);
+  letter-spacing: var(--tracking-action);
+  text-transform: var(--case-display);
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    box-shadow var(--motion),
+    transform var(--motion);
+}
+.pair__even:active {
+  transform: scale(var(--press));
+}
+.pair__even--on {
+  border-width: var(--ink-heavy);
+  box-shadow: var(--shadow-chosen);
+}
+@media (hover: hover) {
+  .pair__even:hover {
+    box-shadow: var(--shadow-panel);
+  }
+  .pair__even--on:hover {
+    box-shadow: var(--shadow-chosen);
+  }
+}
+@media (forced-colors: active) {
+  .pair__even--on {
+    outline: var(--border) solid var(--c-focus);
+  }
+}

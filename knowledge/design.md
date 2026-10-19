@@ -10,6 +10,7 @@ plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-5/
   - https://app.plane.so/the-equal-lens/browse/EVAL-6/
   - https://app.plane.so/the-equal-lens/browse/EVAL-7/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-8/
 ---
 
 # Equal Lens Evaluator design system
@@ -206,7 +207,7 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 
 | Component | Source | What it is |
 |---|---|---|
-| `Page` | `src/ui/Page.tsx` | One screen: on story screens a sticky `<header>` landmark (`position: sticky`, `top: 0`, solid paper, the ink rule under it; the act label and the episode pips, `aria-hidden` because the label says it in words; no page count, owner 19 Oct 2026); its measured height is `--head-h`, and every focusable element and heading in `<main>` has `scroll-margin-top` of that height, so focus never lands under it. Nothing in the header is interactive. `<main>` with the out-of-fiction line, the `h1`, body and one action row; with `pin` (the story's short page-turn screens only: episode and interlude) the row stays at the foot of the screen, with `scroll-padding-bottom` so focus is never under it. On arrival focus moves to the `h1` and the document title becomes "`h1` · Team season". Long titles wrap |
+| `Page` | `src/ui/Page.tsx` | One screen: on story screens a sticky `<header>` landmark (`position: sticky`, `top: 0`, solid paper, the ink rule under it; the chapter label and the `SeasonMap`; no page count, owner 19 Oct 2026); its measured height is `--head-h`, and every focusable element and heading in `<main>` has `scroll-margin-top` of that height, so focus never lands under it. Nothing in the header is interactive. `<main>` with the out-of-fiction line, the `h1`, body and one action row; with `pin` (the story's short page-turn screens only: episode and interlude) the row stays at the foot of the screen, with `scroll-padding-bottom` so focus is never under it. On arrival focus moves to the `h1` and the document title becomes "`h1` · Team season". Long titles wrap |
 | `Button` | `src/ui/Button.tsx` | `primary` (violet fill), `secondary` (violet outline), `quiet` (text). 48 px tall, full width on phones. Hover on pointer devices, `--press` while pressed, disabled for every kind |
 | `Text` | `src/ui/Text.tsx` | Paragraph, `lead`, `small`, `muted`, `strong`; long words break |
 | `Heading` | `src/ui/Text.tsx` | A section heading inside a page (explanation sections, demo tables); `level={3}` for a sub-heading inside a section (the result page's areas) |
@@ -236,6 +237,8 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 | `ResultHero` | `src/ui/ResultHero.tsx` | The top of the result: one number to remember ("38 of 46 equal pairs where you put the man ahead"), the same pairs as a dot grid (`role="img"`, filled: the man ahead, ring: the woman ahead, dashed: neither), the band and its sentence, then the bar and reasons as children; ink on grey only. Without a sex reading it shows the band line alone |
 | `Fold` | `src/ui/Fold.tsx` | A section that folds: native `details` with the `h2` in the summary and a drawn marker; the result's areas, the first open; the opened explanation's sections, all closed |
 | `UpdateReady` | `src/ui/UpdateReady.tsx` | "Update ready. Your season is kept." with an Update button, a fixed bar at the foot of the screen on paper with the ink rule above it (`role="status"`), shown when a new version of the installed app is waiting (EVAL-7); it never reloads on its own |
+| `SeasonMap` | `src/ui/SeasonMap.tsx` | The season map in the sticky header (EVAL-8, concept D), in place of a page count: six stops on one line (chapters 1 to 5 as numbered rounds, the finale square), done filled ink, the current one violet, the rest outlined at `--ink-frame`; and dots for the current chapter's cards only (8 px, `--ink-divider`, violet when done), so progress resets each chapter. One `role="img"` with a spoken label ("Chapter 2 of 5, The complaint: 4 of 11 cards done"). No countdown, no motion; nothing in it is interactive |
+| `PairShare` | `src/ui/PairShare.tsx` | A share as a one-tap pair (EVAL-8, concept B1): two colleague panels side by side (`tapcard`) and a full-width "Share them evenly" option under them; one tap chooses (`aria-pressed`, the stamped weight: `--ink-heavy` and the chosen shadow), "Lock in this choice" confirms; nothing advances on its own; Back reopens it with the saved choice. Stored as units (the whole pool to one, or half each), so scoring and records are unchanged |
 | `Details` | `src/ui/Details.tsx` | "Read the full details": a native `details`, closed, with a quiet display-face summary (a `--control` target, 56 px on the note pitch) and the complete text behind a screen's short points (consent, the content note, the result band). Nothing is cut; Enter or Space toggles it |
 | `DevNotes` | `src/ui/DevNotes.tsx` | Pending markers for the research team, folded, `data-dev`, rendered only by the Vite dev server (`import.meta.env.DEV`); never player copy |
 | `PointCard` | `src/ui/PointCard.tsx` | One finding in a decision area: the pattern's name, the counts, and for a blind spot the player's own decisive pairs as a list (never a made-up inner voice) |
@@ -309,8 +312,10 @@ or disagree blocks (screening, survey) are `AgreeGrid` screens; the recall and w
 valence, and the season's end lists the jobs each colleague led, with no outcome word. Its rules:
 
 - **One decision per screen.** Picks and ordinary decisions commit on their tap (`PickOne`,
-  `Options`); a ranking and a split wait for the player's "Lock in this order" or "Lock in this
-  split" and never advance on their own (owner, 19 Oct 2026). The next screen opens with its
+  `Options`); a ranking and a share wait for the player's "Lock in this order" or "Lock in this
+  choice" and never advance on their own (owner, 19 Oct 2026). A share is a one-tap pair
+  (`PairShare`, EVAL-8): one tap chooses a colleague or "Share them evenly", the lock-in tap
+  confirms, so the no-auto-advance rule holds for pairs as for rankings. The next screen opens with its
   consequence (`Beat`), and a quiet "Back: change my last decision" reopens the last decision
   with its saved answer on screen. The answer given last is the one scored; each re-answer after
   Back is counted and stored with the play as an `edit` item. Nothing counts down; no auto-advance waits.
@@ -357,6 +362,26 @@ valence, and the season's end lists the jobs each colleague led, with no outcome
 - **The profile** (`#/profile`) is optional and pseudonymous, out of fiction: `Timeline`, the
   change line ("No change read yet" unless a change is read), the next retake as a date, never a
   timer, a separate research opt-in, and "Delete my profile and all my records".
+
+### The season in chapters (EVAL-8; every count PENDING v21)
+
+The owner approved concepts A, B1, C and D (20 Oct 2026). **Five story chapters and a finale.**
+A chapter is one episode's form-A cards; its opening line (25 words or fewer) is folded into the
+first card's caption, the consequence stays on the next card's `Then` line, and there are no
+episode splash or interlude screens. Each chapter ends on a three-panel payoff strip (`Strip`)
+that follows two fixed cast slots' running stories, the same for every player, equal in valence
+and never contingent on an answer, then a "Saved on this phone" screen (note register) with
+"Start chapter n" (or "Start the finale") and a quiet "Stop here, carry on later". The finale
+holds screening, the first survey, the note, form B, the second survey, recall, the wrap's three
+items on one screen with one Done, the optional background questions, and one closing screen
+with the debrief, the withdrawal code and Submit; the result comes after it only. Ordinary
+decisions are back to the registered two (the tutorial and the season decision); eligibility and
+the language choice share one screen. **Saves.** The season is saved on the device after every
+answer and resumes in the same browser for 7 days, after which the save is deleted unsent;
+between the first survey's answer and the recall item nothing is saved, so a reload there
+returns to the first survey and the note's effect never straddles a break. The submitted record
+carries `meta.sit`, the number of sittings (1 to 6, a reopening at a save point counts), never a
+time. Back never leaves the story run it is in. Values: `content/config.json` `season.chapters`.
 
 ## 4c. The comic register and the portrait system (EVAL-6, Direction C)
 

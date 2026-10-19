@@ -82,6 +82,8 @@ export interface PlayMeta {
   timingArm?: 'before' | 'after'
   batchMonth?: string
   sex?: string
+  /** The season's sittings, 1 to 6: a count only, never a time (EVAL-8; PENDING v21). */
+  sit?: number
 }
 
 export interface PlayRecord {

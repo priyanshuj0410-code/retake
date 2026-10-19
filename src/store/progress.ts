@@ -6,7 +6,11 @@
  * in memory for the page's life.
  */
 const PREFIX = 'eval-progress:'
+const DAY = 86_400_000
+const STAMP = '_savedAt'
 const memory = new Map<string, string>()
+/** Saves found expired on this page load, so asking twice gives the same answer. */
+const expiredKeys = new Set<string>()
 
 function storage(): Storage | null {
   try {
@@ -30,13 +34,35 @@ export const progress = {
       return null
     }
   },
-  put(key: string, value: unknown) {
-    const raw = JSON.stringify(value)
+  /**
+   * The save, unless it is older than `maxDays`: then it is deleted unsent and `expired` is true
+   * (EVAL-8). The time is kept on this device only, for the expiry, and never leaves it.
+   */
+  fresh<V>(key: string, maxDays: number, now = Date.now()): { value: V | null; expired: boolean } {
+    if (expiredKeys.has(key)) return { value: null, expired: true }
+    const v = progress.get<V & { [STAMP]?: number; finished?: unknown }>(key)
+    if (v && !v.finished && v[STAMP] !== undefined && now - v[STAMP] > maxDays * DAY) {
+      progress.drop(key)
+      expiredKeys.add(key)
+      return { value: null, expired: true }
+    }
+    return { value: v, expired: false }
+  },
+  put(key: string, value: object) {
+    const raw = JSON.stringify({ ...value, [STAMP]: Date.now() })
     memory.set(key, raw)
     try {
       storage()?.setItem(PREFIX + key, raw)
     } catch {
       /* blocked or full storage: the memory copy */
+    }
+  },
+  drop(key: string) {
+    memory.delete(key)
+    try {
+      storage()?.removeItem(PREFIX + key)
+    } catch {
+      /* blocked storage: the memory copy is gone */
     }
   },
 }

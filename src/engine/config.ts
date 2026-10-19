@@ -86,6 +86,16 @@ export interface SeasonConfig {
   retakeGapDays: number | null
   episodes: number
   cards: { minPairs: number; share: number }
+  /** The season in five chapters and a finale (owner, 20 Oct 2026; every value PENDING v21). */
+  chapters: {
+    count: number
+    finale: boolean
+    saveDays: number
+    sittingsMax: number
+    captionWords: number
+    ordinaryKept: string[]
+    payoffSlots: [number, number]
+  }
 }
 
 export const config = raw as unknown as Config

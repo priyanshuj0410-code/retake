@@ -255,7 +255,20 @@ async function main() {
     let weekOne = false
     let midEpisode = false
     await page.goto('about:blank')
+    let stopped = false
     await playSeason(page, `http://localhost:${PORT}/#/play/${seasonToken}`, async (m) => {
+      /* Chapter 1's end: stop, reload (the season stays stopped), carry on: a new sitting. */
+      if (m === 'story:saved' && !stopped) {
+        stopped = true
+        await page.getByRole('button', { name: 'Stop here, carry on later' }).click()
+        await page.waitForSelector('[data-screen="story:stopped"]')
+        await page.reload()
+        await page.waitForSelector('[data-screen="story:stopped"]', { timeout: 30000 })
+        record(R, 'a chapter end: "Stop here, carry on later" survives a reload', true)
+        await page.getByRole('button', { name: 'Carry on now' }).click()
+        await page.waitForSelector('[data-screen="story:saved"]')
+        return
+      }
       if (!m.startsWith('story:beat:')) return
       beats += 1
       const thenShown = (await page.locator('.then').count()) > 0
@@ -267,7 +280,22 @@ async function main() {
         await reloadSame('mid-episode (after the reveal, with the last consequence on screen)')
       }
     })
-    record(R, 'the reload points were reached (week one, mid-episode)', weekOne && midEpisode)
+    record(
+      R,
+      'the reload points were reached (week one, mid-episode, a chapter end)',
+      weekOne && midEpisode && stopped,
+    )
+    const sat = (await owner('GET', 'eval-play')) as Record<
+      string,
+      { meta: { dep: string; sit?: number } }
+    > | null
+    const sit = Object.values(sat ?? {}).find((p) => p.meta.dep === 'season')?.meta.sit
+    record(
+      R,
+      'the record counts two sittings (the reopening at a chapter end), with no time',
+      sit === 2,
+      String(sit),
+    )
     await reloadSame('the result')
     record(
       R,

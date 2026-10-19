@@ -1,4 +1,4 @@
-/* @owns page page__inner page__head page__bar page__act page__track page__pip page__pip--on page__oof page__title page__body page__actions page__actions--pinned page__footnote */
+/* @owns page page__inner page__head page__bar page__act page__oof page__title page__body page__actions page__actions--pinned page__footnote */
 .page {
   background-color: var(--c-bg);
   color: var(--c-text);
@@ -35,7 +35,7 @@
 .page__body :where(h1, h2, h3, a, button, input, select, textarea, summary, [tabindex]) {
   scroll-margin-top: calc(var(--head-h) + var(--gap-s));
 }
-/* The top bar: the episode in words and its track as pips. Progress only; no page count. */
+/* The top bar: the chapter in words and the season map (EVAL-8). Progress only; no page count. */
 .page__bar {
   display: flex;
   flex-wrap: wrap;
@@ -55,20 +55,6 @@
   color: var(--c-text);
   margin: var(--gap-none);
   overflow-wrap: anywhere;
-}
-.page__track {
-  display: inline-flex;
-  gap: var(--gap-xs);
-}
-.page__pip {
-  display: block;
-  width: var(--gap-l);
-  height: var(--gap-s);
-  border: var(--ink-divider) solid var(--c-ink-line);
-  background: var(--c-surface);
-}
-.page__pip--on {
-  background: var(--c-stamp);
 }
 /* Out of fiction: the registered line, set as a note stamp in the display face (its text is
    exactly the line; "Note" is a decorative prefix, silent to screen readers). */

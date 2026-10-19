@@ -1,4 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react'
+import { SeasonMap, type MapStop } from './SeasonMap'
 import './page.css'
 
 const PRODUCT = 'Team season'
@@ -6,8 +7,8 @@ const PRODUCT = 'Team season'
 export interface PageProps {
   surface: 'game' | 'oof' | 'sober'
   act?: string
-  /** The episode track: n of k, drawn as pips beside the act label (which says it in words). */
-  track?: { n: number; k: number }
+  /** The season map beside the act label (EVAL-8): six stops and the current chapter's cards. */
+  map?: { stops: MapStop[]; cards: { done: number; total: number }; label: string }
   /** The out-of-fiction line, "This part is not part of the game." */
   oof?: string
   title?: string
@@ -27,7 +28,7 @@ export interface PageProps {
 export function Page({
   surface,
   act,
-  track,
+  map,
   oof,
   title,
   footnote,
@@ -76,13 +77,7 @@ export function Page({
           <header className="page__head" ref={headRef}>
             <div className="page__bar">
               <p className="page__act">{act}</p>
-              {track ? (
-                <span className="page__track" aria-hidden="true">
-                  {[...Array(track.k).keys()].map((i) => (
-                    <i key={i} className={i < track.n ? 'page__pip page__pip--on' : 'page__pip'} />
-                  ))}
-                </span>
-              ) : null}
+              {map ? <SeasonMap {...map} /> : null}
             </div>
           </header>
         ) : null}
