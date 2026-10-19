@@ -129,6 +129,6 @@ window.__uxCheck = function uxCheck(minTarget) {
   R.needsSkip =
     !!main && els.some((e) => main.compareDocumentPosition(e) & Node.DOCUMENT_POSITION_PRECEDING)
   R.liveRegion = !!d.querySelector('[aria-live], [role=status], [role=alert]')
-  R.needsLive = !!d.querySelector('.sort, .alloc')
+  R.needsLive = !!d.querySelector('.sort, .alloc, .split, .tapcard[aria-pressed]')
   return R
 }

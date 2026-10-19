@@ -76,6 +76,13 @@
   --px-48: 48px;
   --px-40: 40px;
   --px-640: 640px;
+  --px-72: 72px;
+  --px-36: 36px;
+  --px-24: 24px;
+  --px-128: 128px;
+  --grid-all: 1 / -1;
+  --fs-56: 56px;
+  --pct-neg-50: -50%;
   --dur-160: 160ms;
   --dur-0: 0ms;
   --scale-98: 0.98;
@@ -144,6 +151,23 @@
   --lifted: var(--scale-102);
   --lift: var(--shadow-lift);
   --flat: var(--shadow-none);
+
+  /* The season story (knowledge/design.md, section 4a). */
+  --portrait: var(--px-72);
+  --portrait-face: var(--fs-56);
+  --portrait-small: var(--px-48);
+  --portrait-small-face: var(--fs-32);
+  --mascot-badge: var(--px-24);
+  --rank-badge: var(--px-36);
+  --text-band: var(--fs-32);
+  --bar: var(--s-3);
+  --centre: var(--pct-neg-50);
+  --card-min: var(--px-128);
+  --span-row: var(--grid-all);
+  /* Reading levels: neutral on purpose, never green or red (section 4a). */
+  --c-level-lean: var(--c-accent);
+  --c-level-none: var(--c-text);
+  --c-level-unread: var(--c-muted);
 }
 
 @media (min-width: 600px) {

@@ -1,0 +1,41 @@
+/* @owns portrait portrait--small portrait__face portrait__badge */
+.portrait {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--portrait);
+  height: var(--portrait);
+  border-radius: var(--radius-l);
+  background: var(--c-surface);
+  border: var(--border) solid var(--c-border);
+  forced-color-adjust: none;
+}
+.portrait__face {
+  font-size: var(--portrait-face);
+  line-height: var(--leading-tight);
+}
+.portrait--small {
+  width: var(--portrait-small);
+  height: var(--portrait-small);
+  border-radius: var(--radius-m);
+}
+.portrait--small .portrait__face {
+  font-size: var(--portrait-small-face);
+}
+.portrait__badge {
+  position: absolute;
+  right: var(--gap-none);
+  bottom: var(--gap-none);
+  transform: translate(var(--gap-xs), var(--gap-xs));
+  width: var(--mascot-badge);
+  height: var(--mascot-badge);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-small);
+  border-radius: var(--radius-s);
+  background: var(--c-surface);
+  border: var(--border-thin) solid var(--c-border);
+}

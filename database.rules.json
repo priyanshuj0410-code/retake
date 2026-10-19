@@ -103,7 +103,7 @@
         /* The code's own key, so the explanation page can recognise a code. */
         ".read": "auth != null",
         ".write": "auth != null && !data.exists() && root.child('eval-claims/' + auth.uid).exists() && !newData.parent().parent().child('eval-claims/' + auth.uid).exists()",
-        ".validate": "newData.val() == 'panel-g1' || newData.val() == 'panel-g2' || newData.val() == 'firm'"
+        ".validate": "newData.val() == 'panel-g1' || newData.val() == 'panel-g2' || newData.val() == 'firm' || newData.val() == 'season'"
       }
     },
     "eval-play": {
@@ -113,7 +113,7 @@
         ".validate": "newData.hasChildren(['meta'])",
         "meta": {
           ".validate": "newData.hasChildren(['dep', 'v', 'langs', 'arm', 'route', 'result'])",
-          "dep": { ".validate": "newData.val() == 'panel-g1' || newData.val() == 'panel-g2' || newData.val() == 'firm'" },
+          "dep": { ".validate": "newData.val() == 'panel-g1' || newData.val() == 'panel-g2' || newData.val() == 'firm' || newData.val() == 'season'" },
           "v": { ".validate": "newData.isString() && newData.val().length <= 40" },
           "langs": { ".validate": "newData.val() == 'en' || newData.val() == 'hinglish' || newData.val() == 'both'" },
           "arm": { ".validate": "newData.val() == 'FULL' || newData.val() == 'PARTIAL-G' || newData.val() == 'PARTIAL-A'" },
@@ -185,7 +185,7 @@
            derived from the code, so the records of one player are scattered. */
         ".write": "auth != null && ((!data.exists() && newData.exists() && root.child('eval-claims/' + auth.uid).exists() && !newData.parent().parent().child('eval-claims/' + auth.uid).exists()) || (!newData.exists() && (!data.exists() || now < root.child('eval-config/' + data.child('dep').val() + '/deleteUntil').val())))",
         ".validate": "newData.hasChildren(['dep', 'i', 'a', 'sub', 'lab'])",
-        "dep": { ".validate": "newData.val() == 'panel-g1' || newData.val() == 'panel-g2' || newData.val() == 'firm'" },
+        "dep": { ".validate": "newData.val() == 'panel-g1' || newData.val() == 'panel-g2' || newData.val() == 'firm' || newData.val() == 'season'" },
         "i": { ".validate": "newData.isString() && newData.val().length <= 24" },
         "a": { ".validate": "newData.val() == 'same' || newData.val() == 'different'" },
         "sub": { ".validate": "newData.val() == 'low' || newData.val() == 'high'" },
@@ -198,9 +198,48 @@
         /* One optional demographic answer, unlinked: its item and answer only. */
         ".write": "auth != null && ((!data.exists() && newData.exists() && root.child('eval-claims/' + auth.uid).exists() && !newData.parent().parent().child('eval-claims/' + auth.uid).exists()) || (!newData.exists() && (!data.exists() || now < root.child('eval-config/' + data.child('dep').val() + '/deleteUntil').val())))",
         ".validate": "newData.hasChildren(['dep', 'i', 'a'])",
-        "dep": { ".validate": "newData.val() == 'panel-g1' || newData.val() == 'panel-g2' || newData.val() == 'firm'" },
+        "dep": { ".validate": "newData.val() == 'panel-g1' || newData.val() == 'panel-g2' || newData.val() == 'firm' || newData.val() == 'season'" },
         "i": { ".validate": "newData.val() == 'gender' || newData.val() == 'religion' || newData.val() == 'caste' || newData.val() == 'region'" },
         "a": { ".validate": "newData.isString() && newData.val().length <= 24" },
+        "$other": { ".validate": false }
+      }
+    },
+    "eval-profile": {
+      "$k": {
+        /* An optional pseudonymous player profile (EVAL-4): ciphertext only, encrypted on the
+           device under a key derived from the player's recovery code, at a key derived from the
+           same code. Read and written only by whoever holds the code (a 128-bit key, never
+           listed); deletable by them at any time. No field but the ciphertext and its IV. */
+        ".read": "auth != null",
+        ".write": "auth != null",
+        ".validate": "newData.hasChildren(['iv', 'ct'])",
+        "iv": { ".validate": "newData.isString() && newData.val().length <= 24" },
+        "ct": { ".validate": "newData.isString() && newData.val().length <= 20000" },
+        "$other": { ".validate": false }
+      }
+    },
+    "eval-long": {
+      "$k": {
+        /* The longitudinal research link of a profile whose holder opted in (consent PENDING
+           v17): the play keys of their saved seasons, nothing else. Written and deleted only by
+           the code holder; never readable through these rules. */
+        ".write": "auth != null",
+        ".validate": "newData.hasChildren(['plays'])",
+        "plays": { ".validate": "newData.isString() && newData.val().matches(/^[0-9a-f]{32}(,[0-9a-f]{32}){0,49}$/)" },
+        "$other": { ".validate": false }
+      }
+    },
+    "eval-contact": {
+      "$k": {
+        /* Optional stay-in-touch details after a season result (EVAL-4): a name and an email,
+           both optional, and two separate opt-ins. At a random key, linked to no record, code
+           or profile. Created once; never readable through these rules. */
+        ".write": "auth != null && !data.exists() && newData.exists()",
+        ".validate": "newData.hasChildren(['follow', 'research'])",
+        "nm": { ".validate": "newData.isString() && newData.val().length <= 60" },
+        "em": { ".validate": "newData.isString() && newData.val().length <= 120 && newData.val().matches(/^[^@ ]+@[^@ ]+$/)" },
+        "follow": { ".validate": "newData.isBoolean()" },
+        "research": { ".validate": "newData.isBoolean()" },
         "$other": { ".validate": false }
       }
     }

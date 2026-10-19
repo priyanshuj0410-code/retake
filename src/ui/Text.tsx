@@ -19,6 +19,10 @@ export function Text({
   )
 }
 
-export function Heading({ children }: { children: ReactNode }) {
-  return <h2 className="heading">{children}</h2>
+export function Heading({ children, level = 2 }: { children: ReactNode; level?: 2 | 3 }) {
+  return level === 3 ? (
+    <h3 className="heading heading--sub">{children}</h3>
+  ) : (
+    <h2 className="heading">{children}</h2>
+  )
 }

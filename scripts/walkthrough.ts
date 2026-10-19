@@ -14,7 +14,7 @@ import { createElement as h, type ReactElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { notesById, screens, screeningItems } from '../src/content'
 import type { Lang } from '../src/content/types'
-import { config, formatDate, releaseOf, type DeploymentId } from '../src/engine/config'
+import { config, formatDate, releaseOf, type CardDeploymentId } from '../src/engine/config'
 import { windowFor } from '../src/engine/firm'
 import { estimate, longest } from '../src/engine/length'
 import { seeded } from '../src/engine/rng'
@@ -99,7 +99,7 @@ function markup(el: ReactElement, id: string): string {
 
 /* ------------------------------------------------------------------ screen times (25 s a card) */
 
-function secondsOf(step: Step, dep: DeploymentId): number {
+function secondsOf(step: Step, dep: CardDeploymentId): number {
   switch (step.kind) {
     case 'people':
       return T.secondsPerCard
@@ -277,8 +277,8 @@ class Builder {
   private n = 0
   private seenActs = new Set<string>()
   readonly prefix: string
-  readonly dep: DeploymentId
-  constructor(prefix: string, dep: DeploymentId) {
+  readonly dep: CardDeploymentId
+  constructor(prefix: string, dep: CardDeploymentId) {
     this.prefix = prefix
     this.dep = dep
   }
@@ -484,7 +484,7 @@ function stepsInto(b: Builder, r: Runner, steps: Step[], suffix: string): Node[]
 
 /* ------------------------------------------------------------------ the three sessions */
 
-function findSeed(dep: DeploymentId, ok: (r: Runner) => boolean, from = 1): number {
+function findSeed(dep: CardDeploymentId, ok: (r: Runner) => boolean, from = 1): number {
   for (let s = from; s < from + 5000; s++) if (ok(new Runner(seeded(s), dep, ['en']))) return s
   throw new Error(`no seed for ${dep}`)
 }
@@ -763,7 +763,7 @@ function outside(): Section {
     title: 'After the release date: the scoring explanation, per deployment',
     note: 'Served from the database after release, never bundled in the app. Draft text for review.',
     arms: ex.map((e) => ({
-      label: config.deployments[e.dep].label.en,
+      label: e.dep === 'season' ? 'Season story' : config.deployments[e.dep].label.en,
       nodes: [
         screenOf(
           b,
@@ -988,7 +988,7 @@ async function main() {
       })
     walk(sec.nodes)
   }
-  const mins = (dep: DeploymentId) => (longest(estimate(dep)).total / 60).toFixed(1)
+  const mins = (dep: CardDeploymentId) => (longest(estimate(dep)).total / 60).toFixed(1)
   const body = [
     render(sections[0], mins('panel-g1')),
     render(sections[1], mins('panel-g2')),

@@ -1,0 +1,23 @@
+/* @owns share share__card share__status */
+.share {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+}
+.share__card {
+  margin: var(--gap-none);
+  padding: var(--gap-l);
+  border-radius: var(--radius-l);
+  border: var(--border) solid var(--c-accent);
+  background: var(--c-surface);
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  line-height: var(--leading-ui);
+  color: var(--c-text);
+  user-select: all;
+}
+.share__status {
+  margin: var(--gap-none);
+  font-size: var(--text-small);
+  color: var(--c-body);
+}

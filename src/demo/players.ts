@@ -10,7 +10,7 @@
  */
 import { inboxBank } from '../content'
 import type { Lang } from '../content/types'
-import type { DeploymentId } from '../engine/config'
+import type { CardDeploymentId } from '../engine/config'
 import type { Presented } from '../engine/layout'
 import { seeded, type Rng } from '../engine/rng'
 import { Runner, type FirmLabels } from '../engine/runner'
@@ -93,7 +93,7 @@ export interface DemoPlayer {
 /** Plays one whole demo session. `iterations` lowers the code's key-derivation cost for bulk generation. */
 export async function playDemo(
   seed: number,
-  dep: DeploymentId,
+  dep: CardDeploymentId,
   langs: Lang[],
   firm?: FirmLabels,
   iterations = 1000,

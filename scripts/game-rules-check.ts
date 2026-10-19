@@ -4,7 +4,7 @@
  * decisions, some of them unscored too; one act order (cards, then the Committee Inbox, then
  * the direct items); out-of-fiction screens flagged; the content note before the Inbox.
  */
-import { DEPLOYMENTS, type DeploymentId } from '../src/engine/config'
+import { DEPLOYMENTS, type CardDeploymentId } from '../src/engine/config'
 import { seeded } from '../src/engine/rng'
 import { Runner } from '../src/engine/runner'
 import { isOutOfFiction, type Step } from '../src/engine/session'
@@ -12,7 +12,7 @@ import { record } from './lib/check'
 
 const T = 'X-3 game rules'
 
-function play(seed: number, dep: DeploymentId, people: 'start' | 'reverse' | 'lavish-women') {
+function play(seed: number, dep: CardDeploymentId, people: 'start' | 'reverse' | 'lavish-women') {
   const r = new Runner(seeded(seed), dep, ['en'])
   let guard = 0
   while (!r.done && guard++ < 1000) {
@@ -44,7 +44,7 @@ export async function run() {
   let whyRecall = ''
   const firstAt = new Set<number>()
   let recalls = 0
-  for (const dep of ['panel-g1', 'panel-g2'] as DeploymentId[])
+  for (const dep of ['panel-g1', 'panel-g2'] as CardDeploymentId[])
     for (let i = 0; i < 40; i++) {
       const r = play(i, dep, 'start')
       for (const st of r.steps) {

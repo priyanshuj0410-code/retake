@@ -1,7 +1,15 @@
+import type { ProfileBox } from '../story/profile'
 import type { Rng } from '../engine/rng'
 import type { DeploymentId } from '../engine/config'
 import type { CodeKeys } from '../engine/codes'
 import type { Submission } from '../engine/records'
+
+export interface Contact {
+  nm?: string
+  em?: string
+  follow: boolean
+  research: boolean
+}
 
 export type LangSet = 'en' | 'hinglish' | 'both' | 'choose'
 
@@ -63,6 +71,14 @@ export interface Store {
    * one write, and returns the enrolment with its arm and window.
    */
   enrol(enrolKey: string, base: EnrolmentBase, rng: Rng): Promise<Enrolment>
+  /** A pseudonymous profile's ciphertext at its code-derived key (src/story/profile.ts); null when none. */
+  profileGet(key: string): Promise<ProfileBox | null>
+  profilePut(key: string, box: ProfileBox): Promise<void>
+  profileDelete(key: string): Promise<void>
+  /** The longitudinal research link of an opted-in profile; null deletes it. */
+  longPut(key: string, value: { plays: string } | null): Promise<void>
+  /** The optional stay-in-touch details after a result, at a random key, linked to nothing. */
+  contactPut(key: string, value: Contact): Promise<void>
   /** Demo only: issue tokens the way a panel provider's links would carry them. */
   issueTokens(dep: DeploymentId, n: number, langs: LangSet): Promise<string[]>
 }

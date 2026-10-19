@@ -1,0 +1,55 @@
+/* @owns spectrum spectrum__label spectrum__track spectrum__zone spectrum__marker spectrum__ends spectrum__note */
+.spectrum {
+  margin: var(--gap-none);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+}
+.spectrum__label {
+  font-family: var(--font-display);
+  font-size: var(--text-small);
+  font-weight: var(--weight-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--c-label);
+}
+.spectrum__track {
+  position: relative;
+  height: var(--bar);
+  border-radius: var(--radius-s);
+  background: var(--c-border);
+  margin: var(--gap-m) var(--gap-none);
+  forced-color-adjust: none;
+}
+.spectrum__zone {
+  position: absolute;
+  top: var(--gap-none);
+  bottom: var(--gap-none);
+  background: var(--c-rule);
+  border-left: var(--border) dashed var(--c-muted);
+  border-right: var(--border) dashed var(--c-muted);
+}
+.spectrum__marker {
+  position: absolute;
+  top: var(--gap-none);
+  bottom: var(--gap-none);
+  margin: auto var(--gap-none);
+  width: var(--gap-xl);
+  height: var(--gap-xl);
+  transform: translateX(var(--centre));
+  border-radius: var(--radius-l);
+  background: var(--c-accent);
+  border: var(--border-focus) solid var(--c-surface);
+}
+.spectrum__ends {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-weight: var(--weight-label);
+  color: var(--c-text);
+}
+.spectrum__note {
+  margin: var(--gap-none);
+  font-size: var(--text-small);
+  color: var(--c-muted);
+}

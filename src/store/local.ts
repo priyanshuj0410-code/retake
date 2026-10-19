@@ -4,13 +4,15 @@
  * prototype run with no backend at all, and the checks run without the emulator. Nothing in
  * it leaves the device. The real rules are tested against the emulator (scripts/rules-check.ts).
  */
-import { DEPLOYMENTS, releaseOf as releaseOfConfig, type DeploymentId } from '../engine/config'
+import { ALL_DEPLOYMENTS, releaseOf as releaseOfConfig, type DeploymentId } from '../engine/config'
 import type { CodeKeys } from '../engine/codes'
 import { randomKey } from '../engine/rng'
 import type { Submission } from '../engine/records'
 import { formatPending, nextArm, parsePending, windowFor } from '../engine/firm'
 import type { Rng } from '../engine/rng'
+import type { ProfileBox } from '../story/profile'
 import type {
+  Contact,
   Enrolment,
   EnrolmentBase,
   Explanation,
@@ -63,9 +65,12 @@ export class LocalStore implements Store {
       'eval-enrol',
       'eval-alloc',
       'eval-schedule',
+      'eval-profile',
+      'eval-long',
+      'eval-contact',
     ])
       this.tree[n] ??= {}
-    for (const dep of DEPLOYMENTS) this.tree['eval-config'][dep] = releaseOf(dep)
+    for (const dep of ALL_DEPLOYMENTS) this.tree['eval-config'][dep] = releaseOf(dep)
     this.tree['eval-schedule'][DEMO_SCHEDULE.firm] = DEMO_SCHEDULE
   }
 
@@ -167,6 +172,32 @@ export class LocalStore implements Store {
     if (this.now() < releaseOf(dep).releaseAt) return null
     const all = (await this.explanationSource?.()) ?? null
     return all?.find((e) => e.dep === dep) ?? null
+  }
+
+  async profileGet(key: string) {
+    return (this.tree['eval-profile'][key] as ProfileBox | undefined) ?? null
+  }
+
+  async profilePut(key: string, box: ProfileBox) {
+    this.tree['eval-profile'][key] = { iv: box.iv, ct: box.ct }
+    this.save()
+  }
+
+  async profileDelete(key: string) {
+    delete this.tree['eval-profile'][key]
+    this.save()
+  }
+
+  async longPut(key: string, value: { plays: string } | null) {
+    if (value) this.tree['eval-long'][key] = { plays: value.plays }
+    else delete this.tree['eval-long'][key]
+    this.save()
+  }
+
+  async contactPut(key: string, value: Contact) {
+    if (this.tree['eval-contact'][key] !== undefined) throw new Error('refused: contact key exists')
+    this.tree['eval-contact'][key] = { ...value }
+    this.save()
   }
 
   async schedule(firm: string) {

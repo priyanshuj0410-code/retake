@@ -53,3 +53,10 @@ export interface CrosswiseContent {
 export const xw = crosswise as CrosswiseContent
 export { identity, disclosure, screens }
 export const registeredSentences = disclosure.registered as Record<'en' | 'hinglish', string[]>
+
+/** The sentences one sitting shows: the registered four, or for the season story the four with
+    sentence 3 replaced by the owner's pending wording (content/disclosure.json, season). */
+export const sentencesFor = (l: 'en' | 'hinglish', season: boolean): string[] =>
+  season
+    ? registeredSentences[l].map((s, i) => (i === 2 ? disclosure.season.sentence3[l] : s))
+    : registeredSentences[l]

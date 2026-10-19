@@ -1,0 +1,105 @@
+/* @owns agree agree__key agree__keyitem agree__item agree__statement agree__points agree__point agree__point--on agree__input agree__sr agree__ends */
+.agree {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-l);
+}
+.agree__key {
+  margin: var(--gap-none);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-xs) var(--gap-m);
+  font-size: var(--text-small);
+  color: var(--c-muted);
+}
+.agree__keyitem {
+  white-space: nowrap;
+}
+.agree__item {
+  margin: var(--gap-none);
+  padding: var(--gap-m);
+  border: var(--border-thin) solid var(--c-border);
+  border-radius: var(--radius-m);
+  background: var(--c-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+  min-width: 0;
+}
+.agree__statement {
+  padding: var(--gap-none);
+  margin-bottom: var(--gap-s);
+  color: var(--c-text);
+  line-height: var(--leading-ui);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  float: left;
+  width: 100%;
+}
+.agree__points {
+  clear: both;
+  display: flex;
+  gap: var(--gap-xs);
+}
+.agree__point {
+  position: relative;
+  flex: 1 1 0;
+  min-width: var(--target);
+  min-height: var(--target);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border) solid var(--c-border);
+  border-radius: var(--radius-s);
+  background: var(--c-bg);
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  color: var(--c-text);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-color var(--motion),
+    background-color var(--motion);
+}
+.agree__point--on {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: var(--c-on-accent);
+}
+.agree__point:focus-within {
+  outline: var(--border-focus) solid var(--c-focus);
+  outline-offset: var(--border);
+}
+@media (hover: hover) {
+  .agree__point:hover {
+    border-color: var(--c-accent);
+  }
+}
+@media (forced-colors: active) {
+  .agree__point--on {
+    outline: var(--border) solid var(--c-focus);
+  }
+}
+.agree__input {
+  position: absolute;
+  inset: var(--gap-none);
+  opacity: 0;
+  margin: var(--gap-none);
+  cursor: pointer;
+}
+.agree__sr {
+  position: absolute;
+  width: var(--border-thin);
+  height: var(--border-thin);
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.agree__ends {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap-m);
+  font-size: var(--text-small);
+  color: var(--c-muted);
+}

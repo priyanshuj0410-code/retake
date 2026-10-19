@@ -16,6 +16,7 @@ import { createServer } from 'vite'
 import { screeningItems, screens as S } from '../src/content'
 import { marker, step } from './lib/autoplay'
 import { statesPass, type StateResult } from './ux-states'
+import { playSeason } from './season-play'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const LABEL = process.argv[2] ?? 'latest'
@@ -181,6 +182,73 @@ async function allocateByKeyboard(page: Page, screen: string) {
   })
 }
 
+/** Tap-to-order by keyboard: Tab to a card, Enter numbers it (announced, focus kept), Enter again takes it back. */
+async function tapOrderByKeyboard(page: Page, screen: string) {
+  await page.locator('h1').first().focus()
+  let reached = false
+  for (let i = 0; i < 20 && !reached; i++) {
+    await page.keyboard.press('Tab')
+    reached = await page.evaluate(
+      () => document.activeElement?.classList.contains('tapcard') ?? false,
+    )
+  }
+  if (reached) await page.keyboard.press('Enter')
+  const numbered = await page.locator('.tapcard[aria-pressed="true"]').count()
+  const live = (await page.locator('.tapcard__sr[aria-live]').textContent()) ?? ''
+  const kept = await page.evaluate(() => document.activeElement?.classList.contains('tapcard'))
+  if (reached) await page.keyboard.press('Enter')
+  const back = await page.locator('.tapcard[aria-pressed="true"]').count()
+  keyboard.push({
+    card: screen,
+    ok: reached && numbered === 1 && live.length > 0 && !!kept && back === 0,
+    detail: `tab reaches a card ${reached}; Enter numbers it ${numbered === 1}; announced "${live}"; focus kept ${kept}; Enter again takes it back ${back === 0}`,
+  })
+}
+
+/** The quick split by keyboard: Tab to a number, Enter sets it, the count left is announced, focus kept. */
+async function splitByKeyboard(page: Page, screen: string) {
+  await page.locator('h1').first().focus()
+  let reached = false
+  for (let i = 0; i < 20 && !reached; i++) {
+    await page.keyboard.press('Tab')
+    reached = await page.evaluate(
+      () => document.activeElement === document.querySelectorAll('.split__chip')[1],
+    )
+  }
+  if (reached) await page.keyboard.press('Enter')
+  const left = (await page.locator('.split__left').textContent()) ?? ''
+  const kept = await page.evaluate(() => document.activeElement?.classList.contains('split__chip'))
+  if (reached) await page.getByRole('button', { name: 'Start again' }).click()
+  keyboard.push({
+    card: screen,
+    ok: reached && /5/.test(left) && !!kept,
+    detail: `tab reaches a number ${reached}; Enter shares one ("${left}"); focus kept ${kept}`,
+  })
+}
+
+/** The agreement grid by keyboard: Tab into a statement, arrows choose a point, focus stays in it. */
+async function gridByKeyboard(page: Page, screen: string) {
+  await page.locator('h1').first().focus()
+  let reached = false
+  for (let i = 0; i < 20 && !reached; i++) {
+    await page.keyboard.press('Tab')
+    reached = await page.evaluate(
+      () => document.activeElement?.classList.contains('agree__input') ?? false,
+    )
+  }
+  if (reached) await page.keyboard.press('ArrowRight')
+  const checked = await page.locator('.agree__input:checked').count()
+  const named = await page.evaluate(() => {
+    const a = document.activeElement as HTMLInputElement | null
+    return a?.labels?.[0]?.textContent ?? ''
+  })
+  keyboard.push({
+    card: screen,
+    ok: reached && checked === 1 && /Disagree|Strongly/.test(named),
+    detail: `tab reaches a point ${reached}; an arrow chooses one ${checked === 1}; its name "${named}"`,
+  })
+}
+
 async function answerScreeningFairly(page: Page) {
   const legend = (await page.locator('legend').first().textContent()) ?? ''
   const item = screeningItems.find((i) => i.text.en === legend || i.text.hinglish === legend)
@@ -335,6 +403,30 @@ async function main() {
     await page.getByRole('link', { name: /^Demo: open the play link/ }).click()
     await page.waitForSelector('[data-screen="demo"]')
     await play(page, 'firm', new Set())
+
+    /* The season story (EVAL-4): every new kind of screen, its keyboard paths, the result and
+       the profile pages. */
+    const seasonSeen = new Set<string>()
+    await playSeason(page, BASE, async (m) => {
+      if (seasonSeen.has(m)) return
+      seasonSeen.add(m)
+      await audit(page, `season ${m}`)
+      if (m === 'story:beat:rank') await tapOrderByKeyboard(page, `season ${m}`)
+      if (m === 'story:beat:split') await splitByKeyboard(page, `season ${m}`)
+      if (m === 'story:survey') await gridByKeyboard(page, `season ${m}`)
+    })
+    await audit(page, 'season story:result')
+    await page.goto(`${BASE}#/profile`)
+    await page.reload()
+    await page.waitForSelector('[data-screen="profile-locked"]')
+    await audit(page, 'profile locked')
+    await page.getByRole('button', { name: 'Open the demo profile' }).click()
+    await page.waitForSelector('[data-screen="profile"]')
+    await audit(page, 'profile open')
+    await page.getByRole('button', { name: 'Delete my profile and all my records' }).click()
+    await page.waitForSelector('[data-screen="profile-confirm"]')
+    await audit(page, 'profile confirm delete')
+    await page.getByRole('button', { name: 'Keep my profile' }).click()
 
     await page.goto(`${BASE}#/explain`)
     await page.waitForSelector('[data-screen]')

@@ -19,7 +19,7 @@ import {
   xw,
 } from '../content'
 import type { CrosswiseItem, Lang, OrdinaryDecision, SurveyItem } from '../content/types'
-import { config, type DeploymentId, type NoteId, type R1Arm } from './config'
+import { config, type CardDeploymentId, type NoteId, type R1Arm } from './config'
 import { present, rematchesOf, selectCards, type Presented } from './layout'
 import type { Rng } from './rng'
 
@@ -85,7 +85,7 @@ export interface Draws {
 }
 
 export interface Session {
-  dep: DeploymentId
+  dep: CardDeploymentId
   langs: Lang[]
   draws: Draws
   phase1: Step[]
@@ -119,7 +119,7 @@ function interleave(people: Step[], queue: OrdinaryDecision[], act: Act): Step[]
   return out
 }
 
-export function createSession(rng: Rng, dep: DeploymentId, langs: Lang[]): Session {
+export function createSession(rng: Rng, dep: CardDeploymentId, langs: Lang[]): Session {
   const d = config.deployments[dep]
   const arm: R1Arm = d.r1 ? rng.weighted(d.r1) : 'FULL'
   const draws: Draws = {

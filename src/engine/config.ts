@@ -1,8 +1,12 @@
 import raw from '../../content/config.json'
 import type { Family, T } from '../content/types'
 
-export type DeploymentId = 'panel-g1' | 'panel-g2' | 'firm'
-export const DEPLOYMENTS: DeploymentId[] = ['panel-g1', 'panel-g2', 'firm']
+/** The card-engine deployments of research plan v2 (src/engine/session.ts). */
+export type CardDeploymentId = 'panel-g1' | 'panel-g2' | 'firm'
+export const DEPLOYMENTS: CardDeploymentId[] = ['panel-g1', 'panel-g2', 'firm']
+/** Every deployment a token or a record can carry: the card games and the season story (src/story/). */
+export type DeploymentId = CardDeploymentId | 'season'
+export const ALL_DEPLOYMENTS: DeploymentId[] = [...DEPLOYMENTS, 'season']
 export type NoteId = 'a' | 'b' | 'c'
 export type R1Arm = 'FULL' | 'PARTIAL-G' | 'PARTIAL-A'
 
@@ -36,8 +40,8 @@ export interface Config {
   version: string
   demo: boolean
   timing: Record<string, number>
-  targets: Record<DeploymentId, { formA?: FormCounts; formB?: FormCounts; inbox?: number }>
-  deployments: Record<DeploymentId, DeploymentConfig>
+  targets: Record<CardDeploymentId, { formA?: FormCounts; formB?: FormCounts; inbox?: number }>
+  deployments: Record<CardDeploymentId, DeploymentConfig>
   baselinePerFamily: number
   ordinaryPerPeopleCards: number
   tutorialOrdinary: number
@@ -56,6 +60,22 @@ export interface Config {
     withdrawalDaysAfterRelease: number
     releaseAt: Record<DeploymentId, string>
   }
+  season: SeasonConfig
+}
+
+/** The season story's planning values: every key in pendingV17 is PENDING v17. */
+export interface SeasonConfig {
+  pendingV17: string[]
+  castSize: number
+  weeks: number
+  splitCap: number
+  rating: { q: number; minPairs: number; engagementMin: number }
+  timing: Record<string, number>
+  change: { minDiff: number }
+  retakeGapDays: number | null
+  episodes: number
+  decisionsPerEpisode: number
+  cards: { minPairs: number; share: number }
 }
 
 export const config = raw as unknown as Config

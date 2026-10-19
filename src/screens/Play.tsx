@@ -16,10 +16,13 @@ import { Page, Text, Notice } from '../ui'
 import { Disclosure } from './Disclosure'
 import { Consent, Declined, DemoNotice, Finished, LanguageStep } from './PreScreens'
 import { StepView } from './StepView'
+import { StoryPicker, StoryResult, StoryView } from './Story'
+import { StoryRunner } from '../story/runner'
+import type { Story } from '../story/content'
 
 const S = screens
 
-type Pre = 'demo' | 'disclosure' | 'consent' | 'language' | 'declined'
+type Pre = 'demo' | 'disclosure' | 'consent' | 'language' | 'declined' | 'pick'
 
 export function Play({
   start,
@@ -33,6 +36,7 @@ export function Play({
   const [pre, setPre] = useState<Pre>(demo ? 'demo' : 'disclosure')
   const [langs, setLangs] = useState<Lang[] | null>(null)
   const [runner, setRunner] = useState<Runner | null>(null)
+  const [season, setSeason] = useState<StoryRunner | null>(null)
   const [, setTick] = useState(0)
   const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'failed'>('idle')
   const [finished, setFinished] = useState<'submitted' | 'withdrawn' | null>(null)
@@ -50,11 +54,11 @@ export function Play({
 
   /* A page reload would lose the session (answers are held in memory only), so warn first. */
   useEffect(() => {
-    if (!runner || finished) return
+    if ((!runner && !season) || finished) return
     const warn = (e: BeforeUnloadEvent) => e.preventDefault()
     window.addEventListener('beforeunload', warn)
     return () => window.removeEventListener('beforeunload', warn)
-  }, [runner, finished])
+  }, [runner, season, finished])
 
   if (!entry)
     return (
@@ -88,17 +92,22 @@ export function Play({
     langSet === 'both' || langSet === 'choose' ? ['en', 'hinglish'] : [langSet]
   const ui: Lang = langs && langs.length === 1 ? langs[0] : offered[0]
 
+  const isSeason = dep === 'season'
   const begin = (chosen: Lang[]) => {
     setLangs(chosen)
-    setRunner(new Runner(cryptoRng(), dep, chosen, entry.firm))
+    if (isSeason) setPre('pick')
+    else setRunner(new Runner(cryptoRng(), dep, chosen, entry.firm))
   }
+  const beginSeason = (story: Story) =>
+    setSeason(new StoryRunner(cryptoRng(), story, langs ?? offered))
 
-  if (!runner) {
+  if (!runner && !season) {
     if (pre === 'demo') return <DemoNotice ui={ui} onContinue={() => setPre('disclosure')} />
     if (pre === 'disclosure')
       return (
         <Disclosure
           langs={offered}
+          season={isSeason}
           onContinue={() =>
             firm ? (langSet === 'choose' ? setPre('language') : begin(offered)) : setPre('consent')
           }
@@ -110,12 +119,48 @@ export function Play({
         <Consent
           ui={ui}
           demo={demo}
+          season={isSeason}
           onAgree={() => (langSet === 'choose' ? setPre('language') : begin(offered))}
           onDecline={() => setPre('declined')}
         />
       )
+    if (pre === 'pick') return <StoryPicker ui={ui} demo={demo} onPick={beginSeason} />
     return <LanguageStep ui={ui} demo={demo} onChoose={begin} />
   }
+
+  if (season) {
+    if (finished) return <StoryResult runner={season} demo={demo} finished={finished} />
+    const sendSeason = async (withdraw: boolean) => {
+      setSubmitState('sending')
+      try {
+        await season.prepareCode()
+        const keys = season.keys
+        if (!keys) throw new Error('no keys')
+        await store.submit(keys.code, 'season', withdraw ? null : season.submission())
+        setFinished(withdraw ? 'withdrawn' : 'submitted')
+      } catch {
+        setSubmitState('failed')
+      }
+    }
+    return (
+      <StoryView
+        runner={season}
+        demo={demo}
+        submitState={submitState}
+        onSubmit={() => void sendSeason(false)}
+        onWithdraw={() => void sendSeason(true)}
+        onBack={() => {
+          season.back()
+          setTick((x) => x + 1)
+        }}
+        onDone={(v) => {
+          season.answer(v)
+          setTick((x) => x + 1)
+        }}
+      />
+    )
+  }
+  if (!runner) return null
 
   if (finished) return <Finished ui={ui} demo={demo} finished={finished} />
 

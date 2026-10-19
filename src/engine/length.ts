@@ -3,7 +3,7 @@
  * content/config.json, applied to each deployment's configured content. Deterministic.
  * It reports the longest route through each session, act by act, against the cap.
  */
-import { config, type DeploymentId, type FormCounts } from './config'
+import { config, type CardDeploymentId, type FormCounts } from './config'
 import { bankCounts } from './bank-counts'
 
 export interface ActTime {
@@ -12,7 +12,7 @@ export interface ActTime {
 }
 
 export interface Estimate {
-  deployment: DeploymentId
+  deployment: CardDeploymentId
   route: string
   acts: ActTime[]
   total: number
@@ -37,7 +37,7 @@ const cardTime = (n: number, secondsPerCard: number) =>
   n * secondsPerCard + Math.floor(n / config.ordinaryPerPeopleCards) * t('ordinary')
 
 export function estimate(
-  dep: DeploymentId,
+  dep: CardDeploymentId,
   secondsPerCard = t('secondsPerCard'),
   counts?: { formA?: FormCounts; formB?: FormCounts; inbox?: number },
 ): Estimate[] {

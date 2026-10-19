@@ -5,7 +5,7 @@
  */
 import { ordinaryBank, screens, xw } from '../content'
 import type { Lang } from '../content/types'
-import { config, type DeploymentId, type NoteId } from './config'
+import { config, type CardDeploymentId, type NoteId } from './config'
 import { deriveKeys, newCode, type CodeKeys } from './codes'
 import { m3Label, type ConductCard } from './m3'
 import {
@@ -51,11 +51,11 @@ export class Runner {
   keys: CodeKeys | null = null
 
   private readonly rng: Rng
-  readonly dep: DeploymentId
+  readonly dep: CardDeploymentId
   readonly langs: Lang[]
   readonly firm?: FirmLabels
 
-  constructor(rng: Rng, dep: DeploymentId, langs: Lang[], firm?: FirmLabels) {
+  constructor(rng: Rng, dep: CardDeploymentId, langs: Lang[], firm?: FirmLabels) {
     this.rng = rng
     this.dep = dep
     this.langs = langs

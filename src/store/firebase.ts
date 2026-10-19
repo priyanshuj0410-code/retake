@@ -21,7 +21,9 @@ import type { CodeKeys } from '../engine/codes'
 import type { Submission } from '../engine/records'
 import { formatPending, nextArm, parsePending, windowFor } from '../engine/firm'
 import type { Rng } from '../engine/rng'
+import type { ProfileBox } from '../story/profile'
 import type {
+  Contact,
   Enrolment,
   EnrolmentBase,
   Explanation,
@@ -159,6 +161,30 @@ export class FirebaseStore implements Store {
     } catch {
       return null
     }
+  }
+
+  async profileGet(key: string) {
+    return this.read<ProfileBox>(`eval-profile/${key}`)
+  }
+
+  async profilePut(key: string, box: ProfileBox) {
+    await this.uid()
+    await update(ref(this.db), { [`eval-profile/${key}`]: { iv: box.iv, ct: box.ct } })
+  }
+
+  async profileDelete(key: string) {
+    await this.uid()
+    await update(ref(this.db), { [`eval-profile/${key}`]: null })
+  }
+
+  async longPut(key: string, value: { plays: string } | null) {
+    await this.uid()
+    await update(ref(this.db), { [`eval-long/${key}`]: value ? { plays: value.plays } : null })
+  }
+
+  async contactPut(key: string, value: Contact) {
+    await this.uid()
+    await update(ref(this.db), { [`eval-contact/${key}`]: { ...value } })
   }
 
   async schedule(firm: string) {

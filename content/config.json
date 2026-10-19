@@ -226,7 +226,64 @@
     "releaseAt": {
       "panel-g1": "2027-03-01",
       "panel-g2": "2027-03-01",
-      "firm": "2027-06-01"
+      "firm": "2027-06-01",
+      "season": "2027-03-01"
+    }
+  },
+  "season": {
+    "_note": "The season stories (EVAL-4, game redesign). Every key listed in pendingV17 is a PLANNING VALUE set by the builder: generate v17 fixes it. None is final, and none may be used with participants until v17 registers it.",
+    "pendingV17": [
+      "castSize",
+      "splitCap",
+      "rating.q",
+      "rating.minPairs",
+      "rating.engagementMin",
+      "timing",
+      "change.minDiff",
+      "retakeGapDays",
+      "episodes",
+      "decisionsPerEpisode",
+      "cards.minPairs",
+      "cards.share"
+    ],
+    "splitCap": 4,
+    "rating": {
+      "_note": "PENDING v17. A cue reads as a lean when its permutation p (the share of balanced relabellings of the cast whose weight is at least as far from zero) is at most 1 - q; not enough to say below minPairs decisive pairs, when no relabelling could reach 1 - q, or when the player followed the notes in under engagementMin of clear pairs.",
+      "q": 0.95,
+      "minPairs": 8,
+      "engagementMin": 0.7
+    },
+    "timing": {
+      "_note": "PENDING v17. Seconds per screen at the 80th percentile, builder's planning values for pnpm length.",
+      "rank": 20,
+      "pick": 9,
+      "split": 14,
+      "ordinary": 8,
+      "intro": 30,
+      "pick-season": 15,
+      "reveal": 25,
+      "season": 15,
+      "surveyItem": 6,
+      "priorItem": 5,
+      "debrief": 25,
+      "code": 30,
+      "demographics": 20,
+      "submit": 8,
+      "episode": 8
+    },
+    "change": {
+      "_note": "PENDING v17. The profile reads a change between two saved seasons only when the headline weight moved by at least minDiff (on the -1 to +1 scale). A planning value: v17 sets the rule, ideally from the retake arm's test-retest agreement.",
+      "minDiff": 0.5
+    },
+    "retakeGapDays": null,
+    "_retakeNote": "PENDING v17. retakeGapDays: null means no gap. When v17 sets a number, the profile shows the day the next retake opens as a date, never as a countdown.",
+    "castSize": 8,
+    "episodes": 5,
+    "decisionsPerEpisode": 10,
+    "cards": {
+      "_note": "PENDING v17. A domain's blind-spot card for a cue needs at least minPairs equal pairs there with at least share of them one way; the even card needs minPairs with the two sides within one.",
+      "minPairs": 3,
+      "share": 0.67
     }
   }
 }

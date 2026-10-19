@@ -4,7 +4,7 @@
  * against the real rules in the Realtime Database emulator.
  */
 import { playDemo } from '../src/demo/players'
-import { config, type DeploymentId } from '../src/engine/config'
+import { config, type CardDeploymentId, type DeploymentId } from '../src/engine/config'
 import { deriveKeys, formatCode, normaliseCode, validCode } from '../src/engine/codes'
 import { seeded } from '../src/engine/rng'
 import { Runner } from '../src/engine/runner'
@@ -168,7 +168,7 @@ export async function run() {
   /* ------------------------------------------- AT-8 unlinked demographics, sex-label exception */
   {
     const T = 'AT-8 unlinked demographics, with the sex-label exception'
-    for (const dep of ['panel-g1', 'panel-g2', 'firm'] as DeploymentId[]) {
+    for (const dep of ['panel-g1', 'panel-g2', 'firm'] as CardDeploymentId[]) {
       const p = await playDemo(
         21,
         dep,

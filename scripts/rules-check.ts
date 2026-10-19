@@ -14,6 +14,7 @@ import type { Submission } from '../src/engine/records'
 import { formatPending, nextArm, parsePending, windowFor } from '../src/engine/firm'
 import { randomKey, seeded } from '../src/engine/rng'
 import { record, results, summary } from './lib/check'
+import { fairPlayer, playSeason } from '../src/story/players'
 
 const HOST = process.env.FIREBASE_DATABASE_EMULATOR_HOST
 const PROJECT = process.env.GCLOUD_PROJECT ?? 'demo-eval'
@@ -75,7 +76,7 @@ function submitWrites(
 async function main() {
   await call('owner', 'DELETE', '')
   const now = Date.now()
-  for (const dep of ['panel-g1', 'panel-g2', 'firm'])
+  for (const dep of ['panel-g1', 'panel-g2', 'firm', 'season'])
     await call('owner', 'PUT', `eval-config/${dep}`, {
       releaseAt: now + 30 * DAY,
       deleteUntil: now + 44 * DAY,
@@ -161,6 +162,91 @@ async function main() {
     'a token cannot be started without its claim in the same write',
     !(await call(as('y'), 'PUT', `eval-tokens/${tokens[0]}/s`, 'started')).allowed,
   )
+
+  /* ---------------------------------- the season story, its profile and stay-in-touch (EVAL-4) */
+  {
+    const TS = 'X-14 season records, profile and contact (emulator rules)'
+    const ts = randomKey()
+    await call('owner', 'PUT', `eval-tokens/${ts}`, { dep: 'season', langs: 'en', s: 'issued' })
+    const run = playSeason(77, fairPlayer)
+    await run.prepareCode(1000)
+    const sub = run.submission()
+    const u = 'season-1'
+    await patch(as(u), { [`eval-tokens/${ts}/s`]: 'started', [`eval-claims/${u}`]: { tok: ts } })
+    const res = await patch(as(u), submitWrites(sub, sub.codeKey, u, { tok: ts }))
+    record(
+      TS,
+      'a whole season submission is accepted',
+      res.allowed,
+      JSON.stringify(res.value).slice(0, 200),
+    )
+    const pk = randomKey()
+    const box = { iv: 'aaaaaaaaaaaaaaaa', ct: 'Y2lwaGVydGV4dA==' }
+    record(
+      TS,
+      'a device writes a profile box (iv and ct only)',
+      (await call(as('p1'), 'PUT', `eval-profile/${pk}`, box)).allowed,
+    )
+    record(
+      TS,
+      'a profile with any other field is refused',
+      !(await call(as('p1'), 'PUT', `eval-profile/${randomKey()}`, { ...box, name: 'Asha' }))
+        .allowed,
+    )
+    record(
+      TS,
+      'whoever holds the key reads it on another device; nobody lists profiles',
+      (await call(as('p2'), 'GET', `eval-profile/${pk}`)).allowed &&
+        !(await call(as('p2'), 'GET', 'eval-profile')).allowed,
+    )
+    record(
+      TS,
+      'the holder deletes it',
+      (await call(as('p2'), 'DELETE', `eval-profile/${pk}`)).allowed,
+    )
+    const lk = randomKey()
+    record(
+      TS,
+      'a research link holds play keys only',
+      (
+        await call(as('p1'), 'PUT', `eval-long/${lk}`, {
+          plays: `${'a'.repeat(32)},${'b'.repeat(32)}`,
+        })
+      ).allowed &&
+        !(await call(as('p1'), 'PUT', `eval-long/${randomKey()}`, { plays: 'not-a-key' }))
+          .allowed &&
+        !(await call(as('p1'), 'GET', `eval-long/${lk}`)).allowed,
+    )
+    const ck = randomKey()
+    record(
+      TS,
+      'stay-in-touch details are created once, never read, never with another field',
+      (
+        await call(as('c1'), 'PUT', `eval-contact/${ck}`, {
+          em: 'a@example.test',
+          follow: true,
+          research: false,
+        })
+      ).allowed &&
+        !(await call(as('c1'), 'PUT', `eval-contact/${ck}`, { follow: false, research: false }))
+          .allowed &&
+        !(await call(as('c1'), 'GET', `eval-contact/${ck}`)).allowed &&
+        !(
+          await call(as('c1'), 'PUT', `eval-contact/${randomKey()}`, {
+            follow: true,
+            research: true,
+            code: 'x',
+          })
+        ).allowed &&
+        !(
+          await call(as('c1'), 'PUT', `eval-contact/${randomKey()}`, {
+            em: 'not an email',
+            follow: true,
+            research: true,
+          })
+        ).allowed,
+    )
+  }
 
   /* --------------------------------------------- a full session, its records and their fields */
   const t2 = randomKey()

@@ -6,11 +6,14 @@ export function Field({
   value,
   onChange,
   autoComplete = 'off',
+  type = 'text',
 }: {
   label: string
   value: string
   onChange: (v: string) => void
   autoComplete?: string
+  /** text (codes, upper-cased on phones) or email (the optional stay-in-touch form). */
+  type?: 'text' | 'email'
 }) {
   const id = useId()
   return (
@@ -23,8 +26,9 @@ export function Field({
         className="field__input"
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        type={type}
         autoComplete={autoComplete}
-        autoCapitalize="characters"
+        autoCapitalize={type === 'email' ? 'none' : 'characters'}
         spellCheck={false}
       />
     </div>

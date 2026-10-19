@@ -6,7 +6,16 @@
  */
 import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { Button, Checks, Choice, SortList } from '../src/ui'
+import {
+  AgreeGrid,
+  Button,
+  Checks,
+  Choice,
+  QuickSplit,
+  SortList,
+  StoryPick,
+  TapOrder,
+} from '../src/ui'
 import { record } from './lib/check'
 
 const T = 'X-9 component states (markup)'
@@ -91,5 +100,85 @@ export async function run() {
     T,
     'SortList: rows are keyed by item for the reorder movement',
     (sort.match(/data-item="/g) ?? []).length === 3,
+  )
+
+  /* The season story's inputs (EVAL-4). */
+  const tap = html(
+    h(TapOrder, {
+      items: [person('A'), person('B'), person('C'), person('D')],
+      onDone: () => {},
+      labels: {
+        hint: 'Tap in order',
+        undo: 'Undo',
+        choose: (n) => `Choose as number ${n}:`,
+        chosen: (n) => `Number ${n}:`,
+        said: (x, n) => `${x} ${n}`,
+        next: (n) => `${n}`,
+        taken: (x, n) => `${x} ${n}`,
+      },
+    }),
+  )
+  record(
+    T,
+    'TapOrder: every card is a button, none pressed yet, each named "Choose as number 1", a polite live region, no Undo before a tap',
+    (tap.match(/<button[^>]*class="tapcard"/g) ?? []).length === 4 &&
+      (tap.match(/aria-pressed="false"/g) ?? []).length === 4 &&
+      (tap.match(/Choose as number 1:/g) ?? []).length === 4 &&
+      /aria-live="polite"/.test(tap) &&
+      !/>Undo</.test(tap),
+  )
+  const split = html(
+    h(QuickSplit, {
+      items: [person('A'), person('B')],
+      pool: 6,
+      cap: 4,
+      onDone: () => {},
+      labels: { left: (n) => `${n} left`, chip: (x, k) => `${x}: ${k}`, clear: 'Start again' },
+    }),
+  )
+  record(
+    T,
+    'QuickSplit: a row of 0 to cap chips per colleague, 0 pressed, none disabled while 6 are left, the count live',
+    (split.match(/class="split__chip[ "]/g) ?? []).length === 10 &&
+      (split.match(/aria-pressed="true"/g) ?? []).length === 2 &&
+      !/aria-disabled="true"/.test(split) &&
+      /aria-live="polite">6 left/.test(split),
+  )
+  const grid = html(
+    h(AgreeGrid, {
+      items: [
+        { id: 'a', text: 'S1' },
+        { id: 'b', text: 'S2' },
+      ],
+      scale: ['Strongly disagree', 'Disagree', 'Neither', 'Agree', 'Strongly agree'],
+      value: { a: 3 },
+      onChange: () => {},
+      keyLabel: 'key',
+    }),
+  )
+  record(
+    T,
+    'AgreeGrid: one fieldset per statement, five native radios each with its full words, the answered point marked',
+    (grid.match(/<fieldset/g) ?? []).length === 2 &&
+      (grid.match(/type="radio"/g) ?? []).length === 10 &&
+      (grid.match(/1, Strongly disagree/g) ?? []).length === 2 &&
+      (grid.match(/agree__point--on/g) ?? []).length === 1,
+  )
+  const pick = html(
+    h(StoryPick, {
+      options: [
+        { id: 'a', emoji: 'x', title: 'A', premise: 'p' },
+        { id: 'b', emoji: 'y', title: 'B', premise: 'p', later: 'PENDING v17' },
+      ],
+      onPick: () => {},
+      label: 'Pick',
+    }),
+  )
+  record(
+    T,
+    'StoryPick: a season not built is aria-disabled with its PENDING line, never disabled',
+    (pick.match(/aria-disabled="true"/g) ?? []).length === 1 &&
+      /PENDING v17/.test(pick) &&
+      !/ disabled=""/.test(pick),
   )
 }

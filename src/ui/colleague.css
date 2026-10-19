@@ -1,0 +1,33 @@
+/* @owns colleague colleague__who colleague__name colleague__cue colleague__desc */
+.colleague {
+  display: flex;
+  gap: var(--gap-m);
+  align-items: flex-start;
+  min-width: 0;
+  text-align: left;
+}
+.colleague__who {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  min-width: 0;
+}
+.colleague__name {
+  font-family: var(--font-display);
+  font-weight: var(--weight-label);
+  font-size: var(--text-lead);
+  line-height: var(--leading-tight);
+  color: var(--c-text);
+  overflow-wrap: anywhere;
+}
+.colleague__cue {
+  font-size: var(--text-small);
+  color: var(--c-muted);
+  overflow-wrap: anywhere;
+}
+.colleague__desc {
+  font-size: var(--text-label);
+  line-height: var(--leading-ui);
+  color: var(--c-body);
+  overflow-wrap: anywhere;
+}

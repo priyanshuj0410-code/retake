@@ -1,0 +1,3822 @@
+{
+ "_note": "The season stories (EVAL-4, game redesign, 19 Oct 2026). DEMO CONTENT written by the builder: not pre-tested, merit tiers set by the builder (P1 rates them), Hinglish a draft. The warehouse season is built in full; the newsroom and clinic seasons are stubs. Beat counts, tie structures and every threshold the rating uses are PENDING v17 (generate v17 fixes them). Consequences are keyed by the merit tier of the description the player put first, never by who carried it.",
+ "status": "PENDING v17",
+ "stories": [
+  {
+   "id": "warehouse",
+   "built": true,
+   "title": {
+    "en": "The warehouse",
+    "hinglish": "Warehouse"
+   },
+   "premise": {
+    "en": "Five episodes in a busy warehouse, from the hiring sprint to the season close.",
+    "hinglish": "Ek vyast warehouse mein paanch episodes, hiring sprint se season ke ant tak."
+   },
+   "emoji": "📦",
+   "company": {
+    "en": "Kite Logistics",
+    "hinglish": "Kite Logistics"
+   },
+   "intro": [
+    {
+     "en": "You lead a team of eight at Kite Logistics, a made-up warehouse company near Pune. The season runs in five short episodes, about ten decisions each, with the same team throughout.",
+     "hinglish": "Aap Kite Logistics mein aath logon ki team lead karte hain, Pune ke paas ek kaalpanik warehouse company. Season paanch chhote episodes mein chalta hai, har ek mein lagbhag das decisions, poore samay wahi team."
+    },
+    {
+     "en": "Each screen is one decision. What you decide shows up on the next screen.",
+     "hinglish": "Har screen ek decision hai. Aapka decision agli screen par dikhta hai."
+    },
+    {
+     "en": "To put colleagues in order, tap them, first choice first. The last one fills itself in.",
+     "hinglish": "Colleagues ko order mein rakhne ke liye unhe tap kijiye, pehli pasand pehle. Aakhri apne aap bhar jaata hai."
+    },
+    {
+     "en": "To share something out, tap a number for each colleague.",
+     "hinglish": "Kuch baantne ke liye har colleague ke liye ek number tap kijiye."
+    },
+    {
+     "en": "Changed your mind? Use Back on the next screen.",
+     "hinglish": "Mann badal gaya? Agli screen par Back dabaiye."
+    }
+   ],
+   "reveal": {
+    "title": {
+     "en": "You visit the warehouse",
+     "hinglish": "Aap warehouse jaate hain"
+    },
+    "body": {
+     "en": "You meet the team in person. Here is who was who on the team chat.",
+     "hinglish": "Aap team se khud milte hain. Team chat par kaun kaun tha, yeh raha."
+    },
+    "line": {
+     "en": "{mascot} the {animal} is {name}.",
+     "hinglish": "{mascot} {animal} asal mein {name} hain."
+    },
+    "go": {
+     "en": "Meet them and go on",
+     "hinglish": "Milkar aage badhein"
+    }
+   },
+   "beats": [
+    {
+     "id": "wh-w1-plan",
+     "episode": 1,
+     "mascot": true,
+     "kind": "rank",
+     "shape": "mixed",
+     "family": "opportunity",
+     "role": {
+      "en": "Peak plan",
+      "hinglish": "Peak plan"
+     },
+     "scene": {
+      "en": "Lotus Home wants a first plan for its big sale by Friday.",
+      "hinglish": "Lotus Home ko apni badi sale ka pehla plan Friday tak chahiye."
+     },
+     "question": {
+      "en": "Who should draft the peak plan? Put them in order.",
+      "hinglish": "Peak plan kaun likhega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-w1-plan-a",
+       "tier": 3,
+       "text": {
+        "en": "Wrote the peak plans for two clients last year; both were signed off first time.",
+        "hinglish": "Pichhle saal do clients ke peak plan likhe; dono pehli baar mein approve hue."
+       }
+      },
+      {
+       "id": "wh-w1-plan-b",
+       "tier": 3,
+       "text": {
+        "en": "Drafted last year's year-end plan; the client approved it without changes.",
+        "hinglish": "Pichhle saal ka year-end plan likha; client ne bina badlaav approve kiya."
+       }
+      },
+      {
+       "id": "wh-w1-plan-c",
+       "tier": 1,
+       "text": {
+        "en": "Has reviewed plans for others; not yet written one alone.",
+        "hinglish": "Doosron ke plans review kiye hain; akele abhi tak koi nahin likha."
+       }
+      },
+      {
+       "id": "wh-w1-plan-d",
+       "tier": 1,
+       "text": {
+        "en": "New to client plans; strong on spreadsheets, still learning how plans are set out.",
+        "hinglish": "Client plans mein naya; spreadsheet mein mazboot, plan ka format abhi seekhna baaki."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} sent the plan on Friday morning. Lotus Home signed it off with one small note.",
+       "hinglish": "{name} ne Friday subah plan bheja. Lotus Home ne ek chhote note ke saath approve kiya."
+      },
+      "1": {
+       "en": "{name} sent the plan on Friday evening. Lotus Home asked for a second draft.",
+       "hinglish": "{name} ne Friday shaam plan bheja. Lotus Home ne doosra draft maanga."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w1-trucks",
+     "episode": 1,
+     "mascot": true,
+     "kind": "pick",
+     "shape": "rival",
+     "family": "opportunity",
+     "role": {
+      "en": "Transport call",
+      "hinglish": "Transport call"
+     },
+     "scene": {
+      "en": "A truck company can talk for twenty minutes today.",
+      "hinglish": "Ek truck company aaj bees minute baat kar sakti hai."
+     },
+     "question": {
+      "en": "Who should take the transport call?",
+      "hinglish": "Transport call kaun lega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w1-trucks-a",
+       "tier": 2,
+       "text": {
+        "en": "Has booked trucks for three peak seasons; knows the contract terms well.",
+        "hinglish": "Teen peak seasons ke liye truck book kiye; contract ki sharten achhi tarah pata."
+       }
+      },
+      {
+       "id": "wh-w1-trucks-b",
+       "tier": 2,
+       "text": {
+        "en": "Ran the transport side of last year's peak; good at agreeing slots quickly.",
+        "hinglish": "Pichhle saal peak ka transport sambhala; slots jaldi tay karne mein achha."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "{name} took the call. The truck company is holding extra trucks for sale week.",
+       "hinglish": "{name} ne call li. Truck company sale week ke liye extra trucks rok kar rakh rahi hai."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w1-snacks",
+     "episode": 1,
+     "mascot": true,
+     "kind": "ordinary",
+     "type": "budget",
+     "scene": {
+      "en": "The team's first video call is on Thursday.",
+      "hinglish": "Team ki pehli video call Thursday ko hai."
+     },
+     "question": {
+      "en": "Snacks for the first team call?",
+      "hinglish": "Pehli team call ke liye snacks?"
+     },
+     "options": [
+      {
+       "id": "wh-w1-snacks-a",
+       "effect": 3,
+       "text": {
+        "en": "Send each person a small snack box",
+        "hinglish": "Har vyakti ko ek chhota snack box bhejein"
+       },
+       "after": {
+        "en": "The snack boxes arrive on Thursday morning. Cameras stay on.",
+        "hinglish": "Snack boxes Thursday subah pahunch gaye. Camera on rahe."
+       }
+      },
+      {
+       "id": "wh-w1-snacks-b",
+       "effect": 1,
+       "text": {
+        "en": "Skip snacks this time",
+        "hinglish": "Is baar snacks chhod dein"
+       },
+       "after": {
+        "en": "The call runs without snacks. It ends on time.",
+        "hinglish": "Call bina snacks ke chali. Samay par khatam hui."
+       }
+      },
+      {
+       "id": "wh-w1-snacks-c",
+       "effect": -2,
+       "text": {
+        "en": "Pay back anything people buy",
+        "hinglish": "Jo bhi log khareedein, uska paisa lautayein"
+       },
+       "after": {
+        "en": "Twelve receipts arrive by Friday, and accounts asks about each one.",
+        "hinglish": "Friday tak baarah receipts aa gayi, aur accounts har ek ke baare mein pooch raha hai."
+       }
+      }
+     ]
+    },
+    {
+     "id": "wh-w1-scanner",
+     "episode": 1,
+     "mascot": true,
+     "kind": "split",
+     "shape": "rival",
+     "family": "opportunity",
+     "role": {
+      "en": "Scanner training",
+      "hinglish": "Scanner training"
+     },
+     "scene": {
+      "en": "The scanner maker offers 6 training days on the new handheld scanners.",
+      "hinglish": "Scanner company naye handheld scanners par 6 training din de rahi hai."
+     },
+     "question": {
+      "en": "Share the 6 training days.",
+      "hinglish": "6 training din baantiye."
+     },
+     "unit": {
+      "en": "training days",
+      "hinglish": "training din"
+     },
+     "pool": 6,
+     "descriptions": [
+      {
+       "id": "wh-w1-scanner-a",
+       "tier": 3,
+       "text": {
+        "en": "Will set up the scanners on the packing line; the training fits that job.",
+        "hinglish": "Packing line par scanners lagane ka kaam; training usi kaam ke liye."
+       }
+      },
+      {
+       "id": "wh-w1-scanner-b",
+       "tier": 3,
+       "text": {
+        "en": "Trains new pickers every month; will pass the training on.",
+        "hinglish": "Har mahine naye pickers ko training; yeh training aage sikhayi jaayegi."
+       }
+      },
+      {
+       "id": "wh-w1-scanner-c",
+       "tier": 1,
+       "text": {
+        "en": "Works in the office and rarely uses scanners.",
+        "hinglish": "Office mein kaam; scanners ka istemaal kam."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} took the most training days. The packing line scanners are ready.",
+       "hinglish": "Sabse zyada training din {name} ko mile. Packing line ke scanners taiyaar hain."
+      },
+      "1": {
+       "en": "{name} took the most training days. The packing line scanners still need setting up.",
+       "hinglish": "Sabse zyada training din {name} ko mile. Packing line ke scanners abhi lagne baaki hain."
+      },
+      "even": {
+       "en": "The training days were shared evenly. Three colleagues know the new scanners.",
+       "hinglish": "Training din barabar baante gaye. Teen colleagues naye scanners jaante hain."
+      }
+     },
+     "domain": "resources"
+    },
+    {
+     "id": "wh-w1-floor",
+     "episode": 1,
+     "mascot": true,
+     "kind": "rank",
+     "shape": "same",
+     "family": "opportunity",
+     "role": {
+      "en": "Floor walk",
+      "hinglish": "Floor walk"
+     },
+     "scene": {
+      "en": "Lotus Home wants someone to walk the warehouse floor with them.",
+      "hinglish": "Lotus Home chahta hai ki koi unke saath warehouse floor ghoome."
+     },
+     "question": {
+      "en": "Who should lead the floor walk? Put them in order.",
+      "hinglish": "Floor walk kaun lead karega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-w1-floor-a",
+       "tier": 3,
+       "text": {
+        "en": "Led client floor walks for four peak seasons; spots bottlenecks early.",
+        "hinglish": "Chaar peak seasons mein client floor walks lead kiye; rukawatein jaldi pakadne mein achha."
+       }
+      },
+      {
+       "id": "wh-w1-floor-b",
+       "tier": 3,
+       "text": {
+        "en": "Planned the current shelf layout; knows how stock moves through the floor.",
+        "hinglish": "Abhi ka shelf layout plan kiya; floor par stock kaise chalta hai, achhi tarah pata."
+       }
+      },
+      {
+       "id": "wh-w1-floor-c",
+       "tier": 1,
+       "text": {
+        "en": "Has joined one floor walk as a note taker.",
+        "hinglish": "Ek floor walk mein note taker ke roop mein shaamil."
+       }
+      },
+      {
+       "id": "wh-w1-floor-d",
+       "tier": 1,
+       "text": {
+        "en": "Mostly works on the budget side; has not walked the floor with a client.",
+        "hinglish": "Zyaadatar budget ka kaam; client ke saath floor walk nahin kiya."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} walked the floor with the client. They agreed where the sale stock goes.",
+       "hinglish": "{name} ne client ke saath floor walk kiya. Sale stock ki jagah tay ho gayi."
+      },
+      "1": {
+       "en": "{name} walked the floor with the client. Where the sale stock goes is still open.",
+       "hinglish": "{name} ne client ke saath floor walk kiya. Sale stock ki jagah abhi tay nahin hui."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w1-update",
+     "episode": 1,
+     "kind": "pick",
+     "shape": "clear",
+     "family": "opportunity",
+     "role": {
+      "en": "Weekly update",
+      "hinglish": "Weekly update"
+     },
+     "scene": {
+      "en": "Someone writes the weekly update for the client.",
+      "hinglish": "Client ke liye weekly update koi likhta hai."
+     },
+     "question": {
+      "en": "Who should write this week's update?",
+      "hinglish": "Is hafte ka update kaun likhega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w1-update-a",
+       "tier": 3,
+       "text": {
+        "en": "Writes the warehouse newsletter; clear, short and always on time.",
+        "hinglish": "Warehouse newsletter likhne ka kaam; saaf, chhota aur hamesha samay par."
+       }
+      },
+      {
+       "id": "wh-w1-update-b",
+       "tier": 1,
+       "text": {
+        "en": "Prefers talking to writing; updates tend to run long.",
+        "hinglish": "Likhne se zyada baat karna pasand; updates lambe ho jaate hain."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} sent the update. The client replied with a thumbs up.",
+       "hinglish": "{name} ne update bheja. Client ne thumbs up bheja."
+      },
+      "1": {
+       "en": "{name} sent the update. The client asked two questions about it.",
+       "hinglish": "{name} ne update bheja. Client ne us par do sawaal poochhe."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-e1-panel",
+     "episode": 1,
+     "kind": "rank",
+     "shape": "mixed",
+     "family": "opportunity",
+     "domain": "hiring",
+     "role": {
+      "en": "Interview panel",
+      "hinglish": "Interview panel"
+     },
+     "scene": {
+      "en": "Forty temporary pickers apply in one week, and the interview panel needs a lead.",
+      "hinglish": "Ek hafte mein chaalis temporary pickers apply karte hain, aur interview panel ko ek lead chahiye."
+     },
+     "question": {
+      "en": "Who should lead the interview panel? Put them in order.",
+      "hinglish": "Interview panel kaun lead karega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-e1-panel-a",
+       "tier": 3,
+       "text": {
+        "en": "Led the interview panel for the last two peaks; most hires stayed the whole season.",
+        "hinglish": "Pichhle do peaks mein interview panel lead kiya; zyaadatar log poore season ruke."
+       }
+      },
+      {
+       "id": "wh-e1-panel-b",
+       "tier": 3,
+       "text": {
+        "en": "Trained as an interviewer last year and runs the warehouse's skills tests.",
+        "hinglish": "Pichhle saal interviewer ki training li; warehouse ke skills tests chalane ka kaam."
+       }
+      },
+      {
+       "id": "wh-e1-panel-c",
+       "tier": 1,
+       "text": {
+        "en": "Has sat on one panel as an observer.",
+        "hinglish": "Ek panel mein observer ke roop mein baithe hain."
+       }
+      },
+      {
+       "id": "wh-e1-panel-d",
+       "tier": 1,
+       "text": {
+        "en": "Has not interviewed anyone for the warehouse.",
+        "hinglish": "Warehouse ke liye kisi ka interview nahin liya."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} led the panel. Thirty-eight of the forty start on Monday.",
+       "hinglish": "{name} ne panel lead kiya. Chaalis mein se adtees Monday se shuru karenge."
+      },
+      "1": {
+       "en": "{name} led the panel. The interviews run two days over.",
+       "hinglish": "{name} ne panel lead kiya. Interviews do din zyada chale."
+      }
+     }
+    },
+    {
+     "id": "wh-w2-temps",
+     "episode": 1,
+     "kind": "rank",
+     "shape": "same",
+     "family": "opportunity",
+     "role": {
+      "en": "Temp staff plan",
+      "hinglish": "Temp staff plan"
+     },
+     "scene": {
+      "en": "Sale week needs 40 temporary pickers, trained and on a rota.",
+      "hinglish": "Sale week ke liye 40 temporary pickers chahiye, training aur rota ke saath."
+     },
+     "question": {
+      "en": "Who should run the temp staff plan? Put them in order.",
+      "hinglish": "Temp staff plan kaun chalayega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-w2-temps-a",
+       "tier": 3,
+       "text": {
+        "en": "Recruited 30 temporary staff last peak and set up the rota; nobody missed a shift.",
+        "hinglish": "Pichhle peak mein 30 temporary staff rakhe aur rota banaya; kisi ki shift nahin chhooti."
+       }
+      },
+      {
+       "id": "wh-w2-temps-b",
+       "tier": 3,
+       "text": {
+        "en": "Runs the warehouse's training programme; has trained 200 new pickers.",
+        "hinglish": "Warehouse ka training programme chalane ka kaam; 200 naye pickers ko training di."
+       }
+      },
+      {
+       "id": "wh-w2-temps-c",
+       "tier": 1,
+       "text": {
+        "en": "Has helped on the induction desk once.",
+        "hinglish": "Ek baar induction desk par madad ki."
+       }
+      },
+      {
+       "id": "wh-w2-temps-d",
+       "tier": 1,
+       "text": {
+        "en": "Good with schedules in general; has not worked with temporary staff.",
+        "hinglish": "Schedules mein aam taur par achha; temporary staff ke saath kaam nahin kiya."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} opened the temp rota. 25 pickers signed up on the first day.",
+       "hinglish": "{name} ne temp rota khola. Pehle din 25 pickers jude."
+      },
+      "1": {
+       "en": "{name} opened the temp rota. 8 pickers signed up on the first day.",
+       "hinglish": "{name} ne temp rota khola. Pehle din 8 pickers jude."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w2-agency",
+     "episode": 1,
+     "kind": "pick",
+     "shape": "clear",
+     "family": "opportunity",
+     "role": {
+      "en": "Staffing agency",
+      "hinglish": "Staffing agency"
+     },
+     "scene": {
+      "en": "A staffing agency could supply temporary pickers.",
+      "hinglish": "Ek staffing agency temporary pickers de sakti hai."
+     },
+     "question": {
+      "en": "Who should write to the agency?",
+      "hinglish": "Agency ko kaun likhega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w2-agency-a",
+       "tier": 3,
+       "text": {
+        "en": "Hired temporary staff for the last two peaks; knows the agency's team.",
+        "hinglish": "Pichhle do peaks mein temporary staff rakha; agency ki team ko jaante hain."
+       }
+      },
+      {
+       "id": "wh-w2-agency-b",
+       "tier": 1,
+       "text": {
+        "en": "Has not worked with a staffing agency before.",
+        "hinglish": "Staffing agency ke saath pehle kaam nahin kiya."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} wrote to the agency. They can send 40 pickers.",
+       "hinglish": "{name} ne agency ko likha. Woh 40 pickers bhej sakte hain."
+      },
+      "1": {
+       "en": "{name} wrote to the agency. No reply yet.",
+       "hinglish": "{name} ne agency ko likha. Abhi tak jawab nahin aaya."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w2-count",
+     "episode": 1,
+     "kind": "ordinary",
+     "type": "schedule",
+     "scene": {
+      "en": "The client asks for a stock count on a Saturday.",
+      "hinglish": "Client Saturday ko stock count chahta hai."
+     },
+     "question": {
+      "en": "What about the Saturday count?",
+      "hinglish": "Saturday count ka kya karein?"
+     },
+     "options": [
+      {
+       "id": "wh-w2-count-a",
+       "effect": 3,
+       "text": {
+        "en": "Hold it, and give the team a day off in lieu",
+        "hinglish": "Count karein, aur team ko badle mein ek din ki chhutti dein"
+       },
+       "after": {
+        "en": "The Saturday count goes ahead. Monday is a quiet day off.",
+        "hinglish": "Saturday count ho gaya. Monday aaraam ki chhutti hai."
+       }
+      },
+      {
+       "id": "wh-w2-count-b",
+       "effect": 1,
+       "text": {
+        "en": "Move it to a weekday evening",
+        "hinglish": "Ise kisi weekday ki shaam par le jaayein"
+       },
+       "after": {
+        "en": "The count moves to Wednesday evening. Two people join late.",
+        "hinglish": "Count Wednesday shaam ko hua. Do log der se jude."
+       }
+      },
+      {
+       "id": "wh-w2-count-c",
+       "effect": -2,
+       "text": {
+        "en": "Hold it with no day off",
+        "hinglish": "Count karein, koi chhutti nahin"
+       },
+       "after": {
+        "en": "The count goes ahead. The team is tired on Monday.",
+        "hinglish": "Count ho gaya. Monday ko team thaki hui hai."
+       }
+      }
+     ]
+    },
+    {
+     "id": "wh-e2-credit",
+     "episode": 2,
+     "kind": "pick",
+     "shape": "rival",
+     "family": "conduct",
+     "domain": "conduct",
+     "role": {
+      "en": "Credit complaint",
+      "hinglish": "Credit ki shikayat"
+     },
+     "scene": {
+      "en": "Two complaints reach you on Monday, each saying a colleague took credit for their work.",
+      "hinglish": "Monday ko do shikayatein aati hain, dono mein kaha gaya ki kisi colleague ne unke kaam ka credit le liya."
+     },
+     "question": {
+      "en": "Whose complaint do you take up first?",
+      "hinglish": "Aap pehle kiski shikayat uthaate hain?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-e2-credit-a",
+       "tier": 2,
+       "text": {
+        "en": "Says the new shift rota was presented as someone else's work; has the dated draft.",
+        "hinglish": "Kehte hain ki naya shift rota kisi aur ke kaam ke roop mein dikhaya gaya; date wala draft hai."
+       }
+      },
+      {
+       "id": "wh-e2-credit-b",
+       "tier": 2,
+       "text": {
+        "en": "Says the returns fix was claimed by someone else on the client call; has the emails.",
+        "hinglish": "Kehte hain ki client call par returns fix ka credit kisi aur ne liya; emails hain."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "You start with {name}'s complaint. Both complaints are looked into by the end of the week.",
+       "hinglish": "Aap {name} ki shikayat se shuru karte hain. Hafte ke aakhir tak dono shikayaton ki jaanch ho jaati hai."
+      }
+     }
+    },
+    {
+     "id": "wh-e2-dock",
+     "episode": 2,
+     "kind": "rank",
+     "shape": "mixed",
+     "family": "conduct",
+     "domain": "conduct",
+     "role": {
+      "en": "Dock argument",
+      "hinglish": "Dock par bahas"
+     },
+     "scene": {
+      "en": "There was a shouting match on the loading dock. Four colleagues give you their account.",
+      "hinglish": "Loading dock par zor ki bahas hui. Chaar colleagues apna bayaan dete hain."
+     },
+     "question": {
+      "en": "Whose account do you rely on most? Put them in order.",
+      "hinglish": "Aap kiske bayaan par sabse zyada bharosa karenge? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-e2-dock-a",
+       "tier": 3,
+       "text": {
+        "en": "Was on the dock throughout and wrote down what happened the same hour.",
+        "hinglish": "Poore samay dock par the aur usi ghante likh liya ki kya hua."
+       }
+      },
+      {
+       "id": "wh-e2-dock-b",
+       "tier": 3,
+       "text": {
+        "en": "Was loading the next truck, saw all of it, and gave the same account twice.",
+        "hinglish": "Agla truck load kar rahe the, sab dekha, aur do baar ek jaisa bayaan diya."
+       }
+      },
+      {
+       "id": "wh-e2-dock-c",
+       "tier": 1,
+       "text": {
+        "en": "Arrived at the end and heard the rest from others.",
+        "hinglish": "Aakhir mein pahunche aur baaki doosron se suna."
+       }
+      },
+      {
+       "id": "wh-e2-dock-d",
+       "tier": 1,
+       "text": {
+        "en": "Was on a break and heard it from the canteen.",
+        "hinglish": "Break par the aur canteen se suna."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name}'s account holds up against the shift logs. The matter is settled by Friday.",
+       "hinglish": "{name} ka bayaan shift logs se mel khaata hai. Friday tak maamla suljh gaya."
+      },
+      "1": {
+       "en": "{name}'s account has gaps the shift logs do not fill. The matter drags into next week.",
+       "hinglish": "{name} ke bayaan mein kamiyan hain jo shift logs se nahin bhartin. Maamla agle hafte tak khinch gaya."
+      }
+     }
+    },
+    {
+     "id": "wh-e2-overtime",
+     "episode": 2,
+     "kind": "pick",
+     "shape": "same",
+     "family": "conduct",
+     "domain": "conduct",
+     "role": {
+      "en": "Overtime concern",
+      "hinglish": "Overtime ki chinta"
+     },
+     "scene": {
+      "en": "Two colleagues raise the same concern: overtime hours were left off their pay slips.",
+      "hinglish": "Do colleagues ek hi chinta uthaate hain: overtime ke ghante pay slip mein nahin jude."
+     },
+     "question": {
+      "en": "Whose concern goes to payroll first?",
+      "hinglish": "Kiski chinta pehle payroll ko jaayegi?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-e2-overtime-a",
+       "tier": 2,
+       "text": {
+        "en": "Kept a daily log of hours that matches the gate records.",
+        "hinglish": "Ghanton ka roz ka log rakha jo gate records se milta hai."
+       }
+      },
+      {
+       "id": "wh-e2-overtime-b",
+       "tier": 2,
+       "text": {
+        "en": "Has the shift lead's signed overtime sheet for each day.",
+        "hinglish": "Har din ki shift lead ki sign ki hui overtime sheet hai."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "{name}'s concern goes first. Payroll fixes both pay slips this month.",
+       "hinglish": "{name} ki chinta pehle gayi. Payroll ne is mahine dono pay slips theek kar di."
+      }
+     }
+    },
+    {
+     "id": "wh-e2-rule",
+     "episode": 2,
+     "kind": "ordinary",
+     "type": "risk",
+     "scene": {
+      "en": "The team asks how concerns should be raised from now on.",
+      "hinglish": "Team poochhti hai ki ab se chintaayein kaise uthaayi jaayein."
+     },
+     "question": {
+      "en": "How should concerns be raised?",
+      "hinglish": "Chintaayein kaise uthaayi jaayein?"
+     },
+     "options": [
+      {
+       "id": "wh-e2-rule-a",
+       "effect": 3,
+       "text": {
+        "en": "A simple form, with a reply within a week",
+        "hinglish": "Ek seedha form, ek hafte mein jawab ke saath"
+       },
+       "after": {
+        "en": "The form goes up on the notice board.",
+        "hinglish": "Form notice board par lag gaya."
+       }
+      },
+      {
+       "id": "wh-e2-rule-b",
+       "effect": 1,
+       "text": {
+        "en": "Come and see me any time",
+        "hinglish": "Kabhi bhi mujhse mil lijiye"
+       },
+       "after": {
+        "en": "Two people come by. Others say they are not sure it is welcome.",
+        "hinglish": "Do log aaye. Baaki kehte hain unhe pakka nahin ki yeh theek rahega."
+       }
+      },
+      {
+       "id": "wh-e2-rule-c",
+       "effect": -2,
+       "text": {
+        "en": "Raise it at the weekly meeting, in front of everyone",
+        "hinglish": "Weekly meeting mein sabke saamne uthaiye"
+       },
+       "after": {
+        "en": "Nobody raises anything at the weekly meeting.",
+        "hinglish": "Weekly meeting mein koi kuch nahin uthaata."
+       }
+      }
+     ]
+    },
+    {
+     "id": "wh-e2-spoken",
+     "episode": 2,
+     "kind": "pick",
+     "shape": "rival",
+     "family": "conduct",
+     "domain": "conduct",
+     "role": {
+      "en": "Spoken over",
+      "hinglish": "Baat kaati gayi"
+     },
+     "scene": {
+      "en": "Two colleagues each ask for a quiet word: they are often spoken over in shift meetings.",
+      "hinglish": "Do colleagues alag alag baat karna chahte hain: shift meetings mein unki baat aksar kaati jaati hai."
+     },
+     "question": {
+      "en": "You have time for one this week. Who do you meet first?",
+      "hinglish": "Is hafte ek ke liye samay hai. Pehle kisse milenge?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-e2-spoken-a",
+       "tier": 2,
+       "text": {
+        "en": "Gives three recent examples, with the meeting dates.",
+        "hinglish": "Haal ke teen udaharan dete hain, meeting ki tareekhon ke saath."
+       }
+      },
+      {
+       "id": "wh-e2-spoken-b",
+       "tier": 2,
+       "text": {
+        "en": "Gives three recent examples, and a colleague confirms each one.",
+        "hinglish": "Haal ke teen udaharan dete hain, aur ek colleague unki pushti karta hai."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "You meet {name} first. Shift meetings get a round where everyone speaks once.",
+       "hinglish": "Aap pehle {name} se milte hain. Shift meetings mein ab har koi ek baar bolta hai."
+      }
+     }
+    },
+    {
+     "id": "wh-e2-miscount",
+     "episode": 2,
+     "kind": "pick",
+     "shape": "clear",
+     "family": "conduct",
+     "domain": "conduct",
+     "role": {
+      "en": "Stock miscount",
+      "hinglish": "Stock ki galat ginti"
+     },
+     "scene": {
+      "en": "Two colleagues disagree about how the stock miscount happened.",
+      "hinglish": "Do colleagues mein behas hai ki stock ki ginti galat kaise hui."
+     },
+     "question": {
+      "en": "Whose account goes in the incident report?",
+      "hinglish": "Incident report mein kiska bayaan jaayega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-e2-miscount-a",
+       "tier": 3,
+       "text": {
+        "en": "Matches the scanner records line by line.",
+        "hinglish": "Scanner records se line dar line milta hai."
+       }
+      },
+      {
+       "id": "wh-e2-miscount-b",
+       "tier": 1,
+       "text": {
+        "en": "Remembers it differently from the scanner records.",
+        "hinglish": "Scanner records se alag yaad hai."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name}'s account goes in. The scanner check is added to the count routine.",
+       "hinglish": "{name} ka bayaan gaya. Ginti ke tareeke mein scanner check jod diya gaya."
+      },
+      "1": {
+       "en": "{name}'s account goes in. Audit asks why it differs from the scanner records.",
+       "hinglish": "{name} ka bayaan gaya. Audit poochhta hai ki yeh scanner records se alag kyon hai."
+      }
+     }
+    },
+    {
+     "id": "wh-e2-safety",
+     "episode": 2,
+     "kind": "rank",
+     "shape": "same",
+     "family": "conduct",
+     "domain": "conduct",
+     "role": {
+      "en": "Safety concerns",
+      "hinglish": "Safety chintaayein"
+     },
+     "scene": {
+      "en": "Four colleagues report safety concerns. The safety meeting can take two this week.",
+      "hinglish": "Chaar colleagues safety chintaayein batate hain. Is hafte safety meeting do le sakti hai."
+     },
+     "question": {
+      "en": "Whose concern goes to the safety meeting first? Put them in order.",
+      "hinglish": "Kiski chinta pehle safety meeting mein jaayegi? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-e2-safety-a",
+       "tier": 3,
+       "text": {
+        "en": "Photographed a cracked rack upright and logged the bay number.",
+        "hinglish": "Toote rack ka photo liya aur bay number likha."
+       }
+      },
+      {
+       "id": "wh-e2-safety-b",
+       "tier": 3,
+       "text": {
+        "en": "Measured a blocked fire exit route and logged it twice this month.",
+        "hinglish": "Band fire exit raaste ko naapa aur is mahine do baar log kiya."
+       }
+      },
+      {
+       "id": "wh-e2-safety-c",
+       "tier": 1,
+       "text": {
+        "en": "Mentions that the floor felt slippery somewhere last week.",
+        "hinglish": "Kehte hain ki pichhle hafte kahin farsh fisalne wala laga."
+       }
+      },
+      {
+       "id": "wh-e2-safety-d",
+       "tier": 1,
+       "text": {
+        "en": "Heard from someone that a forklift beeps oddly.",
+        "hinglish": "Kisi se suna ki ek forklift ajeeb aawaaz karta hai."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name}'s concern goes first. The repair is booked for Tuesday.",
+       "hinglish": "{name} ki chinta pehle gayi. Marammat Tuesday ko book hui."
+      },
+      "1": {
+       "en": "{name}'s concern goes first. The meeting asks for more detail before acting.",
+       "hinglish": "{name} ki chinta pehle gayi. Meeting ne kaam se pehle aur jaankari maangi."
+      }
+     }
+    },
+    {
+     "id": "wh-e2-witness",
+     "episode": 2,
+     "kind": "pick",
+     "shape": "rival",
+     "family": "conduct",
+     "domain": "conduct",
+     "role": {
+      "en": "Witness statement",
+      "hinglish": "Gawaah ka bayaan"
+     },
+     "scene": {
+      "en": "A customer complains about a damaged parcel. Two colleagues packed orders at that table.",
+      "hinglish": "Ek customer toote parcel ki shikayat karta hai. Us table par do colleagues ne orders pack kiye."
+     },
+     "question": {
+      "en": "Whose packing record do you send to the customer team?",
+      "hinglish": "Kiska packing record customer team ko bhejenge?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-e2-witness-a",
+       "tier": 2,
+       "text": {
+        "en": "Packed by the standard and photographed every parcel that morning.",
+        "hinglish": "Standard ke hisaab se pack kiya aur us subah har parcel ka photo liya."
+       }
+      },
+      {
+       "id": "wh-e2-witness-b",
+       "tier": 2,
+       "text": {
+        "en": "Packed by the standard and has the checker's sign-off for every parcel.",
+        "hinglish": "Standard ke hisaab se pack kiya aur har parcel par checker ka sign-off hai."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "{name}'s record goes to the customer team. The parcel was damaged in transit.",
+       "hinglish": "{name} ka record customer team ko gaya. Parcel raaste mein toota tha."
+      }
+     }
+    },
+    {
+     "id": "wh-e2-quiet",
+     "episode": 2,
+     "kind": "rank",
+     "shape": "same",
+     "family": "conduct",
+     "domain": "conduct",
+     "role": {
+      "en": "Rota dispute",
+      "hinglish": "Rota ka jhagda"
+     },
+     "scene": {
+      "en": "Four colleagues say the holiday rota went against them last year.",
+      "hinglish": "Chaar colleagues kehte hain ki pichhle saal holiday rota unke khilaaf gaya."
+     },
+     "question": {
+      "en": "Whose case do you look at first? Put them in order.",
+      "hinglish": "Aap pehle kiska maamla dekhenge? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-e2-quiet-a",
+       "tier": 3,
+       "text": {
+        "en": "Worked every public holiday last year, by the rota records.",
+        "hinglish": "Rota records ke hisaab se pichhle saal har public holiday par kaam kiya."
+       }
+      },
+      {
+       "id": "wh-e2-quiet-b",
+       "tier": 3,
+       "text": {
+        "en": "Was given no leave in either peak, by the rota records.",
+        "hinglish": "Rota records ke hisaab se dono peaks mein koi chhutti nahin mili."
+       }
+      },
+      {
+       "id": "wh-e2-quiet-c",
+       "tier": 1,
+       "text": {
+        "en": "Had one holiday swapped, by agreement.",
+        "hinglish": "Sehmati se ek chhutti badli gayi."
+       }
+      },
+      {
+       "id": "wh-e2-quiet-d",
+       "tier": 1,
+       "text": {
+        "en": "Had the leave asked for, by the rota records.",
+        "hinglish": "Rota records ke hisaab se maangi gayi chhutti mili."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "You look at {name}'s case first. The new rota spreads holidays more evenly.",
+       "hinglish": "Aap pehle {name} ka maamla dekhte hain. Naya rota chhuttiyaan zyada barabar baant ta hai."
+      },
+      "1": {
+       "en": "You look at {name}'s case first. Two others ask why theirs waited.",
+       "hinglish": "Aap pehle {name} ka maamla dekhte hain. Do aur poochhte hain ki unka maamla kyon ruka."
+      }
+     }
+    },
+    {
+     "id": "wh-e2-note",
+     "episode": 2,
+     "kind": "ordinary",
+     "type": "schedule",
+     "scene": {
+      "en": "The disputes have taken a week. The team is tense.",
+      "hinglish": "Jhagdon mein ek hafta laga. Team mein tanaav hai."
+     },
+     "question": {
+      "en": "How do you close the week?",
+      "hinglish": "Hafta kaise khatam karein?"
+     },
+     "options": [
+      {
+       "id": "wh-e2-note-a",
+       "effect": 3,
+       "text": {
+        "en": "A short team meeting on what changes now",
+        "hinglish": "Ab kya badlega, us par chhoti team meeting"
+       },
+       "after": {
+        "en": "The meeting is short. People leave knowing what changes.",
+        "hinglish": "Meeting chhoti rahi. Log jaante hain ki kya badlega."
+       }
+      },
+      {
+       "id": "wh-e2-note-b",
+       "effect": 1,
+       "text": {
+        "en": "An email to everyone",
+        "hinglish": "Sabko ek email"
+       },
+       "after": {
+        "en": "The email goes out. A few people reply.",
+        "hinglish": "Email chala gaya. Kuch logon ne jawab diya."
+       }
+      },
+      {
+       "id": "wh-e2-note-c",
+       "effect": -2,
+       "text": {
+        "en": "Say nothing and move on",
+        "hinglish": "Kuch na kahein aur aage badhein"
+       },
+       "after": {
+        "en": "Nobody is sure the matter is closed.",
+        "hinglish": "Kisi ko pakka nahin ki maamla khatam hua."
+       }
+      }
+     ]
+    },
+    {
+     "id": "wh-w2-budget",
+     "episode": 3,
+     "kind": "pick",
+     "shape": "rival",
+     "family": "opportunity",
+     "role": {
+      "en": "Budget sheet",
+      "hinglish": "Budget sheet"
+     },
+     "scene": {
+      "en": "The peak budget needs one owner.",
+      "hinglish": "Peak budget ka ek owner chahiye."
+     },
+     "question": {
+      "en": "Who should own the budget sheet?",
+      "hinglish": "Budget sheet kaun sambhalega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w2-budget-a",
+       "tier": 2,
+       "text": {
+        "en": "Kept last year's peak budget within one per cent of plan.",
+        "hinglish": "Pichhle saal ka peak budget plan ke ek pratishat ke andar rakha."
+       }
+      },
+      {
+       "id": "wh-w2-budget-b",
+       "tier": 2,
+       "text": {
+        "en": "Runs the warehouse's monthly cost reports; spots overspends early.",
+        "hinglish": "Warehouse ki monthly cost reports ka kaam; zyada kharch jaldi pakadne mein achha."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "{name} owns the budget sheet now. The first version is shared with the client.",
+       "hinglish": "Budget sheet ab {name} ke paas hai. Pehla version client ko bheja gaya."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w2-boxes",
+     "episode": 3,
+     "kind": "ordinary",
+     "type": "vendor",
+     "scene": {
+      "en": "Sale week needs thousands of packing boxes.",
+      "hinglish": "Sale week ke liye hazaaron packing boxes chahiye."
+     },
+     "question": {
+      "en": "Which box supplier?",
+      "hinglish": "Kaunsa box supplier?"
+     },
+     "options": [
+      {
+       "id": "wh-w2-boxes-a",
+       "effect": 3,
+       "text": {
+        "en": "The local supplier the warehouse has used before",
+        "hinglish": "Local supplier jiske saath warehouse pehle kaam kar chuka hai"
+       },
+       "after": {
+        "en": "The local supplier delivers samples in two days.",
+        "hinglish": "Local supplier ne do din mein samples bhej diye."
+       }
+      },
+      {
+       "id": "wh-w2-boxes-b",
+       "effect": 1,
+       "text": {
+        "en": "The cheapest supplier online",
+        "hinglish": "Online sabse sasta supplier"
+       },
+       "after": {
+        "en": "The online samples arrive a week late, and a little thin.",
+        "hinglish": "Online samples ek hafte der se aaye, aur thode patle."
+       }
+      },
+      {
+       "id": "wh-w2-boxes-c",
+       "effect": -2,
+       "text": {
+        "en": "Let each shift order its own",
+        "hinglish": "Har shift apne boxes khud mangaye"
+       },
+       "after": {
+        "en": "Five suppliers send five different box sizes.",
+        "hinglish": "Paanch suppliers ne paanch alag size ke boxes bheje."
+       }
+      }
+     ]
+    },
+    {
+     "id": "wh-w2-safety",
+     "episode": 3,
+     "kind": "split",
+     "shape": "rival",
+     "family": "opportunity",
+     "role": {
+      "en": "Safety course",
+      "hinglish": "Safety course"
+     },
+     "scene": {
+      "en": "A forklift safety course runs over 6 days, and the days can be split between colleagues.",
+      "hinglish": "Forklift safety course 6 din ka hai, aur din colleagues mein baante ja sakte hain."
+     },
+     "question": {
+      "en": "Share the 6 course days.",
+      "hinglish": "6 course din baantiye."
+     },
+     "unit": {
+      "en": "course days",
+      "hinglish": "course din"
+     },
+     "pool": 6,
+     "descriptions": [
+      {
+       "id": "wh-w2-safety-a",
+       "tier": 3,
+       "text": {
+        "en": "Already runs the forklift checks; the course would make it official.",
+        "hinglish": "Forklift checks pehle se sambhalne ka kaam; course se yeh official hoga."
+       }
+      },
+      {
+       "id": "wh-w2-safety-b",
+       "tier": 3,
+       "text": {
+        "en": "Will lead the loading dock in sale week; the course covers exactly that.",
+        "hinglish": "Sale week mein loading dock lead karne ka kaam; course bilkul usi ke baare mein."
+       }
+      },
+      {
+       "id": "wh-w2-safety-c",
+       "tier": 1,
+       "text": {
+        "en": "Interested in safety work; no safety role in sale week.",
+        "hinglish": "Safety ke kaam mein dilchaspi; sale week mein koi safety role nahin."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} took the most course days and is now writing the sale week safety plan.",
+       "hinglish": "Sabse zyada course din {name} ko mile, aur ab sale week ka safety plan unke haath mein hai."
+      },
+      "1": {
+       "en": "{name} took the most course days. The safety plan still needs a lead.",
+       "hinglish": "Sabse zyada course din {name} ko mile. Safety plan ko abhi bhi ek lead chahiye."
+      },
+      "even": {
+       "en": "The course days were shared evenly. Three colleagues know the safety basics.",
+       "hinglish": "Course din barabar baante gaye. Teen colleagues safety ki buniyadi baatein jaante hain."
+      }
+     },
+     "domain": "resources"
+    },
+    {
+     "id": "wh-w3-deals",
+     "episode": 3,
+     "kind": "rank",
+     "shape": "mixed",
+     "family": "opportunity",
+     "role": {
+      "en": "Supplier deals",
+      "hinglish": "Supplier deals"
+     },
+     "scene": {
+      "en": "Twelve suppliers need peak contracts this week.",
+      "hinglish": "Is hafte baarah suppliers ke peak contracts karne hain."
+     },
+     "question": {
+      "en": "Who should lead the supplier deals? Put them in order.",
+      "hinglish": "Supplier deals kaun lead karega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-w3-deals-a",
+       "tier": 3,
+       "text": {
+        "en": "Negotiated last peak's supplier contracts and saved 15 per cent.",
+        "hinglish": "Pichhle peak ke supplier contracts tay kiye aur 15 pratishat bachaya."
+       }
+      },
+      {
+       "id": "wh-w3-deals-b",
+       "tier": 3,
+       "text": {
+        "en": "Manages the warehouse's supplier list; has worked with eight of the twelve.",
+        "hinglish": "Warehouse ki supplier list sambhalne ka kaam; baarah mein se aath ke saath kaam kiya."
+       }
+      },
+      {
+       "id": "wh-w3-deals-c",
+       "tier": 1,
+       "text": {
+        "en": "Has sat in on two supplier meetings.",
+        "hinglish": "Do supplier meetings mein baithe hain."
+       }
+      },
+      {
+       "id": "wh-w3-deals-d",
+       "tier": 1,
+       "text": {
+        "en": "Strong on paperwork; has not negotiated a contract.",
+        "hinglish": "Kaagzi kaam mein mazboot; koi contract tay nahin kiya."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} closed eleven of the twelve deals under budget.",
+       "hinglish": "{name} ne baarah mein se gyaarah deals budget ke andar poori ki."
+      },
+      "1": {
+       "en": "{name} closed seven deals. Five are still open.",
+       "hinglish": "{name} ne saat deals poori ki. Paanch abhi baaki hain."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w3-rain",
+     "episode": 3,
+     "kind": "ordinary",
+     "type": "risk",
+     "scene": {
+      "en": "The forecast shows heavy rain in sale week.",
+      "hinglish": "Forecast ke hisaab se sale week mein tez baarish hogi."
+     },
+     "question": {
+      "en": "What about the loading dock?",
+      "hinglish": "Loading dock ka kya karein?"
+     },
+     "options": [
+      {
+       "id": "wh-w3-rain-a",
+       "effect": 3,
+       "text": {
+        "en": "Book covers for the loading dock now",
+        "hinglish": "Loading dock ke liye abhi covers book karein"
+       },
+       "after": {
+        "en": "The dock covers are booked.",
+        "hinglish": "Dock covers book ho gaye."
+       }
+      },
+      {
+       "id": "wh-w3-rain-b",
+       "effect": 1,
+       "text": {
+        "en": "Wait for a closer forecast",
+        "hinglish": "Paas ke forecast ka intezaar karein"
+       },
+       "after": {
+        "en": "The forecast still says rain. Covers cost more now.",
+        "hinglish": "Forecast ab bhi baarish bata raha hai. Covers ab mehenge hain."
+       }
+      },
+      {
+       "id": "wh-w3-rain-c",
+       "effect": -2,
+       "text": {
+        "en": "Load the trucks in the rain",
+        "hinglish": "Baarish mein hi trucks load karein"
+       },
+       "after": {
+        "en": "The client is not happy about wet boxes.",
+        "hinglish": "Geele boxes se client khush nahin hai."
+       }
+      }
+     ]
+    },
+    {
+     "id": "wh-w3-minutes",
+     "episode": 3,
+     "kind": "split",
+     "shape": "rival",
+     "family": "npt",
+     "role": {
+      "en": "Meeting minutes",
+      "hinglish": "Meeting minutes"
+     },
+     "scene": {
+      "en": "Someone has to take minutes at 6 client meetings. It is useful, but nobody asks for it.",
+      "hinglish": "6 client meetings ke minutes kisi ko likhne hain. Kaam zaroori hai, par koi ise maangta nahin."
+     },
+     "question": {
+      "en": "Share the 6 sets of minutes.",
+      "hinglish": "6 meetings ke minutes baantiye."
+     },
+     "unit": {
+      "en": "meetings",
+      "hinglish": "meetings"
+     },
+     "pool": 6,
+     "descriptions": [
+      {
+       "id": "wh-w3-minutes-a",
+       "tier": 3,
+       "text": {
+        "en": "Has the lightest workload this month.",
+        "hinglish": "Is mahine sabse halka kaam."
+       }
+      },
+      {
+       "id": "wh-w3-minutes-b",
+       "tier": 3,
+       "text": {
+        "en": "Has a light month after finishing the budget work early.",
+        "hinglish": "Budget ka kaam jaldi khatam hone ke baad is mahine kaam halka."
+       }
+      },
+      {
+       "id": "wh-w3-minutes-c",
+       "tier": 1,
+       "text": {
+        "en": "Is carrying two other deadlines this month.",
+        "hinglish": "Is mahine do aur deadlines saath mein."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} took the most minutes. The notes go out the same day.",
+       "hinglish": "Sabse zyada minutes {name} ke paas gaye. Notes usi din nikal gaye."
+      },
+      "1": {
+       "en": "{name} took the most minutes on top of two deadlines. The notes go out late.",
+       "hinglish": "Do deadlines ke saath sabse zyada minutes {name} ke paas gaye. Notes der se nikle."
+      },
+      "even": {
+       "en": "The minutes were shared evenly. The notes go out within two days.",
+       "hinglish": "Minutes barabar baante gaye. Notes do din ke andar nikal gaye."
+      }
+     },
+     "domain": "resources"
+    },
+    {
+     "id": "wh-w4-trucks",
+     "episode": 3,
+     "kind": "rank",
+     "shape": "same",
+     "family": "opportunity",
+     "role": {
+      "en": "Truck crisis",
+      "hinglish": "Truck crisis"
+     },
+     "scene": {
+      "en": "The truck company has pulled out, ten days before the sale.",
+      "hinglish": "Sale se das din pehle truck company peeche hat gayi."
+     },
+     "question": {
+      "en": "Who should handle the truck crisis? Put them in order.",
+      "hinglish": "Truck crisis kaun sambhalega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-w4-trucks-a",
+       "tier": 3,
+       "text": {
+        "en": "Found replacement trucks at two days' notice during last year's peak.",
+        "hinglish": "Pichhle peak mein do din ke notice par doosre trucks dhoondhe."
+       }
+      },
+      {
+       "id": "wh-w4-trucks-b",
+       "tier": 3,
+       "text": {
+        "en": "Has contacts at three truck firms; handled a cancelled booking last month.",
+        "hinglish": "Teen truck firms mein jaan-pehchaan; pichhle mahine ek cancel booking sambhali."
+       }
+      },
+      {
+       "id": "wh-w4-trucks-c",
+       "tier": 1,
+       "text": {
+        "en": "Calm under pressure; has not dealt with a supplier problem.",
+        "hinglish": "Dabaav mein shaant; supplier ki kisi samasya se nahin nipte."
+       }
+      },
+      {
+       "id": "wh-w4-trucks-d",
+       "tier": 1,
+       "text": {
+        "en": "Joined the transport team recently; still learning who to call.",
+        "hinglish": "Transport team mein haal hi mein shaamil; kise call karna hai, abhi seekhna baaki."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} found a new truck firm by Friday, at the same price.",
+       "hinglish": "{name} ne Friday tak nayi truck firm dhoondh li, usi daam par."
+      },
+      "1": {
+       "en": "{name} found a new truck firm, at a higher price.",
+       "hinglish": "{name} ne nayi truck firm dhoondh li, zyada daam par."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w4-labels",
+     "episode": 3,
+     "kind": "ordinary",
+     "type": "budget",
+     "scene": {
+      "en": "The team is behind on labelling the new shelves.",
+      "hinglish": "Team naye shelves par label lagane mein peeche hai."
+     },
+     "question": {
+      "en": "How do you catch up?",
+      "hinglish": "Kaise poora karein?"
+     },
+     "options": [
+      {
+       "id": "wh-w4-labels-a",
+       "effect": 3,
+       "text": {
+        "en": "Hire two temporary helpers for a week",
+        "hinglish": "Ek hafte ke liye do temporary helpers rakhein"
+       },
+       "after": {
+        "en": "The helpers start on Tuesday. The labels catch up.",
+        "hinglish": "Helpers Tuesday se aaye. Labels ka kaam poora hone laga."
+       }
+      },
+      {
+       "id": "wh-w4-labels-b",
+       "effect": 1,
+       "text": {
+        "en": "Ask for voluntary overtime",
+        "hinglish": "Apni marzi se overtime ke liye poochhein"
+       },
+       "after": {
+        "en": "Three people stay late twice. The labels are nearly done.",
+        "hinglish": "Teen log do baar der tak ruke. Labels lagbhag ho gaye."
+       }
+      },
+      {
+       "id": "wh-w4-labels-c",
+       "effect": -2,
+       "text": {
+        "en": "Skip the shelf labels",
+        "hinglish": "Shelf labels chhod dein"
+       },
+       "after": {
+        "en": "Pickers ask where the shelf labels went.",
+        "hinglish": "Pickers pooch rahe hain ki shelf labels kahan gaye."
+       }
+      }
+     ]
+    },
+    {
+     "id": "wh-w4-returns",
+     "episode": 3,
+     "kind": "pick",
+     "shape": "clear",
+     "family": "opportunity",
+     "role": {
+      "en": "Returns desk",
+      "hinglish": "Returns desk"
+     },
+     "scene": {
+      "en": "Sale week brings returns too.",
+      "hinglish": "Sale week mein returns bhi aate hain."
+     },
+     "question": {
+      "en": "Who should set up the returns desk?",
+      "hinglish": "Returns desk kaun lagayega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w4-returns-a",
+       "tier": 3,
+       "text": {
+        "en": "Ran last peak's returns desk; it handled 3,000 returns without a backlog.",
+        "hinglish": "Pichhle peak ka returns desk chalaya; 3,000 returns bina rukawat ke sambhale."
+       }
+      },
+      {
+       "id": "wh-w4-returns-b",
+       "tier": 1,
+       "text": {
+        "en": "Has not worked on returns before.",
+        "hinglish": "Returns par pehle kaam nahin kiya."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} set up the returns desk. A test run takes ten seconds a parcel.",
+       "hinglish": "{name} ne returns desk lagaya. Test run mein ek parcel par das second lage."
+      },
+      "1": {
+       "en": "{name} set up the returns desk. The test run is slow.",
+       "hinglish": "{name} ne returns desk lagaya. Test run dheema hai."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w3-conveyor",
+     "episode": 3,
+     "kind": "pick",
+     "shape": "clear",
+     "family": "opportunity",
+     "role": {
+      "en": "Conveyor test",
+      "hinglish": "Conveyor test"
+     },
+     "scene": {
+      "en": "The new conveyor belt arrives on Thursday.",
+      "hinglish": "Naya conveyor belt Thursday ko aa raha hai."
+     },
+     "question": {
+      "en": "Who should run the conveyor test?",
+      "hinglish": "Conveyor test kaun karega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w3-conveyor-a",
+       "tier": 3,
+       "text": {
+        "en": "Has tested the last six machines the warehouse bought.",
+        "hinglish": "Warehouse ki pichhli chhah machines ka test kiya."
+       }
+      },
+      {
+       "id": "wh-w3-conveyor-b",
+       "tier": 1,
+       "text": {
+        "en": "Has never tested a machine.",
+        "hinglish": "Kabhi kisi machine ka test nahin kiya."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} ran the test. The belt runs first time.",
+       "hinglish": "{name} ne test kiya. Belt pehli baar mein chal gaya."
+      },
+      "1": {
+       "en": "{name} ran the test. One motor has to be replaced.",
+       "hinglish": "{name} ne test kiya. Ek motor badalni padegi."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w2-pitch",
+     "episode": 4,
+     "kind": "rank",
+     "shape": "mixed",
+     "family": "opportunity",
+     "role": {
+      "en": "Client pitch",
+      "hinglish": "Client pitch"
+     },
+     "scene": {
+      "en": "Lotus Home's directors want to hear the plan in person.",
+      "hinglish": "Lotus Home ke directors plan khud sunna chahte hain."
+     },
+     "question": {
+      "en": "Who should present the plan? Put them in order.",
+      "hinglish": "Plan kaun present karega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-w2-pitch-a",
+       "tier": 3,
+       "text": {
+        "en": "Presented to the company's two biggest clients this year; both renewed.",
+        "hinglish": "Is saal company ke do sabse bade clients ko present kiya; dono ne contract badhaya."
+       }
+      },
+      {
+       "id": "wh-w2-pitch-b",
+       "tier": 3,
+       "text": {
+        "en": "Pitched last year's peak plan to a new client and won the contract.",
+        "hinglish": "Pichhle saal naye client ko peak plan pitch kiya aur contract jeeta."
+       }
+      },
+      {
+       "id": "wh-w2-pitch-c",
+       "tier": 1,
+       "text": {
+        "en": "Has presented inside the team; not yet to a client's directors.",
+        "hinglish": "Team ke andar present kiya hai; client ke directors ko abhi tak nahin."
+       }
+      },
+      {
+       "id": "wh-w2-pitch-d",
+       "tier": 1,
+       "text": {
+        "en": "Knows the plan's numbers best; nervous in front of large groups.",
+        "hinglish": "Plan ke numbers sabse achhe se pata; bade group ke saamne ghabrahat."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} presented the plan. The directors approved the budget in the room.",
+       "hinglish": "{name} ne plan present kiya. Directors ne wahin budget approve kiya."
+      },
+      "1": {
+       "en": "{name} presented the plan. The directors want to see it again next week.",
+       "hinglish": "{name} ne plan present kiya. Directors agle hafte phir dekhna chahte hain."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w2-packing",
+     "episode": 4,
+     "kind": "pick",
+     "shape": "same",
+     "family": "opportunity",
+     "role": {
+      "en": "Packing standard",
+      "hinglish": "Packing standard"
+     },
+     "scene": {
+      "en": "The client wants a packing standard for fragile goods.",
+      "hinglish": "Client ko naazuk saamaan ke liye packing standard chahiye."
+     },
+     "question": {
+      "en": "Who should write the packing standard?",
+      "hinglish": "Packing standard kaun likhega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w2-packing-a",
+       "tier": 2,
+       "text": {
+        "en": "Wrote the packing standards for two glassware clients; breakages fell.",
+        "hinglish": "Do glassware clients ke packing standard likhe; toot-phoot kam hui."
+       }
+      },
+      {
+       "id": "wh-w2-packing-b",
+       "tier": 2,
+       "text": {
+        "en": "Trains the packing line; has a sharp eye for damage.",
+        "hinglish": "Packing line ko training; nuksan pakadne ki tez nazar."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "{name} wrote the packing standard. The client adds it to the contract.",
+       "hinglish": "{name} ne packing standard likha. Client ne use contract mein jod diya."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w3-shelves",
+     "episode": 4,
+     "kind": "pick",
+     "shape": "rival",
+     "family": "opportunity",
+     "role": {
+      "en": "Shelf layout",
+      "hinglish": "Shelf layout"
+     },
+     "scene": {
+      "en": "The sale stock needs 60 new shelf bays.",
+      "hinglish": "Sale stock ke liye 60 naye shelf bays chahiye."
+     },
+     "question": {
+      "en": "Who should plan the shelf layout?",
+      "hinglish": "Shelf layout kaun plan karega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w3-shelves-a",
+       "tier": 2,
+       "text": {
+        "en": "Planned last year's 50 sale bays; pickers found every item.",
+        "hinglish": "Pichhle saal ke 50 sale bays plan kiye; pickers ko har item mil gaya."
+       }
+      },
+      {
+       "id": "wh-w3-shelves-b",
+       "tier": 2,
+       "text": {
+        "en": "Trained in space planning; laid out the returns area last year.",
+        "hinglish": "Space planning mein trained; pichhle saal returns area ka layout banaya."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "{name} planned the shelves. Every bay fits, with room for a returns lane.",
+       "hinglish": "{name} ne shelves plan kiye. Har bay fit hai, returns lane ki jagah bhi hai."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w3-sellers",
+     "episode": 4,
+     "kind": "pick",
+     "shape": "rival",
+     "family": "opportunity",
+     "role": {
+      "en": "Seller outreach",
+      "hinglish": "Seller outreach"
+     },
+     "scene": {
+      "en": "Twenty small sellers can ship through the warehouse in sale week.",
+      "hinglish": "Sale week mein bees chhote sellers warehouse se maal bhej sakte hain."
+     },
+     "question": {
+      "en": "Who should get in touch with the sellers?",
+      "hinglish": "Sellers se sampark kaun karega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w3-sellers-a",
+       "tier": 2,
+       "text": {
+        "en": "Speaks with small sellers every month for the warehouse's marketplace line.",
+        "hinglish": "Warehouse ki marketplace line ke liye har mahine chhote sellers se baat."
+       }
+      },
+      {
+       "id": "wh-w3-sellers-b",
+       "tier": 2,
+       "text": {
+        "en": "Set up last year's small seller desk; many sellers know the name.",
+        "hinglish": "Pichhle saal small seller desk shuru kiya; kai sellers naam se jaante hain."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "{name} called the sellers. Eighteen of twenty have signed up.",
+       "hinglish": "{name} ne sellers ko call kiya. Bees mein se atharah jud gaye."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w3-audit",
+     "episode": 4,
+     "kind": "rank",
+     "shape": "mixed",
+     "family": "opportunity",
+     "role": {
+      "en": "Client audit",
+      "hinglish": "Client audit"
+     },
+     "scene": {
+      "en": "Lotus Home's auditors will inspect the warehouse.",
+      "hinglish": "Lotus Home ke auditors warehouse ki jaanch karenge."
+     },
+     "question": {
+      "en": "Who should host the audit? Put them in order.",
+      "hinglish": "Audit kaun host karega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-w3-audit-a",
+       "tier": 3,
+       "text": {
+        "en": "Hosted last year's client audit; it passed with no findings.",
+        "hinglish": "Pichhle saal ka client audit host kiya; bina kisi kami ke paas hua."
+       }
+      },
+      {
+       "id": "wh-w3-audit-b",
+       "tier": 3,
+       "text": {
+        "en": "Former quality inspector; knows what auditors look for.",
+        "hinglish": "Pehle quality inspector; auditors kya dekhte hain, achhi tarah pata."
+       }
+      },
+      {
+       "id": "wh-w3-audit-c",
+       "tier": 1,
+       "text": {
+        "en": "Has prepared audit files; has not met auditors in person.",
+        "hinglish": "Audit files taiyaar ki hain; auditors se kabhi mile nahin."
+       }
+      },
+      {
+       "id": "wh-w3-audit-d",
+       "tier": 1,
+       "text": {
+        "en": "Prefers working behind the scenes; has not done audit work.",
+        "hinglish": "Parde ke peeche kaam pasand; audit ka kaam nahin kiya."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} hosted the audit. It passed with no findings.",
+       "hinglish": "{name} ne audit host kiya. Bina kisi kami ke paas hua."
+      },
+      "1": {
+       "en": "{name} hosted the audit. It passed with three small findings.",
+       "hinglish": "{name} ne audit host kiya. Teen chhoti kamiyon ke saath paas hua."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w4-walk",
+     "episode": 4,
+     "kind": "pick",
+     "shape": "rival",
+     "family": "opportunity",
+     "role": {
+      "en": "Client walkthrough",
+      "hinglish": "Client walkthrough"
+     },
+     "scene": {
+      "en": "The client's directors want a walkthrough of the plan.",
+      "hinglish": "Client ke directors plan ka walkthrough chahte hain."
+     },
+     "question": {
+      "en": "Who should take the directors through the plan?",
+      "hinglish": "Directors ko plan kaun samjhayega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w4-walk-a",
+       "tier": 2,
+       "text": {
+        "en": "Knows every part of the plan; explains numbers simply.",
+        "hinglish": "Plan ka har hissa pata; numbers aasaani se samjhane mein achha."
+       }
+      },
+      {
+       "id": "wh-w4-walk-b",
+       "tier": 2,
+       "text": {
+        "en": "Has walked this client through two earlier projects.",
+        "hinglish": "Is client ko pehle do projects samjhaye hain."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "{name} took the directors through the plan. They asked for a faster returns lane.",
+       "hinglish": "{name} ne directors ko plan samjhaya. Unhone tez returns lane maangi."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w4-mentor",
+     "episode": 4,
+     "kind": "split",
+     "shape": "rival",
+     "family": "opportunity",
+     "role": {
+      "en": "Mentoring",
+      "hinglish": "Mentoring"
+     },
+     "scene": {
+      "en": "The company director offers 6 hours of one to one mentoring.",
+      "hinglish": "Company director 6 ghante ki one to one mentoring de rahe hain."
+     },
+     "question": {
+      "en": "Share the 6 mentoring hours.",
+      "hinglish": "6 mentoring ghante baantiye."
+     },
+     "unit": {
+      "en": "hours",
+      "hinglish": "ghante"
+     },
+     "pool": 6,
+     "descriptions": [
+      {
+       "id": "wh-w4-mentor-a",
+       "tier": 3,
+       "text": {
+        "en": "Is preparing to lead a site next year; the mentoring fits that plan.",
+        "hinglish": "Agle saal ek site lead karne ki taiyaari; mentoring usi plan ke liye."
+       }
+      },
+      {
+       "id": "wh-w4-mentor-b",
+       "tier": 3,
+       "text": {
+        "en": "Has asked for help with client strategy, which the director knows well.",
+        "hinglish": "Client strategy mein madad maangi hai, jo director achhi tarah jaante hain."
+       }
+      },
+      {
+       "id": "wh-w4-mentor-c",
+       "tier": 1,
+       "text": {
+        "en": "Has not asked for mentoring and is happy in the current role.",
+        "hinglish": "Mentoring nahin maangi; abhi ke role mein khush."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} took the most mentoring hours and has a first session on Monday.",
+       "hinglish": "Sabse zyada mentoring ghante {name} ko mile; pehla session Monday ko hai."
+      },
+      "1": {
+       "en": "{name} took the most mentoring hours, with no questions ready yet.",
+       "hinglish": "Sabse zyada mentoring ghante {name} ko mile, par sawaal abhi taiyaar nahin."
+      },
+      "even": {
+       "en": "The mentoring hours were shared evenly. Three first sessions are booked.",
+       "hinglish": "Mentoring ghante barabar baante gaye. Teen pehle sessions book hue."
+      }
+     },
+     "domain": "resources"
+    },
+    {
+     "id": "wh-w4-signs",
+     "episode": 4,
+     "kind": "pick",
+     "shape": "same",
+     "family": "opportunity",
+     "role": {
+      "en": "Floor signs",
+      "hinglish": "Floor signs"
+     },
+     "scene": {
+      "en": "The floor needs signs in English, Hindi and Marathi.",
+      "hinglish": "Floor par English, Hindi aur Marathi mein signs chahiye."
+     },
+     "question": {
+      "en": "Who should check the signs?",
+      "hinglish": "Signs kaun check karega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w4-signs-a",
+       "tier": 2,
+       "text": {
+        "en": "Edited the warehouse's Hindi and Marathi notices for two years.",
+        "hinglish": "Do saal se warehouse ke Hindi aur Marathi notices edit kiye."
+       }
+      },
+      {
+       "id": "wh-w4-signs-b",
+       "tier": 2,
+       "text": {
+        "en": "Translated last year's floor signs into three languages.",
+        "hinglish": "Pichhle saal ke floor signs teen bhashaon mein translate kiye."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "{name} checked the signs. Every sign reads correctly in all three languages.",
+       "hinglish": "{name} ne signs check kiye. Har sign teeno bhashaon mein sahi hai."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w4-night",
+     "episode": 4,
+     "kind": "rank",
+     "shape": "mixed",
+     "family": "opportunity",
+     "role": {
+      "en": "Night shift lead",
+      "hinglish": "Night shift lead"
+     },
+     "scene": {
+      "en": "Sale week runs a night shift for the first time.",
+      "hinglish": "Sale week mein pehli baar night shift chalegi."
+     },
+     "question": {
+      "en": "Who should lead the night shift? Put them in order.",
+      "hinglish": "Night shift kaun lead karega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-w4-night-a",
+       "tier": 3,
+       "text": {
+        "en": "Led the night shift through two peaks at another warehouse.",
+        "hinglish": "Doosre warehouse mein do peaks tak night shift lead ki."
+       }
+      },
+      {
+       "id": "wh-w4-night-b",
+       "tier": 3,
+       "text": {
+        "en": "Ran last peak's busiest shift; every truck left on time.",
+        "hinglish": "Pichhle peak ki sabse vyast shift chalayi; har truck samay par nikla."
+       }
+      },
+      {
+       "id": "wh-w4-night-c",
+       "tier": 1,
+       "text": {
+        "en": "Has covered one night shift.",
+        "hinglish": "Ek night shift cover ki hai."
+       }
+      },
+      {
+       "id": "wh-w4-night-d",
+       "tier": 1,
+       "text": {
+        "en": "Keen to lead; has not run a shift.",
+        "hinglish": "Lead karne ka shauk; koi shift nahin chalayi."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} leads the night shift. The rota is printed and agreed.",
+       "hinglish": "Night shift {name} lead karenge. Rota chhap gaya aur tay ho gaya."
+      },
+      "1": {
+       "en": "{name} leads the night shift. The rota changes twice this week.",
+       "hinglish": "Night shift {name} lead karenge. Is hafte rota do baar badla."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w6-promotion",
+     "episode": 4,
+     "kind": "pick",
+     "shape": "rival",
+     "family": "opportunity",
+     "role": {
+      "en": "Promotion",
+      "hinglish": "Promotion"
+     },
+     "scene": {
+      "en": "You can put one name forward for senior coordinator.",
+      "hinglish": "Senior coordinator ke liye aap ek naam aage bhej sakte hain."
+     },
+     "question": {
+      "en": "Whose name do you put forward?",
+      "hinglish": "Aap kiska naam aage bhejte hain?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w6-promotion-a",
+       "tier": 2,
+       "text": {
+        "en": "Led parts of the peak from the first week; colleagues often ask for advice.",
+        "hinglish": "Pehle hafte se peak ke hisse lead kiye; colleagues aksar salaah maangte hain."
+       }
+      },
+      {
+       "id": "wh-w6-promotion-b",
+       "tier": 2,
+       "text": {
+        "en": "Took on the hardest parts of the peak and delivered each one; trusted by the client.",
+        "hinglish": "Peak ke sabse mushkil hisse liye aur har ek poora kiya; client ka bharosa."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "{name}'s name goes forward. The director will decide next month.",
+       "hinglish": "{name} ka naam aage gaya. Director agle mahine faisla karenge."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w5-dryrun",
+     "episode": 5,
+     "kind": "rank",
+     "shape": "same",
+     "family": "opportunity",
+     "role": {
+      "en": "Dry run",
+      "hinglish": "Dry run"
+     },
+     "scene": {
+      "en": "The full dry run of sale day is on Saturday.",
+      "hinglish": "Sale day ka poora dry run Saturday ko hai."
+     },
+     "question": {
+      "en": "Who should lead the dry run? Put them in order.",
+      "hinglish": "Dry run kaun lead karega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-w5-dryrun-a",
+       "tier": 3,
+       "text": {
+        "en": "Led dry runs for two large launches; both ran clean.",
+        "hinglish": "Do bade launches ke dry run lead kiye; dono bina gadbad ke chale."
+       }
+      },
+      {
+       "id": "wh-w5-dryrun-b",
+       "tier": 3,
+       "text": {
+        "en": "Knows the sale day plan best; has run every practice so far.",
+        "hinglish": "Sale day ka plan sabse achhe se pata; ab tak ki har practice chalayi."
+       }
+      },
+      {
+       "id": "wh-w5-dryrun-c",
+       "tier": 1,
+       "text": {
+        "en": "Will be on the gate in sale week; has not joined the practices.",
+        "hinglish": "Sale week mein gate par duty; practices mein shaamil nahin."
+       }
+      },
+      {
+       "id": "wh-w5-dryrun-d",
+       "tier": 1,
+       "text": {
+        "en": "Has joined one practice as a helper.",
+        "hinglish": "Ek practice mein helper ke roop mein shaamil."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} led the dry run. It finished on time, with a short list of fixes.",
+       "hinglish": "{name} ne dry run lead kiya. Samay par khatam hua, sudhaar ki chhoti list ke saath."
+      },
+      "1": {
+       "en": "{name} led the dry run. It ran late, with a long list of fixes.",
+       "hinglish": "{name} ne dry run lead kiya. Der tak chala, sudhaar ki lambi list ke saath."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w5-early",
+     "episode": 5,
+     "kind": "split",
+     "shape": "rival",
+     "family": "npt",
+     "role": {
+      "en": "Early unloading",
+      "hinglish": "Early unloading"
+     },
+     "scene": {
+      "en": "Trucks are unloaded at 5 am on each of 6 days. Nobody wants it.",
+      "hinglish": "6 dinon tak har subah 5 baje trucks khaali karne hain. Yeh koi nahin chahta."
+     },
+     "question": {
+      "en": "Share the 6 early shifts.",
+      "hinglish": "6 early shifts baantiye."
+     },
+     "unit": {
+      "en": "early shifts",
+      "hinglish": "early shifts"
+     },
+     "pool": 6,
+     "descriptions": [
+      {
+       "id": "wh-w5-early-a",
+       "tier": 3,
+       "text": {
+        "en": "Lives five minutes from the warehouse.",
+        "hinglish": "Warehouse se paanch minute ki doori par ghar."
+       }
+      },
+      {
+       "id": "wh-w5-early-b",
+       "tier": 3,
+       "text": {
+        "en": "Is an early riser and lives close to the warehouse.",
+        "hinglish": "Subah jaldi uthne ki aadat, aur ghar warehouse ke paas."
+       }
+      },
+      {
+       "id": "wh-w5-early-c",
+       "tier": 1,
+       "text": {
+        "en": "Lives an hour and a half from the warehouse.",
+        "hinglish": "Warehouse se dedh ghante ki doori par ghar."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} took the most early shifts. The trucks are empty by 7.",
+       "hinglish": "Sabse zyada early shifts {name} ke paas gayi. 7 baje tak trucks khaali."
+      },
+      "1": {
+       "en": "{name} took the most early shifts, with a long commute. The trucks are empty by 8.",
+       "hinglish": "Lambe safar ke saath sabse zyada early shifts {name} ke paas gayi. 8 baje tak trucks khaali."
+      },
+      "even": {
+       "en": "The early shifts were shared evenly. The trucks are empty by 7.30.",
+       "hinglish": "Early shifts barabar baanti gayi. 7.30 tak trucks khaali."
+      }
+     },
+     "domain": "resources"
+    },
+    {
+     "id": "wh-w5-visit",
+     "episode": 5,
+     "kind": "rank",
+     "shape": "mixed",
+     "family": "opportunity",
+     "role": {
+      "en": "Director visit",
+      "hinglish": "Director visit"
+     },
+     "scene": {
+      "en": "Lotus Home's managing director may visit on sale day.",
+      "hinglish": "Sale day par Lotus Home ke managing director aa sakte hain."
+     },
+     "question": {
+      "en": "Who should host the visit? Put them in order.",
+      "hinglish": "Visit kaun host karega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-w5-visit-a",
+       "tier": 3,
+       "text": {
+        "en": "Hosted two client directors at earlier peaks; knows the safety rules for visitors.",
+        "hinglish": "Pehle ke peaks mein do client directors ko host kiya; visitors ke safety niyam pata."
+       }
+      },
+      {
+       "id": "wh-w5-visit-b",
+       "tier": 3,
+       "text": {
+        "en": "Ran last year's client tour; the client still mentions it.",
+        "hinglish": "Pichhle saal client tour chalaya; client ab bhi uski baat karta hai."
+       }
+      },
+      {
+       "id": "wh-w5-visit-c",
+       "tier": 1,
+       "text": {
+        "en": "Has met client visitors once, as part of a group.",
+        "hinglish": "Ek baar group ke saath client visitors se mile."
+       }
+      },
+      {
+       "id": "wh-w5-visit-d",
+       "tier": 1,
+       "text": {
+        "en": "Has not hosted a visit.",
+        "hinglish": "Koi visit host nahin kiya."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} will host the director. The visit route is agreed with safety.",
+       "hinglish": "Director ko {name} host karenge. Visit ka raasta safety team ke saath tay hai."
+      },
+      "1": {
+       "en": "{name} will host the director. Safety has asked for a new route.",
+       "hinglish": "Director ko {name} host karenge. Safety team ne naya raasta maanga hai."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w6-briefing",
+     "episode": 5,
+     "kind": "rank",
+     "shape": "same",
+     "family": "opportunity",
+     "role": {
+      "en": "Sale day briefing",
+      "hinglish": "Sale day briefing"
+     },
+     "scene": {
+      "en": "Sale day opens with a briefing for all three shifts.",
+      "hinglish": "Sale day teeno shifts ki briefing se shuru hota hai."
+     },
+     "question": {
+      "en": "Who should give the sale day briefing? Put them in order.",
+      "hinglish": "Sale day briefing kaun dega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-w6-briefing-a",
+       "tier": 3,
+       "text": {
+        "en": "Gave the all hands briefing at the last two peaks; crews listened.",
+        "hinglish": "Pichhle do peaks mein sabki briefing di; crew ne dhyaan se suna."
+       }
+      },
+      {
+       "id": "wh-w6-briefing-b",
+       "tier": 3,
+       "text": {
+        "en": "Runs the warehouse's weekly safety talks.",
+        "hinglish": "Warehouse ki weekly safety talks chalane ka kaam."
+       }
+      },
+      {
+       "id": "wh-w6-briefing-c",
+       "tier": 1,
+       "text": {
+        "en": "Has spoken at team meetings, not to all shifts.",
+        "hinglish": "Team meetings mein bole hain, sab shifts ke saamne nahin."
+       }
+      },
+      {
+       "id": "wh-w6-briefing-d",
+       "tier": 1,
+       "text": {
+        "en": "Prefers not to speak to large groups, but is willing.",
+        "hinglish": "Bade group ke saamne bolna pasand nahin, par taiyaar."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} gave the briefing. The first trucks left early.",
+       "hinglish": "{name} ne briefing di. Pehle trucks jaldi nikle."
+      },
+      "1": {
+       "en": "{name} gave the briefing. The first trucks left on time.",
+       "hinglish": "{name} ne briefing di. Pehle trucks samay par nikle."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w6-debrief",
+     "episode": 5,
+     "kind": "pick",
+     "shape": "rival",
+     "family": "opportunity",
+     "role": {
+      "en": "Client debrief",
+      "hinglish": "Client debrief"
+     },
+     "scene": {
+      "en": "The client wants a final debrief meeting.",
+      "hinglish": "Client ko aakhri debrief meeting chahiye."
+     },
+     "question": {
+      "en": "Who should lead the client debrief?",
+      "hinglish": "Client debrief kaun lead karega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w6-debrief-a",
+       "tier": 2,
+       "text": {
+        "en": "Has led the weekly client calls all season.",
+        "hinglish": "Poore season weekly client calls lead ki."
+       }
+      },
+      {
+       "id": "wh-w6-debrief-b",
+       "tier": 2,
+       "text": {
+        "en": "Owns the final report and its numbers.",
+        "hinglish": "Final report aur uske numbers ki zimmedaari."
+       }
+      }
+     ],
+     "after": {
+      "2": {
+       "en": "{name} led the debrief. The client asks to work together again next year.",
+       "hinglish": "{name} ne debrief lead kiya. Client agle saal phir saath kaam karna chahta hai."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w6-expo",
+     "episode": 5,
+     "kind": "split",
+     "shape": "rival",
+     "family": "opportunity",
+     "role": {
+      "en": "Expo passes",
+      "hinglish": "Expo passes"
+     },
+     "scene": {
+      "en": "Next month's national logistics expo in Delhi has 6 day passes for the team.",
+      "hinglish": "Agle mahine Delhi mein national logistics expo ke 6 day passes team ke liye hain."
+     },
+     "question": {
+      "en": "Share the 6 expo day passes.",
+      "hinglish": "6 expo day passes baantiye."
+     },
+     "unit": {
+      "en": "day passes",
+      "hinglish": "day passes"
+     },
+     "pool": 6,
+     "descriptions": [
+      {
+       "id": "wh-w6-expo-a",
+       "tier": 3,
+       "text": {
+        "en": "Will lead next year's peak; the expo is where the suppliers are.",
+        "hinglish": "Agle saal ka peak lead karne ka kaam; expo mein hi suppliers milte hain."
+       }
+      },
+      {
+       "id": "wh-w6-expo-b",
+       "tier": 3,
+       "text": {
+        "en": "Is building the warehouse's supplier list for next year.",
+        "hinglish": "Agle saal ke liye warehouse ki supplier list banane ka kaam."
+       }
+      },
+      {
+       "id": "wh-w6-expo-c",
+       "tier": 1,
+       "text": {
+        "en": "Has no project planned that needs the expo.",
+        "hinglish": "Aisa koi project nahin jismein expo ki zaroorat ho."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} took the most passes and has booked meetings with five suppliers.",
+       "hinglish": "Sabse zyada passes {name} ko mile; paanch suppliers se meetings tay hain."
+      },
+      "1": {
+       "en": "{name} took the most passes, with no meetings booked yet.",
+       "hinglish": "Sabse zyada passes {name} ko mile, par abhi koi meeting tay nahin."
+      },
+      "even": {
+       "en": "The passes were shared evenly. Three colleagues will go for two days each.",
+       "hinglish": "Passes barabar baante gaye. Teen colleagues do-do din jaayenge."
+      }
+     },
+     "domain": "resources"
+    },
+    {
+     "id": "wh-w6-lessons",
+     "episode": 5,
+     "kind": "pick",
+     "shape": "clear",
+     "family": "opportunity",
+     "role": {
+      "en": "Lessons document",
+      "hinglish": "Lessons document"
+     },
+     "scene": {
+      "en": "The company wants a short lessons document from the peak.",
+      "hinglish": "Company ko peak se seekh ka ek chhota document chahiye."
+     },
+     "question": {
+      "en": "Who should write it?",
+      "hinglish": "Ise kaun likhega?"
+     },
+     "descriptions": [
+      {
+       "id": "wh-w6-lessons-a",
+       "tier": 3,
+       "text": {
+        "en": "Kept the season's notes and issue log up to date every day.",
+        "hinglish": "Poore season roz notes aur issue log update kiya."
+       }
+      },
+      {
+       "id": "wh-w6-lessons-b",
+       "tier": 1,
+       "text": {
+        "en": "Missed most of the planning meetings this season.",
+        "hinglish": "Is season zyaadatar planning meetings mein nahin the."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} wrote the lessons document. The director shares it with other sites.",
+       "hinglish": "{name} ne lessons document likha. Director ne ise doosri sites ke saath share kiya."
+      },
+      "1": {
+       "en": "{name} wrote the lessons document. It needs input from others.",
+       "hinglish": "{name} ne lessons document likha. Ismein doosron ki raay chahiye."
+      }
+     },
+     "domain": "hiring"
+    },
+    {
+     "id": "wh-w6-leftover",
+     "episode": 5,
+     "kind": "ordinary",
+     "type": "budget",
+     "scene": {
+      "en": "Some of the peak budget is left over.",
+      "hinglish": "Peak budget ka kuch hissa bacha hai."
+     },
+     "question": {
+      "en": "What do you do with it?",
+      "hinglish": "Iska kya karein?"
+     },
+     "options": [
+      {
+       "id": "wh-w6-leftover-a",
+       "effect": 3,
+       "text": {
+        "en": "Return it to the client with the final report",
+        "hinglish": "Final report ke saath client ko lauta dein"
+       },
+       "after": {
+        "en": "The client thanks you for the clear accounts.",
+        "hinglish": "Saaf hisaab ke liye client ne shukriya kaha."
+       }
+      },
+      {
+       "id": "wh-w6-leftover-b",
+       "effect": 1,
+       "text": {
+        "en": "Spend it on a team dinner",
+        "hinglish": "Team dinner par kharch karein"
+       },
+       "after": {
+        "en": "The team enjoys the dinner. The client asks about the bill.",
+        "hinglish": "Team ko dinner pasand aaya. Client ne bill ke baare mein poochha."
+       }
+      },
+      {
+       "id": "wh-w6-leftover-c",
+       "effect": -2,
+       "text": {
+        "en": "Buy more shelving now",
+        "hinglish": "Abhi aur shelving khareedein"
+       },
+       "after": {
+        "en": "Sale week is over. The shelving stays in its boxes.",
+        "hinglish": "Sale week khatam ho chuka. Shelving dabbon mein hi padi hai."
+       }
+      }
+     ]
+    },
+    {
+     "id": "wh-w6-party",
+     "episode": 5,
+     "kind": "ordinary",
+     "type": "schedule",
+     "scene": {
+      "en": "The team wants to celebrate the peak.",
+      "hinglish": "Team peak ka jashn manana chahti hai."
+     },
+     "question": {
+      "en": "When should the team celebrate?",
+      "hinglish": "Team jashn kab manaye?"
+     },
+     "options": [
+      {
+       "id": "wh-w6-party-a",
+       "effect": 3,
+       "text": {
+        "en": "Friday lunch, in working hours",
+        "hinglish": "Friday lunch, kaam ke ghanton mein"
+       },
+       "after": {
+        "en": "Friday lunch is booked. Everyone can come.",
+        "hinglish": "Friday lunch book ho gaya. Sab aa sakte hain."
+       }
+      },
+      {
+       "id": "wh-w6-party-b",
+       "effect": 1,
+       "text": {
+        "en": "Saturday night",
+        "hinglish": "Saturday raat"
+       },
+       "after": {
+        "en": "Saturday night works for some. Three people cannot come.",
+        "hinglish": "Saturday raat kuch logon ke liye theek hai. Teen log nahin aa sakte."
+       }
+      },
+      {
+       "id": "wh-w6-party-c",
+       "effect": -2,
+       "text": {
+        "en": "Skip the celebration",
+        "hinglish": "Jashn chhod dein"
+       },
+       "after": {
+        "en": "No celebration. The team chat goes quiet.",
+        "hinglish": "Koi jashn nahin. Team chat shaant ho gayi."
+       }
+      }
+     ]
+    },
+    {
+     "id": "wh-w6-board",
+     "episode": 5,
+     "kind": "rank",
+     "shape": "mixed",
+     "family": "opportunity",
+     "role": {
+      "en": "Board presentation",
+      "hinglish": "Board presentation"
+     },
+     "scene": {
+      "en": "The company board wants the peak results presented.",
+      "hinglish": "Company board peak ke nateeje sunna chahta hai."
+     },
+     "question": {
+      "en": "Who should present to the board? Put them in order.",
+      "hinglish": "Board ke saamne kaun present karega? Inhe order mein rakhiye."
+     },
+     "descriptions": [
+      {
+       "id": "wh-w6-board-a",
+       "tier": 3,
+       "text": {
+        "en": "Presented results to the board twice; both were well received.",
+        "hinglish": "Board ko do baar nateeje present kiye; dono baar achha raha."
+       }
+      },
+      {
+       "id": "wh-w6-board-b",
+       "tier": 3,
+       "text": {
+        "en": "Built the peak's final numbers and knows every figure.",
+        "hinglish": "Peak ke final numbers banaye; har aankda pata."
+       }
+      },
+      {
+       "id": "wh-w6-board-c",
+       "tier": 1,
+       "text": {
+        "en": "Has not presented to the board.",
+        "hinglish": "Board ke saamne present nahin kiya."
+       }
+      },
+      {
+       "id": "wh-w6-board-d",
+       "tier": 1,
+       "text": {
+        "en": "Joined halfway through the season.",
+        "hinglish": "Season ke beech mein shaamil hue."
+       }
+      }
+     ],
+     "after": {
+      "3": {
+       "en": "{name} presented to the board. The board asks the team to run two clients next year.",
+       "hinglish": "{name} ne board ko present kiya. Board ne agle saal do clients sambhalne ko kaha."
+      },
+      "1": {
+       "en": "{name} presented to the board. The board asks for the numbers in writing.",
+       "hinglish": "{name} ne board ko present kiya. Board ne numbers likhit mein maange."
+      }
+     },
+     "domain": "hiring"
+    }
+   ],
+   "episodes": [
+    {
+     "title": {
+      "en": "The hiring sprint",
+      "hinglish": "Hiring sprint"
+     },
+     "premise": {
+      "en": "Peak season is coming. You start from head office, then staff up the warehouse.",
+      "hinglish": "Peak season aa raha hai. Aap head office se shuru karte hain, phir warehouse ke liye log jodte hain."
+     }
+    },
+    {
+     "title": {
+      "en": "The complaint",
+      "hinglish": "Shikayat"
+     },
+     "premise": {
+      "en": "A week of everyday disputes lands on your desk. Complaints of sexual harassment never go to a team lead: they go to the Internal Committee. These are ordinary workplace disputes.",
+      "hinglish": "Roz ke jhagdon ka ek hafta aapki table par aata hai. Sexual harassment ki shikayatein kabhi team lead ke paas nahin jaatin: woh Internal Committee ke paas jaati hain. Yeh aam workplace ke jhagde hain."
+     }
+    },
+    {
+     "title": {
+      "en": "The budget crunch",
+      "hinglish": "Budget ka dabaav"
+     },
+     "premise": {
+      "en": "Costs rise and a supplier pulls out. Every rupee and every hour counts.",
+      "hinglish": "Kharche badhte hain aur ek supplier peeche hat jaata hai. Har rupaya aur har ghanta keemti hai."
+     }
+    },
+    {
+     "title": {
+      "en": "The promotion round",
+      "hinglish": "Promotion round"
+     },
+     "premise": {
+      "en": "The company runs its promotion round, and your picks for the big jobs count.",
+      "hinglish": "Company apna promotion round chalati hai, aur bade kaamon ke liye aapki pasand maayne rakhti hai."
+     }
+    },
+    {
+     "title": {
+      "en": "The season close",
+      "hinglish": "Season ka ant"
+     },
+     "premise": {
+      "en": "Sale week arrives, then the reckoning: who presents, who goes to the expo, what is learnt.",
+      "hinglish": "Sale week aata hai, phir hisaab: kaun present karega, kaun expo jaayega, kya seekha."
+     }
+    }
+   ],
+   "mascots": {
+    "en": "You start at head office. Until you visit the warehouse, you know the team only by the mascots on the team chat.",
+    "hinglish": "Aap head office se shuru karte hain. Warehouse jaane tak aap team ko sirf team chat ke mascots se jaante hain."
+   }
+  },
+  {
+   "id": "newsroom",
+   "built": false,
+   "emoji": "📰",
+   "title": {
+    "en": "The newsroom",
+    "hinglish": "Newsroom"
+   },
+   "premise": {
+    "en": "Five episodes on a city newspaper's night desk, from the first edition to election night. PENDING v17",
+    "hinglish": "Ek shehar ke akhbaar ki night desk par ek season, pehle edition se election ki raat tak. PENDING v17"
+   }
+  },
+  {
+   "id": "clinic",
+   "built": false,
+   "emoji": "🩺",
+   "title": {
+    "en": "The clinic",
+    "hinglish": "Clinic"
+   },
+   "premise": {
+    "en": "Five episodes running a busy city clinic through the monsoon fever rush. PENDING v17",
+    "hinglish": "Monsoon bukhaar ke daur mein ek vyast shehri clinic chalane ka season. PENDING v17"
+   }
+  }
+ ],
+ "screens": {
+  "pickTitle": {
+   "en": "Pick your season",
+   "hinglish": "Apna season chuniye"
+  },
+  "pickBody": {
+   "en": "Each season is a short story in five episodes that reads you. Your decisions shape the story, and at the end you see what they say about you. About 12 minutes.",
+   "hinglish": "Har season paanch episodes ki ek chhoti kahani hai jo aapko padhti hai. Aapke decisions kahani banate hain, aur aakhir mein aap dekhte hain ki woh aapke baare mein kya kehte hain. Lagbhag 12 minute."
+  },
+  "pickLater": {
+   "en": "Not ready yet. PENDING v17",
+   "hinglish": "Abhi taiyaar nahin. PENDING v17"
+  },
+  "play": {
+   "en": "Play {title}",
+   "hinglish": "{title} kheliye"
+  },
+  "startTitle": {
+   "en": "Your season at {company}",
+   "hinglish": "{company} mein aapka season"
+  },
+  "start": {
+   "en": "Start",
+   "hinglish": "Shuru karein"
+  },
+  "back": {
+   "en": "Back: change my last decision",
+   "hinglish": "Back: pichhla decision badlein"
+  },
+  "rankHint": {
+   "en": "Tap them in order, first choice first.",
+   "hinglish": "Order mein tap kijiye, pehli pasand pehle."
+  },
+  "rankUndo": {
+   "en": "Undo last tap",
+   "hinglish": "Pichhla tap hatayein"
+  },
+  "rankChoose": {
+   "en": "Choose as number {n}:",
+   "hinglish": "Number {n} ke roop mein chuniye:"
+  },
+  "rankChosen": {
+   "en": "Number {n}, tap to take back:",
+   "hinglish": "Number {n}, wapas lene ke liye tap kijiye:"
+  },
+  "rankSaid": {
+   "en": "{name} is number {n}.",
+   "hinglish": "{name} number {n} hain."
+  },
+  "rankNext": {
+   "en": "Choose number {n}.",
+   "hinglish": "Number {n} chuniye."
+  },
+  "rankTaken": {
+   "en": "{name} taken back. Choose number {n}.",
+   "hinglish": "{name} wapas liye gaye. Number {n} chuniye."
+  },
+  "yourOrder": {
+   "en": "Your order: {list}.",
+   "hinglish": "Aapka order: {list}."
+  },
+  "pickHint": {
+   "en": "Tap one.",
+   "hinglish": "Ek tap kijiye."
+  },
+  "pickLabel": {
+   "en": "Choose:",
+   "hinglish": "Chuniye:"
+  },
+  "yourPick": {
+   "en": "You chose {name}.",
+   "hinglish": "Aapne {name} ko chuna."
+  },
+  "splitPool": {
+   "en": "{pool} {unit} to share, up to {cap} each.",
+   "hinglish": "{pool} {unit} baantne hain, har ek ko {cap} tak."
+  },
+  "splitLeft": {
+   "en": "{n} left to share",
+   "hinglish": "{n} baantna baaki"
+  },
+  "splitChip": {
+   "en": "{name}: {k}",
+   "hinglish": "{name}: {k}"
+  },
+  "splitClear": {
+   "en": "Start again",
+   "hinglish": "Phir se shuru karein"
+  },
+  "yourSplit": {
+   "en": "Your split: {list}.",
+   "hinglish": "Aapka bantwara: {list}."
+  },
+  "yourOption": {
+   "en": "You chose: {text}.",
+   "hinglish": "Aapne chuna: {text}."
+  },
+  "rosterTitle": {
+   "en": "Your team so far",
+   "hinglish": "Ab tak aapki team"
+  },
+  "rosterEmpty": {
+   "en": "No tasks yet",
+   "hinglish": "Abhi koi kaam nahin"
+  },
+  "rosterMascot": {
+   "en": "{mascot} the {animal}",
+   "hinglish": "{mascot} {animal}"
+  },
+  "outcome": {
+   "3": {
+    "en": "went well",
+    "hinglish": "achha raha"
+   },
+   "2": {
+    "en": "done",
+    "hinglish": "ho gaya"
+   },
+   "1": {
+    "en": "took extra time",
+    "hinglish": "zyada samay laga"
+   }
+  },
+  "seasonTitle": {
+   "en": "Season over",
+   "hinglish": "Season khatam"
+  },
+  "bands": [
+   {
+    "min": -100,
+    "text": {
+     "en": "A hard season. The warehouse fell behind plan, and next quarter starts with catching up.",
+     "hinglish": "Mushkil season. Warehouse plan se peeche raha, aur agla quarter peeche ka kaam poora karne se shuru hoga."
+    }
+   },
+   {
+    "min": 12,
+    "text": {
+     "en": "A steady season. The warehouse delivered most of what it planned.",
+     "hinglish": "Theek-thaak season. Warehouse ne apne plan ka zyaadatar hissa poora kiya."
+    }
+   },
+   {
+    "min": 22,
+    "text": {
+     "en": "A strong season. The warehouse stayed ahead of plan.",
+     "hinglish": "Mazboot season. Warehouse plan se aage raha."
+    }
+   }
+  ],
+  "surveyTitle": {
+   "en": "A few statements",
+   "hinglish": "Kuch baatein"
+  },
+  "surveyBody": {
+   "en": "How far do you agree with each? Tap one point for each statement.",
+   "hinglish": "Aap har baat se kitna sehmat hain? Har baat ke liye ek point tap kijiye."
+  },
+  "surveyKey": [
+   {
+    "en": "Strongly disagree",
+    "hinglish": "Bilkul asehmat"
+   },
+   {
+    "en": "Disagree",
+    "hinglish": "Asehmat"
+   },
+   {
+    "en": "Neither",
+    "hinglish": "Na sehmat na asehmat"
+   },
+   {
+    "en": "Agree",
+    "hinglish": "Sehmat"
+   },
+   {
+    "en": "Strongly agree",
+    "hinglish": "Bilkul sehmat"
+   }
+  ],
+  "surveyLeft": {
+   "en": "{n} still to answer",
+   "hinglish": "{n} ka jawab baaki"
+  },
+  "surveyDone": {
+   "en": "Done with these statements",
+   "hinglish": "In baaton ka jawab ho gaya"
+  },
+  "debriefTitle": {
+   "en": "What this season measured",
+   "hinglish": "Is season ne kya mapa"
+  },
+  "debrief": [
+   {
+    "en": "The season measured attitudes towards sex, and also towards religion, skin tone, caste and place of birth, through decisions about colleagues whose notes for a job were equally strong.",
+    "hinglish": "Is season ne sex ke prati, aur religion, skin tone, caste aur place of birth ke prati attitudes mape, un colleagues ke baare mein decisions se jinke kaam ke notes barabar mazboot the."
+   },
+   {
+    "en": "After you submit, you see your own attitude rating, read from this season's decisions only. It is shown to you alone, and it is stored only if you save it to an optional profile.",
+    "hinglish": "Submit ke baad aap apni attitude rating dekhenge, sirf is season ke decisions se padhi gayi. Yeh sirf aapko dikhti hai, aur tabhi store hoti hai jab aap ise ek vaikalpik profile mein save karein."
+   },
+   {
+    "en": "If anything here brings up a real situation at work, you can contact your Internal Committee, your district's Local Committee, or the SHe-Box portal.",
+    "hinglish": "Agar yahan koi baat kaam ki kisi asli sthiti ki yaad dilaye, to aap apni Internal Committee, apne zile ki Local Committee, ya SHe-Box portal se sampark kar sakte hain."
+   }
+  ],
+  "consentTitle": {
+   "en": "Before you start",
+   "hinglish": "Shuru karne se pehle"
+  },
+  "consent": [
+   {
+    "en": "This is a game season you play once, on your own device. You make decisions about fictional colleagues, then answer a few statements outside the game.",
+    "hinglish": "Yeh ek game season hai jo aap ek baar, apne device par khelte hain. Aap fictional colleagues ke baare mein decisions lete hain, phir game ke bahar kuch baaton ka jawab dete hain."
+   },
+   {
+    "en": "At the end you see an attitude rating read from your own decisions. It is shown only to you, and you can choose to save it to an optional profile with a name you make up. Your answers carry no real name and no contact details.",
+    "hinglish": "Aakhir mein aap apne decisions se padhi gayi attitude rating dekhte hain. Yeh sirf aapko dikhti hai, aur aap chahein to ise apne banaye naam wali ek vaikalpik profile mein save kar sakte hain. Aapke jawabon mein na asli naam hai na contact."
+   },
+   {
+    "en": "At the end you receive a withdrawal code. After all play in the study closes, a page explaining the study opens with that code, and you can withdraw with it until two weeks after the page opens.",
+    "hinglish": "Aakhir mein aapko ek withdrawal code milta hai. Study ka saara khel band hone ke baad, us code se study samjhane wala page khulta hai, aur page khulne ke do hafte baad tak aap usi code se withdraw kar sakte hain."
+   },
+   {
+    "en": "Taking part is voluntary, and you can stop at any time.",
+    "hinglish": "Hissa lena aapki marzi hai, aur aap kabhi bhi ruk sakte hain."
+   },
+   {
+    "en": "If anything in the game brings up a real situation at work, you can contact your Internal Committee, your district's Local Committee, or the SHe-Box portal of the Ministry of Women and Child Development.",
+    "hinglish": "Agar game mein koi baat kaam ki kisi asli sthiti ki yaad dilaye, to aap apni Internal Committee, apne zile ki Local Committee, ya Ministry of Women and Child Development ke SHe-Box portal se sampark kar sakte hain."
+   }
+  ],
+  "consentNote": "DRAFT, owner wording: the season consent must tell the player about the personal rating, which the registered consent (no score shown) does not allow.",
+  "episodeOf": {
+   "en": "Episode {n} of {k}: {title}",
+   "hinglish": "Episode {n} / {k}: {title}"
+  },
+  "episodeShort": {
+   "en": "Episode {n}",
+   "hinglish": "Episode {n}"
+  },
+  "episodeGo": {
+   "en": "Start episode {n}",
+   "hinglish": "Episode {n} shuru karein"
+  }
+ },
+ "rating": {
+  "_note": "The result page's words. A reading of one season's decisions, never a judgement: no screen calls it bias, and nothing says what the player should think. Band names and paragraphs are DRAFT for the owner.",
+  "title": {
+   "en": "Your attitude rating",
+   "hinglish": "Aapki attitude rating"
+  },
+  "submitted": {
+   "en": "Your answers are in. Keep your code: it opens the explanation page and lets you withdraw later.",
+   "hinglish": "Aapke jawab pahunch gaye. Apna code rakhiye: isse explanation page khulta hai aur aap baad mein withdraw kar sakte hain."
+  },
+  "withdrawn": {
+   "en": "Nothing from this session was stored. Your rating below is worked out on this device only.",
+   "hinglish": "Is session ka kuch bhi store nahin hua. Neeche ki rating sirf isi device par nikali gayi hai."
+  },
+  "headlineCue": {
+   "en": "Women and men colleagues",
+   "hinglish": "Mahila aur purush colleagues"
+  },
+  "intro": {
+   "en": "Read from your own decisions in this season, nothing else. It is shown only to you, on this screen, and it is stored only if you save it to a profile.",
+   "hinglish": "Sirf is season ke aapke decisions se padhi gayi. Yeh sirf aapko, isi screen par dikhti hai, aur tabhi store hoti hai jab aap ise profile mein save karein."
+  },
+  "bands": {
+   "lean": {
+    "name": {
+     "en": "Leans towards {group}",
+     "hinglish": "{group} ki taraf jhukaav"
+    },
+    "body": {
+     "en": "When a woman and a man had equally strong notes for a job, you put {group} ahead more often than chance would explain. The pull was small in any one decision; it shows across the season as a whole. That is common: most people's decisions lean one way on some ground, and many never find out. Knowing where yours leaned is the useful part. This reads one season of a made-up warehouse, so treat it as a reading, not a verdict on who you are.",
+     "hinglish": "Jab ek mahila aur ek purush ke kaam ke notes barabar mazboot the, aapne {group} ko itni baar aage rakha jitna sanyog se nahin samjhaya ja sakta. Kisi ek decision mein kheench chhoti thi; yeh poore season mein dikhti hai. Yeh aam baat hai: zyaadatar logon ke decisions kisi aadhaar par ek taraf jhukte hain, aur kai log yeh kabhi nahin jaan paate. Apna jhukaav jaanna hi kaam ki baat hai. Yeh ek kaalpanik warehouse ke ek season ki reading hai, aap kaun hain is par faisla nahin."
+    }
+   },
+   "none": {
+    "name": {
+     "en": "No lean read in your decisions",
+     "hinglish": "Aapke decisions mein koi jhukaav nahin padha gaya"
+    },
+    "body": {
+     "en": "When a woman and a man had equally strong notes for a job, you put each of them ahead about as often as chance would. That is an absence of evidence from about 50 decisions, not a clean bill: a lean too small for one short season to pick up could still be there, and another setting could read differently. Everyone's decisions lean somewhere, so the habits below are worth keeping either way.",
+     "hinglish": "Jab ek mahila aur ek purush ke kaam ke notes barabar mazboot the, aapne dono ko lagbhag utni hi baar aage rakha jitna sanyog se hota. Yeh lagbhag 50 decisions mein saboot ki kami hai, saaf certificate nahin: itna chhota jhukaav ho sakta hai jo ek chhota season na pakad sake, aur kisi aur maahaul mein reading alag ho sakti hai. Har kisi ke decisions kahin na kahin jhukte hain, isliye neeche ki aadatein dono haalat mein kaam ki hain."
+    }
+   },
+   "unread": {
+    "name": {
+     "en": "Not enough to say",
+     "hinglish": "Kehne ke liye kaafi nahin"
+    },
+    "body": {
+     "en": "This season does not hold enough decisions of the right kind to read a lean either way. That says nothing about you; it is a limit of one short season.",
+     "hinglish": "Is season mein sahi tarah ke itne decisions nahin hain ki kisi bhi taraf jhukaav padha ja sake. Yeh aapke baare mein kuch nahin kehta; yeh ek chhote season ki seema hai."
+    }
+   },
+   "unengaged": {
+    "name": {
+     "en": "Not enough to say",
+     "hinglish": "Kehne ke liye kaafi nahin"
+    },
+    "body": {
+     "en": "Many of your decisions did not follow the notes about each colleague, so this season cannot be read. Decisions that do not follow the descriptions are read as not engaged.",
+     "hinglish": "Aapke kai decisions colleagues ke notes ke hisaab se nahin the, isliye yeh season padha nahin ja sakta. Jo decisions descriptions ko follow nahin karte, unhe not engaged maana jaata hai."
+    }
+   }
+  },
+  "strengthLabel": {
+   "en": "Where your decisions sit",
+   "hinglish": "Aapke decisions kahan hain"
+  },
+  "strengthText": {
+   "en": "In {n} equal pairs you put {a} ahead {k} times ({pct} per cent).",
+   "hinglish": "{n} barabar jodiyon mein aapne {a} ko {k} baar aage rakha ({pct} pratishat)."
+  },
+  "noLeanZone": {
+   "en": "No lean read in the shaded middle",
+   "hinglish": "Beech ke shaded hisse mein koi jhukaav nahin"
+  },
+  "whyAll": {
+   "en": "When a woman and a man had equally strong notes for the job, you put the {winner} ahead {k} times out of {n}.",
+   "hinglish": "Jab ek mahila aur ek purush ke kaam ke notes barabar mazboot the, aapne {winner} ko {n} mein se {k} baar aage rakha."
+  },
+  "whyPair": {
+   "en": "When {a} and {b} had the same record, you put {fav} first {k} times out of {n}.",
+   "hinglish": "Jab {a} aur {b} ka record ek jaisa tha, aapne {n} mein se {k} baar {fav} ko pehle rakha."
+  },
+  "whyPairEven": {
+   "en": "When {a} and {b} had the same record, you put each of them first {k} times out of {n}.",
+   "hinglish": "Jab {a} aur {b} ka record ek jaisa tha, aapne {n} mein se {k} baar dono ko pehle rakha."
+  },
+  "zone": {
+   "lean": {
+    "en": "Leans towards {group}",
+    "hinglish": "{group} ki taraf jhukaav"
+   },
+   "none": {
+    "en": "No lean read",
+    "hinglish": "Koi jhukaav nahin padha gaya"
+   },
+   "unread": {
+    "en": "Not enough to say",
+    "hinglish": "Kehne ke liye kaafi nahin"
+   }
+  },
+  "cues": {
+   "sex": {
+    "label": {
+     "en": "Women and men",
+     "hinglish": "Mahila aur purush"
+    },
+    "focal": {
+     "en": "women",
+     "hinglish": "mahilaon"
+    },
+    "comparison": {
+     "en": "men",
+     "hinglish": "purushon"
+    },
+    "focalOne": {
+     "en": "woman",
+     "hinglish": "mahila"
+    },
+    "comparisonOne": {
+     "en": "man",
+     "hinglish": "purush"
+    }
+   },
+   "religion": {
+    "label": {
+     "en": "Hindu and Muslim colleagues",
+     "hinglish": "Hindu aur Muslim colleagues"
+    },
+    "focal": {
+     "en": "Muslim colleagues",
+     "hinglish": "Muslim colleagues"
+    },
+    "comparison": {
+     "en": "Hindu colleagues",
+     "hinglish": "Hindu colleagues"
+    }
+   },
+   "tone": {
+    "label": {
+     "en": "Darker and lighter skin tones",
+     "hinglish": "Gehri aur halki skin tone"
+    },
+    "focal": {
+     "en": "darker skin tones",
+     "hinglish": "gehri skin tone"
+    },
+    "comparison": {
+     "en": "lighter skin tones",
+     "hinglish": "halki skin tone"
+    }
+   },
+   "caste": {
+    "label": {
+     "en": "Surnames read as caste",
+     "hinglish": "Caste se jude surnames"
+    },
+    "focal": {
+     "en": "surnames read as Scheduled Caste",
+     "hinglish": "Scheduled Caste maane jaane wale surnames"
+    },
+    "comparison": {
+     "en": "surnames read as upper caste",
+     "hinglish": "upper caste maane jaane wale surnames"
+    }
+   },
+   "birthplace": {
+    "label": {
+     "en": "Born in the south or the north",
+     "hinglish": "Dakshin ya uttar mein janm"
+    },
+    "focal": {
+     "en": "colleagues born in the south",
+     "hinglish": "dakshin mein janme colleagues"
+    },
+    "comparison": {
+     "en": "colleagues born in the north",
+     "hinglish": "uttar mein janme colleagues"
+    }
+   }
+  },
+  "shareTitle": {
+   "en": "Your summary card",
+   "hinglish": "Aapka summary card"
+  },
+  "shareBody": {
+   "en": "A short card you can keep or pass on. It names the season and the rating, nothing else about you.",
+   "hinglish": "Ek chhota card jo aap rakh sakte hain ya aage bhej sakte hain. Ismein season aur rating hai, aapke baare mein aur kuch nahin."
+  },
+  "shareCard": {
+   "en": "I played Team Season: {title}, a story that reads you. {decisions} decisions, {episodes} episodes, {cast} colleagues. Where my decisions sat on women and men: {band}. Everyone's decisions lean somewhere. Take it and compare.",
+   "hinglish": "Maine Team Season: {title} khela, ek kahani jo aapko padhti hai. {decisions} decisions, {episodes} episodes, {cast} colleagues. Mahila aur purush par mere decisions: {band}. Har kisi ke decisions kahin na kahin jhukte hain. Aap bhi kheliye aur milaiye."
+  },
+  "share": {
+   "en": "Share my card",
+   "hinglish": "Mera card share karein"
+  },
+  "copied": {
+   "en": "Copied. Paste it wherever you like.",
+   "hinglish": "Copy ho gaya. Jahan chahein paste kijiye."
+  },
+  "shareFailed": {
+   "en": "This device cannot share or copy. You can select the card's words instead.",
+   "hinglish": "Yeh device share ya copy nahin kar sakta. Aap card ke shabd select kar sakte hain."
+  },
+  "pending": {
+   "en": "Demo: the thresholds behind every reading are planning values, PENDING v17.",
+   "hinglish": "Demo: har reading ke peeche ki seemaayein planning values hain, PENDING v17."
+  },
+  "committee": {
+   "en": "If anything in this season brings up a real situation at work, you can contact your Internal Committee under the Sexual Harassment of Women at Workplace Act, 2013, your district's Local Committee, or the SHe-Box portal.",
+   "hinglish": "Agar is season ki koi baat kaam ki kisi asli sthiti ki yaad dilaye, to aap Sexual Harassment of Women at Workplace Act, 2013 ke tahat apni Internal Committee, apne zile ki Local Committee, ya SHe-Box portal se sampark kar sakte hain."
+  },
+  "opening": {
+   "en": "You are the person closest to your own decisions, which makes them the hardest for you to see. This page is a view from outside, read only from the choices you just made. Everyone's decisions lean somewhere, and most people never notice where. Some points below will feel right and some may feel off. When one feels off, ask whether it could still be true.",
+   "hinglish": "Aap apne decisions ke sabse kareeb hain, isliye unhe dekhna aapke liye sabse mushkil hai. Yeh page bahar se ek nazar hai, sirf abhi liye gaye aapke faislon se padhi gayi. Har kisi ke decisions kahin na kahin jhukte hain, aur zyaadatar log kabhi notice nahin karte ki kahan. Neeche ki kuch baatein sahi lagengi aur kuch ajeeb. Jo ajeeb lage, us par poochhiye ki kya woh phir bhi sach ho sakti hai."
+  },
+  "readingsTitle": {
+   "en": "Your readings",
+   "hinglish": "Aapki readings"
+  },
+  "meaning": {
+   "lean": {
+    "en": "With equal notes, {group} came out ahead more often than chance explains.",
+    "hinglish": "Barabar notes par {group} sanyog se zyada baar aage rahe."
+   },
+   "none": {
+    "en": "With equal notes, neither group came out ahead more often than chance would.",
+    "hinglish": "Barabar notes par koi bhi group sanyog se zyada aage nahin raha."
+   },
+   "unread": {
+    "en": "Too few equal pairs on this ground to read it this season.",
+    "hinglish": "Is season is aadhaar par itni barabar jodiyan nahin ki padha ja sake."
+   }
+  },
+  "cueShort": {
+   "sex": {
+    "en": "Sex",
+    "hinglish": "Sex"
+   },
+   "religion": {
+    "en": "Religion",
+    "hinglish": "Religion"
+   },
+   "tone": {
+    "en": "Skin tone",
+    "hinglish": "Skin tone"
+   },
+   "caste": {
+    "en": "Surname",
+    "hinglish": "Surname"
+   },
+   "birthplace": {
+    "en": "Birthplace",
+    "hinglish": "Janm sthaan"
+   }
+  },
+  "domainsTitle": {
+   "en": "Your decisions, area by area",
+   "hinglish": "Aapke decisions, har kshetra mein"
+  },
+  "followedTitle": {
+   "en": "Where your decisions followed the record",
+   "hinglish": "Jahan aapke decisions record ke saath chale"
+  },
+  "blindTitle": {
+   "en": "Your blind spots",
+   "hinglish": "Aapke blind spots"
+  },
+  "originTitle": {
+   "en": "Where it may come from",
+   "hinglish": "Yeh kahan se aa sakta hai"
+  },
+  "originBody": {
+   "en": "Optional, and only for you: questions to think over. Nothing here is asked for or stored.",
+   "hinglish": "Vaikalpik, aur sirf aapke liye: sochne ke sawaal. Yahan kuch maanga ya store nahin kiya jaata."
+  },
+  "watchTitle": {
+   "en": "How to keep watch",
+   "hinglish": "Nazar kaise rakhein"
+  },
+  "watchBody": {
+   "en": "Habits some workplaces use for their own decisions, free to use. Sources PENDING v17; no effect is claimed here.",
+   "hinglish": "Kuch workplaces apne faislon ke liye yeh aadatein apnate hain, muft. Sources PENDING v17; yahan kisi asar ka daava nahin."
+  },
+  "noBlind": {
+   "en": "Nothing stood out here this season. With only a few decisions in this area, that is an absence of evidence, not a clean bill.",
+   "hinglish": "Is season yahan kuch alag nahin dikha. Is kshetra mein kam decisions the, isliye yeh saboot ki kami hai, saaf certificate nahin."
+  },
+  "noFollowed": {
+   "en": "Nothing to show here from this season.",
+   "hinglish": "Is season se yahan dikhane ko kuch nahin."
+  },
+  "evidence": {
+   "en": "From your own decisions:",
+   "hinglish": "Aapke apne decisions se:"
+  },
+  "cards": {
+   "clearTitle": {
+    "en": "Clearer notes came first",
+    "hinglish": "Mazboot notes pehle aaye"
+   },
+   "clearBody": {
+    "en": "When one colleague's notes were clearly stronger, you followed them {k} times out of {n}.",
+    "hinglish": "Jab ek colleague ke notes saaf taur par mazboot the, aapne {n} mein se {k} baar unhe follow kiya."
+   },
+   "evenTitle": {
+    "en": "{label}: no pull either way",
+    "hinglish": "{label}: kisi taraf kheench nahin"
+   },
+   "evenBody": {
+    "en": "With equal notes, you put {a} ahead {x} times and {b} ahead {y} times.",
+    "hinglish": "Barabar notes par aapne {x} baar {a} ko aur {y} baar {b} ko aage rakha."
+   },
+   "cueTitle": {
+    "en": "Equal notes, {group} ahead",
+    "hinglish": "Barabar notes, {group} aage"
+   },
+   "cueBody": {
+    "en": "Here, when two colleagues had equally strong notes, you put {group} ahead {k} times out of {n}.",
+    "hinglish": "Yahan, jab do colleagues ke notes barabar mazboot the, aapne {n} mein se {k} baar {group} ko aage rakha."
+   },
+   "weakTitle": {
+    "en": "Weaker notes came first",
+    "hinglish": "Kamzor notes pehle aaye"
+   },
+   "weakBody": {
+    "en": "{k} times here, a colleague with clearly weaker notes came out ahead of one with stronger notes.",
+    "hinglish": "Yahan {k} baar, saaf taur par kamzor notes wala colleague mazboot notes wale se aage raha."
+   },
+   "tied": {
+    "en": "{episode}, {role}: {a} and {b} had equally strong notes. You put {fav} first.",
+    "hinglish": "{episode}, {role}: {a} aur {b} ke notes barabar mazboot the. Aapne {fav} ko pehle rakha."
+   },
+   "weak": {
+    "en": "{episode}, {role}: you put {weak} ahead of {strong}, whose notes were stronger.",
+    "hinglish": "{episode}, {role}: aapne {weak} ko {strong} se aage rakha, jabki {strong} ke notes mazboot the."
+   }
+  },
+  "domains": {
+   "hiring": {
+    "title": {
+     "en": "Hiring and promotion",
+     "hinglish": "Hiring aur promotion"
+    },
+    "narrative": {
+     "en": "Who leads, who presents, who moves up: {n} decisions this season. In {k} pairs, two colleagues had equally strong notes, and the call was yours alone.",
+     "hinglish": "Kaun lead kare, kaun present kare, kaun aage badhe: is season {n} decisions. {k} jodiyon mein do colleagues ke notes barabar mazboot the, aur faisla sirf aapka tha."
+    },
+    "origin": [
+     {
+      "en": "Who did you see leading at work when you started out?",
+      "hinglish": "Jab aapne kaam shuru kiya, aapne kise lead karte dekha?"
+     },
+     {
+      "en": "When you picture a strong presenter, who comes to mind first?",
+      "hinglish": "Mazboot presenter sochte hi sabse pehle kaun yaad aata hai?"
+     },
+     {
+      "en": "Whose confidence did you read as ability this season?",
+      "hinglish": "Is season aapne kiske aatmavishwas ko kabiliyat samjha?"
+     }
+    ],
+    "watch": [
+     {
+      "en": "Write down what the job needs before you read who is in the running.",
+      "hinglish": "Kaun daud mein hai yeh padhne se pehle likh lijiye ki kaam ko kya chahiye."
+     },
+     {
+      "en": "Compare records with the names covered, then look at the names.",
+      "hinglish": "Naam dhak kar records milaiye, phir naam dekhiye."
+     },
+     {
+      "en": "When two people look equal, say what tips it, and check it is about the job.",
+      "hinglish": "Jab do log barabar lagein, to kahiye ki faisla kis baat se jhuka, aur dekhiye ki woh kaam se juda hai."
+     }
+    ]
+   },
+   "conduct": {
+    "title": {
+     "en": "Complaints and conduct",
+     "hinglish": "Shikayatein aur vyavhar"
+    },
+    "narrative": {
+     "en": "Whose account you believe and whose concern goes first: {n} decisions this season. In {k} pairs, the accounts had equally strong backing.",
+     "hinglish": "Kiska bayaan maanein aur kiski chinta pehle jaaye: is season {n} decisions. {k} jodiyon mein bayaanon ka saboot barabar tha."
+    },
+    "origin": [
+     {
+      "en": "Growing up, whose word was taken at home when two people disagreed?",
+      "hinglish": "Bachpan mein ghar par do logon ki behas mein kiski baat maani jaati thi?"
+     },
+     {
+      "en": "In news and films, whose complaints are shown as serious, and whose as fuss?",
+      "hinglish": "News aur filmon mein kiski shikayat gambhir dikhayi jaati hai, aur kiski nakhra?"
+     },
+     {
+      "en": "When an account felt more believable this season, what made it so?",
+      "hinglish": "Is season jab koi bayaan zyada bharosemand laga, to kis wajah se?"
+     }
+    ],
+    "watch": [
+     {
+      "en": "Decide what evidence counts before you hear who is complaining.",
+      "hinglish": "Kaun shikayat kar raha hai yeh sunne se pehle tay kijiye ki kaunsa saboot maayne rakhta hai."
+     },
+     {
+      "en": "Write each account down in the same format, then compare them side by side.",
+      "hinglish": "Har bayaan ek hi format mein likhiye, phir saath rakh kar milaiye."
+     },
+     {
+      "en": "Send anything that may be sexual harassment to the Internal Committee, every time.",
+      "hinglish": "Jo bhi sexual harassment ho sakta hai, use har baar Internal Committee ko bhejiye."
+     }
+    ]
+   },
+   "resources": {
+    "title": {
+     "en": "Sharing resources",
+     "hinglish": "Sansaadhan baantna"
+    },
+    "narrative": {
+     "en": "Training, mentoring, passes, and the work nobody wants: {n} splits this season. In {k} pairs, two colleagues were equally well placed.",
+     "hinglish": "Training, mentoring, passes, aur woh kaam jo koi nahin chahta: is season {n} bantware. {k} jodiyon mein do colleagues barabar sahi jagah par the."
+    },
+    "origin": [
+     {
+      "en": "At home, who got the new things first, and who did the chores?",
+      "hinglish": "Ghar par nayi cheezein pehle kise milti thi, aur kaam kaun karta tha?"
+     },
+     {
+      "en": "At work, who have you seen asked to take notes or stay late?",
+      "hinglish": "Kaam par aapne kise notes lene ya der tak rukne ko kehte dekha hai?"
+     },
+     {
+      "en": "When you shared out the work nobody wanted, who did you think would mind least?",
+      "hinglish": "Jo kaam koi nahin chahta tha, use baant te waqt aapne socha kise sabse kam bura lagega?"
+     }
+    ],
+    "watch": [
+     {
+      "en": "Keep a tally of who gets the visible work and who gets the background work.",
+      "hinglish": "Hisaab rakhiye ki dikhne wala kaam kise milta hai aur peeche ka kaam kise."
+     },
+     {
+      "en": "Rotate the chores nobody asks for, on a list everyone can see.",
+      "hinglish": "Jo kaam koi nahin maangta, use sabko dikhne wali list par baari baari dijiye."
+     },
+     {
+      "en": "Before you share something out, write the reason for each share next to it.",
+      "hinglish": "Kuch baantne se pehle har hisse ke aage uski wajah likhiye."
+     }
+    ]
+   }
+  },
+  "contactTitle": {
+   "en": "Stay in touch (optional)",
+   "hinglish": "Sampark mein rahiye (vaikalpik)"
+  },
+  "contactBody": {
+   "en": "Both fields are optional and are kept apart from your answers and from any profile. Leave them empty to skip.",
+   "hinglish": "Dono fields vaikalpik hain aur aapke jawabon aur kisi bhi profile se alag rakhe jaate hain. Chhodna ho to khaali rakhiye."
+  },
+  "contactName": {
+   "en": "Your name (optional)",
+   "hinglish": "Aapka naam (vaikalpik)"
+  },
+  "contactEmail": {
+   "en": "Your email (optional)",
+   "hinglish": "Aapka email (vaikalpik)"
+  },
+  "contactFollow": {
+   "en": "Send me follow-up material and retake reminders",
+   "hinglish": "Mujhe follow-up material aur retake reminders bhejiye"
+  },
+  "contactResearch": {
+   "en": "I agree to be contacted for longitudinal research (consent text PENDING v17)",
+   "hinglish": "Main lambi research ke liye sampark kiye jaane par sehmat hoon (consent text PENDING v17)"
+  },
+  "contactSend": {
+   "en": "Send my details",
+   "hinglish": "Meri details bhejiye"
+  },
+  "contactSent": {
+   "en": "Thank you. Your details are kept apart from your answers.",
+   "hinglish": "Shukriya. Aapki details aapke jawabon se alag rakhi gayi hain."
+  },
+  "contactNeedEmail": {
+   "en": "Add an email for either box, or untick it.",
+   "hinglish": "Kisi bhi box ke liye email jodiye, ya tick hata dijiye."
+  },
+  "contactFailed": {
+   "en": "Your details could not be sent. Try again.",
+   "hinglish": "Aapki details bheji nahin ja saki. Dobara koshish kijiye."
+  }
+ },
+ "profile": {
+  "_note": "The optional pseudonymous profile (EVAL-4, owner decision 19 Oct 2026: retakes are in). The longitudinal research consent and the change rule are PENDING v17.",
+  "saveTitle": {
+   "en": "Keep it and retake later",
+   "hinglish": "Ise rakhiye aur baad mein dobara kheliye"
+  },
+  "retake": {
+   "en": "Retake later to see how your decisions change. A retake is a different season with a new team.",
+   "hinglish": "Baad mein dobara kheliye aur dekhiye ki aapke decisions kaise badalte hain. Dobara khelna ek alag season hai, nayi team ke saath."
+  },
+  "saveBody": {
+   "en": "Save this rating to a profile with any name you like. There is no email and no password: a recovery code opens it.",
+   "hinglish": "Is rating ko apni pasand ke kisi bhi naam wali profile mein save kijiye. Na email, na password: ek recovery code se profile khulti hai."
+  },
+  "nameLabel": {
+   "en": "A display name (any name you like)",
+   "hinglish": "Ek display naam (koi bhi naam)"
+  },
+  "create": {
+   "en": "Create my profile and save",
+   "hinglish": "Meri profile banayein aur save karein"
+  },
+  "save": {
+   "en": "Save to my profile",
+   "hinglish": "Meri profile mein save karein"
+  },
+  "saved": {
+   "en": "Saved to {name}'s profile.",
+   "hinglish": "{name} ki profile mein save ho gaya."
+  },
+  "noName": {
+   "en": "Enter a display name first.",
+   "hinglish": "Pehle ek display naam likhiye."
+  },
+  "failed": {
+   "en": "The profile could not be saved. Check your connection and try again.",
+   "hinglish": "Profile save nahin ho saki. Connection check karke dobara koshish kijiye."
+  },
+  "recoveryTitle": {
+   "en": "Your recovery code",
+   "hinglish": "Aapka recovery code"
+  },
+  "recoveryBody": {
+   "en": "This code is the only way back into your profile: there is no email and no password. Write it down or take a screenshot. It is not your withdrawal code.",
+   "hinglish": "Yeh code hi aapki profile mein wapas aane ka akela raasta hai: na email, na password. Ise likh lijiye ya screenshot le lijiye. Yeh aapka withdrawal code nahin hai."
+  },
+  "open": {
+   "en": "Open my profile",
+   "hinglish": "Meri profile kholein"
+  },
+  "retakeOn": {
+   "en": "Your next retake opens on {date}.",
+   "hinglish": "Aapka agla retake {date} ko khulega."
+  },
+  "title": {
+   "en": "Your profile",
+   "hinglish": "Aapki profile"
+  },
+  "named": {
+   "en": "{name}'s profile",
+   "hinglish": "{name} ki profile"
+  },
+  "lockedBody": {
+   "en": "Enter your recovery code to open your profile.",
+   "hinglish": "Apni profile kholne ke liye recovery code likhiye."
+  },
+  "codeLabel": {
+   "en": "Recovery code",
+   "hinglish": "Recovery code"
+  },
+  "badCode": {
+   "en": "No profile opens with that code. Check it and try again.",
+   "hinglish": "Is code se koi profile nahin khulti. Check karke dobara koshish kijiye."
+  },
+  "demoOpen": {
+   "en": "Open the demo profile",
+   "hinglish": "Demo profile kholein"
+  },
+  "demoNote": {
+   "en": "Demo: this profile's two past seasons are made up, in seasons that are not built yet, so the timeline can be seen.",
+   "hinglish": "Demo: is profile ke do purane season kaalpanik hain, un seasons mein jo abhi bane nahin, taaki timeline dikh sake."
+  },
+  "timelineTitle": {
+   "en": "Your seasons",
+   "hinglish": "Aapke seasons"
+  },
+  "entry": {
+   "en": "{date}, {story}",
+   "hinglish": "{date}, {story}"
+  },
+  "changeTitle": {
+   "en": "Change between seasons",
+   "hinglish": "Seasons ke beech badlaav"
+  },
+  "noChange": {
+   "en": "No change read yet.",
+   "hinglish": "Abhi koi badlaav nahin padha gaya."
+  },
+  "change": {
+   "en": "Change read: from {from} to {to}, your decisions moved towards {group}.",
+   "hinglish": "Badlaav padha gaya: {from} se {to} tak, aapke decisions {group} ki taraf gaye."
+  },
+  "changePending": {
+   "en": "Demo: the rule for reading a change is a planning value, PENDING v17.",
+   "hinglish": "Demo: badlaav padhne ka niyam ek planning value hai, PENDING v17."
+  },
+  "retakeTitle": {
+   "en": "Retake",
+   "hinglish": "Dobara kheliye"
+  },
+  "retakeBody": {
+   "en": "A retake is a season you have not played, with a new team. In a study, your next link comes from the study team.",
+   "hinglish": "Dobara khelna ek aisa season hai jo aapne nahin khela, nayi team ke saath. Study mein aapka agla link study team se aata hai."
+  },
+  "retakeStart": {
+   "en": "Start a retake (demo)",
+   "hinglish": "Retake shuru karein (demo)"
+  },
+  "noStoryLeft": {
+   "en": "Every built season has been played on this profile. The other seasons are PENDING v17.",
+   "hinglish": "Is profile par har bana hua season khela ja chuka hai. Baaki seasons PENDING v17 hain."
+  },
+  "played": {
+   "en": "Played on your profile",
+   "hinglish": "Aapki profile par khela gaya"
+  },
+  "researchTitle": {
+   "en": "Longitudinal research (optional, PENDING v17)",
+   "hinglish": "Lambi research (vaikalpik, PENDING v17)"
+  },
+  "researchConsent": [
+   {
+    "en": "PENDING v17: this consent text is a draft for the owner and the ethics review.",
+    "hinglish": "PENDING v17: yeh consent text owner aur ethics review ke liye draft hai."
+   },
+   {
+    "en": "If you agree, the study team may link the seasons saved on this profile, to study how decisions change over time. They still never learn your name or contact details.",
+    "hinglish": "Agar aap sehmat hain, to study team is profile par save hue seasons ko jod sakti hai, yeh samajhne ke liye ki decisions samay ke saath kaise badalte hain. Unhe phir bhi aapka naam ya contact kabhi pata nahin chalta."
+   },
+   {
+    "en": "Without it, your saved seasons stay unlinked for research. You can turn this off at any time, and turning it off deletes the link.",
+    "hinglish": "Iske bina, aapke save kiye seasons research ke liye alag hi rehte hain. Aap ise kabhi bhi band kar sakte hain, aur band karne se link mit jaata hai."
+   }
+  ],
+  "researchAgree": {
+   "en": "I agree to longitudinal research use of my saved seasons",
+   "hinglish": "Main apne save kiye seasons ke lambe research mein istemaal ke liye sehmat hoon"
+  },
+  "researchOn": {
+   "en": "Longitudinal research use is on.",
+   "hinglish": "Lambi research ka istemaal chalu hai."
+  },
+  "researchOff": {
+   "en": "Longitudinal research use is off.",
+   "hinglish": "Lambi research ka istemaal band hai."
+  },
+  "deleteTitle": {
+   "en": "Delete",
+   "hinglish": "Mitaayein"
+  },
+  "deleteButton": {
+   "en": "Delete my profile and all my records",
+   "hinglish": "Meri profile aur mere saare records mitaayein"
+  },
+  "deleteConfirm": {
+   "en": "This deletes your profile, its research link, and the records of every saved season still inside its withdrawal window. It cannot be undone.",
+   "hinglish": "Isse aapki profile, uska research link, aur har save kiye season ke records mit jaate hain jo abhi withdrawal window ke andar hain. Ise wapas nahin kiya ja sakta."
+  },
+  "deleteYes": {
+   "en": "Yes, delete everything",
+   "hinglish": "Haan, sab mitaayein"
+  },
+  "deleteNo": {
+   "en": "Keep my profile",
+   "hinglish": "Meri profile rakhein"
+  },
+  "deleted": {
+   "en": "Your profile is deleted. Seasons withdrawn: {w}. Seasons past their withdrawal date, kept with nothing linking them to you: {c}.",
+   "hinglish": "Aapki profile mit gayi. Withdraw hue seasons: {w}. Withdrawal date ke baad wale seasons, jo aapse bina kisi link ke rakhe gaye: {c}."
+  },
+  "lock": {
+   "en": "Close my profile on this device",
+   "hinglish": "Is device par meri profile band karein"
+  }
+ }
+}

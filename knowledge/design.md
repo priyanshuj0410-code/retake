@@ -5,6 +5,7 @@ description: The tokens, surfaces, components and interaction patterns of the ev
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
   - https://app.plane.so/the-equal-lens/browse/EVAL-2/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-4/
 ---
 
 # Equal Lens Evaluator design system
@@ -15,7 +16,8 @@ plain**. It takes The Equal Lens brand (the `equal-lens` canon: Poppins for disp
 Sans for body, core violet `#553286`, ink `#221436`, paper `#FBF9FF`) in its **minimal
 register**: the content is the hero, violet only where it orders the page, no mascot. Lensy
 does not appear: the instrument must not carry a voice that could read as telling players
-what is right.
+what is right. (The season story's week-one animal mascots are the colleagues themselves, not a
+brand mascot; see section 4a.)
 
 ## 1. Rules the code is held to
 
@@ -82,8 +84,8 @@ the whole structure of the visual system:
 
 | Surface | Where | Look |
 |---|---|---|
-| **Game** (`surface="game"`) | First week, your season, rounds after the note, ordinary decisions, the season result | Paper ground, violet act label, character cards on tint with a 2 px line border |
-| **Out of fiction** (`surface="oof"`) | Disclosure, consent, screening block, survey, Off the Record, mid-season note, recall, direct block, the wrap's questions, debrief, code, withdrawal, explanation | Warm paper ground, a hairline rule across the top, and the line "This part is not part of the game." as the first thing on the screen, in the body face, never violet |
+| **Game** (`surface="game"`) | First week, your season, rounds after the note, ordinary decisions, the season result; in the season story: the picker, the opening, every decision, the reveal, the season's end | Paper ground, violet act label (the story's week title), character cards on tint with a 2 px line border |
+| **Out of fiction** (`surface="oof"`) | Disclosure, consent, screening block, survey, Off the Record, mid-season note, recall, direct block, the wrap's questions, debrief, code, withdrawal, explanation; in the season story: the statements grid, the wrap, the attitude-rating result and the profile | Warm paper ground, a hairline rule across the top, and the line "This part is not part of the game." as the first thing on the screen, in the body face, never violet |
 | **Sober** (`surface="sober"`) | The Committee Inbox and its content note | Neutral grey ground, no violet, no illustration, no points, the Internal Committee route stated on every card |
 
 The disclosure screen is out of fiction but shows **only** the four registered sentences and
@@ -97,7 +99,7 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 | `Page` | `src/ui/Page.tsx` | One screen: a `<header>` landmark (demo badge, act label, the hairline), `<main>` with the out-of-fiction line, the `h1`, body and one action row. On arrival focus moves to the `h1` (the title, or a question's `h1` inside its legend) and the document title becomes "`h1` · Team season" |
 | `Button` | `src/ui/Button.tsx` | `primary` (violet fill), `secondary` (violet outline), `quiet` (text). 48 px tall, full width on phones |
 | `Text` | `src/ui/Text.tsx` | Paragraph, `lead`, `small`, `muted`, `strong` |
-| `Heading` | `src/ui/Text.tsx` | A section heading inside a page (explanation sections, demo tables) |
+| `Heading` | `src/ui/Text.tsx` | A section heading inside a page (explanation sections, demo tables); `level={3}` for a sub-heading inside a section (the result page's areas) |
 | `Link` | `src/ui/Link.tsx` | A text link with a 48 px target (the calendar file, demo links) |
 | `List` | `src/ui/List.tsx` | A plain bulleted list of text points (consent, tutorial, debrief) |
 | `Character` | `src/ui/Character.tsx` | One colleague: emoji figure (or species), name, cue lines (surname is part of the name; "Born in"; badge), description |
@@ -111,6 +113,57 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 | `Notice` | `src/ui/Notice.tsx` | A boxed message: `info`, `error`, `demo` |
 | `DemoBadge` | `src/ui/DemoBadge.tsx` | The sun-coloured "Demo" strip at the top of every screen except the disclosure |
 | `Table` | `src/ui/Table.tsx` | The demo results table, with suppressed cells marked |
+| `Portrait` | `src/ui/Portrait.tsx` | A colleague's face, large (72 px box, 56 px emoji; never under 64 px on phones) or small (48 px, the roster): the animal mascot in week one, the human figure with its tone after the reveal, with the mascot as a corner badge |
+| `Colleague` | `src/ui/Colleague.tsx` | A season colleague: `Portrait`, name (surname part of it), cue lines ("Born in"), this job's notes. All spans, so it can sit inside a button |
+| `Beat` | `src/ui/Beat.tsx` | The top of a story screen: the last decision's consequence (violet rule at left) with the answer restated, the scene, and the question as the `h1`, which names the rest with `aria-describedby` |
+| `TapOrder` | `src/ui/TapOrder.tsx` | Tap-to-order ranking: whole-card buttons take numbers 1, 2, 3 in the order tapped; the last fills itself and the order commits (k - 1 taps). Tap a numbered card to take it back; Undo takes back the last tap; every tap announced politely |
+| `PickOne` | `src/ui/PickOne.tsx` | One colleague of two: a whole-card button that commits on the tap |
+| `Options` | `src/ui/Options.tsx` | A single choice (ordinary decisions, the wrap's yes or no) as full-width buttons that commit on the tap; never radios that auto-advance, because arrow keys would answer |
+| `QuickSplit` | `src/ui/QuickSplit.tsx` | Share a pool by tapping one number (0 to the cap) per colleague, `aria-pressed` chips, too-large numbers `aria-disabled`, the count left live; commits when all is shared; "Start again" clears |
+| `AgreeGrid` | `src/ui/AgreeGrid.tsx` | Agree or disagree statements on one screen: one fieldset per statement, five native radios in a row numbered 1 to 5 with full spoken names ("1, Strongly disagree"), a key once above, the end words under each row; fits 320 px at 44 px targets |
+| `Roster` | `src/ui/Roster.tsx` | The cast with running track records: collapsed (`details`) under decisions, open at the reveal (large portraits) and the season's end |
+| `StoryPick` | `src/ui/StoryPick.tsx` | The season picker: one card per story (emoji, title, one-line premise); stories not built yet are `aria-disabled` with their PENDING line |
+| `Spectrum` | `src/ui/Spectrum.tsx` | The strength bar: where the decisions sit between two groups, the middle the season cannot tell from chance shaded with dashed edges, a violet marker; one image with a spoken label and the same numbers in words under it |
+| `ReadingGrid` | `src/ui/ReadingGrid.tsx` | "Your readings": one card per ground, label then the level in a neutral colour (violet lean, ink no lean, grey not enough to say; never green or red, `--c-level-*`), then a one-line meaning; the first card (sex) is wide and holds the strength bar, the long explanation and the reasons |
+| `PointCard` | `src/ui/PointCard.tsx` | One finding in a decision area: the pattern's name, the counts, and for a blind spot the player's own decisive pairs as a list (never a made-up inner voice) |
+| `ShareCard` | `src/ui/ShareCard.tsx` | The summary card, worded for every band, with Share (the device's share sheet, else copy) and a status line |
+| `Timeline` | `src/ui/Timeline.tsx` | The profile's past seasons: a vertical line of dated entries, one band each |
+
+## 4a. The season story (EVAL-4, the game redesign)
+
+The season story is a fourth deployment (`season`, `src/story/`, `content/story.json`): one team
+season told in five short episodes of about ten decisions (50 in all, counts PENDING v17), each
+opened by a title card, about 12 minutes. The player picks one of three seasons first (NPQE's
+way in; the warehouse is built, the newsroom and the clinic are PENDING v17). Its rules:
+
+- **One decision per screen, and no Next.** Every decision commits on its tap (`TapOrder`,
+  `PickOne`, `QuickSplit`, `Options`), the next screen opens with its consequence (`Beat`), and a
+  quiet "Back: change my last decision" reopens it. Nothing counts down; no auto-advance waits.
+- **A fixed cast.** Eight colleagues for the whole season, large portraits (`Portrait`, never
+  under 64 px on phones). In week one each is a different animal mascot with a made-up name; the
+  reveal maps each mascot to its person, and the mascot stays as a corner badge. Each builds a
+  track record (`Roster`), kept off the decision cards so equal notes stay equal.
+- **Consequences follow the notes only.** The consequence line is keyed by the merit tier of the
+  notes the player put first, never by who carried them; nothing marks a choice right, wrong or
+  fair.
+- **The result page** is out of fiction and comes after submit, top to bottom (the owner's
+  NPQE structure, our evidence and stance, 19 Oct 2026): a disarming opening (everyone's
+  decisions lean somewhere; a view from outside; ask whether the point that feels off could
+  still be true); "Your readings", a `ReadingGrid` with sex first and wide (band, `Spectrum`,
+  the long explanation, the reasons); then one section per area (hiring and promotion,
+  complaints and conduct, sharing resources), each with a short narrative, "Where your
+  decisions followed the record" and "Your blind spots" as `PointCard`s (a blind spot ends with
+  the actual decisive pairs), "Where it may come from" (prompts only, nothing asked or stored)
+  and "How to keep watch" (habits, free, sources PENDING v17, no effect claimed); the Internal
+  Committee line; keeping it (an optional profile, the retake as a date); the `ShareCard`; and
+  an optional stay-in-touch form (name and email both optional, two separate unticked boxes,
+  stored apart from answers and profile). It says "attitude rating", never "bias", and never
+  moralises; a card appears only where the decisions support it, so the bands can land
+  anywhere, and no weakness is dressed as a strength. No band is called unbiased; the no-lean
+  band reads "No lean read in your decisions". No paywall, no self-rated accuracy.
+- **The profile** (`#/profile`) is optional and pseudonymous, out of fiction: `Timeline`, the
+  change line ("No change read yet" unless a change is read), the next retake as a date, never a
+  timer, a separate research opt-in, and "Delete my profile and all my records".
 
 ## 5. Interaction patterns, checked against real products (Lazyweb, 19 Oct 2026)
 
@@ -136,6 +189,36 @@ mid-season note uses one identical layout: statistic, source line, instruction s
   The evaluator must not: **no answer is ever marked right or wrong**, and the scoring
   explanation opens only after all play closes. The debrief page is plain sections of prose
   with headings, in the out-of-fiction register, opened with the code.
+
+- **Tap-to-order.** MetaMask's recovery-phrase check fills numbered slots by tapping words in
+  order, and Sleeper's onboarding picks leagues in order by tapping chips. We take tap order with
+  the number shown on each card as it is tapped, and add what ranking needs: the last card fills
+  itself, a numbered card can be taken back, Undo, and a spoken line per tap. It replaces drag in
+  the season story (3 taps for 4 cards, against a drag and a Confirm).
+- **Pick one of two people.** Couple Joy's "who is most likely to" and MSCHF's two-button
+  decision put two large choices on one screen with back navigation. Ours are whole colleague
+  cards that commit on the tap, with Back on the next screen.
+- **Faster allocation.** Bitrig's tip presets and Chime's split by number set an amount in one
+  tap rather than stepping it. `QuickSplit` gives one row of number chips per colleague (0 to a
+  cap), so a 6-unit split takes two or three taps instead of six.
+- **Agreement grid.** 15Five's manager survey sets statements as rows of a 1 to 5 scale on one
+  page; on phones Rise, 222 and Spring Health ask one statement per screen. We keep the rows (12
+  statements, one screen, one Done) and make each row a real fieldset with five native radios
+  whose spoken names carry the full words, so it works at 320 px, by keyboard and by screen
+  reader.
+- **Story-driven play.** Duolingo's stories carry a lesson with recurring cartoon characters,
+  and Tapotron's dialogue screens move a story one line at a time. NPQE (16Personalities' story
+  test, "a story that reads you") lets the player pick one of several short stories. We use a
+  picker of three seasons (one built, two PENDING v17), a fixed cast, and one line of what
+  happened at the top of each decision.
+- **The result page.** 16Personalities shows a named type, trait bars with percentages, and a
+  long free explanation; Storia and Tolan in Lazyweb show a named result with a paragraph and a
+  share action; Elevate names bands on a scale. We take the named band, the strength bar and the
+  long plain explanation, and add what a rating of attitudes needs: the reasons from the
+  player's own decisions, the shaded no-lean middle, and no self-rated "how accurate was this?".
+- **Summary card.** Result-sharing screens (Airbuds, Couple Joy) share a compact card. Ours
+  names the season and the band only, works for every band, and invites "Take it and compare",
+  with no score table.
 
 ## 5a. Accessibility rules set by the October audit
 
@@ -169,6 +252,11 @@ text as a man, a woman and neutral: a gendered word carries its verb ("they were
 was") and takes a capital when it opens a sentence, both done by the generator
 (`src/engine/text.ts`), never string by string. Every release and withdrawal date comes from
 `releaseOf` in `src/engine/config.ts` and is shown as "15 March 2027" (`formatDate`).
+
+The season story's words follow the same rules, held by `scripts/story-check.ts`: no "fair"
+and no "bias" in any story text, descriptions carry no pronoun, consequences use only `{name}`
+and `{g:}`, and every number v17 will fix is marked PENDING v17 in `content/config.json`
+(`season.pendingV17`) and shown as such on screen in demo mode.
 
 ## 7. Old phones
 

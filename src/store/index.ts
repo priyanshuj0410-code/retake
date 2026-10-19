@@ -6,6 +6,7 @@ const KEY = 'eval-demo-store'
 
 /** The demo clock: in demo mode `?now=2027-03-02` pretends a date, to show the release gates. Never in a live build. */
 export function demoNow(): number {
+  if (typeof location === 'undefined') return Date.now()
   const q =
     new URLSearchParams(location.hash.split('?')[1] ?? '').get('now') ??
     new URLSearchParams(location.search).get('now')

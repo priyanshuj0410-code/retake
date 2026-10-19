@@ -5,6 +5,7 @@ import { store, today } from './store'
 import { Play } from './screens/Play'
 import { Enrol, Explain, Home, Withdraw } from './screens/Pages'
 import { Results } from './screens/Results'
+import { Profile } from './screens/Profile'
 import { Notice, Page } from './ui'
 
 const route = () => location.hash.replace(/^#/, '').split('?')[0] || '/'
@@ -40,6 +41,8 @@ export function App() {
       return <Explain />
     case 'withdraw':
       return <Withdraw />
+    case 'profile':
+      return <Profile go={go} />
     case 'results':
       return config.demo ? <Results /> : null
     default:

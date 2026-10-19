@@ -1,0 +1,78 @@
+/* @owns tapcards tapcard tapcard--on tapcard__mark tapcard__sr */
+/* A whole colleague card as one button: tap-to-order, pick one, and the ordinary options. */
+.tapcards {
+  list-style: none;
+  margin: var(--gap-none);
+  padding: var(--gap-none);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+}
+.tapcard {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap-m);
+  width: 100%;
+  min-height: var(--target);
+  padding: var(--gap-m);
+  border: var(--border) solid var(--c-border);
+  border-radius: var(--radius-l);
+  background: var(--c-raised);
+  color: var(--c-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-color var(--motion),
+    background-color var(--motion),
+    transform var(--motion);
+}
+.tapcard:active {
+  transform: scale(var(--press));
+}
+.tapcard--on {
+  border-color: var(--c-accent);
+  background: var(--c-surface);
+}
+@media (hover: hover) {
+  .tapcard:hover {
+    border-color: var(--c-muted);
+  }
+  .tapcard--on:hover {
+    border-color: var(--c-accent);
+  }
+}
+@media (forced-colors: active) {
+  .tapcard--on {
+    outline: var(--border) solid var(--c-focus);
+  }
+}
+.tapcard__mark {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--rank-badge);
+  height: var(--rank-badge);
+  border-radius: var(--radius-l);
+  border: var(--border) solid var(--c-accent);
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-lead);
+  color: var(--c-accent);
+  background: var(--c-surface);
+}
+.tapcard--on .tapcard__mark {
+  background: var(--c-accent);
+  color: var(--c-on-accent);
+}
+.tapcard__sr {
+  position: absolute;
+  width: var(--border-thin);
+  height: var(--border-thin);
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

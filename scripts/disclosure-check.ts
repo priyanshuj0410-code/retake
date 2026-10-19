@@ -10,6 +10,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { createElement } from 'react'
 import { registeredSentences, screens } from '../src/content'
 import { Disclosure } from '../src/screens/Disclosure'
+import { SS } from '../src/story/content'
 import { record } from './lib/check'
 
 const T = 'AT-3 the four-sentence disclosure verbatim'
@@ -72,7 +73,8 @@ export async function run() {
   record(
     T,
     'firm enrolment opens on the disclosure',
-    /useState<EnrolStep>\(preview\?\.step \?\? 'four'\)/.test(pages) && /step === 'four'[\s\S]{0,80}<Disclosure/.test(pages),
+    /useState<EnrolStep>\(preview\?\.step \?\? 'four'\)/.test(pages) &&
+      /step === 'four'[\s\S]{0,80}<Disclosure/.test(pages),
   )
   /* No other sentence about measurement anywhere before the explanation: the consent and
      every pre-release screen avoid the words the rule forbids. */
@@ -87,6 +89,35 @@ export async function run() {
     T,
     'consent, tutorial and short debrief never say "fair", "bias", "preference", "score" of the player or how attitudes are scored',
     !/\b(fair|fairly|bias|biased|preference|merit|weight)\b/i.test(pre),
+  )
+  /* The season story (EVAL-4): the same screen, with sentence 3 replaced by the owner's
+     pending wording, because the season shows each player a rating; 1, 2 and 4 stay verbatim. */
+  for (const langs of [['en'], ['hinglish']] as const) {
+    const got = textOf(
+      renderToStaticMarkup(
+        createElement(Disclosure, { langs: [...langs], onContinue: () => {}, season: true }),
+      ),
+    )
+    const l = langs[0]
+    const want = [
+      registeredSentences[l][0],
+      registeredSentences[l][1],
+      'PENDING owner wording',
+      registeredSentences[l][3],
+      screens.common.continue[l],
+    ]
+    record(
+      T,
+      `season story first screen, ${l}: registered sentences 1, 2 and 4 verbatim, sentence 3 "PENDING owner wording", Continue, nothing else`,
+      JSON.stringify(got) === JSON.stringify(want),
+      JSON.stringify(got) === JSON.stringify(want) ? '' : JSON.stringify(got),
+    )
+  }
+  const seasonPre = JSON.stringify({ c: SS.consent, d: SS.debrief })
+  record(
+    T,
+    'the season consent and debrief never say "fair", "bias", "preference", "merit" or "weight"',
+    !/\b(fair|fairly|bias|biased|preference|merit|weight)\b/i.test(seasonPre),
   )
   record(
     T,

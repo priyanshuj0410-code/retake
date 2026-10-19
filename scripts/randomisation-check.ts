@@ -6,7 +6,7 @@
  * randomisation gives every player the cue-carrying counts and coverage of plan v1 4.1, and
  * no draw depends on an earlier answer except the registered note and route rules.
  */
-import { config, type DeploymentId } from '../src/engine/config'
+import { config, type CardDeploymentId } from '../src/engine/config'
 import { LocalStore } from '../src/store/local'
 import { parsePending, type Arm } from '../src/engine/firm'
 import { BANDS, TYPES, bankFor, type Presented } from '../src/engine/layout'
@@ -40,12 +40,12 @@ const perms = (() => {
 })()
 
 export async function run() {
-  const sessions: Record<DeploymentId, ReturnType<typeof createSession>[]> = {
+  const sessions: Record<CardDeploymentId, ReturnType<typeof createSession>[]> = {
     'panel-g1': [],
     'panel-g2': [],
     firm: [],
   }
-  for (const dep of Object.keys(sessions) as DeploymentId[])
+  for (const dep of Object.keys(sessions) as CardDeploymentId[])
     for (let i = 0; i < N; i++)
       sessions[dep].push(createSession(seeded(1_000_000 + i), dep, ['en', 'hinglish']))
 
@@ -70,7 +70,7 @@ export async function run() {
     coverageFail += 1
     coverageFirst ||= why
   }
-  for (const dep of Object.keys(sessions) as DeploymentId[]) {
+  for (const dep of Object.keys(sessions) as CardDeploymentId[]) {
     const d = config.deployments[dep]
     for (const s of sessions[dep]) {
       const A = formA(s).filter((p) => !p.rematch)
@@ -325,7 +325,7 @@ export async function run() {
   }
 
   /* The registered route and note rules (applied with uniforms drawn at entry). */
-  const notes = (dep: DeploymentId, split: Split, ids: string[]) => {
+  const notes = (dep: CardDeploymentId, split: Split, ids: string[]) => {
     const ss = sessions[dep].filter((s) => s.draws.arm === 'FULL')
     const got = ss
       .map((s) => routeAndNote(s, split))
@@ -516,7 +516,7 @@ export async function run() {
      same cards, cues, orders, Inbox and survey order; route and note differ only through the split. */
   let depOk = true
   let why = ''
-  const play = (seed: number, dep: DeploymentId, pick: 'first' | 'last') => {
+  const play = (seed: number, dep: CardDeploymentId, pick: 'first' | 'last') => {
     const r = new Runner(seeded(seed), dep, ['en', 'hinglish'])
     let guard = 0
     while (!r.done && guard++ < 1000) {
@@ -541,7 +541,7 @@ export async function run() {
     return r
   }
   for (let i = 0; i < 100; i++) {
-    for (const dep of ['panel-g1', 'panel-g2', 'firm'] as DeploymentId[]) {
+    for (const dep of ['panel-g1', 'panel-g2', 'firm'] as CardDeploymentId[]) {
       const a = play(70_000 + i, dep, 'first')
       const b = play(70_000 + i, dep, 'last')
       const cards = (r: Runner) =>

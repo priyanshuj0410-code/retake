@@ -22,7 +22,8 @@
     "merit-reference": "tsx --tsconfig tsconfig.app.json scripts/merit-reference.ts",
     "walkthrough": "tsx --tsconfig tsconfig.app.json --import ./scripts/lib/ignore-css.mjs scripts/walkthrough.ts",
     "ux": "tsx --tsconfig tsconfig.app.json scripts/ux-audit.ts",
-    "ux:states": "tsx --tsconfig tsconfig.app.json scripts/ux-states.ts"
+    "ux:states": "tsx --tsconfig tsconfig.app.json scripts/ux-states.ts",
+    "season": "tsx --tsconfig tsconfig.app.json scripts/season-play.ts"
   },
   "dependencies": {
     "firebase": "^12.18.0",

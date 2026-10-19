@@ -8,7 +8,9 @@
  */
 import { readFileSync } from 'node:fs'
 import { playDemo } from '../src/demo/players'
-import { config, DEPLOYMENTS } from '../src/engine/config'
+import { ALL_DEPLOYMENTS, config, DEPLOYMENTS } from '../src/engine/config'
+import { DEMO_PROFILE_CODE, demoProfileBox } from '../src/story/profile'
+import { formatCode } from '../src/engine/codes'
 import { randomKey } from '../src/engine/rng'
 import { DEMO_SCHEDULE, releaseOf } from '../src/store/local'
 
@@ -24,7 +26,7 @@ const put = (path: string, body: unknown) =>
   })
 
 const players = Number(process.argv[2] ?? 0)
-for (const dep of DEPLOYMENTS) await put(`eval-config/${dep}`, releaseOf(dep))
+for (const dep of ALL_DEPLOYMENTS) await put(`eval-config/${dep}`, releaseOf(dep))
 await put(`eval-schedule/${DEMO_SCHEDULE.firm}`, DEMO_SCHEDULE)
 const explanations = JSON.parse(
   readFileSync(new URL('../content/explanation.json', import.meta.url), 'utf8'),
@@ -37,6 +39,17 @@ for (const dep of ['panel-g1', 'panel-g2'] as const) {
     console.log(`${dep} (${langs}): http://localhost:5173/#/play/${t}`)
   }
 }
+for (const langs of ['choose', 'en']) {
+  const t = randomKey()
+  await put(`eval-tokens/${t}`, { dep: 'season', langs, s: 'issued' })
+  console.log(`season story (${langs}): http://localhost:5173/#/play/${t}`)
+}
+/* One demo profile with two made-up past seasons (EVAL-4), so the timeline can be seen. */
+const demoProfile = await demoProfileBox()
+await put(`eval-profile/${demoProfile.key}`, demoProfile.box)
+console.log(
+  `demo profile: http://localhost:5173/#/profile with recovery code ${formatCode(DEMO_PROFILE_CODE)}`,
+)
 console.log(`firm enrolment: http://localhost:5173/#/enrol/${DEMO_SCHEDULE.firm}`)
 for (let i = 0; i < players; i++) {
   const dep = DEPLOYMENTS[i % 3]

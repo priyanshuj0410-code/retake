@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { screens } from '../content'
 import type { Lang, T } from '../content/types'
+import { SS } from '../story/content'
 import { Button, Choice, List, Notice, Page, Text } from '../ui'
 
 const S = screens
@@ -24,17 +25,24 @@ export function Consent({
   ui,
   demo,
   firm,
+  season,
   onAgree,
   onDecline,
 }: {
   ui: Lang
   demo: boolean
   firm?: boolean
+  /** The season story's consent (content/story.json, a draft for the owner): it tells the player about the personal rating. */
+  season?: boolean
   onAgree?: () => void
   onDecline?: () => void
 }) {
   const L = (t: T) => t[ui]
-  const c = firm ? S.consent.firm : S.consent.panel
+  const c = firm
+    ? S.consent.firm
+    : season
+      ? { ...S.consent.panel, title: SS.consentTitle, points: SS.consent }
+      : S.consent.panel
   return (
     <Page
       surface="oof"

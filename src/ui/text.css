@@ -1,4 +1,4 @@
-/* @owns text text--lead text--small text--muted text--strong heading */
+/* @owns text text--lead text--small text--muted text--strong heading heading--sub */
 .text {
   margin: var(--gap-none);
   color: var(--c-body);
@@ -26,4 +26,8 @@
   line-height: var(--leading-tight);
   color: var(--c-text);
   margin: var(--gap-m) var(--gap-none) var(--gap-none);
+}
+.heading--sub {
+  font-size: var(--text-lead);
+  margin: var(--gap-s) var(--gap-none) var(--gap-none);
 }

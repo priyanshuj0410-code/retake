@@ -15,6 +15,7 @@ import { randomKey } from '../src/engine/rng'
 import { marker, step } from './lib/autoplay'
 import { record, summary } from './lib/check'
 import { timeFields } from './no-timers'
+import { playSeason } from './season-play'
 
 const HOST = process.env.FIREBASE_DATABASE_EMULATOR_HOST
 const PROJECT = process.env.GCLOUD_PROJECT ?? 'demo-eval'
@@ -38,13 +39,15 @@ const DAY = 86_400_000
 async function main() {
   await owner('DELETE', '')
   const now = Date.now()
-  for (const dep of ['panel-g1', 'panel-g2', 'firm'])
+  for (const dep of ['panel-g1', 'panel-g2', 'firm', 'season'])
     await owner('PUT', `eval-config/${dep}`, {
       releaseAt: now + 30 * DAY,
       deleteUntil: now + 44 * DAY,
     })
   const token = randomKey()
   await owner('PUT', `eval-tokens/${token}`, { dep: 'panel-g2', langs: 'en', s: 'issued' })
+  const seasonToken = randomKey()
+  await owner('PUT', `eval-tokens/${seasonToken}`, { dep: 'season', langs: 'en', s: 'issued' })
 
   process.env.VITE_STORE = 'emulator'
   const server = await createServer({
@@ -184,6 +187,57 @@ async function main() {
       'AT-1 one-time tokens (emulator, browser)',
       'opening the same link again is refused',
       /already been used/.test((await page.getByRole('alert').textContent()) ?? ''),
+    )
+
+    /* The season story (EVAL-4) on the real rules: its records, a profile and the
+       stay-in-touch details are all accepted, and each holds only its whitelisted fields. */
+    const T = 'X-14 season records (emulator, browser)'
+    await page.goto('about:blank')
+    await playSeason(page, `http://localhost:${PORT}/#/play/${seasonToken}`)
+    record(
+      T,
+      'a whole season plays to the result on the emulator',
+      /Your answers are in/.test(await page.locator('main').innerText()),
+    )
+    const plays = (await owner('GET', 'eval-play')) as Record<
+      string,
+      { meta: { dep: string } }
+    > | null
+    record(
+      T,
+      'the rules accept the season records',
+      Object.values(plays ?? {}).some((p) => p.meta.dep === 'season'),
+    )
+    await page.getByRole('textbox', { name: /display name/ }).fill('E2E')
+    await page.getByRole('button', { name: 'Create my profile and save' }).click()
+    await page.getByText(/Saved to E2E's profile/).waitFor({ timeout: 30000 })
+    const profiles = (await owner('GET', 'eval-profile')) as Record<
+      string,
+      Record<string, string>
+    > | null
+    const box = Object.values(profiles ?? {})[0] ?? {}
+    record(
+      T,
+      'the profile reaches the emulator as ciphertext only',
+      Object.keys(profiles ?? {}).length === 1 &&
+        Object.keys(box).sort().join(',') === 'ct,iv' &&
+        !JSON.stringify(box).includes('E2E'),
+    )
+    await page.getByRole('textbox', { name: /Your email/ }).fill('e2e@example.test')
+    await page.getByRole('checkbox').last().check()
+    await page.getByRole('button', { name: 'Send my details' }).click()
+    await page.getByText(/kept apart from your answers/).waitFor({ timeout: 30000 })
+    const contacts = (await owner('GET', 'eval-contact')) as Record<
+      string,
+      Record<string, unknown>
+    > | null
+    const c = Object.values(contacts ?? {})[0] ?? {}
+    record(
+      T,
+      'the stay-in-touch details reach the emulator with only the email and the two opt-ins',
+      Object.keys(c).sort().join(',') === 'em,follow,research' &&
+        c.research === true &&
+        c.follow === false,
     )
   } finally {
     await browser.close()

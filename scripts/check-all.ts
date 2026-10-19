@@ -19,6 +19,7 @@ const modules = [
   './design-check',
   './bundle-check',
   './component-states-check',
+  './story-check',
 ]
 for (const m of modules) {
   try {

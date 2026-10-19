@@ -4,11 +4,19 @@
  * play in, and the Continue button. No heading, act label, demo badge or logo.
  * scripts/disclosure-check.ts renders it and compares the text byte for byte.
  */
-import { registeredSentences, screens } from '../content'
+import { screens, sentencesFor } from '../content'
 import type { Lang } from '../content/types'
 import { Button, Page, Text } from '../ui'
 
-export function Disclosure({ langs, onContinue }: { langs: Lang[]; onContinue: () => void }) {
+export function Disclosure({
+  langs,
+  onContinue,
+  season = false,
+}: {
+  langs: Lang[]
+  onContinue: () => void
+  season?: boolean
+}) {
   return (
     <Page
       surface="oof"
@@ -18,7 +26,7 @@ export function Disclosure({ langs, onContinue }: { langs: Lang[]; onContinue: (
     >
       {langs.map((l) => (
         <div key={l} lang={l === 'hinglish' ? 'hi-Latn' : 'en-GB'} data-disclosure={l}>
-          {registeredSentences[l].map((s) => (
+          {sentencesFor(l, season).map((s) => (
             <Text key={s}>{s}</Text>
           ))}
         </div>
