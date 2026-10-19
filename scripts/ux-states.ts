@@ -171,6 +171,8 @@ async function rows(page: Page, component: string, kind: 'radio' | 'checkbox') {
   await page.mouse.move(0, 0)
   rec(component, 'hover changes border-color', before !== over, `${before} -> ${over}`)
   await pressed(page, component, row)
+  /* Two presses tick a checkbox twice; leave the row ticked. */
+  if (!(await rowN(0).locator('input').isChecked())) await rowN(0).click()
   const checked = await rowN(0).evaluate((e) => ({
     cls: e.classList.contains('choice__option--checked'),
     dur: getComputedStyle(e).transitionDuration,
@@ -223,6 +225,14 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
     ) {
       done.add('Choice')
       await rows(page, 'Choice', 'radio')
+    }
+    if (
+      !done.has('Checks') &&
+      (await page.locator('.choice__option:has(input[type=checkbox])').count()) > 1 &&
+      !(await page.locator('input[type=checkbox]:checked').count())
+    ) {
+      done.add('Checks')
+      await rows(page, 'Checks', 'checkbox')
     }
     if (m === 'wrap:submit') {
       await step(page, { submit: true })

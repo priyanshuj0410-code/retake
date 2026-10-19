@@ -72,7 +72,7 @@ export function Checks({
       </legend>
       {hint ? <span className="choice__text">{hint}</span> : null}
       {options.map((o) => (
-        <label className="choice__option" key={o.id}>
+        <label className={rowClass(value.includes(o.id))} key={o.id}>
           <input
             className="choice__input"
             type="checkbox"
