@@ -1,5 +1,6 @@
 /* @owns text text--lead text--small text--muted text--strong heading */
 .text {
+  overflow-wrap: anywhere;
   margin: var(--gap-none);
   color: var(--c-body);
   font-size: var(--text-body);
@@ -20,6 +21,7 @@
   color: var(--c-text);
 }
 .heading {
+  overflow-wrap: anywhere;
   font-family: var(--font-display);
   font-size: var(--text-h2);
   font-weight: var(--weight-display);

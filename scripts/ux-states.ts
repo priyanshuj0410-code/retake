@@ -437,6 +437,8 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
     .context()
     .grantPermissions(['clipboard-read', 'clipboard-write'], { origin: new URL(base).origin })
   await page.goto(base)
+  await stress(page, 'Text', '.text')
+  await stress(page, 'Heading', '.heading')
   await page.getByRole('radio', { name: /^English only/ }).check()
   await page.getByRole('button', { name: /^Panel, game 2$/ }).click()
   await page.waitForSelector('[data-screen="demo"]')
