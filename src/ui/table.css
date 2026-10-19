@@ -2,6 +2,7 @@
 .table__wrap {
   overflow-x: auto;
   max-width: 100%;
+  border-radius: var(--radius-s);
 }
 .table {
   border-collapse: collapse;

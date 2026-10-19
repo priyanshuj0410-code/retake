@@ -6,10 +6,32 @@
   border: var(--border) solid var(--c-border);
   background: var(--c-surface);
   color: var(--c-text);
+  overflow-wrap: anywhere;
+}
+/* Error and done differ by more than colour: a heavier left edge and a glyph that is not read
+   aloud (the words carry the meaning). */
+.notice--error,
+.notice--ok {
+  border-left-width: var(--border-focus);
 }
 .notice--error {
   border-color: var(--c-error);
 }
 .notice--ok {
   border-color: var(--c-ok);
+}
+.notice--error::before,
+.notice--ok::before {
+  font-family: var(--font-display);
+  font-weight: var(--weight-strong);
+}
+.notice--error::before {
+  content: '! ';
+  content: '! ' / '';
+  color: var(--c-error);
+}
+.notice--ok::before {
+  content: '✓ ';
+  content: '✓ ' / '';
+  color: var(--c-ok);
 }

@@ -5,6 +5,7 @@ description: Each prototype acceptance test registered in research plan v1, sect
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
   - https://app.plane.so/the-equal-lens/browse/EVAL-2/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-3/
 ---
 
 # Acceptance tests and the checks that run them
@@ -45,6 +46,7 @@ test off before any pilot datum: that sign-off is not part of this build.
 | X-6 Rules refusals | `scripts/rules-check.ts` | No device reads a record or lists tokens or codes; no write without an open session, no overwrite, nothing outside `eval-` nodes; owner-only dates; firm enrolment created and spent once |
 | X-7 One source for dates | `scripts/release-check.ts` | Only `src/engine/config.ts` reads the release dates; the withdrawal window closes the configured days after release ([ux audit](../reviews/ux-audit-2026-10-19.md), B2) |
 | X-8 Accessibility | `scripts/ux-audit.ts` (`pnpm ux`) | Every screen type at 412, 320 and 1280 px, light and dark: contrast, targets, names, one `h1`, titles, reflow, live regions, axe-core, focus on arrival, keyboard ranking and allocation ([ux audit](../reviews/ux-audit-2026-10-19.md)) |
+| X-9 Component states | `scripts/component-states-check.ts`; `scripts/ux-states.ts` (in `pnpm ux`); the code-field block in `scripts/e2e.ts` | Each component's states in markup, in the browser (hover, focus, press, checked, limits, drag, slide, settle, invalid, done, copy, long content, forced colours, reduced motion) and against the emulator ([component states](../reviews/component-states-2026-10-19.md)) |
 
 ## The predecessor's crosswise build checks
 

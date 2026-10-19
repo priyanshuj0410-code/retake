@@ -33,6 +33,7 @@
   text-transform: uppercase;
   color: var(--c-label);
   margin: var(--gap-none);
+  overflow-wrap: anywhere;
 }
 .page__oof {
   margin: var(--gap-none);
@@ -47,6 +48,7 @@
   line-height: var(--leading-tight);
   margin: var(--gap-none);
   color: var(--c-text);
+  overflow-wrap: anywhere;
 }
 .page__title:focus {
   outline: none;

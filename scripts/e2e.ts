@@ -189,6 +189,30 @@ async function main() {
       /already been used/.test((await page.getByRole('alert').textContent()) ?? ''),
     )
 
+    /* Component states against the emulator's store (scripts/ux-states.ts checks the rest
+       on the demo store): a wrong code on the withdrawal page, sent with Enter. */
+    await page.goto(`http://localhost:${PORT}/#/withdraw`)
+    await page.reload()
+    const field = page.getByRole('textbox')
+    await field.fill('AAAA-BBBB-CCCC')
+    await field.press('Enter')
+    await page.getByRole('alert').waitFor({ timeout: 20000 })
+    const bad = await field.evaluate((e) => ({
+      invalid: e.getAttribute('aria-invalid'),
+      by: document.getElementById(e.getAttribute('aria-describedby') ?? '')?.getAttribute('role'),
+    }))
+    record(
+      'X-9 component states (emulator, browser)',
+      'Field: Enter sends the code; a wrong one is aria-invalid and described by the alert',
+      bad.invalid === 'true' && bad.by === 'alert',
+      JSON.stringify(bad),
+    )
+    await field.press('Backspace')
+    record(
+      'X-9 component states (emulator, browser)',
+      'Field: typing again clears the invalid state',
+      (await field.getAttribute('aria-invalid')) === null,
+    )
     /* The season story (EVAL-4) on the real rules: its records, a profile and the
        stay-in-touch details are all accepted, and each holds only its whitelisted fields. */
     const T = 'X-14 season records (emulator, browser)'

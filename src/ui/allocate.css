@@ -35,6 +35,20 @@
   font-family: var(--font-display);
   font-size: var(--text-lead);
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--motion),
+    border-color var(--motion),
+    transform var(--motion);
+}
+.alloc__step:not([aria-disabled='true']):active {
+  transform: scale(var(--press));
+}
+@media (hover: hover) {
+  .alloc__step:not([aria-disabled='true']):hover {
+    background: var(--c-raised);
+  }
 }
 .alloc__step[aria-disabled='true'] {
   border-color: var(--c-rule);
@@ -48,13 +62,22 @@
   min-width: var(--icon);
   text-align: center;
   color: var(--c-text);
+  font-variant-numeric: tabular-nums;
 }
 .alloc__left {
   font-family: var(--font-display);
   font-weight: var(--weight-label);
   color: var(--c-accent);
   margin: var(--gap-none);
+  font-variant-numeric: tabular-nums;
+  transition: color var(--motion);
 }
+/* Everything placed: a neutral confirmation that the action is complete (a tick that is not
+   read aloud, and the "ok" colour), never a judgement of how it was shared. */
 .alloc__left--done {
   color: var(--c-ok);
+}
+.alloc__left--done::before {
+  content: '✓ ';
+  content: '✓ ' / '';
 }

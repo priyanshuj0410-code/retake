@@ -54,7 +54,9 @@ async function stress(page: Page, component: string, sel: string) {
         /* Icon buttons and rank numerals never hold words; everything else can. */
         if (
           n.textContent?.trim() &&
-          !n.parentElement?.closest('button[aria-label], [aria-hidden="true"], [role="img"]')
+          !n.parentElement?.closest(
+            'button[aria-label], span[aria-label], [aria-hidden="true"], [role="img"]',
+          )
         )
           n.textContent = `${n.textContent} Zimmedaariyonwaalaaprabandhakpratinidhi Bahutlambaanaam`
     })
@@ -144,6 +146,14 @@ async function hover(page: Page, component: string, sel: string, prop: string) {
 }
 
 /* ---------- per component ---------- */
+
+async function demoBadge(page: Page) {
+  await forced(page, true)
+  const edge = await css(page, '.demo', 'border-top-style')
+  await forced(page, false)
+  rec('DemoBadge', 'forced colours: the strip keeps an edge', edge === 'solid', edge)
+  await stress(page, 'DemoBadge', '.demo')
+}
 
 async function button(page: Page) {
   const sel = '.button--primary'
@@ -284,6 +294,135 @@ async function sortList(page: Page) {
   await stress(page, C, '.sort')
 }
 
+async function allocate(page: Page) {
+  const C = 'Allocate'
+  const plus = '.alloc__step:not([aria-disabled="true"])'
+  await hover(page, C, plus, 'background-color')
+  await pressed(page, C, '.alloc__step:nth-child(3)')
+  for (let i = 0; i < 20 && !(await page.locator('.alloc__left--done').count()); i++)
+    await page.locator('.alloc__step:nth-child(3)').first().click()
+  const done = await page.locator('.alloc__left').evaluate((e) => ({
+    cls: e.classList.contains('alloc__left--done'),
+    tick: getComputedStyle(e, '::before').content,
+    dur: getComputedStyle(e).transitionDuration,
+    text: e.textContent,
+  }))
+  rec(
+    C,
+    '"All shared" arrives with a tick and the ok colour',
+    done.cls && /✓/.test(done.tick),
+    JSON.stringify(done),
+  )
+  rec(C, 'remaining count changes at the motion duration', /0\.16s/.test(done.dur), done.dur)
+  const reached = await tabTo(page, '.alloc__step', 1)
+  const before = await page.locator('.alloc__left').textContent()
+  await page.keyboard.press('Enter')
+  const after = await page.evaluate(() => ({
+    kept: document.activeElement === document.querySelectorAll('.alloc__step')[1],
+    live: document.querySelector('.alloc__left')?.textContent ?? '',
+  }))
+  rec(
+    C,
+    'aria-disabled at a limit: focus kept, the live line said again',
+    reached && after.kept && after.live !== before && after.live.trim() === (before ?? '').trim(),
+    JSON.stringify({ before, ...after }),
+  )
+  await focusRing(page, C, '.alloc__step', 0)
+  await forced(page, true)
+  const off = await css(page, '.alloc__step[aria-disabled="true"]', 'color')
+  const on = await css(page, plus, 'color')
+  await forced(page, false)
+  rec(C, 'forced colours: a spent stepper is distinct', off !== on, `${off} vs ${on}`)
+  await stress(page, C, '.alloc')
+}
+
+async function field(page: Page, base: string) {
+  const C = 'Field'
+  await page.goto(`${base}#/explain`)
+  await page.reload()
+  const input = page.getByRole('textbox')
+  await input.waitFor()
+  await page.mouse.move(0, 0)
+  const rest = await input.evaluate((e) => getComputedStyle(e).borderColor)
+  await input.hover()
+  await page.waitForTimeout(220)
+  const over = await input.evaluate((e) => getComputedStyle(e).borderColor)
+  rec(C, 'hover changes border-color', rest !== over, `${rest} -> ${over}`)
+  await focusRing(page, C, '.field__input')
+  await page.waitForTimeout(220)
+  const focus = await input.evaluate((e) => getComputedStyle(e).borderColor)
+  rec(C, 'focus: accent border as well as the ring', focus !== rest, focus)
+  await input.fill('NOT-A-CODE')
+  await input.press('Enter')
+  await page.getByRole('alert').waitFor()
+  await page.waitForTimeout(220)
+  const bad = await input.evaluate((e) => ({
+    invalid: e.getAttribute('aria-invalid'),
+    describedBy: document
+      .getElementById(e.getAttribute('aria-describedby') ?? '')
+      ?.getAttribute('role'),
+    border: getComputedStyle(e).borderColor,
+    alertBorder: getComputedStyle(document.querySelector('[role=alert]') as Element).borderColor,
+  }))
+  rec(
+    C,
+    'Enter submits; invalid is aria-invalid, described by the alert, error border',
+    bad.invalid === 'true' && bad.describedBy === 'alert' && bad.border === bad.alertBorder,
+    JSON.stringify(bad),
+  )
+  await input.press('Backspace')
+  const cleared = await input.evaluate((e) => e.getAttribute('aria-invalid'))
+  rec(C, 'typing again clears the invalid state', cleared === null, String(cleared))
+  await stress(page, C, '.field')
+}
+
+async function notice(page: Page, base: string, code: string) {
+  const C = 'Notice'
+  await page.goto(`${base}#/withdraw`)
+  await page.reload()
+  await page.getByRole('textbox').fill('NOT-A-CODE')
+  await page.getByRole('button', { name: 'Delete my records' }).click()
+  await page.getByRole('alert').waitFor()
+  const err = await css(page, '.notice--error', 'content', '::before')
+  rec(C, 'error: a glyph as well as the colour', /!/.test(err), err)
+  await page.getByRole('textbox').fill(code)
+  await page.getByRole('button', { name: 'Delete my records' }).click()
+  await page.locator('.notice--ok').waitFor()
+  const ok = await css(page, '.notice--ok', 'content', '::before')
+  rec(C, 'done: a tick as well as the colour', /✓/.test(ok), ok)
+  await forced(page, true)
+  const edge = await css(page, '.notice--ok', 'border-left-width')
+  await forced(page, false)
+  rec(C, 'forced colours: the heavier edge stays', parseFloat(edge) >= 3, edge)
+  await stress(page, C, '.notice')
+}
+
+async function link(page: Page, base: string) {
+  const C = 'Link'
+  await page.goto(base)
+  await page.reload()
+  await page.getByRole('button', { name: /^Firm session/ }).click()
+  await page.waitForSelector('[data-screen="disclosure"]')
+  await step(page)
+  await step(page)
+  await page.waitForSelector('[data-screen="enrol-form"]')
+  await step(page)
+  await page.waitForSelector('[data-screen="enrol-done"]')
+  await hover(page, C, '.link', 'text-decoration-thickness')
+  await focusRing(page, C, '.link')
+  const l = page.locator('.link').first()
+  const b = (await l.boundingBox())!
+  const rest = await l.evaluate((e) => getComputedStyle(e).color)
+  await page.mouse.move(b.x + 4, b.y + b.height / 2)
+  await page.mouse.down()
+  await page.waitForTimeout(220)
+  const down = await l.evaluate((e) => getComputedStyle(e).color)
+  await page.mouse.move(0, 0)
+  await page.mouse.up()
+  rec(C, 'pressed: the pressed colour', rest !== down, `${rest} -> ${down}`)
+  await stress(page, C, '.link')
+}
+
 /* ---------- the run ---------- */
 
 export async function statesPass(page: Page, base: string): Promise<StateResult[]> {
@@ -294,14 +433,36 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
     reducedMotion: 'no-preference',
     forcedColors: 'none',
   })
+  await page
+    .context()
+    .grantPermissions(['clipboard-read', 'clipboard-write'], { origin: new URL(base).origin })
   await page.goto(base)
+  await stress(page, 'Text', '.text')
+  await stress(page, 'Heading', '.heading')
   await page.getByRole('radio', { name: /^English only/ }).check()
   await page.getByRole('button', { name: /^Panel, game 2$/ }).click()
   await page.waitForSelector('[data-screen="demo"]')
   await button(page)
+  await demoBadge(page)
   const done = new Set<string>()
+  let sessionCode = ''
+  const grounds = new Map<string, string>()
   for (let guard = 0; guard < 400; guard++) {
     const m = (await marker(page)) ?? ''
+    const surface = await page.locator('.page').first().getAttribute('data-surface')
+    if (surface && !grounds.has(surface)) {
+      grounds.set(surface, await css(page, '.page', 'background-color'))
+      await page.emulateMedia({ colorScheme: 'dark' })
+      const dark = await css(page, '.page', 'background-color')
+      await page.emulateMedia({ colorScheme: 'light' })
+      rec(
+        'Page',
+        `${surface} surface: its own ground, re-pointed in dark`,
+        dark !== grounds.get(surface),
+        `${grounds.get(surface)} / ${dark}`,
+      )
+      await stress(page, 'Page', '.page__title, .page__act')
+    }
     if (!done.has('disabled') && (await page.locator('.button--primary:disabled').count())) {
       done.add('disabled')
       await buttonDisabled(page)
@@ -322,6 +483,10 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
       done.add('Checks')
       await rows(page, 'Checks', 'checkbox')
     }
+    if (!done.has('List') && (await page.locator('.list').count())) {
+      done.add('List')
+      await stress(page, 'List', '.list')
+    }
     if (!done.has('Character') && (await page.locator('.character').count())) {
       done.add('Character')
       await stress(page, 'Character', '.character')
@@ -329,6 +494,36 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
       const fig = await css(page, '.character__figure', 'forced-color-adjust')
       await forced(page, false)
       rec('Character', 'forced colours: the figure keeps its own colours', fig === 'none', fig)
+    }
+    if (!done.has('Code') && m.endsWith(':code')) {
+      done.add('Code')
+      await page.locator('.code').waitFor({ timeout: 20000 })
+      const sel = await css(page, '.code', 'user-select')
+      rec('Code', 'one tap selects the whole code', sel === 'all', sel)
+      await page.getByRole('button', { name: /^(Copy the code|Code copy karein)$/ }).click()
+      await page
+        .locator('.code__status:not(:empty)')
+        .waitFor({ timeout: 5000 })
+        .catch(() => {})
+      const status = (await page.locator('.code__status').textContent()) ?? ''
+      const clip = await page.evaluate(() => navigator.clipboard.readText()).catch(() => '')
+      const shown = ((await page.locator('.code').textContent()) ?? '').trim()
+      sessionCode = shown
+      rec('Code', 'copy: the clipboard holds the code', clip === shown, `${clip} vs ${shown}`)
+      rec('Code', 'copy: a status line says it was copied', /^Copied/.test(status), status)
+      await stress(page, 'Code', '.code')
+    }
+    if (!done.has('Statement') && (await page.locator('.statement').count())) {
+      done.add('Statement')
+      await stress(page, 'Statement', '.statement')
+      await forced(page, true)
+      const edge = await css(page, '.statement__box', 'border-top-style')
+      await forced(page, false)
+      rec('Statement', 'forced colours: both boxes keep their border', edge === 'solid', edge)
+    }
+    if (!done.has('Allocate') && (await page.locator('.alloc').count())) {
+      done.add('Allocate')
+      await allocate(page)
     }
     if (!done.has('SortList') && (await page.locator('.sort').count())) {
       done.add('SortList')
@@ -347,6 +542,15 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
       })
       .catch(() => {})
   }
+  await field(page, base)
+  await notice(page, base, sessionCode)
+  await link(page, base)
+  rec(
+    'Page',
+    'three surfaces, three grounds',
+    new Set(grounds.values()).size === 3 && grounds.size === 3,
+    JSON.stringify([...grounds]),
+  )
   await page.emulateMedia({ reducedMotion: 'reduce', forcedColors: 'none' })
   return out.slice()
 }

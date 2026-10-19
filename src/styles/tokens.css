@@ -152,7 +152,7 @@
   --lift: var(--shadow-lift);
   --flat: var(--shadow-none);
 
-  /* The season story (knowledge/design.md, section 4a). */
+  /* The season story (knowledge/design.md, section 4b). */
   --portrait: var(--px-72);
   --portrait-face: var(--fs-56);
   --portrait-small: var(--px-48);
@@ -164,7 +164,7 @@
   --centre: var(--pct-neg-50);
   --card-min: var(--px-128);
   --span-row: var(--grid-all);
-  /* Reading levels: neutral on purpose, never green or red (section 4a). */
+  /* Reading levels: neutral on purpose, never green or red (section 4b). */
   --c-level-lean: var(--c-accent);
   --c-level-none: var(--c-text);
   --c-level-unread: var(--c-muted);

@@ -8,4 +8,7 @@
   padding: var(--gap-xs) var(--gap-m);
   border-radius: var(--radius-s);
   margin: var(--gap-none);
+  overflow-wrap: anywhere;
+  /* Invisible normally; forced colours paint it, so the strip keeps its edge there. */
+  border: var(--border-thin) solid transparent;
 }

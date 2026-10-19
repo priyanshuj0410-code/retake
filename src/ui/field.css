@@ -5,6 +5,7 @@
   gap: var(--gap-s);
 }
 .field__label {
+  overflow-wrap: anywhere;
   font-family: var(--font-display);
   font-weight: var(--weight-label);
   color: var(--c-text);
@@ -19,4 +20,21 @@
   background: var(--c-surface);
   color: var(--c-text);
   width: 100%;
+  transition: border-color var(--motion);
+}
+.field__input:focus {
+  border-color: var(--c-accent);
+}
+.field__input[aria-invalid='true'] {
+  border-color: var(--c-error);
+}
+@media (hover: hover) {
+  .field__input:not(:focus):not([aria-invalid='true']):hover {
+    border-color: var(--c-muted);
+  }
+}
+@media (forced-colors: active) {
+  .field__input[aria-invalid='true'] {
+    border-style: dashed;
+  }
 }

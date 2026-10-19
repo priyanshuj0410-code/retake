@@ -8,12 +8,17 @@ import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import {
   AgreeGrid,
+  Allocate,
   Button,
   Checks,
   Choice,
+  Code,
+  Field,
+  List,
   QuickSplit,
   SortList,
   StoryPick,
+  Table,
   TapOrder,
 } from '../src/ui'
 import { record } from './lib/check'
@@ -180,5 +185,77 @@ export async function run() {
     (pick.match(/aria-disabled="true"/g) ?? []).length === 1 &&
       /PENDING v17/.test(pick) &&
       !/ disabled=""/.test(pick),
+  )
+  const alloc = (units: number[]) =>
+    html(
+      h(Allocate, {
+        items: [person('A'), person('B')],
+        order: [0, 1],
+        units,
+        pool: 4,
+        onChange: () => {},
+        labels: {
+          add: (n) => `Add: ${n}`,
+          remove: (n) => `Remove: ${n}`,
+          left: (n) => `${n} left to share`,
+          done: 'All shared',
+          unit: 'days',
+        },
+      }),
+    )
+  const spent = alloc([3, 1])
+  const empty = alloc([0, 0])
+  record(
+    T,
+    'Allocate: all shared marks the line done and aria-disables every plus, none disabled',
+    /alloc__left alloc__left--done/.test(spent) &&
+      (spent.match(/aria-disabled="true"/g) ?? []).length === 2 &&
+      !/ disabled=""/.test(spent),
+  )
+  record(
+    T,
+    'Allocate: nothing shared aria-disables every minus and says what is left',
+    (empty.match(/aria-disabled="true"/g) ?? []).length === 2 && /4 left to share/.test(empty),
+  )
+  const field = (invalid: boolean) =>
+    html(h(Field, { label: 'Code', value: 'X', onChange: () => {}, invalid, errorId: 'err' }))
+  record(
+    T,
+    'Field: invalid sets aria-invalid and aria-describedby; valid sets neither',
+    /aria-invalid="true"/.test(field(true)) &&
+      /aria-describedby="err"/.test(field(true)) &&
+      !/aria-invalid|aria-describedby/.test(field(false)),
+  )
+  record(
+    T,
+    'Field: a one-field form, so Enter submits natively',
+    /^<form class="field"/.test(field(false)),
+  )
+  const code = html(
+    h(Code, { value: 'ABCD-EFGH', label: 'Code', copy: { button: 'Copy', done: 'Copied' } }),
+  )
+  record(
+    T,
+    'Code: with copy, a button and an always-present status region (empty until copied)',
+    /<button[^>]*>Copy<\/button><p class="code__status" role="status"><\/p>/.test(code),
+  )
+  record(T, 'List: empty renders nothing', html(h(List, { items: [] })) === '')
+  const table = (rows: { cells: string[]; suppressed?: boolean }[]) =>
+    html(h(Table, { head: ['Group', 'n'], rows, caption: 'Results', empty: 'No groups yet' }))
+  record(
+    T,
+    'Table: the scroll box is a named, focusable region',
+    /<div class="table__wrap" role="region" aria-label="Results" tabindex="0">/.test(table([])),
+  )
+  record(
+    T,
+    'Table: no rows says so across every column',
+    /colSpan="2"|colspan="2"/.test(table([])) && /No groups yet/.test(table([])),
+  )
+  record(
+    T,
+    'Table: a suppressed row is marked in every cell',
+    (table([{ cells: ['a', 'b'], suppressed: true }]).match(/table__cell--suppressed/g) ?? [])
+      .length === 2,
   )
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Character, type CharacterView } from './Character'
 import './allocate.css'
 
@@ -20,9 +21,15 @@ export interface AllocateProps {
 export function Allocate({ items, order, units, pool, onChange, labels }: AllocateProps) {
   const used = units.reduce((a, b) => a + b, 0)
   const left = pool - used
-  /* The steppers are aria-disabled, not disabled, so focus stays on a spent plus. */
+  /* At a limit the live line is said again (a trailing no-break space changes it). */
+  const [again, setAgain] = useState(false)
+  /* The steppers are aria-disabled, not disabled, so focus stays on a spent plus, and pressing
+     it repeats how much is left. */
   const set = (i: number, d: number) => {
-    if ((d > 0 && left === 0) || units[i] + d < 0) return
+    if ((d > 0 && left === 0) || units[i] + d < 0) {
+      setAgain((a) => !a)
+      return
+    }
     const next = units.slice()
     next[i] = Math.max(0, next[i] + d)
     onChange(next)
@@ -34,6 +41,7 @@ export function Allocate({ items, order, units, pool, onChange, labels }: Alloca
         aria-live="polite"
       >
         {left === 0 ? labels.done : labels.left(left)}
+        {again ? '\u00a0' : ''}
       </p>
       <ul className="alloc">
         {order.map((i) => (

@@ -9,6 +9,7 @@
   border-radius: var(--radius-m);
   padding: var(--gap-m) var(--gap-l);
   background: var(--c-surface);
+  min-width: 0;
 }
 .statement__label {
   font-family: var(--font-display);
@@ -18,8 +19,10 @@
   text-transform: uppercase;
   color: var(--c-label);
   margin: var(--gap-none) var(--gap-none) var(--gap-xs);
+  overflow-wrap: anywhere;
 }
 .statement__text {
   margin: var(--gap-none);
   color: var(--c-text);
+  overflow-wrap: anywhere;
 }

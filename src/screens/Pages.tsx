@@ -254,8 +254,22 @@ export function Explain({ preview }: { preview?: ExplainState }) {
       title={L(S.explain.title)}
       actions={<Button onClick={() => void open()}>{L(S.explain.open)}</Button>}
     >
-      <Field label={L(S.explain.enter)} value={code} onChange={setCode} />
-      {state.kind === 'bad' ? <Notice kind="error">{L(S.explain.badCode)}</Notice> : null}
+      <Field
+        label={L(S.explain.enter)}
+        value={code}
+        onChange={(v) => {
+          setCode(v)
+          if (state.kind === 'bad') setState({ kind: 'idle' })
+        }}
+        invalid={state.kind === 'bad'}
+        errorId="code-error"
+        onEnter={() => void open()}
+      />
+      {state.kind === 'bad' ? (
+        <Notice kind="error" id="code-error">
+          {L(S.explain.badCode)}
+        </Notice>
+      ) : null}
       {state.kind === 'notYet' ? (
         <Notice>{L(S.explain.notYet).replace('{date}', state.date ?? '')}</Notice>
       ) : null}
@@ -298,9 +312,23 @@ export function Withdraw({ preview }: { preview?: 'idle' | 'bad' | 'done' | 'clo
       {state === 'done' ? (
         <Notice kind="ok">{L(S.withdraw.done)}</Notice>
       ) : (
-        <Field label={L(S.explain.enter)} value={code} onChange={setCode} />
+        <Field
+          label={L(S.explain.enter)}
+          value={code}
+          onChange={(v) => {
+            setCode(v)
+            if (state === 'bad') setState('idle')
+          }}
+          invalid={state === 'bad'}
+          errorId="code-error"
+          onEnter={() => void go()}
+        />
       )}
-      {state === 'bad' ? <Notice kind="error">{L(S.explain.badCode)}</Notice> : null}
+      {state === 'bad' ? (
+        <Notice kind="error" id="code-error">
+          {L(S.explain.badCode)}
+        </Notice>
+      ) : null}
       {state === 'closed' ? (
         <Notice kind="error">{L(S.withdraw.closed).replace('{date}', closedOn)}</Notice>
       ) : null}

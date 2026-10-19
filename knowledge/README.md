@@ -5,6 +5,7 @@ description: Index of this repo's knowledge base. The evaluator is The Equal Len
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
   - https://app.plane.so/the-equal-lens/browse/EVAL-2/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-3/
 ---
 
 # Equal Lens Evaluator knowledge
@@ -24,6 +25,7 @@ The app is the research instrument specified in the Sex Ed workspace's gated des
   - [acceptance-tests.md](reference/acceptance-tests.md): every registered acceptance test mapped to its check.
 - `reviews/`:
   - [ux-audit-2026-10-19.md](reviews/ux-audit-2026-10-19.md): the ship-readiness UX audit, its fixes, owner decisions and raw results (`reviews/assets/`).
+  - [component-states-2026-10-19.md](reviews/component-states-2026-10-19.md): every component's states and micro-interactions, before and after (EVAL-3).
 
 ## Status (19 Oct 2026)
 
