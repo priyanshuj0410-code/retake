@@ -5,7 +5,8 @@
  */
 import type { Page } from 'playwright-core'
 
-export const marker = (page: Page) => page.locator('[data-screen]').first().getAttribute('data-screen')
+export const marker = (page: Page) =>
+  page.locator('[data-screen]').first().getAttribute('data-screen')
 
 async function clickFirst(page: Page, names: RegExp) {
   const buttons = page.getByRole('button', { name: names })
@@ -20,10 +21,14 @@ async function clickFirst(page: Page, names: RegExp) {
   return false
 }
 
-const NEXT = /^(Continue|Next|Confirm|I agree to take part|Aage badhein|Aage|Pakka karein|Main hissa lene ke liye sehmat hoon)$/
+const NEXT =
+  /^(Continue|Next|Confirm|I agree to take part|Aage badhein|Aage|Pakka karein|Main hissa lene ke liye sehmat hoon)$/
 
 /** Answers the current screen and moves on. Returns false at a screen it does not advance (submit). */
-export async function step(page: Page, opts: { submit?: boolean; withdraw?: boolean } = {}): Promise<boolean> {
+export async function step(
+  page: Page,
+  opts: { submit?: boolean; withdraw?: boolean } = {},
+): Promise<boolean> {
   const add = page.getByRole('button', { name: /^(Add one|Ek badhayein):/ })
   if ((await add.count()) > 0) {
     for (let guard = 0; guard < 20; guard++) {
@@ -36,22 +41,22 @@ export async function step(page: Page, opts: { submit?: boolean; withdraw?: bool
   const g = await groups.count()
   for (let i = 0; i < g; i++) {
     const radios = groups.nth(i).getByRole('radio')
-    if ((await radios.count()) > 0 && !(await groups.nth(i).locator('input:checked').count())) await radios.nth(Math.min(1, (await radios.count()) - 1)).check()
+    if ((await radios.count()) > 0 && !(await groups.nth(i).locator('input:checked').count()))
+      await radios.nth(Math.min(1, (await radios.count()) - 1)).check()
     const boxes = groups.nth(i).getByRole('checkbox')
-    if ((await boxes.count()) > 0 && !(await groups.nth(i).locator('input:checked').count())) await boxes.first().check()
+    if ((await boxes.count()) > 0 && !(await groups.nth(i).locator('input:checked').count()))
+      await boxes.first().check()
   }
   if (opts.submit || opts.withdraw) {
-    const name = opts.withdraw ? /^(Withdraw now|Abhi withdraw karein)$/ : /^(Submit my answers|Mere jawab submit karein)$/
+    const name = opts.withdraw
+      ? /^(Withdraw now|Abhi withdraw karein)$/
+      : /^(Submit my answers|Mere jawab submit karein)$/
     if (await clickFirst(page, name)) return true
-  } else if ((await page.getByRole('button', { name: /^(Submit my answers|Mere jawab submit karein)$/ }).count()) > 0) return false
+  } else if (
+    (await page
+      .getByRole('button', { name: /^(Submit my answers|Mere jawab submit karein)$/ })
+      .count()) > 0
+  )
+    return false
   return clickFirst(page, NEXT)
-}
-
-/** Waits for the code to be derived (PBKDF2) before the Continue button enables. */
-export async function waitReady(page: Page) {
-  await page.waitForFunction(() => {
-    const b = [...document.querySelectorAll('button')].find((x) => /Continue|Aage badhein|Next|Aage|Confirm|Pakka/.test(x.textContent ?? ''))
-    const code = document.querySelector('.code')
-    return !b || !b.hasAttribute('disabled') || !!code || !!document.querySelector('fieldset input:not(:checked)')
-  }, null, { timeout: 15000 })
 }

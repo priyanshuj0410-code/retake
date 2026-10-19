@@ -161,7 +161,7 @@
         { "id": "first-names", "text": { "en": "First names, beyond that", "hinglish": "Uske alawa pehle naam" } },
         { "id": "surnames", "text": { "en": "Surnames", "hinglish": "Surnames" } },
         { "id": "skin", "text": { "en": "Skin colour", "hinglish": "Twacha ka rang" } },
-        { "id": "birthplace", "text": { "en": "The 'Born in' line", "hinglish": "'Janme' wali line" } },
+        { "id": "birthplace", "text": { "en": "The 'Born in' line", "hinglish": "'Janm sthaan' wali line" } },
         { "id": "animal-human", "text": { "en": "Animal or human", "hinglish": "Jaanwar ya insaan" } },
         { "id": "badge", "text": { "en": "Badge colours", "hinglish": "Badge ke rang" } },
         { "id": "descriptions", "text": { "en": "The descriptions", "hinglish": "Descriptions" } },

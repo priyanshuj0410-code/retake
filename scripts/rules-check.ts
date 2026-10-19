@@ -33,7 +33,10 @@ async function call(who: Who, method: string, path: string, body?: unknown) {
   const auth = typeof who === 'object' ? `&auth=${tokenFor(who.uid)}` : ''
   const res = await fetch(`http://${HOST}/${path}.json?ns=${NS}${auth}`, {
     method,
-    headers: { 'content-type': 'application/json', ...(who === 'owner' ? { authorization: 'Bearer owner' } : {}) },
+    headers: {
+      'content-type': 'application/json',
+      ...(who === 'owner' ? { authorization: 'Bearer owner' } : {}),
+    },
     body: body === undefined ? undefined : JSON.stringify(body),
   })
   const text = await res.text()
@@ -48,8 +51,16 @@ const T6 = 'AT-6 the withdrawal code (emulator rules)'
 const T9 = 'AT-9 no arrival order in the store (emulator rules)'
 const TR = 'X-6 rules refusals (emulator)'
 
-function submitWrites(sub: Submission | null, codeKey: string, uid: string, claim: { tok?: string; enrol?: string }) {
-  const w: Record<string, unknown> = { [`eval-codes/${codeKey}`]: sub?.dep ?? 'panel-g1', [`eval-claims/${uid}`]: null }
+function submitWrites(
+  sub: Submission | null,
+  codeKey: string,
+  uid: string,
+  claim: { tok?: string; enrol?: string },
+) {
+  const w: Record<string, unknown> = {
+    [`eval-codes/${codeKey}`]: sub?.dep ?? 'panel-g1',
+    [`eval-claims/${uid}`]: null,
+  }
   if (claim.tok) w[`eval-tokens/${claim.tok}/s`] = 'done'
   if (claim.enrol) w[`eval-enrol/${claim.enrol}/s`] = 'done'
   if (sub) {
@@ -63,13 +74,22 @@ function submitWrites(sub: Submission | null, codeKey: string, uid: string, clai
 async function main() {
   await call('owner', 'DELETE', '')
   const now = Date.now()
-  for (const dep of ['panel-g1', 'panel-g2', 'firm']) await call('owner', 'PUT', `eval-config/${dep}`, { releaseAt: now + 30 * DAY, deleteUntil: now + 44 * DAY })
+  for (const dep of ['panel-g1', 'panel-g2', 'firm'])
+    await call('owner', 'PUT', `eval-config/${dep}`, {
+      releaseAt: now + 30 * DAY,
+      deleteUntil: now + 44 * DAY,
+    })
   await call('owner', 'PUT', 'eval-explain/panel-g1', { dep: 'panel-g1', sections: [] })
   await call('owner', 'PUT', 'eval-explain/panel-g2', { dep: 'panel-g2', sections: [] })
 
   /* ------------------------------------------------------ one-time tokens, 1000 replays */
   const tokens = Array.from({ length: 1000 }, () => randomKey())
-  await call('owner', 'PATCH', 'eval-tokens', Object.fromEntries(tokens.map((t) => [t, { dep: 'panel-g1', langs: 'en', s: 'issued' }])))
+  await call(
+    'owner',
+    'PATCH',
+    'eval-tokens',
+    Object.fromEntries(tokens.map((t) => [t, { dep: 'panel-g1', langs: 'en', s: 'issued' }])),
+  )
   let started = 0
   let submitted = 0
   let replayRefused = 0
@@ -77,25 +97,69 @@ async function main() {
   const keys: string[] = []
   for (const [i, tok] of tokens.entries()) {
     const uid = `device-${i}`
-    const s = await patch(as(uid), { [`eval-tokens/${tok}/s`]: 'started', [`eval-claims/${uid}`]: { tok } })
+    const s = await patch(as(uid), {
+      [`eval-tokens/${tok}/s`]: 'started',
+      [`eval-claims/${uid}`]: { tok },
+    })
     if (s.allowed) started += 1
     const codeKey = randomKey()
     const sub = await patch(as(uid), submitWrites(null, codeKey, uid, { tok }))
     if (sub.allowed) submitted += 1
     keys.push(codeKey)
     const other = `replayer-${i}`
-    const again = await patch(as(other), { [`eval-tokens/${tok}/s`]: 'started', [`eval-claims/${other}`]: { tok } })
+    const again = await patch(as(other), {
+      [`eval-tokens/${tok}/s`]: 'started',
+      [`eval-claims/${other}`]: { tok },
+    })
     if (!again.allowed) replayRefused += 1
     const twice = await patch(as(uid), submitWrites(null, randomKey(), uid, { tok }))
     if (!twice.allowed) resubmitRefused += 1
   }
-  record(T1, '1000 tokens each start once and submit once', started === 1000 && submitted === 1000, `${started} started, ${submitted} submitted`)
-  record(T1, 'every replay of a spent token is refused by the rules', replayRefused === 1000, `${replayRefused} of 1000`)
-  record(T1, 'every second submission is refused by the rules', resubmitRefused === 1000, `${resubmitRefused} of 1000`)
+  record(
+    T1,
+    '1000 tokens each start once and submit once',
+    started === 1000 && submitted === 1000,
+    `${started} started, ${submitted} submitted`,
+  )
+  record(
+    T1,
+    'every replay of a spent token is refused by the rules',
+    replayRefused === 1000,
+    `${replayRefused} of 1000`,
+  )
+  record(
+    T1,
+    'every second submission is refused by the rules',
+    resubmitRefused === 1000,
+    `${resubmitRefused} of 1000`,
+  )
   const unissued = randomKey()
-  record(T1, 'a token nobody issued cannot be started', !(await patch(as('x'), { [`eval-tokens/${unissued}/s`]: 'started', [`eval-claims/x`]: { tok: unissued } })).allowed)
-  record(T1, 'a device cannot issue itself a token', !(await call(as('x'), 'PUT', `eval-tokens/${randomKey()}`, { dep: 'panel-g1', langs: 'en', s: 'issued' })).allowed)
-  record(T1, 'a token cannot be started without its claim in the same write', !(await call(as('y'), 'PUT', `eval-tokens/${tokens[0]}/s`, 'started')).allowed)
+  record(
+    T1,
+    'a token nobody issued cannot be started',
+    !(
+      await patch(as('x'), {
+        [`eval-tokens/${unissued}/s`]: 'started',
+        [`eval-claims/x`]: { tok: unissued },
+      })
+    ).allowed,
+  )
+  record(
+    T1,
+    'a device cannot issue itself a token',
+    !(
+      await call(as('x'), 'PUT', `eval-tokens/${randomKey()}`, {
+        dep: 'panel-g1',
+        langs: 'en',
+        s: 'issued',
+      })
+    ).allowed,
+  )
+  record(
+    T1,
+    'a token cannot be started without its claim in the same write',
+    !(await call(as('y'), 'PUT', `eval-tokens/${tokens[0]}/s`, 'started')).allowed,
+  )
 
   /* --------------------------------------------- a full session, its records and their fields */
   const t2 = randomKey()
@@ -106,44 +170,136 @@ async function main() {
   await patch(as(uid), { [`eval-tokens/${t2}/s`]: 'started', [`eval-claims/${uid}`]: { tok: t2 } })
   const bad = structuredClone(subm)
   ;(bad.play.value.meta as unknown as Record<string, unknown>).createdAt = Date.now()
-  record(T4, 'a record with a write-time field is refused', !(await patch(as(uid), submitWrites(bad, subm.codeKey, uid, { tok: t2 }))).allowed)
+  record(
+    T4,
+    'a record with a write-time field is refused',
+    !(await patch(as(uid), submitWrites(bad, subm.codeKey, uid, { tok: t2 }))).allowed,
+  )
   const bad2 = structuredClone(subm)
   const firstCard = Object.values(bad2.play.value.cards)[0] as unknown as Record<string, unknown>
   firstCard.ms = 5321
-  record(T4, 'a card record with a response-time field is refused', !(await patch(as(uid), submitWrites(bad2, subm.codeKey, uid, { tok: t2 }))).allowed)
+  record(
+    T4,
+    'a card record with a response-time field is refused',
+    !(await patch(as(uid), submitWrites(bad2, subm.codeKey, uid, { tok: t2 }))).allowed,
+  )
   const bad3 = structuredClone(subm)
-  if (bad3.crosswise[0]) (bad3.crosswise[0].value as unknown as Record<string, unknown>).sid = 'session-1'
-  record(T4, 'a crosswise record with a session id is refused', bad3.crosswise.length > 0 && !(await patch(as(uid), submitWrites(bad3, subm.codeKey, uid, { tok: t2 }))).allowed)
+  if (bad3.crosswise[0])
+    (bad3.crosswise[0].value as unknown as Record<string, unknown>).sid = 'session-1'
+  record(
+    T4,
+    'a crosswise record with a session id is refused',
+    bad3.crosswise.length > 0 &&
+      !(await patch(as(uid), submitWrites(bad3, subm.codeKey, uid, { tok: t2 }))).allowed,
+  )
   const ok = await patch(as(uid), submitWrites(subm, subm.codeKey, uid, { tok: t2 }))
-  record(T4, 'a real submission, every field on the whitelist, is accepted', ok.allowed, ok.allowed ? '' : JSON.stringify(ok.value))
+  record(
+    T4,
+    'a real submission, every field on the whitelist, is accepted',
+    ok.allowed,
+    ok.allowed ? '' : JSON.stringify(ok.value),
+  )
 
-  record(TR, 'no device can read a person-level record', !(await call(as(uid), 'GET', `eval-play/${subm.play.key}`)).allowed && !(await call('stranger', 'GET', `eval-play/${subm.play.key}`)).allowed)
-  record(TR, 'no device can list or read crosswise or demographic records', !(await call(as(uid), 'GET', 'eval-xw')).allowed && !(await call(as(uid), 'GET', `eval-xw/${subm.crosswise[0]?.key}`)).allowed && !(await call(as(uid), 'GET', 'eval-demo')).allowed)
-  record(TR, 'tokens and codes cannot be listed', !(await call(as(uid), 'GET', 'eval-tokens')).allowed && !(await call(as(uid), 'GET', 'eval-codes')).allowed)
-  record(TR, 'a record cannot be written without an open session', !(await patch(as('nobody'), { [`eval-xw/${randomKey()}`]: { dep: 'panel-g2', i: 'xw-m3-1', a: 'same', sub: 'low', lab: 'upper' } })).allowed)
-  record(TR, 'a stored record cannot be overwritten', !(await patch(as(uid), { [`eval-play/${subm.play.key}/meta/route`]: 'm1h' })).allowed)
-  record(TR, 'nothing can be written outside the eval- nodes', !(await call(as(uid), 'PUT', `rooms/x`, { a: 1 })).allowed && !(await call(as(uid), 'PUT', `spot/ABCD`, { a: 1 })).allowed)
-  record(TR, 'release dates are written by the owner only', !(await call(as(uid), 'PUT', 'eval-config/panel-g2/releaseAt', 0)).allowed)
+  record(
+    TR,
+    'no device can read a person-level record',
+    !(await call(as(uid), 'GET', `eval-play/${subm.play.key}`)).allowed &&
+      !(await call('stranger', 'GET', `eval-play/${subm.play.key}`)).allowed,
+  )
+  record(
+    TR,
+    'no device can list or read crosswise or demographic records',
+    !(await call(as(uid), 'GET', 'eval-xw')).allowed &&
+      !(await call(as(uid), 'GET', `eval-xw/${subm.crosswise[0]?.key}`)).allowed &&
+      !(await call(as(uid), 'GET', 'eval-demo')).allowed,
+  )
+  record(
+    TR,
+    'tokens and codes cannot be listed',
+    !(await call(as(uid), 'GET', 'eval-tokens')).allowed &&
+      !(await call(as(uid), 'GET', 'eval-codes')).allowed,
+  )
+  record(
+    TR,
+    'a record cannot be written without an open session',
+    !(
+      await patch(as('nobody'), {
+        [`eval-xw/${randomKey()}`]: {
+          dep: 'panel-g2',
+          i: 'xw-m3-1',
+          a: 'same',
+          sub: 'low',
+          lab: 'upper',
+        },
+      })
+    ).allowed,
+  )
+  record(
+    TR,
+    'a stored record cannot be overwritten',
+    !(await patch(as(uid), { [`eval-play/${subm.play.key}/meta/route`]: 'm1h' })).allowed,
+  )
+  record(
+    TR,
+    'nothing can be written outside the eval- nodes',
+    !(await call(as(uid), 'PUT', `rooms/x`, { a: 1 })).allowed &&
+      !(await call(as(uid), 'PUT', `spot/ABCD`, { a: 1 })).allowed,
+  )
+  record(
+    TR,
+    'release dates are written by the owner only',
+    !(await call(as(uid), 'PUT', 'eval-config/panel-g2/releaseAt', 0)).allowed,
+  )
 
   /* --------------------------------------------- the explanation's gate, and withdrawal */
-  record(T6, 'the explanation is refused before the release date', !(await call(as(uid), 'GET', 'eval-explain/panel-g2')).allowed)
-  record(T6, 'the code is recognised (the explanation page can open with it)', (await call(as('reader'), 'GET', `eval-codes/${subm.codeKey}`)).value === 'panel-g2')
+  record(
+    T6,
+    'the explanation is refused before the release date',
+    !(await call(as(uid), 'GET', 'eval-explain/panel-g2')).allowed,
+  )
+  record(
+    T6,
+    'the code is recognised (the explanation page can open with it)',
+    (await call(as('reader'), 'GET', `eval-codes/${subm.codeKey}`)).value === 'panel-g2',
+  )
   await call('owner', 'PUT', 'eval-config/panel-g2/releaseAt', now - DAY)
-  record(T6, 'the explanation opens after the release date', (await call(as(uid), 'GET', 'eval-explain/panel-g2')).allowed)
+  record(
+    T6,
+    'the explanation opens after the release date',
+    (await call(as(uid), 'GET', 'eval-explain/panel-g2')).allowed,
+  )
   const del: Record<string, null> = { [`eval-play/${subm.play.key}`]: null }
-  for (const k of (player.runner.keys as { xw: string[]; demo: string[] }).xw) del[`eval-xw/${k}`] = null
-  for (const k of (player.runner.keys as { xw: string[]; demo: string[] }).demo) del[`eval-demo/${k}`] = null
+  for (const k of (player.runner.keys as { xw: string[]; demo: string[] }).xw)
+    del[`eval-xw/${k}`] = null
+  for (const k of (player.runner.keys as { xw: string[]; demo: string[] }).demo)
+    del[`eval-demo/${k}`] = null
   const w = await patch(as('someone-with-the-code'), del)
-  const left = await Promise.all([call('owner', 'GET', `eval-play/${subm.play.key}`), ...subm.crosswise.map((c) => call('owner', 'GET', `eval-xw/${c.key}`)), ...subm.demographics.map((d) => call('owner', 'GET', `eval-demo/${d.key}`))])
-  record(T6, 'entering the code deletes every record carrying it, in every store', w.allowed && left.every((r) => r.value === null), `${subm.crosswise.length} crosswise, ${subm.demographics.length} demographic`)
+  const left = await Promise.all([
+    call('owner', 'GET', `eval-play/${subm.play.key}`),
+    ...subm.crosswise.map((c) => call('owner', 'GET', `eval-xw/${c.key}`)),
+    ...subm.demographics.map((d) => call('owner', 'GET', `eval-demo/${d.key}`)),
+  ])
+  record(
+    T6,
+    'entering the code deletes every record carrying it, in every store',
+    w.allowed && left.every((r) => r.value === null),
+    `${subm.crosswise.length} crosswise, ${subm.demographics.length} demographic`,
+  )
   const t3 = randomKey()
   await call('owner', 'PUT', `eval-tokens/${t3}`, { dep: 'panel-g2', langs: 'en', s: 'issued' })
   const p3 = await playDemo(4343, 'panel-g2', ['en'])
   const s3 = p3.runner.submission()
-  await patch(as('player-3'), { [`eval-tokens/${t3}/s`]: 'started', [`eval-claims/player-3`]: { tok: t3 } })
+  await patch(as('player-3'), {
+    [`eval-tokens/${t3}/s`]: 'started',
+    [`eval-claims/player-3`]: { tok: t3 },
+  })
   await patch(as('player-3'), submitWrites(s3, s3.codeKey, 'player-3', { tok: t3 }))
   await call('owner', 'PUT', 'eval-config/panel-g2/deleteUntil', now - 1000)
-  record(T6, 'withdrawal is refused after deleteUntil (two weeks after the release)', !(await patch(as('late'), { [`eval-play/${s3.play.key}`]: null })).allowed)
+  record(
+    T6,
+    'withdrawal is refused after deleteUntil (two weeks after the release)',
+    !(await patch(as('late'), { [`eval-play/${s3.play.key}`]: null })).allowed,
+  )
 
   /* ---------------------------------------------------------------- no arrival order */
   await call('owner', 'PUT', 'eval-config/panel-g2/deleteUntil', now + 44 * DAY)
@@ -170,21 +326,75 @@ async function main() {
     den += (i - mean) ** 2
   })
   const rho = num / den
-  record(T9, `the order of 60 known inserts cannot be recovered from the stored order (|rho| < 0.3)`, n === 60 && Math.abs(rho) < 0.3, `rho ${rho.toFixed(3)}, ${n} found`)
+  record(
+    T9,
+    `the order of 60 known inserts cannot be recovered from the stored order (|rho| < 0.3)`,
+    n === 60 && Math.abs(rho) < 0.3,
+    `rho ${rho.toFixed(3)}, ${n} found`,
+  )
   const dump = JSON.stringify((await call('owner', 'GET', 'eval-play')).value)
-  record(T9, 'the stored person-level records hold no write time, sequence or session id', !/"(time|ts|at|seq|session|sid|created|updated)"|1[67]\d{11}/.test(dump))
+  record(
+    T9,
+    'the stored person-level records hold no write time, sequence or session id',
+    !/"(time|ts|at|seq|session|sid|created|updated)"|1[67]\d{11}/.test(dump),
+  )
 
   /* ----------------------------------------------------------------- the firm's enrolment */
   const ek = randomKey()
-  const enrol = { firm: 'demo-firm', batch: 'b1', tdate: '2026-11-16', arm: 'after', from: '2026-11-17', to: '2026-11-23', month: '2026-11', sex: 'woman', s: 'enrolled' }
-  record(TR, 'an enrolment is created once', (await call(as('e1'), 'PUT', `eval-enrol/${ek}`, enrol)).allowed && !(await call(as('e2'), 'PUT', `eval-enrol/${ek}`, { ...enrol, sex: 'man' })).allowed)
-  record(TR, 'an enrolment with an extra field is refused', !(await call(as('e1'), 'PUT', `eval-enrol/${randomKey()}`, { ...enrol, email: 'x' })).allowed)
-  record(TR, 'the enrolment is spent once for its play session', (await patch(as('f1'), { [`eval-enrol/${ek}/s`]: 'started', [`eval-claims/f1`]: { enrol: ek } })).allowed && !(await patch(as('f2'), { [`eval-enrol/${ek}/s`]: 'started', [`eval-claims/f2`]: { enrol: ek } })).allowed)
-  const fp = await playDemo(77, 'firm', ['en'], { timingArm: 'after', batchMonth: '2026-11', sex: 'woman' })
+  const enrol = {
+    firm: 'demo-firm',
+    batch: 'b1',
+    tdate: '2026-11-16',
+    arm: 'after',
+    from: '2026-11-17',
+    to: '2026-11-23',
+    month: '2026-11',
+    sex: 'woman',
+    s: 'enrolled',
+  }
+  record(
+    TR,
+    'an enrolment is created once',
+    (await call(as('e1'), 'PUT', `eval-enrol/${ek}`, enrol)).allowed &&
+      !(await call(as('e2'), 'PUT', `eval-enrol/${ek}`, { ...enrol, sex: 'man' })).allowed,
+  )
+  record(
+    TR,
+    'an enrolment with an extra field is refused',
+    !(await call(as('e1'), 'PUT', `eval-enrol/${randomKey()}`, { ...enrol, email: 'x' })).allowed,
+  )
+  record(
+    TR,
+    'the enrolment is spent once for its play session',
+    (
+      await patch(as('f1'), {
+        [`eval-enrol/${ek}/s`]: 'started',
+        [`eval-claims/f1`]: { enrol: ek },
+      })
+    ).allowed &&
+      !(
+        await patch(as('f2'), {
+          [`eval-enrol/${ek}/s`]: 'started',
+          [`eval-claims/f2`]: { enrol: ek },
+        })
+      ).allowed,
+  )
+  const fp = await playDemo(77, 'firm', ['en'], {
+    timingArm: 'after',
+    batchMonth: '2026-11',
+    sex: 'woman',
+  })
   const fs = fp.runner.submission()
-  record(TR, 'a firm session submits once, carrying the sex label, timing arm and batch-month', (await patch(as('f1'), submitWrites(fs, fs.codeKey, 'f1', { enrol: ek }))).allowed && !(await patch(as('f1'), submitWrites(fs, randomKey(), 'f1', { enrol: ek }))).allowed)
+  record(
+    TR,
+    'a firm session submits once, carrying the sex label, timing arm and batch-month',
+    (await patch(as('f1'), submitWrites(fs, fs.codeKey, 'f1', { enrol: ek }))).allowed &&
+      !(await patch(as('f1'), submitWrites(fs, randomKey(), 'f1', { enrol: ek }))).allowed,
+  )
 }
 
-await main().catch((e) => results.push({ test: 'ERROR rules-check', name: 'threw', ok: false, detail: String(e) }))
+await main().catch((e) =>
+  results.push({ test: 'ERROR rules-check', name: 'threw', ok: false, detail: String(e) }),
+)
 const ok = summary()
 process.exit(ok ? 0 : 1)

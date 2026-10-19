@@ -42,7 +42,7 @@
   "deployments": {
     "panel-g1": {
       "label": { "en": "Panel, game 1", "hinglish": "Panel, game 1" },
-      "_fit": "At plan v1's targets this game takes 37.5 minutes at 25 s a card. To fit 30 it ships with plan v1 4.4's alternative (A), put to the applicant as Q-3 (M1-H's players skip the second half; nobody else has Off the Record), and NPT given first in the registered card order (4 to 2 cue-carrying, below E1-N's floor). The rematch is kept. Plan v2 decides.",
+      "_fit": "At plan v1's targets this game takes 37.5 minutes at 25 s a card with every act-4 route padded, and 35.1 with alternative (A) alone. To fit 30 it ships with plan v1 4.4's alternative (A), put to the applicant as Q-3 (M1-H's players skip the second half; nobody else has Off the Record), and NPT given first in the registered card order (4 to 2 cue-carrying, below E1-N's floor). The rematch is kept. Plan v2 decides.",
       "formA": { "opportunityPerSubstratum": 2, "npt": 2, "conductPerStratum": 3, "rematch": 1 },
       "formB": { "opportunityPerSubstratum": 1, "conductPerStratum": 2 },
       "screening": true,

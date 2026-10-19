@@ -18,7 +18,8 @@
     "seed": "tsx --tsconfig tsconfig.app.json scripts/seed-emulator.ts",
     "emulators": "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" firebase emulators:start --only database,auth --project demo-eval",
     "shots": "tsx --tsconfig tsconfig.app.json scripts/shots.ts",
-    "e2e": "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" firebase emulators:exec --only database,auth --project demo-eval 'tsx --tsconfig tsconfig.app.json scripts/e2e.ts'"
+    "e2e": "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" firebase emulators:exec --only database,auth --project demo-eval 'tsx --tsconfig tsconfig.app.json scripts/e2e.ts'",
+    "merit-reference": "tsx --tsconfig tsconfig.app.json scripts/merit-reference.ts"
   },
   "dependencies": {
     "firebase": "^12.18.0",

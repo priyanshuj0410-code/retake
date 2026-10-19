@@ -277,18 +277,16 @@ export function phase2(
     /* Every route is filled to the same number of screens with neutral privacy items. */
     const neutral = rng.shuffle(xw.neutral)
     const pad = (n: number) =>
-      neutral
-        .splice(0, n)
-        .map(
-          (item) =>
-            ({
-              kind: 'xw',
-              act: 'offTheRecord',
-              item,
-              purpose: 'neutral',
-              fictional: false,
-            }) as Step,
-        )
+      neutral.splice(0, n).map(
+        (item) =>
+          ({
+            kind: 'xw',
+            act: 'offTheRecord',
+            item,
+            purpose: 'neutral',
+            fictional: false,
+          }) as Step,
+      )
     if (d.offTheRecord === 'm1h') {
       const longest = xw.m1hControls.length + xw.m1hStatements.length
       if (route === 'm1h') {

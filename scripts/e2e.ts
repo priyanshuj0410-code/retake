@@ -24,7 +24,11 @@ if (!HOST || !PROJECT.startsWith('demo-')) {
 }
 const NS = `${PROJECT}-default-rtdb`
 const owner = async (method: string, path: string, body?: unknown) => {
-  const r = await fetch(`http://${HOST}/${path}.json?ns=${NS}`, { method, headers: { authorization: 'Bearer owner' }, body: body === undefined ? undefined : JSON.stringify(body) })
+  const r = await fetch(`http://${HOST}/${path}.json?ns=${NS}`, {
+    method,
+    headers: { authorization: 'Bearer owner' },
+    body: body === undefined ? undefined : JSON.stringify(body),
+  })
   return r.json() as Promise<unknown>
 }
 const ROOT = new URL('..', import.meta.url).pathname
@@ -34,12 +38,21 @@ const DAY = 86_400_000
 async function main() {
   await owner('DELETE', '')
   const now = Date.now()
-  for (const dep of ['panel-g1', 'panel-g2', 'firm']) await owner('PUT', `eval-config/${dep}`, { releaseAt: now + 30 * DAY, deleteUntil: now + 44 * DAY })
+  for (const dep of ['panel-g1', 'panel-g2', 'firm'])
+    await owner('PUT', `eval-config/${dep}`, {
+      releaseAt: now + 30 * DAY,
+      deleteUntil: now + 44 * DAY,
+    })
   const token = randomKey()
   await owner('PUT', `eval-tokens/${token}`, { dep: 'panel-g2', langs: 'en', s: 'issued' })
 
   process.env.VITE_STORE = 'emulator'
-  const server = await createServer({ root: ROOT, logLevel: 'silent', server: { port: PORT, strictPort: true }, cacheDir: join(ROOT, 'node_modules/.vite-e2e') })
+  const server = await createServer({
+    root: ROOT,
+    logLevel: 'silent',
+    server: { port: PORT, strictPort: true },
+    cacheDir: join(ROOT, 'node_modules/.vite-e2e'),
+  })
   await server.listen()
   const browser = await chromium.launch({ channel: 'chrome' })
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } })
@@ -75,27 +88,58 @@ async function main() {
   try {
     page.on('console', (m) => m.type() === 'error' && console.log('browser:', m.text()))
     await page.goto(`http://localhost:${PORT}/#/play/${token}`)
-    await page.waitForFunction(() => document.querySelector('[data-screen]')?.getAttribute('data-screen') !== 'loading', null, { timeout: 30000 })
+    await page.waitForFunction(
+      () => document.querySelector('[data-screen]')?.getAttribute('data-screen') !== 'loading',
+      null,
+      { timeout: 30000 },
+    )
     for (let guard = 0; guard < 400; guard++) {
       const m = await marker(page)
       if (m === 'wrap:submit') break
       if (m?.endsWith(':code')) await page.locator('.code').waitFor({ timeout: 30000 })
       const before = await page.locator('[data-screen]').first().innerHTML()
       if (!(await step(page))) throw new Error(`stuck at ${m}`)
-      await page.waitForFunction((b) => document.querySelector('[data-screen]')?.innerHTML !== b, before, { timeout: 20000 }).catch(() => {})
+      await page
+        .waitForFunction((b) => document.querySelector('[data-screen]')?.innerHTML !== b, before, {
+          timeout: 20000,
+        })
+        .catch(() => {})
     }
-    const writesBefore = frames.filter((f) => (f as { d?: { a?: string } }).d?.a === 'm' || (f as { d?: { a?: string } }).d?.a === 'p').length
+    const writesBefore = frames.filter(
+      (f) =>
+        (f as { d?: { a?: string } }).d?.a === 'm' || (f as { d?: { a?: string } }).d?.a === 'p',
+    ).length
     await step(page, { submit: true })
     await page.waitForSelector('[data-screen="finished"]', { timeout: 30000 })
-    const writes = frames.filter((f) => ['m', 'p'].includes((f as { d?: { a?: string } }).d?.a ?? ''))
+    const writes = frames.filter((f) =>
+      ['m', 'p'].includes((f as { d?: { a?: string } }).d?.a ?? ''),
+    )
     const payloads = writes.map((f) => (f as { d: { b: { d: unknown } } }).d.b.d)
-    record('AT-4 no timers (emulator, browser network capture)', `the session wrote ${writes.length} times: once to spend the token, once to submit`, writesBefore === 1 && writes.length === 2, `${writesBefore} before submit`)
+    record(
+      'AT-4 no timers (emulator, browser network capture)',
+      `the session wrote ${writes.length} times: once to spend the token, once to submit`,
+      writesBefore === 1 && writes.length === 2,
+      `${writesBefore} before submit`,
+    )
     const tf = payloads.flatMap((p) => timeFields(p))
-    record('AT-4 no timers (emulator, browser network capture)', 'no write the page sent carries a time field or an epoch value', tf.length === 0, tf.slice(0, 4).join(', '))
+    record(
+      'AT-4 no timers (emulator, browser network capture)',
+      'no write the page sent carries a time field or an epoch value',
+      tf.length === 0,
+      tf.slice(0, 4).join(', '),
+    )
     const sent = JSON.stringify(payloads)
-    record('AT-4 no timers (emulator, browser network capture)', 'no write carries a timestamp placeholder ({".sv": "timestamp"})', !sent.includes('.sv'))
+    record(
+      'AT-4 no timers (emulator, browser network capture)',
+      'no write carries a timestamp placeholder ({".sv": "timestamp"})',
+      !sent.includes('.sv'),
+    )
     const stored = (await owner('GET', 'eval-play')) as Record<string, unknown> | null
-    record('AT-4 no timers (emulator, browser network capture)', 'the records reached the emulator', !!stored && Object.keys(stored).length === 1)
+    record(
+      'AT-4 no timers (emulator, browser network capture)',
+      'the records reached the emulator',
+      !!stored && Object.keys(stored).length === 1,
+    )
 
     const storage = await page.evaluate(async () => {
       const ls = JSON.stringify({ ...localStorage })
@@ -121,13 +165,26 @@ async function main() {
       return { ls, ss, idb: dump.join('\n'), names: dbs.map((d) => d.name) }
     })
     const all = storage.ls + storage.ss + storage.idb
-    record("AT-10 M3's device label (browser storage after a session)", 'the device keeps no label: no "upper", "lower" or "not-engaged" in any storage', !/"(upper|lower|not-engaged)"/.test(all), storage.names.join(', '))
-    record("AT-10 M3's device label (browser storage after a session)", 'the device keeps no answer, card or code in any storage', !/xw-|"chars"|"cards"|eval-play/.test(all) && !all.includes(token))
+    record(
+      "AT-10 M3's device label (browser storage after a session)",
+      'the device keeps no label: no "upper", "lower" or "not-engaged" in any storage',
+      !/"(upper|lower|not-engaged)"/.test(all),
+      storage.names.join(', '),
+    )
+    record(
+      "AT-10 M3's device label (browser storage after a session)",
+      'the device keeps no answer, card or code in any storage',
+      !/xw-|"chars"|"cards"|eval-play/.test(all) && !all.includes(token),
+    )
 
     await page.goto(`http://localhost:${PORT}/#/play/${token}`)
     await page.reload()
     await page.getByRole('alert').waitFor({ timeout: 20000 })
-    record('AT-1 one-time tokens (emulator, browser)', 'opening the same link again is refused', /already been used/.test((await page.getByRole('alert').textContent()) ?? ''))
+    record(
+      'AT-1 one-time tokens (emulator, browser)',
+      'opening the same link again is refused',
+      /already been used/.test((await page.getByRole('alert').textContent()) ?? ''),
+    )
   } finally {
     await browser.close()
     await server.close()

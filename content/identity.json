@@ -37,7 +37,7 @@
     "comparison": "north",
     "south": ["Coimbatore", "Madurai", "Kochi", "Mysuru", "Vijayawada", "Tiruchirappalli"],
     "north": ["Ludhiana", "Kanpur", "Agra", "Meerut", "Varanasi", "Bareilly"],
-    "label": { "en": "Born in {city}", "hinglish": "{city} mein janme" }
+    "label": { "en": "Born in {city}", "hinglish": "Janm sthaan: {city}" }
   },
   "tones": {
     "_note": "Skin tone of the human emoji: colourism, a proxy for the race ground. Human cards only. Focal is the darker pair.",

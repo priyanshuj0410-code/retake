@@ -31,13 +31,20 @@ async function shoot(page: Page, name: string) {
     await page.emulateMedia({ colorScheme: v.scheme, reducedMotion: 'reduce' })
     const dir = join(OUT, `${v.w}-${v.scheme}`)
     mkdirSync(dir, { recursive: true })
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)
-    if (overflow > 0) problems.push(`${name} at ${v.w} ${v.scheme}: ${overflow} px of sideways scroll`)
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    )
+    if (overflow > 0)
+      problems.push(`${name} at ${v.w} ${v.scheme}: ${overflow} px of sideways scroll`)
     /* The page's own height, then one viewport-sized capture: a full-page capture resizes the
        viewport mid-shot, and min-height: 100vh then paints the page twice. */
-    const h = await page.evaluate(() => Math.ceil(document.querySelector('.page')?.scrollHeight ?? document.body.scrollHeight))
+    const h = await page.evaluate(() =>
+      Math.ceil(document.querySelector('.page')?.scrollHeight ?? document.body.scrollHeight),
+    )
     await page.setViewportSize({ width: v.w, height: Math.max(v.h, h) })
-    await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(() => r(null)))))
+    await page.evaluate(
+      () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(() => r(null)))),
+    )
     await page.waitForTimeout(60)
     await page.screenshot({ path: join(dir, `${name}.png`) })
   }
@@ -58,7 +65,11 @@ async function answerScreeningFairly(page: Page) {
   }
 }
 
-async function playSession(page: Page, prefix: string, opts: { fair?: boolean; only?: RegExp; stopAt?: RegExp; withdraw?: boolean } = {}) {
+async function playSession(
+  page: Page,
+  prefix: string,
+  opts: { fair?: boolean; only?: RegExp; stopAt?: RegExp; withdraw?: boolean } = {},
+) {
   const seen = new Set<string>()
   let code = ''
   for (let guard = 0; guard < 400; guard++) {
@@ -70,7 +81,10 @@ async function playSession(page: Page, prefix: string, opts: { fair?: boolean; o
     const key = m.replace(/:\d+$/, '')
     if (!seen.has(key) && (!opts.only || opts.only.test(key))) {
       seen.add(key)
-      await shoot(page, `${prefix}-${String(seen.size).padStart(2, '0')}-${key.replaceAll(':', '-')}`)
+      await shoot(
+        page,
+        `${prefix}-${String(seen.size).padStart(2, '0')}-${key.replaceAll(':', '-')}`,
+      )
     }
     if (opts.stopAt && opts.stopAt.test(key)) return { code, seen }
     if (m.startsWith('screening:screening') && opts.fair) await answerScreeningFairly(page)
@@ -83,7 +97,11 @@ async function playSession(page: Page, prefix: string, opts: { fair?: boolean; o
     const before = await page.locator('[data-screen]').first().innerHTML()
     const moved = await step(page)
     if (!moved) throw new Error(`${prefix}: stuck at ${m}`)
-    await page.waitForFunction((b) => document.querySelector('[data-screen]')?.innerHTML !== b, before, { timeout: 20000 }).catch(() => {})
+    await page
+      .waitForFunction((b) => document.querySelector('[data-screen]')?.innerHTML !== b, before, {
+        timeout: 20000,
+      })
+      .catch(() => {})
   }
   throw new Error(`${prefix}: did not finish`)
 }
@@ -97,7 +115,11 @@ async function startFromHome(page: Page, langLabel: RegExp, game: RegExp) {
 
 async function main() {
   rmSync(OUT, { recursive: true, force: true })
-  const server = await createServer({ root: ROOT, logLevel: 'silent', server: { port: PORT, strictPort: true } })
+  const server = await createServer({
+    root: ROOT,
+    logLevel: 'silent',
+    server: { port: PORT, strictPort: true },
+  })
   await server.listen()
   const browser = await chromium.launch({ channel: 'chrome' })
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } })
@@ -116,7 +138,11 @@ async function main() {
     let gotM1h = false
     for (let i = 0; i < 12 && !gotM1h; i++) {
       await startFromHome(page, /^English only/, /^Panel, game 1$/)
-      const r = await playSession(page, `g1m1h${i}`, { fair: true, only: /^offTheRecord/, stopAt: /^(note|after|wrap)/ })
+      const r = await playSession(page, `g1m1h${i}`, {
+        fair: true,
+        only: /^offTheRecord/,
+        stopAt: /^(note|after|wrap)/,
+      })
       gotM1h = [...r.seen].some((k) => k.startsWith('offTheRecord'))
     }
     if (!gotM1h) problems.push('no Game 1 run reached the M1-H route in 12 tries')
@@ -175,8 +201,13 @@ async function main() {
     await browser.close()
     await server.close()
   }
-  writeFileSync(join(OUT, 'index.txt'), `${captured.length} screens x ${VARIANTS.length} variants\n${captured.join('\n')}\n\nproblems:\n${problems.join('\n') || 'none'}\n`)
-  console.log(`shots: ${captured.length} screens x ${VARIANTS.length} variants in out/shots; problems: ${problems.length ? '\n  ' + problems.join('\n  ') : 'none'}`)
+  writeFileSync(
+    join(OUT, 'index.txt'),
+    `${captured.length} screens x ${VARIANTS.length} variants\n${captured.join('\n')}\n\nproblems:\n${problems.join('\n') || 'none'}\n`,
+  )
+  console.log(
+    `shots: ${captured.length} screens x ${VARIANTS.length} variants in out/shots; problems: ${problems.length ? '\n  ' + problems.join('\n  ') : 'none'}`,
+  )
   if (problems.length) process.exit(1)
 }
 

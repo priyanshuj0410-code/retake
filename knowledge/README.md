@@ -12,8 +12,16 @@ The app is the research instrument specified in the Sex Ed workspace's gated des
 
 ## Structure
 
-- `plane.config.md`: the Plane workspace and project.
-- `design.md`: the design system (tokens, components, patterns). Read it before any UI change.
-- `architecture/`: build and data decisions, including storage on the shared Firebase project.
-- `playbooks/`: how to run, test and deploy.
-- `reference/`: the acceptance tests the research plan registers, mapped to automated checks.
+- [plane.config.md](plane.config.md): the Plane workspace and project.
+- [design.md](design.md): the design system (tokens, surfaces, components, patterns). Read it before any UI change.
+- `architecture/`: build and data decisions.
+  - [data-and-privacy.md](architecture/data-and-privacy.md): the stores on the shared Firebase project, what the app enforces, and what Firebase cannot guarantee.
+- `playbooks/`: how to run, test and register.
+  - [run-and-test.md](playbooks/run-and-test.md): running the demo, where the content lives, the checks, session length.
+  - [firebase.md](playbooks/firebase.md): the rules piece, the owner's apps.json registration, what this repo never does.
+- `reference/`:
+  - [acceptance-tests.md](reference/acceptance-tests.md): every registered acceptance test mapped to its check.
+
+## Status (19 Oct 2026)
+
+Prototype v0, demo mode only: fictional content, seeded demo players, no participant data, nothing deployed.

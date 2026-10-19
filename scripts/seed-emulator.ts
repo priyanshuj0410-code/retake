@@ -16,12 +16,19 @@ const HOST = process.env.FIREBASE_DATABASE_EMULATOR_HOST ?? '127.0.0.1:9000'
 const PROJECT = process.env.GCLOUD_PROJECT ?? 'demo-eval'
 if (!PROJECT.startsWith('demo-')) throw new Error('seed-emulator writes only to a demo- project')
 const NS = `${PROJECT}-default-rtdb`
-const put = (path: string, body: unknown) => fetch(`http://${HOST}/${path}.json?ns=${NS}`, { method: 'PUT', headers: { authorization: 'Bearer owner' }, body: JSON.stringify(body) })
+const put = (path: string, body: unknown) =>
+  fetch(`http://${HOST}/${path}.json?ns=${NS}`, {
+    method: 'PUT',
+    headers: { authorization: 'Bearer owner' },
+    body: JSON.stringify(body),
+  })
 
 const players = Number(process.argv[2] ?? 0)
 for (const dep of DEPLOYMENTS) await put(`eval-config/${dep}`, releaseOf(dep))
 await put(`eval-schedule/${DEMO_SCHEDULE.firm}`, DEMO_SCHEDULE)
-const explanations = JSON.parse(readFileSync(new URL('../content/explanation.json', import.meta.url), 'utf8')) as { dep: string }[]
+const explanations = JSON.parse(
+  readFileSync(new URL('../content/explanation.json', import.meta.url), 'utf8'),
+) as { dep: string }[]
 for (const e of explanations) await put(`eval-explain/${e.dep}`, e)
 for (const dep of ['panel-g1', 'panel-g2'] as const) {
   for (const langs of ['choose', 'both']) {
@@ -33,11 +40,23 @@ for (const dep of ['panel-g1', 'panel-g2'] as const) {
 console.log(`firm enrolment: http://localhost:5173/#/enrol/${DEMO_SCHEDULE.firm}`)
 for (let i = 0; i < players; i++) {
   const dep = DEPLOYMENTS[i % 3]
-  const p = await playDemo(800_000 + i, dep, ['en'], dep === 'firm' ? { timingArm: i % 2 ? 'after' : 'before', batchMonth: '2026-11', sex: ['woman', 'man', 'prefer-not'][i % 3] } : undefined)
+  const p = await playDemo(
+    800_000 + i,
+    dep,
+    ['en'],
+    dep === 'firm'
+      ? {
+          timingArm: i % 2 ? 'after' : 'before',
+          batchMonth: '2026-11',
+          sex: ['woman', 'man', 'prefer-not'][i % 3],
+        }
+      : undefined,
+  )
   const s = p.runner.submission()
   await put(`eval-codes/${s.codeKey}`, dep)
   await put(`eval-play/${s.play.key}`, s.play.value)
   for (const c of s.crosswise) await put(`eval-xw/${c.key}`, c.value)
   for (const d of s.demographics) await put(`eval-demo/${d.key}`, d.value)
 }
-if (players) console.log(`${players} demo players' records written (demo version ${config.version})`)
+if (players)
+  console.log(`${players} demo players' records written (demo version ${config.version})`)
