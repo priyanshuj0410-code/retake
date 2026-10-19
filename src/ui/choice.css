@@ -1,4 +1,4 @@
-/* @owns choice choice__legend choice__heading choice__option choice__input choice__text */
+/* @owns choice choice__legend choice__heading choice__option choice__option--checked choice__input choice__text */
 .choice {
   border: none;
   margin: var(--gap-none);
@@ -16,6 +16,8 @@
   color: var(--c-text);
   padding: var(--gap-none);
   margin-bottom: var(--gap-m);
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 .choice__heading {
   font: inherit;
@@ -34,10 +36,35 @@
   border-radius: var(--radius-m);
   background: var(--c-surface);
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-color var(--motion),
+    background-color var(--motion),
+    transform var(--motion);
 }
-.choice__option:has(.choice__input:checked) {
+.choice__option:active {
+  transform: scale(var(--press));
+}
+.choice__option--checked,
+.choice__option:focus-within {
   border-color: var(--c-accent);
+}
+.choice__option--checked {
   background: var(--c-raised);
+}
+@media (hover: hover) {
+  .choice__option:hover {
+    border-color: var(--c-muted);
+  }
+  .choice__option--checked:hover {
+    border-color: var(--c-accent);
+  }
+}
+@media (forced-colors: active) {
+  .choice__option--checked {
+    outline: var(--border) solid var(--c-focus);
+  }
 }
 .choice__input {
   width: var(--gap-xl);
@@ -49,4 +76,6 @@
 .choice__text {
   color: var(--c-text);
   line-height: var(--leading-ui);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }

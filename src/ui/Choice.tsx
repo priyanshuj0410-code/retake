@@ -1,6 +1,11 @@
 import { useId } from 'react'
 import './choice.css'
 
+/* The checked row carries a class as well as :checked, because :has() is missing on the old
+   Android browsers the evaluator has to run on. */
+const rowClass = (checked: boolean) =>
+  checked ? 'choice__option choice__option--checked' : 'choice__option'
+
 export interface Option {
   id: string
   text: string
@@ -28,7 +33,7 @@ export function Choice({
         {heading ? <h1 className="choice__heading">{legend}</h1> : legend}
       </legend>
       {options.map((o) => (
-        <label className="choice__option" key={o.id}>
+        <label className={rowClass(value === o.id)} key={o.id}>
           <input
             className="choice__input"
             type="radio"

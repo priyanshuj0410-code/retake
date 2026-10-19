@@ -159,6 +159,41 @@ async function buttonDisabled(page: Page) {
   rec('Button', 'forced colours: disabled distinct', off !== on, `${off} vs ${on}`)
 }
 
+/** A radio or checkbox list: hover, checked (class and transition), checked plus focus, press. */
+async function rows(page: Page, component: string, kind: 'radio' | 'checkbox') {
+  const row = `.choice__option:has(input[type=${kind}])`
+  const rowN = (n: number) => page.locator(row).nth(n)
+  await page.mouse.move(0, 0)
+  const before = await rowN(0).evaluate((e) => getComputedStyle(e).borderColor)
+  await rowN(0).hover()
+  await page.waitForTimeout(220)
+  const over = await rowN(0).evaluate((e) => getComputedStyle(e).borderColor)
+  await page.mouse.move(0, 0)
+  rec(component, 'hover changes border-color', before !== over, `${before} -> ${over}`)
+  await pressed(page, component, row)
+  const checked = await rowN(0).evaluate((e) => ({
+    cls: e.classList.contains('choice__option--checked'),
+    dur: getComputedStyle(e).transitionDuration,
+  }))
+  rec(component, 'checked: row class (no :has needed)', checked.cls, JSON.stringify(checked))
+  rec(
+    component,
+    'checked transition at the motion duration',
+    /0\.16s/.test(checked.dur),
+    checked.dur,
+  )
+  await motion(page, false)
+  const still = await rowN(0).evaluate((e) => getComputedStyle(e).transitionDuration)
+  await motion(page, true)
+  rec(component, 'reduced motion: no transition', !/[1-9]/.test(still), still)
+  await focusRing(page, component, `input[type=${kind}]`, 0)
+  await forced(page, true)
+  const fc = await rowN(0).evaluate((e) => getComputedStyle(e).outlineStyle)
+  await forced(page, false)
+  rec(component, 'forced colours: checked row outlined', fc === 'solid', fc)
+  await stress(page, component, '.choice')
+}
+
 /* ---------- the run ---------- */
 
 export async function statesPass(page: Page, base: string): Promise<StateResult[]> {
@@ -180,6 +215,14 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
     if (!done.has('disabled') && (await page.locator('.button--primary:disabled').count())) {
       done.add('disabled')
       await buttonDisabled(page)
+    }
+    if (
+      !done.has('Choice') &&
+      (await page.locator('.choice__option:has(input[type=radio])').count()) > 1 &&
+      !(await page.locator('input[type=radio]:checked').count())
+    ) {
+      done.add('Choice')
+      await rows(page, 'Choice', 'radio')
     }
     if (m === 'wrap:submit') {
       await step(page, { submit: true })

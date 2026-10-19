@@ -6,7 +6,7 @@
  */
 import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { Button } from '../src/ui'
+import { Button, Choice } from '../src/ui'
 import { record } from './lib/check'
 
 const T = 'X-9 component states (markup)'
@@ -17,5 +17,28 @@ export async function run() {
     T,
     'Button: disabled is a real disabled button',
     /<button[^>]*disabled=""/.test(html(h(Button, { disabled: true, children: 'Next' }))),
+  )
+  const choice = html(
+    h(Choice, {
+      legend: 'Q',
+      heading: true,
+      options: [
+        { id: 'a', text: 'A' },
+        { id: 'b', text: 'B' },
+      ],
+      value: 'b',
+      onChange: () => {},
+    }),
+  )
+  record(
+    T,
+    'Choice: the checked row carries choice__option--checked, the others do not',
+    (choice.match(/choice__option--checked/g) ?? []).length === 1 &&
+      /choice__option--checked"><input[^>]*checked=""[^>]*value="b"/.test(choice),
+  )
+  record(
+    T,
+    'Choice: heading puts the question in an h1 inside the legend',
+    /<legend[^>]*><h1/.test(choice),
   )
 }
