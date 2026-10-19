@@ -466,6 +466,10 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
       done.add('Checks')
       await rows(page, 'Checks', 'checkbox')
     }
+    if (!done.has('List') && (await page.locator('.list').count())) {
+      done.add('List')
+      await stress(page, 'List', '.list')
+    }
     if (!done.has('Character') && (await page.locator('.character').count())) {
       done.add('Character')
       await stress(page, 'Character', '.character')

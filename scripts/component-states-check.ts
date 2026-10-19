@@ -6,7 +6,7 @@
  */
 import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { Allocate, Button, Checks, Choice, Code, Field, SortList } from '../src/ui'
+import { Allocate, Button, Checks, Choice, Code, Field, List, SortList } from '../src/ui'
 import { record } from './lib/check'
 
 const T = 'X-9 component states (markup)'
@@ -145,4 +145,5 @@ export async function run() {
     'Code: with copy, a button and an always-present status region (empty until copied)',
     /<button[^>]*>Copy<\/button><p class="code__status" role="status"><\/p>/.test(code),
   )
+  record(T, 'List: empty renders nothing', html(h(List, { items: [] })) === '')
 }

@@ -9,4 +9,8 @@
 .list__item {
   color: var(--c-body);
   line-height: var(--leading-body);
+  overflow-wrap: anywhere;
+}
+.list__item::marker {
+  color: var(--c-muted);
 }
