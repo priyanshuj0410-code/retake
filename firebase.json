@@ -1,0 +1,11 @@
+{
+  "database": {
+    "rules": "database.rules.json",
+    "predeploy": ["bash \"$PROJECT_DIR/scripts/deploy-guard.sh\""]
+  },
+  "emulators": {
+    "auth": { "port": 9099 },
+    "database": { "port": 9000 },
+    "singleProjectMode": true
+  }
+}

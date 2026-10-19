@@ -649,8 +649,8 @@ function CodeStep({
         })}
       </Text>
       <Checks
-        legend={L(screens.wrap.code.title)}
-        options={[{ id: 'saved', text: L(screens.wrap.code.saved) }]}
+        legend={L(screens.wrap.code.saved)}
+        options={[{ id: 'saved', text: L(screens.common.yes) }]}
         value={saved ? ['saved'] : []}
         onChange={(ids) => setSaved(ids.includes('saved'))}
       />

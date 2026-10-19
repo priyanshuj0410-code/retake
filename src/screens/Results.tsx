@@ -8,7 +8,7 @@ import { config } from '../engine/config'
 import { characterScores } from '../engine/score'
 import { playDemo, type DemoPlayer } from '../demo/players'
 import { releaseCategories, type Cell } from '../release/release'
-import { Button, Heading, Notice, Page, Table, Text } from '../ui'
+import { Button, Notice, Page, Table, Text } from '../ui'
 
 interface Row {
   group: string
@@ -123,7 +123,6 @@ export function Results() {
         })
         return (
           <section key={t.caption}>
-            <Heading>{t.caption}</Heading>
             <Table
               caption={t.caption}
               head={['Group', 'People', 'Value']}

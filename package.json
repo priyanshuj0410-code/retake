@@ -11,13 +11,14 @@
     "lint": "oxlint",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.ts\"",
     "preview": "vite preview",
-    "check": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json --import ./scripts/lib/ignore-css.mjs scripts/check-all.ts && pnpm rules",
+    "check": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json --import ./scripts/lib/ignore-css.mjs scripts/check-all.ts && pnpm rules && pnpm e2e",
     "check:fast": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json --import ./scripts/lib/ignore-css.mjs scripts/check-all.ts",
-    "rules": "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" firebase emulators:exec --only database,auth --project demo-eval 'tsx scripts/rules-check.ts'",
-    "length": "tsx scripts/session-length.ts",
-    "seed": "tsx scripts/seed-emulator.ts",
+    "rules": "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" firebase emulators:exec --only database,auth --project demo-eval 'tsx --tsconfig tsconfig.app.json scripts/rules-check.ts'",
+    "length": "tsx --tsconfig tsconfig.app.json scripts/session-length.ts",
+    "seed": "tsx --tsconfig tsconfig.app.json scripts/seed-emulator.ts",
     "emulators": "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" firebase emulators:start --only database,auth --project demo-eval",
-    "shots": "tsx scripts/shots.ts"
+    "shots": "tsx --tsconfig tsconfig.app.json scripts/shots.ts",
+    "e2e": "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" firebase emulators:exec --only database,auth --project demo-eval 'tsx --tsconfig tsconfig.app.json scripts/e2e.ts'"
   },
   "dependencies": {
     "firebase": "^12.18.0",
@@ -37,6 +38,9 @@
     "vite": "^8.2.2"
   },
   "pnpm": {
-    "ignoredBuiltDependencies": ["@firebase/util", "protobufjs"]
+    "ignoredBuiltDependencies": [
+      "@firebase/util",
+      "protobufjs"
+    ]
   }
 }

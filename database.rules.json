@@ -1,0 +1,190 @@
+{
+  /* The Equal Lens Evaluator's piece of the one ruleset of the-equal-lens (EVAL-1). It names
+     this app's nodes, every one prefixed eval-, and nothing else. The whole ruleset is built
+     from every app's piece and deployed only from The Equal Lens repo's firebase/ folder
+     (knowledge/playbooks/firebase.md); a rules deploy from this repo is refused
+     (scripts/deploy-guard.sh). Tested against the emulator only: pnpm rules.
+
+     The design (knowledge/architecture/data-and-privacy.md):
+     - Every device signs in anonymously, with nothing asked, so a session's claim has an id to
+       hold. No record carries that id.
+     - A one-time token (panel) or an enrolment (firm) is spent once: issued to started when the
+       session opens, started to done when it submits, in the same write that deletes the
+       device's claim. A spent token cannot start, and a session cannot submit twice.
+     - Records are created once, only by a device holding an open claim, and only in the write
+       that closes it. Nobody can read them through these rules: the research team reads them
+       with the project's admin credentials after every code is destroyed.
+     - Every record sits at a key derived from the player's withdrawal code. Anyone who holds
+       the code can delete its records until the deployment's deleteUntil date; nobody can
+       find them without it.
+     - The scoring explanation opens at the deployment's releaseAt, never before.
+     - Every record is held to a field whitelist, so no time, order or identity field can be
+       stored. */
+  "rules": {
+    "eval-config": {
+      /* Release and deletion dates per deployment, written by the owner only. */
+      "$dep": {
+        ".read": true
+      }
+    },
+    "eval-schedule": {
+      /* A firm's published training schedule, written by the owner only. */
+      "$firm": {
+        ".read": true
+      }
+    },
+    "eval-explain": {
+      "$dep": {
+        ".read": "auth != null && root.child('eval-config/' + $dep + '/releaseAt').isNumber() && now >= root.child('eval-config/' + $dep + '/releaseAt').val()"
+      }
+    },
+    "eval-tokens": {
+      "$t": {
+        /* One token, read by whoever holds it: a token is a 128-bit secret. Never listed. */
+        ".read": "auth != null",
+        "s": {
+          ".write": "auth != null && ((data.val() == 'issued' && newData.val() == 'started' && newData.parent().parent().parent().child('eval-claims/' + auth.uid + '/tok').val() == $t) || (data.val() == 'started' && newData.val() == 'done' && root.child('eval-claims/' + auth.uid + '/tok').val() == $t && !newData.parent().parent().parent().child('eval-claims/' + auth.uid).exists()))"
+        }
+      }
+    },
+    "eval-enrol": {
+      "$e": {
+        /* A firm enrolment, at a key only the enrolment code (in the player's calendar file)
+           derives. Created once by the enrolling device; deleted by the owner when its play
+           window closes. */
+        ".read": "auth != null",
+        ".write": "auth != null && !data.exists() && newData.child('s').val() == 'enrolled'",
+        ".validate": "newData.hasChildren(['firm', 'batch', 'tdate', 'arm', 'from', 'to', 'month', 'sex', 's'])",
+        "firm": { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "batch": { ".validate": "newData.isString() && newData.val().length <= 20" },
+        "tdate": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)" },
+        "from": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)" },
+        "to": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)" },
+        "month": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}$/)" },
+        "arm": { ".validate": "newData.val() == 'before' || newData.val() == 'after'" },
+        "sex": { ".validate": "newData.val() == 'woman' || newData.val() == 'man' || newData.val() == 'another' || newData.val() == 'prefer-not'" },
+        "s": {
+          ".write": "auth != null && ((data.val() == 'enrolled' && newData.val() == 'started' && newData.parent().parent().parent().child('eval-claims/' + auth.uid + '/enrol').val() == $e) || (data.val() == 'started' && newData.val() == 'done' && root.child('eval-claims/' + auth.uid + '/enrol').val() == $e && !newData.parent().parent().parent().child('eval-claims/' + auth.uid).exists()))",
+          ".validate": "newData.val() == 'enrolled' || newData.val() == 'started' || newData.val() == 'done'"
+        },
+        "$other": { ".validate": false }
+      }
+    },
+    "eval-claims": {
+      "$uid": {
+        /* A device's open session: which token or enrolment it spent. Written only in the same
+           write that spends it; deleted by the write that submits. Never read. */
+        ".write": "auth != null && auth.uid == $uid && ((newData.child('tok').isString() && root.child('eval-tokens/' + newData.child('tok').val() + '/s').val() == 'issued' && newData.parent().parent().child('eval-tokens/' + newData.child('tok').val() + '/s').val() == 'started') || (newData.child('enrol').isString() && root.child('eval-enrol/' + newData.child('enrol').val() + '/s').val() == 'enrolled' && newData.parent().parent().child('eval-enrol/' + newData.child('enrol').val() + '/s').val() == 'started') || (!newData.exists() && data.exists()))",
+        "tok": { ".validate": "newData.isString()" },
+        "enrol": { ".validate": "newData.isString()" },
+        "$other": { ".validate": false }
+      }
+    },
+    "eval-codes": {
+      "$h": {
+        /* The code's own key, so the explanation page can recognise a code. */
+        ".read": "auth != null",
+        ".write": "auth != null && !data.exists() && root.child('eval-claims/' + auth.uid).exists() && !newData.parent().parent().child('eval-claims/' + auth.uid).exists()",
+        ".validate": "newData.val() == 'panel-g1' || newData.val() == 'panel-g2' || newData.val() == 'firm'"
+      }
+    },
+    "eval-play": {
+      "$k": {
+        /* The person-level record: cards, survey, screening, Inbox and wrap answers. */
+        ".write": "auth != null && ((!data.exists() && newData.exists() && root.child('eval-claims/' + auth.uid).exists() && !newData.parent().parent().child('eval-claims/' + auth.uid).exists()) || (!newData.exists() && (!data.exists() || now < root.child('eval-config/' + data.child('meta/dep').val() + '/deleteUntil').val())))",
+        ".validate": "newData.hasChildren(['meta'])",
+        "meta": {
+          ".validate": "newData.hasChildren(['dep', 'v', 'langs', 'arm', 'route', 'result'])",
+          "dep": { ".validate": "newData.val() == 'panel-g1' || newData.val() == 'panel-g2' || newData.val() == 'firm'" },
+          "v": { ".validate": "newData.isString() && newData.val().length <= 40" },
+          "langs": { ".validate": "newData.val() == 'en' || newData.val() == 'hinglish' || newData.val() == 'both'" },
+          "arm": { ".validate": "newData.val() == 'FULL' || newData.val() == 'PARTIAL-G' || newData.val() == 'PARTIAL-A'" },
+          "route": { ".validate": "newData.val() == 'm1h' || newData.val() == 'standard' || newData.val() == 'partial'" },
+          "note": { ".validate": "newData.val() == 'a' || newData.val() == 'b' || newData.val() == 'c'" },
+          "split": { ".validate": "newData.val() == 'low' || newData.val() == 'high'" },
+          "m5": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 3" },
+          "result": { ".validate": "newData.isNumber() && newData.val() >= -100 && newData.val() <= 100" },
+          "timingArm": { ".validate": "newData.val() == 'before' || newData.val() == 'after'" },
+          "batchMonth": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}$/)" },
+          "sex": { ".validate": "newData.val() == 'woman' || newData.val() == 'man' || newData.val() == 'another' || newData.val() == 'prefer-not'" },
+          "$other": { ".validate": false }
+        },
+        "cards": {
+          "$c": {
+            ".validate": "$c.length <= 32 && newData.hasChildren(['card', 'form', 'fam', 'str', 'pres', 'lang', 'base', 'arm', 'filler', 'rm', 'n', 'chars'])",
+            "card": { ".validate": "newData.isString() && newData.val().length <= 20" },
+            "form": { ".validate": "newData.val() == 'A' || newData.val() == 'B'" },
+            "fam": { ".validate": "newData.val() == 'opportunity' || newData.val() == 'npt' || newData.val() == 'conduct'" },
+            "str": { ".validate": "newData.isString() && newData.val().length <= 40" },
+            "pres": { ".validate": "newData.val() == 'human' || newData.val() == 'animal' || newData.val() == 'baseline'" },
+            "sp": { ".validate": "newData.isString() && newData.val().length <= 20" },
+            "lang": { ".validate": "newData.val() == 'en' || newData.val() == 'hinglish'" },
+            "base": { ".validate": "newData.isBoolean()" },
+            "arm": { ".validate": "newData.val() == 'FULL' || newData.val() == 'PARTIAL-G' || newData.val() == 'PARTIAL-A'" },
+            "filler": { ".validate": "newData.isBoolean()" },
+            "rm": { ".validate": "newData.isBoolean()" },
+            "n": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() < 2000" },
+            "chars": {
+              "$i": {
+                ".validate": "newData.hasChildren(['d', 'sex', 'nm', 'rel', 'st', 's'])",
+                "d": { ".validate": "newData.isString() && newData.val().length <= 24" },
+                "sex": { ".validate": "newData.val() == 'woman' || newData.val() == 'man' || newData.val() == 'neutral'" },
+                "nm": { ".validate": "newData.isString() && newData.val().length <= 24" },
+                "rel": { ".validate": "newData.val() == 'hindu' || newData.val() == 'muslim' || newData.val() == 'none'" },
+                "sn": { ".validate": "newData.isString() && newData.val().length <= 24" },
+                "caste": { ".validate": "newData.isString() && newData.val().length <= 24" },
+                "city": { ".validate": "newData.isString() && newData.val().length <= 24" },
+                "born": { ".validate": "newData.isString() && newData.val().length <= 24" },
+                "tone": { ".validate": "newData.val() == 'darker' || newData.val() == 'lighter' || newData.val() == 'constant'" },
+                "badge": { ".validate": "newData.val() == 'green' || newData.val() == 'blue'" },
+                "st": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 3" },
+                "s": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1" },
+                "$other": { ".validate": false }
+              }
+            },
+            "$other": { ".validate": false }
+          }
+        },
+        "items": {
+          "$i": {
+            ".validate": "$i.length <= 32 && newData.hasChildren(['k', 'i', 'v'])",
+            "k": { ".validate": "newData.val() == 'ord' || newData.val() == 'screen' || newData.val() == 'survey' || newData.val() == 'direct' || newData.val() == 'inbox' || newData.val() == 'm1h-direct' || newData.val() == 'recall' || newData.val() == 'probe' || newData.val() == 'prior'" },
+            "i": { ".validate": "newData.isString() && newData.val().length <= 24" },
+            "v": { ".validate": "(newData.isString() && newData.val().length <= 160) || (newData.isNumber() && newData.val() >= 0 && newData.val() <= 10)" },
+            "a": { ".validate": "newData.val() == 1 || newData.val() == 2" },
+            "l": { ".validate": "newData.val() == 'en' || newData.val() == 'hinglish'" },
+            "x": { ".validate": "newData.isString() && newData.val().length <= 24" },
+            "r": { ".validate": "newData.isBoolean()" },
+            "$other": { ".validate": false }
+          }
+        },
+        "$other": { ".validate": false }
+      }
+    },
+    "eval-xw": {
+      "$k": {
+        /* One crosswise answer, unlinked: its item, answer, subsample and label only, at a key
+           derived from the code, so the records of one player are scattered. */
+        ".write": "auth != null && ((!data.exists() && newData.exists() && root.child('eval-claims/' + auth.uid).exists() && !newData.parent().parent().child('eval-claims/' + auth.uid).exists()) || (!newData.exists() && (!data.exists() || now < root.child('eval-config/' + data.child('dep').val() + '/deleteUntil').val())))",
+        ".validate": "newData.hasChildren(['dep', 'i', 'a', 'sub', 'lab'])",
+        "dep": { ".validate": "newData.val() == 'panel-g1' || newData.val() == 'panel-g2' || newData.val() == 'firm'" },
+        "i": { ".validate": "newData.isString() && newData.val().length <= 24" },
+        "a": { ".validate": "newData.val() == 'same' || newData.val() == 'different'" },
+        "sub": { ".validate": "newData.val() == 'low' || newData.val() == 'high'" },
+        "lab": { ".validate": "newData.val() == 'm1h' || newData.val() == 'upper' || newData.val() == 'lower' || newData.val() == 'not-engaged' || newData.val() == 'none'" },
+        "$other": { ".validate": false }
+      }
+    },
+    "eval-demo": {
+      "$k": {
+        /* One optional demographic answer, unlinked: its item and answer only. */
+        ".write": "auth != null && ((!data.exists() && newData.exists() && root.child('eval-claims/' + auth.uid).exists() && !newData.parent().parent().child('eval-claims/' + auth.uid).exists()) || (!newData.exists() && (!data.exists() || now < root.child('eval-config/' + data.child('dep').val() + '/deleteUntil').val())))",
+        ".validate": "newData.hasChildren(['dep', 'i', 'a'])",
+        "dep": { ".validate": "newData.val() == 'panel-g1' || newData.val() == 'panel-g2' || newData.val() == 'firm'" },
+        "i": { ".validate": "newData.val() == 'gender' || newData.val() == 'religion' || newData.val() == 'caste' || newData.val() == 'region'" },
+        "a": { ".validate": "newData.isString() && newData.val().length <= 24" },
+        "$other": { ".validate": false }
+      }
+    }
+  }
+}
