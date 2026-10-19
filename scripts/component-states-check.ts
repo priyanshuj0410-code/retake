@@ -147,7 +147,7 @@ export async function run() {
   record(
     T,
     'Portrait: a listed image (slot, sex, tone; mascot by animal) sits on the backdrop with width, height, lazy loading and the same label',
-    /<img class="portrait__photo" src="\/portraits\/0-woman-d1\.webp" alt="woman, darker skin tone" aria-label="woman, darker skin tone" width="200" height="220" loading="lazy"/.test(
+    /<img class="portrait__photo" src="\/portraits\/0-woman-d1\.webp" alt="woman, darker skin tone" aria-label="woman, darker skin tone" width="384" height="384" loading="lazy"/.test(
       photo,
     ) &&
       /src="\/portraits\/mascot-panda\.webp"/.test(photo) &&

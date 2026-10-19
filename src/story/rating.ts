@@ -14,12 +14,16 @@
  * 1 of 2 within each sex, which can never reach a reading with eight colleagues), so a liking for one
  * colleague cannot pass as a lean (religion and tone relabel over the whole cast: within sex
  * there are too few relabellings for any reading). The cue's p is the share of relabellings
- * whose signed sum over the pairs is at least as far from zero as the player's own. Three zones (thresholds PENDING v18,
- * config.season.rating):
- *   - not enough to say: under minPairs decisive pairs, or no relabelling could reach p 1 - q,
- *     or (the headline only) the player followed the notes in under engagementMin of clear pairs;
- *   - leans towards a group: p at most 1 - q;
+ * whose signed sum over the pairs is at least as far from zero as the player's own. Five levels
+ * (owner decision O2; the quantiles are planning values in config.season.rating.levels, PENDING
+ * v20, never shown to players; demo 0.99, 0.95, 0.85):
+ *   - not enough to say: under minPairs decisive pairs, or no relabelling could reach p
+ *     1 - moderate, or (the headline only) the player followed the notes in under engagementMin
+ *     of clear pairs;
+ *   - strong: p at most 1 - strong; moderate: at most 1 - moderate; possible: at most 1 - possible;
  *   - no lean read: otherwise.
+ * The zone keeps the old three-way split for the checks and the profile's change rule: lean is
+ * moderate or strong; possible and no lean read are both zone none.
  */
 import { config } from '../engine/config'
 import { seeded } from '../engine/rng'
@@ -31,6 +35,9 @@ import { peopleBeats } from './runner'
 export type Cue = 'sex' | 'religion' | 'tone' | 'caste' | 'birthplace'
 export const CUES: Cue[] = ['sex', 'religion', 'tone', 'caste', 'birthplace']
 export type Zone = 'lean' | 'none' | 'unread'
+export type Level = 'strong' | 'moderate' | 'possible' | 'none' | 'unread'
+/** Levels that name a direction ("towards ..."): at least possible. */
+export const LEANING: Level[] = ['strong', 'moderate', 'possible']
 
 export interface Pair {
   beat: number
@@ -43,7 +50,8 @@ export interface Pair {
 export interface CueReading {
   cue: Cue
   zone: Zone
-  /** Which group the lean is towards, when zone is lean. */
+  level: Level
+  /** Which group the lean is towards, when the level is at least possible. */
   towards?: 'focal' | 'comparison'
   weight: number
   pairs: number
@@ -164,8 +172,8 @@ export function readCue(
   cue: Cue,
   minPairs = config.season.rating.minPairs,
 ): CueReading {
-  const { q, permutations } = config.season.rating
-  const alpha = 1 - q
+  const { levels, permutations } = config.season.rating
+  const alpha = 1 - levels.moderate
   const { real, pool } = cueSets(people, cue)
   const obs = weightOf(pairs, real, pool)
   /* The test statistic is the signed sum, not the mean: a relabelling that leaves only a few
@@ -196,11 +204,30 @@ export function readCue(
   const k = Math.floor(alpha * N)
   const floor = obs.n ? Math.min(1, (sorted[Math.min(k, N - 1)] ?? 0) / obs.n) : 1
   const reachable = 2 / N <= alpha + eps
-  let zone: Zone = 'none'
-  if (obs.n < minPairs || !reachable) zone = 'unread'
-  else if (p <= alpha + eps && obs.sum !== 0) zone = 'lean'
-  const reading: CueReading = { cue, zone, weight: obs.w, pairs: obs.n, p, floor, labellings: N }
-  if (zone === 'lean') reading.towards = obs.w > 0 ? 'focal' : 'comparison'
+  const within = (q: number) => obs.sum !== 0 && p <= 1 - q + eps
+  const level: Level =
+    obs.n < minPairs || !reachable
+      ? 'unread'
+      : within(levels.strong)
+        ? 'strong'
+        : within(levels.moderate)
+          ? 'moderate'
+          : within(levels.possible)
+            ? 'possible'
+            : 'none'
+  const zone: Zone =
+    level === 'unread' ? 'unread' : level === 'strong' || level === 'moderate' ? 'lean' : 'none'
+  const reading: CueReading = {
+    cue,
+    zone,
+    level,
+    weight: obs.w,
+    pairs: obs.n,
+    p,
+    floor,
+    labellings: N,
+  }
+  if (LEANING.includes(level)) reading.towards = obs.w > 0 ? 'focal' : 'comparison'
   return reading
 }
 
@@ -229,13 +256,14 @@ export function rate(r: StoryRunner): Rating {
       ...sex,
       engaged,
       zone: engaged ? sex.zone : 'unread',
+      level: engaged ? sex.level : 'unread',
       towards: engaged ? sex.towards : undefined,
     },
     others: CUES.slice(1).map((c) => readCue(people, decisive, c)),
     domains: Object.fromEntries(
       Object.entries(domains).map(([d, x]) => [
         d,
-        engaged ? x : { ...x, zone: 'unread', towards: undefined },
+        engaged ? x : { ...x, zone: 'unread', level: 'unread', towards: undefined },
       ]),
     ) as Record<Domain, CueReading>,
     decisive,

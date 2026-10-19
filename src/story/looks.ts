@@ -2,37 +2,44 @@
  * Who looks like what (knowledge/design.md, section 4c). The portrait system has one geometry;
  * this file only picks its options.
  *
- * - The fixed cast: within each sex the four looks are dealt by the colleague's place in the
- *   cast, and that place is shuffled against religion and skin tone when the cast is drawn
- *   (session.ts), so no hairstyle, glasses or facial hair goes with a religion or a tone across
- *   players. Women: long hair, a bun, a plait, wavy hair with glasses. Men: curly hair with a
- *   beard, a side parting with a moustache, a quiff with glasses, a crew cut. Equal detail for
- *   everyone; one uniform; one dark brown for all hair. The skin tone is the cast member's own
+ * - The fixed cast: each slot has one look for each sex (SLOT below, matching the generated
+ *   portraits), and sex, religion and tone are drawn onto the slots per player (session.ts), so
+ *   no hairstyle, glasses or facial hair goes with a sex, religion or tone across players.
+ *   Equal detail for everyone; one uniform; one dark brown for all drawn hair. The skin tone is the cast member's own
  *   (the emoji tone drawn for them, mapped to five drawn tones).
  * - One-off characters (applicants, complainants, vendors): the same system at the medium tone,
- *   with a look fixed by a hash of their id (slot and first name), so a character never changes
- *   between renders. The name is a random draw, so the look is unrelated to the cue they carry.
+ *   glasses and facial hair by their tied group (shared by both faces of a pair), so a character
+ *   never changes between renders and the pair differs only on the cue.
  * - Mascots: the cast member's animal.
  * There is no attire layer: religion is carried by names only.
  */
 import type { Animal, Hair, Look, Tone } from '../ui'
+import { isPeople, storyById } from './content'
 import type { CastMember } from './session'
 
 type PersonLook = Extract<Look, { kind: 'person' }>
-type Style = Pick<PersonLook, 'hair' | 'facial' | 'glasses'>
 
-const WOMEN: Style[] = [
-  { hair: 'long' },
-  { hair: 'bun' },
-  { hair: 'plait' },
-  { hair: 'wavy', glasses: true },
+/**
+ * Each slot's look, for both sexes, matching the generated portraits (scripts/portraits/cast.py,
+ * slots s1 to s8 = 0 to 7): glasses on both sexes and facial hair on the man are a balanced 2x2
+ * across the slots (both: 3 and 6; glasses only: 2 and 4; facial hair only: 1 and 5; neither: 0
+ * and 7). Sex is drawn per slot, so the woman and the man of a slot are a matched pair. The drawn
+ * fallback uses the nearest of its hairstyles, so the label is right for the image and the drawing.
+ */
+const SLOT: { w: Hair; m: Hair; glasses: boolean; facial?: 'beard' | 'moustache' }[] = [
+  { w: 'long', m: 'side', glasses: false },
+  { w: 'bun', m: 'crew', glasses: false, facial: 'moustache' },
+  { w: 'plait', m: 'quiff', glasses: true },
+  { w: 'wavy', m: 'curly', glasses: true, facial: 'beard' },
+  { w: 'bun', m: 'quiff', glasses: true },
+  { w: 'long', m: 'crew', glasses: false, facial: 'moustache' },
+  { w: 'wavy', m: 'side', glasses: true, facial: 'beard' },
+  { w: 'bun', m: 'side', glasses: false },
 ]
-const MEN: Style[] = [
-  { hair: 'curly', facial: 'beard' },
-  { hair: 'side', facial: 'moustache' },
-  { hair: 'quiff', glasses: true },
-  { hair: 'crew' },
-]
+
+const WOMEN: Hair[] = ['long', 'bun', 'plait', 'wavy']
+const MEN: Hair[] = ['curly', 'side', 'quiff', 'crew']
+const FACIAL = [undefined, 'moustache', 'beard'] as const
 
 const TONE: Record<string, Tone> = {
   '\u{1F3FB}': 'l1',
@@ -42,7 +49,7 @@ const TONE: Record<string, Tone> = {
   '\u{1F3FF}': 'd2',
 }
 
-/** FNV-1a: a small stable hash, so a one-off's look depends on its id only. */
+/** FNV-1a: a small stable hash, so a one-off's drawn hairstyle depends on its id only. */
 function hash(s: string) {
   let h = 0x811c9dc5
   for (const ch of s) {
@@ -52,20 +59,54 @@ function hash(s: string) {
   return h
 }
 
-export function personLook(c: CastMember, cast: CastMember[]): PersonLook {
+/**
+ * The one-off slots' groups, in the order the season creates them (session.ts, and
+ * oneoff_slots in scripts/portraits/cast.py): a rank makes two tied pairs, a pick one, a split
+ * its third colleague and then a tied pair. Both faces of a tied pair share glasses and facial
+ * hair (group g: glasses when g % 3 is 0, facial hair none, moustache, beard by g % 3), so the
+ * pair differs only on the cue.
+ */
+const ONE_OFF_GROUP: Map<number, number> = (() => {
+  const out = new Map<number, number>()
+  let slot = 100
+  let g = 0
+  for (const b of storyById('warehouse')?.beats ?? []) {
+    if (!isPeople(b) || b.shape !== 'oneoff') continue
+    const groups = b.kind === 'rank' ? [2, 2] : b.kind === 'pick' ? [2] : [1, 2]
+    for (const n of groups) {
+      for (let k = 0; k < n; k++) out.set(slot++, g)
+      g += 1
+    }
+  }
+  return out
+})()
+
+export function personLook(c: CastMember): PersonLook {
   const tone = TONE[c.toneEmoji] ?? 'm'
   if (c.oneOff) {
-    const h = hash(`${c.slot}:${c.name}`)
-    const styles = c.sex === 'woman' ? WOMEN : MEN
-    const hair: Hair = styles[h % 4].hair
-    const glasses = (h >>> 4) % 3 === 0
-    const facial =
-      c.sex === 'man' ? ([undefined, 'beard', 'moustache'] as const)[(h >>> 8) % 3] : undefined
-    return { kind: 'person', sex: c.sex, slot: c.slot, oneOff: true, tone, hair, glasses, facial }
+    const g = ONE_OFF_GROUP.get(c.slot) ?? 0
+    const hair = (c.sex === 'woman' ? WOMEN : MEN)[hash(`${c.slot}:${c.name}`) % 4]
+    return {
+      kind: 'person',
+      sex: c.sex,
+      slot: c.slot,
+      oneOff: true,
+      tone,
+      hair,
+      glasses: g % 3 === 0,
+      facial: c.sex === 'man' ? FACIAL[g % 3] : undefined,
+    }
   }
-  const same = cast.filter((x) => x.sex === c.sex)
-  const style = (c.sex === 'woman' ? WOMEN : MEN)[Math.max(0, same.indexOf(c)) % 4]
-  return { kind: 'person', sex: c.sex, slot: c.slot, tone, ...style }
+  const look = SLOT[c.slot % 8]
+  return {
+    kind: 'person',
+    sex: c.sex,
+    slot: c.slot,
+    tone,
+    hair: c.sex === 'woman' ? look.w : look.m,
+    glasses: look.glasses,
+    facial: c.sex === 'man' ? look.facial : undefined,
+  }
 }
 
 export function mascotLook(c: CastMember): Look | undefined {

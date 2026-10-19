@@ -172,7 +172,7 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 | `Notice` | `src/ui/Notice.tsx` | A boxed message: `info`, `error` (`role=alert`, "!"), `ok` (`role=status`, a tick); takes an `id` for a field's description |
 | `DemoBadge` | `src/ui/DemoBadge.tsx` | A quiet outlined chip, "Demo: fictional content", at the top of every screen except the disclosure; never the loudest thing on the screen (EVAL-6) |
 | `Table` | `src/ui/Table.tsx` | The demo results table in a named, focusable scroll region, with suppressed cells marked and an `empty` line |
-| `Portrait` | `src/ui/Portrait.tsx` | A face (section 4c): the generated WebP headshot when `public/portraits/manifest.json` lists it (cast by slot, sex and tone, one-offs by `o{slot}-{sex}`, mascots by animal), on the panel's tint and halftone backdrop, with `width`/`height`, lazy loading except `eager` faces above the fold; otherwise the drawn SVG person or mascot animal (`look`), `role="img"` with an accurate `aria-label` ("woman, darker skin tone, glasses", "panda"), sizes `panel` (fills its card), `row` (72 px) and `then` (64 px); after the reveal the mascot as a 30 per cent inset in the corner |
+| `Portrait` | `src/ui/Portrait.tsx` | A face (section 4c): the generated WebP headshot when `public/portraits/manifest.json` lists it (cast by slot, sex and tone, one-offs by `o{slot}-{sex}`, mascots by animal), on the panel's tint and halftone backdrop, with `width`/`height`, lazy loading except `eager` faces above the fold; otherwise the drawn SVG person or mascot animal (`look`), `role="img"` with an accurate `aria-label` ("woman, darker skin tone, glasses", "panda"), sizes `panel` (fills its card), `row` (72 px) and `then` (64 px); after the reveal the mascot as a 30 per cent inset in the bottom corner, over the uniform |
 | `Colleague` | `src/ui/Colleague.tsx` | A season colleague: `Portrait` panel on top (`cell`) or a 72 px face beside the words (`row`), name in display caps, cue lines ("Born in"), this job's notes. All spans, so it can sit inside a button |
 | `Beat` | `src/ui/Beat.tsx` | The top of a story screen: the last decision's consequence as a small `Then` panel, then the scene as a `Panel` with its narration in a `Caption` and the question as the display `h1`, which names the rest with `aria-describedby` |
 | `TapOrder` | `src/ui/TapOrder.tsx` | Tap-to-order ranking as portrait panels, two across on phones and four from 600 px: tapped cards are stamped 1st, 2nd, 3rd (`Stamp`) with a violet offset shadow; the last fills itself and the order commits (k - 1 taps). Tap a stamped card to take it back; "Clear the stamps" lifts them all; every tap announced politely |
@@ -269,6 +269,17 @@ valence, and the season's end lists the jobs each colleague led, with no outcome
 - **Consequences follow the notes only.** The consequence line is keyed by the merit tier of the
   notes the player put first, never by who carried them; nothing marks a choice right, wrong or
   fair.
+- **Readings (owner decisions O2 and O3, 19 Oct 2026).** Five levels from the cue's permutation
+  p: "Your decisions clearly lean towards ..." (strong), "Your decisions lean towards ..."
+  (moderate), "There's a hint your decisions lean towards ...; more seasons would tell"
+  (possible), "No lean read", "Not enough to say". The size is shown apart, as the decisive-pair
+  count ("38 of 46"). The quantiles live in `config.season.rating.levels` (PENDING v20; demo 0.99,
+  0.95, 0.85), never in player copy. With 70 balanced relabellings the smallest p on a cast cue
+  is 2/70, so strong cannot be reached at 0.99 (flagged for v20). An area names a lean on a cue
+  only when that cue's headline is at least possible; otherwise it shows its equal-notes
+  decisions as examples with no lean label. Caste and birthplace are read for groups only: no
+  per-person card, row or area card on the result page or the profile; religion and skin tone
+  stay.
 - **The result page** is out of fiction (the plain register) and comes after submit, top to
   bottom in the owner's set order (19 Oct 2026, EVAL-6): the disarming opening first, in two or
   three sentences (everyone's decisions lean somewhere; a view from outside; ask whether the
@@ -323,9 +334,20 @@ app's own origin; `Portrait` shows an image only when the manifest lists it, so 
 never shows a broken picture, and falls back to the drawing otherwise (no manifest, an unlisted
 slot or tone). The comic frame stays: the ink border and the
 tint and halftone backdrop sit around the image, which is drawn with `object-fit: cover`.
-Images carry `width="200" height="220"`, `loading="lazy"` except the faces above the fold (the
+Images carry their own size, `width="384" height="384"` (square, cropped to the panel by `object-fit: cover`), `loading="lazy"` except the faces above the fold (the
 first two cards, the first four cast tiles, the consequence face), and the portrait's label
 (the wrapping `role="img"` keeps the same `aria-label`). X-9 checks every branch.
+
+**Delivered (19 Oct 2026).** 160 WebPs, 384 x 384, opaque lavender ground, made with FLUX.2 klein
+4B (method, ratings and checks in `scripts/portraits/README.md`): 64 cast (slots 0 to 7, each with
+a matched woman and man sharing every prompt word but the sex noun, hairstyle and facial hair,
+each in the four tones), 88 one-offs (slots 100 to 143, both sexes, medium tone; both faces of a
+tied pair share glasses and facial hair) and 8 mascots. **Sex is drawn per slot**
+(`session.ts`): a random permutation puts the 4 women and 4 men on the 8 slots, so each slot's
+woman and man act as a control for the face; religion and tone stay the balanced factorial. In a
+one-off tied pair, which face carries the focal cue is drawn per player. The drawn fallback
+follows the same per-slot glasses and facial hair (`looks.ts`), so the label is right for either.
+The generated hair is black or dark brown, not one dark brown (to settle with P1).
 
 **The portrait system** (`src/ui/portraitArt.tsx`, `Portrait`), the fallback. One geometry for every person
 (head, neck, the uniform: a violet polo with a lanyard and badge, one expression) and one for each

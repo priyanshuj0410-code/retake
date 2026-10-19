@@ -22,6 +22,7 @@ import {
 import { cueSets, rate, weightOf } from '../src/story/rating'
 import { StoryRunner } from '../src/story/runner'
 import { drawCast } from '../src/story/session'
+import { personLook } from '../src/story/looks'
 import { resultModel } from '../src/story/why'
 import { store } from '../src/store'
 import type { LocalStore } from '../src/store/local'
@@ -34,6 +35,8 @@ const N = Number(process.env.STORY_N ?? 200)
 export async function run() {
   content()
   draws()
+  slotsAndFaces()
+  levels()
   consequences()
   rating()
   await records()
@@ -477,6 +480,97 @@ function draws() {
   )
 }
 
+/** EVAL-6: sex drawn per slot, and the one-off faces off the cue. */
+function slotsAndFaces() {
+  const T = 'X-11 season story: the cast and the draws'
+  const wh = storyById('warehouse')
+  if (!wh) return
+  const women = Array<number>(8).fill(0)
+  let ordered = true
+  let focalLow = 0
+  let pairsN = 0
+  let samePair = true
+  for (let s = 1; s <= N; s++) {
+    const r = new StoryRunner(seeded(s), wh, ['en'])
+    if (!r.cast.every((c, i) => c.slot === i)) ordered = false
+    r.cast.forEach((c) => (women[c.slot] += c.sex === 'woman' ? 1 : 0))
+    for (const b of r.season.beats) {
+      if (b.kind !== 'people' || b.beat.shape !== 'oneoff') continue
+      for (const tier of [1, 2, 3]) {
+        const tied = b.chars.filter((c) => c.tier === tier).map((c) => r.person(c.slot))
+        if (tied.length !== 2) continue
+        const [x, y] = tied
+        const focal = (m: typeof x) =>
+          m.caste ? m.caste === 'sc-coded' : m.born?.region === 'south'
+        if (focal(x) === focal(y)) continue
+        const [lx, ly] = [personLook(x), personLook(y)]
+        if (lx.glasses !== ly.glasses || lx.facial !== ly.facial) samePair = false
+        pairsN += 1
+        if (focal(x.slot < y.slot ? x : y)) focalLow += 1
+      }
+    }
+  }
+  const share = women.map((w) => w / N)
+  record(
+    T,
+    `sex is drawn per slot: every slot is a woman in 35 to 65 per cent of ${N} casts (${share.map((x) => Math.round(x * 100)).join(', ')}), always 4 and 4, and the cast is held in slot order`,
+    ordered && share.every((x) => x >= 0.35 && x <= 0.65),
+  )
+  record(
+    T,
+    `one-off tied pairs: the focal cue lands on the lower slot in 40 to 60 per cent of pairs (${pairsN ? Math.round((100 * focalLow) / pairsN) : 0} per cent of ${pairsN}), so no face sits on one side`,
+    pairsN > 100 && focalLow / pairsN >= 0.4 && focalLow / pairsN <= 0.6,
+  )
+  record(
+    T,
+    'both faces of a one-off tied pair share glasses and facial hair (they differ only on the cue)',
+    samePair,
+  )
+}
+
+/** Owner decisions O2 (five levels, size shown apart) and O3 (caste and birthplace for groups only). */
+function levels() {
+  const T = 'X-13 the attitude rating on 57 cards (thresholds PENDING v18)'
+  const { strong, moderate, possible } = config.season.rating.levels
+  record(
+    T,
+    `five levels from three permutation quantiles in config (demo ${strong}, ${moderate}, ${possible}), ordered, and no threshold in player copy`,
+    strong > moderate &&
+      moderate > possible &&
+      !/0\.99|0\.95|0\.85|quantile|permutation/i.test(JSON.stringify(RT.levels)),
+  )
+  const seen = new Set<string>()
+  let caste = 0
+  let gated = true
+  for (let s = 1; s <= 60; s++) {
+    for (const t of [fairPlayer, leaningPlayer, { cueWeight: 0.6, noise: 0.3, careless: false }]) {
+      const r = playSeason(s, t)
+      const m = resultModel(r)
+      const lv = m.rating.headline.level
+      seen.add(lv)
+      if (m.cards.some((c) => c.cue === 'caste' || c.cue === 'birthplace')) caste += 1
+      if (
+        m.domains.some((d) => /urname|irthplace|born/i.test(d.blind.map((b) => b.title).join(' ')))
+      )
+        caste += 1
+      const leaning = lv === 'strong' || lv === 'moderate' || lv === 'possible'
+      if (!leaning && m.domains.some((d) => d.reading !== null)) gated = false
+      if (leaning && m.band.indexOf(fill(RT.levels[lv].name.en, { group: '' }).split(' ')[0]) !== 0)
+        gated = false
+    }
+  }
+  record(
+    T,
+    `seeded players reach the levels (${[...seen].join(', ')}); area readings appear only when the headline is at least possible. Known (PENDING v20): with 70 balanced relabellings the smallest p is 2/70, so strong (p at most ${(1 - strong).toFixed(2)}) cannot be reached on the cast cues`,
+    seen.has('moderate') && seen.has('possible') && seen.has('none') && gated,
+  )
+  record(
+    T,
+    'caste and birthplace are never read per person on the result page (owner decision O3): no card, no area card',
+    caste === 0,
+  )
+}
+
 function consequences() {
   const T = 'X-12 consequences follow the notes only'
   const wh = storyById('warehouse')
@@ -534,7 +628,7 @@ function consequences() {
 
 function rating() {
   const T = 'X-13 the attitude rating on 57 cards (thresholds PENDING v18)'
-  const alpha = 1 - config.season.rating.q
+  const alpha = 1 - config.season.rating.levels.moderate
   const domainZones: Record<string, Record<string, number>> = {}
   const casteZones: Record<string, Record<string, number>> = {}
   const zones = (t: typeof fairPlayer, name: string) => {

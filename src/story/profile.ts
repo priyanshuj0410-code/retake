@@ -15,13 +15,15 @@
 import { config } from '../engine/config'
 import { deriveKeys, newCode, normaliseCode } from '../engine/codes'
 import { store } from '../store'
-import type { Zone } from './rating'
+import type { Level, Zone } from './rating'
 
 export interface ProfileSession {
   story: string
   /** The day it was played, YYYY-MM-DD, inside the ciphertext only. */
   day: string
   zone: Zone
+  /** The five-level reading (owner decision O2); older saves carry the zone only. */
+  level?: Level
   towards?: 'focal' | 'comparison'
   weight: number
   pairs: number

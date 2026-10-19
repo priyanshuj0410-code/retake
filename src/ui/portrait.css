@@ -33,16 +33,14 @@
 .portrait__inset {
   position: absolute;
   overflow: hidden;
-  left: var(--gap-s);
-  top: var(--gap-s);
+  right: var(--gap-s);
+  bottom: var(--gap-s);
   width: var(--inset);
   border: var(--border) solid var(--art-line);
   background: var(--art-paper);
 }
 .portrait--row .portrait__inset,
 .portrait--then .portrait__inset {
-  left: auto;
-  top: auto;
   right: var(--gap-none);
   bottom: var(--gap-none);
   width: var(--inset-small);

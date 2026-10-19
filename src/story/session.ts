@@ -2,7 +2,8 @@
  * One season's draws, all made before the first decision so no draw follows an answer.
  *
  * The cast. Eight colleagues, four women and four men (config.season.castSize, PENDING v18),
- * carrying sex, religion and skin tone only: within each sex two Hindus and two Muslims (first
+ * placed on the eight slots by a random permutation (any slot can be either sex), carrying
+ * sex, religion and skin tone only: within each sex two Hindus and two Muslims (first
  * names from content/identity.json), the darker tone on one of each, so religion and tone are
  * balanced within sex. Caste and birthplace ride on one-off characters met once inside the
  * episodes (applicants, complainants, vendors; the owner's layout, PENDING v18). Before the reveal each colleague is a different animal mascot with a
@@ -97,25 +98,37 @@ export function drawCast(rng: Rng): CastMember[] {
       const religion = role.startsWith('h') ? 'hindu' : 'muslim'
       const name = rng.pick(firstNames[religion][sex].filter((n) => !usedNames.has(n)))
       usedNames.add(name)
-      const slot = cast.length
-      const sp = species[slot]
       const tone = role === darkHindu || role === darkMuslim ? 'darker' : 'lighter'
-      const m: CastMember = {
-        slot,
+      cast.push({
+        slot: -1,
         sex,
         religion,
         name,
         tone,
         toneEmoji: rng.pick(tones[tone]),
-        species: sp.id,
-        animal: sp.emoji,
-        animalName: sp.name,
-        mascot: mascots[slot],
+        species: '',
+        animal: '',
+        animalName: { en: '', hinglish: '' },
+        mascot: '',
         rival: -1,
-      }
-      cast.push(m)
+      })
     }
   }
+  /* Sex is drawn per slot (EVAL-6): a random permutation places the 4 women and 4 men on the 8
+     slots (restricted randomisation, exactly 4 of each), so any slot can be either and each
+     slot's matched woman and man portraits act as a control for the face. Religion and tone
+     stay the balanced factorial above. Mascots follow the slot. */
+  const place = rng.shuffle([...cast.keys()])
+  cast.forEach((m, k) => {
+    const slot = place[k]
+    const sp = species[slot]
+    m.slot = slot
+    m.species = sp.id
+    m.animal = sp.emoji
+    m.animalName = sp.name
+    m.mascot = mascots[slot]
+  })
+  cast.sort((a, b) => a.slot - b.slot)
   const women = cast.filter((c) => c.sex === 'woman')
   const men = rng.shuffle(cast.filter((c) => c.sex === 'man'))
   women.forEach((w, i) => {
@@ -190,7 +203,10 @@ export function drawSeason(rng: Rng, story: Story): Season {
   /* A tied pair of one-offs: the same sex, one focal and one comparison on the cue. */
   const oneOffPair = (cue: 'caste' | 'born') => {
     const sex = sexDraw()
-    return rng.shuffle([oneOff(cue, sex, true), oneOff(cue, sex, false)])
+    /* Which face (slot) of the tied pair carries the focal cue is drawn per player (EVAL-6), so
+       no one-off portrait sits on one side of the cue. */
+    const focalFirst = rng.next() < 0.5
+    return rng.shuffle([oneOff(cue, sex, focalFirst), oneOff(cue, sex, !focalFirst)])
   }
   const beats: Presented[] = (story.beats ?? []).map((beat: Beat) => {
     if (!isPeople(beat))

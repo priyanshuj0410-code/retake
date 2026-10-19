@@ -69,7 +69,13 @@ export interface SeasonConfig {
   castSize: number
   weeks: number
   splitCap: number
-  rating: { q: number; minPairs: number; engagementMin: number; permutations: number }
+  rating: {
+    /** Permutation quantiles of the five reading levels (owner decision O2; PENDING v20, never player copy). */
+    levels: { strong: number; moderate: number; possible: number }
+    minPairs: number
+    engagementMin: number
+    permutations: number
+  }
   counted: Record<string, number>
   faking: { screening: string[]; survey: string[]; formB: number }
   route: 'low'

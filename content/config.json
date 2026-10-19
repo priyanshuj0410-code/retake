@@ -240,7 +240,7 @@
       "faking",
       "route",
       "cueCarriers",
-      "rating.q",
+      "rating.levels",
       "rating.minPairs",
       "rating.engagementMin",
       "rating.permutations",
@@ -253,8 +253,13 @@
     ],
     "splitCap": 4,
     "rating": {
-      "_note": "PENDING v18. Computed on all 57 rating cards. A cue reads as a lean when its permutation p is at most 1 - q: the cast's cues against every balanced relabelling of the cast, caste and birthplace against sign flips of the one-off pairs (exact up to 2^12, else `permutations` draws). Not enough to say below minPairs decisive pairs, or when the player followed the notes in under engagementMin of clear pairs.",
-      "q": 0.95,
+      "_note": "PENDING v18. Computed on all 57 rating cards. A cue's level comes from its permutation p against rating.levels: the cast's cues against every balanced relabelling of the cast, caste and birthplace against sign flips of the one-off pairs (exact up to 2^12, else `permutations` draws). Not enough to say below minPairs decisive pairs, or when the player followed the notes in under engagementMin of clear pairs.",
+      "levels": {
+        "_note": "PENDING v20 (the research design sets these). Five reading levels (owner decision O2, 19 Oct 2026) from the cue's permutation p: strong when p is at most 1 - strong, moderate at most 1 - moderate, possible at most 1 - possible; otherwise no lean read, or not enough to say. Demo values are the permutation quantiles 0.99, 0.95 and 0.85. 'Moderate' is the old single lean threshold (q). Never shown to players.",
+        "strong": 0.99,
+        "moderate": 0.95,
+        "possible": 0.85
+      },
       "minPairs": 8,
       "engagementMin": 0.7,
       "permutations": 4000

@@ -14,8 +14,8 @@ function Face({ look, label, eager }: { look: Look; label: string; eager?: boole
         src={src}
         alt={label}
         aria-label={label || undefined}
-        width={200}
-        height={220}
+        width={384}
+        height={384}
         loading={eager ? 'eager' : 'lazy'}
         decoding="async"
       />

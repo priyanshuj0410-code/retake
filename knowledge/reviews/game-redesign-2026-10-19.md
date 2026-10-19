@@ -87,7 +87,16 @@ Direction C from the review sheet (`ui-directions.html`, 19 Oct 2026). Design ru
    WebPs (removed). One-offs look up `o{slot}-{sex}.webp` (slot 100 and up) the same way.
    For the image agent: the cast slot's look is dealt by place within sex (looks.ts), so an
    image set should keep each slot's look constant across its four tones.
-7. **Comic register for a workplace study** may read as less serious (the review sheet's own
+7. **Generated portraits delivered and wired** (19 Oct 2026): every person and mascot on the
+   reveal, the cards, the split rows and the consequence panels shows its WebP (no broken image,
+   alt as the drawn label, eager above the fold and lazy below, checked in the v2 play); strips
+   and the result carry no faces. Sex is now drawn per slot, and one-off focal faces are drawn
+   per player. Flags: the generated hair is black or dark brown, not one dark brown; and the
+   strong level cannot be reached at the 0.99 quantile with 70 relabellings (smallest p 2/70),
+   so v20 needs a quantile the cast can reach or more relabelling power.
+8. **Owner decisions O2 and O3** are in: five reading levels with the size shown apart, area
+   lean labels only at possible or above, and no per-person caste or birthplace reading.
+9. **Comic register for a workplace study** may read as less serious (the review sheet's own
    trade-off); worth a line in the P1 interviews.
 
 ## The 80-decision rebuild (EVAL-5)

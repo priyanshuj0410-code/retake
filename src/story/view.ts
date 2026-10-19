@@ -26,7 +26,7 @@ export function colleagueView(
     }
   const cues: string[] = []
   if (c.born) cues.push(fill(L(identity.birthplace.label), { city: c.born.city }))
-  const look = personLook(c, r.cast)
+  const look = personLook(c)
   return {
     look,
     figureLabel: lookLabel(c, look),

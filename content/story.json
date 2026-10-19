@@ -5480,6 +5480,14 @@
    "weak": {
     "en": "{episode}, {role}: you put {weak} ahead of {strong}, whose notes were stronger.",
     "hinglish": "{episode}, {role}: aapne {weak} ko {strong} se aage rakha, jabki {strong} ke notes mazboot the."
+   },
+   "examplesTitle": {
+    "en": "Some of your decisions with equal notes",
+    "hinglish": "Barabar notes wale aapke kuch decisions"
+   },
+   "examplesBody": {
+    "en": "These are decisions here where two colleagues had equally strong notes. They are shown as examples, with no lean read from them.",
+    "hinglish": "Yeh yahan ke woh decisions hain jahan do colleagues ke notes barabar mazboot the. Yeh sirf misaal ke liye hain, inse koi jhukaav nahin padha gaya."
    }
   },
   "domains": {
@@ -5667,6 +5675,39 @@
   "areasTitle": {
    "en": "Your decisions, area by area",
    "hinglish": "Aapke decisions, kshetra ke hisaab se"
+  },
+  "levels": {
+   "_note": "Owner decision O2 (19 Oct 2026): five levels. The size is shown separately, as the decisive-pair count. Thresholds live in config.season.rating.levels (PENDING v20), never here.",
+   "strong": {
+    "name": {
+     "en": "Your decisions clearly lean towards {group}",
+     "hinglish": "Aapke decisions saaf taur par {group} ki taraf jhukte hain"
+    },
+    "body": {
+     "en": "When a woman and a man had equally strong notes for a job, you put {group} ahead more often than chance would explain. The pull was small in any one decision; it shows across the season as a whole. That is common: most people's decisions lean one way on some ground, and many never find out. Knowing where yours leaned is the useful part. This reads one season of a made-up warehouse, so treat it as a reading, not a verdict on who you are.",
+     "hinglish": "Jab ek mahila aur ek purush ke kaam ke notes barabar mazboot the, aapne {group} ko itni baar aage rakha jitna sanyog se nahin samjhaya ja sakta. Kisi ek decision mein kheench chhoti thi; yeh poore season mein dikhti hai. Yeh aam baat hai: zyaadatar logon ke decisions kisi aadhaar par ek taraf jhukte hain, aur kai log yeh kabhi nahin jaan paate. Apna jhukaav jaanna hi kaam ki baat hai. Yeh ek kaalpanik warehouse ke ek season ki reading hai, aap kaun hain is par faisla nahin."
+    }
+   },
+   "moderate": {
+    "name": {
+     "en": "Your decisions lean towards {group}",
+     "hinglish": "Aapke decisions {group} ki taraf jhukte hain"
+    },
+    "body": {
+     "en": "When a woman and a man had equally strong notes for a job, you put {group} ahead more often than chance would explain. The pull was small in any one decision; it shows across the season as a whole. That is common: most people's decisions lean one way on some ground, and many never find out. Knowing where yours leaned is the useful part. This reads one season of a made-up warehouse, so treat it as a reading, not a verdict on who you are.",
+     "hinglish": "Jab ek mahila aur ek purush ke kaam ke notes barabar mazboot the, aapne {group} ko itni baar aage rakha jitna sanyog se nahin samjhaya ja sakta. Kisi ek decision mein kheench chhoti thi; yeh poore season mein dikhti hai. Yeh aam baat hai: zyaadatar logon ke decisions kisi aadhaar par ek taraf jhukte hain, aur kai log yeh kabhi nahin jaan paate. Apna jhukaav jaanna hi kaam ki baat hai. Yeh ek kaalpanik warehouse ke ek season ki reading hai, aap kaun hain is par faisla nahin."
+    }
+   },
+   "possible": {
+    "name": {
+     "en": "There's a hint your decisions lean towards {group}; more seasons would tell",
+     "hinglish": "Aapke decisions mein {group} ki taraf jhukaav ka ishaara hai; aur seasons se pata chalega"
+    },
+    "body": {
+     "en": "When a woman and a man had equally strong notes for a job, you put {group} ahead somewhat more often than the other way. In one short season that could still be chance, so read it as a hint, not a finding. Another season would show whether it holds. Everyone's decisions lean somewhere, so the habits below are worth keeping either way.",
+     "hinglish": "Jab ek mahila aur ek purush ke kaam ke notes barabar mazboot the, aapne {group} ko kuch zyaada baar aage rakha. Ek chhote season mein yeh abhi bhi sanyog ho sakta hai, isliye ise ishaara samjhiye, nateeja nahin. Ek aur season batayega ki yeh tikta hai ya nahin. Har kisi ke decisions kahin na kahin jhukte hain, isliye neeche ki aadatein dono haalat mein kaam ki hain."
+    }
+   }
   }
  },
  "profile": {

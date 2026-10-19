@@ -23,6 +23,7 @@ import {
 import type { StoryRunner } from '../story/runner'
 import { castTiles, colleagueView, langAttr, trackLines } from '../story/view'
 import { resultModel } from '../story/why'
+import type { Level } from '../story/rating'
 import {
   AgreeGrid,
   Beat,
@@ -815,17 +816,27 @@ export function StoryResult({
       {m.domains.map((d, n) => (
         <Fold key={d.domain} title={d.title} open={n === 0}>
           <Text>{d.narrative}</Text>
-          <ReadingList
-            label={d.title}
-            items={[
-              {
-                id: d.domain,
-                label: L(RT.cueShort.sex),
-                level: d.reading.level,
-                zone: d.reading.zone,
-              },
-            ]}
-          />
+          {d.reading ? (
+            <ReadingList
+              label={d.title}
+              items={[
+                {
+                  id: d.domain,
+                  label: L(RT.cueShort.sex),
+                  level: d.reading.level,
+                  zone: d.reading.zone,
+                },
+              ]}
+            />
+          ) : null}
+          {d.examples.length ? (
+            <PointCard
+              title={L(RT.cards.examplesTitle)}
+              body={L(RT.cards.examplesBody)}
+              evidence={d.examples}
+              evidenceLabel={L(RT.evidence)}
+            />
+          ) : null}
           <Heading level={3}>{L(RT.followedTitle)}</Heading>
           {d.followed.length ? (
             d.followed.map((p) => <PointCard key={p.title} title={p.title} body={p.body} />)
@@ -856,7 +867,14 @@ export function StoryResult({
       ))}
       <Notice>{L(RT.committee)}</Notice>
       <Notice>{L(finished === 'submitted' ? RT.submitted : RT.withdrawn)}</Notice>
-      <KeepIt runner={runner} zone={h.zone} towards={h.towards} weight={h.weight} pairs={h.pairs} />
+      <KeepIt
+        runner={runner}
+        zone={h.zone}
+        level={h.level}
+        towards={h.towards}
+        weight={h.weight}
+        pairs={h.pairs}
+      />
       <Heading>{L(RT.shareTitle)}</Heading>
       <Text kind="small">{L(RT.shareBody)}</Text>
       <ShareCard
@@ -942,12 +960,14 @@ function StayInTouch({ ui }: { ui: Lang }) {
 function KeepIt({
   runner,
   zone,
+  level,
   towards,
   weight,
   pairs,
 }: {
   runner: StoryRunner
   zone: 'lean' | 'none' | 'unread'
+  level: Level
   towards?: 'focal' | 'comparison'
   weight: number
   pairs: number
@@ -962,6 +982,7 @@ function KeepIt({
     story: runner.season.story.id,
     day: today(),
     zone,
+    level,
     ...(towards ? { towards } : {}),
     weight: Math.round(weight * 1000) / 1000,
     pairs,

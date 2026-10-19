@@ -108,6 +108,7 @@ export const storyById = (id: string) => stories.find((s) => s.id === id)
 export const SS = storyContent.screens as unknown as Record<string, T> & StoryContent['screens']
 export const RT = storyContent.rating as unknown as Record<string, T> & {
   bands: Record<'lean' | 'none' | 'unread' | 'unengaged', { name: T; body: T }>
+  levels: Record<'strong' | 'moderate' | 'possible', { name: T; body: T }>
   zone: Record<'lean' | 'none' | 'unread', T>
   meaning: Record<'lean' | 'none' | 'unread', T>
   cueShort: Record<string, T>

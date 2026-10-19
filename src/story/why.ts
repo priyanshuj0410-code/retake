@@ -13,8 +13,10 @@ import { fill } from '../engine/text'
 import { RT, SS, type Domain } from './content'
 import {
   advantage,
-  CUES,
   cueSets,
+  CUES,
+  LEANING,
+  type Level,
   rate,
   type Cue,
   type CueReading,
@@ -42,8 +44,10 @@ export interface DomainSection {
   domain: Domain
   title: string
   narrative: string
-  /** The sex reading on this domain's own cards, as a level and a zone. */
-  reading: { level: string; zone: 'lean' | 'none' | 'unread'; group: string }
+  /** The sex reading on this domain's own cards; null unless the headline is at least possible (O2). */
+  reading: { level: string; zone: 'lean' | 'none' | 'unread'; group: string } | null
+  /** Equal-notes decisions shown as examples, with no lean label, for cues whose headline is under possible. */
+  examples: string[]
   followed: Point[]
   blind: Point[]
   origin: string[]
@@ -71,6 +75,16 @@ export interface ResultModel {
 
 const pct = (x: number) => Math.round(x * 100)
 const DOMAINS: Domain[] = ['hiring', 'conduct', 'resources']
+/** The cues a player is shown (owner decision O3): caste and birthplace are read for groups only. */
+const SHOWN: Cue[] = ['sex', 'religion', 'tone']
+
+/** A reading's words: one of the five levels (owner decision O2), with the group it leans to. */
+export function levelName(level: Level, group: string, lang: Lang, unengaged = false): string {
+  const L = (t: T) => t[lang]
+  if (level === 'strong' || level === 'moderate' || level === 'possible')
+    return fill(L(RT.levels[level].name), { group })
+  return L(RT.bands[unengaged ? 'unengaged' : level === 'none' ? 'none' : 'unread'].name)
+}
 
 export function cueGroup(r: Pick<CueReading, 'cue' | 'towards'>, lang: Lang): string {
   const c = RT.cues[r.cue]
@@ -83,16 +97,13 @@ export function resultModel(run: StoryRunner): ResultModel {
   const rating = rate(run)
   const h = rating.headline
   const sexWords = RT.cues.sex
-  const bandKey = !h.engaged
-    ? 'unengaged'
-    : h.zone === 'lean'
-      ? 'lean'
-      : h.zone === 'none'
-        ? 'none'
-        : 'unread'
-  const group = h.zone === 'lean' ? cueGroup(h, lang) : ''
-  const band = fill(L(RT.bands[bandKey].name), { group })
-  const body = fill(L(RT.bands[bandKey].body), { group })
+  const bandKey = !h.engaged ? 'unengaged' : h.level
+  const group = h.towards ? cueGroup(h, lang) : ''
+  const band = levelName(h.level, group, lang, !h.engaged)
+  const body =
+    bandKey === 'strong' || bandKey === 'moderate' || bandKey === 'possible'
+      ? fill(L(RT.levels[bandKey].body), { group })
+      : fill(L(RT.bands[bandKey].body), { group })
 
   /* The mixed-sex decisive pairs, counted by who came out ahead. */
   const sexPairs = rating.decisive.filter((p) => run.person(p.a).sex !== run.person(p.b).sex)
@@ -187,12 +198,12 @@ export function resultModel(run: StoryRunner): ResultModel {
     }
   }
   /* The readings grid: one card per cue, sex first. */
-  const cards: CueCard[] = [h, ...rating.others].map((r) => {
-    const g = r.zone === 'lean' ? cueGroup(r, lang) : ''
+  const cards: CueCard[] = [h, ...rating.others.filter((r) => SHOWN.includes(r.cue))].map((r) => {
+    const g = r.towards ? cueGroup(r, lang) : ''
     return {
       cue: r.cue,
       label: L(RT.cueShort[r.cue]),
-      level: r.cue === 'sex' ? band : fill(L(RT.zone[r.zone]), { group: g }),
+      level: r.cue === 'sex' ? band : levelName(r.level, g, lang),
       zone: r.cue === 'sex' && !h.engaged ? 'unread' : r.zone,
       meaning: fill(L(RT.meaning[r.cue === 'sex' && !h.engaged ? 'unread' : r.zone]), {
         group: g,
@@ -258,11 +269,30 @@ export function resultModel(run: StoryRunner): ResultModel {
         body: fill(L(RT.cards.weakBody), { k: weak.length }),
         evidence: weak.slice(0, 3),
       })
-    for (const cue of CUES) {
+    const examples: string[] = []
+    for (const cue of SHOWN) {
       const { real: focal, pool } = labelsOf[cue]
       const decided = pairs.filter(
         (p) => pool.has(p.a) && pool.has(p.b) && focal.has(p.a) !== focal.has(p.b) && p.adv !== 0,
       )
+      /* Owner decision O2: an area names a lean on a cue only when that cue's headline is at
+         least possible; otherwise its decisions are shown as examples, with no lean label. */
+      const overall = cue === 'sex' ? h : rating.others.find((r) => r.cue === cue)
+      if (!overall || !LEANING.includes(overall.level)) {
+        if (cue === 'sex')
+          examples.push(
+            ...decided.slice(0, 3).map((p) =>
+              fill(L(RT.cards.tied), {
+                episode: episode(p.beat),
+                role: role(p.beat),
+                a: name(p.a),
+                b: name(p.b),
+                fav: name(winner(p)),
+              }),
+            ),
+          )
+        continue
+      }
       if (decided.length < minPairs) continue
       const fAhead = decided.filter((p) => focal.has(winner(p))).length
       const cAhead = decided.length - fAhead
@@ -306,15 +336,18 @@ export function resultModel(run: StoryRunner): ResultModel {
       domain: d,
       title: L(copy.title),
       narrative: fill(L(copy.narrative), { n: beats.length, k: pairs.length }),
-      reading: (() => {
-        const dr = rating.domains[d]
-        const g = dr.zone === 'lean' ? cueGroup(dr, lang) : ''
-        return {
-          level: fill(L(RT.domainReading), { zone: fill(L(RT.zone[dr.zone]), { group: g }) }),
-          zone: dr.zone,
-          group: g,
-        }
-      })(),
+      reading: LEANING.includes(h.level)
+        ? (() => {
+            const dr = rating.domains[d]
+            const g = dr.towards ? cueGroup(dr, lang) : ''
+            return {
+              level: fill(L(RT.domainReading), { zone: levelName(dr.level, g, lang) }),
+              zone: dr.zone,
+              group: g,
+            }
+          })()
+        : null,
+      examples,
       followed: followed.slice(0, 4),
       blind: blind.slice(0, 4),
       origin: copy.origin.map(L),
@@ -334,10 +367,16 @@ export function resultModel(run: StoryRunner): ResultModel {
 
 /** One saved season as the profile's timeline shows it: its band, worded as on the result page. */
 export function bandOf(
-  s: { zone: string; towards?: 'focal' | 'comparison' },
+  s: { zone: string; level?: Level; towards?: 'focal' | 'comparison' },
   lang: Lang = 'en',
 ): string {
   const L = (t: T) => t[lang]
+  if (s.level)
+    return levelName(
+      s.level,
+      s.towards ? cueGroup({ cue: 'sex', towards: s.towards }, lang) : '',
+      lang,
+    )
   if (s.zone === 'unread') return L(RT.bands.unread.name)
   if (s.zone === 'none') return L(RT.bands.none.name)
   return fill(L(RT.bands.lean.name), { group: cueGroup({ cue: 'sex', towards: s.towards }, lang) })
