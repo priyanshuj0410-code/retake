@@ -54,7 +54,7 @@ says "PENDING" (markers live in underscore keys such as `_pending`, `_watchPendi
 or JSX text in `src/` says it, the dev-only `DevNotes` panel renders nothing outside the Vite dev
 server, and the season disclosure's sentence 3 placeholder may exist only while `config.demo` is
 true (it shows in demo builds only). `pnpm ux` and `pnpm season` read every rendered screen for
-the word as well, leaving out `[data-dev]` and the disclosure.
+the word as well, leaving out only `[data-dev]`.
 
 `pnpm check` also runs `pnpm ux` (`scripts/ux-audit.ts`, from the audit in
 [reviews/ux-audit-2026-10-19.md](reviews/ux-audit-2026-10-19.md)), which plays every screen
@@ -91,7 +91,7 @@ Primitives (in `tokens.css` only):
 | `--comic-tint` | `#EFE8F8` | Game register: the panel fill |
 | `--comic-caption` | `#FFE27A` | Game register: narration captions and cast name plates, always with ink text (14.6:1) |
 | `--comic-rule` | `#8F879C` | Game register: inactive rules |
-| `--cool`, `--cool-ink`, `--cool-soft`, `--cool-rule`, `--cool-hero` | `#F3F5F8`, `#1D2230`, `#4C5468`, `#C9CED8`, `#E3E6EC` | Plain register (out of fiction): ground, ink (14.5:1), secondary (6.9:1), rules, the result hero band |
+| `--note-paper`, `--note-hero`, `--note-soft`, `--note-rule`, `--note-lines` | `#FBF6EC`, `#F2EADB`, `#544B3E`, `#CDBFA6`, rule lines `#EFE6D4` every 32 px | Note register (out of fiction): paper (ink 17.4:1), the result hero band (ink 15.7:1), secondary text (7.9:1 on paper, 7.2:1 on the band), rules and the tan button shadow, the faint ruled texture |
 | `--shadow-ink`, `--shadow-violet` (and small, lilac) | offset shadows, 3 to 5 px, no blur | Game register: panels, captions, the chosen card, the primary button |
 
 Type: Poppins 500/600/700 (`--face-display`) for headings, labels, buttons and numbers;
@@ -144,12 +144,35 @@ the whole structure of the visual system:
 | Surface | Where | Look |
 |---|---|---|
 | **Game** (`surface="game"`) | First week, your season, rounds after the note, ordinary decisions, the season result; in the season story: the picker, the opening, every decision, the reveal, the interludes, the season's end | The comic register (section 4c): white paper, ink-ruled square panels, yellow captions, violet stamps, Big Shoulders Display and Literata; the top bar carries the episode in words, its pips and "Page n of N" (progress, never a countdown) |
-| **Out of fiction** (`surface="oof"`) | Disclosure, consent, screening block, survey, Off the Record, mid-season note, recall, direct block, the wrap's questions, debrief, code, withdrawal, explanation; in the season story: the statements grid, the wrap, the attitude-rating result and the profile | The plain register: cool grey ground, ink text and ink buttons, 1 px rules, no panels, captions, stamps, portraits or violet; the line "This part is not part of the game." under a 4 px ink rule as the first thing on the screen |
+| **Out of fiction** (`surface="oof"`) | Disclosure, consent, screening block, survey, Off the Record, mid-season note, recall, direct block, the wrap's questions, debrief, code, withdrawal, explanation; in the season story: the statements grid, the wrap, the attitude-rating result and the profile | The note register: warm off-white paper (`#FBF6EC`) with faint rule lines, the content inside a 3 px ink frame, Big Shoulders Display headings and Literata text in ink, square ink buttons with a tan offset shadow. The registered line "This part is not part of the game." is the first thing on the screen, as its exact text, set as a tilted ink stamp with a silent "Note ·" prefix. No portraits, yellow captions, halftone art, lilac panels or violet. The disclosure keeps no heading and no stamp |
 | **Sober** (`surface="sober"`) | The Committee Inbox and its content note | Neutral grey ground, no violet, no illustration, no points, the Internal Committee route stated on every card |
 
 The disclosure screen is out of fiction but shows **only** the four registered sentences and
 the Continue button (in demo mode the demo notice is a separate screen before it). Every
 mid-season note uses one identical layout: statistic, source line, instruction sentence.
+
+**The note register's baseline grid.** One pitch, 28 px (`--pitch-28`): running text and lists
+take it as their line-height and draw the ruling behind themselves (`--ruling`, a rule 23 px down
+each pitch, 2 px under the 17 px Literata baseline measured at 21 px), so every line of text sits
+just above its rule at any width; the page's flow gap is one pitch and list items have no gap, so
+the ruling runs on through a list. Headings, the stamp, buttons, cards, the survey grid and the
+result band are framed or solid and break the ruling cleanly, and the text after them takes up
+its own ruling again; no text straddles a rule. `pnpm ux` fails if a ruled block on an
+out-of-fiction screen is not a whole number of pitches tall.
+
+**Option states, both registers.** Radios and checkboxes (`Choice`, `Checks`), the survey points
+(`AgreeGrid`) and the code field rest on `--c-option-rest` (tan in the note register, ink in the
+game); hover (pointer only) takes the accent (ink in the note register, violet in the game);
+focus-visible is a 3 px ring in `--c-focus` (17.4:1 on note paper); pressed is the `--press`
+scale; checked is the filled native mark, the accent edge and the `--c-raised` tint; checked and
+focused keep both. `pnpm ux` checks each, once per register.
+
+**How rule 8 holds between two registers of one family.** Story and note share faces, ink and
+square shapes, so they read as one product; they differ on every cue that says "you are in the
+game": the game is white paper with lilac panels, yellow captions, violet stamps, portraits and
+the episode bar; the note is warm ruled paper inside one ink frame with the "Note" stamp, no
+panels, no captions, no pictures, no violet and no episode bar. The result keeps its number-first
+layout in the note register, its readings in ink only (both poles alike, no green or red).
 
 ## 4. Components (`src/ui`)
 
@@ -180,7 +203,7 @@ mid-season note uses one identical layout: statistic, source line, instruction s
 | `Options` | `src/ui/Options.tsx` | A single choice (ordinary decisions, the wrap's yes or no) as full-width buttons that commit on the tap; never radios that auto-advance, because arrow keys would answer |
 | `QuickSplit` | `src/ui/QuickSplit.tsx` | Share a pool by tapping one number (0 to the cap) per colleague. Nothing starts chosen: each row's `Stamp` is an empty dashed ring and no chip is pressed until a tap, so it never looks answered; the stamp then shows the number. `aria-pressed` chips, too-large numbers `aria-disabled`, the count left live; commits when all is shared; "Start again" clears |
 | `AgreeGrid` | `src/ui/AgreeGrid.tsx` | Agree or disagree statements on one screen: one fieldset per statement, five native radios in a row numbered 1 to 5 with full spoken names ("1, Strongly disagree"); the key once, in a sticky header that stays at the top while the statements scroll, never repeated per row; fits 320 px at 44 px targets |
-| `StoryPick` | `src/ui/StoryPick.tsx` | The season picker: one card per story (a drawn `PanelArt` cover, title in display caps, one-line premise); stories not open are `aria-disabled` with "After your rating." (no emoji, no PENDING) |
+| `StoryPick` | `src/ui/StoryPick.tsx` | The season picker: one card per story in a grid of equal rows (`--rows-equal`, every card as tall as the tallest at each width), a fixed-width art column with the drawn `PanelArt` cover centred, title and premise top-aligned, and the "After your rating." line pinned to the foot so the lines sit level; stories not open are `aria-disabled` (no emoji, no PENDING) |
 | `Spectrum` | `src/ui/Spectrum.tsx` | The strength bar: where the decisions sit between two groups, the middle the season cannot tell from chance as a white band with dashed edges, an ink marker; one image with a spoken label and the same numbers in words under it |
 | `ReadingList` | `src/ui/ReadingList.tsx` | Readings as a plain list, label then level, every level in the same ink and weight ("Leans towards men" looks exactly like "No lean read"); only "Not enough to say" is quieter. No colour reads as good or bad |
 | `ResultHero` | `src/ui/ResultHero.tsx` | The top of the result: one number to remember ("38 of 46 equal pairs where you put the man ahead"), the same pairs as a dot grid (`role="img"`, filled: the man ahead, ring: the woman ahead, dashed: neither), the band and its sentence, then the bar and reasons as children; ink on grey only. Without a sex reading it shows the band line alone |
@@ -490,8 +513,9 @@ and no "bias" in any story text, descriptions carry no pronoun, consequences use
 and `{g:}`, and every number v18 will fix is marked PENDING v18 in `content/config.json`
 (`season.pendingV18`). **No player-facing string says PENDING** (X-16, EVAL-6): markers live in
 underscore keys of the content and reach the research team only through the dev-only
-`DevNotes` panel. The one exception is the season disclosure's sentence 3, the owner-wording
-placeholder, which shows in demo builds only.
+`DevNotes` panel. There is no exception: the season disclosure's sentence 3 is the interim line
+"Attitudes are read; you see yours." (Hinglish "Attitudes padhe jaate hain; aapko apne dikhte
+hain."), set in `content/disclosure.json` and awaiting the owner's wording, never a placeholder.
 
 ## 7. Old phones
 

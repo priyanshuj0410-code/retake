@@ -1,15 +1,15 @@
 /**
  * Copy hygiene (EVAL-6): no player-facing string says "PENDING". Pending markers live in
  * underscore keys of the content (`_pending`, `_note`), in code comments, or in the dev-only
- * DevNotes panel, which a production build never renders. The one exception is the season
- * disclosure's sentence 3, the owner-wording placeholder, which may show in demo builds only.
+ * DevNotes panel, which a production build never renders. There is no exception: the season
+ * disclosure's sentence 3 is an interim line, never a placeholder (owner, 19 Oct 2026).
  * `pnpm ux` also reads every rendered screen for the word (scripts/ux-audit.ts).
  */
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { config } from '../src/engine/config'
+import { sentencesFor } from '../src/content'
 import { DevNotes } from '../src/ui'
 import { record } from './lib/check'
 
@@ -17,7 +17,6 @@ const T = 'X-16 no PENDING in player copy'
 const ROOT = new URL('..', import.meta.url).pathname
 /** Content files that are not player copy: planning values and their notes. */
 const NOT_COPY = new Set(['config.json'])
-const PLACEHOLDER = /^disclosure\.json season\.sentence3\./
 
 function* strings(o: unknown, path: string[]): Generator<[string, string]> {
   if (typeof o === 'string') yield [path.join('.'), o]
@@ -34,17 +33,13 @@ const walk = (dir: string): string[] =>
 
 export async function run() {
   const leaks: string[] = []
-  let placeholder = false
   for (const f of walk(join(ROOT, 'content')).filter((x) => x.endsWith('.json'))) {
     const name = f.slice(join(ROOT, 'content').length + 1)
     if (NOT_COPY.has(name)) continue
     const data = JSON.parse(readFileSync(f, 'utf8')) as Record<string, unknown>
     const { status: _status, ...copy } = data
     for (const [p, v] of strings(copy, []))
-      if (/PENDING/.test(v)) {
-        if (PLACEHOLDER.test(`${name} ${p}`)) placeholder = true
-        else leaks.push(`${name} ${p}`)
-      }
+      if (/PENDING|owner wording/i.test(v)) leaks.push(`${name} ${p}`)
   }
   record(
     T,
@@ -52,10 +47,15 @@ export async function run() {
     leaks.length === 0,
     leaks.slice(0, 6).join(' | '),
   )
+  const shown = (['en', 'hinglish'] as const).flatMap((l) => [
+    ...sentencesFor(l, true),
+    ...sentencesFor(l, false),
+  ])
   record(
     T,
-    "the season disclosure's sentence 3 placeholder shows in demo builds only: while it is the placeholder, config.demo is true",
-    !placeholder || config.demo === true,
+    'the disclosure as rendered (both languages, season and panel) shows no PENDING and no owner-wording placeholder',
+    !shown.some((x) => /PENDING|owner wording/i.test(x)),
+    shown.filter((x) => /PENDING|owner wording/i.test(x)).join(' | '),
   )
   const code = walk(join(ROOT, 'src'))
     .filter((f) => /\.tsx?$/.test(f))

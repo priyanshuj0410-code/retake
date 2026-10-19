@@ -56,6 +56,11 @@ export const registeredSentences = disclosure.registered as Record<'en' | 'hingl
 
 /** The sentences one sitting shows: the registered four, or for the season story the four with
     sentence 3 replaced by the owner's pending wording (content/disclosure.json, season). */
+/**
+ * The disclosure's four sentences. In the season story sentence 3 is the interim line in
+ * content/disclosure.json (season.sentence3), which awaits the owner's wording; it is never a
+ * placeholder.
+ */
 export const sentencesFor = (l: 'en' | 'hinglish', season: boolean): string[] =>
   season
     ? registeredSentences[l].map((s, i) => (i === 2 ? disclosure.season.sentence3[l] : s))

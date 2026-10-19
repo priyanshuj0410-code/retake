@@ -17,7 +17,7 @@
   position: relative;
   height: var(--bar);
   border-radius: var(--radius-s);
-  background: var(--c-border);
+  background: var(--c-rule);
   margin: var(--gap-m) var(--gap-none);
   forced-color-adjust: none;
 }

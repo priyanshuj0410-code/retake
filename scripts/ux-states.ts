@@ -145,6 +145,19 @@ async function hover(page: Page, component: string, sel: string, prop: string) {
   rec(component, `hover changes ${prop}`, before !== after, `${before} -> ${after}`)
 }
 
+/** WCAG contrast of two computed rgb() colours. */
+function contrast(a: string, b: string) {
+  const lum = (c: string) => {
+    const [r, g, bl] = (c.match(/[\d.]+/g) ?? ['0', '0', '0']).slice(0, 3).map((x) => {
+      const v = Number(x) / 255
+      return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4
+    })
+    return 0.2126 * r + 0.7152 * g + 0.0722 * bl
+  }
+  const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m)
+  return (x + 0.05) / (y + 0.05)
+}
+
 /* ---------- per component ---------- */
 
 async function demoBadge(page: Page) {
@@ -204,6 +217,29 @@ async function rows(page: Page, component: string, kind: 'radio' | 'checkbox') {
   await motion(page, true)
   rec(component, 'reduced motion: no transition', !/[1-9]/.test(still), still)
   await focusRing(page, component, `input[type=${kind}]`, 0)
+  /* Checked and focused together (EVAL-6, the note register too): the ring on the mark at 3:1
+     or more against the page, and the checked row keeps its accent edge and its tint. */
+  await page.waitForTimeout(250)
+  const seen = await rowN(0).evaluate((e) => {
+    const input = e.querySelector('input') as HTMLInputElement
+    const page = document.querySelector('.page') as HTMLElement
+    const ground = getComputedStyle(page).backgroundColor
+    return {
+      surface: page.getAttribute('data-surface'),
+      focused: document.activeElement === input && input.checked,
+      ringColour: getComputedStyle(input).outlineColor,
+      ground,
+      tinted: getComputedStyle(e).backgroundColor !== ground,
+      edge: getComputedStyle(e).borderColor,
+    }
+  })
+  const both = { ...seen, ring: contrast(seen.ringColour, seen.ground) }
+  rec(
+    component,
+    `checked and focused (${both.surface} register): ring ${both.ring.toFixed(1)}:1, row tinted and edged`,
+    both.focused && both.ring >= 3 && both.tinted,
+    JSON.stringify(both),
+  )
   await forced(page, true)
   const fc = await rowN(0).evaluate((e) => getComputedStyle(e).outlineStyle)
   await forced(page, false)
@@ -443,6 +479,10 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
   await page.getByRole('button', { name: /^Panel, game 2$/ }).click()
   await page.waitForSelector('[data-screen="demo"]')
   await button(page)
+  /* The press test clicks the button it presses; go on to the first screen with the demo chip
+     (the consent), whatever the layout put under the pointer. */
+  for (let i = 0; i < 3 && !(await page.locator('.demo').count()); i++)
+    await page.locator('.page__actions .button--primary').first().click()
   await demoBadge(page)
   const done = new Set<string>()
   let sessionCode = ''
@@ -468,19 +508,19 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
       await buttonDisabled(page)
     }
     if (
-      !done.has('Choice') &&
+      !done.has(`Choice ${surface}`) &&
       (await page.locator('.choice__option:has(input[type=radio])').count()) > 1 &&
       !(await page.locator('input[type=radio]:checked').count())
     ) {
-      done.add('Choice')
+      done.add(`Choice ${surface}`)
       await rows(page, 'Choice', 'radio')
     }
     if (
-      !done.has('Checks') &&
+      !done.has(`Checks ${surface}`) &&
       (await page.locator('.choice__option:has(input[type=checkbox])').count()) > 1 &&
       !(await page.locator('input[type=checkbox]:checked').count())
     ) {
-      done.add('Checks')
+      done.add(`Checks ${surface}`)
       await rows(page, 'Checks', 'checkbox')
     }
     if (!done.has('List') && (await page.locator('.list').count())) {

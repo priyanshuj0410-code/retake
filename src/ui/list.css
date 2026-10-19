@@ -4,7 +4,8 @@
   padding-left: var(--gap-xl);
   display: flex;
   flex-direction: column;
-  gap: var(--gap-m);
+  gap: var(--list-gap);
+  background-image: var(--ruling);
 }
 .list__item {
   color: var(--c-body);

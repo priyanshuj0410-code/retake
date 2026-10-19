@@ -19,7 +19,7 @@ const ROOT = new URL('..', import.meta.url).pathname
 const OUT = process.env.OUT ?? join(ROOT, 'out/season')
 const WIDTH = Number(process.env.WIDTH ?? 390)
 const HEIGHT = Number(process.env.HEIGHT ?? 844)
-/** Rendered player copy that says PENDING (the dev-only notes and the demo disclosure placeholder aside). */
+/** Rendered player copy that says PENDING (the dev-only notes aside; no screen is exempt). */
 export const leaks: string[] = []
 
 let clicks = 0
@@ -106,7 +106,7 @@ export async function playSeason(
       main?.querySelectorAll('[data-dev]').forEach((e) => e.remove())
       return main?.textContent ?? ''
     })
-    if (/PENDING/.test(said) && m !== 'disclosure') leaks.push(m)
+    if (/PENDING/.test(said)) leaks.push(m)
     /* Faces and mascots are drawn or generated images, never system emoji, so they do not vary
        by phone font: no pictographic character on a season screen, and no text in a portrait. */
     const emoji = await page.evaluate(() => {

@@ -74,8 +74,12 @@ Direction C from the review sheet (`ui-directions.html`, 19 Oct 2026). Design ru
 3. **Hinglish drafts.** The new strings (the hero line and its dots, "Clear the stamps", the strip
    captions split from the old interludes, "Page n / k") are builder drafts for the cognitive
    interviews.
-4. **Sentence 3.** The season disclosure still shows `PENDING owner wording`; X-16 now fails if
-   `config.demo` is set to false while it is the placeholder, so it cannot reach a live build.
+4. **Sentence 3.** The disclosure showed `PENDING owner wording` to players and X-16 let it through
+   (it exempted the demo build). Fixed: sentence 3 is the interim line "Attitudes are read; you see
+   yours." until the owner writes it, and X-16, `pnpm ux` and `pnpm season` fail on any rendered
+   PENDING or owner-wording placeholder, the disclosure included. **Open:** the mid-season notes
+   (`content/notes.json`, and the explanation quoting them) still show `[PLACEHOLDER: a sourced
+   statistic ...]` to players; they need sourced statistics, which I did not invent.
 5. **Old card games retired from the menu (owner request).** The demo landing goes straight
    into the season; panel games 1 and 2 and the firm session open only on the dev server at
    `#/dev`, kept for the checks. A player link to one outside the dev server is refused. One light
@@ -96,7 +100,14 @@ Direction C from the review sheet (`ui-directions.html`, 19 Oct 2026). Design ru
    so v20 needs a quantile the cast can reach or more relabelling power.
 8. **Owner decisions O2 and O3** are in: five reading levels with the size shown apart, area
    lean labels only at possible or above, and no per-person caste or birthplace reading.
-9. **Comic register for a workplace study** may read as less serious (the review sheet's own
+9. **Out of fiction in the comic family (owner request).** The cool plain register is replaced by
+   the note register: same faces and ink, warm ruled paper in a 3 px ink frame, the registered line
+   as a "Note" stamp, ink buttons; rule 8 holds by the absence of panels, captions, pictures,
+   lilac, violet and the episode bar (design.md section 3). Screenshots: `comic-build/v3/`.
+10. **Note register fixes (owner).** Baseline grid at a 28 px pitch with text on its rules (checked
+   by `pnpm ux` and by zoomed screenshots at 390 and 1440 px), option states in the note register
+   checked once per register, and equal-height season cards. Screenshots: `comic-build/v3/`.
+11. **Comic register for a workplace study** may read as less serious (the review sheet's own
    trade-off); worth a line in the P1 interviews.
 
 ## The 80-decision rebuild (EVAL-5)

@@ -32,7 +32,7 @@
   gap: var(--gap-m);
   min-height: var(--target);
   padding: var(--gap-m) var(--gap-l);
-  border: var(--border) solid var(--c-border);
+  border: var(--border) solid var(--c-option-rest);
   border-radius: var(--radius-m);
   background: var(--c-surface);
   cursor: pointer;
@@ -55,7 +55,7 @@
 }
 @media (hover: hover) {
   .choice__option:hover {
-    border-color: var(--c-muted);
+    border-color: var(--c-accent);
   }
   .choice__option--checked:hover {
     border-color: var(--c-accent);

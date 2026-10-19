@@ -2,6 +2,9 @@
 .text {
   overflow-wrap: anywhere;
   margin: var(--gap-none);
+  /* In the note register each line sits on a rule: the ruling is drawn behind running text at
+     the line pitch, so every line of a paragraph has its rule just under the baseline. */
+  background-image: var(--ruling);
   color: var(--c-body);
   font-size: var(--text-body);
   line-height: var(--leading-body);

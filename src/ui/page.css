@@ -1,6 +1,6 @@
 /* @owns page page__inner page__head page__bar page__act page__track page__pip page__pip--on page__progress page__oof page__title page__body page__actions page__actions--pinned */
 .page {
-  background: var(--c-bg);
+  background-color: var(--c-bg);
   color: var(--c-text);
   font-family: var(--font-body);
   font-size: var(--text-body);
@@ -11,6 +11,9 @@
 .page__inner {
   max-width: var(--measure);
   margin: var(--gap-none) auto;
+  border: var(--frame) solid var(--c-frame);
+  padding: var(--frame-pad);
+  background-color: var(--c-bg);
   display: flex;
   flex-direction: column;
   gap: var(--gap-l);
@@ -61,14 +64,25 @@
   color: var(--c-muted);
   white-space: nowrap;
 }
-/* Out of fiction: the line sits under a heavy rule, in the plain face, never in a game colour. */
+/* Out of fiction: the registered line, set as a note stamp in the display face (its text is
+   exactly the line; "Note" is a decorative prefix, silent to screen readers). */
 .page__oof {
+  align-self: flex-start;
   margin: var(--gap-none);
-  padding-top: var(--gap-s);
-  border-top: var(--edge-oof) solid var(--c-text);
-  font-size: var(--text-small);
-  color: var(--c-muted);
-  font-weight: var(--weight-label);
+  padding: var(--gap-xs) var(--gap-s);
+  border: var(--border-focus) solid var(--c-frame);
+  box-shadow: var(--shadow-stamp);
+  transform: rotate(var(--tilt-note));
+  font-family: var(--font-display);
+  font-size: var(--text-label);
+  font-weight: var(--weight-strong);
+  letter-spacing: var(--tracking-display);
+  text-transform: var(--case-display);
+  color: var(--c-text);
+}
+.page__oof::before {
+  content: 'Note · ';
+  content: 'Note · ' / '';
 }
 .page__title {
   font-family: var(--font-display);
@@ -86,7 +100,7 @@
 .page__body {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-l);
+  gap: var(--flow);
 }
 .page__body:focus {
   outline: none;

@@ -110,14 +110,27 @@ async function audit(page: Page, screen: string, inPage = false) {
     return h ? a === h : a?.tagName === 'MAIN'
   }, inPage)
   if (!focus) focusFails.push(screen)
-  /* Copy hygiene (EVAL-6, X-16): no rendered player copy says PENDING; the dev-only notes and
-     the demo disclosure's owner-wording placeholder aside. */
+  /* Copy hygiene (EVAL-6, X-16): no rendered player copy says PENDING, the disclosure included;
+     only the dev-only notes are left out. */
   const said = await page.evaluate(() => {
     const main = document.querySelector('main')?.cloneNode(true) as HTMLElement | undefined
     main?.querySelectorAll('[data-dev]').forEach((e) => e.remove())
     return main?.textContent ?? ''
   })
-  if (/PENDING/.test(said) && !NO_HEADING.test(screen)) problems.push(`${screen}: says PENDING`)
+  if (/PENDING/.test(said)) problems.push(`${screen}: says PENDING`)
+  /* The note register's baseline grid (EVAL-6): running text and lists sit on their ruling, so
+     each is a whole number of 28 px lines and no line straddles a rule. */
+  const offGrid = await page.evaluate(() => {
+    if (document.querySelector('.page')?.getAttribute('data-surface') !== 'oof') return []
+    return [...document.querySelectorAll('.page .text, .page .list')]
+      .filter((e) => getComputedStyle(e).backgroundImage.includes('gradient'))
+      .filter((e) => {
+        const h = e.getBoundingClientRect().height
+        return h > 0 && Math.abs(h / 28 - Math.round(h / 28)) > 0.02
+      })
+      .map((e) => `${e.className}: ${Math.round(e.getBoundingClientRect().height)} px`)
+  })
+  for (const o of offGrid) problems.push(`${screen}: off the 28 px ruling, ${o}`)
   for (const v of VARIANTS) {
     await page.setViewportSize({ width: v.w, height: v.h })
     await page.emulateMedia({ colorScheme: v.scheme, reducedMotion: 'reduce' })

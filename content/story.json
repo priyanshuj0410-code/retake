@@ -4965,7 +4965,6 @@
     "hinglish": "Agar game mein koi baat kaam ki kisi asli sthiti ki yaad dilaye, to aap apni Internal Committee, apne zile ki Local Committee, ya Ministry of Women and Child Development ke SHe-Box portal se sampark kar sakte hain."
    }
   ],
-  "consentNote": "DRAFT, owner wording: the season consent must tell the player about the personal rating, which the registered consent (no score shown) does not allow.",
   "episodeOf": {
    "en": "Episode {n} of {k}: {title}",
    "hinglish": "Episode {n} / {k}: {title}"
@@ -5144,7 +5143,8 @@
   "devTitle": {
    "en": "Research team notes (dev build only)",
    "hinglish": "Research team notes (sirf dev build)"
-  }
+  },
+  "_consentNote": "DRAFT, owner wording: the season consent must tell the player about the personal rating, which the registered consent (no score shown) does not allow."
  },
  "rating": {
   "_note": "The result page's words. A reading of one season's decisions, never a judgement: no screen calls it bias, and nothing says what the player should think. Band names and paragraphs are DRAFT for the owner.",

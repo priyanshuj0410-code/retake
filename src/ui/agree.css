@@ -56,9 +56,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: var(--border) solid var(--c-border);
+  border: var(--border) solid var(--c-option-rest);
   border-radius: var(--radius-s);
-  background: var(--c-bg);
+  background: var(--c-surface);
   font-family: var(--font-display);
   font-weight: var(--weight-display);
   color: var(--c-text);
@@ -67,7 +67,11 @@
   -webkit-tap-highlight-color: transparent;
   transition:
     border-color var(--motion),
-    background-color var(--motion);
+    background-color var(--motion),
+    transform var(--motion);
+}
+.agree__point:active {
+  transform: scale(var(--press));
 }
 .agree__point--on {
   background: var(--c-accent);

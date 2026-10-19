@@ -45,13 +45,23 @@
   --no-case: none;
   --ls-display: 0.04em;
 
-  /* The plain register, out of fiction (EVAL-6): cool grey and ink, no game colour. */
-  --cool: #f3f5f8;
-  --cool-ink: #1d2230;
-  --cool-ink-press: #000000;
-  --cool-soft: #4c5468;
-  --cool-rule: #c9ced8;
-  --cool-hero: #e3e6ec;
+  /* The note register, out of fiction (EVAL-6): an editor's note or case file in the comic
+     family. Warm paper with faint rule lines, the same ink and faces, no lilac, no yellow. */
+  --note-paper: #fbf6ec;
+  --note-hero: #f2eadb;
+  --note-soft: #544b3e;
+  --note-rule: #cdbfa6;
+  /* The ruling: one rule every pitch, 2 px under a 17 px Literata baseline (measured at 21 px). */
+  --pitch-28: 28px;
+  --note-ruling: repeating-linear-gradient(
+    to bottom,
+    transparent 0 23px,
+    #e4d8c2 23px 24px,
+    transparent 24px 28px
+  );
+  --shadow-note: 3px 3px 0 #cdbfa6;
+  --shadow-note-stamp: 2px 2px 0 #121212;
+  --rot-neg-2: -2deg;
 
   --fs-14: 14px;
   --fs-16: 16px;
@@ -90,7 +100,6 @@
   --fs-30: 30px;
   --fs-38: 38px;
   --fs-54: 54px;
-  --bw-4: 4px;
   --px-64: 64px;
   --px-52: 52px;
   --px-300: 300px;
@@ -101,6 +110,7 @@
   --grid-4: repeat(4, minmax(0, 1fr));
   --grid-12: repeat(12, minmax(0, 1fr));
   --grid-cards: repeat(auto-fill, minmax(128px, 1fr));
+  --grid-rows-equal: 1fr;
   --pct-neg-50: -50%;
   --dur-160: 160ms;
   --dur-0: 0ms;
@@ -182,20 +192,21 @@
   /* The comic components (section 4c). Out of the game the same names point at plain values. */
   --c-panel: var(--tint);
   --c-ink-line: var(--line);
+  /* An option's resting edge; hover and focus take the text colour, checked the accent. */
+  --c-option-rest: var(--line);
   --c-caption: var(--comic-caption);
   --c-on-caption: var(--comic-ink);
   --c-stamp: var(--violet);
   --c-on-stamp: var(--white);
   --c-splash: var(--violet);
   --c-on-splash: var(--white);
-  --c-hero: var(--cool-hero);
+  --c-hero: var(--note-hero);
   --font-comic: var(--face-comic-display);
   --font-story: var(--face-comic-text);
   --text-display: var(--fs-30);
   --text-splash: var(--fs-38);
   --text-hero: var(--fs-54);
   --edge: var(--bw-2);
-  --edge-oof: var(--bw-4);
   --shadow-panel: var(--shadow-none);
   --shadow-caption: var(--shadow-none);
   --shadow-chosen: var(--shadow-none);
@@ -209,9 +220,18 @@
   --inset-small: var(--pct-45);
   --dots: var(--px-300);
   --radius-full: var(--pct-50);
+  --frame: var(--s-0);
+  --frame-pad: var(--s-0);
+  --c-frame: var(--comic-ink);
+  --ruling: none;
+  --flow: var(--s-4);
+  --list-gap: var(--s-3);
+  --shadow-stamp: var(--shadow-none);
+  --tilt-note: var(--rot-neg-2);
   --cols-two: var(--grid-2);
   --cols-four: var(--grid-4);
   --cols-cards: var(--grid-cards);
+  --rows-equal: var(--grid-rows-equal);
   --dot-columns: var(--grid-12);
   --text-action: var(--fs-16);
   --tracking-action: normal;
@@ -244,7 +264,8 @@
 
 /* The surfaces (knowledge/design.md, section 3). Each surface re-points the semantic tokens,
    type included, so no component knows which surface it is on. The game is the comic register,
-   out of fiction the cool plain register; the two never share a ground, a face or an accent. */
+   out of fiction the note register (an editor's note: warm ruled paper in a 3 px ink frame,
+   a stamp, the same faces and ink); the two never share a ground, a fill or an accent. */
 [data-surface='game'] {
   --font-display: var(--face-comic-display);
   --font-body: var(--face-comic-text);
@@ -269,6 +290,7 @@
   --c-label: var(--violet);
   --c-panel: var(--comic-tint);
   --c-ink-line: var(--comic-ink);
+  --c-option-rest: var(--comic-ink);
   --c-level-lean: var(--violet);
   --c-level-none: var(--comic-ink);
   --c-level-unread: var(--comic-soft);
@@ -281,28 +303,48 @@
   --shadow-action: var(--shadow-violet-small);
 }
 [data-surface='oof'] {
-  --c-bg: var(--cool);
-  --c-surface: var(--white);
-  --c-raised: var(--cool);
-  --c-text: var(--cool-ink);
-  --c-body: var(--cool-ink);
-  --c-muted: var(--cool-soft);
-  --c-rule: var(--cool-rule);
-  --c-border: var(--cool-rule);
-  --c-accent: var(--cool-ink);
-  --c-accent-press: var(--cool-ink-press);
-  --c-on-accent: var(--white);
-  --c-focus: var(--cool-ink);
-  --edge: var(--bw-1);
-  --c-label: var(--cool-soft);
-  --c-hero: var(--cool-hero);
-  --c-level-lean: var(--cool-ink);
-  --c-level-none: var(--cool-ink);
-  --c-level-unread: var(--cool-soft);
-  --c-action: var(--cool-ink);
-  --c-on-action: var(--white);
-  --c-action-press: var(--cool-ink-press);
-  --c-ink-line: var(--cool-rule);
+  --font-display: var(--face-comic-display);
+  --font-body: var(--face-comic-text);
+  --text-body: var(--fs-17);
+  --text-action: var(--fs-20);
+  --tracking-action: var(--ls-display);
+  --case-display: var(--upper);
+  --tracking-display: var(--ls-display);
+  --radius-card: var(--s-0);
+  --radius-m: var(--s-0);
+  --radius-s: var(--s-0);
+  --edge: var(--bw-2);
+  --frame: var(--bw-3);
+  --frame-pad: var(--s-4);
+  --ruling: var(--note-ruling);
+  --leading-body: var(--pitch-28);
+  --leading-ui: var(--pitch-28);
+  --flow: var(--pitch-28);
+  --list-gap: var(--s-0);
+  --c-bg: var(--note-paper);
+  --c-surface: var(--note-paper);
+  --c-raised: var(--note-hero);
+  --c-text: var(--comic-ink);
+  --c-body: var(--comic-ink);
+  --c-muted: var(--note-soft);
+  --c-rule: var(--note-rule);
+  --c-border: var(--comic-ink);
+  --c-ink-line: var(--comic-ink);
+  --c-option-rest: var(--note-rule);
+  --c-accent: var(--comic-ink);
+  --c-accent-press: var(--note-soft);
+  --c-on-accent: var(--note-paper);
+  --c-focus: var(--comic-ink);
+  --c-label: var(--note-soft);
+  --c-hero: var(--note-hero);
+  --c-level-lean: var(--comic-ink);
+  --c-level-none: var(--comic-ink);
+  --c-level-unread: var(--note-soft);
+  --c-action: var(--comic-ink);
+  --c-on-action: var(--note-paper);
+  --c-action-press: var(--note-soft);
+  --shadow-action: var(--shadow-note);
+  --shadow-stamp: var(--shadow-note-stamp);
 }
 [data-surface='sober'] {
   --c-bg: var(--grey-50);
@@ -322,6 +364,7 @@
   --c-on-action: var(--white);
   --c-action-press: var(--grey-700);
   --c-ink-line: var(--grey-300);
+  --c-option-rest: var(--grey-300);
 }
 
 /* Forced colours (Windows high contrast and similar): the system paints most colours. Inactive

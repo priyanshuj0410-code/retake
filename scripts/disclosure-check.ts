@@ -90,8 +90,9 @@ export async function run() {
     'consent, tutorial and short debrief never say "fair", "bias", "preference", "score" of the player or how attitudes are scored',
     !/\b(fair|fairly|bias|biased|preference|merit|weight)\b/i.test(pre),
   )
-  /* The season story (EVAL-4): the same screen, with sentence 3 replaced by the owner's
-     pending wording, because the season shows each player a rating; 1, 2 and 4 stay verbatim. */
+  /* The season story (EVAL-4): the same screen, with sentence 3 replaced by the interim line
+     (awaiting the owner's wording), because the season shows each player a rating; 1, 2 and 4
+     stay verbatim. */
   for (const langs of [['en'], ['hinglish']] as const) {
     const got = textOf(
       renderToStaticMarkup(
@@ -102,13 +103,15 @@ export async function run() {
     const want = [
       registeredSentences[l][0],
       registeredSentences[l][1],
-      'PENDING owner wording',
+      l === 'en'
+        ? 'Attitudes are read; you see yours.'
+        : 'Attitudes padhe jaate hain; aapko apne dikhte hain.',
       registeredSentences[l][3],
       screens.common.continue[l],
     ]
     record(
       T,
-      `season story first screen, ${l}: registered sentences 1, 2 and 4 verbatim, sentence 3 "PENDING owner wording", Continue, nothing else`,
+      `season story first screen, ${l}: registered sentences 1, 2 and 4 verbatim, sentence 3 the interim line (never a placeholder), Continue, nothing else`,
       JSON.stringify(got) === JSON.stringify(want),
       JSON.stringify(got) === JSON.stringify(want) ? '' : JSON.stringify(got),
     )
