@@ -147,6 +147,14 @@ async function hover(page: Page, component: string, sel: string, prop: string) {
 
 /* ---------- per component ---------- */
 
+async function demoBadge(page: Page) {
+  await forced(page, true)
+  const edge = await css(page, '.demo', 'border-top-style')
+  await forced(page, false)
+  rec('DemoBadge', 'forced colours: the strip keeps an edge', edge === 'solid', edge)
+  await stress(page, 'DemoBadge', '.demo')
+}
+
 async function button(page: Page) {
   const sel = '.button--primary'
   await hover(page, 'Button', sel, 'background-color')
@@ -407,6 +415,7 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
   await page.getByRole('button', { name: /^Panel, game 2$/ }).click()
   await page.waitForSelector('[data-screen="demo"]')
   await button(page)
+  await demoBadge(page)
   const done = new Set<string>()
   let sessionCode = ''
   for (let guard = 0; guard < 400; guard++) {
