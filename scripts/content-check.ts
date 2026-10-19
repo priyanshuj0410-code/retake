@@ -228,11 +228,12 @@ export async function run() {
     )
     const recallOk = [...shown].every((n) => {
       const ids = recallOptions(n as NoteId).map((o) => o.id)
-      return ids.includes(n) && ids.every((id) => id === n || id === 'none')
+      const real = ids.filter((id) => ['a', 'b', 'c'].includes(id))
+      return real.length === 1 && real[0] === n && ids.includes('none')
     })
     record(
       T,
-      `${dep}: the recall item offers each arm only its own note`,
+      `${dep}: the recall item offers each arm only its own real note`,
       recallOk,
       [...shown].join(','),
     )
@@ -249,6 +250,27 @@ export async function run() {
       `shown ${[...shown].join(',') || 'none'}; quoted ${quoted.join(',') || 'none'}`,
     )
   }
+  /* The recall item's made-up notes: two or three, each like a real option in length and
+     register ("A figure about ..., then: ..."), with no instruction to answer any way and
+     nothing from a real note's topic. */
+  const realOpts = screens.recall.options.filter((o) => ['a', 'b', 'c'].includes(o.id))
+  const decoys = screens.recall.options.filter((o) => 'decoy' in o && o.decoy)
+  const meanLen = realOpts.reduce((t, o) => t + o.text.en.length, 0) / realOpts.length
+  const INSTRUCTION = /answer|jawab|ideal|honest|imaandar|sach|truth|employee/i
+  const REAL_TOPIC = /gender|commut|aane jaane|transport|travel|equal|women|men\b|aurat|mard/i
+  const badDecoys = decoys.filter(
+    (o) =>
+      [o.text.en, o.text.hinglish].some((t) => INSTRUCTION.test(t) || REAL_TOPIC.test(t)) ||
+      !/^A figure about .+, then: .+/.test(o.text.en) ||
+      !/ka ek aankda, phir: /.test(o.text.hinglish) ||
+      Math.abs(o.text.en.length - meanLen) > meanLen * 0.25,
+  )
+  record(
+    T,
+    `the recall item's made-up notes (${decoys.length}) carry no instruction, no real note's topic, and match the real options' shape`,
+    decoys.length >= 2 && decoys.length <= 3 && badDecoys.length === 0,
+    badDecoys.map((o) => o.id).join(', '),
+  )
   const BASIS = /budget|vendor|schedule|people|decision|calls|score|faisl|logon/i
   const resultLines = screens.wrap.result.bands.flatMap((b) => [b.text.en, b.text.hinglish])
   record(

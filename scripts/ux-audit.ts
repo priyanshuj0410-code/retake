@@ -13,7 +13,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium, type Page } from 'playwright-core'
 import { createServer } from 'vite'
-import { screeningItems } from '../src/content'
+import { screeningItems, screens as S } from '../src/content'
 import { marker, step } from './lib/autoplay'
 
 const ROOT = new URL('..', import.meta.url).pathname
@@ -66,6 +66,11 @@ const SLIP = /\bthey (was|is|has|does)\b|[.!?] [a-z]/
 const textSlips: string[] = []
 /** Recall screens that offered a note other than the one the player saw (owner decision O1). */
 const recallLeaks: string[] = []
+const DECOYS = new Set(
+  S.recall.options
+    .filter((o) => 'decoy' in o && o.decoy)
+    .flatMap((o) => [o.text.en, o.text.hinglish]),
+)
 const SHOTS = new Set([
   'firm firstWeek:people:ranking',
   'firm firstWeek:people:allocation',
@@ -215,7 +220,12 @@ async function play(
           .evaluateAll((rs) => rs.map((r) => r.closest('label')?.textContent ?? ''))
       ).filter((t) => !/^(I do not remember|Mujhe yaad nahin)$/.test(t.trim()))
       const ideal = (t: string) => /ideal employee/.test(t)
-      if (offered.length !== 1 || ideal(offered[0]) !== ideal(noteText))
+      const real = offered.filter((t) => !DECOYS.has(t.trim()))
+      if (
+        real.length !== 1 ||
+        offered.length - real.length < 2 ||
+        ideal(real[0]) !== ideal(noteText)
+      )
         recallLeaks.push(`${prefix}: offered ${offered.join(' / ')}`)
     }
     if (m === 'wrap:code')

@@ -62,7 +62,7 @@ export type Step =
   | { kind: 'm1h-direct'; act: Act; item: CrosswiseItem }
   | { kind: 'inbox'; act: Act; id: string; lang: Lang }
   | { kind: 'note'; act: Act; note: NoteId }
-  | { kind: 'recall'; act: Act }
+  | { kind: 'recall'; act: Act; order: string[] }
   | { kind: 'probe'; act: Act }
   | { kind: 'result'; act: Act }
   | { kind: 'prior'; act: Act; id: string }
@@ -352,7 +352,14 @@ export function phase2(
             second: i >= surveyItems.length,
           })
       }
-      out.push({ kind: 'recall', act: 'after' })
+      out.push({
+        kind: 'recall',
+        act: 'after',
+        order: [
+          ...rng.shuffle(recallOptions(note).filter((o) => o.id !== 'none')).map((o) => o.id),
+          'none',
+        ],
+      })
     }
     if (d.directBlock) {
       out.push({ kind: 'intro', act: 'direct', which: 'direct' })
@@ -390,9 +397,13 @@ export const isOutOfFiction = (step: Step) =>
     (step.kind === 'survey' || step.kind === 'recall' || step.kind === 'intro'))
 
 /**
- * The recall item's options for a player: the note that player saw, and "I do not remember".
- * No arm is offered a note it did not see (owner decision O1, ux audit 2026-10-19). This departs
- * from the registered item (candidates v12 3.10 and later), which listed every note to every arm.
+ * The recall item's options for a player (owner decisions O1, 19 Oct 2026): the note that player
+ * saw, the made-up notes (`decoy` in content/screens.json: a statistic on another topic and no
+ * instruction to answer any way), and "I do not remember". No arm is offered a real note it did
+ * not see. This departs from the registered item (candidates v12 3.10 and later), which listed
+ * every real note to every arm. The step shuffles all but "I do not remember", which stays last.
  */
 export const recallOptions = (note: NoteId | null) =>
-  screens.recall.options.filter((o) => o.id === note || o.id === 'none')
+  screens.recall.options.filter(
+    (o) => o.id === note || ('decoy' in o && o.decoy) || o.id === 'none',
+  )

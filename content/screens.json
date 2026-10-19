@@ -149,6 +149,9 @@
       { "id": "a", "text": { "en": "A figure about views on gender at work, then: answer as you would", "hinglish": "Kaam par gender par vichaaron ka ek aankda, phir: waise jawab dijiye jaise aap dete hain" } },
       { "id": "b", "text": { "en": "A figure about commuting, then: answer as you would", "hinglish": "Aane jaane ka ek aankda, phir: waise jawab dijiye jaise aap dete hain" } },
       { "id": "c", "text": { "en": "A figure about commuting, then: answer as the ideal employee would", "hinglish": "Aane jaane ka ek aankda, phir: waise jawab dijiye jaise ek ideal employee deta" } },
+      { "id": "d1", "decoy": true, "text": { "en": "A figure about team meetings, then: thanks for playing so far", "hinglish": "Team meetings ka ek aankda, phir: ab tak khelne ke liye shukriya" } },
+      { "id": "d2", "decoy": true, "text": { "en": "A figure about lunch breaks, then: the season is half done", "hinglish": "Lunch break ka ek aankda, phir: season aadha ho gaya hai" } },
+      { "id": "d3", "decoy": true, "text": { "en": "A figure about email at work, then: the next part is short", "hinglish": "Kaam par email ka ek aankda, phir: agla hissa chhota hai" } },
       { "id": "none", "text": { "en": "I do not remember", "hinglish": "Mujhe yaad nahin" } }
     ]
   },

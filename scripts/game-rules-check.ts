@@ -38,6 +38,45 @@ function play(seed: number, dep: DeploymentId, people: 'start' | 'reverse' | 'la
 }
 
 export async function run() {
+  /* The recall item (owner decision O1): the player's own real note, the made-up notes, then
+     "I do not remember"; the order shuffled per player. */
+  let recallOk = true
+  let whyRecall = ''
+  const firstAt = new Set<number>()
+  let recalls = 0
+  for (const dep of ['panel-g1', 'panel-g2'] as DeploymentId[])
+    for (let i = 0; i < 40; i++) {
+      const r = play(i, dep, 'start')
+      for (const st of r.steps) {
+        if (st.kind !== 'recall') continue
+        recalls++
+        const real = st.order.filter((id) => ['a', 'b', 'c'].includes(id))
+        const decoys = st.order.filter((id) => id.startsWith('d'))
+        if (
+          real.length !== 1 ||
+          real[0] !== r.note ||
+          st.order.at(-1) !== 'none' ||
+          decoys.length < 2
+        ) {
+          recallOk = false
+          whyRecall ||= `${dep} seed ${i}: note ${r.note}, offered ${st.order.join(',')}`
+        }
+        firstAt.add(st.order.indexOf(r.note ?? ''))
+      }
+    }
+  record(
+    T,
+    `the recall item offers only the player's own real note (${recalls} recall items)`,
+    recalls > 0 && recallOk,
+    whyRecall,
+  )
+  record(
+    T,
+    "the recall item's order is shuffled per player",
+    firstAt.size > 1,
+    `own note seen at positions ${[...firstAt].join(',')}`,
+  )
+
   let unscoredOk = true
   let orderOk = true
   let oofOk = true

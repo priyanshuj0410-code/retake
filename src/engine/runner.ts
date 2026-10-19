@@ -135,7 +135,7 @@ export class Runner {
         break
       }
       case 'recall':
-        this.record({ k: 'recall', i: 'recall', v: String(value) })
+        this.record({ k: 'recall', i: 'recall', v: String(value), x: s.order.join(',') })
         break
       case 'probe':
         this.record({ k: 'probe', i: 'probe', v: (value as string[]).slice().sort().join(',') })

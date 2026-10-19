@@ -160,8 +160,9 @@ British spelling; no em or en dashes; sentence case; second person; short senten
 Buttons name what happens ("Submit my answers", "Delete my records"). The word "fair" is never
 used in anything shown before the explanation page, and no screen before it says how
 attitudes are scored. The season result is a plain band line ("A strong season. The team
-stayed ahead of plan.") and never names what decides the season. The recall item offers only
-the note the player saw and "I do not remember", and each explanation quotes only the notes its
+stayed ahead of plan.") and never names what decides the season. The recall item offers the
+note the player saw, three made-up notes (a statistic on another topic, no instruction), in
+an order shuffled per player, and "I do not remember" last, and each explanation quotes only the notes its
 game shows (owner decisions O1 to O3, [ux audit](reviews/ux-audit-2026-10-19.md)); both are held
 by `content-check`. `scripts/content-check.ts` checks the dashes and American spellings, and fills every gendered
 text as a man, a woman and neutral: a gendered word carries its verb ("they were", never "they
