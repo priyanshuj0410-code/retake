@@ -3,7 +3,7 @@
  * the attitude rating, its records, and the optional profile. Registered in scripts/check-all.ts.
  */
 import { readFileSync } from 'node:fs'
-import { identity, surveyItems } from '../src/content'
+import { identity, screeningItems, surveyItems } from '../src/content'
 import { config } from '../src/engine/config'
 import { seeded } from '../src/engine/rng'
 import { fill } from '../src/engine/text'
@@ -19,7 +19,7 @@ import {
   setResearch,
   type ProfileSession,
 } from '../src/story/profile'
-import { labellings, rate, weightOf } from '../src/story/rating'
+import { cueSets, rate, weightOf } from '../src/story/rating'
 import { StoryRunner } from '../src/story/runner'
 import { drawCast } from '../src/story/session'
 import { resultModel } from '../src/story/why'
@@ -49,9 +49,57 @@ function content() {
     'three seasons offered, the warehouse built, the newsroom and the clinic stubbed',
     stories.length === 3 &&
       !!wh?.built &&
-      stories.filter((s) => !s.built).every((s) => /PENDING v17/.test(s.premise.en)),
+      stories.filter((s) => !s.built).every((s) => /PENDING v18/.test(s.premise.en)),
   )
-  record(T, `about 50 decisions (${beats.length})`, beats.length >= 40 && beats.length <= 56)
+  const ppl = beats.filter(isPeople)
+  const rating = ppl.filter((b) => !b.mascot && b.form !== 'B')
+  const byDom = (d: string) => rating.filter((b) => b.domain === d)
+  const res = byDom('resources')
+  const formB = ppl.filter((b) => b.form === 'B')
+  const C = config.season.counted
+  record(
+    T,
+    `the owner's 80 counted decisions: ${ppl.filter((b) => b.mascot).length} mascot cards, ${config.season.faking.screening.length} screening items, ${2 * config.season.faking.survey.length + formB.length + 1} faking-test decisions, ${rating.length} rating cards (PENDING v18)`,
+    ppl.filter((b) => b.mascot).length === C.mascot &&
+      config.season.faking.screening.length === C.screening &&
+      2 * config.season.faking.survey.length + formB.length + 1 === C.faking &&
+      rating.length === C.rating &&
+      C.mascot + C.screening + C.faking + C.rating === C.total &&
+      C.total === 80,
+  )
+  record(
+    T,
+    `19 rating cards per domain (hiring ${byDom('hiring').length}, conduct ${byDom('conduct').length}, resources ${res.length}: allocation ${res.filter((b) => b.family !== 'npt').length}, unwanted work ${res.filter((b) => b.family === 'npt').length})`,
+    ['hiring', 'conduct', 'resources'].every((d) => byDom(d).length === C.perDomain) &&
+      res.filter((b) => b.family === 'npt').length === 8 &&
+      res.every((b) => b.kind === 'split'),
+  )
+  record(
+    T,
+    'form B: 6 cards after the note, 3 promotion and 3 conduct, all in the last episode; the mascot cards preview all three domains',
+    formB.length === 6 &&
+      formB.filter((b) => b.domain === 'hiring').length === 3 &&
+      formB.filter((b) => b.domain === 'conduct').length === 3 &&
+      formB.every((b) => b.episode === (wh?.episodes?.length ?? 0)) &&
+      new Set(ppl.filter((b) => b.mascot).map((b) => b.domain)).size === 3,
+  )
+  record(
+    T,
+    'the screening and survey items exist, and each survey administration is keyed two and two within each family',
+    config.season.faking.screening.every((id) => screeningItems.some((i) => i.id === id)) &&
+      ['opportunity', 'conduct'].every((f) => {
+        const its = config.season.faking.survey.map((id) => surveyItems.find((i) => i.id === id))
+        const fam = its.filter((i) => i?.family === f)
+        return fam.length === 2 && new Set(fam.map((i) => i?.keying)).size === 2
+      }),
+  )
+  record(
+    T,
+    'caste and birthplace ride on one-off characters (applicants, complainants, vendors) in every domain, PENDING v18',
+    ['hiring', 'conduct', 'resources'].every((d) => byDom(d).some((b) => b.shape === 'oneoff')) &&
+      config.season.cueCarriers.oneOff.join() === 'caste,birthplace' &&
+      config.season.cueCarriers.cast.join() === 'sex,religion,tone',
+  )
   record(
     T,
     'beat and description ids unique',
@@ -66,12 +114,22 @@ function content() {
       .join('')
     const keys = Object.keys(b.after).sort().join(',')
     if (b.kind === 'rank')
-      return tiers === '1133' && keys === '1,3' && (b.shape === 'mixed' || b.shape === 'same')
+      return tiers === '1133' && keys === '1,3' && ['mixed', 'same', 'oneoff'].includes(b.shape)
     if (b.kind === 'pick' && b.shape === 'clear') return tiers === '13' && keys === '1,3'
     if (b.kind === 'pick')
-      return tiers === '22' && keys === '2' && (b.shape === 'rival' || b.shape === 'same')
+      return (
+        tiers === '22' &&
+        keys === '2' &&
+        ['rival', 'same', 'oneoff'].includes(b.shape) &&
+        (b.shape !== 'oneoff' || !!b.cue)
+      )
     return (
-      tiers === '133' && keys === '1,3,even' && b.shape === 'rival' && (b.pool ?? 0) > 0 && !!b.unit
+      tiers === '133' &&
+      keys === '1,3,even' &&
+      ['rival', 'oneoff'].includes(b.shape) &&
+      (b.shape !== 'oneoff' || !!b.cue) &&
+      (b.pool ?? 0) > 0 &&
+      !!b.unit
     )
   })
   record(
@@ -134,9 +192,9 @@ function content() {
   )
   record(
     T,
-    'the content is marked PENDING v17, and every pendingV17 key exists in config.season',
-    storyContent.status === 'PENDING v17' &&
-      config.season.pendingV17.every(
+    'the content is marked PENDING v18, and every pendingV18 key exists in config.season',
+    storyContent.status === 'PENDING v18' &&
+      config.season.pendingV18.every(
         (k) =>
           k
             .split('.')
@@ -170,7 +228,7 @@ function content() {
   const doms = Object.values(RT.domains)
   record(
     T,
-    "the result page has the owner's areas (hiring and promotion, complaints and conduct, sharing resources), each with 3 or 4 reflection prompts and 3 or 4 habits (sources PENDING v17, no effect claimed), and the Internal Committee line",
+    "the result page has the owner's areas (hiring and promotion, complaints and conduct, sharing resources), each with 3 or 4 reflection prompts and 3 or 4 habits (sources PENDING v18, no effect claimed), and the Internal Committee line",
     doms.length === 3 &&
       doms.every(
         (d) =>
@@ -179,20 +237,29 @@ function content() {
           d.watch.length >= 3 &&
           d.watch.length <= 4,
       ) &&
-      /PENDING v17/.test(RT.watchBody.en) &&
+      /PENDING v18/.test(RT.watchBody.en) &&
       /no effect is claimed/.test(RT.watchBody.en) &&
       /Internal Committee/.test(RT.committee.en),
   )
   const eps = wh?.episodes ?? []
-  const perEp = eps.map((_, k) => beats.filter((b) => b.episode === k + 1).length)
+  const perEp = eps.map(
+    (_, k) =>
+      beats.filter((b) => isPeople(b) && b.episode === k + 1 && !b.mascot && b.form !== 'B').length,
+  )
   record(
     T,
-    `4 or 5 episodes with a title card each, about 10 to 12 decisions each (PENDING v17: ${perEp.join(', ')})`,
+    `4 or 5 episodes with a title card each, 9 to 13 rating cards each, an interlude in each (PENDING v18: ${perEp.join(', ')})`,
     eps.length >= 4 &&
       eps.length <= 5 &&
       eps.length === config.season.episodes &&
-      perEp.every((x) => x >= 8 && x <= 12) &&
-      eps.every((e) => !!e.title.en && !!e.premise.en),
+      perEp.every((x) => x >= 9 && x <= 13) &&
+      eps.every(
+        (e) =>
+          !!e.title.en &&
+          !!e.premise.en &&
+          !!e.interlude &&
+          beats.some((b) => b.id === e.interlude?.after),
+      ),
   )
   record(
     T,
@@ -234,37 +301,18 @@ function content() {
   )
   record(
     T,
-    'the profile offers a separate research consent marked PENDING v17, the delete-everything action, and "No change read yet"',
-    /PENDING v17/.test(PF.researchTitle.en) &&
-      PF.researchConsent.some((c) => /PENDING v17/.test(c.en)) &&
+    'the profile offers a separate research consent marked PENDING v18, the delete-everything action, and "No change read yet"',
+    /PENDING v18/.test(PF.researchTitle.en) &&
+      PF.researchConsent.some((c) => /PENDING v18/.test(c.en)) &&
       PF.deleteButton.en === 'Delete my profile and all my records' &&
       PF.noChange.en === 'No change read yet.',
   )
-  const est = (() => {
-    const tm = config.season.timing
-    const kinds = beats.map((b) => (isPeople(b) ? b.kind : 'ordinary'))
-    const play =
-      kinds.reduce((s, k) => s + (tm[k] ?? 0), 0) +
-      tm.intro +
-      tm['pick-season'] +
-      tm.reveal +
-      tm.episode * (wh?.episodes?.length ?? 0) +
-      tm.season
-    return {
-      play,
-      wrap:
-        surveyItems.length * tm.surveyItem +
-        2 * tm.priorItem +
-        tm.debrief +
-        tm.code +
-        tm.demographics +
-        tm.submit,
-    }
-  })()
+  const run = wh ? new StoryRunner(seeded(1), wh, ['en']) : null
+  const secs = run ? run.estimateSeconds() : 0
   record(
     T,
-    `the story plays in about 12 minutes at the planning timings, PENDING v17 (${(est.play / 60).toFixed(1)} min, wrap ${(est.wrap / 60).toFixed(1)} min)`,
-    est.play / 60 >= 9 && est.play / 60 <= 15,
+    `the session takes about 26 minutes at the scenario's per-type paces, PENDING v18 (${(secs / 60).toFixed(1)} min; ${run?.asked} decisions asked at 12 to 20 s each: ${(((run?.asked ?? 0) * 12) / 60).toFixed(1)} to ${(((run?.asked ?? 0) * 20) / 60).toFixed(1)} min)`,
+    secs / 60 >= 22 && secs / 60 <= 30,
   )
 }
 
@@ -295,20 +343,25 @@ function draws() {
         muslim.filter((c) => c.tone === 'darker').length !== 1
       )
         bad.push(`${s}: tone`)
-      if (!hindu.every((c) => c.surname && !c.born) || !muslim.every((c) => c.born && !c.surname))
-        bad.push(`${s}: surname or birthplace`)
-      if (
-        new Set(hindu.map((c) => c.caste)).size !== 2 ||
-        new Set(muslim.map((c) => c.born?.region)).size !== 2
-      )
-        bad.push(`${s}: caste or region pair`)
+      if (g.some((c) => c.surname || c.born || c.caste))
+        bad.push(`${s}: cast carries caste or birthplace`)
     }
+    /* One-offs: each carries caste or birthplace, never both, at the medium tone. */
+    for (const x of r.season.extras)
+      if (
+        !x.oneOff ||
+        x.tone !== 'constant' ||
+        !!x.caste === !!x.born ||
+        (x.caste && x.religion !== 'hindu') ||
+        (x.born && x.religion !== 'muslim')
+      )
+        bad.push(`${s}: one-off ${x.name}`)
     if (!cast.every((c) => cast[c.rival].sex !== c.sex && cast[c.rival].rival === c.slot))
       bad.push(`${s}: rivals`)
     const pairCount = new Map<string, number>()
     for (const b of r.season.beats) {
       if (b.kind !== 'people') continue
-      const tied = (t: number) => b.chars.filter((c) => c.tier === t).map((c) => cast[c.slot])
+      const tied = (t: number) => b.chars.filter((c) => c.tier === t).map((c) => r.person(c.slot))
       const shape = b.beat.shape
       if (b.beat.kind === 'rank' && shape === 'mixed')
         for (const t of [3, 1]) {
@@ -334,6 +387,22 @@ function draws() {
             (pairCount.get(`p${Math.min(a.slot, c.slot)}`) ?? 0) + 1,
           )
       }
+      if (shape === 'oneoff') {
+        const tiers = b.beat.kind === 'rank' ? [3, 1] : [b.beat.kind === 'pick' ? 2 : 3]
+        const kinds = tiers.map((tr) => {
+          const [a, c] = tied(tr)
+          if (!a.oneOff || !c.oneOff || a.sex !== c.sex)
+            bad.push(`${s} ${b.beat.id}: one-off tie broken`)
+          if (a.caste && c.caste && a.caste !== c.caste) return 'caste'
+          if (a.born && c.born && a.born.region !== c.born.region) return 'born'
+          bad.push(`${s} ${b.beat.id}: one-off tie does not differ on its cue`)
+          return ''
+        })
+        if (b.beat.kind === 'rank' && kinds.sort().join() !== 'born,caste')
+          bad.push(`${s} ${b.beat.id}: ranks need one of each`)
+        if (b.beat.kind !== 'rank' && kinds[0] !== b.beat.cue)
+          bad.push(`${s} ${b.beat.id}: wrong cue`)
+      }
       if (b.beat.kind === 'pick' && shape === 'same') {
         const [a, c] = tied(2)
         if (a.sex !== c.sex) bad.push(`${s} ${b.beat.id}: same pick mixed`)
@@ -349,13 +418,13 @@ function draws() {
   }
   record(
     T,
-    `${N} seeded seasons: 4 women and 4 men, 8 different animals and mascots, religion and tone balanced within sex, surname or birthplace never both, rival pairs of a woman and a man`,
+    `${N} seeded seasons: a cast of 4 women and 4 men, 8 different animals and mascots, religion and tone balanced within sex, no caste or birthplace on the cast; one-offs carry caste or birthplace, never both, at the medium tone; rival pairs of a woman and a man`,
     bad.filter((b) => !/tie|rival pairs/.test(b)).length === 0,
     bad.slice(0, 4).join(' | '),
   )
   record(
     T,
-    'tied notes always go to the tied colleagues (rival pairs on mixed ranks, rival picks and splits; same sex on same-shape beats), and after the reveal the four rival pairs meet equally often (within one) in ranks and in picks',
+    'tied notes always go to the tied colleagues (rival pairs on mixed ranks, rival picks and splits; same sex on same-shape beats; one-off pairs of one sex differing on their cue), and after the reveal the four rival pairs meet equally often (within one) in ranks and in picks',
     bad.filter((b) => /tie|rival pairs/.test(b)).length === 0,
     bad
       .filter((b) => /tie|rival pairs/.test(b))
@@ -430,20 +499,36 @@ function consequences() {
 }
 
 function rating() {
-  const T = 'X-13 the attitude rating (thresholds PENDING v17)'
+  const T = 'X-13 the attitude rating on 57 cards (thresholds PENDING v18)'
   const alpha = 1 - config.season.rating.q
-  const zones = (t: typeof fairPlayer) => {
+  const domainZones: Record<string, Record<string, number>> = {}
+  const casteZones: Record<string, Record<string, number>> = {}
+  const zones = (t: typeof fairPlayer, name: string) => {
     const z: Record<string, number> = {}
+    const dz: Record<string, number> = {}
+    const cz: Record<string, number> = {}
     for (let s = 1; s <= N; s++) {
-      const h = rate(playSeason(1000 + s, t)).headline
+      const rt = rate(playSeason(1000 + s, t))
+      const h = rt.headline
       const k = h.zone === 'lean' ? `lean:${h.towards}` : h.zone
       z[k] = (z[k] ?? 0) + 1
+      for (const [d, x] of Object.entries(rt.domains)) {
+        const kk = `${d}:${x.zone === 'lean' ? `lean:${x.towards}` : x.zone}`
+        dz[kk] = (dz[kk] ?? 0) + 1
+      }
+      for (const o of rt.others) {
+        const kk = `${o.cue}:${o.zone}`
+        cz[kk] = (cz[kk] ?? 0) + 1
+      }
     }
+    domainZones[name] = dz
+    casteZones[name] = cz
     return z
   }
-  const fair = zones(fairPlayer)
-  const leaning = zones(leaningPlayer)
-  const careless = zones(carelessPlayer)
+  const fair = zones(fairPlayer, 'fair')
+  const leaning = zones(leaningPlayer, 'lean')
+  const careless = zones(carelessPlayer, 'careless')
+  zones({ cueWeight: 0, casteWeight: 2, noise: 0.3, careless: false }, 'caste')
   const fairLean = ((fair['lean:focal'] ?? 0) + (fair['lean:comparison'] ?? 0)) / N
   record(
     T,
@@ -463,12 +548,34 @@ function rating() {
     (careless.unread ?? 0) / N >= 0.95,
     JSON.stringify(careless),
   )
+  const doms = ['hiring', 'conduct', 'resources']
+  const dl = domainZones.lean
+  const df = domainZones.fair
+  record(
+    T,
+    `each domain panel produces a reading on its 19 cards: the strong lean towards men read in 80% or more per domain (${doms.map((d) => Math.round(((dl[`${d}:lean:comparison`] ?? 0) / N) * 100)).join(', ')}%), a notes-only player in 10% or fewer per domain, and an engaged player almost never "not enough to say"`,
+    doms.every((d) => (dl[`${d}:lean:comparison`] ?? 0) / N >= 0.8) &&
+      doms.every(
+        (d) => ((df[`${d}:lean:focal`] ?? 0) + (df[`${d}:lean:comparison`] ?? 0)) / N <= 0.1,
+      ) &&
+      doms.every((d) => (df[`${d}:unread`] ?? 0) / N <= 0.05),
+    JSON.stringify({ lean: dl, fair: df }),
+  )
+  const cz = casteZones
+  record(
+    T,
+    `caste and birthplace now read on the one-offs: a player against surnames read as Scheduled Caste reads a caste lean in 80% or more (${Math.round(((cz.caste['caste:lean'] ?? 0) / N) * 100)}%), a notes-only player in 10% or fewer, birthplace likewise`,
+    (cz.caste['caste:lean'] ?? 0) / N >= 0.8 &&
+      (cz.fair['caste:lean'] ?? 0) / N <= 0.1 &&
+      (cz.fair['birthplace:lean'] ?? 0) / N <= 0.1,
+    JSON.stringify(cz),
+  )
   const r = playSeason(5, leaningPlayer)
   const rt = rate(r)
   record(
     T,
-    'decisive pairs come only from after the reveal, and only from equal notes',
-    rt.decisive.every((p) => r.revealed(p.beat)) &&
+    'decisive pairs come only from the 57 rating cards (after the reveal, before the note), and only from equal notes',
+    rt.decisive.every((p) => r.isRating(p.beat)) &&
       rt.decisive.every((p) => {
         const b = r.season.beats[p.beat]
         return (
@@ -476,13 +583,6 @@ function rating() {
           b.chars.find((c) => c.slot === p.a)?.tier === b.chars.find((c) => c.slot === p.b)?.tier
         )
       }),
-  )
-  record(
-    T,
-    'caste and birthplace (one pair per sex) can never reach a reading, so they always say "not enough to say"',
-    rt.others
-      .filter((o) => o.cue === 'caste' || o.cue === 'birthplace')
-      .every((o) => o.zone === 'unread' && o.labellings === 4),
   )
   const m = resultModel(r)
   record(
@@ -497,14 +597,15 @@ function rating() {
     readFileSync(`${ROOT}src/story/why.ts`, 'utf8') +
     readFileSync(`${ROOT}src/screens/Story.tsx`, 'utf8')
   record(T, 'no result code writes "bias"', !/['"`][^'"`]*\bbias/i.test(src))
-  const caste = labellings(r.cast, 'caste')
-  const birth = labellings(r.cast, 'birthplace')
+  const people = [...r.cast, ...r.season.extras]
+  const caste = cueSets(people, 'caste')
+  const birth = cueSets(people, 'birthplace')
   record(
     T,
-    'caste compares only colleagues with surnames, birthplace only colleagues with a birthplace',
-    [...caste.pool].every((s) => !!r.cast[s].caste) &&
-      caste.pool.size === 4 &&
-      [...birth.pool].every((s) => !!r.cast[s].born) &&
+    'caste compares only one-offs with surnames, birthplace only one-offs with a birthplace; sex, religion and tone only the cast',
+    [...caste.pool].every((s) => !!r.person(s).caste && r.person(s).oneOff) &&
+      [...birth.pool].every((s) => !!r.person(s).born && r.person(s).oneOff) &&
+      [...cueSets(people, 'sex').pool].every((s) => !r.person(s).oneOff) &&
       weightOf(
         [{ beat: 0, a: [...caste.real][0], b: [...birth.pool][0], adv: 1 }],
         caste.real,
@@ -525,11 +626,19 @@ function records() {
     const items = Object.values(sub.play.value.items)
     record(
       T,
-      'one card record per people decision, one item per ordinary decision, survey item and wrap question',
-      cards.length === people &&
+      `80 counted decisions (${r.counted}), ${r.asked} asked: one card record per people decision (form B marked B), one item per ordinary decision, screening item, survey item in each administration, the recall, the probe and the three wrap items`,
+      r.counted === 80 &&
+        cards.length === people &&
+        cards.filter((c) => c.form === 'B').length === 6 &&
         items.filter((i) => i.k === 'ord').length === ordinary &&
-        items.filter((i) => i.k === 'survey').length === surveyItems.length &&
-        items.filter((i) => i.k === 'prior').length === 2,
+        items.filter((i) => i.k === 'screen').length === 4 &&
+        items.filter((i) => i.k === 'survey' && i.a === 1).length === 4 &&
+        items.filter((i) => i.k === 'survey' && i.a === 2).length === 4 &&
+        items.filter((i) => i.k === 'recall').length === 1 &&
+        items.filter((i) => i.k === 'probe').length === 1 &&
+        items.filter((i) => i.k === 'prior').length === 3 &&
+        sub.play.value.meta.split === 'low' &&
+        (sub.play.value.meta.note === 'b' || sub.play.value.meta.note === 'c'),
     )
     record(
       T,
@@ -552,6 +661,7 @@ function records() {
     const wh = storyById('warehouse')
     if (!wh) return
     const b = new StoryRunner(seeded(3), wh, ['en'])
+    b.answer(null)
     b.answer(null)
     b.answer({ order: [0, 1, 2, 3] })
     b.back()

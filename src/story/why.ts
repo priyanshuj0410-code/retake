@@ -14,7 +14,7 @@ import { RT, SS, type Domain } from './content'
 import {
   advantage,
   CUES,
-  labellings,
+  cueSets,
   rate,
   type Cue,
   type CueReading,
@@ -42,6 +42,8 @@ export interface DomainSection {
   domain: Domain
   title: string
   narrative: string
+  /** The sex reading on this domain's own cards, as a level and a zone. */
+  reading: { level: string; zone: 'lean' | 'none' | 'unread'; group: string }
   followed: Point[]
   blind: Point[]
   origin: string[]
@@ -87,10 +89,11 @@ export function resultModel(run: StoryRunner): ResultModel {
   const body = fill(L(RT.bands[bandKey].body), { group })
 
   /* The mixed-sex decisive pairs, counted by who came out ahead. */
-  const sexPairs = rating.decisive.filter((p) => run.cast[p.a].sex !== run.cast[p.b].sex)
+  const sexPairs = rating.decisive.filter((p) => run.person(p.a).sex !== run.person(p.b).sex)
   const womanAhead = sexPairs.filter(
     (p) =>
-      (run.cast[p.a].sex === 'woman' && p.adv > 0) || (run.cast[p.b].sex === 'woman' && p.adv < 0),
+      (run.person(p.a).sex === 'woman' && p.adv > 0) ||
+      (run.person(p.b).sex === 'woman' && p.adv < 0),
   ).length
   const manAhead = sexPairs.filter((p) => p.adv !== 0).length - womanAhead
   const n = sexPairs.length
@@ -131,7 +134,7 @@ export function resultModel(run: StoryRunner): ResultModel {
     { w: number; m: number; wAhead: number; mAhead: number; n: number }
   >()
   for (const p of sexPairs) {
-    const [w, m] = run.cast[p.a].sex === 'woman' ? [p.a, p.b] : [p.b, p.a]
+    const [w, m] = run.person(p.a).sex === 'woman' ? [p.a, p.b] : [p.b, p.a]
     const key = `${w}-${m}`
     const e = byPair.get(key) ?? { w, m, wAhead: 0, mAhead: 0, n: 0 }
     e.n += 1
@@ -176,7 +179,7 @@ export function resultModel(run: StoryRunner): ResultModel {
     }
   })
 
-  /* One section per decision area. Card thresholds PENDING v17 (config.season.cards). */
+  /* One section per decision area. Card thresholds PENDING v18 (config.season.cards). */
   const { minPairs, share } = config.season.cards
   const winner = (p: Pair) => (p.adv > 0 ? p.a : p.b)
   const episode = (i: number) => fill(L(SS.episodeShort), { n: run.season.beats[i].beat.episode })
@@ -188,13 +191,14 @@ export function resultModel(run: StoryRunner): ResultModel {
     const b = run.season.beats[i]
     return b.kind === 'people' ? b.beat.domain : null
   }
-  const labelsOf = Object.fromEntries(CUES.map((c) => [c, labellings(run.cast, c)])) as Record<
+  const people = [...run.cast, ...run.season.extras]
+  const labelsOf = Object.fromEntries(CUES.map((c) => [c, cueSets(people, c)])) as Record<
     Cue,
-    ReturnType<typeof labellings>
+    ReturnType<typeof cueSets>
   >
   const domains: DomainSection[] = DOMAINS.map((d) => {
     const copy = RT.domains[d]
-    const beats = peopleBeats(run).filter(({ i }) => run.revealed(i) && domainOf(i) === d)
+    const beats = peopleBeats(run).filter(({ i }) => run.isRating(i) && domainOf(i) === d)
     const pairs = rating.decisive.filter((p) => domainOf(p.beat) === d)
     const followed: Point[] = []
     const blind: Point[] = []
@@ -281,6 +285,15 @@ export function resultModel(run: StoryRunner): ResultModel {
       domain: d,
       title: L(copy.title),
       narrative: fill(L(copy.narrative), { n: beats.length, k: pairs.length }),
+      reading: (() => {
+        const dr = rating.domains[d]
+        const g = dr.zone === 'lean' ? cueGroup(dr, lang) : ''
+        return {
+          level: fill(L(RT.domainReading), { zone: fill(L(RT.zone[dr.zone]), { group: g }) }),
+          zone: dr.zone,
+          group: g,
+        }
+      })(),
       followed: followed.slice(0, 4),
       blind: blind.slice(0, 4),
       origin: copy.origin.map(L),

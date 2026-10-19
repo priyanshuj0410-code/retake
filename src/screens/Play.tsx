@@ -16,7 +16,9 @@ import { Page, Text, Notice } from '../ui'
 import { Disclosure } from './Disclosure'
 import { Consent, Declined, DemoNotice, Finished, LanguageStep } from './PreScreens'
 import { StepView } from './StepView'
-import { StoryPicker, StoryResult, StoryView } from './Story'
+import { Eligibility, NotEligible, StoryPicker, StoryResult, StoryView } from './Story'
+import { stories } from '../story/content'
+import { playedStories } from '../story/profile'
 import { StoryRunner } from '../story/runner'
 import type { Story } from '../story/content'
 
@@ -37,6 +39,14 @@ export function Play({
   const [langs, setLangs] = useState<Lang[] | null>(null)
   const [runner, setRunner] = useState<Runner | null>(null)
   const [season, setSeason] = useState<StoryRunner | null>(null)
+  const [eligible, setEligible] = useState<'unasked' | 'yes' | 'no'>('unasked')
+  /* The story is drawn at entry, uniformly over the built stories this profile has not played
+     (candidates v17 3.17: randomised, not self-chosen). */
+  const [drawn] = useState<Story | null>(() => {
+    const played = playedStories()
+    const open = stories.filter((s) => s.built && !played.has(s.id))
+    return open.length ? cryptoRng().pick(open) : null
+  })
   const [, setTick] = useState(0)
   const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'failed'>('idle')
   const [finished, setFinished] = useState<'submitted' | 'withdrawn' | null>(null)
@@ -103,6 +113,9 @@ export function Play({
 
   if (!runner && !season) {
     if (pre === 'demo') return <DemoNotice ui={ui} onContinue={() => setPre('disclosure')} />
+    if (pre === 'disclosure' && isSeason && eligible === 'unasked')
+      return <Eligibility ui={ui} demo={demo} onDone={(ok) => setEligible(ok ? 'yes' : 'no')} />
+    if (pre === 'disclosure' && isSeason && eligible === 'no') return <NotEligible ui={ui} />
     if (pre === 'disclosure')
       return (
         <Disclosure
@@ -124,7 +137,8 @@ export function Play({
           onDecline={() => setPre('declined')}
         />
       )
-    if (pre === 'pick') return <StoryPicker ui={ui} demo={demo} onPick={beginSeason} />
+    if (pre === 'pick')
+      return <StoryPicker ui={ui} demo={demo} drawn={drawn} onPick={beginSeason} />
     return <LanguageStep ui={ui} demo={demo} onChoose={begin} />
   }
 

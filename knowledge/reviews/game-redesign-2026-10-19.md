@@ -1,15 +1,191 @@
 ---
 type: review
 title: Game redesign, 19 Oct 2026
-description: The season-story redesign of the evaluator (EVAL-4) - why, what changed, the full 390 px Playwright play with its decision and click totals against the old build, the screen list, what is PENDING v17, and what to flag.
+description: The season-story redesign of the evaluator (EVAL-4) and its rebuild to the owner's 80-decision layout (EVAL-5) - why, what changed, the full 390 px Playwright play with counted and asked decisions, clicks, screens and time against the old build, the screen list, what is PENDING v18, and what to flag.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-4/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-5/
 ---
 
-# Game redesign, 19 Oct 2026 (EVAL-4)
+# Game redesign, 19 Oct 2026 (EVAL-4, rebuilt for 80 decisions in EVAL-5)
 
 Branch `eval-game-redesign` (worktree `../equal-lens-evaluator-game`). Design rules:
 [design.md](../design.md) sections 4, 4a and 4b. Run it: [run-and-test](../playbooks/run-and-test.md).
+Layout source: the Sex Ed workspace's
+`Paper Analysis/Hypotheses/workplace-gender-training-v2/scenario-80-decisions-2026-10-19.md`
+(Game 1's low branch, the demo route).
+
+## The 80-decision rebuild (EVAL-5)
+
+**Counted (80):** 4 mascot cards in week one (one per domain plus a second hiring card); the
+screening block's 4 items on one grid; the faking test's 15 (the survey's 4 items on one grid,
+the note, 6 form-B cards (promotion 3, conduct 3), the same 4 items again, the recall item);
+57 cue-carrying rating cards, 19 per domain (hiring and promotion; complaints and conduct;
+resource sharing, 11 allocation and 8 unwanted work), spread over the five episodes (11, 12, 12,
+12, 10). **Asked, not counted (16):** the two eligibility items (18 or over; working in India,
+before the four sentences), 10 ordinary story decisions, and the wrap's four (the noticing
+probe, prior knowledge, origin, replay).
+
+- **Order (candidates v17's act order):** week one's mascot cards, the reveal, the 57 rating
+  cards over the five episodes, then out of fiction the screening block, survey 1 and the note,
+  then the 6 form-B cards back in the story, survey 2, the recall item, the probe, the season
+  result, the wrap items, submit, the rating. The note is drawn 1:1 (b honest retake, c
+  faking), as plan v2's low branch.
+- **Episodes read as a season:** each opens with a title card, each has one interlude (a short
+  scene between card runs: the pickers arrive, the budget lands in red ink, the promotion list
+  goes up, sale day), and every decision screen opens with what came of the last one.
+- **Consequences are equal in valence** (candidates v17 3.17): every line now differs in
+  content, never in success ("the directors ask about costs first" against "about timing
+  first"), still keyed by the merit tier of the notes, never by who held them. The roster
+  shows the jobs each colleague led, with no outcome word.
+- **Cue carriers (PENDING v18, which decides it):** the fixed cast of 8 carries sex, religion
+  and skin tone only; caste (a surname read as Scheduled Caste or upper caste) and birthplace
+  (born in the south or the north) ride on 44 one-off characters, applicants (6 ranks),
+  complainants (4 picks) and vendors (4 splits), each met once, at the medium tone, in tied
+  pairs of one sex.
+- **The story is drawn, not chosen** (candidates v17 3.17): the season card shows the drawn
+  story; the newsroom and the clinic are shown as "after your rating", PENDING v18.
+- **Rating on all 57 cards:** sex, religion and tone against the cast's 70 relabellings; caste
+  and birthplace against sign flips of the one-off pairs; each domain panel reads sex on its own
+  19 cards (thresholds PENDING v18). Seeded players, 200 seasons each (`pnpm check` X-13 runs
+  the same models): a strong lean towards men is read in 100 per cent overall and in 96 to 100
+  per cent per domain; a mild one in 93 per cent overall and 42 to 48 per cent per domain; a
+  notes-only player is read as leaning in 5.5 per cent overall and 2 to 5 per cent per domain,
+  and never "not enough to say" in a domain; a player against surnames read as Scheduled Caste
+  is read on caste in 100 per cent (a notes-only player in 1 per cent); a content-blind player
+  is never read.
+
+### Fresh Playwright totals, 390 x 844 (`BASE=http://localhost:5184/ pnpm season`)
+
+| | Old build (prototype v0) | First redesign (EVAL-4) | **80-decision rebuild (EVAL-5)** |
+|---|---|---|---|
+| Decisions counted | 202 questions (owner's count) | 50 | **80** |
+| Decisions asked | 202 | 64 (50 + 12 statements + 2 wrap) | **96** (80 + 2 eligibility + 10 ordinary + 4 wrap) |
+| Clicks to the result | at least 606 (202 x 3) before the Nexts | 122 | **202** |
+| Screens to the result | 127 to 163 (game 1) | 71 | **110** |
+| Time at 12 to 20 s per decision | | | **16.0 to 26.7 min** counted; **19.2 to 32.0 min** asked |
+| Time at the scenario's per-type paces (PENDING v18) | about 30 min | 15.7 | **27.5 min** (the scenario's own estimate: 26.0, without this build's 10 ordinary decisions, episode cards and interludes) |
+
+Clicks by kind: rank 28 x 3 = 84; split 20 x 2 = 40; pick 19; ordinary 10; screening grid 4
+and Done; each survey grid 4 and Done; recall 1; probe 1 and Done; episode cards 5;
+interludes 5; eligibility 2 and Continue; the rest one each (language 2, code 2).
+
+### Screen list (80-decision rebuild)
+
+| # | Screen | Clicks | Heading |
+|---|---|---|---|
+| 1 | demo | 1 | Demo mode |
+| 2 | eligibility | 3 | Before the season |
+| 3 | disclosure | 1 |  |
+| 4 | consent | 1 | Before you start |
+| 5 | language | 2 | Choose your language |
+| 6 | story:pick | 1 | Your season |
+| 7 | story:intro | 1 | Your season at Kite Logistics |
+| 8 | story:episode | 1 | Episode 1: The hiring sprint |
+| 9 | story:beat:rank | 3 | Who should draft the peak plan? (mascot) |
+| 10 | story:beat:rank | 3 | Whose account do you rely on most? (mascot) |
+| 11 | story:beat:ordinary | 1 | Snacks for the first team call? |
+| 12 | story:beat:split | 2 | Share the 6 training days. (mascot) |
+| 13 | story:beat:rank | 3 | Who should lead the floor walk? (mascot) |
+| 14 | story:reveal | 1 | You visit the warehouse |
+| 15 | story:beat:rank | 3 | Who should lead the interview panel? |
+| 16 | story:beat:rank | 3 | Who should get the supervisor job? (applicants) |
+| 17 | story:beat:split | 2 | Share the 6 course places. |
+| 18 | story:beat:rank | 3 | Who should run the temp staff plan? |
+| 19 | story:interlude | 1 | The hiring sprint |
+| 20 | story:beat:rank | 3 | Who should drive for the peak? (applicants) |
+| 21 | story:beat:pick | 1 | Whose complaint do you take up first? (complainants) |
+| 22 | story:beat:rank | 3 | Who should lead the supplier deals? |
+| 23 | story:beat:ordinary | 1 | What about the Saturday count? |
+| 24 | story:beat:rank | 3 | Who should be the returns clerk? (applicants) |
+| 25 | story:beat:split | 2 | Share the 6 stock checks. |
+| 26 | story:beat:pick | 1 | Whose account do you take first? |
+| 27 | story:beat:pick | 1 | Who should own the budget sheet? |
+| 28 | story:episode | 1 | Episode 2: The complaint |
+| 29 | story:beat:pick | 1 | Whose complaint do you take up first? |
+| 30 | story:beat:rank | 3 | Whose account do you rely on most? |
+| 31 | story:beat:pick | 1 | Whose concern goes to payroll first? |
+| 32 | story:beat:ordinary | 1 | How should concerns be raised? |
+| 33 | story:beat:pick | 1 | You have time for one this week. Who do you meet first? |
+| 34 | story:beat:rank | 3 | Whose account do you rely on most? |
+| 35 | story:interlude | 1 | The complaint |
+| 36 | story:beat:rank | 3 | Who should coordinate next year's peak? (applicants) |
+| 37 | story:beat:split | 2 | Share the 6 write-ups. |
+| 38 | story:beat:rank | 3 | Whose concern goes to the safety meeting first? |
+| 39 | story:beat:pick | 1 | Whose complaint do you take up first? (complainants) |
+| 40 | story:beat:pick | 1 | Whose packing record do you send to the customer team? |
+| 41 | story:beat:split | 2 | Share the 6 sessions. (vendors) |
+| 42 | story:beat:rank | 3 | Whose case do you look at first? |
+| 43 | story:beat:ordinary | 1 | How do you close the week? |
+| 44 | story:episode | 1 | Episode 3: The budget crunch |
+| 45 | story:beat:ordinary | 1 | Which box supplier? |
+| 46 | story:beat:split | 2 | Share the 6 course days. |
+| 47 | story:beat:rank | 3 | Who should handle the truck crisis? |
+| 48 | story:beat:split | 2 | Share the 6 trial orders. (vendors) |
+| 49 | story:beat:split | 2 | Share the 6 sets of minutes. |
+| 50 | story:beat:pick | 1 | Whose account goes in the incident report? |
+| 51 | story:beat:split | 2 | Share the 6 visit days. |
+| 52 | story:beat:ordinary | 1 | What about the loading dock? |
+| 53 | story:beat:split | 2 | Share the 6 on-call days. |
+| 54 | story:beat:split | 2 | Share the 6 runs. (vendors) |
+| 55 | story:interlude | 1 | The budget crunch |
+| 56 | story:beat:rank | 3 | Who should host the audit? |
+| 57 | story:beat:split | 2 | Share the 6 hours. |
+| 58 | story:beat:rank | 3 | Whose account do you rely on most? |
+| 59 | story:beat:split | 2 | Share the 6 mentoring hours. |
+| 60 | story:beat:ordinary | 1 | How do you catch up? |
+| 61 | story:episode | 1 | Episode 4: The promotion round |
+| 62 | story:beat:rank | 3 | Who should present the plan? |
+| 63 | story:beat:rank | 3 | Who should be the quality lead? (applicants) |
+| 64 | story:interlude | 1 | The promotion round |
+| 65 | story:beat:split | 2 | Share the 6 slots. |
+| 66 | story:beat:rank | 3 | Whose account of the call do you rely on most? |
+| 67 | story:beat:rank | 3 | Who should lead the night shift? |
+| 68 | story:beat:split | 2 | Share the 6 lunch days. (vendors) |
+| 69 | story:beat:pick | 1 | Whose complaint goes to the agency first? (complainants) |
+| 70 | story:beat:rank | 3 | Who should supervise nights? (applicants) |
+| 71 | story:beat:ordinary | 1 | How should the shifts work? |
+| 72 | story:beat:pick | 1 | You have time for one this week. Who do you meet first? |
+| 73 | story:beat:split | 2 | Share the 6 days. |
+| 74 | story:beat:rank | 3 | Who should host the visit? |
+| 75 | story:beat:pick | 1 | Whose name do you put forward? |
+| 76 | story:episode | 1 | Episode 5: The season close |
+| 77 | story:beat:rank | 3 | Who should lead the dry run? |
+| 78 | story:beat:split | 2 | Share the 6 early shifts. |
+| 79 | story:interlude | 1 | The season close |
+| 80 | story:beat:rank | 3 | Whose account do you rely on most? |
+| 81 | story:beat:split | 2 | Share the 6 hours. |
+| 82 | story:beat:rank | 3 | Who should give the sale day briefing? |
+| 83 | story:beat:pick | 1 | Whose complaint do you take up first? (complainants) |
+| 84 | story:beat:split | 2 | Share the 6 expo day passes. |
+| 85 | story:beat:rank | 3 | Whose concern goes first? |
+| 86 | story:beat:rank | 3 | Who should present to the board? |
+| 87 | story:beat:split | 2 | Share the 6 late shifts. |
+| 88 | story:beat:ordinary | 1 | What do you do with it? |
+| 89 | story:screening | 5 | A few statements about women and men at work (4 items) |
+| 90 | story:fsurvey | 5 | A few statements (4 items) |
+| 91 | story:note | 1 | A note before the next part |
+| 92 | story:beat:pick | 1 | Who gets the stretch assignment? (form B) |
+| 93 | story:beat:pick | 1 | Whose report goes into the safety log first? (form B) |
+| 94 | story:beat:pick | 1 | Whose name goes on the shortlist? (form B) |
+| 95 | story:beat:ordinary | 1 | When should the team celebrate? |
+| 96 | story:beat:pick | 1 | Whose request do you look at first? (form B) |
+| 97 | story:beat:pick | 1 | Who should mentor the new hires? (form B) |
+| 98 | story:beat:pick | 1 | Whose concern do you take up first? (form B) |
+| 99 | story:fsurvey | 5 | The same statements again (4 items) |
+| 100 | story:recall | 1 | What did the note before this part say? |
+| 101 | story:probe | 2 | Spot the pattern |
+| 102 | story:season | 1 | Season over |
+| 103 | story:prior | 1 | Before today, had anyone told you how this test reads attitudes? |
+| 104 | story:prior | 1 | How did you come to play today? |
+| 105 | story:prior | 1 | Have you played this game before? |
+| 106 | story:demographics | 1 | About you (optional) |
+| 107 | story:debrief | 1 | What this season measured |
+| 108 | story:code | 2 | Your withdrawal code |
+| 109 | story:submit | 1 | Submit or withdraw |
+| 110 | story:result | 0 | Your attitude rating |
+
+## The first redesign (EVAL-4)
 
 ## Why
 
@@ -82,7 +258,7 @@ Clicks by kind: rank 16 screens x 3 = 48; pick 19 x 1; ordinary 9 x 1; split 6 x
 episode cards 5; statements 12 taps and Done; the rest one each (the language step 2, the code
 step 2).
 
-### Screen list
+### Screen list (first redesign, superseded by the 80-decision list above)
 
 | # | Screen | Clicks | Heading |
 |---|---|---|---|
@@ -165,27 +341,44 @@ Screenshots: [rank](assets/game-redesign-2026-10-19-rank.jpg),
 [result](assets/game-redesign-2026-10-19-result.jpg),
 [profile](assets/game-redesign-2026-10-19-profile.jpg).
 
-## Verification
+## Verification (after the 80-decision rebuild)
 
-`pnpm check`: 280 of 280 in `check-all` (new: X-10 to X-15, the season disclosure, the new
-component states), 43 of 43 rules in the emulator (new: season records, profile, research
-link, contact), 13 of 13 e2e (new: a whole season, a profile and the contact form on the
-emulator), and `pnpm ux` with every new season screen at six variants: no contrast,
-target, name, heading, overflow, axe or focus failure; keyboard paths for tap-to-order,
-the quick split and the grid pass; 87 of 87 component states.
+`pnpm check`: 285 of 285 in `check-all` (X-10 now holds the 80 counted decisions, 19 per
+domain, form B, the grids' keying and the cue carriers; X-11 the one-off characters; X-13 the
+per-domain and caste and birthplace readings), 43 of 43 rules in the emulator, 13 of 13 e2e (a
+whole 80-decision season, a profile and the contact form on the emulator), and `pnpm ux` with
+every new screen (eligibility, interludes, the screening and survey grids, the note, recall,
+the probe, the wrap items) at six variants: no contrast, target, name, heading, overflow, axe
+or focus failure; keyboard paths pass; 87 of 87 component states.
 
-## PENDING v17 (marked in `content/config.json` `season.pendingV17`, `content/story.json`, on screen in demo mode)
+## PENDING v18 (marked in `content/config.json` `season.pendingV18`, `content/story.json`, on screen in demo mode)
 
-- Cast size (8), episodes (5), decisions per episode (10), split cap (4), every planning timing.
-- The rating: q 0.95 (a lean at p 0.05 or less), at least 8 decisive pairs, engagement at 0.7
-  of clear pairs; the area cards (at least 3 pairs, two thirds one way).
-- The change rule between profile seasons (0.5 on the -1 to +1 weight) and the retake gap
-  (none set; shown as a date when set).
-- The newsroom and clinic seasons; the longitudinal research consent text (profile and
-  stay-in-touch); the "keep watch" habits' sources.
+- The layout: cast size (8), episodes (5), the 80 counted decisions and their split (4 + 4 +
+  15 + 57, 19 per domain), the faking test's items (screening scr-01, 02, 03, 06; survey sv-01,
+  03, 04, 02) and form-B count, the low-branch demo route, the split cap (4), every pace.
+- Which characters carry which cue: the cast sex, religion and tone; one-offs caste and
+  birthplace.
+- The rating: q 0.95, at least 8 decisive pairs overall and per domain, engagement at 0.7 of
+  clear pairs, 4000 sign-flip draws above 12 one-off pairs; the area cards (3 pairs, two thirds).
+- The change rule between profile seasons (0.5) and the retake gap (none set; a date when set).
+- The newsroom and clinic seasons; the longitudinal research consent text; the habits' sources.
 - Owner wording: disclosure sentence 3; the season consent (draft).
 
-## To flag
+## To flag (80-decision rebuild)
+
+1. **Length.** 27.5 minutes at the scenario's paces, 19 to 32 minutes at 12 to 20 seconds per
+   asked decision: well past the 12-minute target and close to the 30-minute cap at slow paces.
+2. **Content written fast.** 34 new beats and every consequence line rewritten to equal valence;
+   none is pre-tested (P1 must rate valence and merit tiers), and the Hinglish is a draft.
+3. **One-off characters are many (44 per season)** and use the same name pools as the cast, so a
+   first name can repeat across people; v18 decides whether caste and birthplace stay on
+   one-offs.
+4. **Not yet to v17's letter:** running stories are not registered per slot (notes are drawn
+   per card), and the week-one merit baseline is not yet used in the reasons.
+5. The original list below still applies, except item 4 (caste and birthplace now read) and
+   item 5 (power is now as in the rebuild section above).
+
+## To flag (first redesign)
 
 1. **The result conflicts with registered rules.** The registered disclosure says attitudes
    are read for groups only, the consent says no score is shown, and the scoring explanation

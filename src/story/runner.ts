@@ -5,15 +5,17 @@
  * the stored record holds only each decision's final answer. The screens and the checks'
  * seeded players drive the same runner.
  */
-import { identity, screens, surveyItems } from '../content'
+import { identity } from '../content'
 import type { Lang, T } from '../content/types'
-import { config } from '../engine/config'
+import { config, type NoteId } from '../engine/config'
+import { recallOptions } from '../engine/session'
 import { deriveKeys, newCode, type CodeKeys } from '../engine/codes'
 import type { CardRecord, CharRecord, ItemRecord, PlayMeta, Submission } from '../engine/records'
 import { randomKey, type Rng } from '../engine/rng'
 import { fill } from '../engine/text'
 import { SS, isPeople, type PeopleBeat, type Story } from './content'
 import {
+  ONE_OFF,
   drawSeason,
   type CastMember,
   type OrdinaryPresented,
@@ -26,8 +28,13 @@ export type StoryStep =
   | { kind: 'episode'; n: number }
   | { kind: 'beat'; i: number }
   | { kind: 'reveal' }
+  | { kind: 'interlude'; n: number }
   | { kind: 'season' }
-  | { kind: 'survey' }
+  | { kind: 'screening' }
+  | { kind: 'fsurvey'; admin: 1 | 2 }
+  | { kind: 'note' }
+  | { kind: 'recall' }
+  | { kind: 'probe' }
   | { kind: 'prior'; id: string }
   | { kind: 'debrief' }
   | { kind: 'code' }
@@ -44,7 +51,19 @@ export interface RecordEntry {
   tier: number
 }
 
-export const IN_STORY: StoryStep['kind'][] = ['intro', 'episode', 'beat', 'reveal', 'season']
+export const IN_STORY: StoryStep['kind'][] = [
+  'intro',
+  'episode',
+  'beat',
+  'reveal',
+  'interlude',
+  'season',
+]
+
+/** The wrap's single-choice items: prior knowledge, origin and replay (candidates v17 3.5). */
+const faking = config.season.faking
+
+export const WRAP_ITEMS = ['told', 'origin', 'replay'] as const
 
 export class StoryRunner {
   readonly dep = 'season' as const
@@ -54,8 +73,15 @@ export class StoryRunner {
   readonly langs: Lang[]
   index = 0
   answers = new Map<number, BeatAnswer>()
-  survey: Record<string, number> = {}
+  /** The faking test's survey, per administration (the same four items twice). */
+  survey: Record<1 | 2, Record<string, number>> = { 1: {}, 2: {} }
+  screening: Record<string, number> = {}
+  recall: string | null = null
+  probe: string[] = []
   prior: Record<string, string> = {}
+  /** Game 1's low branch, the demo route: the note drawn 1:1 at entry (b honest retake, c faking). */
+  readonly note: NoteId
+  readonly recallOrder: string[]
   demographics: Record<string, string> = {}
   code: string | null = null
   keys: CodeKeys | null = null
@@ -64,18 +90,94 @@ export class StoryRunner {
     this.langs = langs
     this.lang = langs[0]
     this.season = drawSeason(rng, story)
+    this.note = rng.weighted(config.deployments['panel-g1'].notes.low ?? { b: 1 })
+    this.recallOrder = [
+      ...rng.shuffle(recallOptions(this.note).filter((o) => o.id !== 'none')).map((o) => o.id),
+      'none',
+    ]
+    const beats = this.season.beats
+    const firstB = beats.findIndex((b) => b.kind === 'people' && b.beat.form === 'B')
+    const lastB = beats.map((b) => b.kind === 'people' && b.beat.form === 'B').lastIndexOf(true)
+    const interludes = new Map(
+      (story.episodes ?? []).flatMap((e, n) => (e.interlude ? [[e.interlude.after, n + 1]] : [])),
+    )
     const steps: StoryStep[] = [{ kind: 'intro' }]
-    this.season.beats.forEach((b, i) => {
-      const prev = this.season.beats[i - 1]?.beat
+    beats.forEach((b, i) => {
+      const prev = beats[i - 1]?.beat
       if (prev?.mascot && !b.beat.mascot) steps.push({ kind: 'reveal' })
       if (prev?.episode !== b.beat.episode) steps.push({ kind: 'episode', n: b.beat.episode })
+      /* Game 1's low branch: after the last form-A card, the screening block, the first survey
+         administration and the note; then form B; then the second administration and recall. */
+      if (i === firstB)
+        steps.push({ kind: 'screening' }, { kind: 'fsurvey', admin: 1 }, { kind: 'note' })
       steps.push({ kind: 'beat', i })
+      const n = interludes.get(b.beat.id)
+      if (n) steps.push({ kind: 'interlude', n })
+      if (i === lastB) steps.push({ kind: 'fsurvey', admin: 2 }, { kind: 'recall' })
     })
-    steps.push({ kind: 'season' }, { kind: 'survey' })
-    for (const p of screens.wrap.prior.filter((x) => !('firmOnly' in x && x.firmOnly)))
-      steps.push({ kind: 'prior', id: p.id })
-    steps.push({ kind: 'debrief' }, { kind: 'code' }, { kind: 'demographics' }, { kind: 'submit' })
+    steps.push({ kind: 'probe' }, { kind: 'season' })
+    for (const id of WRAP_ITEMS) steps.push({ kind: 'prior', id })
+    steps.push({ kind: 'demographics' }, { kind: 'debrief' }, { kind: 'code' }, { kind: 'submit' })
     this.steps = steps
+  }
+
+  /** Every counted decision (the owner's 80): week one's mascot cards, the screening block, the faking test (survey, form B, survey, recall) and the rating cards. */
+  get counted(): number {
+    const people = this.season.beats.filter((b) => b.kind === 'people').length
+    return people + faking.screening.length + 2 * faking.survey.length + 1
+  }
+
+  /** Every decision asked: the counted ones, the two eligibility items, the ordinary decisions and the wrap's four. */
+  get asked(): number {
+    return (
+      this.counted +
+      2 +
+      this.season.beats.filter((b) => b.kind === 'ordinary').length +
+      1 +
+      WRAP_ITEMS.length
+    )
+  }
+
+  /**
+   * The session's length at the planning paces (config.season.timing, the 80-decision
+   * scenario's per-type paces, PENDING v18): every card, grid item, single choice, the probe,
+   * the note, the ordinary decisions, the fixed overhead and this build's own screens.
+   */
+  estimateSeconds(): number {
+    const tm = config.season.timing
+    const beats = this.season.beats
+    const cards = beats.filter((b) => b.kind === 'people')
+    const ordinary = beats.length - cards.length
+    const grid = faking.screening.length + 2 * faking.survey.length
+    const single = 2 + 1 + WRAP_ITEMS.length
+    const story = this.season.story
+    return (
+      cards.reduce((s, b) => s + (tm[b.beat.kind] ?? tm.rank), 0) +
+      ordinary * tm.ordinary +
+      grid * tm.gridItem +
+      single * tm.single +
+      tm.probe +
+      tm.note +
+      tm.overhead +
+      (story.episodes?.length ?? 0) * (tm.episode + tm.interlude) +
+      tm.intro +
+      tm.season +
+      tm.debrief +
+      tm.code +
+      tm.demographics +
+      tm.submit
+    )
+  }
+
+  /** The rating cards: after the reveal, before the note. */
+  isRating(i: number) {
+    const b = this.season.beats[i]
+    return b.kind === 'people' && !b.beat.mascot && b.beat.form !== 'B'
+  }
+
+  /** A character by slot: a cast member, or a one-off (slots from ONE_OFF). */
+  person(slot: number): CastMember {
+    return slot >= ONE_OFF ? this.season.extras[slot - ONE_OFF] : this.season.cast[slot]
   }
 
   get current(): StoryStep | undefined {
@@ -96,7 +198,10 @@ export class StoryRunner {
     const s = this.current
     if (!s) return
     if (s.kind === 'beat') this.answers.set(s.i, value as BeatAnswer)
-    if (s.kind === 'survey') this.survey = { ...(value as Record<string, number>) }
+    if (s.kind === 'fsurvey') this.survey[s.admin] = { ...(value as Record<string, number>) }
+    if (s.kind === 'screening') this.screening = { ...(value as Record<string, number>) }
+    if (s.kind === 'recall') this.recall = String(value)
+    if (s.kind === 'probe') this.probe = [...(value as string[])]
     if (s.kind === 'prior') this.prior[s.id] = String(value)
     if (s.kind === 'demographics') this.demographics = { ...(value as Record<string, string>) }
     this.index += 1
@@ -124,7 +229,7 @@ export class StoryRunner {
   }
 
   displayName(slot: number, revealed: boolean) {
-    const c = this.cast[slot]
+    const c = this.person(slot)
     if (!revealed) return c.mascot
     return c.surname ? `${c.name} ${c.surname}` : c.name
   }
@@ -161,7 +266,7 @@ export class StoryRunner {
     const name = (pos: number) => this.displayName(b.chars[pos].slot, shown)
     const lead = this.lead(b, a)
     const key = lead === 'even' ? 'even' : String(b.chars[lead].tier)
-    const sex = lead === 'even' || !shown ? undefined : this.cast[b.chars[lead].slot].sex
+    const sex = lead === 'even' || !shown ? undefined : this.person(b.chars[lead].slot).sex
     const text = fill(L(b.beat.after[key]), { name: lead === 'even' ? '' : name(lead) }, sex)
     let summary = ''
     if ('order' in a)
@@ -232,7 +337,7 @@ export class StoryRunner {
     const beat: PeopleBeat = p.beat
     return {
       card: beat.id,
-      form: 'A',
+      form: beat.form ?? 'A',
       fam: beat.family,
       str: `${beat.kind}-${beat.shape}`,
       pres: this.revealed(i) ? 'human' : 'animal',
@@ -243,7 +348,7 @@ export class StoryRunner {
       rm: false,
       n: i,
       chars: p.chars.map((ch, pos) => {
-        const c = this.cast[ch.slot]
+        const c = this.person(ch.slot)
         const r: CharRecord = {
           d: ch.d,
           sex: c.sex,
@@ -273,6 +378,9 @@ export class StoryRunner {
       arm: 'FULL',
       route: 'standard',
       result: this.points,
+      /* The demo route is Game 1's low branch (config.season.route, PENDING v18). */
+      split: 'low',
+      note: this.note,
     }
     const cards: Record<string, CardRecord> = {}
     const items: Record<string, ItemRecord> = {}
@@ -282,9 +390,20 @@ export class StoryRunner {
       if (b.kind === 'people') cards[randomKey()] = this.cardRecord(b, i, a)
       else if ('option' in a) items[randomKey()] = { k: 'ord', i: b.beat.id, v: a.option }
     })
-    for (const it of surveyItems)
-      if (this.survey[it.id] !== undefined)
-        items[randomKey()] = { k: 'survey', i: it.id, v: this.survey[it.id], a: 1 }
+    for (const admin of [1, 2] as const)
+      for (const [id, v] of Object.entries(this.survey[admin]))
+        items[randomKey()] = { k: 'survey', i: id, v, a: admin }
+    for (const [id, v] of Object.entries(this.screening))
+      items[randomKey()] = { k: 'screen', i: id, v: String(v) }
+    if (this.recall)
+      items[randomKey()] = {
+        k: 'recall',
+        i: 'recall',
+        v: this.recall,
+        x: this.recallOrder.join(','),
+      }
+    if (this.probe.length)
+      items[randomKey()] = { k: 'probe', i: 'probe', v: this.probe.slice().sort().join(',') }
     for (const [id, v] of Object.entries(this.prior)) items[randomKey()] = { k: 'prior', i: id, v }
     const demoKeys = shuffled(this.keys.demo)
     const demographics = Object.entries(this.demographics)

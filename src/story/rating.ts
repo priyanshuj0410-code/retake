@@ -14,7 +14,7 @@
  * 1 of 2 within each sex, which can never reach a reading with eight colleagues), so a liking for one
  * colleague cannot pass as a lean (religion and tone relabel over the whole cast: within sex
  * there are too few relabellings for any reading). The cue's p is the share of relabellings
- * whose signed sum over the pairs is at least as far from zero as the player's own. Three zones (thresholds PENDING v17,
+ * whose signed sum over the pairs is at least as far from zero as the player's own. Three zones (thresholds PENDING v18,
  * config.season.rating):
  *   - not enough to say: under minPairs decisive pairs, or no relabelling could reach p 1 - q,
  *     or (the headline only) the player followed the notes in under engagementMin of clear pairs;
@@ -22,6 +22,8 @@
  *   - no lean read: otherwise.
  */
 import { config } from '../engine/config'
+import { seeded } from '../engine/rng'
+import type { Domain } from './content'
 import type { CastMember } from './session'
 import type { BeatAnswer, StoryRunner } from './runner'
 import { peopleBeats } from './runner'
@@ -54,6 +56,8 @@ export interface CueReading {
 export interface Rating {
   headline: CueReading & { engaged: boolean }
   others: CueReading[]
+  /** The sex reading on each domain's own cards (thresholds PENDING v18). */
+  domains: Record<Domain, CueReading>
   decisive: Pair[]
   /** Pairs with clearly different notes, and how many the player decided the notes' way. */
   clear: { followed: number; n: number }
@@ -91,8 +95,8 @@ export function pairsOf(r: StoryRunner) {
         const tx = b.chars[x].tier
         const ty = b.chars[y].tier
         if (tx === ty) {
-          if (r.revealed(i)) decisive.push({ beat: i, a: b.chars[x].slot, b: b.chars[y].slot, adv })
-        } else {
+          if (r.isRating(i)) decisive.push({ beat: i, a: b.chars[x].slot, b: b.chars[y].slot, adv })
+        } else if (b.beat.form !== 'B') {
           n += 1
           if (Math.sign(tx - ty) === adv) followed += 1
         }
@@ -109,62 +113,35 @@ function subsets<X>(xs: X[], k: number): X[][] {
   return [...subsets(t, k - 1).map((s) => [h, ...s]), ...subsets(t, k)]
 }
 
-const product = (parts: number[][][]): number[][] =>
-  parts.reduce<number[][]>((acc, opts) => acc.flatMap((a) => opts.map((o) => [...a, ...o])), [[]])
-
-/** The cue's real labelling (the focal slots) and every balanced relabelling. */
-export function labellings(
-  cast: CastMember[],
-  cue: Cue,
-): { real: Set<number>; all: Set<number>[]; pool: Set<number> } {
-  const slots = (f: (c: CastMember) => boolean) => cast.filter(f).map((c) => c.slot)
-  const sexes = ['woman', 'man'] as const
-  let real: number[]
-  let all: number[][]
-  /* Who carries the cue at all: everyone for sex, religion and tone; the Hindus (surnames) for
-     caste; the Muslims (birthplaces) for birthplace. Only pairs inside it are compared. */
-  let pool = cast.map((c) => c.slot)
-  if (cue === 'sex') {
-    real = slots((c) => c.sex === 'woman')
-    all = subsets(
-      cast.map((c) => c.slot),
-      real.length,
-    )
-  } else {
-    const within = (inPool: (c: CastMember) => boolean, focal: (c: CastMember) => boolean) => {
-      pool = slots(inPool)
-      const pool_ = inPool
-      real = slots((c) => pool_(c) && focal(c))
-      all = product(
-        sexes.map((s) => {
-          const inSex = slots((c) => c.sex === s && pool_(c))
-          return subsets(inSex, slots((c) => c.sex === s && pool_(c) && focal(c)).length)
-        }),
-      )
-    }
-    /* Religion and tone relabel over the whole cast (every 4 of 8): within each sex there are
-       only 36 relabellings, too few for any reading to reach p 0.05. */
-    const across = (focal: (c: CastMember) => boolean) => {
-      real = slots(focal)
-      all = subsets(
-        cast.map((c) => c.slot),
-        real.length,
-      )
-    }
-    if (cue === 'religion') across((c) => c.religion === 'muslim')
-    else if (cue === 'tone') across((c) => c.tone === 'darker')
-    else if (cue === 'caste')
-      within(
-        (c) => !!c.caste,
-        (c) => c.caste === 'sc-coded',
-      )
-    else
-      within(
-        (c) => !!c.born,
-        (c) => c.born?.region === 'south',
-      )
+/** Who carries a cue and who is in its focal group: the fixed cast for sex, religion and tone;
+    the one-off characters for caste (surnames) and birthplace (PENDING v18, config.season.cueCarriers). */
+export function cueSets(people: CastMember[], cue: Cue): { real: Set<number>; pool: Set<number> } {
+  const carries = (c: CastMember) =>
+    cue === 'caste' ? !!c.caste : cue === 'birthplace' ? !!c.born : !c.oneOff
+  const focal = (c: CastMember) =>
+    cue === 'sex'
+      ? c.sex === 'woman'
+      : cue === 'religion'
+        ? c.religion === 'muslim'
+        : cue === 'tone'
+          ? c.tone === 'darker'
+          : cue === 'caste'
+            ? c.caste === 'sc-coded'
+            : c.born?.region === 'south'
+  const pool = people.filter(carries)
+  return {
+    real: new Set(pool.filter(focal).map((c) => c.slot)),
+    pool: new Set(pool.map((c) => c.slot)),
   }
-  return { real: new Set(real!), all: all!.map((x) => new Set(x)), pool: new Set(pool) }
+}
+
+/** The cast cues' relabellings: every 4 of the 8 colleagues as the focal group (70). */
+export function labellings(cast: CastMember[], cue: Cue): Set<number>[] {
+  const { real } = cueSets(cast, cue)
+  return subsets(
+    cast.map((c) => c.slot),
+    real.size,
+  ).map((x) => new Set(x))
 }
 
 /** The cue's weight over the pairs inside the pool whose two colleagues differ on it. */
@@ -181,14 +158,36 @@ export function weightOf(pairs: Pair[], focal: Set<number>, pool?: Set<number>) 
   return { w: n ? sum / n : 0, n, sum }
 }
 
-export function readCue(cast: CastMember[], pairs: Pair[], cue: Cue): CueReading {
-  const { q, minPairs } = config.season.rating
+export function readCue(
+  people: CastMember[],
+  pairs: Pair[],
+  cue: Cue,
+  minPairs = config.season.rating.minPairs,
+): CueReading {
+  const { q, permutations } = config.season.rating
   const alpha = 1 - q
-  const { real, all, pool } = labellings(cast, cue)
+  const { real, pool } = cueSets(people, cue)
   const obs = weightOf(pairs, real, pool)
   /* The test statistic is the signed sum, not the mean: a relabelling that leaves only a few
      pairs differing on the cue could otherwise reach an extreme mean from two or three pairs. */
-  const null_ = all.map((l) => Math.abs(weightOf(pairs, l, pool).sum))
+  let null_: number[]
+  if (cue === 'caste' || cue === 'birthplace') {
+    /* One-off characters each appear in one pair, so relabelling them is flipping each pair's
+       sign: exact up to 2^12 pairs, else `permutations` seeded draws. */
+    const signed = pairs
+      .filter((p) => pool.has(p.a) && pool.has(p.b) && real.has(p.a) !== real.has(p.b))
+      .map((p) => (real.has(p.a) ? p.adv : -p.adv))
+    const m = signed.length
+    const rng = seeded(4242)
+    const flips =
+      m <= 12
+        ? [...Array(2 ** m).keys()].map((mask) => signed.map((_, i) => ((mask >> i) & 1 ? -1 : 1)))
+        : [...Array(permutations).keys()].map(() => signed.map(() => (rng.next() < 0.5 ? -1 : 1)))
+    null_ = flips.map((f) => Math.abs(signed.reduce((s, v, i) => s + v * f[i], 0)))
+  } else {
+    const cast = people.filter((c) => !c.oneOff)
+    null_ = labellings(cast, cue).map((l) => Math.abs(weightOf(pairs, l, pool).sum))
+  }
   const N = null_.length
   const eps = 1e-9
   const p = null_.filter((x) => x >= Math.abs(obs.sum) - eps).length / N
@@ -208,7 +207,23 @@ export function readCue(cast: CastMember[], pairs: Pair[], cue: Cue): CueReading
 export function rate(r: StoryRunner): Rating {
   const { decisive, clear } = pairsOf(r)
   const engaged = clear.n === 0 || clear.followed / clear.n >= config.season.rating.engagementMin
-  const sex = readCue(r.cast, decisive, 'sex')
+  const people = [...r.cast, ...r.season.extras]
+  const sex = readCue(people, decisive, 'sex')
+  const domainOf = (i: number) => {
+    const b = r.season.beats[i]
+    return b.kind === 'people' ? b.beat.domain : null
+  }
+  const domains = Object.fromEntries(
+    (['hiring', 'conduct', 'resources'] as Domain[]).map((d) => [
+      d,
+      readCue(
+        people,
+        decisive.filter((p) => domainOf(p.beat) === d),
+        'sex',
+        config.season.domains.minPairs,
+      ),
+    ]),
+  ) as Record<Domain, CueReading>
   return {
     headline: {
       ...sex,
@@ -216,7 +231,13 @@ export function rate(r: StoryRunner): Rating {
       zone: engaged ? sex.zone : 'unread',
       towards: engaged ? sex.towards : undefined,
     },
-    others: CUES.slice(1).map((c) => readCue(r.cast, decisive, c)),
+    others: CUES.slice(1).map((c) => readCue(people, decisive, c)),
+    domains: Object.fromEntries(
+      Object.entries(domains).map(([d, x]) => [
+        d,
+        engaged ? x : { ...x, zone: 'unread', towards: undefined },
+      ]),
+    ) as Record<Domain, CueReading>,
     decisive,
     clear,
   }

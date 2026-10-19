@@ -5,7 +5,7 @@
  * screen opens with what came of it; Back reopens the last decision. Nothing counts down.
  */
 import { useEffect, useState } from 'react'
-import { screens, surveyItems } from '../content'
+import { notesById, screeningItems, screens, surveyItems } from '../content'
 import type { Lang, T } from '../content/types'
 import { config, formatDate, releaseOf } from '../engine/config'
 import { formatCode } from '../engine/codes'
@@ -51,14 +51,82 @@ import {
 
 const S = screens
 
-/** The season picker, NPQE's way in: three short stories, one tap starts one. */
+/**
+ * The two eligibility items before the four sentences (candidates v17 3.19): aged 18 or over,
+ * working in India. Asked, not counted, and not stored beyond the session.
+ */
+export function Eligibility({
+  ui,
+  demo,
+  onDone,
+}: {
+  ui: Lang
+  demo: boolean
+  onDone: (ok: boolean) => void
+}) {
+  const L = (t: T) => t[ui]
+  const [v, setV] = useState<Record<string, string>>({})
+  const items = SS.eligible as unknown as { id: string; text: T }[]
+  return (
+    <Page
+      surface="oof"
+      stepKey="eligibility"
+      screen="eligibility"
+      oof={L(S.common.outOfFiction)}
+      demo={demo ? L(S.common.demoBadge) : undefined}
+      lang={langAttr(ui)}
+      title={L(SS.eligibleTitle)}
+      actions={
+        <Button
+          onClick={() => onDone(items.every((i) => v[i.id] === 'yes'))}
+          disabled={items.some((i) => !v[i.id])}
+        >
+          {L(S.common.continue)}
+        </Button>
+      }
+    >
+      {items.map((it) => (
+        <Choice
+          key={it.id}
+          legend={L(it.text)}
+          options={[
+            { id: 'yes', text: L(S.common.yes) },
+            { id: 'no', text: L(S.common.no) },
+          ]}
+          value={v[it.id] ?? null}
+          onChange={(id) => setV({ ...v, [it.id]: id })}
+        />
+      ))}
+    </Page>
+  )
+}
+
+export function NotEligible({ ui }: { ui: Lang }) {
+  const L = (t: T) => t[ui]
+  return (
+    <Page
+      surface="oof"
+      stepKey="not-eligible"
+      oof={L(S.common.outOfFiction)}
+      lang={langAttr(ui)}
+      title={L(SS.eligibleTitle)}
+    >
+      <Text kind="lead">{L(SS.eligibleNo)}</Text>
+    </Page>
+  )
+}
+
+/** The season card, NPQE's way in: the drawn story starts with one tap; the others are shown, playable after the rating (PENDING v18). */
 export function StoryPicker({
   ui,
   demo,
+  drawn,
   onPick,
 }: {
   ui: Lang
   demo: boolean
+  /** The story the tool drew for this player (candidates v17 3.17: randomised, not chosen). */
+  drawn: Story | null
   onPick: (s: Story) => void
 }) {
   const L = (t: T) => t[ui]
@@ -68,9 +136,9 @@ export function StoryPicker({
     emoji: s.emoji,
     title: L(s.title),
     premise: L(s.premise),
-    later: !s.built ? L(SS.pickLater) : played.has(s.id) ? L(PF.played) : undefined,
+    later: s.id === drawn?.id ? undefined : played.has(s.id) ? L(PF.played) : L(SS.pickLater),
   }))
-  const left = options.some((o) => !o.later)
+  const left = !!drawn
   return (
     <Page
       surface="game"
@@ -125,11 +193,12 @@ export function StoryView({
     step.kind === 'episode' ||
     step.kind === 'beat' ||
     step.kind === 'reveal' ||
+    step.kind === 'interlude' ||
     step.kind === 'season'
   const episodeNow =
     step.kind === 'beat'
       ? runner.season.beats[step.i].beat.episode
-      : step.kind === 'episode'
+      : step.kind === 'episode' || step.kind === 'interlude'
         ? step.n
         : step.kind === 'reveal' || step.kind === 'intro'
           ? 1
@@ -240,20 +309,98 @@ export function StoryView({
           onDone={onDone}
         />
       )
-    case 'survey':
-      return <SurveyStep key={key} ui={ui} page={page} onDone={onDone} />
-    case 'prior': {
-      const p = S.wrap.prior.find((x) => x.id === step.id)
-      if (!p) return null
+    case 'interlude': {
+      const ep = episodes[step.n - 1]
       return (
-        <Page {...page} title={L(p.text)}>
+        <Page {...page} actions={<Button onClick={() => onDone(null)}>{L(SS.interludeGo)}</Button>}>
+          <Beat then={then?.text} answer={then?.summary} question={L(ep.title)} />
+          <Text kind="lead">{L(ep.interlude?.text ?? ep.premise)}</Text>
+          {back}
+          {roster}
+        </Page>
+      )
+    }
+    case 'screening':
+      return (
+        <GridStep
+          key={key}
+          ui={ui}
+          page={page}
+          title={L(SS.screeningTitle)}
+          items={config.season.faking.screening.flatMap((id) => {
+            const it = screeningItems.find((x) => x.id === id)
+            return it ? [{ id, text: L(it.text) }] : []
+          })}
+          onDone={onDone}
+        />
+      )
+    case 'fsurvey':
+      return (
+        <GridStep
+          key={key}
+          ui={ui}
+          page={page}
+          title={L(step.admin === 1 ? SS.surveyTitle : SS.surveyTitle2)}
+          items={config.season.faking.survey.flatMap((id) => {
+            const it = surveyItems.find((x) => x.id === id)
+            return it ? [{ id, text: L(it.text) }] : []
+          })}
+          onDone={onDone}
+        />
+      )
+    case 'note': {
+      const n = notesById.get(runner.note)
+      if (!n) return null
+      return (
+        <Page
+          {...page}
+          title={L(S.note.title)}
+          actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}
+        >
+          <Text kind="lead">{L(n.statistic)}</Text>
+          <Text kind="small">
+            {L(S.note.sourceLabel)}: {L(n.source)}
+          </Text>
+          <Text kind="strong">{L(n.instruction)}</Text>
+        </Page>
+      )
+    }
+    case 'recall':
+      return (
+        <Page {...page} title={L(S.recall.question)}>
           <Options
-            label={L(p.text)}
-            options={[
-              { id: 'yes', text: L(S.common.yes) },
-              { id: 'no', text: L(S.common.no) },
-              { id: 'not-sure', text: L(S.common.notSure) },
-            ]}
+            label={L(S.recall.question)}
+            options={runner.recallOrder.map((id) => {
+              const o = S.recall.options.find((x) => x.id === id)
+              return { id, text: o ? L(o.text) : id }
+            })}
+            onPick={onDone}
+          />
+        </Page>
+      )
+    case 'probe':
+      return <ProbeStep key={key} ui={ui} page={page} onDone={onDone} />
+    case 'prior': {
+      const item =
+        step.id === 'origin'
+          ? SS.origin
+          : step.id === 'replay'
+            ? SS.replay
+            : {
+                text: S.wrap.prior.find((x) => x.id === step.id)?.text,
+                options: [
+                  { id: 'yes', text: S.common.yes },
+                  { id: 'no', text: S.common.no },
+                  { id: 'not-sure', text: S.common.notSure },
+                ],
+              }
+      const q = item as unknown as { text: T; options: { id: string; text: T }[] }
+      if (!q.text) return null
+      return (
+        <Page {...page} title={L(q.text)}>
+          <Options
+            label={L(q.text)}
+            options={q.options.map((o) => ({ id: o.id, text: L(o.text) }))}
             onPick={onDone}
           />
         </Page>
@@ -349,7 +496,7 @@ function BeatStep({
   const shown = runner.revealed(i)
   const items = b.chars.map((ch) => {
     const d = b.beat.descriptions.find((x) => x.id === ch.d)
-    return colleagueView(runner, runner.cast[ch.slot], shown, d ? L(d.text) : '')
+    return colleagueView(runner, runner.person(ch.slot), shown, d ? L(d.text) : '')
   })
   let input: React.ReactNode
   if (b.beat.kind === 'rank')
@@ -412,7 +559,48 @@ function BeatStep({
   )
 }
 
-function SurveyStep({
+/** Agree or disagree items on one grid screen (the screening block, each survey administration). */
+function GridStep({
+  ui,
+  page,
+  title,
+  items,
+  onDone,
+}: {
+  ui: Lang
+  page: PageBase
+  title: string
+  items: { id: string; text: string }[]
+  onDone: (v: unknown) => void
+}) {
+  const L = (t: T) => t[ui]
+  const [v, setV] = useState<Record<string, number>>({})
+  const left = items.filter((i) => v[i.id] === undefined).length
+  return (
+    <Page
+      {...page}
+      title={title}
+      actions={
+        <Button onClick={() => onDone(v)} disabled={left > 0}>
+          {L(SS.surveyDone)}
+        </Button>
+      }
+    >
+      <Text>{L(SS.surveyBody)}</Text>
+      <AgreeGrid
+        items={items}
+        scale={SS.surveyKey.map(L)}
+        value={v}
+        onChange={setV}
+        keyLabel={SS.surveyKey.map((s, i) => `${i + 1} ${L(s)}`).join(', ')}
+      />
+      <Text kind="small">{left > 0 ? fill(L(SS.surveyLeft), { n: left }) : ''}</Text>
+    </Page>
+  )
+}
+
+/** "Spot the pattern": any number of answers, then one confirm tap (candidates v17 3.17). */
+function ProbeStep({
   ui,
   page,
   onDone,
@@ -422,27 +610,25 @@ function SurveyStep({
   onDone: (v: unknown) => void
 }) {
   const L = (t: T) => t[ui]
-  const [v, setV] = useState<Record<string, number>>({})
-  const left = surveyItems.filter((i) => v[i.id] === undefined).length
+  const [v, setV] = useState<string[]>([])
+  const pr = S.wrap.probe
   return (
     <Page
       {...page}
-      title={L(SS.surveyTitle)}
       actions={
-        <Button onClick={() => onDone(v)} disabled={left > 0}>
-          {L(SS.surveyDone)}
+        <Button onClick={() => onDone(v)} disabled={v.length === 0}>
+          {L(SS.probeDone)}
         </Button>
       }
     >
-      <Text>{L(SS.surveyBody)}</Text>
-      <AgreeGrid
-        items={surveyItems.map((i) => ({ id: i.id, text: L(i.text) }))}
-        scale={SS.surveyKey.map(L)}
+      <Checks
+        heading
+        legend={L(pr.question)}
+        hint={L(pr.hint)}
+        options={pr.options.map((o) => ({ id: o.id, text: L(o.text) }))}
         value={v}
         onChange={setV}
-        keyLabel={SS.surveyKey.map((s, i) => `${i + 1} ${L(s)}`).join(', ')}
       />
-      <Text kind="small">{left > 0 ? fill(L(SS.surveyLeft), { n: left }) : ''}</Text>
     </Page>
   )
 }
@@ -596,6 +782,20 @@ export function StoryResult({
         <section key={d.domain} aria-label={d.title}>
           <Heading>{d.title}</Heading>
           <Text>{d.narrative}</Text>
+          <ReadingGrid
+            label={d.title}
+            items={[
+              {
+                id: d.domain,
+                label: L(RT.cueShort.sex),
+                level: d.reading.level,
+                zone: d.reading.zone,
+                meaning: fill(L(RT.meaning[d.reading.zone]), {
+                  group: d.reading.zone === 'lean' ? d.reading.group : '',
+                }),
+              },
+            ]}
+          />
           <Heading level={3}>{L(RT.followedTitle)}</Heading>
           {d.followed.length ? (
             d.followed.map((p) => <PointCard key={p.title} title={p.title} body={p.body} />)
@@ -643,7 +843,7 @@ export function StoryResult({
 
 /**
  * After the result: name and email, both optional, and two separate unticked boxes (follow-up
- * and retake reminders; longitudinal research, consent PENDING v17). Stored apart from the
+ * and retake reminders; longitudinal research, consent PENDING v18). Stored apart from the
  * answers and from any profile, at a random key, with nothing that links them.
  */
 function StayInTouch({ ui }: { ui: Lang }) {

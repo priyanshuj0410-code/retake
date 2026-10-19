@@ -10,6 +10,7 @@ import type { CastMember } from './session'
 const toneWords: Record<string, string> = {
   darker: 'darker skin tone',
   lighter: 'lighter skin tone',
+  constant: 'medium skin tone',
 }
 
 export function colleagueView(
@@ -32,7 +33,7 @@ export function colleagueView(
   return {
     figure: (c.sex === 'woman' ? identity.figures.woman : identity.figures.man) + c.toneEmoji,
     figureLabel: `${c.sex}, ${toneWords[c.tone]}`,
-    badge: c.animal,
+    badge: c.animal || undefined,
     name: r.displayName(c.slot, true),
     cues,
     description,
@@ -52,9 +53,7 @@ export function rosterItems(
     const rec = records.get(c.slot) ?? []
     const lines = [
       ...(extra ? extra(c) : v.cues),
-      ...(rec.length
-        ? rec.map((e) => `${L(e.role)}: ${L(SS.outcome[String(e.tier)])}`)
-        : [L(SS.rosterEmpty)]),
+      ...(rec.length ? [rec.map((e) => L(e.role)).join(', ')] : [L(SS.rosterEmpty)]),
     ]
     return { figure: v.figure, figureLabel: v.figureLabel, badge: v.badge, name: v.name, lines }
   })

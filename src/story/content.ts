@@ -20,8 +20,10 @@ export interface StoryDescription {
  * - same: a rank of two women and two men, the women tied and the men tied.
  * - rival: a pick between, or a split led by, one rival pair carrying tied notes.
  * - clear: a pick between two colleagues whose notes differ clearly.
+ * - oneoff: one-off characters, not the cast: a rank of a caste pair and a birthplace pair, or a
+ *   pick or split led by one tied pair differing on `cue` (same sex, the medium tone).
  */
-export type Shape = 'mixed' | 'same' | 'rival' | 'clear'
+export type Shape = 'mixed' | 'same' | 'rival' | 'clear' | 'oneoff'
 
 export type Domain = 'hiring' | 'conduct' | 'resources'
 
@@ -36,6 +38,11 @@ export interface PeopleBeat {
   family: 'opportunity' | 'npt' | 'conduct'
   /** The result page's area: hiring and promotion, complaints and conduct, sharing resources. */
   domain: Domain
+  /** B: played after the mid-season note (the faking test's form B); never in the rating. */
+  form?: 'B'
+  /** oneoff beats: who the one-offs are, and which cue their tied pair carries. */
+  oneoff?: string
+  cue?: 'caste' | 'born'
   role: T
   scene: T
   question: T
@@ -67,7 +74,7 @@ export interface Story {
   premise: T
   company?: T
   intro?: T[]
-  episodes?: { title: T; premise: T }[]
+  episodes?: { title: T; premise: T; interlude?: { after: string; text: T } }[]
   mascots?: T
   reveal?: { title: T; body: T; line: T; go: T }
   beats?: Beat[]

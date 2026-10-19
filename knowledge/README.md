@@ -6,6 +6,8 @@ plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
   - https://app.plane.so/the-equal-lens/browse/EVAL-2/
   - https://app.plane.so/the-equal-lens/browse/EVAL-3/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-4/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-5/
 ---
 
 # Equal Lens Evaluator knowledge
@@ -25,9 +27,9 @@ The app is the research instrument specified in the Sex Ed workspace's gated des
   - [acceptance-tests.md](reference/acceptance-tests.md): every registered acceptance test mapped to its check.
 - `reviews/`:
   - [ux-audit-2026-10-19.md](reviews/ux-audit-2026-10-19.md): the ship-readiness UX audit, its fixes, owner decisions and raw results (`reviews/assets/`).
-  - [game-redesign-2026-10-19.md](reviews/game-redesign-2026-10-19.md): the season-story redesign (EVAL-4): the full 390 px play, decision and click totals against prototype v0, the screen list, what is PENDING v17, and what to flag.
+  - [game-redesign-2026-10-19.md](reviews/game-redesign-2026-10-19.md): the season-story redesign (EVAL-4) and its 80-decision rebuild (EVAL-5): the full 390 px play, counted and asked decisions, clicks, screens and time against prototype v0, the screen list, what is PENDING v18, and what to flag.
   - [component-states-2026-10-19.md](reviews/component-states-2026-10-19.md): every component's states and micro-interactions, before and after (EVAL-3).
 
 ## Status (19 Oct 2026)
 
-Season story (EVAL-4, branch `eval-game-redesign`): a fourth deployment, `season`, the redesigned game for the MIT Solve prototype; every number generate v17 will fix is marked PENDING v17. Prototype v0, demo mode only: fictional content, seeded demo players, no participant data, nothing deployed. Card counts follow research plan v2 (the panel as two games).
+Season story (EVAL-4, branch `eval-game-redesign`): a fourth deployment, `season`, the redesigned game for the MIT Solve prototype; rebuilt to the owner's 80 counted decisions (EVAL-5); every number v18 will fix is marked PENDING v18. Prototype v0, demo mode only: fictional content, seeded demo players, no participant data, nothing deployed. Card counts follow research plan v2 (the panel as two games).

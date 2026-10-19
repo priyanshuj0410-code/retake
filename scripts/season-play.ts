@@ -20,6 +20,7 @@ const OUT = join(ROOT, 'out/season')
 
 let clicks = 0
 let decisions = 0
+let asked = 0
 const screens: { n: number; screen: string; clicks: number; heading: string }[] = []
 const shot = new Set<string>()
 
@@ -73,7 +74,7 @@ async function waitNew(page: Page, before: string) {
  * Plays from the home page to the result. `onScreen` runs on each new screen before it is
  * answered (pnpm ux audits there); without it, each new kind of screen is screenshotted.
  */
-export const totals = () => ({ clicks, decisions, screens })
+export const totals = () => ({ clicks, decisions, asked, screens })
 
 export async function playSeason(
   page: Page,
@@ -112,49 +113,78 @@ export async function playSeason(
     }
     const button = (n: string | RegExp, o: { exact?: boolean } = {}) =>
       page.getByRole('button', { name: n, ...o })
-    if (
-      m === 'demo' ||
-      m === 'disclosure' ||
-      m === 'story:intro' ||
-      m === 'story:episode' ||
-      m === 'story:reveal'
-    )
-      await click(page, page.locator('.page__actions button').first())
-    else if (m === 'consent') await click(page, button('I agree to take part'))
-    else if (m === 'language') {
-      await page.getByRole('radio', { name: 'English' }).check()
-      clicks += 1
-      await click(page, button('Continue'))
-    } else if (m === 'story:pick') await click(page, button(/The warehouse/))
-    else if (m === 'story:beat:rank') {
-      decisions += 1
-      const cards = page.locator('.tapcard')
-      const order = await preference(page, '.tapcard')
-      for (const i of order.slice(0, 3)) await click(page, cards.nth(i))
-    } else if (m === 'story:beat:pick') {
-      decisions += 1
-      await click(page, page.locator('.tapcard').nth((await preference(page, '.tapcard'))[0]))
-    } else if (m === 'story:beat:ordinary') {
-      decisions += 1
-      await click(page, page.locator('.options__option').first())
-    } else if (m === 'story:beat:split') {
-      decisions += 1
-      const rows = page.locator('.split__row')
-      const order = await preference(page, '.split__row')
-      await click(page, rows.nth(order[0]).getByRole('button', { name: /: 4$/ }))
-      await click(page, rows.nth(order[1]).getByRole('button', { name: /: 2$/ }))
-    } else if (m === 'story:season' || m === 'story:debrief' || m === 'story:demographics')
-      await click(page, button('Continue'))
-    else if (m === 'story:survey') {
+    const grid = async (counts: boolean) => {
       const groups = page.locator('fieldset')
       const n = await groups.count()
       for (let i = 0; i < n; i++) {
         await groups.nth(i).getByRole('radio', { name: /^4,/ }).check()
         clicks += 1
+        asked += 1
+        if (counts) decisions += 1
       }
       await click(page, button('Done with these statements'))
-    } else if (m === 'story:prior') await click(page, button('No', { exact: true }))
-    else if (m === 'story:code') {
+    }
+    if (
+      m === 'demo' ||
+      m === 'disclosure' ||
+      m === 'story:intro' ||
+      m === 'story:episode' ||
+      m === 'story:interlude' ||
+      m === 'story:reveal' ||
+      m === 'story:note'
+    )
+      await click(page, page.locator('.page__actions button').first())
+    else if (m === 'eligibility') {
+      for (const name of [/18 or over/, /work in India/]) {
+        await page.getByRole('group', { name }).getByRole('radio', { name: 'Yes' }).check()
+        clicks += 1
+        asked += 1
+      }
+      await click(page, button('Continue'))
+    } else if (m === 'consent') await click(page, button('I agree to take part'))
+    else if (m === 'language') {
+      await page.getByRole('radio', { name: 'English' }).check()
+      clicks += 1
+      await click(page, button('Continue'))
+    } else if (m === 'story:pick')
+      await click(page, page.locator('.storypick__card:not([aria-disabled="true"])').first())
+    else if (m === 'story:beat:rank') {
+      decisions += 1
+      asked += 1
+      const cards = page.locator('.tapcard')
+      const order = await preference(page, '.tapcard')
+      for (const i of order.slice(0, 3)) await click(page, cards.nth(i))
+    } else if (m === 'story:beat:pick') {
+      decisions += 1
+      asked += 1
+      await click(page, page.locator('.tapcard').nth((await preference(page, '.tapcard'))[0]))
+    } else if (m === 'story:beat:ordinary') {
+      asked += 1
+      await click(page, page.locator('.options__option').first())
+    } else if (m === 'story:beat:split') {
+      decisions += 1
+      asked += 1
+      const rows = page.locator('.split__row')
+      const order = await preference(page, '.split__row')
+      await click(page, rows.nth(order[0]).getByRole('button', { name: /: 4$/ }))
+      await click(page, rows.nth(order[1]).getByRole('button', { name: /: 2$/ }))
+    } else if (m === 'story:screening' || m === 'story:fsurvey') await grid(true)
+    else if (m === 'story:recall') {
+      decisions += 1
+      asked += 1
+      await click(page, page.locator('.options__option').first())
+    } else if (m === 'story:probe') {
+      asked += 1
+      await page.getByRole('checkbox', { name: /woman or a man/ }).check()
+      clicks += 1
+      await click(page, button('Done'))
+    } else if (m === 'story:season' || m === 'story:debrief' || m === 'story:demographics')
+      await click(page, button('Continue'))
+    else if (m === 'story:prior') {
+      asked += 1
+      const no = button('No', { exact: true })
+      await click(page, (await no.count()) ? no : page.locator('.options__option').first())
+    } else if (m === 'story:code') {
       await page.locator('.code').waitFor({ timeout: 20000 })
       await page.getByRole('checkbox').check()
       clicks += 1
@@ -167,8 +197,7 @@ export async function playSeason(
         .catch(async () => {
           throw new Error(`submit did not finish: ${await page.locator('main').innerText()}`)
         })
-    }
-    else throw new Error(`no rule for screen ${m}`)
+    } else throw new Error(`no rule for screen ${m}`)
     screens.push({ n: screens.length + 1, screen: m, clicks: clicks - c0, heading })
     await waitNew(page, before)
   }
@@ -200,6 +229,7 @@ async function main() {
     await page.screenshot({ path: join(OUT, 'profile.png'), fullPage: true })
     const summary = {
       decisions,
+      asked,
       clicks,
       screensToResult: screens.length,
       byKind: screens.reduce<Record<string, { screens: number; clicks: number }>>((a, s) => {

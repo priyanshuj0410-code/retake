@@ -1,7 +1,7 @@
 /**
  * The optional pseudonymous profile (#/profile): open it with the recovery code, see past
  * ratings as a timeline (one band per season), the change line, the next retake as a date
- * (never a countdown), the separate longitudinal research opt-in (PENDING v17), and delete
+ * (never a countdown), the separate longitudinal research opt-in (PENDING v18), and delete
  * everything. Out of fiction.
  */
 import { useState } from 'react'

@@ -9,7 +9,7 @@
  * on the device (AES-GCM) under a key derived from the recovery code, at a node key derived
  * from the same code (eval-profile/<key>). Nobody without the code can read it, link its
  * seasons, or find it. A player who opts in to longitudinal research use (consent PENDING
- * v17) also writes eval-long/<key>: the play keys of their saved seasons, which is the link
+ * v18) also writes eval-long/<key>: the play keys of their saved seasons, which is the link
  * the research team may then use; opting out deletes it.
  */
 import { config } from '../engine/config'
@@ -185,7 +185,7 @@ export async function deleteProfile(): Promise<{ withdrawn: number; closed: numb
 
 /**
  * The change line between the last two readable seasons: a change is read only when the
- * headline weight moved by at least config.season.change.minDiff (PENDING v17).
+ * headline weight moved by at least config.season.change.minDiff (PENDING v18).
  */
 export function changeOf(sessions: ProfileSession[]) {
   const readable = sessions.filter((s) => s.zone !== 'unread')
@@ -196,7 +196,7 @@ export function changeOf(sessions: ProfileSession[]) {
   return { from: a, to: b, towards: d > 0 ? ('focal' as const) : ('comparison' as const) }
 }
 
-/** The day a retake opens, when v17 sets a gap (config.season.retakeGapDays); null otherwise. */
+/** The day a retake opens, when v18 sets a gap (config.season.retakeGapDays); null otherwise. */
 export function nextRetake(sessions: ProfileSession[]): number | null {
   const gap = config.season.retakeGapDays
   const last = sessions[sessions.length - 1]

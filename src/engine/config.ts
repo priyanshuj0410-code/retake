@@ -63,18 +63,22 @@ export interface Config {
   season: SeasonConfig
 }
 
-/** The season story's planning values: every key in pendingV17 is PENDING v17. */
+/** The season story's planning values: every key in pendingV18 is PENDING v18. */
 export interface SeasonConfig {
-  pendingV17: string[]
+  pendingV18: string[]
   castSize: number
   weeks: number
   splitCap: number
-  rating: { q: number; minPairs: number; engagementMin: number }
+  rating: { q: number; minPairs: number; engagementMin: number; permutations: number }
+  counted: Record<string, number>
+  faking: { screening: string[]; survey: string[]; formB: number }
+  route: 'low'
+  cueCarriers: { cast: string[]; oneOff: string[] }
+  domains: { minPairs: number }
   timing: Record<string, number>
   change: { minDiff: number }
   retakeGapDays: number | null
   episodes: number
-  decisionsPerEpisode: number
   cards: { minPairs: number; share: number }
 }
 

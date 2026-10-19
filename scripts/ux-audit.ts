@@ -413,7 +413,7 @@ async function main() {
       await audit(page, `season ${m}`)
       if (m === 'story:beat:rank') await tapOrderByKeyboard(page, `season ${m}`)
       if (m === 'story:beat:split') await splitByKeyboard(page, `season ${m}`)
-      if (m === 'story:survey') await gridByKeyboard(page, `season ${m}`)
+      if (m === 'story:screening') await gridByKeyboard(page, `season ${m}`)
     })
     await audit(page, 'season story:result')
     await page.goto(`${BASE}#/profile`)

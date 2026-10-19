@@ -7,6 +7,7 @@ plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-2/
   - https://app.plane.so/the-equal-lens/browse/EVAL-3/
   - https://app.plane.so/the-equal-lens/browse/EVAL-4/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-5/
 ---
 
 # Equal Lens Evaluator design system
@@ -190,9 +191,17 @@ tick on "All shared" and on done notices confirms completion of an action only.
 ## 4b. The season story (EVAL-4, the game redesign)
 
 The season story is a fourth deployment (`season`, `src/story/`, `content/story.json`): one team
-season told in five short episodes of about ten decisions (50 in all, counts PENDING v17), each
-opened by a title card, about 12 minutes. The player picks one of three seasons first (NPQE's
-way in; the warehouse is built, the newsroom and the clinic are PENDING v17). Its rules:
+season in five episodes, each opened by a title card and broken once by an interlude (a short
+scene with one Continue), on the owner's 80-decision layout (EVAL-5, Game 1's low branch, all
+counts PENDING v18): 4 mascot cards, 57 rating cards (19 per domain), then out of fiction the
+screening grid, the survey grid and the note, 6 form-B cards back in the story, the survey grid
+again and the recall item; about 26 minutes. The tool draws the story (candidates v17 3.17); the
+season card shows it with the newsroom and the clinic as "after your rating" (PENDING v18).
+Applicants, complainants and vendors are one-off characters with the same `Colleague` card and
+no mascot badge; they carry caste and birthplace, the fixed cast sex, religion and tone. Agree
+or disagree blocks (screening, survey) are `AgreeGrid` screens; the recall and wrap items are
+`Options`; the noticing probe is `Checks` with one Done. Consequence lines are equal in
+valence, and the roster lists the jobs each colleague led, with no outcome word. Its rules:
 
 - **One decision per screen, and no Next.** Every decision commits on its tap (`TapOrder`,
   `PickOne`, `QuickSplit`, `Options`), the next screen opens with its consequence (`Beat`), and a
@@ -212,7 +221,7 @@ way in; the warehouse is built, the newsroom and the clinic are PENDING v17). It
   complaints and conduct, sharing resources), each with a short narrative, "Where your
   decisions followed the record" and "Your blind spots" as `PointCard`s (a blind spot ends with
   the actual decisive pairs), "Where it may come from" (prompts only, nothing asked or stored)
-  and "How to keep watch" (habits, free, sources PENDING v17, no effect claimed); the Internal
+  and "How to keep watch" (habits, free, sources PENDING v18, no effect claimed); the Internal
   Committee line; keeping it (an optional profile, the retake as a date); the `ShareCard`; and
   an optional stay-in-touch form (name and email both optional, two separate unticked boxes,
   stored apart from answers and profile). It says "attitude rating", never "bias", and never
@@ -279,7 +288,7 @@ way in; the warehouse is built, the newsroom and the clinic are PENDING v17). It
 - **Story-driven play.** Duolingo's stories carry a lesson with recurring cartoon characters,
   and Tapotron's dialogue screens move a story one line at a time. NPQE (16Personalities' story
   test, "a story that reads you") lets the player pick one of several short stories. We use a
-  picker of three seasons (one built, two PENDING v17), a fixed cast, and one line of what
+  drawn season shown beside the other two (one built, two PENDING v18), a fixed cast, and one line of what
   happened at the top of each decision.
 - **The result page.** 16Personalities shows a named type, trait bars with percentages, and a
   long free explanation; Storia and Tolan in Lazyweb show a named result with a paragraph and a
@@ -325,8 +334,8 @@ was") and takes a capital when it opens a sentence, both done by the generator
 
 The season story's words follow the same rules, held by `scripts/story-check.ts`: no "fair"
 and no "bias" in any story text, descriptions carry no pronoun, consequences use only `{name}`
-and `{g:}`, and every number v17 will fix is marked PENDING v17 in `content/config.json`
-(`season.pendingV17`) and shown as such on screen in demo mode.
+and `{g:}`, and every number v18 will fix is marked PENDING v18 in `content/config.json`
+(`season.pendingV18`) and shown as such on screen in demo mode.
 
 ## 7. Old phones
 

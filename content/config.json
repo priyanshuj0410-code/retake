@@ -231,45 +231,53 @@
     }
   },
   "season": {
-    "_note": "The season stories (EVAL-4, game redesign). Every key listed in pendingV17 is a PLANNING VALUE set by the builder: generate v17 fixes it. None is final, and none may be used with participants until v17 registers it.",
-    "pendingV17": [
+    "_note": "The season story (EVAL-4, EVAL-5: the owner's 80-decision layout, Game 1's low branch as the demo route). Every key listed in pendingV18 is a PLANNING VALUE set by the builder or taken from the 80-decision scenario: v18 fixes it. None is final, and none may be used with participants until v18 registers it.",
+    "pendingV18": [
       "castSize",
+      "episodes",
+      "counted",
       "splitCap",
+      "faking",
+      "route",
+      "cueCarriers",
       "rating.q",
       "rating.minPairs",
       "rating.engagementMin",
-      "timing",
+      "rating.permutations",
+      "domains.minPairs",
+      "cards.minPairs",
+      "cards.share",
       "change.minDiff",
       "retakeGapDays",
-      "episodes",
-      "decisionsPerEpisode",
-      "cards.minPairs",
-      "cards.share"
+      "timing"
     ],
     "splitCap": 4,
     "rating": {
-      "_note": "PENDING v17. A cue reads as a lean when its permutation p (the share of balanced relabellings of the cast whose weight is at least as far from zero) is at most 1 - q; not enough to say below minPairs decisive pairs, when no relabelling could reach 1 - q, or when the player followed the notes in under engagementMin of clear pairs.",
+      "_note": "PENDING v18. Computed on all 57 rating cards. A cue reads as a lean when its permutation p is at most 1 - q: the cast's cues against every balanced relabelling of the cast, caste and birthplace against sign flips of the one-off pairs (exact up to 2^12, else `permutations` draws). Not enough to say below minPairs decisive pairs, or when the player followed the notes in under engagementMin of clear pairs.",
       "q": 0.95,
       "minPairs": 8,
-      "engagementMin": 0.7
+      "engagementMin": 0.7,
+      "permutations": 4000
     },
     "timing": {
-      "_note": "PENDING v17. Seconds per screen at the 80th percentile, builder's planning values for pnpm length.",
+      "_note": "PENDING v18. The scenario's per-type paces (sim_scenario80.py length): a tap-to-order or tap-to-give card 20 s, a grid item 5 s, a single-choice item 6 s, the probe 10 s, an ordinary decision 10 s, the note 15 s, 80 s of fixed overhead; plus this build's own: a pick of two colleagues 12 s, each episode card and interlude, the opening, the season's end, the debrief, the code, demographics and submit.",
       "rank": 20,
-      "pick": 9,
-      "split": 14,
-      "ordinary": 8,
-      "intro": 30,
-      "pick-season": 15,
-      "reveal": 25,
-      "season": 15,
-      "surveyItem": 6,
-      "priorItem": 5,
-      "debrief": 25,
-      "code": 30,
-      "demographics": 20,
-      "submit": 8,
-      "episode": 8
+      "pick": 12,
+      "split": 20,
+      "ordinary": 10,
+      "gridItem": 5,
+      "single": 6,
+      "probe": 10,
+      "note": 15,
+      "overhead": 80,
+      "episode": 5,
+      "interlude": 8,
+      "intro": 20,
+      "season": 10,
+      "debrief": 20,
+      "code": 25,
+      "demographics": 15,
+      "submit": 5
     },
     "change": {
       "_note": "PENDING v17. The profile reads a change between two saved seasons only when the headline weight moved by at least minDiff (on the -1 to +1 scale). A planning value: v17 sets the rule, ideally from the retake arm's test-retest agreement.",
@@ -279,11 +287,52 @@
     "_retakeNote": "PENDING v17. retakeGapDays: null means no gap. When v17 sets a number, the profile shows the day the next retake opens as a date, never as a countdown.",
     "castSize": 8,
     "episodes": 5,
-    "decisionsPerEpisode": 10,
     "cards": {
       "_note": "PENDING v17. A domain's blind-spot card for a cue needs at least minPairs equal pairs there with at least share of them one way; the even card needs minPairs with the two sides within one.",
       "minPairs": 3,
       "share": 0.67
+    },
+    "counted": {
+      "_note": "PENDING v18. The owner's 80 counted decisions: 4 mascot cards, 4 screening items, 15 faking-test decisions (4 + 6 + 4 + 1), 57 rating cards (19 per domain). Entry, wrap and ordinary decisions are asked but not counted.",
+      "mascot": 4,
+      "screening": 4,
+      "faking": 15,
+      "rating": 57,
+      "perDomain": 19,
+      "total": 80
+    },
+    "faking": {
+      "_note": "PENDING v18. Game 1's low branch at the scenario's S4 split: the screening block's 4 items on one grid, the survey's 4 items (two per family, keyed two and two) on one grid before and after the note, 6 form-B cards, the recall item.",
+      "screening": [
+        "scr-01",
+        "scr-02",
+        "scr-03",
+        "scr-06"
+      ],
+      "survey": [
+        "sv-01",
+        "sv-03",
+        "sv-04",
+        "sv-02"
+      ],
+      "formB": 6
+    },
+    "route": "low",
+    "cueCarriers": {
+      "_note": "PENDING v18, which decides it: the fixed cast of 8 carries sex, religion and skin tone; caste and birthplace ride on one-off characters (applicants, complainants, vendors) inside the episodes.",
+      "cast": [
+        "sex",
+        "religion",
+        "tone"
+      ],
+      "oneOff": [
+        "caste",
+        "birthplace"
+      ]
+    },
+    "domains": {
+      "_note": "PENDING v18. Each domain panel reads sex on its own 19 cards with the same floor, at minPairs or more decisive pairs.",
+      "minPairs": 8
     }
   }
 }

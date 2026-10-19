@@ -173,7 +173,7 @@ export async function run() {
     h(StoryPick, {
       options: [
         { id: 'a', emoji: 'x', title: 'A', premise: 'p' },
-        { id: 'b', emoji: 'y', title: 'B', premise: 'p', later: 'PENDING v17' },
+        { id: 'b', emoji: 'y', title: 'B', premise: 'p', later: 'PENDING v18' },
       ],
       onPick: () => {},
       label: 'Pick',
@@ -183,7 +183,7 @@ export async function run() {
     T,
     'StoryPick: a season not built is aria-disabled with its PENDING line, never disabled',
     (pick.match(/aria-disabled="true"/g) ?? []).length === 1 &&
-      /PENDING v17/.test(pick) &&
+      /PENDING v18/.test(pick) &&
       !/ disabled=""/.test(pick),
   )
   const alloc = (units: number[]) =>

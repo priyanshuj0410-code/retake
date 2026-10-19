@@ -4,7 +4,6 @@
  * women (cueWeight > 0 favours men), noise, and an optional content-blind (careless) mode.
  */
 import { seeded, type Rng } from '../engine/rng'
-import { surveyItems } from '../content'
 import { storyById } from './content'
 import { StoryRunner, type BeatAnswer } from './runner'
 import type { PeoplePresented } from './session'
@@ -12,6 +11,8 @@ import { config } from '../engine/config'
 
 export interface SeasonTraits {
   cueWeight: number
+  /** A weight against one-offs with surnames read as Scheduled Caste (the caste check). */
+  casteWeight?: number
   noise: number
   careless: boolean
 }
@@ -23,9 +24,12 @@ export function decide(rng: Rng, r: StoryRunner, p: PeoplePresented, t: SeasonTr
   const k = p.chars.length
   const u = p.chars.map((ch) => {
     if (t.careless) return rng.next()
-    const c = r.cast[ch.slot]
-    const cue = c.sex === 'woman' ? -t.cueWeight : 0
-    return ch.tier + cue + t.noise * gauss(rng)
+    const c = r.person(ch.slot)
+    const cue =
+      (c.sex === 'woman' && !c.oneOff ? -t.cueWeight : 0) -
+      (c.caste === 'sc-coded' ? (t.casteWeight ?? 0) : 0)
+    /* Unwanted work goes the other way: a lean against women gives them more of it. */
+    return ch.tier + (p.beat.family === 'npt' ? -cue : cue) + t.noise * gauss(rng)
   })
   const order = [...Array(k).keys()].sort((a, b) => u[b] - u[a])
   if (p.beat.kind === 'rank') return { order }
@@ -56,8 +60,12 @@ export function playSeason(seed: number, t: SeasonTraits, storyId = 'warehouse')
       const b = r.season.beats[s.i]
       if (b.kind === 'people') r.answer(decide(rng, r, b, t))
       else r.answer({ option: rng.pick(b.order) })
-    } else if (s.kind === 'survey')
-      r.answer(Object.fromEntries(surveyItems.map((i) => [i.id, rng.int(5)])))
+    } else if (s.kind === 'fsurvey')
+      r.answer(Object.fromEntries(config.season.faking.survey.map((id) => [id, rng.int(5)])))
+    else if (s.kind === 'screening')
+      r.answer(Object.fromEntries(config.season.faking.screening.map((id) => [id, rng.int(5)])))
+    else if (s.kind === 'recall') r.answer(r.note)
+    else if (s.kind === 'probe') r.answer(['sex'])
     else if (s.kind === 'prior') r.answer('no')
     else if (s.kind === 'demographics') r.answer({})
     else r.answer(null)
