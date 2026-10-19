@@ -6,7 +6,7 @@
  */
 import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { Button, Checks, Choice, SortList } from '../src/ui'
+import { Allocate, Button, Checks, Choice, SortList } from '../src/ui'
 import { record } from './lib/check'
 
 const T = 'X-9 component states (markup)'
@@ -91,5 +91,36 @@ export async function run() {
     T,
     'SortList: rows are keyed by item for the reorder movement',
     (sort.match(/data-item="/g) ?? []).length === 3,
+  )
+  const alloc = (units: number[]) =>
+    html(
+      h(Allocate, {
+        items: [person('A'), person('B')],
+        order: [0, 1],
+        units,
+        pool: 4,
+        onChange: () => {},
+        labels: {
+          add: (n) => `Add: ${n}`,
+          remove: (n) => `Remove: ${n}`,
+          left: (n) => `${n} left to share`,
+          done: 'All shared',
+          unit: 'days',
+        },
+      }),
+    )
+  const spent = alloc([3, 1])
+  const empty = alloc([0, 0])
+  record(
+    T,
+    'Allocate: all shared marks the line done and aria-disables every plus, none disabled',
+    /alloc__left alloc__left--done/.test(spent) &&
+      (spent.match(/aria-disabled="true"/g) ?? []).length === 2 &&
+      !/ disabled=""/.test(spent),
+  )
+  record(
+    T,
+    'Allocate: nothing shared aria-disables every minus and says what is left',
+    (empty.match(/aria-disabled="true"/g) ?? []).length === 2 && /4 left to share/.test(empty),
   )
 }

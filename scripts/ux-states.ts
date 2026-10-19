@@ -54,7 +54,7 @@ async function stress(page: Page, component: string, sel: string) {
         /* Icon buttons and rank numerals never hold words; everything else can. */
         if (
           n.textContent?.trim() &&
-          !n.parentElement?.closest('button[aria-label], [aria-hidden="true"], [role="img"]')
+          !n.parentElement?.closest('button[aria-label], span[aria-label], [aria-hidden="true"], [role="img"]')
         )
           n.textContent = `${n.textContent} Zimmedaariyonwaalaaprabandhakpratinidhi Bahutlambaanaam`
     })
@@ -284,6 +284,48 @@ async function sortList(page: Page) {
   await stress(page, C, '.sort')
 }
 
+async function allocate(page: Page) {
+  const C = 'Allocate'
+  const plus = '.alloc__step:not([aria-disabled="true"])'
+  await hover(page, C, plus, 'background-color')
+  await pressed(page, C, '.alloc__step:nth-child(3)')
+  for (let i = 0; i < 20 && !(await page.locator('.alloc__left--done').count()); i++)
+    await page.locator('.alloc__step:nth-child(3)').first().click()
+  const done = await page.locator('.alloc__left').evaluate((e) => ({
+    cls: e.classList.contains('alloc__left--done'),
+    tick: getComputedStyle(e, '::before').content,
+    dur: getComputedStyle(e).transitionDuration,
+    text: e.textContent,
+  }))
+  rec(
+    C,
+    '"All shared" arrives with a tick and the ok colour',
+    done.cls && /✓/.test(done.tick),
+    JSON.stringify(done),
+  )
+  rec(C, 'remaining count changes at the motion duration', /0\.16s/.test(done.dur), done.dur)
+  const reached = await tabTo(page, '.alloc__step', 1)
+  const before = await page.locator('.alloc__left').textContent()
+  await page.keyboard.press('Enter')
+  const after = await page.evaluate(() => ({
+    kept: document.activeElement === document.querySelectorAll('.alloc__step')[1],
+    live: document.querySelector('.alloc__left')?.textContent ?? '',
+  }))
+  rec(
+    C,
+    'aria-disabled at a limit: focus kept, the live line said again',
+    reached && after.kept && after.live !== before && after.live.trim() === (before ?? '').trim(),
+    JSON.stringify({ before, ...after }),
+  )
+  await focusRing(page, C, '.alloc__step', 0)
+  await forced(page, true)
+  const off = await css(page, '.alloc__step[aria-disabled="true"]', 'color')
+  const on = await css(page, plus, 'color')
+  await forced(page, false)
+  rec(C, 'forced colours: a spent stepper is distinct', off !== on, `${off} vs ${on}`)
+  await stress(page, C, '.alloc')
+}
+
 /* ---------- the run ---------- */
 
 export async function statesPass(page: Page, base: string): Promise<StateResult[]> {
@@ -329,6 +371,10 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
       const fig = await css(page, '.character__figure', 'forced-color-adjust')
       await forced(page, false)
       rec('Character', 'forced colours: the figure keeps its own colours', fig === 'none', fig)
+    }
+    if (!done.has('Allocate') && (await page.locator('.alloc').count())) {
+      done.add('Allocate')
+      await allocate(page)
     }
     if (!done.has('SortList') && (await page.locator('.sort').count())) {
       done.add('SortList')
