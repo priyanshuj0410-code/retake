@@ -72,7 +72,7 @@ export async function run() {
   record(
     T,
     'firm enrolment opens on the disclosure',
-    /useState<'four'/.test(pages) && /step === 'four'[\s\S]{0,80}<Disclosure/.test(pages),
+    /useState<EnrolStep>\(preview\?\.step \?\? 'four'\)/.test(pages) && /step === 'four'[\s\S]{0,80}<Disclosure/.test(pages),
   )
   /* No other sentence about measurement anywhere before the explanation: the consent and
      every pre-release screen avoid the words the rule forbids. */

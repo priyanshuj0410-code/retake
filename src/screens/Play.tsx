@@ -6,14 +6,15 @@
  */
 import { useEffect, useRef, useState } from 'react'
 import { screens } from '../content'
-import type { Lang, T } from '../content/types'
+import type { Lang } from '../content/types'
 import { config, type DeploymentId } from '../engine/config'
 import { cryptoRng } from '../engine/rng'
 import { Runner, type FirmLabels } from '../engine/runner'
 import { store } from '../store'
 import type { LangSet, StartResult } from '../store/types'
-import { Button, Choice, List, Notice, Page, Text } from '../ui'
+import { Page, Text, Notice } from '../ui'
 import { Disclosure } from './Disclosure'
+import { Consent, Declined, DemoNotice, Finished, LanguageStep } from './PreScreens'
 import { StepView } from './StepView'
 
 const S = screens
@@ -82,7 +83,6 @@ export function Play({
   const offered: Lang[] =
     langSet === 'both' || langSet === 'choose' ? ['en', 'hinglish'] : [langSet]
   const ui: Lang = langs && langs.length === 1 ? langs[0] : offered[0]
-  const L = (t: T) => t[ui]
 
   const begin = (chosen: Lang[]) => {
     setLangs(chosen)
@@ -90,17 +90,7 @@ export function Play({
   }
 
   if (!runner) {
-    if (pre === 'demo')
-      return (
-        <Page
-          surface="oof"
-          stepKey="demo"
-          title={L(S.demoNotice.title)}
-          actions={<Button onClick={() => setPre('disclosure')}>{L(S.common.continue)}</Button>}
-        >
-          <Text>{L(S.demoNotice.body)}</Text>
-        </Page>
-      )
+    if (pre === 'demo') return <DemoNotice ui={ui} onContinue={() => setPre('disclosure')} />
     if (pre === 'disclosure')
       return (
         <Disclosure
@@ -110,51 +100,20 @@ export function Play({
           }
         />
       )
-    if (pre === 'declined')
-      return (
-        <Page surface="oof" stepKey="declined" oof={L(S.common.outOfFiction)}>
-          <Text kind="lead">{L(S.consent.declined)}</Text>
-        </Page>
-      )
+    if (pre === 'declined') return <Declined ui={ui} />
     if (pre === 'consent')
       return (
-        <Page
-          surface="oof"
-          stepKey="consent"
-          oof={L(S.common.outOfFiction)}
-          demo={demo ? L(S.common.demoBadge) : undefined}
-          title={L(S.consent.panel.title)}
-          actions={
-            <>
-              <Button onClick={() => (langSet === 'choose' ? setPre('language') : begin(offered))}>
-                {L(S.consent.panel.agree)}
-              </Button>
-              <Button kind="secondary" onClick={() => setPre('declined')}>
-                {L(S.consent.panel.decline)}
-              </Button>
-            </>
-          }
-        >
-          <List items={S.consent.panel.points.map(L)} />
-        </Page>
+        <Consent
+          ui={ui}
+          demo={demo}
+          onAgree={() => (langSet === 'choose' ? setPre('language') : begin(offered))}
+          onDecline={() => setPre('declined')}
+        />
       )
-    return <LanguageStep ui={ui} demo={demo} langSet={langSet} offered={offered} onChoose={begin} />
+    return <LanguageStep ui={ui} demo={demo} onChoose={begin} />
   }
 
-  if (finished)
-    return (
-      <Page
-        surface="oof"
-        stepKey="finished"
-        oof={L(S.common.outOfFiction)}
-        demo={demo ? L(S.common.demoBadge) : undefined}
-        title={L(S.wrap.submit.title)}
-      >
-        <Notice kind="ok">
-          {finished === 'submitted' ? L(S.wrap.submit.submitted) : L(S.wrap.submit.withdrawn)}
-        </Notice>
-      </Page>
-    )
+  if (finished) return <Finished ui={ui} demo={demo} finished={finished} />
 
   const step = runner.current
   if (!step) return null
@@ -184,51 +143,5 @@ export function Play({
         setTick((t) => t + 1)
       }}
     />
-  )
-}
-
-function LanguageStep({
-  ui,
-  demo,
-  langSet,
-  offered,
-  onChoose,
-}: {
-  ui: Lang
-  demo: boolean
-  langSet: LangSet
-  offered: Lang[]
-  onChoose: (l: Lang[]) => void
-}) {
-  const L = (t: T) => t[ui]
-  const [v, setV] = useState<string | null>(null)
-  void langSet
-  void offered
-  return (
-    <Page
-      surface="oof"
-      stepKey="language"
-      oof={L(S.common.outOfFiction)}
-      demo={demo ? L(S.common.demoBadge) : undefined}
-      actions={
-        <Button
-          onClick={() => v && onChoose(v === 'both' ? ['en', 'hinglish'] : [v as Lang])}
-          disabled={!v}
-        >
-          {L(S.common.continue)}
-        </Button>
-      }
-    >
-      <Choice
-        legend={L(S.language.title)}
-        options={[
-          { id: 'en', text: L(S.language.en) },
-          { id: 'hinglish', text: L(S.language.hinglish) },
-          { id: 'both', text: L(S.language.both) },
-        ]}
-        value={v}
-        onChange={setV}
-      />
-    </Page>
   )
 }

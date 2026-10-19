@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { screens } from '../content'
 import { Disclosure } from './Disclosure'
+import { Consent } from './PreScreens'
 import type { T } from '../content/types'
 import { config, DEPLOYMENTS, type DeploymentId } from '../engine/config'
 import {
@@ -16,7 +17,7 @@ import { cryptoRng } from '../engine/rng'
 import { store, iso } from '../store'
 import { DEMO_SCHEDULE } from '../store/local'
 import type { Enrolment, Explanation, LangSet } from '../store/types'
-import { Button, Choice, Code, Field, Heading, Link, List, Notice, Page, Text } from '../ui'
+import { Button, Choice, Code, Field, Heading, Link, Notice, Page, Text } from '../ui'
 
 const S = screens
 const L = (t: T) => t.en
@@ -75,11 +76,20 @@ export function Home({ go }: { go: (hash: string) => void }) {
   )
 }
 
-export function Enrol({ firm }: { firm: string }) {
-  const [step, setStep] = useState<'four' | 'consent' | 'form' | 'done' | 'declined'>('four')
+type EnrolStep = 'four' | 'consent' | 'form' | 'done' | 'declined'
+
+/** `preview` opens the page at a later step, for the question walkthrough (scripts/walkthrough.ts). */
+export function Enrol({
+  firm,
+  preview,
+}: {
+  firm: string
+  preview?: { step: EnrolStep; done?: { code: string; e: Enrolment } }
+}) {
+  const [step, setStep] = useState<EnrolStep>(preview?.step ?? 'four')
   const [sex, setSex] = useState<string | null>(null)
   const [batch, setBatch] = useState<string | null>(null)
-  const [done, setDone] = useState<{ code: string; e: Enrolment } | null>(null)
+  const [done, setDone] = useState<{ code: string; e: Enrolment } | null>(preview?.done ?? null)
   const [err, setErr] = useState<string | null>(null)
   const schedule = firm === DEMO_SCHEDULE.firm ? DEMO_SCHEDULE : null
   if (step === 'four')
@@ -92,23 +102,13 @@ export function Enrol({ firm }: { firm: string }) {
     )
   if (step === 'consent')
     return (
-      <Page
-        surface="oof"
-        stepKey="enrol-consent"
-        oof={L(S.common.outOfFiction)}
-        demo={demoBadge}
-        title={L(S.consent.firm.title)}
-        actions={
-          <>
-            <Button onClick={() => setStep('form')}>{L(S.consent.firm.agree)}</Button>
-            <Button kind="secondary" onClick={() => setStep('declined')}>
-              {L(S.consent.firm.decline)}
-            </Button>
-          </>
-        }
-      >
-        <List items={S.consent.firm.points.map(L)} />
-      </Page>
+      <Consent
+        ui="en"
+        demo={config.demo}
+        firm
+        onAgree={() => setStep('form')}
+        onDecline={() => setStep('declined')}
+      />
     )
   if (step === 'form' || !done) {
     const submit = async () => {
@@ -200,14 +200,16 @@ export function Enrol({ firm }: { firm: string }) {
   )
 }
 
-export function Explain() {
+type ExplainState = {
+  kind: 'idle' | 'bad' | 'notYet' | 'open'
+  dep?: DeploymentId
+  date?: string
+  ex?: Explanation
+}
+
+export function Explain({ preview }: { preview?: ExplainState }) {
   const [code, setCode] = useState('')
-  const [state, setState] = useState<{
-    kind: 'idle' | 'bad' | 'notYet' | 'open'
-    dep?: DeploymentId
-    date?: string
-    ex?: Explanation
-  }>({ kind: 'idle' })
+  const [state, setState] = useState<ExplainState>(preview ?? { kind: 'idle' })
   const open = async () => {
     const c = normaliseCode(code)
     if (!validCode(c)) return setState({ kind: 'bad' })
@@ -255,9 +257,9 @@ export function Explain() {
   )
 }
 
-export function Withdraw() {
+export function Withdraw({ preview }: { preview?: 'idle' | 'bad' | 'done' | 'closed' }) {
   const [code, setCode] = useState('')
-  const [state, setState] = useState<'idle' | 'bad' | 'done' | 'closed'>('idle')
+  const [state, setState] = useState<'idle' | 'bad' | 'done' | 'closed'>(preview ?? 'idle')
   const go = async () => {
     const c = normaliseCode(code)
     if (!validCode(c)) return setState('bad')

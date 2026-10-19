@@ -17,7 +17,7 @@ export const iso = (ms: number) => new Date(ms + 5.5 * 3600_000).toISOString().s
 export const today = () => iso(demoNow())
 
 export function makeStore(): Store {
-  const kind = import.meta.env.VITE_STORE ?? 'local'
+  const kind = import.meta.env?.VITE_STORE ?? 'local'
   if (kind === 'emulator')
     return new FirebaseStore({
       apiKey: 'demo-key',
@@ -53,7 +53,7 @@ export function makeStore(): Store {
     /* The scoring explanation is never in the bundle. The demo dev server serves it from
        content/, where the seed script also reads it for the emulator. */
     async () => {
-      if (!import.meta.env.DEV) return null
+      if (!import.meta.env?.DEV) return null
       try {
         const r = await fetch('/content/explanation.json')
         return r.ok ? ((await r.json()) as Explanation[]) : null
