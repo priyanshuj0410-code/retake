@@ -68,10 +68,17 @@ async function answerScreeningFairly(page: Page) {
 async function playSession(
   page: Page,
   prefix: string,
-  opts: { fair?: boolean; only?: RegExp; stopAt?: RegExp; withdraw?: boolean } = {},
+  opts: {
+    fair?: boolean
+    only?: RegExp
+    stopAt?: RegExp
+    withdraw?: boolean
+    seen?: Set<string>
+  } = {},
 ) {
-  const seen = new Set<string>()
+  const seen = opts.seen ?? new Set<string>()
   let code = ''
+  let sawScreening = false
   for (let guard = 0; guard < 400; guard++) {
     const m = (await marker(page)) ?? 'unknown'
     if (m.endsWith(':code')) {
@@ -79,6 +86,7 @@ async function playSession(
       code = ((await page.locator('.code').textContent()) ?? '').trim()
     }
     const key = m.replace(/:\d+$/, '')
+    if (key.startsWith('screening')) sawScreening = true
     if (!seen.has(key) && (!opts.only || opts.only.test(key))) {
       seen.add(key)
       await shoot(
@@ -86,13 +94,16 @@ async function playSession(
         `${prefix}-${String(seen.size).padStart(2, '0')}-${key.replaceAll(':', '-')}`,
       )
     }
-    if (opts.stopAt && opts.stopAt.test(key)) return { code, seen }
+    if (opts.stopAt && opts.stopAt.test(key)) return { code, seen, partial: !sawScreening }
     if (m.startsWith('screening:screening') && opts.fair) await answerScreeningFairly(page)
     if (m === 'wrap:submit') {
       await step(page, { submit: !opts.withdraw, withdraw: opts.withdraw })
       await page.waitForSelector('[data-screen="finished"]')
-      await shoot(page, `${prefix}-zz-${opts.withdraw ? 'withdrawn' : 'submitted'}`)
-      return { code, seen }
+      if (!seen.has('finished')) {
+        seen.add('finished')
+        await shoot(page, `${prefix}-zz-${opts.withdraw ? 'withdrawn' : 'submitted'}`)
+      }
+      return { code, seen, partial: !sawScreening }
     }
     const before = await page.locator('[data-screen]').first().innerHTML()
     const moved = await step(page)
@@ -130,22 +141,20 @@ async function main() {
     await page.waitForSelector('[data-screen="home"]')
     await shoot(page, 'a-home')
 
-    /* Game 1, bilingual: the first-half cards, screening, survey, note, rounds after it, wrap. */
-    await startFromHome(page, /^Bilingual/, /^Panel, game 1$/)
-    await playSession(page, 'g1')
-
-    /* Game 1 again until a run reaches the M1-H privacy block (high scorers, a random half). */
-    let gotM1h = false
-    for (let i = 0; i < 12 && !gotM1h; i++) {
-      await startFromHome(page, /^English only/, /^Panel, game 1$/)
-      const r = await playSession(page, `g1m1h${i}`, {
-        fair: true,
-        only: /^offTheRecord/,
-        stopAt: /^(note|after|wrap)/,
-      })
-      gotM1h = [...r.seen].some((k) => k.startsWith('offTheRecord'))
+    /* Game 1: runs until every branch has been met (plan v2 1.1): the low scorers' honest
+       survey, note and second half; the high scorers' Off the Record with M1-H's statement
+       route; R1's partial arms going straight to the wrap. Each screen is captured once. */
+    const g1seen = new Set<string>()
+    const branches = { low: false, m1h: false, partial: false }
+    for (let i = 0; i < 24 && !(branches.low && branches.m1h && branches.partial); i++) {
+      await startFromHome(page, i === 0 ? /^Bilingual/ : /^English only/, /^Panel, game 1$/)
+      const r = await playSession(page, 'g1', { fair: i % 2 === 1, seen: g1seen })
+      branches.low ||= g1seen.has('note:note')
+      branches.m1h ||= g1seen.has('offTheRecord:m1h-direct')
+      branches.partial ||= r.partial
     }
-    if (!gotM1h) problems.push('no Game 1 run reached the M1-H route in 12 tries')
+    if (!branches.low || !branches.m1h)
+      problems.push(`game 1 branches not all met: ${JSON.stringify(branches)}`)
 
     /* Game 2, Hinglish: format practice, private diary, Committee Inbox, truthful-message arm. */
     await startFromHome(page, /^Hinglish only/, /^Panel, game 2$/)

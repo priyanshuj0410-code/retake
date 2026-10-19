@@ -24,7 +24,10 @@ export function timeFields(o: unknown, path = ''): string[] {
   if (o === null || typeof o !== 'object')
     return typeof o === 'number' && o > 1e11 ? [`${path} looks like an epoch time`] : []
   return Object.entries(o as Record<string, unknown>).flatMap(([k, v]) => [
-    ...(TIME_KEY.test(k) && !/^\d+$/.test(k) ? [`${path}/${k}`] : []),
+    /* Record keys are random or code-derived ids, not field names. */
+    ...(TIME_KEY.test(k) && !/^\d+$/.test(k) && !/^([0-9a-z]{28}|[0-9a-f]{32})$/.test(k)
+      ? [`${path}/${k}`]
+      : []),
     ...timeFields(v, `${path}/${k}`),
   ])
 }

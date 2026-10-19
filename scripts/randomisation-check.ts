@@ -151,23 +151,24 @@ export async function run() {
             fail(`${dep} ${p.card.id}: all-baseline presentation`)
       }
       const rm = formA(s).filter((p) => p.rematch)
-      if ((d.formA.rematch ?? 0) > 0) {
-        if (rm.length !== 1) fail(`${dep}: one rematch`)
-        else {
-          const src = A.find((p) => p.card.id === rm[0].card.id)
-          if (
-            !src ||
-            rm[0].start.join() !== src.start.slice().reverse().join() ||
-            JSON.stringify(rm[0].chars) !== JSON.stringify(src.chars)
-          )
-            fail(`${dep}: rematch has the same characters and its order flipped`)
-          const order = formA(s)
-          if (
-            order.findIndex((p) => p.rematch) <=
-            order.findIndex((p) => p.card.id === rm[0].card.id && !p.rematch)
-          )
-            fail(`${dep}: rematch returns later`)
-        }
+      const want = d.formA.rematch ?? 0
+      if (rm.length !== want) fail(`${dep}: ${rm.length} rematches, want ${want}`)
+      if (d.rematchFamily && rm.some((p) => p.family !== d.rematchFamily))
+        fail(`${dep}: rematch family`)
+      if (new Set(rm.map((p) => p.card.id)).size !== rm.length)
+        fail(`${dep}: rematches of distinct cards`)
+      const order = formA(s)
+      for (const r of rm) {
+        const src = A.find((p) => p.card.id === r.card.id)
+        if (
+          !src ||
+          r.start.join() !== src.start.slice().reverse().join() ||
+          JSON.stringify(r.chars) !== JSON.stringify(src.chars)
+        )
+          fail(`${dep}: a rematch has the same characters and its order flipped`)
+        const at = order.findIndex((p) => p.card.id === r.card.id && !p.rematch)
+        const back = order.indexOf(r)
+        if (back <= at + 1) fail(`${dep}: a rematch returns later, not next to its first showing`)
       }
     }
   }
@@ -338,12 +339,17 @@ export async function run() {
   )
   const g2 = config.deployments['panel-g2'].notes
   pTest(
-    'game 2: low scorers drawn to note a or b as configured',
-    gof(notes('panel-g2', 'low', ['a', 'b']), [g2.low?.a ?? 0, g2.low?.b ?? 0]),
+    'game 2: every player drawn to note a or b as configured, unstratified',
+    gof(notes('panel-g2', 'low', ['a', 'b']), [g2.all?.a ?? 0, g2.all?.b ?? 0]),
   )
-  pTest(
-    'game 2: high scorers drawn to note a or b as configured',
-    gof(notes('panel-g2', 'high', ['a', 'b']), [g2.high?.a ?? 0, g2.high?.b ?? 0]),
+  record(
+    T,
+    'game 2: the note does not depend on any answer (no screening block)',
+    sessions['panel-g2'].every(
+      (s) =>
+        routeAndNote(s, 'low').note === routeAndNote(s, 'high').note &&
+        routeAndNote(s, null).note === routeAndNote(s, 'low').note,
+    ),
   )
   const high = sessions['panel-g1']
     .filter((s) => s.draws.arm === 'FULL')
@@ -357,15 +363,20 @@ export async function run() {
   )
   record(
     T,
-    'note c is drawn for low scorers only',
-    sessions['panel-g1'].every((s) => routeAndNote(s, 'high').note !== 'c'),
+    'high scorers receive no note; note c is drawn for low scorers only',
+    sessions['panel-g1'].every((s) => routeAndNote(s, 'high').note === null),
   )
   record(
     T,
-    'partial-arm players receive note b',
+    'partial-arm players go from form A to the wrap: no screening, no note',
     sessions['panel-g1']
       .filter((s) => s.draws.arm !== 'FULL')
-      .every((s) => routeAndNote(s, 'low').note === 'b'),
+      .every(
+        (s) =>
+          routeAndNote(s, null).route === 'partial' &&
+          routeAndNote(s, null).note === null &&
+          !s.phase1.some((st) => st.kind === 'screening'),
+      ),
   )
   const sub = sessions['panel-g2'].map((s) => s.draws.xwSub)
   pTest(

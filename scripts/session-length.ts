@@ -1,7 +1,7 @@
 /**
  * The session-length estimator at 25 s a card (research plan v1, 4.2; plan-scripts/cap_fit.py's
  * timing model): every game must fit the 30-minute cap on its longest route. Run alone with
- * `pnpm length` for the act-by-act table, at the configured counts and at plan v1's targets.
+ * `pnpm length` for the act-by-act table, at the configured counts and at the research plan's targets (content/config.json, targets).
  */
 import { config, DEPLOYMENTS } from '../src/engine/config'
 import { enrolmentEstimate, estimate, longest } from '../src/engine/length'
@@ -28,7 +28,9 @@ export async function run(print = false) {
         for (const a of e.acts)
           console.log(`    ${a.act.padEnd(52)} ${String(Math.round(a.seconds)).padStart(5)} s`)
       }
-      console.log(`  at plan v1's targets: ${min(target.total)}`)
+      console.log(
+        `  at the research plan's targets (content/config.json, targets): ${min(target.total)}`,
+      )
     }
   }
   const enrol = enrolmentEstimate().reduce((s, a) => s + a.seconds, 0)

@@ -34,7 +34,7 @@ export const formCards = (f: FormCounts, baseline = config.baselinePerFamily) =>
 }
 
 const cardTime = (n: number, secondsPerCard: number) =>
-  n * secondsPerCard + Math.ceil(n / config.ordinaryPerPeopleCards) * t('ordinary')
+  n * secondsPerCard + Math.floor(n / config.ordinaryPerPeopleCards) * t('ordinary')
 
 export function estimate(
   dep: DeploymentId,
@@ -48,6 +48,7 @@ export function estimate(
   const b = bankCounts()
   const surveyAnswers = b.surveyItems + b.surveyRepeats
   const firm = dep === 'firm'
+  const hasNote = Object.keys(d.notes).length > 0
 
   const start: ActTime = {
     act: '0 start',
@@ -64,7 +65,7 @@ export function estimate(
       : 0,
   }
   const survey1: ActTime = {
-    act: '4 survey, first half',
+    act: '4 survey, first half (honest)',
     seconds: d.surveyFirstHalf ? surveyAnswers * t('surveyItem') : 0,
   }
   const practice =
@@ -76,21 +77,18 @@ export function estimate(
   const m1hRoute =
     (b.m1hControls + b.m1hStatements) * t('crosswiseItem') + b.m1hStatements * t('directItem')
   const m3Route = (b.m3Items + b.rcItems) * t('crosswiseItem')
-  const otrRoute = d.offTheRecord === 'm1h' ? m1hRoute : d.offTheRecord === 'm3' ? m3Route : 0
   const inboxAct: ActTime = {
     act: '6 Committee Inbox',
     seconds: inbox > 0 ? t('contentNote') + inbox * t('inbox') : 0,
   }
-  const note: ActTime = {
-    act: '7 mid-season note',
-    seconds: Object.keys(d.notes).length > 0 ? t('note') : 0,
-  }
+  const note: ActTime = { act: '7 mid-season note', seconds: hasNote ? t('note') : 0 }
   const second: ActTime = {
     act: '8 rounds after the note (form B), survey, recall',
-    seconds:
-      cardTime(nB, secondsPerCard) +
-      (d.surveySecondHalf ? surveyAnswers * t('surveyItem') : 0) +
-      (Object.keys(d.notes).length > 0 ? t('recall') : 0),
+    seconds: hasNote
+      ? cardTime(nB, secondsPerCard) +
+        (d.surveySecondHalf ? surveyAnswers * t('surveyItem') : 0) +
+        t('recall')
+      : 0,
   }
   const direct: ActTime = {
     act: '8 direct block',
@@ -107,42 +105,48 @@ export function estimate(
       (firm ? 3 : 4) * t('demographicItem') +
       t('submit'),
   }
-
-  const build = (route: string, otr: number, skipSecond: boolean): Estimate => {
-    const acts = [
-      start,
-      tutorial,
-      actA,
-      screening,
-      survey1,
-      { act: '5 Off the Record', seconds: otr },
-      inboxAct,
-      skipSecond ? { ...note, seconds: 0 } : note,
-      firm ? direct : skipSecond ? { ...second, seconds: 0 } : second,
-      wrap,
-    ].filter((a) => a.seconds > 0)
+  const build = (route: string, acts: ActTime[], cards: number): Estimate => {
+    const kept = acts.filter((a) => a.seconds > 0)
     return {
       deployment: dep,
       route,
-      acts,
-      total: acts.reduce((s, a) => s + a.seconds, 0),
-      peopleCards: nA + (skipSecond || firm ? 0 : nB),
+      acts: kept,
+      total: kept.reduce((s, a) => s + a.seconds, 0),
+      peopleCards: cards,
     }
   }
-
-  if (d.offTheRecord === 'm1h' && d.m1hSkipsSecondHalf) {
-    /* Plan v1 4.4 alternative (A): no act-4 padding, and M1-H's players skip the second half.
-       Every other player has no crosswise item in this game, so no Off the Record either. */
+  if (d.screening) {
+    /* Game 1's three branches (plan v2 1.1). */
     return [
-      build('M1-H route (skips the second half)', practice + m1hRoute, true),
-      build('every other route (no Off the Record)', 0, false),
+      build(
+        'low scorers (M1-L)',
+        [start, tutorial, actA, screening, survey1, note, second, wrap],
+        nA + nB,
+      ),
+      build(
+        'high scorers (M1-H route, others padded to it)',
+        [
+          start,
+          tutorial,
+          actA,
+          screening,
+          { act: '5 Off the Record', seconds: practice + m1hRoute },
+          wrap,
+        ],
+        nA,
+      ),
+      build("R1's partial arms", [start, tutorial, actA, wrap], nA),
     ]
+  }
+  const otr: ActTime = {
+    act: '5 Off the Record',
+    seconds: d.offTheRecord === 'm3' ? practice + m3Route : 0,
   }
   return [
     build(
-      d.offTheRecord === 'none' ? 'the one route' : 'every route, padded to the longest',
-      d.offTheRecord === 'none' ? 0 : practice + otrRoute,
-      false,
+      'every player',
+      [start, tutorial, actA, otr, inboxAct, note, firm ? direct : second, wrap],
+      nA + (hasNote ? nB : 0),
     ),
   ]
 }

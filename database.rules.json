@@ -99,7 +99,7 @@
           "v": { ".validate": "newData.isString() && newData.val().length <= 40" },
           "langs": { ".validate": "newData.val() == 'en' || newData.val() == 'hinglish' || newData.val() == 'both'" },
           "arm": { ".validate": "newData.val() == 'FULL' || newData.val() == 'PARTIAL-G' || newData.val() == 'PARTIAL-A'" },
-          "route": { ".validate": "newData.val() == 'm1h' || newData.val() == 'standard' || newData.val() == 'partial'" },
+          "route": { ".validate": "newData.val() == 'm1h' || newData.val() == 'high' || newData.val() == 'standard' || newData.val() == 'partial'" },
           "note": { ".validate": "newData.val() == 'a' || newData.val() == 'b' || newData.val() == 'c'" },
           "split": { ".validate": "newData.val() == 'low' || newData.val() == 'high'" },
           "m5": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 3" },

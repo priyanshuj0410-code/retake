@@ -62,7 +62,8 @@ export class Runner {
     this.firm = firm
     this.session = createSession(rng, dep, langs)
     this.steps = this.session.phase1.slice()
-    if (!config.deployments[dep].screening) this.extend()
+    /* With no screening block in this session (game 2, the firm, R1's partial arms), phase two follows at once. */
+    if (!this.steps.some((st) => st.kind === 'screening')) this.extend()
   }
 
   get current(): Step | undefined {
@@ -75,9 +76,8 @@ export class Runner {
 
   /** Builds phase two once the screening block is answered (or at once, with no screening block). */
   private extend() {
-    if (config.deployments[this.dep].screening) {
+    if (this.steps.some((st) => st.kind === 'screening'))
       this.split = splitOf(screeningScore(this.screening))
-    }
     const r = routeAndNote(this.session, this.split)
     this.route = r.route
     this.note = r.note
@@ -125,7 +125,9 @@ export class Runner {
         this.answers.xw.push({ i: s.item.id, purpose: s.purpose, a: value as 'same' | 'different' })
         break
       case 'm1h-direct':
-        this.record({ k: 'm1h-direct', i: s.item.id, v: value ? 'true' : 'false' })
+        /* Neutral padding items are answered and discarded, as in the crosswise half. */
+        if (xw.m1hStatements.some((i) => i.id === s.item.id))
+          this.record({ k: 'm1h-direct', i: s.item.id, v: value ? 'true' : 'false' })
         break
       case 'inbox': {
         const v = value as { label: number; action: string }
@@ -227,6 +229,9 @@ export class Runner {
       meta.batchMonth = this.firm.batchMonth
       meta.sex = this.firm.sex
     }
+    /* Game 1's high scorers outside M1-H answer neutral items only: none of their crosswise
+       answers is stored, so no record marks the route. */
+    if (this.route === 'high') this.answers.xw = []
     return buildSubmission({
       keys: this.keys,
       meta,

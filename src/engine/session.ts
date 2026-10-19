@@ -12,7 +12,7 @@
 import { inboxBank, ordinaryBank, screeningItems, surveyItems, directItems, xw } from '../content'
 import type { CrosswiseItem, Lang, OrdinaryDecision, SurveyItem } from '../content/types'
 import { config, type DeploymentId, type NoteId, type R1Arm } from './config'
-import { present, rematchOf, selectCards, type Presented } from './layout'
+import { present, rematchesOf, selectCards, type Presented } from './layout'
 import type { Rng } from './rng'
 
 export type Act =
@@ -64,7 +64,7 @@ export type Step =
   | { kind: 'submit'; act: Act }
 
 export type Split = 'low' | 'high'
-export type Route = 'm1h' | 'standard' | 'partial'
+export type Route = 'm1h' | 'high' | 'standard' | 'partial'
 
 export interface Draws {
   arm: R1Arm
@@ -126,13 +126,16 @@ export function createSession(rng: Rng, dep: DeploymentId, langs: Lang[]): Sessi
 
   const slotsA = selectCards(rng, d.formA, 'A', conductBank, fillers)
   let formA = rng.shuffle(present(rng, slotsA, { form: 'A', langs, arm, fillers }))
-  if ((d.formA.rematch ?? 0) > 0) {
-    const rm = rematchOf(rng, formA.slice(0, Math.max(1, formA.length - 3)))
-    if (rm) {
-      /* The rematch returns late in form A, after its source card and never next to it. */
+  /* Rematches: cue-carrying form A cards that return late in form A with the same characters
+     and their starting order flipped, never next to their first showing. Scored by no claim
+     (plan v2: none in the panel games; two conduct cards in the firm, for S5's guard). */
+  const nRematch = d.formA.rematch ?? 0
+  if (nRematch > 0) {
+    const early = formA.slice(0, Math.max(1, formA.length - 3))
+    for (const rm of rematchesOf(rng, early, nRematch, d.rematchFamily)) {
       const at = formA.findIndex((p) => p.card.id === rm.card.id && !p.rematch)
       const lo = Math.max(at + 2, Math.floor(formA.length * 0.6))
-      const pos = lo + rng.int(Math.max(1, formA.length - lo + 1))
+      const pos = Math.min(formA.length, lo + rng.int(Math.max(1, formA.length - lo + 1)))
       formA = [...formA.slice(0, pos), rm, ...formA.slice(pos)]
     }
   }
@@ -177,7 +180,7 @@ export function createSession(rng: Rng, dep: DeploymentId, langs: Lang[]): Sessi
     n: i,
   }))
   phase1.push(...interleave(peopleA, ordinaryQueue, 'season'))
-  if (d.screening) {
+  if (d.screening && arm === 'FULL') {
     phase1.push({ kind: 'intro', act: 'screening', which: 'screening' })
     for (const s of screeningItems) phase1.push({ kind: 'screening', act: 'screening', id: s.id })
   }
@@ -204,7 +207,12 @@ export function splitOf(score: number): Split {
   return score < config.split.lowBelow ? 'low' : 'high'
 }
 
-/** The registered route and note rules, applied with the uniforms drawn at the start. */
+/**
+ * The registered route and note rules (plan v2 1.1), applied with the uniforms drawn at entry.
+ * Game 1: R1's partial arms go to the wrap; high scorers to Off the Record, a random share of
+ * them on M1-H's statement route; low scorers to the note (faking or honest retake) and the
+ * second half. Game 2 and the firm have one route; game 2's note is drawn 1:1, unstratified.
+ */
 export function routeAndNote(
   s: Session,
   split: Split | null,
@@ -221,16 +229,80 @@ export function routeAndNote(
     }
     return entries[entries.length - 1][0]
   }
-  if (Object.keys(d.notes).length === 0) return { route: 'standard', note: null, rc: false }
-  if (s.draws.arm !== 'FULL')
-    return { route: 'partial', note: pickNote(d.notes.partial), rc: false }
   const rc = d.offTheRecord === 'm3' && s.draws.uRc < config.rc.share
-  if (d.offTheRecord === 'm1h' && split === 'high' && s.draws.uRoute < config.m1h.share)
-    return { route: 'm1h', note: pickNote(d.notes.m1h), rc }
-  return { route: 'standard', note: pickNote(split ? d.notes[split] : undefined), rc }
+  if (s.draws.arm !== 'FULL') return { route: 'partial', note: null, rc: false }
+  if (d.screening) {
+    if (split === 'high')
+      return { route: s.draws.uRoute < config.m1h.share ? 'm1h' : 'high', note: null, rc: false }
+    return { route: 'standard', note: pickNote(d.notes.low), rc: false }
+  }
+  return { route: 'standard', note: pickNote(d.notes.all), rc }
 }
 
-/** Phase two: everything after the screening block. */
+function offTheRecord(route: Route, rc: boolean, rng: Rng, kind: 'm1h' | 'm3'): Step[] {
+  const out: Step[] = []
+  out.push({ kind: 'intro', act: 'offTheRecord', which: 'otr' })
+  out.push({ kind: 'intro', act: 'offTheRecord', which: 'xw-direct' })
+  for (const item of xw.practice.direct) out.push({ kind: 'xw-direct', act: 'offTheRecord', item })
+  out.push({ kind: 'intro', act: 'offTheRecord', which: 'xw-practice' })
+  const practice = [...xw.practice.direct, ...xw.practice.crosswise].slice(0, 3)
+  for (const item of practice)
+    out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'practice', fictional: true })
+  out.push({ kind: 'intro', act: 'offTheRecord', which: 'xw-items' })
+  out.push({
+    kind: 'xw',
+    act: 'offTheRecord',
+    item: xw.anchor,
+    purpose: 'anchor',
+    fictional: false,
+  })
+  out.push({
+    kind: 'xw',
+    act: 'offTheRecord',
+    item: xw.knownZero,
+    purpose: 'zero',
+    fictional: false,
+  })
+  /* Every route is filled to the same number of screens with neutral privacy items. */
+  const neutral = rng.shuffle(xw.neutral)
+  const pad = (n: number) =>
+    neutral
+      .splice(0, n)
+      .map(
+        (item) =>
+          ({ kind: 'xw', act: 'offTheRecord', item, purpose: 'neutral', fictional: false }) as Step,
+      )
+  if (kind === 'm1h') {
+    if (route === 'm1h') {
+      for (const item of xw.m1hControls)
+        out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'control', fictional: false })
+      for (const item of xw.m1hStatements)
+        out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'm1h', fictional: false })
+      out.push({ kind: 'intro', act: 'offTheRecord', which: 'm1h-direct' })
+      for (const item of xw.m1hStatements)
+        out.push({ kind: 'm1h-direct', act: 'offTheRecord', item })
+    } else {
+      /* Neutral items in the crosswise format for the crosswise half, and answered directly
+         for the direct half, so both routes have the same screens and the same formats. */
+      out.push(...pad(xw.m1hControls.length))
+      const twelve = neutral.splice(0, xw.m1hStatements.length)
+      for (const item of twelve)
+        out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'neutral', fictional: false })
+      out.push({ kind: 'intro', act: 'offTheRecord', which: 'm1h-direct' })
+      for (const item of twelve) out.push({ kind: 'm1h-direct', act: 'offTheRecord', item })
+    }
+  } else {
+    for (const item of xw.m3Items)
+      out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'm3', fictional: false })
+    if (rc)
+      for (const item of xw.rcItems)
+        out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'rc', fictional: false })
+    else out.push(...pad(xw.rcItems.length))
+  }
+  return out
+}
+
+/** Phase two: everything after form A (and the screening block, where there is one). */
 export function phase2(
   s: Session,
   route: Route,
@@ -240,110 +312,52 @@ export function phase2(
 ): Step[] {
   const d = config.deployments[s.dep]
   const out: Step[] = []
-  if (d.surveyFirstHalf) {
-    out.push({ kind: 'intro', act: 'survey', which: 'survey' })
-    for (const [i, item] of s.surveyOrder.first.entries())
-      out.push({ kind: 'survey', act: 'survey', item, admin: 1, second: i >= surveyItems.length })
-  }
-
-  const skipSecond = d.offTheRecord === 'm1h' && d.m1hSkipsSecondHalf && route === 'm1h'
-  const runOtr =
-    d.offTheRecord === 'm3' ||
-    (d.offTheRecord === 'm1h' && (route === 'm1h' || !d.m1hSkipsSecondHalf))
-  if (runOtr) {
-    out.push({ kind: 'intro', act: 'offTheRecord', which: 'otr' })
-    out.push({ kind: 'intro', act: 'offTheRecord', which: 'xw-direct' })
-    for (const item of xw.practice.direct)
-      out.push({ kind: 'xw-direct', act: 'offTheRecord', item })
-    out.push({ kind: 'intro', act: 'offTheRecord', which: 'xw-practice' })
-    const practice = [...xw.practice.direct, ...xw.practice.crosswise].slice(0, 3)
-    for (const item of practice)
-      out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'practice', fictional: true })
-    out.push({ kind: 'intro', act: 'offTheRecord', which: 'xw-items' })
-    out.push({
-      kind: 'xw',
-      act: 'offTheRecord',
-      item: xw.anchor,
-      purpose: 'anchor',
-      fictional: false,
-    })
-    out.push({
-      kind: 'xw',
-      act: 'offTheRecord',
-      item: xw.knownZero,
-      purpose: 'zero',
-      fictional: false,
-    })
-    /* Every route is filled to the same number of screens with neutral privacy items. */
-    const neutral = rng.shuffle(xw.neutral)
-    const pad = (n: number) =>
-      neutral.splice(0, n).map(
-        (item) =>
-          ({
-            kind: 'xw',
-            act: 'offTheRecord',
+  if (route === 'm1h' || route === 'high') out.push(...offTheRecord(route, false, rng, 'm1h'))
+  if (route === 'standard') {
+    if (d.surveyFirstHalf) {
+      out.push({ kind: 'intro', act: 'survey', which: 'survey' })
+      for (const [i, item] of s.surveyOrder.first.entries())
+        out.push({ kind: 'survey', act: 'survey', item, admin: 1, second: i >= surveyItems.length })
+    }
+    if (d.offTheRecord === 'm3') out.push(...offTheRecord(route, rc, rng, 'm3'))
+    if (s.inbox.length > 0) {
+      out.push({ kind: 'intro', act: 'inbox', which: 'inbox' })
+      for (const i of s.inbox) out.push({ kind: 'inbox', act: 'inbox', id: i.id, lang: i.lang })
+    }
+    if (note) {
+      out.push({ kind: 'note', act: 'note', note })
+      const peopleB: Step[] = s.formB.map((p, i) => ({
+        kind: 'people',
+        act: 'after',
+        p,
+        n: 1000 + i,
+      }))
+      out.push(...interleave(peopleB, s.ordinaryQueue, 'after'))
+      if (d.surveySecondHalf) {
+        out.push({ kind: 'intro', act: 'after', which: 'survey' })
+        for (const [i, item] of s.surveyOrder.second.entries())
+          out.push({
+            kind: 'survey',
+            act: 'after',
             item,
-            purpose: 'neutral',
-            fictional: false,
-          }) as Step,
-      )
-    if (d.offTheRecord === 'm1h') {
-      const longest = xw.m1hControls.length + xw.m1hStatements.length
-      if (route === 'm1h') {
-        for (const item of xw.m1hControls)
-          out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'control', fictional: false })
-        for (const item of xw.m1hStatements)
-          out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'm1h', fictional: false })
-        out.push({ kind: 'intro', act: 'offTheRecord', which: 'm1h-direct' })
-        for (const item of xw.m1hStatements)
-          out.push({ kind: 'm1h-direct', act: 'offTheRecord', item })
-      } else {
-        out.push(...pad(longest))
+            admin: 2,
+            second: i >= surveyItems.length,
+          })
       }
-    } else {
-      for (const item of xw.m3Items)
-        out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'm3', fictional: false })
-      if (rc)
-        for (const item of xw.rcItems)
-          out.push({ kind: 'xw', act: 'offTheRecord', item, purpose: 'rc', fictional: false })
-      else out.push(...pad(xw.rcItems.length))
+      out.push({ kind: 'recall', act: 'after' })
+    }
+    if (d.directBlock) {
+      out.push({ kind: 'intro', act: 'direct', which: 'direct' })
+      for (const [i, item] of s.surveyOrder.direct.entries())
+        out.push({
+          kind: 'survey',
+          act: 'direct',
+          item,
+          admin: 'direct',
+          second: i >= directItems.length,
+        })
     }
   }
-
-  if (s.inbox.length > 0) {
-    out.push({ kind: 'intro', act: 'inbox', which: 'inbox' })
-    for (const i of s.inbox) out.push({ kind: 'inbox', act: 'inbox', id: i.id, lang: i.lang })
-  }
-
-  if (note && !skipSecond) {
-    out.push({ kind: 'note', act: 'note', note })
-    const peopleB: Step[] = s.formB.map((p, i) => ({
-      kind: 'people',
-      act: 'after',
-      p,
-      n: 1000 + i,
-    }))
-    out.push(...interleave(peopleB, s.ordinaryQueue, 'after'))
-    if (d.surveySecondHalf) {
-      out.push({ kind: 'intro', act: 'after', which: 'survey' })
-      for (const [i, item] of s.surveyOrder.second.entries())
-        out.push({ kind: 'survey', act: 'after', item, admin: 2, second: i >= surveyItems.length })
-    }
-    out.push({ kind: 'recall', act: 'after' })
-  }
-
-  if (d.directBlock) {
-    out.push({ kind: 'intro', act: 'direct', which: 'direct' })
-    for (const [i, item] of s.surveyOrder.direct.entries())
-      out.push({
-        kind: 'survey',
-        act: 'direct',
-        item,
-        admin: 'direct',
-        second: i >= directItems.length,
-      })
-  }
-
   out.push({ kind: 'probe', act: 'wrap' }, { kind: 'result', act: 'wrap' })
   out.push({ kind: 'prior', act: 'wrap', id: 'told' }, { kind: 'prior', act: 'wrap', id: 'heard' })
   if (s.dep === 'firm') out.push({ kind: 'prior', act: 'wrap', id: 'played' })

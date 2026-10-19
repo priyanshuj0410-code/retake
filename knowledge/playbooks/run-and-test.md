@@ -60,7 +60,7 @@ Text fields are `{ "en": ..., "hinglish": ... }`. Tokens in card texts: `{name}`
 |---|---|
 | `pnpm check` | Everything: types, lint, every acceptance test, the rules in the emulator, the browser run ([acceptance tests](../reference/acceptance-tests.md)) |
 | `pnpm check:fast` | Without the emulator (about 10 s) |
-| `pnpm length` | The session-length table, act by act, at 25 s a card, at the configured counts and at plan v1's targets |
+| `pnpm length` | The session-length table, act by act, at 25 s a card, at the configured counts and at the research plan's targets |
 | `pnpm rules`, `pnpm e2e` | The emulator parts alone |
 | `pnpm shots` | Screenshots of every act and page at 390 and 1440 px, light and dark, into `out/shots/` (git-ignored) with `index.txt` |
 
@@ -68,15 +68,19 @@ Text fields are `{ "en": ..., "hinglish": ... }`. Tokens in card texts: `{name}`
 
 ## 5. Session length (19 Oct 2026, 25 s a card)
 
-| Session | Longest route | At plan v1's targets |
-|---|---|---|
-| Panel game 1 | 29.4 min (36 people cards) | 37.5 min padded, 35.1 with alternative (A) |
-| Panel game 2 | 27.2 min (20 people cards) | 27.2 min |
-| Firm | 29.5 min (23 people cards, Inbox 42) | 31.3 min (Inbox 48) |
+The counts follow research plan v2 (1.1), which supersedes v1's (the panel as two games).
 
-Game 1 does not fit at plan v1's targets. To fit, the configuration uses plan v1 4.4's
-alternative (A), put to the applicant as Q-3 (M1-H's players skip the second half; nobody else
-has Off the Record in game 1), and gives NPT first in the registered card order (4 to 2
-cue-carrying cards, below E1-N's adjudicability floor of 4). The rematch is kept, as the brief
-requires. The firm's Inbox gives two cards at a time from 48 to 42. These are configuration
-values for plan v2 to settle.
+| Session | Longest route | Plan v2's figure (`cap_fit_v2.py 25`) |
+|---|---|---|
+| Panel game 1, low scorers (M1-L) | 29.8 min (37 people cards) | 29.86 min |
+| Panel game 1, high scorers (M1-H route; others padded to it) | 25.2 min | 25.27 min |
+| Panel game 1, R1's partial arms | 16.4 min | 16.43 min |
+| Panel game 2 (Inbox 24) | 30.0 min (29.97; 20 people cards) | 29.88 min |
+| Firm (two conduct rematch cards, Inbox 42) | 29.9 min (24 people cards) | 29.77 min at Inbox 44 |
+
+This build counts two screens `cap_fit_v2.py` does not: the content note before the Committee
+Inbox (15 s, a planning value of this build) and, in the firm, the direct block's four repeat
+pairs. Game 2 still fits at plan v2's 24 Inbox cards (with 2.5 s to spare); the firm does not
+fit at 44 (30.6 min), so its Inbox gives two cards, to 42 (21 and 21). Game 1 has no rematch
+card (plan v2 1.2: one would take the low branch to 30.3 minutes); the firm has two conduct
+rematch cards, each returning with its starting order flipped.

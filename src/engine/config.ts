@@ -1,5 +1,5 @@
 import raw from '../../content/config.json'
-import type { T } from '../content/types'
+import type { Family, T } from '../content/types'
 
 export type DeploymentId = 'panel-g1' | 'panel-g2' | 'firm'
 export const DEPLOYMENTS: DeploymentId[] = ['panel-g1', 'panel-g2', 'firm']
@@ -23,9 +23,9 @@ export interface DeploymentConfig {
   surveyFirstHalf: boolean
   surveySecondHalf: boolean
   offTheRecord: 'm1h' | 'm3' | 'none'
-  m1hSkipsSecondHalf?: boolean
   inbox: number
-  notes: Partial<Record<'low' | 'high' | 'partial' | 'm1h', Partial<Record<NoteId, number>>>>
+  notes: Partial<Record<'low' | 'all', Partial<Record<NoteId, number>>>>
+  rematchFamily?: Family
   directBlock: boolean
   r1?: Record<R1Arm, number>
   r1Fillers?: string[]

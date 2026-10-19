@@ -24,4 +24,4 @@ The app is the research instrument specified in the Sex Ed workspace's gated des
 
 ## Status (19 Oct 2026)
 
-Prototype v0, demo mode only: fictional content, seeded demo players, no participant data, nothing deployed.
+Prototype v0, demo mode only: fictional content, seeded demo players, no participant data, nothing deployed. Card counts follow research plan v2 (the panel as two games).
