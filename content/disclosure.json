@@ -19,10 +19,6 @@
     "hinglish": false
   },
   "season": {
-    "_note": "The season story (EVAL-4) shows each player an individual attitude rating, so registered sentence 3 ('Attitudes are read, for groups only.') is not true for it. Until the owner writes the new wording, sentence 3 is this interim line (owner decision, 19 Oct 2026), never a placeholder; sentences 1, 2 and 4 stay as registered. AWAITS THE OWNER'S WORDING. scripts/disclosure-check.ts holds all four.",
-    "sentence3": {
-      "en": "Attitudes are read; you see yours.",
-      "hinglish": "Attitudes padhe jaate hain; aapko apne dikhte hain."
-    }
+    "_note": "The season story (EVAL-4) shows each player an individual attitude rating, so registered sentence 3 ('Attitudes are read, for groups only.') is not true for it. Its interim line lives in src/engine/config.ts (seasonSentence3), with a code comment that it awaits the owner's wording; sentences 1, 2 and 4 stay as registered. scripts/disclosure-check.ts holds all four."
   }
 }

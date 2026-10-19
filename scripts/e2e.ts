@@ -216,8 +216,74 @@ async function main() {
     /* The season story (EVAL-4) on the real rules: its records, a profile and the
        stay-in-touch details are all accepted, and each holds only its whitelisted fields. */
     const T = 'X-14 season records (emulator, browser)'
+    /* A reload resumes (owner, 19 Oct 2026): at week one, mid-episode and on the result, the
+       same screen, words and faces come back (the same answers, the same draw). */
+    const R = 'X-17 a reload resumes the season (emulator, browser)'
+    const sig = () =>
+      page.evaluate(() => ({
+        screen: document.querySelector('[data-screen]')?.getAttribute('data-screen'),
+        text: (document.querySelector('main') as HTMLElement | null)?.innerText ?? '',
+        faces: [...document.querySelectorAll('.portrait')]
+          .map(
+            (e) =>
+              `${e.getAttribute('aria-label')} ${e.querySelector('img')?.getAttribute('src') ?? ''}`,
+          )
+          .join('|'),
+        act: document.querySelector('.page__act')?.textContent ?? '',
+      }))
+    const reloadSame = async (where: string) => {
+      const a = await sig()
+      await page.reload()
+      await page.waitForFunction(
+        (s) => document.querySelector('[data-screen]')?.getAttribute('data-screen') === s,
+        a.screen,
+        { timeout: 30000 },
+      )
+      await page.waitForTimeout(300)
+      const b = await sig()
+      const same = JSON.stringify(a) === JSON.stringify(b)
+      record(
+        R,
+        `${where}: a reload comes back on the same screen with the same words, faces and answers`,
+        same && !!a.screen && a.text.length > 0,
+        same
+          ? `${a.screen}`
+          : `${a.screen} -> ${b.screen}; ${a.text.slice(0, 80)} | ${b.text.slice(0, 80)}`,
+      )
+    }
+    let beats = 0
+    let weekOne = false
+    let midEpisode = false
     await page.goto('about:blank')
-    await playSeason(page, `http://localhost:${PORT}/#/play/${seasonToken}`)
+    await playSeason(page, `http://localhost:${PORT}/#/play/${seasonToken}`, async (m) => {
+      if (!m.startsWith('story:beat:')) return
+      beats += 1
+      const thenShown = (await page.locator('.then').count()) > 0
+      if (!weekOne) {
+        weekOne = true
+        await reloadSame('week one (a mascot card)')
+      } else if (!midEpisode && beats >= 12 && thenShown) {
+        midEpisode = true
+        await reloadSame('mid-episode (after the reveal, with the last consequence on screen)')
+      }
+    })
+    record(R, 'the reload points were reached (week one, mid-episode)', weekOne && midEpisode)
+    await reloadSame('the result')
+    record(
+      R,
+      'the same link on a reload after submit shows the result, not a refusal',
+      (await page.locator('[data-screen="story:result"]').count()) === 1 &&
+        (await page.getByRole('alert').count()) === 0,
+    )
+    const fresh = await browser.newPage({ viewport: { width: 390, height: 844 } })
+    await fresh.goto(`http://localhost:${PORT}/#/play/${seasonToken}`)
+    await fresh.getByRole('alert').waitFor({ timeout: 20000 })
+    record(
+      R,
+      'on another device the submitted link is refused (one-time rule)',
+      /already been used/.test((await fresh.getByRole('alert').textContent()) ?? ''),
+    )
+    await fresh.close()
     record(
       T,
       'a whole season plays to the result on the emulator',

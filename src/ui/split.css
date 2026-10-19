@@ -33,7 +33,7 @@
   min-width: var(--target);
   min-height: var(--target);
   border-radius: var(--radius-s);
-  border: var(--border) solid var(--c-ink-line);
+  border: var(--ink-frame) solid var(--c-ink-line);
   background: var(--c-surface);
   color: var(--c-text);
   font-family: var(--font-display);

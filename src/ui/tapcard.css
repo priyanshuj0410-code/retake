@@ -39,6 +39,7 @@
   transform: scale(var(--press));
 }
 .tapcard--on {
+  border-width: var(--ink-heavy);
   box-shadow: var(--shadow-chosen);
 }
 @media (hover: hover) {

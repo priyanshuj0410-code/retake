@@ -160,12 +160,49 @@ function contrast(a: string, b: string) {
 
 /* ---------- per component ---------- */
 
-async function demoBadge(page: Page) {
-  await forced(page, true)
-  const edge = await css(page, '.demo', 'border-top-style')
-  await forced(page, false)
-  rec('DemoBadge', 'forced colours: the strip keeps an edge', edge === 'solid', edge)
-  await stress(page, 'DemoBadge', '.demo')
+/* "Read the full details" (consent): hover, focus ring, Enter opens it with the full text. */
+async function details(page: Page) {
+  const sel = '.details__summary'
+  await hover(page, 'Details', sel, 'text-decoration-line')
+  await focusRing(page, 'Details', sel)
+  const h = (await page.locator(sel).first().boundingBox())?.height ?? 0
+  rec('Details', 'the summary is a 48 px target or more', h >= 48, `${h}`)
+  const closed = await page
+    .locator('.details')
+    .first()
+    .evaluate((e) => !(e as HTMLDetailsElement).open)
+  await page.keyboard.press('Enter')
+  const open = await page
+    .locator('.details')
+    .first()
+    .evaluate((e) => (e as HTMLDetailsElement).open)
+  const words = (await page.locator('.details__body').first().innerText()).split(/\s+/).length
+  rec(
+    'Details',
+    'closed at rest; Enter opens it, and the full text is inside',
+    closed && open && words > 60,
+    `${closed} ${open} ${words} words`,
+  )
+  await stress(page, 'Details', '.details')
+}
+
+/* The prototype line (owner, 19 Oct 2026): one quiet line on the landing screen only, AA. */
+async function prototypeLine(page: Page, base: string) {
+  await page.goto(base)
+  await page.waitForSelector('[data-screen="eligibility"]')
+  const lines = await page.locator('.page__footnote').allInnerTexts()
+  const fg = await css(page, '.page__footnote', 'color')
+  const bg = await css(page, '.page', 'background-color')
+  const r = contrast(fg, bg)
+  rec(
+    'Page',
+    'landing: one quiet prototype line, AA, and no demo badge',
+    lines.length === 1 &&
+      lines[0] === 'Prototype. Fictional people and stories; your answers stay in this browser.' &&
+      r >= 4.5 &&
+      (await page.locator('.demo').count()) === 0,
+    `${lines.join(' | ')} ${r.toFixed(2)}`,
+  )
 }
 
 async function button(page: Page) {
@@ -472,18 +509,21 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
   await page
     .context()
     .grantPermissions(['clipboard-read', 'clipboard-write'], { origin: new URL(base).origin })
+  await prototypeLine(page, base)
   await page.goto(`${base}#/dev`)
   await stress(page, 'Text', '.text')
   await stress(page, 'Heading', '.heading')
   await page.getByRole('radio', { name: /^English only/ }).check()
   await page.getByRole('button', { name: /^Panel, game 2$/ }).click()
-  await page.waitForSelector('[data-screen="demo"]')
+  await page.waitForSelector('[data-screen="disclosure"]')
   await button(page)
-  /* The press test clicks the button it presses; go on to the first screen with the demo chip
-     (the consent), whatever the layout put under the pointer. */
-  for (let i = 0; i < 3 && !(await page.locator('.demo').count()); i++)
+  /* The press test clicks the button it presses; go on to the consent, whatever the layout put
+     under the pointer. */
+  for (let i = 0; i < 3 && (await marker(page)) !== 'consent'; i++)
     await page.locator('.page__actions .button--primary').first().click()
-  await demoBadge(page)
+  await details(page)
+  const sawFootnote = await page.locator('.page__footnote, .demo').count()
+  rec('Page', 'consent: no demo badge and no prototype line (landing only)', sawFootnote === 0)
   const done = new Set<string>()
   let sessionCode = ''
   const grounds = new Map<string, string>()

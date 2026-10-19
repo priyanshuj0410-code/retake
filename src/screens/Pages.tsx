@@ -17,11 +17,10 @@ import { cryptoRng } from '../engine/rng'
 import { store, iso } from '../store'
 import { DEMO_SCHEDULE } from '../store/local'
 import type { Enrolment, Explanation, LangSet } from '../store/types'
-import { Button, Choice, Code, Field, Heading, Link, Notice, Page, Text } from '../ui'
+import { Button, Choice, Code, Field, Fold, Heading, Link, Notice, Page, Text } from '../ui'
 
 const S = screens
 const L = (t: T) => t.en
-const demoBadge = config.demo ? L(S.common.demoBadge) : undefined
 const DAY = 86_400_000
 
 /**
@@ -41,7 +40,7 @@ export function SeasonLanding({ go }: { go: (hash: string) => void }) {
     }
   }, [go])
   return (
-    <Page surface="oof" stepKey="landing" demo={demoBadge}>
+    <Page surface="oof" stepKey="landing">
       {msg ? <Notice kind="error">{msg}</Notice> : <Notice>…</Notice>}
     </Page>
   )
@@ -60,7 +59,7 @@ export function Home({ go }: { go: (hash: string) => void }) {
     }
   }
   return (
-    <Page surface="oof" stepKey="home" demo={demoBadge} title="Equal Lens Evaluator: prototype v0">
+    <Page surface="oof" stepKey="home" title="Equal Lens Evaluator: prototype v0">
       <Text>
         This page exists only in demo mode. In a study, a panel provider sends each player a
         one-time link, and a firm sends one generic enrolment link; no player sees this page.
@@ -131,13 +130,7 @@ export function Enrol({
     )
   if (step === 'consent')
     return (
-      <Consent
-        ui="en"
-        demo={config.demo}
-        firm
-        onAgree={() => setStep('form')}
-        onDecline={() => setStep('declined')}
-      />
+      <Consent ui="en" firm onAgree={() => setStep('form')} onDecline={() => setStep('declined')} />
     )
   if (step === 'form' || !done) {
     const submit = async () => {
@@ -162,7 +155,6 @@ export function Enrol({
         surface="oof"
         stepKey="enrol-form"
         oof={L(S.common.outOfFiction)}
-        demo={demoBadge}
         title={schedule?.name ?? firm}
         actions={
           <Button onClick={() => void submit()} disabled={!sex || !batch}>
@@ -209,7 +201,6 @@ export function Enrol({
       surface="oof"
       stepKey="enrol-done"
       oof={L(S.common.outOfFiction)}
-      demo={demoBadge}
       title={L(S.consent.firm.title)}
     >
       <Notice kind="ok">
@@ -256,16 +247,16 @@ export function Explain({ preview }: { preview?: ExplainState }) {
         surface="oof"
         stepKey="explain-open"
         oof={L(S.common.outOfFiction)}
-        demo={demoBadge}
         title={L(S.explain.title)}
       >
+        {/* One heading per section, each folded, so the page scans as a list; every
+            paragraph is one tap away (owner, 19 Oct 2026). */}
         {state.ex.sections.map((sec) => (
-          <section key={sec.heading.en}>
-            <Heading>{sec.heading.en}</Heading>
+          <Fold key={sec.heading.en} title={sec.heading.en}>
             {sec.body.map((b) => (
               <Text key={b.en}>{b.en}</Text>
             ))}
-          </section>
+          </Fold>
         ))}
       </Page>
     )
@@ -274,7 +265,6 @@ export function Explain({ preview }: { preview?: ExplainState }) {
       surface="oof"
       stepKey="explain"
       oof={L(S.common.outOfFiction)}
-      demo={demoBadge}
       title={L(S.explain.title)}
       actions={<Button onClick={() => void open()}>{L(S.explain.open)}</Button>}
     >
@@ -324,7 +314,6 @@ export function Withdraw({ preview }: { preview?: 'idle' | 'bad' | 'done' | 'clo
       surface="oof"
       stepKey={state === 'done' ? 'withdraw-done' : 'withdraw'}
       oof={L(S.common.outOfFiction)}
-      demo={demoBadge}
       title={L(S.withdraw.title)}
       actions={
         state === 'done' ? undefined : (

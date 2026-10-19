@@ -1,6 +1,6 @@
 /* @owns fold fold__summary fold__title fold__body */
 .fold {
-  border-top: var(--border) solid var(--c-text);
+  border-top: var(--ink-divider) solid var(--c-text);
 }
 .fold__summary {
   display: flex;

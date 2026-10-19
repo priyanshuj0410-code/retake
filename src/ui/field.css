@@ -2,7 +2,7 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-s);
+  gap: var(--field-gap);
 }
 .field__label {
   overflow-wrap: anywhere;
@@ -11,11 +11,11 @@
   color: var(--c-text);
 }
 .field__input {
-  min-height: var(--target);
+  min-height: var(--control);
   font-family: var(--font-mono);
   font-size: var(--text-lead);
   padding: var(--gap-s) var(--gap-m);
-  border: var(--border) solid var(--c-option-rest);
+  border: var(--ink-frame) solid var(--c-option-rest);
   border-radius: var(--radius-m);
   background: var(--c-surface);
   color: var(--c-text);

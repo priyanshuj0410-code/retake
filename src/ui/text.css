@@ -28,11 +28,11 @@
   font-family: var(--font-display);
   font-size: var(--text-h2);
   font-weight: var(--weight-display);
-  line-height: var(--leading-tight);
+  line-height: var(--leading-heading);
   color: var(--c-text);
-  margin: var(--gap-m) var(--gap-none) var(--gap-none);
+  margin: var(--heading-gap) var(--gap-none) var(--gap-none);
 }
 .heading--sub {
   font-size: var(--text-lead);
-  margin: var(--gap-s) var(--gap-none) var(--gap-none);
+  margin: var(--heading-gap) var(--gap-none) var(--gap-none);
 }

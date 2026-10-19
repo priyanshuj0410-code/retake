@@ -8,7 +8,7 @@
   margin: var(--gap-none);
   padding: var(--gap-l);
   border-radius: var(--radius-l);
-  border: var(--border) solid var(--c-accent);
+  border: var(--ink-frame) solid var(--c-accent);
   background: var(--c-surface);
   font-family: var(--font-display);
   font-size: var(--text-lead);

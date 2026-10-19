@@ -12,8 +12,8 @@ import json
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-MASCOTS = {"bear": "c0", "panda": "c1", "frog": "c1", "koala": "c0", "elephant": "c1", "penguin": "c1",
-           "rabbit": "c0", "tiger": "c0"}  # chosen by eye for matched framing and detail; reasons in README
+MASCOTS = {"bear": "c0", "panda": "c1", "frog": "c2", "koala": "c0", "elephant": "c1", "penguin": "c3",
+           "rabbit": "c0", "tiger": "c3"}  # chosen by eye for matched framing and detail; reasons in README
 
 
 def main():

@@ -74,10 +74,20 @@ export function seeded(seed: number): Rng {
   return sfc32(mix(), mix(), mix(), mix())
 }
 
-export function cryptoRng(): Rng {
+export type Seed = [number, number, number, number]
+
+/** A fresh 128-bit seed from the platform's cryptographic source. */
+export function cryptoSeed(): Seed {
   const s = new Uint32Array(4)
   crypto.getRandomValues(s)
-  return sfc32(s[0], s[1], s[2], s[3])
+  return [s[0], s[1], s[2], s[3]]
+}
+
+/** The generator a seed starts: the season keeps its seed so a reload redraws the same season. */
+export const fromSeed = (s: Seed): Rng => sfc32(s[0], s[1], s[2], s[3])
+
+export function cryptoRng(): Rng {
+  return fromSeed(cryptoSeed())
 }
 
 /** A random key for a stored record: 128 bits, base-36. Carries no time and no order. */

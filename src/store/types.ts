@@ -54,6 +54,11 @@ export interface Store {
   readonly kind: 'local' | 'emulator' | 'firebase'
   /** Spends a one-time token: issued to started. A started or done token is refused. */
   start(token: string): Promise<StartResult>
+  /**
+   * Reopens a token this device started and still holds in progress (a reload mid-session): a
+   * started token resumes, a done one is refused as used. Writes nothing.
+   */
+  resume(token: string): Promise<StartResult>
   /** Spends a firm enrolment for its one play session, inside its play window. */
   startEnrolment(enrolKey: string, today: string): Promise<StartResult & { enrolment?: Enrolment }>
   /** One write: the records (or none, for a player who withdraws at once), the code's key, and the token to done. */

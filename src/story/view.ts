@@ -13,6 +13,8 @@ export function colleagueView(
   c: CastMember,
   revealed: boolean,
   description?: string,
+  /** The mascot beside the face: on the reveal only, as the bridge; never after it. */
+  withInset = false,
 ): ColleagueView {
   const L = (t: T) => t[r.lang]
   const mascot = mascotLook(c)
@@ -30,21 +32,23 @@ export function colleagueView(
   return {
     look,
     figureLabel: lookLabel(c, look),
-    inset: mascot,
+    inset: withInset ? mascot : undefined,
     name: r.displayName(c.slot, true),
     cues,
     description,
   }
 }
 
-/** The cast as panels: mascots before the reveal, people (with the mascot inset) after it. */
+/** The cast as panels: mascots before the reveal, people after it (the reveal adds the mascot inset). */
 export function castTiles(
   r: StoryRunner,
   revealed: boolean,
   lines: (c: CastMember) => string[] = () => [],
+  /** The reveal shows each mascot beside its face once; nowhere else does. */
+  inset = false,
 ): CastTile[] {
   return r.cast.map((c) => {
-    const v = colleagueView(r, c, revealed)
+    const v = colleagueView(r, c, revealed, undefined, inset)
     return { look: v.look, label: v.figureLabel, inset: v.inset, name: v.name, lines: lines(c) }
   })
 }

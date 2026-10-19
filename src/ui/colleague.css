@@ -7,7 +7,7 @@
 }
 .colleague__face {
   display: block;
-  border-bottom: var(--edge) solid var(--c-ink-line);
+  border-bottom: var(--ink-divider) solid var(--c-ink-line);
 }
 .colleague--row {
   flex-direction: row;

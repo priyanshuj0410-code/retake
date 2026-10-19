@@ -55,7 +55,7 @@
   align-items: center;
   justify-content: center;
   width: var(--card-min);
-  border-right: var(--edge) solid var(--c-ink-line);
+  border-right: var(--ink-divider) solid var(--c-ink-line);
   background: var(--c-panel);
 }
 .storypick__text {

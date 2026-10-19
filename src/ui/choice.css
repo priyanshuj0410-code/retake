@@ -5,17 +5,17 @@
   padding: var(--gap-none);
   display: flex;
   flex-direction: column;
-  gap: var(--gap-s);
+  gap: var(--field-gap);
   min-width: 0;
 }
 .choice__legend {
   font-family: var(--font-display);
   font-size: var(--text-lead);
   font-weight: var(--weight-display);
-  line-height: var(--leading-tight);
+  line-height: var(--leading-ui);
   color: var(--c-text);
   padding: var(--gap-none);
-  margin-bottom: var(--gap-m);
+  margin-bottom: var(--legend-gap);
   max-width: 100%;
   overflow-wrap: anywhere;
 }
@@ -30,9 +30,9 @@
   display: flex;
   align-items: center;
   gap: var(--gap-m);
-  min-height: var(--target);
+  min-height: var(--control);
   padding: var(--gap-m) var(--gap-l);
-  border: var(--border) solid var(--c-option-rest);
+  border: var(--ink-frame) solid var(--c-option-rest);
   border-radius: var(--radius-m);
   background: var(--c-surface);
   cursor: pointer;

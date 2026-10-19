@@ -38,12 +38,12 @@
   "mascots": {
    "bear": "c0",
    "panda": "c1",
-   "frog": "c1",
+   "frog": "c2",
    "koala": "c0",
    "elephant": "c1",
-   "penguin": "c1",
+   "penguin": "c3",
    "rabbit": "c0",
-   "tiger": "c0"
+   "tiger": "c3"
   },
   "oneoffs": [
    "o100-w",

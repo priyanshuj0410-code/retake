@@ -6,7 +6,7 @@
  * asked, so the rules have a user id to hold a session's claim; the id is never written into
  * any record.
  */
-import { initializeApp, type FirebaseApp } from 'firebase/app'
+import { getApps, initializeApp, type FirebaseApp } from 'firebase/app'
 import { connectAuthEmulator, getAuth, signInAnonymously, type Auth } from 'firebase/auth'
 import {
   connectDatabaseEmulator,
@@ -50,10 +50,12 @@ export class FirebaseStore implements Store {
 
   constructor(s: FirebaseSettings) {
     this.kind = s.emulator ? 'emulator' : 'firebase'
-    this.app = initializeApp(
-      { apiKey: s.apiKey, projectId: s.projectId, databaseURL: s.databaseURL },
-      `eval-${Math.random()}`,
-    )
+    /* A stable app name: the anonymous sign-in is kept per app name, so a reload keeps the same
+       user id, and with it the claim that lets a resumed session submit. */
+    const name = `eval-${s.projectId}`
+    this.app =
+      getApps().find((a) => a.name === name) ??
+      initializeApp({ apiKey: s.apiKey, projectId: s.projectId, databaseURL: s.databaseURL }, name)
     this.db = getDatabase(this.app)
     this.auth = getAuth(this.app)
     if (s.emulator) {
@@ -91,6 +93,22 @@ export class FirebaseStore implements Store {
       return { ok: true, dep: t.dep, langs: t.langs }
     } catch (e) {
       return { ok: false, reason: String(e).includes('PERMISSION_DENIED') ? 'used' : 'offline' }
+    }
+  }
+
+  /* The claim written at the start stays under this device's anonymous user id, which the SDK
+     keeps across a reload, so submit is still allowed by the rules. */
+  async resume(token: string): Promise<StartResult> {
+    try {
+      const t = await this.read<{ dep: DeploymentId; langs: LangSet; s: string }>(
+        `eval-tokens/${token}`,
+      )
+      if (!t) return { ok: false, reason: 'unknown' }
+      if (t.s !== 'started') return { ok: false, reason: 'used' }
+      this.claimed = { tok: token }
+      return { ok: true, dep: t.dep, langs: t.langs }
+    } catch {
+      return { ok: false, reason: 'offline' }
     }
   }
 

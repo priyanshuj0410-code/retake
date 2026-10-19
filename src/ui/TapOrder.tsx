@@ -6,6 +6,10 @@ import './tapcard.css'
 
 export interface TapOrderLabels {
   hint: string
+  /** The confirm button once every card is stamped: "Lock in this order". */
+  lock: string
+  /** Said when every card is stamped: "Every card is stamped. Lock in this order, or tap one to change it." */
+  ready: string
   /** The quiet action that lifts every stamp: "Clear the stamps". */
   clear: string
   /** Said when the stamps are cleared: "Stamps cleared. Choose number 1." */
@@ -23,9 +27,10 @@ export interface TapOrderLabels {
 
 /**
  * Tap-to-order ranking as portrait panels: tap the colleagues in order of preference and each
- * is stamped with the next rank. With one left it takes the last rank itself and the order
- * commits (k - 1 taps for k cards, no Confirm). Tapping a stamped card takes it back with
- * every rank after it; "Clear the stamps" lifts them all. Every tap is announced in a polite
+ * is stamped with the next rank; with one left it takes the last rank itself. Nothing advances
+ * on its own: once every card is stamped the player confirms with "Lock in this order" (owner
+ * decision, 19 Oct 2026). Tapping a stamped card takes it back with every rank after it;
+ * "Clear the stamps" lifts them all. Back reopens the card with the saved order (`initial`). Every tap is announced in a polite
  * live region. Cards are native buttons, so Tab, Enter and Space work, and each card's name
  * says its state.
  */
@@ -33,12 +38,15 @@ export function TapOrder({
   items,
   onDone,
   labels,
+  initial,
 }: {
   items: ColleagueView[]
   onDone: (order: number[]) => void
   labels: TapOrderLabels
+  /** A saved order to show again, stamped (Back). */
+  initial?: number[]
 }) {
-  const [chosen, setChosen] = useState<number[]>([])
+  const [chosen, setChosen] = useState<number[]>(() => initial?.slice() ?? [])
   const [live, setLive] = useState('')
   const k = items.length
   const tap = (i: number) => {
@@ -51,7 +59,8 @@ export function TapOrder({
     }
     const next = [...chosen, i]
     if (next.length >= k - 1) {
-      onDone([...next, ...items.map((_, j) => j).filter((j) => !next.includes(j))])
+      setChosen([...next, ...items.map((_, j) => j).filter((j) => !next.includes(j))])
+      setLive(`${labels.said(items[i].name, next.length)} ${labels.ready}`)
       return
     }
     setChosen(next)
@@ -67,7 +76,7 @@ export function TapOrder({
         {items.map((c, i) => {
           const at = chosen.indexOf(i)
           return (
-            <li key={c.name}>
+            <li key={`${i}-${c.name}`}>
               <button
                 type="button"
                 className={at >= 0 ? 'tapcard tapcard--on' : 'tapcard'}
@@ -91,6 +100,7 @@ export function TapOrder({
       <p className="tapcard__sr" aria-live="polite">
         {live}
       </p>
+      {chosen.length === k ? <Button onClick={() => onDone(chosen)}>{labels.lock}</Button> : null}
       {chosen.length > 0 ? (
         <Button kind="quiet" onClick={clear}>
           {labels.clear}

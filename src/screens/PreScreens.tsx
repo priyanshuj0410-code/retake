@@ -1,36 +1,20 @@
-/** The screens around a session's steps: the demo notice, consent, language and the end. */
+/** The screens around a session's steps: consent, language and the end. */
 import { useState } from 'react'
 import { screens } from '../content'
 import type { Lang, T } from '../content/types'
 import { SS } from '../story/content'
-import { Button, Choice, List, Notice, Page, Text } from '../ui'
+import { Button, Choice, Details, List, Notice, Page, Text } from '../ui'
 
 const S = screens
 
-export function DemoNotice({ ui, onContinue }: { ui: Lang; onContinue?: () => void }) {
-  const L = (t: T) => t[ui]
-  return (
-    <Page
-      surface="oof"
-      stepKey="demo"
-      title={L(S.demoNotice.title)}
-      actions={<Button onClick={onContinue}>{L(S.common.continue)}</Button>}
-    >
-      <Text>{L(S.demoNotice.body)}</Text>
-    </Page>
-  )
-}
-
 export function Consent({
   ui,
-  demo,
   firm,
   season,
   onAgree,
   onDecline,
 }: {
   ui: Lang
-  demo: boolean
   firm?: boolean
   /** The season story's consent (content/story.json, a draft for the owner): it tells the player about the personal rating. */
   season?: boolean
@@ -38,28 +22,32 @@ export function Consent({
   onDecline?: () => void
 }) {
   const L = (t: T) => t[ui]
+  /* Short points to scan in about ten seconds; the full consent text, unchanged, one tap away
+     under "Read the full details" (owner, 19 Oct 2026). */
   const c = firm
     ? S.consent.firm
     : season
-      ? { ...S.consent.panel, title: SS.consentTitle, points: SS.consent }
+      ? { ...S.consent.panel, title: SS.consentTitle, short: SS.consentShort, points: SS.consent }
       : S.consent.panel
   return (
     <Page
       surface="oof"
       stepKey={firm ? 'enrol-consent' : 'consent'}
       oof={L(S.common.outOfFiction)}
-      demo={demo ? L(S.common.demoBadge) : undefined}
       title={L(c.title)}
       actions={
         <>
           <Button onClick={onAgree}>{L(c.agree)}</Button>
-          <Button kind="secondary" onClick={onDecline}>
+          <Button kind="quiet" onClick={onDecline}>
             {L(c.decline)}
           </Button>
         </>
       }
     >
-      <List items={c.points.map(L)} />
+      <List items={c.short.map(L)} />
+      <Details summary={L(S.common.fullDetails)}>
+        <List items={c.points.map(L)} />
+      </Details>
     </Page>
   )
 }
@@ -73,22 +61,13 @@ export function Declined({ ui, stepKey = 'declined' }: { ui: Lang; stepKey?: str
   )
 }
 
-export function Finished({
-  ui,
-  demo,
-  finished,
-}: {
-  ui: Lang
-  demo: boolean
-  finished: 'submitted' | 'withdrawn'
-}) {
+export function Finished({ ui, finished }: { ui: Lang; finished: 'submitted' | 'withdrawn' }) {
   const L = (t: T) => t[ui]
   return (
     <Page
       surface="oof"
       stepKey="finished"
       oof={L(S.common.outOfFiction)}
-      demo={demo ? L(S.common.demoBadge) : undefined}
       title={L(S.wrap.submit.title)}
     >
       <Notice kind="ok">
@@ -98,15 +77,7 @@ export function Finished({
   )
 }
 
-export function LanguageStep({
-  ui,
-  demo,
-  onChoose,
-}: {
-  ui: Lang
-  demo: boolean
-  onChoose?: (l: Lang[]) => void
-}) {
+export function LanguageStep({ ui, onChoose }: { ui: Lang; onChoose?: (l: Lang[]) => void }) {
   const L = (t: T) => t[ui]
   const [v, setV] = useState<string | null>(null)
   return (
@@ -114,7 +85,6 @@ export function LanguageStep({
       surface="oof"
       stepKey="language"
       oof={L(S.common.outOfFiction)}
-      demo={demo ? L(S.common.demoBadge) : undefined}
       actions={
         <Button
           onClick={() => v && onChoose?.(v === 'both' ? ['en', 'hinglish'] : [v as Lang])}

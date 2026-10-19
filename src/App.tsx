@@ -22,6 +22,7 @@ export function App() {
   }, [])
   const [, kind, arg] = path.split('/')
   const startToken = useCallback(() => store.start(arg ?? ''), [arg])
+  const resumeToken = useCallback(() => store.resume(arg ?? ''), [arg])
   const startFirm = useCallback(async () => {
     const r = await store.startEnrolment(await enrolmentKey(arg ?? ''), today())
     if (!r.ok || !r.enrolment) return r
@@ -37,7 +38,15 @@ export function App() {
   )
   switch (kind) {
     case 'play':
-      return <Play key={path} start={startToken} firm={false} />
+      return (
+        <Play
+          key={path}
+          start={startToken}
+          resume={resumeToken}
+          sessionKey={arg ? `play/${arg}` : undefined}
+          firm={false}
+        />
+      )
     case 'firm':
       return devRoutes() ? <Play key={path} start={startFirm} firm /> : closed
     case 'enrol':

@@ -16,6 +16,7 @@ import {
   Checks,
   Choice,
   Code,
+  Details,
   List,
   Notice,
   Page,
@@ -30,7 +31,6 @@ export function StepView({
   runner,
   step,
   ui,
-  demo,
   onDone,
   submitState,
   onSubmit,
@@ -39,7 +39,6 @@ export function StepView({
   runner: Runner
   step: Step
   ui: Lang
-  demo: boolean
   onDone: (value: unknown) => void
   submitState: 'idle' | 'sending' | 'failed'
   onSubmit: () => void
@@ -54,7 +53,6 @@ export function StepView({
     surface,
     act,
     oof,
-    demo: demo ? L(S.common.demoBadge) : undefined,
     stepKey: key,
     lang: ui === 'hinglish' ? 'hi-Latn' : 'en-GB',
     screen: `${step.act}:${step.kind}${step.kind === 'intro' ? `:${step.which}` : step.kind === 'people' ? `:${step.p.card.type}` : ''}`,
@@ -176,10 +174,14 @@ export function StepView({
           title={L(S.note.title)}
           actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}
         >
-          <Text kind="lead">{L(n.statistic)}</Text>
-          <Text kind="small">
-            {L(S.note.sourceLabel)}: {L(n.source)}
-          </Text>
+          {/* A statistic not yet sourced is a marked placeholder in content/notes.json; a player
+             never sees it (X-16), so the note shows its instruction only until it is sourced. */}
+          {n.placeholder ? null : (
+            <>
+              <Text kind="lead">{L(n.statistic)}</Text>
+              <Text kind="small">{`${L(S.note.sourceLabel)}: ${L(n.source)}`}</Text>
+            </>
+          )}
           <Text kind="strong">{L(n.instruction)}</Text>
         </Page>
       )
@@ -513,8 +515,11 @@ function IntroStep({
           title={L(screens.inbox.noteTitle)}
           actions={go}
         >
-          <Text>{L(screens.inbox.note)}</Text>
-          <Text kind="small">{L(screens.inbox.route)}</Text>
+          <List items={screens.inbox.noteShort.map(L)} />
+          <Details summary={L(screens.common.fullDetails)}>
+            <Text>{L(screens.inbox.note)}</Text>
+            <Text kind="small">{L(screens.inbox.route)}</Text>
+          </Details>
         </Page>
       )
   }

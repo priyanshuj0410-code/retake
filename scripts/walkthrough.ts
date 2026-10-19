@@ -23,7 +23,7 @@ import { phase2, type Step } from '../src/engine/session'
 import { characterView, fill } from '../src/engine/text'
 import { Disclosure } from '../src/screens/Disclosure'
 import { Enrol, Explain, Withdraw } from '../src/screens/Pages'
-import { Consent, DemoNotice, Finished, LanguageStep } from '../src/screens/PreScreens'
+import { Consent, Finished, LanguageStep } from '../src/screens/PreScreens'
 import { StepView } from '../src/screens/StepView'
 import { DEMO_SCHEDULE } from '../src/store/local'
 import type { Enrolment, Explanation } from '../src/store/types'
@@ -313,7 +313,6 @@ class Builder {
       runner,
       step,
       ui: UI,
-      demo: config.demo,
       onDone: () => {},
       submitState: 'idle',
       onSubmit: () => {},
@@ -351,9 +350,6 @@ const spread = (pool: number) =>
 
 function preScreens(b: Builder, firm: boolean) {
   b.act('A0', 'Start')
-  b.page(b.nodes, 'A0', 'Demo notice (demo mode only)', h(DemoNotice, { ui: UI }), 0, {
-    note: 'Shown only in demo mode, before the disclosure, so the disclosure screen itself stays exactly the four sentences.',
-  })
   b.page(
     b.nodes,
     'A0',
@@ -365,8 +361,8 @@ function preScreens(b: Builder, firm: boolean) {
       placeholder: 'The Hinglish wording is a draft, not yet pre-tested.',
     },
   )
-  if (!firm) b.page(b.nodes, 'A0', 'Consent', h(Consent, { ui: UI, demo: config.demo }), T.consent)
-  b.page(b.nodes, 'A0', 'Language', h(LanguageStep, { ui: UI, demo: config.demo }), T.language, {
+  if (!firm) b.page(b.nodes, 'A0', 'Consent', h(Consent, { ui: UI }), T.consent)
+  b.page(b.nodes, 'A0', 'Language', h(LanguageStep, { ui: UI }), T.language, {
     note: 'Shown when the link lets the player choose. Bilingual players then meet English and Hinglish cards, drawn per card.',
   })
 }
@@ -427,7 +423,7 @@ function wrapAndEnd(b: Builder, r: Runner, steps: Step[]) {
             b,
             'A9',
             'Thank-you screen after submitting',
-            h(Finished, { ui: UI, demo: config.demo, finished: 'submitted' }),
+            h(Finished, { ui: UI, finished: 'submitted' }),
             0,
             's',
           ),
@@ -440,7 +436,7 @@ function wrapAndEnd(b: Builder, r: Runner, steps: Step[]) {
             b,
             'A9',
             'Thank-you screen after withdrawing (nothing stored)',
-            h(Finished, { ui: UI, demo: config.demo, finished: 'withdrawn' }),
+            h(Finished, { ui: UI, finished: 'withdrawn' }),
             0,
             'w',
           ),
@@ -649,13 +645,7 @@ async function firm(): Promise<Section> {
     T.four,
     { placeholder: 'The Hinglish wording is a draft, not yet pre-tested.' },
   )
-  b.page(
-    b.nodes,
-    'A0',
-    'Consent (firm)',
-    h(Consent, { ui: UI, demo: config.demo, firm: true }),
-    T.consent,
-  )
+  b.page(b.nodes, 'A0', 'Consent (firm)', h(Consent, { ui: UI, firm: true }), T.consent)
   b.page(
     b.nodes,
     'A0',
@@ -706,7 +696,6 @@ async function firm(): Promise<Section> {
   })
   const p = new Builder('FP', 'firm')
   p.act('A0', 'Play session, inside the window')
-  p.page(p.nodes, 'A0', 'Demo notice (demo mode only)', h(DemoNotice, { ui: UI }), 0)
   p.page(
     p.nodes,
     'A0',
@@ -714,7 +703,7 @@ async function firm(): Promise<Section> {
     h(Disclosure, { langs: ['en', 'hinglish'], onContinue: () => {} }),
     T.four,
   )
-  p.page(p.nodes, 'A0', 'Language', h(LanguageStep, { ui: UI, demo: config.demo }), T.language)
+  p.page(p.nodes, 'A0', 'Language', h(LanguageStep, { ui: UI }), T.language)
   const r = new Runner(seeded(7), 'firm', ['en'], {
     timingArm: 'after',
     batchMonth: '2026-11',

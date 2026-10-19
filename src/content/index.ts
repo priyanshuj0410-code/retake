@@ -1,4 +1,5 @@
 /** Every content file, typed. Researchers edit content/, never this file. */
+import { seasonSentence3 } from '../engine/config'
 import opportunity from '../../content/cards/opportunity.json'
 import conduct from '../../content/cards/conduct.json'
 import npt from '../../content/cards/npt.json'
@@ -54,14 +55,12 @@ export const xw = crosswise as CrosswiseContent
 export { identity, disclosure, screens }
 export const registeredSentences = disclosure.registered as Record<'en' | 'hinglish', string[]>
 
-/** The sentences one sitting shows: the registered four, or for the season story the four with
-    sentence 3 replaced by the owner's pending wording (content/disclosure.json, season). */
 /**
- * The disclosure's four sentences. In the season story sentence 3 is the interim line in
- * content/disclosure.json (season.sentence3), which awaits the owner's wording; it is never a
- * placeholder.
+ * The disclosure's four sentences: the registered four, or for the season story the four with
+ * sentence 3 replaced by the interim line in src/engine/config.ts (seasonSentence3), which
+ * awaits the owner's wording; it is never a placeholder.
  */
 export const sentencesFor = (l: 'en' | 'hinglish', season: boolean): string[] =>
   season
-    ? registeredSentences[l].map((s, i) => (i === 2 ? disclosure.season.sentence3[l] : s))
+    ? registeredSentences[l].map((s, i) => (i === 2 ? seasonSentence3[l] : s))
     : registeredSentences[l]

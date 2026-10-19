@@ -10,12 +10,12 @@
 .portrait--row {
   flex: none;
   width: var(--portrait);
-  border: var(--border) solid var(--c-ink-line);
+  border: var(--ink-divider) solid var(--c-ink-line);
 }
 .portrait--then {
   flex: none;
   width: var(--face-then);
-  border: var(--border) solid var(--c-ink-line);
+  border: var(--ink-divider) solid var(--c-ink-line);
 }
 .portrait__art {
   display: block;
@@ -36,7 +36,7 @@
   right: var(--gap-s);
   bottom: var(--gap-s);
   width: var(--inset);
-  border: var(--border) solid var(--art-line);
+  border: var(--ink-divider) solid var(--art-line);
   background: var(--art-paper);
 }
 .portrait--row .portrait__inset,

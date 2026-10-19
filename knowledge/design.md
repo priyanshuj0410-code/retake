@@ -50,11 +50,13 @@ its enrolment) open only on the Vite dev server in demo mode, from the developer
   pictures fill from art classes, never from hex in the markup (EVAL-6).
 
 `pnpm check` runs X-16 (`scripts/pending-check.ts`, EVAL-6): no content string a player can see
-says "PENDING" (markers live in underscore keys such as `_pending`, `_watchPending`), no string
-or JSX text in `src/` says it, the dev-only `DevNotes` panel renders nothing outside the Vite dev
-server, and the season disclosure's sentence 3 placeholder may exist only while `config.demo` is
-true (it shows in demo builds only). `pnpm ux` and `pnpm season` read every rendered screen for
-the word as well, leaving out only `[data-dev]`.
+holds a placeholder (`scripts/lib/placeholder.ts`: PENDING, PLACEHOLDER, TODO, TBD, FIXME,
+"owner wording", `{{ }}`, `[[ ]]`; markers live in underscore keys such as `_pending`, and an
+unsourced note statistic is a record marked `placeholder: true` that the note screens never
+render), no string or JSX text in `src/` holds one, the dev-only `DevNotes` panel renders nothing
+outside the Vite dev server, and the season disclosure's sentence 3 is the interim line held in
+`src/engine/config.ts` (`seasonSentence3`, commented as awaiting the owner's wording). `pnpm ux`
+and `pnpm season` read every rendered screen with the same pattern, leaving out only `[data-dev]`.
 
 `pnpm check` also runs `pnpm ux` (`scripts/ux-audit.ts`, from the audit in
 [reviews/ux-audit-2026-10-19.md](reviews/ux-audit-2026-10-19.md)), which plays every screen
@@ -92,7 +94,19 @@ Primitives (in `tokens.css` only):
 | `--comic-caption` | `#FFE27A` | Game register: narration captions and cast name plates, always with ink text (14.6:1) |
 | `--comic-rule` | `#8F879C` | Game register: inactive rules |
 | `--note-paper`, `--note-hero`, `--note-soft`, `--note-rule`, `--note-lines` | `#FBF6EC`, `#F2EADB`, `#544B3E`, `#CDBFA6`, rule lines `#EFE6D4` every 32 px | Note register (out of fiction): paper (ink 17.4:1), the result hero band (ink 15.7:1), secondary text (7.9:1 on paper, 7.2:1 on the band), rules and the tan button shadow, the faint ruled texture |
-| `--shadow-ink`, `--shadow-violet` (and small, lilac) | offset shadows, 3 to 5 px, no blur | Game register: panels, captions, the chosen card, the primary button |
+| `--note-line` | `#8A7D66` | Note register: a control's resting edge (fields, radios, checkboxes, survey points), 3.7:1 on paper (WCAG 1.4.11) |
+| `--grey-500` | `#7A7874` | Sober surface: control edges and ink lines, 4.0:1 on its grey |
+| `--shadow-ink-2`, `--shadow-violet` (and small) | offset shadows, no blur: resting panels and captions 2 px ink, the chosen card 5 px violet, the primary button 4 px violet | Game register |
+| `--bw-1`, `--bw-1-5`, `--bw-3` | 1, 1.5, 3 px | Ink weights, read through `--ink-divider`, `--ink-frame`, `--ink-heavy` (below) |
+
+**Visual weight (owner, 19 Oct 2026).** Frames recede so faces, names and the question read first.
+`--ink-frame` (1.5 px) is every card, panel, page frame and control edge (`--edge` and the note
+register's `--frame` point at it); `--ink-divider` (1 px) is every inner divider (the colleague's
+name rule, the season card's art column, the caption's rule, a fold's top rule, the episode pips);
+`--ink-heavy` (3 px) is read only by a selected or stamped state (a stamped ranking card), and the
+filled primary button is the other heavy mark. Resting offset shadows are 2 px. Control
+boundaries and focus rings keep 3:1 on every surface. `pnpm check` (X-4) holds all three: frames
+at most 2 px, the heavy weight only on a selected state, and 3:1 boundaries.
 
 Type: Poppins 500/600/700 (`--face-display`) for headings, labels, buttons and numbers;
 Nunito Sans 400/600/700 (`--face-body`) for text. The game register re-points `--font-display`
@@ -130,9 +144,9 @@ its own colours (`forced-color-adjust: none`), since the skin tone is the cue.
 
 There is no dark mode (EVAL-6, a deliberate single light theme); every semantic token is
 re-pointed by surface only, none is overridden in a component. The surfaces re-point type and shape too (EVAL-6): on the
-game `--radius-card`, `--radius-m` and `--radius-s` are 0 (square panels), `--edge` is 3 px,
-`--shadow-panel`, `--shadow-caption`, `--shadow-chosen` and `--shadow-action` are offset ink or
-violet shadows, `--c-action` (the primary button) is ink with a violet shadow; out of fiction
+game `--radius-card`, `--radius-m` and `--radius-s` are 0 (square panels), `--edge` is 1.5 px
+(`--ink-frame`), `--shadow-panel` and `--shadow-caption` are 2 px ink offsets, `--shadow-chosen`
+and `--shadow-action` violet offsets, `--c-action` (the primary button) is ink with a violet shadow; out of fiction
 `--edge` is 1 px, every shadow is none, and `--c-accent`, `--c-action` and the reading levels
 are ink, never violet.
 
@@ -148,8 +162,21 @@ the whole structure of the visual system:
 | **Sober** (`surface="sober"`) | The Committee Inbox and its content note | Neutral grey ground, no violet, no illustration, no points, the Internal Committee route stated on every card |
 
 The disclosure screen is out of fiction but shows **only** the four registered sentences and
-the Continue button (in demo mode the demo notice is a separate screen before it). Every
-mid-season note uses one identical layout: statistic, source line, instruction sentence.
+the Continue button. There is no demo badge and no demo notice screen (owner, 19 Oct 2026): the
+shareable build says it is a prototype once, on the landing screen only (the season's
+eligibility items, the first screen a visitor sees), as a quiet `page__footnote` line in the note
+register: "Prototype. Fictional people and stories; your answers stay in this browser." Every
+mid-season note uses one identical layout: statistic, source line, instruction sentence; while
+the statistic is an unsourced placeholder the note shows its instruction only.
+
+**Short points first, full text one tap away (owner, 19 Oct 2026).** No note-register screen
+shows a block of more than about 60 words. Consent is a heading, five one-line points (what you
+do, how long, stop any time, no name, what you get at the end) and the agree action, with the
+decline as a quiet button; the complete consent text, unchanged, sits under "Read the full
+details" (`Details`). The content note before the Committee Inbox is four points with the full
+note and the Internal Committee route in `Details`; the result band shows its first sentence with
+the rest in `Details`; the opened explanation is one `Fold` per section, all closed, so it scans
+as a list of headings.
 
 **The note register's baseline grid.** One pitch, 28 px (`--pitch-28`): running text and lists
 take it as their line-height and draw the ruling behind themselves (`--ruling`, a rule 23 px down
@@ -178,7 +205,7 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 
 | Component | Source | What it is |
 |---|---|---|
-| `Page` | `src/ui/Page.tsx` | One screen: a `<header>` landmark (the quiet demo chip; on game screens the top bar with the act label, the episode pips, `aria-hidden` because the label says it in words, and "Page n of N"), `<main>` with the out-of-fiction line, the `h1`, body and one action row; with `pin` (the story's short page-turn screens only: episode and interlude) the row stays at the foot of the screen, with `scroll-padding-bottom` so focus is never under it. On arrival focus moves to the `h1` and the document title becomes "`h1` · Team season". Long titles wrap |
+| `Page` | `src/ui/Page.tsx` | One screen: on story screens a sticky `<header>` landmark (`position: sticky`, `top: 0`, solid paper, the ink rule under it; the act label and the episode pips, `aria-hidden` because the label says it in words; no page count, owner 19 Oct 2026); its measured height is `--head-h`, and every focusable element and heading in `<main>` has `scroll-margin-top` of that height, so focus never lands under it. Nothing in the header is interactive. `<main>` with the out-of-fiction line, the `h1`, body and one action row; with `pin` (the story's short page-turn screens only: episode and interlude) the row stays at the foot of the screen, with `scroll-padding-bottom` so focus is never under it. On arrival focus moves to the `h1` and the document title becomes "`h1` · Team season". Long titles wrap |
 | `Button` | `src/ui/Button.tsx` | `primary` (violet fill), `secondary` (violet outline), `quiet` (text). 48 px tall, full width on phones. Hover on pointer devices, `--press` while pressed, disabled for every kind |
 | `Text` | `src/ui/Text.tsx` | Paragraph, `lead`, `small`, `muted`, `strong`; long words break |
 | `Heading` | `src/ui/Text.tsx` | A section heading inside a page (explanation sections, demo tables); `level={3}` for a sub-heading inside a section (the result page's areas) |
@@ -193,27 +220,28 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 | `Code` | `src/ui/Code.tsx` | The withdrawal code in large monospace groups of four; one tap selects it all; with `copy`, a copy button and a status line |
 | `Field` | `src/ui/Field.tsx` | A labelled text input (code entry) in a one-field form: Enter submits; `invalid` and `errorId` set `aria-invalid` and `aria-describedby`; `type="email"` for the optional stay-in-touch form (no upper-casing) |
 | `Notice` | `src/ui/Notice.tsx` | A boxed message: `info`, `error` (`role=alert`, "!"), `ok` (`role=status`, a tick); takes an `id` for a field's description |
-| `DemoBadge` | `src/ui/DemoBadge.tsx` | A quiet outlined chip, "Demo: fictional content", at the top of every screen except the disclosure; never the loudest thing on the screen (EVAL-6) |
 | `Table` | `src/ui/Table.tsx` | The demo results table in a named, focusable scroll region, with suppressed cells marked and an `empty` line |
-| `Portrait` | `src/ui/Portrait.tsx` | A face (section 4c): the generated WebP headshot when `public/portraits/manifest.json` lists it (cast by slot, sex and tone, one-offs by `o{slot}-{sex}`, mascots by animal), on the panel's tint and halftone backdrop, with `width`/`height`, lazy loading except `eager` faces above the fold; otherwise the drawn SVG person or mascot animal (`look`), `role="img"` with an accurate `aria-label` ("woman, darker skin tone, glasses", "panda"), sizes `panel` (fills its card), `row` (72 px) and `then` (64 px); after the reveal the mascot as a 30 per cent inset in the bottom corner, over the uniform |
+| `Portrait` | `src/ui/Portrait.tsx` | A face (section 4c): the generated WebP headshot when `public/portraits/manifest.json` lists it (cast by slot, sex and tone, one-offs by `o{slot}-{sex}`, mascots by animal), on the panel's tint and halftone backdrop, with `width`/`height`, lazy loading except `eager` faces above the fold; otherwise the drawn SVG person or mascot animal (`look`), `role="img"` with an accurate `aria-label` ("woman, darker skin tone, glasses", "panda"), sizes `panel` (fills its card), `row` (72 px) and `then` (64 px); with `inset`, the mascot in the bottom corner, used on the reveal only, as the bridge: before it mascots only, after it faces only |
 | `Colleague` | `src/ui/Colleague.tsx` | A season colleague: `Portrait` panel on top (`cell`) or a 72 px face beside the words (`row`), name in display caps, cue lines ("Born in"), this job's notes. All spans, so it can sit inside a button |
 | `Beat` | `src/ui/Beat.tsx` | The top of a story screen: the last decision's consequence as a small `Then` panel, then the scene as a `Panel` with its narration in a `Caption` and the question as the display `h1`, which names the rest with `aria-describedby` |
-| `TapOrder` | `src/ui/TapOrder.tsx` | Tap-to-order ranking as portrait panels, two across on phones and four from 600 px: tapped cards are stamped 1st, 2nd, 3rd (`Stamp`) with a violet offset shadow; the last fills itself and the order commits (k - 1 taps). Tap a stamped card to take it back; "Clear the stamps" lifts them all; every tap announced politely |
+| `TapOrder` | `src/ui/TapOrder.tsx` | Tap-to-order ranking as portrait panels, two across on phones and four from 600 px: tapped cards are stamped 1st, 2nd, 3rd (`Stamp`) with a violet offset shadow; the last fills itself. Nothing advances on its own: "Lock in this order" confirms (owner, 19 Oct 2026). Tap a stamped card to take it back; "Clear the stamps" lifts them all; Back reopens it with the saved order stamped (`initial`); every tap announced politely |
 | `PickOne` | `src/ui/PickOne.tsx` | One colleague of two (the conduct picks): portrait panels side by side, a whole-card button that commits on the tap |
 | `Options` | `src/ui/Options.tsx` | A single choice (ordinary decisions, the wrap's yes or no) as full-width buttons that commit on the tap; never radios that auto-advance, because arrow keys would answer |
-| `QuickSplit` | `src/ui/QuickSplit.tsx` | Share a pool by tapping one number (0 to the cap) per colleague. Nothing starts chosen: each row's `Stamp` is an empty dashed ring and no chip is pressed until a tap, so it never looks answered; the stamp then shows the number. `aria-pressed` chips, too-large numbers `aria-disabled`, the count left live; commits when all is shared; "Start again" clears |
+| `QuickSplit` | `src/ui/QuickSplit.tsx` | Share a pool by tapping one number (0 to the cap) per colleague. Nothing starts chosen: each row's `Stamp` is an empty dashed ring and no chip is pressed until a tap; the stamp then shows the number. `aria-pressed` chips, too-large numbers `aria-disabled`, the count left live. Nothing advances on its own: once all is shared "Lock in this split" confirms; "Start again" clears; Back reopens it with the saved split exactly (`initial`) |
 | `AgreeGrid` | `src/ui/AgreeGrid.tsx` | Agree or disagree statements on one screen: one fieldset per statement, five native radios in a row numbered 1 to 5 with full spoken names ("1, Strongly disagree"); the key once, in a sticky header that stays at the top while the statements scroll, never repeated per row; fits 320 px at 44 px targets |
 | `StoryPick` | `src/ui/StoryPick.tsx` | The season picker: one card per story in a grid of equal rows (`--rows-equal`, every card as tall as the tallest at each width), a fixed-width art column with the drawn `PanelArt` cover centred, title and premise top-aligned, and the "After your rating." line pinned to the foot so the lines sit level; stories not open are `aria-disabled` (no emoji, no PENDING) |
 | `Spectrum` | `src/ui/Spectrum.tsx` | The strength bar: where the decisions sit between two groups, the middle the season cannot tell from chance as a white band with dashed edges, an ink marker; one image with a spoken label and the same numbers in words under it |
 | `ReadingList` | `src/ui/ReadingList.tsx` | Readings as a plain list, label then level, every level in the same ink and weight ("Leans towards men" looks exactly like "No lean read"); only "Not enough to say" is quieter. No colour reads as good or bad |
 | `ResultHero` | `src/ui/ResultHero.tsx` | The top of the result: one number to remember ("38 of 46 equal pairs where you put the man ahead"), the same pairs as a dot grid (`role="img"`, filled: the man ahead, ring: the woman ahead, dashed: neither), the band and its sentence, then the bar and reasons as children; ink on grey only. Without a sex reading it shows the band line alone |
-| `Fold` | `src/ui/Fold.tsx` | A section that folds: native `details` with the `h2` in the summary and a drawn marker; the result's areas, the first open |
+| `Fold` | `src/ui/Fold.tsx` | A section that folds: native `details` with the `h2` in the summary and a drawn marker; the result's areas, the first open; the opened explanation's sections, all closed |
+| `Details` | `src/ui/Details.tsx` | "Read the full details": a native `details`, closed, with a quiet display-face summary (a `--control` target, 56 px on the note pitch) and the complete text behind a screen's short points (consent, the content note, the result band). Nothing is cut; Enter or Space toggles it |
 | `DevNotes` | `src/ui/DevNotes.tsx` | Pending markers for the research team, folded, `data-dev`, rendered only by the Vite dev server (`import.meta.env.DEV`); never player copy |
 | `PointCard` | `src/ui/PointCard.tsx` | One finding in a decision area: the pattern's name, the counts, and for a blind spot the player's own decisive pairs as a list (never a made-up inner voice) |
 | `ShareCard` | `src/ui/ShareCard.tsx` | The summary card, worded for every band, with Share (the device's share sheet, else copy) and a status line |
 | `Timeline` | `src/ui/Timeline.tsx` | The profile's past seasons: a vertical line of dated entries, one band each |
+| `Group` | `src/ui/Group.tsx` | A named section whose parts (heading, text, each label with its field, the button, a notice) are spaced on the flow, one rule pitch in the note register, so nothing touches and fields and buttons keep the baseline grid |
 | `Panel` | `src/ui/Comic.tsx` | Game register: an ink-ruled square box, tinted or paper; holds a scene and its question |
-| `Caption` | `src/ui/Comic.tsx` | Game register: a yellow narration box with an ink border and offset shadow; ink text on yellow at 14.6:1 |
+| `Caption` | `src/ui/Comic.tsx` | Game register: a yellow narration box with a 1.5 px ink border and a 2 px offset shadow; ink text on yellow at 14.6:1 |
 | `Stamp` | `src/ui/Comic.tsx` | Game register: a 52 px round violet stamp tilted 8 degrees (a rank, a share); empty it is a dashed ring with nothing in it. `aria-hidden`: the button's name says the state |
 | `Splash` | `src/ui/Comic.tsx` | Game register: the violet halftone panel that opens a season, an episode, the reveal and the season's end, with the screen's `h1` in 38 px display caps and an italic line |
 | `Then` | `src/ui/Comic.tsx` | Game register: what came of the last decision, a small paper panel with the 64 px face of whoever led it and the story line in 16 px italic only (no recap of the answer; Back reopens it); always smaller than the new scene |
@@ -240,14 +268,14 @@ no component knows its surface). Full before and after matrices:
 | Field | Border | Ring and accent border | n/a | n/a | n/a | `aria-invalid`, described, cleared on edit | n/a | n/a | Wraps | Ring; dashed when invalid | No fade |
 | Code | n/a | Copy button ring | Copy button | n/a | n/a | n/a | "Copied" line | n/a | Wraps | Border kept | n/a |
 | Notice | n/a | n/a | n/a | n/a | n/a | "!" and edge | Tick and edge | n/a | Wraps | Edge kept | n/a |
-| DemoBadge | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps | Edge kept | n/a |
+| Details | Underline | Ring | n/a | Open (marker turns) | n/a | n/a | n/a | n/a | Wraps | Ring | n/a |
 | Link | Thicker underline | Ring | Pressed colour | n/a | n/a | n/a | n/a | n/a | Wraps | Ring | No fade |
 | List | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps; empty renders nothing | System colours | n/a |
 | Text, Heading | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Long words break | System colours | n/a |
 | Table | n/a | Region ring | n/a | n/a | n/a | n/a | n/a | n/a | Scrolls in its region; empty line | System colours | n/a |
 | Page | n/a | Heading on arrival | n/a | n/a | n/a | n/a | n/a | n/a | Title wraps | Hairline kept | Instant scroll |
 | Portrait, Colleague | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps under the panel or beside a 72 px face | Picture keeps its colours (`forced-color-adjust: none`) | n/a |
-| TapOrder | Offset ink shadow | Ring on the card | `--press` | Rank `Stamp` and violet offset shadow, `aria-pressed` | n/a | n/a | Commits on the last tap | n/a | Wraps | Highlight outline on stamped | No scale |
+| TapOrder | 2 px ink offset | Ring on the card | `--press` | Rank `Stamp`, 3 px ink edge (`--ink-heavy`) and violet offset shadow, `aria-pressed` | n/a | n/a | "Lock in this order" once all are stamped; never on the last tap | n/a | Wraps | Highlight outline on stamped | No scale |
 | PickOne, Options | Border | Ring | `--press` | n/a | n/a | n/a | Commits on the tap | n/a | Wraps | Ring | No scale |
 | QuickSplit | n/a | Ring on a chip | `--press` | Filled chip, `aria-pressed`, the row's stamp shows the number; empty ring and no pressed chip before a tap | `aria-disabled` past what is left (dashed) | n/a | Commits when all is shared | n/a | Chips fit 320 at 44 px | Highlight outline on chosen | No scale |
 | AgreeGrid | Border | Ring on the point | n/a | Filled point (ink) | n/a | n/a | n/a | n/a | Five points fit 320 at 44 px; the key stays at the top | Highlight outline on chosen | No transition |
@@ -278,16 +306,19 @@ or disagree blocks (screening, survey) are `AgreeGrid` screens; the recall and w
 `Options`; the noticing probe is `Checks` with one Done. Consequence lines are equal in
 valence, and the season's end lists the jobs each colleague led, with no outcome word. Its rules:
 
-- **One decision per screen, and no Next.** Every decision commits on its tap (`TapOrder`,
-  `PickOne`, `QuickSplit`, `Options`), the next screen opens with its consequence (`Beat`), and a
-  quiet "Back: change my last decision" reopens it. Nothing counts down; no auto-advance waits.
+- **One decision per screen.** Picks and ordinary decisions commit on their tap (`PickOne`,
+  `Options`); a ranking and a split wait for the player's "Lock in this order" or "Lock in this
+  split" and never advance on their own (owner, 19 Oct 2026). The next screen opens with its
+  consequence (`Beat`), and a quiet "Back: change my last decision" reopens the last decision
+  with its saved answer on screen. The answer given last is the one scored; each re-answer after
+  Back is counted and stored with the play as an `edit` item. Nothing counts down; no auto-advance waits.
   The consequence is a small `Then` panel above the new scene and always smaller than it, the
   story line only: no admin recap of the answer. No roster sits under a decision (EVAL-6 removed the
   collapsed "Your team so far" heading that read as broken).
 - **A fixed cast.** Eight colleagues for the whole season, drawn portraits (`Portrait`, never
   under 64 px on phones). In the first decisions each is a different animal mascot with a made-up
   name, shown together on the opening's mascot sheet; the reveal turns each mascot panel into its
-  person with the mascot as an inset and the caption "Kiwi the bear is Huma." Each builds a track
+  person with the mascot beside the face, once, and the caption "Kiwi the bear is Huma."; after the reveal, faces only Each builds a track
   record, shown at the season's end and kept off the decision cards so equal notes stay equal.
 - **Consequences follow the notes only.** The consequence line is keyed by the merit tier of the
   notes the player put first, never by who carried them; nothing marks a choice right, wrong or
@@ -342,8 +373,8 @@ question in 30 px display caps; decisions are portrait panels (`TapOrder`, `Pick
 portrait rows (`QuickSplit`); a `Stamp` marks a rank or a share; interludes are a `Strip` of two
 or three `PanelArt` scenes with captions; the cast appears as a `CastGrid`. Hierarchy runs
 forwards: the new scene and question are always larger than the consequence of the last one.
-The episode track in the top bar is progress ("Episode 2 of 5", pips, "Page 29 of 103"), never a
-countdown.
+The episode track in the sticky top bar is progress ("Episode 2 of 5" and its pips; the page
+count was removed, owner 19 Oct 2026), never a countdown.
 
 **Generated images first, the drawing as the fallback** (owner decision, 19 Oct 2026). People
 and mascots are meant to come from generated WebP headshots made by a separate agent:
@@ -515,7 +546,21 @@ and `{g:}`, and every number v18 will fix is marked PENDING v18 in `content/conf
 underscore keys of the content and reach the research team only through the dev-only
 `DevNotes` panel. There is no exception: the season disclosure's sentence 3 is the interim line
 "Attitudes are read; you see yours." (Hinglish "Attitudes padhe jaate hain; aapko apne dikhte
-hain."), set in `content/disclosure.json` and awaiting the owner's wording, never a placeholder.
+hain."), set in `src/engine/config.ts` (`seasonSentence3`) with a comment that it awaits the
+owner's wording, never a placeholder.
+
+**A card's question is the question only (owner, 19 Oct 2026).** "Whose account do you rely on
+most?", never "... Put them in order."; the helper line under it carries the action ("Tap them
+in order, first choice first."; a split's "6 days to share, up to 4 each."). An allocation card
+asks "Who gets the 6 training days?" rather than "Share the 6 training days.". X-2 fails any
+ranking, allocation or pick question that repeats its helper's action words.
+
+**A reload resumes (owner, 19 Oct 2026).** A season in progress is kept on this device
+(`src/store/progress.ts`: localStorage under the local store, never sent), so a refresh mid-season
+reopens the same screen with the same answers and the same draw (the season's seed, so cast,
+cues, episodes, cards and mascot pairing are redrawn identically). The one-time link refuses a
+reload only once the session is submitted or withdrawn; a reload of the result shows the same
+result. `pnpm e2e` reloads at week one, mid-episode and the result.
 
 ## 7. Old phones
 

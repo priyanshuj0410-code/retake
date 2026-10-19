@@ -50,7 +50,17 @@ export interface CardRecord {
 }
 
 export interface ItemRecord {
-  k: 'ord' | 'screen' | 'survey' | 'direct' | 'inbox' | 'm1h-direct' | 'recall' | 'probe' | 'prior'
+  k:
+    | 'ord'
+    | 'screen'
+    | 'survey'
+    | 'direct'
+    | 'inbox'
+    | 'm1h-direct'
+    | 'recall'
+    | 'probe'
+    | 'prior'
+    | 'edit'
   i: string
   v: string | number
   a?: number

@@ -100,7 +100,6 @@ export function Results() {
     <Page
       surface="oof"
       stepKey="results"
-      demo={config.demo ? 'Demo: invented players, not a finding' : undefined}
       title="Demo results through the release rule"
       actions={
         <Button onClick={() => void run()} disabled={busy}>

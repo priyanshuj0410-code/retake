@@ -6,7 +6,7 @@
   letter-spacing: var(--tracking-label);
   color: var(--c-text);
   background: var(--c-surface);
-  border: var(--border) solid var(--c-accent);
+  border: var(--ink-frame) solid var(--c-accent);
   border-radius: var(--radius-m);
   padding: var(--gap-l);
   text-align: center;

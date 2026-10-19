@@ -17,6 +17,7 @@ import { screeningItems, screens as S } from '../src/content'
 import { marker, step } from './lib/autoplay'
 import { statesPass, type StateResult } from './ux-states'
 import { leaks, playSeason } from './season-play'
+import { PLACEHOLDER } from './lib/placeholder'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const LABEL = process.argv[2] ?? 'latest'
@@ -117,7 +118,8 @@ async function audit(page: Page, screen: string, inPage = false) {
     main?.querySelectorAll('[data-dev]').forEach((e) => e.remove())
     return main?.textContent ?? ''
   })
-  if (/PENDING/.test(said)) problems.push(`${screen}: says PENDING`)
+  if (PLACEHOLDER.test(said))
+    problems.push(`${screen}: shows a placeholder (${said.match(PLACEHOLDER)?.[0]})`)
   /* The note register's baseline grid (EVAL-6): running text and lists sit on their ruling, so
      each is a whole number of 28 px lines and no line straddles a rule. */
   const offGrid = await page.evaluate(() => {
@@ -368,7 +370,7 @@ async function startFromHome(page: Page, lang: RegExp, game: RegExp) {
   await page.goto(`${BASE}#/dev`)
   await page.getByRole('radio', { name: lang }).check()
   await page.getByRole('button', { name: game }).click()
-  await page.waitForSelector('[data-screen="demo"]')
+  await page.waitForSelector('[data-screen="disclosure"]')
 }
 
 async function main() {
@@ -422,7 +424,7 @@ async function main() {
     await page.waitForSelector('[data-screen="enrol-done"]')
     await audit(page, 'firm enrol-done')
     await page.getByRole('link', { name: /^Demo: open the play link/ }).click()
-    await page.waitForSelector('[data-screen="demo"]')
+    await page.waitForSelector('[data-screen="disclosure"]')
     await play(page, 'firm', new Set())
 
     /* The season story (EVAL-4): every new kind of screen, its keyboard paths, the result and

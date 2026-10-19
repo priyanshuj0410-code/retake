@@ -23,6 +23,7 @@ import { cueSets, rate, weightOf } from '../src/story/rating'
 import { StoryRunner } from '../src/story/runner'
 import { drawCast } from '../src/story/session'
 import { personLook } from '../src/story/looks'
+import { castTiles, colleagueView } from '../src/story/view'
 import { resultModel } from '../src/story/why'
 import { store } from '../src/store'
 import type { LocalStore } from '../src/store/local'
@@ -37,6 +38,7 @@ export async function run() {
   draws()
   slotsAndFaces()
   levels()
+  backAndEdits()
   consequences()
   rating()
   await records()
@@ -571,6 +573,64 @@ function levels() {
   )
 }
 
+/** Back and edits (owner, 19 Oct 2026): the saved answer comes back, the final one is scored, the edit is counted. */
+function backAndEdits() {
+  const T = 'X-12 consequences follow the notes only'
+  const wh = storyById('warehouse')
+  if (!wh) return
+  const r = new StoryRunner(seeded(7), wh, ['en'])
+  let first = -1
+  for (let g = 0; g < 200 && r.current; g++) {
+    const s = r.current
+    if (
+      s.kind === 'beat' &&
+      r.season.beats[s.i].kind === 'people' &&
+      !r.season.beats[s.i].beat.mascot
+    ) {
+      const b = r.season.beats[s.i]
+      if (b.kind === 'people' && b.beat.kind === 'rank') {
+        first = s.i
+        r.answer({ order: [0, 1, 2, 3] })
+        break
+      }
+    }
+    r.answer(
+      s.kind === 'beat' && r.season.beats[s.i].kind === 'ordinary'
+        ? { option: (r.season.beats[s.i] as { order: string[] }).order[0] }
+        : s.kind === 'beat'
+          ? (() => {
+              const b = r.season.beats[s.i]
+              return b.kind === 'people' && b.beat.kind === 'pick'
+                ? { pick: 0 }
+                : b.kind === 'people' && b.beat.kind === 'split'
+                  ? { units: b.chars.map((_, k) => (k === 0 ? (b.beat.pool ?? 6) : 0)) }
+                  : { order: b.kind === 'people' ? b.chars.map((_, k) => k) : [] }
+            })()
+          : null,
+    )
+  }
+  r.back()
+  const kept =
+    r.current?.kind === 'beat' &&
+    r.current.i === first &&
+    JSON.stringify(r.answers.get(first)) === JSON.stringify({ order: [0, 1, 2, 3] })
+  r.answer({ order: [3, 2, 1, 0] })
+  record(
+    T,
+    'Back reopens a decision with its saved answer; the answer given last is the one scored, and the edit is counted',
+    kept &&
+      JSON.stringify(r.answers.get(first)) === JSON.stringify({ order: [3, 2, 1, 0] }) &&
+      r.edits.get(first) === 1,
+  )
+  const v = colleagueView(r, r.cast[0], true)
+  const tiles = castTiles(r, true, () => [], true)
+  record(
+    T,
+    'after the reveal no face carries a mascot inset; the reveal alone shows each mascot beside its face',
+    v.inset === undefined && tiles.every((t) => t.inset !== undefined),
+  )
+}
+
 function consequences() {
   const T = 'X-12 consequences follow the notes only'
   const wh = storyById('warehouse')
@@ -785,7 +845,8 @@ function records() {
       timeFields(sub.play.value).length === 0,
       timeFields(sub.play.value).join(', '),
     )
-    /* Back: answer, go back, answer differently: only the final answer is kept. */
+    /* Back: answer, go back (the saved answer is shown again), answer differently: only the final
+       answer is kept and scored, and the edit is counted (EVAL-6). */
     const wh = storyById('warehouse')
     if (!wh) return
     const b = new StoryRunner(seeded(3), wh, ['en'])
@@ -793,14 +854,15 @@ function records() {
     b.answer(null)
     b.answer({ order: [0, 1, 2, 3] })
     b.back()
-    const reopened = b.current?.kind === 'beat' && b.answers.size === 0
+    const reopened = b.current?.kind === 'beat' && b.answers.size === 1
     b.answer({ order: [3, 2, 1, 0] })
     record(
       T,
-      'Back reopens the last decision and keeps only the final answer',
+      'Back reopens the last decision with its saved answer and keeps only the final answer, counting the edit',
       reopened &&
         b.answers.size === 1 &&
-        JSON.stringify(b.answers.get(0)) === JSON.stringify({ order: [3, 2, 1, 0] }),
+        JSON.stringify(b.answers.get(0)) === JSON.stringify({ order: [3, 2, 1, 0] }) &&
+        b.edits.get(0) === 1,
     )
     const rules = readFileSync(`${ROOT}database.rules.json`, 'utf8')
     record(

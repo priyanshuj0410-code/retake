@@ -19,7 +19,7 @@
   padding: var(--gap-s) var(--gap-m);
   background: var(--c-caption);
   color: var(--c-on-caption);
-  border: var(--border) solid var(--c-on-caption);
+  border: var(--ink-frame) solid var(--c-on-caption);
   box-shadow: var(--shadow-caption);
   font-family: var(--font-story);
   font-size: var(--text-label);
@@ -173,7 +173,7 @@
   gap: var(--gap-xs);
   margin: var(--gap-none);
   padding: var(--gap-xs) var(--gap-s) var(--gap-s);
-  border-top: var(--edge) solid var(--c-on-caption);
+  border-top: var(--ink-divider) solid var(--c-on-caption);
   background: var(--c-caption);
   color: var(--c-on-caption);
   font-size: var(--text-small);

@@ -90,6 +90,17 @@ export interface SeasonConfig {
 
 export const config = raw as unknown as Config
 
+/*
+ * The season disclosure's sentence 3. Registered sentence 3 ("Attitudes are read, for groups
+ * only.") is not true for the season, which shows each player their own rating. This interim
+ * line AWAITS THE OWNER'S WORDING (owner decision, 19 Oct 2026); until it arrives the player
+ * sees this line, never a placeholder (scripts/pending-check.ts, X-16).
+ */
+export const seasonSentence3 = {
+  en: 'Attitudes are read; you see yours.',
+  hinglish: 'Attitudes padhe jaate hain; aapko apne dikhte hain.',
+} as const
+
 const DAY = 86_400_000
 
 /** A deployment's release and the end of its withdrawal window, both from `config.release`:

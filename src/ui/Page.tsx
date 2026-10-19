@@ -1,5 +1,4 @@
 import { useEffect, useRef, type ReactNode } from 'react'
-import { DemoBadge } from './DemoBadge'
 import './page.css'
 
 const PRODUCT = 'Team season'
@@ -7,14 +6,13 @@ const PRODUCT = 'Team season'
 export interface PageProps {
   surface: 'game' | 'oof' | 'sober'
   act?: string
-  /** Progress through the session, "Page 15 of 96": never a countdown. */
-  progress?: string
   /** The episode track: n of k, drawn as pips beside the act label (which says it in words). */
   track?: { n: number; k: number }
   /** The out-of-fiction line, "This part is not part of the game." */
   oof?: string
   title?: string
-  demo?: string
+  /** A quiet line under the content, in the note register: the prototype line on the landing only. */
+  footnote?: string
   /** Changes on every new screen, so focus moves to its heading. */
   stepKey: string
   children?: ReactNode
@@ -29,11 +27,10 @@ export interface PageProps {
 export function Page({
   surface,
   act,
-  progress,
   track,
   oof,
   title,
-  demo,
+  footnote,
   stepKey,
   children,
   actions,
@@ -42,6 +39,20 @@ export function Page({
   pin,
 }: PageProps) {
   const mainRef = useRef<HTMLElement>(null)
+  const headRef = useRef<HTMLElement>(null)
+  const pageRef = useRef<HTMLDivElement>(null)
+  /* The sticky header's height, as --head-h, so a focused or scrolled-to element is never
+     under it (scroll-margin-top in page.css). */
+  useEffect(() => {
+    const head = headRef.current
+    const root = pageRef.current
+    if (!head || !root || typeof ResizeObserver === 'undefined') return
+    const ro = new ResizeObserver(() =>
+      root.style.setProperty('--head-h', `${head.getBoundingClientRect().height}px`),
+    )
+    ro.observe(head)
+    return () => ro.disconnect()
+  }, [act])
   /* Each new screen: focus on its heading (the title, or a question's h1 inside its legend),
      and a document title that names it, "Your season · Team season". */
   useEffect(() => {
@@ -53,27 +64,26 @@ export function Page({
     window.scrollTo(0, 0)
   }, [stepKey])
   return (
-    <div className="page" data-surface={surface} lang={lang} data-screen={screen ?? stepKey}>
+    <div
+      className="page"
+      data-surface={surface}
+      lang={lang}
+      data-screen={screen ?? stepKey}
+      ref={pageRef}
+    >
       <div className="page__inner">
-        {demo || act || progress ? (
-          <header className="page__head">
-            {demo ? <DemoBadge text={demo} /> : null}
-            {act || progress ? (
-              <div className="page__bar">
-                {act ? <p className="page__act">{act}</p> : null}
-                {track ? (
-                  <span className="page__track" aria-hidden="true">
-                    {[...Array(track.k).keys()].map((i) => (
-                      <i
-                        key={i}
-                        className={i < track.n ? 'page__pip page__pip--on' : 'page__pip'}
-                      />
-                    ))}
-                  </span>
-                ) : null}
-                {progress ? <p className="page__progress">{progress}</p> : null}
-              </div>
-            ) : null}
+        {act ? (
+          <header className="page__head" ref={headRef}>
+            <div className="page__bar">
+              <p className="page__act">{act}</p>
+              {track ? (
+                <span className="page__track" aria-hidden="true">
+                  {[...Array(track.k).keys()].map((i) => (
+                    <i key={i} className={i < track.n ? 'page__pip page__pip--on' : 'page__pip'} />
+                  ))}
+                </span>
+              ) : null}
+            </div>
           </header>
         ) : null}
         <main className="page__body" ref={mainRef} tabIndex={-1}>
@@ -85,6 +95,7 @@ export function Page({
               {actions}
             </div>
           ) : null}
+          {footnote ? <p className="page__footnote">{footnote}</p> : null}
         </main>
       </div>
     </div>

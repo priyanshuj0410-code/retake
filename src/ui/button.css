@@ -1,6 +1,6 @@
 /* @owns button button--primary button--secondary button--quiet */
 .button {
-  min-height: var(--target);
+  min-height: var(--control);
   width: 100%;
   border-radius: var(--radius-m);
   font-family: var(--font-display);
@@ -9,7 +9,7 @@
   text-transform: var(--case-display);
   letter-spacing: var(--tracking-action);
   padding: var(--gap-m) var(--gap-l);
-  border: var(--border) solid var(--c-accent);
+  border: var(--ink-frame) solid var(--c-accent);
   cursor: pointer;
   text-align: center;
   overflow-wrap: anywhere;

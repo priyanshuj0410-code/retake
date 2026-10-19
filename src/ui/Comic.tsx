@@ -148,7 +148,7 @@ export function CastGrid({
   return (
     <ul className={`castgrid castgrid--${kind}`} aria-label={label}>
       {items.map((it, i) => (
-        <li className="castgrid__tile" key={it.name}>
+        <li className="castgrid__tile" key={`${i}-${it.name}`}>
           <Portrait look={it.look} label={it.label} inset={it.inset} eager={i < 4} />
           <p className="castgrid__caption">
             <span className="castgrid__name">{it.name}</span>

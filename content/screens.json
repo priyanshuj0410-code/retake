@@ -5,7 +5,8 @@
     "next": { "en": "Next", "hinglish": "Aage" },
     "confirm": { "en": "Confirm", "hinglish": "Pakka karein" },
     "outOfFiction": { "en": "This part is not part of the game.", "hinglish": "Yeh hissa game ka hissa nahin hai." },
-    "demoBadge": { "en": "Demo: fictional content, no real participants", "hinglish": "Demo: kalpanik content, koi asli participant nahin" },
+    "fullDetails": { "en": "Read the full details", "hinglish": "Poori jaankari padhiye" },
+    "prototype": { "en": "Prototype. Fictional people and stories; your answers stay in this browser.", "hinglish": "Prototype. Kaalpanik log aur kahaniyan; aapke jawab isi browser mein rehte hain." },
     "moveUp": { "en": "Move up", "hinglish": "Upar karein" },
     "moveDown": { "en": "Move down", "hinglish": "Neeche karein" },
     "position": { "en": "position {n} of {k}", "hinglish": "{k} mein se {n} number par" },
@@ -32,13 +33,6 @@
       "direct": { "en": "Questions", "hinglish": "Sawaal" }
     }
   },
-  "demoNotice": {
-    "title": { "en": "Demo mode", "hinglish": "Demo mode" },
-    "body": {
-      "en": "This is a prototype. Every colleague, incident and statistic in it is fictional, the names and cities are illustrative and not yet pre-tested, and no real participant plays it before ethics approval. Answers go to a test store only.",
-      "hinglish": "Yeh ek prototype hai. Ismein har colleague, incident aur statistic kalpanik hai, naam aur shehar sirf udaharan hain aur abhi pre-test nahin hue, aur ethics approval se pehle koi asli participant ise nahin khelta. Jawab sirf test store mein jaate hain."
-    }
-  },
   "language": {
     "title": { "en": "Choose your language", "hinglish": "Apni bhasha chunein" },
     "en": { "en": "English", "hinglish": "English" },
@@ -48,6 +42,13 @@
   "consent": {
     "panel": {
       "title": { "en": "Before you start", "hinglish": "Shuru karne se pehle" },
+      "short": [
+        { "en": "You make decisions about made-up colleagues at work.", "hinglish": "Aap kaam par kaalpanik colleagues ke baare mein decisions lete hain." },
+        { "en": "It takes up to 30 minutes.", "hinglish": "Ismein 30 minute tak lagte hain." },
+        { "en": "You can stop at any time.", "hinglish": "Aap kabhi bhi ruk sakte hain." },
+        { "en": "Your answers carry no name or contact details.", "hinglish": "Aapke jawabon mein na naam hai na contact." },
+        { "en": "At the end you get a code to withdraw later.", "hinglish": "Aakhir mein aapko baad mein withdraw karne ka code milta hai." }
+      ],
       "points": [
         { "en": "This is a game season you play once, on your own device. You make decisions about fictional colleagues and ordinary work decisions.", "hinglish": "Yeh ek game season hai jo aap ek baar, apne device par khelte hain. Aap fictional colleagues aur roz ke kaam ke decisions lete hain." },
         { "en": "Some short parts are outside the game, including questions in a privacy-protecting format and, partway through, a note that may ask you to answer in a particular way.", "hinglish": "Kuch chhote hisse game se bahar hain, jaise privacy bachane wale format mein sawaal, aur beech mein ek note jo aapse kisi khaas tarah jawab dene ko keh sakta hai." },
@@ -61,6 +62,13 @@
     },
     "firm": {
       "title": { "en": "Before you enrol", "hinglish": "Enrol karne se pehle" },
+      "short": [
+        { "en": "You make decisions about made-up colleagues at work.", "hinglish": "Aap kaam par kaalpanik colleagues ke baare mein decisions lete hain." },
+        { "en": "It takes up to 30 minutes.", "hinglish": "Ismein 30 minute tak lagte hain." },
+        { "en": "You can stop at any time.", "hinglish": "Aap kabhi bhi ruk sakte hain." },
+        { "en": "Your employer never sees who took part or any answer.", "hinglish": "Aapka employer kabhi nahin dekhta ki kisne hissa liya ya koi jawab." },
+        { "en": "At the end you get a code to withdraw later.", "hinglish": "Aakhir mein aapko baad mein withdraw karne ka code milta hai." }
+      ],
       "points": [
         { "en": "This is a game season you play once, on your own device, in a play window the tool gives you. You make decisions about fictional colleagues and ordinary work decisions.", "hinglish": "Yeh ek game season hai jo aap ek baar, apne device par, tool ki di hui play window mein khelte hain. Aap fictional colleagues aur roz ke kaam ke decisions lete hain." },
         { "en": "No score is ever shown to you or to anyone. Your answers carry no name and no contact details. The optional background questions at the end are stored apart from the rest.", "hinglish": "Koi score kabhi aapko ya kisi aur ko nahin dikhaya jaata. Aapke jawabon mein na naam hai na contact. Aakhir ke optional background sawaal baaki se alag rakhe jaate hain." },
@@ -118,6 +126,12 @@
   },
   "inbox": {
     "noteTitle": { "en": "Before the Committee Inbox", "hinglish": "Committee Inbox se pehle" },
+    "noteShort": [
+      { "en": "The next cards describe sexual harassment at work.", "hinglish": "Agle cards mein kaam par sexual harassment ki baat hai." },
+      { "en": "They are plain, with no graphic detail.", "hinglish": "Woh seedhe hain, bina graphic detail ke." },
+      { "en": "There are no points in this part.", "hinglish": "Is hisse mein koi points nahin hain." },
+      { "en": "You can stop at any time.", "hinglish": "Aap kabhi bhi ruk sakte hain." }
+    ],
     "note": { "en": "Content note: the next cards describe incidents of sexual harassment and conduct close to it at work. They are written plainly and without graphic detail. There are no points in this part. If anything here brings up a real situation, your Internal Committee is the route to raise it, and you can stop at any time.", "hinglish": "Content note: agle cards mein kaam par sexual harassment aur usse milte jhulte vyavhaar ki ghatnaayein hain. Woh seedhe shabdon mein, bina graphic detail ke likhi hain. Is hisse mein koi points nahin hain. Agar yahan koi baat kisi asli sthiti ki yaad dilaye, to use uthane ka raasta aapki Internal Committee hai, aur aap kabhi bhi ruk sakte hain." },
     "question": { "en": "Is this sexual harassment?", "hinglish": "Kya yeh sexual harassment hai?" },
     "scale": [

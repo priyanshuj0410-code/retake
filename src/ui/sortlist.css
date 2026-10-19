@@ -13,7 +13,7 @@
   gap: var(--gap-m);
   align-items: center;
   background: var(--c-raised);
-  border: var(--border) solid var(--c-border);
+  border: var(--ink-frame) solid var(--c-border);
   border-radius: var(--radius-l);
   padding: var(--gap-m);
   box-shadow: var(--flat);
@@ -56,7 +56,7 @@
   min-width: var(--target);
   min-height: var(--target);
   border-radius: var(--radius-s);
-  border: var(--border) solid var(--c-accent);
+  border: var(--ink-frame) solid var(--c-accent);
   background: var(--c-surface);
   color: var(--c-accent);
   font-size: var(--text-lead);

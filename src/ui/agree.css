@@ -56,7 +56,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: var(--border) solid var(--c-option-rest);
+  border: var(--ink-frame) solid var(--c-option-rest);
   border-radius: var(--radius-s);
   background: var(--c-surface);
   font-family: var(--font-display);

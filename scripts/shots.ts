@@ -121,7 +121,7 @@ async function startFromHome(page: Page, langLabel: RegExp, game: RegExp) {
   await page.goto(BASE)
   await page.getByRole('radio', { name: langLabel }).check()
   await page.getByRole('button', { name: game }).click()
-  await page.waitForSelector('[data-screen="demo"]')
+  await page.waitForSelector('[data-screen="disclosure"]')
 }
 
 async function main() {
@@ -177,7 +177,7 @@ async function main() {
     await page.waitForSelector('[data-screen="enrol-done"]')
     await shoot(page, 'f-02-enrol-done')
     await page.getByRole('link', { name: /^Demo: open the play link/ }).click()
-    await page.waitForSelector('[data-screen="demo"]')
+    await page.waitForSelector('[data-screen="disclosure"]')
     await playSession(page, 'f')
 
     /* After play: the explanation (closed, then open after the release), and withdrawal. */

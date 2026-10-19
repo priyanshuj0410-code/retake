@@ -42,7 +42,7 @@
   display: block;
   aspect-ratio: 1;
   border-radius: var(--radius-full);
-  border: var(--border) solid var(--c-text);
+  border: var(--ink-frame) solid var(--c-text);
 }
 .resulthero__dot--filled {
   background: var(--c-text);

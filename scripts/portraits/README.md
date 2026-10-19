@@ -119,8 +119,9 @@ once with seed + 1. The first draws are kept in `work/rejected/`. The one-offs c
 `pick.py` flags every tied pair whose members differ noticeably.
 
 **Mascots.** One prompt frame was used for all 8 animals, with 2 seeds each. The picks were made by eye, for the same
-framing and a similar level of detail: bear c0, panda c1, frog c1, koala c0, elephant c1, penguin c1, rabbit c0 and
-tiger c0.
+framing and a similar level of detail: bear c0, panda c1, koala c0, elephant c1 and rabbit c0. In a second round (owner's request), the
+same frame plus a bust sentence (`BUST` in `cast.py`) gave 3 more candidates each for the tiger, penguin and frog,
+which had come out head-only or without a neck. The picks were tiger c3, frog c2 and penguin c3.
 
 ## Verification
 
@@ -163,8 +164,8 @@ under a minute.
   fall under the hair-safe L* floor.
 - **Head size** is normalised on eye distance. Drawn proportions still vary, for example rounder faces and wider-set
   eyes.
-- **Mascot appeal is not equal.** The tiger is the most colourful and detailed, and is drawn as a head without
-  shoulders. The penguin and frog are drawn as one body with no neck. The koala has a faint collar line. The panda,
+- **Mascot appeal is not equal.** The tiger is still the most colourful and detailed (orange with stripes). The
+  penguin shows a shoulder line at the flippers but no true neck, which no candidate drew. The koala has a faint collar line. The panda,
   koala and rabbit read as the cutest.
 - **One-off tied pairs were not picked for a match.** Each one has a single draw, and 24 of the 40 same-sex tied pairs
   are flagged in `scores.json`. The clearest gaps come from the generator drawing some faces rounder and older

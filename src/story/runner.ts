@@ -1,8 +1,9 @@
 /**
  * The season runner: walks one season story from its opening to its last screen and keeps
- * every answer in memory until submit, as the card games' runner does. Every decision commits
- * as soon as it is made (no Next); Back reopens the last decision and clears its answer, so
- * the stored record holds only each decision's final answer. The screens and the checks'
+ * every answer until submit. Nothing reaches the server before submit; in a browser the
+ * in-progress state is kept on this device (src/screens/Play.tsx) so a reload resumes the
+ * same screen, answers and draw. Back reopens the last decision with its saved answer; the
+ * final answer is the one stored, and each re-answer is counted. The screens and the checks'
  * seeded players drive the same runner.
  */
 import { identity } from '../content'
@@ -51,6 +52,20 @@ export interface RecordEntry {
   tier: number
 }
 
+/** Everything a reload needs besides the story and the seed (which redraw the season). */
+export interface RunnerState {
+  index: number
+  answers: [number, BeatAnswer][]
+  edits: [number, number][]
+  survey: Record<1 | 2, Record<string, number>>
+  screening: Record<string, number>
+  recall: string | null
+  probe: string[]
+  prior: Record<string, string>
+  demographics: Record<string, string>
+  code: string | null
+}
+
 export const IN_STORY: StoryStep['kind'][] = [
   'intro',
   'episode',
@@ -85,6 +100,11 @@ export class StoryRunner {
   demographics: Record<string, string> = {}
   code: string | null = null
   keys: CodeKeys | null = null
+  /** Called after every change, so the screen can keep the state for a reload. */
+  private onChange: (() => void) | null = null
+  setOnChange(f: (() => void) | null) {
+    this.onChange = f
+  }
 
   constructor(rng: Rng, story: Story, langs: Lang[]) {
     this.langs = langs
@@ -194,10 +214,20 @@ export class StoryRunner {
   }
 
   /** Records the answer to the current step and moves on. */
+  /**
+   * How many times each beat was answered again after Back (owner decision, 19 Oct 2026). The
+   * final answer is the one scored, as before; the count is stored with the play as an 'edit'
+   * item, so an edited decision can be told apart in the analysis.
+   */
+  readonly edits = new Map<number, number>()
+
   answer(value: unknown) {
     const s = this.current
     if (!s) return
-    if (s.kind === 'beat') this.answers.set(s.i, value as BeatAnswer)
+    if (s.kind === 'beat') {
+      if (this.answers.has(s.i)) this.edits.set(s.i, (this.edits.get(s.i) ?? 0) + 1)
+      this.answers.set(s.i, value as BeatAnswer)
+    }
     if (s.kind === 'fsurvey') this.survey[s.admin] = { ...(value as Record<string, number>) }
     if (s.kind === 'screening') this.screening = { ...(value as Record<string, number>) }
     if (s.kind === 'recall') this.recall = String(value)
@@ -205,6 +235,38 @@ export class StoryRunner {
     if (s.kind === 'prior') this.prior[s.id] = String(value)
     if (s.kind === 'demographics') this.demographics = { ...(value as Record<string, string>) }
     this.index += 1
+    this.onChange?.()
+  }
+
+  snapshot(): RunnerState {
+    return structuredClone({
+      index: this.index,
+      answers: [...this.answers],
+      edits: [...this.edits],
+      survey: this.survey,
+      screening: this.screening,
+      recall: this.recall,
+      probe: this.probe,
+      prior: this.prior,
+      demographics: this.demographics,
+      code: this.code,
+    })
+  }
+
+  /** Puts a snapshot back on a runner drawn from the same story and seed. */
+  restore(st: RunnerState) {
+    const s = structuredClone(st)
+    this.index = Math.min(Math.max(0, s.index), this.steps.length - 1)
+    this.answers = new Map(s.answers)
+    this.edits.clear()
+    for (const [i, n] of s.edits) this.edits.set(i, n)
+    this.survey = s.survey
+    this.screening = s.screening
+    this.recall = s.recall
+    this.probe = s.probe
+    this.prior = s.prior
+    this.demographics = s.demographics
+    this.code = s.code
   }
 
   /** The beat step before the current one inside the story, which Back reopens; null where Back is not offered. */
@@ -215,12 +277,12 @@ export class StoryRunner {
     return null
   }
 
+  /** Back reopens the last decision with its saved answer on screen, to edit or confirm again. */
   back() {
     const to = this.backTarget
     if (to === null) return
-    const st = this.steps[to]
-    if (st.kind === 'beat') this.answers.delete(st.i)
     this.index = to
+    this.onChange?.()
   }
 
   /** Whether cues are on screen: after the reveal. */
@@ -322,7 +384,8 @@ export class StoryRunner {
 
   async prepareCode(iterations?: number) {
     if (this.keys) return
-    this.code = newCode()
+    this.code ??= newCode()
+    this.onChange?.()
     this.keys = await deriveKeys(this.code, iterations)
   }
 
@@ -399,6 +462,8 @@ export class StoryRunner {
       if (!a) return
       if (b.kind === 'people') cards[randomKey()] = this.cardRecord(b, i, a)
       else if ('option' in a) items[randomKey()] = { k: 'ord', i: b.beat.id, v: a.option }
+      const e = this.edits.get(i)
+      if (e) items[randomKey()] = { k: 'edit', i: b.beat.id, v: String(e) }
     })
     for (const admin of [1, 2] as const)
       for (const [id, v] of Object.entries(this.survey[admin]))

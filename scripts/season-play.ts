@@ -14,6 +14,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium, type Page } from 'playwright-core'
 import { createServer } from 'vite'
+import { PLACEHOLDER } from './lib/placeholder'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const OUT = process.env.OUT ?? join(ROOT, 'out/season')
@@ -87,7 +88,12 @@ export async function playSeason(
 ) {
   if (/#\/play\//.test(base)) await page.goto(base)
   /* The demo landing goes straight into the season (EVAL-6). */ else await page.goto(base)
-  await page.waitForSelector('[data-screen="demo"]', { timeout: 30000 })
+  await page.waitForSelector(
+    '[data-screen]:not([data-screen="loading"]):not([data-screen="landing"])',
+    {
+      timeout: 30000,
+    },
+  )
   for (let guard = 0; guard < 200; guard++) {
     await page.waitForSelector('[data-screen]')
     const m = (await marker(page)) ?? ''
@@ -106,7 +112,7 @@ export async function playSeason(
       main?.querySelectorAll('[data-dev]').forEach((e) => e.remove())
       return main?.textContent ?? ''
     })
-    if (/PENDING/.test(said)) leaks.push(m)
+    if (PLACEHOLDER.test(said)) leaks.push(m)
     /* Faces and mascots are drawn or generated images, never system emoji, so they do not vary
        by phone font: no pictographic character on a season screen, and no text in a portrait. */
     const emoji = await page.evaluate(() => {
@@ -172,6 +178,7 @@ export async function playSeason(
       const cards = page.locator('.tapcard')
       const order = await preference(page, '.tapcard')
       for (const i of order.slice(0, 3)) await click(page, cards.nth(i))
+      await click(page, button('Lock in this order'))
     } else if (m === 'story:beat:pick') {
       decisions += 1
       asked += 1
@@ -186,6 +193,7 @@ export async function playSeason(
       const order = await preference(page, '.split__row')
       await click(page, rows.nth(order[0]).getByRole('button', { name: /: 4$/ }))
       await click(page, rows.nth(order[1]).getByRole('button', { name: /: 2$/ }))
+      await click(page, button('Lock in this split'))
     } else if (m === 'story:screening' || m === 'story:fsurvey') await grid(true)
     else if (m === 'story:recall') {
       decisions += 1

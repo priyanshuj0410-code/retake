@@ -17,7 +17,7 @@ export function PickOne({
   return (
     <ul className="tapcards" aria-label={hint}>
       {items.map((c, i) => (
-        <li key={c.name}>
+        <li key={`${i}-${c.name}`}>
           <button type="button" className="tapcard" onClick={() => onPick(i)}>
             <span className="tapcard__sr">{label}</span>
             <Colleague c={c} eager />

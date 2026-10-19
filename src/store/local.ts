@@ -100,6 +100,15 @@ export class LocalStore implements Store {
     return { ok: true, dep: t.dep, langs: t.langs }
   }
 
+  async resume(token: string): Promise<StartResult> {
+    const t = this.tree['eval-tokens'][token] as
+      { dep: DeploymentId; langs: LangSet; s: string } | undefined
+    if (!t) return { ok: false, reason: 'unknown' }
+    if (t.s !== 'started') return { ok: false, reason: 'used' }
+    this.claim = { tok: token }
+    return { ok: true, dep: t.dep, langs: t.langs }
+  }
+
   async startEnrolment(enrolKey: string, today: string) {
     const e = this.tree['eval-enrol'][enrolKey] as Enrolment | undefined
     if (!e) return { ok: false as const, reason: 'unknown' as const }

@@ -75,8 +75,8 @@
       "hinglish": "Lotus Home ko apni badi sale ka pehla plan Friday tak chahiye."
      },
      "question": {
-      "en": "Who should draft the peak plan? Put them in order.",
-      "hinglish": "Peak plan kaun likhega? Inhe order mein rakhiye."
+      "en": "Who should draft the peak plan?",
+      "hinglish": "Peak plan kaun likhega?"
      },
      "descriptions": [
       {
@@ -141,8 +141,8 @@
       "hinglish": "Do shifts ek doosre par handover chhodne ka aarop lagati hain. Chaar colleagues bayaan dete hain."
      },
      "question": {
-      "en": "Whose account do you rely on most? Put them in order.",
-      "hinglish": "Aap kiske bayaan par sabse zyada bharosa karenge? Inhe order mein rakhiye."
+      "en": "Whose account do you rely on most?",
+      "hinglish": "Aap kiske bayaan par sabse zyada bharosa karenge?"
      },
      "descriptions": [
       {
@@ -258,8 +258,8 @@
       "hinglish": "Scanner company naye handheld scanners par 6 training din de rahi hai."
      },
      "question": {
-      "en": "Share the 6 training days.",
-      "hinglish": "6 training din baantiye."
+      "en": "Who gets the 6 training days?",
+      "hinglish": "6 training din kise milenge?"
      },
      "unit": {
       "en": "training days",
@@ -324,8 +324,8 @@
       "hinglish": "Lotus Home chahta hai ki koi unke saath warehouse floor ghoome."
      },
      "question": {
-      "en": "Who should lead the floor walk? Put them in order.",
-      "hinglish": "Floor walk kaun lead karega? Inhe order mein rakhiye."
+      "en": "Who should lead the floor walk?",
+      "hinglish": "Floor walk kaun lead karega?"
      },
      "descriptions": [
       {
@@ -389,8 +389,8 @@
       "hinglish": "Ek hafte mein chaalis temporary pickers apply karte hain, aur interview panel ko ek lead chahiye."
      },
      "question": {
-      "en": "Who should lead the interview panel? Put them in order.",
-      "hinglish": "Interview panel kaun lead karega? Inhe order mein rakhiye."
+      "en": "Who should lead the interview panel?",
+      "hinglish": "Interview panel kaun lead karega?"
      },
      "descriptions": [
       {
@@ -453,8 +453,8 @@
       "hinglish": "Chaar bahari applicants temporary shift supervisor ki naukri chahte hain."
      },
      "question": {
-      "en": "Who should get the supervisor job? Put them in order.",
-      "hinglish": "Supervisor ki naukri kise milni chahiye? Inhe order mein rakhiye."
+      "en": "Who should get the supervisor job?",
+      "hinglish": "Supervisor ki naukri kise milni chahiye?"
      },
      "descriptions": [
       {
@@ -518,8 +518,8 @@
       "hinglish": "First aid course mein 6 jagah hain, jo do sessions mein baanti ja sakti hain."
      },
      "question": {
-      "en": "Share the 6 course places.",
-      "hinglish": "6 course jagah baantiye."
+      "en": "Who gets the 6 course places?",
+      "hinglish": "6 course jagah kise milenge?"
      },
      "descriptions": [
       {
@@ -582,8 +582,8 @@
       "hinglish": "Sale week ke liye 40 temporary pickers chahiye, training aur rota ke saath."
      },
      "question": {
-      "en": "Who should run the temp staff plan? Put them in order.",
-      "hinglish": "Temp staff plan kaun chalayega? Inhe order mein rakhiye."
+      "en": "Who should run the temp staff plan?",
+      "hinglish": "Temp staff plan kaun chalayega?"
      },
      "descriptions": [
       {
@@ -647,8 +647,8 @@
       "hinglish": "Chaar applicants do forklift driver jagahon ke liye aaye hain."
      },
      "question": {
-      "en": "Who should drive for the peak? Put them in order.",
-      "hinglish": "Peak ke liye kaun chalayega? Inhe order mein rakhiye."
+      "en": "Who should drive for the peak?",
+      "hinglish": "Peak ke liye kaun chalayega?"
      },
      "descriptions": [
       {
@@ -757,8 +757,8 @@
       "hinglish": "Is hafte baarah suppliers ke peak contracts karne hain."
      },
      "question": {
-      "en": "Who should lead the supplier deals? Put them in order.",
-      "hinglish": "Supplier deals kaun lead karega? Inhe order mein rakhiye."
+      "en": "Who should lead the supplier deals?",
+      "hinglish": "Supplier deals kaun lead karega?"
      },
      "descriptions": [
       {
@@ -874,8 +874,8 @@
       "hinglish": "Chaar applicants returns clerk ki naukri chahte hain."
      },
      "question": {
-      "en": "Who should be the returns clerk? Put them in order.",
-      "hinglish": "Returns clerk kaun bane? Inhe order mein rakhiye."
+      "en": "Who should be the returns clerk?",
+      "hinglish": "Returns clerk kaun bane?"
      },
      "descriptions": [
       {
@@ -939,8 +939,8 @@
       "hinglish": "6 shaam ke stock checks ke liye kisi ko der tak rukna hai. Yeh koi nahin maangta."
      },
      "question": {
-      "en": "Share the 6 stock checks.",
-      "hinglish": "6 stock checks baantiye."
+      "en": "Who gets the 6 stock checks?",
+      "hinglish": "6 stock checks kise milenge?"
      },
      "descriptions": [
       {
@@ -1136,8 +1136,8 @@
       "hinglish": "Loading dock par zor ki bahas hui. Chaar colleagues apna bayaan dete hain."
      },
      "question": {
-      "en": "Whose account do you rely on most? Put them in order.",
-      "hinglish": "Aap kiske bayaan par sabse zyada bharosa karenge? Inhe order mein rakhiye."
+      "en": "Whose account do you rely on most?",
+      "hinglish": "Aap kiske bayaan par sabse zyada bharosa karenge?"
      },
      "descriptions": [
       {
@@ -1340,8 +1340,8 @@
       "hinglish": "Aisle 9 mein ek pallet gira. Kisi ko chot nahin aayi. Chaar colleagues bayaan dete hain."
      },
      "question": {
-      "en": "Whose account do you rely on most? Put them in order.",
-      "hinglish": "Kiske bayaan par sabse zyada bharosa karenge? Inhe order mein rakhiye."
+      "en": "Whose account do you rely on most?",
+      "hinglish": "Kiske bayaan par sabse zyada bharosa karenge?"
      },
      "descriptions": [
       {
@@ -1404,8 +1404,8 @@
       "hinglish": "Chaar bahari candidates agle saal ke peak ke coordinator ke liye apply karte hain."
      },
      "question": {
-      "en": "Who should coordinate next year's peak? Put them in order.",
-      "hinglish": "Agle saal ka peak kaun coordinate kare? Inhe order mein rakhiye."
+      "en": "Who should coordinate next year's peak?",
+      "hinglish": "Agle saal ka peak kaun coordinate kare?"
      },
      "descriptions": [
       {
@@ -1469,8 +1469,8 @@
       "hinglish": "6 meetings ke baad shikayat log likhna hai. Yeh koi nahin maangta."
      },
      "question": {
-      "en": "Share the 6 write-ups.",
-      "hinglish": "6 write-ups baantiye."
+      "en": "Who gets the 6 write-ups?",
+      "hinglish": "6 write-ups kise milenge?"
      },
      "descriptions": [
       {
@@ -1534,8 +1534,8 @@
       "hinglish": "Chaar colleagues safety chintaayein batate hain. Is hafte safety meeting do le sakti hai."
      },
      "question": {
-      "en": "Whose concern goes to the safety meeting first? Put them in order.",
-      "hinglish": "Kiski chinta pehle safety meeting mein jaayegi? Inhe order mein rakhiye."
+      "en": "Whose concern goes to the safety meeting first?",
+      "hinglish": "Kiski chinta pehle safety meeting mein jaayegi?"
      },
      "descriptions": [
       {
@@ -1688,8 +1688,8 @@
       "hinglish": "Teen bahari trainers kaam par chinta uthaane par 6 sessions ke liye bid karte hain."
      },
      "question": {
-      "en": "Share the 6 sessions.",
-      "hinglish": "6 sessions baantiye."
+      "en": "Who gets the 6 sessions?",
+      "hinglish": "6 sessions kise milenge?"
      },
      "descriptions": [
       {
@@ -1755,8 +1755,8 @@
       "hinglish": "Chaar colleagues kehte hain ki pichhle saal holiday rota unke khilaaf gaya."
      },
      "question": {
-      "en": "Whose case do you look at first? Put them in order.",
-      "hinglish": "Aap pehle kiska maamla dekhenge? Inhe order mein rakhiye."
+      "en": "Whose case do you look at first?",
+      "hinglish": "Aap pehle kiska maamla dekhenge?"
      },
      "descriptions": [
       {
@@ -1922,8 +1922,8 @@
       "hinglish": "Forklift safety course 6 din ka hai, aur din colleagues mein baante ja sakte hain."
      },
      "question": {
-      "en": "Share the 6 course days.",
-      "hinglish": "6 course din baantiye."
+      "en": "Who gets the 6 course days?",
+      "hinglish": "6 course din kise milenge?"
      },
      "unit": {
       "en": "course days",
@@ -1987,8 +1987,8 @@
       "hinglish": "Sale se das din pehle truck company peeche hat gayi."
      },
      "question": {
-      "en": "Who should handle the truck crisis? Put them in order.",
-      "hinglish": "Truck crisis kaun sambhalega? Inhe order mein rakhiye."
+      "en": "Who should handle the truck crisis?",
+      "hinglish": "Truck crisis kaun sambhalega?"
      },
      "descriptions": [
       {
@@ -2052,8 +2052,8 @@
       "hinglish": "Teen local box banane wale trial orders le sakte hain. 6 orders hain."
      },
      "question": {
-      "en": "Share the 6 trial orders.",
-      "hinglish": "6 trial orders baantiye."
+      "en": "Who gets the 6 trial orders?",
+      "hinglish": "6 trial orders kise milenge?"
      },
      "descriptions": [
       {
@@ -2118,8 +2118,8 @@
       "hinglish": "6 client meetings ke minutes kisi ko likhne hain. Kaam zaroori hai, par koi ise maangta nahin."
      },
      "question": {
-      "en": "Share the 6 sets of minutes.",
-      "hinglish": "6 meetings ke minutes baantiye."
+      "en": "Who gets the 6 sets of minutes?",
+      "hinglish": "6 meetings ke minutes kise milenge?"
      },
      "unit": {
       "en": "meetings",
@@ -2232,8 +2232,8 @@
       "hinglish": "Is mahine Mumbai ke suppliers ke paas 6 din ki visits hain."
      },
      "question": {
-      "en": "Share the 6 visit days.",
-      "hinglish": "6 visit din baantiye."
+      "en": "Who gets the 6 visit days?",
+      "hinglish": "6 visit din kise milenge?"
      },
      "descriptions": [
       {
@@ -2349,8 +2349,8 @@
       "hinglish": "Client 6 weekend dinon par kisi ko on call chahta hai. Yeh koi nahin maangta."
      },
      "question": {
-      "en": "Share the 6 on-call days.",
-      "hinglish": "6 on-call din baantiye."
+      "en": "Who gets the 6 on-call days?",
+      "hinglish": "6 on-call din kise milenge?"
      },
      "descriptions": [
       {
@@ -2414,8 +2414,8 @@
       "hinglish": "Teen truck maalik sale week mein 6 extra runs le sakte hain."
      },
      "question": {
-      "en": "Share the 6 runs.",
-      "hinglish": "6 runs baantiye."
+      "en": "Who gets the 6 runs?",
+      "hinglish": "6 runs kise milenge?"
      },
      "descriptions": [
       {
@@ -2480,8 +2480,8 @@
       "hinglish": "Lotus Home ke auditors warehouse ki jaanch karenge."
      },
      "question": {
-      "en": "Who should host the audit? Put them in order.",
-      "hinglish": "Audit kaun host karega? Inhe order mein rakhiye."
+      "en": "Who should host the audit?",
+      "hinglish": "Audit kaun host karega?"
      },
      "descriptions": [
       {
@@ -2545,8 +2545,8 @@
       "hinglish": "Ek analytics consultant 6 ghante ki one to one madad de raha hai."
      },
      "question": {
-      "en": "Share the 6 hours.",
-      "hinglish": "6 ghante baantiye."
+      "en": "Who gets the 6 hours?",
+      "hinglish": "6 ghante kise milenge?"
      },
      "descriptions": [
       {
@@ -2610,8 +2610,8 @@
       "hinglish": "Overtime list se kaun chhoota, is par behas hui. Chaar colleagues bayaan dete hain."
      },
      "question": {
-      "en": "Whose account do you rely on most? Put them in order.",
-      "hinglish": "Kiske bayaan par sabse zyada bharosa karenge? Inhe order mein rakhiye."
+      "en": "Whose account do you rely on most?",
+      "hinglish": "Kiske bayaan par sabse zyada bharosa karenge?"
      },
      "descriptions": [
       {
@@ -2673,8 +2673,8 @@
       "hinglish": "Company director 6 ghante ki one to one mentoring de rahe hain."
      },
      "question": {
-      "en": "Share the 6 mentoring hours.",
-      "hinglish": "6 mentoring ghante baantiye."
+      "en": "Who gets the 6 mentoring hours?",
+      "hinglish": "6 mentoring ghante kise milenge?"
      },
      "unit": {
       "en": "hours",
@@ -2790,8 +2790,8 @@
       "hinglish": "Lotus Home ke directors plan khud sunna chahte hain."
      },
      "question": {
-      "en": "Who should present the plan? Put them in order.",
-      "hinglish": "Plan kaun present karega? Inhe order mein rakhiye."
+      "en": "Who should present the plan?",
+      "hinglish": "Plan kaun present karega?"
      },
      "descriptions": [
       {
@@ -2855,8 +2855,8 @@
       "hinglish": "Chaar bahari candidates warehouse ke quality lead ke liye apply karte hain."
      },
      "question": {
-      "en": "Who should be the quality lead? Put them in order.",
-      "hinglish": "Quality lead kaun bane? Inhe order mein rakhiye."
+      "en": "Who should be the quality lead?",
+      "hinglish": "Quality lead kaun bane?"
      },
      "descriptions": [
       {
@@ -2920,8 +2920,8 @@
       "hinglish": "Monthly operations review mein 6 bolne ke slots hain, jo directors dekhte hain."
      },
      "question": {
-      "en": "Share the 6 slots.",
-      "hinglish": "6 slots baantiye."
+      "en": "Who gets the 6 slots?",
+      "hinglish": "6 slots kise milenge?"
      },
      "descriptions": [
       {
@@ -2985,8 +2985,8 @@
       "hinglish": "Lotus Home kehta hai ki team ke saath ek call mein badtameezi hui. Chaar colleagues call par the."
      },
      "question": {
-      "en": "Whose account of the call do you rely on most? Put them in order.",
-      "hinglish": "Call ke kiske bayaan par sabse zyada bharosa karenge? Inhe order mein rakhiye."
+      "en": "Whose account of the call do you rely on most?",
+      "hinglish": "Call ke kiske bayaan par sabse zyada bharosa karenge?"
      },
      "descriptions": [
       {
@@ -3048,8 +3048,8 @@
       "hinglish": "Sale week mein pehli baar night shift chalegi."
      },
      "question": {
-      "en": "Who should lead the night shift? Put them in order.",
-      "hinglish": "Night shift kaun lead karega? Inhe order mein rakhiye."
+      "en": "Who should lead the night shift?",
+      "hinglish": "Night shift kaun lead karega?"
      },
      "descriptions": [
       {
@@ -3113,8 +3113,8 @@
       "hinglish": "Teen caterers 6 sale dinon ka lunch cover kar sakte hain."
      },
      "question": {
-      "en": "Share the 6 lunch days.",
-      "hinglish": "6 lunch din baantiye."
+      "en": "Who gets the 6 lunch days?",
+      "hinglish": "6 lunch din kise milenge?"
      },
      "descriptions": [
       {
@@ -3226,8 +3226,8 @@
       "hinglish": "Chaar bahari candidates peak ke baad raat ki supervision ke liye apply karte hain."
      },
      "question": {
-      "en": "Who should supervise nights? Put them in order.",
-      "hinglish": "Raat ki supervision kaun kare? Inhe order mein rakhiye."
+      "en": "Who should supervise nights?",
+      "hinglish": "Raat ki supervision kaun kare?"
      },
      "descriptions": [
       {
@@ -3387,8 +3387,8 @@
       "hinglish": "6 dinon break room saaf karna hai. Yeh koi nahin maangta."
      },
      "question": {
-      "en": "Share the 6 days.",
-      "hinglish": "6 din baantiye."
+      "en": "Who gets the 6 days?",
+      "hinglish": "6 din kise milenge?"
      },
      "descriptions": [
       {
@@ -3451,8 +3451,8 @@
       "hinglish": "Sale day par Lotus Home ke managing director aa sakte hain."
      },
      "question": {
-      "en": "Who should host the visit? Put them in order.",
-      "hinglish": "Visit kaun host karega? Inhe order mein rakhiye."
+      "en": "Who should host the visit?",
+      "hinglish": "Visit kaun host karega?"
      },
      "descriptions": [
       {
@@ -3559,8 +3559,8 @@
       "hinglish": "Sale day ka poora dry run Saturday ko hai."
      },
      "question": {
-      "en": "Who should lead the dry run? Put them in order.",
-      "hinglish": "Dry run kaun lead karega? Inhe order mein rakhiye."
+      "en": "Who should lead the dry run?",
+      "hinglish": "Dry run kaun lead karega?"
      },
      "descriptions": [
       {
@@ -3623,8 +3623,8 @@
       "hinglish": "6 dinon tak har subah 5 baje trucks khaali karne hain. Yeh koi nahin chahta."
      },
      "question": {
-      "en": "Share the 6 early shifts.",
-      "hinglish": "6 early shifts baantiye."
+      "en": "Who gets the 6 early shifts?",
+      "hinglish": "6 early shifts kise milenge?"
      },
      "unit": {
       "en": "early shifts",
@@ -3689,8 +3689,8 @@
       "hinglish": "Sale stock ka ek pallet gayab hai, aur do shifts ek doosre ko dosh deti hain. Chaar colleagues bayaan dete hain."
      },
      "question": {
-      "en": "Whose account do you rely on most? Put them in order.",
-      "hinglish": "Kiske bayaan par sabse zyada bharosa karenge? Inhe order mein rakhiye."
+      "en": "Whose account do you rely on most?",
+      "hinglish": "Kiske bayaan par sabse zyada bharosa karenge?"
      },
      "descriptions": [
       {
@@ -3753,8 +3753,8 @@
       "hinglish": "Puraane invoices file karne ke chhah ghante ka kaam hai. Yeh koi nahin maangta."
      },
      "question": {
-      "en": "Share the 6 hours.",
-      "hinglish": "6 ghante baantiye."
+      "en": "Who gets the 6 hours?",
+      "hinglish": "6 ghante kise milenge?"
      },
      "descriptions": [
       {
@@ -3817,8 +3817,8 @@
       "hinglish": "Sale day teeno shifts ki briefing se shuru hota hai."
      },
      "question": {
-      "en": "Who should give the sale day briefing? Put them in order.",
-      "hinglish": "Sale day briefing kaun dega? Inhe order mein rakhiye."
+      "en": "Who should give the sale day briefing?",
+      "hinglish": "Sale day briefing kaun dega?"
      },
      "descriptions": [
       {
@@ -3927,8 +3927,8 @@
       "hinglish": "Agle mahine Delhi mein national logistics expo ke 6 day passes team ke liye hain."
      },
      "question": {
-      "en": "Share the 6 expo day passes.",
-      "hinglish": "6 expo day passes baantiye."
+      "en": "Who gets the 6 expo day passes?",
+      "hinglish": "6 expo day passes kise milenge?"
      },
      "unit": {
       "en": "day passes",
@@ -3993,8 +3993,8 @@
       "hinglish": "Chaar colleagues break room ki chintaayein uthaate hain. Meeting do le sakti hai."
      },
      "question": {
-      "en": "Whose concern goes first? Put them in order.",
-      "hinglish": "Kiski chinta pehle jaaye? Inhe order mein rakhiye."
+      "en": "Whose concern goes first?",
+      "hinglish": "Kiski chinta pehle jaaye?"
      },
      "descriptions": [
       {
@@ -4056,8 +4056,8 @@
       "hinglish": "Company board peak ke nateeje sunna chahta hai."
      },
      "question": {
-      "en": "Who should present to the board? Put them in order.",
-      "hinglish": "Board ke saamne kaun present karega? Inhe order mein rakhiye."
+      "en": "Who should present to the board?",
+      "hinglish": "Board ke saamne kaun present karega?"
      },
      "descriptions": [
       {
@@ -4121,8 +4121,8 @@
       "hinglish": "Sale week ke baad returns pack karne ki 6 late shifts cover karni hain. Yeh koi nahin maangta."
      },
      "question": {
-      "en": "Share the 6 late shifts.",
-      "hinglish": "6 late shifts baantiye."
+      "en": "Who gets the 6 late shifts?",
+      "hinglish": "6 late shifts kise milenge?"
      },
      "descriptions": [
       {
@@ -4943,6 +4943,28 @@
    "en": "Before you start",
    "hinglish": "Shuru karne se pehle"
   },
+  "consentShort": [
+   {
+    "en": "You make choices about made-up colleagues at work.",
+    "hinglish": "Aap kaam par kaalpanik colleagues ke baare mein faisle lete hain."
+   },
+   {
+    "en": "It takes under 30 minutes.",
+    "hinglish": "Ismein 30 minute se kam lagte hain."
+   },
+   {
+    "en": "You can stop at any time.",
+    "hinglish": "Aap kabhi bhi ruk sakte hain."
+   },
+   {
+    "en": "Your answers carry no name or contact details.",
+    "hinglish": "Aapke jawabon mein na naam hai na contact."
+   },
+   {
+    "en": "At the end you see your own rating and get a code.",
+    "hinglish": "Aakhir mein aap apni rating dekhte hain aur ek code milta hai."
+   }
+  ],
   "consent": [
    {
     "en": "This is a game season you play once, on your own device. You make decisions about fictional colleagues, then answer a few statements outside the game.",
@@ -5144,7 +5166,19 @@
    "en": "Research team notes (dev build only)",
    "hinglish": "Research team notes (sirf dev build)"
   },
-  "_consentNote": "DRAFT, owner wording: the season consent must tell the player about the personal rating, which the registered consent (no score shown) does not allow."
+  "_consentNote": "DRAFT, owner wording: the season consent must tell the player about the personal rating, which the registered consent (no score shown) does not allow.",
+  "rankLock": {
+   "en": "Lock in this order",
+   "hinglish": "Yeh order pakka karein"
+  },
+  "rankReady": {
+   "en": "Every card is stamped. Lock in this order, or tap a card to change it.",
+   "hinglish": "Har card par stamp hai. Yeh order pakka karein, ya badalne ke liye card tap kijiye."
+  },
+  "splitLock": {
+   "en": "Lock in this split",
+   "hinglish": "Yeh bantwara pakka karein"
+  }
  },
  "rating": {
   "_note": "The result page's words. A reading of one season's decisions, never a judgement: no screen calls it bias, and nothing says what the player should think. Band names and paragraphs are DRAFT for the owner.",

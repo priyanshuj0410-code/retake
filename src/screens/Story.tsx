@@ -31,7 +31,9 @@ import {
   Caption,
   CastGrid,
   DevNotes,
+  Details,
   Fold,
+  Group,
   Panel,
   ReadingList,
   ResultHero,
@@ -67,11 +69,12 @@ const S = screens
  */
 export function Eligibility({
   ui,
-  demo,
+  footnote,
   onDone,
 }: {
   ui: Lang
-  demo: boolean
+  /** The prototype line, on this landing screen only. */
+  footnote?: string
   onDone: (ok: boolean) => void
 }) {
   const L = (t: T) => t[ui]
@@ -82,8 +85,8 @@ export function Eligibility({
       surface="oof"
       stepKey="eligibility"
       screen="eligibility"
+      footnote={footnote}
       oof={L(S.common.outOfFiction)}
-      demo={demo ? L(S.common.demoBadge) : undefined}
       lang={langAttr(ui)}
       title={L(SS.eligibleTitle)}
       actions={
@@ -129,12 +132,10 @@ export function NotEligible({ ui }: { ui: Lang }) {
 /** The season card, NPQE's way in: the drawn story starts with one tap; the others are shown, playable after the rating (PENDING v18). */
 export function StoryPicker({
   ui,
-  demo,
   drawn,
   onPick,
 }: {
   ui: Lang
-  demo: boolean
   /** The story the tool drew for this player (candidates v17 3.17: randomised, not chosen). */
   drawn: Story | null
   onPick: (s: Story) => void
@@ -154,7 +155,6 @@ export function StoryPicker({
       surface="game"
       stepKey="story-pick"
       screen="story:pick"
-      demo={demo ? L(S.common.demoBadge) : undefined}
       lang={langAttr(ui)}
       title={L(SS.pickTitle)}
     >
@@ -174,7 +174,6 @@ export function StoryPicker({
 
 export function StoryView({
   runner,
-  demo,
   submitState,
   onDone,
   onBack,
@@ -182,7 +181,6 @@ export function StoryView({
   onWithdraw,
 }: {
   runner: StoryRunner
-  demo: boolean
   submitState: 'idle' | 'sending' | 'failed'
   onDone: (v: unknown) => void
   onBack: () => void
@@ -220,11 +218,7 @@ export function StoryView({
     surface: inStory ? 'game' : 'oof',
     act: inStory ? act(episodeNow) : undefined,
     track: inStory ? { n: episodeNow, k: episodes.length } : undefined,
-    progress: inStory
-      ? fill(L(SS.pageOf), { n: runner.index + 1, k: runner.steps.length })
-      : undefined,
     oof: inStory ? undefined : L(S.common.outOfFiction),
-    demo: demo ? L(S.common.demoBadge) : undefined,
     stepKey: key,
     lang: langAttr(ui),
     screen: `story:${step.kind}${step.kind === 'beat' ? `:${runner.season.beats[step.i].beat.kind}` : ''}`,
@@ -287,14 +281,19 @@ export function StoryView({
           <CastGrid
             kind="reveal"
             label={L(rv.title)}
-            items={castTiles(runner, true, (c) => [
-              fill(L(rv.line), {
-                mascot: c.mascot,
-                animal: L(c.animalName),
-                name: runner.displayName(c.slot, true),
-              }),
-              ...colleagueView(runner, c, true).cues,
-            ])}
+            items={castTiles(
+              runner,
+              true,
+              (c) => [
+                fill(L(rv.line), {
+                  mascot: c.mascot,
+                  animal: L(c.animalName),
+                  name: runner.displayName(c.slot, true),
+                }),
+                ...colleagueView(runner, c, true).cues,
+              ],
+              true,
+            )}
           />
           {back}
         </Page>
@@ -387,10 +386,14 @@ export function StoryView({
           title={L(S.note.title)}
           actions={<Button onClick={() => onDone(null)}>{L(S.common.continue)}</Button>}
         >
-          <Text kind="lead">{L(n.statistic)}</Text>
-          <Text kind="small">
-            {L(S.note.sourceLabel)}: {L(n.source)}
-          </Text>
+          {/* A statistic not yet sourced is a marked placeholder in content/notes.json; a player
+             never sees it (X-16), so the note shows its instruction only until it is sourced. */}
+          {n.placeholder ? null : (
+            <>
+              <Text kind="lead">{L(n.statistic)}</Text>
+              <Text kind="small">{`${L(S.note.sourceLabel)}: ${L(n.source)}`}</Text>
+            </>
+          )}
           <Text kind="strong">{L(n.instruction)}</Text>
         </Page>
       )
@@ -524,6 +527,7 @@ function BeatStep({
     )
   }
   const shown = runner.revealed(i)
+  const saved = runner.answers.get(i)
   const items = b.chars.map((ch) => {
     const d = b.beat.descriptions.find((x) => x.id === ch.d)
     return colleagueView(runner, runner.person(ch.slot), shown, d ? L(d.text) : '')
@@ -534,9 +538,12 @@ function BeatStep({
       <TapOrder
         items={items}
         onDone={(order) => onDone({ order })}
+        initial={saved && 'order' in saved ? saved.order : undefined}
         labels={{
           hint: L(SS.rankHint),
           clear: L(SS.rankUndo),
+          lock: L(SS.rankLock),
+          ready: L(SS.rankReady),
           cleared: L(SS.rankCleared),
           stamp: (n) => L(SS.rankStamps[n - 1] ?? { en: String(n), hinglish: String(n) }),
           choose: (n) => fill(L(SS.rankChoose), { n }),
@@ -563,10 +570,12 @@ function BeatStep({
         pool={b.beat.pool ?? 6}
         cap={config.season.splitCap}
         onDone={(units) => onDone({ units })}
+        initial={saved && 'units' in saved ? saved.units : undefined}
         labels={{
           left: (n) => fill(L(SS.splitLeft), { n }),
           chip: (name, k) => fill(L(SS.splitChip), { name, k }),
           clear: L(SS.splitClear),
+          lock: L(SS.splitLock),
         }}
       />
     )
@@ -762,17 +771,18 @@ function DemographicsStep({
  */
 export function StoryResult({
   runner,
-  demo,
   finished,
 }: {
   runner: StoryRunner
-  demo: boolean
   finished: 'submitted' | 'withdrawn'
 }) {
   const ui = runner.lang
   const L = (t: T) => t[ui]
   const [m] = useState(() => resultModel(runner))
   const h = m.rating.headline
+  /* The band's reading opens with its first sentence; the rest is one tap away (owner, 19 Oct
+     2026: no block of more than about 60 words on a note screen). */
+  const [lead, ...more] = m.body.split(/(?<=[.!?])\s+(?=[A-Z])/)
   return (
     <Page
       surface="oof"
@@ -780,7 +790,6 @@ export function StoryResult({
       screen="story:result"
       title={L(RT.title)}
       oof={L(S.common.outOfFiction)}
-      demo={demo ? L(S.common.demoBadge) : undefined}
       lang={langAttr(ui)}
     >
       <Text kind="lead">{L(RT.opening)}</Text>
@@ -788,8 +797,13 @@ export function StoryResult({
         group={L(RT.cues.sex.label)}
         figure={m.hero ?? undefined}
         band={m.band}
-        body={m.body}
+        body={lead}
       >
+        {more.length ? (
+          <Details summary={L(S.common.fullDetails)}>
+            <Text>{more.join(' ')}</Text>
+          </Details>
+        ) : null}
         {m.bar ? (
           <Spectrum
             at={m.bar.at}
@@ -924,7 +938,7 @@ function StayInTouch({ ui }: { ui: Lang }) {
     }
   }
   return (
-    <section aria-label={L(RT.contactTitle)}>
+    <Group label={L(RT.contactTitle)}>
       <Heading>{L(RT.contactTitle)}</Heading>
       {state === 'sent' ? (
         <Notice kind="ok">{L(RT.contactSent)}</Notice>
@@ -952,7 +966,7 @@ function StayInTouch({ ui }: { ui: Lang }) {
           {state === 'failed' ? <Notice kind="error">{L(RT.contactFailed)}</Notice> : null}
         </>
       )}
-    </section>
+    </Group>
   )
 }
 
@@ -976,7 +990,10 @@ function KeepIt({
   const L = (t: T) => t[ui]
   const open = currentProfile()
   const [name, setName] = useState('')
-  const [state, setState] = useState<'idle' | 'saving' | 'saved' | 'noName' | 'failed'>('idle')
+  /* After a reload of the result, a season this profile already holds shows as saved. */
+  const [state, setState] = useState<'idle' | 'saving' | 'saved' | 'noName' | 'failed'>(() =>
+    runner.code && open?.data.sessions.some((x) => x.code === runner.code) ? 'saved' : 'idle',
+  )
   const [code, setCode] = useState<string | null>(null)
   const session = () => ({
     story: runner.season.story.id,
@@ -1002,7 +1019,7 @@ function KeepIt({
   const p = currentProfile()
   const next = p ? nextRetake(p.data.sessions) : null
   return (
-    <section aria-label={L(PF.saveTitle)}>
+    <Group label={L(PF.saveTitle)}>
       <Heading>{L(PF.saveTitle)}</Heading>
       <Text>{L(PF.retake)}</Text>
       {next !== null ? <Text>{fill(L(PF.retakeOn), { date: formatDate(next, ui) })}</Text> : null}
@@ -1033,6 +1050,6 @@ function KeepIt({
           {state === 'failed' ? <Notice kind="error">{L(PF.failed)}</Notice> : null}
         </>
       )}
-    </section>
+    </Group>
   )
 }

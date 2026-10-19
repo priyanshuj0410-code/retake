@@ -308,6 +308,44 @@ export async function run() {
     slips.slice(0, 5).join(' | '),
   )
 
+  /* A card's question is the question only; its helper line carries the instruction (owner,
+     19 Oct 2026). Each kind's helper states one action: a question that repeats it fails. */
+  const story = JSON.parse(readFileSync(join(ROOT, 'content/story.json'), 'utf8')) as {
+    stories: {
+      id: string
+      beats?: { id: string; kind: string; question?: Record<string, string> }[]
+    }[]
+    screens: Record<string, Record<string, string>>
+  }
+  const helperOf: Record<string, string> = {
+    rank: 'rankHint',
+    split: 'splitPool',
+    pick: 'pickHint',
+  }
+  const actionWords: Record<string, RegExp> = {
+    rank: /\b(in order|order mein|first choice|pehli pasand)\b/i,
+    split: /\b(share|baant\w*)\b/i,
+    pick: /\b(tap|tap kijiye)\b/i,
+  }
+  const repeats: string[] = []
+  let asked = 0
+  for (const st of story.stories)
+    for (const b of st.beats ?? []) {
+      const re = actionWords[b.kind]
+      if (!re || !b.question) continue
+      asked += 1
+      const helper = story.screens[helperOf[b.kind]]
+      for (const lang of ['en', 'hinglish'])
+        if (re.test(helper?.[lang] ?? '') && re.test(b.question[lang] ?? ''))
+          repeats.push(`${b.id} (${lang}): ${b.question[lang]}`)
+    }
+  record(
+    T,
+    `no ranking, allocation or pick question repeats the action its helper line states (${asked} cards)`,
+    asked > 0 && repeats.length === 0,
+    repeats.slice(0, 4).join(' | '),
+  )
+
   /* Writing rules over every content file and every string in src. */
   const files = [
     ...walk(join(ROOT, 'content')).filter((f) => f.endsWith('.json')),

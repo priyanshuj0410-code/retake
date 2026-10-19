@@ -192,6 +192,8 @@ export async function run() {
         hint: 'Tap in order',
         clear: 'Clear the stamps',
         cleared: 'Stamps cleared.',
+        lock: 'Lock in this order',
+        ready: 'All stamped.',
         stamp: (n) => `${n}st`,
         choose: (n) => `Choose as number ${n}:`,
         chosen: (n) => `Number ${n}:`,
@@ -218,7 +220,12 @@ export async function run() {
       pool: 6,
       cap: 4,
       onDone: () => {},
-      labels: { left: (n) => `${n} left`, chip: (x, k) => `${x}: ${k}`, clear: 'Start again' },
+      labels: {
+        left: (n) => `${n} left`,
+        chip: (x, k) => `${x}: ${k}`,
+        clear: 'Start again',
+        lock: 'Lock in this split',
+      },
     }),
   )
   record(
@@ -230,6 +237,60 @@ export async function run() {
       !/>Start again</.test(split) &&
       !/aria-disabled="true"/.test(split) &&
       /aria-live="polite">6 left/.test(split),
+  )
+  /* No auto-advance (owner, 19 Oct 2026): a saved answer (Back) comes back stamped, with the confirm button. */
+  const tapSaved = html(
+    h(TapOrder, {
+      items: [person('A'), person('B'), person('C'), person('D')],
+      onDone: () => {},
+      initial: [2, 0, 3, 1],
+      labels: {
+        hint: 'Tap in order',
+        clear: 'Clear the stamps',
+        cleared: 'Stamps cleared.',
+        lock: 'Lock in this order',
+        ready: 'All stamped.',
+        stamp: (n) => `No ${n}`,
+        choose: (n) => `Choose as number ${n}:`,
+        chosen: (n) => `Number ${n}:`,
+        said: (x, n) => `${x} ${n}`,
+        next: (n) => `${n}`,
+        taken: (x, n) => `${x} ${n}`,
+      },
+    }),
+  )
+  record(
+    T,
+    'TapOrder: a saved order shows every stamp and waits for "Lock in this order" (no auto-advance), with "Clear the stamps"',
+    (tapSaved.match(/class="stamp"/g) ?? []).length === 4 &&
+      (tapSaved.match(/aria-pressed="true"/g) ?? []).length === 4 &&
+      />Lock in this order</.test(tapSaved) &&
+      />Clear the stamps</.test(tapSaved),
+  )
+  const splitSaved = html(
+    h(QuickSplit, {
+      items: [person('A'), person('B'), person('C')],
+      pool: 6,
+      cap: 4,
+      onDone: () => {},
+      initial: [4, 2, 0],
+      labels: {
+        left: (n) => `${n} left`,
+        chip: (x, k) => `${x}: ${k}`,
+        clear: 'Start again',
+        lock: 'Lock in this split',
+      },
+    }),
+  )
+  record(
+    T,
+    'QuickSplit: a saved split comes back exactly (4, 2, 0 pressed) and waits for "Lock in this split"',
+    (splitSaved.match(/aria-pressed="true"/g) ?? []).length === 3 &&
+      /aria-label="A: 4" aria-pressed="true"|aria-pressed="true"[^>]*aria-label="A: 4"/.test(
+        splitSaved,
+      ) &&
+      />Lock in this split</.test(splitSaved) &&
+      !/>Lock in this split</.test(split),
   )
   const grid = html(
     h(AgreeGrid, {

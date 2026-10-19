@@ -90,7 +90,7 @@ def main():
          os.path.join(out, "pairs-tones.png"))
     tiles = [tile(Image.open(os.path.join(PUBLIC, f"mascot-{a}.webp")), a) for a in picks["mascots"]]
     for a, cand in picks["mascots"].items():
-        for k in range(2):
+        for k in range(5):
             p = os.path.join(WORK, "raw", f"mascot-{a}-c{k}.png")
             if os.path.exists(p):
                 tiles.append(tile(Image.open(p), f"{a} c{k}", cand == f"c{k}"))

@@ -183,4 +183,78 @@ export async function run() {
     undocumented.length === 0,
     undocumented.join(', '),
   )
+
+  /* Visual weight (owner, 19 Oct 2026): frames recede. Every surface's --edge and --frame
+     resolve to at most 2 px, the heavy 3 px ink is read only by the selected or stamped state,
+     and a control's resting edge keeps 3:1 against its ground (WCAG 1.4.11). */
+  const def = (block: string, name: string) =>
+    block.match(new RegExp(`${name}\\s*:\\s*([^;]+);`))?.[1]?.trim()
+  const resolve = (block: string, name: string, depth = 0): string | undefined => {
+    const v = def(block, name) ?? def(tokens, name)
+    const ref = v?.match(/^var\((--[\w-]+)\)$/)?.[1]
+    return ref && depth < 6 ? resolve(block, ref, depth + 1) : v
+  }
+  const blocks: [string, string][] = [
+    ['root', tokens.slice(tokens.indexOf('/* @tier semantic') >= 0 ? 0 : 0)],
+    ...(['game', 'oof', 'sober'] as const).map((sf): [string, string] => {
+      const i = tokens.indexOf(`[data-surface='${sf}']`)
+      return [sf, i >= 0 ? tokens.slice(i, tokens.indexOf('}', i)) : '']
+    }),
+  ]
+  const heavyFrames: string[] = []
+  for (const [sf, b] of blocks)
+    for (const n of ['--edge', '--frame', '--ink-frame']) {
+      const v = resolve(b, n)
+      const px = Number(v?.match(/^([\d.]+)px$/)?.[1] ?? 0)
+      if (px > 2) heavyFrames.push(`${sf} ${n} ${v}`)
+    }
+  record(
+    T,
+    'card, panel and page frames are at most 2 px on every surface (--edge, --frame, --ink-frame)',
+    heavyFrames.length === 0,
+    heavyFrames.join(', '),
+  )
+  const heavyReads = sheets.flatMap((sh) =>
+    /var\(--ink-heavy\)/.test(read(sh))
+      ? [...strip(read(sh)).matchAll(/([^{}]+)\{[^}]*var\(--ink-heavy\)/g)]
+          .map((m) => m[1].trim())
+          .filter((sel) => !/--on|--chosen|--stamped|\[aria-pressed='true'\]/.test(sel))
+          .map((sel) => `${sh}: ${sel}`)
+      : [],
+  )
+  record(
+    T,
+    'the heavy ink weight is read only by a selected or stamped state',
+    heavyReads.length === 0,
+    heavyReads.join(', '),
+  )
+  const lum = (hex: string) => {
+    const c = hex.replace('#', '')
+    const [r, g, b] = [0, 2, 4].map((i) => {
+      const x = parseInt(c.slice(i, i + 2), 16) / 255
+      return x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4
+    })
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+  }
+  const ratio = (a: string, b: string) => {
+    const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m)
+    return (x + 0.05) / (y + 0.05)
+  }
+  const faint: string[] = []
+  for (const [sf, b] of blocks.slice(1)) {
+    if (!b) continue
+    for (const edge of ['--c-option-rest', '--c-ink-line', '--c-focus']) {
+      const fg = resolve(b, edge)
+      const bg = resolve(b, '--c-bg')
+      if (!fg?.startsWith('#') || !bg?.startsWith('#')) continue
+      const r = ratio(fg, bg)
+      if (r < 3) faint.push(`${sf} ${edge} ${fg} on ${bg}: ${r.toFixed(2)}`)
+    }
+  }
+  record(
+    T,
+    'control boundaries and focus rings keep 3:1 against their ground on every surface (WCAG 1.4.11)',
+    faint.length === 0,
+    faint.join(', '),
+  )
 }

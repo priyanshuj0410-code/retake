@@ -97,6 +97,7 @@ export interface StoryContent {
     rankStamps: T[]
     debrief: T[]
     consent: T[]
+    consentShort: T[]
   }
   rating: Record<string, unknown>
 }

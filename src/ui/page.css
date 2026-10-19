@@ -1,4 +1,4 @@
-/* @owns page page__inner page__head page__bar page__act page__track page__pip page__pip--on page__progress page__oof page__title page__body page__actions page__actions--pinned */
+/* @owns page page__inner page__head page__bar page__act page__track page__pip page__pip--on page__oof page__title page__body page__actions page__actions--pinned page__footnote */
 .page {
   background-color: var(--c-bg);
   color: var(--c-text);
@@ -22,15 +22,27 @@
   display: flex;
   flex-direction: column;
   gap: var(--gap-m);
+  /* Sticky (owner, 19 Oct 2026): the episode and its pips stay at the top, on solid paper with
+     the ink rule under them, and the screen scrolls under it. Nothing in it is interactive. */
+  position: sticky;
+  top: var(--gap-none);
+  z-index: 1;
+  background-color: var(--c-bg);
+  padding-top: var(--gap-s);
 }
-/* The top bar: the episode in words, its track as pips, and the page count. Progress only. */
+/* Whatever focus or a scroll brings into view stops below the sticky header: --head-h is the
+   header's measured height (src/ui/Page.tsx). */
+.page__body :where(h1, h2, h3, a, button, input, select, textarea, summary, [tabindex]) {
+  scroll-margin-top: calc(var(--head-h) + var(--gap-s));
+}
+/* The top bar: the episode in words and its track as pips. Progress only; no page count. */
 .page__bar {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: var(--gap-s) var(--gap-m);
-  border-bottom: var(--edge) solid var(--c-ink-line);
+  border-bottom: var(--ink-frame) solid var(--c-ink-line);
   padding-bottom: var(--gap-s);
 }
 .page__act {
@@ -52,17 +64,11 @@
   display: block;
   width: var(--gap-l);
   height: var(--gap-s);
-  border: var(--border) solid var(--c-ink-line);
+  border: var(--ink-divider) solid var(--c-ink-line);
   background: var(--c-surface);
 }
 .page__pip--on {
   background: var(--c-stamp);
-}
-.page__progress {
-  margin: var(--gap-none);
-  font-size: var(--text-small);
-  color: var(--c-muted);
-  white-space: nowrap;
 }
 /* Out of fiction: the registered line, set as a note stamp in the display face (its text is
    exactly the line; "Note" is a decorative prefix, silent to screen readers). */
@@ -120,4 +126,10 @@
   padding: var(--gap-s) var(--gap-none) var(--gap-m);
   background: var(--c-bg);
   border-top: var(--border-thin) solid var(--c-rule);
+}
+.page__footnote {
+  margin: var(--gap-none);
+  font-size: var(--text-small);
+  line-height: var(--leading-ui);
+  color: var(--c-muted);
 }

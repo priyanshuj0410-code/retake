@@ -166,7 +166,7 @@
         "items": {
           "$i": {
             ".validate": "$i.length <= 32 && newData.hasChildren(['k', 'i', 'v'])",
-            "k": { ".validate": "newData.val() == 'ord' || newData.val() == 'screen' || newData.val() == 'survey' || newData.val() == 'direct' || newData.val() == 'inbox' || newData.val() == 'm1h-direct' || newData.val() == 'recall' || newData.val() == 'probe' || newData.val() == 'prior'" },
+            "k": { ".validate": "newData.val() == 'ord' || newData.val() == 'screen' || newData.val() == 'survey' || newData.val() == 'direct' || newData.val() == 'inbox' || newData.val() == 'm1h-direct' || newData.val() == 'recall' || newData.val() == 'probe' || newData.val() == 'prior' || newData.val() == 'edit'" },
             "i": { ".validate": "newData.isString() && newData.val().length <= 24" },
             "v": { ".validate": "(newData.isString() && newData.val().length <= 160) || (newData.isNumber() && newData.val() >= 0 && newData.val() <= 10)" },
             "a": { ".validate": "newData.val() == 1 || newData.val() == 2" },

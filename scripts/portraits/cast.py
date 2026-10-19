@@ -65,6 +65,23 @@ def mascot_prompt(animal):
     return MASCOT.format(animal=animal) + STYLE
 
 
+# Round two (owner, 19 Oct): the tiger came out head-only and the penguin and frog with no neck, unlike the bear,
+# panda and koala. Same frame plus one sentence asking for a bust: head on a neck, shoulders, upper chest.
+BUST = {
+    "tiger": "Draw it as a bust: the head sits on a short neck, with the rounded shoulders and upper chest of its "
+             "striped body visible at the bottom of the frame. Only a few simple stripes. ",
+    "penguin": "Draw it as a bust: a round head clearly separate from the body, with a visible neck line and rounded "
+               "shoulders, the upper chest at the bottom of the frame. ",
+    "frog": "Draw it as a bust: the head sits on a short neck, with clearly rounded shoulders and the upper chest at "
+            "the bottom of the frame. ",
+}
+BUST_CANDIDATES = (2, 3, 4)
+
+
+def bust_prompt(animal):
+    return MASCOT.format(animal=animal) + BUST[animal] + STYLE
+
+
 def jobs(only=None, groups=("cast", "mascots")):
     out = []
     for k in (range(CANDIDATES) if "cast" in groups else []):
@@ -76,6 +93,11 @@ def jobs(only=None, groups=("cast", "mascots")):
         for i, a in enumerate(ANIMALS):
             out.append(dict(id=f"mascot-{a}-c{k}", kind="mascot", animal=a, cand=k, seed=mascot_seed(i, k),
                             prompt=mascot_prompt(a)))
+    if "mascots2" in groups:
+        for k in BUST_CANDIDATES:
+            for a in BUST:
+                out.append(dict(id=f"mascot-{a}-c{k}", kind="mascot", animal=a, cand=k,
+                                seed=mascot_seed(ANIMALS.index(a), k), prompt=bust_prompt(a)))
     if "oneoffs" in groups:
         out += oneoff_jobs()
     return [j for j in out if not only or j["id"] in only]

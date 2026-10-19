@@ -29,7 +29,6 @@ import { Button, Checks, DevNotes, Field, Heading, List, Notice, Page, Text, Tim
 
 const S = screens
 const L = (t: T) => t.en
-const demoBadge = config.demo ? L(S.common.demoBadge) : undefined
 
 const dateOf = (day: string) => formatDate(Date.parse(`${day}T12:00:00+05:30`), 'en')
 
@@ -47,7 +46,6 @@ export function Profile({ go }: { go: (h: string) => void }) {
         surface="oof"
         stepKey="profile-deleted"
         oof={L(S.common.outOfFiction)}
-        demo={demoBadge}
         title={L(PF.title)}
       >
         <Notice kind="ok">
@@ -72,7 +70,6 @@ export function Profile({ go }: { go: (h: string) => void }) {
         surface="oof"
         stepKey="profile-locked"
         oof={L(S.common.outOfFiction)}
-        demo={demoBadge}
         title={L(PF.title)}
         actions={
           <>
@@ -101,7 +98,6 @@ export function Profile({ go }: { go: (h: string) => void }) {
         surface="oof"
         stepKey="profile-confirm"
         oof={L(S.common.outOfFiction)}
-        demo={demoBadge}
         title={L(PF.deleteButton)}
         actions={
           <>
@@ -143,7 +139,6 @@ export function Profile({ go }: { go: (h: string) => void }) {
       surface="oof"
       stepKey="profile"
       oof={L(S.common.outOfFiction)}
-      demo={demoBadge}
       title={L(PF.named).replace('{name}', p.data.name)}
     >
       {p.data.demo ? <Notice>{L(PF.demoNote)}</Notice> : null}

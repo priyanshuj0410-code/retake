@@ -107,7 +107,44 @@ Direction C from the review sheet (`ui-directions.html`, 19 Oct 2026). Design ru
 10. **Note register fixes (owner).** Baseline grid at a 28 px pitch with text on its rules (checked
    by `pnpm ux` and by zoomed screenshots at 390 and 1440 px), option states in the note register
    checked once per register, and equal-height season cards. Screenshots: `comic-build/v3/`.
-11. **Comic register for a workplace study** may read as less serious (the review sheet's own
+11. **No auto-advance on ranking and split; Back restores (owner).** Research consequence, checked:
+    before this, Back deleted the saved answer and the re-answer replaced it, so the scored answer
+    was already the final one and no edit was recorded. Scoring is unchanged (the final answer is
+    still the one scored); what is new is that Back no longer deletes the answer (it is shown
+    again, to edit or confirm) and each re-answer is counted and stored as an item `{ k: 'edit',
+    i: <card id>, v: <count> }`. The rules piece in this repo (`database.rules.json`) now accepts
+    `k: 'edit'`; **the shared ruleset in The Equal Lens repo's firebase/ must take the same change
+    before this ships**, or season submits that carry an edit will be refused. Mascot insets now
+    appear on the reveal only. The profile save and stay-in-touch forms are spaced on the pitch
+    (`Group`; fields and buttons 56 px, two pitches).
+12. **A reload resumes; the prototype says so once (owner, 19 Oct 2026).** The live build broke on
+    refresh: the token was spent at the start and the answers lived in memory, so a reload was
+    refused as "already used". A season in progress is now kept on the device
+    (`src/store/progress.ts`) with its seed, so a reload resumes the same screen, answers and draw;
+    `store.resume` reopens a started token without a write, and the link is refused only once the
+    session is submitted or withdrawn. The server still sees two writes (AT-4). Research flag: the
+    device now holds the season's answers and its withdrawal code in localStorage after play (the
+    card games still keep nothing, AT-10); clearing site data removes them. The demo badge and the
+    demo notice screen are gone; the landing screen carries one quiet prototype line.
+13. **Scannable note screens, lighter frames, quieter copy (owner, 19 Oct 2026).** Consent, the
+    content note, the result band and the explanation show short points with the complete text
+    under "Read the full details" (nothing cut). Frames are 1.5 px, dividers 1 px, resting shadows
+    2 px; the 3 px ink marks only a stamped card. Ranking and allocation questions no longer repeat
+    their helper line's action (X-2). The header is sticky and the page count is gone. Research
+    flag: the mid-season note's statistic is still an unsourced placeholder. The live build showed
+    "[PLACEHOLDER: a sourced statistic ...]" and "Source: [PLACEHOLDER: ...]" to players in both
+    languages. Choice (owner's options: hide the line, or a dev-only flag): **hide**. While a note
+    is marked `placeholder: true` in `content/notes.json`, the note screen (season and card games)
+    renders no statistic and no source line; its title, instruction sentence and Continue keep the
+    note's format, and the manipulation still reads by its instruction. A sourced figure needs only
+    the content edit and `placeholder: false`. The explanation's quotes of the notes now describe
+    the statistic ("A sourced statistic on how many Indian employees ..., with its source.")
+    instead of repeating the marker. The source line is one string, so no stray space can split
+    "Source:". X-16 now reads every content file (the explanation and the notes included) with a
+    pattern that catches "[PLACEHOLDER", any bracketed upper-case or TODO-like marker, PENDING, TBD,
+    `{{ }}`; only the statistic and source of a marked placeholder note are exempt in content, and
+    every rendered screen is read with the same pattern by `pnpm ux`.
+14. **Comic register for a workplace study** may read as less serious (the review sheet's own
    trade-off); worth a line in the P1 interviews.
 
 ## The 80-decision rebuild (EVAL-5)

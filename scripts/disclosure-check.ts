@@ -56,18 +56,19 @@ export async function run() {
     )
     record(
       T,
-      `rendered first screen, ${langs.join(' + ')}: no heading, act label, demo badge or out-of-fiction line`,
-      !/<h1|"page__act"|class="demo"|page__oof/.test(html),
+      `rendered first screen, ${langs.join(' + ')}: no heading, act label, demo badge, prototype line or out-of-fiction line`,
+      !/<h1|"page__act"|class="demo"|page__footnote|page__oof/.test(html),
     )
   }
   /* The disclosure is the first screen of every sitting: the Play component starts on it
-     (after the separate demo notice in demo mode), and firm enrolment starts on it too. */
+     (the season's eligibility items aside), and firm enrolment starts on it too. */
   const play = readFileSync(new URL('../src/screens/Play.tsx', import.meta.url), 'utf8')
   record(
     T,
-    'Play opens on the disclosure (or the demo notice, then the disclosure)',
-    /useState<Pre>\(demo \? 'demo' : 'disclosure'\)/.test(play) &&
-      /pre === 'demo'[\s\S]*setPre\('disclosure'\)/.test(play),
+    'Play opens on the disclosure (a reload resumes the saved screen), with no demo notice before it',
+    /useState<Pre>\(saved\?\.pre \?\? 'disclosure'\)/.test(play) &&
+      !/type Pre = [^\n]*'demo'/.test(play) &&
+      !/DemoNotice/.test(play),
   )
   const pages = readFileSync(new URL('../src/screens/Pages.tsx', import.meta.url), 'utf8')
   record(
