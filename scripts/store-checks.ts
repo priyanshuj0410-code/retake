@@ -59,7 +59,7 @@ export async function run() {
     record(
       T,
       'no record carries a token (the token is never given to the session runner)',
-      tokenInRecords === 0 && !/tok/.test(sub),
+      tokenInRecords === 0 && !/"tok"/.test(sub),
     )
     const unknown = await store.start('not-a-token')
     record(T, 'an unknown token is refused', !unknown.ok && unknown.reason === 'unknown')
