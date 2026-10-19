@@ -54,7 +54,9 @@ async function stress(page: Page, component: string, sel: string) {
         /* Icon buttons and rank numerals never hold words; everything else can. */
         if (
           n.textContent?.trim() &&
-          !n.parentElement?.closest('button[aria-label], span[aria-label], [aria-hidden="true"], [role="img"]')
+          !n.parentElement?.closest(
+            'button[aria-label], span[aria-label], [aria-hidden="true"], [role="img"]',
+          )
         )
           n.textContent = `${n.textContent} Zimmedaariyonwaalaaprabandhakpratinidhi Bahutlambaanaam`
     })
@@ -371,6 +373,14 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
       const fig = await css(page, '.character__figure', 'forced-color-adjust')
       await forced(page, false)
       rec('Character', 'forced colours: the figure keeps its own colours', fig === 'none', fig)
+    }
+    if (!done.has('Statement') && (await page.locator('.statement').count())) {
+      done.add('Statement')
+      await stress(page, 'Statement', '.statement')
+      await forced(page, true)
+      const edge = await css(page, '.statement__box', 'border-top-style')
+      await forced(page, false)
+      rec('Statement', 'forced colours: both boxes keep their border', edge === 'solid', edge)
     }
     if (!done.has('Allocate') && (await page.locator('.alloc').count())) {
       done.add('Allocate')
