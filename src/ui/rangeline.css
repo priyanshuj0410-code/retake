@@ -1,4 +1,4 @@
-/* @owns rangeline rangeline--compact rangeline__caption rangeline__track rangeline__axis rangeline__mid rangeline__range rangeline__dot rangeline__ends rangeline__middle rangeline__note */
+/* @owns rangeline rangeline--compact rangeline__caption rangeline__track rangeline__axis rangeline__mid rangeline__range rangeline__dot rangeline__dot--hollow rangeline__ends rangeline__middle rangeline__note */
 .rangeline {
   margin: var(--gap-none);
   display: flex;
@@ -54,6 +54,10 @@
   border-radius: var(--radius-full);
   background: var(--c-text);
   border: var(--border) solid var(--c-surface);
+}
+.rangeline__dot--hollow {
+  background: var(--c-surface);
+  border: var(--border) solid var(--c-text);
 }
 .rangeline--compact .rangeline__dot {
   width: var(--range-dot-compact);

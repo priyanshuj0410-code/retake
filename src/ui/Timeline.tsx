@@ -6,7 +6,7 @@ export interface TimelineItem {
   what: string
   band: string
   /** The season's position with its range on the men-first to women-first line (EVAL-10). */
-  range?: { at: number; lo: number; hi: number; label: string }
+  range?: { at: number; lo: number; hi: number; label: string; point?: 'solid' | 'hollow' | 'none' }
 }
 
 /**
@@ -37,6 +37,7 @@ export function Timeline({
                 at={it.range.at}
                 lo={it.range.lo}
                 hi={it.range.hi}
+                point={it.range.point}
                 ends={ends}
                 label={it.range.label}
               />

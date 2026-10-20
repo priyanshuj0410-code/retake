@@ -150,7 +150,8 @@ export function Profile({ go }: { go: (h: string) => void }) {
         ends={{ left: L(RT.rangeLeft), middle: L(RT.rangeMiddle), right: L(RT.rangeRight) }}
         items={sessions.map((s) => {
           const band = bandOf(s)
-          const pos = s.counts && s.zone !== 'unread' ? positionOf(s.counts) : null
+          /* Always show the range (EVAL-10); an untagged season's point is hollow or left out. */
+          const pos = s.counts ? positionOf(s.counts) : null
           return {
             when: dateOf(s.day),
             what: storyTitle(s.story),
@@ -158,6 +159,7 @@ export function Profile({ go }: { go: (h: string) => void }) {
             range: pos
               ? {
                   ...pos,
+                  point: s.zone === 'unread' ? config.season.rating.untagged.point : 'solid',
                   label: fill(L(RT.rangeSaid), {
                     at: pc(pos.at),
                     lo: pc(pos.lo),

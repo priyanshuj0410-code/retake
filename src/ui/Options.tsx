@@ -6,7 +6,8 @@ export function Options({
   onPick,
   label,
 }: {
-  options: { id: string; text: string }[]
+  /** `help`: the option in Hinglish under it, in the help mode (EVAL-10). */
+  options: { id: string; text: string; help?: string }[]
   onPick: (id: string) => void
   label: string
 }) {
@@ -16,6 +17,11 @@ export function Options({
         <li key={o.id}>
           <button type="button" className="options__option" onClick={() => onPick(o.id)}>
             {o.text}
+            {o.help ? (
+              <span className="options__help" lang="hi-Latn">
+                {o.help}
+              </span>
+            ) : null}
           </button>
         </li>
       ))}

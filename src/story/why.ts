@@ -12,6 +12,7 @@ import { config } from '../engine/config'
 import { fill } from '../engine/text'
 import { RT, SS, type Domain } from './content'
 import { pc, positionOf } from './range'
+import { currentProfile } from './profile'
 import {
   advantage,
   cueSets,
@@ -69,8 +70,9 @@ export interface ResultModel {
     note: string
     ends: { left: string; middle: string; right: string }
   } | null
-  /** "Not enough to tell": nothing of the result shows below the tag (EVAL-10, copy audit G5). */
+  /** A forming reading (the old "Not enough to tell"): no tag, the position, the next step. */
   unread: boolean
+  forming: { next: string; words: string; left: string } | null
   /** What shows below the headline (owner decision 5, restored): see `sectionsBelow`. */
   sections: { others: boolean; areas: boolean }
   /** The women-and-men pairs: woman first, man first, even (the profile keeps them, EVAL-10). */
@@ -95,18 +97,52 @@ const DOMAINS: Domain[] = ['hiring', 'conduct', 'resources']
 const SHOWN: Cue[] = ['sex', 'religion', 'tone']
 
 /**
- * What the result page shows below the women-and-men headline (owner decision 5, restored after
- * EVAL-10's G5 fix): with a readable headline, everything (the other readings and the areas);
- * with "Not enough to tell" on sex, nothing of the sex result below its tag, but the religion and
- * skin-tone readings the player does have; with every cue "Not enough to tell", the one plain
- * message and nothing else.
+ * What the result page shows below the women-and-men headline (owner decision 5 and the owner's
+ * always-show rule, EVAL-10): the other readings always show, each with its tag or "Still
+ * forming"; the areas (which read the sex result decision by decision) only once the headline is
+ * readable. A forming reading is never a dead end: its position, range and next step show above.
  */
 export function sectionsBelow(
   sexUnread: boolean,
   otherZones: ('lean' | 'none' | 'unread')[],
 ): { others: boolean; areas: boolean } {
-  if (!sexUnread) return { others: true, areas: true }
-  return { others: otherZones.some((z) => z !== 'unread'), areas: false }
+  void otherZones
+  return { others: true, areas: !sexUnread }
+}
+
+/**
+ * The seasons still to pool before an untagged reading can be tagged (EVAL-10, the research
+ * critic): the registered opening count less the seasons pooled since the reading's last
+ * restart, never projected per player; null when this build cannot open a pooled reading.
+ */
+export function seasonsToTag(pooledSeasons: number): number | null {
+  const u = config.season.rating.untagged
+  if (!u.pooledInBuild || u.openingSeasons === null) return null
+  return Math.max(0, u.openingSeasons - pooledSeasons)
+}
+
+/** A position on the line in words, from the edges in config (untagged.words). */
+function placeWord(x: number, lang: Lang): string {
+  const [a, b, c, d] = config.season.rating.untagged.words
+  const k =
+    x < a
+      ? 'mostlyMen'
+      : x < b
+        ? 'slightlyMen'
+        : x <= c
+          ? 'equal'
+          : x <= d
+            ? 'slightlyWomen'
+            : 'mostlyWomen'
+  return RT.rangeWords[k][lang]
+}
+
+/** An untagged range in words: "Somewhere between slightly men-first and slightly women-first." */
+export function rangeInWords(lo: number, hi: number, lang: Lang): string {
+  const [a, b] = [placeWord(lo, lang), placeWord(hi, lang)]
+  return a === b
+    ? fill(RT.rangeWords.around[lang], { a })
+    : fill(RT.rangeWords.between[lang], { a, b })
 }
 
 /** The group words a tag uses: "men", "women", or both together ("women and men"). */
@@ -155,8 +191,9 @@ export function resultModel(run: StoryRunner): ResultModel {
   const sexWords = RT.cues.sex
   const bandKey = !h.engaged ? 'unengaged' : h.level
   const unread = bandKey === 'unengaged' || bandKey === 'unread'
-  const band = levelName(h.level, 'sex', h.towards, lang, !h.engaged)
-  const body = fill(L(RT.tagBodies[bandKey]), {
+  /* A forming reading (EVAL-10, owner): no tag, a warm heading, the position with its range. */
+  const band = unread ? L(RT.forming.title) : levelName(h.level, 'sex', h.towards, lang)
+  const body = fill(L(unread ? RT.forming[bandKey] : RT.tagBodies[bandKey]), {
     group: cueGroup({ cue: 'sex', towards: h.towards ?? 'comparison' }, lang),
     both: tagGroup('sex', 'both', lang),
   })
@@ -172,10 +209,19 @@ export function resultModel(run: StoryRunner): ResultModel {
   const n = sexPairs.length
   const even = n - manAhead - womanAhead
 
-  let range: ResultModel['range'] = null
   let hero: ResultModel['hero'] = null
-  const pos = positionOf({ w: womanAhead, m: manAhead, e: even })
-  if (n > 0 && !unread && pos) {
+  /* Always show the position (the owner's always-show rule): with no pairs at all, the whole
+     line is the range. */
+  const pos = positionOf({ w: womanAhead, m: manAhead, e: even }) ?? { at: 0.5, lo: 0, hi: 1, n: 0 }
+  const ends = { left: L(RT.rangeLeft), middle: L(RT.rangeMiddle), right: L(RT.rangeRight) }
+  const range: ResultModel['range'] = {
+    ...pos,
+    ends,
+    caption: L(RT.rangeCaption),
+    note: L(RT.rangeNote),
+    label: fill(L(RT.rangeSaid), { at: pc(pos.at), lo: pc(pos.lo), hi: pc(pos.hi), tag: band }),
+  }
+  if (n > 0 && !unread) {
     const lead = manAhead >= womanAhead
     hero = {
       big: fill(L(RT.heroNumber), { k: lead ? manAhead : womanAhead, n }),
@@ -190,15 +236,22 @@ export function resultModel(run: StoryRunner): ResultModel {
         label: fill(L(RT.heroDots), { n, m: manAhead, w: womanAhead, e: even }),
       },
     }
-    const ends = { left: L(RT.rangeLeft), middle: L(RT.rangeMiddle), right: L(RT.rangeRight) }
-    range = {
-      ...pos,
-      ends,
-      caption: L(RT.rangeCaption),
-      note: L(RT.rangeNote),
-      label: fill(L(RT.rangeSaid), { at: pc(pos.at), lo: pc(pos.lo), hi: pc(pos.hi), tag: band }),
-    }
   }
+  /* Untagged (EVAL-10): the range is the mark, said in words; pooled seasons so far: this one
+     and any saved on an open profile (the reading has not restarted in this build). */
+  const pooled =
+    1 + (currentProfile()?.data.sessions.filter((x) => x.code !== run.code).length ?? 0)
+  const toTag = seasonsToTag(pooled)
+  const forming = unread
+    ? {
+        next: L(RT.forming.next),
+        words: rangeInWords(pos.lo, pos.hi, lang),
+        left:
+          toTag === null
+            ? L(RT.forming.notYet)
+            : fill(L(toTag === 1 ? RT.forming.leftOne : RT.forming.left), { n: toTag }),
+      }
+    : null
 
   const why: string[] = []
   if (n > 0 && manAhead !== womanAhead)
@@ -424,6 +477,7 @@ export function resultModel(run: StoryRunner): ResultModel {
     body,
     range,
     unread,
+    forming,
     sections: sectionsBelow(
       unread,
       cards.filter((c) => c.cue !== 'sex').map((c) => c.zone),

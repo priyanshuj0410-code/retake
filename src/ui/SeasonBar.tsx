@@ -11,10 +11,11 @@ export interface SeasonProgress {
 
 /**
  * The season's one progress bar in the sticky header (EVAL-10, owner; checked against
- * Duolingo's lesson header, Cal AI's and Finch's questionnaire bars in Lazyweb): a thin rounded
- * track in a tint with the done part in the accent, split into one segment per chapter and the
- * finale by small gaps, never tall ticks. Progress only: no countdown, no motion, nothing
- * interactive.
+ * Duolingo's lesson header, Cal AI's and Finch's questionnaire bars in Lazyweb): one 6 px pill
+ * per chapter and the finale, small gaps between them, the track a visible tint and the done part
+ * a pill of the accent, flush left. A started segment's fill is never thinner than it is tall,
+ * and at the very start the first segment shows a round dot, never a point. Progress only: no
+ * countdown, no motion, nothing interactive.
  */
 export function SeasonBar({ value, ticks, label }: SeasonProgress) {
   const edges = [0, ...ticks, 1]
@@ -24,12 +25,12 @@ export function SeasonBar({ value, ticks, label }: SeasonProgress) {
       {edges.slice(1).map((end, i) => {
         const start = edges[i]
         const span = end - start
+        const done = span > 0 ? (value - start) / span : 0
         return (
           <span className="seasonbar__seg" key={start} style={{ flexGrow: span }}>
-            <span
-              className="seasonbar__fill"
-              style={{ width: pc(span > 0 ? (value - start) / span : 0) }}
-            />
+            {done > 0 || i === 0 ? (
+              <span className="seasonbar__fill" style={{ width: pc(done) }} />
+            ) : null}
           </span>
         )
       })}

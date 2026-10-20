@@ -68,7 +68,8 @@ export interface SeasonConfig {
   pendingV18: string[]
   castSize: number
   weeks: number
-  splitCap: number
+  /** A split's per-person cap as a share of its pool (EVAL-10; PENDING v26). */
+  splitCapShare: number
   rating: {
     /** Permutation quantiles of the five reading levels (owner decision O2; PENDING v20, never player copy). */
     levels: { strong: number; moderate: number; possible: number }
@@ -77,6 +78,13 @@ export interface SeasonConfig {
     permutations: number
     /** The position-with-range display's maths (EVAL-10; PENDING v22, never player copy). */
     range: { method: 'beta' | 'wilson'; prior: [number, number]; mass: number }
+    /** Untagged readings (EVAL-10; PENDING v26): the hollow point, the range in words, opening. */
+    untagged: {
+      point: 'hollow' | 'none'
+      words: [number, number, number, number]
+      openingSeasons: number | null
+      pooledInBuild: boolean
+    }
   }
   counted: Record<string, number>
   faking: { screening: string[]; survey: string[]; formB: number }
@@ -101,6 +109,14 @@ export interface SeasonConfig {
 }
 
 export const config = raw as unknown as Config
+
+/**
+ * A split card's per-person cap (EVAL-10, owner): about two thirds of its pool, rounded, and never
+ * under a third (rounded up), so the pool can always be shared evenly when it divides by 3 and
+ * near-evenly otherwise.
+ */
+export const splitCap = (pool: number) =>
+  Math.max(Math.ceil(pool / 3), Math.round(pool * config.season.splitCapShare))
 
 /*
  * The season disclosure's sentence 3. Registered sentence 3 ("Attitudes are read, for groups

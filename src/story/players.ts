@@ -4,10 +4,10 @@
  * women (cueWeight > 0 favours men), noise, and an optional content-blind (careless) mode.
  */
 import { seeded, type Rng } from '../engine/rng'
-import { storyById } from './content'
+import { poolOf, storyById } from './content'
 import { StoryRunner, type BeatAnswer } from './runner'
 import type { PeoplePresented } from './session'
-import { config } from '../engine/config'
+import { config, splitCap } from '../engine/config'
 
 export interface SeasonTraits {
   cueWeight: number
@@ -35,8 +35,8 @@ export function decide(rng: Rng, r: StoryRunner, p: PeoplePresented, t: SeasonTr
   if (p.beat.kind === 'rank') return { order }
   if (p.beat.kind === 'pick') return { pick: order[0] }
   const units = Array<number>(k).fill(0)
-  const pool = p.beat.pool ?? 6
-  const cap = config.season.splitCap
+  const pool = poolOf(p.beat)
+  const cap = splitCap(pool)
   /* Most to the most wanted (or, for unwanted work, to the best placed), within the cap. */
   const plan = [Math.min(cap, Math.ceil(pool / 2)), Math.floor(pool / 3), 0]
   let left = pool

@@ -3,13 +3,14 @@
   border-top: var(--border-thin) solid var(--c-rule);
 }
 .details__summary {
+  /* A small heading (EVAL-10, owner): the label and its caret no larger than a section label. */
   display: flex;
   align-items: center;
-  gap: var(--gap-s);
-  min-height: var(--control);
+  gap: var(--gap-xs);
+  min-height: var(--target);
   font-family: var(--font-display);
-  font-size: var(--text-action);
-  letter-spacing: var(--tracking-action);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
   text-transform: var(--case-display);
   line-height: var(--leading-ui);
   color: var(--c-accent);

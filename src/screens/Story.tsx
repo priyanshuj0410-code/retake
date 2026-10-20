@@ -7,12 +7,12 @@
 import { useEffect, useState } from 'react'
 import { notesById, screeningItems, screens, surveyItems } from '../content'
 import type { Lang, T } from '../content/types'
-import { config, formatDate, releaseOf } from '../engine/config'
+import { config, formatDate, releaseOf, splitCap } from '../engine/config'
 import { formatCode } from '../engine/codes'
 import { fill } from '../engine/text'
 import { store, today } from '../store'
 import { randomKey } from '../engine/rng'
-import { PF, PRACTICE, RT, SS, stories, storyById, type Story } from '../story/content'
+import { PF, poolOf, PRACTICE, RT, SS, stories, storyById, type Story } from '../story/content'
 import {
   addSession,
   createProfile,
@@ -25,6 +25,7 @@ import { castTiles, colleagueView, langAttr, sceneArt, trackLines } from '../sto
 import { resultModel } from '../story/why'
 import type { Level } from '../story/rating'
 import {
+  Actions,
   AgreeGrid,
   Beat,
   type BeatThen,
@@ -65,13 +66,12 @@ import {
 const S = screens
 
 /**
- * The first screen (EVAL-10, language first): when the link lets the player choose, the
- * language comes first under a bilingual heading ("Choose your language / Apni bhasha
- * chunein"), and the two eligibility items (candidates v17 3.19: aged 18 or over, working in
- * India) follow in the language chosen; until one is chosen they show in English with the
- * Hinglish under each. Asked, not counted, and not stored beyond the session.
- * "English with Hinglish help" is the third option: English on screen with the Hinglish under
- * every question and description.
+ * The first screens (EVAL-10, language first): when the link lets the player choose, the
+ * language comes alone first, under a bilingual heading ("Choose your language / Apni bhasha
+ * chunein"); then "Before the season", the two eligibility items (candidates v17 3.19: aged 18 or
+ * over, working in India) in the language chosen: English only, Hinglish only, or English with
+ * the Hinglish under every question and option. Asked, not counted, and not stored beyond the
+ * session.
  */
 export function Eligibility({
   ui,
@@ -80,34 +80,48 @@ export function Eligibility({
   onDone,
 }: {
   ui: Lang
-  /** The prototype line, on this landing screen only. */
+  /** The prototype line, on these landing screens only. */
   footnote?: T
-  /** The language choice on the same screen, first, when the link lets the player choose. */
+  /** The language choice first, on its own screen, when the link lets the player choose. */
   languages?: boolean
   onDone: (ok: boolean, langs?: Lang[]) => void
 }) {
   const [v, setV] = useState<Record<string, string>>({})
   const [lang, setLang] = useState<string | null>(null)
-  /* What the rest of the screen shows: the chosen language, or English with the Hinglish
-     help until a language is chosen. */
+  const [step, setStep] = useState<'language' | 'questions'>(languages ? 'language' : 'questions')
   const show: Lang = languages ? (lang === 'hinglish' ? 'hinglish' : 'en') : ui
-  const help = languages ? lang === null || lang === 'both' : false
+  const help = languages ? lang === 'both' : false
   const L = (t: T) => t[show]
   const H = (t: T) => (help ? t.hinglish : undefined)
+  const O = (id: string, t: T) => ({ id, text: L(t), help: H(t) })
   const items = SS.eligible as unknown as { id: string; text: T }[]
-  const questions = items.map((it) => (
-    <Choice
-      key={it.id}
-      legend={L(it.text)}
-      help={H(it.text)}
-      options={[
-        { id: 'yes', text: L(S.common.yes) },
-        { id: 'no', text: L(S.common.no) },
-      ]}
-      value={v[it.id] ?? null}
-      onChange={(id) => setV({ ...v, [it.id]: id })}
-    />
-  ))
+  if (step === 'language')
+    return (
+      <Page
+        surface="oof"
+        stepKey="language"
+        screen="language"
+        footnote={footnote ? `${footnote.en} / ${footnote.hinglish}` : undefined}
+        lang="en-GB"
+        actions={
+          <Button onClick={() => setStep('questions')} disabled={!lang}>
+            {`${S.common.continue.en} / ${S.common.continue.hinglish}`}
+          </Button>
+        }
+      >
+        <Choice
+          heading
+          legend={`${SS.langTitle.en} / ${SS.langTitle.hinglish}`}
+          options={[
+            { id: 'en', text: S.language.en.en },
+            { id: 'hinglish', text: S.language.hinglish.hinglish },
+            { id: 'both', text: SS.langBoth.en, help: SS.langBoth.hinglish },
+          ]}
+          value={lang}
+          onChange={setLang}
+        />
+      </Page>
+    )
   return (
     <Page
       surface="oof"
@@ -116,7 +130,7 @@ export function Eligibility({
       footnote={footnote ? L(footnote) : undefined}
       oof={L(S.common.outOfFiction)}
       lang={langAttr(show)}
-      title={languages ? undefined : L(SS.eligibleTitle)}
+      title={L(SS.eligibleTitle)}
       actions={
         <Button
           onClick={() =>
@@ -125,33 +139,22 @@ export function Eligibility({
               lang ? (lang === 'both' ? ['en', 'hinglish'] : [lang as Lang]) : undefined,
             )
           }
-          disabled={items.some((i) => !v[i.id]) || (languages === true && !lang)}
+          disabled={items.some((i) => !v[i.id])}
         >
           {L(S.common.continue)}
         </Button>
       }
     >
-      {languages ? (
-        <>
-          <Choice
-            heading
-            legend={`${SS.langTitle.en} / ${SS.langTitle.hinglish}`}
-            options={[
-              { id: 'en', text: S.language.en.en },
-              { id: 'hinglish', text: S.language.hinglish.hinglish },
-              { id: 'both', text: SS.langBoth.en },
-            ]}
-            value={lang}
-            onChange={setLang}
-          />
-          <Group label={L(SS.eligibleTitle)}>
-            <Heading>{L(SS.eligibleTitle)}</Heading>
-            {questions}
-          </Group>
-        </>
-      ) : (
-        questions
-      )}
+      {items.map((it) => (
+        <Choice
+          key={it.id}
+          legend={L(it.text)}
+          help={H(it.text)}
+          options={[O('yes', S.common.yes), O('no', S.common.no)]}
+          value={v[it.id] ?? null}
+          onChange={(id) => setV({ ...v, [it.id]: id })}
+        />
+      ))}
     </Page>
   )
 }
@@ -342,8 +345,8 @@ export function StoryView({
           <Options
             label={L(PRACTICE.offer)}
             options={[
-              { id: 'practice', text: L(PRACTICE.practise) },
-              { id: 'start', text: L(PRACTICE.start) },
+              { id: 'practice', text: L(PRACTICE.practise), help: H(PRACTICE.practise) },
+              { id: 'start', text: L(PRACTICE.start), help: H(PRACTICE.start) },
             ]}
             onPick={onDone}
           />
@@ -410,6 +413,7 @@ export function StoryView({
         <GridStep
           key={key}
           ui={ui}
+          help={runner.help}
           page={page}
           title={L(SS.screeningTitle)}
           items={config.season.faking.screening.flatMap((id) => {
@@ -424,6 +428,7 @@ export function StoryView({
         <GridStep
           key={key}
           ui={ui}
+          help={runner.help}
           page={page}
           title={L(step.admin === 1 ? SS.surveyTitle : SS.surveyTitle2)}
           items={config.season.faking.survey.flatMap((id) => {
@@ -471,7 +476,7 @@ export function StoryView({
             label={L(S.recall.question)}
             options={runner.recallOrder.map((id) => {
               const o = S.recall.options.find((x) => x.id === id)
-              return { id, text: o ? L(o.text) : id }
+              return { id, text: o ? L(o.text) : id, help: o ? H(o.text) : undefined }
             })}
             onPick={onDone}
           />
@@ -640,7 +645,7 @@ function BeatStep({
   if (b.kind === 'ordinary') {
     const opts = b.order.map((id) => {
       const o = b.beat.options.find((x) => x.id === id)
-      return { id, text: o ? L(o.text) : id }
+      return { id, text: o ? L(o.text) : id, help: o ? H(o.text) : undefined }
     })
     return (
       <Page {...page}>
@@ -688,8 +693,8 @@ function BeatStep({
     input = (
       <QuickSplit
         items={items}
-        pool={b.beat.pool ?? 6}
-        cap={config.season.splitCap}
+        pool={poolOf(b.beat)}
+        cap={splitCap(poolOf(b.beat))}
         onDone={(units) => onDone({ units })}
         initial={saved && 'units' in saved ? saved.units : undefined}
         labels={splitLabels(L)}
@@ -701,9 +706,9 @@ function BeatStep({
       {b.beat.kind === 'split' ? (
         <Text kind="small">
           {fill(L(SS.splitPool), {
-            pool: b.beat.pool ?? 6,
+            pool: poolOf(b.beat),
             unit: b.beat.unit ? L(b.beat.unit) : '',
-            cap: config.season.splitCap,
+            cap: splitCap(poolOf(b.beat)),
           })}
         </Text>
       ) : (
@@ -758,8 +763,8 @@ function PracticeStep({
       ) : (
         <QuickSplit
           items={items}
-          pool={p.pool ?? 6}
-          cap={config.season.splitCap}
+          pool={poolOf(p)}
+          cap={splitCap(poolOf(p))}
           onDone={next}
           labels={splitLabels(L)}
         />
@@ -771,12 +776,15 @@ function PracticeStep({
 /** Agree or disagree items on one grid screen (the screening block, each survey administration). */
 function GridStep({
   ui,
+  help,
   page,
   title,
   items,
   onDone,
 }: {
   ui: Lang
+  /** "English with Hinglish help": the key's words in Hinglish too. */
+  help?: boolean
   page: PageBase
   title: string
   items: { id: string; text: string; help?: string }[]
@@ -799,6 +807,7 @@ function GridStep({
       <AgreeGrid
         items={items}
         scale={SS.surveyKey.map(L)}
+        scaleHelp={help ? SS.surveyKey.map((t) => t.hinglish) : undefined}
         value={v}
         onChange={setV}
         keyLabel={SS.surveyKey.map((s, i) => `${i + 1} ${L(s)}`).join(', ')}
@@ -839,7 +848,7 @@ function ProbeStep({
         legend={L(pr.question)}
         help={H(pr.question)}
         hint={L(pr.hint)}
-        options={pr.options.map((o) => ({ id: o.id, text: L(o.text) }))}
+        options={pr.options.map((o) => ({ id: o.id, text: L(o.text), help: H(o.text) }))}
         value={v}
         onChange={setV}
       />
@@ -895,7 +904,7 @@ function WrapStep({
           key={it.id}
           legend={L(it.text)}
           help={H(it.text)}
-          options={it.options.map((o) => ({ id: o.id, text: L(o.text) }))}
+          options={it.options.map((o) => ({ id: o.id, text: L(o.text), help: H(o.text) }))}
           value={v[it.id] ?? null}
           onChange={(id) => setV({ ...v, [it.id]: id })}
         />
@@ -967,7 +976,14 @@ function CloseStep({
         </Text>
         <Checks
           legend={L(S.wrap.code.saved)}
-          options={[{ id: 'saved', text: L(S.common.yes) }]}
+          help={runner.help ? S.wrap.code.saved.hinglish : undefined}
+          options={[
+            {
+              id: 'saved',
+              text: L(S.common.yes),
+              help: runner.help ? S.common.yes.hinglish : undefined,
+            },
+          ]}
           value={saved ? ['saved'] : []}
           onChange={(ids) => setSaved(ids.includes('saved'))}
         />
@@ -1009,8 +1025,8 @@ function DemographicsStep({
           legend={L(it.text)}
           help={H(it.text)}
           options={[
-            ...it.options.map((o) => ({ id: o.id, text: L(o.text) })),
-            { id: 'prefer-not', text: L(S.common.skip) },
+            ...it.options.map((o) => ({ id: o.id, text: L(o.text), help: H(o.text) })),
+            { id: 'prefer-not', text: L(S.common.skip), help: H(S.common.skip) },
           ]}
           value={v[it.id] ?? null}
           onChange={(id) => setV({ ...v, [it.id]: id })}
@@ -1070,10 +1086,18 @@ export function StoryResult({
             lo={m.range.lo}
             hi={m.range.hi}
             ends={m.range.ends}
-            label={m.range.label}
+            label={m.forming ? `${m.range.label} ${m.forming.words}` : m.range.label}
             caption={m.range.caption}
-            note={m.range.note}
+            note={m.forming ? m.forming.words : m.range.note}
+            point={m.forming ? config.season.rating.untagged.point : 'solid'}
           />
+        ) : null}
+        {m.forming ? (
+          <>
+            <Text>{m.forming.next}</Text>
+            <Text kind="muted">{m.forming.left}</Text>
+            <FormingActions runner={runner} />
+          </>
         ) : null}
         {m.why.length ? <List items={m.why} /> : null}
       </ResultHero>
@@ -1182,6 +1206,36 @@ export function StoryResult({
         ].map((x) => (typeof x === 'string' ? x : L(x)))}
       />
     </Page>
+  )
+}
+
+/**
+ * A forming reading's next step (EVAL-10, owner: never a dead end): "Start another season" (a new
+ * demo link; in a study the next link comes from the study team) and, with no profile open yet,
+ * "Save to my profile", which takes the player to the profile form below.
+ */
+function FormingActions({ runner }: { runner: StoryRunner }) {
+  const L = (t: T) => t[runner.lang]
+  const start = async () => {
+    const [t] = await store.issueTokens('season', 1, runner.langs.length > 1 ? 'both' : runner.lang)
+    location.hash = `#/play/${t}`
+  }
+  const save = () => {
+    const group = [...document.querySelectorAll('section')].find(
+      (x) => x.getAttribute('aria-label') === L(PF.saveTitle),
+    )
+    group?.querySelector<HTMLInputElement>('input')?.focus()
+  }
+  if (!config.demo && currentProfile()) return null
+  return (
+    <Actions>
+      {config.demo ? <Button onClick={() => void start()}>{L(RT.forming.start)}</Button> : null}
+      {currentProfile() ? null : (
+        <Button kind="quiet" onClick={save}>
+          {L(RT.forming.save)}
+        </Button>
+      )}
+    </Actions>
   )
 }
 

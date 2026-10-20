@@ -248,7 +248,7 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 | `StoryPick` | `src/ui/StoryPick.tsx` | The season picker: one card per story in a grid of equal rows (`--rows-equal`, every card as tall as the tallest at each width), a fixed-width art column with the drawn `PanelArt` cover centred, title and premise top-aligned, and the "After your rating." line pinned to the foot so the lines sit level; stories not open are `aria-disabled` (no emoji, no PENDING) |
 | `RangeLine` | `src/ui/RangeLine.tsx` | The position with range (EVAL-10, owner): one line from "Men first" to "Women first" with a dashed tick at "About equal", an ink dot at the position (the share of pairs where the woman came first, an even share counting half) and a shaded range around it (`--c-range`, ink-edged), from the maths in `config.season.rating.range` (PENDING v22, `src/story/range.ts`). One image with a spoken label; `compact` (the profile timeline) drops the end labels. Ink on the ground only; neither end is marked as right |
 | `ReadingList` | `src/ui/ReadingList.tsx` | Readings as a plain list, label then level, every level in the same ink and weight ("Leans towards men" looks exactly like "No lean read"); only "Not enough to say" is quieter. No colour reads as good or bad |
-| `ResultHero` | `src/ui/ResultHero.tsx` | The top of the result: one number to remember ("38 of 46 pairs where you put the man first"), one sentence saying what a pair is, the dot grid (`role="img"`, filled: the man first, ring: the woman first, dashed: neither), the tag and its sentence, then the `RangeLine` and the reasons as children; ink on grey only. With "Not enough to tell" it shows the tag and its sentence only, and nothing of the result follows (copy audit G5) |
+| `ResultHero` | `src/ui/ResultHero.tsx` | The top of the result: one number to remember ("38 of 46 pairs where you put the man first"), one sentence saying what a pair is, the dot grid (`role="img"`, filled: the man first, ring: the woman first, dashed: neither), the tag and its sentence, then the `RangeLine` and the reasons as children; ink on grey only. A forming reading shows its heading, sentence, the range (hollow point) in words and the next step, no dots and no tag |
 | `Fold` | `src/ui/Fold.tsx` | A section that folds: native `details` with the `h2` in the summary and a drawn marker; the result's areas, the first open; the opened explanation's sections, all closed |
 | `UpdateReady` | `src/ui/UpdateReady.tsx` | "Update ready. Your season is kept." with an Update button, a fixed bar at the foot of the screen on paper with the ink rule above it (`role="status"`), shown when a new version of the installed app is waiting (EVAL-7); it never reloads on its own |
 | `SeasonMap` | `src/ui/SeasonMap.tsx` | The season map on the chapter-end screen (EVAL-8, concept D; moved out of the header by EVAL-10): six stops on one line (chapters 1 to 5 as numbered rounds, the finale square), done filled ink, the current one violet, the rest outlined. One `role="img"` with a spoken label. No card dots, no countdown, no motion; nothing in it is interactive |
@@ -528,13 +528,29 @@ pass (EVAL-10)".
   fails any practice item that names a person or a cue.
 - **Tags and the position with range.** "Clear pattern: men first", "Pattern: men first more
   often", "Maybe a pattern: men first a little more often", "No pattern: women and men first
-  about equally", "Not enough to tell" (and the same with "women first", or the cue's groups for
-  religion and skin tone). The thresholds stay in `config.season.rating.levels`; the range maths
-  in `config.season.rating.range` (PENDING v22). Nothing pending in player copy.
-- **The result** says what a pair is and drops "chance would explain" and "shaded middle". With
-  "Not enough to tell" on sex it shows nothing more of the sex result below the tag (no areas),
-  but keeps the religion and skin-tone readings the player has (owner decision 5); with every
-  cue unread it shows the one plain message only (`sectionsBelow`).
+  about equally" (and the same with "women first", or the cue's groups for religion and skin
+  tone); an untagged other reading says "Still forming". The thresholds stay in
+  `config.season.rating.levels`; the range maths in `config.season.rating.range` (PENDING v22).
+  Nothing pending in player copy.
+- **Always show; tag only once confirmed (owner, the research critic; v26 registers it).** A
+  reading that is not confirmed is never a dead end: "Your reading is still forming", a warm
+  sentence (no blame, never "cannot"), the position with its range where **the range is the
+  mark** (the point hollow or left out, `untagged.point`, hollow by default; a tagged reading keeps
+  the solid dot), the range in words ("Somewhere between slightly men-first and slightly
+  women-first", edges in `untagged.words`), the next step, and "Tagged after N more seasons on
+  your profile", N the registered opening count less the seasons pooled since the reading's last
+  restart, never projected per player. This build reads each season alone, so the line says "not
+  available yet" (`untagged.pooledInBuild`). Then "Start another season" (demo) and, with no
+  profile open, "Save to my profile". The other readings always show; the areas only once the
+  headline is readable (`sectionsBelow`). The profile timeline draws every season's range, an
+  untagged one with the hollow point.
+- **Split pools (owner: "why is it always 6?").** Every split card sets its own pool (4, 5, 6, 8,
+  9, 10 or 12, by what is shared; no value on more than 15 per cent of the 20 cards; no default
+  in code, `story-check` fails a missing pool). The per-person cap is about two thirds of the pool
+  (`splitCap`, `splitCapShare` 0.67), never under a third, so an even or near-even split is
+  always possible. The chips are 44 px columns that wrap (a cap of 8 is two rows of 5 and 4).
+  Scoring reads shares (units over the total) on the record and the sign of a difference in the
+  reading, never raw units, so pools compare (PENDING v26, which registers the variation).
 - **The scoring rule** holds in the game: no in-game copy says how answers are read
   (`story-check` X-20 fails "reads you", "decisions that count", "rating", "equal pairs",
   "chance" in the opening, chapters, picker, consent points or practice).
@@ -548,6 +564,24 @@ pass (EVAL-10)".
   another story's face. One-offs and mascots are shared. The drawn fallback's four cast tones
   match the generated ones (the owner's approved range, 20 Oct 2026): `l1` #EDC6A2, `l2` #C9A080,
   `d1` #A67C5F, `d2` #845940, and the one-off constant `m` #B88E6F.
+
+- **Language, then eligibility (owner).** When the link lets the player choose, the language is a
+  screen of its own under the bilingual heading; "Before the season" follows in the chosen
+  language only (English, Hinglish, or English with the Hinglish under every question and every
+  option). Nothing shows in a language the player did not choose.
+- **One help-mode style.** Every Hinglish help line (questions, options, statements and the
+  survey key, descriptions, consent points, icon rows) is `--text-help` (14 px), upright, muted,
+  body type, under its English. A question under an `h1` is body type at 17 px, never display
+  type, and sits one pitch above its options in the note register (`--question-gap`).
+- **One action pair.** A primary and at most one quiet action, stacked half a pitch apart on
+  phones (`--pair-gap`) and side by side from 600 px. The quiet action is small body type in
+  sentence case, muted ink, a thin underline, its text on the primary's left edge and a 48 px hit
+  area: quieter, never hidden (a consent's decline stays easy to use). "Read the full details" is
+  a small display label (16 px) one pitch above the actions.
+- **The season bar** is 6 px pills (`--radius-pill`, never a percentage radius), one per chapter
+  and the finale with 4 px gaps, the track `--c-track` (lilac `#C9BEDA`, 1.8:1 on white; the tan
+  rule on note paper) and the done part an accent pill flush left, never thinner than it is
+  tall; at the very start the first segment shows a round dot.
 
 ### The comic page grammar (EVAL-10, owner)
 

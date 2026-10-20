@@ -106,6 +106,29 @@ muted small type (spoken in full). Phones show one card per row with a 96 px thu
 no ranking page fits one scroll (28 of 28, 1,003 to 1,179 px). Screenshots:
 `build-v5/50-{rank,pick,split}-{390,1440}`, `50-split-320`, `51-header-back-{390,1440}`.
 
+**Language leak on "Before the season" (owner).** The live screen showed Hinglish under the
+English questions because the questions shared the language screen and, until a language was
+chosen, showed English with the Hinglish help. The language is now its own first screen;
+"Before the season" follows in the chosen language only, and the help mode carries the Hinglish
+under options too, in one muted style everywhere. Also fixed in this batch: the decline and other
+quiet actions (quieter, on the primary's left edge, a tight pair), the smaller expander, and the
+season bar's pill shapes. Screenshots: `build-v5/60-*` to `67-*`.
+
+**Split pools (owner: "why is it always 6?").** `players.ts` and the split screen defaulted a
+missing pool to 6 and every card set 6. Each split now sets its own pool (4 to 12 by what is
+shared), with no default and a check that fails a missing one; the cap scales at about two thirds
+of the pool. Scoring was already pool-free: the record stores shares (units over the total) and
+the reading compares the sign of two colleagues' units within a card, so no raw-unit reading had
+to change. **v26 must register the pool variation.**
+
+**Always show, tag only once confirmed (owner and the research critic).** "Not enough to tell" is
+replaced by "Your reading is still forming": the range as the mark (hollow point), the range in
+words, the next step and "Tagged after N more seasons on your profile", N from config; this build
+reads each season alone, so it says "not available yet". The other readings always show. The
+tagged states' copy was checked for tone (no verdict on the person). **v26 must register the
+always-show rule and this wording.** Screenshots: `build-v5/80-result-{forming,pattern,nopattern}-{en,hinglish}`,
+`70-split-pool-12-*`.
+
 ### Shared rules change (must land before this ships)
 
 The rules piece in this repo (`database.rules.json`) now accepts `meta.chapter_timing` (exactly

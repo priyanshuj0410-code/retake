@@ -1,16 +1,18 @@
 /* @owns seasonbar seasonbar__seg seasonbar__fill */
 .seasonbar {
   display: flex;
+  align-items: center;
   gap: var(--seg-gap);
   flex: 1 1 var(--bar-min);
   min-width: 0;
   forced-color-adjust: none;
 }
+/* Pills, never percentage radii (which turn thin bars into lenses). */
 .seasonbar__seg {
   position: relative;
   flex-basis: 0;
   height: var(--bar-thin);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
   background: var(--c-track);
   overflow: hidden;
 }
@@ -19,5 +21,7 @@
   left: var(--gap-none);
   top: var(--gap-none);
   bottom: var(--gap-none);
+  min-width: var(--bar-thin);
+  border-radius: var(--radius-pill);
   background: var(--c-accent);
 }

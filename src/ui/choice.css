@@ -14,11 +14,15 @@
   display: grid;
   grid-auto-rows: var(--rows-equal);
   gap: var(--field-gap);
+  /* The question block (question and its help line) stands apart from its options: one pitch in
+     the note register (EVAL-10). */
+  margin-top: var(--question-gap);
 }
 .choice__legend {
-  font-family: var(--font-display);
-  font-size: var(--text-lead);
-  font-weight: var(--weight-display);
+  /* A question under a screen's h1 is body type (EVAL-10), so it never competes with the h1. */
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-strong);
   line-height: var(--leading-ui);
   color: var(--c-text);
   padding: var(--gap-none);
@@ -27,8 +31,12 @@
   overflow-wrap: anywhere;
 }
 .choice__heading {
-  font: inherit;
   margin: var(--gap-none);
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-display);
+  line-height: var(--leading-tight);
+  text-transform: var(--case-display);
 }
 .choice__heading:focus {
   outline: none;
@@ -85,10 +93,14 @@
   overflow-wrap: anywhere;
 }
 .choice__help {
+  /* The help mode's one style (EVAL-10): muted, small, upright, every screen alike. */
   display: block;
   font-family: var(--font-body);
-  font-size: var(--text-body);
+  font-size: var(--text-help);
   font-weight: normal;
-  font-style: italic;
+  font-style: normal;
+  line-height: var(--leading-tight-rows);
+  letter-spacing: normal;
+  text-transform: none;
   color: var(--c-muted);
 }

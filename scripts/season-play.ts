@@ -192,7 +192,7 @@ export async function playSeason(
       await click(page, button('Continue'))
     } else if (m === 'consent' || m === 'start') await click(page, button('I agree to take part'))
     else if (m === 'language') {
-      await page.getByRole('radio', { name: 'English' }).check()
+      await page.getByRole('radio', { name: 'English', exact: true }).check()
       clicks += 1
       await click(page, button('Continue'))
     } else if (m === 'story:pick')
@@ -214,11 +214,19 @@ export async function playSeason(
     } else if (m === 'story:beat:split') {
       decisions += 1
       asked += 1
-      /* A split across three (EVAL-10): 4 and 2 to the two preferred, then confirm. */
+      /* A split across three (EVAL-10): half the pool (rounded up) to the preferred, the rest to
+         the next, then confirm. Each card sets its own pool. */
       const rows = page.locator('.split__row')
       const order = await preference(page, '.split__row')
-      await click(page, rows.nth(order[0]).getByRole('button', { name: /: 4$/ }))
-      await click(page, rows.nth(order[1]).getByRole('button', { name: /: 2$/ }))
+      const pool = Number(
+        ((await page.locator('.split__left').textContent()) ?? '').match(/\d+/)?.[0],
+      )
+      const first = Math.ceil(pool / 2)
+      await click(page, rows.nth(order[0]).getByRole('button', { name: new RegExp(`: ${first}$`) }))
+      await click(
+        page,
+        rows.nth(order[1]).getByRole('button', { name: new RegExp(`: ${pool - first}$`) }),
+      )
       await click(page, button('Confirm these shares'))
     } else if (m === 'story:screening' || m === 'story:fsurvey') await grid(true)
     else if (m === 'story:recall') {

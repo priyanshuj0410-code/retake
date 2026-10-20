@@ -236,7 +236,7 @@
       "castSize",
       "episodes",
       "counted",
-      "splitCap",
+      "splitCapShare",
       "faking",
       "route",
       "cueCarriers",
@@ -251,7 +251,8 @@
       "retakeGapDays",
       "timing"
     ],
-    "splitCap": 4,
+    "splitCapShare": 0.67,
+    "_splitCapNote": "EVAL-10 (owner): each split card sets its own pool (4 to 12, PENDING v26, which registers the variation); the per-person cap is the pool times splitCapShare, rounded, and never under a third of the pool, so an even split (or a near-even one) is always possible.",
     "rating": {
       "_note": "PENDING v18. Computed on all 57 rating cards. A cue's level comes from its permutation p against rating.levels: the cast's cues against every balanced relabelling of the cast, caste and birthplace against sign flips of the one-off pairs (exact up to 2^12, else `permutations` draws). Not enough to say below minPairs decisive pairs, or when the player followed the notes in under engagementMin of clear pairs.",
       "levels": {
@@ -268,6 +269,13 @@
         "method": "beta",
         "prior": [1, 1],
         "mass": 0.9
+      },
+      "untagged": {
+        "_pending": "PENDING v26: the always-show rule (owner, 20 Oct 2026) and the research critic's adjustment. An untagged reading (still forming, or not yet confirmed) shows its range as the mark, the point hollow or left out (`point`), the range in words from `words` (edges between mostly men-first, slightly men-first, about equal, slightly women-first and mostly women-first), and 'Tagged after N more seasons on your profile', N being `openingSeasons` less the seasons pooled since the reading's last restart. `pooledInBuild` false: this build reads each season alone, so a pooled reading cannot open yet and the line says 'Not available yet'. Planning values; the research design sets them.",
+        "point": "hollow",
+        "words": [0.2, 0.4, 0.6, 0.8],
+        "openingSeasons": 3,
+        "pooledInBuild": false
       }
     },
     "timing": {

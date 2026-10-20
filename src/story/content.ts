@@ -114,7 +114,16 @@ export const SS = storyContent.screens as unknown as Record<string, T> & StoryCo
 export const RT = storyContent.rating as unknown as Record<string, T> & {
   /** The five tags (EVAL-10): Clear pattern, Pattern, Maybe a pattern, No pattern, Not enough to tell. */
   tags: Record<'strong' | 'moderate' | 'possible' | 'none' | 'unread', T>
-  tagBodies: Record<'strong' | 'moderate' | 'possible' | 'none' | 'unread' | 'unengaged', T>
+  tagBodies: Record<'strong' | 'moderate' | 'possible' | 'none', T>
+  /** A forming reading (EVAL-10, owner): never a dead end. */
+  forming: Record<
+    'title' | 'unread' | 'unengaged' | 'next' | 'left' | 'leftOne' | 'notYet' | 'start' | 'save',
+    T
+  >
+  rangeWords: Record<
+    'mostlyMen' | 'slightlyMen' | 'equal' | 'slightlyWomen' | 'mostlyWomen' | 'between' | 'around',
+    T
+  >
   meaning: Record<'lean' | 'none' | 'unread', T>
   cueShort: Record<string, T>
   cues: Record<string, Record<string, T>>
@@ -149,3 +158,9 @@ export const PRACTICE = (
     }
   }
 ).practice
+
+/** A split card's pool (EVAL-10): every split sets its own; there is no default (content-check). */
+export function poolOf(b: { id?: string; pool?: number }): number {
+  if (!b.pool) throw new Error(`split ${b.id ?? ''} has no pool`)
+  return b.pool
+}

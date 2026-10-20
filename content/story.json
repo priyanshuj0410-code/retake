@@ -238,18 +238,18 @@
       "hinglish": "Scanner training"
      },
      "scene": {
-      "en": "The scanner maker offers 6 training days on the new handheld scanners.",
-      "hinglish": "Scanner company naye handheld scanners par 6 training din de rahi hai."
+      "en": "The scanner maker offers 4 training days on the new handheld scanners.",
+      "hinglish": "Scanner company naye handheld scanners par 4 training din de rahi hai."
      },
      "question": {
-      "en": "Who gets the 6 training days?",
-      "hinglish": "6 training din kise milenge?"
+      "en": "Who gets the 4 training days?",
+      "hinglish": "4 training din kise milenge?"
      },
      "unit": {
       "en": "training days",
       "hinglish": "training din"
      },
-     "pool": 6,
+     "pool": 4,
      "descriptions": [
       {
        "id": "wh-w1-scanner-a",
@@ -919,12 +919,12 @@
       "hinglish": "Stock checks"
      },
      "scene": {
-      "en": "Someone has to stay late for 6 evening stock checks. Nobody asks for it.",
-      "hinglish": "6 shaam ke stock checks ke liye kisi ko der tak rukna hai. Yeh koi nahin maangta."
+      "en": "Someone has to stay late for 9 evening stock checks. Nobody asks for it.",
+      "hinglish": "9 shaam ke stock checks ke liye kisi ko der tak rukna hai. Yeh koi nahin maangta."
      },
      "question": {
-      "en": "Who gets the 6 stock checks?",
-      "hinglish": "6 stock checks kise milenge?"
+      "en": "Who gets the 9 stock checks?",
+      "hinglish": "9 stock checks kise milenge?"
      },
      "descriptions": [
       {
@@ -970,7 +970,7 @@
       "en": "stock checks",
       "hinglish": "stock checks"
      },
-     "pool": 6
+     "pool": 9
     },
     {
      "id": "wh-e1-cr1",
@@ -1449,12 +1449,12 @@
       "hinglish": "Shikayat log"
      },
      "scene": {
-      "en": "Someone has to write up the complaint log after 6 meetings. Nobody asks for it.",
-      "hinglish": "6 meetings ke baad shikayat log likhna hai. Yeh koi nahin maangta."
+      "en": "Someone has to write up the complaint log after 5 meetings. Nobody asks for it.",
+      "hinglish": "5 meetings ke baad shikayat log likhna hai. Yeh koi nahin maangta."
      },
      "question": {
-      "en": "Who gets the 6 write-ups?",
-      "hinglish": "6 write-ups kise milenge?"
+      "en": "Who gets the 5 write-ups?",
+      "hinglish": "5 write-ups kise milenge?"
      },
      "descriptions": [
       {
@@ -1500,7 +1500,7 @@
       "en": "write-ups",
       "hinglish": "write-ups"
      },
-     "pool": 6
+     "pool": 5
     },
     {
      "id": "wh-e2-safety",
@@ -1668,12 +1668,12 @@
       "hinglish": "Bahari trainers"
      },
      "scene": {
-      "en": "3 outside trainers bid to run 6 sessions on raising problems at work.",
-      "hinglish": "3 bahari trainers kaam par pareshaani uthaane par 6 sessions ke liye bid karte hain."
+      "en": "3 outside trainers bid to run 8 sessions on raising problems at work.",
+      "hinglish": "3 bahari trainers kaam par pareshaani uthaane par 8 sessions ke liye bid karte hain."
      },
      "question": {
-      "en": "Who gets the 6 sessions?",
-      "hinglish": "6 sessions kise milenge?"
+      "en": "Who gets the 8 sessions?",
+      "hinglish": "8 sessions kise milenge?"
      },
      "descriptions": [
       {
@@ -1719,7 +1719,7 @@
       "en": "sessions",
       "hinglish": "sessions"
      },
-     "pool": 6,
+     "pool": 8,
      "oneoff": "vendors",
      "cue": "caste"
     },
@@ -1902,18 +1902,18 @@
       "hinglish": "Safety course"
      },
      "scene": {
-      "en": "A forklift safety course runs over 6 days, and the days can be split between colleagues.",
-      "hinglish": "Forklift safety course 6 din ka hai, aur din colleagues mein baante ja sakte hain."
+      "en": "A forklift safety course runs over 5 days, and the days can be split between colleagues.",
+      "hinglish": "Forklift safety course 5 din ka hai, aur din colleagues mein baante ja sakte hain."
      },
      "question": {
-      "en": "Who gets the 6 course days?",
-      "hinglish": "6 course din kise milenge?"
+      "en": "Who gets the 5 course days?",
+      "hinglish": "5 course din kise milenge?"
      },
      "unit": {
       "en": "course days",
       "hinglish": "course din"
      },
-     "pool": 6,
+     "pool": 5,
      "descriptions": [
       {
        "id": "wh-w2-safety-a",
@@ -2032,12 +2032,12 @@
       "hinglish": "Box trial orders"
      },
      "scene": {
-      "en": "3 local box makers can each take trial orders. There are 6 orders.",
-      "hinglish": "3 local box banane wale trial orders le sakte hain. 6 orders hain."
+      "en": "3 local box makers can each take trial orders. There are 12 orders.",
+      "hinglish": "3 local box banane wale trial orders le sakte hain. 12 orders hain."
      },
      "question": {
-      "en": "Who gets the 6 trial orders?",
-      "hinglish": "6 trial orders kise milenge?"
+      "en": "Who gets the 12 trial orders?",
+      "hinglish": "12 trial orders kise milenge?"
      },
      "descriptions": [
       {
@@ -2083,7 +2083,7 @@
       "en": "orders",
       "hinglish": "orders"
      },
-     "pool": 6,
+     "pool": 12,
      "oneoff": "vendors",
      "cue": "born"
     },
@@ -2098,18 +2098,18 @@
       "hinglish": "Meeting minutes"
      },
      "scene": {
-      "en": "Someone has to take minutes at 6 client meetings. It is useful, but nobody asks for it.",
-      "hinglish": "6 client meetings ke minutes kisi ko likhne hain. Kaam zaroori hai, par koi ise maangta nahin."
+      "en": "Someone has to take minutes at 9 client meetings. It is useful, but nobody asks for it.",
+      "hinglish": "9 client meetings ke minutes kisi ko likhne hain. Kaam zaroori hai, par koi ise maangta nahin."
      },
      "question": {
-      "en": "Who gets the 6 sets of minutes?",
-      "hinglish": "6 meetings ke minutes kise milenge?"
+      "en": "Who gets the 9 sets of minutes?",
+      "hinglish": "9 meetings ke minutes kise milenge?"
      },
      "unit": {
       "en": "meetings",
       "hinglish": "meetings"
      },
-     "pool": 6,
+     "pool": 9,
      "descriptions": [
       {
        "id": "wh-w3-minutes-a",
@@ -2212,12 +2212,12 @@
       "hinglish": "Supplier visits"
      },
      "scene": {
-      "en": "There are 6 days of visits to suppliers in Mumbai this month.",
-      "hinglish": "Is mahine Mumbai ke suppliers ke paas 6 din ki visits hain."
+      "en": "There are 4 days of visits to suppliers in Mumbai this month.",
+      "hinglish": "Is mahine Mumbai ke suppliers ke paas 4 din ki visits hain."
      },
      "question": {
-      "en": "Who gets the 6 visit days?",
-      "hinglish": "6 visit din kise milenge?"
+      "en": "Who gets the 4 visit days?",
+      "hinglish": "4 visit din kise milenge?"
      },
      "descriptions": [
       {
@@ -2263,7 +2263,7 @@
       "en": "visit days",
       "hinglish": "visit din"
      },
-     "pool": 6
+     "pool": 4
     },
     {
      "id": "wh-w3-rain",
@@ -2329,12 +2329,12 @@
       "hinglish": "Weekend calls"
      },
      "scene": {
-      "en": "The client wants someone on call on 6 weekend days. Nobody asks for it.",
-      "hinglish": "Client 6 weekend dinon par kisi ko on call chahta hai. Yeh koi nahin maangta."
+      "en": "The client wants someone on call on 10 weekend days. Nobody asks for it.",
+      "hinglish": "Client 10 weekend dinon par kisi ko on call chahta hai. Yeh koi nahin maangta."
      },
      "question": {
-      "en": "Who gets the 6 on-call days?",
-      "hinglish": "6 on-call din kise milenge?"
+      "en": "Who gets the 10 on-call days?",
+      "hinglish": "10 on-call din kise milenge?"
      },
      "descriptions": [
       {
@@ -2380,7 +2380,7 @@
       "en": "on-call days",
       "hinglish": "on-call din"
      },
-     "pool": 6
+     "pool": 10
     },
     {
      "id": "wh-e3-vo3",
@@ -2394,12 +2394,12 @@
       "hinglish": "Extra truck runs"
      },
      "scene": {
-      "en": "3 truck owners can take 6 extra runs in sale week.",
-      "hinglish": "3 truck maalik sale week mein 6 extra runs le sakte hain."
+      "en": "3 truck owners can take 8 extra runs in sale week.",
+      "hinglish": "3 truck maalik sale week mein 8 extra runs le sakte hain."
      },
      "question": {
-      "en": "Who gets the 6 runs?",
-      "hinglish": "6 runs kise milenge?"
+      "en": "Who gets the 8 runs?",
+      "hinglish": "8 runs kise milenge?"
      },
      "descriptions": [
       {
@@ -2445,7 +2445,7 @@
       "en": "runs",
       "hinglish": "runs"
      },
-     "pool": 6,
+     "pool": 8,
      "oneoff": "vendors",
      "cue": "caste"
     },
@@ -2525,12 +2525,12 @@
       "hinglish": "Analytics ghante"
      },
      "scene": {
-      "en": "An analytics consultant offers 6 hours of one to one help.",
-      "hinglish": "Ek analytics consultant 6 ghante ki one to one madad de raha hai."
+      "en": "An analytics consultant offers 10 hours of one to one help.",
+      "hinglish": "Ek analytics consultant 10 ghante ki one to one madad de raha hai."
      },
      "question": {
-      "en": "Who gets the 6 hours?",
-      "hinglish": "6 ghante kise milenge?"
+      "en": "Who gets the 10 hours?",
+      "hinglish": "10 ghante kise milenge?"
      },
      "descriptions": [
       {
@@ -2576,7 +2576,7 @@
       "en": "hours",
       "hinglish": "ghante"
      },
-     "pool": 6
+     "pool": 10
     },
     {
      "id": "wh-e4-cm3",
@@ -2653,18 +2653,18 @@
       "hinglish": "Mentoring"
      },
      "scene": {
-      "en": "The company director offers 6 hours of one to one mentoring.",
-      "hinglish": "Company director 6 ghante ki one to one mentoring de rahe hain."
+      "en": "The company director offers 12 hours of one to one mentoring.",
+      "hinglish": "Company director 12 ghante ki one to one mentoring de rahe hain."
      },
      "question": {
-      "en": "Who gets the 6 mentoring hours?",
-      "hinglish": "6 mentoring ghante kise milenge?"
+      "en": "Who gets the 12 mentoring hours?",
+      "hinglish": "12 mentoring ghante kise milenge?"
      },
      "unit": {
       "en": "hours",
       "hinglish": "ghante"
      },
-     "pool": 6,
+     "pool": 12,
      "descriptions": [
       {
        "id": "wh-w4-mentor-a",
@@ -3093,12 +3093,12 @@
       "hinglish": "Lunch caterers"
      },
      "scene": {
-      "en": "3 caterers can cover lunch on 6 sale days.",
-      "hinglish": "3 caterers 6 sale dinon ka lunch cover kar sakte hain."
+      "en": "3 caterers can cover lunch on 5 sale days.",
+      "hinglish": "3 caterers 5 sale dinon ka lunch cover kar sakte hain."
      },
      "question": {
-      "en": "Who gets the 6 lunch days?",
-      "hinglish": "6 lunch din kise milenge?"
+      "en": "Who gets the 5 lunch days?",
+      "hinglish": "5 lunch din kise milenge?"
      },
      "descriptions": [
       {
@@ -3144,7 +3144,7 @@
       "en": "lunch days",
       "hinglish": "lunch din"
      },
-     "pool": 6,
+     "pool": 5,
      "oneoff": "vendors",
      "cue": "born"
     },
@@ -3367,12 +3367,12 @@
       "hinglish": "Break room roster"
      },
      "scene": {
-      "en": "Someone has to tidy the break room on 6 days. Nobody asks for it.",
-      "hinglish": "6 din break room saaf karna hai. Yeh koi nahin maangta."
+      "en": "Someone has to tidy the break room on 4 days. Nobody asks for it.",
+      "hinglish": "4 din break room saaf karna hai. Yeh koi nahin maangta."
      },
      "question": {
-      "en": "Who gets the 6 days?",
-      "hinglish": "6 din kise milenge?"
+      "en": "Who gets the 4 days?",
+      "hinglish": "4 din kise milenge?"
      },
      "descriptions": [
       {
@@ -3418,7 +3418,7 @@
       "en": "days",
       "hinglish": "din"
      },
-     "pool": 6
+     "pool": 4
     },
     {
      "id": "wh-w5-visit",
@@ -3603,18 +3603,18 @@
       "hinglish": "Early unloading"
      },
      "scene": {
-      "en": "Trucks are unloaded at 5 am on each of 6 days. Nobody wants it.",
-      "hinglish": "6 dinon tak har subah 5 baje trucks khaali karne hain. Yeh koi nahin chahta."
+      "en": "Trucks are unloaded at 5 am on each of 9 days. Nobody wants it.",
+      "hinglish": "9 dinon tak har subah 5 baje trucks khaali karne hain. Yeh koi nahin chahta."
      },
      "question": {
-      "en": "Who gets the 6 early shifts?",
-      "hinglish": "6 early shifts kise milenge?"
+      "en": "Who gets the 9 early shifts?",
+      "hinglish": "9 early shifts kise milenge?"
      },
      "unit": {
       "en": "early shifts",
       "hinglish": "early shifts"
      },
-     "pool": 6,
+     "pool": 9,
      "descriptions": [
       {
        "id": "wh-w5-early-a",
@@ -3733,12 +3733,12 @@
       "hinglish": "Invoice filing"
      },
      "scene": {
-      "en": "6 hours of filing old invoices need doing. Nobody asks for it.",
-      "hinglish": "Puraane invoices file karne ke 6 ghante ka kaam hai. Yeh koi nahin maangta."
+      "en": "8 hours of filing old invoices need doing. Nobody asks for it.",
+      "hinglish": "Puraane invoices file karne ke 8 ghante ka kaam hai. Yeh koi nahin maangta."
      },
      "question": {
-      "en": "Who gets the 6 hours?",
-      "hinglish": "6 ghante kise milenge?"
+      "en": "Who gets the 8 hours?",
+      "hinglish": "8 ghante kise milenge?"
      },
      "descriptions": [
       {
@@ -3784,7 +3784,7 @@
       "en": "hours",
       "hinglish": "ghante"
      },
-     "pool": 6
+     "pool": 8
     },
     {
      "id": "wh-w6-briefing",
@@ -4101,12 +4101,12 @@
       "hinglish": "Der tak returns packing"
      },
      "scene": {
-      "en": "After sale week, 6 late shifts packing returns need covering. Nobody asks for it.",
-      "hinglish": "Sale week ke baad returns pack karne ki 6 late shifts cover karni hain. Yeh koi nahin maangta."
+      "en": "After sale week, 10 late shifts packing returns need covering. Nobody asks for it.",
+      "hinglish": "Sale week ke baad returns pack karne ki 10 late shifts cover karni hain. Yeh koi nahin maangta."
      },
      "question": {
-      "en": "Who gets the 6 late shifts?",
-      "hinglish": "6 late shifts kise milenge?"
+      "en": "Who gets the 10 late shifts?",
+      "hinglish": "10 late shifts kise milenge?"
      },
      "descriptions": [
       {
@@ -4152,7 +4152,7 @@
       "en": "late shifts",
       "hinglish": "late shifts"
      },
-     "pool": 6
+     "pool": 10
     },
     {
      "id": "wh-w6-leftover",
@@ -5932,34 +5932,26 @@
     "hinglish": "Koi pattern nahin: {group} lagbhag barabar pehle"
    },
    "unread": {
-    "en": "Not enough to tell",
-    "hinglish": "Batane ke liye kaafi nahin"
+    "en": "Still forming",
+    "hinglish": "Abhi ban rahi hai"
    }
   },
   "tagBodies": {
    "strong": {
-    "en": "In pairs with equally strong descriptions, you put {group} first far more often. That is unlikely to be chance. No single decision decided it; it shows across the season. This is one season of a made-up warehouse, not a verdict on who you are.",
-    "hinglish": "Barabar mazboot description wali jodiyon mein aapne {group} ko kaafi zyada baar pehle rakha. Yeh ittefaq hona mushkil hai. Kisi ek decision se yeh tay nahin hua; yeh poore season mein dikhta hai. Yeh ek banaye hue warehouse ka ek season hai, aap kaun hain is par faisla nahin."
+    "en": "In pairs with equally strong descriptions, you put {group} first far more often. That is unlikely to be chance. It is one season of a made-up warehouse, not a judgement of you.",
+    "hinglish": "Barabar mazboot description wali jodiyon mein aapne {group} ko kaafi zyada baar pehle rakha. Yeh ittefaq hona mushkil hai. Yeh ek banaye hue warehouse ka ek season hai, aap par faisla nahin."
    },
    "moderate": {
-    "en": "In pairs with equally strong descriptions, you put {group} first more often. That is unlikely to be chance alone, but one season is a short look. No single decision decided it.",
-    "hinglish": "Barabar mazboot description wali jodiyon mein aapne {group} ko zyada baar pehle rakha. Yeh sirf ittefaq hona mushkil hai, par ek season chhoti si jhalak hai. Kisi ek decision se yeh tay nahin hua."
+    "en": "In pairs with equally strong descriptions, you put {group} first more often. That is unlikely to be chance alone, and one season is a short look.",
+    "hinglish": "Barabar mazboot description wali jodiyon mein aapne {group} ko zyada baar pehle rakha. Yeh sirf ittefaq hona mushkil hai, aur ek season chhoti si jhalak hai."
    },
    "possible": {
     "en": "In pairs with equally strong descriptions, you put {group} first a little more often. Chance could also give this, so treat it as a maybe. More seasons would tell.",
     "hinglish": "Barabar mazboot description wali jodiyon mein aapne {group} ko thoda zyada baar pehle rakha. Yeh ittefaq se bhi ho sakta hai, isliye ise shayad samjhiye. Aur seasons se pata chalega."
    },
    "none": {
-    "en": "In pairs with equally strong descriptions, you put {both} first about equally. One short season can still miss a small pattern.",
-    "hinglish": "Barabar mazboot description wali jodiyon mein aapne {both} ko lagbhag barabar pehle rakha. Ek chhota season phir bhi chhota pattern chhod sakta hai."
-   },
-   "unread": {
-    "en": "We cannot give you a result this time. There were too few pairs with equally strong descriptions to tell.",
-    "hinglish": "Is baar hum aapko result nahin de sakte. Barabar mazboot description wali jodiyan bahut kam thi."
-   },
-   "unengaged": {
-    "en": "We cannot give you a result this time. In many decisions you chose differently from what the descriptions pointed to, so the pairs cannot tell us enough.",
-    "hinglish": "Is baar hum aapko result nahin de sakte. Kai decisions mein aapne description se alag chuna, isliye jodiyon se kaafi pata nahin chalta."
+    "en": "In pairs with equally strong descriptions, you put {both} first about equally. Another season would show whether that holds.",
+    "hinglish": "Barabar mazboot description wali jodiyon mein aapne {both} ko lagbhag barabar pehle rakha. Ek aur season batayega ki yeh tikta hai ya nahin."
    }
   },
   "shareInclude": {
@@ -6017,6 +6009,75 @@
   "shareAdd": {
    "en": "Add to the card",
    "hinglish": "Card mein jodiye"
+  },
+  "forming": {
+   "_note": "EVAL-10 (owner): the always-show rule, registered in v26. A reading that is not yet confirmed is never a dead end: the position and range, no tag, the next step and how many more seasons. Every line 25 words or fewer; no blame, never 'cannot'.",
+   "title": {
+    "en": "Your reading is still forming",
+    "hinglish": "Aapki reading abhi ban rahi hai"
+   },
+   "unengaged": {
+    "en": "This season your choices and the colleagues' descriptions didn't line up closely, so the range is wide. Here is where you sit so far.",
+    "hinglish": "Is season aapke choices aur colleagues ke descriptions zyada mel nahin khaaye, isliye range chaudi hai. Abhi aap yahan hain."
+   },
+   "unread": {
+    "en": "This season had only a few pairs to compare, so the range is wide. Here is where you sit so far.",
+    "hinglish": "Is season compare karne ke liye kam jodiyan thi, isliye range chaudi hai. Abhi aap yahan hain."
+   },
+   "next": {
+    "en": "Play another season to sharpen it. Taking a moment with each description helps.",
+    "hinglish": "Ise saaf karne ke liye ek aur season kheliye. Har description par thoda ruk kar padhna madad karta hai."
+   },
+   "left": {
+    "en": "Tagged after {n} more seasons on your profile.",
+    "hinglish": "Aapki profile par {n} aur season ke baad tag milega."
+   },
+   "leftOne": {
+    "en": "Tagged after 1 more season on your profile.",
+    "hinglish": "Aapki profile par 1 aur season ke baad tag milega."
+   },
+   "start": {
+    "en": "Start another season",
+    "hinglish": "Ek aur season shuru karein"
+   },
+   "save": {
+    "en": "Save to my profile",
+    "hinglish": "Meri profile mein save karein"
+   },
+   "notYet": {
+    "en": "Tagged after more seasons on your profile: not available yet.",
+    "hinglish": "Profile par aur seasons ke baad tag: abhi available nahin."
+   }
+  },
+  "rangeWords": {
+   "mostlyMen": {
+    "en": "mostly men-first",
+    "hinglish": "zyadatar purush pehle"
+   },
+   "slightlyMen": {
+    "en": "slightly men-first",
+    "hinglish": "thoda purush pehle"
+   },
+   "equal": {
+    "en": "about equal",
+    "hinglish": "lagbhag barabar"
+   },
+   "slightlyWomen": {
+    "en": "slightly women-first",
+    "hinglish": "thoda mahila pehle"
+   },
+   "mostlyWomen": {
+    "en": "mostly women-first",
+    "hinglish": "zyadatar mahila pehle"
+   },
+   "between": {
+    "en": "Somewhere between {a} and {b}.",
+    "hinglish": "Kahin {a} aur {b} ke beech."
+   },
+   "around": {
+    "en": "Around {a}.",
+    "hinglish": "Lagbhag {a}."
+   }
   }
  },
  "profile": {

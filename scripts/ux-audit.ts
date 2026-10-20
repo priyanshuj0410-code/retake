@@ -331,6 +331,7 @@ async function splitByKeyboard(page: Page, screen: string) {
     )
   }
   const before = await page.locator('[data-screen]').first().getAttribute('data-screen')
+  const pool = Number(((await page.locator('.split__left').textContent()) ?? '').match(/\d+/)?.[0])
   if (reached) await page.keyboard.press('Enter')
   const left = (await page.locator('.split__left').textContent()) ?? ''
   const kept = await page.evaluate(() => document.activeElement?.classList.contains('split__chip'))
@@ -339,7 +340,7 @@ async function splitByKeyboard(page: Page, screen: string) {
   if (reached) await page.getByRole('button', { name: 'Start again' }).click()
   keyboard.push({
     card: screen,
-    ok: empty && reached && /5/.test(left) && !!kept && still && early === 0,
+    ok: empty && reached && left.includes(String(pool - 1)) && !!kept && still && early === 0,
     detail: `empty at the start ${empty}; tab reaches a number ${reached}; Enter shares one ("${left}"); focus kept ${kept}; no auto-advance ${still}; no confirm before all is shared ${early === 0}`,
   })
 }

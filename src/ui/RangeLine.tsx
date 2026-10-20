@@ -16,6 +16,7 @@ export function RangeLine({
   caption,
   note,
   compact,
+  point = 'solid',
 }: {
   /** 0 (the left end) to 1 (the right end). */
   at: number
@@ -29,6 +30,8 @@ export function RangeLine({
   /** A plain sentence under it. */
   note?: string
   compact?: boolean
+  /** An untagged reading's point (EVAL-10): hollow, or left out, so the range is the mark. */
+  point?: 'solid' | 'hollow' | 'none'
 }) {
   const pc = (x: number) => `${Math.round(Math.min(1, Math.max(0, x)) * 1000) / 10}%`
   return (
@@ -38,7 +41,14 @@ export function RangeLine({
         <span className="rangeline__axis" />
         <span className="rangeline__mid" />
         <span className="rangeline__range" style={{ left: pc(lo), width: pc(hi - lo) }} />
-        <span className="rangeline__dot" style={{ left: pc(at) }} />
+        {point === 'none' ? null : (
+          <span
+            className={
+              point === 'hollow' ? 'rangeline__dot rangeline__dot--hollow' : 'rangeline__dot'
+            }
+            style={{ left: pc(at) }}
+          />
+        )}
       </div>
       {compact ? null : (
         <div className="rangeline__ends" aria-hidden="true">

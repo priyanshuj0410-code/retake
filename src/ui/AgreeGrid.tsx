@@ -12,6 +12,7 @@ import './agree.css'
 export function AgreeGrid({
   items,
   scale,
+  scaleHelp,
   value,
   onChange,
   keyLabel,
@@ -19,6 +20,8 @@ export function AgreeGrid({
   /** `help`: the statement in Hinglish under it (EVAL-10's help mode). */
   items: { id: string; text: string; help?: string }[]
   scale: string[]
+  /** The scale's words in Hinglish, under each in the key, in the help mode (EVAL-10). */
+  scaleHelp?: string[]
   value: Record<string, number>
   onChange: (v: Record<string, number>) => void
   keyLabel: string
@@ -30,6 +33,11 @@ export function AgreeGrid({
         {scale.map((s, i) => (
           <span className="agree__keyitem" key={s}>
             {i + 1} {s}
+            {scaleHelp?.[i] ? (
+              <span className="agree__help" lang="hi-Latn">
+                {scaleHelp[i]}
+              </span>
+            ) : null}
           </span>
         ))}
       </p>

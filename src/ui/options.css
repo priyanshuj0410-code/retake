@@ -1,4 +1,4 @@
-/* @owns options options__option */
+/* @owns options options__option options__help */
 /* Every option in a choice is the same size (EVAL-10, owner): an unequal look nudges choices. */
 .options {
   list-style: none;
@@ -37,4 +37,16 @@
     border-color: var(--c-accent);
     box-shadow: var(--shadow-panel);
   }
+}
+.options__help {
+  /* The help mode's one style (EVAL-10). */
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-help);
+  font-weight: normal;
+  font-style: normal;
+  line-height: var(--leading-tight-rows);
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--c-muted);
 }

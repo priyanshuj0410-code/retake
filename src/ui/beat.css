@@ -104,9 +104,14 @@
   outline: none;
 }
 .beat__help {
-  margin: var(--gap-none);
-  font-size: var(--text-body);
-  font-style: italic;
+  /* The help mode's one style (EVAL-10): muted, small, upright, every screen alike. */
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-help);
+  font-weight: normal;
+  font-style: normal;
+  line-height: var(--leading-tight-rows);
+  letter-spacing: normal;
+  text-transform: none;
   color: var(--c-muted);
-  overflow-wrap: anywhere;
 }

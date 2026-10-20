@@ -41,8 +41,14 @@
   color: var(--c-text);
 }
 .iconlist__help {
+  /* The help mode's one style (EVAL-10): muted, small, upright, every screen alike. */
   display: block;
-  font-size: var(--text-small);
-  font-style: italic;
+  font-family: var(--font-body);
+  font-size: var(--text-help);
+  font-weight: normal;
+  font-style: normal;
+  line-height: var(--leading-tight-rows);
+  letter-spacing: normal;
+  text-transform: none;
   color: var(--c-muted);
 }

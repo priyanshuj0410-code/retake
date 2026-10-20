@@ -23,6 +23,22 @@ function Legend({ legend, heading, help }: { legend: string; heading?: boolean; 
 export interface Option {
   id: string
   text: string
+  /** The option in Hinglish under it, in the help mode (EVAL-10). */
+  help?: string
+}
+
+/** An option's words, with its Hinglish under it in the help mode. */
+function OptionText({ o }: { o: Option }) {
+  return (
+    <span className="choice__text">
+      {o.text}
+      {o.help ? (
+        <span className="choice__help" lang="hi-Latn">
+          {o.help}
+        </span>
+      ) : null}
+    </span>
+  )
 }
 
 /** One answer from a list: native radio inputs, so keyboards and screen readers work as they do everywhere. */
@@ -58,7 +74,7 @@ export function Choice({
               checked={value === o.id}
               onChange={() => onChange(o.id)}
             />
-            <span className="choice__text">{o.text}</span>
+            <OptionText o={o} />
           </label>
         ))}
       </div>
@@ -99,7 +115,7 @@ export function Checks({
                 onChange(e.target.checked ? [...value, o.id] : value.filter((x) => x !== o.id))
               }
             />
-            <span className="choice__text">{o.text}</span>
+            <OptionText o={o} />
           </label>
         ))}
       </div>

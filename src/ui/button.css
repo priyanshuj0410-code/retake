@@ -50,10 +50,25 @@
   color: var(--c-accent);
 }
 .button--quiet {
+  /* The quiet action (EVAL-10, owner): clearly quieter than the primary but easy to see (a
+     consent's decline stays usable): small body type in sentence case, muted ink, a thin
+     underline, its text on the primary's left edge, a 48 px hit area. */
+  width: auto;
+  align-self: flex-start;
+  min-height: var(--target);
+  padding: var(--gap-xs) var(--gap-none);
   background: transparent;
   border-color: transparent;
-  color: var(--c-accent);
+  color: var(--c-muted);
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: var(--weight-label);
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: left;
   text-decoration: underline;
+  text-decoration-thickness: var(--border-thin);
+  text-underline-offset: var(--gap-xs);
 }
 .button--nav {
   display: inline-flex;
@@ -92,6 +107,7 @@
     background: var(--c-raised);
   }
   .button--quiet:hover:not(:disabled) {
+    color: var(--c-text);
     text-decoration-thickness: var(--border);
   }
 }

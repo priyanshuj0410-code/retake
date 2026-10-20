@@ -4,7 +4,7 @@
  */
 import { readFileSync } from 'node:fs'
 import { identity, screeningItems, surveyItems } from '../src/content'
-import { config } from '../src/engine/config'
+import { config, splitCap } from '../src/engine/config'
 import { seeded } from '../src/engine/rng'
 import { fill } from '../src/engine/text'
 import {
@@ -16,6 +16,7 @@ import {
   stories,
   storyContent,
   storyById,
+  poolOf,
 } from '../src/story/content'
 import { positionOf } from '../src/story/range'
 import { carelessPlayer, fairPlayer, leaningPlayer, playSeason } from '../src/story/players'
@@ -157,6 +158,42 @@ function content() {
       !!b.unit
     )
   })
+  /* Split pools (EVAL-10, owner: "why is it always 6?"): every split sets its own pool, with no
+     default; the pools vary with what is shared and no value covers more than about a quarter of
+     the cards; the cap (about two thirds of the pool) always allows an even split when the pool
+     divides by 3 and a near-even one otherwise; scoring reads shares, never raw units. */
+  const splitBeats = stories
+    .flatMap((st) => (st.beats ?? []).filter(isPeople))
+    .filter((b) => b.kind === 'split')
+  const pools = splitBeats.map((b) => b.pool)
+  const counts = new Map<number, number>()
+  for (const p of pools) if (p) counts.set(p, (counts.get(p) ?? 0) + 1)
+  const most = Math.max(...counts.values())
+  const capOk = [...counts.keys()].every((p) => {
+    const c = splitCap(p)
+    return 3 * c >= p && c >= Math.ceil(p / 3) && c < p
+  })
+  const runnerSrc = readFileSync(`${ROOT}src/story/runner.ts`, 'utf8')
+  const ratingSrc = readFileSync(`${ROOT}src/story/rating.ts`, 'utf8')
+  record(
+    T,
+    `every split sets its own pool (${[...counts.entries()]
+      .sort((a, b) => a[0] - b[0])
+      .map(([p, n]) => `${p}: ${n}`)
+      .join(
+        ', ',
+      )}), none covers more than 30 per cent of the ${splitBeats.length} cards, the cap allows an even or near-even split, no code falls back to a default pool, and scoring reads shares (units over the total) or the sign of a difference, never raw units`,
+    pools.every((p) => typeof p === 'number' && p >= 4 && p <= 12) &&
+      counts.size >= 5 &&
+      most / splitBeats.length <= 0.3 &&
+      capOk &&
+      !/pool \?\? \d/.test(
+        readFileSync(`${ROOT}src/screens/Story.tsx`, 'utf8') +
+          readFileSync(`${ROOT}src/story/players.ts`, 'utf8'),
+      ) &&
+      /a\.units\.map\(\(u\) => u \/ total\)/.test(runnerSrc) &&
+      /Math\.sign\(ans\.units\[a\] - ans\.units\[b\]\)/.test(ratingSrc),
+  )
   record(
     T,
     'every people beat has the descriptions, tiers and consequences its tie structure needs',
@@ -232,14 +269,14 @@ function content() {
   const tagEn = Object.values(RT.tags).map((t) => t.en)
   record(
     T,
-    'the five tags read "Clear pattern: men first", "Pattern: men first more often", "Maybe a pattern: men first a little more often", "No pattern: women and men first about equally" and "Not enough to tell"; no tag is unbiased or fair, and no result copy says "lean", "chance would explain" or "shaded middle"',
+    'the five tags read "Clear pattern: men first", "Pattern: men first more often", "Maybe a pattern: men first a little more often", "No pattern: women and men first about equally" and, for other cues, "Still forming" (the always-show rule); no tag is unbiased or fair, and no result copy says "lean", "chance would explain" or "shaded middle"',
     levelName('strong', 'sex', 'comparison', 'en') === 'Clear pattern: men first' &&
       levelName('moderate', 'sex', 'comparison', 'en') === 'Pattern: men first more often' &&
       levelName('possible', 'sex', 'comparison', 'en') ===
         'Maybe a pattern: men first a little more often' &&
       levelName('none', 'sex', undefined, 'en') ===
         'No pattern: women and men first about equally' &&
-      levelName('unread', 'sex', undefined, 'en') === 'Not enough to tell' &&
+      levelName('unread', 'sex', undefined, 'en') === 'Still forming' &&
       levelName('moderate', 'sex', 'focal', 'en') === 'Pattern: women first more often' &&
       tagEn.every((b) => !/unbiased|fair/i.test(b)) &&
       !/\blean|chance would explain|shaded middle|attitude rating/i.test(
@@ -605,8 +642,13 @@ function levels() {
       const leaning = lv === 'strong' || lv === 'moderate' || lv === 'possible'
       if (!leaning && m.domains.some((d) => d.reading !== null)) gated = false
       if (leaning && m.band !== levelName(lv, 'sex', m.rating.headline.towards, 'en')) gated = false
-      /* "Not enough to tell" shows nothing of the result below the tag (EVAL-10, G5). */
-      if (m.unread && (m.hero || m.range || m.why.length)) gated = false
+      /* A forming reading (EVAL-10, always-show): no tag, no dots, no reasons, but always the
+         range, said in words, and the next step. */
+      if (
+        m.unread &&
+        (m.hero || !m.range || m.why.length || !m.forming?.words || m.band !== RT.forming.title.en)
+      )
+        gated = false
       if (!m.unread && m.range && !(m.range.lo <= m.range.at && m.range.at <= m.range.hi))
         gated = false
     }
@@ -811,7 +853,7 @@ function backAndEdits() {
               return b.kind === 'people' && b.beat.kind === 'pick'
                 ? { pick: 0 }
                 : b.kind === 'people' && b.beat.kind === 'split'
-                  ? { units: b.chars.map((_, k) => (k === 0 ? (b.beat.pool ?? 6) : 0)) }
+                  ? { units: b.chars.map((_, k) => (k === 0 ? poolOf(b.beat) : 0)) }
                   : { order: b.kind === 'people' ? b.chars.map((_, k) => k) : [] }
             })()
           : null,
@@ -1204,7 +1246,13 @@ async function prototypePass() {
               ? { order: b.chars.map((_, i) => i) }
               : b.beat.kind === 'pick'
                 ? { pick: 0 }
-                : { units: b.chars.map((_, i) => (i === 0 ? 4 : i === 1 ? 2 : 0)) },
+                : (() => {
+                    const pool = poolOf(b.beat)
+                    const first = Math.ceil(pool / 2)
+                    return {
+                      units: b.chars.map((_, i) => (i === 0 ? first : i === 1 ? pool - first : 0)),
+                    }
+                  })(),
         )
       } else if (st.kind === 'fsurvey') r.answer({})
       else if (st.kind === 'screening') r.answer({})
@@ -1336,32 +1384,38 @@ async function prototypePass() {
       /beat__ask/.test(beatSrc) &&
       !/<img|<Portrait/.test(beatSrc),
   )
-  /* Owner decision 5, restored: "Not enough to tell" on sex hides the rest of the sex result
-     (G5) but keeps the religion and skin-tone readings the player has; every cue unread shows
-     the plain message only. Checked on the rule and on seeded players' result models. */
-  const both = sectionsBelow(true, ['lean', 'unread'])
-  const none = sectionsBelow(true, ['unread', 'unread'])
+  /* The always-show rule (owner, EVAL-10; v26 registers it) and the research critic's
+     adjustment: a forming reading is never a dead end (the range, said in words, the next step,
+     "Tagged after N more seasons on your profile" or "not available yet", no tag, a hollow or
+     no point, all from config); the other readings always show; the areas only once readable;
+     no line of the forming copy is over 25 words, says "cannot" or blames. */
+  const below = sectionsBelow(true, ['unread', 'unread'])
   const read = sectionsBelow(false, ['unread', 'unread'])
   let seasonsOk = true
-  let sexUnreadOthersRead = 0
-  for (let k = 1; k <= 40; k++) {
+  let forming = 0
+  for (let k = 1; k <= 30; k++) {
     const mm = resultModel(playSeason(k, carelessPlayer))
-    const others = mm.cards.filter((c) => c.cue !== 'sex')
-    const anyRead = others.some((c) => c.zone !== 'unread')
-    if (mm.unread && anyRead) sexUnreadOthersRead += 1
-    if (mm.unread && (mm.sections.others !== anyRead || mm.sections.areas)) seasonsOk = false
-    if (!mm.unread && !(mm.sections.others && mm.sections.areas)) seasonsOk = false
+    if (!mm.unread) continue
+    forming += 1
+    if (!mm.range || !mm.forming || !/^Somewhere between|^Around/.test(mm.forming.words))
+      seasonsOk = false
+    if (mm.sections.areas || !mm.sections.others) seasonsOk = false
   }
+  const lines = Object.entries(RT.forming)
+    .filter(([key]) => !key.startsWith('_'))
+    .flatMap(([, t]) => [t.en, t.hinglish])
+  const u = config.season.rating.untagged
   record(
     T,
-    `"Not enough to tell" on sex keeps the religion and skin-tone readings the player has and hides the rest of the sex result; every cue unread shows the plain message only (owner decision 5 with G5; ${sexUnreadOthersRead} of 40 seeded careless seasons had sex unread with another cue read)`,
-    both.others &&
-      !both.areas &&
-      !none.others &&
-      !none.areas &&
+    `a forming reading is never a dead end: the range in words, the next step, the seasons-to-tag line from config (${u.pooledInBuild ? `opening at ${u.openingSeasons}` : 'not available yet: this build reads each season alone'}), a ${u.point} point, the other readings always, the areas only once readable; forming copy 25 words or fewer per line, no "cannot" (${forming} of 30 careless seasons were forming)`,
+    below.others &&
+      !below.areas &&
       read.others &&
       read.areas &&
-      seasonsOk,
+      seasonsOk &&
+      forming > 0 &&
+      ['hollow', 'none'].includes(u.point) &&
+      lines.every((l) => l.split(/\s+/).length <= 25 && !/cannot|can't|nahin de sakte/i.test(l)),
   )
   /* Ranges: inside 0 to 1 around the position, narrower with more pairs; the profile shows a
      change only when two seasons' ranges do not overlap. */

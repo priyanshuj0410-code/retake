@@ -186,10 +186,12 @@ async function details(page: Page) {
   await stress(page, 'Details', '.details')
 }
 
-/* The prototype line (owner, 19 Oct 2026): one quiet line on the landing screen only, AA. */
+/* The prototype line (owner, 19 Oct 2026): one quiet line on the landing screen only, AA. Since
+   EVAL-10 the landing is the language screen, before any language is chosen, so the line is in
+   both languages, English first. */
 async function prototypeLine(page: Page, base: string) {
   await page.goto(base)
-  await page.waitForSelector('[data-screen="eligibility"]')
+  await page.waitForSelector('[data-screen="language"]')
   const lines = await page.locator('.page__footnote').allInnerTexts()
   const fg = await css(page, '.page__footnote', 'color')
   const bg = await css(page, '.page', 'background-color')
@@ -198,7 +200,9 @@ async function prototypeLine(page: Page, base: string) {
     'Page',
     'landing: one quiet prototype line, AA, and no demo badge',
     lines.length === 1 &&
-      lines[0] === 'Prototype. Fictional people and stories; your answers stay in this browser.' &&
+      lines[0].startsWith(
+        'Prototype. Fictional people and stories; your answers stay in this browser. / ',
+      ) &&
       r >= 4.5 &&
       (await page.locator('.demo').count()) === 0,
     `${lines.join(' | ')} ${r.toFixed(2)}`,

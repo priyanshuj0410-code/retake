@@ -24,14 +24,17 @@
   align-items: flex-start;
   gap: var(--gap-m);
 }
+/* The number chips (EVAL-10): as many 44 px columns as fit, so a cap of 4 is one row in a card
+   three across, and a bigger pool's cap wraps onto a second row of the same chips. */
 .split__chips {
-  display: flex;
-  gap: var(--gap-xs);
+  display: grid;
+  grid-template-columns: var(--chips-row);
+  gap: var(--chip-gap);
+  margin-top: auto;
 }
 .split__chip {
-  flex: 1 1 0;
-  min-width: var(--target);
-  min-height: var(--target);
+  min-width: var(--chip-min);
+  min-height: var(--chip-min);
   border-radius: var(--radius-s);
   border: var(--ink-frame) solid var(--c-ink-line);
   background: var(--c-surface);
@@ -75,22 +78,12 @@
   color: var(--c-text);
 }
 /* A split's three cards sit three in a row from 600 px (owner's exception, EVAL-10), the same
-   size; the five number chips stay on one row, 44 px or more each (the owner's floor here). */
+   size, 44 px chips (the owner's floor here). */
 @media (min-width: 600px) {
   .split {
     grid-template-columns: var(--cols-three);
   }
   .split__row {
     padding: var(--gap-m) var(--gap-s);
-  }
-  .split__chips {
-    display: grid;
-    grid-template-columns: var(--chips-row);
-    gap: var(--chip-gap);
-    margin-top: auto;
-  }
-  .split__chip {
-    min-width: var(--chip-min);
-    min-height: var(--chip-min);
   }
 }
