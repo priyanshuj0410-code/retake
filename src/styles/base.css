@@ -23,3 +23,9 @@ body {
   outline: var(--border-focus) solid var(--c-focus);
   outline-offset: var(--border);
 }
+/* Print (EVAL-11): grounds, dots and the range band print as on screen. */
+@media print {
+  html {
+    print-color-adjust: exact;
+  }
+}

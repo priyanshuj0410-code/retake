@@ -83,3 +83,9 @@
   font-size: var(--text-small);
   color: var(--c-muted);
 }
+/* Print (EVAL-11): the line, its caption and its ends stay on one page. */
+@media print {
+  .rangeline {
+    break-inside: avoid;
+  }
+}

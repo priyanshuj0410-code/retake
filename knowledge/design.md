@@ -12,6 +12,7 @@ plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-7/
   - https://app.plane.so/the-equal-lens/browse/EVAL-8/
   - https://app.plane.so/the-equal-lens/browse/EVAL-10/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-11/
 ---
 
 # Equal Lens Evaluator design system
@@ -260,7 +261,7 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 | `SeasonBar` | `src/ui/SeasonBar.tsx` | The header's one progress bar (EVAL-10, owner; checked in Lazyweb against Duolingo's lesson header and Cal AI's, Finch's and me+'s questionnaire bars): a thin rounded track (`--bar-thin`, 6 px) in `--c-track`, the done part in the accent, one segment per chapter and the finale split by 4 px gaps, never tall ticks. Beside it the chapter label in small sentence-case body type ("Chapter 1 of 5 · The hiring sprint"); one compact row from 600 px, two short rows on phones; a hairline under the header. One image with a spoken label; no countdown, no motion |
 | `Actions` | `src/ui/Actions.tsx` | The one action row on every screen (EVAL-10): the primary first, full width on phones and left-aligned from 600 px, then at most one quiet secondary on the same edge. `Page`, `TapOrder` and `QuickSplit` all use it, so no button sits at another indent; Back is never in it |
 | `IconList` | `src/ui/IconList.tsx` | Tight rows of a small drawn line icon (20 px, ink on the paper, tan fill; no face, skin or symbol) and one line of text, 16 px at 1.3 leading, the Hinglish under each in the help mode; two lists in a row are split by a hairline (EVAL-10's "Before you start" screen) |
-| `Group` | `src/ui/Group.tsx` | A named section whose parts (heading, text, each label with its field, the button, a notice) are spaced on the flow, one rule pitch in the note register, so nothing touches and fields and buttons keep the baseline grid |
+| `Group` | `src/ui/Group.tsx` | A named section whose parts (heading, text, each label with its field, the button, a notice) are spaced on the flow, one rule pitch in the note register, so nothing touches and fields and buttons keep the baseline grid; without `label` it is a plain div with the same spacing and no landmark (the share block, whose `ShareCard` names itself); `screen` (EVAL-11) marks a group that works on screen only (the result's profile, share and stay-in-touch groups), which does not print |
 | `Panel` | `src/ui/Comic.tsx` | Game register: an ink-ruled square box, tinted or paper; holds a scene and its question |
 | `Caption` | `src/ui/Comic.tsx` | Game register: a yellow narration box with a 1.5 px ink border and a 2 px offset shadow; ink text on yellow at 14.6:1 |
 | `Stamp` | `src/ui/Comic.tsx` | Game register: a 52 px round violet stamp tilted 8 degrees (a rank, a share); empty it is a dashed ring with nothing in it. `aria-hidden`: the button's name says the state |
@@ -609,6 +610,36 @@ over a whole season (69 decisions), 15 fit and 54 do not (every ranking card, 1,
 and every split, 1,070 to 1,310 px; picks and ordinary decisions fit or nearly fit, 844 to
 930 px). Four colleague cards with 17 px descriptions do not fit one phone screen; the cards are
 the part that scrolls, under the question.
+
+## 4e. Print: the result as an A4 report (EVAL-11)
+
+The season result prints as a document; nothing else is designed for paper. The result page's one
+`Actions` row holds a secondary "Save as PDF" button (Hinglish "PDF ke roop mein save karein")
+that calls `window.print()`; the browser's own print dialog saves the PDF, so nothing new is
+fetched or generated in the app. Every rule lives under `@media print`: the page box and the
+re-pointed tokens in `tokens.css`, each component's own rules in its own sheet.
+
+- **Page.** `@page` A4 with 16 mm sides and top and 18 mm foot. On paper the note register drops
+  its ground and its ruling: white paper (`--c-bg` and `--c-surface` are `--white`), no outer ink
+  frame or frame padding, body 16 px at 1.5 leading, a 16 px flow. The result band keeps its tan
+  ground, and the dots and the range line print as drawn (`print-color-adjust: exact` on `html`);
+  both are CSS boxes, so they stay vector in the PDF.
+- **Open.** Every `Fold` (the areas) and every `Details` ("Read the full details") prints open:
+  `src/main.tsx` opens closed ones on `beforeprint` and closes them again on `afterprint`, and
+  `::details-content` is made visible as a fallback. The fold marker and the Details summary do
+  not print.
+- **Hidden.** The `Actions` row, the sticky story header and Back, `DevNotes`, and every
+  `Group` marked `screen` (the profile form, the summary card and its heading, the stay-in-touch
+  form).
+- **Pagination.** `Heading`, the page title, the fold's heading, the result band and the small
+  intro line before a list (`text--small`) are `break-after: avoid`; a `PointCard`, a
+  `ReadingList`, a `List`, a `Notice`, the `RangeLine` and the hero's number and dots are
+  `break-inside: avoid`. Areas do not force a new page: a forced break let Chromium split a list
+  that was set to avoid it.
+- **Sample.** `knowledge/samples/sample-result-report.pdf` is a seeded player's result exported
+  through Playwright's `page.pdf` (A4, backgrounds printed, print media), with a footer on every
+  page: "Sample report from a prototype. Fictional colleagues; not a real result." and the page
+  count. The footer belongs to the sample export only, not to the app's own print.
 
 ## 5. Interaction patterns, checked against real products (Lazyweb, 19 Oct 2026)
 

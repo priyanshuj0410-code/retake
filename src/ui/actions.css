@@ -24,3 +24,9 @@
     gap: var(--pair-gap) var(--gap-xl);
   }
 }
+/* Print (EVAL-11): no action row on paper. */
+@media print {
+  .actions {
+    display: none;
+  }
+}

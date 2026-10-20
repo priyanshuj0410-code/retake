@@ -469,6 +469,29 @@
   }
 }
 
+/* Print (EVAL-11, knowledge/design.md section 4e): the result as an A4 report. The page box
+   carries the margins; the note register prints on white with no ruling and no outer frame, at
+   a 16 px body on a 1.5 leading and a 16 px flow, so it reads as a document, not a screen. */
+@page {
+  size: A4;
+  margin: 16mm 16mm 18mm;
+}
+@media print {
+  :root,
+  [data-surface] {
+    --c-bg: var(--white);
+    --c-surface: var(--white);
+    --ruling: none;
+    --frame: var(--s-0);
+    --frame-pad: var(--s-0);
+    --text-body: var(--fs-16);
+    --leading-body: var(--lh-150);
+    --leading-ui: var(--lh-140);
+    --leading-heading: var(--lh-120);
+    --flow: var(--s-4);
+  }
+}
+
 /* @tier art */
 /* The drawn art (section 4c): the portraits, the mascots and the panel scenes. Raw colours
    for pictures only, read by portrait.css and panelart.css and by nothing else (design-check).

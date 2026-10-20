@@ -39,3 +39,17 @@
   gap: var(--gap-l);
   padding: var(--gap-s) var(--gap-none) var(--gap-l);
 }
+/* Print (EVAL-11): every area prints open (src/main.tsx opens them before printing), without the
+   marker, its heading kept with its first lines. */
+@media print {
+  .fold::details-content {
+    content-visibility: visible;
+  }
+  .fold__summary {
+    min-height: auto;
+    break-after: avoid;
+  }
+  .fold__summary::before {
+    display: none;
+  }
+}

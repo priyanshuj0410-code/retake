@@ -5565,6 +5565,10 @@
     }
    }
   },
+  "savePdf": {
+   "en": "Save as PDF",
+   "hinglish": "PDF ke roop mein save karein"
+  },
   "shareTitle": {
    "en": "Your summary card",
    "hinglish": "Aapka summary card"

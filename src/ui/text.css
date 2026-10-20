@@ -36,3 +36,10 @@
   font-size: var(--text-lead);
   margin: var(--heading-gap) var(--gap-none) var(--gap-none);
 }
+/* Print (EVAL-11): a heading never ends a page, nor does the small line that introduces a list. */
+@media print {
+  .heading,
+  .text--small {
+    break-after: avoid;
+  }
+}

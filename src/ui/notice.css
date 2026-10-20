@@ -35,3 +35,9 @@
   content: '✓ ' / '';
   color: var(--c-ok);
 }
+/* Print (EVAL-11): a boxed message is never split across pages. */
+@media print {
+  .notice {
+    break-inside: avoid;
+  }
+}

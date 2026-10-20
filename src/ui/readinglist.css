@@ -26,3 +26,9 @@
   font-weight: var(--weight-label);
   color: var(--c-level-unread);
 }
+/* Print (EVAL-11): a list of readings (two or three rows) stays on one page. */
+@media print {
+  .readinglist {
+    break-inside: avoid;
+  }
+}

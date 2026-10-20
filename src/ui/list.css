@@ -27,3 +27,9 @@
   text-transform: none;
   color: var(--c-muted);
 }
+/* Print (EVAL-11): a short list of points stays on one page. */
+@media print {
+  .list {
+    break-inside: avoid;
+  }
+}
