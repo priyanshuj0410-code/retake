@@ -69,3 +69,14 @@
   color: var(--c-body);
   line-height: var(--leading-body);
 }
+/* Print (EVAL-11): the number, its line and the dots stay together; the tag stays with its
+   sentence. The band's ground prints. */
+@media print {
+  .resulthero__big,
+  .resulthero__dots {
+    break-inside: avoid;
+  }
+  .resulthero__band {
+    break-after: avoid;
+  }
+}

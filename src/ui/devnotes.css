@@ -19,3 +19,9 @@
   flex-direction: column;
   gap: var(--gap-xs);
 }
+/* Print (EVAL-11): research notes never reach paper. */
+@media print {
+  .devnotes {
+    display: none;
+  }
+}

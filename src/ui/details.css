@@ -41,3 +41,12 @@
   gap: var(--flow);
   padding-bottom: var(--flow);
 }
+/* Print (EVAL-11): the full text prints in place, without its summary control. */
+@media print {
+  .details::details-content {
+    content-visibility: visible;
+  }
+  .details__summary {
+    display: none;
+  }
+}

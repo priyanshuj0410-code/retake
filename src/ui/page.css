@@ -114,3 +114,18 @@
   justify-content: flex-start;
   margin-bottom: var(--gap-none);
 }
+/* Print (EVAL-11): the page box carries the margins, so the screen's padding, height and the
+   sticky header go; Back goes; the title stays with what follows it. */
+@media print {
+  .page {
+    min-height: auto;
+    padding: var(--gap-none);
+  }
+  .page__head,
+  .page__nav {
+    display: none;
+  }
+  .page__title {
+    break-after: avoid;
+  }
+}

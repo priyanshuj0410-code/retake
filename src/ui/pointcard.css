@@ -38,3 +38,9 @@
   line-height: var(--leading-ui);
   color: var(--c-body);
 }
+/* Print (EVAL-11): a card is never split across pages. */
+@media print {
+  .pointcard {
+    break-inside: avoid;
+  }
+}

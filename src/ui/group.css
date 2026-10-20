@@ -1,6 +1,12 @@
-/* @owns group */
+/* @owns group group--screen */
 .group {
   display: flex;
   flex-direction: column;
   gap: var(--flow);
+}
+/* Print (EVAL-11): a screen-only group (a form, the share card) does not print. */
+@media print {
+  .group--screen {
+    display: none;
+  }
 }

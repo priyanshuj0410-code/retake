@@ -1049,6 +1049,11 @@ export function StoryResult({
       title={L(RT.title)}
       oof={L(S.common.outOfFiction)}
       lang={langAttr(ui)}
+      actions={
+        <Button kind="secondary" onClick={() => window.print()}>
+          {L(RT.savePdf)}
+        </Button>
+      }
     >
       <Text kind="lead">{L(RT.opening)}</Text>
       <ResultHero
@@ -1168,18 +1173,20 @@ export function StoryResult({
         readings={m.readings}
         why={m.why}
       />
-      <Heading>{L(RT.shareTitle)}</Heading>
-      <Text kind="small">{L(RT.shareBody)}</Text>
-      <ShareCard
-        text={m.share}
-        result={m.shareResult}
-        include={L(RT.shareInclude)}
-        includeLegend={L(RT.shareAdd)}
-        title={L(RT.shareTitle)}
-        button={L(RT.share)}
-        copied={L(RT.copied)}
-        failed={L(RT.shareFailed)}
-      />
+      <Group screen>
+        <Heading>{L(RT.shareTitle)}</Heading>
+        <Text kind="small">{L(RT.shareBody)}</Text>
+        <ShareCard
+          text={m.share}
+          result={m.shareResult}
+          include={L(RT.shareInclude)}
+          includeLegend={L(RT.shareAdd)}
+          title={L(RT.shareTitle)}
+          button={L(RT.share)}
+          copied={L(RT.copied)}
+          failed={L(RT.shareFailed)}
+        />
+      </Group>
       <StayInTouch ui={ui} />
       <DevNotes
         title={L(SS.devTitle)}
@@ -1250,7 +1257,7 @@ function StayInTouch({ ui }: { ui: Lang }) {
     }
   }
   return (
-    <Group label={L(RT.contactTitle)}>
+    <Group label={L(RT.contactTitle)} screen>
       <Heading>{L(RT.contactTitle)}</Heading>
       {state === 'sent' ? (
         <Notice kind="ok">{L(RT.contactSent)}</Notice>
@@ -1343,7 +1350,7 @@ function KeepIt({
   const p = currentProfile()
   const next = p ? nextRetake(p.data.sessions) : null
   return (
-    <Group label={L(PF.saveTitle)}>
+    <Group label={L(PF.saveTitle)} screen>
       <Heading>{L(PF.saveTitle)}</Heading>
       <Text>{L(PF.retake)}</Text>
       {next !== null ? <Text>{fill(L(PF.retakeOn), { date: formatDate(next, ui) })}</Text> : null}
