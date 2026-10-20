@@ -2,10 +2,10 @@
  "_note": "Generated with FLUX.2 klein 4B (mflux 0.19.1); method and checks in scripts/portraits/README.md. Names follow src/ui/portraitImages.ts. Cast: {slot}-{sex}-{tone}.webp, slot 0-7, sex woman/man, tone l1, l2, d1, d2 lightest to darkest. One-offs: o{slot}-{sex}.webp, slot 100+, at the constant medium tone. Mascots: mascot-{animal}.webp. Those are the warehouse's. Every other story has its own cast, named with the story id first: {story}-{slot}-{sex}-{tone}.webp (casts below); the mascots are shared.",
  "_tones": {
   "l1": "#EDC6A2",
-  "l2": "#D09970",
-  "d1": "#A9724B",
-  "d2": "#7C4F31",
-  "m (one-offs)": "#BC8459"
+  "l2": "#C9A080",
+  "d1": "#A67C5F",
+  "d2": "#845940",
+  "m (one-offs)": "#B88E6F"
  },
  "casts": {
   "warehouse": {

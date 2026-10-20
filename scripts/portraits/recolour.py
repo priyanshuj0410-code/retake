@@ -11,12 +11,13 @@ import numpy as np
 
 from colour import hex2lab, lab2rgb, lin2srgb, srgb2lin
 
-# lightest to darkest, the targets for the mid-skin colour. Owner, 20 Oct 2026: the darkest tone was too dark and the
-# steps uneven (L* 82.4 / 71.4 / 47.4 / 32.5, steps 11.0, 24.0, 14.9). Now even steps of about 14.8 in CIELAB L*:
-# l1 kept, d2 raised to L* 38, l2 and d1 between, with a* and b* interpolated in L* along the old tones (one-off m
-# included), so hue and chroma follow the old curve. The one-offs' m (L* 59.8) sits between l2 and d1.
-# Before: {"t1": "#EDC6A2", "t2": "#D9A47B", "t3": "#9A6440", "t4": "#6B4329"}
-TONES = {"t1": "#EDC6A2", "t2": "#D09970", "t3": "#A9724B", "t4": "#7C4F31"}  # L* 82.4, 67.5, 52.9, 38.0
+# lightest to darkest, the targets for the mid-skin colour. Fourth set, the owner's range (20 Oct 2026): from the
+# lightest tone of set 2 (l1 #EDC6A2, L* 82.4) to the darkest of set 3 (d2 #845940, L* 41.9), evenly spaced in L*,
+# with a* and b* interpolated linearly in L* between those two ends. README, "Tone targets", has all four sets.
+# Set 1 (game tokens):  {"t1": "#EDC6A2", "t2": "#D9A47B", "t3": "#9A6440", "t4": "#6B4329"}  L* 82.4/71.4/47.4/32.5
+# Set 2 (even steps):   {"t1": "#EDC6A2", "t2": "#D09970", "t3": "#A9724B", "t4": "#7C4F31"}  L* 82.4/67.5/52.9/38.0
+# Set 3 (Pawar 2024):   {"t1": "#B89474", "t2": "#AA805E", "t3": "#986B49", "t4": "#845940"}  L* 63.9/56.9/49.1/41.9
+TONES = {"t1": "#EDC6A2", "t2": "#C9A080", "t3": "#A67C5F", "t4": "#845940"}  # L* 82.4, 68.8, 55.4, 41.9
 
 
 def shoulder(x, k=0.92):

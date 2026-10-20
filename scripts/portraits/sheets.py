@@ -17,7 +17,7 @@ import sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
-from build import cast_name, crop384, oneoff_name
+from build import MEDIUM, cast_name, crop384, oneoff_name
 import story
 from story import WORK
 
@@ -124,7 +124,7 @@ def main():
             j = gen[cid]
             tiles.append(tile(Image.open(os.path.join(PUBLIC, oneoff_name(cid) + ".webp")),
                               f"{oneoff_name(cid)} {j['role']}", False, f"{j['beat']} g{j['group']}  {fmt(scores.get(cid))}"[:40]))
-        grid(tiles, 8, "One-offs at the constant medium tone (#BC8459), woman then man per slot",
+        grid(tiles, 8, f"One-offs at the constant medium tone ({MEDIUM}), woman then man per slot",
              os.path.join(out, "oneoffs.png"))
 
 

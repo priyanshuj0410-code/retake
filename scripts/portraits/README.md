@@ -80,28 +80,87 @@ to the target. Ratios between pixels survive, so shading, halftone and ink keep 
 soft shoulder above 0.92 linear stops clipping. Partial weights blend the recoloured pixel with the original. A pixel
 with weight 0 is copied byte for byte.
 
-The targets (`TONES` in `recolour.py`, the same for every story):
+### Tone targets
 
-| Tone | Hex now | L* now | Hex until 20 Oct 2026 | L* then |
-|---|---|---|---|---|
-| l1 | `#EDC6A2` | 82.4 | `#EDC6A2` | 82.4 |
-| l2 | `#D09970` | 67.5 | `#D9A47B` | 71.4 |
-| d1 | `#A9724B` | 52.9 | `#9A6440` | 47.4 |
-| d2 | `#7C4F31` | 38.0 | `#6B4329` | 32.5 |
-| m (one-offs only) | `#BC8459` | 59.8 | `#BC8459` | 59.8 |
+The targets are `TONES` in `recolour.py` and `MEDIUM` in `build.py`. They are the same for every story. This is the
+fourth set, chosen by the owner on 20 Oct 2026. The research design should record all four, because each one changes
+the stimulus.
 
-**Stimulus change, 20 Oct 2026 (owner).** The first targets were the game's tokens (`src/styles/tokens.css`). The
-owner found the darkest tone too dark and asked for bigger, more even steps. The old steps in CIELAB L* were 11.0,
-24.0 and 14.9: one large jump at the light/dark boundary and a small one inside the light pair. The new targets keep
-l1, raise d2 by 5.5 L*, and space the four tones evenly, 14.9, 14.6 and 14.9 L* apart. a* and b* for each new L* are
-interpolated along the old five tokens (m included), so hue and chroma follow the old curve. The one-offs' constant m
-(L* 59.8) now sits near the middle of the scale, 7.7 below l2 and 6.9 above d1. The light pair (L* 67.5 and up) and
-the dark pair (52.9 and down) stay 14.6 L* apart, so the cue still has two distinct sides, though the gap between
-them is smaller than the old 24.0. The bases and masks did not change. Only the recolour target changed, so l1 files and
-one-offs and mascots were byte-identical to before. (Mask step 5, added afterwards, then changed every warehouse cast
-file. See Verification.) The tokens in `src/styles/tokens.css` (the drawn-SVG fallback)
-still hold the old values and should be updated to match. Before-and-after sheet: `tones-before-after.png` in the
-warehouse review folder.
+| Tone | Hex | L* | a* | b* | ITA° | ITA category | Pawar 2024 cluster |
+|---|---|---|---|---|---|---|---|
+| l1 | `#EDC6A2` | 82.4 | 8.7 | 23.2 | +54.3 | light | above the measured range (max L* 69, ITA 43) |
+| l2 | `#C9A080` | 68.8 | 10.7 | 22.5 | +40.0 | intermediate | light cluster, near its top (L* 57-69, ITA 24 to 43) |
+| d1 | `#A67C5F` | 55.4 | 12.5 | 22.2 | +13.8 | tan | medium cluster, upper half (L* 42-60, ITA -22 to 30) |
+| d2 | `#845940` | 41.9 | 14.7 | 21.6 | -20.6 | brown | medium cluster's minimum L* (42), one above the dark cluster's max (41) |
+| m (one-offs only) | `#B88E6F` | 62.2 | 11.7 | 22.6 | +28.4 | intermediate | inside both the light cluster (L* 57-69) and the medium cluster's ITA range |
+
+| Set | l1 | l2 | d1 | d2 | m | L* steps | Gap between the pairs (l2 to d1) | Pair means apart |
+|---|---|---|---|---|---|---|---|---|
+| 1. Game tokens (until 20 Oct 2026) | `#EDC6A2` 82.4 | `#D9A47B` 71.4 | `#9A6440` 47.4 | `#6B4329` 32.5 | `#BC8459` 59.8 | 11.0 / 24.0 / 14.9 | 24.0 L* | 37.0 L* |
+| 2. Even steps | `#EDC6A2` 82.4 | `#D09970` 67.5 | `#A9724B` 52.9 | `#7C4F31` 38.0 | `#BC8459` 59.8 | 14.9 / 14.6 / 14.9 | 14.6 L* | 29.5 L* |
+| 3. Pawar-based | `#B89474` 63.9 | `#AA805E` 56.9 | `#986B49` 49.1 | `#845940` 41.9 | `#A37550` 53.0 | 7.0 / 7.8 / 7.2 | 7.8 L* | 15.0 L* |
+| 4. Owner's range (now) | `#EDC6A2` 82.4 | `#C9A080` 68.8 | `#A67C5F` 55.4 | `#845940` 41.9 | `#B88E6F` 62.2 | 13.6 / 13.4 / 13.5 | 13.4 L* | 27.0 L* |
+
+**The owner's choice (set 4).** After seeing set 3, the owner set the range himself. It runs from the lightest tone of
+set 2 (l1 `#EDC6A2`, L* 82.4) to the darkest of set 3 (d2 `#845940`, L* 41.9). The four tones are evenly spaced in L*
+between those ends. a* and b* are interpolated linearly in L* between the two end colours, so the middle tones keep
+the same warm, slightly olive lean. Chroma is 24.8 to 26.1 and hue angle 69 to 56°, never pink or grey. The one-offs'
+constant tone is the L* midpoint, 62.2. That is inside the measured range (the light cluster's L* is 57 to 69), so it
+needed no flag.
+
+**l1 is above the measured Indian range.** l1 has ITA +54 and L* 82.4. In the one Indian colorimetry dataset found
+(below), no one measured above ITA 43 or L* 69. This is the owner's deliberate choice, made against that data: the
+lightest face is lighter than any cheek measured in that sample. d2 sits at the bottom edge of the medium cluster, so
+about 24% of that sample (the dark cluster) is darker than the darkest face.
+
+**What it costs the colourism cue.** The light/dark gap (l2 to d1) is 13.4 L*. It was 24.0 in set 1, 14.6 in set 2
+and 7.8 in set 3. The pair means are 27.0 L* apart, against 37.0, 29.5 and 15.0. So set 4 keeps about 90% of set 2's
+gap and a little over half of set 1's.
+
+**Why set 3 (superseded by set 4).** The owner judged that the light end of set 2 (L* 82.4, ITA +54, "light" in the ITA scheme) and its dark end
+did not read as Indian. Set 3 is placed inside skin colour measured on Indian adults. The source is Pawar PG, Borle A,
+Patil PR, Patil RM, Gadakh PS, Rani G. "Facial skin color assessment and proposed skin shade guide for maxillofacial
+prosthesis using cluster analysis in a cohort of Indian adults." J Indian Prosthodont Soc 2024;24(4):366-373,
+doi:10.4103/jips.jips_194_24. The DOI was checked on Crossref, and the figures were read from the raw full text (Europe
+PMC, PMC11614129).
+
+The study measured 368 adults aged 20 to 45 (215 women) with a SkinColorCatch colorimeter on the malar (cheek) skin,
+in Maharashtra. Table 2 gives three k-means clusters:
+
+| Cluster | n (%) | ITA° mean ± SD (min, max) | L* | a* | b* |
+|---|---|---|---|---|---|
+| dark | 88 (23.91) | -47.04 ± 14.77 (-57, -27) | 34.53 ± 4.31 (24, 41) | 8.55 ± 3.23 (1, 15) | 11.42 ± 3.70 (5, 17) |
+| medium | 224 (60.87) | 4.29 ± 11.34 (-22, 30) | 51.67 ± 4.24 (42, 60) | 8.79 ± 3.13 (2, 14) | 21.36 ± 3.28 (12, 29) |
+| light | 56 (15.22) | 34.65 ± 4.29 (24, 43) | 62.66 ± 3.08 (57, 69) | 6.53 ± 1.79 (3, 9) | 17.73 ± 2.39 (13, 22) |
+
+The authors label these clusters with the Chardon ITA categories. In their words, the medium cluster is "medium skin
+color (combination of tan and brown)" and the light cluster is "light skin color (intermediate)". The sample therefore
+spans intermediate, tan and brown, and reaches "dark" (below -30°). No Indian adult in it measured "light" or "very
+light": the highest ITA was 43 and the highest L* was 69. Set 2's l1 (L* 82.4, ITA +54) lay outside the measured range.
+Its d2 (L* 38.0) lay inside it, in the dark cluster. The owner asked for a lighter d2 anyway.
+
+**How set 3 was built.** L* runs from 64, just above the light cluster's mean (62.66), to 42. That is the medium
+cluster's minimum, one point above the dark cluster's maximum (41). The four tones are 7 to 8 L* apart, with the
+widest step (7.8) between l2 and d1, where the cue splits. a* and b* at each L* are interpolated from the clusters' means
+plus 2 SD, each capped at that cluster's measured maximum. The plain means were tried first. In this comic style,
+next to violet and blue, they render grey and ashy (C* about 18 to 22). The +2 SD values stay inside the measured
+ranges and read as warm brown with a yellow (olive) lean: hue angle 56 to 68°, a* 9 to 15, b* 22 to 26.
+
+The one-offs' constant tone moved from `#BC8459` (a* 16.6 and b* 31.7, both above the measured maxima of 14 and 29) to
+`#A37550` (L* 53.0). That is midway between l2 and d1, so a one-off belongs to neither side of the cue.
+
+**What set 3 cost the colourism cue.** The light/dark gap (l2 to d1) shrank from 24.0 L* in set 1, and 14.6 in set 2,
+to 7.8. The pair means move from 37.0 and 29.5 L* apart to 15.0. The two sides stay visibly distinct, both at
+phone size (72 px) and at full size (`phone-l1-d2.png`, `full-l1.png` and `full-d2.png` in each review folder). But the
+cue is now about half as strong as set 2 and about a third of set 1, as a lightness difference. P1 should check that it
+is still noticed. A further caveat: these are mean colours of real skin under a colorimeter. They are not perceptual
+judgements of a drawing, and the data come from one region of India.
+
+**Not changed.** Bases and masks are unchanged, so morphology is identical across all three sets. The lips keep
+the base colour. With a lighter d2 the lips now read slightly lighter than the skin on d2, and much less so than in
+set 1. The tokens in `src/styles/tokens.css` (the drawn-SVG fallback) still hold set 1 and should be updated to set 4.
+Comparison sheets in the warehouse review folder: `tones-original-pawar-owner.png` (sets 1, 3 and 4, 2 people of each
+sex), `tones-old-current-proposed.png` (sets 1, 2 and 3) and `tones-before-after.png` (set 1 against set 2).
 
 The base itself (L* about 57 to 72) is never shipped. Every delivered person went through the same recolour.
 
@@ -165,9 +224,9 @@ pass the exact checks.
 **Results (`check-output.txt`).**
 - All 152 person variants pass both exact checks: max |diff| is 0 outside the mask at 512 px and 0 outside the
   footprint at 384 px.
-- After WebP, the mean |diff| outside the footprint is 0.65 to 1.65 levels, with isolated maxima up to 121 on
+- After WebP, the mean |diff| outside the footprint is 0.64 to 1.62 levels, with isolated maxima up to 105 on
   halftone dots.
-- The core median lands within Delta E 1.45 of its target (median 0.36).
+- The core median lands within Delta E 1.63 of its target (median 0.39), at the set 4 targets.
 
 **Compute.** Generation took about 80 minutes for the 152 images and 3 re-rolls, plus about 10 minutes of pilots, on
 an Apple M4 with 24 GB. That is about 30 s an image once `mx.clear_cache()` runs between images. Without it, MLX's
@@ -183,6 +242,10 @@ under a minute.
   Facial hair exists only on men, in 4 of the 8 slots.
 - **Salmon hatching under some jaws** survived on d2 in the first build (5-woman, 7-woman). Mask step 5 removed it
   on 20 Oct 2026. In `necks-d2.png` none is visible now.
+- **Pink cheek and neck patches on some one-offs** (o117-m, o130-w, o141-w and others) showed at the darker tones.
+  Step 5 now covers the one-offs too, and it also takes in red cheek shading beside the nose and mouth, inside the face
+  outline, for every person. That changed the masks of all 136 delivered bases slightly, by 0 to 270 px each. Every
+  variant still passes the exact checks.
 - **Head size** is normalised on eye distance. Drawn proportions still vary, for example rounder faces and wider-set
   eyes.
 - **Mascot appeal is not equal.** The tiger is still the most colourful and detailed (orange with stripes). The
@@ -225,8 +288,8 @@ are done this way. Everything above applies unchanged, except for the points bel
   the upper lip in a clean-shaven slot (s2-m-c0, s7-m-c0, s7-m-c2, s8-m-c1, s8-m-c2). They were rejected, not
   re-drawn, because each slot kept at least one clean candidate.
 - **Mask.** These draws have redder neck shadows than the warehouse's. Step 4 left them as salmon halftone on d2, so
-  `skinmask.py` step 5 adds red-side shade under the chin. It now applies to every story's cast, the warehouse
-  included, but not to the one-offs.
+  `skinmask.py` step 5 adds red-side shade under the chin and on the cheeks. It now applies to every person: every
+  story's cast, the warehouse included, and the one-offs.
 
 **Commands.** These are the same scripts, with the story in `PORTRAIT_STORY` (`story.py`). Each story works in
 `work/stories/<story>/` and writes `check-output-<story>.txt`:
@@ -246,7 +309,7 @@ story's files. To add a story, add it to `STORIES` in `story.py` and to `STORY_C
 **Results.**
 - Both stories: 64 variants each, and all pass both exact checks (max |diff| 0 outside the mask at 512 px and outside
   the footprint at 384 px).
-- Tone accuracy is within Delta E 1.78 for the newsroom (median 0.40) and 1.47 for the clinic (median 0.54).
+- Tone accuracy (set 4) is within Delta E 1.78 for the newsroom (median 0.39) and 1.47 for the clinic (median 0.67).
 - Files are 17 to 28 KB.
 - Generation took about 25 s an image: 96 candidates plus 5 re-rolls.
 

@@ -460,8 +460,8 @@
   --art-crate: #e8c48a;
   --art-figure: #bdb6c8;
   --art-caption: #ffe27a;
-  --art-skin: #bc8459;
-  --art-skin-shade: #9d6c48;
+  --art-skin: #b88e6f;
+  --art-skin-shade: #99765c;
   --art-feature: #613f2a;
   --art-lip: #895d3f;
   --art-fur: #9a6a45;
@@ -471,8 +471,8 @@
   --art-acc: #9a6a45;
   --art-acc2: #9a6a45;
 }
-/* The four cast tones (EVAL-10): evenly spaced lightness, L* 82.4, 67.5, 52.9 and 38.0, the
-   same targets as the generated portraits (scripts/portraits/recolour.py). */
+/* The cast tones and the one-off constant (EVAL-10, the owner's approved range), the same
+   targets as the generated portraits (scripts/portraits/recolour.py). */
 [data-tone='l1'] {
   --art-skin: #edc6a2;
   --art-skin-shade: #c29e80;
@@ -480,26 +480,26 @@
   --art-lip: #a9886e;
 }
 [data-tone='l2'] {
-  --art-skin: #d09970;
-  --art-skin-shade: #ad7f5d;
+  --art-skin: #c9a080;
+  --art-skin-shade: #a7856a;
   --art-feature: #6c4b37;
   --art-lip: #9c7255;
 }
 [data-tone='m'] {
-  --art-skin: #bc8459;
-  --art-skin-shade: #9d6c48;
+  --art-skin: #b88e6f;
+  --art-skin-shade: #99765c;
   --art-feature: #613f2a;
   --art-lip: #895d3f;
 }
 [data-tone='d1'] {
-  --art-skin: #a9724b;
-  --art-skin-shade: #8c5f3e;
+  --art-skin: #a67c5f;
+  --art-skin-shade: #8a674f;
   --art-feature: #553221;
   --art-lip: #73482e;
 }
 [data-tone='d2'] {
-  --art-skin: #7c4f31;
-  --art-skin-shade: #674229;
+  --art-skin: #845940;
+  --art-skin-shade: #6e4a35;
   --art-feature: #432618;
   --art-lip: #543320;
 }

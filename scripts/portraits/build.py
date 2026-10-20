@@ -2,7 +2,7 @@
 
   python3 scripts/portraits/build.py
 Cast: each chosen base -> four tones by recolour (l1, l2, d1, d2, lightest to darkest) -> eye-normalised crop -> 384 px
-WebP. One-offs: their single base -> the constant medium tone (the game's 'm', #BC8459) by the same recolour.
+WebP. One-offs: their single base -> the constant medium tone (MEDIUM) by the same recolour.
 Mascots: the chosen candidate, backdrop normalised, resized whole. Writes work/variant/ (512 px PNG after recolour),
 work/out384/ (384 px PNG before WebP), public/portraits/*.webp and public/portraits/manifest.json.
 PORTRAIT_STORY=newsroom (or clinic) builds only that story's cast, from scores-<story>.json into
@@ -24,7 +24,7 @@ from story import WORK, key
 HERE = os.path.dirname(os.path.abspath(__file__))
 PUBLIC = os.path.join(HERE, "..", "..", "public", "portraits")
 OUT_PX, QUALITY, PAD = 384, 90, 200  # q 90, not 80: at 80 the files came out 8-20 KB and the halftone smeared
-MEDIUM = "#BC8459"  # src/styles/tokens.css [data-tone='m'] --art-skin, the one-offs' constant tone
+MEDIUM = "#B88E6F"  # the one-offs' constant tone: the L* midpoint (62.2) of the owner's range (README, "Tone targets"); set 3 used #A37550, sets 1-2 #BC8459
 GAME_TONE = {"t1": "l1", "t2": "l2", "t3": "d1", "t4": "d2"}
 SEXWORD = {"w": "woman", "m": "man"}
 

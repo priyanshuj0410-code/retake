@@ -536,8 +536,8 @@ pass (EVAL-10)".
   warehouse and `{story}-{slot}-{sex}-{tone}.webp` for every other story (newsroom, clinic; the
   manifest's `casts` map), only when the manifest lists it; a missing file draws the SVG, never
   another story's face. One-offs and mascots are shared. The drawn fallback's four cast tones
-  match the generated ones, evenly spaced in lightness: `l1` #EDC6A2 (L* 82.4), `l2` #D09970
-  (67.5), `d1` #A9724B (52.9), `d2` #7C4F31 (38.0); one-offs keep the medium `m`.
+  match the generated ones (the owner's approved range, 20 Oct 2026): `l1` #EDC6A2, `l2` #C9A080,
+  `d1` #A67C5F, `d2` #845940, and the one-off constant `m` #B88E6F.
 
 ### The comic page grammar (EVAL-10, owner)
 
