@@ -4,6 +4,7 @@ crop box, and save the base, the mask and a mask overlay for the manual check.
   python3 scripts/portraits/analyse.py            # all raw candidates not yet analysed
   python3 scripts/portraits/analyse.py --force    # redo all (after editing masks.json)
 Writes work/base/<id>.png, work/mask/<id>.png (weight x 255), work/overlay/<id>.png and work/analysis.json.
+PORTRAIT_STORY=newsroom (or clinic) works on that story's work/stories/<story>/ instead (story.py).
 """
 import glob
 import json
@@ -18,9 +19,8 @@ from backdrop import backdrop
 from colour import rgb2lab
 from frame import crop_box, eyes
 from skinmask import mask
+from story import WORK, key
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-WORK = os.path.join(HERE, "work")
 OUT = os.path.join(WORK, "analysis.json")
 
 
@@ -43,8 +43,8 @@ def main():
             continue
         raw = np.asarray(Image.open(path).convert("RGB"))
         base, bd = backdrop(raw)
-        w, ref = mask(base, cid)
-        e, how = eyes(base, w, cid)
+        w, ref = mask(base, key(cid))
+        e, how = eyes(base, w, key(cid))
         box, shift = crop_box(e, base) if e else (None, "")
         Image.fromarray(base).save(os.path.join(WORK, "base", cid + ".png"))
         Image.fromarray(np.round(w * 255).astype(np.uint8)).save(os.path.join(WORK, "mask", cid + ".png"))

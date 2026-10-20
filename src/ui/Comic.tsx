@@ -82,8 +82,11 @@ export function Then({
   text,
   look,
   label,
+  lead,
 }: {
   id?: string
+  /** The label before the line: "After your last decision:" (EVAL-10). */
+  lead?: string
   text: string
   look?: Look
   label?: string
@@ -92,6 +95,7 @@ export function Then({
     <div className="then" id={id}>
       {look ? <Portrait look={look} label={label ?? ''} size="then" eager /> : null}
       <span className="then__words">
+        {lead ? <span className="then__lead">{lead}</span> : null}
         <span className="then__text">{text}</span>
       </span>
     </div>

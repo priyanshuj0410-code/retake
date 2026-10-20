@@ -13,11 +13,18 @@
    highlights are taken in, with a wider hue window (redder shadow shades such as under the chin); the holes holding
    the eyes and the mouth keep the step-1 weights. Within 12 px outside the silhouette, skin-hued shade with L* above
    34 is taken in too (a neck shadow running into the collar); the L* floor keeps dark brown hair out.
-5. Manual edits from masks.json, per base: "exclude" ellipses [cx, cy, rx, ry] are forced to 0 (used for lips or
+5. Cast members of every story (not one-offs; owner, 20 Oct 2026, after the tone change): below the mouth, or
+   beside the jaw clear of the lips, shade on the red side of the skin hue is taken in within 30 px of the skin and
+   wherever it connects to the skin. Neck shadows can be much redder than the skin (hue up to 65 degrees below the
+   reference, many halftone dots under L* 34), which step 4 left as salmon halftone on the darkest tone.
+   It also takes in small skin islands cut off between the lanyard and the collar, which the 150 px rule drops.
+   Blue and teal shirts, green and navy lanyards and black hair sit far outside the hue or chroma window.
+6. Manual edits from masks.json, per base: "exclude" ellipses [cx, cy, rx, ry] are forced to 0 (used for lips or
    anything the colour rule let through), "include" ellipses are allowed back in. Every edit is listed there.
 """
 import json
 import os
+import re
 
 import numpy as np
 from PIL import Image
@@ -86,6 +93,26 @@ def refine(w0, L, C, dh, rgb8):
     return np.where(near, np.maximum(w, w_near), w)
 
 
+def neck(w0, L, C, dh, rgb8):
+    """Step 5 (story casts only): red-side shade below the mouth, within 30 px of the skin."""
+    from frame import eyes
+    e, _ = eyes(rgb8, w0)
+    if not e:
+        return w0
+    (xa, ya), (xb, yb) = e
+    d, cx, cy = xb - xa, (xa + xb) / 2, (ya + yb) / 2
+    yy, xx = np.mgrid[0:w0.shape[0], 0:w0.shape[1]]
+    # under the mouth, or beside the jaw well clear of the lips
+    below = (yy > cy + 1.45 * d) | ((yy > cy + 0.9 * d) & (np.abs(xx - cx) > 0.6 * d))
+    core = w0 >= 0.5
+    w_neck = ramp(C / np.maximum(L, 1), 0.30, 0.40) * ramp(C, 4, 8) * ramp(dh, -70, -60) * (1 - ramp(dh, 12, 18))
+    # a wide shadow can run further than 30 px from the skin: also grow through red-side shade connected to it
+    lbl, _ = ndimage.label(below & (core | (w_neck >= 0.3)))
+    grown = np.isin(lbl, np.unique(lbl[below & core])[1:])
+    region = below & (ndimage.binary_dilation(core, iterations=30) | ndimage.binary_dilation(grown, iterations=2))
+    return np.where(region, np.maximum(w0, w_neck), w0)
+
+
 def mask(rgb8, name=None):
     lab = rgb2lab(rgb8 / 255.0)
     ref = reference(lab)
@@ -101,6 +128,9 @@ def mask(rgb8, name=None):
     keep = ndimage.binary_dilation(keep, iterations=2)
     w = np.where(keep, w, 0.0)
     w = refine(w, L, C, dh, rgb8)
+    if name and re.fullmatch(r"([a-z]+/)?s[1-8]-[wm]-c\d+", name):  # every story's cast (story.key), not one-offs
+        dhs = (H - href + 180) % 360 - 180
+        w = neck(w, L, C, dhs, rgb8)
     edits = json.load(open(EDITS)).get(name, {}) if (name and os.path.exists(EDITS)) else {}
     for e in edits.get("exclude", []):
         w[ellipse(w.shape, *e)] = 0.0

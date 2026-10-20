@@ -7,18 +7,24 @@ go to the smaller difference in the linework proxy (analysis.json). A pair is fl
 the age gap is 3 years or more, or the linework proxy differs by more than 0.03. One-off tied pairs (focal and
 comparison of one group, same sex) are compared the same way and flagged at distance 1 or an age gap of 3 years.
 Writes scores.json.
+PORTRAIT_STORY=newsroom (or clinic) picks that story's cast from ratings-<story>.json into scores-<story>.json
+(story.py). Those casts are rated on apparent age and attractiveness only (owner, 20 Oct 2026), so their distance is
+|age difference| / 3 + |attractiveness difference|, with the same flag rules. They have no one-offs or mascots.
 """
 import json
 import os
 
+import story
+
 HERE = os.path.dirname(os.path.abspath(__file__))
+DIMS = ("attractive", "warmth", "competence") if story.WAREHOUSE else ("attractive",)
 MASCOTS = {"bear": "c0", "panda": "c1", "frog": "c2", "koala": "c0", "elephant": "c1", "penguin": "c3",
            "rabbit": "c0", "tiger": "c3"}  # chosen by eye for matched framing and detail; reasons in README
 
 
 def main():
-    r = json.load(open(os.path.join(HERE, "ratings.json")))["ratings"]
-    an = json.load(open(os.path.join(HERE, "work", "analysis.json")))
+    r = json.load(open(story.RATINGS))["ratings"]
+    an = json.load(open(os.path.join(story.WORK, "analysis.json")))
     picks, flags, dist = {}, {}, {}
     for s in sorted({k.split("-")[0] for k in r if k.startswith("s")}, key=lambda x: int(x[1:])):
         best = None
@@ -28,7 +34,7 @@ def main():
                 w, m = r[wi], r[mi]
                 if w["note"].startswith("REJECTED") or m["note"].startswith("REJECTED"):
                     continue
-                dd = abs(w["age"] - m["age"]) / 3 + sum(abs(w[x] - m[x]) for x in ("attractive", "warmth", "competence"))
+                dd = abs(w["age"] - m["age"]) / 3 + sum(abs(w[x] - m[x]) for x in DIMS)
                 lw = abs(an[wi]["linework"] - an[mi]["linework"])
                 if best is None or (dd, lw) < best[:2]:
                     best = (dd, lw, i, j)
@@ -45,8 +51,16 @@ def main():
             why.append(f"linework gap {dist[s]['linework_gap']:+.3f} (man minus woman)")
         if why:
             flags[s] = "FLAG: " + ", ".join(why)
+    if not story.WAREHOUSE:
+        json.dump(dict(_note=f"{story.STORY} cast picks from pick.py on the PROVISIONAL ratings in "
+                             f"{os.path.basename(story.RATINGS)} (apparent age and attractiveness only); re-run after P1 re-rates.",
+                       picks=dict(cast=picks), pair_distance=dist, flags=flags, scores=r),
+                  open(story.SCORES, "w"), indent=1)
+        for s in picks:
+            print(s, picks[s], dist[s], flags.get(s, ""))
+        return
     # one-off tied pairs: focal and comparison of one group, same sex (the game draws one sex for the pair)
-    gen = json.load(open(os.path.join(HERE, "work", "generation-log.json")))["images"]
+    gen = json.load(open(os.path.join(story.WORK, "generation-log.json")))["images"]
     oneoff_flags = {}
     groups = {}
     for k, j in gen.items():
@@ -63,7 +77,7 @@ def main():
     oneoffs = sorted([k for k in an if k.startswith("o")], key=lambda k: (int(k[1:].split("-")[0]), k.split("-")[1] != "w"))
     json.dump(dict(_note="Picks from pick.py on the PROVISIONAL ratings in ratings.json; re-run after P1 re-rates.",
                    picks=dict(cast=picks, mascots=MASCOTS, oneoffs=oneoffs),
-                   pair_distance=dist, flags=flags, oneoff_pair_flags=oneoff_flags, scores=r), open(os.path.join(HERE, "scores.json"), "w"), indent=1)
+                   pair_distance=dist, flags=flags, oneoff_pair_flags=oneoff_flags, scores=r), open(story.SCORES, "w"), indent=1)
     for s in picks:
         print(s, picks[s], dist[s], flags.get(s, ""))
     print(f"one-off tied pairs flagged: {len(oneoff_flags)} of {len(groups)}")

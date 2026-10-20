@@ -1,4 +1,4 @@
-/* @owns list list__item */
+/* @owns list list__item list__help */
 .list {
   margin: var(--gap-none);
   padding-left: var(--gap-xl);
@@ -13,5 +13,11 @@
   overflow-wrap: anywhere;
 }
 .list__item::marker {
+  color: var(--c-muted);
+}
+.list__help {
+  display: block;
+  font-size: var(--text-small);
+  font-style: italic;
   color: var(--c-muted);
 }

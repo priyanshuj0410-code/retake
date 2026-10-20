@@ -81,8 +81,12 @@ export function Home({ go }: { go: (hash: string) => void }) {
         Your profile (demo profile with two past seasons)
       </Button>
       <Heading>Play a demo session (card games, plan v2)</Heading>
-      <Button onClick={() => void startDemo('panel-g1')}>Panel, game 1</Button>
-      <Button onClick={() => void startDemo('panel-g2')}>Panel, game 2</Button>
+      <Button kind="secondary" onClick={() => void startDemo('panel-g1')}>
+        Panel, game 1
+      </Button>
+      <Button kind="secondary" onClick={() => void startDemo('panel-g2')}>
+        Panel, game 2
+      </Button>
       <Button kind="secondary" onClick={() => go(`#/enrol/${DEMO_SCHEDULE.firm}`)}>
         Firm session: enrol (fictional firm)
       </Button>

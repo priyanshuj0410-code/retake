@@ -1,12 +1,13 @@
 ---
 type: review
 title: Game redesign, 19 Oct 2026
-description: The season-story redesign of the evaluator (EVAL-4) and its rebuild to the owner's 80-decision layout (EVAL-5) - why, what changed, the full 390 px Playwright play with counted and asked decisions, clicks, screens and time against the old build, the screen list, what is PENDING v18, and what to flag; then the owner's Direction C (comic panels) built in (EVAL-6), defect by defect, and the season in five chapters and a finale (EVAL-8).
+description: The season-story redesign of the evaluator (EVAL-4) and its rebuild to the owner's 80-decision layout (EVAL-5) - why, what changed, the full 390 px Playwright play with counted and asked decisions, clicks, screens and time against the old build, the screen list, what is PENDING v18, and what to flag; then the owner's Direction C (comic panels) built in (EVAL-6), defect by defect, the season in five chapters and a finale (EVAL-8), and the prototype pass (EVAL-10).
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-4/
   - https://app.plane.so/the-equal-lens/browse/EVAL-5/
   - https://app.plane.so/the-equal-lens/browse/EVAL-6/
   - https://app.plane.so/the-equal-lens/browse/EVAL-8/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-10/
 ---
 
 # Game redesign, 19 Oct 2026 (EVAL-4, rebuilt for 80 decisions in EVAL-5)
@@ -16,6 +17,100 @@ Branch `eval-game-redesign` (worktree `../equal-lens-evaluator-game`). Design ru
 Layout source: the Sex Ed workspace's
 `Paper Analysis/Hypotheses/workplace-gender-training-v2/scenario-80-decisions-2026-10-19.md`
 (Game 1's low branch, the demo route).
+
+## Prototype pass (EVAL-10, owner decisions of 20 Oct 2026)
+
+Plane: [EVAL-10](https://app.plane.so/the-equal-lens/browse/EVAL-10/) (EVAL-9, an earlier attempt
+cut off before it committed anything, is closed as superseded). Design rules:
+[design.md](../design.md) sections 4, 4a, 4b, 4d and 6. Inputs: the owner's eight decisions,
+the persona copy audit (ten fixes and a glossary), and the owner's review of the live build
+(nine binding points). Screenshots at 390 px, with before shots from the live build
+(`00-before-*`): the session scratchpad's `build-v5/`.
+
+### What changed
+
+1. **Padding.** Option rows sit in `choice__rows`, half a pitch (14 px) apart in the note
+   register, so no frames touch; groups are a full pitch apart; a checked row is a fill with the
+   resting border, never a heavier one. `pnpm ux` and `ux:states` fail touching rows, groups
+   closer than a pitch, and a heavier checked border.
+2. **Shares back to splits** (EVAL-8's one-tap pairs reverted): three colleagues (the tied pair
+   and a third with weaker descriptions, as before EVAL-8, so the draws match the pre-EVAL-8
+   layout), an empty start, the count left, "Confirm these shares", the saved answer on Back.
+   Chapters, saves, the map and the story in the card are kept.
+3. **Copy audit, both languages** (446 strings in `story.json`, 52 in `screens.json`, the
+   Hinglish of the season's screening and survey items, the message instruction): language first
+   with a bilingual heading; "Both, mixed" made real as **"English with Hinglish help"** (English
+   on screen, the Hinglish under every question, description, consent point and the message;
+   chosen over two full languages, which doubled every screen); "Your result"; the hero explains
+   a pair and drops "chance would explain" and "shaded middle"; "Not enough to tell" shows nothing
+   of the result below it; the glossary ("description", "message", "chapter", no "rounds"); plain
+   Hinglish ("nakhra", "utpeedan", "svabhavik" and the rest gone); plain consent with the
+   committees glossed and "Delete my answers"; "Confirm this order" and "Confirm these shares";
+   one session length (`sessionMinutes`, 30 minutes now); digits; roster, comp-off, pareshaani;
+   "After your last decision:"; descriptions at 17 px; questions in sentence case.
+4. **Tags** ("Clear pattern: men first" to "Not enough to tell"), thresholds still in config; the
+   **position with range** (`RangeLine`): a dot on a men-first to women-first line with a shaded
+   range from `config.season.rating.range` (a Beta posterior interval, 90 per cent, flat prior;
+   PENDING v22, which will likely use a posterior model). Nothing pending in player copy.
+5. **Share card**: by default the season only; an unticked "Include my result" adds the tag and a
+   chance line computed from the reading levels in config ("about 1 in 20 players who go by the
+   descriptions get this tag or a clearer one"). Religion and skin tone never.
+6. **Profile**: each season as a compact position with range, and "Two results can differ by
+   chance; overlapping ranges mean no change shown." The change line now follows that rule
+   (seasons saved before EVAL-10 have no counts and keep the old weight rule).
+7. **Firm per-chapter flag**, `meta.chapter_timing`: one letter per chapter and the finale, "y"
+   when played after the player's own training date, "n" when not (before it, or on the day
+   itself); never a date or a time. Set at each chapter's first answer from the device clock; the
+   training date stays on the device. Wired through the runner and `Play` for an entry that
+   carries the enrolment's training date; the firm route still plays the card game today, so only
+   a firm season will carry it.
+8. **Scoring rule**: no in-game copy says how answers are read ("a story that reads you",
+   "decisions that count", "rating" and "chance" are gone from the picker, opening, chapters,
+   consent points and practice); X-20 holds it.
+
+From the owner's live review (binding): device-neutral "Saved in this browser"; the disclosure
+and every screen show only the chosen language; one hierarchy (one `h1`, lead, body, muted meta,
+one primary, one quiet secondary) with the chapter-end screen rebuilt to it; the ruling made a
+faint texture; one thin season bar in the header (the six-stop map moved to the chapter end);
+an **opt-in practice round** in place of the up-front instructions ("Practise first" or "Start
+the season", one rank, share and pick with the mascots at a picnic, never recorded, `meta.practice`
+y or n, `content-check` fails a practice cue); one action pattern (`Actions`, Back as the top nav
+link); equal option sizes (checked by `pnpm ux`); ranking cards fit 320 to 1440 px (checked at
+eight widths).
+
+**Decision pages as comic pages** (owner, during the pass): panel 1 what happened (the
+consequence with the leader's headshot, or the chapter's title panel on its first decision),
+panel 2 how it unfolds (a drawn prop beside the scene caption), panel 3 the decision (the
+question in a caption box, the equal-size cards, the action), 8 px gutters, captions of 25 words
+or fewer. Measured at 390 x 844 over a whole season of 69 decisions: **54 exceed one scroll**
+(all 28 rankings, 1,030 to 1,220 px; all 20 splits, 1,070 to 1,310 px; 6 picks, 857 to 930 px);
+15 fit (13 picks, 2 ordinary). Before the change 63 exceeded it (rankings to 1,305 px). Before
+and after for three consecutive decisions: `build-v5/30-before-decision-6..8` and
+`30-after-decision-6..8`.
+
+### Shared rules change (must land before this ships)
+
+The rules piece in this repo (`database.rules.json`) now accepts `meta.chapter_timing` (exactly
+six of y or n, season records only) and `meta.practice` (y or n). **The shared ruleset in The
+Equal Lens repo's firebase/ must take the same two changes**, with EVAL-8's `meta.sit` and
+EVAL-6's `edit` item, or season submits will be refused.
+
+### To flag (EVAL-10)
+
+1. **The range is a planning model.** Beta(1 + women first, 1 + men first), even pairs half each,
+   90 per cent; v22 sets the real one. The position is clamped inside its range at the extremes.
+2. **"Not enough to tell" now hides the other readings too** (the owner's G5 instruction),
+   superseding owner decision 5's "a player with no sex reading still sees the readings they
+   have".
+3. **Practice uses the season's mascot animals** (by species name, not their mascot names). It
+   precedes the 4 mascot baseline cards; a liking formed in practice could touch them. Worth a
+   pilot look, or practice could use objects.
+4. **Stimulus wording moved**: the copy sweep changed description and question wording (digits,
+   "description", "problem", plain Hinglish) on both sides of every matched pair alike; P1 must
+   re-rate valence and merit tiers, and the screening and survey Hinglish needs the matched-pair
+   equivalence pre-test. The registered note (c) instruction now says "chapters", not "rounds".
+5. **Copy register**: "chapter" was kept over the audit's "episode" because the owner's share
+   card says "5 chapters".
 
 ## Direction C, comic panels (EVAL-6)
 

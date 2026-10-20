@@ -277,6 +277,26 @@ async function rows(page: Page, component: string, kind: 'radio' | 'checkbox') {
     both.focused && both.ring >= 3 && both.tinted,
     JSON.stringify(both),
   )
+  /* EVAL-10 (owner): a checked row keeps the resting border weight (a fill marks it, never a
+     heavier border), and the rows of one group never touch (no doubled borders). */
+  await page.locator('h1').first().focus()
+  const rowSeen = await rowN(0).evaluate((e) => {
+    const all = [...(e.parentElement?.querySelectorAll('.choice__option') ?? [])]
+    const gaps = all
+      .slice(1)
+      .map((x, i) => x.getBoundingClientRect().top - all[i].getBoundingClientRect().bottom)
+    return {
+      checked: getComputedStyle(all[0]).borderTopWidth,
+      rest: getComputedStyle(all[1] ?? all[0]).borderTopWidth,
+      gaps,
+    }
+  })
+  rec(
+    component,
+    `checked row keeps the resting border weight (${rowSeen.checked} against ${rowSeen.rest}), and rows never touch (gaps ${rowSeen.gaps.map((g) => Math.round(g)).join(', ')} px)`,
+    rowSeen.checked === rowSeen.rest && rowSeen.gaps.every((g) => g >= 8),
+    JSON.stringify(rowSeen),
+  )
   await forced(page, true)
   const fc = await rowN(0).evaluate((e) => getComputedStyle(e).outlineStyle)
   await forced(page, false)
@@ -454,12 +474,12 @@ async function notice(page: Page, base: string, code: string) {
   await page.goto(`${base}#/withdraw`)
   await page.reload()
   await page.getByRole('textbox').fill('NOT-A-CODE')
-  await page.getByRole('button', { name: 'Delete my records' }).click()
+  await page.getByRole('button', { name: 'Delete my answers' }).click()
   await page.getByRole('alert').waitFor()
   const err = await css(page, '.notice--error', 'content', '::before')
   rec(C, 'error: a glyph as well as the colour', /!/.test(err), err)
   await page.getByRole('textbox').fill(code)
-  await page.getByRole('button', { name: 'Delete my records' }).click()
+  await page.getByRole('button', { name: 'Delete my answers' }).click()
   await page.locator('.notice--ok').waitFor()
   const ok = await css(page, '.notice--ok', 'content', '::before')
   rec(C, 'done: a tick as well as the colour', /✓/.test(ok), ok)
@@ -520,7 +540,7 @@ export async function statesPass(page: Page, base: string): Promise<StateResult[
   /* The press test clicks the button it presses; go on to the consent, whatever the layout put
      under the pointer. */
   for (let i = 0; i < 3 && (await marker(page)) !== 'consent'; i++)
-    await page.locator('.page__actions .button--primary').first().click()
+    await page.locator('main > .actions .button--primary').first().click()
   await details(page)
   const sawFootnote = await page.locator('.page__footnote, .demo').count()
   rec('Page', 'consent: no demo badge and no prototype line (landing only)', sawFootnote === 0)

@@ -1,4 +1,4 @@
-/* @owns colleague colleague--row colleague__face colleague__who colleague__name colleague__cue colleague__desc */
+/* @owns colleague colleague--row colleague__face colleague__who colleague__name colleague__cue colleague__desc colleague__help */
 .colleague {
   display: flex;
   flex-direction: column;
@@ -6,8 +6,13 @@
   text-align: left;
 }
 .colleague__face {
-  display: block;
   border-bottom: var(--ink-divider) solid var(--c-ink-line);
+  /* The comic page (EVAL-10): faces cropped to a wider frame, head and shoulders, so a
+     decision's cards take less of the phone screen. */
+  aspect-ratio: var(--card-face);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .colleague--row {
   flex-direction: row;
@@ -39,9 +44,14 @@
   color: var(--c-muted);
   overflow-wrap: anywhere;
 }
-.colleague__desc {
-  font-size: var(--text-small);
+.colleague__desc,
+.colleague__help {
+  font-size: var(--text-desc);
   line-height: var(--leading-ui);
   color: var(--c-body);
   overflow-wrap: anywhere;
+}
+.colleague__help {
+  color: var(--c-muted);
+  font-style: italic;
 }

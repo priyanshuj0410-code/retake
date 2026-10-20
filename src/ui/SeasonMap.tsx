@@ -12,26 +12,18 @@ const FINALE = {
 }
 
 export interface MapStop {
-  /** The stop's short name: the chapter title, or "Finale and rating". */
+  /** The stop's short name: the chapter title, or "Finale and result". */
   title: string
   state: 'done' | 'now' | 'next'
 }
 
 /**
- * The season map (EVAL-8, concept D), in the sticky header in place of a page count: six stops
- * (five chapters and the finale, the finale drawn square) on one line, and dots for the current
- * chapter's cards only, so progress resets each chapter. No countdown, no motion. It is one
- * image with a spoken label that says the same in words.
+ * The season map (EVAL-8, concept D; moved by EVAL-10): six stops on one line (five chapters
+ * and the finale, the finale drawn square), shown on the chapter-end screen, where the player
+ * stops to look. The sticky header carries only the thin `SeasonBar`. No countdown, no motion;
+ * one image with a spoken label that says the same in words.
  */
-export function SeasonMap({
-  stops,
-  cards,
-  label,
-}: {
-  stops: MapStop[]
-  cards: { done: number; total: number }
-  label: string
-}) {
+export function SeasonMap({ stops, label }: { stops: MapStop[]; label: string }) {
   return (
     <div className="map" role="img" aria-label={label}>
       <ol className="map__stops">
@@ -44,11 +36,6 @@ export function SeasonMap({
           </li>
         ))}
       </ol>
-      <span className="map__dots">
-        {[...Array(cards.total).keys()].map((i) => (
-          <i key={i} className={i < cards.done ? 'map__dot map__dot--done' : 'map__dot'} />
-        ))}
-      </span>
     </div>
   )
 }

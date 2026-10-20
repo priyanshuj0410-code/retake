@@ -2,7 +2,8 @@
 
 Run with mflux's own interpreter:
   caffeinate -i ~/.local/share/uv/tools/mflux/bin/python scripts/portraits/generate.py GROUP[,GROUP] [id ...]
-GROUP is cast, mascots or oneoffs.
+GROUP is cast, mascots or oneoffs. PORTRAIT_STORY=newsroom (or clinic) makes GROUP cast that story's cast, written to
+work/stories/<story>/ (story.py).
 Skips any image already on disk, so it can be stopped and resumed. Appends every seed, prompt and timing to
 scripts/portraits/work/generation-log.json.
 """
@@ -13,10 +14,10 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cast  # noqa: E402
+import story  # noqa: E402
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-RAW = os.path.join(HERE, "work", "raw")
-LOG = os.path.join(HERE, "work", "generation-log.json")
+RAW = os.path.join(story.WORK, "raw")
+LOG = os.path.join(story.WORK, "generation-log.json")
 
 
 def main():

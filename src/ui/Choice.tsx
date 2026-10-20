@@ -6,6 +6,20 @@ import './choice.css'
 const rowClass = (checked: boolean) =>
   checked ? 'choice__option choice__option--checked' : 'choice__option'
 
+/** The question, and under it its Hinglish in the "English with Hinglish help" mode (EVAL-10). */
+function Legend({ legend, heading, help }: { legend: string; heading?: boolean; help?: string }) {
+  return (
+    <legend className="choice__legend">
+      {heading ? <h1 className="choice__heading">{legend}</h1> : legend}
+      {help ? (
+        <span className="choice__help" lang="hi-Latn">
+          {help}
+        </span>
+      ) : null}
+    </legend>
+  )
+}
+
 export interface Option {
   id: string
   text: string
@@ -15,6 +29,7 @@ export interface Option {
 export function Choice({
   legend,
   heading,
+  help,
   options,
   value,
   onChange,
@@ -22,6 +37,8 @@ export function Choice({
   legend: string
   /** The question is the screen's heading: the legend holds the page's h1. */
   heading?: boolean
+  /** The question in Hinglish under it (EVAL-10's help mode). */
+  help?: string
   options: Option[]
   value: string | null
   onChange: (id: string) => void
@@ -29,22 +46,22 @@ export function Choice({
   const name = useId()
   return (
     <fieldset className="choice">
-      <legend className="choice__legend">
-        {heading ? <h1 className="choice__heading">{legend}</h1> : legend}
-      </legend>
-      {options.map((o) => (
-        <label className={rowClass(value === o.id)} key={o.id}>
-          <input
-            className="choice__input"
-            type="radio"
-            name={name}
-            value={o.id}
-            checked={value === o.id}
-            onChange={() => onChange(o.id)}
-          />
-          <span className="choice__text">{o.text}</span>
-        </label>
-      ))}
+      <Legend legend={legend} heading={heading} help={help} />
+      <div className="choice__rows">
+        {options.map((o) => (
+          <label className={rowClass(value === o.id)} key={o.id}>
+            <input
+              className="choice__input"
+              type="radio"
+              name={name}
+              value={o.id}
+              checked={value === o.id}
+              onChange={() => onChange(o.id)}
+            />
+            <span className="choice__text">{o.text}</span>
+          </label>
+        ))}
+      </div>
     </fieldset>
   )
 }
@@ -53,6 +70,7 @@ export function Choice({
 export function Checks({
   legend,
   heading,
+  help,
   hint,
   options,
   value,
@@ -60,6 +78,7 @@ export function Checks({
 }: {
   legend: string
   heading?: boolean
+  help?: string
   hint?: string
   options: Option[]
   value: string[]
@@ -67,23 +86,23 @@ export function Checks({
 }) {
   return (
     <fieldset className="choice">
-      <legend className="choice__legend">
-        {heading ? <h1 className="choice__heading">{legend}</h1> : legend}
-      </legend>
+      <Legend legend={legend} heading={heading} help={help} />
       {hint ? <span className="choice__text">{hint}</span> : null}
-      {options.map((o) => (
-        <label className={rowClass(value.includes(o.id))} key={o.id}>
-          <input
-            className="choice__input"
-            type="checkbox"
-            checked={value.includes(o.id)}
-            onChange={(e) =>
-              onChange(e.target.checked ? [...value, o.id] : value.filter((x) => x !== o.id))
-            }
-          />
-          <span className="choice__text">{o.text}</span>
-        </label>
-      ))}
+      <div className="choice__rows">
+        {options.map((o) => (
+          <label className={rowClass(value.includes(o.id))} key={o.id}>
+            <input
+              className="choice__input"
+              type="checkbox"
+              checked={value.includes(o.id)}
+              onChange={(e) =>
+                onChange(e.target.checked ? [...value, o.id] : value.filter((x) => x !== o.id))
+              }
+            />
+            <span className="choice__text">{o.text}</span>
+          </label>
+        ))}
+      </div>
     </fieldset>
   )
 }

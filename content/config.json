@@ -262,7 +262,13 @@
       },
       "minPairs": 8,
       "engagementMin": 0.7,
-      "permutations": 4000
+      "permutations": 4000,
+      "range": {
+        "_pending": "PENDING v22: v22 redesigns the reading to strict targets and will likely use a posterior model. These are planning values for the position-with-range display (EVAL-10): the share of equal woman-and-man pairs where the woman came first (an even share counts half), with the equal-tailed interval holding `mass` of a Beta(prior + women first, prior + men first) posterior ('beta'), or the Wilson score interval ('wilson'). Never shown with this marker; the screens show the dot and the range only.",
+        "method": "beta",
+        "prior": [1, 1],
+        "mass": 0.9
+      }
     },
     "timing": {
       "_note": "PENDING v18. The scenario's per-type paces (sim_scenario80.py length): a tap-to-order or tap-to-give card 20 s, a grid item 5 s, a single-choice item 6 s, the probe 10 s, an ordinary decision 10 s, the note 15 s, 80 s of fixed overhead; plus this build's own: a pick of two colleagues 12 s, each episode card and interlude, the opening, the season's end, the debrief, the code, demographics and submit.",
@@ -282,8 +288,7 @@
       "debrief": 20,
       "code": 25,
       "demographics": 15,
-      "submit": 5,
-      "pair": 12
+      "submit": 5
     },
     "change": {
       "_note": "PENDING v17. The profile reads a change between two saved seasons only when the headline weight moved by at least minDiff (on the -1 to +1 scale). A planning value: v17 sets the rule, ideally from the retake arm's test-retest agreement.",

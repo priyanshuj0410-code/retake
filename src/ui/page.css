@@ -1,4 +1,4 @@
-/* @owns page page__inner page__head page__bar page__act page__oof page__title page__body page__actions page__actions--pinned page__footnote */
+/* @owns page page__inner page__head page__bar page__act page__oof page__title page__body page__nav page__footnote */
 .page {
   background-color: var(--c-bg);
   color: var(--c-text);
@@ -97,25 +97,15 @@
 .page__body:focus {
   outline: none;
 }
-.page__actions {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-m);
-  margin-top: var(--gap-s);
-}
-/* Pinned (the story's turn-the-page screens): the action row stays at the foot of the screen
-   while the page scrolls, so "Continue" is in the same place on every one of them. */
-.page__actions--pinned {
-  position: sticky;
-  bottom: var(--gap-none);
-  z-index: 1;
-  padding: var(--gap-s) var(--gap-none) var(--gap-m);
-  background: var(--c-bg);
-  border-top: var(--border-thin) solid var(--c-rule);
-}
 .page__footnote {
   margin: var(--gap-none);
   font-size: var(--text-small);
   line-height: var(--leading-ui);
   color: var(--c-muted);
+}
+/* Back (EVAL-10): a small nav link at the top left of the screen, under the header. */
+.page__nav {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: var(--gap-none);
 }

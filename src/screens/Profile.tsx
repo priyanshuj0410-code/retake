@@ -25,6 +25,8 @@ import {
 } from '../story/profile'
 import { stories } from '../story/content'
 import { bandOf } from '../story/why'
+import { pc, positionOf } from '../story/range'
+import { fill } from '../engine/text'
 import { Button, Checks, DevNotes, Field, Heading, List, Notice, Page, Text, Timeline } from '../ui'
 
 const S = screens
@@ -145,12 +147,29 @@ export function Profile({ go }: { go: (h: string) => void }) {
       <Heading>{L(PF.timelineTitle)}</Heading>
       <Timeline
         label={L(PF.timelineTitle)}
-        items={sessions.map((s) => ({
-          when: dateOf(s.day),
-          what: storyTitle(s.story),
-          band: bandOf(s),
-        }))}
+        ends={{ left: L(RT.rangeLeft), middle: L(RT.rangeMiddle), right: L(RT.rangeRight) }}
+        items={sessions.map((s) => {
+          const band = bandOf(s)
+          const pos = s.counts && s.zone !== 'unread' ? positionOf(s.counts) : null
+          return {
+            when: dateOf(s.day),
+            what: storyTitle(s.story),
+            band,
+            range: pos
+              ? {
+                  ...pos,
+                  label: fill(L(RT.rangeSaid), {
+                    at: pc(pos.at),
+                    lo: pc(pos.lo),
+                    hi: pc(pos.hi),
+                    tag: band,
+                  }),
+                }
+              : undefined,
+          }
+        })}
       />
+      <Text kind="muted">{L(PF.timelineNote)}</Text>
       <Heading>{L(PF.changeTitle)}</Heading>
       <Text>
         {change

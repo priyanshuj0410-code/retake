@@ -1,0 +1,22 @@
+/* @owns actions actions--pinned */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+  margin-top: var(--gap-s);
+}
+/* Pinned (the story's turn-the-page screens): the action row stays at the foot of the screen
+   while the page scrolls, so "Continue" is in the same place on every one of them. */
+.actions--pinned {
+  position: sticky;
+  bottom: var(--gap-none);
+  z-index: 1;
+  padding: var(--gap-s) var(--gap-none) var(--gap-m);
+  background: var(--c-bg);
+  border-top: var(--border-thin) solid var(--c-rule);
+}
+@media (min-width: 600px) {
+  .actions {
+    align-items: flex-start;
+  }
+}

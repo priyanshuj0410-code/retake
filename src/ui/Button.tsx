@@ -8,7 +8,8 @@ export function Button({
   children,
   type = 'button',
 }: {
-  kind?: 'primary' | 'secondary' | 'quiet'
+  /** `nav`: Back, a small link-like control at the top left of a screen (EVAL-10). */
+  kind?: 'primary' | 'secondary' | 'quiet' | 'nav'
   onClick?: () => void
   disabled?: boolean
   children: ReactNode

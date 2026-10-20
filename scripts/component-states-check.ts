@@ -182,6 +182,33 @@ export async function run() {
     'Portrait: a tone or slot the manifest does not list falls back to the drawn SVG',
     !/<img/.test(face()) && /class="pt-skin/.test(face()),
   )
+  /* Each story's own cast (EVAL-10): the newsroom's face is newsroom-{slot}-{sex}-{tone}.webp;
+     a missing story file draws the SVG, never the warehouse face; one-offs stay shared. */
+  const newsroom = {
+    kind: 'person' as const,
+    sex: 'woman' as const,
+    slot: 2,
+    story: 'newsroom',
+    tone: 'd1' as const,
+    hair: 'long' as const,
+  }
+  const nf = (files: string[]) => {
+    setPortraitFiles(files)
+    return html(h(Portrait, { look: newsroom, label: 'woman, darker skin tone' }))
+  }
+  const withStory = nf(['newsroom-2-woman-d1.webp', '2-woman-d1.webp'])
+  const onlyWarehouse = nf(['2-woman-d1.webp'])
+  const sharedOneOff = (() => {
+    setPortraitFiles(['o103-man.webp'])
+    return html(h(Portrait, { look: { ...applicant, story: 'newsroom' }, label: 'man' }))
+  })()
+  record(
+    T,
+    "Portrait: a story's cast takes its own prefixed file; without it the SVG is drawn, never the warehouse face; one-offs are shared across stories",
+    /src="\/portraits\/newsroom-2-woman-d1\.webp"/.test(withStory) &&
+      !/<img/.test(onlyWarehouse) &&
+      /src="\/portraits\/o103-man\.webp"/.test(sharedOneOff),
+  )
   setPortraitFiles(null)
   /* The season story's inputs (EVAL-4). */
   const tap = html(
@@ -192,7 +219,7 @@ export async function run() {
         hint: 'Tap in order',
         clear: 'Clear the stamps',
         cleared: 'Stamps cleared.',
-        lock: 'Lock in this order',
+        lock: 'Confirm this order',
         ready: 'All stamped.',
         stamp: (n) => `${n}st`,
         choose: (n) => `Choose as number ${n}:`,
@@ -216,7 +243,7 @@ export async function run() {
   )
   const split = html(
     h(QuickSplit, {
-      items: [person('A'), person('B')],
+      items: [person('A'), person('B'), person('C')],
       pool: 6,
       cap: 4,
       onDone: () => {},
@@ -224,16 +251,17 @@ export async function run() {
         left: (n) => `${n} left`,
         chip: (x, k) => `${x}: ${k}`,
         clear: 'Start again',
-        lock: 'Lock in this split',
+        lock: 'Confirm these shares',
       },
     }),
   )
   record(
     T,
-    'QuickSplit: a row of 0 to cap chips per colleague, none pressed and every stamp an empty ring at the start (it never looks answered), none disabled while 6 are left, the count live',
-    (split.match(/class="split__chip[ "]/g) ?? []).length === 10 &&
+    'QuickSplit: three colleagues, a row of 0 to cap chips each, none pressed and every stamp an empty ring at the start (it never looks answered), none disabled while 6 are left, the count live, no confirm yet',
+    (split.match(/class="split__chip[ "]/g) ?? []).length === 15 &&
       (split.match(/aria-pressed="true"/g) ?? []).length === 0 &&
-      (split.match(/class="stamp stamp--empty"/g) ?? []).length === 2 &&
+      (split.match(/class="stamp stamp--empty"/g) ?? []).length === 3 &&
+      !/>Confirm these shares</.test(split) &&
       !/>Start again</.test(split) &&
       !/aria-disabled="true"/.test(split) &&
       /aria-live="polite">6 left/.test(split),
@@ -248,7 +276,7 @@ export async function run() {
         hint: 'Tap in order',
         clear: 'Clear the stamps',
         cleared: 'Stamps cleared.',
-        lock: 'Lock in this order',
+        lock: 'Confirm this order',
         ready: 'All stamped.',
         stamp: (n) => `No ${n}`,
         choose: (n) => `Choose as number ${n}:`,
@@ -261,10 +289,10 @@ export async function run() {
   )
   record(
     T,
-    'TapOrder: a saved order shows every stamp and waits for "Lock in this order" (no auto-advance), with "Clear the stamps"',
+    'TapOrder: a saved order shows every stamp and waits for "Confirm this order" (no auto-advance), with "Clear the stamps"',
     (tapSaved.match(/class="stamp"/g) ?? []).length === 4 &&
       (tapSaved.match(/aria-pressed="true"/g) ?? []).length === 4 &&
-      />Lock in this order</.test(tapSaved) &&
+      />Confirm this order</.test(tapSaved) &&
       />Clear the stamps</.test(tapSaved),
   )
   const splitSaved = html(
@@ -278,19 +306,19 @@ export async function run() {
         left: (n) => `${n} left`,
         chip: (x, k) => `${x}: ${k}`,
         clear: 'Start again',
-        lock: 'Lock in this split',
+        lock: 'Confirm these shares',
       },
     }),
   )
   record(
     T,
-    'QuickSplit: a saved split comes back exactly (4, 2, 0 pressed) and waits for "Lock in this split"',
+    'QuickSplit: a saved split comes back exactly (4, 2, 0 pressed) and waits for "Confirm these shares"',
     (splitSaved.match(/aria-pressed="true"/g) ?? []).length === 3 &&
       /aria-label="A: 4" aria-pressed="true"|aria-pressed="true"[^>]*aria-label="A: 4"/.test(
         splitSaved,
       ) &&
-      />Lock in this split</.test(splitSaved) &&
-      !/>Lock in this split</.test(split),
+      />Confirm these shares</.test(splitSaved) &&
+      !/>Confirm these shares</.test(split),
   )
   const grid = html(
     h(AgreeGrid, {

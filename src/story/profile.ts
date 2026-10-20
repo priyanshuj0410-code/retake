@@ -2,7 +2,7 @@
  * The optional, pseudonymous player profile (EVAL-4, the owner's retake decision of 19 Oct
  * 2026). Made after a result, never before. It holds a display name and one entry per saved
  * season: the story, the day, the band and the numbers behind it, and that season's
- * withdrawal code (so "Delete my profile and all my records" can withdraw each one).
+ * withdrawal code (so "Delete my profile and all my answers" can withdraw each one).
  *
  * Sign-in needs no email: the device signs in anonymously and the profile opens with a
  * recovery code shown once. The store sees only ciphertext: the whole profile is encrypted
@@ -16,6 +16,7 @@ import { config } from '../engine/config'
 import { deriveKeys, newCode, normaliseCode } from '../engine/codes'
 import { store } from '../store'
 import type { Level, Zone } from './rating'
+import { overlaps, positionOf } from './range'
 
 export interface ProfileSession {
   story: string
@@ -27,6 +28,8 @@ export interface ProfileSession {
   towards?: 'focal' | 'comparison'
   weight: number
   pairs: number
+  /** The women-and-men pairs, woman first, man first and even (EVAL-10): the timeline's position with range. Older saves have none. */
+  counts?: { w: number; m: number; e: number }
   /** That season's withdrawal code. */
   code: string
 }
@@ -186,13 +189,21 @@ export async function deleteProfile(): Promise<{ withdrawn: number; closed: numb
 }
 
 /**
- * The change line between the last two readable seasons: a change is read only when the
- * headline weight moved by at least config.season.change.minDiff (PENDING v18).
+ * The change line between the last two readable seasons (EVAL-10, the owner's line "two
+ * results can differ by chance; overlapping ranges mean no change shown"): with both seasons'
+ * counts, a change is shown only when their ranges do not overlap; an older save without
+ * counts falls back to the headline weight moving by config.season.change.minDiff (PENDING v18).
  */
 export function changeOf(sessions: ProfileSession[]) {
   const readable = sessions.filter((s) => s.zone !== 'unread')
   if (readable.length < 2) return null
   const [a, b] = readable.slice(-2)
+  const pa = a.counts ? positionOf(a.counts) : null
+  const pb = b.counts ? positionOf(b.counts) : null
+  if (pa && pb) {
+    if (overlaps(pa, pb)) return null
+    return { from: a, to: b, towards: pb.at > pa.at ? ('focal' as const) : ('comparison' as const) }
+  }
   const d = b.weight - a.weight
   if (Math.abs(d) < config.season.change.minDiff) return null
   return { from: a, to: b, towards: d > 0 ? ('focal' as const) : ('comparison' as const) }
@@ -233,17 +244,21 @@ export async function demoProfileBox(): Promise<{ key: string; box: ProfileBox }
         story: 'newsroom',
         day: '2026-07-14',
         zone: 'lean',
+        level: 'moderate',
         towards: 'comparison',
         weight: -0.6,
         pairs: 25,
+        counts: { w: 5, m: 20, e: 0 },
         code: newCode(),
       },
       {
         story: 'clinic',
         day: '2026-09-02',
         zone: 'none',
+        level: 'none',
         weight: -0.08,
         pairs: 25,
+        counts: { w: 11, m: 13, e: 1 },
         code: newCode(),
       },
     ],

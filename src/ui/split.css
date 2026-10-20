@@ -5,8 +5,8 @@
   list-style: none;
   margin: var(--gap-none);
   padding: var(--gap-none);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-auto-rows: var(--rows-equal);
   gap: var(--gap-m);
 }
 .split__row {

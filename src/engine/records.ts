@@ -84,6 +84,14 @@ export interface PlayMeta {
   sex?: string
   /** The season's sittings, 1 to 6: a count only, never a time (EVAL-8; PENDING v21). */
   sit?: number
+  /**
+   * The firm season's per-chapter flag (EVAL-10): one letter per chapter then the finale, "y"
+   * when played after the player's own training date and "n" when not. Yes or no only, never a
+   * time or a date.
+   */
+  chapter_timing?: string
+  /** Whether the player took the opt-in practice round (EVAL-10): "y" or "n", nothing about its answers. */
+  practice?: 'y' | 'n'
 }
 
 export interface PlayRecord {

@@ -7,7 +7,11 @@
   padding: var(--gap-none);
   display: grid;
   grid-template-columns: var(--cols-two);
-  gap: var(--gap-m) var(--gap-s);
+  grid-auto-rows: var(--rows-equal);
+  gap: var(--gutter);
+}
+.tapcards > li {
+  min-width: 0;
 }
 @media (min-width: 600px) {
   .tapcards {

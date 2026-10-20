@@ -16,6 +16,10 @@ The file names follow `src/ui/portraitImages.ts`. All 160 files are listed in `p
 
 The `s1` to `s8` used inside this folder are game slots 0 to 7. Every cast slot has both a woman and a man.
 
+Those 160 files are the warehouse story's. Each other story has its own cast of 8, named with the story id from
+`content/story.json` first: `newsroom-{slot}-{sex}-{tone}.webp` and `clinic-{slot}-{sex}-{tone}.webp`, 64 files
+each, with the same slot, sex and tone codes. The mascots and one-offs are shared. See "Other stories' casts" below.
+
 ## Pipeline
 
 | Step | Script | What it does |
@@ -76,15 +80,28 @@ to the target. Ratios between pixels survive, so shading, halftone and ink keep 
 soft shoulder above 0.92 linear stops clipping. Partial weights blend the recoloured pixel with the original. A pixel
 with weight 0 is copied byte for byte.
 
-The targets are the game's tokens (`src/styles/tokens.css`):
+The targets (`TONES` in `recolour.py`, the same for every story):
 
-| Tone | Hex |
-|---|---|
-| l1 | `#EDC6A2` |
-| l2 | `#D9A47B` |
-| d1 | `#9A6440` |
-| d2 | `#6B4329` |
-| m (one-offs only) | `#BC8459` |
+| Tone | Hex now | L* now | Hex until 20 Oct 2026 | L* then |
+|---|---|---|---|---|
+| l1 | `#EDC6A2` | 82.4 | `#EDC6A2` | 82.4 |
+| l2 | `#D09970` | 67.5 | `#D9A47B` | 71.4 |
+| d1 | `#A9724B` | 52.9 | `#9A6440` | 47.4 |
+| d2 | `#7C4F31` | 38.0 | `#6B4329` | 32.5 |
+| m (one-offs only) | `#BC8459` | 59.8 | `#BC8459` | 59.8 |
+
+**Stimulus change, 20 Oct 2026 (owner).** The first targets were the game's tokens (`src/styles/tokens.css`). The
+owner found the darkest tone too dark and asked for bigger, more even steps. The old steps in CIELAB L* were 11.0,
+24.0 and 14.9: one large jump at the light/dark boundary and a small one inside the light pair. The new targets keep
+l1, raise d2 by 5.5 L*, and space the four tones evenly, 14.9, 14.6 and 14.9 L* apart. a* and b* for each new L* are
+interpolated along the old five tokens (m included), so hue and chroma follow the old curve. The one-offs' constant m
+(L* 59.8) now sits near the middle of the scale, 7.7 below l2 and 6.9 above d1. The light pair (L* 67.5 and up) and
+the dark pair (52.9 and down) stay 14.6 L* apart, so the cue still has two distinct sides, though the gap between
+them is smaller than the old 24.0. The bases and masks did not change. Only the recolour target changed, so l1 files and
+one-offs and mascots were byte-identical to before. (Mask step 5, added afterwards, then changed every warehouse cast
+file. See Verification.) The tokens in `src/styles/tokens.css` (the drawn-SVG fallback)
+still hold the old values and should be updated to match. Before-and-after sheet: `tones-before-after.png` in the
+warehouse review folder.
 
 The base itself (L* about 57 to 72) is never shipped. Every delivered person went through the same recolour.
 
@@ -139,7 +156,11 @@ and eyes. The first build showed three defects:
 - light, salmon-coloured neck shadows on the darkest tone;
 - a light ear edge.
 
-The mask refinement in step 4 fixed all three.
+The mask refinement in step 4 fixed all three. After the 20 Oct tone change, every darkest variant was looked at
+again in close-ups of the face and neck. The faint salmon hatching under the jaw of 5-woman and 7-woman was still there, so the
+owner had mask step 5 (`skinmask.py`, red-side neck shade) applied to the warehouse cast too. That removed it. It
+changed the masks and so all 64 warehouse cast files. One-offs and mascots are untouched, and all 152 variants still
+pass the exact checks.
 
 **Results (`check-output.txt`).**
 - All 152 person variants pass both exact checks: max |diff| is 0 outside the mask at 512 px and 0 outside the
@@ -160,8 +181,8 @@ under a minute.
 - **Faces drawn by sex.** The model draws men with more ink (forehead and nasolabial lines) and women smoother and
   younger-looking. The ratings show this, and slots s6 and s7 are flagged for it. Hair necessarily differs by sex.
   Facial hair exists only on men, in 4 of the 8 slots.
-- **Small salmon hatching under some jaws** survives on d2. These are anti-aliased edges of ink hatching that
-  fall under the hair-safe L* floor.
+- **Salmon hatching under some jaws** survived on d2 in the first build (5-woman, 7-woman). Mask step 5 removed it
+  on 20 Oct 2026. In `necks-d2.png` none is visible now.
 - **Head size** is normalised on eye distance. Drawn proportions still vary, for example rounder faces and wider-set
   eyes.
 - **Mascot appeal is not equal.** The tiger is still the most colourful and detailed (orange with stripes). The
@@ -179,3 +200,77 @@ under a minute.
   slot, or pairs rivals by slot.
 - The generator is not bit-reproducible across machines or mflux versions. The raw images in `work/raw` are the
   record.
+
+## Other stories' casts (newsroom, clinic)
+
+Owner, 20 Oct 2026: each story gets its own cast of 8, working towards about 10 stories. The newsroom and the clinic
+are done this way. Everything above applies unchanged, except for the points below.
+
+**What differs.**
+- **Uniform.** One per story, set in `STORY_CASTS` in `cast.py`. The newsroom wears a plain mid-blue button-up shirt
+  with a green lanyard and a blank white press card. The clinic wears a plain teal scrubs top with a navy lanyard and
+  a blank white ID badge. Scrubs were used instead of a white coat because a coat reads as "doctor" and scrubs do not,
+  so the uniform does not cue a role. There is no stethoscope for the same reason.
+- **Looks.** Each story has its own ages (28 to 39), face shapes and hairstyles. Glasses and facial hair are again
+  balanced 2x2 across the slots, in a different arrangement in each story. Facial hair is 2 moustaches and 2 short
+  beards. The woman and the man of a slot share the prompt, glasses and seed. The frame, style, backdrop, base tone,
+  expression and 3 candidates per slot and sex are the warehouse's.
+- **Matching.** Matching uses apparent age and attractiveness only: distance = |age gap|/3 + |attractiveness gap|,
+  with the same flag rules (`ratings-<story>.json`, `scores-<story>.json`). The ratings are PROVISIONAL, from one
+  rater (the generating agent).
+- **Re-rolls.** A candidate with a forehead dot that reads as a bindi, or facial hair its slot does not have, was
+  re-drawn with seed + 100 (`STORY_RESEED`). The first draws are kept in `work/stories/<story>/rejected/` and logged
+  under `rejected` in that story's `generation-log.json`. Newsroom: s2-w-c0, s7-w-c1 and s7-w-c2 (dot), and s5-m-c2
+  (a faint moustache). Clinic: s8-w-c0 (dot). Every re-draw came out clean. Five clinic men drew stippled stubble on
+  the upper lip in a clean-shaven slot (s2-m-c0, s7-m-c0, s7-m-c2, s8-m-c1, s8-m-c2). They were rejected, not
+  re-drawn, because each slot kept at least one clean candidate.
+- **Mask.** These draws have redder neck shadows than the warehouse's. Step 4 left them as salmon halftone on d2, so
+  `skinmask.py` step 5 adds red-side shade under the chin. It now applies to every story's cast, the warehouse
+  included, but not to the one-offs.
+
+**Commands.** These are the same scripts, with the story in `PORTRAIT_STORY` (`story.py`). Each story works in
+`work/stories/<story>/` and writes `check-output-<story>.txt`:
+
+```
+PORTRAIT_STORY=newsroom scripts/portraits/run.sh cast
+PORTRAIT_STORY=newsroom python3 scripts/portraits/analyse.py
+PORTRAIT_STORY=newsroom python3 scripts/portraits/pick.py
+PORTRAIT_STORY=newsroom python3 scripts/portraits/build.py
+PORTRAIT_STORY=newsroom python3 scripts/portraits/check.py
+PORTRAIT_STORY=newsroom python3 scripts/portraits/sheets.py <review-dir>/newsroom
+```
+
+`build.py` rebuilds `manifest.json` from every story's `build.json`. Building one story therefore never drops another
+story's files. To add a story, add it to `STORIES` in `story.py` and to `STORY_CASTS` in `cast.py`.
+
+**Results.**
+- Both stories: 64 variants each, and all pass both exact checks (max |diff| 0 outside the mask at 512 px and outside
+  the footprint at 384 px).
+- Tone accuracy is within Delta E 1.78 for the newsroom (median 0.40) and 1.47 for the clinic (median 0.54).
+- Files are 17 to 28 KB.
+- Generation took about 25 s an image: 96 candidates plus 5 re-rolls.
+
+**Flags (provisional ratings).**
+- Newsroom s6 (game slot 5): every woman candidate was drawn about 38 to 40 and plainer. The men were drawn about 33
+  to 34. The best pair is 4 years and 1 attractiveness point apart.
+- Linework gaps, with the man inkier: newsroom s1 and s3, and clinic s2 and s4.
+- Clinic s6-w-c1 (game slot 5) has pink cheeks that read as blush at l1 and fade at the darker tones. That is a
+  tone-dependent cue like the lips.
+- Small remaining quirks:
+  - green glints on some lenses (clinic s3-m-c0);
+  - a reddish shadow on the temple and jaw of clinic s3-m-c2 (not picked) and s8-w-c2;
+  - a grey-green cast around the mouth of newsroom s5-m-c1.
+- Newsroom s1-w (bob) and s3-w (shoulder-length, straight) have similar hairstyles.
+
+### Looking up a story's cast (for `Portrait`)
+
+A cast file is `{prefix}{slot}-{sex}-{tone}.webp`. The prefix is empty for the warehouse and `{storyId}-` for every
+other story, where `storyId` is the story's `id` in `content/story.json` (`newsroom`, `clinic`). `manifest.json`
+spells this out under `casts` (`{ "newsroom": { "prefix": "newsroom-", "pattern": "newsroom-{slot}-{sex}-{tone}.webp",
+"slots": 8 }, ... }`). The current reader reads only `files` and ignores `casts`.
+
+So `fileFor` needs the current story: a `story` on the cast `Look`, or a parameter. For a cast member it should build
+`${story === 'warehouse' ? '' : story + '-'}${slot}-${sex}-${tone}.webp`. As now, it should use only names listed in
+`files`. If a story's file is missing, draw the SVG. Never fall back to the warehouse face, because that would show
+one story's colleague in another story. One-offs (`o{slot}-{sex}.webp`) and mascots are shared by all stories and
+need no prefix.

@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from 'react'
-import { SeasonMap, type MapStop } from './SeasonMap'
+import { Actions } from './Actions'
+import { SeasonBar, type SeasonProgress } from './SeasonBar'
 import './page.css'
 
 const PRODUCT = 'Team season'
@@ -7,8 +8,10 @@ const PRODUCT = 'Team season'
 export interface PageProps {
   surface: 'game' | 'oof' | 'sober'
   act?: string
-  /** The season map beside the act label (EVAL-8): six stops and the current chapter's cards. */
-  map?: { stops: MapStop[]; cards: { done: number; total: number }; label: string }
+  /** One thin season progress bar with chapter ticks under the chapter label (EVAL-10). */
+  progress?: SeasonProgress
+  /** Back, as a small nav link at the top left of the screen, under the header (EVAL-10). */
+  nav?: ReactNode
   /** The out-of-fiction line, "This part is not part of the game." */
   oof?: string
   title?: string
@@ -28,7 +31,8 @@ export interface PageProps {
 export function Page({
   surface,
   act,
-  map,
+  progress,
+  nav,
   oof,
   title,
   footnote,
@@ -77,19 +81,16 @@ export function Page({
           <header className="page__head" ref={headRef}>
             <div className="page__bar">
               <p className="page__act">{act}</p>
-              {map ? <SeasonMap {...map} /> : null}
+              {progress ? <SeasonBar {...progress} /> : null}
             </div>
           </header>
         ) : null}
         <main className="page__body" ref={mainRef} tabIndex={-1}>
+          {nav ? <div className="page__nav">{nav}</div> : null}
           {oof ? <p className="page__oof">{oof}</p> : null}
           {title ? <h1 className="page__title">{title}</h1> : null}
           {children}
-          {actions ? (
-            <div className={pin ? 'page__actions page__actions--pinned' : 'page__actions'}>
-              {actions}
-            </div>
-          ) : null}
+          {actions ? <Actions pin={pin}>{actions}</Actions> : null}
           {footnote ? <p className="page__footnote">{footnote}</p> : null}
         </main>
       </div>

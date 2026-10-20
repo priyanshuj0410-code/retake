@@ -4,7 +4,7 @@
  */
 import raw from '../../content/story.json'
 import type { T } from '../content/types'
-import type { ArtKey } from '../ui'
+import type { Animal, ArtKey } from '../ui'
 
 export type Tier = 1 | 2 | 3
 
@@ -112,9 +112,9 @@ export const storyById = (id: string) => stories.find((s) => s.id === id)
 /** A story screen's text by key. */
 export const SS = storyContent.screens as unknown as Record<string, T> & StoryContent['screens']
 export const RT = storyContent.rating as unknown as Record<string, T> & {
-  bands: Record<'lean' | 'none' | 'unread' | 'unengaged', { name: T; body: T }>
-  levels: Record<'strong' | 'moderate' | 'possible', { name: T; body: T }>
-  zone: Record<'lean' | 'none' | 'unread', T>
+  /** The five tags (EVAL-10): Clear pattern, Pattern, Maybe a pattern, No pattern, Not enough to tell. */
+  tags: Record<'strong' | 'moderate' | 'possible' | 'none' | 'unread', T>
+  tagBodies: Record<'strong' | 'moderate' | 'possible' | 'none' | 'unread' | 'unengaged', T>
   meaning: Record<'lean' | 'none' | 'unread', T>
   cueShort: Record<string, T>
   cues: Record<string, Record<string, T>>
@@ -124,3 +124,28 @@ export const RT = storyContent.rating as unknown as Record<string, T> & {
 export const isPeople = (b: Beat): b is PeopleBeat => b.kind !== 'ordinary'
 export const PF = (raw as unknown as { profile: Record<string, T> & { researchConsent: T[] } })
   .profile
+
+/** One practice item (EVAL-10): the mascots doing something that is not work, with no cue. */
+export interface PracticeItem {
+  kind: 'rank' | 'split' | 'pick'
+  /** The mascot animal on each card, and its name as shown ("Bear"). */
+  animals: { animal: Animal; name: T; text: T }[]
+  scene: T
+  question: T
+  hint: T
+  pool?: number
+}
+
+/** The opt-in practice round: offered once at the start, never recorded or scored. */
+export const PRACTICE = (
+  raw as unknown as {
+    practice: {
+      offer: T
+      offerBody: T
+      practise: T
+      start: T
+      label: T
+      items: PracticeItem[]
+    }
+  }
+).practice

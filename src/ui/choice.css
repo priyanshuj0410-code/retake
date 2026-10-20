@@ -1,4 +1,4 @@
-/* @owns choice choice__legend choice__heading choice__option choice__option--checked choice__input choice__text */
+/* @owns choice choice__legend choice__heading choice__option choice__option--checked choice__input choice__text choice__help choice__rows */
 .choice {
   border: none;
   margin: var(--gap-none);
@@ -7,6 +7,13 @@
   flex-direction: column;
   gap: var(--field-gap);
   min-width: 0;
+}
+/* The rows of one question: the same size each (EVAL-10, owner), and apart, half a pitch in the
+   note register, so no two frames touch and double. */
+.choice__rows {
+  display: grid;
+  grid-auto-rows: var(--rows-equal);
+  gap: var(--field-gap);
 }
 .choice__legend {
   font-family: var(--font-display);
@@ -46,7 +53,8 @@
 .choice__option:active {
   transform: scale(var(--press));
 }
-.choice__option--checked,
+/* Checked (EVAL-10, owner): the same border weight and colour as at rest, plus a fill; never a
+   heavier border. Focus still takes the accent edge. */
 .choice__option:focus-within {
   border-color: var(--c-accent);
 }
@@ -55,9 +63,6 @@
 }
 @media (hover: hover) {
   .choice__option:hover {
-    border-color: var(--c-accent);
-  }
-  .choice__option--checked:hover {
     border-color: var(--c-accent);
   }
 }
@@ -78,4 +83,12 @@
   line-height: var(--leading-ui);
   min-width: 0;
   overflow-wrap: anywhere;
+}
+.choice__help {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: normal;
+  font-style: italic;
+  color: var(--c-muted);
 }

@@ -16,7 +16,8 @@ export function AgreeGrid({
   onChange,
   keyLabel,
 }: {
-  items: { id: string; text: string }[]
+  /** `help`: the statement in Hinglish under it (EVAL-10's help mode). */
+  items: { id: string; text: string; help?: string }[]
   scale: string[]
   value: Record<string, number>
   onChange: (v: Record<string, number>) => void
@@ -36,6 +37,11 @@ export function AgreeGrid({
         <fieldset className="agree__item" key={it.id}>
           <legend className="agree__statement">
             {n + 1}. {it.text}
+            {it.help ? (
+              <span className="agree__help" lang="hi-Latn">
+                {it.help}
+              </span>
+            ) : null}
           </legend>
           <div className="agree__points">
             {scale.map((s, i) => (

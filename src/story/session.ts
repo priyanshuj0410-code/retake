@@ -11,7 +11,8 @@
  * random with one man as rivals: the pairs whose notes are tied when the season sets one
  * against the other.
  *
- * A share (split) is a one-tap pair since EVAL-8: the tied pair only, no third colleague.
+ * A share (split) goes to three colleagues: the tied pair and a third with weaker
+ * descriptions (EVAL-8's one-tap pairs were reverted by the owner in EVAL-10).
  *
  * Each people beat then draws which colleagues it shows (by its tie structure, balanced over
  * the season), which of its descriptions each one carries (the tied descriptions always go to
@@ -228,11 +229,8 @@ export function drawSeason(rng: Rng, story: Story): Season {
         chars = [...give(top, byTier(3)), ...give(low, byTier(1))]
       } else if (beat.kind === 'pick') chars = give(oneOffPair(beat.cue ?? 'caste'), byTier(2))
       else {
-        /* A share is a one-tap pair (EVAL-8, B1): the tied pair only. The retired third
-           colleague's one-off slot is still reserved (drawn, never shown), so the one-off slots,
-           their looks and their generated portraits keep their numbering (looks.ts, cast.py). */
-        oneOff(rng.next() < 0.5 ? 'caste' : 'born', sexDraw(), rng.next() < 0.5)
-        chars = give(oneOffPair(beat.cue ?? 'caste'), byTier(3))
+        const third = oneOff(rng.next() < 0.5 ? 'caste' : 'born', sexDraw(), rng.next() < 0.5)
+        chars = [...give(oneOffPair(beat.cue ?? 'caste'), byTier(3)), ...give([third], byTier(1))]
       }
     } else if (beat.kind === 'rank' && beat.shape === 'mixed') {
       /* The two rival pairs that have met least so far (ties drawn), so every pair meets about
@@ -251,6 +249,10 @@ export function drawSeason(rng: Rng, story: Story): Season {
     } else if (beat.shape === 'rival') {
       const pair = rng.shuffle(pairs[beat.kind === 'pick' ? q.pick() : q.split()])
       chars = give(pair, byTier(beat.kind === 'pick' ? 2 : 3))
+      if (beat.kind === 'split') {
+        const third = rng.pick(cast.map((c) => c.slot).filter((s) => !pair.includes(s)))
+        chars.push(...give([third], byTier(1)))
+      }
     } else if (beat.shape === 'same') {
       const two = rng.shuffle(bySex(rng.next() < 0.5 ? 'woman' : 'man')).slice(0, 2)
       chars = give(two, byTier(2))

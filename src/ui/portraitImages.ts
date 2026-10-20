@@ -3,7 +3,10 @@
  * in public/portraits/, with a manifest.json listing what exists. People are keyed by slot and
  * sex, with one pre-rendered image per skin tone ({slot}-{sex}-{tone}.webp, tones l1, l2, d1,
  * d2); one-off characters by their slot (100 up) and sex, at the medium tone they all share
- * (o{slot}-{sex}.webp); mascots by animal (mascot-{animal}.webp). Only files the manifest lists are used, so a
+ * (o{slot}-{sex}.webp); mascots by animal (mascot-{animal}.webp). Each story has its own cast
+ * (EVAL-10, scripts/portraits/README.md): the warehouse's files have no prefix, every other
+ * story's carry its id (newsroom-{slot}-{sex}-{tone}.webp); a story whose file is missing draws
+ * the SVG, never another story's face. One-offs and mascots are shared. Only files the manifest lists are used, so a
  * missing image never shows a broken picture: the drawn SVG is the fallback. The manifest is
  * fetched once, from this app's own origin; until it arrives, and if it is absent, every
  * portrait is drawn.
@@ -54,7 +57,7 @@ export function fileFor(look: Look, known: ReadonlySet<string> | null): string |
         ? null
         : look.oneOff
           ? `o${look.slot}-${look.sex}.webp`
-          : `${look.slot}-${look.sex}-${look.tone}.webp`
+          : `${look.story && look.story !== 'warehouse' ? `${look.story}-` : ''}${look.slot}-${look.sex}-${look.tone}.webp`
   return name && known.has(name) ? `${BASE}${name}` : null
 }
 

@@ -1,8 +1,82 @@
-/* @owns beat beat__question */
+/* @owns beat beat__title beat__kicker beat__chapter beat__opening beat__unfold beat__prop beat__scene beat__ask beat__question beat__help */
+/* A decision page as a comic page (EVAL-10): panels with gutters, stacked for a phone. */
 .beat {
+  display: grid;
+  gap: var(--gutter);
+}
+/* Panel 1 on a chapter's first decision: the title panel, violet like the splash. */
+.beat__title {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-m);
+  gap: var(--gap-xs);
+  padding: var(--gap-m);
+  border: var(--edge) solid var(--c-ink-line);
+  background: var(--c-splash);
+  color: var(--c-on-splash);
+}
+.beat__kicker,
+.beat__chapter,
+.beat__opening {
+  margin: var(--gap-none);
+  overflow-wrap: anywhere;
+}
+.beat__kicker {
+  font-family: var(--font-comic);
+  font-weight: var(--weight-strong);
+  font-size: var(--text-small);
+  letter-spacing: var(--tracking-display);
+  text-transform: var(--case-display);
+}
+.beat__chapter {
+  font-family: var(--font-comic);
+  font-weight: var(--weight-strong);
+  font-size: var(--text-h1);
+  line-height: var(--leading-tight);
+  text-transform: var(--case-display);
+}
+.beat__opening {
+  font-family: var(--font-story);
+  font-style: italic;
+  font-size: var(--text-label);
+  line-height: var(--leading-ui);
+}
+/* Panel 2: a small prop panel beside the scene caption; the caption alone spans the row. */
+.beat__unfold {
+  display: grid;
+  grid-template-columns: var(--unfold-cols);
+  gap: var(--gutter);
+  align-items: stretch;
+}
+.beat__unfold > :only-child {
+  grid-column: var(--span-row);
+}
+.beat__prop {
+  border: var(--edge) solid var(--c-ink-line);
+  background: var(--c-panel);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.beat__scene {
+  margin: var(--gap-none);
+  padding: var(--gap-s) var(--gap-m);
+  background: var(--c-caption);
+  color: var(--c-on-caption);
+  border: var(--edge) solid var(--c-on-caption);
+  font-family: var(--font-story);
+  font-size: var(--text-label);
+  line-height: var(--leading-ui);
+  overflow-wrap: anywhere;
+}
+/* Panel 3: the question in a caption box, then (outside) the cards and the action. */
+.beat__ask {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  padding: var(--gap-m);
+  border: var(--edge) solid var(--c-ink-line);
+  background: var(--c-panel);
+  box-shadow: var(--shadow-caption);
 }
 .beat__question {
   margin: var(--gap-none);
@@ -11,10 +85,17 @@
   font-weight: var(--weight-strong);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-display);
-  text-transform: var(--case-display);
+  text-transform: var(--case-question);
   color: var(--c-text);
   overflow-wrap: anywhere;
 }
 .beat__question:focus {
   outline: none;
+}
+.beat__help {
+  margin: var(--gap-none);
+  font-size: var(--text-body);
+  font-style: italic;
+  color: var(--c-muted);
+  overflow-wrap: anywhere;
 }

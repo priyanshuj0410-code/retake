@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { screens } from '../content'
 import type { Lang, T } from '../content/types'
 import { SS } from '../story/content'
+import { fill } from '../engine/text'
 import { Button, Choice, Details, List, Notice, Page, Text } from '../ui'
 
 const S = screens
@@ -11,17 +12,24 @@ export function Consent({
   ui,
   firm,
   season,
+  help,
+  minutes,
   onAgree,
   onDecline,
 }: {
   ui: Lang
+  /** "English with Hinglish help" (EVAL-10): the Hinglish under each point, smaller. */
+  help?: boolean
+  /** The season's one session length (EVAL-10), filled into "{minutes}". */
+  minutes?: number
   firm?: boolean
   /** The season story's consent (content/story.json, a draft for the owner): it tells the player about the personal rating. */
   season?: boolean
   onAgree?: () => void
   onDecline?: () => void
 }) {
-  const L = (t: T) => t[ui]
+  const L = (t: T) => fill(t[ui], { minutes: minutes ?? '' })
+  const H = (t: T) => fill(t.hinglish, { minutes: minutes ?? '' })
   /* Short points to scan in about ten seconds; the full consent text, unchanged, one tap away
      under "Read the full details" (owner, 19 Oct 2026). */
   const c = firm
@@ -44,9 +52,9 @@ export function Consent({
         </>
       }
     >
-      <List items={c.short.map(L)} />
+      <List items={c.short.map(L)} help={help ? c.short.map(H) : undefined} />
       <Details summary={L(S.common.fullDetails)}>
-        <List items={c.points.map(L)} />
+        <List items={c.points.map(L)} help={help ? c.points.map(H) : undefined} />
       </Details>
     </Page>
   )

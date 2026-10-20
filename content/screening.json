@@ -6,7 +6,7 @@
       "format": "direct",
       "text": {
         "en": "Women and men are equally able to manage a large team.",
-        "hinglish": "Mahilayein aur purush ek badi team sambhalne mein barabar saksham hain."
+        "hinglish": "Mahila aur purush ek badi team sambhalne mein barabar kaabil hain."
       },
       "keying": "agree-fair"
     },
@@ -15,7 +15,7 @@
       "format": "direct",
       "text": {
         "en": "Some jobs simply suit men better than women.",
-        "hinglish": "Kuch naukriyan purushon ke liye mahilaon se behtar baithti hain."
+        "hinglish": "Kuch jobs purush ke liye mahila se behtar baithti hain."
       },
       "keying": "disagree-fair"
     },
@@ -24,7 +24,7 @@
       "format": "direct",
       "text": {
         "en": "Employers should check that women and men are treated alike when they apply for jobs.",
-        "hinglish": "Naukri ke liye aavedan karte samay employers ko dekhna chahiye ki mahilaon aur purushon ke saath ek jaisa vyavhar ho."
+        "hinglish": "Naukri ke liye apply karte time employers ko dekhna chahiye ki mahila aur purush ke saath ek jaisa behaviour ho."
       },
       "keying": "agree-fair"
     },
@@ -33,14 +33,14 @@
       "format": "vignette",
       "text": {
         "en": "A firm has one opening for a senior project manager. Two applicants, a woman and a man, have the same experience and the same interview scores. The woman has a young child. What is the fairest way to decide?",
-        "hinglish": "Ek firm mein senior project manager ka ek hi pad khaali hai. Do aavedak, ek mahila aur ek purush, ka anubhav aur interview ke ank barabar hain. Mahila ka ek chhota bachcha hai. Faisla karne ka sabse nyaayik tareeka kya hai?"
+        "hinglish": "Ek firm mein senior project manager ki ek hi post khaali hai. 2 applicants, ek mahila aur ek purush, ka experience aur interview ke marks barabar hain. Mahila ka ek chhota bachcha hai. Decide karne ka sabse fair tareeka kya hai?"
       },
       "options": [
         {
           "id": "c",
           "text": {
             "en": "Give the role to the woman, because women have fewer chances at senior jobs.",
-            "hinglish": "Pad mahila ko do, kyunki mahilaon ko senior naukriyon ke mauke kam milte hain."
+            "hinglish": "Post mahila ko do, kyunki mahila ko senior jobs ke mauke kam milte hain."
           },
           "fairness": 0.33
         },
@@ -48,7 +48,7 @@
           "id": "a",
           "text": {
             "en": "Treat them the same and decide with a further task set for both under the same conditions.",
-            "hinglish": "Dono ke saath ek jaisa vyavhar karo aur dono ke liye ek hi sthiti mein ek aur task rakhkar faisla karo."
+            "hinglish": "Dono ke saath ek jaisa behaviour karo aur dono ke liye ek hi conditions mein ek aur task rakhkar decide karo."
           },
           "fairness": 1
         },
@@ -56,7 +56,7 @@
           "id": "d",
           "text": {
             "en": "Give the role to the man, because he is less likely to need leave.",
-            "hinglish": "Pad purush ko do, kyunki use chhutti ki zarurat padne ki sambhavna kam hai."
+            "hinglish": "Post purush ko do, kyunki use chhutti ki zarurat kam padegi."
           },
           "fairness": 0
         },
@@ -64,7 +64,7 @@
           "id": "b",
           "text": {
             "en": "Decide by a coin toss, since the two cannot be separated.",
-            "hinglish": "Sikka uchhalkar faisla karo, kyunki dono mein antar nahi kiya ja sakta."
+            "hinglish": "Sikka uchhalkar decide karo, kyunki dono mein koi fark nahin kiya ja sakta."
           },
           "fairness": 0.67
         }
@@ -75,7 +75,7 @@
       "format": "direct",
       "text": {
         "en": "Men and women should share the care of children and elders equally, including taking leave.",
-        "hinglish": "Bachchon aur buzurgon ki dekhbhal mein purushon aur mahilaon ko barabar hissa lena chahiye, chhutti lena bhi shamil hai."
+        "hinglish": "Bachchon aur buzurgon ki dekhbhal mein purush aur mahila ko barabar hissa lena chahiye, chhutti lena bhi shamil hai."
       },
       "keying": "agree-fair"
     },
@@ -84,7 +84,7 @@
       "format": "direct",
       "text": {
         "en": "A man is a more natural boss than a woman.",
-        "hinglish": "Ek purush mahila ke mukable zyada svabhavik boss hota hai."
+        "hinglish": "Boss banne ke liye purush mahila se zyada natural hota hai."
       },
       "keying": "disagree-fair"
     },
@@ -93,7 +93,7 @@
       "format": "direct",
       "text": {
         "en": "Companies should take active steps to bring more women into senior posts.",
-        "hinglish": "Companiyon ko senior padon par zyada mahilaon ko laane ke liye sakriya kadam uthane chahiye."
+        "hinglish": "Companies ko senior posts par zyada mahilaon ko laane ke liye active kadam uthane chahiye."
       },
       "keying": "agree-fair"
     },
@@ -102,14 +102,14 @@
       "format": "vignette",
       "text": {
         "en": "In a team meeting, a woman suggests a plan and nobody responds. Ten minutes later a man suggests the same plan and the manager praises him. What is the fairest response by the manager afterwards?",
-        "hinglish": "Team meeting mein ek mahila ek yojana batati hai aur koi jawab nahi deta. Das minute baad ek purush wahi yojana batata hai aur manager uski taarif karta hai. Baad mein manager ki sabse nyaayik pratikriya kya hogi?"
+        "hinglish": "Team meeting mein ek mahila ek plan batati hai aur koi jawab nahin deta. 10 minute baad ek purush wahi plan batata hai aur manager uski taarif karta hai. Baad mein manager ka sabse fair response kya hoga?"
       },
       "options": [
         {
           "id": "d",
           "text": {
             "en": "Give the credit to the man, since men usually have the good plans.",
-            "hinglish": "Shreya purush ko do, kyunki achhi yojanayein aksar purushon ke paas hoti hain."
+            "hinglish": "Credit purush ko do, kyunki achhe plans aksar purush ke paas hote hain."
           },
           "fairness": 0
         },
@@ -117,7 +117,7 @@
           "id": "b",
           "text": {
             "en": "Thank both for their input and give them shared credit.",
-            "hinglish": "Dono ko unke yogdaan ke liye dhanyavaad do aur shreya saajha do."
+            "hinglish": "Dono ko unke input ke liye shukriya kaho aur credit dono ko barabar do."
           },
           "fairness": 0.67
         },
@@ -125,7 +125,7 @@
           "id": "a",
           "text": {
             "en": "Note that the woman suggested the plan first and give her the credit.",
-            "hinglish": "Yeh darj karo ki yojana pehle mahila ne batayi thi aur shreya use do."
+            "hinglish": "Yeh note karo ki plan pehle mahila ne bataya tha aur credit use do."
           },
           "fairness": 1
         },
@@ -133,7 +133,7 @@
           "id": "c",
           "text": {
             "en": "Give the credit to the man, since the manager heard it clearly from him.",
-            "hinglish": "Shreya purush ko do, kyunki manager ne yeh baat usi se saaf sunni."
+            "hinglish": "Credit purush ko do, kyunki manager ne yeh baat usi se saaf suni."
           },
           "fairness": 0.33
         }
@@ -144,7 +144,7 @@
       "format": "direct",
       "text": {
         "en": "Women are better suited than men to jobs that mainly involve caring for people.",
-        "hinglish": "Jin naukriyon mein mukhya roop se logon ki dekhbhal karni hoti hai, unke liye mahilayein purushon se zyada upyukt hain."
+        "hinglish": "Jin jobs mein zyadatar logon ki dekhbhal karni hoti hai, unke liye mahila purush se zyada suitable hai."
       },
       "keying": "disagree-fair"
     },

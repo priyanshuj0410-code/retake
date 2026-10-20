@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Actions } from './Actions'
 import { Button } from './Button'
 import { Colleague, type ColleagueView } from './Colleague'
 import { Stamp } from './Comic'
@@ -10,7 +11,7 @@ import './split.css'
  * colleague's stamp is an empty ring and no number is pressed until the player taps one, so the
  * card never looks answered before it is. A number that would share more than is left is
  * aria-disabled (focus stays on it). Nothing advances on its own: once everything is shared the
- * player confirms with "Lock in this split" (anyone not given a number gets none); "Start
+ * player confirms with "Confirm these shares" (anyone not given a number gets none); "Start
  * again" clears it; Back reopens the card with the saved split (`initial`). The count left is
  * a polite live region.
  */
@@ -30,7 +31,7 @@ export function QuickSplit({
     left: (n: number) => string
     chip: (name: string, k: number) => string
     clear: string
-    /** The confirm button once everything is shared: "Lock in this split". */
+    /** The confirm button once everything is shared: "Confirm these shares". */
     lock: string
   }
   /** A saved split to show again (Back). */
@@ -78,13 +79,15 @@ export function QuickSplit({
           </li>
         ))}
       </ul>
-      {left === 0 ? (
-        <Button onClick={() => onDone(units.map((u) => u ?? 0))}>{labels.lock}</Button>
-      ) : null}
       {units.some((u) => u !== null) ? (
-        <Button kind="quiet" onClick={() => setUnits(items.map(() => null))}>
-          {labels.clear}
-        </Button>
+        <Actions>
+          {left === 0 ? (
+            <Button onClick={() => onDone(units.map((u) => u ?? 0))}>{labels.lock}</Button>
+          ) : null}
+          <Button kind="quiet" onClick={() => setUnits(items.map(() => null))}>
+            {labels.clear}
+          </Button>
+        </Actions>
       ) : null}
     </>
   )

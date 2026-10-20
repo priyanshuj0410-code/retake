@@ -9,7 +9,7 @@
  */
 import { useEffect, useRef, useState } from 'react'
 import { screens } from '../content'
-import type { Lang, T } from '../content/types'
+import type { Lang } from '../content/types'
 import { config, devRoutes, type DeploymentId } from '../engine/config'
 import { cryptoRng, cryptoSeed, fromSeed, type Seed } from '../engine/rng'
 import { Runner, type FirmLabels } from '../engine/runner'
@@ -32,7 +32,7 @@ import { fill } from '../engine/text'
 import { SS } from '../story/content'
 import { stories, storyById } from '../story/content'
 import { playedStories } from '../story/profile'
-import { StoryRunner, type RunnerState } from '../story/runner'
+import { sessionMinutes, StoryRunner, type RunnerState } from '../story/runner'
 import type { Story } from '../story/content'
 
 const S = screens
@@ -188,7 +188,7 @@ export function Play({
           <Notice kind="error">
             {fill(SS.expired.en, { days: config.season.chapters.saveDays })}
           </Notice>
-          <Text lang="hi-Latn">
+          <Text lang="hi-Latn" kind="small">
             {fill(SS.expired.hinglish, { days: config.season.chapters.saveDays })}
           </Text>
         </Page>
@@ -208,7 +208,9 @@ export function Play({
         title={`${S.entry.title.en} / ${S.entry.title.hinglish}`}
       >
         <Notice kind="error">{msg.en}</Notice>
-        <Text lang="hi-Latn">{msg.hinglish}</Text>
+        <Text lang="hi-Latn" kind="small">
+          {msg.hinglish}
+        </Text>
       </Page>
     )
   }
@@ -217,7 +219,6 @@ export function Play({
   const offered: Lang[] =
     langSet === 'both' || langSet === 'choose' ? ['en', 'hinglish'] : [langSet]
   const ui: Lang = langs && langs.length === 1 ? langs[0] : offered[0]
-  const L = (t: T) => t[ui]
 
   const isSeason = dep === 'season'
   /* The old card games open only on the dev server (EVAL-6); a player link to one is refused. */
@@ -243,7 +244,7 @@ export function Play({
       return (
         <Eligibility
           ui={ui}
-          footnote={config.demo ? L(S.common.prototype) : undefined}
+          footnote={config.demo ? S.common.prototype : undefined}
           languages={langSet === 'choose'}
           onDone={(ok, chosen) => {
             if (chosen) setLangs(chosen)
@@ -255,7 +256,7 @@ export function Play({
     if (pre === 'disclosure')
       return (
         <Disclosure
-          langs={offered}
+          langs={isSeason && langs ? langs : offered}
           season={isSeason}
           onContinue={() =>
             firm ? (langSet === 'choose' ? setPre('language') : begin(offered)) : setPre('consent')
@@ -267,6 +268,8 @@ export function Play({
       return (
         <Consent
           ui={ui}
+          help={isSeason && !!langs && langs.length > 1}
+          minutes={drawn ? sessionMinutes(drawn) : undefined}
           season={isSeason}
           onAgree={() =>
             isSeason && langs

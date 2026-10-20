@@ -53,13 +53,17 @@
   --note-rule: #cdbfa6;
   /* A control's resting edge on note paper: 3.7:1, the WCAG 1.4.11 floor of 3:1 with room. */
   --note-line: #8a7d66;
-  /* The ruling: one rule every pitch, 2 px under a 17 px Literata baseline (measured at 21 px). */
+  /* The ruling: one rule every pitch, 2 px under a 17 px Literata baseline (measured at 21 px).
+     EVAL-10 (owner): a faint paper texture, never an underline: the rule is barely darker than
+     the paper (1.05:1), so text still sits on the grid without looking underlined. */
   --pitch-28: 28px;
+  /* Half a pitch: the gap between option rows, so their frames never touch (EVAL-10). */
+  --pitch-14: 14px;
   --pitch-2x: 56px;
   --note-ruling: repeating-linear-gradient(
     to bottom,
     transparent 0 23px,
-    #e4d8c2 23px 24px,
+    #f3ecdf 23px 24px,
     transparent 24px 28px
   );
   --shadow-note: 3px 3px 0 #cdbfa6;
@@ -115,6 +119,13 @@
   --grid-12: repeat(12, minmax(0, 1fr));
   --grid-cards: repeat(auto-fill, minmax(128px, 1fr));
   --grid-rows-equal: 1fr;
+  --grid-ends: 1fr auto 1fr;
+  --grid-unfold: minmax(0, 1fr) minmax(0, 2fr);
+  --ratio-5-4: 5 / 4;
+  --px-28: 28px;
+  --px-20: 20px;
+  --px-6: 6px;
+  --px-neg-3: -3px;
   --pct-neg-50: -50%;
   --dur-160: 160ms;
   --dur-0: 0ms;
@@ -195,7 +206,6 @@
   /* The season story (knowledge/design.md, section 4b). */
   --portrait: var(--px-72);
   --text-band: var(--fs-32);
-  --bar: var(--s-3);
   --centre: var(--pct-neg-50);
   --card-min: var(--px-128);
   --span-row: var(--grid-all);
@@ -221,6 +231,10 @@
   --shadow-caption: var(--shadow-none);
   --shadow-chosen: var(--shadow-none);
   --case-display: var(--no-case);
+  /* Questions stay in sentence case on every surface (EVAL-10, copy audit D3). */
+  --case-question: var(--no-case);
+  /* A colleague's description: 17 px or more (EVAL-10, copy audit D3). */
+  --text-desc: var(--fs-17);
   --tracking-display: var(--ls-wide);
   --radius-card: var(--r-16);
   --stamp: var(--px-52);
@@ -240,6 +254,7 @@
   --list-gap: var(--s-3);
   --control: var(--px-48);
   --field-gap: var(--s-2);
+  --label-gap: var(--s-2);
   --legend-gap: var(--s-3);
   --heading-gap: var(--s-3);
   --leading-heading: var(--lh-120);
@@ -249,6 +264,22 @@
   --cols-four: var(--grid-4);
   --cols-cards: var(--grid-cards);
   --rows-equal: var(--grid-rows-equal);
+  /* The position-with-range line (EVAL-10): its height, the dot, the range's inset, the end labels. */
+  --range-h: var(--px-28);
+  --range-h-compact: var(--px-20);
+  --range-dot: var(--px-20);
+  --range-dot-compact: var(--s-3);
+  --range-inset: var(--s-1);
+  --range-ends: var(--grid-ends);
+  /* The comic page (EVAL-10): the gutter between panels, and panel 2's prop beside its caption. */
+  --gutter: var(--s-2);
+  --unfold-cols: var(--grid-unfold);
+  --card-face: var(--ratio-5-4);
+  --half: var(--pct-50);
+  /* The season bar in the header (EVAL-10): a thin line, and chapter ticks that stand out of it. */
+  --bar-thin: var(--px-6);
+  --tick-out: var(--px-neg-3);
+  --c-range: var(--mist);
   --dot-columns: var(--grid-12);
   --text-action: var(--fs-16);
   --tracking-action: normal;
@@ -340,7 +371,8 @@
   --flow: var(--pitch-28);
   --list-gap: var(--s-0);
   --control: var(--pitch-2x);
-  --field-gap: var(--s-0);
+  --field-gap: var(--pitch-14);
+  --label-gap: var(--s-0);
   --legend-gap: var(--s-0);
   --heading-gap: var(--s-0);
   --leading-heading: var(--pitch-28);
@@ -351,6 +383,10 @@
   --c-body: var(--comic-ink);
   --c-muted: var(--note-soft);
   --c-rule: var(--note-rule);
+  --c-range: var(--note-rule);
+  /* No violet out of fiction (rule 8): the chapter-end map's next stop is tan with ink. */
+  --c-stamp: var(--note-rule);
+  --c-on-stamp: var(--comic-ink);
   --c-border: var(--comic-ink);
   --c-ink-line: var(--comic-ink);
   --c-option-rest: var(--note-line);
@@ -429,6 +465,8 @@
   --art-acc: #9a6a45;
   --art-acc2: #9a6a45;
 }
+/* The four cast tones (EVAL-10): evenly spaced lightness, L* 82.4, 67.5, 52.9 and 38.0, the
+   same targets as the generated portraits (scripts/portraits/recolour.py). */
 [data-tone='l1'] {
   --art-skin: #edc6a2;
   --art-skin-shade: #c29e80;
@@ -436,8 +474,8 @@
   --art-lip: #a9886e;
 }
 [data-tone='l2'] {
-  --art-skin: #d9a47b;
-  --art-skin-shade: #b38462;
+  --art-skin: #d09970;
+  --art-skin-shade: #ad7f5d;
   --art-feature: #6c4b37;
   --art-lip: #9c7255;
 }
@@ -448,14 +486,14 @@
   --art-lip: #895d3f;
 }
 [data-tone='d1'] {
-  --art-skin: #9a6440;
-  --art-skin-shade: #835335;
+  --art-skin: #a9724b;
+  --art-skin-shade: #8c5f3e;
   --art-feature: #553221;
   --art-lip: #73482e;
 }
 [data-tone='d2'] {
-  --art-skin: #6b4329;
-  --art-skin-shade: #5f3a24;
+  --art-skin: #7c4f31;
+  --art-skin-shade: #674229;
   --art-feature: #432618;
   --art-lip: #543320;
 }

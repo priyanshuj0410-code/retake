@@ -196,7 +196,7 @@ async function main() {
     await page.goto(`${BASE}#/withdraw`)
     await page.getByRole('textbox').fill(code)
     await shoot(page, 'x-withdraw')
-    await page.getByRole('button', { name: 'Delete my records' }).click()
+    await page.getByRole('button', { name: 'Delete my answers' }).click()
     await page.getByRole('status').waitFor()
     await shoot(page, 'x-withdrawn')
     await page.goto(`${BASE}#/results`)

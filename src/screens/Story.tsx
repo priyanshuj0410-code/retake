@@ -12,7 +12,7 @@ import { formatCode } from '../engine/codes'
 import { fill } from '../engine/text'
 import { store, today } from '../store'
 import { randomKey } from '../engine/rng'
-import { PF, RT, SS, stories, storyById, type Story } from '../story/content'
+import { PF, PRACTICE, RT, SS, stories, storyById, type Story } from '../story/content'
 import {
   addSession,
   createProfile,
@@ -20,8 +20,8 @@ import {
   nextRetake,
   playedStories,
 } from '../story/profile'
-import type { StoryRunner } from '../story/runner'
-import { castTiles, colleagueView, langAttr, trackLines } from '../story/view'
+import { sessionMinutes, type StoryRunner } from '../story/runner'
+import { castTiles, colleagueView, langAttr, sceneArt, trackLines } from '../story/view'
 import { resultModel } from '../story/why'
 import type { Level } from '../story/rating'
 import {
@@ -52,10 +52,11 @@ import {
   Options,
   Page,
   PickOne,
-  PairShare,
+  SeasonMap,
+  QuickSplit,
   PointCard,
   ShareCard,
-  Spectrum,
+  RangeLine,
   StoryPick,
   TapOrder,
   Text,
@@ -64,8 +65,13 @@ import {
 const S = screens
 
 /**
- * The two eligibility items before the four sentences (candidates v17 3.19): aged 18 or over,
- * working in India. Asked, not counted, and not stored beyond the session.
+ * The first screen (EVAL-10, language first): when the link lets the player choose, the
+ * language comes first under a bilingual heading ("Choose your language / Apni bhasha
+ * chunein"), and the two eligibility items (candidates v17 3.19: aged 18 or over, working in
+ * India) follow in the language chosen; until one is chosen they show in English with the
+ * Hinglish under each. Asked, not counted, and not stored beyond the session.
+ * "English with Hinglish help" is the third option: English on screen with the Hinglish under
+ * every question and description.
  */
 export function Eligibility({
   ui,
@@ -75,24 +81,42 @@ export function Eligibility({
 }: {
   ui: Lang
   /** The prototype line, on this landing screen only. */
-  footnote?: string
-  /** The language choice on the same screen, when the link lets the player choose (EVAL-8). */
+  footnote?: T
+  /** The language choice on the same screen, first, when the link lets the player choose. */
   languages?: boolean
   onDone: (ok: boolean, langs?: Lang[]) => void
 }) {
-  const L = (t: T) => t[ui]
   const [v, setV] = useState<Record<string, string>>({})
   const [lang, setLang] = useState<string | null>(null)
+  /* What the rest of the screen shows: the chosen language, or English with the Hinglish
+     help until a language is chosen. */
+  const show: Lang = languages ? (lang === 'hinglish' ? 'hinglish' : 'en') : ui
+  const help = languages ? lang === null || lang === 'both' : false
+  const L = (t: T) => t[show]
+  const H = (t: T) => (help ? t.hinglish : undefined)
   const items = SS.eligible as unknown as { id: string; text: T }[]
+  const questions = items.map((it) => (
+    <Choice
+      key={it.id}
+      legend={L(it.text)}
+      help={H(it.text)}
+      options={[
+        { id: 'yes', text: L(S.common.yes) },
+        { id: 'no', text: L(S.common.no) },
+      ]}
+      value={v[it.id] ?? null}
+      onChange={(id) => setV({ ...v, [it.id]: id })}
+    />
+  ))
   return (
     <Page
       surface="oof"
       stepKey="eligibility"
       screen="eligibility"
-      footnote={footnote}
+      footnote={footnote ? L(footnote) : undefined}
       oof={L(S.common.outOfFiction)}
-      lang={langAttr(ui)}
-      title={L(SS.eligibleTitle)}
+      lang={langAttr(show)}
+      title={languages ? undefined : L(SS.eligibleTitle)}
       actions={
         <Button
           onClick={() =>
@@ -107,30 +131,27 @@ export function Eligibility({
         </Button>
       }
     >
-      {items.map((it) => (
-        <Choice
-          key={it.id}
-          legend={L(it.text)}
-          options={[
-            { id: 'yes', text: L(S.common.yes) },
-            { id: 'no', text: L(S.common.no) },
-          ]}
-          value={v[it.id] ?? null}
-          onChange={(id) => setV({ ...v, [it.id]: id })}
-        />
-      ))}
       {languages ? (
-        <Choice
-          legend={L(S.language.title)}
-          options={[
-            { id: 'en', text: L(S.language.en) },
-            { id: 'hinglish', text: L(S.language.hinglish) },
-            { id: 'both', text: L(S.language.both) },
-          ]}
-          value={lang}
-          onChange={setLang}
-        />
-      ) : null}
+        <>
+          <Choice
+            heading
+            legend={`${SS.langTitle.en} / ${SS.langTitle.hinglish}`}
+            options={[
+              { id: 'en', text: S.language.en.en },
+              { id: 'hinglish', text: S.language.hinglish.hinglish },
+              { id: 'both', text: SS.langBoth.en },
+            ]}
+            value={lang}
+            onChange={setLang}
+          />
+          <Group label={L(SS.eligibleTitle)}>
+            <Heading>{L(SS.eligibleTitle)}</Heading>
+            {questions}
+          </Group>
+        </>
+      ) : (
+        questions
+      )}
     </Page>
   )
 }
@@ -198,7 +219,9 @@ export function StoryPicker({
       lang={langAttr(ui)}
       title={L(SS.pickTitle)}
     >
-      <Text kind="lead">{L(SS.pickBody)}</Text>
+      <Text kind="lead">
+        {fill(L(SS.pickBody), { minutes: drawn ? sessionMinutes(drawn) : '' })}
+      </Text>
       <StoryPick
         options={options}
         label={L(SS.pickTitle)}
@@ -232,6 +255,8 @@ export function StoryView({
 }) {
   const ui = runner.lang
   const L = (t: T) => t[ui]
+  /* "English with Hinglish help" (EVAL-10): the Hinglish under each question, smaller. */
+  const H = (t: T) => (runner.help ? t.hinglish : undefined)
   const step = runner.current
   if (!step) return null
   const story = runner.season.story
@@ -246,57 +271,62 @@ export function StoryView({
     step.kind === 'reveal' ||
     step.kind === 'payoff' ||
     step.kind === 'season'
-  /* The season map (EVAL-8, concept D): six stops and the current chapter's card dots, on the
-     story's screens, the chapter-end save screens and the finale's cards. */
+  /* The header (EVAL-10, owner): a compact chapter label and one thin season progress bar with
+     chapter ticks, on the story's screens, the chapter-end save screens and the finale. The
+     six-stop map lives on the chapter-end screen. */
   const k = runner.chapters
   const chapter = runner.chapterAt()
   const finale = chapter > k
   const stopTitle = (n: number) => (n > k ? L(SS.finaleAct) : L(episodes[n - 1].title))
-  const cards = runner.chapterCards(chapter)
-  const showMap = inStory || step.kind === 'saved'
-  const map = showMap
+  const showMap = inStory || step.kind === 'saved' || step.kind === 'practice'
+  const done = runner.seasonProgress()
+  const progress = showMap
     ? {
-        stops: [...Array(k + 1).keys()].map((i) => ({
-          title: stopTitle(i + 1),
-          state: (i + 1 < chapter ? 'done' : i + 1 === chapter ? 'now' : 'next') as
-            'done' | 'now' | 'next',
-        })),
-        cards,
-        label: finale
-          ? fill(L(SS.mapFinale), { done: cards.done, cards: cards.total })
-          : fill(L(SS.mapNow), {
-              n: chapter,
-              k,
-              title: stopTitle(chapter),
-              done: cards.done,
-              cards: cards.total,
-            }),
+        value: done.value,
+        ticks: done.ticks,
+        label: fill(L(SS.progressSaid), {
+          act: finale
+            ? L(SS.finaleAct)
+            : fill(L(SS.chapterOf), { n: chapter, k, title: stopTitle(chapter) }),
+          pct: Math.round(done.value * 100),
+        }),
       }
     : undefined
+  const stops = [...Array(k + 1).keys()].map((i) => ({
+    title: stopTitle(i + 1),
+    state: (i + 1 < chapter ? 'done' : i + 1 === chapter ? 'now' : 'next') as
+      'done' | 'now' | 'next',
+  }))
+  /* Back (EVAL-10): a small nav link at the top left, under the header, never at the bottom. */
+  const back =
+    runner.backTarget !== null ? (
+      <Button kind="nav" onClick={onBack}>
+        {L(SS.back)}
+      </Button>
+    ) : null
   const page = {
-    surface: inStory ? 'game' : 'oof',
+    surface: inStory || step.kind === 'practice' ? 'game' : 'oof',
     act: showMap
-      ? finale
-        ? L(SS.finaleAct)
-        : fill(L(SS.chapterOf), { n: chapter, k, title: stopTitle(chapter) })
+      ? step.kind === 'practice'
+        ? L(PRACTICE.label)
+        : finale
+          ? L(SS.finaleAct)
+          : fill(L(SS.chapterOf), { n: chapter, k, title: stopTitle(chapter) })
       : undefined,
-    map,
-    oof: inStory ? undefined : L(S.common.outOfFiction),
+    progress,
+    nav: back ?? undefined,
+    oof: inStory || step.kind === 'practice' ? undefined : L(S.common.outOfFiction),
     stepKey: key,
     lang: langAttr(ui),
     screen: `story:${step.kind}${step.kind === 'beat' ? `:${runner.season.beats[step.i].beat.kind}` : ''}`,
   } as const
-  const back =
-    runner.backTarget !== null ? (
-      <Button kind="quiet" onClick={onBack}>
-        {L(SS.back)}
-      </Button>
-    ) : null
 
   switch (step.kind) {
     case 'intro':
+      /* The opening, then the opt-in practice round (EVAL-10, owner): no up-front instructions;
+         two equal choices, "Practise first" and "Start the season". */
       return (
-        <Page {...page} actions={<Button onClick={() => onDone(null)}>{L(SS.start)}</Button>}>
+        <Page {...page}>
           <Splash title={fill(L(SS.startTitle), { company: L(story.company as T) })} />
           <Panel tone="paper">
             <List items={(story.intro ?? []).map(L)} />
@@ -307,8 +337,20 @@ export function StoryView({
             label={L(SS.mascotsTitle)}
             items={castTiles(runner, false, (c) => [L(c.animalName)])}
           />
+          <Heading>{L(PRACTICE.offer)}</Heading>
+          <Text>{L(PRACTICE.offerBody)}</Text>
+          <Options
+            label={L(PRACTICE.offer)}
+            options={[
+              { id: 'practice', text: L(PRACTICE.practise) },
+              { id: 'start', text: L(PRACTICE.start) },
+            ]}
+            onPick={onDone}
+          />
         </Page>
       )
+    case 'practice':
+      return <PracticeStep key={key} runner={runner} n={step.n} page={page} onDone={onDone} />
     case 'reveal': {
       const rv = story.reveal
       if (!rv) return null
@@ -337,7 +379,6 @@ export function StoryView({
               true,
             )}
           />
-          {back}
         </Page>
       )
     }
@@ -358,20 +399,11 @@ export function StoryView({
             label={L(SS.rosterTitle)}
             items={castTiles(runner, true, trackLines(runner))}
           />
-          {back}
         </Page>
       )
     case 'beat':
       return (
-        <BeatStep
-          key={key}
-          runner={runner}
-          i={step.i}
-          page={page}
-          then={then}
-          back={back}
-          onDone={onDone}
-        />
+        <BeatStep key={key} runner={runner} i={step.i} page={page} then={then} onDone={onDone} />
       )
     case 'screening':
       return (
@@ -382,7 +414,7 @@ export function StoryView({
           title={L(SS.screeningTitle)}
           items={config.season.faking.screening.flatMap((id) => {
             const it = screeningItems.find((x) => x.id === id)
-            return it ? [{ id, text: L(it.text) }] : []
+            return it ? [{ id, text: L(it.text), help: H(it.text) }] : []
           })}
           onDone={onDone}
         />
@@ -396,7 +428,7 @@ export function StoryView({
           title={L(step.admin === 1 ? SS.surveyTitle : SS.surveyTitle2)}
           items={config.season.faking.survey.flatMap((id) => {
             const it = surveyItems.find((x) => x.id === id)
-            return it ? [{ id, text: L(it.text) }] : []
+            return it ? [{ id, text: L(it.text), help: H(it.text) }] : []
           })}
           onDone={onDone}
         />
@@ -419,12 +451,22 @@ export function StoryView({
             </>
           )}
           <Text kind="strong">{L(n.instruction)}</Text>
+          {runner.help ? (
+            <Text kind="small" lang="hi-Latn">
+              {n.instruction.hinglish}
+            </Text>
+          ) : null}
         </Page>
       )
     }
     case 'recall':
       return (
         <Page {...page} title={L(S.recall.question)}>
+          {runner.help ? (
+            <Text kind="small" lang="hi-Latn">
+              {S.recall.question.hinglish}
+            </Text>
+          ) : null}
           <Options
             label={L(S.recall.question)}
             options={runner.recallOrder.map((id) => {
@@ -436,7 +478,7 @@ export function StoryView({
         </Page>
       )
     case 'probe':
-      return <ProbeStep key={key} ui={ui} page={page} onDone={onDone} />
+      return <ProbeStep key={key} ui={ui} help={runner.help} page={page} onDone={onDone} />
     case 'payoff': {
       const ep = episodes[step.n - 1]
       const [sa, sb] = config.season.chapters.payoffSlots
@@ -452,11 +494,12 @@ export function StoryView({
             label={L(SS.payoffLabel)}
             panels={ep.payoff.map((p) => ({ art: p.art, text: fill(L(p.text), names) }))}
           />
-          {back}
         </Page>
       )
     }
     case 'saved': {
+      /* One h1 ("Chapter 1 done"), a short status line, the body, muted meta, one primary action
+         and one quiet one (EVAL-10's hierarchy); the six-stop map lives here. */
       const last = step.n >= runner.chapters
       const days = config.season.chapters.saveDays
       return (
@@ -474,21 +517,28 @@ export function StoryView({
             </>
           }
         >
-          <Heading>{L(SS.savedHeading)}</Heading>
-          <Text>{fill(L(SS.savedBody), { days })}</Text>
+          <Text kind="lead">{L(SS.savedHeading)}</Text>
+          <SeasonMap
+            stops={stops.map((x, i) => ({
+              ...x,
+              state: i < step.n ? 'done' : i === step.n ? 'now' : 'next',
+            }))}
+            label={fill(L(SS.mapSaved), { n: step.n, k, title: stopTitle(step.n + 1) })}
+          />
           <Text>
             {fill(L(SS.savedNext), {
               title: last ? L(SS.finaleAct) : L(episodes[step.n].title),
             })}
           </Text>
-          <Text kind="small">{L(SS.savedRating)}</Text>
+          <Text>{fill(L(SS.savedBody), { days })}</Text>
+          <Text kind="muted">{L(SS.savedRating)}</Text>
         </Page>
       )
     }
     case 'wrap':
-      return <WrapStep key={key} ui={ui} page={page} onDone={onDone} />
+      return <WrapStep key={key} ui={ui} help={runner.help} page={page} onDone={onDone} />
     case 'demographics':
-      return <DemographicsStep key={key} ui={ui} page={page} onDone={onDone} />
+      return <DemographicsStep key={key} ui={ui} help={runner.help} page={page} onDone={onDone} />
     case 'close':
       return (
         <CloseStep
@@ -512,26 +562,54 @@ function thenView(
 ): BeatThen | undefined {
   if (!c) return undefined
   const v = c.lead ? colleagueView(runner, runner.person(c.lead.slot), c.lead.revealed) : null
-  return { text: c.text, look: v?.look, label: v?.figureLabel }
+  return {
+    lead: SS.thenLead[runner.lang],
+    text: c.text,
+    look: v?.look,
+    label: v?.figureLabel,
+  }
 }
+
+/** The ranking card's words, shared by the season's cards and the practice round. */
+const rankLabels = (L: (t: T) => string) => ({
+  hint: L(SS.rankHint),
+  clear: L(SS.rankUndo),
+  lock: L(SS.rankLock),
+  ready: L(SS.rankReady),
+  cleared: L(SS.rankCleared),
+  stamp: (n: number) => L(SS.rankStamps[n - 1] ?? { en: String(n), hinglish: String(n) }),
+  choose: (n: number) => fill(L(SS.rankChoose), { n }),
+  chosen: (n: number) => fill(L(SS.rankChosen), { n }),
+  said: (name: string, n: number) => fill(L(SS.rankSaid), { name, n }),
+  next: (n: number) => fill(L(SS.rankNext), { n }),
+  taken: (name: string, n: number) => fill(L(SS.rankTaken), { name, n }),
+})
+
+/** The share card's words, shared by the season's cards and the practice round. */
+const splitLabels = (L: (t: T) => string) => ({
+  left: (n: number) => fill(L(SS.splitLeft), { n }),
+  chip: (name: string, k: number) => fill(L(SS.splitChip), { name, k }),
+  clear: L(SS.splitClear),
+  lock: L(SS.splitLock),
+})
 
 function BeatStep({
   runner,
   i,
   page,
   then,
-  back,
   onDone,
 }: {
   runner: StoryRunner
   i: number
   page: PageBase
   then: BeatThen | undefined
-  back: React.ReactNode
   onDone: (v: unknown) => void
 }) {
   const ui = runner.lang
   const L = (t: T) => t[ui]
+  /* "English with Hinglish help" (EVAL-10): the Hinglish under each question and description. */
+  const H = (t: T) => (runner.help ? t.hinglish : undefined)
   const b = runner.season.beats[i]
   /* The chapter's opening is folded into its first card's caption (EVAL-8, concept A). */
   const chapter = runner.chapterAt()
@@ -539,9 +617,26 @@ function BeatStep({
     chapter <= runner.chapters &&
     runner.steps.findIndex((st, k) => st.kind === 'beat' && runner.chapterOf[k] === chapter) ===
       runner.index
-  const opening = firstOfChapter ? runner.season.story.episodes?.[chapter - 1]?.opening : undefined
-  const scene = opening ? `${L(opening)} ${L(b.beat.scene)}` : L(b.beat.scene)
-  const head = <Beat then={then} scene={scene} question={L(b.beat.question)} />
+  /* The comic page (EVAL-10): a chapter's first decision opens with its title panel (the
+     chapter and its opening line) in place of the consequence panel. */
+  const ep = firstOfChapter ? runner.season.story.episodes?.[chapter - 1] : undefined
+  const title = ep
+    ? {
+        kicker: fill(L(SS.chapterKicker), { n: chapter, k: runner.chapters }),
+        title: L(ep.title),
+        body: ep.opening ? L(ep.opening) : undefined,
+      }
+    : undefined
+  const head = (
+    <Beat
+      then={title ? undefined : then}
+      title={title}
+      scene={L(b.beat.scene)}
+      art={sceneArt(b.beat.id, b.kind === 'people' ? b.beat.domain : 'ordinary')}
+      question={L(b.beat.question)}
+      help={H(b.beat.question)}
+    />
+  )
   if (b.kind === 'ordinary') {
     const opts = b.order.map((id) => {
       const o = b.beat.options.find((x) => x.id === id)
@@ -555,7 +650,6 @@ function BeatStep({
           options={opts}
           onPick={(id) => onDone({ option: id })}
         />
-        {back}
       </Page>
     )
   }
@@ -563,7 +657,10 @@ function BeatStep({
   const saved = runner.answers.get(i)
   const items = b.chars.map((ch) => {
     const d = b.beat.descriptions.find((x) => x.id === ch.d)
-    return colleagueView(runner, runner.person(ch.slot), shown, d ? L(d.text) : '')
+    return {
+      ...colleagueView(runner, runner.person(ch.slot), shown, d ? L(d.text) : ''),
+      descriptionHelp: d ? H(d.text) : undefined,
+    }
   })
   let input: React.ReactNode
   if (b.beat.kind === 'rank')
@@ -572,19 +669,7 @@ function BeatStep({
         items={items}
         onDone={(order) => onDone({ order })}
         initial={saved && 'order' in saved ? saved.order : undefined}
-        labels={{
-          hint: L(SS.rankHint),
-          clear: L(SS.rankUndo),
-          lock: L(SS.rankLock),
-          ready: L(SS.rankReady),
-          cleared: L(SS.rankCleared),
-          stamp: (n) => L(SS.rankStamps[n - 1] ?? { en: String(n), hinglish: String(n) }),
-          choose: (n) => fill(L(SS.rankChoose), { n }),
-          chosen: (n) => fill(L(SS.rankChosen), { n }),
-          said: (name, n) => fill(L(SS.rankSaid), { name, n }),
-          next: (n) => fill(L(SS.rankNext), { n }),
-          taken: (name, n) => fill(L(SS.rankTaken), { name, n }),
-        }}
+        labels={rankLabels(L)}
       />
     )
   else if (b.beat.kind === 'pick')
@@ -596,45 +681,89 @@ function BeatStep({
         onPick={(pick) => onDone({ pick })}
       />
     )
-  else {
-    /* A share as a one-tap pair (EVAL-8, B1): the whole pool to one, or evenly; stored as units,
-       so scoring and records are unchanged. */
-    const pool = b.beat.pool ?? 6
-    const initial =
-      saved && 'units' in saved
-        ? saved.units[0] === saved.units[1]
-          ? ('even' as const)
-          : saved.units.indexOf(Math.max(...saved.units))
-        : undefined
+  else
+    /* A share across three colleagues (the owner reverted EVAL-8's one-tap pairs in EVAL-10):
+       nothing chosen at the start, the count left always shown, and "Confirm these shares"
+       once everything is shared; Back reopens it with the saved shares. */
     input = (
-      <PairShare
+      <QuickSplit
         items={items}
-        initial={initial}
-        onDone={(c) =>
-          onDone({
-            units: items.map((_, pos) => (c === 'even' ? pool / 2 : pos === c ? pool : 0)),
-          })
-        }
-        labels={{
-          hint: L(SS.pairHint),
-          even: L(SS.pairEven),
-          lock: L(SS.pairLock),
-          chosen: (name) => fill(L(SS.pairChosen), { name }),
-          chosenEven: L(SS.pairChosenEven),
-        }}
+        pool={b.beat.pool ?? 6}
+        cap={config.season.splitCap}
+        onDone={(units) => onDone({ units })}
+        initial={saved && 'units' in saved ? saved.units : undefined}
+        labels={splitLabels(L)}
       />
     )
-  }
   return (
     <Page {...page}>
       {head}
       {b.beat.kind === 'split' ? (
-        <Text kind="small">{L(SS.pairHint)}</Text>
+        <Text kind="small">
+          {fill(L(SS.splitPool), {
+            pool: b.beat.pool ?? 6,
+            unit: b.beat.unit ? L(b.beat.unit) : '',
+            cap: config.season.splitCap,
+          })}
+        </Text>
       ) : (
         <Text kind="small">{L(b.beat.kind === 'rank' ? SS.rankHint : SS.pickHint)}</Text>
       )}
       {input}
-      {back}
+    </Page>
+  )
+}
+
+/**
+ * One practice item (EVAL-10, owner): the mascots doing something that is not work, with a
+ * one-line hint. The same controls as the season's cards; nothing is recorded or scored (the
+ * runner keeps only whether practice was taken).
+ */
+function PracticeStep({
+  runner,
+  n,
+  page,
+  onDone,
+}: {
+  runner: StoryRunner
+  n: number
+  page: PageBase
+  onDone: (v: unknown) => void
+}) {
+  const L = (t: T) => t[runner.lang]
+  const H = (t: T) => (runner.help ? t.hinglish : undefined)
+  const p = PRACTICE.items[n]
+  const items = p.animals.map((a) => ({
+    look: { kind: 'animal' as const, animal: a.animal },
+    figureLabel: L(a.name),
+    name: L(a.name),
+    cues: [],
+    description: L(a.text),
+    descriptionHelp: H(a.text),
+  }))
+  const next = () => onDone(null)
+  return (
+    <Page {...page}>
+      <Beat
+        scene={L(p.scene)}
+        art={p.kind === 'split' ? 'coffee' : 'crowd'}
+        question={L(p.question)}
+        help={H(p.question)}
+      />
+      <Text kind="small">{L(p.hint)}</Text>
+      {p.kind === 'rank' ? (
+        <TapOrder items={items} onDone={next} labels={rankLabels(L)} />
+      ) : p.kind === 'pick' ? (
+        <PickOne items={items} hint={L(p.hint)} label={L(SS.pickLabel)} onPick={next} />
+      ) : (
+        <QuickSplit
+          items={items}
+          pool={p.pool ?? 6}
+          cap={config.season.splitCap}
+          onDone={next}
+          labels={splitLabels(L)}
+        />
+      )}
     </Page>
   )
 }
@@ -650,7 +779,7 @@ function GridStep({
   ui: Lang
   page: PageBase
   title: string
-  items: { id: string; text: string }[]
+  items: { id: string; text: string; help?: string }[]
   onDone: (v: unknown) => void
 }) {
   const L = (t: T) => t[ui]
@@ -682,14 +811,18 @@ function GridStep({
 /** "Spot the pattern": any number of answers, then one confirm tap (candidates v17 3.17). */
 function ProbeStep({
   ui,
+  help,
   page,
   onDone,
 }: {
   ui: Lang
+  /** "English with Hinglish help" (EVAL-10). */
+  help?: boolean
   page: PageBase
   onDone: (v: unknown) => void
 }) {
   const L = (t: T) => t[ui]
+  const H = (t: T) => (help ? t.hinglish : undefined)
   const [v, setV] = useState<string[]>([])
   const pr = S.wrap.probe
   return (
@@ -704,6 +837,7 @@ function ProbeStep({
       <Checks
         heading
         legend={L(pr.question)}
+        help={H(pr.question)}
         hint={L(pr.hint)}
         options={pr.options.map((o) => ({ id: o.id, text: L(o.text) }))}
         value={v}
@@ -719,14 +853,18 @@ function ProbeStep({
  */
 function WrapStep({
   ui,
+  help,
   page,
   onDone,
 }: {
   ui: Lang
+  /** "English with Hinglish help" (EVAL-10). */
+  help?: boolean
   page: PageBase
   onDone: (v: unknown) => void
 }) {
   const L = (t: T) => t[ui]
+  const H = (t: T) => (help ? t.hinglish : undefined)
   const [v, setV] = useState<Record<string, string>>({})
   const told = S.wrap.prior.find((x) => x.id === 'told')
   const items = [
@@ -756,6 +894,7 @@ function WrapStep({
         <Choice
           key={it.id}
           legend={L(it.text)}
+          help={H(it.text)}
           options={it.options.map((o) => ({ id: o.id, text: L(o.text) }))}
           value={v[it.id] ?? null}
           onChange={(id) => setV({ ...v, [it.id]: id })}
@@ -844,14 +983,18 @@ function CloseStep({
 
 function DemographicsStep({
   ui,
+  help,
   page,
   onDone,
 }: {
   ui: Lang
+  /** "English with Hinglish help" (EVAL-10). */
+  help?: boolean
   page: PageBase
   onDone: (v: unknown) => void
 }) {
   const L = (t: T) => t[ui]
+  const H = (t: T) => (help ? t.hinglish : undefined)
   const [v, setV] = useState<Record<string, string>>({})
   return (
     <Page
@@ -864,6 +1007,7 @@ function DemographicsStep({
         <Choice
           key={it.id}
           legend={L(it.text)}
+          help={H(it.text)}
           options={[
             ...it.options.map((o) => ({ id: o.id, text: L(o.text) })),
             { id: 'prefer-not', text: L(S.common.skip) },
@@ -896,9 +1040,9 @@ export function StoryResult({
   const L = (t: T) => t[ui]
   const [m] = useState(() => resultModel(runner))
   const h = m.rating.headline
-  /* The band's reading opens with its first sentence; the rest is one tap away (owner, 19 Oct
+  /* The tag's sentence opens with its first sentence; the rest is one tap away (owner, 19 Oct
      2026: no block of more than about 60 words on a note screen). */
-  const [lead, ...more] = m.body.split(/(?<=[.!?])\s+(?=[A-Z])/)
+  const [lead, ...more] = m.unread ? [m.body] : m.body.split(/(?<=[.!?])\s+(?=[A-Z])/)
   return (
     <Page
       surface="oof"
@@ -920,95 +1064,103 @@ export function StoryResult({
             <Text>{more.join(' ')}</Text>
           </Details>
         ) : null}
-        {m.bar ? (
-          <Spectrum
-            at={m.bar.at}
-            from={m.bar.from}
-            to={m.bar.to}
-            left={m.bar.left}
-            right={m.bar.right}
-            label={m.bar.label}
-            zoneLabel={m.strength ?? L(RT.noLeanZone)}
+        {m.range ? (
+          <RangeLine
+            at={m.range.at}
+            lo={m.range.lo}
+            hi={m.range.hi}
+            ends={m.range.ends}
+            label={m.range.label}
+            caption={m.range.caption}
+            note={m.range.note}
           />
         ) : null}
-        {m.bar ? <Text kind="muted">{L(RT.noLeanZone)}</Text> : null}
         {m.why.length ? <List items={m.why} /> : null}
       </ResultHero>
-      <Heading>{L(RT.otherTitle)}</Heading>
-      <ReadingList
-        label={L(RT.otherTitle)}
-        items={m.cards
-          .filter((c) => c.cue !== 'sex')
-          .map((c) => ({ id: c.cue, label: c.label, level: c.level, zone: c.zone }))}
-      />
-      <Text kind="small">{L(RT.intro)}</Text>
-      <Heading>{L(RT.areasTitle)}</Heading>
-      {m.domains.map((d, n) => (
-        <Fold key={d.domain} title={d.title} open={n === 0}>
-          <Text>{d.narrative}</Text>
-          {d.reading ? (
-            <ReadingList
-              label={d.title}
-              items={[
-                {
-                  id: d.domain,
-                  label: L(RT.cueShort.sex),
-                  level: d.reading.level,
-                  zone: d.reading.zone,
-                },
-              ]}
-            />
-          ) : null}
-          {d.examples.length ? (
-            <PointCard
-              title={L(RT.cards.examplesTitle)}
-              body={L(RT.cards.examplesBody)}
-              evidence={d.examples}
-              evidenceLabel={L(RT.evidence)}
-            />
-          ) : null}
-          <Heading level={3}>{L(RT.followedTitle)}</Heading>
-          {d.followed.length ? (
-            d.followed.map((p) => <PointCard key={p.title} title={p.title} body={p.body} />)
-          ) : (
-            <Text kind="muted">{L(RT.noFollowed)}</Text>
-          )}
-          <Heading level={3}>{L(RT.blindTitle)}</Heading>
-          {d.blind.length ? (
-            d.blind.map((p) => (
-              <PointCard
-                key={p.title}
-                title={p.title}
-                body={p.body}
-                evidence={p.evidence}
-                evidenceLabel={L(RT.evidence)}
-              />
-            ))
-          ) : (
-            <Text kind="muted">{L(RT.noBlind)}</Text>
-          )}
-          <Heading level={3}>{L(RT.originTitle)}</Heading>
-          <Text kind="small">{L(RT.originBody)}</Text>
-          <List items={d.origin} />
-          <Heading level={3}>{L(RT.watchTitle)}</Heading>
-          <Text kind="small">{L(RT.watchBody)}</Text>
-          <List items={d.watch} />
-        </Fold>
-      ))}
+      {/* "Not enough to tell" (EVAL-10, copy audit G5): nothing of the result below the tag. */}
+      {m.unread ? null : (
+        <>
+          <Heading>{L(RT.otherTitle)}</Heading>
+          <ReadingList
+            label={L(RT.otherTitle)}
+            items={m.cards
+              .filter((c) => c.cue !== 'sex')
+              .map((c) => ({ id: c.cue, label: c.label, level: c.level, zone: c.zone }))}
+          />
+          <Text kind="small">{L(RT.intro)}</Text>
+          <Heading>{L(RT.areasTitle)}</Heading>
+          {m.domains.map((d, n) => (
+            <Fold key={d.domain} title={d.title} open={n === 0}>
+              <Text>{d.narrative}</Text>
+              {d.reading ? (
+                <ReadingList
+                  label={d.title}
+                  items={[
+                    {
+                      id: d.domain,
+                      label: L(RT.cueShort.sex),
+                      level: d.reading.level,
+                      zone: d.reading.zone,
+                    },
+                  ]}
+                />
+              ) : null}
+              {d.examples.length ? (
+                <PointCard
+                  title={L(RT.cards.examplesTitle)}
+                  body={L(RT.cards.examplesBody)}
+                  evidence={d.examples}
+                  evidenceLabel={L(RT.evidence)}
+                />
+              ) : null}
+              <Heading level={3}>{L(RT.followedTitle)}</Heading>
+              {d.followed.length ? (
+                d.followed.map((p) => <PointCard key={p.title} title={p.title} body={p.body} />)
+              ) : (
+                <Text kind="muted">{L(RT.noFollowed)}</Text>
+              )}
+              <Heading level={3}>{L(RT.blindTitle)}</Heading>
+              {d.blind.length ? (
+                d.blind.map((p) => (
+                  <PointCard
+                    key={p.title}
+                    title={p.title}
+                    body={p.body}
+                    evidence={p.evidence}
+                    evidenceLabel={L(RT.evidence)}
+                  />
+                ))
+              ) : (
+                <Text kind="muted">{L(RT.noBlind)}</Text>
+              )}
+              <Heading level={3}>{L(RT.originTitle)}</Heading>
+              <Text kind="small">{L(RT.originBody)}</Text>
+              <List items={d.origin} />
+              <Heading level={3}>{L(RT.watchTitle)}</Heading>
+              <Text kind="small">{L(RT.watchBody)}</Text>
+              <List items={d.watch} />
+            </Fold>
+          ))}
+        </>
+      )}
       <Notice>{L(RT.committee)}</Notice>
       <Notice>{L(finished === 'submitted' ? RT.submitted : RT.withdrawn)}</Notice>
       <KeepIt
         runner={runner}
         zone={h.zone}
-        level={h.level}
+        level={h.engaged ? h.level : 'unread'}
         towards={h.towards}
         weight={h.weight}
         pairs={h.pairs}
+        counts={m.counts}
       />
       <Heading>{L(RT.shareTitle)}</Heading>
       <Text kind="small">{L(RT.shareBody)}</Text>
       <ShareCard
         text={m.share}
+        result={m.shareResult}
+        include={L(RT.shareInclude)}
+        includeLegend={L(RT.shareAdd)}
         title={L(RT.shareTitle)}
         button={L(RT.share)}
         copied={L(RT.copied)}
@@ -1094,6 +1246,7 @@ function KeepIt({
   towards,
   weight,
   pairs,
+  counts,
 }: {
   runner: StoryRunner
   zone: 'lean' | 'none' | 'unread'
@@ -1101,6 +1254,8 @@ function KeepIt({
   towards?: 'focal' | 'comparison'
   weight: number
   pairs: number
+  /** Women first, men first and even, for the profile's position with range (EVAL-10). */
+  counts: { w: number; m: number; e: number }
 }) {
   const ui = runner.lang
   const L = (t: T) => t[ui]
@@ -1119,6 +1274,7 @@ function KeepIt({
     ...(towards ? { towards } : {}),
     weight: Math.round(weight * 1000) / 1000,
     pairs,
+    counts,
     code: runner.code ?? '',
   })
   const save = async () => {

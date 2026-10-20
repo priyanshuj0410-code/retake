@@ -6,6 +6,7 @@
 3. After WebP (lossy, q 90) the same comparison is reported, not required to be 0: the codec encodes each file on
    its own, so it adds small differences everywhere.
 4. Tone accuracy: the median Lab of the mask core in each variant against its target (Delta E 1976).
+PORTRAIT_STORY=newsroom (or clinic) checks that story's build and writes check-output-<story>.txt (story.py).
 """
 import json
 import os
@@ -17,9 +18,9 @@ from scipy import ndimage
 from build import OUT_PX, PAD, crop384
 from colour import hex2lab, rgb2lab
 from skinmask import mask
+from story import CHECK_OUT, WORK, key
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-WORK = os.path.join(HERE, "work")
 PUBLIC = os.path.join(HERE, "..", "..", "public", "portraits")
 
 
@@ -39,7 +40,7 @@ def main():
         cid = r["base"]
         if cid not in cache:
             base = np.asarray(Image.open(os.path.join(WORK, "base", cid + ".png")).convert("RGB")).astype(int)
-            w, _ = mask(base.astype(np.uint8), cid)
+            w, _ = mask(base.astype(np.uint8), key(cid))
             foot = resize_f(ndimage.binary_dilation(w > 0, iterations=4), r["crop"]) != 0
             cache[cid] = (base, w, foot, crop384(base.astype(np.uint8), r["crop"]).astype(int))
         base, w, foot, base384 = cache[cid]
@@ -61,7 +62,7 @@ def main():
                      f"  | changed px {changed:6d}  | core median vs target dE {de:.2f}")
     head = [f"variants checked: {len(lines)}, failures: {fails}",
             "rule: max|diff| outside the mask must be exactly 0 at 512 px and outside the resampling footprint at 384 px"]
-    open(os.path.join(HERE, "check-output.txt"), "w").write("\n".join(head + lines) + "\n")
+    open(CHECK_OUT, "w").write("\n".join(head + lines) + "\n")
     print("\n".join(head))
 
 

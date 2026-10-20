@@ -12,9 +12,9 @@ import { config, type NoteId } from '../engine/config'
 import { recallOptions } from '../engine/session'
 import { deriveKeys, newCode, type CodeKeys } from '../engine/codes'
 import type { CardRecord, CharRecord, ItemRecord, PlayMeta, Submission } from '../engine/records'
-import { randomKey, type Rng } from '../engine/rng'
+import { randomKey, seeded, type Rng } from '../engine/rng'
 import { fill } from '../engine/text'
-import { SS, isPeople, type PeopleBeat, type Story } from './content'
+import { PRACTICE, SS, isPeople, type PeopleBeat, type Story } from './content'
 import {
   ONE_OFF,
   drawSeason,
@@ -26,6 +26,8 @@ import {
 
 export type StoryStep =
   | { kind: 'intro' }
+  /** An opt-in practice item (EVAL-10): rank, share and pick with the mascots and no cue; never recorded. */
+  | { kind: 'practice'; n: number }
   | { kind: 'beat'; i: number }
   | { kind: 'reveal' }
   | { kind: 'season' }
@@ -63,14 +65,41 @@ export interface RunnerState {
   demographics: Record<string, string>
   code: string | null
   sittings?: number
+  practice?: boolean | null
+  /** The firm player's own training date and each chapter's flag (EVAL-10); device only until submit. */
+  training?: string | null
+  timing?: Record<number, boolean>
 }
 
-export const IN_STORY: StoryStep['kind'][] = ['intro', 'beat', 'reveal', 'season', 'payoff']
+export const IN_STORY: StoryStep['kind'][] = [
+  'intro',
+  'practice',
+  'beat',
+  'reveal',
+  'season',
+  'payoff',
+]
 
 /** The wrap's single-choice items: prior knowledge, origin and replay (candidates v17 3.5), on one screen with one Done (EVAL-8). */
 const faking = config.season.faking
 
 export const WRAP_ITEMS = ['told', 'origin', 'replay'] as const
+
+const minutesCache = new Map<string, number>()
+
+/**
+ * The season's one session length in minutes (EVAL-10, copy audit B5): the runner's estimate at
+ * the configured paces, rounded up to the next 5 minutes. Every screen that names a length
+ * fills "{minutes}" from here, so no two screens disagree.
+ */
+export function sessionMinutes(story: Story): number {
+  const hit = minutesCache.get(story.id)
+  if (hit) return hit
+  const r = new StoryRunner(seeded(1), story, ['en'])
+  const m = Math.ceil(r.estimateSeconds() / 60 / 5) * 5
+  minutesCache.set(story.id, m)
+  return m
+}
 
 export class StoryRunner {
   readonly dep = 'season' as const
@@ -94,6 +123,22 @@ export class StoryRunner {
   readonly chapters: number
   /** How many sittings the season took (1 to 6; a count only, no times; PENDING v21). */
   sittings = 1
+  /** Whether the player took the opt-in practice round (EVAL-10): yes or no only; its answers are never kept. */
+  practice: boolean | null = null
+  /**
+   * A firm player's own training date (YYYY-MM-DD), when the season is played from a firm
+   * enrolment (EVAL-10). It never leaves the device: the record carries only, per chapter,
+   * whether that chapter was played after it (yes or no, `meta.chapter_timing`), with no time.
+   */
+  training: string | null = null
+  /** Per chapter (1 to `chapters + 1`, the finale last): played after the training date. Set at the chapter's first answer. */
+  timing: Record<number, boolean> = {}
+  /** Today as YYYY-MM-DD; the screen sets it to the store's clock (the demo clock in demo mode). */
+  clock: () => string = () => new Date().toISOString().slice(0, 10)
+  /** "English with Hinglish help" (EVAL-10): English on screen, the Hinglish under each question and description. */
+  get help() {
+    return this.langs.length > 1
+  }
   demographics: Record<string, string> = {}
   code: string | null = null
   keys: CodeKeys | null = null
@@ -120,6 +165,11 @@ export class StoryRunner {
     const chapters = story.episodes?.length ?? 1
     const steps: StoryStep[] = [{ kind: 'intro' }]
     const chapterOf: number[] = [1]
+    /* The opt-in practice round (EVAL-10) right after the opening; skipped unless chosen. */
+    PRACTICE.items.forEach((_, n) => {
+      steps.push({ kind: 'practice', n })
+      chapterOf.push(1)
+    })
     const push = (st: StoryStep, n: number) => {
       steps.push(st)
       chapterOf.push(n)
@@ -184,10 +234,7 @@ export class StoryRunner {
     const single = 2 + 1 + WRAP_ITEMS.length
     const story = this.season.story
     return (
-      cards.reduce(
-        (s, b) => s + ((b.beat.kind === 'split' ? tm.pair : tm[b.beat.kind]) ?? tm.rank),
-        0,
-      ) +
+      cards.reduce((s, b) => s + (tm[b.beat.kind] ?? tm.rank), 0) +
       ordinary * tm.ordinary +
       grid * tm.gridItem +
       single * tm.single +
@@ -240,6 +287,17 @@ export class StoryRunner {
   answer(value: unknown) {
     const s = this.current
     if (!s) return
+    const ch = this.chapterAt()
+    if (this.training && this.timing[ch] === undefined)
+      this.timing[ch] = this.clock() > this.training
+    if (s.kind === 'intro') {
+      /* "Practise first" or "Start the season": two equal choices; the second skips practice. */
+      this.practice = value === 'practice'
+      this.index += 1
+      if (!this.practice) while (this.current?.kind === 'practice') this.index += 1
+      this.onChange?.()
+      return
+    }
     if (s.kind === 'beat') {
       if (this.answers.has(s.i)) this.edits.set(s.i, (this.edits.get(s.i) ?? 0) + 1)
       this.answers.set(s.i, value as BeatAnswer)
@@ -267,6 +325,9 @@ export class StoryRunner {
       demographics: this.demographics,
       code: this.code,
       sittings: this.sittings,
+      practice: this.practice,
+      training: this.training,
+      timing: this.timing,
     })
   }
 
@@ -285,6 +346,23 @@ export class StoryRunner {
     this.demographics = s.demographics
     this.code = s.code
     this.sittings = s.sittings ?? 1
+    this.practice = s.practice ?? null
+    this.training = s.training ?? null
+    this.timing = s.timing ?? {}
+  }
+
+  /**
+   * The firm flag per chapter (EVAL-10): one letter per chapter and the finale, "y" when it was
+   * played after the player's own training date, "n" when not (before it, or on the day); null
+   * when the season has no training date (a panel player). A chapter with no answer yet takes
+   * today.
+   */
+  chapterTiming(): string | null {
+    if (!this.training) return null
+    const after = this.clock() > this.training
+    return [...Array(this.chapters + 1).keys()]
+      .map((k) => ((this.timing[k + 1] ?? after) ? 'y' : 'n'))
+      .join('')
   }
 
   /** The chapter (or the finale, `chapters + 1`) a step belongs to. */
@@ -298,6 +376,23 @@ export class StoryRunner {
       st.kind === 'beat' && this.chapterOf[k] === n ? [k] : [],
     )
     return { total: idx.length, done: idx.filter((k) => k < this.index).length }
+  }
+
+  /**
+   * The season bar (EVAL-10): how much of the season's cards are done, 0 to 1, and a tick where
+   * each chapter after the first (and the finale) starts. Cards only, so the bar never moves on
+   * a page-turn screen.
+   */
+  seasonProgress(): { value: number; ticks: number[] } {
+    const cards = this.steps.flatMap((st, k) => (st.kind === 'beat' ? [k] : []))
+    const total = cards.length || 1
+    const done = cards.filter((k) => k < this.index).length
+    const ticks: number[] = []
+    for (let n = 2; n <= this.chapters + 1; n++) {
+      const first = cards.findIndex((k) => this.chapterOf[k] === n)
+      if (first > 0) ticks.push(first / total)
+    }
+    return { value: done / total, ticks }
   }
 
   /** A new sitting: the season was reopened from this device at a save point (PENDING v21). */
@@ -497,7 +592,10 @@ export class StoryRunner {
       split: 'low',
       note: this.note,
       sit: this.sittings,
+      practice: this.practice ? 'y' : 'n',
     }
+    const timing = this.chapterTiming()
+    if (timing) meta.chapter_timing = timing
     const cards: Record<string, CardRecord> = {}
     const items: Record<string, ItemRecord> = {}
     this.season.beats.forEach((b, i) => {

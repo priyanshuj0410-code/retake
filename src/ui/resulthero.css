@@ -1,4 +1,4 @@
-/* @owns resulthero resulthero__group resulthero__big resulthero__number resulthero__line resulthero__dots resulthero__dot resulthero__dot--filled resulthero__dot--dashed resulthero__band resulthero__body */
+/* @owns resulthero resulthero__group resulthero__big resulthero__number resulthero__line resulthero__pair resulthero__dots resulthero__dot resulthero__dot--filled resulthero__dot--dashed resulthero__band resulthero__body */
 .resulthero {
   display: flex;
   flex-direction: column;
@@ -29,6 +29,11 @@
 }
 .resulthero__line {
   color: var(--c-body);
+}
+.resulthero__pair {
+  margin: var(--gap-none);
+  font-size: var(--text-small);
+  color: var(--c-muted);
 }
 .resulthero__dots {
   display: grid;

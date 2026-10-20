@@ -54,6 +54,9 @@ async function preference(page: Page, sel: string): Promise<number[]> {
   )
   const idx = cards.map((_, i) => i)
   if (POLICY === 'order') return idx
+  /* POLICY=weak goes against the descriptions (a player the result cannot read). */
+  if (POLICY === 'weak')
+    return idx.sort((a, b) => (TIER.get(cards[a].desc) ?? 0) - (TIER.get(cards[b].desc) ?? 0))
   return idx.sort(
     (a, b) =>
       (TIER.get(cards[b].desc) ?? 0) - (TIER.get(cards[a].desc) ?? 0) ||
@@ -151,24 +154,40 @@ export async function playSeason(
     if (
       m === 'demo' ||
       m === 'disclosure' ||
-      m === 'story:intro' ||
       m === 'story:payoff' ||
       m === 'story:saved' ||
       m === 'story:reveal' ||
       m === 'story:note'
     )
-      await click(page, page.locator('.page__actions button').first())
-    else if (m === 'eligibility') {
-      for (const name of [/18 or over/, /work in India/]) {
-        await page.getByRole('group', { name }).getByRole('radio', { name: 'Yes' }).check()
-        clicks += 1
-        asked += 1
-      }
-      /* The language choice shares the screen when the link lets the player choose (EVAL-8). */
+      await click(page, page.locator('.page > .page__inner > main > .actions button').first())
+    else if (m === 'story:intro')
+      /* The opt-in practice round (EVAL-10): PRACTICE=no starts the season at once. */
+      await click(
+        page,
+        button(process.env.PRACTICE === 'no' ? 'Start the season' : 'Practise first'),
+      )
+    else if (m === 'story:practice') {
+      /* Practice is never counted as a decision: rank, share or pick, the simplest way. */
+      if (await page.locator('.split__row').count()) {
+        const rows = page.locator('.split__row')
+        await click(page, rows.nth(0).getByRole('button', { name: /: 4$/ }))
+        await click(page, rows.nth(1).getByRole('button', { name: /: 2$/ }))
+        await click(page, button('Confirm these shares'))
+      } else if (await page.locator('.tapcard[aria-pressed]').count()) {
+        for (let i = 0; i < 3; i++) await click(page, page.locator('.tapcard').nth(i))
+        await click(page, button('Confirm this order'))
+      } else await click(page, page.locator('.tapcard').first())
+    } else if (m === 'eligibility') {
+      /* Language first (EVAL-10), then the two items in the language chosen. */
       const lang = page.getByRole('radio', { name: 'English', exact: true })
       if (await lang.count()) {
         await lang.check()
         clicks += 1
+      }
+      for (const name of [/18 or over/, /work in India/]) {
+        await page.getByRole('group', { name }).getByRole('radio', { name: 'Yes' }).check()
+        clicks += 1
+        asked += 1
       }
       await click(page, button('Continue'))
     } else if (m === 'consent') await click(page, button('I agree to take part'))
@@ -184,7 +203,7 @@ export async function playSeason(
       const cards = page.locator('.tapcard')
       const order = await preference(page, '.tapcard')
       for (const i of order.slice(0, 3)) await click(page, cards.nth(i))
-      await click(page, button('Lock in this order'))
+      await click(page, button('Confirm this order'))
     } else if (m === 'story:beat:pick') {
       decisions += 1
       asked += 1
@@ -195,10 +214,12 @@ export async function playSeason(
     } else if (m === 'story:beat:split') {
       decisions += 1
       asked += 1
-      /* A one-tap pair (EVAL-8): the preferred colleague, then Lock in. */
-      const order = await preference(page, '.tapcard')
-      await click(page, page.locator('.tapcard').nth(order[0]))
-      await click(page, button('Lock in this choice'))
+      /* A split across three (EVAL-10): 4 and 2 to the two preferred, then confirm. */
+      const rows = page.locator('.split__row')
+      const order = await preference(page, '.split__row')
+      await click(page, rows.nth(order[0]).getByRole('button', { name: /: 4$/ }))
+      await click(page, rows.nth(order[1]).getByRole('button', { name: /: 2$/ }))
+      await click(page, button('Confirm these shares'))
     } else if (m === 'story:screening' || m === 'story:fsurvey') await grid(true)
     else if (m === 'story:recall') {
       decisions += 1

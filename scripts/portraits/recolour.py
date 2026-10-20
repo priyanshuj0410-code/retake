@@ -11,8 +11,12 @@ import numpy as np
 
 from colour import hex2lab, lab2rgb, lin2srgb, srgb2lin
 
-# lightest to darkest; the evaluator's tones, used as targets for the mid-skin colour
-TONES = {"t1": "#EDC6A2", "t2": "#D9A47B", "t3": "#9A6440", "t4": "#6B4329"}
+# lightest to darkest, the targets for the mid-skin colour. Owner, 20 Oct 2026: the darkest tone was too dark and the
+# steps uneven (L* 82.4 / 71.4 / 47.4 / 32.5, steps 11.0, 24.0, 14.9). Now even steps of about 14.8 in CIELAB L*:
+# l1 kept, d2 raised to L* 38, l2 and d1 between, with a* and b* interpolated in L* along the old tones (one-off m
+# included), so hue and chroma follow the old curve. The one-offs' m (L* 59.8) sits between l2 and d1.
+# Before: {"t1": "#EDC6A2", "t2": "#D9A47B", "t3": "#9A6440", "t4": "#6B4329"}
+TONES = {"t1": "#EDC6A2", "t2": "#D09970", "t3": "#A9724B", "t4": "#7C4F31"}  # L* 82.4, 67.5, 52.9, 38.0
 
 
 def shoulder(x, k=0.92):

@@ -11,6 +11,7 @@ import type { Lang, T } from '../content/types'
 import { config } from '../engine/config'
 import { fill } from '../engine/text'
 import { RT, SS, type Domain } from './content'
+import { pc, positionOf } from './range'
 import {
   advantage,
   cueSets,
@@ -58,37 +59,75 @@ export interface ResultModel {
   rating: Rating
   band: string
   body: string
-  /** Where the player sits on the bar, 0 (always the men) to 1 (always the women), and the shaded middle. */
-  bar: { at: number; from: number; to: number; left: string; right: string; label: string } | null
-  strength: string | null
+  /** Where the result sits on the men-first to women-first line, with its range (EVAL-10). */
+  range: {
+    at: number
+    lo: number
+    hi: number
+    label: string
+    caption: string
+    note: string
+    ends: { left: string; middle: string; right: string }
+  } | null
+  /** "Not enough to tell": nothing of the result shows below the tag (EVAL-10, copy audit G5). */
+  unread: boolean
+  /** The women-and-men pairs: woman first, man first, even (the profile keeps them, EVAL-10). */
+  counts: { w: number; m: number; e: number }
   /** The one number to remember: k of n equal woman-and-man pairs went one way, and the dots. */
   hero: {
     big: string
     line: string
+    pair: string
     dots: { filled: number; rings: number; dashed: number; label: string }
   } | null
   why: string[]
   cards: CueCard[]
   domains: DomainSection[]
   share: string
+  /** What "Include my result" adds to the card: the women-and-men tag and its chance line, nothing else. */
+  shareResult: string
 }
 
-const pct = (x: number) => Math.round(x * 100)
 const DOMAINS: Domain[] = ['hiring', 'conduct', 'resources']
 /** The cues a player is shown (owner decision O3): caste and birthplace are read for groups only. */
 const SHOWN: Cue[] = ['sex', 'religion', 'tone']
 
-/** A reading's words: one of the five levels (owner decision O2), with the group it leans to. */
-export function levelName(level: Level, group: string, lang: Lang, unengaged = false): string {
+/** The group words a tag uses: "men", "women", or both together ("women and men"). */
+export function tagGroup(cue: Cue, towards: 'focal' | 'comparison' | 'both', lang: Lang): string {
+  const c = RT.cues[cue]
+  const t = towards === 'both' ? c.both : towards === 'focal' ? c.firstFocal : c.firstComparison
+  return (t ?? c.label)[lang]
+}
+
+/**
+ * A reading's tag (EVAL-10, owner): "Clear pattern: men first", "Pattern: men first more
+ * often", "Maybe a pattern: men first a little more often", "No pattern: women and men first
+ * about equally", "Not enough to tell". The thresholds behind them stay in config
+ * (season.rating.levels), never in player copy.
+ */
+export function levelName(
+  level: Level,
+  cue: Cue,
+  towards: 'focal' | 'comparison' | undefined,
+  lang: Lang,
+  unengaged = false,
+): string {
   const L = (t: T) => t[lang]
-  if (level === 'strong' || level === 'moderate' || level === 'possible')
-    return fill(L(RT.levels[level].name), { group })
-  return L(RT.bands[unengaged ? 'unengaged' : level === 'none' ? 'none' : 'unread'].name)
+  if (unengaged || level === 'unread') return L(RT.tags.unread)
+  if (level === 'none') return fill(L(RT.tags.none), { group: tagGroup(cue, 'both', lang) })
+  return fill(L(RT.tags[level]), { group: tagGroup(cue, towards ?? 'comparison', lang) })
 }
 
 export function cueGroup(r: Pick<CueReading, 'cue' | 'towards'>, lang: Lang): string {
   const c = RT.cues[r.cue]
   return (r.towards === 'focal' ? c.focal : c.comparison)[lang]
+}
+
+/** "about 1 in 20", from a rate (EVAL-10's share card): one in N up to a half, else k in 20. */
+export function oneIn(rate: number, lang: Lang): { n: number; k: number; of: number } {
+  void lang
+  if (rate <= 0.5) return { n: Math.max(1, Math.round(1 / rate)), k: 1, of: 0 }
+  return { n: 0, k: Math.round(rate * 20), of: 20 }
 }
 
 export function resultModel(run: StoryRunner): ResultModel {
@@ -98,14 +137,14 @@ export function resultModel(run: StoryRunner): ResultModel {
   const h = rating.headline
   const sexWords = RT.cues.sex
   const bandKey = !h.engaged ? 'unengaged' : h.level
-  const group = h.towards ? cueGroup(h, lang) : ''
-  const band = levelName(h.level, group, lang, !h.engaged)
-  const body =
-    bandKey === 'strong' || bandKey === 'moderate' || bandKey === 'possible'
-      ? fill(L(RT.levels[bandKey].body), { group })
-      : fill(L(RT.bands[bandKey].body), { group })
+  const unread = bandKey === 'unengaged' || bandKey === 'unread'
+  const band = levelName(h.level, 'sex', h.towards, lang, !h.engaged)
+  const body = fill(L(RT.tagBodies[bandKey]), {
+    group: cueGroup({ cue: 'sex', towards: h.towards ?? 'comparison' }, lang),
+    both: tagGroup('sex', 'both', lang),
+  })
 
-  /* The mixed-sex decisive pairs, counted by who came out ahead. */
+  /* The mixed-sex decisive pairs, counted by who came first. */
   const sexPairs = rating.decisive.filter((p) => run.person(p.a).sex !== run.person(p.b).sex)
   const womanAhead = sexPairs.filter(
     (p) =>
@@ -114,18 +153,19 @@ export function resultModel(run: StoryRunner): ResultModel {
   ).length
   const manAhead = sexPairs.filter((p) => p.adv !== 0).length - womanAhead
   const n = sexPairs.length
+  const even = n - manAhead - womanAhead
 
-  let bar: ResultModel['bar'] = null
-  let strength: string | null = null
+  let range: ResultModel['range'] = null
   let hero: ResultModel['hero'] = null
-  if (n > 0 && bandKey !== 'unengaged') {
+  const pos = positionOf({ w: womanAhead, m: manAhead, e: even })
+  if (n > 0 && !unread && pos) {
     const lead = manAhead >= womanAhead
-    const even = n - manAhead - womanAhead
     hero = {
       big: fill(L(RT.heroNumber), { k: lead ? manAhead : womanAhead, n }),
       line: fill(L(RT.heroLine), {
         one: L(lead ? sexWords.comparisonOne : sexWords.focalOne),
       }),
+      pair: L(RT.pairIs),
       dots: {
         filled: manAhead,
         rings: womanAhead,
@@ -133,22 +173,14 @@ export function resultModel(run: StoryRunner): ResultModel {
         label: fill(L(RT.heroDots), { n, m: manAhead, w: womanAhead, e: even }),
       },
     }
-    const at = (1 + h.weight) / 2
-    bar = {
-      at,
-      from: (1 - h.floor) / 2,
-      to: (1 + h.floor) / 2,
-      left: L(sexWords.comparison),
-      right: L(sexWords.focal),
-      label: L(RT.strengthLabel),
+    const ends = { left: L(RT.rangeLeft), middle: L(RT.rangeMiddle), right: L(RT.rangeRight) }
+    range = {
+      ...pos,
+      ends,
+      caption: L(RT.rangeCaption),
+      note: L(RT.rangeNote),
+      label: fill(L(RT.rangeSaid), { at: pc(pos.at), lo: pc(pos.lo), hi: pc(pos.hi), tag: band }),
     }
-    const menLead = manAhead >= womanAhead
-    strength = fill(L(RT.strengthText), {
-      n,
-      a: L(menLead ? sexWords.comparison : sexWords.focal),
-      k: menLead ? manAhead : womanAhead,
-      pct: pct((menLead ? manAhead : womanAhead) / n),
-    })
   }
 
   const why: string[] = []
@@ -203,7 +235,7 @@ export function resultModel(run: StoryRunner): ResultModel {
     return {
       cue: r.cue,
       label: L(RT.cueShort[r.cue]),
-      level: r.cue === 'sex' ? band : levelName(r.level, g, lang),
+      level: r.cue === 'sex' ? band : levelName(r.level, r.cue, r.towards, lang),
       zone: r.cue === 'sex' && !h.engaged ? 'unread' : r.zone,
       meaning: fill(L(RT.meaning[r.cue === 'sex' && !h.engaged ? 'unread' : r.zone]), {
         group: g,
@@ -341,7 +373,9 @@ export function resultModel(run: StoryRunner): ResultModel {
             const dr = rating.domains[d]
             const g = dr.towards ? cueGroup(dr, lang) : ''
             return {
-              level: fill(L(RT.domainReading), { zone: levelName(dr.level, g, lang) }),
+              level: fill(L(RT.domainReading), {
+                zone: levelName(dr.level, 'sex', dr.towards, lang),
+              }),
               zone: dr.zone,
               group: g,
             }
@@ -355,29 +389,63 @@ export function resultModel(run: StoryRunner): ResultModel {
     }
   })
 
+  /* The share card (EVAL-10, owner): the season only by default; "Include my result" adds the
+     women-and-men tag and one line on how often chance alone gives it, from the reading levels
+     in config. Religion and skin tone are never on the card. */
   const shareText = fill(L(RT.shareCard), {
     title: L(run.season.story.title),
     decisions: run.decisions,
-    episodes: run.season.story.episodes?.length ?? 0,
+    chapters: run.chapters,
     cast: run.cast.length,
-    band,
   })
-  return { rating, band, body, bar, strength, hero, why, cards, domains, share: shareText }
+  const shareResult = [fill(L(RT.shareResult), { tag: band }), chanceLine(bandKey, lang)]
+    .filter(Boolean)
+    .join(' ')
+  return {
+    rating,
+    band,
+    body,
+    range,
+    unread,
+    counts: { w: womanAhead, m: manAhead, e: even },
+    hero,
+    why: unread ? [] : why,
+    cards,
+    domains,
+    share: shareText,
+    shareResult,
+  }
 }
 
-/** One saved season as the profile's timeline shows it: its band, worded as on the result page. */
+/**
+ * The share card's chance line, from config.season.rating.levels (never a number in the
+ * content): for a pattern tag, how many players who go by the descriptions alone get that tag
+ * or a clearer one; for "No pattern", how many of them get it. None for "Not enough to tell".
+ */
+export function chanceLine(key: Level | 'unengaged', lang: Lang): string {
+  const L = (t: T) => t[lang]
+  const lv = config.season.rating.levels
+  if (key === 'strong' || key === 'moderate' || key === 'possible') {
+    const o = oneIn(1 - lv[key], lang)
+    return o.of
+      ? fill(L(RT.shareChanceMany), { k: o.k, of: o.of })
+      : fill(L(RT.shareChancePattern), { n: o.n })
+  }
+  if (key === 'none') {
+    const o = oneIn(lv.possible, lang)
+    return o.of
+      ? fill(L(RT.shareChanceNone), { k: o.k, of: o.of })
+      : fill(L(RT.shareChanceNoneOne), { n: o.n })
+  }
+  return ''
+}
+
+/** One saved season as the profile's timeline shows it: its tag, worded as on the result page. */
 export function bandOf(
   s: { zone: string; level?: Level; towards?: 'focal' | 'comparison' },
   lang: Lang = 'en',
 ): string {
-  const L = (t: T) => t[lang]
-  if (s.level)
-    return levelName(
-      s.level,
-      s.towards ? cueGroup({ cue: 'sex', towards: s.towards }, lang) : '',
-      lang,
-    )
-  if (s.zone === 'unread') return L(RT.bands.unread.name)
-  if (s.zone === 'none') return L(RT.bands.none.name)
-  return fill(L(RT.bands.lean.name), { group: cueGroup({ cue: 'sex', towards: s.towards }, lang) })
+  const level: Level =
+    s.level ?? (s.zone === 'lean' ? 'moderate' : s.zone === 'none' ? 'none' : 'unread')
+  return levelName(level, 'sex', s.towards, lang)
 }

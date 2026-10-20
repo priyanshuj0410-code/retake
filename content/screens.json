@@ -8,7 +8,7 @@
     "fullDetails": { "en": "Read the full details", "hinglish": "Poori jaankari padhiye" },
     "updateReady": { "en": "Update ready. Your season is kept.", "hinglish": "Naya version taiyaar hai. Aapka season bacha rehta hai." },
     "update": { "en": "Update", "hinglish": "Update karein" },
-    "prototype": { "en": "Prototype. Fictional people and stories; your answers stay in this browser.", "hinglish": "Prototype. Kaalpanik log aur kahaniyan; aapke jawab isi browser mein rehte hain." },
+    "prototype": { "en": "Prototype. Fictional people and stories; your answers stay in this browser.", "hinglish": "Prototype. Fictional log aur kahaniyan; aapke jawab isi browser mein rehte hain." },
     "moveUp": { "en": "Move up", "hinglish": "Upar karein" },
     "moveDown": { "en": "Move down", "hinglish": "Neeche karein" },
     "position": { "en": "position {n} of {k}", "hinglish": "{k} mein se {n} number par" },
@@ -22,15 +22,15 @@
     "notSure": { "en": "Not sure", "hinglish": "Pakka nahin" },
     "dragHint": { "en": "Drag a card, or use the arrows.", "hinglish": "Card ko kheenchiye, ya arrows use kijiye." },
     "acts": {
-      "start": { "en": "Start", "hinglish": "Shuruaat" },
+      "start": { "en": "Start", "hinglish": "Shuru" },
       "firstWeek": { "en": "First week", "hinglish": "Pehla hafta" },
       "season": { "en": "Your season", "hinglish": "Aapka season" },
       "screening": { "en": "A few questions", "hinglish": "Kuch sawaal" },
       "survey": { "en": "Questions", "hinglish": "Sawaal" },
-      "offTheRecord": { "en": "Off the Record", "hinglish": "Off the Record" },
-      "inbox": { "en": "Committee Inbox", "hinglish": "Committee Inbox" },
-      "note": { "en": "Mid-season note", "hinglish": "Mid-season note" },
-      "after": { "en": "Rounds after the note", "hinglish": "Note ke baad ke rounds" },
+      "offTheRecord": { "en": "Off the record", "hinglish": "Off the record" },
+      "inbox": { "en": "Committee inbox", "hinglish": "Committee inbox" },
+      "note": { "en": "Mid-season message", "hinglish": "Mid-season message" },
+      "after": { "en": "Chapters after the message", "hinglish": "Message ke baad ke chapters" },
       "wrap": { "en": "Season wrap", "hinglish": "Season wrap" },
       "direct": { "en": "Questions", "hinglish": "Sawaal" }
     }
@@ -156,15 +156,15 @@
     "route": { "en": "Under the Sexual Harassment of Women at Workplace Act, 2013, complaints go to the employer's Internal Committee, or to the district's Local Committee where there is none.", "hinglish": "Sexual Harassment of Women at Workplace Act, 2013 ke tahat shikayat employer ki Internal Committee ke paas jaati hai, ya jahan woh na ho, zile ki Local Committee ke paas." }
   },
   "note": {
-    "title": { "en": "A note before the next part", "hinglish": "Agle hisse se pehle ek note" },
+    "title": { "en": "A message before the next part", "hinglish": "Agle hisse se pehle ek message" },
     "sourceLabel": { "en": "Source", "hinglish": "Source" }
   },
   "recall": {
-    "question": { "en": "What did the note before this part say?", "hinglish": "Is hisse se pehle wale note mein kya likha tha?" },
+    "question": { "en": "What did the message before this part say?", "hinglish": "Is hisse se pehle wale message mein kya likha tha?" },
     "options": [
-      { "id": "a", "text": { "en": "A figure about views on gender at work, then: answer as you would", "hinglish": "Kaam par gender par vichaaron ka ek aankda, phir: waise jawab dijiye jaise aap dete hain" } },
-      { "id": "b", "text": { "en": "A figure about commuting, then: answer as you would", "hinglish": "Aane jaane ka ek aankda, phir: waise jawab dijiye jaise aap dete hain" } },
-      { "id": "c", "text": { "en": "A figure about commuting, then: answer as the ideal employee would", "hinglish": "Aane jaane ka ek aankda, phir: waise jawab dijiye jaise ek ideal employee deta" } },
+      { "id": "a", "text": { "en": "A figure about views on gender at work, then: answer as you would", "hinglish": "Kaam par gender ko lekar soch ka ek aankda, phir: waise hi jawab dijiye jaise aap dete hain" } },
+      { "id": "b", "text": { "en": "A figure about commuting, then: answer as you would", "hinglish": "Aane jaane ka ek aankda, phir: waise hi jawab dijiye jaise aap dete hain" } },
+      { "id": "c", "text": { "en": "A figure about commuting, then: answer as the ideal employee would", "hinglish": "Aane jaane ka ek aankda, phir: waise hi jawab dijiye jaise ek ideal employee deta hai" } },
       { "id": "d1", "decoy": true, "text": { "en": "A figure about team meetings, then: thanks for playing so far", "hinglish": "Team meetings ka ek aankda, phir: ab tak khelne ke liye shukriya" } },
       { "id": "d2", "decoy": true, "text": { "en": "A figure about lunch breaks, then: the season is half done", "hinglish": "Lunch break ka ek aankda, phir: season aadha ho gaya hai" } },
       { "id": "d3", "decoy": true, "text": { "en": "A figure about email at work, then: the next part is short", "hinglish": "Kaam par email ka ek aankda, phir: agla hissa chhota hai" } },
@@ -176,11 +176,11 @@
       "question": { "en": "Spot the pattern: which of these did you notice changing between the characters?", "hinglish": "Pattern pehchaniye: characters ke beech inmein se kya badalta hua aapne dekha?" },
       "hint": { "en": "Choose any number.", "hinglish": "Jitne chahein chunein." },
       "options": [
-        { "id": "sex", "text": { "en": "Whether a character was a woman or a man", "hinglish": "Character aurat tha ya aadmi" } },
+        { "id": "sex", "text": { "en": "Whether a character was a woman or a man", "hinglish": "Character mahila tha ya purush" } },
         { "id": "first-names", "text": { "en": "First names, beyond that", "hinglish": "Uske alawa pehle naam" } },
         { "id": "surnames", "text": { "en": "Surnames", "hinglish": "Surnames" } },
-        { "id": "skin", "text": { "en": "Skin colour", "hinglish": "Twacha ka rang" } },
-        { "id": "birthplace", "text": { "en": "The 'Born in' line", "hinglish": "'Janm sthaan' wali line" } },
+        { "id": "skin", "text": { "en": "Skin colour", "hinglish": "Skin tone" } },
+        { "id": "birthplace", "text": { "en": "The 'Born in' line", "hinglish": "'Kahan paida hue' wali line" } },
         { "id": "animal-human", "text": { "en": "Animal or human", "hinglish": "Jaanwar ya insaan" } },
         { "id": "badge", "text": { "en": "Badge colours", "hinglish": "Badge ke rang" } },
         { "id": "descriptions", "text": { "en": "The descriptions", "hinglish": "Descriptions" } },
@@ -210,30 +210,30 @@
       ]
     },
     "code": {
-      "title": { "en": "Your withdrawal code", "hinglish": "Aapka withdrawal code" },
+      "title": { "en": "Your code", "hinglish": "Aapka code" },
       "body": { "en": "This code is shown once. Save it: write it down or take a screenshot. Your answers carry this code, not your name.", "hinglish": "Yeh code sirf ek baar dikhaya jaata hai. Ise save kijiye: likh lijiye ya screenshot le lijiye. Aapke jawabon par yeh code hai, aapka naam nahin." },
-      "release": { "en": "From {date}, a page explaining the study opens with this code. You can withdraw with it until {until}.", "hinglish": "{date} se is code se study samjhane wala page khulega. Aap {until} tak isse withdraw kar sakte hain." },
+      "release": { "en": "From {date}, a page explaining the study opens with this code. You can delete your answers with it until {until}.", "hinglish": "{date} se is code se study samjhane wala page khulega. Aap {until} tak isse apne jawab mita sakte hain." },
       "copy": { "en": "Copy the code", "hinglish": "Code copy karein" },
       "copied": { "en": "Copied. Save it somewhere you will find it.", "hinglish": "Copy ho gaya. Ise aisi jagah save kijiye jahan aap ise dhoondh sakein." },
       "saved": { "en": "I have saved my code", "hinglish": "Maine apna code save kar liya hai" }
     },
     "demographics": {
       "title": { "en": "About you (optional)", "hinglish": "Aapke baare mein (optional)" },
-      "body": { "en": "Each question is optional. These answers are stored apart from everything else, carry only the answer, and are read only for groups of 50 or more.", "hinglish": "Har sawaal optional hai. Yeh jawab baaki sab se alag rakhe jaate hain, inmein sirf jawab hota hai, aur sirf 50 ya usse zyaada ke groups ke liye padhe jaate hain." },
+      "body": { "en": "Each question is optional. These answers are stored apart from everything else, carry only the answer, and are read only for groups of 50 or more.", "hinglish": "Har sawaal optional hai. Yeh jawab baaki sab se alag rakhe jaate hain, inmein sirf jawab hota hai, aur sirf 50 ya usse zyada ke groups ke liye padhe jaate hain." },
       "items": [
         { "id": "gender", "firm": false, "text": { "en": "Your gender", "hinglish": "Aapka gender" }, "options": [
-          { "id": "woman", "text": { "en": "Woman", "hinglish": "Aurat" } },
-          { "id": "man", "text": { "en": "Man", "hinglish": "Aadmi" } },
-          { "id": "another", "text": { "en": "Another", "hinglish": "Anya" } }
+          { "id": "woman", "text": { "en": "Woman", "hinglish": "Mahila" } },
+          { "id": "man", "text": { "en": "Man", "hinglish": "Purush" } },
+          { "id": "another", "text": { "en": "Another", "hinglish": "Koi aur" } }
         ] },
-        { "id": "religion", "firm": true, "text": { "en": "Your religion", "hinglish": "Aapka dharm" }, "options": [
+        { "id": "religion", "firm": true, "text": { "en": "Your religion", "hinglish": "Aapka religion" }, "options": [
           { "id": "hindu", "text": { "en": "Hindu", "hinglish": "Hindu" } },
           { "id": "muslim", "text": { "en": "Muslim", "hinglish": "Muslim" } },
           { "id": "christian", "text": { "en": "Christian", "hinglish": "Christian" } },
           { "id": "sikh", "text": { "en": "Sikh", "hinglish": "Sikh" } },
           { "id": "buddhist", "text": { "en": "Buddhist", "hinglish": "Buddhist" } },
           { "id": "jain", "text": { "en": "Jain", "hinglish": "Jain" } },
-          { "id": "another", "text": { "en": "Another, or none", "hinglish": "Anya, ya koi nahin" } }
+          { "id": "another", "text": { "en": "Another, or none", "hinglish": "Koi aur, ya koi nahin" } }
         ] },
         { "id": "caste", "firm": true, "text": { "en": "Your caste or community category", "hinglish": "Aapki caste ya community category" }, "options": [
           { "id": "sc", "text": { "en": "Scheduled Caste", "hinglish": "Scheduled Caste" } },
@@ -248,23 +248,23 @@
           { "id": "west", "text": { "en": "West", "hinglish": "West" } },
           { "id": "north-east", "text": { "en": "North-east", "hinglish": "North-east" } },
           { "id": "central", "text": { "en": "Central", "hinglish": "Central" } },
-          { "id": "outside", "text": { "en": "Outside India", "hinglish": "Bharat ke bahar" } }
+          { "id": "outside", "text": { "en": "Outside India", "hinglish": "India ke bahar" } }
         ] }
       ]
     },
     "submit": {
-      "title": { "en": "Submit or withdraw", "hinglish": "Submit ya withdraw" },
-      "body": { "en": "Submit sends your answers under your code. Withdraw deletes them now and sends nothing; your code still opens the explanation page when it is released.", "hinglish": "Submit aapke jawab aapke code ke saath bhejta hai. Withdraw unhe abhi mita deta hai aur kuch nahin bhejta; release hone par aapka code tab bhi explanation page kholta hai." },
+      "title": { "en": "Send or delete your answers", "hinglish": "Jawab bhejein ya mita dein" },
+      "body": { "en": "Submit sends your answers under your code. Delete my answers removes them now and sends nothing. Your code still opens the explanation page when it is released.", "hinglish": "Submit aapke jawab aapke code ke saath bhejta hai. Mere jawab mita dein unhe abhi mita deta hai aur kuch nahin bhejta. Release hone par aapka code tab bhi explanation page kholta hai." },
       "submit": { "en": "Submit my answers", "hinglish": "Mere jawab submit karein" },
-      "withdraw": { "en": "Withdraw now", "hinglish": "Abhi withdraw karein" },
-      "submitted": { "en": "Thank you. Your answers are in. Keep your code: it opens the explanation page and lets you withdraw later.", "hinglish": "Shukriya. Aapke jawab pahunch gaye. Apna code rakhiye: isse explanation page khulta hai aur aap baad mein withdraw kar sakte hain." },
-      "withdrawn": { "en": "Thank you. Nothing from this session was stored. Keep your code if you want to read the explanation page when it is released.", "hinglish": "Shukriya. Is session ka kuch bhi store nahin hua. Release hone par explanation page padhna ho to apna code rakhiye." },
+      "withdraw": { "en": "Delete my answers", "hinglish": "Mere jawab mita dein" },
+      "submitted": { "en": "Thank you. Your answers are in. Keep your code: it opens the explanation page and lets you delete your answers later.", "hinglish": "Shukriya. Aapke jawab pahunch gaye. Apna code rakhiye: isse explanation page khulta hai aur aap baad mein apne jawab mita sakte hain." },
+      "withdrawn": { "en": "Thank you. Your answers are deleted and nothing from this session was stored. Keep your code if you want to read the explanation page when it is released.", "hinglish": "Shukriya. Aapke jawab mita diye gaye aur is session ka kuch bhi store nahin hua. Release hone par explanation page padhna ho to apna code rakhiye." },
       "failed": { "en": "Your answers could not be sent. Check your connection and try again; nothing is lost while this page is open.", "hinglish": "Aapke jawab bheje nahin ja sake. Connection check karke dobara koshish kijiye; yeh page khula rehne tak kuch nahin khota." }
     }
   },
   "entry": {
     "title": { "en": "This link cannot open a game", "hinglish": "Yeh link game nahin khol sakta" },
-    "refused": { "en": "This link has already been used. Each link starts one session only, and a session cannot be replayed.", "hinglish": "Yeh link pehle hi use ho chuka hai. Har link sirf ek session shuru karta hai, aur session dobara nahin khela ja sakta." },
+    "refused": { "en": "This link has already been used. Each link starts a single session only, and a session cannot be replayed.", "hinglish": "Yeh link pehle hi use ho chuka hai. Har link sirf ek session shuru karta hai, aur session dobara nahin khela ja sakta." },
     "unknown": { "en": "This link is not valid.", "hinglish": "Yeh link valid nahin hai." },
     "offline": { "en": "The study could not be reached. Check your connection and open the link again.", "hinglish": "Study tak pahuncha nahin ja saka. Connection check karke link dobara kholiye." }
   },
@@ -291,10 +291,10 @@
     "badCode": { "en": "That code was not recognised. Check it and try again.", "hinglish": "Yeh code pehchana nahin gaya. Check karke dobara koshish kijiye." }
   },
   "withdraw": {
-    "title": { "en": "Withdraw from the study", "hinglish": "Study se withdraw karein" },
-    "body": { "en": "Entering your code deletes every record that carries it, in every store. This cannot be undone.", "hinglish": "Code daalne se us code wale saare records, har store se, mit jaate hain. Ise wapas nahin kiya ja sakta." },
-    "button": { "en": "Delete my records", "hinglish": "Mere records mitaiye" },
-    "done": { "en": "Your records have been deleted.", "hinglish": "Aapke records mita diye gaye." },
-    "closed": { "en": "Withdrawal closed on {date}, when every code was destroyed.", "hinglish": "Withdrawal {date} ko band hua, jab saare codes nasht kar diye gaye." }
+    "title": { "en": "Delete my answers", "hinglish": "Mere jawab mita dein" },
+    "body": { "en": "Enter your code to delete all your answers, from every place they are stored. This cannot be undone.", "hinglish": "Apna code daaliye. Aapke saare jawab, har jagah se, mit jaayenge. Ise wapas nahin kiya ja sakta." },
+    "button": { "en": "Delete my answers", "hinglish": "Mere jawab mita dein" },
+    "done": { "en": "Your answers have been deleted.", "hinglish": "Aapke jawab mita diye gaye." },
+    "closed": { "en": "Deleting answers closed on {date}, when every code was destroyed.", "hinglish": "Jawab mitane ka mauka {date} ko band hua, jab saare codes hata diye gaye." }
   }
 }

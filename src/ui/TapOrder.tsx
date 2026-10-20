@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import { Colleague, type ColleagueView } from './Colleague'
+import { Actions } from './Actions'
 import { Button } from './Button'
 import { Stamp } from './Comic'
 import './tapcard.css'
 
 export interface TapOrderLabels {
   hint: string
-  /** The confirm button once every card is stamped: "Lock in this order". */
+  /** The confirm button once every card is stamped: "Confirm this order". */
   lock: string
-  /** Said when every card is stamped: "Every card is stamped. Lock in this order, or tap one to change it." */
+  /** Said when every card is stamped: "Every card is stamped. Confirm this order, or tap one to change it." */
   ready: string
   /** The quiet action that lifts every stamp: "Clear the stamps". */
   clear: string
@@ -28,7 +29,7 @@ export interface TapOrderLabels {
 /**
  * Tap-to-order ranking as portrait panels: tap the colleagues in order of preference and each
  * is stamped with the next rank; with one left it takes the last rank itself. Nothing advances
- * on its own: once every card is stamped the player confirms with "Lock in this order" (owner
+ * on its own: once every card is stamped the player confirms with "Confirm this order" (owner
  * decision, 19 Oct 2026). Tapping a stamped card takes it back with every rank after it;
  * "Clear the stamps" lifts them all. Back reopens the card with the saved order (`initial`). Every tap is announced in a polite
  * live region. Cards are native buttons, so Tab, Enter and Space work, and each card's name
@@ -100,11 +101,15 @@ export function TapOrder({
       <p className="tapcard__sr" aria-live="polite">
         {live}
       </p>
-      {chosen.length === k ? <Button onClick={() => onDone(chosen)}>{labels.lock}</Button> : null}
       {chosen.length > 0 ? (
-        <Button kind="quiet" onClick={clear}>
-          {labels.clear}
-        </Button>
+        <Actions>
+          {chosen.length === k ? (
+            <Button onClick={() => onDone(chosen)}>{labels.lock}</Button>
+          ) : null}
+          <Button kind="quiet" onClick={clear}>
+            {labels.clear}
+          </Button>
+        </Actions>
       ) : null}
     </>
   )

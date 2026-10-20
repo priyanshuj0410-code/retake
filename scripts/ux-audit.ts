@@ -133,6 +133,75 @@ async function audit(page: Page, screen: string, inPage = false) {
       .map((e) => `${e.className}: ${Math.round(e.getBoundingClientRect().height)} px`)
   })
   for (const o of offGrid) problems.push(`${screen}: off the 28 px ruling, ${o}`)
+  /* EVAL-10 (owner): one action pattern, equal options, one progress bar, plain hierarchy. */
+  for (const l of await page.evaluate(() => {
+    const out: string[] = []
+    /* Every option the player chooses between is the same size: ranking and pick cards, split
+       rows, option buttons, radio and checkbox rows (an unequal look nudges choices). */
+    for (const [group, item] of [
+      ['.tapcards', '.tapcard'],
+      ['.split', '.split__row'],
+      ['.options', '.options__option'],
+      ['.choice__rows', '.choice__option'],
+    ]) {
+      document.querySelectorAll(group).forEach((g) => {
+        const bs = [...g.querySelectorAll(item)]
+          .map((e) => e.getBoundingClientRect())
+          .filter((b) => b.width > 0)
+        if (bs.length < 2) return
+        const w = bs.map((b) => Math.round(b.width))
+        const h = bs.map((b) => Math.round(b.height))
+        if (Math.max(...w) - Math.min(...w) > 1 || Math.max(...h) - Math.min(...h) > 1)
+          out.push(`unequal options in ${group}: widths ${w.join('/')}, heights ${h.join('/')}`)
+      })
+    }
+    /* Rows of one question never touch, and in the note register sit half a pitch apart. */
+    const oof = document.querySelector('.page')?.getAttribute('data-surface') === 'oof'
+    document.querySelectorAll('.choice__rows').forEach((g) => {
+      const bs = [...g.children].map((e) => e.getBoundingClientRect())
+      bs.slice(1).forEach((b, i) => {
+        const gap = b.top - bs[i].bottom
+        if (gap < (oof ? 13.5 : 4)) out.push(`option rows ${Math.round(gap)} px apart`)
+      })
+    })
+    /* Question groups in the note register are a full pitch apart. */
+    if (oof) {
+      const sets = [...document.querySelectorAll('main fieldset.choice')]
+      sets.slice(1).forEach((f, i) => {
+        const prev = sets[i].getBoundingClientRect()
+        const gap = f.getBoundingClientRect().top - prev.bottom
+        if (gap > 0 && gap < 27.5) out.push(`question groups ${Math.round(gap)} px apart`)
+      })
+    }
+    /* At most one primary action on a screen. */
+    const primaries = [...document.querySelectorAll('main .button--primary')].filter(
+      (b) => b.getBoundingClientRect().width > 0,
+    )
+    if (primaries.length > 1) out.push(`${primaries.length} primary buttons`)
+    /* Back is the small nav link at the top, before the heading, never in an action row. */
+    const back = [...document.querySelectorAll('main button')].find((b) =>
+      /^Back\b/.test(b.textContent ?? ''),
+    )
+    if (back) {
+      if (!back.closest('.page__nav')) out.push('Back is not the nav link at the top')
+      const h1 = document.querySelector('main h1')
+      if (h1 && back.compareDocumentPosition(h1) & Node.DOCUMENT_POSITION_PRECEDING)
+        out.push('Back comes after the heading')
+    }
+    /* The header: one thin season bar, no chapter circles or card dots. */
+    const head = document.querySelector('.page__head')
+    if (head && (head.querySelector('.map') || head.querySelectorAll('.seasonbar').length > 1))
+      out.push('the header carries more than one progress bar')
+    /* Descriptions at 17 px or more; card questions in sentence case. */
+    document.querySelectorAll('.colleague__desc').forEach((d) => {
+      if (parseFloat(getComputedStyle(d).fontSize) < 17) out.push('a description under 17 px')
+    })
+    document.querySelectorAll('.beat__question').forEach((q) => {
+      if (getComputedStyle(q).textTransform !== 'none') out.push('a question set in capitals')
+    })
+    return out
+  }))
+    problems.push(`${screen}: ${l}`)
   for (const v of VARIANTS) {
     await page.setViewportSize({ width: v.w, height: v.h })
     await page.emulateMedia({ colorScheme: v.scheme, reducedMotion: 'reduce' })
@@ -228,34 +297,50 @@ async function tapOrderByKeyboard(page: Page, screen: string) {
   })
 }
 
-/** The one-tap pair by keyboard (EVAL-8): Tab to a card, Enter chooses it (pressed, announced,
-    focus kept), "Lock in this choice" appears, and nothing advances; Enter on "Share them evenly"
-    moves the choice there. */
-async function pairByKeyboard(page: Page, screen: string) {
+/** The ranking cards fit at every width from 320 to 1440 px (EVAL-10, owner: they were cut at 860). */
+async function cardsFit(page: Page, screen: string) {
+  for (const w of [320, 390, 600, 768, 860, 1024, 1280, 1440]) {
+    await page.setViewportSize({ width: w, height: 900 })
+    await settle(page)
+    const cut = await page.evaluate(() => {
+      const main = document.querySelector('main')?.getBoundingClientRect()
+      const vw = document.documentElement.clientWidth
+      return [...document.querySelectorAll('.tapcard')].filter((c) => {
+        const b = c.getBoundingClientRect()
+        return b.left < 0 || b.right > vw + 0.5 || (!!main && b.right > main.right + 0.5)
+      }).length
+    })
+    if (cut) problems.push(`${screen}: ${cut} ranking cards cut off at ${w} px`)
+  }
+  await page.setViewportSize({ width: 412, height: 915 })
+}
+
+/** The split by keyboard (EVAL-10, the one-tap pairs reverted): Tab to a number, Enter sets it,
+    the count left is announced and focus kept; nothing is chosen at the start, nothing advances on
+    its own, and "Confirm these shares" appears only once everything is shared. */
+async function splitByKeyboard(page: Page, screen: string) {
+  const empty =
+    (await page.locator('.split__chip[aria-pressed="true"]').count()) === 0 &&
+    (await page.getByRole('button', { name: 'Confirm these shares' }).count()) === 0
   await page.locator('h1').first().focus()
   let reached = false
   for (let i = 0; i < 20 && !reached; i++) {
     await page.keyboard.press('Tab')
     reached = await page.evaluate(
-      () => document.activeElement?.classList.contains('tapcard') ?? false,
+      () => document.activeElement === document.querySelectorAll('.split__chip')[1],
     )
   }
   const before = await page.locator('[data-screen]').first().getAttribute('data-screen')
   if (reached) await page.keyboard.press('Enter')
-  const pressed = await page.locator('.tapcard[aria-pressed="true"]').count()
-  const live = (await page.locator('.tapcard__sr[aria-live]').textContent()) ?? ''
-  const kept = await page.evaluate(() => document.activeElement?.classList.contains('tapcard'))
-  const lock = await page.getByRole('button', { name: 'Lock in this choice' }).count()
+  const left = (await page.locator('.split__left').textContent()) ?? ''
+  const kept = await page.evaluate(() => document.activeElement?.classList.contains('split__chip'))
   const still = (await page.locator('[data-screen]').first().getAttribute('data-screen')) === before
-  await page.locator('.pair__even').focus()
-  await page.keyboard.press('Enter')
-  const even =
-    (await page.locator('.pair__even[aria-pressed="true"]').count()) === 1 &&
-    (await page.locator('.tapcard[aria-pressed="true"]').count()) === 0
+  const early = await page.getByRole('button', { name: 'Confirm these shares' }).count()
+  if (reached) await page.getByRole('button', { name: 'Start again' }).click()
   keyboard.push({
     card: screen,
-    ok: reached && pressed === 1 && live.length > 0 && !!kept && lock === 1 && still && even,
-    detail: `tab reaches a card ${reached}; Enter chooses it ${pressed === 1}; announced "${live}"; focus kept ${kept}; lock-in shown ${lock === 1}; no auto-advance ${still}; evenly takes the choice ${even}`,
+    ok: empty && reached && /5/.test(left) && !!kept && still && early === 0,
+    detail: `empty at the start ${empty}; tab reaches a number ${reached}; Enter shares one ("${left}"); focus kept ${kept}; no auto-advance ${still}; no confirm before all is shared ${early === 0}`,
   })
 }
 
@@ -444,8 +529,11 @@ async function main() {
       if (seasonSeen.has(m)) return
       seasonSeen.add(m)
       await audit(page, `season ${m}`)
-      if (m === 'story:beat:rank') await tapOrderByKeyboard(page, `season ${m}`)
-      if (m === 'story:beat:split') await pairByKeyboard(page, `season ${m}`)
+      if (m === 'story:beat:rank') {
+        await cardsFit(page, `season ${m}`)
+        await tapOrderByKeyboard(page, `season ${m}`)
+      }
+      if (m === 'story:beat:split') await splitByKeyboard(page, `season ${m}`)
       if (m === 'story:screening') await gridByKeyboard(page, `season ${m}`)
     })
     await audit(page, 'season story:result')
@@ -457,7 +545,7 @@ async function main() {
     await page.getByRole('button', { name: 'Open the demo profile' }).click()
     await page.waitForSelector('[data-screen="profile"]')
     await audit(page, 'profile open')
-    await page.getByRole('button', { name: 'Delete my profile and all my records' }).click()
+    await page.getByRole('button', { name: 'Delete my profile and all my answers' }).click()
     await page.waitForSelector('[data-screen="profile-confirm"]')
     await audit(page, 'profile confirm delete')
     await page.getByRole('button', { name: 'Keep my profile' }).click()
@@ -486,7 +574,7 @@ async function main() {
     await page.waitForSelector('[data-screen]')
     await audit(page, 'withdraw form')
     await page.getByRole('textbox').fill(g2.code)
-    await page.getByRole('button', { name: 'Delete my records' }).click()
+    await page.getByRole('button', { name: 'Delete my answers' }).click()
     await page.getByRole('status').waitFor()
     await audit(page, 'withdraw done')
     await page.goto(`${BASE}#/withdraw?now=2027-04-01`)
@@ -494,7 +582,7 @@ async function main() {
     await page.waitForSelector('[data-screen]')
     await audit(page, 'withdraw closed')
     await page.getByRole('textbox').fill(g1code)
-    await page.getByRole('button', { name: 'Delete my records' }).click()
+    await page.getByRole('button', { name: 'Delete my answers' }).click()
     await page.getByRole('alert').waitFor()
     walk.push({
       page: 'withdraw after the window, game 1 code',

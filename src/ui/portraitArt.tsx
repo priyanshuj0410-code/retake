@@ -21,6 +21,8 @@ export type Look =
       slot?: number
       /** A one-off character (applicant, complainant, other team): its image is o{slot}-{sex}. */
       oneOff?: boolean
+      /** The story whose cast this is (EVAL-10): each story has its own generated cast; one-offs are shared. */
+      story?: string
       tone: Tone
       hair: Hair
       facial?: 'beard' | 'moustache'

@@ -34,11 +34,18 @@ export function decide(rng: Rng, r: StoryRunner, p: PeoplePresented, t: SeasonTr
   const order = [...Array(k).keys()].sort((a, b) => u[b] - u[a])
   if (p.beat.kind === 'rank') return { order }
   if (p.beat.kind === 'pick') return { pick: order[0] }
-  /* A share is a one-tap pair (EVAL-8): the whole pool to one colleague, or split evenly when
-     the two are close. */
+  const units = Array<number>(k).fill(0)
   const pool = p.beat.pool ?? 6
-  if (k === 2 && Math.abs(u[0] - u[1]) < 0.2) return { units: [pool / 2, pool / 2] }
-  return { units: p.chars.map((_, pos) => (pos === order[0] ? pool : 0)) }
+  const cap = config.season.splitCap
+  /* Most to the most wanted (or, for unwanted work, to the best placed), within the cap. */
+  const plan = [Math.min(cap, Math.ceil(pool / 2)), Math.floor(pool / 3), 0]
+  let left = pool
+  order.forEach((pos, rk) => {
+    const give = Math.min(left, rk === k - 1 ? left : (plan[rk] ?? 0), cap)
+    units[pos] = give
+    left -= give
+  })
+  return { units }
 }
 
 /** Plays a whole season to the submit screen, with every answer a seeded player gives. */

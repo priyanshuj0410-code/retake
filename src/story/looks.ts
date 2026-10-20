@@ -81,7 +81,7 @@ const ONE_OFF_GROUP: Map<number, number> = (() => {
   return out
 })()
 
-export function personLook(c: CastMember): PersonLook {
+export function personLook(c: CastMember, story?: string): PersonLook {
   const tone = TONE[c.toneEmoji] ?? 'm'
   if (c.oneOff) {
     const g = ONE_OFF_GROUP.get(c.slot) ?? 0
@@ -102,6 +102,7 @@ export function personLook(c: CastMember): PersonLook {
     kind: 'person',
     sex: c.sex,
     slot: c.slot,
+    ...(story ? { story } : {}),
     tone,
     hair: c.sex === 'woman' ? look.w : look.m,
     glasses: look.glasses,

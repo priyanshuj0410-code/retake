@@ -1,4 +1,4 @@
-/* @owns timeline timeline__entry timeline__when timeline__what timeline__band */
+/* @owns timeline timeline__entry timeline__when timeline__what timeline__band timeline__range timeline__ends */
 .timeline {
   list-style: none;
   margin: var(--gap-none);
@@ -38,4 +38,16 @@
   font-weight: var(--weight-display);
   font-size: var(--text-lead);
   color: var(--c-text);
+}
+.timeline__range {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  max-width: var(--dots);
+}
+.timeline__ends {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-small);
+  color: var(--c-muted);
 }

@@ -11,10 +11,13 @@ export interface ColleagueView {
   name: string
   cues: string[]
   description?: string
+  /** The description in Hinglish, under it, for "English with Hinglish help" (EVAL-10). */
+  descriptionHelp?: string
 }
 
 /**
- * One colleague: a portrait panel, the name and its cue lines, and this job's notes. `cell` puts
+ * One colleague: a portrait panel, the name and its cue lines, and this job's description
+ * (17 px or more, EVAL-10), and its Hinglish under it in the help mode. `cell` puts
  * the panel on top (the ranking and pick cards), `row` puts a 72 px face beside the words (the
  * split). All spans, so it can sit inside a button.
  */
@@ -45,6 +48,11 @@ export function Colleague({
           </span>
         ))}
         {c.description ? <span className="colleague__desc">{c.description}</span> : null}
+        {c.descriptionHelp ? (
+          <span className="colleague__help" lang="hi-Latn">
+            {c.descriptionHelp}
+          </span>
+        ) : null}
       </span>
     </span>
   )

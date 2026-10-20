@@ -2,7 +2,7 @@
 import { identity } from '../content'
 import type { Lang, T } from '../content/types'
 import { fill } from '../engine/text'
-import type { CastTile, ColleagueView } from '../ui'
+import type { ArtKey, CastTile, ColleagueView } from '../ui'
 import { SS } from './content'
 import { lookLabel, mascotLook, personLook } from './looks'
 import type { StoryRunner } from './runner'
@@ -28,7 +28,7 @@ export function colleagueView(
     }
   const cues: string[] = []
   if (c.born) cues.push(fill(L(identity.birthplace.label), { city: c.born.city }))
-  const look = personLook(c)
+  const look = personLook(c, r.season.story.id)
   return {
     look,
     figureLabel: lookLabel(c, look),
@@ -64,3 +64,21 @@ export function trackLines(r: StoryRunner): (c: CastMember) => string[] {
 }
 
 export const langAttr = (l: Lang) => (l === 'hinglish' ? 'hi-Latn' : 'en-GB')
+
+/**
+ * The drawn prop beside a decision's scene (EVAL-10's comic page, panel 2): picked from the
+ * comic art kit by the decision's area, fixed by its id, so a card always shows the same prop
+ * and no prop depends on who is on the card. No faces: props only.
+ */
+const PROPS: Record<string, ArtKey[]> = {
+  hiring: ['board', 'table', 'dashboard', 'crowd'],
+  conduct: ['letters', 'chat', 'note', 'glance'],
+  resources: ['crates', 'ledger', 'truck', 'coffee'],
+  ordinary: ['coffee', 'table'],
+}
+export function sceneArt(id: string, area: string): ArtKey {
+  const set = PROPS[area] ?? PROPS.ordinary
+  let h = 0
+  for (const ch of id) h = (h * 31 + ch.charCodeAt(0)) >>> 0
+  return set[h % set.length]
+}

@@ -2,13 +2,13 @@
   {"id":"a","placeholder":true,
    "statistic":{"en":"[PLACEHOLDER: a sourced statistic on how many Indian employees support equal chances for women and men at work goes here.]","hinglish":"[PLACEHOLDER: a sourced statistic on how many Indian employees support equal chances for women and men at work goes here.]"},
    "source":{"en":"[PLACEHOLDER: source to be confirmed]","hinglish":"[PLACEHOLDER: source to be confirmed]"},
-   "instruction":{"en":"For the next part, the rounds and the questions after them, answer as you would.","hinglish":"Agle hisse ke liye, yaani rounds aur uske baad ke sawaalon ke liye, waise hi jawab dijiye jaise aap dete hain."}},
+   "instruction":{"en":"For the chapters and the questions after them, answer as you would.","hinglish":"Agle chapters aur uske baad ke sawaalon ke liye, waise hi jawab dijiye jaise aap dete hain."}},
   {"id":"b","placeholder":true,
    "statistic":{"en":"[PLACEHOLDER: a sourced statistic on how many Indian employees travel to work by public transport each day goes here.]","hinglish":"[PLACEHOLDER: a sourced statistic on how many Indian employees travel to work by public transport each day goes here.]"},
    "source":{"en":"[PLACEHOLDER: source to be confirmed]","hinglish":"[PLACEHOLDER: source to be confirmed]"},
-   "instruction":{"en":"For the next part, the rounds and the questions after them, answer as you would.","hinglish":"Agle hisse ke liye, yaani rounds aur uske baad ke sawaalon ke liye, waise hi jawab dijiye jaise aap dete hain."}},
+   "instruction":{"en":"For the chapters and the questions after them, answer as you would.","hinglish":"Agle chapters aur uske baad ke sawaalon ke liye, waise hi jawab dijiye jaise aap dete hain."}},
   {"id":"c","placeholder":true,
    "statistic":{"en":"[PLACEHOLDER: a sourced statistic on how many Indian employees travel to work by public transport each day goes here.]","hinglish":"[PLACEHOLDER: a sourced statistic on how many Indian employees travel to work by public transport each day goes here.]"},
    "source":{"en":"[PLACEHOLDER: source to be confirmed]","hinglish":"[PLACEHOLDER: source to be confirmed]"},
-   "instruction":{"en":"For the next part, the rounds and the questions after them, answer as the ideal employee would.","hinglish":"Agle hisse ke liye, yaani rounds aur uske baad ke sawaalon ke liye, waise jawab dijiye jaise ek aadarsh karmchari deta hai."}}
+   "instruction":{"en":"For the chapters and the questions after them, answer as the ideal employee would.","hinglish":"Agle chapters aur uske baad ke sawaalon ke liye, waise hi jawab dijiye jaise ek ideal employee deta hai."}}
 ]

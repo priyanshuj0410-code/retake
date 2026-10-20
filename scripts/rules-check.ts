@@ -15,6 +15,7 @@ import { formatPending, nextArm, parsePending, windowFor } from '../src/engine/f
 import { randomKey, seeded } from '../src/engine/rng'
 import { record, results, summary } from './lib/check'
 import { fairPlayer, playSeason } from '../src/story/players'
+import { config } from '../src/engine/config'
 
 const HOST = process.env.FIREBASE_DATABASE_EMULATOR_HOST
 const PROJECT = process.env.GCLOUD_PROJECT ?? 'demo-eval'
@@ -207,6 +208,66 @@ async function main() {
       sub.play.value.meta.sit === 1 &&
         JSON.stringify(sitOk) === JSON.stringify([true, false, false, false]),
       JSON.stringify(sitOk),
+    )
+    /* The firm per-chapter flag (EVAL-10): y or n for each of the 5 chapters and the finale, on a
+       season record only; a date, a time, a wrong length or another letter is refused. */
+    const timingOk: boolean[] = []
+    for (const [n, v] of [
+      [0, 'nnyyyy'],
+      [1, 'nnyyy'],
+      [2, '2027-03-01'],
+      [3, 'nnyyya'],
+      [4, 1],
+    ] as const) {
+      const tk = randomKey()
+      await call('owner', 'PUT', `eval-tokens/${tk}`, { dep: 'season', langs: 'en', s: 'issued' })
+      const rr = playSeason(90 + n, fairPlayer)
+      await rr.prepareCode(1000)
+      const sb = rr.submission()
+      ;(sb.play.value.meta as unknown as Record<string, unknown>).chapter_timing = v
+      const who = `season-timing-${n}`
+      await patch(as(who), {
+        [`eval-tokens/${tk}/s`]: 'started',
+        [`eval-claims/${who}`]: { tok: tk },
+      })
+      timingOk.push((await patch(as(who), submitWrites(sb, sb.codeKey, who, { tok: tk }))).allowed)
+    }
+    record(
+      TS,
+      `meta.chapter_timing is accepted as y or n for each of the ${config.season.chapters.count} chapters and the finale, and refused as a date, a short string, another letter or a number; a panel season carries none`,
+      config.season.chapters.count + 1 === 6 &&
+        sub.play.value.meta.chapter_timing === undefined &&
+        JSON.stringify(timingOk) === JSON.stringify([true, false, false, false, false]),
+      JSON.stringify(timingOk),
+    )
+    /* The practice flag (EVAL-10): y or n, nothing else. */
+    const practiceOk: boolean[] = []
+    for (const [n, v] of [
+      [0, 'y'],
+      [1, 'yes'],
+      [2, true],
+    ] as const) {
+      const tk = randomKey()
+      await call('owner', 'PUT', `eval-tokens/${tk}`, { dep: 'season', langs: 'en', s: 'issued' })
+      const rr = playSeason(95 + n, fairPlayer)
+      await rr.prepareCode(1000)
+      const sb = rr.submission()
+      ;(sb.play.value.meta as unknown as Record<string, unknown>).practice = v
+      const who = `season-practice-${n}`
+      await patch(as(who), {
+        [`eval-tokens/${tk}/s`]: 'started',
+        [`eval-claims/${who}`]: { tok: tk },
+      })
+      practiceOk.push(
+        (await patch(as(who), submitWrites(sb, sb.codeKey, who, { tok: tk }))).allowed,
+      )
+    }
+    record(
+      TS,
+      'meta.practice is accepted as y or n and refused otherwise; every season record carries it',
+      sub.play.value.meta.practice === 'n' &&
+        JSON.stringify(practiceOk) === JSON.stringify([true, false, false]),
+      JSON.stringify(practiceOk),
     )
     const pk = randomKey()
     const box = { iv: 'aaaaaaaaaaaaaaaa', ct: 'Y2lwaGVydGV4dA==' }

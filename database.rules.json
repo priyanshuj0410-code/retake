@@ -126,6 +126,10 @@
           "batchMonth": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}$/)" },
           "sex": { ".validate": "newData.val() == 'woman' || newData.val() == 'man' || newData.val() == 'another' || newData.val() == 'prefer-not'" },
           "sit": { ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 6 && newData.val() % 1 == 0" },
+          /* The firm season's per-chapter flag (EVAL-10): y or n per chapter then the finale, only on a season record; no time, no date. */
+          "chapter_timing": { ".validate": "newData.isString() && newData.val().matches(/^[yn]{6}$/) && newData.parent().child('dep').val() == 'season'" },
+          /* Whether the player took the opt-in practice round (EVAL-10): y or n only. */
+          "practice": { ".validate": "newData.val() == 'y' || newData.val() == 'n'" },
           "$other": { ".validate": false }
         },
         "cards": {

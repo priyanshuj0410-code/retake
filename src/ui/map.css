@@ -1,4 +1,4 @@
-/* @owns map map__stops map__stop map__stop--done map__stop--now map__stop--next map__stop--finale map__dots map__dot map__dot--done */
+/* @owns map map__stops map__stop map__stop--done map__stop--now map__stop--next map__stop--finale */
 .map {
   display: flex;
   flex-wrap: wrap;
@@ -40,25 +40,8 @@
 .map__stop--finale {
   border-radius: var(--radius-s);
 }
-.map__dots {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap-xs);
-}
-.map__dot {
-  display: block;
-  width: var(--gap-s);
-  height: var(--gap-s);
-  border: var(--ink-divider) solid var(--c-ink-line);
-  border-radius: var(--radius-full);
-}
-.map__dot--done {
-  background: var(--c-stamp);
-  border-color: var(--c-stamp);
-}
 @media (forced-colors: active) {
-  .map__stop--now,
-  .map__dot--done {
+  .map__stop--now {
     background: CanvasText;
   }
 }

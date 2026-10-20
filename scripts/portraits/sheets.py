@@ -7,6 +7,8 @@ With "candidates" only the pre-pick candidate sheets are drawn (used while scori
   mascots.png      the delivered mascots, then every mascot candidate with the chosen one marked
   oneoffs.png      the one-offs (delivered WebP), grouped by beat, focal / comparison / third labelled
   mask-check.png   for every chosen base: the mask overlay, then t1 and t4 face close-ups for halo and bleed checks
+PORTRAIT_STORY=newsroom (or clinic) draws that story's slot, pairs-tones and mask-check sheets (no mascots or
+one-offs); pass a story-specific <out-dir>.
 """
 import json
 import os
@@ -16,9 +18,10 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 from build import cast_name, crop384, oneoff_name
+import story
+from story import WORK
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-WORK = os.path.join(HERE, "work")
 PUBLIC = os.path.join(HERE, "..", "..", "public", "portraits")
 FONT = ImageFont.truetype("/System/Library/Fonts/Supplemental/Arial.ttf", 15)
 BIG = ImageFont.truetype("/System/Library/Fonts/Supplemental/Arial.ttf", 22)
@@ -55,14 +58,18 @@ def base_crop(cid, analysis):
 
 
 def fmt(s):
-    return f"age {s['age']}  attr {s['attractive']}  warm {s['warmth']}  comp {s['competence']}" if s else ""
+    if not s:
+        return ""
+    if "warmth" not in s:
+        return f"age {s['age']}  attr {s['attractive']}" + ("  REJECTED" if s["note"].startswith("REJECTED") else "")
+    return f"age {s['age']}  attr {s['attractive']}  warm {s['warmth']}  comp {s['competence']}"
 
 
 def main():
     out = sys.argv[1]
     os.makedirs(out, exist_ok=True)
     analysis = json.load(open(os.path.join(WORK, "analysis.json")))
-    sc = json.load(open(os.path.join(HERE, "scores.json"))) if os.path.exists(os.path.join(HERE, "scores.json")) else {}
+    sc = json.load(open(story.SCORES)) if os.path.exists(story.SCORES) else {}
     scores, picks = sc.get("scores", {}), sc.get("picks", {})
     slots = sorted({k.split("-")[0] for k in analysis if k.startswith("s")}, key=lambda s: int(s[1:]))
     for slot in slots:
@@ -86,8 +93,22 @@ def main():
             for t in ("t1", "t2", "t3", "t4"):
                 n = cast_name(slot, sex, t)
                 tiles.append(tile(Image.open(os.path.join(PUBLIC, n + ".webp")), n, False, f"base {slot}-{sex}-{picks['cast'][slot][sex]}"))
-    grid(tiles, 8, "Chosen pairs across the four tones (delivered WebP, 384 px): woman l1 l2 d1 d2, man l1 l2 d1 d2",
+    grid(tiles, 8, f"{story.STORY}: chosen pairs across the four tones (delivered WebP, 384 px): woman l1 l2 d1 d2, man l1 l2 d1 d2",
          os.path.join(out, "pairs-tones.png"))
+    tiles = []
+    for slot, pair in picks["cast"].items():
+        for sex, cand in pair.items():
+            cid = f"{slot}-{sex}-{cand}"
+            tiles.append(tile(Image.fromarray(crop384(np.asarray(Image.open(os.path.join(WORK, "overlay", cid + ".png"))),
+                                                      analysis[cid]["crop"])), cid + " mask"))
+            for t in ("t1", "t4"):
+                n = cast_name(slot, sex, t)
+                v = np.asarray(Image.open(os.path.join(WORK, "out384", n + ".png")))
+                tiles.append(tile(Image.fromarray(v[110:270, 110:274]), f"{n} face x1.6"))
+    grid(tiles, 6, f"{story.STORY} mask check: overlay (green = recoloured), then lightest and darkest face close-ups",
+         os.path.join(out, "mask-check.png"))
+    if not story.WAREHOUSE:
+        return
     tiles = [tile(Image.open(os.path.join(PUBLIC, f"mascot-{a}.webp")), a) for a in picks["mascots"]]
     for a, cand in picks["mascots"].items():
         for k in range(5):
@@ -105,18 +126,6 @@ def main():
                               f"{oneoff_name(cid)} {j['role']}", False, f"{j['beat']} g{j['group']}  {fmt(scores.get(cid))}"[:40]))
         grid(tiles, 8, "One-offs at the constant medium tone (#BC8459), woman then man per slot",
              os.path.join(out, "oneoffs.png"))
-    tiles = []
-    for slot, pair in picks["cast"].items():
-        for sex, cand in pair.items():
-            cid = f"{slot}-{sex}-{cand}"
-            tiles.append(tile(Image.fromarray(crop384(np.asarray(Image.open(os.path.join(WORK, "overlay", cid + ".png"))),
-                                                      analysis[cid]["crop"])), cid + " mask"))
-            for t in ("t1", "t4"):
-                n = cast_name(slot, sex, t)
-                v = np.asarray(Image.open(os.path.join(WORK, "out384", n + ".png")))
-                tiles.append(tile(Image.fromarray(v[110:270, 110:274]), f"{n} face x1.6"))
-    grid(tiles, 6, "Mask check: overlay (green = recoloured), then lightest and darkest face close-ups",
-         os.path.join(out, "mask-check.png"))
 
 
 if __name__ == "__main__":

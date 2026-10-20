@@ -75,6 +75,8 @@ export interface SeasonConfig {
     minPairs: number
     engagementMin: number
     permutations: number
+    /** The position-with-range display's maths (EVAL-10; PENDING v22, never player copy). */
+    range: { method: 'beta' | 'wilson'; prior: [number, number]; mass: number }
   }
   counted: Record<string, number>
   faking: { screening: string[]; survey: string[]; formB: number }

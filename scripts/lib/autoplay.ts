@@ -49,7 +49,7 @@ export async function step(
   }
   if (opts.submit || opts.withdraw) {
     const name = opts.withdraw
-      ? /^(Withdraw now|Abhi withdraw karein)$/
+      ? /^(Delete my answers|Mere jawab mita dein)$/
       : /^(Submit my answers|Mere jawab submit karein)$/
     if (await clickFirst(page, name)) return true
   } else if (

@@ -83,8 +83,11 @@ def bust_prompt(animal):
 
 
 def jobs(only=None, groups=("cast", "mascots")):
+    """GROUP cast is the cast of the story in PORTRAIT_STORY (story.py): the warehouse by default."""
     out = []
-    for k in (range(CANDIDATES) if "cast" in groups else []):
+    if "cast" in groups and not story.WAREHOUSE:
+        out += story_cast_jobs(story.STORY)
+    for k in (range(CANDIDATES) if "cast" in groups and story.WAREHOUSE else []):
         for slot in SLOTS:
             for sex in SEX:
                 out.append(dict(id=f"{slot}-{sex}-c{k}", kind="person", slot=slot, sex=sex, cand=k,
@@ -110,6 +113,8 @@ def jobs(only=None, groups=("cast", "mascots")):
 # then a pair. All one-offs come from outside the warehouse team and wear one plain shirt, the same for everyone.
 import json as _json
 import os as _os
+
+import story
 
 ONEOFF_PERSON = PERSON.replace(
     "Wearing a plain deep violet short-collared work polo shirt with no pocket, the warehouse staff uniform, with a "
@@ -175,4 +180,85 @@ def oneoff_jobs():
             out.append(dict(id=oid, kind="oneoff", sex=sex, cand=0,
                             seed=8000 + (o["slot"] - 100) * 10 + ONEOFF_RESEED.get(oid, 0),
                             prompt=oneoff_prompt(o, sex), **{k: o[k] for k in ("slot", "beat", "who", "role", "group")}))
+    return out
+
+
+# ---- the casts of the other stories (owner, 20 Oct 2026: every story gets its own cast of 8, towards about 10) ----
+# Same frame, style, backdrop, base tone, expression and candidate count as the warehouse; only the uniform (one for
+# the whole story) and the slot looks change. Within a slot the woman and the man again share every word except the
+# sex noun, the hairstyle and (men only) facial hair, and they share the seed. Glasses x facial hair is a balanced 2x2
+# across each story's slots, arranged differently from the warehouse. Facial hair is 2 moustaches and 2 short beards.
+WAREHOUSE_UNIFORM = ("Wearing a plain deep violet short-collared work polo shirt with no pocket, the warehouse staff "
+                     "uniform, with a yellow lanyard around the neck holding a blank white ID card.")
+assert WAREHOUSE_UNIFORM in PERSON
+
+
+def L(age, face, w, m, glasses, facial=""):
+    return dict(age=age, face=face, w=w, m=m, glasses=glasses, facial=facial)
+
+
+MOUSTACHE, BEARD = "a neatly trimmed moustache", "a short neatly trimmed full beard"
+STORY_CASTS = {
+    # a plain shirt with a press lanyard; mid-blue keeps clear of the lavender backdrop and of the skin hue window
+    "newsroom": dict(
+        seed=11000,
+        uniform=("Wearing a plain mid-blue collared button-up shirt with no pocket, the newsroom staff dress, with a "
+                 "green lanyard around the neck holding a blank white press card."),
+        # both: s2 s7; glasses only: s4 s5; facial hair only: s1 s6; neither: s3 s8
+        slots={
+            "s1": L(31, "a heart-shaped face", "a sleek chin-length black bob", "short black hair with a quiff", False, MOUSTACHE),
+            "s2": L(36, "a soft square face", "black hair in a neat French braid down the back", "a neat black crew cut", True, BEARD),
+            "s3": L(28, "an oval face", "shoulder-length straight black hair tucked behind the ears",
+                    "medium-length straight black hair parted in the middle", False),
+            "s4": L(34, "an angular face with high cheekbones", "black hair in a high ponytail",
+                    "short black hair with faded sides", True),
+            "s5": L(30, "a long narrow face", "long straight black hair worn loose with a side parting",
+                    "thick short black hair brushed forward", True),
+            "s6": L(39, "a round face", "short layered black hair", "short tousled black hair", False, BEARD),
+            "s7": L(33, "an oval face with a broad forehead", "black hair in a twisted low knot", "short wavy black hair", True, MOUSTACHE),
+            "s8": L(37, "a round face with full cheeks", "dark brown hair half tied back",
+                    "short dark brown hair combed to the side", False),
+        }),
+    # scrubs, not a white coat: a coat reads as doctor and scrubs do not, so role (doctor or nurse) is not cued by sex;
+    # no stethoscope for the same reason. Teal keeps clear of the backdrop and the skin hue window.
+    "clinic": dict(
+        seed=12000,
+        uniform=("Wearing a plain teal medical scrubs top with a short V-neck and no pocket, the clinic staff uniform, "
+                 "with a navy blue lanyard around the neck holding a blank white ID badge."),
+        # both: s1 s6; glasses only: s3 s8; facial hair only: s4 s5; neither: s2 s7
+        slots={
+            "s1": L(35, "a round face", "black hair in a neat low bun", "short black hair with a neat side parting", True, BEARD),
+            "s2": L(29, "an angular face with high cheekbones", "a short black crop with a side fringe", "a black buzz cut", False),
+            "s3": L(39, "a soft square face", "long black hair in a single braid down the back", "short curly black hair", True),
+            "s4": L(32, "an oval face", "chin-length wavy black hair", "short black hair swept back", False, MOUSTACHE),
+            "s5": L(30, "a heart-shaped face", "black hair in a high bun", "short black hair with a fringe brushed forward", False, BEARD),
+            "s6": L(37, "a long narrow face", "shoulder-length straight black hair with a centre parting",
+                    "medium-length black hair tucked behind the ears", True, MOUSTACHE),
+            "s7": L(33, "a round face with full cheeks", "black hair tied back in a short ponytail", "short spiky black hair", False),
+            "s8": L(34, "an oval face with a broad forehead", "dark brown curly hair tied back", "short wavy dark brown hair", True),
+        }),
+}
+# candidates re-rolled (seed + 100 x n): a forehead dot that reads as a bindi, or facial hair the slot does not have.
+# The first draws stay in that story's work/stories/<story>/rejected/, logged under "rejected" in its generation log.
+STORY_RESEED = {"newsroom": {"s2-w-c0": 1, "s7-w-c1": 1, "s7-w-c2": 1, "s5-m-c2": 1}, "clinic": {"s8-w-c0": 1}}
+
+
+def story_prompt(st, slot, sex):
+    c = STORY_CASTS[st]
+    s = c["slots"][slot]
+    glasses = ", wearing thin dark-rimmed glasses" if s["glasses"] else ", no glasses"
+    facial = (", " + s["facial"]) if (sex == "m" and s["facial"]) else ""
+    frame = PERSON.replace(WAREHOUSE_UNIFORM, c["uniform"])
+    return frame.format(sex=SEX[sex], age=s["age"], face=s["face"], hair=s[sex], glasses=glasses, facial=facial) + STYLE
+
+
+def story_cast_jobs(st):
+    c, out = STORY_CASTS[st], []
+    for k in range(CANDIDATES):
+        for slot in c["slots"]:
+            for sex in SEX:
+                cid = f"{slot}-{sex}-c{k}"
+                out.append(dict(id=cid, story=st, kind="person", slot=slot, sex=sex, cand=k,
+                                seed=c["seed"] + int(slot[1:]) * 10 + k + 100 * STORY_RESEED[st].get(cid, 0),
+                                prompt=story_prompt(st, slot, sex)))
     return out

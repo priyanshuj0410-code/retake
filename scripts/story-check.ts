@@ -7,7 +7,17 @@ import { identity, screeningItems, surveyItems } from '../src/content'
 import { config } from '../src/engine/config'
 import { seeded } from '../src/engine/rng'
 import { fill } from '../src/engine/text'
-import { isPeople, PF, RT, stories, storyContent, storyById } from '../src/story/content'
+import {
+  isPeople,
+  PF,
+  PRACTICE,
+  RT,
+  SS,
+  stories,
+  storyContent,
+  storyById,
+} from '../src/story/content'
+import { positionOf } from '../src/story/range'
 import { carelessPlayer, fairPlayer, leaningPlayer, playSeason } from '../src/story/players'
 import {
   addSession,
@@ -20,11 +30,11 @@ import {
   type ProfileSession,
 } from '../src/story/profile'
 import { cueSets, rate, weightOf } from '../src/story/rating'
-import { StoryRunner } from '../src/story/runner'
+import { sessionMinutes, StoryRunner } from '../src/story/runner'
 import { drawCast } from '../src/story/session'
 import { personLook } from '../src/story/looks'
 import { castTiles, colleagueView } from '../src/story/view'
-import { resultModel } from '../src/story/why'
+import { chanceLine, levelName, resultModel } from '../src/story/why'
 import { store } from '../src/store'
 import type { LocalStore } from '../src/store/local'
 import { progress } from '../src/store/progress'
@@ -45,6 +55,7 @@ export async function run() {
   rating()
   await records()
   await profile()
+  await prototypePass()
 }
 
 function content() {
@@ -216,28 +227,56 @@ function content() {
           undefined,
       ),
   )
-  const bands = Object.values(RT.bands).map((b) => b.name.en)
+  /* The five tags (EVAL-10, owner): exact words, both directions fill, no band called unbiased
+     or fair, no "lean" or "chance would explain" left, nothing pending in player copy. */
+  const tagEn = Object.values(RT.tags).map((t) => t.en)
   record(
     T,
-    'no band is named unbiased; the no-lean band reads as an absence of evidence',
-    bands.every((b) => !/unbiased|fair/i.test(b)) &&
-      RT.bands.none.name.en === 'No lean read in your decisions' &&
-      /absence of evidence/.test(RT.bands.none.body.en),
+    'the five tags read "Clear pattern: men first", "Pattern: men first more often", "Maybe a pattern: men first a little more often", "No pattern: women and men first about equally" and "Not enough to tell"; no tag is unbiased or fair, and no result copy says "lean", "chance would explain" or "shaded middle"',
+    levelName('strong', 'sex', 'comparison', 'en') === 'Clear pattern: men first' &&
+      levelName('moderate', 'sex', 'comparison', 'en') === 'Pattern: men first more often' &&
+      levelName('possible', 'sex', 'comparison', 'en') ===
+        'Maybe a pattern: men first a little more often' &&
+      levelName('none', 'sex', undefined, 'en') ===
+        'No pattern: women and men first about equally' &&
+      levelName('unread', 'sex', undefined, 'en') === 'Not enough to tell' &&
+      levelName('moderate', 'sex', 'focal', 'en') === 'Pattern: women first more often' &&
+      tagEn.every((b) => !/unbiased|fair/i.test(b)) &&
+      !/\blean|chance would explain|shaded middle|attitude rating/i.test(
+        JSON.stringify(storyContent.rating, (k, v) => (k.startsWith('_') ? undefined : v)).replace(
+          /"\w+":/g,
+          '',
+        ),
+      ),
   )
-  const card = (band: string) =>
-    fill(RT.shareCard.en, {
-      title: 'The warehouse',
-      decisions: 48,
-      episodes: 5,
-      cast: 8,
-      band: fill(band, { group: 'men' }),
-    })
+  /* The share card (EVAL-10, owner): by default the season only; "Include my result" adds the
+     women-and-men tag and a chance line from config, and never religion or skin tone. */
+  const card = fill(RT.shareCard.en, {
+    title: 'The warehouse',
+    decisions: 77,
+    chapters: 5,
+    cast: 8,
+  })
+  const chance = (['strong', 'moderate', 'possible', 'none'] as const).map((k) =>
+    chanceLine(k, 'en'),
+  )
+  const words = ['religion', 'tone']
+    .flatMap((c) => Object.values(RT.cues[c]).flatMap((t) => [t.en, t.hinglish]))
+    .map((w) => w.toLowerCase())
   record(
     T,
-    'the share card fills for every band, invites a comparison, and shows no score',
-    bands.every((b) => !/\{/.test(card(b))) &&
-      /Take it and compare/.test(RT.shareCard.en) &&
-      !/\d+ ?(per cent|%)|score|rank/i.test(RT.shareCard.en.replace(/\{\w+\}/g, '')),
+    'the share card names the season only ("I played Team Season: ... Try it yourself."), with no score; the result adds the tag and a chance line worked out from the reading levels in config; no share text names religion or skin tone',
+    card ===
+      'I played Team Season: The warehouse. 77 decisions, 5 chapters, 8 colleagues. Try it yourself.' &&
+      !/\d+ ?(per cent|%)|score|rank/i.test(RT.shareCard.en.replace(/\{\w+\}/g, '')) &&
+      chance.every((c) => c.length > 0 && !/\{/.test(c)) &&
+      chanceLine('moderate', 'en').includes(
+        String(Math.round(1 / (1 - config.season.rating.levels.moderate))),
+      ) &&
+      chanceLine('unread', 'en') === '' &&
+      [RT.shareCard, RT.shareResult, RT.shareChancePattern, RT.shareChanceMany, RT.shareChanceNone]
+        .flatMap((t) => [t.en, t.hinglish])
+        .every((t) => words.every((w) => !t.toLowerCase().includes(w))),
   )
   const doms = Object.values(RT.domains)
   record(
@@ -252,7 +291,7 @@ function content() {
           d.watch.length <= 4,
       ) &&
       /PENDING v18/.test(RT._watchPending as unknown as string) &&
-      /No effect is claimed/.test(RT.watchBody.en) &&
+      /We have not tested whether they work/.test(RT.watchBody.en) &&
       /Internal Committee/.test(RT.committee.en),
   )
   const eps = wh?.episodes ?? []
@@ -342,11 +381,13 @@ function content() {
   )
   record(
     T,
-    'the profile offers a separate research consent (pending v18 in a _researchConsentPending note, not on screen), the delete-everything action, and "No change read yet"',
+    'the profile offers a separate research consent (pending v18 in a _researchConsentPending note, not on screen), the delete-everything action, and "No change shown yet" with the chance line (EVAL-10)',
     !/PENDING/.test(JSON.stringify([PF.researchTitle, PF.researchConsent])) &&
       /PENDING v18/.test(PF._researchConsentPending as unknown as string) &&
-      PF.deleteButton.en === 'Delete my profile and all my records' &&
-      PF.noChange.en === 'No change read yet.',
+      PF.deleteButton.en === 'Delete my profile and all my answers' &&
+      PF.noChange.en === 'No change shown yet.' &&
+      PF.timelineNote.en ===
+        'Two results can differ by chance; overlapping ranges mean no change shown.',
   )
   const run = wh ? new StoryRunner(seeded(1), wh, ['en']) : null
   const secs = run ? run.estimateSeconds() : 0
@@ -541,7 +582,11 @@ function levels() {
     `five levels from three permutation quantiles in config (demo ${strong}, ${moderate}, ${possible}), ordered, and no threshold in player copy`,
     strong > moderate &&
       moderate > possible &&
-      !/0\.99|0\.95|0\.85|quantile|permutation/i.test(JSON.stringify(RT.levels)),
+      !/0\.99|0\.95|0\.85|quantile|permutation|PENDING/i.test(
+        JSON.stringify([RT.tags, RT.tagBodies, RT.rangeNote, RT.rangeSaid], (k, v) =>
+          k.startsWith('_') ? undefined : v,
+        ),
+      ),
   )
   const seen = new Set<string>()
   let caste = 0
@@ -559,7 +604,10 @@ function levels() {
         caste += 1
       const leaning = lv === 'strong' || lv === 'moderate' || lv === 'possible'
       if (!leaning && m.domains.some((d) => d.reading !== null)) gated = false
-      if (leaning && m.band.indexOf(fill(RT.levels[lv].name.en, { group: '' }).split(' ')[0]) !== 0)
+      if (leaning && m.band !== levelName(lv, 'sex', m.rating.headline.towards, 'en')) gated = false
+      /* "Not enough to tell" shows nothing of the result below the tag (EVAL-10, G5). */
+      if (m.unread && (m.hero || m.range || m.why.length)) gated = false
+      if (!m.unread && m.range && !(m.range.lo <= m.range.at && m.range.at <= m.range.hi))
         gated = false
     }
   }
@@ -577,7 +625,7 @@ function levels() {
 
 /** The season in five chapters and a finale, story in the card, pairs, the map (EVAL-8, PENDING v21). */
 function chapters() {
-  const T = 'X-19 chapters, story in the card, one-tap pairs (EVAL-8)'
+  const T = 'X-19 chapters, story in the card, the season map (EVAL-8; splits again since EVAL-10)'
   const wh = storyById('warehouse')
   if (!wh) return
   const ch = config.season.chapters
@@ -660,11 +708,13 @@ function chapters() {
   const splits = r.season.beats.filter((b) => b.kind === 'people' && b.beat.kind === 'split')
   record(
     T,
-    `every share is a one-tap pair of tied colleagues (${splits.length} cards)`,
+    `every share goes to three colleagues: a tied pair and a third with weaker descriptions (${splits.length} cards; EVAL-10 reverted the one-tap pairs)`,
     splits.length > 0 &&
-      splits.every(
-        (b) => b.kind === 'people' && b.chars.length === 2 && b.chars[0].tier === b.chars[1].tier,
-      ),
+      splits.every((b) => {
+        if (b.kind !== 'people' || b.chars.length !== 3) return false
+        const tiers = b.chars.map((c) => c.tier).sort()
+        return tiers[1] === tiers[2] && tiers[0] < tiers[1]
+      }),
   )
   /* Payoffs: the same for every player and never contingent on answers: the strip names only
      the two configured cast slots, and the screen fills nothing else into it. */
@@ -933,11 +983,13 @@ function rating() {
   const m = resultModel(r)
   record(
     T,
-    'the result model gives the band, the bar, the reasons with a named pair, and the share card',
+    'the result model gives the tag, the position with its range, what a pair is, the reasons with a named pair, and the share card (the tag only in what "Include my result" adds)',
     !!m.band &&
-      !!m.bar &&
-      m.why.some((w) => /had the same record/.test(w)) &&
-      m.share.includes(m.band),
+      !!m.range &&
+      !!m.hero?.pair &&
+      m.why.some((w) => /had equally strong descriptions/.test(w)) &&
+      !m.share.includes(m.band) &&
+      m.shareResult.includes(m.band),
   )
   const src =
     readFileSync(`${ROOT}src/story/why.ts`, 'utf8') +
@@ -1089,7 +1141,7 @@ async function profile() {
   const del = await deleteProfile()
   record(
     T,
-    '"Delete my profile and all my records" removes the profile and withdraws its seasons',
+    '"Delete my profile and all my answers" removes the profile and withdraws its seasons',
     had &&
       local.tree['eval-play'][playKey] === undefined &&
       local.tree['eval-profile'][u.key] === undefined &&
@@ -1126,5 +1178,215 @@ async function profile() {
       Object.keys(added[0]).sort().join(',') === 'em,follow,nm,research' &&
       /"eval-contact"[\s\S]*?"\$other": \{ ".validate": false \}/.test(rules) &&
       !/"eval-contact": \{\s*"\$k": \{[^}]*".read"/.test(rules),
+  )
+}
+
+/** The owner's prototype pass (EVAL-10): practice, the firm chapter flag, the help mode, one length, the profile's ranges. */
+async function prototypePass() {
+  const T = 'X-20 prototype pass (EVAL-10)'
+  const wh = storyById('warehouse')
+  if (!wh) return
+  const answerAll = (r: StoryRunner, choice: 'practice' | 'start', days?: string[]) => {
+    let k = 0
+    for (let g = 0; g < 500 && r.current && r.current.kind !== 'close'; g++) {
+      const st = r.current
+      if (days) r.clock = () => days[Math.min(days.length - 1, r.chapterAt() - 1)]
+      if (st.kind === 'intro') r.answer(choice)
+      else if (st.kind === 'practice') {
+        k += 1
+        r.answer(null)
+      } else if (st.kind === 'beat') {
+        const b = r.season.beats[st.i]
+        r.answer(
+          b.kind === 'ordinary'
+            ? { option: b.order[0] }
+            : b.beat.kind === 'rank'
+              ? { order: b.chars.map((_, i) => i) }
+              : b.beat.kind === 'pick'
+                ? { pick: 0 }
+                : { units: b.chars.map((_, i) => (i === 0 ? 4 : i === 1 ? 2 : 0)) },
+        )
+      } else if (st.kind === 'fsurvey') r.answer({})
+      else if (st.kind === 'screening') r.answer({})
+      else if (st.kind === 'recall') r.answer(r.note)
+      else if (st.kind === 'probe') r.answer(['sex'])
+      else if (st.kind === 'wrap') r.answer({ told: 'no', origin: 'chose', replay: 'no' })
+      else if (st.kind === 'demographics') r.answer({})
+      else r.answer(null)
+    }
+    return k
+  }
+  /* Practice: offered once, three items (rank, share, pick), skipped unless chosen, never
+     recorded; the record says only whether it was taken. */
+  const a = new StoryRunner(seeded(31), wh, ['en'])
+  const b = new StoryRunner(seeded(31), wh, ['en'])
+  const tookA = answerAll(a, 'practice')
+  const tookB = answerAll(b, 'start')
+  await a.prepareCode(1000)
+  await b.prepareCode(1000)
+  const sa = a.submission()
+  const sb = b.submission()
+  const strip = (x: typeof sa) =>
+    JSON.stringify({
+      cards: Object.values(x.play.value.cards)
+        .map((c) => c.card)
+        .sort(),
+      items: Object.values(x.play.value.items)
+        .map((i) => `${i.k}:${i.i}`)
+        .sort(),
+    })
+  record(
+    T,
+    'practice is three items (rank, share, pick) after the opening, played only when chosen, never recorded or scored; the record carries practice y or n only',
+    tookA === 3 &&
+      tookB === 0 &&
+      sa.play.value.meta.practice === 'y' &&
+      sb.play.value.meta.practice === 'n' &&
+      strip(sa) === strip(sb) &&
+      a.points === b.points,
+    `${tookA} ${tookB} ${sa.play.value.meta.practice} ${sb.play.value.meta.practice}`,
+  )
+  /* The firm per-chapter flag: one letter per chapter and the finale, y when played after the
+     player's own training date, n when not (before it or on the day); none without a date. */
+  const f = new StoryRunner(seeded(32), wh, ['en'])
+  f.training = '2027-01-10'
+  answerAll(f, 'start', [
+    '2027-01-05',
+    '2027-01-08',
+    '2027-01-10',
+    '2027-01-12',
+    '2027-01-15',
+    '2027-01-16',
+  ])
+  await f.prepareCode(1000)
+  const fm = f.submission().play.value.meta
+  const flat = JSON.stringify(f.submission().play.value)
+  record(
+    T,
+    'meta.chapter_timing records, per chapter then the finale, after the training date or not (y or n), never a date or a time; a panel season has none',
+    fm.chapter_timing === 'nnnyyy' &&
+      !flat.includes('2027-01') &&
+      sb.play.value.meta.chapter_timing === undefined,
+    String(fm.chapter_timing),
+  )
+  /* "English with Hinglish help": English on screen, the Hinglish under each question and
+     description; the record says both. */
+  const h = new StoryRunner(seeded(33), wh, ['en', 'hinglish'])
+  const e = new StoryRunner(seeded(33), wh, ['en'])
+  record(
+    T,
+    '"Both, mixed" is real: English with the Hinglish under each question and description (help mode), recorded as both',
+    h.help && !e.help && h.lang === 'en',
+  )
+  /* One true session length: every screen that names one fills it from sessionMinutes. */
+  const minutes = sessionMinutes(wh)
+  const lengthy = JSON.stringify(storyContent.screens).match(/\d+ minute/g) ?? []
+  record(
+    T,
+    `one session length (${minutes} minutes) filled from the estimate everywhere; no fixed minute count in season copy`,
+    minutes % 5 === 0 &&
+      minutes * 60 >= new StoryRunner(seeded(1), wh, ['en']).estimateSeconds() &&
+      lengthy.length === 0 &&
+      /\{minutes\}/.test(SS.pickBody.en) &&
+      SS.consentShort.some((t) => /\{minutes\}/.test(t.en) && /\{minutes\}/.test(t.hinglish)),
+    lengthy.join(', '),
+  )
+  /* The scoring rule: nothing shown during the game says how answers are read. */
+  const inGame = JSON.stringify([wh.intro, wh.episodes, SS.pickBody, SS.consentShort, PRACTICE])
+  record(
+    T,
+    'no in-game copy says how answers are read ("reads you", "decisions that count", "attitude", "rating", "equal pairs", "chance")',
+    !/reads you|padhti hai|that count|gine jaate|attitude|rating|equal pairs|chance|ittefaq/i.test(
+      inGame,
+    ),
+    (
+      inGame.match(
+        /reads you|padhti hai|that count|gine jaate|attitude|rating|equal pairs|chance|ittefaq/gi,
+      ) ?? []
+    ).join(', '),
+  )
+  /* The comic page (EVAL-10): every panel caption is 25 words or fewer in English (30 in
+     Hinglish): scenes, consequences, chapter openings, payoff panels, practice scenes. */
+  const caps = [
+    ...(wh.beats ?? []).flatMap((x) => [
+      x.scene,
+      ...Object.values('after' in x ? (x.after ?? {}) : {}),
+    ]),
+    ...(wh.episodes ?? []).flatMap((e) => [e.opening, ...e.payoff.map((p) => p.text)]),
+    ...PRACTICE.items.map((it) => it.scene),
+  ].filter(Boolean) as { en: string; hinglish: string }[]
+  const long = caps.filter(
+    (c) => c.en.split(/\s+/).length > 25 || c.hinglish.split(/\s+/).length > 30,
+  )
+  record(
+    T,
+    `every comic-page caption is 25 words or fewer (${caps.length} captions: scenes, consequences, chapter openings, payoffs, practice)`,
+    long.length === 0,
+    long.map((c) => c.en).join(' | '),
+  )
+  const beatSrc = readFileSync(`${ROOT}src/ui/Beat.tsx`, 'utf8')
+  record(
+    T,
+    'a decision page is a comic page: panel 1 (what happened, or the chapter title panel), panel 2 (a drawn prop beside the scene), panel 3 (the question in a caption box); props are inline SVG from the art kit, never a generated face',
+    /beat__title/.test(beatSrc) &&
+      /<Then/.test(beatSrc) &&
+      /<PanelArt/.test(beatSrc) &&
+      /beat__ask/.test(beatSrc) &&
+      !/<img|<Portrait/.test(beatSrc),
+  )
+  /* Ranges: inside 0 to 1 around the position, narrower with more pairs; the profile shows a
+     change only when two seasons' ranges do not overlap. */
+  const small = positionOf({ w: 3, m: 7, e: 0 })
+  const big = positionOf({ w: 30, m: 70, e: 0 })
+  const sep = changeOf([
+    {
+      story: 'a',
+      day: '2026-01-01',
+      zone: 'lean',
+      weight: -0.6,
+      pairs: 40,
+      counts: { w: 8, m: 32, e: 0 },
+      code: 'x',
+    },
+    {
+      story: 'b',
+      day: '2026-03-01',
+      zone: 'none',
+      weight: 0,
+      pairs: 40,
+      counts: { w: 20, m: 20, e: 0 },
+      code: 'y',
+    },
+  ])
+  const near = changeOf([
+    {
+      story: 'a',
+      day: '2026-01-01',
+      zone: 'lean',
+      weight: -0.6,
+      pairs: 25,
+      counts: { w: 5, m: 20, e: 0 },
+      code: 'x',
+    },
+    {
+      story: 'b',
+      day: '2026-03-01',
+      zone: 'none',
+      weight: -0.08,
+      pairs: 25,
+      counts: { w: 11, m: 13, e: 1 },
+      code: 'y',
+    },
+  ])
+  record(
+    T,
+    `the position sits inside its range, the range narrows with more pairs (${config.season.rating.range.method}, mass ${config.season.rating.range.mass}, from config), and the profile shows a change only when the ranges do not overlap`,
+    !!small &&
+      !!big &&
+      small.lo <= small.at &&
+      small.at <= small.hi &&
+      big.hi - big.lo < small.hi - small.lo &&
+      sep?.towards === 'focal' &&
+      near === null,
   )
 }

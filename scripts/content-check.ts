@@ -20,6 +20,7 @@ import { BANDS, STRATA, TYPES, bankFor } from '../src/engine/layout'
 import { recallOptions } from '../src/engine/session'
 import { fill } from '../src/engine/text'
 import { record } from './lib/check'
+import { PRACTICE } from '../src/story/content'
 
 const T = 'X-2 content banks and writing rules'
 const ROOT = new URL('..', import.meta.url).pathname
@@ -192,9 +193,9 @@ export async function run() {
   )
   record(
     T,
-    'note (c) is the registered instruction, with no "fair" and no CEO framing',
+    'note (c) is the registered instruction (EVAL-10: "chapters", no "rounds"), with no "fair" and no CEO framing',
     c?.instruction.en ===
-      'For the next part, the rounds and the questions after them, answer as the ideal employee would.',
+      'For the chapters and the questions after them, answer as the ideal employee would.',
   )
   record(
     T,
@@ -366,4 +367,36 @@ export async function run() {
     dashes.join(', '),
   )
   record(T, 'British spelling (no common American forms)', us.length === 0, us.join('; '))
+
+  /* The opt-in practice round (EVAL-10, owner): its items carry no cue. Every card is a mascot
+     animal (never a person), and no practice text names a person's first name, surname or
+     birthplace from the identity pools, a sex, a religion, a skin tone or a caste. */
+  const ANIMALS = ['bear', 'panda', 'frog', 'koala', 'elephant', 'penguin', 'rabbit', 'tiger']
+  const pools = [
+    ...Object.values(identity.firstNames).flatMap((x) => Object.values(x).flat()),
+    ...Object.values(identity.surnames.hindu ?? {}).flat(),
+    ...identity.birthplace.south,
+    ...identity.birthplace.north,
+    ...identity.neutralNames,
+  ] as string[]
+  const CUE_WORDS =
+    /\b(woman|women|man|men|male|female|he|she|him|his|her|hers|mahila|purush|aurat|aadmi|hindu|muslim|caste|skin|tone|born|paida|religion|dharm)\b/i
+  const pItems = PRACTICE.items
+  const texts = pItems.flatMap((it) => [
+    it.scene,
+    it.question,
+    it.hint,
+    ...it.animals.flatMap((a) => [a.name, a.text]),
+  ])
+  const pWords = texts.flatMap((t) => [t.en, t.hinglish])
+  record(
+    T,
+    `practice items carry no cue: ${pItems.length} items (rank, share, pick), every card a mascot animal, no name from the identity pools and no word for a sex, religion, skin tone, caste or birthplace`,
+    pItems.map((it) => it.kind).join(',') === 'rank,split,pick' &&
+      pItems.every((it) => it.animals.every((a) => ANIMALS.includes(a.animal))) &&
+      pWords.every(
+        (w) => !!w && !CUE_WORDS.test(w) && pools.every((n) => !new RegExp(`\\b${n}\\b`).test(w)),
+      ),
+    pWords.filter((w) => CUE_WORDS.test(w)).join(' | '),
+  )
 }

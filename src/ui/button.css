@@ -1,4 +1,4 @@
-/* @owns button button--primary button--secondary button--quiet */
+/* @owns button button--primary button--secondary button--quiet button--nav */
 .button {
   min-height: var(--control);
   width: 100%;
@@ -55,6 +55,18 @@
   color: var(--c-accent);
   text-decoration: underline;
 }
+.button--nav {
+  width: auto;
+  align-self: flex-start;
+  min-height: var(--target);
+  padding: var(--gap-xs) var(--gap-none);
+  background: transparent;
+  border-color: transparent;
+  color: var(--c-accent);
+  font-size: var(--text-small);
+  text-decoration: underline;
+  text-align: left;
+}
 @media (hover: hover) {
   .button--primary:hover:not(:disabled) {
     background: var(--c-action-press);
@@ -63,7 +75,8 @@
   .button--secondary:hover:not(:disabled) {
     background: var(--c-raised);
   }
-  .button--quiet:hover:not(:disabled) {
+  .button--quiet:hover:not(:disabled),
+  .button--nav:hover:not(:disabled) {
     text-decoration-thickness: var(--border);
   }
 }

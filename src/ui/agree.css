@@ -1,4 +1,4 @@
-/* @owns agree agree__key agree__keyitem agree__item agree__statement agree__points agree__point agree__point--on agree__input agree__sr */
+/* @owns agree agree__key agree__keyitem agree__item agree__statement agree__points agree__point agree__point--on agree__input agree__sr agree__help */
 .agree {
   display: flex;
   flex-direction: column;
@@ -106,4 +106,9 @@
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+.agree__help {
+  display: block;
+  font-style: italic;
+  color: var(--c-muted);
 }
