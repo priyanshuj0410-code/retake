@@ -25,7 +25,8 @@
     "ux:states": "tsx --tsconfig tsconfig.app.json scripts/ux-states.ts",
     "season": "tsx --tsconfig tsconfig.app.json scripts/season-play.ts",
     "pwa": "tsx --tsconfig tsconfig.app.json scripts/pwa-check.ts",
-    "icons": "tsx scripts/icons.ts"
+    "icons": "tsx scripts/icons.ts",
+    "sample-pdf": "tsx --tsconfig tsconfig.app.json scripts/sample-pdf.ts"
   },
   "dependencies": {
     "firebase": "^12.18.0",

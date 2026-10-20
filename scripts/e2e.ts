@@ -338,11 +338,13 @@ async function main() {
       string,
       Record<string, string>
     > | null
-    const box = Object.values(profiles ?? {})[0] ?? {}
+    /* The demo profile (EVAL-12) is seeded before the run; the new one is the other key. */
+    const mine = Object.entries(profiles ?? {}).filter(([k]) => k !== demo.key)
+    const box = mine[0]?.[1] ?? {}
     record(
       T,
       'the profile reaches the emulator as ciphertext only',
-      Object.keys(profiles ?? {}).length === 1 &&
+      mine.length === 1 &&
         Object.keys(box).sort().join(',') === 'ct,iv' &&
         !JSON.stringify(box).includes('E2E'),
     )

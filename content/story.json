@@ -5669,10 +5669,6 @@
    "en": "Nothing stood out here this season. With only a few decisions in this area, a small pattern could still be missed.",
    "hinglish": "Is season yahan kuch alag nahin dikha. Is area mein kam decisions the, isliye chhota pattern phir bhi chhoot sakta hai."
   },
-  "noFollowed": {
-   "en": "Nothing to show here from this season.",
-   "hinglish": "Is season se yahan dikhane ko kuch nahin."
-  },
   "evidence": {
    "en": "From your own decisions:",
    "hinglish": "Aapke apne decisions se:"
@@ -5725,6 +5721,18 @@
    "examplesBody": {
     "en": "In these decisions, two colleagues had equally strong descriptions. They are examples only; no pattern is read from them.",
     "hinglish": "In decisions mein do colleagues ke description barabar mazboot the. Yeh sirf misaal hain; inse koi pattern nahin padha gaya."
+   },
+   "clearCaption": {
+    "en": "times the clearly stronger description came first",
+    "hinglish": "baar saaf taur par mazboot description pehle aaya"
+   },
+   "cueCaption": {
+    "en": "times {group} came first, with equally strong descriptions",
+    "hinglish": "baar barabar mazboot description par {group} pehle"
+   },
+   "evenSaid": {
+    "en": "With equally strong descriptions: {a} first {x} times, {b} first {y} times.",
+    "hinglish": "Barabar mazboot description par: {x} baar {a} pehle, {y} baar {b} pehle."
    }
   },
   "domains": {
@@ -5882,10 +5890,6 @@
   "contactFailed": {
    "en": "Your details could not be sent. Try again.",
    "hinglish": "Aapki details bheji nahin ja saki. Dobara koshish kijiye."
-  },
-  "domainReading": {
-   "en": "Women and men in this area: {zone}",
-   "hinglish": "Is area mein mahila aur purush: {zone}"
   },
   "_devPending": {
    "en": "Demo: the thresholds behind every tag and the range maths are planning values, PENDING v20 and v22.",
@@ -6082,6 +6086,88 @@
     "en": "Around {a}.",
     "hinglish": "Lagbhag {a}."
    }
+  },
+  "glanceTitle": {
+   "en": "At a glance",
+   "hinglish": "Ek nazar mein"
+  },
+  "glanceNote": {
+   "en": "Each line is one reading on the same scale. A solid dot is tagged; a hollow one is still forming, and the range is the mark.",
+   "hinglish": "Har line ek reading hai, ek hi scale par. Bhara bindu tag wala hai; khaali bindu abhi ban raha hai, aur range hi nishaan hai."
+  },
+  "rangeWordsCues": {
+   "tone": {
+    "mostlyLeft": {
+     "en": "mostly lighter-first",
+     "hinglish": "zyadatar halki pehle"
+    },
+    "slightlyLeft": {
+     "en": "slightly lighter-first",
+     "hinglish": "thoda halki pehle"
+    },
+    "equal": {
+     "en": "about equal",
+     "hinglish": "lagbhag barabar"
+    },
+    "slightlyRight": {
+     "en": "slightly darker-first",
+     "hinglish": "thoda gehri pehle"
+    },
+    "mostlyRight": {
+     "en": "mostly darker-first",
+     "hinglish": "zyadatar gehri pehle"
+    }
+   },
+   "religion": {
+    "mostlyLeft": {
+     "en": "mostly Hindu-first",
+     "hinglish": "zyadatar Hindu pehle"
+    },
+    "slightlyLeft": {
+     "en": "slightly Hindu-first",
+     "hinglish": "thoda Hindu pehle"
+    },
+    "equal": {
+     "en": "about equal",
+     "hinglish": "lagbhag barabar"
+    },
+    "slightlyRight": {
+     "en": "slightly Muslim-first",
+     "hinglish": "thoda Muslim pehle"
+    },
+    "mostlyRight": {
+     "en": "mostly Muslim-first",
+     "hinglish": "zyadatar Muslim pehle"
+    }
+   }
+  },
+  "pairFirst": {
+   "en": "first",
+   "hinglish": "pehle"
+  },
+  "pairEach": {
+   "en": "{k} each of {n}",
+   "hinglish": "{n} mein se {k}-{k}"
+  },
+  "pairsLabel": {
+   "en": "Your decisions",
+   "hinglish": "Aapke decisions"
+  },
+  "glanceLocked": {
+   "en": "Tagged after {n} more seasons",
+   "hinglish": "{n} aur season ke baad tag"
+  },
+  "glanceLockedOne": {
+   "en": "Tagged after 1 more season",
+   "hinglish": "1 aur season ke baad tag"
+  },
+  "whyPairsTitle": {
+   "en": "The pairs you met most often:",
+   "hinglish": "Jo jodiyan aapke saamne sabse zyada aayin:"
+  },
+  "areaDots": {
+   "en": "{n} woman-and-man pairs here: filled, the man first ({m}); ring, the woman first ({w}); dashed, neither ({e}).",
+   "hinglish": "Yahan {n} mahila-purush jodiyan: bhara, purush pehle ({m}); gol, mahila pehle ({w}); dashed, koi nahin ({e})."
   }
  },
  "profile": {

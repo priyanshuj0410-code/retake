@@ -596,7 +596,10 @@ async function main() {
     await page.getByRole('button', { name: 'See past seasons' }).click()
     await page.waitForSelector('[data-screen="profile-history"]')
     await audit(page, 'profile history')
-    await page.getByRole('link', { name: /^Open the full report/ }).first().click()
+    await page
+      .getByRole('link', { name: /^Open the full report/ })
+      .first()
+      .click()
     await page.waitForSelector('[data-screen="profile-season"]')
     await audit(page, 'profile season report')
     await page.goto(`${BASE}#/profile/account`)

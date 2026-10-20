@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { DotGrid } from './DotGrid'
 import './resulthero.css'
 
 /**
@@ -38,15 +39,7 @@ export function ResultHero({
             <span className="resulthero__line">{figure.line}</span>
           </p>
           <p className="resulthero__pair">{figure.pair}</p>
-          <span className="resulthero__dots" role="img" aria-label={figure.dots.label}>
-            {[
-              ...Array<string>(figure.dots.filled).fill('resulthero__dot resulthero__dot--filled'),
-              ...Array<string>(figure.dots.dashed).fill('resulthero__dot resulthero__dot--dashed'),
-              ...Array<string>(figure.dots.rings).fill('resulthero__dot'),
-            ].map((c, i) => (
-              <i key={i} className={c} />
-            ))}
-          </span>
+          <DotGrid {...figure.dots} />
         </>
       ) : null}
       <h2 className="resulthero__band">{band}</h2>

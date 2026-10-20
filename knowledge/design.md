@@ -249,13 +249,17 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 | `StoryPick` | `src/ui/StoryPick.tsx` | The season picker: one card per story in a grid of equal rows (`--rows-equal`, every card as tall as the tallest at each width), a fixed-width art column with the drawn `PanelArt` cover centred, title and premise top-aligned, and the "After your rating." line pinned to the foot so the lines sit level; stories not open are `aria-disabled` (no emoji, no PENDING) |
 | `RangeLine` | `src/ui/RangeLine.tsx` | The position with range (EVAL-10, owner): one line from "Men first" to "Women first" with a dashed tick at "About equal", an ink dot at the position (the share of pairs where the woman came first, an even share counting half) and a shaded range around it (`--c-range`, ink-edged), from the maths in `config.season.rating.range` (PENDING v22, `src/story/range.ts`). One image with a spoken label; `compact` (the profile timeline) drops the end labels. Ink on the ground only; neither end is marked as right |
 | `ReadingList` | `src/ui/ReadingList.tsx` | Readings as a plain list, label then level, every level in the same ink and weight ("Leans towards men" looks exactly like "No lean read"); only "Not enough to say" is quieter. No colour reads as good or bad |
-| `ResultHero` | `src/ui/ResultHero.tsx` | The top of the result: one number to remember ("38 of 46 pairs where you put the man first"), one sentence saying what a pair is, the dot grid (`role="img"`, filled: the man first, ring: the woman first, dashed: neither), the tag and its sentence, then the `RangeLine` and the reasons as children; ink on grey only. A forming reading shows its heading, sentence, the range (hollow point) in words and the next step, no dots and no tag |
+| `ResultHero` | `src/ui/ResultHero.tsx` | The top of the result: one number to remember ("38 of 46 pairs where you put the man first"), one sentence saying what a pair is, the `DotGrid`, the tag and the sentences after its first (EVAL-12: the first repeated the tag), then the `RangeLine` and the pairs met most often (`Pairs`) as children; ink on grey only. A forming reading shows its heading, sentence, the range (hollow point) in words and the next step, no dots and no tag |
 | `Fold` | `src/ui/Fold.tsx` | A section that folds: native `details` with the `h2` in the summary and a drawn marker; the result's areas, the first open; the opened explanation's sections, all closed |
 | `UpdateReady` | `src/ui/UpdateReady.tsx` | "Update ready. Your season is kept." with an Update button, a fixed bar at the foot of the screen on paper with the ink rule above it (`role="status"`), shown when a new version of the installed app is waiting (EVAL-7); it never reloads on its own |
 | `SeasonMap` | `src/ui/SeasonMap.tsx` | The season map on the chapter-end screen (EVAL-8, concept D; moved out of the header by EVAL-10): six stops on one line (chapters 1 to 5 as numbered rounds, the finale square), done filled ink, the current one violet, the rest outlined. One `role="img"` with a spoken label. No card dots, no countdown, no motion; nothing in it is interactive |
 | `Details` | `src/ui/Details.tsx` | "Read the full details": a native `details`, closed, with a quiet display-face summary (a `--control` target, 56 px on the note pitch) and the complete text behind a screen's short points (consent, the content note, the result band). Nothing is cut; Enter or Space toggles it |
 | `DevNotes` | `src/ui/DevNotes.tsx` | Pending markers for the research team, folded, `data-dev`, rendered only by the Vite dev server (`import.meta.env.DEV`); never player copy |
-| `PointCard` | `src/ui/PointCard.tsx` | One finding in a decision area: the pattern's name, the counts, and for a blind spot the player's own decisive pairs as a list (never a made-up inner voice) |
+| `DotGrid` | `src/ui/DotGrid.tsx` | Equal-description pairs as dots (EVAL-12, from `ResultHero`): filled the man first, a ring the woman first, dashed neither, in 12 columns; one `role="img"` with the three counts spoken; `small` (220 px wide) and a visible `caption` for an area. The shapes, never a colour, carry the meaning |
+| `Glance` | `src/ui/Glance.tsx` | "At a glance" (EVAL-12): small multiples, one compact `RangeLine` per reading on the same 0 to 1 scale (women and men, the three areas, skin tone, religion), each with its label, a short status (the tag, or "Tagged after N more seasons") and its own end words; label and status beside the line from 600 px and on paper, above it on phones. A solid point is tagged, a hollow one still forming; each line is one image with the status, the range in words and the figures spoken |
+| `Tally` | `src/ui/Tally.tsx` | A count as a picture (EVAL-12): "68 / 68" in display figures beside a thin ink-framed bar filled to k of n, with a one-line caption; with `parts`, one bar split between two named groups (ink, then tan with a paper divider) and each part's count in words under it. One image with the full sentence spoken |
+| `Pairs` | `src/ui/Pairs.tsx` | The player's own decisions as compact rows (EVAL-12): where it happened (muted), then two name chips with "=" (equally strong descriptions) or "<" (the first one's was weaker), the colleague put first set first on the tan ground and marked "FIRST" in words, an optional count ("8 of 12"); the place beside the pair from 600 px and on paper. Names only, no portraits; each row one image with the whole sentence spoken |
+| `Columns` | `src/ui/Columns.tsx` | Two short blocks side by side from 600 px and on paper, stacked on phones (EVAL-12: an area's questions and habits). No frame, no colour |
 | `ShareCard` | `src/ui/ShareCard.tsx` | The summary card (EVAL-10): by default the season only ("I played Team Season: The warehouse. 77 decisions, 5 chapters, 8 colleagues. Try it yourself."); an unticked `Checks` box "Include my result" adds the women-and-men tag and one chance line from config. Religion and skin tone are never on it. Share (the device's share sheet, else copy) and a status line |
 | `Timeline` | `src/ui/Timeline.tsx` | The profile's past seasons (EVAL-12): a vertical line of dated entries, each with the story, "Past season, not a confirmed reading" (never a tag), a compact hollow `RangeLine`, a `note` where the change rule fired ("Your decisions changed in this season."), and a `Link` to its read-only report |
 | `Trend` | `src/ui/Trend.tsx` | The profile's trend (EVAL-12): the pooled women-and-men reading after each season as a point on a vertical "Men first" to "Women first" line with a dashed "About equal" rule, its range a shaded band joined season to season (`--trend-h` 160 px, ink on `--c-range`); a season where the change rule fired is a hollow square with its own range bar, and the band starts again after it. Month labels under the points; one `role="img"` whose label says every point in words. No colour says good or bad, nothing moves |
@@ -302,7 +306,7 @@ no component knows its surface). Full before and after matrices:
 | QuickSplit | n/a | Ring on a chip | `--press` | Filled chip, `aria-pressed`, the row's stamp shows the number; empty ring and no pressed chip before a tap | `aria-disabled` past what is left (dashed) | n/a | Commits when all is shared | n/a | Chips fit 320 at 44 px | Highlight outline on chosen | No scale |
 | AgreeGrid | Border | Ring on the point | n/a | Filled point (ink) | n/a | n/a | n/a | n/a | Five points fit 320 at 44 px; the key stays at the top | Highlight outline on chosen | No transition |
 | StoryPick | Violet offset shadow | Ring | `--press` | n/a | `aria-disabled` (not open), tinted, no shadow | n/a | n/a | n/a | Wraps | Ring | No scale |
-| Timeline, Trend, ReadingList, ResultHero, PointCard, Spectrum, Beat, Panel, Caption, Splash, Then, Strip, CastGrid, PanelArt | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps; the cast grid drops to two columns | Borders kept; pictures and the trend keep colour | n/a |
+| Timeline, Trend, ReadingList, ResultHero, DotGrid, Glance, Tally, Pairs, Columns, Spectrum, Beat, Panel, Caption, Splash, Then, Strip, CastGrid, PanelArt | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps; the cast grid drops to two columns | Borders kept; pictures and the trend keep colour | n/a |
 | Fold, DevNotes | n/a | `summary` ring | n/a | Open marker ▾ | n/a | n/a | n/a | n/a | Wraps | Ring | n/a |
 | Stamp | n/a | n/a | n/a | Filled and tilted | Empty: dashed ring, upright | n/a | n/a | n/a | n/a | Border kept | n/a |
 | ShareCard | n/a | Button ring | Button | n/a | n/a | "cannot share" status | "Copied" status | n/a | Wraps | Border kept | n/a |
@@ -363,13 +367,13 @@ valence, and the season's end lists the jobs each colleague led, with no outcome
   three sentences (everyone's decisions lean somewhere; a view from outside; ask whether the
   point that feels off could still be true); then the `ResultHero` for sex ("38 of 46 equal
   pairs where you put the man ahead", the dot grid, the band, its sentence, `Spectrum` and the
-  reasons); "Your other readings" as a `ReadingList` (religion, skin tone, surname,
-  birthplace), so a player with no sex reading still sees the readings they do have (owner
-  decision 5); then "Your decisions, area by area", one `Fold` per area (hiring and promotion,
-  complaints and conduct, sharing resources; the first open), each with a short narrative, "Where your
-  decisions followed the record" and "Your blind spots" as `PointCard`s (a blind spot ends with
-  the actual decisive pairs), "Where it may come from" (prompts only, nothing asked or stored)
-  and "How to keep watch" (habits, free, no effect claimed; sources pending in a content note); the Internal
+  reasons); since EVAL-12 every reading comes first "At a glance" (section 4g), so a player
+  with no sex reading still sees the readings they do have (owner decision 5); then "Your
+  decisions, area by area", one `Fold` per area (hiring and promotion, complaints and conduct,
+  sharing resources; the first open), each with a short narrative, its line and dots, "Where your
+  decisions followed the descriptions" as `Tally`s and "Worth a second look" with the player's
+  own pairs (`Pairs`), then the questions (prompts only, nothing asked or stored) and "How to keep
+  watch" (habits, free, no effect claimed) in `Columns`; the Internal
   Committee line; the plain "Your answers are in" notice (no tick, no green); keeping it (an optional profile, the retake as a date); the `ShareCard`; and
   an optional stay-in-touch form (name and email both optional, two separate unticked boxes,
   stored apart from answers and profile). It says "Your result" (EVAL-10; never "attitude rating" or "bias"), and never
@@ -631,9 +635,10 @@ re-pointed tokens in `tokens.css`, each component's own rules in its own sheet.
   `Group` marked `screen` (the profile form, the summary card and its heading, the stay-in-touch
   form).
 - **Pagination.** `Heading`, the page title, the fold's heading, the result band and the small
-  intro line before a list (`text--small`) are `break-after: avoid`; a `PointCard`, a
-  `ReadingList`, a `List`, a `Notice`, the `RangeLine` and the hero's number and dots are
-  `break-inside: avoid`. Areas do not force a new page: a forced break let Chromium split a list
+  intro line before a list (`text--small`) are `break-after: avoid`; a `ReadingList`, a
+  `List`, a `Notice`, the `RangeLine`, the hero's number, the `DotGrid` with its caption, the
+  `Glance` strip, a `Tally`, a `Pairs` row and a `Columns` block are `break-inside: avoid`
+  (EVAL-12; `Glance`, `Columns` and `Pairs` take their wide layout on paper). Areas do not force a new page: a forced break let Chromium split a list
   that was set to avoid it.
 - **Sample.** `knowledge/samples/sample-result-report.pdf` is a seeded player's result exported
   through Playwright's `page.pdf` (A4, backgrounds printed, print media), with a footer on every
@@ -705,6 +710,34 @@ a few counts on top); we count seasons and stories, with no streak, league or XP
 and Eufy's progress lines over time; ours adds the range as a band and breaks it at a change.
 Delete: Dipsea's and Life360's confirmations (the keep action beside the destructive one); ours
 confirms in the page rather than a modal.
+
+## 4g. The result page redesigned (EVAL-12, owner, 20 Oct 2026)
+
+Plane: [EVAL-12](https://app.plane.so/the-equal-lens/browse/EVAL-12/). Two owner changes: no
+repeated copy, and more pictures. Top to bottom: the title and the opening; **At a glance**
+(`Glance`: women and men, hiring and promotion, complaints and conduct, sharing resources, skin
+tone, religion; one line each on one scale, its intro first); the women-and-men `ResultHero`
+(number, dots, tag, the sentences after the tag's first, the range, "The pairs you met most
+often:" as `Pairs`); then one `Fold` per area: its narrative, its line (the reading only, never
+"Women and men in this area: ..."; the heading names the area), its `DotGrid` with a one-line
+caption, "Where your decisions followed the descriptions" as `Tally`s (hidden when there is none:
+no "Nothing to show here"), "Worth a second look" (a title, a `Tally` for a skin-tone or religion
+pattern, never for women and men, whose dots already show it, and the player's own `Pairs`), and
+the questions and habits in `Columns`. The religion-and-skin-tone `ReadingList` and the
+`PointCard` are gone (the strip says the same).
+
+- **The unlock rule on the result page.** A reading is tagged only once the seasons pooled since
+  the last restart (this one and an open profile's) reach its registered count
+  (`season.profile.readings`): women and men open at the first season; every area, skin tone,
+  religion line shows untagged on a first season (hollow point, the range in words,
+  "Tagged after N more seasons on your profile"), never "Pattern". A reading opened through a
+  profile takes the pooled reading's tag. `story-check` X-13 holds it over 180 seeded seasons.
+- **Visual rules.** Tokens only; ink, tan and paper, so no colour reads as good or bad, and shape
+  or words always carry the meaning with it (solid against hollow, filled against ring, "FIRST",
+  "=" and "<"); every picture is one `role="img"` with its sentence spoken. Print keeps the
+  wide layouts and never splits a strip, a tally, a pair row or a dot grid from its caption.
+- **The sample PDF** (`pnpm sample-pdf`, section 4e) is five A4 pages for the seeded men-first
+  player; the closing notices share the last page with the last area.
 
 ## 5. Interaction patterns, checked against real products (Lazyweb, 19 Oct 2026)
 

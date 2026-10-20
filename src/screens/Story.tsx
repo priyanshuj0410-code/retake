@@ -33,11 +33,9 @@ import {
   Caption,
   CastGrid,
   DevNotes,
-  Details,
   Fold,
   Group,
   Panel,
-  ReadingList,
   ResultHero,
   Splash,
   Strip,
@@ -56,9 +54,13 @@ import {
   PickOne,
   SeasonMap,
   QuickSplit,
-  PointCard,
   ShareCard,
   RangeLine,
+  Columns,
+  DotGrid,
+  Glance,
+  Pairs,
+  Tally,
   StoryPick,
   TapOrder,
   Text,
@@ -1038,9 +1040,14 @@ export function StoryResult({
   const L = (t: T) => t[ui]
   const [m] = useState(() => resultModel(runner))
   const h = m.rating.headline
-  /* The tag's sentence opens with its first sentence; the rest is one tap away (owner, 19 Oct
-     2026: no block of more than about 60 words on a note screen). */
-  const [lead, ...more] = m.unread ? [m.body] : m.body.split(/(?<=[.!?])\s+(?=[A-Z])/)
+  /* The tag's first sentence says again what the band and the number say (EVAL-12: no repeated
+     copy), so a tagged result shows the sentences after it; a forming one shows its own words. */
+  const body = m.unread
+    ? m.body
+    : m.body
+        .split(/(?<=[.!?])\s+(?=[A-Z])/)
+        .slice(1)
+        .join(' ')
   return (
     <Page
       surface="oof"
@@ -1056,17 +1063,29 @@ export function StoryResult({
       }
     >
       <Text kind="lead">{L(RT.opening)}</Text>
+      {/* At a glance (EVAL-12): every reading on one scale, tagged only once it opens. */}
+      <Heading>{L(RT.glanceTitle)}</Heading>
+      <Text kind="small">{`${L(RT.glanceNote)} ${L(RT.intro)}`}</Text>
+      <Glance
+        label={L(RT.glanceTitle)}
+        rows={m.glance.map((g) => ({
+          id: g.id,
+          label: g.label,
+          status: g.short,
+          at: g.at,
+          lo: g.lo,
+          hi: g.hi,
+          point: g.point,
+          ends: g.ends,
+          said: g.said,
+        }))}
+      />
       <ResultHero
         group={L(RT.cues.sex.label)}
         figure={m.hero ?? undefined}
         band={m.band}
-        body={lead}
+        body={body}
       >
-        {more.length ? (
-          <Details summary={L(S.common.fullDetails)}>
-            <Text>{more.join(' ')}</Text>
-          </Details>
-        ) : null}
         {m.range ? (
           <RangeLine
             at={m.range.at}
@@ -1074,7 +1093,6 @@ export function StoryResult({
             hi={m.range.hi}
             ends={m.range.ends}
             label={m.forming ? `${m.range.label} ${m.forming.words}` : m.range.label}
-            caption={m.range.caption}
             note={m.forming ? m.forming.words : m.range.note}
             point={m.forming ? config.season.rating.untagged.point : 'solid'}
           />
@@ -1086,76 +1104,75 @@ export function StoryResult({
             <FormingActions runner={runner} />
           </>
         ) : null}
-        {m.why.length ? <List items={m.why} /> : null}
+        {m.whyPairs.length ? <Text kind="small">{L(RT.whyPairsTitle)}</Text> : null}
+        {m.whyPairs.length ? (
+          <Pairs items={m.whyPairs} label={L(RT.pairsLabel)} firstWord={L(RT.pairFirst)} />
+        ) : null}
       </ResultHero>
-      {/* Below the headline (owner decision 5, with the copy audit's G5): "Not enough to tell" on
-          sex shows nothing more of the sex result, but the religion and skin-tone readings the
-          player does have still show; with every cue unread, nothing else shows. */}
-      {m.sections.others ? (
-        <>
-          <Heading>{L(RT.otherTitle)}</Heading>
-          <ReadingList
-            label={L(RT.otherTitle)}
-            items={m.cards
-              .filter((c) => c.cue !== 'sex')
-              .map((c) => ({ id: c.cue, label: c.label, level: c.level, zone: c.zone }))}
-          />
-          <Text kind="small">{L(RT.intro)}</Text>
-        </>
-      ) : null}
+      {/* The areas (owner decision 5, with the copy audit's G5): only once the women-and-men
+          headline is readable. Each area's heading names it, so its rows say only the reading. */}
       {m.sections.areas ? (
         <>
           <Heading>{L(RT.areasTitle)}</Heading>
           {m.domains.map((d, n) => (
             <Fold key={d.domain} title={d.title} open={n === 0}>
               <Text>{d.narrative}</Text>
-              {d.reading ? (
-                <ReadingList
-                  label={d.title}
-                  items={[
-                    {
-                      id: d.domain,
-                      label: L(RT.cueShort.sex),
-                      level: d.reading.level,
-                      zone: d.reading.zone,
-                    },
-                  ]}
-                />
-              ) : null}
+              <RangeLine
+                at={d.line.at}
+                lo={d.line.lo}
+                hi={d.line.hi}
+                ends={d.line.ends}
+                point={d.line.point}
+                label={d.line.said}
+                note={d.line.tagged ? d.line.status : `${d.line.status} ${d.line.words}`}
+              />
+              {d.dots ? <DotGrid small {...d.dots} /> : null}
               {d.examples.length ? (
-                <PointCard
-                  title={L(RT.cards.examplesTitle)}
-                  body={L(RT.cards.examplesBody)}
-                  evidence={d.examples}
-                  evidenceLabel={L(RT.evidence)}
-                />
+                <>
+                  <Heading level={3}>{L(RT.cards.examplesTitle)}</Heading>
+                  <Text kind="small">{L(RT.cards.examplesBody)}</Text>
+                  <Pairs
+                    items={d.examples}
+                    label={L(RT.cards.examplesTitle)}
+                    firstWord={L(RT.pairFirst)}
+                  />
+                </>
               ) : null}
-              <Heading level={3}>{L(RT.followedTitle)}</Heading>
               {d.followed.length ? (
-                d.followed.map((p) => <PointCard key={p.title} title={p.title} body={p.body} />)
-              ) : (
-                <Text kind="muted">{L(RT.noFollowed)}</Text>
-              )}
+                <>
+                  <Heading level={3}>{L(RT.followedTitle)}</Heading>
+                  {d.followed.map((t) => (
+                    <Tally key={t.said} {...t} />
+                  ))}
+                </>
+              ) : null}
               <Heading level={3}>{L(RT.blindTitle)}</Heading>
               {d.blind.length ? (
-                d.blind.map((p) => (
-                  <PointCard
-                    key={p.title}
-                    title={p.title}
-                    body={p.body}
-                    evidence={p.evidence}
-                    evidenceLabel={L(RT.evidence)}
-                  />
+                d.blind.map((b) => (
+                  <Group key={b.title}>
+                    <Text kind="strong">{b.title}</Text>
+                    {b.tally ? <Tally {...b.tally} /> : null}
+                    {b.body ? <Text kind="small">{b.body}</Text> : null}
+                    <Pairs items={b.pairs} label={L(RT.evidence)} firstWord={L(RT.pairFirst)} />
+                  </Group>
                 ))
               ) : (
                 <Text kind="muted">{L(RT.noBlind)}</Text>
               )}
-              <Heading level={3}>{L(RT.originTitle)}</Heading>
-              <Text kind="small">{L(RT.originBody)}</Text>
-              <List items={d.origin} />
-              <Heading level={3}>{L(RT.watchTitle)}</Heading>
-              <Text kind="small">{L(RT.watchBody)}</Text>
-              <List items={d.watch} />
+              <Columns
+                items={[
+                  <>
+                    <Heading level={3}>{L(RT.originTitle)}</Heading>
+                    <Text kind="small">{L(RT.originBody)}</Text>
+                    <List items={d.origin} />
+                  </>,
+                  <>
+                    <Heading level={3}>{L(RT.watchTitle)}</Heading>
+                    <Text kind="small">{L(RT.watchBody)}</Text>
+                    <List items={d.watch} />
+                  </>,
+                ]}
+              />
             </Fold>
           ))}
         </>

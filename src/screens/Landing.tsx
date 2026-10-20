@@ -196,11 +196,7 @@ export function SignIn({ go, after = '#/profile' }: { go: (h: string) => void; a
       }
       oof={L(S.common.outOfFiction)}
       title={L(LD.signInTitle)}
-      actions={
-        <Button onClick={() => void send()}>
-          {L(LD.signInGo)}
-        </Button>
-      }
+      actions={<Button onClick={() => void send()}>{L(LD.signInGo)}</Button>}
     >
       <Text>{L(LD.signInBody)}</Text>
       <Field

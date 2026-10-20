@@ -10,10 +10,10 @@
 import type { Lang, T } from '../content/types'
 import { config, type ProfileReadingId } from '../engine/config'
 import { fill } from '../engine/text'
-import { RT, SS, type Domain } from './content'
+import { PF, RT, SS, type Domain } from './content'
 import { pc, positionOf, type Counts } from './range'
 import { currentProfile } from './profile'
-import { walk } from './pool'
+import { profileNow, walk } from './pool'
 import {
   advantage,
   cueSets,
@@ -29,12 +29,6 @@ import {
 import type { StoryRunner } from './runner'
 import { peopleBeats } from './runner'
 
-export interface Point {
-  title: string
-  body: string
-  evidence: string[]
-}
-
 export interface CueCard {
   cue: Cue
   label: string
@@ -43,16 +37,60 @@ export interface CueCard {
   meaning: string
 }
 
+/** One decision as a pair row (EVAL-12): who came first, beside whom, and the sentence it says. */
+export interface PairView {
+  context?: string
+  first: string
+  other: string
+  relation: 'equal' | 'weaker'
+  even?: boolean
+  count?: string
+  said: string
+}
+
+/** A count as a picture (EVAL-12): k of n, or two named parts. */
+export interface TallyView {
+  title?: string
+  k?: number
+  n?: number
+  parts?: { label: string; n: number }[]
+  caption?: string
+  said: string
+}
+
+/**
+ * One reading as a position-and-range line (EVAL-12): tagged only once its registered season
+ * count is reached (config.season.profile.readings), otherwise untagged with a hollow point, the
+ * range in words and "Tagged after N more seasons on your profile".
+ */
+export interface LineView {
+  id: ProfileReadingId
+  label: string
+  status: string
+  /** The status in a few words, for the at-a-glance strip: the tag, or "Tagged after N more seasons". */
+  short: string
+  tagged: boolean
+  at: number
+  lo: number
+  hi: number
+  point: 'solid' | 'hollow' | 'none'
+  ends: { left: string; middle: string; right: string }
+  words: string
+  said: string
+}
+
 export interface DomainSection {
   domain: Domain
   title: string
   narrative: string
-  /** The sex reading on this domain's own cards; null unless the headline is at least possible (O2). */
-  reading: { level: string; zone: 'lean' | 'none' | 'unread'; group: string } | null
-  /** Equal-notes decisions shown as examples, with no lean label, for cues whose headline is under possible. */
-  examples: string[]
-  followed: Point[]
-  blind: Point[]
+  /** Women and men on this area's own cards, as a line (EVAL-12): untagged until it opens. */
+  line: LineView
+  /** The same pairs as dots: filled the man first, a ring the woman first, dashed neither. */
+  dots: { filled: number; rings: number; dashed: number; label: string; caption: string } | null
+  /** Equal-description decisions shown as examples, with no lean label, while the headline is under possible. */
+  examples: PairView[]
+  followed: TallyView[]
+  blind: { title: string; tally: TallyView | null; body?: string; pairs: PairView[] }[]
   origin: string[]
   watch: string[]
 }
@@ -88,6 +126,10 @@ export interface ResultModel {
     dots: { filled: number; rings: number; dashed: number; label: string }
   } | null
   why: string[]
+  /** The rival pairs behind the headline, as pair rows (EVAL-12). */
+  whyPairs: PairView[]
+  /** "At a glance" (EVAL-12): women and men, each area, skin tone and religion on one scale. */
+  glance: LineView[]
   cards: CueCard[]
   domains: DomainSection[]
   share: string
@@ -133,25 +175,21 @@ export function toTagLine(toTag: number | null, lang: Lang): string {
   return fill(L(toTag === 1 ? RT.forming.leftOne : RT.forming.left), { n: toTag })
 }
 
-/** A position on the line in words, from the edges in config (untagged.words). */
-function placeWord(x: number, lang: Lang): string {
+/** A position on the line in words, from the edges in config (untagged.words); per cue since EVAL-12. */
+function placeWord(x: number, lang: Lang, cue: Cue = 'sex'): string {
   const [a, b, c, d] = config.season.rating.untagged.words
-  const k =
-    x < a
-      ? 'mostlyMen'
-      : x < b
-        ? 'slightlyMen'
-        : x <= c
-          ? 'equal'
-          : x <= d
-            ? 'slightlyWomen'
-            : 'mostlyWomen'
-  return RT.rangeWords[k][lang]
+  const k = x < a ? 0 : x < b ? 1 : x <= c ? 2 : x <= d ? 3 : 4
+  if (cue === 'tone' || cue === 'religion') {
+    const w = RT.rangeWordsCues[cue]
+    return [w.mostlyLeft, w.slightlyLeft, w.equal, w.slightlyRight, w.mostlyRight][k][lang]
+  }
+  const keys = ['mostlyMen', 'slightlyMen', 'equal', 'slightlyWomen', 'mostlyWomen'] as const
+  return RT.rangeWords[keys[k]][lang]
 }
 
 /** An untagged range in words: "Somewhere between slightly men-first and slightly women-first." */
-export function rangeInWords(lo: number, hi: number, lang: Lang): string {
-  const [a, b] = [placeWord(lo, lang), placeWord(hi, lang)]
+export function rangeInWords(lo: number, hi: number, lang: Lang, cue: Cue = 'sex'): string {
+  const [a, b] = [placeWord(lo, lang, cue), placeWord(hi, lang, cue)]
   return a === b
     ? fill(RT.rangeWords.around[lang], { a })
     : fill(RT.rangeWords.between[lang], { a, b })
@@ -288,14 +326,37 @@ export function resultModel(run: StoryRunner): ResultModel {
     byPair.set(key, e)
   }
   const name = (slot: number) => run.displayName(slot, true)
+  const whyPairs: PairView[] = []
   for (const e of [...byPair.values()]
     .filter((x) => x.n >= 2)
     .sort((x, y) => y.n - x.n)
     .slice(0, 2)) {
-    if (e.wAhead === e.mAhead)
-      why.push(fill(L(RT.whyPairEven), { a: name(e.w), b: name(e.m), k: e.wAhead, n: e.n }))
-    else {
+    if (e.wAhead === e.mAhead) {
+      const said = fill(L(RT.whyPairEven), { a: name(e.w), b: name(e.m), k: e.wAhead, n: e.n })
+      why.push(said)
+      whyPairs.push({
+        first: name(e.w),
+        other: name(e.m),
+        relation: 'equal',
+        even: true,
+        count: fill(L(RT.pairEach), { k: e.wAhead, n: e.n }),
+        said,
+      })
+    } else {
       const favW = e.wAhead > e.mAhead
+      whyPairs.push({
+        first: name(favW ? e.w : e.m),
+        other: name(favW ? e.m : e.w),
+        relation: 'equal',
+        count: fill(L(RT.heroNumber), { k: favW ? e.wAhead : e.mAhead, n: e.n }),
+        said: fill(L(RT.whyPair), {
+          a: name(e.w),
+          b: name(e.m),
+          fav: name(favW ? e.w : e.m),
+          k: favW ? e.wAhead : e.mAhead,
+          n: e.n,
+        }),
+      })
       why.push(
         fill(L(RT.whyPair), {
           a: name(e.w),
@@ -338,15 +399,92 @@ export function resultModel(run: StoryRunner): ResultModel {
     Cue,
     ReturnType<typeof cueSets>
   >
+  /* The readings as lines (EVAL-12). The unlock rule: a reading is tagged only once the seasons
+     pooled since the last restart (this one, and an open profile's) reach its registered count;
+     women and men open at the first season, as before. A reading that opens through a profile
+     is tagged from the pooled reading; every other one shows its range, hollow. */
+  const seasonCounts = {
+    ...readingCounts(people, rating.decisive, domainOf),
+    sex: { w: womanAhead, m: manAhead, e: even },
+  }
+  const pooledNow = profileNow([...saved, { readings: seasonCounts }])
+  const lineOf = (id: ProfileReadingId): LineView => {
+    const cue: Cue = id === 'tone' || id === 'religion' ? id : 'sex'
+    const p = positionOf(seasonCounts[id] ?? { w: 0, m: 0, e: 0 }) ?? {
+      at: 0.5,
+      lo: 0,
+      hi: 1,
+      n: 0,
+    }
+    const opens = config.season.profile.readings.find((r) => r.id === id)?.opens ?? null
+    const pr = pooledNow.readings.find((r) => r.id === id)
+    const tagged = id === 'sex' ? !unread : opens !== null && pooled >= opens && !!pr?.tagged
+    const status =
+      id === 'sex'
+        ? band
+        : tagged && pr
+          ? levelName(pr.level, cue, pr.towards, lang)
+          : fill(L(PF.forming), { left: toTagLine(seasonsToTag(pooled, id), lang) })
+    const ends =
+      cue === 'sex'
+        ? { left: L(RT.rangeLeft), middle: L(RT.rangeMiddle), right: L(RT.rangeRight) }
+        : { left: L(PF.ends[cue].left), middle: L(RT.rangeMiddle), right: L(PF.ends[cue].right) }
+    const words = rangeInWords(p.lo, p.hi, lang, cue)
+    const toTag = seasonsToTag(pooled, id)
+    const short = tagged
+      ? status
+      : toTag === null
+        ? L(PF.notAvailable)
+        : toTag === 1
+          ? L(RT.glanceLockedOne)
+          : toTag === 0
+            ? L(RT.forming.title)
+            : fill(L(RT.glanceLocked), { n: toTag })
+    return {
+      id,
+      label: L(PF.labels[id]),
+      status,
+      short,
+      tagged,
+      ...p,
+      point: tagged ? 'solid' : config.season.rating.untagged.point,
+      ends,
+      words,
+      said: `${L(PF.labels[id])}: ${status}. ${tagged ? '' : `${words} `}${fill(L(PF.lineSaid), {
+        label: L(PF.labels[id]),
+        right: ends.right.toLowerCase(),
+        at: pc(p.at),
+        lo: pc(p.lo),
+        hi: pc(p.hi),
+      })}`,
+    }
+  }
+  const glance = (['sex', 'hiring', 'conduct', 'resources', 'tone', 'religion'] as const).map(
+    lineOf,
+  )
+  const pairOf = (p: Pair): PairView => ({
+    context: `${episode(p.beat)}, ${role(p.beat)}`,
+    first: name(winner(p)),
+    other: name(p.a === winner(p) ? p.b : p.a),
+    relation: 'equal',
+    said: fill(L(RT.cards.tied), {
+      episode: episode(p.beat),
+      role: role(p.beat),
+      a: name(p.a),
+      b: name(p.b),
+      fav: name(winner(p)),
+    }),
+  })
+
   const domains: DomainSection[] = DOMAINS.map((d) => {
     const copy = RT.domains[d]
     const beats = peopleBeats(run).filter(({ i }) => run.isRating(i) && domainOf(i) === d)
     const pairs = rating.decisive.filter((p) => domainOf(p.beat) === d)
-    const followed: Point[] = []
-    const blind: Point[] = []
+    const followed: TallyView[] = []
+    const blind: DomainSection['blind'] = []
     let clearN = 0
     let clearK = 0
-    const weak: string[] = []
+    const weak: PairView[] = []
     for (const { b, i } of beats) {
       const a = run.answers.get(i)
       if (!a) continue
@@ -357,29 +495,35 @@ export function resultModel(run: StoryRunner): ResultModel {
           const adv = advantage(b.beat.kind, b.beat.family === 'npt', x, y, a)
           if (adv > 0) clearK += 1
           else if (adv < 0)
-            weak.push(
-              fill(L(RT.cards.weak), {
+            weak.push({
+              context: `${episode(i)}, ${role(i)}`,
+              first: name(b.chars[y].slot),
+              other: name(b.chars[x].slot),
+              relation: 'weaker',
+              said: fill(L(RT.cards.weak), {
                 episode: episode(i),
                 role: role(i),
                 weak: name(b.chars[y].slot),
                 strong: name(b.chars[x].slot),
               }),
-            )
+            })
         }
     }
     if (clearN > 0 && clearK / clearN >= config.season.rating.engagementMin)
       followed.push({
-        title: L(RT.cards.clearTitle),
-        body: fill(L(RT.cards.clearBody), { k: clearK, n: clearN }),
-        evidence: [],
+        k: clearK,
+        n: clearN,
+        caption: L(RT.cards.clearCaption),
+        said: fill(L(RT.cards.clearBody), { k: clearK, n: clearN }),
       })
     if (weak.length >= 2)
       blind.push({
         title: L(RT.cards.weakTitle),
+        tally: null,
         body: fill(L(RT.cards.weakBody), { k: weak.length }),
-        evidence: weak.slice(0, 3),
+        pairs: weak.slice(0, 3),
       })
-    const examples: string[] = []
+    const examples: PairView[] = []
     for (const cue of SHOWN) {
       const { real: focal, pool } = labelsOf[cue]
       const decided = pairs.filter(
@@ -389,18 +533,7 @@ export function resultModel(run: StoryRunner): ResultModel {
          least possible; otherwise its decisions are shown as examples, with no lean label. */
       const overall = cue === 'sex' ? h : rating.others.find((r) => r.cue === cue)
       if (!overall || !LEANING.includes(overall.level)) {
-        if (cue === 'sex')
-          examples.push(
-            ...decided.slice(0, 3).map((p) =>
-              fill(L(RT.cards.tied), {
-                episode: episode(p.beat),
-                role: role(p.beat),
-                a: name(p.a),
-                b: name(p.b),
-                fav: name(winner(p)),
-              }),
-            ),
-          )
+        if (cue === 'sex') examples.push(...decided.slice(0, 3).map(pairOf))
         continue
       }
       if (decided.length < minPairs) continue
@@ -410,55 +543,55 @@ export function resultModel(run: StoryRunner): ResultModel {
       if (Math.max(fAhead, cAhead) / decided.length >= share) {
         const towards = fAhead > cAhead ? 'focal' : 'comparison'
         const g = cueGroup({ cue, towards }, lang)
+        const k = Math.max(fAhead, cAhead)
         blind.push({
           title: fill(L(RT.cards.cueTitle), { group: g }),
-          body: fill(L(RT.cards.cueBody), {
-            group: g,
-            k: Math.max(fAhead, cAhead),
-            n: decided.length,
-          }),
-          evidence: decided
+          tally:
+            cue === 'sex'
+              ? null
+              : {
+                  k,
+                  n: decided.length,
+                  caption: fill(L(RT.cards.cueCaption), { group: g }),
+                  said: fill(L(RT.cards.cueBody), { group: g, k, n: decided.length }),
+                },
+          pairs: decided
             .filter((p) => focal.has(winner(p)) === (towards === 'focal'))
             .slice(0, 3)
-            .map((p) =>
-              fill(L(RT.cards.tied), {
-                episode: episode(p.beat),
-                role: role(p.beat),
-                a: name(p.a),
-                b: name(p.b),
-                fav: name(winner(p)),
-              }),
-            ),
+            .map(pairOf),
         })
       } else if (Math.abs(fAhead - cAhead) <= 1)
         followed.push({
           title: fill(L(RT.cards.evenTitle), { label: L(RT.cueShort[cue]) }),
-          body: fill(L(RT.cards.evenBody), {
+          parts: [
+            { label: L(words.firstFocal ?? words.focal), n: fAhead },
+            { label: L(words.firstComparison ?? words.comparison), n: cAhead },
+          ],
+          said: fill(L(RT.cards.evenSaid), {
             a: L(words.focal),
             x: fAhead,
             b: L(words.comparison),
             y: cAhead,
           }),
-          evidence: [],
         })
     }
+    const c = seasonCounts[d]
+    const n = c ? c.w + c.m + c.e : 0
     return {
       domain: d,
       title: L(copy.title),
       narrative: fill(L(copy.narrative), { n: beats.length, k: pairs.length }),
-      reading: LEANING.includes(h.level)
-        ? (() => {
-            const dr = rating.domains[d]
-            const g = dr.towards ? cueGroup(dr, lang) : ''
-            return {
-              level: fill(L(RT.domainReading), {
-                zone: levelName(dr.level, 'sex', dr.towards, lang),
-              }),
-              zone: dr.zone,
-              group: g,
+      line: lineOf(d),
+      dots:
+        c && n
+          ? {
+              filled: c.m,
+              rings: c.w,
+              dashed: c.e,
+              label: fill(L(RT.heroDots), { n, m: c.m, w: c.w, e: c.e }),
+              caption: fill(L(RT.areaDots), { n, m: c.m, w: c.w, e: c.e }),
             }
-          })()
-        : null,
+          : null,
       examples,
       followed: followed.slice(0, 4),
       blind: blind.slice(0, 4),
@@ -491,12 +624,11 @@ export function resultModel(run: StoryRunner): ResultModel {
       cards.filter((c) => c.cue !== 'sex').map((c) => c.zone),
     ),
     counts: { w: womanAhead, m: manAhead, e: even },
-    readings: {
-      ...readingCounts(people, rating.decisive, domainOf),
-      sex: { w: womanAhead, m: manAhead, e: even },
-    },
+    readings: seasonCounts,
     hero,
     why: unread ? [] : why,
+    whyPairs: unread ? [] : whyPairs,
+    glance,
     cards,
     domains,
     share: shareText,

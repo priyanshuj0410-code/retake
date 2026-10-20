@@ -8,6 +8,7 @@ plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-5/
   - https://app.plane.so/the-equal-lens/browse/EVAL-6/
   - https://app.plane.so/the-equal-lens/browse/EVAL-7/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-12/
 ---
 
 # Running and testing the evaluator
@@ -42,11 +43,17 @@ firm), `#/explain`, `#/withdraw`.
 
 ## 2a. The season story (EVAL-4)
 
-On the demo home page, "Team season: pick a story" issues a `season` token and plays the
-redesigned game at the owner's 80 counted decisions (EVAL-5): eligibility, the drawn season, five episodes, the faking test (Game 1's low branch), the result page, the optional profile.
-"Your profile" opens `#/profile`; "Open the demo profile" there writes and opens a demo profile
-with two made-up past seasons (recovery code `DEMQ-PRQF-2XE7`; `pnpm seed` writes it to the
-emulator too and prints season links). `pnpm season` plays one whole season in Chrome at
+The root is the landing page (EVAL-12): "Start a season" issues a `season` token and plays the
+redesigned game at the owner's 80 counted decisions (EVAL-5): the language, eligibility, "Before
+you start", the drawn season, five chapters and the finale, the result page, the optional
+profile. "I've played before: sign in" (`#/signin`) opens a profile by its recovery code; on the
+dev server the sign-in screen seeds the demo profile, four made-up past seasons across three
+stories with a restart, and shows its code (`DEMQ-PRQF-2XE7`) in the dev-only notes panel
+(`pnpm seed` writes it to the emulator too and prints season links). Signed in, the landing says
+"Continue as <name>"; a season in progress makes "Resume chapter N" its first action. The
+profile is `#/profile` (`/history`, `/season/<n>`, `/account`). `pnpm sample-pdf` (with `BASE`,
+`PDF` and optionally `SHOTS=path-{w}.png:390,1440`) plays a season on a running dev server and
+exports the result as the sample A4 PDF. `pnpm season` plays one whole season in Chrome at
 390 px through the accessible roles and prints the decision and click totals (`BASE=http://localhost:5184/`
 plays a running dev server; `POLICY=order` taps in the order shown). The branch's dev server
 runs with `pnpm dev --port 5184`. Content: `content/story.json` (stories, episodes, beats,

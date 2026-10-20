@@ -375,11 +375,21 @@ function content() {
   )
   record(
     T,
-    'reading levels, the hero and its dots use neutral colour tokens, never green or red',
-    !/teal|coral|green|red\b|--c-ok|--c-error|--violet|--c-accent/.test(
-      readFileSync(`${ROOT}src/ui/readinglist.css`, 'utf8') +
-        readFileSync(`${ROOT}src/ui/resulthero.css`, 'utf8') +
-        readFileSync(`${ROOT}src/ui/pointcard.css`, 'utf8'),
+    'reading levels, the hero, its dots and every result visual (at a glance, tallies, pair rows, columns, range lines) use neutral colour tokens, never green or red',
+    ![
+      'readinglist',
+      'resulthero',
+      'dotgrid',
+      'glance',
+      'tally',
+      'pairs',
+      'columns',
+      'rangeline',
+      'trend',
+    ].some((f) =>
+      /teal|coral|green|red\b|--c-ok|--c-error|--violet|--c-accent/.test(
+        readFileSync(`${ROOT}src/ui/${f}.css`, 'utf8'),
+      ),
     ),
   )
   record(
@@ -403,8 +413,8 @@ function content() {
   const story = readFileSync(`${ROOT}src/screens/Story.tsx`, 'utf8')
   const order = [
     'RT.opening',
+    '<Glance',
     '<ResultHero',
-    'RT.otherTitle',
     'RT.areasTitle',
     'RT.followedTitle',
     'RT.blindTitle',
@@ -418,7 +428,7 @@ function content() {
   const at = order.map((s) => story.indexOf(s, story.indexOf('export function StoryResult')))
   record(
     T,
-    "the result page renders its sections in the owner's order: the short disarming opening first, then the one number with its dots and band, the other readings, the folded areas and the rest",
+    "the result page renders its sections in the owner's order: the short disarming opening first, then every reading at a glance (EVAL-12), the one number with its dots and band, the folded areas and the rest",
     at.every((x, i) => x > 0 && (i === 0 || x > at[i - 1])),
     at.join(','),
   )
@@ -646,7 +656,16 @@ function levels() {
       )
         caste += 1
       const leaning = lv === 'strong' || lv === 'moderate' || lv === 'possible'
-      if (!leaning && m.domains.some((d) => d.reading !== null)) gated = false
+      /* The unlock rule (EVAL-12): on a first season only women and men can be tagged; every
+         area, skin tone and religion line is hollow, untagged, with its seasons-to-tag line. */
+      const locked = m.glance.filter((g) => g.id !== 'sex')
+      if (
+        locked.some(
+          (g) => g.tagged || g.point === 'solid' || !/Tagged after|not available/i.test(g.status),
+        ) ||
+        m.domains.some((d) => d.line.tagged || /Pattern|pattern/.test(d.line.status))
+      )
+        gated = false
       if (leaning && m.band !== levelName(lv, 'sex', m.rating.headline.towards, 'en')) gated = false
       /* A forming reading (EVAL-10, always-show): no tag, no dots, no reasons, but always the
          range, said in words, and the next step. */
@@ -661,7 +680,7 @@ function levels() {
   }
   record(
     T,
-    `seeded players reach the levels (${[...seen].join(', ')}); area readings appear only when the headline is at least possible. Known (PENDING v20): with 70 balanced relabellings the smallest p is 2/70, so strong (p at most ${(1 - strong).toFixed(2)}) cannot be reached on the cast cues`,
+    `seeded players reach the levels (${[...seen].join(', ')}); on a first season no area, skin tone or religion line is tagged (the unlock rule, EVAL-12). Known (PENDING v20): with 70 balanced relabellings the smallest p is 2/70, so strong (p at most ${(1 - strong).toFixed(2)}) cannot be reached on the cast cues`,
     seen.has('moderate') && seen.has('possible') && seen.has('none') && gated,
   )
   record(

@@ -133,6 +133,11 @@ export const RT = storyContent.rating as unknown as Record<string, T> & {
     'mostlyMen' | 'slightlyMen' | 'equal' | 'slightlyWomen' | 'mostlyWomen' | 'between' | 'around',
     T
   >
+  /** Range words for skin tone and religion (EVAL-12): left is the comparison group first. */
+  rangeWordsCues: Record<
+    'tone' | 'religion',
+    Record<'mostlyLeft' | 'slightlyLeft' | 'equal' | 'slightlyRight' | 'mostlyRight', T>
+  >
   meaning: Record<'lean' | 'none' | 'unread', T>
   cueShort: Record<string, T>
   cues: Record<string, Record<string, T>>

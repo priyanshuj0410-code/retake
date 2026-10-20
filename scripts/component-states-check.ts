@@ -9,6 +9,11 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import {
   AgreeGrid,
   Allocate,
+  DotGrid,
+  Glance,
+  Pairs,
+  Tally,
+  Trend,
   Button,
   Checks,
   Choice,
@@ -429,5 +434,133 @@ export async function run() {
     'Table: a suppressed row is marked in every cell',
     (table([{ cells: ['a', 'b'], suppressed: true }]).match(/table__cell--suppressed/g) ?? [])
       .length === 2,
+  )
+
+  /* EVAL-12: the result and profile pictures carry their meaning in shape and words, each with a
+     spoken sentence. */
+  const ends = { left: 'Men first', middle: 'About equal', right: 'Women first' }
+  const glance = html(
+    h(Glance, {
+      label: 'At a glance',
+      rows: [
+        {
+          id: 'a',
+          label: 'Women and men',
+          status: 'Pattern',
+          at: 0.3,
+          lo: 0.2,
+          hi: 0.4,
+          point: 'solid',
+          ends,
+          said: 'Women and men: Pattern',
+        },
+        {
+          id: 'b',
+          label: 'Skin tone',
+          status: 'Tagged after 1 more season',
+          at: 0.5,
+          lo: 0.3,
+          hi: 0.7,
+          point: 'hollow',
+          ends,
+          said: 'Skin tone: Tagged after 1 more season',
+        },
+      ],
+    }),
+  )
+  record(
+    T,
+    'Glance: one row per reading, a solid point when tagged and a hollow one when not, the status in words, each line spoken',
+    (glance.match(/glance__row/g) ?? []).length === 2 &&
+      (glance.match(/rangeline__dot--hollow/g) ?? []).length === 1 &&
+      /Tagged after 1 more season/.test(glance) &&
+      /role="img" aria-label="Skin tone: Tagged after 1 more season"/.test(glance),
+  )
+  const dots = html(
+    h(DotGrid, { filled: 3, rings: 2, dashed: 1, label: '6 pairs', caption: 'caption' }),
+  )
+  record(
+    T,
+    'DotGrid: filled, dashed and ring dots by shape, one spoken image, the caption visible',
+    (dots.match(/dotgrid__dot--filled/g) ?? []).length === 3 &&
+      (dots.match(/dotgrid__dot--dashed/g) ?? []).length === 1 &&
+      (dots.match(/<i /g) ?? []).length === 6 &&
+      /role="img" aria-label="6 pairs"/.test(dots) &&
+      /<figcaption[^>]*>caption</.test(dots),
+  )
+  const tally = html(h(Tally, { k: 3, n: 4, caption: 'came first', said: '3 of 4 came first' }))
+  const parts = html(
+    h(Tally, {
+      parts: [
+        { label: 'Darker', n: 2 },
+        { label: 'Lighter', n: 3 },
+      ],
+      said: 'Darker 2, lighter 3',
+    }),
+  )
+  record(
+    T,
+    'Tally: the figures and the bar (75%), or two named parts with their counts; each spoken in a sentence',
+    /3 \/ 4/.test(tally) &&
+      /width:75%/.test(tally) &&
+      /aria-label="3 of 4 came first"/.test(tally) &&
+      /Darker: 2/.test(parts) &&
+      /Lighter: 3/.test(parts) &&
+      /tally__fill--second/.test(parts),
+  )
+  const pairs = html(
+    h(Pairs, {
+      label: 'Pairs',
+      firstWord: 'first',
+      items: [
+        {
+          context: 'Chapter 1',
+          first: 'Ravi',
+          other: 'Meena',
+          relation: 'equal',
+          said: 'Ravi first',
+        },
+        { first: 'Asha', other: 'Imran', relation: 'weaker', said: 'Asha weaker first' },
+        {
+          first: 'Uma',
+          other: 'Ali',
+          relation: 'equal',
+          even: true,
+          count: '2 each of 4',
+          said: 'even',
+        },
+      ],
+    }),
+  )
+  record(
+    T,
+    'Pairs: who came first is set first and marked in words ("first"); "=" or "<" between the names; an even pair has no mark; each row spoken',
+    (pairs.match(/pairs__mark/g) ?? []).length === 2 &&
+      />=</.test(pairs) &&
+      />&lt;</.test(pairs) &&
+      /2 each of 4/.test(pairs) &&
+      (pairs.match(/role="img"/g) ?? []).length === 3 &&
+      !/<img/.test(pairs),
+  )
+  const trend = html(
+    h(Trend, {
+      label: 'trend said',
+      ends: { top: 'Women first', middle: 'About equal', bottom: 'Men first' },
+      items: [
+        { when: 'Jun', at: 0.2, lo: 0.1, hi: 0.3 },
+        { when: 'Jul', at: 0.6, lo: 0.5, hi: 0.7, change: true },
+        { when: 'Aug', at: 0.4, lo: 0.3, hi: 0.5 },
+        { when: 'Sep', at: 0.35, lo: 0.3, hi: 0.4 },
+      ],
+    }),
+  )
+  record(
+    T,
+    'Trend: a point per season, a change drawn as a square with its own bar and the band broken there, one spoken image',
+    (trend.match(/trend__point/g) ?? []).length === 5 &&
+      (trend.match(/trend__point--change/g) ?? []).length === 1 &&
+      (trend.match(/<polygon/g) ?? []).length === 1 &&
+      (trend.match(/trend__bar/g) ?? []).length === 2 &&
+      /role="img" aria-label="trend said"/.test(trend),
   )
 }

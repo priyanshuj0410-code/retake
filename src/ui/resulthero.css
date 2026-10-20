@@ -1,4 +1,4 @@
-/* @owns resulthero resulthero__group resulthero__big resulthero__number resulthero__line resulthero__pair resulthero__dots resulthero__dot resulthero__dot--filled resulthero__dot--dashed resulthero__band resulthero__body */
+/* @owns resulthero resulthero__group resulthero__big resulthero__number resulthero__line resulthero__pair resulthero__band resulthero__body */
 .resulthero {
   display: flex;
   flex-direction: column;
@@ -35,27 +35,6 @@
   font-size: var(--text-small);
   color: var(--c-muted);
 }
-.resulthero__dots {
-  display: grid;
-  grid-template-columns: var(--dot-columns);
-  gap: var(--gap-xs);
-  max-width: var(--dots);
-  margin: var(--gap-xs) var(--gap-none);
-  forced-color-adjust: none;
-}
-.resulthero__dot {
-  display: block;
-  aspect-ratio: 1;
-  border-radius: var(--radius-full);
-  border: var(--ink-frame) solid var(--c-text);
-}
-.resulthero__dot--filled {
-  background: var(--c-text);
-}
-.resulthero__dot--dashed {
-  border-style: dashed;
-  border-color: var(--c-muted);
-}
 .resulthero__band {
   margin: var(--gap-s) var(--gap-none) var(--gap-none);
   font-family: var(--font-display);
@@ -72,8 +51,7 @@
 /* Print (EVAL-11): the number, its line and the dots stay together; the tag stays with its
    sentence. The band's ground prints. */
 @media print {
-  .resulthero__big,
-  .resulthero__dots {
+  .resulthero__big {
     break-inside: avoid;
   }
   .resulthero__band {

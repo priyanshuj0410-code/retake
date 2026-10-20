@@ -64,7 +64,8 @@ export interface Config {
 }
 
 /** The profile's readings (EVAL-12): three cues, three areas (the sex reading on the area's cards) and the role pattern. */
-export type ProfileReadingId = 'sex' | 'tone' | 'religion' | 'conduct' | 'hiring' | 'resources' | 'role'
+export type ProfileReadingId =
+  'sex' | 'tone' | 'religion' | 'conduct' | 'hiring' | 'resources' | 'role'
 
 /** The season story's planning values: every key in pendingV18 is PENDING v18. */
 export interface SeasonConfig {

@@ -136,6 +136,9 @@
   /* The profile's trend (EVAL-12): its plot height and the axis-label column beside it. */
   --grid-trend: auto minmax(0, 1fr);
   --dash-4-3: 4 3;
+  /* The result's at-a-glance strip (EVAL-12): label and status, then the line. */
+  --grid-2-3: minmax(0, 2fr) minmax(0, 3fr);
+  --px-220: 220px;
   --dur-160: 160ms;
   --dur-0: 0ms;
   --scale-98: 0.98;
@@ -288,6 +291,11 @@
   --trend-cols: var(--grid-trend);
   --trend-dot: var(--range-dot-compact);
   --trend-dash: var(--dash-4-3);
+  /* The result page's visuals (EVAL-12). */
+  --glance-cols: var(--grid-2-3);
+  --dots-small: var(--px-220);
+  --tally-h: var(--s-3);
+  --pairs-context: var(--px-220);
   /* The comic page (EVAL-10): the gutter between panels, and panel 2's prop beside its caption. */
   --gutter: var(--s-2);
   /* A phone's decision card (EVAL-10): a thumbnail beside the words. */
@@ -315,7 +323,6 @@
   --shadow-action: var(--shadow-none);
   --action-room: var(--px-128);
   /* Reading levels: neutral on purpose, never green or red (section 4b). */
-  --c-level-lean: var(--c-accent);
   --c-level-none: var(--c-text);
   --c-level-unread: var(--c-muted);
 }
@@ -366,7 +373,6 @@
   --c-panel: var(--comic-tint);
   --c-ink-line: var(--comic-ink);
   --c-option-rest: var(--comic-ink);
-  --c-level-lean: var(--violet);
   --c-level-none: var(--comic-ink);
   --c-level-unread: var(--comic-soft);
   --shadow-panel: var(--shadow-ink-2);
@@ -424,7 +430,6 @@
   --c-focus: var(--comic-ink);
   --c-label: var(--note-soft);
   --c-hero: var(--note-hero);
-  --c-level-lean: var(--comic-ink);
   --c-level-none: var(--comic-ink);
   --c-level-unread: var(--note-soft);
   --c-action: var(--comic-ink);
