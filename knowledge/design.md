@@ -509,8 +509,10 @@ pass (EVAL-10)".
   card a compact horizontal layout: a 96 px thumbnail (`--thumb`) on a tinted column on the
   left, the name and description on the right, the stamp top right. From 600 px a ranking of 4
   is 2 x 2 and a pick of 2 side by side; a split's 3 cards are three in a row (the owner's
-  exception), face on top, the number chips wrapping inside the card at 48 px targets. Content is
-  capped at 720 px (`--measure`). Measured at 390 x 844 over a whole season: no ranking page fits
+  exception), face on top, the five number chips on one row at the card's foot, 44 px or more
+  each (the owner's floor for this row; 48 px everywhere else). Content is capped at 760 px
+  (`--measure`), the width at which five 44 px chips fit a card three across. On desktop the scene
+  row's prop and caption are equal-height panels, the caption centred. Measured at 390 x 844 over a whole season: no ranking page fits
   one scroll (28 of 28 run 1,003 to 1,179 px), picks fit or nearly (844 to 861 px), splits run
   1,051 to 1,294 px.
 - **Equal options.** Every option the player chooses between is the same size (ranking and

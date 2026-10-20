@@ -47,10 +47,15 @@
   gap: var(--gutter);
   align-items: stretch;
 }
+/* From 600 px the prop and the scene are equal-height panels, the caption centred. */
 @media (min-width: 600px) {
   .beat__unfold {
     grid-template-columns: var(--unfold-cols-wide);
-    align-items: start;
+    align-items: stretch;
+  }
+  .beat__scene {
+    display: flex;
+    align-items: center;
   }
 }
 .beat__unfold > :only-child {
