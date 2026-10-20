@@ -1,21 +1,23 @@
-/* @owns seasonbar seasonbar__fill seasonbar__tick */
+/* @owns seasonbar seasonbar__seg seasonbar__fill */
 .seasonbar {
-  position: relative;
-  flex: 1 1 100%;
-  height: var(--bar-thin);
-  background: var(--c-rule);
+  display: flex;
+  gap: var(--seg-gap);
+  flex: 1 1 var(--bar-min);
+  min-width: 0;
   forced-color-adjust: none;
+}
+.seasonbar__seg {
+  position: relative;
+  flex-basis: 0;
+  height: var(--bar-thin);
+  border-radius: var(--radius-full);
+  background: var(--c-track);
+  overflow: hidden;
 }
 .seasonbar__fill {
   position: absolute;
   left: var(--gap-none);
   top: var(--gap-none);
   bottom: var(--gap-none);
-  background: var(--c-text);
-}
-.seasonbar__tick {
-  position: absolute;
-  top: var(--tick-out);
-  bottom: var(--tick-out);
-  border-left: var(--ink-frame) solid var(--c-text);
+  background: var(--c-accent);
 }

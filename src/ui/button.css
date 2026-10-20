@@ -1,4 +1,4 @@
-/* @owns button button--primary button--secondary button--quiet button--nav */
+/* @owns button button--primary button--secondary button--quiet button--nav button__arrow */
 .button {
   min-height: var(--control);
   width: 100%;
@@ -56,16 +56,32 @@
   text-decoration: underline;
 }
 .button--nav {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-xs);
   width: auto;
   align-self: flex-start;
   min-height: var(--target);
-  padding: var(--gap-xs) var(--gap-none);
+  min-width: var(--target);
+  padding: var(--gap-xs) var(--gap-s) var(--gap-xs) var(--gap-none);
   background: transparent;
   border-color: transparent;
-  color: var(--c-accent);
+  color: var(--c-muted);
+  font-family: var(--font-body);
   font-size: var(--text-small);
-  text-decoration: underline;
+  font-weight: var(--weight-label);
+  letter-spacing: normal;
+  text-transform: none;
   text-align: left;
+}
+.button__arrow {
+  width: var(--gap-l);
+  height: var(--gap-l);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 @media (hover: hover) {
   .button--primary:hover:not(:disabled) {
@@ -75,9 +91,13 @@
   .button--secondary:hover:not(:disabled) {
     background: var(--c-raised);
   }
-  .button--quiet:hover:not(:disabled),
-  .button--nav:hover:not(:disabled) {
+  .button--quiet:hover:not(:disabled) {
     text-decoration-thickness: var(--border);
+  }
+}
+@media (hover: hover) {
+  .button--nav:hover:not(:disabled) {
+    color: var(--c-text);
   }
 }
 @media (forced-colors: active) {

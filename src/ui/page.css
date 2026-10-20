@@ -35,26 +35,31 @@
 .page__body :where(h1, h2, h3, a, button, input, select, textarea, summary, [tabindex]) {
   scroll-margin-top: calc(var(--head-h) + var(--gap-s));
 }
-/* The top bar: the chapter in words and the season map (EVAL-8). Progress only; no page count. */
+/* The top bar (EVAL-10, owner): a short chapter label in small sentence-case body type and the
+   thin season bar; two short rows on phones, one compact row from 600 px; a hairline under it.
+   Progress only; no page count. */
 .page__bar {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
-  gap: var(--gap-s) var(--gap-m);
-  border-bottom: var(--ink-frame) solid var(--c-ink-line);
+  gap: var(--gap-xs) var(--gap-m);
+  border-bottom: var(--ink-divider) solid var(--c-rule);
   padding-bottom: var(--gap-s);
 }
 .page__act {
-  flex: 1 1 auto;
-  font-family: var(--font-display);
-  font-size: var(--text-label);
-  font-weight: var(--weight-strong);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--c-text);
+  flex: 1 1 100%;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: var(--weight-label);
+  line-height: var(--leading-tight-rows);
+  color: var(--c-muted);
   margin: var(--gap-none);
   overflow-wrap: anywhere;
+}
+@media (min-width: 600px) {
+  .page__act {
+    flex: 0 1 auto;
+  }
 }
 /* Out of fiction: the registered line, set as a note stamp in the display face (its text is
    exactly the line; "Note" is a decorative prefix, silent to screen readers). */

@@ -300,8 +300,8 @@ export function StoryView({
   /* Back (EVAL-10): a small nav link at the top left, under the header, never at the bottom. */
   const back =
     runner.backTarget !== null ? (
-      <Button kind="nav" onClick={onBack}>
-        {L(SS.back)}
+      <Button kind="nav" onClick={onBack} label={L(SS.backSaid)}>
+        {L(SS.backShort)}
       </Button>
     ) : null
   const page = {

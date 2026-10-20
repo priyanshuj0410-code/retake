@@ -7,7 +7,7 @@
   padding: var(--gap-none);
   display: grid;
   grid-auto-rows: var(--rows-equal);
-  gap: var(--gap-m);
+  gap: var(--gutter);
 }
 .split__row {
   display: flex;
@@ -73,4 +73,15 @@
   letter-spacing: var(--tracking-display);
   text-transform: var(--case-display);
   color: var(--c-text);
+}
+/* A split's three cards sit three in a row from 600 px (owner's exception, EVAL-10), the same
+   size; the number chips wrap inside each card and keep their 48 px targets. */
+@media (min-width: 600px) {
+  .split {
+    grid-template-columns: var(--cols-three);
+  }
+  .split__chips {
+    display: grid;
+    grid-template-columns: var(--chips-wrap);
+  }
 }

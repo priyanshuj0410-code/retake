@@ -6,16 +6,18 @@
   margin: var(--gap-none);
   padding: var(--gap-none);
   display: grid;
-  grid-template-columns: var(--cols-two);
+  grid-template-columns: var(--cols-one);
   grid-auto-rows: var(--rows-equal);
   gap: var(--gutter);
 }
 .tapcards > li {
   min-width: 0;
 }
+/* One card per row on phones; from 600 px two across (a ranking of 4 is 2 x 2, a pick of 2 side
+   by side), never more (EVAL-10, owner). */
 @media (min-width: 600px) {
   .tapcards {
-    grid-template-columns: var(--cols-cards);
+    grid-template-columns: var(--cols-two);
   }
 }
 .tapcard {

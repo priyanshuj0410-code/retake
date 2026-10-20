@@ -222,7 +222,7 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 | Component | Source | What it is |
 |---|---|---|
 | `Page` | `src/ui/Page.tsx` | One screen: on story screens a sticky `<header>` landmark (`position: sticky`, `top: 0`, solid paper, the ink rule under it) with the compact chapter label ("Chapter 1 of 5 · The hiring sprint") and one thin `SeasonBar` (EVAL-10; no chapter circles, no card dots); its measured height is `--head-h`, and every focusable element and heading in `<main>` has `scroll-margin-top` of that height. Nothing in the header is interactive. `<main>` holds, in order: `nav` (Back, the small link at the top left), the out-of-fiction line, the `h1`, the body and one `Actions` row. With `pin` (payoff screens only) the row stays at the foot of the screen. On arrival focus moves to the `h1` and the document title becomes "`h1` · Team season". Long titles wrap |
-| `Button` | `src/ui/Button.tsx` | `primary` (ink or violet fill), `secondary` (outline), `quiet` (text), `nav` (Back: small, underlined, left-aligned, 48 px target; EVAL-10). Primary, secondary and quiet are 48 px tall (56 px on the pitch), full width on phones and left-aligned from 600 px. Hover on pointer devices, `--press` while pressed, disabled for every kind |
+| `Button` | `src/ui/Button.tsx` | `primary` (ink or violet fill), `secondary` (outline), `quiet` (text), `nav` (Back, EVAL-10: a drawn left chevron and the word "Back" in muted small body type at the top left, 48 px hit area, spoken as "Back: change your last decision" through `label`). Primary, secondary and quiet are 48 px tall (56 px on the pitch), full width on phones and left-aligned from 600 px. Hover on pointer devices, `--press` while pressed, disabled for every kind |
 | `Text` | `src/ui/Text.tsx` | Paragraph, `lead`, `small`, `muted`, `strong`; long words break |
 | `Heading` | `src/ui/Text.tsx` | A section heading inside a page (explanation sections, demo tables); `level={3}` for a sub-heading inside a section (the result page's areas) |
 | `Link` | `src/ui/Link.tsx` | A text link with a 48 px target (the calendar file, demo links); thin offset underline that thickens on hover, pressed colour |
@@ -257,7 +257,7 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 | `PointCard` | `src/ui/PointCard.tsx` | One finding in a decision area: the pattern's name, the counts, and for a blind spot the player's own decisive pairs as a list (never a made-up inner voice) |
 | `ShareCard` | `src/ui/ShareCard.tsx` | The summary card (EVAL-10): by default the season only ("I played Team Season: The warehouse. 77 decisions, 5 chapters, 8 colleagues. Try it yourself."); an unticked `Checks` box "Include my result" adds the women-and-men tag and one chance line from config. Religion and skin tone are never on it. Share (the device's share sheet, else copy) and a status line |
 | `Timeline` | `src/ui/Timeline.tsx` | The profile's past seasons: a vertical line of dated entries, each with its tag and, where the season saved its counts, a compact `RangeLine`; under it the line "Two results can differ by chance; overlapping ranges mean no change shown." |
-| `SeasonBar` | `src/ui/SeasonBar.tsx` | The header's one progress bar (EVAL-10, owner): a thin line (`--bar-thin`) filled to how much of the season's cards are done, with an ink tick where each chapter and the finale start. One image with a spoken label ("Chapter 2 of 5 · The complaint: 30 per cent of the season done"); no countdown, no motion |
+| `SeasonBar` | `src/ui/SeasonBar.tsx` | The header's one progress bar (EVAL-10, owner; checked in Lazyweb against Duolingo's lesson header and Cal AI's, Finch's and me+'s questionnaire bars): a thin rounded track (`--bar-thin`, 6 px) in `--c-track`, the done part in the accent, one segment per chapter and the finale split by 4 px gaps, never tall ticks. Beside it the chapter label in small sentence-case body type ("Chapter 1 of 5 · The hiring sprint"); one compact row from 600 px, two short rows on phones; a hairline under the header. One image with a spoken label; no countdown, no motion |
 | `Actions` | `src/ui/Actions.tsx` | The one action row on every screen (EVAL-10): the primary first, full width on phones and left-aligned from 600 px, then at most one quiet secondary on the same edge. `Page`, `TapOrder` and `QuickSplit` all use it, so no button sits at another indent; Back is never in it |
 | `IconList` | `src/ui/IconList.tsx` | Tight rows of a small drawn line icon (20 px, ink on the paper, tan fill; no face, skin or symbol) and one line of text, 16 px at 1.3 leading, the Hinglish under each in the help mode; two lists in a row are split by a hairline (EVAL-10's "Before you start" screen) |
 | `Group` | `src/ui/Group.tsx` | A named section whose parts (heading, text, each label with its field, the button, a notice) are spaced on the flow, one rule pitch in the note register, so nothing touches and fields and buttons keep the baseline grid |
@@ -505,6 +505,14 @@ pass (EVAL-10)".
   and the save line as body, "Your result comes after the finale." as meta. `pnpm ux` fails a
   screen with two primary buttons, a Back that is not the top nav link, or a header with more
   than one progress bar.
+- **Cards per row (owner).** On phones (under 600 px) every decision is one card per row, each
+  card a compact horizontal layout: a 96 px thumbnail (`--thumb`) on a tinted column on the
+  left, the name and description on the right, the stamp top right. From 600 px a ranking of 4
+  is 2 x 2 and a pick of 2 side by side; a split's 3 cards are three in a row (the owner's
+  exception), face on top, the number chips wrapping inside the card at 48 px targets. Content is
+  capped at 720 px (`--measure`). Measured at 390 x 844 over a whole season: no ranking page fits
+  one scroll (28 of 28 run 1,003 to 1,179 px), picks fit or nearly (844 to 861 px), splits run
+  1,051 to 1,294 px.
 - **Equal options.** Every option the player chooses between is the same size (ranking and
   pick cards, split rows, option buttons, radio and checkbox rows: grids of equal rows), and
   `pnpm ux` compares the boxes within each choice. The ranking cards fit every width from 320

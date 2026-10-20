@@ -180,7 +180,7 @@ async function audit(page: Page, screen: string, inPage = false) {
     if (primaries.length > 1) out.push(`${primaries.length} primary buttons`)
     /* Back is the small nav link at the top, before the heading, never in an action row. */
     const back = [...document.querySelectorAll('main button')].find((b) =>
-      /^Back\b/.test(b.textContent ?? ''),
+      /^Back\b/.test(b.getAttribute('aria-label') ?? b.textContent ?? ''),
     )
     if (back) {
       if (!back.closest('.page__nav')) out.push('Back is not the nav link at the top')

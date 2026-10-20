@@ -58,7 +58,7 @@ export function QuickSplit({
         {items.map((c, i) => (
           <li className="split__row" key={`${i}-${c.name}`}>
             <span className="split__who">
-              <Colleague c={c} layout="row" eager={i === 0} />
+              <Colleague c={c} layout="split" eager={i === 0} />
               <Stamp>{units[i] === null ? undefined : units[i]}</Stamp>
             </span>
             <div className="split__chips" role="group" aria-label={c.name}>

@@ -27,12 +27,21 @@ export function Colleague({
   eager,
 }: {
   c: ColleagueView
-  layout?: 'cell' | 'row'
+  /** `split`: a row on phones, the face on top from 600 px, where a split's cards are three across (EVAL-10). */
+  layout?: 'cell' | 'row' | 'split'
   /** Load a generated image at once (the first cards, above the fold). */
   eager?: boolean
 }) {
   return (
-    <span className={layout === 'cell' ? 'colleague' : 'colleague colleague--row'}>
+    <span
+      className={
+        layout === 'cell'
+          ? 'colleague'
+          : layout === 'split'
+            ? 'colleague colleague--row colleague--split'
+            : 'colleague colleague--row'
+      }
+    >
       {layout === 'cell' ? (
         <span className="colleague__face">
           <Portrait look={c.look} label={c.figureLabel} inset={c.inset} eager={eager} />

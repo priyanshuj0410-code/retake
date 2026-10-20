@@ -98,6 +98,14 @@ result" sentence 3). **Research design v22 must register this change**; until th
 from the registered disclosure screen. The card games and firm enrolment keep the separate
 disclosure. Screenshots: `build-v5/40-start-{en,hinglish,help}-closed` and `41-...-open`.
 
+**Header, Back and cards (owner, during the pass).** The header is a small sentence-case chapter
+label beside a thin segmented track (references in Lazyweb: Duolingo's lesson header, Cal AI,
+Finch and me+ questionnaire bars), with a hairline under it; Back is a chevron and "Back" in
+muted small type (spoken in full). Phones show one card per row with a 96 px thumbnail; from
+600 px rankings are 2 x 2, picks 2 and splits 3 across, content capped at 720 px. At 390 x 844
+no ranking page fits one scroll (28 of 28, 1,003 to 1,179 px). Screenshots:
+`build-v5/50-{rank,pick,split}-{390,1440}`, `50-split-320`, `51-header-back-{390,1440}`.
+
 ### Shared rules change (must land before this ships)
 
 The rules piece in this repo (`database.rules.json`) now accepts `meta.chapter_timing` (exactly

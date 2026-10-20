@@ -4891,10 +4891,6 @@
    "en": "Start",
    "hinglish": "Shuru karein"
   },
-  "back": {
-   "en": "Back: change my last decision",
-   "hinglish": "Back: pichhla decision badlein"
-  },
   "rankHint": {
    "en": "Tap them in order, first choice first.",
    "hinglish": "Order mein tap kijiye, pehli pasand pehle."
@@ -5405,7 +5401,15 @@
      "hinglish": "Aakhir mein ek code milta hai: isse baad mein explanation khulta hai aur jawab mit sakte hain."
     }
    }
-  ]
+  ],
+  "backShort": {
+   "en": "Back",
+   "hinglish": "Peeche"
+  },
+  "backSaid": {
+   "en": "Back: change your last decision",
+   "hinglish": "Peeche: apna pichhla decision badlein"
+  }
  },
  "rating": {
   "_note": "The result page's words (EVAL-10: 'Your result', the five tags, the position with range). A reading of one season's decisions, never a judgement: no screen calls it bias, and nothing says what the player should think. Drafts for the owner.",

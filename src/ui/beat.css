@@ -47,6 +47,12 @@
   gap: var(--gutter);
   align-items: stretch;
 }
+@media (min-width: 600px) {
+  .beat__unfold {
+    grid-template-columns: var(--unfold-cols-wide);
+    align-items: start;
+  }
+}
 .beat__unfold > :only-child {
   grid-column: var(--span-row);
 }

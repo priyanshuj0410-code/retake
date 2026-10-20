@@ -1,4 +1,4 @@
-/* @owns colleague colleague--row colleague__face colleague__who colleague__name colleague__cue colleague__desc colleague__help */
+/* @owns colleague colleague--row colleague--split colleague__face colleague__who colleague__name colleague__cue colleague__desc colleague__help */
 .colleague {
   display: flex;
   flex-direction: column;
@@ -13,6 +13,28 @@
   overflow: hidden;
   display: flex;
   align-items: center;
+}
+/* A decision card on a phone (EVAL-10, owner): one card per row, a 96 px thumbnail beside the
+   name and description, so a four-card ranking stays short; the stamp sits top right, clear of
+   the name. From 600 px the face is on top again, in the 2 x 2 or side-by-side grid. */
+@media (max-width: 599px) {
+  .colleague:not(.colleague--row) {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .colleague:not(.colleague--row) .colleague__face {
+    flex: none;
+    width: var(--thumb);
+    aspect-ratio: auto;
+    border-bottom: none;
+    border-right: var(--ink-divider) solid var(--c-ink-line);
+    align-items: flex-start;
+    background: var(--c-panel);
+  }
+  .colleague:not(.colleague--row) .colleague__who {
+    flex: 1 1 auto;
+    padding-right: var(--stamp);
+  }
 }
 .colleague--row {
   flex-direction: row;
@@ -54,4 +76,9 @@
 .colleague__help {
   color: var(--c-muted);
   font-style: italic;
+}
+@media (min-width: 600px) {
+  .colleague--split {
+    flex-direction: column;
+  }
 }
