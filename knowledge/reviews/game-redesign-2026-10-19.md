@@ -88,6 +88,16 @@ or fewer. Measured at 390 x 844 over a whole season of 69 decisions: **54 exceed
 and after for three consecutive decisions: `build-v5/30-before-decision-6..8` and
 `30-after-decision-6..8`.
 
+**Registered change: one "Before you start" screen** (owner, during the pass). The registered
+design shows the four disclosure sentences alone on the first screen, with Continue and no heading
+(candidates v12 3.10, AT-3), and the consent after it. For the season they are now merged into one
+screen: heading "Before you start", the four sentences verbatim and in order as icon rows, the
+practical points that do not repeat them, the full consent behind "Read the full details", agree
+or decline. The content had repeated itself ("made-up colleagues" was sentence 2, "see your own
+result" sentence 3). **Research design v22 must register this change**; until then it departs
+from the registered disclosure screen. The card games and firm enrolment keep the separate
+disclosure. Screenshots: `build-v5/40-start-{en,hinglish,help}-closed` and `41-...-open`.
+
 ### Shared rules change (must land before this ships)
 
 The rules piece in this repo (`database.rules.json`) now accepts `meta.chapter_timing` (exactly

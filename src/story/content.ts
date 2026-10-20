@@ -101,7 +101,7 @@ export interface StoryContent {
     rankStamps: T[]
     debrief: T[]
     consent: T[]
-    consentShort: T[]
+    startPoints: { icon: string; text: T }[]
   }
   rating: Record<string, unknown>
 }

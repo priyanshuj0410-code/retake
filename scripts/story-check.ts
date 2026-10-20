@@ -1288,11 +1288,13 @@ async function prototypePass() {
       minutes * 60 >= new StoryRunner(seeded(1), wh, ['en']).estimateSeconds() &&
       lengthy.length === 0 &&
       /\{minutes\}/.test(SS.pickBody.en) &&
-      SS.consentShort.some((t) => /\{minutes\}/.test(t.en) && /\{minutes\}/.test(t.hinglish)),
+      SS.startPoints.some(
+        (p) => /\{minutes\}/.test(p.text.en) && /\{minutes\}/.test(p.text.hinglish),
+      ),
     lengthy.join(', '),
   )
   /* The scoring rule: nothing shown during the game says how answers are read. */
-  const inGame = JSON.stringify([wh.intro, wh.episodes, SS.pickBody, SS.consentShort, PRACTICE])
+  const inGame = JSON.stringify([wh.intro, wh.episodes, SS.pickBody, SS.startPoints, PRACTICE])
   record(
     T,
     'no in-game copy says how answers are read ("reads you", "decisions that count", "attitude", "rating", "equal pairs", "chance")',

@@ -1,0 +1,48 @@
+/* @owns iconlist iconlist__row iconlist__icon iconlist__text iconlist__help icon__fill icon__dot */
+.iconlist {
+  list-style: none;
+  margin: var(--gap-none);
+  padding: var(--gap-none);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+}
+.iconlist + .iconlist {
+  border-top: var(--ink-divider) solid var(--c-rule);
+  padding-top: var(--gap-s);
+}
+.iconlist__row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap-s);
+  font-size: var(--text-label);
+  line-height: var(--leading-tight-rows);
+}
+.iconlist__icon {
+  flex: none;
+  width: var(--icon);
+  height: var(--icon);
+  fill: none;
+  stroke: var(--c-text);
+  stroke-width: var(--icon-stroke);
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  forced-color-adjust: auto;
+}
+.icon__fill {
+  fill: var(--c-raised);
+}
+.icon__dot {
+  fill: var(--c-text);
+}
+.iconlist__text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--c-text);
+}
+.iconlist__help {
+  display: block;
+  font-size: var(--text-small);
+  font-style: italic;
+  color: var(--c-muted);
+}

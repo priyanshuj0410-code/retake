@@ -18,7 +18,7 @@ import { progress } from '../store/progress'
 import type { LangSet, StartResult } from '../store/types'
 import { Page, Text, Notice } from '../ui'
 import { Disclosure } from './Disclosure'
-import { Consent, Declined, Finished, LanguageStep } from './PreScreens'
+import { Consent, Declined, Finished, LanguageStep, SeasonStart } from './PreScreens'
 import { StepView } from './StepView'
 import {
   Eligibility,
@@ -253,11 +253,21 @@ export function Play({
         />
       )
     if (pre === 'disclosure' && isSeason && eligible === 'no') return <NotEligible ui={ui} />
+    /* The season's disclosure and consent are one screen (EVAL-10, owner; registered in v22). */
+    if (pre === 'disclosure' && isSeason)
+      return (
+        <SeasonStart
+          ui={ui}
+          help={!!langs && langs.length > 1}
+          minutes={drawn ? sessionMinutes(drawn) : undefined}
+          onAgree={() => begin(langs ?? offered)}
+          onDecline={() => setPre('declined')}
+        />
+      )
     if (pre === 'disclosure')
       return (
         <Disclosure
-          langs={isSeason && langs ? langs : offered}
-          season={isSeason}
+          langs={offered}
           onContinue={() =>
             firm ? (langSet === 'choose' ? setPre('language') : begin(offered)) : setPre('consent')
           }
@@ -268,9 +278,6 @@ export function Play({
       return (
         <Consent
           ui={ui}
-          help={isSeason && !!langs && langs.length > 1}
-          minutes={drawn ? sessionMinutes(drawn) : undefined}
-          season={isSeason}
           onAgree={() =>
             isSeason && langs
               ? begin(langs)

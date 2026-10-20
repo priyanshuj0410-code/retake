@@ -8,8 +8,9 @@
 import { readFileSync } from 'node:fs'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { createElement } from 'react'
-import { registeredSentences, screens } from '../src/content'
+import { registeredSentences, screens, sentencesFor } from '../src/content'
 import { Disclosure } from '../src/screens/Disclosure'
+import { SeasonStart } from '../src/screens/PreScreens'
 import { SS } from '../src/story/content'
 import { record } from './lib/check'
 
@@ -91,16 +92,28 @@ export async function run() {
     'consent, tutorial and short debrief never say "fair", "bias", "preference", "score" of the player or how attitudes are scored',
     !/\b(fair|fairly|bias|biased|preference|merit|weight)\b/i.test(pre),
   )
-  /* The season story (EVAL-4): the same screen, with sentence 3 replaced by the interim line
-     (awaiting the owner's wording), because the season shows each player a rating; 1, 2 and 4
-     stay verbatim. */
-  for (const langs of [['en'], ['hinglish']] as const) {
-    const got = textOf(
-      renderToStaticMarkup(
-        createElement(Disclosure, { langs: [...langs], onContinue: () => {}, season: true }),
-      ),
-    )
+  /* The season story (EVAL-4): sentence 3 is the interim line (awaiting the owner's wording),
+     because the season shows each player a result; 1, 2 and 4 stay verbatim. Since EVAL-10 the
+     season's disclosure and consent are ONE screen, "Before you start" (owner, 20 Oct 2026; a
+     registered change for v22): the four sentences first, verbatim and in order, each its own
+     row with a drawn icon, then practical points that repeat none of them, the complete consent
+     (with the Internal Committee help) behind "Read the full details", and agree or decline. */
+  for (const langs of [['en'], ['hinglish'], ['en', 'hinglish']] as const) {
     const l = langs[0]
+    const html = renderToStaticMarkup(
+      createElement(SeasonStart, {
+        ui: l,
+        help: langs.length > 1,
+        minutes: 30,
+        onAgree: () => {},
+        onDecline: () => {},
+      }),
+    )
+    const lists = [...html.matchAll(/<ul class="iconlist"[\s\S]*?<\/ul>/g)].map((m) => m[0])
+    const rowsOf = (ul: string) =>
+      [...ul.matchAll(/<span class="iconlist__text">([^<]+)/g)].map((m) =>
+        m[1].replaceAll('&#x27;', "'").trim(),
+      )
     const want = [
       registeredSentences[l][0],
       registeredSentences[l][1],
@@ -108,15 +121,39 @@ export async function run() {
         ? 'Attitudes are read; you see yours.'
         : 'Attitudes padhe jaate hain; aapko apne dikhte hain.',
       registeredSentences[l][3],
-      screens.common.continue[l],
     ]
+    const got = lists[0] ? rowsOf(lists[0]) : []
+    const practical = lists[1] ? rowsOf(lists[1]).join(' ') : ''
+    const icons = (lists[0]?.match(/class="iconlist__icon"/g) ?? []).length
+    const help = langs.length > 1
     record(
       T,
-      `season story first screen, ${l}: registered sentences 1, 2 and 4 verbatim, sentence 3 the interim line (never a placeholder), Continue, nothing else`,
-      JSON.stringify(got) === JSON.stringify(want),
-      JSON.stringify(got) === JSON.stringify(want) ? '' : JSON.stringify(got),
+      `season first screen, ${langs.join(' + ')}: "Before you start" with the four sentences first, verbatim and in order (sentence 3 the interim line), each its own row with an icon${help ? ', the Hinglish under each' : ', in the chosen language only'}`,
+      new RegExp(`<h1[^>]*>${SS.consentTitle[l]}</h1>`).test(html) &&
+        JSON.stringify(got) === JSON.stringify(want) &&
+        icons === 4 &&
+        (help
+          ? sentencesFor('hinglish', true).every((x) => html.includes(x.replaceAll("'", '&#x27;')))
+          : !html.includes(registeredSentences[l === 'en' ? 'hinglish' : 'en'][1])),
+      JSON.stringify(got),
+    )
+    record(
+      T,
+      `season first screen, ${langs.join(' + ')}: the practical points repeat no sentence (no made-up or fictional colleagues, no result or attitudes), the full consent with the Internal Committee, Local Committee and SHe-Box help sits behind "Read the full details", and the actions are agree and decline`,
+      !!practical &&
+        !/fictional|made-up|colleague|result|attitude|kaalpanik/i.test(practical) &&
+        /<details[\s\S]*Internal Committee[\s\S]*Local Committee[\s\S]*SHe-Box[\s\S]*<\/details>/.test(
+          html,
+        ) &&
+        html.includes(screens.consent.panel.agree[l]) &&
+        html.includes(screens.consent.panel.decline[l]),
     )
   }
+  record(
+    T,
+    'the season opens on the merged screen after the eligibility items; the card games and firm enrolment keep the separate disclosure',
+    /pre === 'disclosure' && isSeason\)\s*return \(\s*<SeasonStart/.test(play),
+  )
   const seasonPre = JSON.stringify({ c: SS.consent, d: SS.debrief })
   record(
     T,

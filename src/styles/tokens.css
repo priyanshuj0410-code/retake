@@ -125,6 +125,8 @@
   --px-28: 28px;
   --px-20: 20px;
   --px-6: 6px;
+  --sw-1-8: 1.8;
+  --lh-130: 1.3;
   --px-neg-3: -3px;
   --pct-neg-50: -50%;
   --dur-160: 160ms;
@@ -273,6 +275,10 @@
   --range-ends: var(--grid-ends);
   /* The comic page (EVAL-10): the gutter between panels, and panel 2's prop beside its caption. */
   --gutter: var(--s-2);
+  /* The merged "Before you start" screen (EVAL-10): tight icon rows. */
+  --icon: var(--px-20);
+  --icon-stroke: var(--sw-1-8);
+  --leading-tight-rows: var(--lh-130);
   --unfold-cols: var(--grid-unfold);
   --card-face: var(--ratio-5-4);
   --half: var(--pct-50);

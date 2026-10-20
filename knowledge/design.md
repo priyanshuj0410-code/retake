@@ -164,7 +164,20 @@ the whole structure of the visual system:
 | **Out of fiction** (`surface="oof"`) | Disclosure, consent, screening block, survey, Off the Record, mid-season note, recall, direct block, the wrap's questions, debrief, code, withdrawal, explanation; in the season story: the statements grid, the wrap, the result and the profile | The note register: warm off-white paper (`#FBF6EC`) with faint rule lines, the content inside a 3 px ink frame, Big Shoulders Display headings and Literata text in ink, square ink buttons with a tan offset shadow. The registered line "This part is not part of the game." is the first thing on the screen, as its exact text, set as a tilted ink stamp with a silent "Note ·" prefix. No portraits, yellow captions, halftone art, lilac panels or violet. The disclosure keeps no heading and no stamp |
 | **Sober** (`surface="sober"`) | The Committee Inbox and its content note | Neutral grey ground, no violet, no illustration, no points, the Internal Committee route stated on every card |
 
-The disclosure screen is out of fiction but shows **only** the four registered sentences and
+**The season's first screen (EVAL-10, owner; a registered change that research design v22
+registers).** For the season story the disclosure and the consent are one note-register screen,
+"Before you start" (`SeasonStart`): the four registered sentences first, verbatim and in their
+registered order (sentence 3 the interim line), each in its own row with a drawn icon
+(`IconList`: a lens, three blank silhouettes, a result card, a descriptions card; no face, skin or
+religious symbol); then the practical points the sentences do not already say (about {minutes}
+minutes in 5 chapters; stop any time, saved in this browser; no real name or contact details;
+the code at the end); the complete consent text, with the Internal Committee, Local Committee and
+SHe-Box help, behind "Read the full details"; "I agree to take part" and the quiet decline. It
+has a heading and no "Note" stamp, and fits one 390 x 844 screen with the details closed in
+English (content ends at 749 px) and Hinglish (806 px); the help mode, which doubles every row,
+runs to 1,022 px. `pnpm ux` holds the English and Hinglish fit; AT-3 holds the sentences verbatim
+and in order. The card games and firm enrolment keep the registered separate disclosure: the
+disclosure screen there is out of fiction but shows **only** the four registered sentences and
 the Continue button. There is no demo badge and no demo notice screen (owner, 19 Oct 2026): the
 shareable build says it is a prototype once, on the landing screen only (the season's
 eligibility items, the first screen a visitor sees), as a quiet `page__footnote` line in the note
@@ -246,6 +259,7 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 | `Timeline` | `src/ui/Timeline.tsx` | The profile's past seasons: a vertical line of dated entries, each with its tag and, where the season saved its counts, a compact `RangeLine`; under it the line "Two results can differ by chance; overlapping ranges mean no change shown." |
 | `SeasonBar` | `src/ui/SeasonBar.tsx` | The header's one progress bar (EVAL-10, owner): a thin line (`--bar-thin`) filled to how much of the season's cards are done, with an ink tick where each chapter and the finale start. One image with a spoken label ("Chapter 2 of 5 · The complaint: 30 per cent of the season done"); no countdown, no motion |
 | `Actions` | `src/ui/Actions.tsx` | The one action row on every screen (EVAL-10): the primary first, full width on phones and left-aligned from 600 px, then at most one quiet secondary on the same edge. `Page`, `TapOrder` and `QuickSplit` all use it, so no button sits at another indent; Back is never in it |
+| `IconList` | `src/ui/IconList.tsx` | Tight rows of a small drawn line icon (20 px, ink on the paper, tan fill; no face, skin or symbol) and one line of text, 16 px at 1.3 leading, the Hinglish under each in the help mode; two lists in a row are split by a hairline (EVAL-10's "Before you start" screen) |
 | `Group` | `src/ui/Group.tsx` | A named section whose parts (heading, text, each label with its field, the button, a notice) are spaced on the flow, one rule pitch in the note register, so nothing touches and fields and buttons keep the baseline grid |
 | `Panel` | `src/ui/Comic.tsx` | Game register: an ink-ruled square box, tinted or paper; holds a scene and its question |
 | `Caption` | `src/ui/Comic.tsx` | Game register: a yellow narration box with a 1.5 px ink border and a 2 px offset shadow; ink text on yellow at 14.6:1 |

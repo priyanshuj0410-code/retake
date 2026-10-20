@@ -534,6 +534,20 @@ async function main() {
         await tapOrderByKeyboard(page, `season ${m}`)
       }
       if (m === 'story:beat:split') await splitByKeyboard(page, `season ${m}`)
+      /* The merged "Before you start" screen (EVAL-10, owner) fits one phone screen with its
+         details closed. */
+      if (m === 'start') {
+        await page.setViewportSize({ width: 390, height: 844 })
+        await settle(page)
+        /* The decline button, the last thing on it, is on the first screen. */
+        const h = await page.evaluate(() => {
+          const b = [...document.querySelectorAll('main .actions button')].pop()
+          return b ? Math.round(b.getBoundingClientRect().bottom + window.scrollY) : 9999
+        })
+        if (h > 844)
+          problems.push(`season start: content ends at ${h} px at 390 x 844, over one screen`)
+        await page.setViewportSize({ width: 412, height: 915 })
+      }
       if (m === 'story:screening') await gridByKeyboard(page, `season ${m}`)
     })
     await audit(page, 'season story:result')

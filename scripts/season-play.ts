@@ -190,7 +190,7 @@ export async function playSeason(
         asked += 1
       }
       await click(page, button('Continue'))
-    } else if (m === 'consent') await click(page, button('I agree to take part'))
+    } else if (m === 'consent' || m === 'start') await click(page, button('I agree to take part'))
     else if (m === 'language') {
       await page.getByRole('radio', { name: 'English' }).check()
       clicks += 1

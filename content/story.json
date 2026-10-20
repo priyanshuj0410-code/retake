@@ -5062,28 +5062,6 @@
    "en": "Before you start",
    "hinglish": "Shuru karne se pehle"
   },
-  "consentShort": [
-   {
-    "en": "You make decisions about made-up colleagues at work.",
-    "hinglish": "Aap kaam par fictional colleagues ke baare mein decisions lete hain."
-   },
-   {
-    "en": "It takes about {minutes} minutes.",
-    "hinglish": "Ismein lagbhag {minutes} minute lagte hain."
-   },
-   {
-    "en": "You can stop at any time.",
-    "hinglish": "Aap kabhi bhi ruk sakte hain."
-   },
-   {
-    "en": "Your answers carry no name or contact details.",
-    "hinglish": "Aapke jawabon mein na naam hai na contact."
-   },
-   {
-    "en": "At the end you see your own result and get a code.",
-    "hinglish": "Aakhir mein aap apna result dekhte hain aur ek code milta hai."
-   }
-  ],
   "consent": [
    {
     "en": "This is a game season you play once, on your own device. You make decisions about fictional colleagues. Then you answer a few statements outside the game.",
@@ -5389,7 +5367,45 @@
   "chapterKicker": {
    "en": "Chapter {n} of {k}",
    "hinglish": "Chapter {n} / {k}"
-  }
+  },
+  "startSentences": {
+   "en": "What this study is",
+   "hinglish": "Yeh study kya hai"
+  },
+  "startPractical": {
+   "en": "Before you agree",
+   "hinglish": "Sehmat hone se pehle"
+  },
+  "startPoints": [
+   {
+    "icon": "chapters",
+    "text": {
+     "en": "About {minutes} minutes, in 5 chapters.",
+     "hinglish": "Lagbhag {minutes} minute, 5 chapters mein."
+    }
+   },
+   {
+    "icon": "saved",
+    "text": {
+     "en": "Stop any time; your place is saved in this browser.",
+     "hinglish": "Kabhi bhi rukiye; jagah is browser mein save rehti hai."
+    }
+   },
+   {
+    "icon": "noname",
+    "text": {
+     "en": "No real name or contact details are needed.",
+     "hinglish": "Asli naam ya contact details ki zaroorat nahin."
+    }
+   },
+   {
+    "icon": "code",
+    "text": {
+     "en": "At the end you get a code: it opens the explanation later and can delete your answers.",
+     "hinglish": "Aakhir mein ek code milta hai: isse baad mein explanation khulta hai aur jawab mit sakte hain."
+    }
+   }
+  ]
  },
  "rating": {
   "_note": "The result page's words (EVAL-10: 'Your result', the five tags, the position with range). A reading of one season's decisions, never a judgement: no screen calls it bias, and nothing says what the player should think. Drafts for the owner.",
