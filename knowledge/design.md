@@ -12,6 +12,7 @@ plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-7/
   - https://app.plane.so/the-equal-lens/browse/EVAL-8/
   - https://app.plane.so/the-equal-lens/browse/EVAL-10/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-12/
 ---
 
 # Equal Lens Evaluator design system
@@ -32,8 +33,8 @@ Display for display and Literata for the story (section 4c). The **plain registe
 fiction) is cool grey and ink in Nunito Sans and Poppins, with no panels, captions, stamps or
 violet. **One light theme, on purpose:** both registers were designed as a single light look,
 so `color-scheme: light` is set and there are no dark overrides; the OS dark setting changes
-nothing (`pnpm ux` checks each surface's ground is the same under dark). The demo landing goes
-straight into the season story; the old card games (panel games 1 and 2, the firm session and
+nothing (`pnpm ux` checks each surface's ground is the same under dark). The root URL is the
+landing page (EVAL-12, section 4e), from which "Start a season" goes into the season story; the old card games (panel games 1 and 2, the firm session and
 its enrolment) open only on the Vite dev server in demo mode, from the developer menu at
 `#/dev`, which no player-facing page links to (`devRoutes`), and are kept for the checks.
 
@@ -179,9 +180,8 @@ runs to 1,022 px. `pnpm ux` holds the English and Hinglish fit; AT-3 holds the s
 and in order. The card games and firm enrolment keep the registered separate disclosure: the
 disclosure screen there is out of fiction but shows **only** the four registered sentences and
 the Continue button. There is no demo badge and no demo notice screen (owner, 19 Oct 2026): the
-shareable build says it is a prototype once, on the landing screen only (the season's
-eligibility items, the first screen a visitor sees), as a quiet `page__footnote` line in the note
-register: "Prototype. Fictional people and stories; your answers stay in this browser." Every
+shareable build says it is a prototype once, on the landing page only (EVAL-12; before it, the
+language screen), as a quiet `page__footnote` line: "Prototype. Fictional people and stories; your answers stay in this browser." Every
 mid-season note uses one identical layout: statistic, source line, instruction sentence; while
 the statistic is an unsourced placeholder the note shows its instruction only.
 
@@ -221,11 +221,11 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 
 | Component | Source | What it is |
 |---|---|---|
-| `Page` | `src/ui/Page.tsx` | One screen: on story screens a sticky `<header>` landmark (`position: sticky`, `top: 0`, solid paper, the ink rule under it) with the compact chapter label ("Chapter 1 of 5 · The hiring sprint") and one thin `SeasonBar` (EVAL-10; no chapter circles, no card dots); its measured height is `--head-h`, and every focusable element and heading in `<main>` has `scroll-margin-top` of that height. Nothing in the header is interactive. `<main>` holds, in order: `nav` (Back, the small link at the top left), the out-of-fiction line, the `h1`, the body and one `Actions` row. With `pin` (payoff screens only) the row stays at the foot of the screen. On arrival focus moves to the `h1` and the document title becomes "`h1` · Team season". Long titles wrap |
+| `Page` | `src/ui/Page.tsx` | One screen: on story screens a sticky `<header>` landmark (`position: sticky`, `top: 0`, solid paper, the ink rule under it) with the compact chapter label ("Chapter 1 of 5 · The hiring sprint") and nothing else (EVAL-12, owner: the season bar is gone; no bar, chapter circles or card dots; the chapter-end screen's `SeasonMap` shows where the player is); its measured height is `--head-h`, and every focusable element and heading in `<main>` has `scroll-margin-top` of that height. Nothing in the header is interactive. `<main>` holds, in order: `nav` (Back, the small link at the top left), the out-of-fiction line, the `h1`, the body and one `Actions` row. With `pin` (payoff screens only) the row stays at the foot of the screen. On arrival focus moves to the `h1` and the document title becomes "`h1` · Team season". Long titles wrap |
 | `Button` | `src/ui/Button.tsx` | `primary` (ink or violet fill), `secondary` (outline), `quiet` (text), `nav` (Back, EVAL-10: a drawn left chevron and the word "Back" in muted small body type at the top left, 48 px hit area, spoken as "Back: change your last decision" through `label`). Primary, secondary and quiet are 48 px tall (56 px on the pitch), full width on phones and left-aligned from 600 px. Hover on pointer devices, `--press` while pressed, disabled for every kind |
 | `Text` | `src/ui/Text.tsx` | Paragraph, `lead`, `small`, `muted`, `strong`; long words break |
 | `Heading` | `src/ui/Text.tsx` | A section heading inside a page (explanation sections, demo tables); `level={3}` for a sub-heading inside a section (the result page's areas) |
-| `Link` | `src/ui/Link.tsx` | A text link with a 48 px target (the calendar file, demo links); thin offset underline that thickens on hover, pressed colour |
+| `Link` | `src/ui/Link.tsx` | A text link with a 48 px target (the calendar file, demo links, "How this works", a past season's report); thin offset underline that thickens on hover, pressed colour; `label` gives a short link its full spoken name |
 | `List` | `src/ui/List.tsx` | A plain bulleted list of text points (consent, the opening, debrief); muted markers; `help` sets each point's Hinglish under it, smaller; empty renders nothing |
 | `Character` | `src/ui/Character.tsx` | One colleague: emoji figure (or species), name, cue lines (surname is part of the name; "Born in"; badge), description. Text column shrinks and wraps at 320 px |
 | `SortList` | `src/ui/SortList.tsx` | Drag-to-sort list of `Character`s with up and down buttons on every row. The dragged card lifts and settles; displaced rows slide (FLIP); a button at a limit is `aria-disabled` and says the position again |
@@ -234,7 +234,7 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 | `Checks` | `src/ui/Choice.tsx` | Any-number choice as full-width checkbox rows (the noticing probe, the code saved box, "Include my result"), the same rows, gap and states as `Choice`; takes `heading` and `help` too |
 | `Statement` | `src/ui/Statement.tsx` | A crosswise pair: statement A and statement B in two labelled boxes |
 | `Code` | `src/ui/Code.tsx` | The withdrawal code in large monospace groups of four; one tap selects it all; with `copy`, a copy button and a status line |
-| `Field` | `src/ui/Field.tsx` | A labelled text input (code entry) in a one-field form: Enter submits; `invalid` and `errorId` set `aria-invalid` and `aria-describedby`; `type="email"` for the optional stay-in-touch form (no upper-casing) |
+| `Field` | `src/ui/Field.tsx` | A labelled text input (code entry) in a one-field form: Enter submits; `invalid` and `errorId` set `aria-invalid` and `aria-describedby`; `type="email"` for the optional stay-in-touch form (no upper-casing); `hint` (EVAL-12) is a small muted line under the label that the input is always described by (the recovery code's format), with `maxLength` and `inputMode` |
 | `Notice` | `src/ui/Notice.tsx` | A boxed message: `info`, `error` (`role=alert`, "!"), `ok` (`role=status`, a tick); takes an `id` for a field's description |
 | `Table` | `src/ui/Table.tsx` | The demo results table in a named, focusable scroll region, with suppressed cells marked and an `empty` line |
 | `Portrait` | `src/ui/Portrait.tsx` | A face (section 4c): the generated WebP headshot when `public/portraits/manifest.json` lists it (cast by slot, sex and tone, one-offs by `o{slot}-{sex}`, mascots by animal), on the panel's tint and halftone backdrop, with `width`/`height`, lazy loading except `eager` faces above the fold; otherwise the drawn SVG person or mascot animal (`look`), `role="img"` with an accurate `aria-label` ("woman, darker skin tone, glasses", "panda"), sizes `panel` (fills its card), `row` (72 px) and `then` (64 px); with `inset`, the mascot in the bottom corner, used on the reveal only, as the bridge: before it mascots only, after it faces only |
@@ -256,8 +256,8 @@ layout in the note register, its readings in ink only (both poles alike, no gree
 | `DevNotes` | `src/ui/DevNotes.tsx` | Pending markers for the research team, folded, `data-dev`, rendered only by the Vite dev server (`import.meta.env.DEV`); never player copy |
 | `PointCard` | `src/ui/PointCard.tsx` | One finding in a decision area: the pattern's name, the counts, and for a blind spot the player's own decisive pairs as a list (never a made-up inner voice) |
 | `ShareCard` | `src/ui/ShareCard.tsx` | The summary card (EVAL-10): by default the season only ("I played Team Season: The warehouse. 77 decisions, 5 chapters, 8 colleagues. Try it yourself."); an unticked `Checks` box "Include my result" adds the women-and-men tag and one chance line from config. Religion and skin tone are never on it. Share (the device's share sheet, else copy) and a status line |
-| `Timeline` | `src/ui/Timeline.tsx` | The profile's past seasons: a vertical line of dated entries, each with its tag and, where the season saved its counts, a compact `RangeLine`; under it the line "Two results can differ by chance; overlapping ranges mean no change shown." |
-| `SeasonBar` | `src/ui/SeasonBar.tsx` | The header's one progress bar (EVAL-10, owner; checked in Lazyweb against Duolingo's lesson header and Cal AI's, Finch's and me+'s questionnaire bars): a thin rounded track (`--bar-thin`, 6 px) in `--c-track`, the done part in the accent, one segment per chapter and the finale split by 4 px gaps, never tall ticks. Beside it the chapter label in small sentence-case body type ("Chapter 1 of 5 · The hiring sprint"); one compact row from 600 px, two short rows on phones; a hairline under the header. One image with a spoken label; no countdown, no motion |
+| `Timeline` | `src/ui/Timeline.tsx` | The profile's past seasons (EVAL-12): a vertical line of dated entries, each with the story, "Past season, not a confirmed reading" (never a tag), a compact hollow `RangeLine`, a `note` where the change rule fired ("Your decisions changed in this season."), and a `Link` to its read-only report |
+| `Trend` | `src/ui/Trend.tsx` | The profile's trend (EVAL-12): the pooled women-and-men reading after each season as a point on a vertical "Men first" to "Women first" line with a dashed "About equal" rule, its range a shaded band joined season to season (`--trend-h` 160 px, ink on `--c-range`); a season where the change rule fired is a hollow square with its own range bar, and the band starts again after it. Month labels under the points; one `role="img"` whose label says every point in words. No colour says good or bad, nothing moves |
 | `Actions` | `src/ui/Actions.tsx` | The one action row on every screen (EVAL-10): the primary first, full width on phones and left-aligned from 600 px, then at most one quiet secondary on the same edge. `Page`, `TapOrder` and `QuickSplit` all use it, so no button sits at another indent; Back is never in it |
 | `IconList` | `src/ui/IconList.tsx` | Tight rows of a small drawn line icon (20 px, ink on the paper, tan fill; no face, skin or symbol) and one line of text, 16 px at 1.3 leading, the Hinglish under each in the help mode; two lists in a row are split by a hairline (EVAL-10's "Before you start" screen) |
 | `Group` | `src/ui/Group.tsx` | A named section whose parts (heading, text, each label with its field, the button, a notice) are spaced on the flow, one rule pitch in the note register, so nothing touches and fields and buttons keep the baseline grid |
@@ -301,7 +301,7 @@ no component knows its surface). Full before and after matrices:
 | QuickSplit | n/a | Ring on a chip | `--press` | Filled chip, `aria-pressed`, the row's stamp shows the number; empty ring and no pressed chip before a tap | `aria-disabled` past what is left (dashed) | n/a | Commits when all is shared | n/a | Chips fit 320 at 44 px | Highlight outline on chosen | No scale |
 | AgreeGrid | Border | Ring on the point | n/a | Filled point (ink) | n/a | n/a | n/a | n/a | Five points fit 320 at 44 px; the key stays at the top | Highlight outline on chosen | No transition |
 | StoryPick | Violet offset shadow | Ring | `--press` | n/a | `aria-disabled` (not open), tinted, no shadow | n/a | n/a | n/a | Wraps | Ring | No scale |
-| Timeline, ReadingList, ResultHero, PointCard, Spectrum, Beat, Panel, Caption, Splash, Then, Strip, CastGrid, PanelArt | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps; the cast grid drops to two columns | Borders kept; pictures and the bar keep colour | n/a |
+| Timeline, Trend, ReadingList, ResultHero, PointCard, Spectrum, Beat, Panel, Caption, Splash, Then, Strip, CastGrid, PanelArt | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps; the cast grid drops to two columns | Borders kept; pictures and the trend keep colour | n/a |
 | Fold, DevNotes | n/a | `summary` ring | n/a | Open marker ▾ | n/a | n/a | n/a | n/a | Wraps | Ring | n/a |
 | Stamp | n/a | n/a | n/a | Filled and tilted | Empty: dashed ring, upright | n/a | n/a | n/a | n/a | Border kept | n/a |
 | ShareCard | n/a | Button ring | Button | n/a | n/a | "cannot share" status | "Copied" status | n/a | Wraps | Border kept | n/a |
@@ -375,9 +375,9 @@ valence, and the season's end lists the jobs each colleague led, with no outcome
   moralises; a card appears only where the decisions support it, so the bands can land
   anywhere, and no weakness is dressed as a strength. No band is called unbiased; the no-lean
   band reads "No lean read in your decisions". No paywall, no self-rated accuracy.
-- **The profile** (`#/profile`) is optional and pseudonymous, out of fiction: `Timeline`, the
-  change line ("No change read yet" unless a change is read), the next retake as a date, never a
-  timer, a separate research opt-in, and "Delete my profile and all my records".
+- **The profile** (`#/profile`) is optional and pseudonymous, out of fiction; EVAL-12 builds it
+  (section 4e): "You now" pooled since the last restart, the readings with their season counts,
+  "This season", past seasons and the trend on demand, and account and privacy.
 
 ### The season in chapters (EVAL-8; every count PENDING v21)
 
@@ -503,8 +503,8 @@ pass (EVAL-10)".
   Back as the `nav` link at the top left under the header. The chapter-end screen: "Chapter 1
   done" is the `h1`, "Saved in this browser." the lead line, the `SeasonMap`, the next chapter
   and the save line as body, "Your result comes after the finale." as meta. `pnpm ux` fails a
-  screen with two primary buttons, a Back that is not the top nav link, or a header with more
-  than one progress bar.
+  screen with two primary buttons, a Back that is not the top nav link, or a header holding
+  anything but the chapter label (EVAL-12).
 - **Cards per row (owner).** On phones (under 600 px) every decision is one card per row, each
   card a compact horizontal layout: a 96 px thumbnail (`--thumb`) on a tinted column on the
   left, the name and description on the right, the stamp top right. From 600 px a ranking of 4
@@ -578,10 +578,9 @@ pass (EVAL-10)".
   sentence case, muted ink, a thin underline, its text on the primary's left edge and a 48 px hit
   area: quieter, never hidden (a consent's decline stays easy to use). "Read the full details" is
   a small display label (16 px) one pitch above the actions.
-- **The season bar** is 6 px pills (`--radius-pill`, never a percentage radius), one per chapter
-  and the finale with 4 px gaps, the track `--c-track` (lilac `#C9BEDA`, 1.8:1 on white; the tan
-  rule on note paper) and the done part an accent pill flush left, never thinner than it is
-  tall; at the very start the first segment shows a round dot.
+- **No season bar** (EVAL-12, owner): the header is the chapter label only; the season bar, its
+  tokens (`--bar-thin`, `--seg-gap`, `--bar-min`, `--c-track`, `--radius-pill`) and its check were
+  removed. Where the player is in the season shows on the chapter-end screen's `SeasonMap`.
 
 ### The comic page grammar (EVAL-10, owner)
 
@@ -609,6 +608,72 @@ over a whole season (69 decisions), 15 fit and 54 do not (every ranking card, 1,
 and every split, 1,070 to 1,310 px; picks and ordinary decisions fit or nearly fit, 844 to
 930 px). Four colleague cards with 17 px descriptions do not fit one phone screen; the cards are
 the part that scrolls, under the question.
+
+## 4e. The landing page, sign-in and the profile (EVAL-12, owner decisions of 20 Oct 2026)
+
+Plane: [EVAL-12](https://app.plane.so/the-equal-lens/browse/EVAL-12/). Review:
+[reviews/landing-profile-2026-10-20.md](reviews/landing-profile-2026-10-20.md).
+
+- **The landing page** (`#/`, `Landing`, game surface) is one phone screen (content ends near
+  745 px at 390 x 844; `pnpm ux` holds it under 844): a `Splash` with "Team Season" as the `h1`
+  and one line; the mascot sheet (`CastGrid`, four animals, no person, so no rated cue is shown)
+  with one `Caption`; three `IconList` rows (about {minutes} minutes in 5 chapters; a fictional
+  workplace; your result, shown with its range); "How this works" as a `Link`; one `Actions` row;
+  the prototype line as its footnote. Actions by state: signed out, "Start a season" and the quiet
+  "I've played before: sign in"; signed in, "Continue as <name>" and the quiet "Start a new
+  season"; whenever this browser holds an unfinished season, "Resume chapter N" (or "Resume the
+  finale") is the primary and the other becomes the quiet one. "Start a season" leads to the
+  language, then eligibility, then "Before you start". Outside demo mode there is no start
+  button: links come from the study team.
+- **How this works** (`#/how`, note register): what a season looks at (three list points), the
+  four registered sentences verbatim and in order as `IconList` rows, and privacy (five points).
+  It never says how answers are read (`content-check` fails pairs, descriptions being compared,
+  chance, scoring or permutation words in it).
+- **Sign-in** (`#/signin`, note register) is entering the recovery code: one `Field` with its
+  format as the `hint`, grouped in fours as it is typed; a character no code uses is named at once
+  (inline), a short code on sending, a code that opens nothing is the error `Notice` that the
+  field is described by; "Lost your code?" is a `Details` that says plainly the code cannot be
+  recovered because nothing identifying was stored. Signing in keeps the code in this browser
+  until "Sign out on this browser". The demo profile's code shows only in the dev-only `DevNotes`.
+- **The profile** (`#/profile`, note register): the `h1` is "<name>'s profile"; the lead line
+  counts seasons played and stories played against those left (`season.profile.storiesTotal`, no
+  repeats); the next season's date in words when a retake gap is set, never a countdown. **You
+  now**: the women-and-men reading pooled since the last restart as a `RangeLine`, solid and
+  tagged only once its seasons reach the registered count, otherwise hollow with the range in
+  words, the next step and "Tagged after N more seasons on your profile" (N the count less the
+  seasons pooled, never projected per player; "not available yet" with no count); the change line
+  ("Your decisions changed" only when the faster change rule fires, else "No change shown") and
+  its chance sentence. **Your readings**: a `ReadingList` of women and men, skin tone, religion,
+  complaints and conduct, hiring and promotion, sharing resources and the role pattern, each its
+  tag or "Still forming. Tagged after N more seasons" or "Not available yet", the untagged ones
+  quieter. **This season**: its own position and range, hollow and untagged. One `Actions` row:
+  "See past seasons" and the quiet "Account and privacy".
+- **Past seasons** (`#/profile/history`): the `Trend`, its note, and a `Timeline` of every season,
+  each "Past season, not a confirmed reading" with a link to its read-only report
+  (`#/profile/season/<n>`: the season's lines for women and men, religion, skin tone and the three
+  areas, all hollow and untagged, its saved reasons, and the Internal Committee line).
+- **Account and privacy** (`#/profile/account`): one `Group` each for the recovery code (`Code`
+  with copy), the display name, the optional email with its two opt-ins (kept apart at a random
+  key; emptying it removes it), the research opt-in, signing out, and "Delete my profile and all
+  my records", whose confirmation opens in place (an alert `Notice`, "Yes, delete everything",
+  the quiet "Keep my profile"). Every save button is secondary: no screen has two primaries.
+- **Readings in one word each** (the persona glossary, both languages): "result" for a season,
+  "reading" for what the profile pools, "season", "description", "chapter"; never a verdict on
+  the person; the warm "still forming" wherever a reading is untagged.
+
+**Checked against real products (Lazyweb, 20 Oct 2026).** Landing: Breeze's personality-test
+overview (duration and question count above one "Get started") and Storia's welcome (a short
+count of what is coming); we take the plain facts and one start action, and leave out "what you
+get" sales copy. Returning players: DoorDash's and Canva's "Continue as <account>" with another
+account as the quieter choice, Messenger's continue-or-log-out; ours is "Continue as <name>" and
+"Start a new season". Code entry: Spotify for Creators', Clear's and Life360's code screens; we
+take the single grouped field and the inline error, and leave out every resend countdown.
+Recovery code: MetaMask's secret phrase and Believe's tap-to-copy; we copy in place and say
+plainly it is the only way back. Profile: Duolingo's, Mimo's and Drops' profile headers (name and
+a few counts on top); we count seasons and stories, with no streak, league or XP. Trend: Strava's
+and Eufy's progress lines over time; ours adds the range as a band and breaks it at a change.
+Delete: Dipsea's and Life360's confirmations (the keep action beside the destructive one); ours
+confirms in the page rather than a modal.
 
 ## 5. Interaction patterns, checked against real products (Lazyweb, 19 Oct 2026)
 

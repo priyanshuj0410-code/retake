@@ -89,8 +89,12 @@ export async function playSeason(
   base: string,
   onScreen?: (marker: string) => Promise<void>,
 ) {
-  if (/#\/play\//.test(base)) await page.goto(base)
-  /* The demo landing goes straight into the season (EVAL-6). */ else await page.goto(base)
+  await page.goto(base)
+  /* The landing (EVAL-12): "Start a season" issues the demo link and opens its language screen. */
+  if (!/#\/play\//.test(base)) {
+    await page.waitForSelector('[data-screen="landing"]', { timeout: 30000 })
+    await page.getByRole('button', { name: /^Start a (new )?season$/ }).click()
+  }
   await page.waitForSelector(
     '[data-screen]:not([data-screen="loading"]):not([data-screen="landing"])',
     {

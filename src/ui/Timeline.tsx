@@ -1,3 +1,4 @@
+import { Link } from './Link'
 import { RangeLine } from './RangeLine'
 import './timeline.css'
 
@@ -7,6 +8,10 @@ export interface TimelineItem {
   band: string
   /** The season's position with its range on the men-first to women-first line (EVAL-10). */
   range?: { at: number; lo: number; hi: number; label: string; point?: 'solid' | 'hollow' | 'none' }
+  /** A plain line under the entry (EVAL-12: "Your decisions changed in this season."). */
+  note?: string
+  /** A link to the season's own page (EVAL-12: its read-only report). */
+  open?: { href: string; text: string; label: string }
 }
 
 /**
@@ -46,6 +51,12 @@ export function Timeline({
                 <span>{ends.right}</span>
               </span>
             </span>
+          ) : null}
+          {it.note ? <span className="timeline__note">{it.note}</span> : null}
+          {it.open ? (
+            <Link href={it.open.href} label={it.open.label}>
+              {it.open.text}
+            </Link>
           ) : null}
         </li>
       ))}

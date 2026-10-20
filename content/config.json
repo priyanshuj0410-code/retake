@@ -271,11 +271,9 @@
         "mass": 0.9
       },
       "untagged": {
-        "_pending": "PENDING v26: the always-show rule (owner, 20 Oct 2026) and the research critic's adjustment. An untagged reading (still forming, or not yet confirmed) shows its range as the mark, the point hollow or left out (`point`), the range in words from `words` (edges between mostly men-first, slightly men-first, about equal, slightly women-first and mostly women-first), and 'Tagged after N more seasons on your profile', N being `openingSeasons` less the seasons pooled since the reading's last restart. `pooledInBuild` false: this build reads each season alone, so a pooled reading cannot open yet and the line says 'Not available yet'. Planning values; the research design sets them.",
+        "_pending": "PENDING v26: the always-show rule (owner, 20 Oct 2026) and the research critic's adjustment. An untagged reading (still forming, or not yet confirmed) shows its range as the mark, the point hollow or left out (`point`), and the range in words from `words` (edges between mostly men-first, slightly men-first, about equal, slightly women-first and mostly women-first). How many seasons a reading needs before it is tagged is season.profile.readings (EVAL-12). Planning values; the research design sets them.",
         "point": "hollow",
-        "words": [0.2, 0.4, 0.6, 0.8],
-        "openingSeasons": 3,
-        "pooledInBuild": false
+        "words": [0.2, 0.4, 0.6, 0.8]
       }
     },
     "timing": {
@@ -301,6 +299,21 @@
     "change": {
       "_note": "PENDING v17. The profile reads a change between two saved seasons only when the headline weight moved by at least minDiff (on the -1 to +1 scale). A planning value: v17 sets the rule, ideally from the retake arm's test-retest agreement.",
       "minDiff": 0.5
+    },
+    "profile": {
+      "_pending": "EVAL-12 (owner, 20 Oct 2026); every value PENDING research design v26, config only, never shown as pending. `readings`: the profile's readings in order, each with the registered season count at which its pooled reading may be tagged (`opens`; null: no count meets the targets yet, shown as 'not available yet'). v25 registered tone 2, religion 3, conduct 3, hiring and promotion 4, resource sharing 4 and role 6; the owner's brief sets the values below for v26. `pooling`: how the seasons since the last restart combine, 'equal' (v25, section 3.18: equal weights, the pooled variance the sum of the seasons' variances over k squared) or 'inverse-variance' (v22, withdrawn in v23 because it inflated an area reading's pooled false rate). `reliableChange`: the faster change rule's threshold on the latest season's estimate minus the pool's, over the root of the sum of their variances; 2.576 is two-sided 0.01 on the normal (v25 uses Student's t on the latest season's degrees of freedom, which this build's share estimate does not carry). When it fires, that season is shown as the change, untagged, and is not pooled; the pool starts on the next season (v24). `storiesTotal`: stories in the catalogue, each played once per profile.",
+      "storiesTotal": 10,
+      "readings": [
+        { "id": "sex", "opens": 1 },
+        { "id": "tone", "opens": 2 },
+        { "id": "religion", "opens": 3 },
+        { "id": "conduct", "opens": 4 },
+        { "id": "hiring", "opens": 5 },
+        { "id": "resources", "opens": 4 },
+        { "id": "role", "opens": null }
+      ],
+      "pooling": "equal",
+      "reliableChange": 2.576
     },
     "retakeGapDays": null,
     "_retakeNote": "PENDING v17. retakeGapDays: null means no gap. When v17 sets a number, the profile shows the day the next retake opens as a date, never as a countdown.",

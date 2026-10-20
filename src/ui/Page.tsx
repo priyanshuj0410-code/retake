@@ -1,6 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { Actions } from './Actions'
-import { SeasonBar, type SeasonProgress } from './SeasonBar'
 import './page.css'
 
 const PRODUCT = 'Team season'
@@ -8,8 +7,6 @@ const PRODUCT = 'Team season'
 export interface PageProps {
   surface: 'game' | 'oof' | 'sober'
   act?: string
-  /** One thin season progress bar with chapter ticks under the chapter label (EVAL-10). */
-  progress?: SeasonProgress
   /** Back, as a small nav link at the top left of the screen, under the header (EVAL-10). */
   nav?: ReactNode
   /** The out-of-fiction line, "This part is not part of the game." */
@@ -31,7 +28,6 @@ export interface PageProps {
 export function Page({
   surface,
   act,
-  progress,
   nav,
   oof,
   title,
@@ -81,7 +77,6 @@ export function Page({
           <header className="page__head" ref={headRef}>
             <div className="page__bar">
               <p className="page__act">{act}</p>
-              {progress ? <SeasonBar {...progress} /> : null}
             </div>
           </header>
         ) : null}

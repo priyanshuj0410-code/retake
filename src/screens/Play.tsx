@@ -15,6 +15,7 @@ import { cryptoRng, cryptoSeed, fromSeed, type Seed } from '../engine/rng'
 import { Runner, type FirmLabels } from '../engine/runner'
 import { store } from '../store'
 import { progress } from '../store/progress'
+import { loadSaved, restoreSeason, type Pre, type Saved } from '../story/saved'
 import type { LangSet, StartResult } from '../store/types'
 import { Page, Text, Notice } from '../ui'
 import { Disclosure } from './Disclosure'
@@ -32,46 +33,13 @@ import { fill } from '../engine/text'
 import { SS } from '../story/content'
 import { stories, storyById } from '../story/content'
 import { playedStories } from '../story/profile'
-import { sessionMinutes, StoryRunner, type RunnerState } from '../story/runner'
+import { sessionMinutes, StoryRunner } from '../story/runner'
 import type { Story } from '../story/content'
 
 const S = screens
 
-type Pre = 'disclosure' | 'consent' | 'language' | 'declined' | 'pick'
 type Entry = StartResult & { firm?: FirmLabels }
 type Finish = 'submitted' | 'withdrawn' | null
-
-/** A season session as this device keeps it between reloads (never sent anywhere). */
-interface Saved {
-  v: 1
-  entry: Entry
-  pre: Pre
-  eligible: 'unasked' | 'yes' | 'no'
-  langs: Lang[] | null
-  drawn: string | null
-  season: { story: string; seed: Seed; langs: Lang[]; state: RunnerState } | null
-  finished: Finish
-  /** Stopped at a chapter end with "Stop here, carry on later". */
-  stopped?: boolean
-}
-
-/** A save older than the configured days is deleted unsent (EVAL-8; PENDING v21). */
-function loadSaved(key: string | undefined): { saved: Saved | null; expired: boolean } {
-  if (!key) return { saved: null, expired: false }
-  const r = progress.fresh<Saved>(key, config.season.chapters.saveDays)
-  return { saved: r.value, expired: r.expired }
-}
-
-function restoreSeason(saved: Saved | null): StoryRunner | null {
-  const s = saved?.season
-  const story = s ? storyById(s.story) : undefined
-  if (!s || !story) return null
-  const r = new StoryRunner(fromSeed(s.seed), story, s.langs)
-  r.restore(s.state)
-  /* Reopened at a save point (a chapter end, or after "Stop here"): a new sitting. */
-  if (!saved?.finished && (saved?.stopped || r.current?.kind === 'saved')) r.newSitting()
-  return r
-}
 
 export function Play({
   start,
@@ -244,7 +212,6 @@ export function Play({
       return (
         <Eligibility
           ui={ui}
-          footnote={config.demo ? S.common.prototype : undefined}
           languages={langSet === 'choose'}
           onDone={(ok, chosen) => {
             if (chosen) setLangs(chosen)

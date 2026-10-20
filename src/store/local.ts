@@ -203,9 +203,9 @@ export class LocalStore implements Store {
     this.save()
   }
 
-  async contactPut(key: string, value: Contact) {
-    if (this.tree['eval-contact'][key] !== undefined) throw new Error('refused: contact key exists')
-    this.tree['eval-contact'][key] = { ...value }
+  async contactPut(key: string, value: Contact | null) {
+    if (value) this.tree['eval-contact'][key] = { ...value }
+    else delete this.tree['eval-contact'][key]
     this.save()
   }
 

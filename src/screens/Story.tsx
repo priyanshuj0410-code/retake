@@ -19,6 +19,7 @@ import {
   currentProfile,
   nextRetake,
   playedStories,
+  type ProfileSession,
 } from '../story/profile'
 import { sessionMinutes, type StoryRunner } from '../story/runner'
 import { castTiles, colleagueView, langAttr, sceneArt, trackLines } from '../story/view'
@@ -75,13 +76,10 @@ const S = screens
  */
 export function Eligibility({
   ui,
-  footnote,
   languages,
   onDone,
 }: {
   ui: Lang
-  /** The prototype line, on these landing screens only. */
-  footnote?: T
   /** The language choice first, on its own screen, when the link lets the player choose. */
   languages?: boolean
   onDone: (ok: boolean, langs?: Lang[]) => void
@@ -101,7 +99,6 @@ export function Eligibility({
         surface="oof"
         stepKey="language"
         screen="language"
-        footnote={footnote ? `${footnote.en} / ${footnote.hinglish}` : undefined}
         lang="en-GB"
         actions={
           <Button onClick={() => setStep('questions')} disabled={!lang}>
@@ -127,7 +124,6 @@ export function Eligibility({
       surface="oof"
       stepKey="eligibility"
       screen="eligibility"
-      footnote={footnote ? L(footnote) : undefined}
       oof={L(S.common.outOfFiction)}
       lang={langAttr(show)}
       title={L(SS.eligibleTitle)}
@@ -274,27 +270,14 @@ export function StoryView({
     step.kind === 'reveal' ||
     step.kind === 'payoff' ||
     step.kind === 'season'
-  /* The header (EVAL-10, owner): a compact chapter label and one thin season progress bar with
-     chapter ticks, on the story's screens, the chapter-end save screens and the finale. The
-     six-stop map lives on the chapter-end screen. */
+  /* The header (EVAL-10; the bar removed by EVAL-12, owner): the compact chapter label only, on
+     the story's screens, the chapter-end save screens and the finale. Where the player is in the
+     season shows on the chapter-end screen's map. */
   const k = runner.chapters
   const chapter = runner.chapterAt()
   const finale = chapter > k
   const stopTitle = (n: number) => (n > k ? L(SS.finaleAct) : L(episodes[n - 1].title))
-  const showMap = inStory || step.kind === 'saved' || step.kind === 'practice'
-  const done = runner.seasonProgress()
-  const progress = showMap
-    ? {
-        value: done.value,
-        ticks: done.ticks,
-        label: fill(L(SS.progressSaid), {
-          act: finale
-            ? L(SS.finaleAct)
-            : fill(L(SS.chapterOf), { n: chapter, k, title: stopTitle(chapter) }),
-          pct: Math.round(done.value * 100),
-        }),
-      }
-    : undefined
+  const showAct = inStory || step.kind === 'saved' || step.kind === 'practice'
   const stops = [...Array(k + 1).keys()].map((i) => ({
     title: stopTitle(i + 1),
     state: (i + 1 < chapter ? 'done' : i + 1 === chapter ? 'now' : 'next') as
@@ -309,14 +292,13 @@ export function StoryView({
     ) : null
   const page = {
     surface: inStory || step.kind === 'practice' ? 'game' : 'oof',
-    act: showMap
+    act: showAct
       ? step.kind === 'practice'
         ? L(PRACTICE.label)
         : finale
           ? L(SS.finaleAct)
           : fill(L(SS.chapterOf), { n: chapter, k, title: stopTitle(chapter) })
       : undefined,
-    progress,
     nav: back ?? undefined,
     oof: inStory || step.kind === 'practice' ? undefined : L(S.common.outOfFiction),
     stepKey: key,
@@ -1183,6 +1165,8 @@ export function StoryResult({
         weight={h.weight}
         pairs={h.pairs}
         counts={m.counts}
+        readings={m.readings}
+        why={m.why}
       />
       <Heading>{L(RT.shareTitle)}</Heading>
       <Text kind="small">{L(RT.shareBody)}</Text>
@@ -1307,6 +1291,8 @@ function KeepIt({
   weight,
   pairs,
   counts,
+  readings,
+  why,
 }: {
   runner: StoryRunner
   zone: 'lean' | 'none' | 'unread'
@@ -1316,6 +1302,10 @@ function KeepIt({
   pairs: number
   /** Women first, men first and even, for the profile's position with range (EVAL-10). */
   counts: { w: number; m: number; e: number }
+  /** Every profile reading's counts, for the profile's pooling (EVAL-12). */
+  readings: ProfileSession['readings']
+  /** The reasons, for the read-only report on the profile (EVAL-12). */
+  why: string[]
 }) {
   const ui = runner.lang
   const L = (t: T) => t[ui]
@@ -1335,6 +1325,8 @@ function KeepIt({
     weight: Math.round(weight * 1000) / 1000,
     pairs,
     counts,
+    readings,
+    report: { lang: ui, why },
     code: runner.code ?? '',
   })
   const save = async () => {

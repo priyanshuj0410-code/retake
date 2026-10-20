@@ -188,10 +188,16 @@ async function audit(page: Page, screen: string, inPage = false) {
       if (h1 && back.compareDocumentPosition(h1) & Node.DOCUMENT_POSITION_PRECEDING)
         out.push('Back comes after the heading')
     }
-    /* The header: one thin season bar, no chapter circles or card dots. */
+    /* The header (EVAL-12, owner): the chapter label only. No progress bar, chapter circles,
+       card dots or any picture; Back stays the nav link under it. */
     const head = document.querySelector('.page__head')
-    if (head && (head.querySelector('.map') || head.querySelectorAll('.seasonbar').length > 1))
-      out.push('the header carries more than one progress bar')
+    if (head) {
+      if (head.querySelector('.map, [role="img"], [role="progressbar"], progress, svg'))
+        out.push('the header carries a progress bar or a picture')
+      const kids = [...head.querySelectorAll('*')].filter((e) => e.children.length === 0)
+      if (kids.length !== 1 || !kids[0].classList.contains('page__act'))
+        out.push('the header holds more than the chapter label')
+    }
     /* Descriptions at 17 px or more; card questions in sentence case. */
     document.querySelectorAll('.colleague__desc').forEach((d) => {
       if (parseFloat(getComputedStyle(d).fontSize) < 17) out.push('a description under 17 px')
@@ -553,17 +559,70 @@ async function main() {
     })
     await audit(page, 'season story:result')
     for (const l of leaks) problems.push(`season ${l}`)
-    await page.goto(`${BASE}#/profile`)
-    await page.reload()
-    await page.waitForSelector('[data-screen="profile-locked"]')
-    await audit(page, 'profile locked')
-    await page.getByRole('button', { name: 'Open the demo profile' }).click()
+    /* EVAL-12: the landing (signed out, signed in, with a season to resume), "How this works",
+       sign-in with its inline and wrong-code errors, and every view of the profile. */
+    const landingFits = async (state: string) => {
+      await page.setViewportSize({ width: 390, height: 844 })
+      await settle(page)
+      const bottom = await page.evaluate(() => {
+        const last = [...document.querySelectorAll('main > *')].pop()
+        return last ? Math.round(last.getBoundingClientRect().bottom + window.scrollY) : 9999
+      })
+      if (bottom > 844) problems.push(`landing ${state}: content ends at ${bottom} px at 390 x 844`)
+      await page.setViewportSize({ width: 412, height: 915 })
+    }
+    await page.goto(BASE)
+    await page.waitForSelector('[data-screen="landing"] .actions')
+    await audit(page, 'landing signed out')
+    await landingFits('signed out')
+    await page.getByRole('link', { name: 'How this works' }).click()
+    await page.waitForSelector('[data-screen="how"]')
+    await audit(page, 'how this works')
+    await page.goto(`${BASE}#/signin`)
+    await page.waitForSelector('[data-screen="signin"]')
+    await audit(page, 'sign-in')
+    const codeField = page.getByRole('textbox', { name: 'Recovery code' })
+    await codeField.pressSequentially('DEMO')
+    await page.getByRole('alert').waitFor()
+    await audit(page, 'sign-in inline error', true)
+    await codeField.fill('AAAA-BBBB-CCCC')
+    await page.getByRole('button', { name: 'Sign in', exact: true }).click()
+    await page.getByRole('alert').waitFor()
+    await audit(page, 'sign-in wrong code', true)
+    await codeField.fill('DEMQ-PRQF-2XE7')
+    await page.getByRole('button', { name: 'Sign in', exact: true }).click()
     await page.waitForSelector('[data-screen="profile"]')
-    await audit(page, 'profile open')
-    await page.getByRole('button', { name: 'Delete my profile and all my answers' }).click()
-    await page.waitForSelector('[data-screen="profile-confirm"]')
-    await audit(page, 'profile confirm delete')
+    await audit(page, 'profile')
+    await page.getByRole('button', { name: 'See past seasons' }).click()
+    await page.waitForSelector('[data-screen="profile-history"]')
+    await audit(page, 'profile history')
+    await page.getByRole('link', { name: /^Open the full report/ }).first().click()
+    await page.waitForSelector('[data-screen="profile-season"]')
+    await audit(page, 'profile season report')
+    await page.goto(`${BASE}#/profile/account`)
+    await page.waitForSelector('[data-screen="profile-account"]')
+    await audit(page, 'profile account')
+    await page.getByRole('button', { name: 'Delete my profile and all my records' }).click()
+    await page.getByRole('button', { name: 'Keep my profile' }).waitFor()
+    await audit(page, 'profile account confirm delete', true)
     await page.getByRole('button', { name: 'Keep my profile' }).click()
+    await page.goto(BASE)
+    await page.waitForSelector('[data-screen="landing"] .actions')
+    await audit(page, 'landing signed in')
+    await landingFits('signed in')
+    await page.getByRole('button', { name: 'Start a new season' }).click()
+    await page.waitForSelector('[data-screen="language"]')
+    await page.goto(BASE)
+    await page.getByRole('button', { name: 'Resume chapter 1' }).waitFor()
+    await audit(page, 'landing resume')
+    await landingFits('resume')
+    /* Leave the browser as a first visitor finds it: no sign-in, no season in progress. */
+    await page.evaluate(() =>
+      Object.keys(localStorage)
+        .filter((k) => k.startsWith('eval-progress:') || k === 'eval-profile-signin')
+        .forEach((k) => localStorage.removeItem(k)),
+    )
+    await page.reload()
 
     await page.goto(`${BASE}#/explain`)
     await page.waitForSelector('[data-screen]')

@@ -44,11 +44,11 @@ for (const langs of ['choose', 'en']) {
   await put(`eval-tokens/${t}`, { dep: 'season', langs, s: 'issued' })
   console.log(`season story (${langs}): http://localhost:5173/#/play/${t}`)
 }
-/* One demo profile with two made-up past seasons (EVAL-4), so the timeline can be seen. */
+/* One demo profile with four made-up past seasons (EVAL-12), so the readings, the restart and the trend can be seen. */
 const demoProfile = await demoProfileBox()
 await put(`eval-profile/${demoProfile.key}`, demoProfile.box)
 console.log(
-  `demo profile: http://localhost:5173/#/profile with recovery code ${formatCode(DEMO_PROFILE_CODE)}`,
+  `demo profile: http://localhost:5173/#/signin with recovery code ${formatCode(DEMO_PROFILE_CODE)}`,
 )
 console.log(`firm enrolment: http://localhost:5173/#/enrol/${DEMO_SCHEDULE.firm}`)
 for (let i = 0; i < players; i++) {

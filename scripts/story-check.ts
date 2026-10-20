@@ -26,10 +26,15 @@ import {
   createProfile,
   deleteProfile,
   nextRetake,
+  DEMO_PROFILE_CODE,
   openProfile,
+  seedDemoProfile,
+  setContact,
   setResearch,
+  storiesPlayed,
   type ProfileSession,
 } from '../src/story/profile'
+import { estimateOf, pool, profileNow, rangeOf, walk } from '../src/story/pool'
 import { cueSets, rate, weightOf } from '../src/story/rating'
 import { sessionMinutes, StoryRunner } from '../src/story/runner'
 import { drawCast } from '../src/story/session'
@@ -57,6 +62,7 @@ export async function run() {
   await records()
   await profile()
   await prototypePass()
+  await profilePooling()
 }
 
 function content() {
@@ -418,13 +424,13 @@ function content() {
   )
   record(
     T,
-    'the profile offers a separate research consent (pending v18 in a _researchConsentPending note, not on screen), the delete-everything action, and "No change shown yet" with the chance line (EVAL-10)',
+    'the profile offers a separate research consent (pending v18 in a _researchConsentPending note, not on screen), the delete-everything action, "Your decisions changed" or "No change shown" with the chance line (EVAL-12)',
     !/PENDING/.test(JSON.stringify([PF.researchTitle, PF.researchConsent])) &&
       /PENDING v18/.test(PF._researchConsentPending as unknown as string) &&
-      PF.deleteButton.en === 'Delete my profile and all my answers' &&
-      PF.noChange.en === 'No change shown yet.' &&
-      PF.timelineNote.en ===
-        'Two results can differ by chance; overlapping ranges mean no change shown.',
+      PF.deleteButton.en === 'Delete my profile and all my records' &&
+      PF.changed.en === 'Your decisions changed' &&
+      PF.noChange.en === 'No change shown' &&
+      /by chance/.test(PF.timelineNote.en),
   )
   const run = wh ? new StoryRunner(seeded(1), wh, ['en']) : null
   const secs = run ? run.estimateSeconds() : 0
@@ -1183,18 +1189,19 @@ async function profile() {
   const del = await deleteProfile()
   record(
     T,
-    '"Delete my profile and all my answers" removes the profile and withdraws its seasons',
+    '"Delete my profile and all my records" removes the profile and withdraws its seasons',
     had &&
       local.tree['eval-play'][playKey] === undefined &&
       local.tree['eval-profile'][u.key] === undefined &&
       del.withdrawn >= 1,
   )
-  const ch = changeOf([s1, { ...s1, zone: 'none', weight: 0 }])
-  const none = changeOf([s1, { ...s1, weight: -0.5 }])
+  const at = (w: number, m: number) => ({ ...s1, counts: { w, m, e: 0 } })
+  const ch = changeOf([at(5, 20), at(18, 7)])
+  const none = changeOf([at(5, 20), at(8, 17)])
   record(
     T,
-    `a change is read only past the planning threshold (PENDING v17, ${config.season.change.minDiff}); otherwise "No change read yet"`,
-    ch?.towards === 'focal' && none === null && changeOf([s1]) === null,
+    `a change is shown only when the faster change rule fires (|z| over ${config.season.profile.reliableChange}, config.season.profile, PENDING v26); otherwise "No change shown"`,
+    ch?.towards === 'focal' && none === null && changeOf([at(5, 20)]) === null,
   )
   const gap = config.season.retakeGapDays
   record(
@@ -1407,7 +1414,7 @@ async function prototypePass() {
   const u = config.season.rating.untagged
   record(
     T,
-    `a forming reading is never a dead end: the range in words, the next step, the seasons-to-tag line from config (${u.pooledInBuild ? `opening at ${u.openingSeasons}` : 'not available yet: this build reads each season alone'}), a ${u.point} point, the other readings always, the areas only once readable; forming copy 25 words or fewer per line, no "cannot" (${forming} of 30 careless seasons were forming)`,
+    `a forming reading is never a dead end: the range in words, the next step, the seasons-to-tag line from config.season.profile (women and men open at ${config.season.profile.readings[0].opens}), a ${u.point} point, the other readings always, the areas only once readable; forming copy 25 words or fewer per line, no "cannot" (${forming} of 30 careless seasons were forming)`,
     below.others &&
       !below.areas &&
       read.others &&
@@ -1421,55 +1428,126 @@ async function prototypePass() {
      change only when two seasons' ranges do not overlap. */
   const small = positionOf({ w: 3, m: 7, e: 0 })
   const big = positionOf({ w: 30, m: 70, e: 0 })
-  const sep = changeOf([
-    {
-      story: 'a',
-      day: '2026-01-01',
-      zone: 'lean',
-      weight: -0.6,
-      pairs: 40,
-      counts: { w: 8, m: 32, e: 0 },
-      code: 'x',
-    },
-    {
-      story: 'b',
-      day: '2026-03-01',
-      zone: 'none',
-      weight: 0,
-      pairs: 40,
-      counts: { w: 20, m: 20, e: 0 },
-      code: 'y',
-    },
-  ])
-  const near = changeOf([
-    {
-      story: 'a',
-      day: '2026-01-01',
-      zone: 'lean',
-      weight: -0.6,
-      pairs: 25,
-      counts: { w: 5, m: 20, e: 0 },
-      code: 'x',
-    },
-    {
-      story: 'b',
-      day: '2026-03-01',
-      zone: 'none',
-      weight: -0.08,
-      pairs: 25,
-      counts: { w: 11, m: 13, e: 1 },
-      code: 'y',
-    },
-  ])
   record(
     T,
-    `the position sits inside its range, the range narrows with more pairs (${config.season.rating.range.method}, mass ${config.season.rating.range.mass}, from config), and the profile shows a change only when the ranges do not overlap`,
+    `the position sits inside its range and the range narrows with more pairs (${config.season.rating.range.method}, mass ${config.season.rating.range.mass}, from config)`,
     !!small &&
       !!big &&
       small.lo <= small.at &&
       small.at <= small.hi &&
-      big.hi - big.lo < small.hi - small.lo &&
-      sep?.towards === 'focal' &&
-      near === null,
+      big.hi - big.lo < small.hi - small.lo,
+  )
+}
+
+/**
+ * The profile built (EVAL-12): readings pooled since the last restart (equal weights by default,
+ * inverse variance as the config's other value), the faster change rule and the restart after the
+ * season that fires it, each reading tagged only at its registered count with "Tagged after N
+ * more seasons" never projected per player, the optional email kept apart and deletable, and the
+ * demo profile showing a confirmed reading, an unconfirmed one, a restart and the trend.
+ */
+async function profilePooling() {
+  const T = 'X-21 the profile: pooling, change and restart (EVAL-12)'
+  const P = config.season.profile
+  const a = estimateOf({ w: 8, m: 16, e: 1 })
+  const b = estimateOf({ w: 10, m: 14, e: 0 })
+  const eq = a && b ? pool([a, b], 'equal') : null
+  const iv = a && b ? pool([a, b], 'inverse-variance') : null
+  record(
+    T,
+    `seasons pool with ${P.pooling} weights (config): equal weights average the estimates with the variances summed over k squared; inverse variance is the other option; pooling narrows the range`,
+    !!a &&
+      !!b &&
+      !!eq &&
+      !!iv &&
+      Math.abs(eq.at - (a.at + b.at) / 2) < 1e-12 &&
+      Math.abs(eq.v - (a.v + b.v) / 4) < 1e-12 &&
+      Math.abs(iv.v - 1 / (1 / a.v + 1 / b.v)) < 1e-12 &&
+      rangeOf(eq).hi - rangeOf(eq).lo < rangeOf(a).hi - rangeOf(a).lo,
+  )
+  const season = (w: number, m: number): ProfileSession => ({
+    story: 'x',
+    day: '2026-01-01',
+    zone: 'none',
+    weight: 0,
+    pairs: w + m,
+    counts: { w, m, e: 0 },
+    readings: { sex: { w, m, e: 0 }, tone: { w: 12, m: 12, e: 0 } },
+    code: '',
+  })
+  const w4 = walk([season(5, 20), season(18, 7), season(12, 13), season(11, 14)])
+  const w2 = walk([season(5, 20), season(18, 7)])
+  const steady = walk([season(5, 20), season(7, 18), season(6, 19)])
+  record(
+    T,
+    'the faster change rule restarts the pool after the season that fires it: that season is the change, not pooled, and the pool starts on the next season; steady seasons all pool',
+    JSON.stringify(w4.changes) === '[1]' &&
+      JSON.stringify(w4.pooled) === '[2,3]' &&
+      !w4.latestChanged &&
+      w4.trend[1].change &&
+      w4.trend[3].pooled === 2 &&
+      w2.latestChanged &&
+      w2.pooled.length === 0 &&
+      steady.changes.length === 0 &&
+      steady.pooled.length === 3,
+  )
+  const lean = profileNow([season(5, 20), season(6, 19)])
+  const even = profileNow([season(12, 12), season(13, 11)])
+  const r = (x: typeof lean, id: string) => x.readings.find((y) => y.id === id)
+  const sameN = P.readings.every((rd) => r(lean, rd.id)?.toTag === r(even, rd.id)?.toTag)
+  record(
+    T,
+    `each reading is tagged only once the seasons pooled since the restart reach its registered count (${P.readings.map((x) => `${x.id} ${x.opens ?? 'none'}`).join(', ')}); N is that count less the seasons pooled, the same for every player; a reading with no count says "not available yet"`,
+    r(lean, 'sex')?.tagged === (P.readings[0].opens !== null && P.readings[0].opens <= 2) &&
+      P.readings.every((rd) => {
+        const x = r(lean, rd.id)
+        if (!x) return false
+        if (rd.opens === null) return x.toTag === null && !x.tagged
+        return (
+          x.toTag === Math.max(0, rd.opens - x.seasons) && (x.tagged ? x.seasons >= rd.opens : true)
+        )
+      }) &&
+      sameN &&
+      r(lean, 'religion')?.seasons === 0,
+  )
+  await seedDemoProfile()
+  const demo = await openProfile(DEMO_PROFILE_CODE)
+  const ds = demo?.data.sessions ?? []
+  const now = profileNow(ds)
+  const tagged = now.readings.filter((x) => x.tagged).length
+  const forming = now.readings.filter((x) => !x.tagged && (x.toTag ?? 0) > 0).length
+  record(
+    T,
+    `the demo profile holds 4 past seasons across 3 stories with a restart, ${tagged} confirmed and ${forming} unconfirmed readings, and a trend point per season`,
+    ds.length === 4 &&
+      storiesPlayed(ds).played === 3 &&
+      now.changes.length === 1 &&
+      tagged >= 1 &&
+      forming >= 1 &&
+      now.trend.length === 4 &&
+      !!demo?.data.demo,
+  )
+  const local = store as LocalStore
+  await setContact('owner@example.test', true, false)
+  const key = demo?.data.contact?.key ?? ''
+  const first = JSON.stringify(local.tree['eval-contact'][key])
+  await setContact('owner2@example.test', false, true)
+  const second = local.tree['eval-contact'][key] as Record<string, unknown> | undefined
+  await setContact('', false, false)
+  const removed = local.tree['eval-contact'][key] === undefined && !demo?.data.contact
+  await setContact('owner@example.test', true, true)
+  const again = demo?.data.contact?.key ?? ''
+  await deleteProfile()
+  record(
+    T,
+    "the profile's email is kept apart at a random key with only the email and the two opt-ins, replaced on change, removed when emptied, and deleted with the profile",
+    /owner@example.test/.test(first) &&
+      second?.em === 'owner2@example.test' &&
+      Object.keys(second ?? {})
+        .sort()
+        .join(',') === 'em,follow,research' &&
+      removed &&
+      local.tree['eval-contact'][again] === undefined &&
+      !JSON.stringify(local.tree['eval-profile']).includes('owner@'),
   )
 }

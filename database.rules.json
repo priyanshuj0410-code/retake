@@ -236,10 +236,12 @@
     },
     "eval-contact": {
       "$k": {
-        /* Optional stay-in-touch details after a season result (EVAL-4): a name and an email,
-           both optional, and two separate opt-ins. At a random key, linked to no record, code
-           or profile. Created once; never readable through these rules. */
-        ".write": "auth != null && !data.exists() && newData.exists()",
+        /* Optional stay-in-touch details (EVAL-4): a name and an email, both optional, and two
+           separate opt-ins. At a random key (128 bits, never listed), linked to no record, code
+           or profile on the server. Since EVAL-12 a profile keeps the key inside its
+           ciphertext, so whoever holds the key may replace or delete the details (editing the
+           email, deleting the profile); never readable through these rules. */
+        ".write": "auth != null",
         ".validate": "newData.hasChildren(['follow', 'research'])",
         "nm": { ".validate": "newData.isString() && newData.val().length <= 60" },
         "em": { ".validate": "newData.isString() && newData.val().length <= 120 && newData.val().matches(/^[^@ ]+@[^@ ]+$/)" },

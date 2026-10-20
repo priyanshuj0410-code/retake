@@ -57,6 +57,20 @@ export const progress = {
       /* blocked or full storage: the memory copy */
     }
   },
+  /** Every key this device holds a save under that starts with `prefix` (EVAL-12: the landing's resume). */
+  keys(prefix: string): string[] {
+    const out = new Set([...memory.keys()].filter((k) => k.startsWith(prefix)))
+    try {
+      const s = storage()
+      for (let i = 0; s && i < s.length; i++) {
+        const k = s.key(i)
+        if (k?.startsWith(PREFIX + prefix)) out.add(k.slice(PREFIX.length))
+      }
+    } catch {
+      /* blocked storage: the memory copies */
+    }
+    return [...out]
+  },
   drop(key: string) {
     memory.delete(key)
     try {

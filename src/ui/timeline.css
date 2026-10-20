@@ -1,4 +1,4 @@
-/* @owns timeline timeline__entry timeline__when timeline__what timeline__band timeline__range timeline__ends */
+/* @owns timeline timeline__entry timeline__when timeline__what timeline__band timeline__range timeline__ends timeline__note */
 .timeline {
   list-style: none;
   margin: var(--gap-none);
@@ -44,6 +44,11 @@
   flex-direction: column;
   gap: var(--gap-xs);
   max-width: var(--dots);
+}
+.timeline__note {
+  font-size: var(--text-small);
+  color: var(--c-text);
+  font-weight: var(--weight-label);
 }
 .timeline__ends {
   display: flex;

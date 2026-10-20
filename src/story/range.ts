@@ -53,7 +53,7 @@ function betaQuantile(a: number, b: number, q: number): number {
 }
 
 /** The standard normal quantile (Acklam's rational approximation). */
-function normalQuantile(p: number): number {
+export function normalQuantile(p: number): number {
   const a = [
     -39.69683028665376, 220.9460984245205, -275.9285104469687, 138.357751867269, -30.66479806614716,
     2.506628277459239,

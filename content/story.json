@@ -5352,10 +5352,6 @@
    "en": "English with Hinglish help",
    "hinglish": "English, Hinglish madad ke saath"
   },
-  "progressSaid": {
-   "en": "{act}: {pct} per cent of the season done",
-   "hinglish": "{act}: season ka {pct} percent ho gaya"
-  },
   "mapSaved": {
    "en": "Your season map: chapter {n} of {k} done; next, {title}",
    "hinglish": "Aapke season ka map: {k} mein se chapter {n} poora; aage, {title}"
@@ -6044,6 +6040,10 @@
     "en": "Save to my profile",
     "hinglish": "Meri profile mein save karein"
    },
+   "pairs": {
+    "en": "Tagged once more seasons on your profile add enough pairs.",
+    "hinglish": "Profile par aur seasons se kaafi jodiyan judne par tag milega."
+   },
    "notYet": {
     "en": "Tagged after more seasons on your profile: not available yet.",
     "hinglish": "Profile par aur seasons ke baad tag: abhi available nahin."
@@ -6081,7 +6081,7 @@
   }
  },
  "profile": {
-  "_note": "The optional pseudonymous profile (EVAL-4, owner decision 19 Oct 2026: retakes are in). The longitudinal research consent and the change rule are PENDING v18.",
+  "_note": "The optional pseudonymous profile (EVAL-4, owner decision 19 Oct 2026: retakes are in; EVAL-12 builds it: you now, history and trends, account and privacy). The longitudinal research consent is PENDING v18; the readings' season counts and the change rule are PENDING v26 (config.season.profile).",
   "saveTitle": {
    "en": "Keep it and retake later",
    "hinglish": "Ise rakhiye aur baad mein dobara kheliye"
@@ -6131,8 +6131,8 @@
    "hinglish": "Meri profile kholein"
   },
   "retakeOn": {
-   "en": "Your next retake opens on {date}.",
-   "hinglish": "Aapka agla retake {date} ko khulega."
+   "en": "Your next season opens on {date}.",
+   "hinglish": "Aapka agla season {date} ko khulega."
   },
   "title": {
    "en": "Your profile",
@@ -6159,8 +6159,8 @@
    "hinglish": "Demo profile kholein"
   },
   "demoNote": {
-   "en": "Demo: this profile's two past seasons are made up, in seasons that are not built yet, so the timeline can be seen.",
-   "hinglish": "Demo: is profile ke do purane season kaalpanik hain, un seasons mein jo abhi bane nahin, taaki timeline dikh sake."
+   "en": "Demo: this profile's four past seasons are made up, so the readings, the restart and the trend can be seen.",
+   "hinglish": "Demo: is profile ke chaar purane season kaalpanik hain, taaki readings, restart aur trend dikh sakein."
   },
   "timelineTitle": {
    "en": "Your seasons",
@@ -6175,8 +6175,8 @@
    "hinglish": "Seasons ke beech badlaav"
   },
   "noChange": {
-   "en": "No change shown yet.",
-   "hinglish": "Abhi koi badlaav nahin dikhaya gaya."
+   "en": "No change shown",
+   "hinglish": "Koi badlaav nahin dikha"
   },
   "change": {
    "en": "Change shown: from {from} to {to}, your result moved towards {group} first, and the two ranges do not overlap.",
@@ -6233,12 +6233,12 @@
    "hinglish": "Mitaayein"
   },
   "deleteButton": {
-   "en": "Delete my profile and all my answers",
-   "hinglish": "Meri profile aur mere saare jawab mita dein"
+   "en": "Delete my profile and all my records",
+   "hinglish": "Meri profile aur mere saare records mita dein"
   },
   "deleteConfirm": {
-   "en": "This deletes your profile, its research link, and the answers of every saved season you can still delete. It cannot be undone.",
-   "hinglish": "Isse aapki profile, uska research link, aur har save kiye season ke woh jawab mit jaate hain jo abhi mitaaye ja sakte hain. Ise wapas nahin kiya ja sakta."
+   "en": "This deletes your profile, your email for follow-ups, the research link, and the answers of every saved season you can still delete. It cannot be undone.",
+   "hinglish": "Isse aapki profile, follow-up ka email, research link, aur har saved season ke woh jawab mit jaate hain jo abhi mit sakte hain. Yeh wapas nahin hoga."
   },
   "deleteYes": {
    "en": "Yes, delete everything",
@@ -6253,8 +6253,8 @@
    "hinglish": "Aapki profile mit gayi. Mitaaye gaye seasons: {w}. Mitaane ki date ke baad wale seasons, jo aapse bina kisi link ke rakhe gaye: {c}."
   },
   "lock": {
-   "en": "Close my profile on this device",
-   "hinglish": "Is device par meri profile band karein"
+   "en": "Sign out on this browser",
+   "hinglish": "Is browser par sign out karein"
   },
   "_devChangePending": {
    "en": "Demo: the range maths behind the change line is a planning value, PENDING v22.",
@@ -6262,9 +6262,266 @@
   },
   "_researchConsentPending": "PENDING v18: this consent text is a draft for the owner and the ethics review.",
   "timelineNote": {
-   "en": "Two results can differ by chance; overlapping ranges mean no change shown.",
-   "hinglish": "Do results ittefaq se alag ho sakte hain; agar ranges ek doosre par aati hain, to koi badlaav nahin dikhaya jaata."
-  }
+   "en": "Two seasons can differ by chance. A change shows only when the difference is larger than chance usually gives.",
+   "hinglish": "Do seasons ittefaq se alag ho sakte hain. Badlaav tabhi dikhta hai jab fark ittefaq se zyada ho."
+  },
+  "counts": {
+   "en": "{s} seasons played. {p} of {total} stories played, {left} left.",
+   "hinglish": "{s} season khele. {total} mein se {p} kahaniyan kheli, {left} baaki."
+  },
+  "countsOne": {
+   "en": "1 season played. {p} of {total} stories played, {left} left.",
+   "hinglish": "1 season khela. {total} mein se {p} kahaniyan kheli, {left} baaki."
+  },
+  "nowTitle": {
+   "en": "You now",
+   "hinglish": "Aap abhi"
+  },
+  "nowPooled": {
+   "en": "Your seasons since {date}, taken together.",
+   "hinglish": "{date} se aapke seasons, ek saath."
+  },
+  "nowPooledOne": {
+   "en": "Your season on {date}. More seasons sharpen it.",
+   "hinglish": "{date} ka aapka season. Aur seasons ise saaf karte hain."
+  },
+  "nowRestart": {
+   "en": "Your reading starts again from your next season.",
+   "hinglish": "Aapki reading aapke agle season se phir shuru hogi."
+  },
+  "nowEmpty": {
+   "en": "Play a season to see your reading here.",
+   "hinglish": "Yahan apni reading dekhne ke liye ek season kheliye."
+  },
+  "changed": {
+   "en": "Your decisions changed",
+   "hinglish": "Aapke decisions badle"
+  },
+  "changedBody": {
+   "en": "Your latest season differs from the seasons before it by more than chance usually gives. It is shown below as this season, untagged.",
+   "hinglish": "Aapka pichla season pehle ke seasons se ittefaq se zyada alag hai. Neeche yeh is season ke roop mein, bina tag ke, dikhaya gaya hai."
+  },
+  "readingsTitle": {
+   "en": "Your readings",
+   "hinglish": "Aapki readings"
+  },
+  "readingsNote": {
+   "en": "A reading is tagged once enough seasons are on your profile.",
+   "hinglish": "Profile par kaafi seasons hone par reading ko tag milta hai."
+  },
+  "notAvailable": {
+   "en": "Not available yet",
+   "hinglish": "Abhi available nahin"
+  },
+  "forming": {
+   "en": "Still forming. {left}",
+   "hinglish": "Abhi ban rahi hai. {left}"
+  },
+  "labels": {
+   "sex": {
+    "en": "Women and men",
+    "hinglish": "Mahila aur purush"
+   },
+   "tone": {
+    "en": "Skin tone",
+    "hinglish": "Skin tone"
+   },
+   "religion": {
+    "en": "Religion",
+    "hinglish": "Religion"
+   },
+   "conduct": {
+    "en": "Complaints and conduct",
+    "hinglish": "Shikayatein aur behaviour"
+   },
+   "hiring": {
+    "en": "Hiring and promotion",
+    "hinglish": "Hiring aur promotion"
+   },
+   "resources": {
+    "en": "Sharing resources",
+    "hinglish": "Resources baantna"
+   },
+   "role": {
+    "en": "Who gets which kind of work",
+    "hinglish": "Kise kis tarah ka kaam milta hai"
+   }
+  },
+  "ends": {
+   "tone": {
+    "left": {
+     "en": "Lighter first",
+     "hinglish": "Halki pehle"
+    },
+    "right": {
+     "en": "Darker first",
+     "hinglish": "Gehri pehle"
+    }
+   },
+   "religion": {
+    "left": {
+     "en": "Hindu first",
+     "hinglish": "Hindu pehle"
+    },
+    "right": {
+     "en": "Muslim first",
+     "hinglish": "Muslim pehle"
+    }
+   }
+  },
+  "lineSaid": {
+   "en": "{label}: {at} per cent towards {right}; the range runs from {lo} to {hi} per cent.",
+   "hinglish": "{label}: {right} ki taraf {at} percent; range {lo} se {hi} percent tak."
+  },
+  "thisSeason": {
+   "en": "This season",
+   "hinglish": "Yeh season"
+  },
+  "thisSeasonOf": {
+   "en": "{story}, {date}. Its own position and range, untagged.",
+   "hinglish": "{story}, {date}. Iski apni position aur range, bina tag ke."
+  },
+  "pastLabel": {
+   "en": "Past season, not a confirmed reading",
+   "hinglish": "Pichla season, confirm reading nahin"
+  },
+  "pastChanged": {
+   "en": "Your decisions changed in this season.",
+   "hinglish": "Is season mein aapke decisions badle."
+  },
+  "seePast": {
+   "en": "See past seasons",
+   "hinglish": "Pichle seasons dekhein"
+  },
+  "account": {
+   "en": "Account and privacy",
+   "hinglish": "Account aur privacy"
+  },
+  "historyTitle": {
+   "en": "Past seasons",
+   "hinglish": "Pichle seasons"
+  },
+  "trendTitle": {
+   "en": "Your reading over time",
+   "hinglish": "Samay ke saath aapki reading"
+  },
+  "trendNote": {
+   "en": "Each point is your reading after that season, with its range as the band. A square marks a season that changed; the reading starts again after it.",
+   "hinglish": "Har bindu us season ke baad aapki reading hai, band uski range. Square ek badle hue season ko dikhata hai; uske baad reading phir shuru hoti hai."
+  },
+  "trendSaid": {
+   "en": "Your reading after each season, from {first} to {last}: {points}.",
+   "hinglish": "Har season ke baad aapki reading, {first} se {last} tak: {points}."
+  },
+  "trendPoint": {
+   "en": "{date}, women first in {at} per cent, range {lo} to {hi}",
+   "hinglish": "{date}, {at} percent mein mahila pehle, range {lo} se {hi}"
+  },
+  "trendChange": {
+   "en": "{date}, a change: women first in {at} per cent, range {lo} to {hi}",
+   "hinglish": "{date}, badlaav: {at} percent mein mahila pehle, range {lo} se {hi}"
+  },
+  "seasonsTitle": {
+   "en": "Each season",
+   "hinglish": "Har season"
+  },
+  "openReport": {
+   "en": "Open the full report",
+   "hinglish": "Poori report kholein"
+  },
+  "openReportSaid": {
+   "en": "Open the full report: {story}, {date}",
+   "hinglish": "Poori report kholein: {story}, {date}"
+  },
+  "reportTitle": {
+   "en": "Your result: {story}",
+   "hinglish": "Aapka result: {story}"
+  },
+  "reportWhen": {
+   "en": "{date}. Past season, not a confirmed reading. Read only.",
+   "hinglish": "{date}. Pichla season, confirm reading nahin. Sirf padhne ke liye."
+  },
+  "reportOthers": {
+   "en": "Religion and skin tone",
+   "hinglish": "Religion aur skin tone"
+  },
+  "reportAreas": {
+   "en": "Your decisions, area by area",
+   "hinglish": "Aapke decisions, area ke hisaab se"
+  },
+  "reportNone": {
+   "en": "This season saved no counts for this.",
+   "hinglish": "Is season ne iske liye koi ginti save nahin ki."
+  },
+  "backProfile": {
+   "en": "Back to your profile",
+   "hinglish": "Apni profile par wapas"
+  },
+  "backHistory": {
+   "en": "Back to past seasons",
+   "hinglish": "Pichle seasons par wapas"
+  },
+  "codeTitle": {
+   "en": "Your recovery code",
+   "hinglish": "Aapka recovery code"
+  },
+  "codeBody": {
+   "en": "Keep it somewhere safe. It is the only way back into your profile.",
+   "hinglish": "Ise sambhal kar rakhiye. Profile mein wapas aane ka yahi ek raasta hai."
+  },
+  "copy": {
+   "en": "Copy my code",
+   "hinglish": "Mera code copy karein"
+  },
+  "copied": {
+   "en": "Copied.",
+   "hinglish": "Copy ho gaya."
+  },
+  "nameTitle": {
+   "en": "Display name",
+   "hinglish": "Display naam"
+  },
+  "nameSave": {
+   "en": "Save the name",
+   "hinglish": "Naam save karein"
+  },
+  "nameSaved": {
+   "en": "Name saved.",
+   "hinglish": "Naam save ho gaya."
+  },
+  "emailTitle": {
+   "en": "Email for follow-ups (optional)",
+   "hinglish": "Follow-up ke liye email (optional)"
+  },
+  "emailBody": {
+   "en": "Kept apart from your answers and your profile. Leave it empty and save to remove it.",
+   "hinglish": "Aapke jawabon aur profile se alag rakha jaata hai. Hatane ke liye khaali chhod kar save karein."
+  },
+  "emailSave": {
+   "en": "Save my email choices",
+   "hinglish": "Email ke choices save karein"
+  },
+  "emailSaved": {
+   "en": "Email choices saved.",
+   "hinglish": "Email ke choices save ho gaye."
+  },
+  "emailRemoved": {
+   "en": "Email removed.",
+   "hinglish": "Email hata diya gaya."
+  },
+  "emailNeed": {
+   "en": "Add an email for either box, or untick both.",
+   "hinglish": "Kisi bhi box ke liye email likhiye, ya dono untick karein."
+  },
+  "signOutTitle": {
+   "en": "This browser",
+   "hinglish": "Yeh browser"
+  },
+  "signOutBody": {
+   "en": "Signing out keeps your profile. Your recovery code opens it again.",
+   "hinglish": "Sign out karne se profile rehti hai. Recovery code se yeh phir khulti hai."
+  },
+  "_devPooling": "Pooling: {pooling} weights; change rule at |z| over {z}; season counts {counts}. PENDING v26 (config.season.profile)."
  },
  "practice": {
   "_note": "EVAL-10 (owner): the opt-in practice round. Mascots doing things that are not work, so no item carries a cue (content-check). Never recorded or scored: the record says only practice y or n.",
@@ -6441,5 +6698,228 @@
     ]
    }
   ]
+ },
+ "landing": {
+  "_note": "EVAL-12 (owner, 20 Oct 2026): the landing page, sign-in by recovery code, and How this works. Out of the game except the landing's comic hero. No line says how answers are read (content-check).",
+  "title": {
+   "en": "Team Season",
+   "hinglish": "Team Season"
+  },
+  "line": {
+   "en": "Lead a small team through one season of everyday workplace decisions.",
+   "hinglish": "Ek chhoti team ko roz ke kaam ke decisions ke ek season se le chaliye."
+  },
+  "points": [
+   {
+    "icon": "chapters",
+    "text": {
+     "en": "About {minutes} minutes, in 5 chapters.",
+     "hinglish": "Lagbhag {minutes} minute, 5 chapters mein."
+    }
+   },
+   {
+    "icon": "cast",
+    "text": {
+     "en": "A fictional workplace: made-up people and a made-up story.",
+     "hinglish": "Ek kaalpanik workplace: banaye hue log aur banayi hui kahani."
+    }
+   },
+   {
+    "icon": "result",
+    "text": {
+     "en": "At the end, your result, shown with its range.",
+     "hinglish": "Aakhir mein aapka result, apni range ke saath."
+    }
+   }
+  ],
+  "pointsLabel": {
+   "en": "What a season is",
+   "hinglish": "Season kya hai"
+  },
+  "mascots": [
+   {
+    "animal": "bear",
+    "name": {
+     "en": "Bear",
+     "hinglish": "Bear"
+    }
+   },
+   {
+    "animal": "panda",
+    "name": {
+     "en": "Panda",
+     "hinglish": "Panda"
+    }
+   },
+   {
+    "animal": "tiger",
+    "name": {
+     "en": "Tiger",
+     "hinglish": "Tiger"
+    }
+   },
+   {
+    "animal": "rabbit",
+    "name": {
+     "en": "Rabbit",
+     "hinglish": "Rabbit"
+    }
+   }
+  ],
+  "mascotSaid": {
+   "en": "{name}, a mascot",
+   "hinglish": "{name}, ek mascot"
+  },
+  "mascotsCaption": {
+   "en": "Your team starts as mascots. Who they are comes later.",
+   "hinglish": "Aapki team mascots ke roop mein shuru hoti hai. Woh kaun hain, yeh baad mein pata chalta hai."
+  },
+  "castLabel": {
+   "en": "Some of the team, as mascots",
+   "hinglish": "Team ke kuch log, mascots ke roop mein"
+  },
+  "start": {
+   "en": "Start a season",
+   "hinglish": "Season shuru karein"
+  },
+  "startNew": {
+   "en": "Start a new season",
+   "hinglish": "Naya season shuru karein"
+  },
+  "signIn": {
+   "en": "I've played before: sign in",
+   "hinglish": "Pehle khel chuke hain: sign in karein"
+  },
+  "continueAs": {
+   "en": "Continue as {name}",
+   "hinglish": "{name} ke roop mein aage badhein"
+  },
+  "resume": {
+   "en": "Resume chapter {n}",
+   "hinglish": "Chapter {n} se aage kheliye"
+  },
+  "resumeFinale": {
+   "en": "Resume the finale",
+   "hinglish": "Finale se aage kheliye"
+  },
+  "signedIn": {
+   "en": "Signed in on this browser as {name}.",
+   "hinglish": "Is browser par {name} ke roop mein sign in hai."
+  },
+  "saved": {
+   "en": "Your season is saved in this browser.",
+   "hinglish": "Aapka season is browser mein save hai."
+  },
+  "studyLinks": {
+   "en": "In a study, your link to play comes from the study team.",
+   "hinglish": "Study mein khelne ka link study team se aata hai."
+  },
+  "how": {
+   "en": "How this works",
+   "hinglish": "Yeh kaise kaam karta hai"
+  },
+  "howTitle": {
+   "en": "How this works",
+   "hinglish": "Yeh kaise kaam karta hai"
+  },
+  "howMeasuredTitle": {
+   "en": "What a season looks at",
+   "hinglish": "Season kya dekhta hai"
+  },
+  "howMeasured": [
+   {
+    "en": "You make everyday decisions about made-up colleagues: who to hire, promote, believe and share with.",
+    "hinglish": "Aap banaye hue colleagues ke baare mein roz ke decisions lete hain: kise hire karein, promote karein, kiski baat maanein, kise kya dein."
+   },
+   {
+    "en": "Your result describes those decisions as they relate to women and men, religion and skin tone.",
+    "hinglish": "Aapka result in decisions ko mahila aur purush, religion aur skin tone ke hisaab se batata hai."
+   },
+   {
+    "en": "It describes one season of decisions, not you as a person.",
+    "hinglish": "Yeh ek season ke decisions batata hai, aapko ek insaan ke roop mein nahin."
+   }
+  ],
+  "howSentencesTitle": {
+   "en": "What you agree to before you start",
+   "hinglish": "Shuru karne se pehle aap kis baat par sehmat hote hain"
+  },
+  "howPrivacyTitle": {
+   "en": "Privacy",
+   "hinglish": "Privacy"
+  },
+  "howPrivacy": [
+   {
+    "en": "No real name, email or password is needed to play.",
+    "hinglish": "Khelne ke liye asli naam, email ya password nahin chahiye."
+   },
+   {
+    "en": "While you play, your season is saved in this browser only, and deleted unsent after {days} days.",
+    "hinglish": "Khelte waqt aapka season sirf is browser mein save hota hai, aur {days} din baad bina bheje mit jaata hai."
+   },
+   {
+    "en": "Your answers are sent without your name. Your code at the end can delete them.",
+    "hinglish": "Aapke jawab bina naam ke bheje jaate hain. Aakhir ka code unhe mita sakta hai."
+   },
+   {
+    "en": "A profile is optional. A recovery code locks it; signing in keeps the code in this browser until you sign out.",
+    "hinglish": "Profile optional hai. Ek recovery code use lock karta hai; sign in karne par code is browser mein rehta hai jab tak aap sign out na karein."
+   },
+   {
+    "en": "An email for follow-ups is optional and kept apart from your answers.",
+    "hinglish": "Follow-up ke liye email optional hai aur aapke jawabon se alag rakha jaata hai."
+   }
+  ],
+  "back": {
+   "en": "Back",
+   "hinglish": "Peeche"
+  },
+  "backSaid": {
+   "en": "Back to the start",
+   "hinglish": "Shuru par wapas"
+  },
+  "signInTitle": {
+   "en": "Sign in with your recovery code",
+   "hinglish": "Apne recovery code se sign in karein"
+  },
+  "signInBody": {
+   "en": "Your recovery code is the 12 letters and numbers you saved when you made your profile.",
+   "hinglish": "Recovery code woh 12 akshar aur number hain jo aapne profile banate waqt save kiye the."
+  },
+  "codeHint": {
+   "en": "3 groups of 4, for example 7K2M-QX4P-9TRB.",
+   "hinglish": "4-4 ke 3 group, jaise 7K2M-QX4P-9TRB."
+  },
+  "codeShort": {
+   "en": "Enter all 12 characters of your code.",
+   "hinglish": "Code ke saare 12 akshar likhiye."
+  },
+  "codeChar": {
+   "en": "\"{ch}\" is never in a recovery code: codes leave out 0, 1, I, L, O and U.",
+   "hinglish": "\"{ch}\" kabhi recovery code mein nahin hota: code mein 0, 1, I, L, O aur U nahin hote."
+  },
+  "codeWrong": {
+   "en": "No profile opens with that code. Check each group and try again.",
+   "hinglish": "Is code se koi profile nahin khulti. Har group check karke dobara koshish kijiye."
+  },
+  "signInGo": {
+   "en": "Sign in",
+   "hinglish": "Sign in karein"
+  },
+  "lostTitle": {
+   "en": "Lost your code?",
+   "hinglish": "Code kho gaya?"
+  },
+  "lost": [
+   {
+    "en": "We cannot find it for you. Your profile is locked with the code itself, and nothing that could identify you was ever stored: no name, no email, no password.",
+    "hinglish": "Hum ise aapke liye nahin dhoondh sakte. Aapki profile code se hi lock hai, aur aapki pehchaan batane wali koi cheez kabhi save nahin hui: na naam, na email, na password."
+   },
+   {
+    "en": "So without the code nobody can open the profile, including us. You can start a new season and make a new profile.",
+    "hinglish": "Isliye code ke bina koi profile nahin khol sakta, hum bhi nahin. Aap naya season shuru karke nayi profile bana sakte hain."
+   }
+  ],
+  "_devDemoCode": "Demo profile (dev server only): sign in with {code}."
  }
 }

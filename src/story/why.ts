@@ -8,11 +8,12 @@
  * decisions support it, so the page can land anywhere.
  */
 import type { Lang, T } from '../content/types'
-import { config } from '../engine/config'
+import { config, type ProfileReadingId } from '../engine/config'
 import { fill } from '../engine/text'
 import { RT, SS, type Domain } from './content'
-import { pc, positionOf } from './range'
+import { pc, positionOf, type Counts } from './range'
 import { currentProfile } from './profile'
+import { walk } from './pool'
 import {
   advantage,
   cueSets,
@@ -77,6 +78,8 @@ export interface ResultModel {
   sections: { others: boolean; areas: boolean }
   /** The women-and-men pairs: woman first, man first, even (the profile keeps them, EVAL-10). */
   counts: { w: number; m: number; e: number }
+  /** Every profile reading's counts this season, for the profile's pooling (EVAL-12). */
+  readings: Partial<Record<ProfileReadingId, Counts>>
   /** The one number to remember: k of n equal woman-and-man pairs went one way, and the dots. */
   hero: {
     big: string
@@ -112,13 +115,22 @@ export function sectionsBelow(
 
 /**
  * The seasons still to pool before an untagged reading can be tagged (EVAL-10, the research
- * critic): the registered opening count less the seasons pooled since the reading's last
- * restart, never projected per player; null when this build cannot open a pooled reading.
+ * critic; EVAL-12 pools them): the reading's registered count (config.season.profile.readings)
+ * less the seasons pooled since the last restart, never projected per player; null when no count
+ * meets the targets yet ("not available yet").
  */
-export function seasonsToTag(pooledSeasons: number): number | null {
-  const u = config.season.rating.untagged
-  if (!u.pooledInBuild || u.openingSeasons === null) return null
-  return Math.max(0, u.openingSeasons - pooledSeasons)
+export function seasonsToTag(pooledSeasons: number, id: ProfileReadingId = 'sex'): number | null {
+  const opens = config.season.profile.readings.find((r) => r.id === id)?.opens ?? null
+  if (opens === null) return null
+  return Math.max(0, opens - pooledSeasons)
+}
+
+/** The "Tagged after ..." line for an untagged reading, from the seasons it still needs. */
+export function toTagLine(toTag: number | null, lang: Lang): string {
+  const L = (t: T) => t[lang]
+  if (toTag === null) return L(RT.forming.notYet)
+  if (toTag === 0) return L(RT.forming.pairs)
+  return fill(L(toTag === 1 ? RT.forming.leftOne : RT.forming.left), { n: toTag })
 }
 
 /** A position on the line in words, from the edges in config (untagged.words). */
@@ -237,19 +249,15 @@ export function resultModel(run: StoryRunner): ResultModel {
       },
     }
   }
-  /* Untagged (EVAL-10): the range is the mark, said in words; pooled seasons so far: this one
-     and any saved on an open profile (the reading has not restarted in this build). */
-  const pooled =
-    1 + (currentProfile()?.data.sessions.filter((x) => x.code !== run.code).length ?? 0)
-  const toTag = seasonsToTag(pooled)
+  /* Untagged (EVAL-10): the range is the mark, said in words; pooled seasons so far (EVAL-12):
+     this one and those an open profile pools since its last restart. */
+  const saved = currentProfile()?.data.sessions.filter((x) => x.code !== run.code) ?? []
+  const pooled = 1 + walk(saved).pooled.length
   const forming = unread
     ? {
         next: L(RT.forming.next),
         words: rangeInWords(pos.lo, pos.hi, lang),
-        left:
-          toTag === null
-            ? L(RT.forming.notYet)
-            : fill(L(toTag === 1 ? RT.forming.leftOne : RT.forming.left), { n: toTag }),
+        left: toTagLine(seasonsToTag(pooled), lang),
       }
     : null
 
@@ -483,12 +491,50 @@ export function resultModel(run: StoryRunner): ResultModel {
       cards.filter((c) => c.cue !== 'sex').map((c) => c.zone),
     ),
     counts: { w: womanAhead, m: manAhead, e: even },
+    readings: {
+      ...readingCounts(people, rating.decisive, domainOf),
+      sex: { w: womanAhead, m: manAhead, e: even },
+    },
     hero,
     why: unread ? [] : why,
     cards,
     domains,
     share: shareText,
     shareResult,
+  }
+}
+
+/**
+ * A season's counts per profile reading (EVAL-12): over the equal-description pairs whose two
+ * colleagues differ on the cue, how often the focal group's colleague came first, the comparison
+ * group's, or neither. The areas count women and men on that area's own cards. Role has no
+ * reading in this build.
+ */
+export function readingCounts(
+  people: Parameters<typeof cueSets>[0],
+  decisive: Pair[],
+  domainOf: (beat: number) => Domain | null,
+): Partial<Record<ProfileReadingId, Counts>> {
+  const count = (pairs: Pair[], cue: Cue): Counts => {
+    const { real, pool } = cueSets(people, cue)
+    const c = { w: 0, m: 0, e: 0 }
+    for (const p of pairs) {
+      if (!pool.has(p.a) || !pool.has(p.b) || real.has(p.a) === real.has(p.b)) continue
+      const s = real.has(p.a) ? p.adv : -p.adv
+      if (s > 0) c.w += 1
+      else if (s < 0) c.m += 1
+      else c.e += 1
+    }
+    return c
+  }
+  const inArea = (d: Domain) => decisive.filter((p) => domainOf(p.beat) === d)
+  return {
+    sex: count(decisive, 'sex'),
+    tone: count(decisive, 'tone'),
+    religion: count(decisive, 'religion'),
+    hiring: count(inArea('hiring'), 'sex'),
+    conduct: count(inArea('conduct'), 'sex'),
+    resources: count(inArea('resources'), 'sex'),
   }
 }
 

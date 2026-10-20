@@ -1,4 +1,4 @@
-/* @owns field field__label field__input */
+/* @owns field field__label field__hint field__input */
 .field {
   display: flex;
   flex-direction: column;
@@ -9,6 +9,11 @@
   font-family: var(--font-display);
   font-weight: var(--weight-label);
   color: var(--c-text);
+}
+.field__hint {
+  font-size: var(--text-small);
+  color: var(--c-muted);
+  overflow-wrap: anywhere;
 }
 .field__input {
   min-height: var(--control);

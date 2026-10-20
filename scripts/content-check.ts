@@ -20,7 +20,7 @@ import { BANDS, STRATA, TYPES, bankFor } from '../src/engine/layout'
 import { recallOptions } from '../src/engine/session'
 import { fill } from '../src/engine/text'
 import { record } from './lib/check'
-import { PRACTICE } from '../src/story/content'
+import { LD, PF, PRACTICE } from '../src/story/content'
 
 const T = 'X-2 content banks and writing rules'
 const ROOT = new URL('..', import.meta.url).pathname
@@ -398,5 +398,62 @@ export async function run() {
         (w) => !!w && !CUE_WORDS.test(w) && pools.every((n) => !new RegExp(`\\b${n}\\b`).test(w)),
       ),
     pWords.filter((w) => CUE_WORDS.test(w)).join(' | '),
+  )
+
+  /* The landing, sign-in, "How this works" and the profile (EVAL-12). Every player string is in
+     both languages; none is a verdict on the person; the landing and "How this works" never say
+     how answers are read; the persona glossary holds (result, season, description, chapter). */
+  const strings = (o: unknown, key = ''): { key: string; t: Record<string, string> }[] =>
+    key.split('.').pop()?.startsWith('_')
+      ? []
+      : Array.isArray(o)
+        ? o.flatMap((x, i) => strings(x, `${key}.${i}`))
+        : o && typeof o === 'object'
+          ? 'en' in o && typeof (o as Record<string, unknown>).en === 'string'
+            ? [{ key, t: o as Record<string, string> }]
+            : Object.entries(o).flatMap(([k, v]) => strings(v, `${key}.${k}`))
+          : []
+  const ld = strings(LD, 'landing')
+  const pf = strings(PF, 'profile')
+  const oneLang = [...ld, ...pf].filter((x) => !x.t.en?.trim() || !x.t.hinglish?.trim())
+  record(
+    T,
+    `landing, sign-in and profile copy is in both languages (${ld.length + pf.length} strings)`,
+    ld.length > 30 && pf.length > 60 && oneLang.length === 0,
+    oneLang.map((x) => x.key).join(', '),
+  )
+  const VERDICT =
+    /\b(biased|bias|racist|sexist|prejudiced?|unfair|fair|bigot\w*|good person|bad person|you are a|aap ek)\b/i
+  const verdicts = [...ld, ...pf].filter((x) => VERDICT.test(x.t.en) || VERDICT.test(x.t.hinglish))
+  record(
+    T,
+    'no landing or profile line is a verdict on the person ("bias", "fair", "you are a ...")',
+    verdicts.length === 0,
+    verdicts.map((x) => `${x.key}: ${x.t.en}`).join(' | '),
+  )
+  const HOW_READ =
+    /\b(pairs?|jod\w*|equally strong|barabar mazboot|chance|ittefaq|scor\w*|permutation|relabel\w*|weight\w*|threshold|compare[sd]?|percent|per cent)\b/i
+  const howKeys = ld.filter((x) => !/^landing\.(code|signIn|lost|_)/.test(x.key))
+  const leaks = howKeys.filter((x) => HOW_READ.test(x.t.en) || HOW_READ.test(x.t.hinglish))
+  record(
+    T,
+    `the landing and "How this works" never say how answers are read (${howKeys.length} strings)`,
+    howKeys.length > 20 && leaks.length === 0,
+    leaks.map((x) => `${x.key}: ${x.t.en}`).join(' | '),
+  )
+  const GLOSSARY: [RegExp, string][] = [
+    [/\b(attitude rating|score|grade)\b/i, 'result'],
+    [/\b(rounds?|episodes?)\b/i, 'chapter'],
+    [/\b(notes? on|profile notes|bio)\b/i, 'description'],
+    [/\b(games? played|plays)\b/i, 'season'],
+  ]
+  const offGloss = [...ld, ...pf].flatMap((x) =>
+    GLOSSARY.filter(([re]) => re.test(x.t.en)).map(([, w]) => `${x.key} (use "${w}")`),
+  )
+  record(
+    T,
+    'landing and profile copy keeps the glossary: "result", "season", "chapter", "description"',
+    offGloss.length === 0,
+    offGloss.join(', '),
   )
 }

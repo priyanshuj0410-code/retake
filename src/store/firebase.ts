@@ -200,9 +200,9 @@ export class FirebaseStore implements Store {
     await update(ref(this.db), { [`eval-long/${key}`]: value ? { plays: value.plays } : null })
   }
 
-  async contactPut(key: string, value: Contact) {
+  async contactPut(key: string, value: Contact | null) {
     await this.uid()
-    await update(ref(this.db), { [`eval-contact/${key}`]: { ...value } })
+    await update(ref(this.db), { [`eval-contact/${key}`]: value ? { ...value } : null })
   }
 
   async schedule(firm: string) {

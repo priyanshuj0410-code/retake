@@ -16,6 +16,7 @@ import { marker, step } from './lib/autoplay'
 import { record, summary } from './lib/check'
 import { timeFields } from './no-timers'
 import { playSeason } from './season-play'
+import { demoProfileBox } from '../src/story/profile'
 
 const HOST = process.env.FIREBASE_DATABASE_EMULATOR_HOST
 const PROJECT = process.env.GCLOUD_PROJECT ?? 'demo-eval'
@@ -48,6 +49,10 @@ async function main() {
   await owner('PUT', `eval-tokens/${token}`, { dep: 'panel-g2', langs: 'en', s: 'issued' })
   const seasonToken = randomKey()
   await owner('PUT', `eval-tokens/${seasonToken}`, { dep: 'season', langs: 'en', s: 'issued' })
+  const resumeToken = randomKey()
+  await owner('PUT', `eval-tokens/${resumeToken}`, { dep: 'season', langs: 'choose', s: 'issued' })
+  const demo = await demoProfileBox()
+  await owner('PUT', `eval-profile/${demo.key}`, demo.box)
 
   process.env.VITE_STORE = 'emulator'
   const server = await createServer({
@@ -356,6 +361,152 @@ async function main() {
       Object.keys(c).sort().join(',') === 'em,follow,research' &&
         c.research === true &&
         c.follow === false,
+    )
+
+    /* EVAL-12 on the real rules: sign-in with the demo code and a wrong one, continue as the
+       signed-in player, resume a season in progress, and the profile's history view. */
+    const X = 'X-22 landing, sign-in and the profile (emulator, browser)'
+    const fresh2 = await browser.newContext({ viewport: { width: 390, height: 844 } })
+    const p2 = await fresh2.newPage()
+    p2.on('pageerror', (e) => console.log('browser:', e.message))
+    await p2.goto(`http://localhost:${PORT}/#/signin`)
+    await p2.waitForSelector('[data-screen="signin"]', { timeout: 30000 })
+    const code = p2.getByRole('textbox', { name: 'Recovery code' })
+    await code.fill('ABCD-EFGH-JKMN')
+    await p2.getByRole('button', { name: 'Sign in', exact: true }).click()
+    await p2.getByRole('alert').waitFor({ timeout: 30000 })
+    const wrong = await code.evaluate((e) => ({
+      invalid: e.getAttribute('aria-invalid'),
+      by: (e.getAttribute('aria-describedby') ?? '')
+        .split(' ')
+        .map((id) => document.getElementById(id)?.getAttribute('role'))
+        .includes('alert'),
+      said: document.querySelector('[role="alert"]')?.textContent ?? '',
+    }))
+    record(
+      X,
+      'a wrong code shows the error pattern: the field is aria-invalid and described by the alert',
+      wrong.invalid === 'true' && wrong.by && /No profile opens with that code/.test(wrong.said),
+      JSON.stringify(wrong),
+    )
+    await code.fill('')
+    await code.pressSequentially('demqprqf2xe7')
+    record(
+      X,
+      'the code is grouped in fours as it is typed',
+      (await code.inputValue()) === 'DEMQ-PRQF-2XE7',
+      await code.inputValue(),
+    )
+    await p2.getByRole('button', { name: 'Sign in', exact: true }).click()
+    await p2.waitForSelector('[data-screen="profile"]', { timeout: 30000 })
+    const top = await p2.locator('main').innerText()
+    record(
+      X,
+      'the demo code opens the demo profile: 4 seasons, 3 of 10 stories, "You now", the readings and "This season"',
+      /Demo player's profile/i.test(top) &&
+        /4 seasons played\. 3 of 10 stories played, 7 left\./.test(top) &&
+        /You now/.test(top) &&
+        /Tagged after \d+ more seasons? on your profile/.test(top) &&
+        /Not available yet/.test(top) &&
+        /This season/.test(top),
+    )
+    await p2.getByRole('button', { name: 'See past seasons' }).click()
+    await p2.waitForSelector('[data-screen="profile-history"]')
+    const hist = await p2.locator('main').innerText()
+    const trend = await p2.locator('.trend [role="img"]').getAttribute('aria-label')
+    record(
+      X,
+      'the history view: the trend with every season said in words, 4 past seasons untagged, the change marked, each with its report',
+      (trend ?? '').split(';').length === 4 &&
+        /a change/.test(trend ?? '') &&
+        (hist.match(/Past season, not a confirmed reading/g) ?? []).length === 4 &&
+        /Your decisions changed in this season/.test(hist) &&
+        (await p2.getByRole('link', { name: /^Open the full report/ }).count()) === 4 &&
+        !/Pattern|Clear pattern/.test(hist),
+      trend ?? '',
+    )
+    await p2
+      .getByRole('link', { name: /^Open the full report/ })
+      .nth(2)
+      .click()
+    await p2.waitForSelector('[data-screen="profile-season"]')
+    record(
+      X,
+      'a past season opens read only: no tag, no form, no save button',
+      /Read only/.test(await p2.locator('main').innerText()) &&
+        (await p2.locator('main input, main .button--primary').count()) === 0,
+    )
+    await p2.goto(`http://localhost:${PORT}/`)
+    await p2.reload()
+    await p2.getByRole('button', { name: 'Continue as Demo player' }).waitFor({ timeout: 30000 })
+    record(
+      X,
+      'continue: after a reload the landing still knows the signed-in player ("Continue as Demo player", "Start a new season")',
+      (await p2.getByRole('button', { name: 'Start a new season' }).count()) === 1,
+    )
+    await p2.goto(`http://localhost:${PORT}/#/play/${resumeToken}`)
+    await p2.waitForSelector('[data-screen="language"]', { timeout: 30000 })
+    await p2.getByRole('radio', { name: /^English$/ }).check()
+    await p2.getByRole('button', { name: /^Continue/ }).click()
+    await p2.waitForSelector('[data-screen="eligibility"]')
+    await p2.goto(`http://localhost:${PORT}/`)
+    await p2.reload()
+    await p2.getByRole('button', { name: 'Resume chapter 1' }).waitFor({ timeout: 30000 })
+    const order = await p2.locator('main .actions button').allInnerTexts()
+    record(
+      X,
+      'resume: a season in progress makes "Resume chapter 1" the primary, with "Continue as" quiet beside it',
+      /resume chapter 1/i.test(order[0] ?? '') && /continue as demo player/i.test(order[1] ?? ''),
+      order.join(' | '),
+    )
+    await p2.getByRole('button', { name: 'Resume chapter 1' }).click()
+    await p2.waitForFunction((t) => location.hash === `#/play/${t}`, resumeToken, {
+      timeout: 30000,
+    })
+    await p2.waitForSelector('[data-screen="language"], [data-screen="eligibility"]')
+    record(X, 'resume reopens the same link where it was left', true)
+    await fresh2.close()
+  } finally {
+    await browser.close()
+    await server.close()
+  }
+  await landingOnLocalStore()
+}
+
+/**
+ * Landing to start runs on the demo store: on the emulator a device never issues a token (the
+ * panel provider does), so "Start a season" is checked where the demo issues its own link.
+ */
+async function landingOnLocalStore() {
+  const X = 'X-22 landing, sign-in and the profile (demo store, browser)'
+  process.env.VITE_STORE = 'local'
+  const server = await createServer({
+    root: ROOT,
+    logLevel: 'silent',
+    server: { port: PORT - 1, strictPort: true },
+    cacheDir: join(ROOT, 'node_modules/.vite-e2e-local'),
+  })
+  await server.listen()
+  const browser = await chromium.launch({ channel: 'chrome' })
+  try {
+    const page = await browser.newPage({ viewport: { width: 390, height: 844 } })
+    await page.goto(`http://localhost:${PORT - 1}/`)
+    await page.waitForSelector('[data-screen="landing"] .actions', { timeout: 30000 })
+    const first = await page.locator('main .actions button').allInnerTexts()
+    await page.getByRole('button', { name: 'Start a season' }).click()
+    await page.waitForSelector('[data-screen="language"]', { timeout: 30000 })
+    await page.getByRole('radio', { name: /^English$/ }).check()
+    await page.getByRole('button', { name: /^Continue/ }).click()
+    await page.waitForSelector('[data-screen="eligibility"]')
+    for (const g of await page.locator('fieldset').all())
+      await g.getByRole('radio', { name: 'Yes' }).check()
+    await page.getByRole('button', { name: 'Continue', exact: true }).click()
+    await page.waitForSelector('[data-screen="start"]')
+    record(
+      X,
+      'landing to start: "Start a season" (with "I\'ve played before: sign in" quiet beside it) leads to the language, eligibility, then "Before you start"',
+      /start a season/i.test(first[0] ?? '') && /sign in/i.test(first[1] ?? ''),
+      first.join(' | '),
     )
   } finally {
     await browser.close()

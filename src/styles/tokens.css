@@ -130,13 +130,12 @@
   --px-28: 28px;
   --px-20: 20px;
   --px-96: 96px;
-  --px-6: 6px;
-  --r-pill: 999px;
-  /* The season bar's track on white (EVAL-10): 1.8:1 against the paper, clearly visible. */
-  --lilac-track: #c9beda;
   --sw-1-8: 1.8;
   --lh-130: 1.3;
   --pct-neg-50: -50%;
+  /* The profile's trend (EVAL-12): its plot height and the axis-label column beside it. */
+  --grid-trend: auto minmax(0, 1fr);
+  --dash-4-3: 4 3;
   --dur-160: 160ms;
   --dur-0: 0ms;
   --scale-98: 0.98;
@@ -284,6 +283,11 @@
   --range-dot-compact: var(--s-3);
   --range-inset: var(--s-1);
   --range-ends: var(--grid-ends);
+  /* The profile's trend (EVAL-12). */
+  --trend-h: var(--px-160);
+  --trend-cols: var(--grid-trend);
+  --trend-dot: var(--range-dot-compact);
+  --trend-dash: var(--dash-4-3);
   /* The comic page (EVAL-10): the gutter between panels, and panel 2's prop beside its caption. */
   --gutter: var(--s-2);
   /* A phone's decision card (EVAL-10): a thumbnail beside the words. */
@@ -301,14 +305,7 @@
   --chip-min: var(--px-44);
   --chip-gap: var(--bw-2);
   --half: var(--pct-50);
-  /* The season bar in the header (EVAL-10): a thin line, and chapter ticks that stand out of it. */
-  --bar-thin: var(--px-6);
-  --radius-pill: var(--r-pill);
-  --seg-gap: var(--s-1);
-  --bar-min: var(--px-128);
   --c-range: var(--mist);
-  /* The season bar's track (EVAL-10): a light tint under the accent. */
-  --c-track: var(--lilac-track);
   --dot-columns: var(--grid-12);
   --text-action: var(--fs-16);
   --tracking-action: normal;
@@ -366,7 +363,6 @@
   --c-rule: var(--comic-rule);
   --c-border: var(--comic-ink);
   --c-label: var(--violet);
-  --c-track: var(--lilac-track);
   --c-panel: var(--comic-tint);
   --c-ink-line: var(--comic-ink);
   --c-option-rest: var(--comic-ink);
@@ -416,7 +412,6 @@
   --c-muted: var(--note-soft);
   --c-rule: var(--note-rule);
   --c-range: var(--note-rule);
-  --c-track: var(--note-rule);
   /* No violet out of fiction (rule 8): the chapter-end map's next stop is tan with ink. */
   --c-stamp: var(--note-rule);
   --c-on-stamp: var(--comic-ink);

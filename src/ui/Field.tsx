@@ -15,6 +15,9 @@ export function Field({
   invalid = false,
   errorId,
   onEnter,
+  hint,
+  inputMode,
+  maxLength,
 }: {
   label: string
   value: string
@@ -25,8 +28,14 @@ export function Field({
   invalid?: boolean
   errorId?: string
   onEnter?: () => void
+  /** A line under the label that says what to type (EVAL-12: the code's format); always read with the field. */
+  hint?: string
+  inputMode?: 'text' | 'email'
+  maxLength?: number
 }) {
   const id = useId()
+  const hintId = `${id}-hint`
+  const described = [hint ? hintId : '', invalid && errorId ? errorId : ''].filter(Boolean)
   return (
     /* A one-field form: Enter submits it natively, with no key handler (the no-timers rule
        forbids keystroke capture). */
@@ -41,6 +50,11 @@ export function Field({
       <label className="field__label" htmlFor={id}>
         {label}
       </label>
+      {hint ? (
+        <span className="field__hint" id={hintId}>
+          {hint}
+        </span>
+      ) : null}
       <input
         id={id}
         className="field__input"
@@ -53,7 +67,9 @@ export function Field({
         spellCheck={false}
         enterKeyHint="go"
         aria-invalid={invalid || undefined}
-        aria-describedby={invalid && errorId ? errorId : undefined}
+        aria-describedby={described.length ? described.join(' ') : undefined}
+        inputMode={inputMode}
+        maxLength={maxLength}
       />
     </form>
   )

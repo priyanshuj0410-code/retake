@@ -309,7 +309,7 @@ async function main() {
     const ck = randomKey()
     record(
       TS,
-      'stay-in-touch details are created once, never read, never with another field',
+      'stay-in-touch details: written, replaced and deleted by whoever holds the key (EVAL-12), never read, never with another field or a bad email, never unauthenticated',
       (
         await call(as('c1'), 'PUT', `eval-contact/${ck}`, {
           em: 'a@example.test',
@@ -317,9 +317,16 @@ async function main() {
           research: false,
         })
       ).allowed &&
-        !(await call(as('c1'), 'PUT', `eval-contact/${ck}`, { follow: false, research: false }))
+        (await call(as('c2'), 'PUT', `eval-contact/${ck}`, { follow: false, research: false }))
           .allowed &&
         !(await call(as('c1'), 'GET', `eval-contact/${ck}`)).allowed &&
+        !(await call(as('c1'), 'GET', 'eval-contact')).allowed &&
+        !(await call('stranger', 'PUT', `eval-contact/${ck}`, { follow: false, research: true }))
+          .allowed &&
+        !(await call('stranger', 'DELETE', `eval-contact/${ck}`)).allowed &&
+        !(await call(as('c1'), 'PUT', `eval-contact/${ck}`, { follow: false })).allowed &&
+        (await call(as('c1'), 'DELETE', `eval-contact/${ck}`)).allowed &&
+        (await call('owner', 'GET', `eval-contact/${ck}`)).value === null &&
         !(
           await call(as('c1'), 'PUT', `eval-contact/${randomKey()}`, {
             follow: true,

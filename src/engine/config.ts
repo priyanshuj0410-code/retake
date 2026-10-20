@@ -63,6 +63,9 @@ export interface Config {
   season: SeasonConfig
 }
 
+/** The profile's readings (EVAL-12): three cues, three areas (the sex reading on the area's cards) and the role pattern. */
+export type ProfileReadingId = 'sex' | 'tone' | 'religion' | 'conduct' | 'hiring' | 'resources' | 'role'
+
 /** The season story's planning values: every key in pendingV18 is PENDING v18. */
 export interface SeasonConfig {
   pendingV18: string[]
@@ -78,12 +81,10 @@ export interface SeasonConfig {
     permutations: number
     /** The position-with-range display's maths (EVAL-10; PENDING v22, never player copy). */
     range: { method: 'beta' | 'wilson'; prior: [number, number]; mass: number }
-    /** Untagged readings (EVAL-10; PENDING v26): the hollow point, the range in words, opening. */
+    /** Untagged readings (EVAL-10; PENDING v26): the hollow point and the range in words. */
     untagged: {
       point: 'hollow' | 'none'
       words: [number, number, number, number]
-      openingSeasons: number | null
-      pooledInBuild: boolean
     }
   }
   counted: Record<string, number>
@@ -93,6 +94,15 @@ export interface SeasonConfig {
   domains: { minPairs: number }
   timing: Record<string, number>
   change: { minDiff: number }
+  /** The profile (EVAL-12; every value PENDING v26, never shown as pending). */
+  profile: {
+    storiesTotal: number
+    /** Each reading and the registered season count at which its pooled reading may be tagged. */
+    readings: { id: ProfileReadingId; opens: number | null }[]
+    pooling: 'equal' | 'inverse-variance'
+    /** The faster change rule's threshold on the standardised difference (two-sided 0.01: 2.576). */
+    reliableChange: number
+  }
   retakeGapDays: number | null
   episodes: number
   cards: { minPairs: number; share: number }

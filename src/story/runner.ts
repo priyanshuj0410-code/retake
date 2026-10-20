@@ -378,23 +378,6 @@ export class StoryRunner {
     return { total: idx.length, done: idx.filter((k) => k < this.index).length }
   }
 
-  /**
-   * The season bar (EVAL-10): how much of the season's cards are done, 0 to 1, and a tick where
-   * each chapter after the first (and the finale) starts. Cards only, so the bar never moves on
-   * a page-turn screen.
-   */
-  seasonProgress(): { value: number; ticks: number[] } {
-    const cards = this.steps.flatMap((st, k) => (st.kind === 'beat' ? [k] : []))
-    const total = cards.length || 1
-    const done = cards.filter((k) => k < this.index).length
-    const ticks: number[] = []
-    for (let n = 2; n <= this.chapters + 1; n++) {
-      const first = cards.findIndex((k) => this.chapterOf[k] === n)
-      if (first > 0) ticks.push(first / total)
-    }
-    return { value: done / total, ticks }
-  }
-
   /** A new sitting: the season was reopened from this device at a save point (PENDING v21). */
   newSitting() {
     this.sittings = Math.min(this.sittings + 1, config.season.chapters.sittingsMax)

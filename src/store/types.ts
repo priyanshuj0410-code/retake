@@ -82,8 +82,12 @@ export interface Store {
   profileDelete(key: string): Promise<void>
   /** The longitudinal research link of an opted-in profile; null deletes it. */
   longPut(key: string, value: { plays: string } | null): Promise<void>
-  /** The optional stay-in-touch details after a result, at a random key, linked to nothing. */
-  contactPut(key: string, value: Contact): Promise<void>
+  /**
+   * The optional stay-in-touch details, at a random key, linked to nothing: from the result page,
+   * or from a profile, which keeps the key inside its ciphertext so its holder can change the
+   * details or delete them (EVAL-12). null deletes them.
+   */
+  contactPut(key: string, value: Contact | null): Promise<void>
   /** Demo only: issue tokens the way a panel provider's links would carry them. */
   issueTokens(dep: DeploymentId, n: number, langs: LangSet): Promise<string[]>
 }

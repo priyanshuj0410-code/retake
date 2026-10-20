@@ -20,7 +20,7 @@ export interface MapStop {
 /**
  * The season map (EVAL-8, concept D; moved by EVAL-10): six stops on one line (five chapters
  * and the finale, the finale drawn square), shown on the chapter-end screen, where the player
- * stops to look. The sticky header carries only the thin `SeasonBar`. No countdown, no motion;
+ * stops to look. The sticky header carries only the chapter label (EVAL-12). No countdown, no motion;
  * one image with a spoken label that says the same in words.
  */
 export function SeasonMap({ stops, label }: { stops: MapStop[]; label: string }) {

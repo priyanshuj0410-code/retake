@@ -117,7 +117,16 @@ export const RT = storyContent.rating as unknown as Record<string, T> & {
   tagBodies: Record<'strong' | 'moderate' | 'possible' | 'none', T>
   /** A forming reading (EVAL-10, owner): never a dead end. */
   forming: Record<
-    'title' | 'unread' | 'unengaged' | 'next' | 'left' | 'leftOne' | 'notYet' | 'start' | 'save',
+    | 'title'
+    | 'unread'
+    | 'unengaged'
+    | 'next'
+    | 'left'
+    | 'leftOne'
+    | 'notYet'
+    | 'pairs'
+    | 'start'
+    | 'save',
     T
   >
   rangeWords: Record<
@@ -131,8 +140,28 @@ export const RT = storyContent.rating as unknown as Record<string, T> & {
   domains: Record<Domain, { title: T; narrative: T; origin: T[]; watch: T[] }>
 }
 export const isPeople = (b: Beat): b is PeopleBeat => b.kind !== 'ordinary'
-export const PF = (raw as unknown as { profile: Record<string, T> & { researchConsent: T[] } })
-  .profile
+export const PF = (
+  raw as unknown as {
+    profile: Record<string, T> & {
+      researchConsent: T[]
+      labels: Record<string, T>
+      ends: Record<string, { left: T; right: T }>
+    }
+  }
+).profile
+
+/** The landing page, sign-in and "How this works" (EVAL-12). */
+export const LD = (
+  raw as unknown as {
+    landing: Record<string, T> & {
+      points: { icon: string; text: T }[]
+      howMeasured: T[]
+      howPrivacy: T[]
+      lost: T[]
+      _devDemoCode: string
+    }
+  }
+).landing
 
 /** One practice item (EVAL-10): the mascots doing something that is not work, with no cue. */
 export interface PracticeItem {

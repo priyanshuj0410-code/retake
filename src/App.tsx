@@ -3,7 +3,8 @@ import { config, devRoutes } from './engine/config'
 import { enrolmentKey } from './engine/codes'
 import { store, today } from './store'
 import { Play } from './screens/Play'
-import { Enrol, Explain, Home, SeasonLanding, Withdraw } from './screens/Pages'
+import { Enrol, Explain, Home, Withdraw } from './screens/Pages'
+import { HowItWorks, Landing, SignIn } from './screens/Landing'
 import { Results } from './screens/Results'
 import { Profile } from './screens/Profile'
 import { Notice, Page, UpdateReady } from './ui'
@@ -40,7 +41,7 @@ function Screen() {
   const go = useCallback((h: string) => {
     location.hash = h
   }, [])
-  const [, kind, arg] = path.split('/')
+  const [, kind, arg, sub] = path.split('/')
   const startToken = useCallback(() => store.start(arg ?? ''), [arg])
   const resumeToken = useCallback(() => store.resume(arg ?? ''), [arg])
   const startFirm = useCallback(async () => {
@@ -78,10 +79,15 @@ function Screen() {
     case 'withdraw':
       return <Withdraw />
     case 'profile':
-      return <Profile go={go} />
+      return <Profile key={path} go={go} view={arg} arg={sub} />
+    case 'signin':
+      return <SignIn go={go} />
+    case 'how':
+      return <HowItWorks go={go} />
     case 'results':
       return config.demo ? <Results /> : null
     default:
-      return config.demo ? <SeasonLanding go={go} /> : closed
+      /* The landing (EVAL-12): what a season is, start or resume, and sign-in for returning players. */
+      return <Landing go={go} />
   }
 }
