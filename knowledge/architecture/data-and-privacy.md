@@ -4,12 +4,23 @@ title: Data and privacy on the shared Firebase project
 description: How the evaluator stores records on the-equal-lens's Realtime Database, which of the registered storage protections the app enforces, and what Firebase cannot guarantee for the unlinked-record and mixing-pool design, stated plainly with what the app does about each.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-13/
   - https://app.plane.so/the-equal-lens/browse/EVAL-4/
   - https://app.plane.so/the-equal-lens/browse/EVAL-5/
   - https://app.plane.so/the-equal-lens/browse/EVAL-12/
 ---
 
 # Data and privacy on the shared Firebase project
+
+> **Trainer branch (EVAL-13, 20 Oct 2026).** This page describes the evaluator. The daily
+> trainer on branch `trainer-daily` uses no backend: everything stays in the phone's
+> localStorage (`src/store/index.ts`, key `elt:v1`): the language, the road name, friends'
+> road names, each play day's choices keyed by its date, and the private Sunday notes. No
+> times, durations, keystrokes or per-answer stamps are stored (Profile C as extended on 20 Oct
+> 2026: play-day dates and private notes are the two exceptions). `pnpm check` holds this
+> (`scripts/privacy-check.ts`, and the saved state after real play in `scripts/e2e.ts`). A
+> real global board needs a server store; the `Backend` interface in the store is where it
+> plugs in, and it will need its own rules piece and a fresh privacy review.
 
 The registered design (candidates v12 3.0, 3.1, 3.8, 3.9; research plan v1, section 9) asks for
 person-level records under a withdrawal code, unlinked crosswise and demographic records

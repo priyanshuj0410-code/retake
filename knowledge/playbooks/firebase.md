@@ -4,9 +4,15 @@ title: The evaluator on the-equal-lens Firebase project
 description: How the Equal Lens Evaluator joins the shared Firebase project, the exact registration the owner applies in The Equal Lens repo, how its rules piece is tested, and what this repo never does.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-13/
 ---
 
 # The evaluator on `the-equal-lens`
+
+> **Trainer branch (EVAL-13).** The trainer does not use Firebase. `database.rules.json`,
+> `firebase.json`, `.firebaserc` and the deploy guard are kept unchanged; the evaluator's
+> emulator rules check (`pnpm rules`) was retired with the evaluator's code on this branch, so
+> the rules piece is tested only on the evaluator's branch. Nothing here changes rules.
 
 Every Equal Lens app shares one Firebase project, `the-equal-lens`, and one Realtime Database
 with one ruleset built from each app's piece (The Equal Lens repo,

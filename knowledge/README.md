@@ -1,37 +1,43 @@
 ---
 type: index
-title: Equal Lens Evaluator knowledge
-description: Index of this repo's knowledge base. The evaluator is The Equal Lens's single-session game-form decision task for the workplace gender-training study, built as the MIT Solve 2027 prototype.
+title: Equal Lens Daily trainer knowledge
+description: Index of this repo's knowledge base. The repo now holds The Equal Lens daily fairness trainer (EVAL-13), a mobile-first daily puzzle that replaced the evaluator's screens; the evaluator's notes are kept as history.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-2/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-3/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-4/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-5/
   - https://app.plane.so/the-equal-lens/browse/EVAL-12/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-13/
 ---
 
-# Equal Lens Evaluator knowledge
+# Equal Lens Daily trainer knowledge
 
-The app is the research instrument specified in the Sex Ed workspace's gated design (`Paper Analysis/Hypotheses/workplace-gender-training-v2/`: `candidates-v12-2026-10-19.md`, `tool-design-single-session-v3-2026-10-15.md` and the research plan). The design is the authority; this repo implements it.
+Branch `trainer-daily` (EVAL-13): one fairness puzzle a day, scored on consistency both ways,
+in two skins (Lugdi and Station) that alternate by ISO week. The product decisions live in the
+Sex Ed workspace (`Paper Analysis/Hypotheses/daily-fairness-trainer/brief-2026-10-20.md`); this
+repo implements them.
 
 ## Structure
 
 - [plane.config.md](plane.config.md): the Plane workspace and project.
-- [design.md](design.md): the design system (tokens, surfaces, components, patterns). Read it before any UI change.
-- `architecture/`: build and data decisions.
-  - [data-and-privacy.md](architecture/data-and-privacy.md): the stores on the shared Firebase project, what the app enforces, and what Firebase cannot guarantee.
-- `playbooks/`: how to run, test and register.
-  - [run-and-test.md](playbooks/run-and-test.md): running the demo, where the content lives, the checks, session length.
-  - [firebase.md](playbooks/firebase.md): the rules piece, the owner's apps.json registration, what this repo never does.
+- [design.md](design.md): the trainer's design system (tokens per skin, type, the text-colour
+  rule, components and states, motion, scoring as shown, copy rules). Read it before any UI change.
+- `architecture/`:
+  - [data-and-privacy.md](architecture/data-and-privacy.md): the trainer stores on the phone only
+    (note at the top); the rest describes the evaluator's Firebase storage.
+- `playbooks/`:
+  - [run-and-test.md](playbooks/run-and-test.md): running the trainer, the date override, where
+    the content lives, the checks and the screenshots.
+  - [firebase.md](playbooks/firebase.md): the evaluator's rules piece (unchanged, unused here).
 - `reference/`:
-  - [acceptance-tests.md](reference/acceptance-tests.md): every registered acceptance test mapped to its check.
+  - [acceptance-tests.md](reference/acceptance-tests.md): each requirement of EVAL-13 mapped to its check.
 - `reviews/`:
-  - [ux-audit-2026-10-19.md](reviews/ux-audit-2026-10-19.md): the ship-readiness UX audit, its fixes, owner decisions and raw results (`reviews/assets/`).
-  - [game-redesign-2026-10-19.md](reviews/game-redesign-2026-10-19.md): the season-story redesign (EVAL-4) and its 80-decision rebuild (EVAL-5): the full 390 px play, counted and asked decisions, clicks, screens and time against prototype v0, the screen list, what is PENDING v18, and what to flag.
-  - [component-states-2026-10-19.md](reviews/component-states-2026-10-19.md): every component's states and micro-interactions, before and after (EVAL-3).
-  - [landing-profile-2026-10-20.md](reviews/landing-profile-2026-10-20.md): the landing page, sign-in, the profile built with pooling and the change rule, the season bar removed, and the result page redesigned (EVAL-12).
+  - [trainer-content-2026-10-20.md](reviews/trainer-content-2026-10-20.md): the fortnight's content
+    for the owner's review, and the decisions to confirm.
+  - Evaluator history: [ux-audit-2026-10-19.md](reviews/ux-audit-2026-10-19.md),
+    [game-redesign-2026-10-19.md](reviews/game-redesign-2026-10-19.md),
+    [component-states-2026-10-19.md](reviews/component-states-2026-10-19.md),
+    [landing-profile-2026-10-20.md](reviews/landing-profile-2026-10-20.md).
 
-## Status (19 Oct 2026)
+## Status (20 Oct 2026)
 
-Season story (EVAL-4, branch `eval-game-redesign`): a fourth deployment, `season`, the redesigned game for the MIT Solve prototype; rebuilt to the owner's 80 counted decisions (EVAL-5); every number v18 will fix is marked PENDING v18. Prototype v0, demo mode only: fictional content, seeded demo players, no participant data, nothing deployed. Card counts follow research plan v2 (the panel as two games).
+First working version: 14 days of content, eight mechanics, local storage only, a sample board.
+Nothing is deployed or pushed.

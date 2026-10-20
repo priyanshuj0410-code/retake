@@ -1,900 +1,226 @@
 ---
 type: design-system
-title: Equal Lens Evaluator design system
-description: The tokens, surfaces, components and interaction patterns of the evaluator prototype. Every UI choice in src/ comes from here, and scripts/design-check.ts holds the code to it.
+title: Equal Lens Daily trainer design system
+description: The tokens per skin, type, the text-colour rule, every component and its states, motion and copy rules of the daily fairness trainer. Every UI choice in src/ comes from here, and scripts/design-check.ts and scripts/content-check.ts hold the code and the content to it.
 plane_issues:
-  - https://app.plane.so/the-equal-lens/browse/EVAL-1/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-2/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-3/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-4/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-5/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-6/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-7/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-8/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-10/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-11/
-  - https://app.plane.so/the-equal-lens/browse/EVAL-12/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-13/
 ---
 
-# Equal Lens Evaluator design system
+# Equal Lens Daily: design system
 
-The evaluator is a research instrument dressed as a short game. Players use their own phones,
-often old Android phones on slow connections, so the system is **mobile first, light, and
-plain**. It takes The Equal Lens brand (the `equal-lens` canon: Poppins for display, Nunito
-Sans for body, core violet `#553286`, ink `#221436`, paper `#FBF9FF`) in its **minimal
-register**: the content is the hero, violet only where it orders the page, no mascot. Lensy
-does not appear: the instrument must not carry a voice that could read as telling players
-what is right. (The season story's week-one animal mascots are the colleagues themselves, not a
-brand mascot; see section 4b.)
+The trainer is one fairness puzzle a day, played on the player's own phone in 5 to 7 minutes.
+It replaces the evaluator's screens (EVAL-1 to EVAL-12, kept in git history and on the
+evaluator's own branch). The look is Indian craft vernacular in two skins that alternate by
+ISO week: **Lugdi** (Hindi pulp-novel covers, the "Ghat Series") in odd weeks and **Station**
+(railway enamel boards) in even weeks. Each day within a skin is a different object or genre.
+The owner's samples are the source: the Lugdi and Station pages (five days each) and the range
+page (eight more days each, a month calendar and the variety dials).
 
-Since EVAL-6 (19 Oct 2026, the owner's Direction C) the system has **two registers that never
-mix**. The **game register** is an editorial comic: ink-ruled panels on white paper with a lilac
-tint, yellow narration captions, violet rank stamps, halftone-shaded portraits, Big Shoulders
-Display for display and Literata for the story (section 4c). The **plain register** (out of
-fiction) is cool grey and ink in Nunito Sans and Poppins, with no panels, captions, stamps or
-violet. **One light theme, on purpose:** both registers were designed as a single light look,
-so `color-scheme: light` is set and there are no dark overrides; the OS dark setting changes
-nothing (`pnpm ux` checks each surface's ground is the same under dark). The root URL is the
-landing page (EVAL-12, section 4f), from which "Start a season" goes into the season story; the old card games (panel games 1 and 2, the firm session and
-its enrolment) open only on the Vite dev server in demo mode, from the developer menu at
-`#/dev`, which no player-facing page links to (`devRoutes`), and are kept for the checks.
+Product decisions are in the Sex Ed workspace: `Paper Analysis/Hypotheses/daily-fairness-trainer/brief-2026-10-20.md`
+and the 20 Oct blocks of `workplace-gender-training-v2/resume-note-2026-10-18.md`. Scoring and
+the ladder: `workplace-gender-training-v2/consistency-and-levels-2026-10-20.md`. The fortnight's
+content and what the owner must review: [reviews/trainer-content-2026-10-20.md](reviews/trainer-content-2026-10-20.md).
 
 ## 1. Rules the code is held to
 
 `pnpm check` runs `scripts/design-check.ts`, which fails when:
 
-- a raw colour, size or duration appears in any stylesheet but `src/styles/tokens.css`;
-- a stylesheet reads a primitive token (only semantic and component tokens are read);
-- a token is read that does not exist, or one exists that nothing reads;
-- a screen (`src/screens/`) writes a `className` or a `style`: screens compose `src/ui` only;
-- a class used in `src/ui` is defined by no stylesheet, or one defined is never used;
-- a component exported from `src/ui` is missing from section 4 of this file;
-- an art token (the pictures' raw colours, `@tier art`, section 4c) is read by any stylesheet
-  but `portrait.css` and `panelart.css`, or the art tier holds anything but a colour (EVAL-6);
-- a component or screen (`src/ui/*.tsx`, `src/screens/*.tsx`) writes a colour: the SVG
-  pictures fill from art classes, never from hex in the markup (EVAL-6).
+- a raw colour, size, duration or angle appears in any stylesheet but `src/styles/tokens.css`;
+- a stylesheet reads a primitive token, or a token that does not exist, or a token is defined
+  that nothing reads;
+- **the text-colour rule** breaks (section 3): a `color` reads anything but an `--c-on-*` token
+  (or `inherit`), an `--c-on-*` token resolves to anything but its skin's ink or paper in any
+  skin or ground, the accent (`--c-display`) is read by anything but display type, or the
+  accent resolves to red;
+- any text and ground pair fails contrast (4.5:1 for text, 3:1 for the focus ring and control
+  edges) in any skin or ground: 78 pairs over 7 skin and ground sets at present;
+- a screen, a board or `App.tsx` writes a `className` or a `style` (they compose `src/ui`);
+- a component, board or screen mentions a gender (so no colour, shape or position can be
+  gender-coded: the cast's gender reaches the scoring only);
+- an answer option's stylesheet styles by position (`:nth-child` and the like);
+- a class is used and owned by no stylesheet, owned twice, or owned and never used; class
+  names are static, and variants and states are `data-*` or `aria-*` attributes;
+- a component exported from `src/ui` is missing from section 4;
+- press feedback starts later than 100 ms, the hit-stop in code differs from its token, the
+  reduced-motion state is missing, or a transition reads no `--dur-*` token;
+- a face other than Hind and Sarpanch is declared, or the manifest's colours are not tokens.
 
-`pnpm check` runs X-16 (`scripts/pending-check.ts`, EVAL-6): no content string a player can see
-holds a placeholder (`scripts/lib/placeholder.ts`: PENDING, PLACEHOLDER, TODO, TBD, FIXME,
-"owner wording", `{{ }}`, `[[ ]]`; markers live in underscore keys such as `_pending`, and an
-unsourced note statistic is a record marked `placeholder: true` that the note screens never
-render), no string or JSX text in `src/` holds one, the dev-only `DevNotes` panel renders nothing
-outside the Vite dev server, and the season disclosure's sentence 3 is the interim line held in
-`src/engine/config.ts` (`seasonSentence3`, commented as awaiting the owner's wording). `pnpm ux`
-and `pnpm season` read every rendered screen with the same pattern, leaving out only `[data-dev]`.
+`pnpm ux` (`scripts/ux-audit.ts`) then plays every screen of all 14 days in Chrome at 390, 320
+and 1280 px and fails on: computed text contrast below AA against the real ground, a target
+under 44 px on phones (24 px on desktop), a control without a name, more or fewer than one
+`h1`, a heading skip, sideways scroll, text under 12 px, any axe-core violation, focus not on the
+new screen's `h1`, or a set of answer options whose resting options are not drawn alike.
 
-`pnpm check` also runs `pnpm ux` (`scripts/ux-audit.ts`, from the audit in
-[reviews/ux-audit-2026-10-19.md](reviews/ux-audit-2026-10-19.md)), which plays every screen
-type of both panel games, the firm session and the season story (its result and profile pages too) and fails on any of: text below AA contrast
-against its real background, a target under 44 px on phones or 24 px on desktop, a control
-without a name, a heading skip, a screen without one `h1` or its own document title, sideways
-scroll at 320 px, a ranking or allocation card without a live region, text under 12 px, any
-axe-core violation, focus not on the new screen's heading, or a ranking or allocation card
-that cannot be finished by keyboard with focus kept. After the audit, `pnpm ux` runs the
-component states pass (`scripts/ux-states.ts`, `pnpm ux:states` alone), which checks every
-state in section 4a in the browser, and `pnpm check` runs X-9 (`scripts/component-states-check.ts`),
-which renders each component in each state and checks the markup that carries it.
+## 2. Tokens per skin
 
-## 2. Tokens
+Three tiers in `tokens.css`. **Primitives** hold every raw value (the skins' colours, a pixel
+scale, durations, line heights, the two families). The **semantic tier** names what a value is
+for; it is set per skin on `html[data-skin]` and per ground on `html[data-ground]`, which
+`App.tsx` sets from the day being shown. Components read the semantic tier only.
 
-Primitives (in `tokens.css` only):
+| Token | Lugdi | Station | Use |
+|---|---|---|---|
+| `--c-ground` | night `#1B0B2E` (jungle `#0B1A12`, navy `#0A1630`, plum `#2B0F2E`, blood `#2A0A12` by genre) | platform black `#1C1C1C` | the page |
+| `--c-on-ground` | paper `#FFFFFF` | paper `#FFFFFF` | text on the page |
+| `--c-plate` / `--c-on-plate` | cover yellow `#FFD23F` / ink `#111111` | board yellow `#F7C600` / ink `#141414` | answer options, the score plate |
+| `--c-sheet` / `--c-on-sheet` | paper / ink | paper / ink | notes, reflection columns, inputs |
+| `--c-ticket` / `--c-on-ticket` | paper / ink | card `#E9DFC4` / ink | ticket surfaces |
+| `--c-band` / `--c-on-band` | the ground / paper | enamel blue `#0F4C9C` / paper | the cover band, blue boards, the board table |
+| `--c-button` / `--c-on-button` | yellow / ink | yellow / ink | the commit |
+| `--c-button-alt` / `--c-on-button-alt` | paper / ink | paper / ink | secondary actions |
+| `--c-selected` / `--c-on-selected` | ink / paper | ink / paper | a chosen option, the stamped commit |
+| `--c-display` | yellow (accent) | yellow (accent) | display titles only |
+| `--c-roundel` | red `#E4002B` | blue | the price roundel (a fill, never text) |
+| `--c-streak` / `--c-streak-forgiven` / `--c-streak-empty` | yellow spine / **red spine** / dim | yellow ticket / **white ticket** / dim | the streak |
+| `--c-edge`, `--c-edge-ground`, `--c-muted-edge`, `--c-focus` | ink, paper, dim `#6B6478`, yellow | ink, paper, dim `#6F6F6F`, yellow | edges and the focus ring |
+| `--shadow-display`, `--shadow-button` | red then black offset | none | the pulp offset print |
+| `--font-display`, `--weight-display`, `--case-display` | Sarpanch 900, capitals | Hind 700, as written | display type |
+| `--radius-plate`, `--radius-button`, `--inset-board` | 0 (printed covers) | 6 px, with the inset enamel rule | corners |
 
-| Token | Value | Use |
+Shared semantic tokens: type sizes `--text-xs` 12 to `--text-4xl` 44 px; gaps `--gap-hair` 2 to
+`--gap-xl` 24 px with a 16 px `--gutter`; `--tap-min` 44 px; `--button-height` 56 px;
+`--page-max` 480 px; portraits 44, 64 and 96 px; motion tokens in section 5.
+
+No colour is gender-coded: there is no pink and blue, and the Station blue is a board colour,
+never a person's. The answer options in a set are one tone.
+
+## 3. Type and the text-colour rule
+
+- **Reading face: Hind** (400 to 700) for Latin and Devanagari, with Hind Vadodara (Gujarati),
+  Hind Siliguri (Bangla), Hind Madurai (Tamil) and Hind Guntur (Telugu) declared under the same
+  family through `unicode-range`, so one stack reads every script a Station board carries.
+  Kannada, Malayalam, Gurmukhi and Odia are not covered by the Hind family; no day uses them
+  yet (a Noto Sans face per script would be the fallback, an owner decision).
+- **Display face: Sarpanch** 900 (Latin and Devanagari) for Lugdi titles, names on plates and
+  button labels, set in capitals with the red-then-black offset shadow. **Station displays in
+  Hind bold**, as written. Numbers (scores, stats) are Hind bold with tabular figures in both
+  skins, because Sarpanch's figures read poorly at small sizes.
+- Self hosted from the Fontsource packages (`pnpm fonts` copies them into `public/fonts`), so
+  no third party is contacted. Hind's fi and fl ligatures are switched off.
+- **The text-colour rule (owner, 20 Oct 2026).** Text is only ink or paper. An accent colour
+  appears on display type alone (the yellow title). Lugdi red is never text: it is the title
+  shadow, the price roundel, the button's offset shadow and the forgiven spine. Contrast is
+  checked twice: statically on the tokens (`design-check`) and in the browser on every screen
+  (`pnpm ux`). Cover paintings never sit behind text: the title and blurb sit on a solid band
+  and the painting is a decorative strip below it.
+
+## 4. Components and their states (`src/ui`)
+
+Screens (`src/screens`) and mechanic boards (`src/boards`) compose these and nothing else.
+States are attributes: `aria-checked` and `aria-pressed` for chosen, `aria-disabled` for
+inactive (never `disabled`, so focus stays), `data-state`, `data-tone`, `data-mark`.
+
+| Component | What | States |
 |---|---|---|
-| `--violet` | `#553286` | Core brand. Headings, primary buttons, focus |
-| `--violet-deep` | `#42266B` | Pressed primary |
-| `--ink` | `#221436` | Text at full contrast (15.9:1 on paper) |
-| `--body` | `#574B70` | Running text (7.6:1 on paper) |
-| `--soft` | `#6B5A8C` | Secondary text (5.6:1 on paper; darker than the canon's `#7F65A4`, which is 4.3:1 and fails AA for small text) |
-| `--paper` | `#FBF9FF` | Game page background |
-| `--mist` | `#E7E0F1` | Rules, dividers |
-| `--line` | `#E7DEF4` | Card borders |
-| `--tint` | `#F4F0FA` | Character card fill |
-| `--teal-deep` | `#0F6E56` | "All shared" state |
-| `--coral-deep` | `#C2553F` | Errors and refusals |
-| `--grey-*` | neutral greys | The Committee Inbox's sober surface |
-| `--comic-paper`, `--comic-ink` | `#FFFFFF`, `#121212` | Game register: the page and every panel rule (18.7:1) |
-| `--comic-soft` | `#3D3846` | Game register: secondary text (11.4:1 on paper) |
-| `--comic-tint` | `#EFE8F8` | Game register: the panel fill |
-| `--comic-caption` | `#FFE27A` | Game register: narration captions and cast name plates, always with ink text (14.6:1) |
-| `--comic-rule` | `#8F879C` | Game register: inactive rules |
-| `--note-paper`, `--note-hero`, `--note-soft`, `--note-rule`, `--note-lines` | `#FBF6EC`, `#F2EADB`, `#544B3E`, `#CDBFA6`, rule lines `#EFE6D4` every 32 px | Note register (out of fiction): paper (ink 17.4:1), the result hero band (ink 15.7:1), secondary text (7.9:1 on paper, 7.2:1 on the band), rules and the tan button shadow, the faint ruled texture |
-| `--note-line` | `#8A7D66` | Note register: a control's resting edge (fields, radios, checkboxes, survey points), 3.7:1 on paper (WCAG 1.4.11) |
-| `--grey-500` | `#7A7874` | Sober surface: control edges and ink lines, 4.0:1 on its grey |
-| `--shadow-ink-2`, `--shadow-violet` (and small) | offset shadows, no blur: resting panels and captions 2 px ink, the chosen card 5 px violet, the primary button 4 px violet | Game register |
-| `--bw-1`, `--bw-1-5`, `--bw-3` | 1, 1.5, 3 px | Ink weights, read through `--ink-divider`, `--ink-frame`, `--ink-heavy` (below) |
-
-**Visual weight (owner, 19 Oct 2026).** Frames recede so faces, names and the question read first.
-`--ink-frame` (1.5 px) is every card, panel, page frame and control edge (`--edge` and the note
-register's `--frame` point at it); `--ink-divider` (1 px) is every inner divider (the colleague's
-name rule, the season card's art column, the caption's rule, a fold's top rule, the episode pips);
-`--ink-heavy` (3 px) is read only by a selected or stamped state (a stamped ranking card), and the
-filled primary button is the other heavy mark. Resting offset shadows are 2 px. Control
-boundaries and focus rings keep 3:1 on every surface. `pnpm check` (X-4) holds all three: frames
-at most 2 px, the heavy weight only on a selected state, and 3:1 boundaries.
-
-Type: Poppins 500/600/700 (`--face-display`) for headings, labels, buttons and numbers;
-Nunito Sans 400/600/700 (`--face-body`) for text. The game register re-points `--font-display`
-to **Big Shoulders Display 800** (`--face-comic-display`, upper case through `--case-display`,
-30 px questions, 38 px splash titles) and `--font-body` to **Literata 400, 600 and 400 italic**
-(`--face-comic-text`, 17 px; italic for narration in splashes and the "then" panel). All four
-families are self hosted latin subsets (`public/fonts/`, OFL, from the Fontsource packages),
-`font-display: swap`, so no third party is fetched at run time. Both self hosted, latin subsets, OFL, so no
-third party is contacted. Hindi is not set in Devanagari in this prototype: the second language
-is Hinglish in Latin script. The scale is 14, 16, 18, 20, 24, 28 px; body is 18 px on phones
-(older phones, older eyes) and 17 px from 600 px up.
-
-Space is a 4 then 8 px grid (`--s-1` to `--s-7`). Radii 8, 12, 16. Every touch target is at
-least 48 by 48 px (`--target`).
-
-Motion: one duration (`--motion`, 160 ms) for every state change, and two scales:
-`--press` (0.98, a pressed control) and `--lifted` (1.02, a card being dragged), with the
-`--lift` shadow. Under `prefers-reduced-motion` the duration is 0 and both scales are 1, so
-nothing moves, scales or slides. The reorder slide (FLIP) reads `--motion` at run time, so it
-follows the same rule. **Nothing in the product counts down, pulses, loops or times out.** No
-timer exists anywhere (the exam rule; `scripts/no-timers.ts`), and no key handler: Enter on
-the code field submits a native one-field form.
-
-| Token | Value | Use |
-|---|---|---|
-| `--scale-98`, `--scale-100`, `--scale-102` | 0.98, 1, 1.02 | Primitives for the two scales |
-| `--press` | `--scale-98` (1 reduced) | Buttons, option rows, move buttons, steppers while pressed |
-| `--lifted` | `--scale-102` (1 reduced) | The ranking card being dragged |
-
-Forced colours (`forced-colors: active`): `--c-rule` becomes `GrayText` and `--c-focus`
-becomes `Highlight` on every surface. Inactive controls therefore read as inactive, the focus
-ring stays, and a checked option row gets a `Highlight` outline. Transparent borders on the
-demo strip, and the heavier left edge on notices, keep their shapes. The emoji figure keeps
-its own colours (`forced-color-adjust: none`), since the skin tone is the cue.
-
-There is no dark mode (EVAL-6, a deliberate single light theme); every semantic token is
-re-pointed by surface only, none is overridden in a component. The surfaces re-point type and shape too (EVAL-6): on the
-game `--radius-card`, `--radius-m` and `--radius-s` are 0 (square panels), `--edge` is 1.5 px
-(`--ink-frame`), `--shadow-panel` and `--shadow-caption` are 2 px ink offsets, `--shadow-chosen`
-and `--shadow-action` violet offsets, `--c-action` (the primary button) is ink with a violet shadow; out of fiction
-`--edge` is 1 px, every shadow is none, and `--c-accent`, `--c-action` and the reading levels
-are ink, never violet.
-
-## 3. Surfaces: three registers that never mix
-
-The design's own rule 8 is that out-of-fiction screens look different from the game. That is
-the whole structure of the visual system:
-
-| Surface | Where | Look |
-|---|---|---|
-| **Game** (`surface="game"`) | First week, your season, rounds after the note, ordinary decisions, the season result; in the season story: the picker, the opening, every decision, the reveal, the interludes, the season's end | The comic register (section 4c): white paper, ink-ruled square panels, yellow captions, violet stamps, Big Shoulders Display and Literata; the top bar carries the episode in words, its pips and "Page n of N" (progress, never a countdown) |
-| **Out of fiction** (`surface="oof"`) | Disclosure, consent, screening block, survey, Off the Record, mid-season note, recall, direct block, the wrap's questions, debrief, code, withdrawal, explanation; in the season story: the statements grid, the wrap, the result and the profile | The note register: warm off-white paper (`#FBF6EC`) with faint rule lines, the content inside a 3 px ink frame, Big Shoulders Display headings and Literata text in ink, square ink buttons with a tan offset shadow. The registered line "This part is not part of the game." is the first thing on the screen, as its exact text, set as a tilted ink stamp with a silent "Note ·" prefix. No portraits, yellow captions, halftone art, lilac panels or violet. The disclosure keeps no heading and no stamp |
-| **Sober** (`surface="sober"`) | The Committee Inbox and its content note | Neutral grey ground, no violet, no illustration, no points, the Internal Committee route stated on every card |
-
-**The season's first screen (EVAL-10, owner; a registered change that research design v22
-registers).** For the season story the disclosure and the consent are one note-register screen,
-"Before you start" (`SeasonStart`): the four registered sentences first, verbatim and in their
-registered order (sentence 3 the interim line), each in its own row with a drawn icon
-(`IconList`: a lens, three blank silhouettes, a result card, a descriptions card; no face, skin or
-religious symbol); then the practical points the sentences do not already say (about {minutes}
-minutes in 5 chapters; stop any time, saved in this browser; no real name or contact details;
-the code at the end); the complete consent text, with the Internal Committee, Local Committee and
-SHe-Box help, behind "Read the full details"; "I agree to take part" and the quiet decline. It
-has a heading and no "Note" stamp, and fits one 390 x 844 screen with the details closed in
-English (content ends at 749 px) and Hinglish (806 px); the help mode, which doubles every row,
-runs to 1,022 px. `pnpm ux` holds the English and Hinglish fit; AT-3 holds the sentences verbatim
-and in order. The card games and firm enrolment keep the registered separate disclosure: the
-disclosure screen there is out of fiction but shows **only** the four registered sentences and
-the Continue button. There is no demo badge and no demo notice screen (owner, 19 Oct 2026): the
-shareable build says it is a prototype once, on the landing page only (EVAL-12; before it, the
-language screen), as a quiet `page__footnote` line: "Prototype. Fictional people and stories; your answers stay in this browser." Every
-mid-season note uses one identical layout: statistic, source line, instruction sentence; while
-the statistic is an unsourced placeholder the note shows its instruction only.
-
-**Short points first, full text one tap away (owner, 19 Oct 2026).** No note-register screen
-shows a block of more than about 60 words. Consent is a heading, five one-line points (what you
-do, how long, stop any time, no name, what you get at the end) and the agree action, with the
-decline as a quiet button; the complete consent text, unchanged, sits under "Read the full
-details" (`Details`). The content note before the Committee Inbox is four points with the full
-note and the Internal Committee route in `Details`; the result band shows its first sentence with
-the rest in `Details`; the opened explanation is one `Fold` per section, all closed, so it scans
-as a list of headings.
-
-**The note register's baseline grid.** One pitch, 28 px (`--pitch-28`): running text and lists
-take it as their line-height and draw the ruling behind themselves (`--ruling`, a rule 23 px down
-each pitch, 2 px under the 17 px Literata baseline measured at 21 px), so every line of text sits
-just above its rule at any width; the page's flow gap is one pitch and list items have no gap, so
-the ruling runs on through a list. Headings, the stamp, buttons, cards, the survey grid and the
-result band are framed or solid and break the ruling cleanly, and the text after them takes up
-its own ruling again; no text straddles a rule. `pnpm ux` fails if a ruled block on an
-out-of-fiction screen is not a whole number of pitches tall.
-
-**Option states, both registers.** Radios and checkboxes (`Choice`, `Checks`), the survey points
-(`AgreeGrid`) and the code field rest on `--c-option-rest` (tan in the note register, ink in the
-game); hover (pointer only) takes the accent (ink in the note register, violet in the game);
-focus-visible is a 3 px ring in `--c-focus` (17.4:1 on note paper); pressed is the `--press`
-scale; checked is the filled native mark, the accent edge and the `--c-raised` tint; checked and
-focused keep both. `pnpm ux` checks each, once per register.
-
-**How rule 8 holds between two registers of one family.** Story and note share faces, ink and
-square shapes, so they read as one product; they differ on every cue that says "you are in the
-game": the game is white paper with lilac panels, yellow captions, violet stamps, portraits and
-the episode bar; the note is warm ruled paper inside one ink frame with the "Note" stamp, no
-panels, no captions, no pictures, no violet and no episode bar. The result keeps its number-first
-layout in the note register, its readings in ink only (both poles alike, no green or red).
-
-## 4. Components (`src/ui`)
-
-| Component | Source | What it is |
-|---|---|---|
-| `Page` | `src/ui/Page.tsx` | One screen: on story screens a sticky `<header>` landmark (`position: sticky`, `top: 0`, solid paper, the ink rule under it) with the compact chapter label ("Chapter 1 of 5 · The hiring sprint") and nothing else (EVAL-12, owner: the season bar is gone; no bar, chapter circles or card dots; the chapter-end screen's `SeasonMap` shows where the player is); its measured height is `--head-h`, and every focusable element and heading in `<main>` has `scroll-margin-top` of that height. Nothing in the header is interactive. `<main>` holds, in order: `nav` (Back, the small link at the top left), the out-of-fiction line, the `h1`, the body and one `Actions` row. With `pin` (payoff screens only) the row stays at the foot of the screen. On arrival focus moves to the `h1` and the document title becomes "`h1` · Team season". Long titles wrap |
-| `Button` | `src/ui/Button.tsx` | `primary` (ink or violet fill), `secondary` (outline), `quiet` (text), `nav` (Back, EVAL-10: a drawn left chevron and the word "Back" in muted small body type at the top left, 48 px hit area, spoken as "Back: change your last decision" through `label`). Primary, secondary and quiet are 48 px tall (56 px on the pitch), full width on phones and left-aligned from 600 px. Hover on pointer devices, `--press` while pressed, disabled for every kind |
-| `Text` | `src/ui/Text.tsx` | Paragraph, `lead`, `small`, `muted`, `strong`; long words break |
-| `Heading` | `src/ui/Text.tsx` | A section heading inside a page (explanation sections, demo tables); `level={3}` for a sub-heading inside a section (the result page's areas) |
-| `Link` | `src/ui/Link.tsx` | A text link with a 48 px target (the calendar file, demo links, "How this works", a past season's report); thin offset underline that thickens on hover, pressed colour; `label` gives a short link its full spoken name |
-| `List` | `src/ui/List.tsx` | A plain bulleted list of text points (consent, the opening, debrief); muted markers; `help` sets each point's Hinglish under it, smaller; empty renders nothing |
-| `Character` | `src/ui/Character.tsx` | One colleague: emoji figure (or species), name, cue lines (surname is part of the name; "Born in"; badge), description. Text column shrinks and wraps at 320 px |
-| `SortList` | `src/ui/SortList.tsx` | Drag-to-sort list of `Character`s with up and down buttons on every row. The dragged card lifts and settles; displaced rows slide (FLIP); a button at a limit is `aria-disabled` and says the position again |
-| `Allocate` | `src/ui/Allocate.tsx` | Share a fixed pool between `Character`s with minus and plus steppers and a remaining count. A stepper at its limit is `aria-disabled` and says the remaining line again; "All shared" arrives with a tick |
-| `Choice` | `src/ui/Choice.tsx` | Single choice as full-width radio rows (scales, menus, the language). The rows sit in `choice__rows`, a grid of equal rows (`--rows-equal`) half a pitch apart in the note register (`--field-gap`, 14 px; 8 px in the game), so no two frames touch and double (EVAL-10). Checked is a fill (`--c-raised`) with the same border weight and colour as at rest, never a heavier border; focus takes the accent edge. `heading` puts the question in the screen's `h1`, inside the legend; `help` sets the Hinglish under the question ("English with Hinglish help"). The checked row carries `choice__option--checked` (no `:has()`) |
-| `Checks` | `src/ui/Choice.tsx` | Any-number choice as full-width checkbox rows (the noticing probe, the code saved box, "Include my result"), the same rows, gap and states as `Choice`; takes `heading` and `help` too |
-| `Statement` | `src/ui/Statement.tsx` | A crosswise pair: statement A and statement B in two labelled boxes |
-| `Code` | `src/ui/Code.tsx` | The withdrawal code in large monospace groups of four; one tap selects it all; with `copy`, a copy button and a status line |
-| `Field` | `src/ui/Field.tsx` | A labelled text input (code entry) in a one-field form: Enter submits; `invalid` and `errorId` set `aria-invalid` and `aria-describedby`; `type="email"` for the optional stay-in-touch form (no upper-casing); `hint` (EVAL-12) is a small muted line under the label that the input is always described by (the recovery code's format), with `maxLength` and `inputMode` |
-| `Notice` | `src/ui/Notice.tsx` | A boxed message: `info`, `error` (`role=alert`, "!"), `ok` (`role=status`, a tick); takes an `id` for a field's description |
-| `Table` | `src/ui/Table.tsx` | The demo results table in a named, focusable scroll region, with suppressed cells marked and an `empty` line |
-| `Portrait` | `src/ui/Portrait.tsx` | A face (section 4c): the generated WebP headshot when `public/portraits/manifest.json` lists it (cast by slot, sex and tone, one-offs by `o{slot}-{sex}`, mascots by animal), on the panel's tint and halftone backdrop, with `width`/`height`, lazy loading except `eager` faces above the fold; otherwise the drawn SVG person or mascot animal (`look`), `role="img"` with an accurate `aria-label` ("woman, darker skin tone, glasses", "panda"), sizes `panel` (fills its card), `row` (72 px) and `then` (64 px); with `inset`, the mascot in the bottom corner, used on the reveal only, as the bridge: before it mascots only, after it faces only |
-| `Colleague` | `src/ui/Colleague.tsx` | A season colleague: `Portrait` panel on top (`cell`) or a 72 px face beside the words (`row`), name in display caps, cue lines ("Born in"), this job's description at 17 px (`--text-desc`, EVAL-10) and, in the help mode, its Hinglish under it in italic. All spans, so it can sit inside a button |
-| `Beat` | `src/ui/Beat.tsx` | The top of a decision page as a comic page (EVAL-10, section 4d's page grammar): panel 1, the last decision's `Then` panel (or a chapter's violet title panel); panel 2, a small drawn prop beside the scene caption; panel 3, the question in a caption box as the `h1` in sentence case (`--case-question`), its Hinglish under it in the help mode; 8 px gutters. The `h1` names panels 1 and 2 with `aria-describedby` |
-| `TapOrder` | `src/ui/TapOrder.tsx` | Tap-to-order ranking as portrait panels, two across on phones and auto-fitting from 600 px, every card the same size (`--rows-equal`): tapped cards are stamped 1st, 2nd, 3rd (`Stamp`) with a violet offset shadow; the last fills itself. Nothing advances on its own: "Confirm this order" confirms (EVAL-10; was "Lock in"). Tap a stamped card to take it back; "Clear the stamps" lifts them all; both sit in one `Actions` row. Back reopens it with the saved order stamped (`initial`); every tap announced politely |
-| `PickOne` | `src/ui/PickOne.tsx` | One colleague of two (the conduct picks): portrait panels side by side, a whole-card button that commits on the tap |
-| `Options` | `src/ui/Options.tsx` | A single choice (ordinary decisions, recall, the practice offer) as full-width buttons of equal size (a grid of equal rows, EVAL-10) that commit on the tap; never radios that auto-advance, because arrow keys would answer |
-| `QuickSplit` | `src/ui/QuickSplit.tsx` | Share a pool among three colleagues (EVAL-10, the one-tap pairs reverted) by tapping one number (0 to the cap) per colleague; rows of equal size. Nothing starts chosen: each row's `Stamp` is an empty dashed ring and no chip is pressed until a tap; the stamp then shows the number. `aria-pressed` chips, too-large numbers `aria-disabled`, the count left live. Nothing advances on its own: once all is shared "Confirm these shares" confirms; "Start again" clears; both in one `Actions` row; Back reopens it with the saved split exactly (`initial`) |
-| `AgreeGrid` | `src/ui/AgreeGrid.tsx` | Agree or disagree statements on one screen: one fieldset per statement, five native radios in a row numbered 1 to 5 with full spoken names ("1, Strongly disagree"); the key once, in a sticky header that stays at the top while the statements scroll, never repeated per row; fits 320 px at 44 px targets |
-| `StoryPick` | `src/ui/StoryPick.tsx` | The season picker: one card per story in a grid of equal rows (`--rows-equal`, every card as tall as the tallest at each width), a fixed-width art column with the drawn `PanelArt` cover centred, title and premise top-aligned, and the "After your rating." line pinned to the foot so the lines sit level; stories not open are `aria-disabled` (no emoji, no PENDING) |
-| `RangeLine` | `src/ui/RangeLine.tsx` | The position with range (EVAL-10, owner): one line from "Men first" to "Women first" with a dashed tick at "About equal", an ink dot at the position (the share of pairs where the woman came first, an even share counting half) and a shaded range around it (`--c-range`, ink-edged), from the maths in `config.season.rating.range` (PENDING v22, `src/story/range.ts`). One image with a spoken label; `compact` (the profile timeline) drops the end labels. Ink on the ground only; neither end is marked as right |
-| `ReadingList` | `src/ui/ReadingList.tsx` | Readings as a plain list, label then level, every level in the same ink and weight ("Leans towards men" looks exactly like "No lean read"); only "Not enough to say" is quieter. No colour reads as good or bad |
-| `ResultHero` | `src/ui/ResultHero.tsx` | The top of the result: one number to remember ("38 of 46 pairs where you put the man first"), one sentence saying what a pair is, the `DotGrid`, the tag and the sentences after its first (EVAL-12: the first repeated the tag), then the `RangeLine` and the pairs met most often (`Pairs`) as children; ink on grey only. A forming reading shows its heading, sentence, the range (hollow point) in words and the next step, no dots and no tag |
-| `Fold` | `src/ui/Fold.tsx` | A section that folds: native `details` with the `h2` in the summary and a drawn marker; the result's areas, the first open; the opened explanation's sections, all closed |
-| `UpdateReady` | `src/ui/UpdateReady.tsx` | "Update ready. Your season is kept." with an Update button, a fixed bar at the foot of the screen on paper with the ink rule above it (`role="status"`), shown when a new version of the installed app is waiting (EVAL-7); it never reloads on its own |
-| `SeasonMap` | `src/ui/SeasonMap.tsx` | The season map on the chapter-end screen (EVAL-8, concept D; moved out of the header by EVAL-10): six stops on one line (chapters 1 to 5 as numbered rounds, the finale square), done filled ink, the current one violet, the rest outlined. One `role="img"` with a spoken label. No card dots, no countdown, no motion; nothing in it is interactive |
-| `Details` | `src/ui/Details.tsx` | "Read the full details": a native `details`, closed, with a quiet display-face summary (a `--control` target, 56 px on the note pitch) and the complete text behind a screen's short points (consent, the content note, the result band). Nothing is cut; Enter or Space toggles it |
-| `DevNotes` | `src/ui/DevNotes.tsx` | Pending markers for the research team, folded, `data-dev`, rendered only by the Vite dev server (`import.meta.env.DEV`); never player copy |
-| `DotGrid` | `src/ui/DotGrid.tsx` | Equal-description pairs as dots (EVAL-12, from `ResultHero`): filled the man first, a ring the woman first, dashed neither, in 12 columns; one `role="img"` with the three counts spoken; `small` (220 px wide) and a visible `caption` for an area. The shapes, never a colour, carry the meaning |
-| `Glance` | `src/ui/Glance.tsx` | "At a glance" (EVAL-12): small multiples, one compact `RangeLine` per reading on the same 0 to 1 scale (women and men, the three areas, skin tone, religion), each with its label, a short status (the tag, or "Tagged after N more seasons") and its own end words; label and status beside the line from 600 px and on paper, above it on phones. A solid point is tagged, a hollow one still forming; each line is one image with the status, the range in words and the figures spoken |
-| `Tally` | `src/ui/Tally.tsx` | A count as a picture (EVAL-12): "68 / 68" in display figures beside a thin ink-framed bar filled to k of n, with a one-line caption; with `parts`, one bar split between two named groups (ink, then tan with a paper divider) and each part's count in words under it. One image with the full sentence spoken |
-| `Pairs` | `src/ui/Pairs.tsx` | The player's own decisions as compact rows (EVAL-12): where it happened (muted), then two name chips with "=" (equally strong descriptions) or "<" (the first one's was weaker), the colleague put first set first on the tan ground and marked "FIRST" in words, an optional count ("8 of 12"); the place beside the pair from 600 px and on paper. Names only, no portraits; each row one image with the whole sentence spoken |
-| `Columns` | `src/ui/Columns.tsx` | Two short blocks side by side from 600 px and on paper, stacked on phones (EVAL-12: an area's questions and habits). No frame, no colour |
-| `ShareCard` | `src/ui/ShareCard.tsx` | The summary card (EVAL-10): by default the season only ("I played Team Season: The warehouse. 77 decisions, 5 chapters, 8 colleagues. Try it yourself."); an unticked `Checks` box "Include my result" adds the women-and-men tag and one chance line from config. Religion and skin tone are never on it. Share (the device's share sheet, else copy) and a status line |
-| `Timeline` | `src/ui/Timeline.tsx` | The profile's past seasons (EVAL-12): a vertical line of dated entries, each with the story, "Past season, not a confirmed reading" (never a tag), a compact hollow `RangeLine`, a `note` where the change rule fired ("Your decisions changed in this season."), and a `Link` to its read-only report |
-| `Trend` | `src/ui/Trend.tsx` | The profile's trend (EVAL-12): the pooled women-and-men reading after each season as a point on a vertical "Men first" to "Women first" line with a dashed "About equal" rule, its range a shaded band joined season to season (`--trend-h` 160 px, ink on `--c-range`); a season where the change rule fired is a hollow square with its own range bar, and the band starts again after it. Month labels under the points; one `role="img"` whose label says every point in words. No colour says good or bad, nothing moves |
-| `Actions` | `src/ui/Actions.tsx` | The one action row on every screen (EVAL-10): the primary first, full width on phones and left-aligned from 600 px, then at most one quiet secondary on the same edge. `Page`, `TapOrder` and `QuickSplit` all use it, so no button sits at another indent; Back is never in it |
-| `IconList` | `src/ui/IconList.tsx` | Tight rows of a small drawn line icon (20 px, ink on the paper, tan fill; no face, skin or symbol) and one line of text, 16 px at 1.3 leading, the Hinglish under each in the help mode; two lists in a row are split by a hairline (EVAL-10's "Before you start" screen) |
-| `Group` | `src/ui/Group.tsx` | A named section whose parts (heading, text, each label with its field, the button, a notice) are spaced on the flow, one rule pitch in the note register, so nothing touches and fields and buttons keep the baseline grid; without `label` it is a plain div with the same spacing and no landmark (the share block, whose `ShareCard` names itself); `screen` (EVAL-11) marks a group that works on screen only (the result's profile, share and stay-in-touch groups), which does not print |
-| `Panel` | `src/ui/Comic.tsx` | Game register: an ink-ruled square box, tinted or paper; holds a scene and its question |
-| `Caption` | `src/ui/Comic.tsx` | Game register: a yellow narration box with a 1.5 px ink border and a 2 px offset shadow; ink text on yellow at 14.6:1 |
-| `Stamp` | `src/ui/Comic.tsx` | Game register: a 52 px round violet stamp tilted 8 degrees (a rank, a share); empty it is a dashed ring with nothing in it. `aria-hidden`: the button's name says the state |
-| `Splash` | `src/ui/Comic.tsx` | Game register: the violet halftone panel that opens a season, an episode, the reveal and the season's end, with the screen's `h1` in 38 px display caps and an italic line |
-| `Then` | `src/ui/Comic.tsx` | Game register: what came of the last decision, a small paper panel with the 64 px face of whoever led it and the story line in 16 px italic only (no recap of the answer; Back reopens it); always smaller than the new scene |
-| `Strip` | `src/ui/Comic.tsx` | Game register: an interlude as two or three panels, the first full width, each a yellow caption over a drawn scene (`PanelArt`); a named group |
-| `CastGrid` | `src/ui/Comic.tsx` | Game register: the cast as portrait panels over yellow name plates; `sheet` (four across, the week-one mascots) and `reveal` (two across on phones, four from 600 px: the reveal with the mascot inset and "Kiwi the bear is Huma.", the season's end with the jobs led) |
-| `PanelArt` | `src/ui/PanelArt.tsx` | Game register: the drawn scenes (crowd, table, crates, letters, chat, note, ledger, coffee, glance, board, backs, truck, dashboard; the season covers warehouse, newsroom, clinic), light inline SVG, decorative, no faces |
-
-## 4a. States of every component
-
-"Yes" is a state the component has and `pnpm ux` or X-9 checks; "n/a" does not apply. Every
-interactive state is also present on all three surfaces (the tokens re-point;
-no component knows its surface). Full before and after matrices:
-[reviews/component-states-2026-10-19.md](reviews/component-states-2026-10-19.md).
-
-| Component | Hover | Focus | Pressed | Checked | Disabled or limit | Error | Done | Drag | Long text at 320 | Forced colours | Reduced motion |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Button | Yes (pointer) | Ring | `--press` | n/a | `disabled`, all kinds | n/a | n/a | n/a | Wraps | Ring, GrayText disabled | No scale |
-| Choice | Border | Ring on the radio, row border | `--press` | Class and fill, same border weight, 160 ms | n/a | n/a | n/a | n/a | Wraps | Highlight outline | No scale, no transition |
-| Checks | Border | Ring on the box | `--press` | Class, 160 ms | n/a | n/a | n/a | n/a | Wraps | Highlight outline | As Choice |
-| SortList | Move buttons | Ring | `--press` | n/a | `aria-disabled`, says position | n/a | n/a | Lift, slide, settle | Wraps | GrayText at a limit | No lift, no slide |
-| Allocate | Steppers | Ring | `--press` | n/a | `aria-disabled`, says remaining | n/a | Tick, ok colour | n/a | Wraps | GrayText at a limit | No scale, no fade |
-| Character | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps | Figure keeps colour | n/a |
-| Statement | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps | Borders kept | n/a |
-| Field | Border | Ring and accent border | n/a | n/a | n/a | `aria-invalid`, described, cleared on edit | n/a | n/a | Wraps | Ring; dashed when invalid | No fade |
-| Code | n/a | Copy button ring | Copy button | n/a | n/a | n/a | "Copied" line | n/a | Wraps | Border kept | n/a |
-| Notice | n/a | n/a | n/a | n/a | n/a | "!" and edge | Tick and edge | n/a | Wraps | Edge kept | n/a |
-| Details | Underline | Ring | n/a | Open (marker turns) | n/a | n/a | n/a | n/a | Wraps | Ring | n/a |
-| Link | Thicker underline | Ring | Pressed colour | n/a | n/a | n/a | n/a | n/a | Wraps | Ring | No fade |
-| List | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps; empty renders nothing | System colours | n/a |
-| Text, Heading | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Long words break | System colours | n/a |
-| Table | n/a | Region ring | n/a | n/a | n/a | n/a | n/a | n/a | Scrolls in its region; empty line | System colours | n/a |
-| Page | n/a | Heading on arrival | n/a | n/a | n/a | n/a | n/a | n/a | Title wraps | Hairline kept | Instant scroll |
-| Portrait, Colleague | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps under the panel or beside a 72 px face | Picture keeps its colours (`forced-color-adjust: none`) | n/a |
-| TapOrder | 2 px ink offset | Ring on the card | `--press` | Rank `Stamp`, 3 px ink edge (`--ink-heavy`) and violet offset shadow, `aria-pressed` | n/a | n/a | "Lock in this order" once all are stamped; never on the last tap | n/a | Wraps | Highlight outline on stamped | No scale |
-| PickOne, Options | Border | Ring | `--press` | n/a | n/a | n/a | Commits on the tap | n/a | Wraps | Ring | No scale |
-| QuickSplit | n/a | Ring on a chip | `--press` | Filled chip, `aria-pressed`, the row's stamp shows the number; empty ring and no pressed chip before a tap | `aria-disabled` past what is left (dashed) | n/a | Commits when all is shared | n/a | Chips fit 320 at 44 px | Highlight outline on chosen | No scale |
-| AgreeGrid | Border | Ring on the point | n/a | Filled point (ink) | n/a | n/a | n/a | n/a | Five points fit 320 at 44 px; the key stays at the top | Highlight outline on chosen | No transition |
-| StoryPick | Violet offset shadow | Ring | `--press` | n/a | `aria-disabled` (not open), tinted, no shadow | n/a | n/a | n/a | Wraps | Ring | No scale |
-| Timeline, Trend, ReadingList, ResultHero, DotGrid, Glance, Tally, Pairs, Columns, Spectrum, Beat, Panel, Caption, Splash, Then, Strip, CastGrid, PanelArt | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | Wraps; the cast grid drops to two columns | Borders kept; pictures and the trend keep colour | n/a |
-| Fold, DevNotes | n/a | `summary` ring | n/a | Open marker ▾ | n/a | n/a | n/a | n/a | Wraps | Ring | n/a |
-| Stamp | n/a | n/a | n/a | Filled and tilted | Empty: dashed ring, upright | n/a | n/a | n/a | n/a | Border kept | n/a |
-| ShareCard | n/a | Button ring | Button | n/a | n/a | "cannot share" status | "Copied" status | n/a | Wraps | Border kept | n/a |
-
-**No state judges an answer.** Checked rows, a placed card and "All shared" confirm that an
-action happened; nothing is marked right, wrong, good or fair, nothing celebrates, and the
-tick on "All shared" and on done notices confirms completion of an action only.
-
-## 4b. The season story (EVAL-4, the game redesign)
-
-The season story is a fourth deployment (`season`, `src/story/`, `content/story.json`): one team
-season in five episodes, each opened by a title card and broken once by an interlude (a short
-scene with one Continue), on the owner's 80-decision layout (EVAL-5, Game 1's low branch, all
-counts PENDING v18): 4 mascot cards, 57 rating cards (19 per domain), then out of fiction the
-screening grid, the survey grid and the note, 6 form-B cards back in the story, the survey grid
-again and the recall item; about 26 minutes. The tool draws the story (candidates v17 3.17); the
-season card shows it with the newsroom and the clinic as "After your rating." (their pending
-marker is a `_pending` note in the content, never on screen).
-Applicants, complainants and vendors are one-off characters with the same `Colleague` card,
-drawn by the same portrait system at the medium tone with a look fixed by their id (section 4c),
-and no mascot inset; they carry caste and birthplace, the fixed cast sex, religion and tone. Agree
-or disagree blocks (screening, survey) are `AgreeGrid` screens; the recall and wrap items are
-`Options`; the noticing probe is `Checks` with one Done. Consequence lines are equal in
-valence, and the season's end lists the jobs each colleague led, with no outcome word. Its rules:
-
-- **One decision per screen.** Picks and ordinary decisions commit on their tap (`PickOne`,
-  `Options`); a ranking and a share wait for the player's "Confirm this order" or "Confirm these
-  shares" and never advance on their own (owner, 19 Oct 2026). A share goes to three colleagues
-  (`QuickSplit`; EVAL-10 reverted EVAL-8's one-tap pairs): the tied pair and a third with weaker
-  descriptions, nothing chosen at the start, the count left always shown. The next screen opens with its
-  consequence (`Beat`), and a quiet "Back: change my last decision" reopens the last decision
-  with its saved answer on screen. The answer given last is the one scored; each re-answer after
-  Back is counted and stored with the play as an `edit` item. Nothing counts down; no auto-advance waits.
-  The consequence is a small `Then` panel above the new scene and always smaller than it, the
-  story line only: no admin recap of the answer. No roster sits under a decision (EVAL-6 removed the
-  collapsed "Your team so far" heading that read as broken).
-- **A fixed cast.** Eight colleagues for the whole season, drawn portraits (`Portrait`, never
-  under 64 px on phones). In the first decisions each is a different animal mascot with a made-up
-  name, shown together on the opening's mascot sheet; the reveal turns each mascot panel into its
-  person with the mascot beside the face, once, and the caption "Kiwi the bear is Huma."; after the reveal, faces only Each builds a track
-  record, shown at the season's end and kept off the decision cards so equal notes stay equal.
-- **Consequences follow the notes only.** The consequence line is keyed by the merit tier of the
-  notes the player put first, never by who carried them; nothing marks a choice right, wrong or
-  fair.
-- **Readings (owner decisions O2 and O3, 19 Oct 2026).** Five levels from the cue's permutation
-  p: "Your decisions clearly lean towards ..." (strong), "Your decisions lean towards ..."
-  (moderate), "There's a hint your decisions lean towards ...; more seasons would tell"
-  (possible), "No lean read", "Not enough to say". The size is shown apart, as the decisive-pair
-  count ("38 of 46"). The quantiles live in `config.season.rating.levels` (PENDING v20; demo 0.99,
-  0.95, 0.85), never in player copy. With 70 balanced relabellings the smallest p on a cast cue
-  is 2/70, so strong cannot be reached at 0.99 (flagged for v20). An area names a lean on a cue
-  only when that cue's headline is at least possible; otherwise it shows its equal-notes
-  decisions as examples with no lean label. Caste and birthplace are read for groups only: no
-  per-person card, row or area card on the result page or the profile; religion and skin tone
-  stay.
-- **The result page** is out of fiction (the plain register) and comes after submit, top to
-  bottom in the owner's set order (19 Oct 2026, EVAL-6): the disarming opening first, in two or
-  three sentences (everyone's decisions lean somewhere; a view from outside; ask whether the
-  point that feels off could still be true); then the `ResultHero` for sex ("38 of 46 equal
-  pairs where you put the man ahead", the dot grid, the band, its sentence, `Spectrum` and the
-  reasons); since EVAL-12 every reading comes first "At a glance" (section 4g), so a player
-  with no sex reading still sees the readings they do have (owner decision 5); then "Your
-  decisions, area by area", one `Fold` per area (hiring and promotion, complaints and conduct,
-  sharing resources; the first open), each with a short narrative, its line and dots, "Where your
-  decisions followed the descriptions" as `Tally`s and "Worth a second look" with the player's
-  own pairs (`Pairs`), then the questions (prompts only, nothing asked or stored) and "How to keep
-  watch" (habits, free, no effect claimed) in `Columns`; the Internal
-  Committee line; the plain "Your answers are in" notice (no tick, no green); keeping it (an optional profile, the retake as a date); the `ShareCard`; and
-  an optional stay-in-touch form (name and email both optional, two separate unticked boxes,
-  stored apart from answers and profile). It says "Your result" (EVAL-10; never "attitude rating" or "bias"), and never
-  moralises; a card appears only where the decisions support it, so the bands can land
-  anywhere, and no weakness is dressed as a strength. No band is called unbiased; the no-lean
-  band reads "No lean read in your decisions". No paywall, no self-rated accuracy.
-- **The profile** (`#/profile`) is optional and pseudonymous, out of fiction; EVAL-12 builds it
-  (section 4f): "You now" pooled since the last restart, the readings with their season counts,
-  "This season", past seasons and the trend on demand, and account and privacy.
-
-### The season in chapters (EVAL-8; every count PENDING v21)
-
-The owner approved concepts A, B1, C and D (20 Oct 2026). **Five story chapters and a finale.**
-A chapter is one episode's form-A cards; its opening line (25 words or fewer) is folded into the
-first card's caption, the consequence stays on the next card's `Then` line, and there are no
-episode splash or interlude screens. Each chapter ends on a three-panel payoff strip (`Strip`)
-that follows two fixed cast slots' running stories, the same for every player, equal in valence
-and never contingent on an answer, then a "Saved on this phone" screen (note register) with
-"Start chapter n" (or "Start the finale") and a quiet "Stop here, carry on later". The finale
-holds screening, the first survey, the note, form B, the second survey, recall, the wrap's three
-items on one screen with one Done, the optional background questions, and one closing screen
-with the debrief, the withdrawal code and Submit; the result comes after it only. Ordinary
-decisions are back to the registered two (the tutorial and the season decision); eligibility and
-the language choice share one screen. **Saves.** The season is saved on the device after every
-answer and resumes in the same browser for 7 days, after which the save is deleted unsent;
-between the first survey's answer and the recall item nothing is saved, so a reload there
-returns to the first survey and the note's effect never straddles a break. The submitted record
-carries `meta.sit`, the number of sittings (1 to 6, a reopening at a save point counts), never a
-time. Back never leaves the story run it is in. Values: `content/config.json` `season.chapters`.
-
-## 4c. The comic register and the portrait system (EVAL-6, Direction C)
-
-The owner chose Direction C, "comic panels", from the three directions in the 19 Oct 2026
-review sheet. Its references come from the saved Lazyweb search "Equal Lens evaluator game:
-three visual directions" (19 Oct 2026, private to the owner's account): The New Yorker's cartoon
-view (a full-width drawing with its caption), The Atlantic's article (kicker, display headline,
-cover illustration), Duolingo's chat (dialogue carried by small cartoon avatars) and 222's
-result reveal (one sentence owns the screen, used for "38 of 46"); Episode and Choices
-(chaptered story with characters on every beat) are outside Lazyweb.
-
-**Pieces.** A screen in the game is built from panels: `Splash` (violet halftone, the `h1`)
-opens a season, an episode, the reveal and the season's end; `Then` (small, paper) says what came
-of the last decision; `Panel` holds a scene with its `Caption` (yellow, offset ink shadow) and the
-question in 30 px display caps; decisions are portrait panels (`TapOrder`, `PickOne`) or
-portrait rows (`QuickSplit`); a `Stamp` marks a rank or a share; interludes are a `Strip` of two
-or three `PanelArt` scenes with captions; the cast appears as a `CastGrid`. Hierarchy runs
-forwards: the new scene and question are always larger than the consequence of the last one.
-The episode track in the sticky top bar is progress ("Episode 2 of 5" and its pips; the page
-count was removed, owner 19 Oct 2026), never a countdown.
-
-**Generated images first, the drawing as the fallback** (owner decision, 19 Oct 2026). People
-and mascots are meant to come from generated WebP headshots made by a separate agent:
-`public/portraits/{slot}-{sex}-{tone}.webp` (the cast slot, 0 to 7, women 0 to 3 and men 4 to
-7; one pre-rendered image per skin tone, `l1`, `l2`, `d1`, `d2`) and
-`public/portraits/o{slot}-{sex}.webp` for one-off characters (their slot, 100 and up; one image
-each, as one-offs all share the medium tone), and `public/portraits/mascot-{animal}.webp`, with
-`manifest.json` listing what exists (a list of file
-names, or `{ "files": [...] }`). `src/ui/portraitImages.ts` fetches the manifest once from the
-app's own origin; `Portrait` shows an image only when the manifest lists it, so a missing file
-never shows a broken picture, and falls back to the drawing otherwise (no manifest, an unlisted
-slot or tone). The comic frame stays: the ink border and the
-tint and halftone backdrop sit around the image, which is drawn with `object-fit: cover`.
-Images carry their own size, `width="384" height="384"` (square, cropped to the panel by `object-fit: cover`), `loading="lazy"` except the faces above the fold (the
-first two cards, the first four cast tiles, the consequence face), and the portrait's label
-(the wrapping `role="img"` keeps the same `aria-label`). X-9 checks every branch.
-
-**Delivered (19 Oct 2026).** 160 WebPs, 384 x 384, opaque lavender ground, made with FLUX.2 klein
-4B (method, ratings and checks in `scripts/portraits/README.md`): 64 cast (slots 0 to 7, each with
-a matched woman and man sharing every prompt word but the sex noun, hairstyle and facial hair,
-each in the four tones), 88 one-offs (slots 100 to 143, both sexes, medium tone; both faces of a
-tied pair share glasses and facial hair) and 8 mascots. **Sex is drawn per slot**
-(`session.ts`): a random permutation puts the 4 women and 4 men on the 8 slots, so each slot's
-woman and man act as a control for the face; religion and tone stay the balanced factorial. In a
-one-off tied pair, which face carries the focal cue is drawn per player. The drawn fallback
-follows the same per-slot glasses and facial hair (`looks.ts`), so the label is right for either.
-The generated hair is black or dark brown, not one dark brown (to settle with P1).
-
-**The portrait system** (`src/ui/portraitArt.tsx`, `Portrait`), the fallback. One geometry for every person
-(head, neck, the uniform: a violet polo with a lanyard and badge, one expression) and one for each
-of the eight mascot animals (bear, panda, frog, koala, elephant, penguin, rabbit, tiger), drawn as
-light inline SVG of about 25 shapes with a 2.6 unit ink line and halftone shading (a pattern of
-ink dots on the shaded side of the face; a violet halftone corner on the lilac ground). Options:
-
-- Five skin tones (`l1`, `l2`, `m`, `d1`, `d2`), from the tone each cast member was drawn with;
-  one-off characters are all `m`.
-- Women: long hair, a bun, a plait, wavy hair with glasses. Men: curly hair with a beard, a side
-  parting with a moustache, a quiff with glasses, a crew cut. **Every hair colour is the same dark
-  brown** (`--art-hair`). Within each sex the four looks go by the colleague's place in the cast,
-  which the draw shuffles against religion and tone, so across players no look goes with a
-  religion or a tone (`src/story/looks.ts`).
-- One-off characters (applicants, complainants, other teams' colleagues) take a look fixed by a
-  hash of their id (slot and first name): the same character never changes between renders, and
-  as the name is a random draw the look is unrelated to the cue they carry.
-- **No attire layer.** Hijab, bindi, cap and tilak are not built or shipped; religion is carried
-  by names only, as before.
-- `role="img"` with an accurate label: sex, tone words, then glasses or facial hair ("man, darker
-  skin tone, beard"); a mascot is named by its animal.
-
-Colours come from the **art tier** of `tokens.css` (`--art-*`, raw colours for pictures only:
-line, ground, the dark brown, the uniform, five tone sets selected by `data-tone`, eight animal
-sets selected by `data-animal`), read only by `portrait.css` and `panelart.css`
-(design-check). Pictures keep their colours in forced-colours mode.
-
-**Contrast and halftone.** No text sits on halftone: captions, name plates and the splash text
-have solid grounds (ink on `#FFE27A` 14.6:1; white on violet 9.6:1, and 6.2:1 at the centre of one of the splash white dots at
-16 per cent, so AA holds everywhere). The halftone dots are 5 and 7 units apart in a 200-unit
-picture, about 4 px at 1x on a 170 px panel and 2 px on the 64 px face, which read as a tint
-rather than a moire at 1x and 2x (checked in the 19 Oct screenshots).
-
-**Old phones.** No image download, no font fetch from a third party, no library; one display and
-one text face added (about 78 KB of woff2 for the four files). Motion stays the 160 ms press;
-reduced motion makes it instant, and nothing moves on its own.
-
-## 4d. The prototype pass (EVAL-10, owner decisions of 20 Oct 2026)
-
-Plane: [EVAL-10](https://app.plane.so/the-equal-lens/browse/EVAL-10/). Review:
-[reviews/game-redesign-2026-10-19.md](reviews/game-redesign-2026-10-19.md), section "Prototype
-pass (EVAL-10)".
-
-- **Language first.** When the link lets the player choose, the first screen opens on the
-  language under a bilingual heading ("Choose your language / Apni bhasha chunein"); the two
-  eligibility items follow in the chosen language (English with the Hinglish under each until
-  one is chosen). The disclosure, consent and every later screen show only the chosen language.
-- **"Both, mixed" made real: "English with Hinglish help"** (option label "English with Hinglish
-  help / English, Hinglish madad ke saath"). English on screen; the Hinglish under every
-  question (card questions, statements, the wrap, recall, the probe, eligibility), every
-  description, the consent points and the message, smaller and in italic, `lang="hi-Latn"`.
-  Recorded as `meta.langs: 'both'`. Chosen over showing both languages in full, because two
-  full languages doubled every screen's length.
-- **Hierarchy, every screen:** one `h1`; an optional lead line (`Text lead`); body text; muted
-  meta (`Text muted`); one primary action and at most one quiet secondary in one `Actions` row;
-  Back as the `nav` link at the top left under the header. The chapter-end screen: "Chapter 1
-  done" is the `h1`, "Saved in this browser." the lead line, the `SeasonMap`, the next chapter
-  and the save line as body, "Your result comes after the finale." as meta. `pnpm ux` fails a
-  screen with two primary buttons, a Back that is not the top nav link, or a header holding
-  anything but the chapter label (EVAL-12).
-- **Cards per row (owner).** On phones (under 600 px) every decision is one card per row, each
-  card a compact horizontal layout: a 96 px thumbnail (`--thumb`) on a tinted column on the
-  left, the name and description on the right, the stamp top right. From 600 px a ranking of 4
-  is 2 x 2 and a pick of 2 side by side; a split's 3 cards are three in a row (the owner's
-  exception), face on top, the five number chips on one row at the card's foot, 44 px or more
-  each (the owner's floor for this row; 48 px everywhere else). Content is capped at 760 px
-  (`--measure`), the width at which five 44 px chips fit a card three across. On desktop the scene
-  row's prop and caption are equal-height panels, the caption centred. Measured at 390 x 844 over a whole season: no ranking page fits
-  one scroll (28 of 28 run 1,003 to 1,179 px), picks fit or nearly (844 to 861 px), splits run
-  1,051 to 1,294 px.
-- **Equal options.** Every option the player chooses between is the same size (ranking and
-  pick cards, split rows, option buttons, radio and checkbox rows: grids of equal rows), and
-  `pnpm ux` compares the boxes within each choice. The ranking cards fit every width from 320
-  to 1440 px (`pnpm ux` checks eight widths).
-- **The ruling** is a faint paper texture (`#F3ECDF` on `#FBF6EC`), so text sits on the pitch
-  without looking underlined.
-- **Practice, opt-in.** The opening ends with "Want a quick practice first?" and two equal
-  choices, "Practise first" and "Start the season" (no up-front instructions). Practice is one
-  rank, one share and one pick with the mascots at a picnic, each with a one-line hint; it is
-  never recorded or scored, and the record carries only `meta.practice` y or n. `content-check`
-  fails any practice item that names a person or a cue.
-- **Tags and the position with range.** "Clear pattern: men first", "Pattern: men first more
-  often", "Maybe a pattern: men first a little more often", "No pattern: women and men first
-  about equally" (and the same with "women first", or the cue's groups for religion and skin
-  tone); an untagged other reading says "Still forming". The thresholds stay in
-  `config.season.rating.levels`; the range maths in `config.season.rating.range` (PENDING v22).
-  Nothing pending in player copy.
-- **Always show; tag only once confirmed (owner, the research critic; v26 registers it).** A
-  reading that is not confirmed is never a dead end: "Your reading is still forming", a warm
-  sentence (no blame, never "cannot"), the position with its range where **the range is the
-  mark** (the point hollow or left out, `untagged.point`, hollow by default; a tagged reading keeps
-  the solid dot), the range in words ("Somewhere between slightly men-first and slightly
-  women-first", edges in `untagged.words`), the next step, and "Tagged after N more seasons on
-  your profile", N the registered opening count less the seasons pooled since the reading's last
-  restart, never projected per player. This build reads each season alone, so the line says "not
-  available yet" (`untagged.pooledInBuild`). Then "Start another season" (demo) and, with no
-  profile open, "Save to my profile". The other readings always show; the areas only once the
-  headline is readable (`sectionsBelow`). The profile timeline draws every season's range, an
-  untagged one with the hollow point.
-- **Split pools (owner: "why is it always 6?").** Every split card sets its own pool (4, 5, 6, 8,
-  9, 10 or 12, by what is shared; no value on more than 15 per cent of the 20 cards; no default
-  in code, `story-check` fails a missing pool). The per-person cap is about two thirds of the pool
-  (`splitCap`, `splitCapShare` 0.67), never under a third, so an even or near-even split is
-  always possible. The chips are 44 px columns that wrap (a cap of 8 is two rows of 5 and 4).
-  Scoring reads shares (units over the total) on the record and the sign of a difference in the
-  reading, never raw units, so pools compare (PENDING v26, which registers the variation).
-- **The scoring rule** holds in the game: no in-game copy says how answers are read
-  (`story-check` X-20 fails "reads you", "decisions that count", "rating", "equal pairs",
-  "chance" in the opening, chapters, picker, consent points or practice).
-- **One session length**, `sessionMinutes` (the estimate rounded up to 5 minutes), filled into
-  every "{minutes}"; no fixed minute count in season copy.
-- **Device-neutral saves:** "Saved in this browser", in both languages.
-
-- **Each story's own cast** (EVAL-10): `Portrait` looks up `{slot}-{sex}-{tone}.webp` for the
-  warehouse and `{story}-{slot}-{sex}-{tone}.webp` for every other story (newsroom, clinic; the
-  manifest's `casts` map), only when the manifest lists it; a missing file draws the SVG, never
-  another story's face. One-offs and mascots are shared. The drawn fallback's four cast tones
-  match the generated ones (the owner's approved range, 20 Oct 2026): `l1` #EDC6A2, `l2` #C9A080,
-  `d1` #A67C5F, `d2` #845940, and the one-off constant `m` #B88E6F.
-
-- **Language, then eligibility (owner).** When the link lets the player choose, the language is a
-  screen of its own under the bilingual heading; "Before the season" follows in the chosen
-  language only (English, Hinglish, or English with the Hinglish under every question and every
-  option). Nothing shows in a language the player did not choose.
-- **One help-mode style.** Every Hinglish help line (questions, options, statements and the
-  survey key, descriptions, consent points, icon rows) is `--text-help` (14 px), upright, muted,
-  body type, under its English. A question under an `h1` is body type at 17 px, never display
-  type, and sits one pitch above its options in the note register (`--question-gap`).
-- **One action pair.** A primary and at most one quiet action, stacked half a pitch apart on
-  phones (`--pair-gap`) and side by side from 600 px. The quiet action is small body type in
-  sentence case, muted ink, a thin underline, its text on the primary's left edge and a 48 px hit
-  area: quieter, never hidden (a consent's decline stays easy to use). "Read the full details" is
-  a small display label (16 px) one pitch above the actions.
-- **No season bar** (EVAL-12, owner): the header is the chapter label only; the season bar, its
-  tokens (`--bar-thin`, `--seg-gap`, `--bar-min`, `--c-track`, `--radius-pill`) and its check were
-  removed. Where the player is in the season shows on the chapter-end screen's `SeasonMap`.
-
-### The comic page grammar (EVAL-10, owner)
-
-Every decision screen is one comic page that flows from the last decision into the next, read
-top to bottom on a phone like a webtoon, panels separated by an 8 px gutter (`--gutter`):
-
-1. **What happened**: the last decision's consequence as the `Then` panel, the face of whoever
-   led it (a cast headshot) beside the line, labelled "After your last decision:". On a
-   chapter's first decision a **title panel** takes its place: violet, the kicker "Chapter 2 of
-   5", the chapter title and its opening line.
-2. **How it unfolds**: a small prop panel (one third wide, a drawn `PanelArt` prop from the art
-   kit, picked by the decision's area and fixed by its id; never a face) beside the scene in a
-   yellow caption panel (two thirds wide).
-3. **The decision**: the question in a caption box (the screen's `h1`, sentence case, with an ink
-   offset shadow), then the colleague cards as the page's largest panels on the same gutter,
-   every card the same size (faces cropped to 5:4 head and shoulders, `--card-face`), then the
-   action row.
-
-Rules: captions are 25 words or fewer (30 in Hinglish), checked by `story-check` X-20 over every
-scene, consequence, opening, payoff and practice scene; consequences follow the descriptions'
-merit only and are equal in valence (pre-test pending, PO-18, PO-39); no face is generated
-mid-story (cast headshots and inline SVG props only, so nothing heavy reaches an old phone);
-Back stays the top-left nav link and restores the saved answer. One scroll at 390 x 844: measured
-over a whole season (69 decisions), 15 fit and 54 do not (every ranking card, 1,030 to 1,220 px,
-and every split, 1,070 to 1,310 px; picks and ordinary decisions fit or nearly fit, 844 to
-930 px). Four colleague cards with 17 px descriptions do not fit one phone screen; the cards are
-the part that scrolls, under the question.
-
-## 4e. Print: the result as an A4 report (EVAL-11)
-
-The season result prints as a document; nothing else is designed for paper. The result page's one
-`Actions` row holds a secondary "Save as PDF" button (Hinglish "PDF ke roop mein save karein")
-that calls `window.print()`; the browser's own print dialog saves the PDF, so nothing new is
-fetched or generated in the app. Every rule lives under `@media print`: the page box and the
-re-pointed tokens in `tokens.css`, each component's own rules in its own sheet.
-
-- **Page.** `@page` A4 with 16 mm sides and top and 18 mm foot. On paper the note register drops
-  its ground and its ruling: white paper (`--c-bg` and `--c-surface` are `--white`), no outer ink
-  frame or frame padding, body 16 px at 1.5 leading, a 16 px flow. The result band keeps its tan
-  ground, and the dots and the range line print as drawn (`print-color-adjust: exact` on `html`);
-  both are CSS boxes, so they stay vector in the PDF.
-- **Open.** Every `Fold` (the areas) and every `Details` ("Read the full details") prints open:
-  `src/main.tsx` opens closed ones on `beforeprint` and closes them again on `afterprint`, and
-  `::details-content` is made visible as a fallback. The fold marker and the Details summary do
-  not print.
-- **Hidden.** The `Actions` row, the sticky story header and Back, `DevNotes`, and every
-  `Group` marked `screen` (the profile form, the summary card and its heading, the stay-in-touch
-  form).
-- **Pagination.** `Heading`, the page title, the fold's heading, the result band and the small
-  intro line before a list (`text--small`) are `break-after: avoid`; a `ReadingList`, a
-  `List`, a `Notice`, the `RangeLine`, the hero's number, the `DotGrid` with its caption, the
-  `Glance` strip, a `Tally`, a `Pairs` row and a `Columns` block are `break-inside: avoid`
-  (EVAL-12; `Glance`, `Columns` and `Pairs` take their wide layout on paper). Areas do not force a new page: a forced break let Chromium split a list
-  that was set to avoid it.
-- **Sample.** `knowledge/samples/sample-result-report.pdf` is a seeded player's result exported
-  through Playwright's `page.pdf` (A4, backgrounds printed, print media), with a footer on every
-  page: "Sample report from a prototype. Fictional colleagues; not a real result." and the page
-  count. The footer belongs to the sample export only, not to the app's own print.
-
-## 4f. The landing page, sign-in and the profile (EVAL-12, owner decisions of 20 Oct 2026)
-
-Plane: [EVAL-12](https://app.plane.so/the-equal-lens/browse/EVAL-12/). Review:
-[reviews/landing-profile-2026-10-20.md](reviews/landing-profile-2026-10-20.md).
-
-- **The landing page** (`#/`, `Landing`, game surface) is one phone screen (content ends near
-  745 px at 390 x 844; `pnpm ux` holds it under 844): a `Splash` with "Team Season" as the `h1`
-  and one line; the mascot sheet (`CastGrid`, four animals, no person, so no rated cue is shown)
-  with one `Caption`; three `IconList` rows (about {minutes} minutes in 5 chapters; a fictional
-  workplace; your result, shown with its range); "How this works" as a `Link`; one `Actions` row;
-  the prototype line as its footnote. Actions by state: signed out, "Start a season" and the quiet
-  "I've played before: sign in"; signed in, "Continue as <name>" and the quiet "Start a new
-  season"; whenever this browser holds an unfinished season, "Resume chapter N" (or "Resume the
-  finale") is the primary and the other becomes the quiet one. "Start a season" leads to the
-  language, then eligibility, then "Before you start". Outside demo mode there is no start
-  button: links come from the study team.
-- **How this works** (`#/how`, note register): what a season looks at (three list points), the
-  four registered sentences verbatim and in order as `IconList` rows, and privacy (five points).
-  It never says how answers are read (`content-check` fails pairs, descriptions being compared,
-  chance, scoring or permutation words in it).
-- **Sign-in** (`#/signin`, note register) is entering the recovery code: one `Field` with its
-  format as the `hint`, grouped in fours as it is typed; a character no code uses is named at once
-  (inline), a short code on sending, a code that opens nothing is the error `Notice` that the
-  field is described by; "Lost your code?" is a `Details` that says plainly the code cannot be
-  recovered because nothing identifying was stored. Signing in keeps the code in this browser
-  until "Sign out on this browser". The demo profile's code shows only in the dev-only `DevNotes`.
-- **The profile** (`#/profile`, note register): the `h1` is "<name>'s profile"; the lead line
-  counts seasons played and stories played against those left (`season.profile.storiesTotal`, no
-  repeats); the next season's date in words when a retake gap is set, never a countdown. **You
-  now**: the women-and-men reading pooled since the last restart as a `RangeLine`, solid and
-  tagged only once its seasons reach the registered count, otherwise hollow with the range in
-  words, the next step and "Tagged after N more seasons on your profile" (N the count less the
-  seasons pooled, never projected per player; "not available yet" with no count); the change line
-  ("Your decisions changed" only when the faster change rule fires, else "No change shown") and
-  its chance sentence. **Your readings**: a `ReadingList` of women and men, skin tone, religion,
-  complaints and conduct, hiring and promotion, sharing resources and the role pattern, each its
-  tag or "Still forming. Tagged after N more seasons" or "Not available yet", the untagged ones
-  quieter. **This season**: its own position and range, hollow and untagged. One `Actions` row:
-  "See past seasons" and the quiet "Account and privacy".
-- **Past seasons** (`#/profile/history`): the `Trend`, its note, and a `Timeline` of every season,
-  each "Past season, not a confirmed reading" with a link to its read-only report
-  (`#/profile/season/<n>`: the season's lines for women and men, religion, skin tone and the three
-  areas, all hollow and untagged, its saved reasons, and the Internal Committee line).
-- **Account and privacy** (`#/profile/account`): one `Group` each for the recovery code (`Code`
-  with copy), the display name, the optional email with its two opt-ins (kept apart at a random
-  key; emptying it removes it), the research opt-in, signing out, and "Delete my profile and all
-  my records", whose confirmation opens in place (an alert `Notice`, "Yes, delete everything",
-  the quiet "Keep my profile"). Every save button is secondary: no screen has two primaries.
-- **Readings in one word each** (the persona glossary, both languages): "result" for a season,
-  "reading" for what the profile pools, "season", "description", "chapter"; never a verdict on
-  the person; the warm "still forming" wherever a reading is untagged.
-
-**Checked against real products (Lazyweb, 20 Oct 2026).** Landing: Breeze's personality-test
-overview (duration and question count above one "Get started") and Storia's welcome (a short
-count of what is coming); we take the plain facts and one start action, and leave out "what you
-get" sales copy. Returning players: DoorDash's and Canva's "Continue as <account>" with another
-account as the quieter choice, Messenger's continue-or-log-out; ours is "Continue as <name>" and
-"Start a new season". Code entry: Spotify for Creators', Clear's and Life360's code screens; we
-take the single grouped field and the inline error, and leave out every resend countdown.
-Recovery code: MetaMask's secret phrase and Believe's tap-to-copy; we copy in place and say
-plainly it is the only way back. Profile: Duolingo's, Mimo's and Drops' profile headers (name and
-a few counts on top); we count seasons and stories, with no streak, league or XP. Trend: Strava's
-and Eufy's progress lines over time; ours adds the range as a band and breaks it at a change.
-Delete: Dipsea's and Life360's confirmations (the keep action beside the destructive one); ours
-confirms in the page rather than a modal.
-
-## 4g. The result page redesigned (EVAL-12, owner, 20 Oct 2026)
-
-Plane: [EVAL-12](https://app.plane.so/the-equal-lens/browse/EVAL-12/). Two owner changes: no
-repeated copy, and more pictures. Top to bottom: the title and the opening; **At a glance**
-(`Glance`: women and men, hiring and promotion, complaints and conduct, sharing resources, skin
-tone, religion; one line each on one scale, its intro first); the women-and-men `ResultHero`
-(number, dots, tag, the sentences after the tag's first, the range, "The pairs you met most
-often:" as `Pairs`); then one `Fold` per area: its narrative, its line (the reading only, never
-"Women and men in this area: ..."; the heading names the area), its `DotGrid` with a one-line
-caption, "Where your decisions followed the descriptions" as `Tally`s (hidden when there is none:
-no "Nothing to show here"), "Worth a second look" (a title, a `Tally` for a skin-tone or religion
-pattern, never for women and men, whose dots already show it, and the player's own `Pairs`), and
-the questions and habits in `Columns`. The religion-and-skin-tone `ReadingList` and the
-`PointCard` are gone (the strip says the same).
-
-- **The unlock rule on the result page.** A reading is tagged only once the seasons pooled since
-  the last restart (this one and an open profile's) reach its registered count
-  (`season.profile.readings`): women and men open at the first season; every area, skin tone,
-  religion line shows untagged on a first season (hollow point, the range in words,
-  "Tagged after N more seasons on your profile"), never "Pattern". A reading opened through a
-  profile takes the pooled reading's tag. `story-check` X-13 holds it over 180 seeded seasons.
-- **Visual rules.** Tokens only; ink, tan and paper, so no colour reads as good or bad, and shape
-  or words always carry the meaning with it (solid against hollow, filled against ring, "FIRST",
-  "=" and "<"); every picture is one `role="img"` with its sentence spoken. Print keeps the
-  wide layouts and never splits a strip, a tally, a pair row or a dot grid from its caption.
-- **The sample PDF** (`pnpm sample-pdf`, section 4e) is five A4 pages for the seeded men-first
-  player; the closing notices share the last page with the last area.
-
-## 5. Interaction patterns, checked against real products (Lazyweb, 19 Oct 2026)
-
-- **Sorting.** Spotify's playlist editor, Deezer's library customisation and Real Sports'
-  league order all reorder a list by a drag handle on each row, with a list that stays fully
-  visible. We take the handle and the visible list, and add what none of them has: **up and
-  down buttons on every row**, because drag alone fails keyboard users, screen readers, and
-  thumbs on small old phones. Each move is announced ("Priya, position 2 of 4") in a polite
-  live region. The starting order is the tool's random draw, so nothing is pre-sorted.
-- **Allocating.** Chime's split-direct-deposit screen splits one total across destinations by
-  number with the remaining amount always shown; sliders (eBay, Artsy price filters) suit a
-  range, not a fixed pool. We use **steppers per colleague and a remaining count**, and the
-  card cannot be confirmed until everything is shared. No slider: sliders are hard to set
-  exactly on a small screen and poor with a screen reader.
-- **Agreement scales.** Rise and Spring Health ask one statement per screen; Rise uses a
-  vertical list of labelled options, Spring Health a slider. We use **one item per screen and a
-  vertical list of fully labelled radio rows**: every point has its words, which matters for a
-  scale whose fair end alternates.
-- **Content note before the Inbox.** Content-advisory splash screens (the photosensitivity
-  warning pattern) put the note on its own screen before the material, with one action to go
-  on. We do the same, sober, with the Internal Committee route in the note.
-- **Debrief.** Quiz products (Duolingo, Sololearn) pair an answer with an explanation of why.
-  The evaluator must not: **no answer is ever marked right or wrong**, and the scoring
-  explanation opens only after all play closes. The debrief page is plain sections of prose
-  with headings, in the out-of-fiction register, opened with the code.
-
-- **Micro-interactions (Lazyweb, 19 Oct 2026, EVAL-3).** Reorder lists (Raycast, Vinyls,
-  Real Sports) keep handles and the whole list visible; we add the lift and a short slide
-  of the displaced rows so the move is seen, not inferred. Steppers with a ceiling (Grubhub's
-  item quantity, Michelin's guest count) grey the spent control and keep the value in view;
-  ours stay focusable and say the remaining line again. Inline code errors (Acorns, MSCHF,
-  Mill's promo code) sit under the field and colour its border; ours also mark the field
-  `aria-invalid`, point to the message and clear as soon as the code is edited. Tap-to-copy
-  (Believe's wallet address, CapCut's 2FA code) confirms in place; we take the in-place
-  confirmation and leave out CapCut's countdown. Questionnaires (Rays, Elevate, Lose It)
-  highlight the chosen row; ours does, without any sign of which row is better. Split screens
-  (Chime, Navan's remaining budget) keep the remainder visible; ours ticks when nothing is
-  left, as a fact about the action.
-- **Tap-to-order.** MetaMask's recovery-phrase check fills numbered slots by tapping words in
-  order, and Sleeper's onboarding picks leagues in order by tapping chips. We take tap order with
-  the number shown on each card as it is tapped, and add what ranking needs: the last card fills
-  itself, a numbered card can be taken back, Undo, and a spoken line per tap. It replaces drag in
-  the season story (3 taps for 4 cards, against a drag and a Confirm).
-- **Pick one of two people.** Couple Joy's "who is most likely to" and MSCHF's two-button
-  decision put two large choices on one screen with back navigation. Ours are whole colleague
-  cards that commit on the tap, with Back on the next screen.
-- **Faster allocation.** Bitrig's tip presets and Chime's split by number set an amount in one
-  tap rather than stepping it. `QuickSplit` gives one row of number chips per colleague (0 to a
-  cap), so a 6-unit split takes two or three taps instead of six.
-- **Agreement grid.** 15Five's manager survey sets statements as rows of a 1 to 5 scale on one
-  page; on phones Rise, 222 and Spring Health ask one statement per screen. We keep the rows (12
-  statements, one screen, one Done) and make each row a real fieldset with five native radios
-  whose spoken names carry the full words, so it works at 320 px, by keyboard and by screen
-  reader.
-- **Story-driven play.** Duolingo's stories carry a lesson with recurring cartoon characters,
-  and Tapotron's dialogue screens move a story one line at a time. NPQE (16Personalities' story
-  test, "a story that reads you") lets the player pick one of several short stories. We use a
-  drawn season shown beside the other two (one built, two PENDING v18), a fixed cast, and one line of what
-  happened at the top of each decision.
-- **The result page.** 16Personalities shows a named type, trait bars with percentages, and a
-  long free explanation; Storia and Tolan in Lazyweb show a named result with a paragraph and a
-  share action; Elevate names bands on a scale. We take the named band, the strength bar and the
-  long plain explanation, and add what a rating of attitudes needs: the reasons from the
-  player's own decisions, the shaded no-lean middle, and no self-rated "how accurate was this?".
-- **Summary card.** Result-sharing screens (Airbuds, Couple Joy) share a compact card. Ours
-  names the season and the band only, works for every band, and invites "Take it and compare",
-  with no score table.
-
-## 5a. Accessibility rules set by the October audit
-
-- **One `h1` per screen**, and focus on it when the screen arrives. A screen whose question is
-  the page puts the question in the `h1` inside the legend (`Choice heading`). A state change
-  that is a new screen (a card's continuation, the recall item's continuation, a finished
-  withdrawal) is a new `stepKey`, so focus moves with it. The disclosure alone has no heading,
-  as registered.
-- **A control at its limit is `aria-disabled`, never `disabled`**, when the person is likely
-  to be on it: the up and down buttons at the ends of the ranking list and the allocation
-  steppers. A `disabled` button drops keyboard focus to the page; an `aria-disabled` one keeps
-  it and does nothing. Inactive glyphs stay faint, which WCAG 1.4.3 allows.
-- **No skip link**: nothing focusable comes before `<main>`, and focus already lands on the
-  heading. If anything focusable is ever added to the header, add a skip link with it; `pnpm
-  ux` fails until then.
-- Results shown on the same screen (a bad code, the explanation's release date) are `status`
-  or `alert` notices and leave focus on the button that asked.
-
-## 6. Writing on screens
-
-British spelling; no em or en dashes; sentence case; second person; short sentences.
-Buttons name what happens ("Submit my answers", "Delete my records"). The word "fair" is never
-used in anything shown before the explanation page, and no screen before it says how
-attitudes are scored. The season result is a plain band line ("A strong season. The team
-stayed ahead of plan.") and never names what decides the season. The recall item offers the
-note the player saw, three made-up notes (a statistic on another topic, no instruction), in
-an order shuffled per player, and "I do not remember" last, and each explanation quotes only the notes its
-game shows (owner decisions O1 to O3, [ux audit](reviews/ux-audit-2026-10-19.md)); both are held
-by `content-check`. `scripts/content-check.ts` checks the dashes and American spellings, and fills every gendered
-text as a man, a woman and neutral: a gendered word carries its verb ("they were", never "they
-was") and takes a capital when it opens a sentence, both done by the generator
-(`src/engine/text.ts`), never string by string. Every release and withdrawal date comes from
-`releaseOf` in `src/engine/config.ts` and is shown as "15 March 2027" (`formatDate`).
-
-**Glossary (EVAL-10, the persona copy audit), one word per concept in both languages:** the
-card text is a "description"; the mid-season text a "message"; a part of the season a
-"chapter" (the owner's share card says "5 chapters", so "chapter" wins over the audit's
-"episode"; "round" is gone); a choice a "decision"; the comparison "women and men" / "mahila aur
-purush"; the payoff page "result" (never "attitude rating"); luck "chance" / "ittefaq"; the key
-"your code"; removing answers "Delete my answers"; a problem raised "problem" / "pareshaani";
-"comp-off", "roster"; digits, never number words; plain Hinglish with no Sanskritised words
-("nakhra", "utpeedan", "svabhavik" are gone). Buttons say "Confirm this order" and "Confirm these
-shares", never "Lock in"; the consequence panel is labelled "After your last decision:".
-
-The season story's words follow the same rules, held by `scripts/story-check.ts`: no "fair"
-and no "bias" in any story text, descriptions carry no pronoun, consequences use only `{name}`
-and `{g:}`, and every number v18 will fix is marked PENDING v18 in `content/config.json`
-(`season.pendingV18`). **No player-facing string says PENDING** (X-16, EVAL-6): markers live in
-underscore keys of the content and reach the research team only through the dev-only
-`DevNotes` panel. There is no exception: the season disclosure's sentence 3 is the interim line
-"Attitudes are read; you see yours." (Hinglish "Attitudes padhe jaate hain; aapko apne dikhte
-hain."), set in `src/engine/config.ts` (`seasonSentence3`) with a comment that it awaits the
-owner's wording, never a placeholder.
-
-**A card's question is the question only (owner, 19 Oct 2026).** "Whose account do you rely on
-most?", never "... Put them in order."; the helper line under it carries the action ("Tap them
-in order, first choice first."; a split's "6 days to share, up to 4 each."). An allocation card
-asks "Who gets the 6 training days?" rather than "Share the 6 training days.". X-2 fails any
-ranking, allocation or pick question that repeats its helper's action words.
-
-**A reload resumes (owner, 19 Oct 2026).** A season in progress is kept on this device
-(`src/store/progress.ts`: localStorage under the local store, never sent), so a refresh mid-season
-reopens the same screen with the same answers and the same draw (the season's seed, so cast,
-cues, episodes, cards and mascot pairing are redrawn identically). The one-time link refuses a
-reload only once the session is submitted or withdrawn; a reload of the result shows the same
-result. `pnpm e2e` reloads at week one, mid-episode and the result.
-
-## 6a. The installed app (EVAL-7)
-
-Team season is a PWA. `public/manifest.webmanifest`: name and short name "Team season",
-`display: standalone`, `start_url` and `scope` "./", `theme_color` `--violet` (#553286) and
-`background_color` `--note-paper` (#FBF6EC), held to the tokens by X-4. Icons are drawn by
-`pnpm icons` (`scripts/icons.ts`) in the comic register and never show a face: a square
-ink-ruled panel on caption yellow holding the violet round stamp, tilted 8 degrees, with "TS"
-in Big Shoulders; 192 and 512 px, a maskable 512 px with the art inside the central 60 per cent,
-`apple-touch-icon` at 180 px and a 32 px favicon. `index.html` carries the iOS meta tags.
-The service worker (`scripts/pwa/sw.js`, written into the build with its precache list by
-`scripts/pwa/plugin.ts`; none on the dev server) precaches the shell, hashed assets, fonts,
-icons and every portrait; `index.html` is network-first, everything else cache-first; it never
-touches another origin, so nothing from Firebase is cached, and it never touches localStorage,
-where the season in progress lives. A new version waits for the player's tap on `UpdateReady`;
-nothing reloads mid-season on its own. `pnpm pwa` (X-18) checks installability (Chrome's own
-check, the one Lighthouse reads), the precache, an offline reload that resumes the season, and
-the update prompt.
-
-## 7. Old phones
-
-The season story draws its people and mascots as inline SVG (section 4c), so its look no longer
-depends on the phone's emoji font. No web fonts block rendering (`font-display: swap`); emoji are Unicode 6.0 animals plus the
-human figures with skin-tone modifiers (Android 7 and later draw the modifiers; older phones
-show the tone swatch beside the figure, which still carries the cue, a named limitation). No
-animation library, no drag library: the drag is Pointer Events on the handle, with the
-buttons as the always-working path.
+| `Shell` | The frame: series line, `main`, the tab bar after it. Moves focus to the new screen's `h1` when `screen` changes | one per screen |
+| `Nav` | Today, Board, Week | current (`aria-current`, a paper rule above), pressed |
+| `Masthead` | Lugdi: the cover band (title, blurb, price roundel) and the painting strip. Station: the enamel board (city script line, title, city, sub line) in yellow, blue or white | Lugdi grounds by genre; Station board tones |
+| `Title` | A screen's display heading (results, board, onboarding) | none |
+| `Text`, `Heading`, `Link` | Body text (s, m, l), a section heading, a text link | link pressed |
+| `Stack`, `Cluster`, `Split` | Layout for screens, which write no styles | gap s, m, l |
+| `Button` | The full-width action, primary or secondary. `useCommit` gives it the hit-stop | rest, hover, pressed (sinks into its shadow within 60 ms), focus ring, inactive (dashed, `aria-disabled`), stamped (ink, "Locked", tilted, held 140 ms) |
+| `Choices` | A radio group of equal options: rules, responses, languages, road names, a pick of names. Arrow keys move | rest, pressed, chosen (ink), locked (the chosen one stays, the rest go dashed) |
+| `Options` | The container of one set of answer options; `pnpm ux` checks its children look alike | none |
+| `Person` | One person as information or as an option (radio, checkbox or button): portrait or monogram, name, record, stats, quote, an aside (punches) and a mark (slot or position) | rest, pressed, chosen, inactive, marked, mark empty (dashed) |
+| `Portrait` | The cast member in the skin's art (`pulp-*` or `enamel-*`), or a monogram plate for a new character. Decorative (`alt=""`) | sizes s, m, l, fill; round |
+| `Stats` | Numbers with labels as a description list | none |
+| `Slots` | The places to fill (jobs, berths) as buttons | empty (dashed), filled (paper), armed (a person is chosen and waiting) |
+| `Punches` | Checks as punch holes, filled when spent; holes stay | per hole on or off |
+| `Voice` | A character's pressing line with a round portrait | none |
+| `WordNote` | A note with blanks; each blank is a button | empty, active (ink with a yellow rule), filled |
+| `WordBank` | The shared word bank; every word fits either note | rest, pressed, inactive |
+| `Swipe` | Quick-fire keep or cut: drag the card, or the two buttons (always there, and the keyboard path) | resting, dragging (follows the finger, no transition), released (springs back over `--dur-move`) |
+| `Slider` | A share guess, 0 to 100 in fives, the number large | focus |
+| `Score` | The headline as its sum: score = consistency + practice | none |
+| `Figures` | Clear numbers, one per row | none |
+| `Streak` | The count and the fortnight strip: Lugdi spines, Station tickets | played, forgiven (red spine or white ticket), missed, today (outlined), still to come (dashed) |
+| `Ranks` | The board table: top ranks, a gap, the player's row. Never a bottom list | your row (plate) |
+| `Reflect` | A twin pair side by side for the Sunday look back; marks "You chose", gives no verdict | chosen mark |
+| `Field` | A labelled search box with its action (find a friend) | focus |
+| `NoteBox` | The private Sunday note, stored on the phone only and never read by the scoring | focus |
+| `Notice` | A plain dashed label: sample data, drafts, status | live (role status) when it reports a result |
+| `Plate` | A surface for information, not an option: plate, sheet, ticket, band, or the ground with an accent rule | tones |
+| `UpdateReady` | A new version is waiting; nothing reloads until the tap | none |
+
+**Mechanic boards (`src/boards`), the puzzle engine's UI.** One per step kind, registered in
+`src/boards/index.tsx` with its commit label: `assign` (lock a rule with `Choices`, then the
+people appear; tap a `Person`, then a `Slots` place), `pick` (two `Person` tiles, or rows with an
+even option), `checks` (`Voice`, `Person` rows with `Punches`, then `Choices`), `team` (`Person`
+checkboxes, `Voice`, `Choices` of responses), `rank` (lock a rule, then tap `Person` rows in
+order; marks show CNF, RAC, WL), `words` (`WordNote` twice and a `WordBank`), `swipe` (`Swipe`)
+and `crowd` (`Slider`). Every board orders its people per player and step (a hash of the
+player's seed, date, step and person), so no twin is always on the left.
+
+## 5. Motion
+
+- **Press feedback within 100 ms.** Every pressable sinks by `--press-shift` (2 px) over
+  `--dur-press` (60 ms); the Lugdi button's red offset shadow shortens with it and a paper ring
+  appears. The ring is the part that survives reduced motion.
+- **Hit-stop on commit.** The commit is stamped at once (ink, "Locked", tilted by
+  `--stamp-tilt`, with no transition) and held still for `--dur-hitstop` (140 ms, `HIT_STOP_MS`
+  in `src/ui/Button.tsx`) before the next screen. The hold is the only timeout in the app.
+- **Reduced motion is a designed state**, not motion switched off by accident: under
+  `prefers-reduced-motion: reduce` the travel, the tilts and every transition time go to 0,
+  while the ring on press, the stamped colour and the 140 ms hold stay, so a press and a commit
+  still read as events. The swipe card follows the finger (direct manipulation) and returns
+  with no animation.
+- No animation library and no timers on screen.
+
+## 6. Screens
+
+`#/` today (the day's cover and the one action: play, carry on, see the result, or open the
+week on Sunday; the road name, practice, the streak, the language switch); `#/play` the steps;
+`#/result` the day's result; `#/week` the week (on Sunday the back cover or the PNR slip, with
+the look back and the closing action; other days the week so far); `#/board` the board and
+friends; `#/dev` the prototype menu. First run: language, then a road name. The tab bar sits at
+the end of every screen but play, so nothing focusable comes before the content.
+
+**Date override (prototype).** `?day=1` to `14` (the anchor fortnight, 19 Oct to 1 Nov 2026) or
+`?date=YYYY-MM-DD`, in the hash's query or the page's; it is held for the tab until `?day=0` or
+"Back to the real date" in `#/dev`.
+
+## 7. Scoring as the player sees it
+
+- **Lean** is the size only, 0 to 100, labelled "direction hidden". Each mirrored judgement
+  gives a signed unit (positive when the woman's side came out better); the lean is the
+  absolute value of their sum over the count plus 2 (shrinkage, so one choice is never a
+  verdict). The sign never leaves `src/engine/score.ts`. Favouring women costs exactly what
+  favouring men costs, and a player who overcorrects shows a lean like any other: lean is
+  each player's own absolute lean.
+- **Consistency** (0 to 100) is the mean of the parts present: rules kept (the player's own
+  locked rule), matching cases treated alike (mirrored gossip lines, and twins that come back
+  days later with the genders swapped), check-spending parity (the gap in checks between
+  matching records) and word-choice parity (the gap between two notes' words); over a week,
+  evenness (100 minus the lean) is added.
+- **Headline score = consistency + practice**, always shown as its sum. Practice is 10 per
+  puzzle solved and 10 for closing the week; the board ranks practice alone.
+- A twin's first half shows no consistency number ("Some of today's choices count later in
+  the week."); the returning half shows the matched case. The transfer day shows no score.
+- The streak counts days played; one missed day in each ISO week is forgiven and shown.
+- The Sunday look back shows a twin pair side by side, asks "What was different?" and gives
+  no verdict. The optional note stays on the phone and is never read by anything.
+
+## 8. Copy rules
+
+- British spelling; no em or en dashes (the middle dot `·` separates); sentence case except
+  Lugdi display type, which is set in capitals by CSS, never in the strings.
+- **Minimal reading** (owner): prompts at most 18 words, blurbs 12, quotes, lines, records and
+  findings 14, titles 6 (held by `content-check`). Stats are numbers, not sentences.
+- **No visible timers**, and no word of seconds, countdowns or hurrying.
+- **Symmetric answer options**: one component and one tone per set; mirrored people share the
+  same record, numbers, findings and word bank; each mirror is one woman and one man.
+- Never say which way a player leaned. Never call a player fair or biased. The board reads "by
+  practice".
+- Sample data says so on the screen it appears on (the board, the crowd figure).
+- **Languages**: English is the source; Hindi (Devanagari) is a draft, marked `_status: draft` in
+  `content/i18n/hi.json` and said on the language screen. Every string has a Hindi draft with
+  the same `{slots}`. Station boards carry the city's own script line as a draft too.
+- Road names are generated from place, time and thing words (`content/handles.json`), never a
+  person's word, so no handle carries a gender; a number is added only when a name is taken.
+
+## 9. Accessibility
+
+One `h1` per screen, focused on arrival (no ring: headings are not controls). Inactive controls
+are `aria-disabled`. Radio groups take arrow keys. Every mark in the streak says its state in
+words. The board is a table with a caption. Portraits are decorative; names are always written.
+All checked by `pnpm ux` at three widths.
