@@ -50,7 +50,7 @@ export function StreakStrip(props: { saved: Saved; date: string }) {
   return (
     <Streak
       label={t('streak.label')}
-      count={t('streak.days', { n: s.count })}
+      count={s.count === 1 ? t('streak.one') : t('streak.days', { n: s.count })}
       note={t('streak.forgiven')}
       marks={marks(played, props.date).map((m) => ({ ...m, label: t(key[m.mark], { date: date(m.date) }) }))}
     />

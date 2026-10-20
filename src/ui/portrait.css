@@ -5,7 +5,7 @@
   width: var(--portrait-m);
   height: var(--portrait-m);
   object-fit: cover;
-  object-position: center 22%;
+  object-position: var(--portrait-focus);
   border: var(--edge) solid var(--c-edge);
   border-radius: var(--radius-plate);
   background: var(--c-sheet);
@@ -24,7 +24,7 @@
   aspect-ratio: 1;
 }
 .portrait[data-round='true'] {
-  border-radius: 50%;
+  border-radius: var(--round);
   border-color: var(--c-display);
 }
 .portrait__mono {

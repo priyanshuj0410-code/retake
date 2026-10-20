@@ -1,6 +1,6 @@
 /**
  * Writes dist/sw.js at the end of a production build (EVAL-7): the template in scripts/pwa/sw.js
- * with every file the build emitted (the shell, hashed scripts and styles, fonts, portraits,
+ * with every file the build emitted (the shell, hashed scripts and styles, fonts, art,
  * icons, the manifest) as the precache list, and a version hashed from their contents. The dev
  * server has no service worker.
  */
@@ -17,7 +17,7 @@ const walk = (d: string): string[] =>
 export function serviceWorker(): Plugin {
   let outDir = 'dist'
   return {
-    name: 'team-season-sw',
+    name: 'elt-sw',
     apply: 'build',
     configResolved(c) {
       outDir = resolve(c.root, c.build.outDir)

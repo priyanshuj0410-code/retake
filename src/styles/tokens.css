@@ -23,7 +23,6 @@
   --station-yellow: #f7c600;
   --station-blue: #0f4c9c;
   --station-rail: #1c1c1c;
-  --station-flap: #262626;
   --station-card: #e9dfc4;
   --station-dim: #6f6f6f;
 
@@ -34,22 +33,16 @@
   --px-5: 5px;
   --px-6: 6px;
   --px-8: 8px;
-  --px-10: 10px;
   --px-12: 12px;
   --px-13: 13px;
-  --px-14: 14px;
   --px-15: 15px;
   --px-16: 16px;
   --px-17: 17px;
-  --px-20: 20px;
   --px-22: 22px;
   --px-24: 24px;
   --px-28: 28px;
-  --px-32: 32px;
   --px-36: 36px;
-  --px-40: 40px;
   --px-44: 44px;
-  --px-48: 48px;
   --px-56: 56px;
   --px-64: 64px;
   --px-96: 96px;
@@ -90,7 +83,6 @@
   --gap-m: var(--px-12);
   --gap-l: var(--px-16);
   --gap-xl: var(--px-24);
-  --gap-2xl: var(--px-32);
   --gutter: var(--px-16);
 
   --edge: var(--px-2);
@@ -118,6 +110,8 @@
   --measure: 30ch;
   --mask-fade: linear-gradient(transparent, #000 30%, #000 70%, transparent);
   --art-zoom: 116%;
+  --round: 50%;
+  --portrait-focus: center 22%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -134,8 +128,6 @@
    grounds, and yellow only on display titles. Red is never text: title shadows, the price
    roundel, the button's offset shadow and the forgiven spine. */
 [data-skin='lugdi'] {
-  --c-ink: var(--lugdi-ink);
-  --c-paper: var(--lugdi-paper);
   --c-ground: var(--lugdi-night);
   --c-on-ground: var(--lugdi-paper);
   --c-plate: var(--lugdi-yellow);
@@ -153,8 +145,6 @@
   --c-selected: var(--lugdi-ink);
   --c-on-selected: var(--lugdi-paper);
   --c-display: var(--lugdi-yellow);
-  --c-flap: var(--lugdi-ink);
-  --c-display-flap: var(--lugdi-yellow);
   --c-edge: var(--lugdi-ink);
   --c-edge-ground: var(--lugdi-paper);
   --c-muted-edge: var(--lugdi-dim);
@@ -193,8 +183,6 @@
 /* Station: railway enamel boards. Yellow and white boards carry ink; the blue board and the
    platform black carry paper. Split-flap amber is the one accent, on flap letters only. */
 [data-skin='station'] {
-  --c-ink: var(--station-ink);
-  --c-paper: var(--station-paper);
   --c-ground: var(--station-rail);
   --c-on-ground: var(--station-paper);
   --c-plate: var(--station-yellow);
@@ -212,8 +200,6 @@
   --c-selected: var(--station-ink);
   --c-on-selected: var(--station-paper);
   --c-display: var(--station-yellow);
-  --c-flap: var(--station-flap);
-  --c-display-flap: var(--station-yellow);
   --c-edge: var(--station-ink);
   --c-edge-ground: var(--station-paper);
   --c-muted-edge: var(--station-dim);

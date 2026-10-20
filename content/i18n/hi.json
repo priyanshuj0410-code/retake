@@ -22,7 +22,6 @@
   "today.level": "स्तर {n}",
   "today.no": "अंक {n}",
   "today.practice": "अभ्यास",
-  "today.streak": "लगातार",
   "weekday.1": "सोमवार",
   "weekday.2": "मंगलवार",
   "weekday.3": "बुधवार",
@@ -135,5 +134,6 @@
   "dev.day": "दिन {n} · {date} · {object}",
   "update.ready": "नया वर्ज़न तैयार है।",
   "update.button": "अपडेट करें",
-  "board.band": "आपका दायरा"
+  "board.band": "आपका दायरा",
+  "streak.one": "1 दिन"
 }

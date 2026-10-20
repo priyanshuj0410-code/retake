@@ -21,7 +21,6 @@
   "today.level": "Level {n}",
   "today.no": "No. {n}",
   "today.practice": "Practice",
-  "today.streak": "Streak",
   "weekday.1": "Monday",
   "weekday.2": "Tuesday",
   "weekday.3": "Wednesday",
@@ -134,5 +133,6 @@
   "dev.day": "Day {n} · {date} · {object}",
   "update.ready": "A new version is ready.",
   "update.button": "Update",
-  "board.band": "Your band"
+  "board.band": "Your band",
+  "streak.one": "1 day"
 }

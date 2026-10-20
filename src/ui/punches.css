@@ -7,7 +7,7 @@
 .punches__hole {
   width: var(--hole);
   height: var(--hole);
-  border-radius: 50%;
+  border-radius: var(--round);
   border: var(--edge) solid currentColor;
 }
 .punches__hole[data-on='true'] {

@@ -64,7 +64,7 @@ export function Week(props: { date: string; go: (h: string) => void }) {
         chosen: ans?.choice === id,
       }))
     if (sun.skin === 'lugdi')
-      return view(a.step, ansA).map((p) => ({ label: t(`weekday.${a.day.weekday}` as UiKey), people: [p] }))
+      return view(a.step, ansA).map((p) => ({ label: `${t(`weekday.${a.day.weekday}` as UiKey)} · ${p.name}`, people: [p] }))
     return [
       { label: t('week.left'), people: view(a.step, ansA) },
       { label: t('week.right'), people: view(b.step, ansB) },

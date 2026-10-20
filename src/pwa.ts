@@ -2,7 +2,7 @@
  * The service worker's page side (EVAL-7). Production builds only: it registers /sw.js, checks
  * for a new version when the page is shown again, and reports a waiting version to the screen,
  * which offers "Update". Nothing reloads on its own: the page reloads only after the player taps
- * it, and a season in progress resumes from this device's save (src/store/progress.ts).
+ * it, and a puzzle in progress resumes from this device's save (src/store/index.ts).
  */
 type Listener = (apply: () => void) => void
 const listeners = new Set<Listener>()

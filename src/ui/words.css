@@ -1,4 +1,4 @@
-/* @owns note note__who note__text note__blank bank bank__word */
+/* @owns note note__text note__blank bank bank__word */
 .note {
   display: flex;
   gap: var(--gap-m);
@@ -7,11 +7,6 @@
   border-radius: var(--radius-plate);
   background: var(--c-sheet);
   color: var(--c-on-sheet);
-}
-.note__who {
-  font-family: var(--font-display);
-  font-weight: var(--weight-display);
-  font-size: var(--text-l);
 }
 .note__text {
   margin: 0;

@@ -1,7 +1,6 @@
 import { totalPractice } from '../engine/results'
-import { streak } from '../engine/streak'
 import { useT } from '../i18n'
-import { playedDates, store, useSaved } from '../store'
+import { store, useSaved } from '../store'
 import { Button, Figures, Masthead, Notice, Shell, Stack } from '../ui'
 import { dayOf, handleOf, StreakStrip, TabBar, useMeta } from './common'
 
@@ -41,7 +40,6 @@ export function Today(props: { date: string; go: (h: string) => void }) {
         rows={[
           { label: t('board.nameCol'), n: handle },
           { label: t('today.practice'), n: num(totalPractice(saved)) },
-          { label: t('today.streak'), n: t('streak.days', { n: streak(playedDates(saved), props.date).count }) },
         ]}
       />
       <StreakStrip saved={saved} date={props.date} />

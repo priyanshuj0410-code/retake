@@ -42,7 +42,7 @@
   height: var(--portrait-m);
   display: grid;
   place-items: center;
-  border-radius: 50%;
+  border-radius: var(--round);
   background: var(--c-roundel);
   color: var(--c-on-band);
   font-size: var(--text-xs);

@@ -1,15 +1,15 @@
 /*
- * Team season's service worker (EVAL-7), written into dist/ by scripts/pwa/plugin.ts with the
- * build's file list and version. It precaches the app shell, the fonts and public/portraits so
- * a season plays offline once loaded. index.html is network-first, so an update arrives on the
+ * Equal Lens Daily's service worker (EVAL-7, kept for the trainer in EVAL-13), written into dist/ by scripts/pwa/plugin.ts with the
+ * build's file list and version. It precaches the app shell, the fonts and public/art so
+ * the daily puzzle plays offline once loaded. index.html is network-first, so an update arrives on the
  * next load; everything else is cache-first from this version's precache. Only this origin's
  * GET requests are touched: Firebase (another origin) and anything cross-origin pass straight
- * to the network and are never cached. It never reads or writes localStorage, where the season
- * in progress lives, and a new version waits until the player taps "Update" (no reload mid-season).
+ * to the network and are never cached. It never reads or writes localStorage, where the player's days
+ * live, and a new version waits until the player taps "Update" (no reload mid-puzzle).
  */
 const VERSION = '__VERSION__'
 const PRECACHE = __PRECACHE__
-const CACHE = `team-season-${VERSION}`
+const CACHE = `elt-${VERSION}`
 const SHELL = './index.html'
 
 self.addEventListener('install', (event) => {
@@ -22,7 +22,7 @@ self.addEventListener('activate', (event) => {
       .keys()
       .then((keys) =>
         Promise.all(
-          keys.filter((k) => k.startsWith('team-season-') && k !== CACHE).map((k) => caches.delete(k)),
+          keys.filter((k) => k.startsWith('elt-') && k !== CACHE).map((k) => caches.delete(k)),
         ),
       )
       .then(() => self.clients.claim()),

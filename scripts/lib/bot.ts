@@ -29,6 +29,7 @@ const COMMIT: Record<Step['kind'], string> = {
 async function playStep(page: Page, step: Step, policy: Policy, each?: (s: Step, phase: string) => Promise<void>) {
   const radio = (n: string | RegExp) => page.getByRole('radio', { name: n }).first().click()
   const button = (n: string | RegExp) => page.getByRole('button', { name: n }).first().click()
+  await each?.(step, 'arrive')
   const prefer = (whos: string[]) =>
     [...whos].sort((x, y) =>
       policy === 'lean' ? (cast(x).gender === 'w' ? -1 : 1) - (cast(y).gender === 'w' ? -1 : 1) : 0,

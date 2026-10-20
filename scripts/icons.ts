@@ -1,10 +1,9 @@
 /**
- * `pnpm icons`: draws the app icons in the comic register (EVAL-7) and writes them to
- * public/icons/. No face: a square ink-ruled panel on caption yellow holding the violet round
- * stamp tilted 8 degrees, "TS" in the display face. The maskable icon keeps the art inside the
- * central 60 per cent (the safe zone is a circle of 80 per cent), on a full-bleed ground.
- * Colours are the tokens' values (src/styles/tokens.css): --comic-caption, --comic-paper,
- * --comic-ink, --violet, --white; scripts/design-check.ts holds the manifest to them.
+ * `pnpm icons`: draws the app icons in the Lugdi skin (EVAL-13) and writes them to
+ * public/icons/. No face: the yellow price plate on the night ground with "EL" in Sarpanch, its
+ * offset shadow in Lugdi red. The maskable icon keeps the art inside the central 60 per cent.
+ * Colours are the tokens' values (src/styles/tokens.css): --lugdi-night, --lugdi-yellow,
+ * --lugdi-red, --lugdi-ink; scripts/design-check.ts holds the manifest to them.
  */
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -12,25 +11,21 @@ import { chromium } from 'playwright-core'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const OUT = join(ROOT, 'public/icons')
-const FONT = `file://${join(ROOT, 'public/fonts/big-shoulders-display-800.woff2')}`
+const FONT = `file://${join(ROOT, 'public/fonts/sarpanch-latin-900-normal.woff2')}`
 
 const art = (size: number, inset: number) => {
   const s = size
   const p = Math.round(s * inset)
   const w = s - 2 * p
-  const line = Math.max(2, Math.round(s * 0.025))
-  const shadow = Math.max(2, Math.round(s * 0.03))
-  const stamp = Math.round(w * 0.62)
+  const shadow = Math.max(2, Math.round(s * 0.05))
   return `<!doctype html><html><head><style>
-@font-face { font-family: 'BSD'; src: url('${FONT}') format('woff2'); font-weight: 800; }
-html, body { margin: 0; width: ${s}px; height: ${s}px; background: #ffe27a; overflow: hidden; }
-.panel { position: absolute; left: ${p}px; top: ${p}px; width: ${w - line * 2 - shadow}px; height: ${w - line * 2 - shadow}px;
-  background: #ffffff; border: ${line}px solid #121212; box-shadow: ${shadow}px ${shadow}px 0 #121212;
-  display: flex; align-items: center; justify-content: center; }
-.stamp { width: ${stamp}px; height: ${stamp}px; border-radius: 50%; background: #553286; color: #ffffff;
-  transform: rotate(-8deg); display: flex; align-items: center; justify-content: center;
-  font: 800 ${Math.round(stamp * 0.5)}px/1 'BSD', Impact, sans-serif; letter-spacing: 0.02em; }
-</style></head><body><div class="panel"><div class="stamp">TS</div></div></body></html>`
+@font-face { font-family: 'SP'; src: url('${FONT}') format('woff2'); font-weight: 900; }
+html, body { margin: 0; width: ${s}px; height: ${s}px; background: #1b0b2e; overflow: hidden; }
+.plate { position: absolute; left: ${p}px; top: ${p}px; width: ${w - shadow}px; height: ${w - shadow}px;
+  background: #ffd23f; box-shadow: ${shadow}px ${shadow}px 0 #e4002b; color: #111111;
+  display: flex; align-items: center; justify-content: center;
+  font: 900 ${Math.round(w * 0.46)}px/1 'SP', Impact, sans-serif; }
+</style></head><body><div class="plate">EL</div></body></html>`
 }
 
 mkdirSync(OUT, { recursive: true })

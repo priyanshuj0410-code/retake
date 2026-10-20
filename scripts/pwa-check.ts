@@ -1,13 +1,14 @@
 /**
- * `pnpm pwa` (EVAL-7): the installable, offline app, in a real browser on a production build.
+ * `pnpm pwa` (EVAL-7, kept for the trainer in EVAL-13): the installable, offline app, in a
+ * real browser on a production build.
  *   - Chrome's installability check (the one Lighthouse reads, Page.getInstallabilityErrors)
- *     reports no error, and the manifest names Team season with 192, 512 and maskable icons.
- *   - The service worker precaches the shell, the fonts and every portrait, and caches nothing
- *     from another origin (Firebase included).
- *   - A season loaded once resumes offline: the same screen, words and faces after a reload with
- *     the network off, its portraits and fonts drawn from the cache.
- *   - A new version waits: "Update ready" appears and nothing reloads until the player taps
- *     Update; then the page reloads and the season resumes.
+ *     reports no error, and the manifest names Equal Lens Daily with 192, 512 and maskable icons.
+ *   - The service worker precaches the shell, every font and all the art, and caches nothing
+ *     from another origin.
+ *   - A puzzle in progress resumes offline: the same screen, words and faces after a reload
+ *     with the network off, its art and fonts drawn from the cache.
+ *   - A new version waits: "A new version is ready" appears and nothing reloads until the
+ *     player taps Update; then the page reloads and the puzzle resumes.
  */
 import { createServer } from 'node:http'
 import { existsSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs'
@@ -16,13 +17,12 @@ import { extname, join } from 'node:path'
 import { chromium, type Page } from 'playwright-core'
 import { build } from 'vite'
 import { record, summary } from './lib/check'
-import { playSeason } from './season-play'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const DIST = join(ROOT, 'out/pwa-dist')
 const PORT = 5199
 const BASE = `http://localhost:${PORT}/`
-const T = 'X-18 installable, offline, update on tap (production build)'
+const T = 'W installable, offline, update on tap (production build)'
 const TYPES: Record<string, string> = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript',
@@ -50,16 +50,18 @@ await new Promise<void>((r) => server.listen(PORT, r))
 
 const sig = (page: Page) =>
   page.evaluate(() => ({
-    screen: document.querySelector('[data-screen]')?.getAttribute('data-screen'),
+    screen: document.querySelector('h1')?.textContent ?? '',
     text: (document.querySelector('main') as HTMLElement | null)?.innerText ?? '',
-    faces: [...document.querySelectorAll('.portrait img')]
+    faces: [...document.querySelectorAll('img.portrait')]
       .map((e) => (e as HTMLImageElement).getAttribute('src'))
       .join('|'),
   }))
+const sameScreen = (page: Page, s: string) =>
+  page.waitForFunction((h) => document.querySelector('h1')?.textContent === h, s, { timeout: 30000 })
 
 /* A persistent profile: Chrome refuses to install from an incognito context, which a plain
    Playwright context is. */
-const profile = mkdtempSync(join(tmpdir(), 'team-season-pwa-'))
+const profile = mkdtempSync(join(tmpdir(), 'elt-pwa-'))
 const context = await chromium.launchPersistentContext(profile, {
   channel: 'chrome',
   viewport: { width: 390, height: 844 },
@@ -87,8 +89,8 @@ try {
   }
   record(
     T,
-    'the manifest: Team season, standalone, start_url "./", icons at 192, 512 and maskable',
-    manifest.name === 'Team season' &&
+    'the manifest: Equal Lens Daily, standalone, start_url "./", icons at 192, 512 and maskable',
+    manifest.name === 'Equal Lens Daily' &&
       manifest.display === 'standalone' &&
       manifest.start_url === './' &&
       manifest.icons.some((i) => i.sizes === '192x192') &&
@@ -106,18 +108,18 @@ try {
   record(
     T,
     'iOS: apple-touch-icon, apple-mobile-web-app-capable and title, and the theme colour',
-    head.apple && head.capable && head.title === 'Team season' && head.theme === '#553286',
+    head.apple && head.capable && head.title === 'Equal Lens Daily' && head.theme === '#1b0b2e',
     JSON.stringify(head),
   )
 
-  /* Play into week two, then go offline and reload. */
-  let beats = 0
-  await playSeason(page, BASE, async (m) => {
-    if (m.startsWith('story:beat:')) beats += 1
-    if (beats >= 8) throw new Error('STOP')
-  }).catch((e: unknown) => {
-    if (!String(e).includes('STOP')) throw e
-  })
+  /* A player part way through Friday's checks: one ticket punched. */
+  await page.evaluate(() =>
+    localStorage.setItem('elt:v1', JSON.stringify({ v: 1, lang: 'en', seed: 7, handle: { a: 'ghat', b: 'jugnu' }, friends: [], days: {}, notes: {} })),
+  )
+  await page.goto(`${BASE}#/play?day=5`)
+  await page.reload()
+  await page.getByRole('button', { name: /: Anita, 0 checks/ }).click()
+  await page.getByText('Checks left: 2').waitFor()
   const cached = await page.evaluate(async () => {
     const out: string[] = []
     for (const k of await caches.keys())
@@ -127,49 +129,45 @@ try {
   const origin = new URL(BASE).origin
   record(
     T,
-    'the precache holds the shell, every font and every portrait, and nothing from another origin',
+    'the precache holds the shell, every font and all the art, and nothing from another origin',
     cached.some((u) => u.endsWith('/index.html') || u === BASE) &&
-      cached.filter((u) => u.includes('/fonts/')).length >= 8 &&
-      cached.filter((u) => u.includes('/portraits/')).length >= 100 &&
+      cached.filter((u) => u.includes('/fonts/')).length >= 20 &&
+      cached.filter((u) => u.includes('/art/')).length >= 24 &&
       cached.every((u) => u.startsWith(origin)),
     `${cached.length} entries`,
   )
   const sw = readFileSync(join(DIST, 'sw.js'), 'utf8')
   record(
     T,
-    'the worker passes every other origin (Firebase) to the network untouched',
+    'the worker passes every other origin to the network untouched',
     /url\.origin !== self\.location\.origin\) return/.test(sw) &&
       !/firebase/i.test(sw.replace(/\/\*[\s\S]*?\*\//g, '')),
   )
   const before = await sig(page)
   await context.setOffline(true)
   await page.reload()
-  await page.waitForFunction(
-    (s) => document.querySelector('[data-screen]')?.getAttribute('data-screen') === s,
-    before.screen,
-    { timeout: 30000 },
-  )
+  await sameScreen(page, before.screen)
   await page.waitForTimeout(400)
   const after = await sig(page)
   const drawn = await page.evaluate(async () => {
     await document.fonts.ready
-    const imgs = [...document.querySelectorAll('.portrait img')] as HTMLImageElement[]
+    const imgs = [...document.querySelectorAll('img.portrait')] as HTMLImageElement[]
+    await Promise.all(imgs.map((i) => (i.complete ? null : new Promise((r) => (i.onload = r)))))
     return {
       imgs: imgs.length,
       ok: imgs.every((i) => i.complete && i.naturalWidth > 0),
-      font: document.fonts.check('17px Literata'),
+      font: document.fonts.check('900 17px Sarpanch') && document.fonts.check('600 15px Hind'),
     }
   })
   record(
     T,
-    'offline: a reload mid-season resumes the same screen, words and faces',
-    JSON.stringify(before) === JSON.stringify(after) &&
-      before.screen?.startsWith('story:') === true,
+    'offline: a reload mid-puzzle resumes the same screen, words and faces',
+    JSON.stringify(before) === JSON.stringify(after) && after.text.includes('Checks left: 2'),
     `${before.screen} -> ${after.screen}`,
   )
   record(
     T,
-    'offline: the portraits and the fonts come from the cache',
+    'offline: the art and the fonts come from the cache',
     drawn.imgs > 0 && drawn.ok && drawn.font,
     JSON.stringify(drawn),
   )
@@ -179,21 +177,18 @@ try {
   await page.evaluate(() => ((window as unknown as { __kept: number }).__kept = 1))
   writeFileSync(join(DIST, 'sw.js'), `${sw}\n// next version\n`)
   await page.evaluate(() => navigator.serviceWorker.getRegistration().then((r) => r?.update()))
-  await page.getByRole('status').filter({ hasText: 'Update ready' }).waitFor({ timeout: 30000 })
+  await page.getByRole('status').filter({ hasText: 'A new version is ready' }).waitFor({ timeout: 30000 })
   await page.waitForTimeout(1500)
   const kept = await page.evaluate(() => (window as unknown as { __kept?: number }).__kept === 1)
-  record(T, 'a new version shows "Update ready" and does not reload on its own', kept)
+  record(T, 'a new version shows its prompt and does not reload on its own', kept)
   const screenBefore = (await sig(page)).screen
   await Promise.all([
     page.waitForEvent('load', { timeout: 30000 }),
     page.getByRole('button', { name: 'Update' }).click(),
   ])
-  await page.waitForFunction(
-    (s) => document.querySelector('[data-screen]')?.getAttribute('data-screen') === s,
-    screenBefore,
-    { timeout: 30000 },
-  )
-  record(T, 'tapping Update reloads once and the season resumes where it was', true)
+  await sameScreen(page, screenBefore)
+  await page.getByText('Checks left: 2').waitFor()
+  record(T, 'tapping Update reloads once and the puzzle resumes where it was', true)
 } catch (e) {
   record(T, 'threw', false, String(e))
 } finally {
