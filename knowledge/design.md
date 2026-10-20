@@ -507,8 +507,10 @@ pass (EVAL-10)".
   about equally", "Not enough to tell" (and the same with "women first", or the cue's groups for
   religion and skin tone). The thresholds stay in `config.season.rating.levels`; the range maths
   in `config.season.rating.range` (PENDING v22). Nothing pending in player copy.
-- **The result** says what a pair is, drops "chance would explain" and "shaded middle", and with
-  "Not enough to tell" shows nothing of the result below the tag (no other readings, no areas).
+- **The result** says what a pair is and drops "chance would explain" and "shaded middle". With
+  "Not enough to tell" on sex it shows nothing more of the sex result below the tag (no areas),
+  but keeps the religion and skin-tone readings the player has (owner decision 5); with every
+  cue unread it shows the one plain message only (`sectionsBelow`).
 - **The scoring rule** holds in the game: no in-game copy says how answers are read
   (`story-check` X-20 fails "reads you", "decisions that count", "rating", "equal pairs",
   "chance" in the opening, chapters, picker, consent points or practice).

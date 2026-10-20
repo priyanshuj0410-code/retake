@@ -1077,8 +1077,10 @@ export function StoryResult({
         ) : null}
         {m.why.length ? <List items={m.why} /> : null}
       </ResultHero>
-      {/* "Not enough to tell" (EVAL-10, copy audit G5): nothing of the result below the tag. */}
-      {m.unread ? null : (
+      {/* Below the headline (owner decision 5, with the copy audit's G5): "Not enough to tell" on
+          sex shows nothing more of the sex result, but the religion and skin-tone readings the
+          player does have still show; with every cue unread, nothing else shows. */}
+      {m.sections.others ? (
         <>
           <Heading>{L(RT.otherTitle)}</Heading>
           <ReadingList
@@ -1088,6 +1090,10 @@ export function StoryResult({
               .map((c) => ({ id: c.cue, label: c.label, level: c.level, zone: c.zone }))}
           />
           <Text kind="small">{L(RT.intro)}</Text>
+        </>
+      ) : null}
+      {m.sections.areas ? (
+        <>
           <Heading>{L(RT.areasTitle)}</Heading>
           {m.domains.map((d, n) => (
             <Fold key={d.domain} title={d.title} open={n === 0}>
@@ -1142,7 +1148,7 @@ export function StoryResult({
             </Fold>
           ))}
         </>
-      )}
+      ) : null}
       <Notice>{L(RT.committee)}</Notice>
       <Notice>{L(finished === 'submitted' ? RT.submitted : RT.withdrawn)}</Notice>
       <KeepIt

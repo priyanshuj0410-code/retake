@@ -34,7 +34,7 @@ import { sessionMinutes, StoryRunner } from '../src/story/runner'
 import { drawCast } from '../src/story/session'
 import { personLook } from '../src/story/looks'
 import { castTiles, colleagueView } from '../src/story/view'
-import { chanceLine, levelName, resultModel } from '../src/story/why'
+import { chanceLine, levelName, resultModel, sectionsBelow } from '../src/story/why'
 import { store } from '../src/store'
 import type { LocalStore } from '../src/store/local'
 import { progress } from '../src/store/progress'
@@ -1333,6 +1333,33 @@ async function prototypePass() {
       /<PanelArt/.test(beatSrc) &&
       /beat__ask/.test(beatSrc) &&
       !/<img|<Portrait/.test(beatSrc),
+  )
+  /* Owner decision 5, restored: "Not enough to tell" on sex hides the rest of the sex result
+     (G5) but keeps the religion and skin-tone readings the player has; every cue unread shows
+     the plain message only. Checked on the rule and on seeded players' result models. */
+  const both = sectionsBelow(true, ['lean', 'unread'])
+  const none = sectionsBelow(true, ['unread', 'unread'])
+  const read = sectionsBelow(false, ['unread', 'unread'])
+  let seasonsOk = true
+  let sexUnreadOthersRead = 0
+  for (let k = 1; k <= 40; k++) {
+    const mm = resultModel(playSeason(k, carelessPlayer))
+    const others = mm.cards.filter((c) => c.cue !== 'sex')
+    const anyRead = others.some((c) => c.zone !== 'unread')
+    if (mm.unread && anyRead) sexUnreadOthersRead += 1
+    if (mm.unread && (mm.sections.others !== anyRead || mm.sections.areas)) seasonsOk = false
+    if (!mm.unread && !(mm.sections.others && mm.sections.areas)) seasonsOk = false
+  }
+  record(
+    T,
+    `"Not enough to tell" on sex keeps the religion and skin-tone readings the player has and hides the rest of the sex result; every cue unread shows the plain message only (owner decision 5 with G5; ${sexUnreadOthersRead} of 40 seeded careless seasons had sex unread with another cue read)`,
+    both.others &&
+      !both.areas &&
+      !none.others &&
+      !none.areas &&
+      read.others &&
+      read.areas &&
+      seasonsOk,
   )
   /* Ranges: inside 0 to 1 around the position, narrower with more pairs; the profile shows a
      change only when two seasons' ranges do not overlap. */

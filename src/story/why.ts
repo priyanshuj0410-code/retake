@@ -71,6 +71,8 @@ export interface ResultModel {
   } | null
   /** "Not enough to tell": nothing of the result shows below the tag (EVAL-10, copy audit G5). */
   unread: boolean
+  /** What shows below the headline (owner decision 5, restored): see `sectionsBelow`. */
+  sections: { others: boolean; areas: boolean }
   /** The women-and-men pairs: woman first, man first, even (the profile keeps them, EVAL-10). */
   counts: { w: number; m: number; e: number }
   /** The one number to remember: k of n equal woman-and-man pairs went one way, and the dots. */
@@ -91,6 +93,21 @@ export interface ResultModel {
 const DOMAINS: Domain[] = ['hiring', 'conduct', 'resources']
 /** The cues a player is shown (owner decision O3): caste and birthplace are read for groups only. */
 const SHOWN: Cue[] = ['sex', 'religion', 'tone']
+
+/**
+ * What the result page shows below the women-and-men headline (owner decision 5, restored after
+ * EVAL-10's G5 fix): with a readable headline, everything (the other readings and the areas);
+ * with "Not enough to tell" on sex, nothing of the sex result below its tag, but the religion and
+ * skin-tone readings the player does have; with every cue "Not enough to tell", the one plain
+ * message and nothing else.
+ */
+export function sectionsBelow(
+  sexUnread: boolean,
+  otherZones: ('lean' | 'none' | 'unread')[],
+): { others: boolean; areas: boolean } {
+  if (!sexUnread) return { others: true, areas: true }
+  return { others: otherZones.some((z) => z !== 'unread'), areas: false }
+}
 
 /** The group words a tag uses: "men", "women", or both together ("women and men"). */
 export function tagGroup(cue: Cue, towards: 'focal' | 'comparison' | 'both', lang: Lang): string {
@@ -407,6 +424,10 @@ export function resultModel(run: StoryRunner): ResultModel {
     body,
     range,
     unread,
+    sections: sectionsBelow(
+      unread,
+      cards.filter((c) => c.cue !== 'sex').map((c) => c.zone),
+    ),
     counts: { w: womanAhead, m: manAhead, e: even },
     hero,
     why: unread ? [] : why,

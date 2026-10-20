@@ -99,9 +99,10 @@ EVAL-6's `edit` item, or season submits will be refused.
 
 1. **The range is a planning model.** Beta(1 + women first, 1 + men first), even pairs half each,
    90 per cent; v22 sets the real one. The position is clamped inside its range at the extremes.
-2. **"Not enough to tell" now hides the other readings too** (the owner's G5 instruction),
-   superseding owner decision 5's "a player with no sex reading still sees the readings they
-   have".
+2. **"Not enough to tell" and owner decision 5** (restored after review): with sex unread, nothing
+   more of the sex result shows below its tag (G5), but the religion and skin-tone readings the
+   player has still show; with every cue unread, only the plain message. `story-check` X-20
+   holds both.
 3. **Practice uses the season's mascot animals** (by species name, not their mascot names). It
    precedes the 4 mascot baseline cards; a liking formed in practice could touch them. Worth a
    pilot look, or practice could use objects.
