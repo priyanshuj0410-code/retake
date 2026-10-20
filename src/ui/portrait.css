@@ -1,127 +1,37 @@
-/* @owns portrait portrait--row portrait--then portrait__art portrait__photo portrait__inset pt-l pt-bg pt-dot-ink pt-dot-violet pt-hair pt-cloth pt-clothd pt-badge pt-lanyard pt-skin pt-skinsh pt-eye pt-glass pt-s-hair pt-s-feat pt-s-lip pt-s-lanyard pt-s-line pt-fur pt-fur-b pt-light pt-dark pt-acc pt-acc-b pt-white pt-s-dark */
-/* The portrait system (knowledge/design.md, section 4c). Art tokens are read here and in
-   panelart.css only. The picture keeps its own colours in forced-colours mode: tone is a cue. */
+/* @owns portrait portrait__mono */
 .portrait {
-  position: relative;
   display: block;
-  width: 100%;
-  forced-color-adjust: none;
-}
-.portrait--row {
   flex: none;
-  width: var(--portrait);
-  border: var(--ink-divider) solid var(--c-ink-line);
+  width: var(--portrait-m);
+  height: var(--portrait-m);
+  object-fit: cover;
+  object-position: center 22%;
+  border: var(--edge) solid var(--c-edge);
+  border-radius: var(--radius-plate);
+  background: var(--c-sheet);
 }
-.portrait--then {
-  flex: none;
-  width: var(--face-then);
-  border: var(--ink-divider) solid var(--c-ink-line);
+.portrait[data-size='s'] {
+  width: var(--portrait-s);
+  height: var(--portrait-s);
 }
-.portrait__art {
-  display: block;
+.portrait[data-size='l'] {
+  width: var(--portrait-l);
+  height: var(--portrait-l);
+}
+.portrait[data-size='fill'] {
   width: 100%;
   height: auto;
+  aspect-ratio: 1;
 }
-.portrait__photo {
-  position: absolute;
-  inset: var(--gap-none);
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.portrait[data-round='true'] {
+  border-radius: 50%;
+  border-color: var(--c-display);
 }
-.portrait__inset {
-  position: absolute;
-  overflow: hidden;
-  right: var(--gap-s);
-  bottom: var(--gap-s);
-  width: var(--inset);
-  border: var(--ink-divider) solid var(--art-line);
-  background: var(--art-paper);
-}
-.portrait--row .portrait__inset,
-.portrait--then .portrait__inset {
-  right: var(--gap-none);
-  bottom: var(--gap-none);
-  width: var(--inset-small);
-}
-.pt-l {
-  stroke: var(--art-line);
-  stroke-linejoin: round;
-}
-.pt-bg {
-  fill: var(--art-bg);
-}
-.pt-dot-ink {
-  fill: var(--art-line);
-}
-.pt-dot-violet {
-  fill: var(--art-violet);
-}
-.pt-hair {
-  fill: var(--art-hair);
-}
-.pt-cloth {
-  fill: var(--art-cloth);
-}
-.pt-clothd {
-  fill: var(--art-cloth-dark);
-}
-.pt-badge {
-  fill: var(--art-badge);
-}
-.pt-lanyard {
-  fill: var(--art-lanyard);
-}
-.pt-skin {
-  fill: var(--art-skin);
-}
-.pt-skinsh {
-  fill: var(--art-skin-shade);
-}
-.pt-eye {
-  fill: var(--art-line);
-}
-.pt-glass {
-  fill: var(--art-paper);
-  stroke: var(--art-line);
-}
-.pt-s-hair {
-  stroke: var(--art-hair);
-}
-.pt-s-feat {
-  stroke: var(--art-feature);
-}
-.pt-s-lip {
-  stroke: var(--art-lip);
-}
-.pt-s-lanyard {
-  stroke: var(--art-lanyard);
-}
-.pt-s-line {
-  stroke: var(--art-line);
-}
-.pt-fur {
-  fill: var(--art-fur);
-}
-.pt-fur-b {
-  fill: var(--art-fur2);
-}
-.pt-light {
-  fill: var(--art-light);
-}
-.pt-dark {
-  fill: var(--art-dark);
-}
-.pt-acc {
-  fill: var(--art-acc);
-}
-.pt-acc-b {
-  fill: var(--art-acc2);
-}
-.pt-white {
-  fill: var(--art-paper);
-}
-.pt-s-dark {
-  stroke: var(--art-dark);
+.portrait__mono {
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-xl);
+  color: var(--c-on-sheet);
 }

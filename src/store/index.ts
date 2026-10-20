@@ -1,69 +1,109 @@
-import { FirebaseStore } from './firebase'
-import { LocalStore, type Tree } from './local'
-import type { Explanation, Store } from './types'
+/**
+ * The trainer's store: this device only (localStorage), no backend. It holds the language,
+ * the road name, friends' road names, the choices of each day keyed by its date, and the
+ * private Sunday notes. It never holds a time: no response times, no keystrokes, no per-answer
+ * stamps, only play-day dates (owner rule, Profile C as extended on 20 Oct 2026). The Backend
+ * interface is where a server store would plug in for the real global board.
+ */
+import { useSyncExternalStore } from 'react'
+import type { Answer } from '../engine/answers'
+import type { Handle } from '../engine/handles'
+import { freshSeed } from '../engine/rng'
+import type { Lang } from '../content/types'
 
-const KEY = 'eval-demo-store'
-
-/** The demo clock: in demo mode `?now=2027-03-02` pretends a date, to show the release gates. Never in a live build. */
-export function demoNow(): number {
-  if (typeof location === 'undefined') return Date.now()
-  const q =
-    new URLSearchParams(location.hash.split('?')[1] ?? '').get('now') ??
-    new URLSearchParams(location.search).get('now')
-  return q ? Date.parse(`${q}T12:00:00+05:30`) : Date.now()
+export interface DayRecord {
+  /** The content day (1 to 14) this date played. */
+  n: number
+  answers: (Answer | null)[]
+  /** The step the player is on, so a reload resumes it. */
+  at: number
+  done: boolean
 }
 
-/** A date in India, as YYYY-MM-DD. */
-export const iso = (ms: number) => new Date(ms + 5.5 * 3600_000).toISOString().slice(0, 10)
-export const today = () => iso(demoNow())
+export interface Saved {
+  v: 1
+  lang: Lang | null
+  seed: number
+  handle: Handle | null
+  friends: string[]
+  days: Record<string, DayRecord>
+  /** Sunday notes by ISO week. Private: nothing reads them but the note box itself. */
+  notes: Record<string, string>
+}
 
-export function makeStore(): Store {
-  const kind = import.meta.env?.VITE_STORE ?? 'local'
-  if (kind === 'emulator')
-    return new FirebaseStore({
-      apiKey: 'demo-key',
-      projectId: 'demo-eval',
-      databaseURL: 'http://127.0.0.1:9000/?ns=demo-eval-default-rtdb',
-      emulator: { host: '127.0.0.1', dbPort: 9000, authPort: 9099 },
-    })
-  if (kind === 'firebase')
-    return new FirebaseStore({
-      apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-      projectId: 'the-equal-lens',
-      databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
-    })
-  return new LocalStore(
-    demoNow,
-    {
-      load: () => {
-        try {
-          const s = localStorage.getItem(KEY)
-          return s ? (JSON.parse(s) as Tree) : null
-        } catch {
-          return null
-        }
-      },
-      save: (t) => {
-        try {
-          localStorage.setItem(KEY, JSON.stringify(t))
-        } catch {
-          /* private window or blocked storage: the demo keeps working in memory */
-        }
-      },
-    },
-    /* The scoring explanation is never in the bundle. The demo dev server serves it from
-       content/, where the seed script also reads it for the emulator. */
-    async () => {
-      if (!import.meta.env?.DEV) return null
-      try {
-        const r = await fetch('/content/explanation.json')
-        return r.ok ? ((await r.json()) as Explanation[]) : null
-      } catch {
-        return null
-      }
-    },
+export interface Backend {
+  load(): Saved | null
+  save(s: Saved): void
+}
+
+export const KEY = 'elt:v1'
+
+const fresh = (): Saved => ({
+  v: 1,
+  lang: null,
+  seed: freshSeed(),
+  handle: null,
+  friends: [],
+  days: {},
+  notes: {},
+})
+
+export const localBackend: Backend = {
+  load() {
+    try {
+      const raw = localStorage.getItem(KEY)
+      return raw ? (JSON.parse(raw) as Saved) : null
+    } catch {
+      return null
+    }
+  },
+  save(s) {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(s))
+    } catch {
+      /* private window or full storage: play goes on in memory for this page */
+    }
+  },
+}
+
+let backend: Backend = localBackend
+let state: Saved = backend.load() ?? fresh()
+const subs = new Set<() => void>()
+
+export const store = {
+  get: () => state,
+  update(f: (s: Saved) => Saved) {
+    state = f(state)
+    backend.save(state)
+    for (const s of subs) s()
+  },
+  subscribe(f: () => void) {
+    subs.add(f)
+    return () => {
+      subs.delete(f)
+    }
+  },
+  reset() {
+    try {
+      localStorage.removeItem(KEY)
+    } catch {
+      /* nothing stored */
+    }
+    state = fresh()
+    for (const s of subs) s()
+  },
+  /** For the checks: a store in memory. */
+  useBackend(b: Backend) {
+    backend = b
+    state = b.load() ?? fresh()
+  },
+}
+
+export const useSaved = () => useSyncExternalStore(store.subscribe, store.get, store.get)
+
+export const playedDates = (s: Saved) =>
+  new Set(
+    Object.entries(s.days)
+      .filter(([, r]) => r.done)
+      .map(([d]) => d),
   )
-}
-
-export const store = makeStore()
-export type { Store }

@@ -1,0 +1,38 @@
+{
+  "id": "S-fri",
+  "n": 12,
+  "skin": "station",
+  "ground": "rail",
+  "weekday": 5,
+  "level": 7,
+  "levelName": { "en": "Marriage and family", "hi": "शादी और परिवार" },
+  "area": "money",
+  "object": { "en": "Card tickets", "hi": "गत्ते के टिकट" },
+  "masthead": {
+    "series": { "en": "No.", "hi": "अंक" },
+    "no": 223,
+    "title": { "en": "Chit Fund Committee", "hi": "चिट फंड कमेटी" },
+    "city": { "en": "Kolkata", "hi": "कोलकाता" },
+    "script": "চিট ফান্ড কমিটি",
+    "board": "blue",
+    "blurb": { "en": "Treasurer wanted · ₹6 lakh a month", "hi": "ख़ज़ांची चाहिए · ₹6 लाख महीना" }
+  },
+  "steps": [
+    {
+      "kind": "checks",
+      "id": "committee-checks",
+      "prompt": { "en": "Spend up to three checks. Tap a ticket to punch it.", "hi": "तीन जाँचें तक करें। टिकट पर टैप करके पंच करें।" },
+      "choosePrompt": { "en": "Who keeps the cash box?", "hi": "गल्ला किसके पास रहेगा?" },
+      "budget": 3,
+      "checkLabel": { "en": "Punch the ticket", "hi": "टिकट पंच करें" },
+      "people": [
+        { "who": "anita", "record": { "en": "9 years of accounts · 2-year gap, family", "hi": "9 साल हिसाब-किताब · 2 साल का ब्रेक, परिवार" }, "finding": { "en": "Referee: every book balanced.", "hi": "रेफ़री: हर बही का हिसाब ठीक।" }, "mirror": "m1" },
+        { "who": "vikram", "record": { "en": "9 years of accounts · 2-year gap, family", "hi": "9 साल हिसाब-किताब · 2 साल का ब्रेक, परिवार" }, "finding": { "en": "Referee: every book balanced.", "hi": "रेफ़री: हर बही का हिसाब ठीक।" }, "mirror": "m1" },
+        { "who": "farida", "record": { "en": "6 years of accounts · no gap", "hi": "6 साल हिसाब-किताब · कोई ब्रेक नहीं" }, "finding": { "en": "Referee: careful, and on time.", "hi": "रेफ़री: सावधान, और समय की पाबंद।" } }
+      ],
+      "voice": { "who": "meena", "line": { "en": "\"Punch Vikram's ticket twice. What if he moves back to run his father's shop?\"", "hi": "\"विक्रम का टिकट दो बार पंच करो। अगर वो पिता की दुकान संभालने लौट गया तो?\"" }, "target": "vikram" },
+      "twin": { "id": "T2", "half": "b" }
+    }
+  ],
+  "_review": "Twin T2, second half: the same matching records, the voice now pointing at the man with a family question. Farida is a new character (monogram until a portrait exists)."
+}

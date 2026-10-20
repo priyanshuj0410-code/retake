@@ -1,76 +1,64 @@
-import { useId } from 'react'
+import { useId, type ReactNode } from 'react'
 import './field.css'
 
-/**
- * A labelled text input. `invalid` marks it aria-invalid and points it, by
- * aria-describedby, at the message that says why (`errorId`, a Notice's id); `onEnter` lets the
- * Enter key do what the page's button does.
- */
-export function Field({
-  label,
-  value,
-  onChange,
-  autoComplete = 'off',
-  type = 'text',
-  invalid = false,
-  errorId,
-  onEnter,
-  hint,
-  inputMode,
-  maxLength,
-}: {
+/** A labelled text box with its action beside it (finding a friend by road name). */
+export function Field(props: {
   label: string
   value: string
   onChange: (v: string) => void
-  autoComplete?: string
-  /** text (codes, upper-cased on phones) or email (the optional stay-in-touch form). */
-  type?: 'text' | 'email'
-  invalid?: boolean
-  errorId?: string
-  onEnter?: () => void
-  /** A line under the label that says what to type (EVAL-12: the code's format); always read with the field. */
-  hint?: string
-  inputMode?: 'text' | 'email'
-  maxLength?: number
+  onSubmit: () => void
+  action: ReactNode
 }) {
   const id = useId()
-  const hintId = `${id}-hint`
-  const described = [hint ? hintId : '', invalid && errorId ? errorId : ''].filter(Boolean)
   return (
-    /* A one-field form: Enter submits it natively, with no key handler (the no-timers rule
-       forbids keystroke capture). */
     <form
       className="field"
-      noValidate
+      role="search"
       onSubmit={(e) => {
         e.preventDefault()
-        onEnter?.()
+        props.onSubmit()
       }}
     >
       <label className="field__label" htmlFor={id}>
-        {label}
+        {props.label}
       </label>
-      {hint ? (
-        <span className="field__hint" id={hintId}>
-          {hint}
-        </span>
-      ) : null}
-      <input
-        id={id}
-        className="field__input"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        type={type}
-        autoComplete={autoComplete}
-        autoCapitalize={type === 'email' ? 'none' : 'characters'}
-        autoCorrect="off"
-        spellCheck={false}
-        enterKeyHint="go"
-        aria-invalid={invalid || undefined}
-        aria-describedby={described.length ? described.join(' ') : undefined}
-        inputMode={inputMode}
-        maxLength={maxLength}
-      />
+      <div className="field__row">
+        <input
+          id={id}
+          className="field__input"
+          type="search"
+          autoComplete="off"
+          spellCheck={false}
+          value={props.value}
+          onChange={(e) => props.onChange(e.target.value)}
+        />
+        {props.action}
+      </div>
     </form>
+  )
+}
+
+/** The private Sunday note: saved on this phone only, and never read by the scoring. */
+export function NoteBox(props: { label: string; hint: string; value: string; onChange: (v: string) => void }) {
+  const id = useId()
+  const hint = useId()
+  return (
+    <div className="notebox">
+      <label className="field__label" htmlFor={id}>
+        {props.label}
+      </label>
+      <textarea
+        id={id}
+        className="notebox__input"
+        rows={3}
+        maxLength={280}
+        aria-describedby={hint}
+        value={props.value}
+        onChange={(e) => props.onChange(e.target.value)}
+      />
+      <p className="notebox__hint" id={hint}>
+        {props.hint}
+      </p>
+    </div>
   )
 }

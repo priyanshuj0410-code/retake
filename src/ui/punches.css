@@ -1,0 +1,15 @@
+/* @owns punches punches__hole */
+.punches {
+  display: flex;
+  gap: var(--gap-xs);
+  align-items: center;
+}
+.punches__hole {
+  width: var(--hole);
+  height: var(--hole);
+  border-radius: 50%;
+  border: var(--edge) solid currentColor;
+}
+.punches__hole[data-on='true'] {
+  background: currentColor;
+}

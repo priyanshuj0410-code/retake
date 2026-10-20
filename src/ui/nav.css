@@ -1,0 +1,24 @@
+/* @owns nav nav__link */
+.nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.nav__link {
+  min-height: var(--tap-min);
+  display: grid;
+  place-items: center;
+  padding: var(--gap-s);
+  font-size: var(--text-m);
+  font-weight: 600;
+  color: var(--c-on-ground);
+  text-decoration: none;
+  border-top: var(--focus-width) solid transparent;
+}
+.nav__link[aria-current='page'] {
+  font-weight: 700;
+  border-top-color: var(--c-edge-ground);
+}
+.nav__link:active {
+  transform: translateY(var(--press-shift));
+  transition: transform var(--dur-press);
+}

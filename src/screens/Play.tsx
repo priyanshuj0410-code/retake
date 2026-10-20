@@ -1,327 +1,67 @@
-/**
- * A session from its link to its last screen. The token (panel) or the enrolment (firm) is
- * spent before the first screen, so a link starts one session only. A season in progress is
- * kept on this device (src/store/progress.ts), so a reload resumes the same screen, answers and
- * draw; the one-time rule then refuses the link only once the session is submitted or
- * withdrawn, and a reload of the result shows the same result. The first screen of every
- * sitting is the four registered sentences and nothing else; the season's eligibility items
- * come before them.
- */
-import { useEffect, useRef, useState } from 'react'
-import { screens } from '../content'
-import type { Lang } from '../content/types'
-import { config, devRoutes, type DeploymentId } from '../engine/config'
-import { cryptoRng, cryptoSeed, fromSeed, type Seed } from '../engine/rng'
-import { Runner, type FirmLabels } from '../engine/runner'
-import { store } from '../store'
-import { progress } from '../store/progress'
-import { loadSaved, restoreSeason, type Pre, type Saved } from '../story/saved'
-import type { LangSet, StartResult } from '../store/types'
-import { Page, Text, Notice } from '../ui'
-import { Disclosure } from './Disclosure'
-import { Consent, Declined, Finished, LanguageStep, SeasonStart } from './PreScreens'
-import { StepView } from './StepView'
-import {
-  Eligibility,
-  NotEligible,
-  StoryPicker,
-  StoryResult,
-  StoryStopped,
-  StoryView,
-} from './Story'
-import { fill } from '../engine/text'
-import { SS } from '../story/content'
-import { stories, storyById } from '../story/content'
-import { playedStories } from '../story/profile'
-import { sessionMinutes, StoryRunner } from '../story/runner'
-import type { Story } from '../story/content'
+import { Board, COMMIT, SkinContext } from '../boards'
+import { emptyAnswer, isComplete, type Answer } from '../engine/answers'
+import { hash } from '../engine/rng'
+import { useT } from '../i18n'
+import { store, useSaved, type DayRecord } from '../store'
+import { Button, Heading, Masthead, Shell, Stack, Text, useCommit } from '../ui'
+import { dayOf, handleOf, useMeta } from './common'
 
-const S = screens
-
-type Entry = StartResult & { firm?: FirmLabels }
-type Finish = 'submitted' | 'withdrawn' | null
-
-export function Play({
-  start,
-  resume,
-  sessionKey,
-  firm,
-}: {
-  start: () => Promise<Entry>
-  /** Reopens the same link after a reload, when this device holds the session in progress. */
-  resume?: () => Promise<Entry>
-  /** Where this device keeps a season in progress (the token); none for the dev-only firm route. */
-  sessionKey?: string
-  firm: boolean
-}) {
-  const [{ saved, expired }] = useState(() => loadSaved(sessionKey))
-  const [stopped, setStopped] = useState(saved?.stopped ?? false)
-  const [entry, setEntry] = useState<Entry | null>(null)
-  const [pre, setPre] = useState<Pre>(saved?.pre ?? 'disclosure')
-  const [langs, setLangs] = useState<Lang[] | null>(saved?.langs ?? null)
-  const [runner, setRunner] = useState<Runner | null>(null)
-  const [seed, setSeed] = useState<Seed | null>(saved?.season?.seed ?? null)
-  const [season, setSeason] = useState<StoryRunner | null>(() => restoreSeason(saved))
-  const [eligible, setEligible] = useState<'unasked' | 'yes' | 'no'>(saved?.eligible ?? 'unasked')
-  /* The story is drawn at entry, uniformly over the built stories this profile has not played
-     (candidates v17 3.17: randomised, not self-chosen); a reload keeps the same draw. */
-  const [drawn] = useState<Story | null>(() => {
-    if (saved) return saved.drawn ? (storyById(saved.drawn) ?? null) : null
-    const played = playedStories()
-    const open = stories.filter((s) => s.built && !played.has(s.id))
-    return open.length ? cryptoRng().pick(open) : null
+/** Today's puzzle, step by step. Every change is saved, so a reload carries on. */
+export function Play(props: { date: string; go: (h: string) => void }) {
+  const { t, tx, lang } = useT()
+  const saved = useSaved()
+  const day = dayOf(props.date)
+  const rec: DayRecord = saved.days[props.date] ?? {
+    n: day.n,
+    answers: day.steps.map(() => null),
+    at: 0,
+    done: false,
+  }
+  const at = Math.min(rec.at, day.steps.length - 1)
+  const step = day.steps[at]
+  const answer: Answer = rec.answers[at] ?? emptyAnswer(step)
+  const put = (r: DayRecord) => store.update((s) => ({ ...s, days: { ...s.days, [props.date]: r } }))
+  /* This player's order for the step's people: a hash of seed, date, step and person. */
+  const order = <T,>(xs: T[], key: (x: T) => string) => {
+    const rank = (x: T) => hash(`${saved.seed}|${props.date}|${step.id}|${key(x)}`)
+    return [...xs].sort((a, b) => rank(a) - rank(b))
+  }
+  const [stamped, commit] = useCommit(() => {
+    const last = at === day.steps.length - 1
+    put({ ...rec, answers: rec.answers.map((x, i) => (i === at ? answer : x)), at: at + 1, done: last })
+    if (last) props.go('#/result')
   })
-  const [, setTick] = useState(0)
-  const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'failed'>('idle')
-  const [finished, setFinished] = useState<Finish>(saved?.finished ?? null)
-
-  /* The token is spent once per mount, even where React runs an effect twice. A session this
-     device holds is reopened instead (a finished one needs no store at all). */
-  const started = useRef<Promise<Entry> | null>(null)
-  useEffect(() => {
-    let live = true
-    started.current ??= expired
-      ? Promise.resolve({ ok: false, reason: 'used' } as Entry)
-      : saved?.finished
-        ? Promise.resolve(saved.entry)
-        : saved && resume
-          ? resume().then((r) => (r.ok ? saved.entry : r))
-          : start()
-    void started.current.then((r) => live && setEntry(r))
-    return () => {
-      live = false
-    }
-  }, [start, resume, saved, expired])
-
-  /* Keep a season in progress for a reload: after every render, and after every change the
-     runner makes on its own (the code, drawn once). */
-  const save = () => {
-    if (!sessionKey || !entry?.ok || entry.dep !== 'season') return
-    /* No save point inside the faking test (EVAL-8): from the first survey's answer to the
-       recall item the last save stays at the first survey, so the note's effect never
-       straddles a break. */
-    if (season && !finished) {
-      const from = season.steps.findIndex((st) => st.kind === 'fsurvey' && st.admin === 1)
-      const until = season.steps.findIndex((st) => st.kind === 'recall')
-      if (season.index > from && season.index <= until) return
-    }
-    const v: Saved = {
-      v: 1,
-      entry,
-      pre,
-      eligible,
-      langs,
-      drawn: drawn?.id ?? null,
-      season:
-        season && seed
-          ? {
-              story: season.season.story.id,
-              seed,
-              langs: season.langs,
-              state: season.snapshot(),
-            }
-          : null,
-      finished,
-      stopped,
-    }
-    progress.put(sessionKey, v)
-  }
-  useEffect(() => {
-    save()
-    season?.setOnChange(save)
-  })
-
-  /* A card game is held in memory only, so a reload would lose it: warn first. */
-  useEffect(() => {
-    if (!runner || finished) return
-    const warn = (e: BeforeUnloadEvent) => e.preventDefault()
-    window.addEventListener('beforeunload', warn)
-    return () => window.removeEventListener('beforeunload', warn)
-  }, [runner, finished])
-
-  if (!entry)
-    return (
-      <Page surface="oof" stepKey="loading">
-        <Text>…</Text>
-      </Page>
-    )
-  if (!entry.ok) {
-    if (expired)
-      return (
-        <Page
-          surface="oof"
-          stepKey="expired"
-          title={`${S.entry.title.en} / ${S.entry.title.hinglish}`}
-        >
-          <Notice kind="error">
-            {fill(SS.expired.en, { days: config.season.chapters.saveDays })}
-          </Notice>
-          <Text lang="hi-Latn" kind="small">
-            {fill(SS.expired.hinglish, { days: config.season.chapters.saveDays })}
-          </Text>
-        </Page>
-      )
-    const msg =
-      entry.reason === 'used'
-        ? S.entry.refused
-        : entry.reason === 'offline'
-          ? S.entry.offline
-          : entry.reason === 'window'
-            ? S.firm.closed
-            : S.entry.unknown
-    return (
-      <Page
-        surface="oof"
-        stepKey="refused"
-        title={`${S.entry.title.en} / ${S.entry.title.hinglish}`}
-      >
-        <Notice kind="error">{msg.en}</Notice>
-        <Text lang="hi-Latn" kind="small">
-          {msg.hinglish}
-        </Text>
-      </Page>
-    )
-  }
-  const dep: DeploymentId = entry.dep
-  const langSet: LangSet = entry.langs
-  const offered: Lang[] =
-    langSet === 'both' || langSet === 'choose' ? ['en', 'hinglish'] : [langSet]
-  const ui: Lang = langs && langs.length === 1 ? langs[0] : offered[0]
-
-  const isSeason = dep === 'season'
-  /* The old card games open only on the dev server (EVAL-6); a player link to one is refused. */
-  if (!isSeason && !devRoutes())
-    return (
-      <Page surface="oof" stepKey="closed">
-        <Notice>Open the link you were sent to play.</Notice>
-      </Page>
-    )
-  const begin = (chosen: Lang[]) => {
-    setLangs(chosen)
-    if (isSeason) setPre('pick')
-    else setRunner(new Runner(cryptoRng(), dep, chosen, entry.firm))
-  }
-  const beginSeason = (story: Story) => {
-    const s = cryptoSeed()
-    setSeed(s)
-    setSeason(new StoryRunner(fromSeed(s), story, langs ?? offered))
-  }
-
-  if (!runner && !season) {
-    if (pre === 'disclosure' && isSeason && eligible === 'unasked')
-      return (
-        <Eligibility
-          ui={ui}
-          languages={langSet === 'choose'}
-          onDone={(ok, chosen) => {
-            if (chosen) setLangs(chosen)
-            setEligible(ok ? 'yes' : 'no')
-          }}
-        />
-      )
-    if (pre === 'disclosure' && isSeason && eligible === 'no') return <NotEligible ui={ui} />
-    /* The season's disclosure and consent are one screen (EVAL-10, owner; registered in v22). */
-    if (pre === 'disclosure' && isSeason)
-      return (
-        <SeasonStart
-          ui={ui}
-          help={!!langs && langs.length > 1}
-          minutes={drawn ? sessionMinutes(drawn) : undefined}
-          onAgree={() => begin(langs ?? offered)}
-          onDecline={() => setPre('declined')}
-        />
-      )
-    if (pre === 'disclosure')
-      return (
-        <Disclosure
-          langs={offered}
-          onContinue={() =>
-            firm ? (langSet === 'choose' ? setPre('language') : begin(offered)) : setPre('consent')
-          }
-        />
-      )
-    if (pre === 'declined') return <Declined ui={ui} />
-    if (pre === 'consent')
-      return (
-        <Consent
-          ui={ui}
-          onAgree={() =>
-            isSeason && langs
-              ? begin(langs)
-              : langSet === 'choose'
-                ? setPre('language')
-                : begin(offered)
-          }
-          onDecline={() => setPre('declined')}
-        />
-      )
-    if (pre === 'pick') return <StoryPicker ui={ui} drawn={drawn} onPick={beginSeason} />
-    return <LanguageStep ui={ui} onChoose={begin} />
-  }
-
-  if (season) {
-    if (finished) return <StoryResult runner={season} finished={finished} />
-    if (stopped) return <StoryStopped ui={season.lang} onCarryOn={() => setStopped(false)} />
-    const sendSeason = async (withdraw: boolean) => {
-      setSubmitState('sending')
-      try {
-        await season.prepareCode()
-        const keys = season.keys
-        if (!keys) throw new Error('no keys')
-        await store.submit(keys.code, 'season', withdraw ? null : season.submission())
-        setFinished(withdraw ? 'withdrawn' : 'submitted')
-      } catch {
-        setSubmitState('failed')
-      }
-    }
-    return (
-      <StoryView
-        runner={season}
-        submitState={submitState}
-        onSubmit={() => void sendSeason(false)}
-        onWithdraw={() => void sendSeason(true)}
-        onBack={() => {
-          season.back()
-          setTick((x) => x + 1)
-        }}
-        onStop={() => setStopped(true)}
-        onDone={(v) => {
-          season.answer(v)
-          setTick((x) => x + 1)
-        }}
-      />
-    )
-  }
-  if (!runner) return null
-
-  if (finished) return <Finished ui={ui} finished={finished} />
-
-  const step = runner.current
-  if (!step) return null
-  const send = async (withdraw: boolean) => {
-    setSubmitState('sending')
-    try {
-      await runner.prepareCode()
-      const keys = runner.keys
-      if (!keys) throw new Error('no keys')
-      await store.submit(keys.code, dep, withdraw ? null : runner.submission())
-      setFinished(withdraw ? 'withdrawn' : 'submitted')
-    } catch {
-      setSubmitState('failed')
-    }
-  }
+  const meta = useMeta(props.date)
+  const m = day.masthead
   return (
-    <StepView
-      runner={runner}
-      step={step}
-      ui={ui}
-      submitState={submitState}
-      onSubmit={() => void send(false)}
-      onWithdraw={() => void send(true)}
-      onDone={(v) => {
-        runner.answer(v)
-        setTick((t) => t + 1)
-      }}
-    />
+    <SkinContext.Provider value={day.skin}>
+      <Shell meta={meta} screen={`play-${props.date}-${at}`}>
+        <Masthead
+          skin={day.skin}
+          title={tx(m.title, { handle: handleOf(saved, lang) })}
+          blurb={tx(m.blurb)}
+          art={at === 0 ? m.art : undefined}
+          artPosition={m.artPosition}
+          roundel={m.roundel ? tx(m.roundel) : undefined}
+          board={m.board}
+          script={m.script}
+          city={m.city ? tx(m.city) : undefined}
+        />
+        <Stack>
+          {day.steps.length > 1 ? <Text size="s">{t('play.part', { i: at + 1, n: day.steps.length })}</Text> : null}
+          <Heading>{tx(step.prompt)}</Heading>
+          <Board
+            key={step.id}
+            step={step}
+            answer={answer}
+            order={order}
+            onChange={(a) => put({ ...rec, answers: rec.answers.map((x, i) => (i === at ? a : x)) })}
+          />
+        </Stack>
+        <Button disabled={!isComplete(step, answer)} stamped={stamped} onPress={commit}>
+          {stamped ? t('play.stamped') : t(COMMIT[step.kind])}
+        </Button>
+      </Shell>
+    </SkinContext.Provider>
   )
 }

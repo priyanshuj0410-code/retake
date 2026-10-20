@@ -1,0 +1,13 @@
+{
+  "_review": "The cast. `gender` is read by the scoring only, never by any screen. Recurring characters have pulp and enamel portraits in public/art; new characters (art: false) show a monogram plate until portraits exist.",
+  "kamla": { "name": { "en": "Kamla", "hi": "कमला" }, "gender": "w", "art": true, "recurring": true },
+  "pammi": { "name": { "en": "Pammi", "hi": "पम्मी" }, "gender": "w", "art": true, "recurring": true },
+  "anita": { "name": { "en": "Anita", "hi": "अनीता" }, "gender": "w", "art": true, "recurring": true },
+  "meena": { "name": { "en": "Meena", "hi": "मीना" }, "gender": "w", "art": true, "recurring": true },
+  "raju": { "name": { "en": "Raju", "hi": "राजू" }, "gender": "m", "art": true, "recurring": true },
+  "salim": { "name": { "en": "Salim", "hi": "सलीम" }, "gender": "m", "art": true, "recurring": true },
+  "vikram": { "name": { "en": "Vikram", "hi": "विक्रम" }, "gender": "m", "art": true, "recurring": true },
+  "arjun": { "name": { "en": "Arjun", "hi": "अर्जुन" }, "gender": "m", "art": true, "recurring": true },
+  "farida": { "name": { "en": "Farida", "hi": "फ़रीदा" }, "gender": "w", "art": false, "recurring": false },
+  "joseph": { "name": { "en": "Joseph", "hi": "जोसेफ़" }, "gender": "m", "art": false, "recurring": false }
+}

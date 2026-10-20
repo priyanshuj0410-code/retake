@@ -1,123 +1,204 @@
 /**
- * The shapes of every content file in content/. Researchers replace content by
- * editing those JSON files; nothing here holds a word of it. scripts/content-check.ts
- * validates every file against these shapes and the rules in the comments.
- *
- * Text is bilingual: `en` is English, `hinglish` is Hinglish in Latin script.
- * A text may hold tokens, resolved per character by src/engine/text.ts:
- *   {name}               the character's display name (first name, plus surname if drawn)
- *   {first}              in a continuation: the name of the character the player put first
- *   {recall}             in an unscored ordinary decision: a character the player staffed earlier
- *   {g:he|she|they}      a word that agrees with the character's sex (man|woman|neutral)
+ * The shape of every content file in content/ (the owner reviews them there, never in code).
+ * Text is { en, hi }: English is the source, Hindi is a draft until a native speaker signs it
+ * off (content/i18n/hi.json `_status`). A new language adds its key to Text and a file under
+ * content/i18n/; any string without it falls back to English.
  */
-export interface T {
-  en: string
-  hinglish: string
+export type Lang = 'en' | 'hi'
+export type Text = { en: string } & Partial<Record<Exclude<Lang, 'en'>, string>>
+
+export type Skin = 'lugdi' | 'station'
+export type Ground = 'night' | 'jungle' | 'navy' | 'plum' | 'blood' | 'rail'
+export type Area =
+  | 'home'
+  | 'online'
+  | 'road'
+  | 'work'
+  | 'money'
+  | 'sport'
+  | 'travel'
+  | 'trust'
+export type BoardTone = 'yellow' | 'blue' | 'white'
+
+/** A person in the cast. `gender` is read by the scoring only; no component ever receives it. */
+export interface CastMember {
+  name: Text
+  gender: 'w' | 'm'
+  /** true when public/art holds pulp-<id>.webp and enamel-<id>.webp; otherwise a monogram. */
+  art: boolean
+  /** Recurring characters return across the fortnight; new ones appear once. */
+  recurring: boolean
 }
 
-export type Lang = keyof T
-
-export type Family = 'opportunity' | 'npt' | 'conduct'
-export type Band = 'male-typed' | 'integrated' | 'female-typed'
-export type OppType = 'ranking' | 'allocation'
-export type ConductStratum = 'accused-man' | 'accused-woman'
-export type Form = 'A' | 'B'
-
-/** One description on a people card. Merit-close to the others on its card, never tied. */
-export interface Description {
+export interface Stat {
   id: string
-  text: T
+  label: Text
 }
 
-/**
- * A people card. Four descriptions, fixed across players; only the identity layer and the
- * starting order vary. A ranking card is sorted; an allocation card shares `pool` units.
- */
-export interface PeopleCard {
+export interface Rule {
   id: string
-  family: Family
-  /** The bank the card is drawn from: form A (before the note) or form B (after). */
-  form: Form
-  /** Opportunity cards: ranking or good-resource allocation. NPT and conduct cards: ranking. */
-  type: OppType
-  /** Opportunity and NPT cards: the role's planning sex-typing band (P1 rates it; not yet rated). */
-  band?: Band
-  /** Conduct cards: the accused's sex, fixed for the card. */
-  stratum?: ConductStratum
-  /** The role, in a few words, for the band audit ("logistics lead"). */
-  role: T
-  title: T
-  prompt: T
-  /** Allocation cards: what is shared, and how many units. */
-  unit?: T
-  pool?: number
-  descriptions: [Description, Description, Description, Description]
-  /** The fixed, never evaluative narrative line after the card. Identical whatever the cues. */
-  continuation: T
+  label: Text
+  /** The stat that orders people under this rule; 'sum' adds every stat. */
+  key: string
 }
 
-export interface OrdinaryOption {
+export interface Voice {
+  who: string
+  line: Text
+  /** Who the voice points at, for the twin's swapped half. Scoring reads it; the UI does not. */
+  target?: string
+}
+
+export interface Twin {
   id: string
-  text: T
-  /** Season points. Ignored when the decision is unscored. */
-  effect: number
+  half: 'a' | 'b'
 }
 
-/** A budget, vendor, schedule or risk decision. The season is decided by the scored ones only. */
-export interface OrdinaryDecision {
+/** Lock a rule, then assign people to slots. */
+export interface AssignStep {
+  kind: 'assign'
   id: string
-  kind: 'budget' | 'vendor' | 'schedule' | 'risk'
-  scored: boolean
-  title: T
-  body: T
-  options: OrdinaryOption[]
-  continuation: T
-  /** Shown in the first-week tutorial. */
-  tutorial?: boolean
+  prompt: Text
+  stats: Stat[]
+  rules: Rule[]
+  people: { who: string; values: Record<string, number> }[]
+  slots: { id: string; label: Text; value: number }[]
 }
 
-/** A Committee Inbox incident: harassment under the 2013 Act, or a legal near-miss. */
-export interface InboxIncident {
+/** Choose one option; options can be people (with stats and a loaded quote) or even actions. */
+export interface PickStep {
+  kind: 'pick'
   id: string
-  kind: 'harassment' | 'near-miss'
-  severity: 'lower' | 'middle' | 'higher'
-  text: T
+  prompt: Text
+  stats?: Stat[]
+  options: {
+    id: string
+    who?: string
+    label?: Text
+    values?: Record<string, number>
+    quote?: Text
+    /** The non-gender attributes this option carries; a twin's halves match on it. */
+    profile?: string
+  }[]
+  twin?: Twin
 }
 
-/** A matched-survey item. The fair answer sits at a scale end. */
-export interface SurveyItem {
+/** Spend a budget of checks across candidates, then choose one. */
+export interface ChecksStep {
+  kind: 'checks'
   id: string
-  family: 'opportunity' | 'conduct'
-  /** Which end is fair: agree-fair puts the fair answer at "strongly agree". */
-  keying: 'agree-fair' | 'disagree-fair'
-  /** disagree-fair items only: whom the unfair (agree) answer favours. */
-  unfairFavours?: 'men' | 'women'
-  /** Asked twice, apart within the survey (a repeat pair). A real item, never an instructed one. */
-  repeat: boolean
-  text: T
+  prompt: Text
+  choosePrompt: Text
+  budget: number
+  checkLabel: Text
+  people: { who: string; record: Text; finding: Text; mirror?: string }[]
+  voice?: Voice
+  twin?: Twin
 }
 
-export interface ScreeningItem {
+/** Pick a team of `seats`, with a voice and a response to it. */
+export interface TeamStep {
+  kind: 'team'
   id: string
-  format: 'direct' | 'vignette'
-  text: T
-  /** Direct items: which end of the five-point agreement scale is fair. */
-  keying?: 'agree-fair' | 'disagree-fair'
-  /** Vignettes list their own options, each with its fairness from 0 (least) to 1 (fairest). */
-  options?: { id: string; text: T; fairness: number }[]
+  prompt: Text
+  seats: number
+  stat: Stat
+  people: { who: string; value: number }[]
+  voice: Voice
+  responsePrompt: Text
+  responses: { id: string; label: Text; restricts: boolean }[]
+  twin?: Twin
 }
 
-/** A crosswise statement. Records carry only the item id, the answer, the subsample and a label. */
-export interface CrosswiseItem {
+/** Put people in order; optionally lock a rule first. */
+export interface RankStep {
+  kind: 'rank'
   id: string
-  text: T
+  prompt: Text
+  positions: Text[]
+  rules?: Rule[]
+  stats?: Stat[]
+  people: { who: string; record: Text; values?: Record<string, number> }[]
 }
 
-export interface NoteText {
-  id: 'a' | 'b' | 'c'
-  statistic: T
-  source: T
-  instruction: T
-  /** True until the statistic is sourced and verified. Shown in demo mode only. */
-  placeholder: boolean
+/** Fill the blanks of two notes from one shared bank of words. */
+export interface WordsStep {
+  kind: 'words'
+  id: string
+  prompt: Text
+  facts: Text
+  template: Text
+  people: string[]
+  bank: { id: string; text: Text; valence: -1 | 0 | 1 }[]
+}
+
+/** Quick-fire keep or cut; items come in mirrored pairs. */
+export interface SwipeStep {
+  kind: 'swipe'
+  id: string
+  prompt: Text
+  cut: Text
+  keep: Text
+  items: { id: string; who: string; text: Text; pair: string }[]
+}
+
+/** Guess a share of the crowd; scored on closeness. The crowd figure is sample data. */
+export interface CrowdStep {
+  kind: 'crowd'
+  id: string
+  prompt: Text
+  sample: number
+  players: number
+  who?: string[]
+}
+
+export type Step =
+  | AssignStep
+  | PickStep
+  | ChecksStep
+  | TeamStep
+  | RankStep
+  | WordsStep
+  | SwipeStep
+  | CrowdStep
+export type StepKind = Step['kind']
+
+export interface Masthead {
+  series: Text
+  no: number
+  title: Text
+  blurb: Text
+  /** Lugdi: a cover painting, public/art/<art>.webp. */
+  art?: string
+  artPosition?: 'top' | 'centre' | 'bottom'
+  roundel?: Text
+  /** Station: the board, its colour and the city's own script line (a draft). */
+  board?: BoardTone
+  script?: string
+  city?: Text
+}
+
+export interface Reflection {
+  twin: string
+  prompt: Text
+}
+
+export interface Day {
+  id: string
+  /** 1 to 14: the fortnight's order, Monday of the Lugdi week first. */
+  n: number
+  skin: Skin
+  ground: Ground
+  weekday: 1 | 2 | 3 | 4 | 5 | 6 | 7
+  level: number | null
+  levelName: Text
+  area: Area | null
+  object: Text
+  transfer?: boolean
+  sunday?: boolean
+  masthead: Masthead
+  steps: Step[]
+  reflect?: Reflection
+  /** What the owner should know when reviewing this day. Never shown to players. */
+  _review?: string
 }

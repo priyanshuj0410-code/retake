@@ -1,0 +1,34 @@
+{
+  "id": "S-wed",
+  "n": 10,
+  "skin": "station",
+  "ground": "rail",
+  "weekday": 3,
+  "level": null,
+  "levelName": { "en": "A new kind of puzzle", "hi": "एक नई तरह की पहेली" },
+  "area": "trust",
+  "object": { "en": "Cloak room", "hi": "क्लॉक रूम" },
+  "transfer": true,
+  "masthead": {
+    "series": { "en": "Transfer day", "hi": "ट्रांसफ़र डे" },
+    "no": 221,
+    "title": { "en": "Cloak Room", "hi": "क्लॉक रूम" },
+    "city": { "en": "Jaipur", "hi": "जयपुर" },
+    "script": "अमानती सामान घर",
+    "board": "white",
+    "blurb": { "en": "Nothing about jobs or teams today.", "hi": "आज नौकरी या टीम की कोई बात नहीं।" }
+  },
+  "steps": [
+    {
+      "kind": "pick",
+      "id": "cloak-bag",
+      "prompt": { "en": "One black bag. Two people describe it the same way. Who gets it without ID?", "hi": "एक काला बैग। दो लोग उसे एक जैसा बताते हैं। बिना पहचान पत्र के किसे मिलेगा?" },
+      "options": [
+        { "id": "pammi", "who": "pammi", "quote": { "en": "\"Black, red strap, a tiffin inside.\"", "hi": "\"काला, लाल पट्टा, अंदर टिफ़िन।\"" }, "profile": "same" },
+        { "id": "raju", "who": "raju", "quote": { "en": "\"Black, red strap, a tiffin inside.\"", "hi": "\"काला, लाल पट्टा, अंदर टिफ़िन।\"" }, "profile": "same" },
+        { "id": "neither", "label": { "en": "Neither: both show ID", "hi": "किसी को नहीं: दोनों पहचान पत्र दिखाएँ" } }
+      ]
+    }
+  ],
+  "_review": "Transfer day: a scenario type the player has not practised (an everyday trust call), with no feedback on the day. The choice still counts quietly as one lean unit in the week. The Hindi board line is a draft."
+}

@@ -1,23 +1,11 @@
 import type { ReactNode } from 'react'
 import './notice.css'
 
-export function Notice({
-  kind = 'info',
-  id,
-  children,
-}: {
-  kind?: 'info' | 'error' | 'ok'
-  /** For a Field's aria-describedby. */
-  id?: string
-  children: ReactNode
-}) {
+/** A plain label that something is sample data or a draft, or a short status line. */
+export function Notice(props: { children: ReactNode; live?: boolean }) {
   return (
-    <p
-      id={id}
-      className={kind === 'info' ? 'notice' : `notice notice--${kind}`}
-      role={kind === 'error' ? 'alert' : 'status'}
-    >
-      {children}
+    <p className="notice" role={props.live ? 'status' : undefined}>
+      {props.children}
     </p>
   )
 }

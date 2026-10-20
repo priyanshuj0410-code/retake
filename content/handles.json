@@ -1,0 +1,31 @@
+{
+  "_review": "Road names are built as '<first> <joiner> <second>', truck-art style. Every word names a place, a time or a thing, never a person, so no handle carries a gender. The joiner agrees with the second word in Hindi (ka or ki). A number is added only when the name is already taken. Review both lists for slurs and regional meanings before each new language.",
+  "first": [
+    { "id": "ghat", "en": "Ghat", "hi": "घाट" },
+    { "id": "highway", "en": "Highway", "hi": "हाईवे" },
+    { "id": "raat", "en": "Raat", "hi": "रात" },
+    { "id": "dhaba", "en": "Dhaba", "hi": "ढाबा" },
+    { "id": "kilometre", "en": "Kilometre", "hi": "किलोमीटर" },
+    { "id": "sadak", "en": "Sadak", "hi": "सड़क" },
+    { "id": "toll", "en": "Toll Naka", "hi": "टोल नाका" },
+    { "id": "pahad", "en": "Pahad", "hi": "पहाड़" },
+    { "id": "diesel", "en": "Diesel", "hi": "डीज़ल" },
+    { "id": "mela", "en": "Mela", "hi": "मेला" },
+    { "id": "monsoon", "en": "Monsoon", "hi": "मानसून" },
+    { "id": "junction", "en": "Junction", "hi": "जंक्शन" }
+  ],
+  "second": [
+    { "id": "toofan", "en": "Toofan", "hi": "तूफ़ान", "joiner": { "en": "Ka", "hi": "का" } },
+    { "id": "bijli", "en": "Bijli", "hi": "बिजली", "joiner": { "en": "Ki", "hi": "की" } },
+    { "id": "sitara", "en": "Sitara", "hi": "सितारा", "joiner": { "en": "Ka", "hi": "का" } },
+    { "id": "express", "en": "Express", "hi": "एक्सप्रेस", "joiner": { "en": "Ki", "hi": "की" } },
+    { "id": "rocket", "en": "Rocket", "hi": "रॉकेट", "joiner": { "en": "Ka", "hi": "का" } },
+    { "id": "pahiya", "en": "Pahiya", "hi": "पहिया", "joiner": { "en": "Ka", "hi": "का" } },
+    { "id": "horn", "en": "Horn", "hi": "हॉर्न", "joiner": { "en": "Ka", "hi": "का" } },
+    { "id": "chai", "en": "Chai", "hi": "चाय", "joiner": { "en": "Ki", "hi": "की" } },
+    { "id": "dhuan", "en": "Dhuan", "hi": "धुआँ", "joiner": { "en": "Ka", "hi": "का" } },
+    { "id": "chakra", "en": "Chakra", "hi": "चक्र", "joiner": { "en": "Ka", "hi": "का" } },
+    { "id": "jugnu", "en": "Jugnu", "hi": "जुगनू", "joiner": { "en": "Ka", "hi": "का" } },
+    { "id": "baarish", "en": "Baarish", "hi": "बारिश", "joiner": { "en": "Ki", "hi": "की" } }
+  ]
+}

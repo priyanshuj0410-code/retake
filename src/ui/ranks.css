@@ -1,0 +1,41 @@
+/* @owns ranks ranks__caption ranks__head ranks__row ranks__cell ranks__gap */
+.ranks {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--radius-plate);
+  background: var(--c-band);
+  color: var(--c-on-band);
+}
+.ranks__caption {
+  padding: var(--gap-s) var(--gap-m);
+  text-align: left;
+  font-size: var(--text-m);
+  font-weight: 700;
+  background: var(--c-band);
+  color: var(--c-on-band);
+}
+.ranks__head {
+  padding: var(--gap-xs) var(--gap-m);
+  text-align: left;
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+.ranks__row[data-you='true'] {
+  background: var(--c-plate);
+  color: var(--c-on-plate);
+}
+.ranks__cell {
+  padding: var(--gap-s) var(--gap-m);
+  border-top: var(--edge-thin) solid var(--c-muted-edge);
+  font-size: var(--text-m);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.ranks__row[data-you='true'] .ranks__cell {
+  font-weight: 700;
+}
+.ranks__gap {
+  padding: var(--gap-xs) var(--gap-m);
+  font-size: var(--text-s);
+  text-align: center;
+}

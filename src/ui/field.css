@@ -1,45 +1,38 @@
-/* @owns field field__label field__hint field__input */
-.field {
+/* @owns field field__label field__row field__input notebox notebox__input notebox__hint */
+.field,
+.notebox {
   display: flex;
   flex-direction: column;
-  gap: var(--label-gap);
+  gap: var(--gap-s);
 }
 .field__label {
-  overflow-wrap: anywhere;
-  font-family: var(--font-display);
-  font-weight: var(--weight-label);
-  color: var(--c-text);
+  font-size: var(--text-m);
+  font-weight: 700;
+  color: var(--c-on-ground);
 }
-.field__hint {
-  font-size: var(--text-small);
-  color: var(--c-muted);
-  overflow-wrap: anywhere;
+.field__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--gap-s);
 }
-.field__input {
-  min-height: var(--control);
-  font-family: var(--font-mono);
-  font-size: var(--text-lead);
+.field__input,
+.notebox__input {
+  min-height: var(--tap-min);
   padding: var(--gap-s) var(--gap-m);
-  border: var(--ink-frame) solid var(--c-option-rest);
-  border-radius: var(--radius-m);
-  background: var(--c-surface);
-  color: var(--c-text);
-  width: 100%;
-  transition: border-color var(--motion);
+  border: var(--edge) solid var(--c-edge);
+  border-radius: var(--radius-plate);
+  background: var(--c-sheet);
+  color: var(--c-on-sheet);
+  font: inherit;
+  font-size: var(--text-l);
 }
-.field__input:focus {
-  border-color: var(--c-accent);
+.notebox__input {
+  min-height: var(--portrait-l);
+  resize: vertical;
 }
-.field__input[aria-invalid='true'] {
-  border-color: var(--c-error);
-}
-@media (hover: hover) {
-  .field__input:not(:focus):not([aria-invalid='true']):hover {
-    border-color: var(--c-muted);
-  }
-}
-@media (forced-colors: active) {
-  .field__input[aria-invalid='true'] {
-    border-style: dashed;
-  }
+.notebox__hint {
+  margin: 0;
+  font-size: var(--text-s);
+  font-weight: 500;
+  color: var(--c-on-ground);
 }

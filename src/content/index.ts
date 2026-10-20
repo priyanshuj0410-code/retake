@@ -1,66 +1,64 @@
-/** Every content file, typed. Researchers edit content/, never this file. */
-import { seasonSentence3 } from '../engine/config'
-import opportunity from '../../content/cards/opportunity.json'
-import conduct from '../../content/cards/conduct.json'
-import npt from '../../content/cards/npt.json'
-import ordinary from '../../content/ordinary.json'
-import inbox from '../../content/inbox.json'
-import survey from '../../content/survey.json'
-import directBlock from '../../content/direct-block.json'
-import screening from '../../content/screening.json'
-import crosswise from '../../content/crosswise.json'
-import notes from '../../content/notes.json'
-import identity from '../../content/identity.json'
-import disclosure from '../../content/disclosure.json'
-import screens from '../../content/screens.json'
-import type {
-  CrosswiseItem,
-  InboxIncident,
-  NoteText,
-  OrdinaryDecision,
-  PeopleCard,
-  ScreeningItem,
-  SurveyItem,
-  T,
-} from './types'
+/** Every content file, typed. The days are listed here in the fortnight's order. */
+import castJson from '../../content/cast.json'
+import handlesJson from '../../content/handles.json'
+import sampleJson from '../../content/sample.json'
+import d01 from '../../content/days/01-lugdi-mon.json'
+import d02 from '../../content/days/02-lugdi-tue.json'
+import d03 from '../../content/days/03-lugdi-wed.json'
+import d04 from '../../content/days/04-lugdi-thu.json'
+import d05 from '../../content/days/05-lugdi-fri.json'
+import d06 from '../../content/days/06-lugdi-sat.json'
+import d07 from '../../content/days/07-lugdi-sun.json'
+import d08 from '../../content/days/08-station-mon.json'
+import d09 from '../../content/days/09-station-tue.json'
+import d10 from '../../content/days/10-station-wed.json'
+import d11 from '../../content/days/11-station-thu.json'
+import d12 from '../../content/days/12-station-fri.json'
+import d13 from '../../content/days/13-station-sat.json'
+import d14 from '../../content/days/14-station-sun.json'
+import type { CastMember, Day, Step, Text } from './types'
 
-export const cards = [
-  ...(opportunity as PeopleCard[]),
-  ...(npt as PeopleCard[]),
-  ...(conduct as PeopleCard[]),
-]
-export const cardById = new Map(cards.map((c) => [c.id, c]))
-export const ordinaryBank = ordinary as OrdinaryDecision[]
-export const inboxBank = inbox as InboxIncident[]
-export const surveyItems = (survey as { items: SurveyItem[] }).items
-export const directItems = (directBlock as { items: SurveyItem[] }).items
-export const screeningItems = (screening as { items: ScreeningItem[] }).items
-export const notesById = new Map((notes as NoteText[]).map((n) => [n.id, n]))
+export const DAYS = [d01, d02, d03, d04, d05, d06, d07, d08, d09, d10, d11, d12, d13, d14] as Day[]
 
-export interface CrosswiseContent {
-  randomiser: T
-  randomiserQuestion: { low: T; high: T }
-  answers: { same: T; different: T }
-  instructions: T
-  practice: { fictionalRandomiser: T; direct: CrosswiseItem[]; crosswise: CrosswiseItem[] }
-  anchor: CrosswiseItem
-  knownZero: CrosswiseItem
-  m1hControls: CrosswiseItem[]
-  m1hStatements: CrosswiseItem[]
-  m3Items: CrosswiseItem[]
-  rcItems: CrosswiseItem[]
-  neutral: CrosswiseItem[]
+export const dayByN = (n: number): Day => DAYS[n - 1]
+export const dayById = (id: string): Day | undefined => DAYS.find((d) => d.id === id)
+
+const { _review: _castReview, ...castEntries } = castJson as unknown as Record<string, unknown>
+void _castReview
+export const CAST = castEntries as Record<string, CastMember>
+
+export const cast = (who: string): CastMember => {
+  const c = CAST[who]
+  if (!c) throw new Error(`unknown cast member ${who}`)
+  return c
 }
-export const xw = crosswise as CrosswiseContent
-export { identity, disclosure, screens }
-export const registeredSentences = disclosure.registered as Record<'en' | 'hinglish', string[]>
 
-/**
- * The disclosure's four sentences: the registered four, or for the season story the four with
- * sentence 3 replaced by the interim line in src/engine/config.ts (seasonSentence3), which
- * awaits the owner's wording; it is never a placeholder.
- */
-export const sentencesFor = (l: 'en' | 'hinglish', season: boolean): string[] =>
-  season
-    ? registeredSentences[l].map((s, i) => (i === 2 ? seasonSentence3[l] : s))
-    : registeredSentences[l]
+export interface HandleWord {
+  id: string
+  en: string
+  hi: string
+  joiner?: Text
+}
+export const HANDLE_WORDS = handlesJson as unknown as { first: HandleWord[]; second: HandleWord[] }
+
+export const SAMPLE = sampleJson as {
+  players: number
+  named: number
+  seed: number
+  topPractice: number
+  medianPractice: number
+}
+
+/** Every step of the fortnight with the day it belongs to. */
+export const allSteps = (): { day: Day; step: Step }[] =>
+  DAYS.flatMap((day) => day.steps.map((step) => ({ day, step })))
+
+/** The two halves of a twin, as content. */
+export function twinHalves(id: string) {
+  const halves = allSteps().filter(({ step }) => 'twin' in step && step.twin?.id === id)
+  const a = halves.find(({ step }) => 'twin' in step && step.twin?.half === 'a')
+  const b = halves.find(({ step }) => 'twin' in step && step.twin?.half === 'b')
+  return { a, b }
+}
+
+export type * from './types'

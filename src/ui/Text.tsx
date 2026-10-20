@@ -1,28 +1,31 @@
 import type { ReactNode } from 'react'
 import './text.css'
 
-export function Text({
-  kind,
-  children,
-  id,
-  lang,
-}: {
-  kind?: 'lead' | 'small' | 'muted' | 'strong'
-  children: ReactNode
-  id?: string
-  lang?: string
-}) {
+export function Text(props: { children: ReactNode; size?: 's' | 'm' | 'l'; lang?: string }) {
   return (
-    <p className={kind ? `text text--${kind}` : 'text'} id={id} lang={lang}>
-      {children}
+    <p className="text" data-size={props.size ?? 'm'} lang={props.lang}>
+      {props.children}
     </p>
   )
 }
 
-export function Heading({ children, level = 2 }: { children: ReactNode; level?: 2 | 3 }) {
-  return level === 3 ? (
-    <h3 className="heading heading--sub">{children}</h3>
-  ) : (
-    <h2 className="heading">{children}</h2>
+export function Heading(props: { children: ReactNode; id?: string }) {
+  return (
+    <h2 className="heading" id={props.id}>
+      {props.children}
+    </h2>
+  )
+}
+
+/** The screen's display heading: Sarpanch in Lugdi, Hind bold in Station, accent colour. */
+export function Title(props: { children: ReactNode }) {
+  return <h1 className="title">{props.children}</h1>
+}
+
+export function Link(props: { href: string; children: ReactNode }) {
+  return (
+    <a className="link" href={props.href}>
+      {props.children}
+    </a>
   )
 }

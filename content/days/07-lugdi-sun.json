@@ -1,0 +1,23 @@
+{
+  "id": "L-sun",
+  "n": 7,
+  "skin": "lugdi",
+  "ground": "blood",
+  "weekday": 7,
+  "level": null,
+  "levelName": { "en": "Back cover", "hi": "पिछला कवर" },
+  "area": null,
+  "object": { "en": "Back cover", "hi": "पिछला कवर" },
+  "sunday": true,
+  "masthead": {
+    "series": { "en": "Back cover", "hi": "पिछला कवर" },
+    "no": 218,
+    "title": { "en": "This week, by {handle}", "hi": "इस हफ़्ते, {handle} की कहानी" },
+    "blurb": { "en": "Your week in numbers, and one look back.", "hi": "आपका हफ़्ता अंकों में, और एक बार पीछे देखें।" }
+  },
+  "steps": [],
+  "reflect": {
+    "twin": "T1",
+    "prompt": { "en": "Same 14 years, same 61 ghat trips. Different words, and you chose. What was different?", "hi": "वही 14 साल, वही 61 घाट ट्रिप। शब्द अलग थे, और आपने चुना। क्या अलग था?" }
+  }
+}

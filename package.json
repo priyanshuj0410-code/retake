@@ -29,11 +29,16 @@
     "sample-pdf": "tsx --tsconfig tsconfig.app.json scripts/sample-pdf.ts"
   },
   "dependencies": {
-    "firebase": "^12.18.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@fontsource/hind": "^5.3.0",
+    "@fontsource/hind-guntur": "^5.3.0",
+    "@fontsource/hind-madurai": "^5.3.0",
+    "@fontsource/hind-siliguri": "^5.3.0",
+    "@fontsource/hind-vadodara": "^5.3.0",
+    "@fontsource/sarpanch": "^5.3.0",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",

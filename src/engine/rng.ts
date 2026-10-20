@@ -1,21 +1,16 @@
 /**
- * Random draws. In play every session is seeded from the platform's cryptographic source,
- * so no draw can be predicted or replayed; the checks seed it by number so a statistical
- * test is reproducible. sfc32, a small fast generator with a 128-bit state.
+ * Seeded random draws (sfc32, seeded through splitmix32). The trainer uses them where a draw
+ * must repeat: the order options are shown in (per player and step, so the same twin is not
+ * always on the left), handle offers, and the sample board every phone sees the same way.
  */
 export interface Rng {
-  /** Uniform on [0, 1). */
   next(): number
   int(n: number): number
   pick<T>(xs: readonly T[]): T
   shuffle<T>(xs: readonly T[]): T[]
-  /** A random subset of size k of 0..n-1, as a boolean mask. */
-  choose(n: number, k: number): boolean[]
-  /** Draws a key of `weights` with probability proportional to its value. */
-  weighted<K extends string>(weights: Partial<Record<K, number>>): K
 }
 
-export function sfc32(a: number, b: number, c: number, d: number): Rng {
+function sfc32(a: number, b: number, c: number, d: number): Rng {
   const next = () => {
     a >>>= 0
     b >>>= 0
@@ -31,7 +26,7 @@ export function sfc32(a: number, b: number, c: number, d: number): Rng {
     return (t >>> 0) / 4294967296
   }
   for (let i = 0; i < 15; i++) next()
-  const rng: Rng = {
+  return {
     next,
     int: (n) => Math.floor(next() * n),
     pick: (xs) => xs[Math.floor(next() * xs.length)],
@@ -43,25 +38,9 @@ export function sfc32(a: number, b: number, c: number, d: number): Rng {
       }
       return out
     },
-    choose: (n, k) => {
-      const idx = rng.shuffle([...Array(n).keys()]).slice(0, k)
-      return [...Array(n).keys()].map((i) => idx.includes(i))
-    },
-    weighted: <K extends string>(weights: Partial<Record<K, number>>) => {
-      const entries = Object.entries(weights) as [K, number][]
-      const total = entries.reduce((s, [, w]) => s + w, 0)
-      let u = next() * total
-      for (const [k, w] of entries) {
-        u -= w
-        if (u < 0) return k
-      }
-      return entries[entries.length - 1][0]
-    },
   }
-  return rng
 }
 
-/** A seeded generator for the checks: the seed is spread over the whole state by splitmix32, so neighbouring seeds give unrelated streams. */
 export function seeded(seed: number): Rng {
   let x = seed >>> 0
   const mix = () => {
@@ -74,25 +53,21 @@ export function seeded(seed: number): Rng {
   return sfc32(mix(), mix(), mix(), mix())
 }
 
-export type Seed = [number, number, number, number]
+/** A 32-bit hash of a string (FNV-1a), to seed a draw from names. */
+export function hash(s: string): number {
+  let h = 0x811c9dc5
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i)
+    h = Math.imul(h, 0x01000193)
+  }
+  return h >>> 0
+}
 
-/** A fresh 128-bit seed from the platform's cryptographic source. */
-export function cryptoSeed(): Seed {
-  const s = new Uint32Array(4)
+export const seededBy = (...parts: (string | number)[]) => seeded(hash(parts.join('|')))
+
+/** A fresh seed from the platform's cryptographic source. */
+export function freshSeed(): number {
+  const s = new Uint32Array(1)
   crypto.getRandomValues(s)
-  return [s[0], s[1], s[2], s[3]]
-}
-
-/** The generator a seed starts: the season keeps its seed so a reload redraws the same season. */
-export const fromSeed = (s: Seed): Rng => sfc32(s[0], s[1], s[2], s[3])
-
-export function cryptoRng(): Rng {
-  return fromSeed(cryptoSeed())
-}
-
-/** A random key for a stored record: 128 bits, base-36. Carries no time and no order. */
-export function randomKey(): string {
-  const b = new Uint32Array(4)
-  crypto.getRandomValues(b)
-  return Array.from(b, (x) => x.toString(36).padStart(7, '0')).join('')
+  return s[0]
 }

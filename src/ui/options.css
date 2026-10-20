@@ -1,52 +1,11 @@
-/* @owns options options__option options__help */
-/* Every option in a choice is the same size (EVAL-10, owner): an unequal look nudges choices. */
+/* @owns options */
 .options {
-  list-style: none;
-  margin: var(--gap-none);
-  padding: var(--gap-none);
   display: grid;
-  grid-auto-rows: var(--rows-equal);
   gap: var(--gap-s);
 }
-.options__option {
-  width: 100%;
-  height: 100%;
-  min-height: var(--target);
-  padding: var(--gap-m) var(--gap-l);
-  border: var(--edge) solid var(--c-ink-line);
-  border-radius: var(--radius-m);
-  background: var(--c-surface);
-  color: var(--c-text);
-  font: inherit;
-  line-height: var(--leading-ui);
-  text-align: left;
-  overflow-wrap: anywhere;
-  cursor: pointer;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  transition:
-    border-color var(--motion),
-    box-shadow var(--motion),
-    transform var(--motion);
+.options[data-columns='2'] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.options__option:active {
-  transform: scale(var(--press));
-}
-@media (hover: hover) {
-  .options__option:hover {
-    border-color: var(--c-accent);
-    box-shadow: var(--shadow-panel);
-  }
-}
-.options__help {
-  /* The help mode's one style (EVAL-10). */
-  display: block;
-  font-family: var(--font-body);
-  font-size: var(--text-help);
-  font-weight: normal;
-  font-style: normal;
-  line-height: var(--leading-tight-rows);
-  letter-spacing: normal;
-  text-transform: none;
-  color: var(--c-muted);
+.options[data-columns='4'] {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }

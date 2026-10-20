@@ -1,0 +1,30 @@
+/* @owns slider slider__label slider__value slider__input slider__scale */
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+}
+.slider__label {
+  font-size: var(--text-m);
+  font-weight: 700;
+  color: var(--c-on-ground);
+}
+.slider__value {
+  margin: 0;
+  font-weight: 700;
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  font-variant-numeric: tabular-nums;
+}
+.slider__input {
+  width: 100%;
+  min-height: var(--tap-min);
+  accent-color: var(--c-plate);
+}
+.slider__scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-s);
+  font-weight: 600;
+  color: var(--c-on-ground);
+}

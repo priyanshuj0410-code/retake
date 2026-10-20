@@ -1,0 +1,46 @@
+/* @owns slots slots__slot slots__label slots__who */
+.slots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap-s);
+}
+.slots__slot {
+  min-height: var(--portrait-l);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--gap-xs);
+  padding: var(--gap-s);
+  border: var(--edge) dashed var(--c-edge-ground);
+  border-radius: var(--radius-plate);
+  background: var(--c-ground);
+  color: var(--c-on-ground);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform var(--dur-press);
+  touch-action: manipulation;
+}
+.slots__slot:active {
+  transform: translate(var(--press-shift), var(--press-shift));
+}
+.slots__slot[data-filled='true'] {
+  border-style: solid;
+  border-color: var(--c-edge);
+  background: var(--c-sheet);
+  color: var(--c-on-sheet);
+}
+.slots__slot[data-armed='true'] {
+  outline: var(--edge) solid var(--c-focus);
+}
+.slots__label {
+  font-size: var(--text-s);
+  font-weight: 700;
+  line-height: var(--leading-snug);
+}
+.slots__who {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-l);
+  line-height: var(--leading-tight);
+}

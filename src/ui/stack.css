@@ -1,0 +1,23 @@
+/* @owns stack cluster split */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+}
+.stack[data-gap='s'] {
+  gap: var(--gap-s);
+}
+.stack[data-gap='l'] {
+  gap: var(--gap-xl);
+}
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-s);
+  align-items: center;
+}
+.split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-m);
+}

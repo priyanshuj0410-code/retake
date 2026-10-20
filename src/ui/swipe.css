@@ -1,0 +1,46 @@
+/* @owns swipe swipe__deck swipe__card swipe__text swipe__progress swipe__actions */
+.swipe {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+}
+.swipe__deck {
+  position: relative;
+  min-height: calc(2 * var(--swipe-height));
+  touch-action: pan-y;
+}
+.swipe__card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+  padding: var(--gap-l);
+  border: var(--edge) solid var(--c-edge);
+  border-radius: var(--radius-plate);
+  background: var(--c-plate);
+  color: var(--c-on-plate);
+  cursor: grab;
+  user-select: none;
+  transition: transform var(--dur-move);
+}
+.swipe__card[data-dragging='true'] {
+  transition: none;
+  cursor: grabbing;
+}
+.swipe__text {
+  margin: 0;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: var(--leading-snug);
+}
+.swipe__progress {
+  margin: 0;
+  font-size: var(--text-s);
+  font-weight: 700;
+}
+.swipe__actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-s);
+}

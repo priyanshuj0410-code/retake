@@ -1,0 +1,37 @@
+{
+  "id": "L-fri",
+  "n": 5,
+  "skin": "lugdi",
+  "ground": "jungle",
+  "weekday": 5,
+  "level": 7,
+  "levelName": { "en": "Marriage and family", "hi": "शादी और परिवार" },
+  "area": "money",
+  "object": { "en": "Crime cover", "hi": "क्राइम का कवर" },
+  "masthead": {
+    "series": { "en": "Ghat Series", "hi": "घाट सीरीज़" },
+    "no": 216,
+    "title": { "en": "Chit Fund Ka Raaz", "hi": "चिट फंड का राज़" },
+    "blurb": { "en": "₹6 lakh. One treasurer. Three checks to spend.", "hi": "₹6 लाख। एक ख़ज़ांची। तीन जाँचें।" },
+    "art": "pulp-s-money",
+    "artPosition": "centre"
+  },
+  "steps": [
+    {
+      "kind": "checks",
+      "id": "chit-checks",
+      "prompt": { "en": "Spend up to three checks. Tap a person to call their referee.", "hi": "तीन जाँचें तक करें। किसी पर टैप करके उनके रेफ़री को फ़ोन करें।" },
+      "choosePrompt": { "en": "Who keeps the cash box?", "hi": "गल्ला किसके पास रहेगा?" },
+      "budget": 3,
+      "checkLabel": { "en": "Call the referee", "hi": "रेफ़री को फ़ोन" },
+      "people": [
+        { "who": "anita", "record": { "en": "9 years of accounts · 2-year gap, family", "hi": "9 साल हिसाब-किताब · 2 साल का ब्रेक, परिवार" }, "finding": { "en": "Referee: every book balanced.", "hi": "रेफ़री: हर बही का हिसाब ठीक।" }, "mirror": "m1" },
+        { "who": "vikram", "record": { "en": "9 years of accounts · 2-year gap, family", "hi": "9 साल हिसाब-किताब · 2 साल का ब्रेक, परिवार" }, "finding": { "en": "Referee: every book balanced.", "hi": "रेफ़री: हर बही का हिसाब ठीक।" }, "mirror": "m1" },
+        { "who": "pammi", "record": { "en": "6 years of accounts · no gap", "hi": "6 साल हिसाब-किताब · कोई ब्रेक नहीं" }, "finding": { "en": "Referee: careful, and on time.", "hi": "रेफ़री: सावधान, और समय की पाबंद।" } }
+      ],
+      "voice": { "who": "meena", "line": { "en": "\"Dig into Anita twice. What if she leaves after the wedding?\"", "hi": "\"अनीता की दो बार जाँच करो। शादी के बाद चली गई तो?\"" }, "target": "anita" },
+      "twin": { "id": "T2", "half": "a" }
+    }
+  ],
+  "_review": "Twin T2, first half. Anita and Vikram have identical records and identical referee findings. Meena-ji's voice points at Anita and a marriage question. On Friday of the Station week the voice points at Vikram and a family question. Check-spending parity is the gap in checks between the two matching records."
+}

@@ -1,0 +1,41 @@
+{
+  "id": "S-tue",
+  "n": 9,
+  "skin": "station",
+  "ground": "rail",
+  "weekday": 2,
+  "level": 3,
+  "levelName": { "en": "Same yardstick", "hi": "एक ही पैमाना" },
+  "area": "work",
+  "object": { "en": "Platform announcement", "hi": "प्लेटफ़ॉर्म घोषणा" },
+  "masthead": {
+    "series": { "en": "No.", "hi": "अंक" },
+    "no": 220,
+    "title": { "en": "Platform Announcement", "hi": "प्लेटफ़ॉर्म घोषणा" },
+    "city": { "en": "Hyderabad", "hi": "हैदराबाद" },
+    "script": "ప్లాట్‌ఫామ్ ప్రకటన",
+    "board": "white",
+    "blurb": { "en": "Two station masters. One shared list of words.", "hi": "दो स्टेशन मास्टर। शब्दों की एक ही सूची।" }
+  },
+  "steps": [
+    {
+      "kind": "words",
+      "id": "announce",
+      "prompt": { "en": "Write both announcements from the same words.", "hi": "एक ही शब्दों से दोनों घोषणाएँ लिखें।" },
+      "facts": { "en": "Both ran the Diwali rush: 312 trains, 0 delays.", "hi": "दोनों ने दिवाली की भीड़ संभाली: 312 ट्रेनें, 0 देरी।" },
+      "template": { "en": "Employee of the month: {name}, our ___ and ___ station master.", "hi": "महीने के कर्मचारी: {name}, हमारे ___ और ___ स्टेशन मास्टर।" },
+      "people": ["pammi", "vikram"],
+      "bank": [
+        { "id": "decisive", "text": { "en": "decisive", "hi": "निर्णायक" }, "valence": 1 },
+        { "id": "pushy", "text": { "en": "pushy", "hi": "धक्का-मुक्की वाले" }, "valence": -1 },
+        { "id": "ambitious", "text": { "en": "ambitious", "hi": "महत्वाकांक्षी" }, "valence": 1 },
+        { "id": "scheming", "text": { "en": "scheming", "hi": "चालबाज़" }, "valence": -1 },
+        { "id": "caring", "text": { "en": "caring", "hi": "ख़याल रखने वाले" }, "valence": 1 },
+        { "id": "soft", "text": { "en": "soft", "hi": "नरम" }, "valence": -1 },
+        { "id": "calm", "text": { "en": "calm", "hi": "शांत" }, "valence": 1 },
+        { "id": "cold", "text": { "en": "cold", "hi": "रूखे" }, "valence": -1 }
+      ]
+    }
+  ],
+  "_review": "Same mechanic as Thursday of the Lugdi week, new words and a new life area. 'soft' is coded -1 here because it is the word that diminishes men for the same calm behaviour (ladder level 4). The Hindi word list needs a native check; 'धक्का-मुक्की वाले' is a placeholder rendering of 'pushy'."
+}

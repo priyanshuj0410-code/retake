@@ -1,0 +1,38 @@
+/* @owns score score__part score__n score__label score__op */
+.score {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--gap-s);
+  margin: 0;
+  padding: var(--gap-m);
+  border-radius: var(--radius-plate);
+  background: var(--c-plate);
+  color: var(--c-on-plate);
+}
+.score__part {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 0;
+}
+.score__part:first-child {
+  flex: 1;
+}
+.score__n {
+  margin: 0;
+  font-weight: 700;
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  font-variant-numeric: tabular-nums;
+}
+.score__part:not(:first-child) .score__n {
+  font-size: var(--text-xl);
+}
+.score__label {
+  font-size: var(--text-s);
+  font-weight: 700;
+}
+.score__op {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  padding-bottom: var(--gap-hair);
+}

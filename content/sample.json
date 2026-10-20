@@ -1,0 +1,8 @@
+{
+  "_review": "Sample data for the prototype's board, shown on screen as made up. There is no backend: the other players, their practice and the crowd figures are generated from these numbers with a fixed seed, so every phone sees the same sample board.",
+  "players": 24180,
+  "named": 240,
+  "seed": 2026,
+  "topPractice": 412,
+  "medianPractice": 60
+}

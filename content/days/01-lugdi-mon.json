@@ -1,0 +1,49 @@
+{
+  "id": "L-mon",
+  "n": 1,
+  "skin": "lugdi",
+  "ground": "night",
+  "weekday": 1,
+  "level": 2,
+  "levelName": { "en": "Same rule for all", "hi": "सबके लिए एक नियम" },
+  "area": "home",
+  "object": { "en": "Family drama cover", "hi": "पारिवारिक ड्रामा का कवर" },
+  "masthead": {
+    "series": { "en": "Ghat Series", "hi": "घाट सीरीज़" },
+    "no": 212,
+    "title": { "en": "Diwali Ki Raat", "hi": "दिवाली की रात" },
+    "blurb": { "en": "Five relatives. Three stall jobs. You set the rule first.", "hi": "पाँच रिश्तेदार। स्टॉल पर तीन काम। नियम पहले आप तय करें।" },
+    "art": "pulp-s-diwali",
+    "artPosition": "centre",
+    "roundel": { "en": "Price ₹ 2", "hi": "दाम ₹ 2" }
+  },
+  "steps": [
+    {
+      "kind": "assign",
+      "id": "diwali-stall",
+      "prompt": { "en": "Who gets the three stall jobs?", "hi": "स्टॉल के तीन काम किसे मिलेंगे?" },
+      "stats": [
+        { "id": "free", "label": { "en": "free time", "hi": "खाली समय" } },
+        { "id": "skill", "label": { "en": "skill", "hi": "हुनर" } }
+      ],
+      "rules": [
+        { "id": "free", "label": { "en": "Most free time", "hi": "सबसे ज़्यादा खाली समय" }, "key": "free" },
+        { "id": "skill", "label": { "en": "Most skill", "hi": "सबसे ज़्यादा हुनर" }, "key": "skill" },
+        { "id": "both", "label": { "en": "Both, added up", "hi": "दोनों, जोड़कर" }, "key": "sum" }
+      ],
+      "people": [
+        { "who": "meena", "values": { "free": 5, "skill": 4 } },
+        { "who": "vikram", "values": { "free": 4, "skill": 2 } },
+        { "who": "anita", "values": { "free": 3, "skill": 3 } },
+        { "who": "arjun", "values": { "free": 3, "skill": 3 } },
+        { "who": "salim", "values": { "free": 1, "skill": 5 } }
+      ],
+      "slots": [
+        { "id": "cash", "label": { "en": "Cash box", "hi": "गल्ला" }, "value": 1 },
+        { "id": "sweets", "label": { "en": "Sweets counter", "hi": "मिठाई काउंटर" }, "value": 1 },
+        { "id": "lights", "label": { "en": "Lights", "hi": "रोशनी" }, "value": 1 }
+      ]
+    }
+  ],
+  "_review": "Anita and Arjun are identical on both stats, so under any rule they tie for the last job. Who gets it is one lean unit. Rule compliance: anyone placed above someone with a higher score on the locked rule counts against it."
+}

@@ -1,619 +1,234 @@
-/* Equal Lens Evaluator: the tokens. The only stylesheet allowed to hold a raw value.
-   Two tiers: PRIMITIVE (what a value is) and SEMANTIC (what it is for). Stylesheets read
-   semantic tokens only. Then the three surfaces re-point semantic
-   tokens; no component knows which surface it is on. knowledge/design.md explains each. */
+/* The trainer's tokens (knowledge/design.md, section 2). Three tiers: primitives hold every raw
+   value and are read only by the semantic tier below them; the semantic tier is set per skin
+   and per ground, and is all a component stylesheet may read. scripts/design-check.ts holds
+   the text-colour rule: every --c-on-* resolves to its skin's ink or paper, accents
+   (--c-display*) never resolve to red, and every pair passes contrast. */
 
 /* @tier primitive */
 :root {
-  --violet: #553286;
-  --violet-deep: #42266b;
-  --ink: #221436;
-  --body: #574b70;
-  --soft: #6b5a8c;
-  --paper: #fbf9ff;
-  --mist: #e7e0f1;
-  --line: #e7def4;
-  --tint: #f4f0fa;
-  --white: #ffffff;
-  --teal-deep: #0f6e56;
-  --coral-deep: #c2553f;
-  --grey-50: #f5f5f4;
-  --grey-100: #ebebea;
-  --grey-300: #c9c8c6;
-  --grey-500: #7a7874;
-  --grey-700: #44423f;
-  --grey-900: #1d1c1a;
+  --lugdi-ink: #111111;
+  --lugdi-paper: #ffffff;
+  --lugdi-yellow: #ffd23f;
+  --lugdi-red: #e4002b;
+  --lugdi-black: #000000;
+  --lugdi-night: #1b0b2e;
+  --lugdi-jungle: #0b1a12;
+  --lugdi-navy: #0a1630;
+  --lugdi-plum: #2b0f2e;
+  --lugdi-blood: #2a0a12;
+  --lugdi-dim: #6b6478;
 
-  --face-display: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --face-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --face-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --station-ink: #141414;
+  --station-paper: #ffffff;
+  --station-yellow: #f7c600;
+  --station-blue: #0f4c9c;
+  --station-rail: #1c1c1c;
+  --station-flap: #262626;
+  --station-card: #e9dfc4;
+  --station-dim: #6f6f6f;
 
-  /* The game register, comic panels (EVAL-6): paper, ink, a lilac tint, the caption yellow. */
-  --comic-paper: #ffffff;
-  --comic-ink: #121212;
-  --comic-soft: #3d3846;
-  --comic-tint: #efe8f8;
-  --comic-rule: #8f879c;
-  --comic-caption: #ffe27a;
-  --face-comic-display: 'Big Shoulders Display', Impact, 'Arial Narrow', sans-serif;
-  --face-comic-text: 'Literata', Georgia, 'Times New Roman', serif;
-  --shadow-ink-2: 2px 2px 0 #121212;
-  --shadow-violet: 5px 5px 0 #553286;
-  --shadow-violet-small: 4px 4px 0 #553286;
-  --rot-neg-8: -8deg;
-  --upper: uppercase;
-  --no-case: none;
-  --ls-display: 0.04em;
-
-  /* The note register, out of fiction (EVAL-6): an editor's note or case file in the comic
-     family. Warm paper with faint rule lines, the same ink and faces, no lilac, no yellow. */
-  --note-paper: #fbf6ec;
-  --note-hero: #f2eadb;
-  --note-soft: #544b3e;
-  --note-rule: #cdbfa6;
-  /* A control's resting edge on note paper: 3.7:1, the WCAG 1.4.11 floor of 3:1 with room. */
-  --note-line: #8a7d66;
-  /* The ruling: one rule every pitch, 2 px under a 17 px Literata baseline (measured at 21 px).
-     EVAL-10 (owner): a faint paper texture, never an underline: the rule is barely darker than
-     the paper (1.05:1), so text still sits on the grid without looking underlined. */
-  --pitch-28: 28px;
-  /* Half a pitch: the gap between option rows, so their frames never touch (EVAL-10). */
-  --pitch-14: 14px;
-  --pitch-2x: 56px;
-  --note-ruling: repeating-linear-gradient(
-    to bottom,
-    transparent 0 23px,
-    #f3ecdf 23px 24px,
-    transparent 24px 28px
-  );
-  --shadow-note: 3px 3px 0 #cdbfa6;
-  --shadow-note-stamp: 2px 2px 0 #121212;
-  --rot-neg-2: -2deg;
-
-  --fs-14: 14px;
-  --fs-16: 16px;
-  --fs-17: 17px;
-  --fs-18: 18px;
-  --fs-20: 20px;
-  --fs-24: 24px;
-  --fs-28: 28px;
-  --fs-32: 32px;
-  --fw-600: 600;
-  --fw-700: 700;
-  --lh-120: 1.2;
-  --lh-140: 1.4;
-  --lh-150: 1.5;
-  --ls-wide: 0.06em;
-
-  --s-0: 0;
-  --s-1: 4px;
-  --s-2: 8px;
-  --s-3: 12px;
-  --s-4: 16px;
-  --s-5: 24px;
-  --s-7: 48px;
-  --r-8: 8px;
-  --r-12: 12px;
-  --r-16: 16px;
-  --bw-1: 1px;
-  --bw-2: 2px;
-  --bw-3: 3px;
-  --bw-1-5: 1.5px;
-  --px-48: 48px;
-  --px-40: 40px;
-  --px-72: 72px;
-  --px-128: 128px;
-  --grid-all: 1 / -1;
-  --fs-30: 30px;
-  --fs-38: 38px;
-  --fs-54: 54px;
-  --px-64: 64px;
-  --px-52: 52px;
-  --px-300: 300px;
-  --pct-30: 30%;
-  --pct-45: 45%;
-  --pct-50: 50%;
-  --grid-2: repeat(2, minmax(0, 1fr));
-  --grid-4: repeat(4, minmax(0, 1fr));
-  --grid-12: repeat(12, minmax(0, 1fr));
-  --grid-rows-equal: 1fr;
-  --grid-ends: 1fr auto 1fr;
-  --grid-1: minmax(0, 1fr);
-  --grid-3: repeat(3, minmax(0, 1fr));
-  --grid-chips-row: repeat(auto-fit, minmax(var(--px-44), 1fr));
-  --px-44: 44px;
-  --px-760: 760px;
-  --grid-unfold: minmax(0, 1fr) minmax(0, 2fr);
-  --grid-unfold-wide: var(--px-160) minmax(0, 1fr);
-  --px-160: 160px;
-  --ratio-5-4: 5 / 4;
-  --px-28: 28px;
+  --px-1: 1px;
+  --px-2: 2px;
+  --px-3: 3px;
+  --px-4: 4px;
+  --px-5: 5px;
+  --px-6: 6px;
+  --px-8: 8px;
+  --px-10: 10px;
+  --px-12: 12px;
+  --px-13: 13px;
+  --px-14: 14px;
+  --px-15: 15px;
+  --px-16: 16px;
+  --px-17: 17px;
   --px-20: 20px;
+  --px-22: 22px;
+  --px-24: 24px;
+  --px-28: 28px;
+  --px-32: 32px;
+  --px-36: 36px;
+  --px-40: 40px;
+  --px-44: 44px;
+  --px-48: 48px;
+  --px-56: 56px;
+  --px-64: 64px;
   --px-96: 96px;
-  --sw-1-8: 1.8;
-  --lh-130: 1.3;
-  --pct-neg-50: -50%;
-  /* The profile's trend (EVAL-12): its plot height and the axis-label column beside it. */
-  --grid-trend: auto minmax(0, 1fr);
-  --dash-4-3: 4 3;
-  /* The result's at-a-glance strip (EVAL-12): label and status, then the line. */
-  --grid-2-3: minmax(0, 2fr) minmax(0, 3fr);
-  --px-220: 220px;
-  --dur-160: 160ms;
-  --dur-0: 0ms;
-  --scale-98: 0.98;
-  --scale-100: 1;
-  --scale-102: 1.02;
-  --shadow-lift: 0 6px 18px rgb(34 20 54 / 0.18);
-  --shadow-none: none;
+  --px-120: 120px;
+  --px-480: 480px;
+
+  --ms-60: 60ms;
+  --ms-140: 140ms;
+  --ms-180: 180ms;
+  --ms-0: 0ms;
+
+  --lh-tight: 1.05;
+  --lh-snug: 1.25;
+  --lh-body: 1.45;
+
+  --family-hind: 'Hind', system-ui, sans-serif;
+  --family-sarpanch: 'Sarpanch', 'Hind', system-ui, sans-serif;
 }
 
 /* @tier semantic */
 :root {
-  --c-bg: var(--paper);
-  /* One light theme, on purpose (EVAL-6): the comic register and the plain register were
-     designed as a single light look, so the OS dark setting does not change them. */
-  color-scheme: light;
-  --c-surface: var(--white);
-  --c-raised: var(--tint);
-  --c-text: var(--ink);
-  --c-body: var(--body);
-  --c-muted: var(--soft);
-  --c-rule: var(--mist);
-  --c-border: var(--line);
-  --c-accent: var(--violet);
-  --c-accent-press: var(--violet-deep);
-  --c-on-accent: var(--white);
-  --c-focus: var(--violet);
-  --c-ok: var(--teal-deep);
-  --c-error: var(--coral-deep);
-  --c-label: var(--violet);
+  --font-body: var(--family-hind);
+  --text-xs: var(--px-12);
+  --text-s: var(--px-13);
+  --text-m: var(--px-15);
+  --text-l: var(--px-17);
+  --text-xl: var(--px-22);
+  --text-2xl: var(--px-28);
+  --text-3xl: var(--px-36);
+  --text-4xl: var(--px-44);
+  --leading-tight: var(--lh-tight);
+  --leading-snug: var(--lh-snug);
+  --leading-body: var(--lh-body);
 
-  --font-display: var(--face-display);
-  --font-body: var(--face-body);
-  --font-mono: var(--face-mono);
-  --text-small: var(--fs-14);
-  --text-label: var(--fs-16);
-  --text-body: var(--fs-18);
-  --text-lead: var(--fs-20);
-  --text-h2: var(--fs-20);
-  --text-h1: var(--fs-24);
-  --text-code: var(--fs-28);
-  --weight-strong: var(--fw-700);
-  --weight-label: var(--fw-600);
-  --weight-display: var(--fw-600);
-  --leading-tight: var(--lh-120);
-  --leading-body: var(--lh-150);
-  --leading-ui: var(--lh-140);
-  --tracking-label: var(--ls-wide);
+  --gap-hair: var(--px-2);
+  --gap-xs: var(--px-4);
+  --gap-s: var(--px-8);
+  --gap-m: var(--px-12);
+  --gap-l: var(--px-16);
+  --gap-xl: var(--px-24);
+  --gap-2xl: var(--px-32);
+  --gutter: var(--px-16);
 
-  --gap-none: var(--s-0);
-  --gap-xs: var(--s-1);
-  --gap-s: var(--s-2);
-  --gap-m: var(--s-3);
-  --gap-l: var(--s-4);
-  --gap-xl: var(--s-5);
-  --gap-3xl: var(--s-7);
-  --radius-s: var(--r-8);
-  --radius-m: var(--r-12);
-  --radius-l: var(--r-16);
-  --border-thin: var(--bw-1);
-  --border: var(--bw-2);
-  --border-focus: var(--bw-3);
-  /* Visual weight (owner, 19 Oct 2026): frames recede, so faces, names and questions read
-     first. Card and panel frames and control edges are 1.5 px, inner dividers 1 px; the heavy
-     3 px ink is kept for the selected or stamped state (and the filled primary button). */
-  --ink-frame: var(--bw-1-5);
-  --ink-divider: var(--bw-1);
-  --ink-heavy: var(--bw-3);
-  --target: var(--px-48);
-  --icon: var(--px-40);
-  --measure: var(--px-760);
-  --motion: var(--dur-160);
-  --press: var(--scale-98);
-  --lifted: var(--scale-102);
-  --lift: var(--shadow-lift);
-  --flat: var(--shadow-none);
+  --edge: var(--px-2);
+  --edge-thin: var(--px-1);
+  --focus-width: var(--px-3);
+  --tap-min: var(--px-44);
+  --button-height: var(--px-56);
+  --page-max: var(--px-480);
+  --portrait-s: var(--px-44);
+  --portrait-m: var(--px-64);
+  --portrait-l: var(--px-96);
+  --hole: var(--px-16);
+  --spine-height: var(--px-28);
+  --spine-height-tall: var(--px-36);
+  --swipe-height: var(--px-120);
 
-  /* The season story (knowledge/design.md, section 4b). */
-  --portrait: var(--px-72);
-  --text-band: var(--fs-32);
-  --centre: var(--pct-neg-50);
-  --card-min: var(--px-128);
-  --span-row: var(--grid-all);
-  /* The comic components (section 4c). Out of the game the same names point at plain values. */
-  --c-panel: var(--tint);
-  --c-ink-line: var(--line);
-  /* An option's resting edge; hover and focus take the text colour, checked the accent. */
-  --c-option-rest: var(--line);
-  --c-caption: var(--comic-caption);
-  --c-on-caption: var(--comic-ink);
-  --c-stamp: var(--violet);
-  --c-on-stamp: var(--white);
-  --c-splash: var(--violet);
-  --c-on-splash: var(--white);
-  --c-hero: var(--note-hero);
-  --font-comic: var(--face-comic-display);
-  --font-story: var(--face-comic-text);
-  --text-display: var(--fs-30);
-  --text-splash: var(--fs-38);
-  --text-hero: var(--fs-54);
-  --edge: var(--ink-frame);
-  --shadow-panel: var(--shadow-none);
-  --shadow-caption: var(--shadow-none);
-  --shadow-chosen: var(--shadow-none);
-  --case-display: var(--no-case);
-  /* Questions stay in sentence case on every surface (EVAL-10, copy audit D3). */
-  --case-question: var(--no-case);
-  /* A colleague's description: 17 px or more (EVAL-10, copy audit D3). */
-  --text-desc: var(--fs-17);
-  /* Every help-mode Hinglish line (EVAL-10): one size everywhere. */
-  --text-help: var(--fs-14);
-  --tracking-display: var(--ls-wide);
-  --radius-card: var(--r-16);
-  --stamp: var(--px-52);
-  --tilt: var(--rot-neg-8);
-  --face-then: var(--px-64);
-  --inset: var(--pct-30);
-  --inset-small: var(--pct-45);
-  --dots: var(--px-300);
-  --radius-full: var(--pct-50);
-  --frame: var(--s-0);
-  --frame-pad: var(--s-0);
-  --c-frame: var(--comic-ink);
-  --ruling: none;
-  --flow: var(--s-4);
-  /* The sticky story header's height, measured at run time by src/ui/Page.tsx; 0 without one. */
-  --head-h: var(--s-0);
-  --list-gap: var(--s-3);
-  --control: var(--px-48);
-  --field-gap: var(--s-2);
-  --label-gap: var(--s-2);
-  --question-gap: var(--s-2);
-  --pair-gap: var(--s-3);
-  --legend-gap: var(--s-3);
-  --heading-gap: var(--s-3);
-  --leading-heading: var(--lh-120);
-  --shadow-stamp: var(--shadow-none);
-  --tilt-note: var(--rot-neg-2);
-  --cols-two: var(--grid-2);
-  --cols-four: var(--grid-4);
-  --rows-equal: var(--grid-rows-equal);
-  /* The position-with-range line (EVAL-10): its height, the dot, the range's inset, the end labels. */
-  --range-h: var(--px-28);
-  --range-h-compact: var(--px-20);
-  --range-dot: var(--px-20);
-  --range-dot-compact: var(--s-3);
-  --range-inset: var(--s-1);
-  --range-ends: var(--grid-ends);
-  /* The profile's trend (EVAL-12). */
-  --trend-h: var(--px-160);
-  --trend-cols: var(--grid-trend);
-  --trend-dot: var(--range-dot-compact);
-  --trend-dash: var(--dash-4-3);
-  /* The result page's visuals (EVAL-12). */
-  --glance-cols: var(--grid-2-3);
-  --dots-small: var(--px-220);
-  --tally-h: var(--s-3);
-  --pairs-context: var(--px-220);
-  /* The comic page (EVAL-10): the gutter between panels, and panel 2's prop beside its caption. */
-  --gutter: var(--s-2);
-  /* A phone's decision card (EVAL-10): a thumbnail beside the words. */
-  --thumb: var(--px-96);
-  /* The merged "Before you start" screen (EVAL-10): tight icon rows. */
-  --icon: var(--px-20);
-  --icon-stroke: var(--sw-1-8);
-  --leading-tight-rows: var(--lh-130);
-  --unfold-cols: var(--grid-unfold);
-  --unfold-cols-wide: var(--grid-unfold-wide);
-  --card-face: var(--ratio-5-4);
-  --cols-one: var(--grid-1);
-  --cols-three: var(--grid-3);
-  --chips-row: var(--grid-chips-row);
-  --chip-min: var(--px-44);
-  --chip-gap: var(--bw-2);
-  --half: var(--pct-50);
-  --c-range: var(--mist);
-  --dot-columns: var(--grid-12);
-  --text-action: var(--fs-16);
-  --tracking-action: normal;
-  --c-action: var(--violet);
-  --c-on-action: var(--white);
-  --c-action-press: var(--violet-deep);
-  --shadow-action: var(--shadow-none);
-  --action-room: var(--px-128);
-  /* Reading levels: neutral on purpose, never green or red (section 4b). */
-  --c-level-none: var(--c-text);
-  --c-level-unread: var(--c-muted);
-}
-
-@media (min-width: 600px) {
-  :root {
-    --text-body: var(--fs-17);
-    --text-h1: var(--fs-28);
-    --text-code: var(--fs-32);
-  }
+  /* Motion (section 5): press feedback lands inside 100 ms; the hit-stop holds a commit still
+     for a beat before the next screen. Reduced motion keeps the hold and drops the movement. */
+  --dur-press: var(--ms-60);
+  --dur-hitstop: var(--ms-140);
+  --dur-move: var(--ms-180);
+  --press-shift: var(--px-2);
+  --stamp-tilt: -2deg;
+  --lift-tilt: 2deg;
+  --measure: 30ch;
+  --mask-fade: linear-gradient(transparent, #000 30%, #000 70%, transparent);
+  --art-zoom: 116%;
 }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
-    --motion: var(--dur-0);
-    --press: var(--scale-100);
-    --lifted: var(--scale-100);
+    --dur-press: var(--ms-0);
+    --dur-move: var(--ms-0);
+    --press-shift: 0px;
+    --stamp-tilt: 0deg;
+    --lift-tilt: 0deg;
   }
 }
 
-/* The surfaces (knowledge/design.md, section 3). Each surface re-points the semantic tokens,
-   type included, so no component knows which surface it is on. The game is the comic register,
-   out of fiction the note register (an editor's note: warm ruled paper in a 3 px ink frame,
-   a stamp, the same faces and ink); the two never share a ground, a fill or an accent. */
-[data-surface='game'] {
-  --font-display: var(--face-comic-display);
-  --font-body: var(--face-comic-text);
-  --text-body: var(--fs-17);
-  --text-h1: var(--fs-30);
-  --text-action: var(--fs-20);
-  --tracking-action: var(--ls-display);
-  --edge: var(--ink-frame);
-  --c-option-rest: var(--comic-rule);
-  --case-display: var(--upper);
-  --tracking-display: var(--ls-display);
-  --radius-card: var(--s-0);
-  --radius-m: var(--s-0);
-  --radius-s: var(--s-0);
-  --c-bg: var(--comic-paper);
-  --c-surface: var(--comic-paper);
-  --c-raised: var(--comic-tint);
-  --c-text: var(--comic-ink);
-  --c-body: var(--comic-ink);
-  --c-muted: var(--comic-soft);
-  --c-rule: var(--comic-rule);
-  --c-border: var(--comic-ink);
-  --c-label: var(--violet);
-  --c-panel: var(--comic-tint);
-  --c-ink-line: var(--comic-ink);
-  --c-option-rest: var(--comic-ink);
-  --c-level-none: var(--comic-ink);
-  --c-level-unread: var(--comic-soft);
-  --shadow-panel: var(--shadow-ink-2);
-  --shadow-caption: var(--shadow-ink-2);
-  --shadow-chosen: var(--shadow-violet);
-  --c-action: var(--comic-ink);
-  --c-on-action: var(--comic-paper);
-  --c-action-press: var(--violet-deep);
-  --shadow-action: var(--shadow-violet-small);
+/* Lugdi: Hindi pulp-novel covers. Text is ink on yellow or white plates, paper on the night
+   grounds, and yellow only on display titles. Red is never text: title shadows, the price
+   roundel, the button's offset shadow and the forgiven spine. */
+[data-skin='lugdi'] {
+  --c-ink: var(--lugdi-ink);
+  --c-paper: var(--lugdi-paper);
+  --c-ground: var(--lugdi-night);
+  --c-on-ground: var(--lugdi-paper);
+  --c-plate: var(--lugdi-yellow);
+  --c-on-plate: var(--lugdi-ink);
+  --c-sheet: var(--lugdi-paper);
+  --c-on-sheet: var(--lugdi-ink);
+  --c-ticket: var(--lugdi-paper);
+  --c-on-ticket: var(--lugdi-ink);
+  --c-band: var(--lugdi-night);
+  --c-on-band: var(--lugdi-paper);
+  --c-button: var(--lugdi-yellow);
+  --c-on-button: var(--lugdi-ink);
+  --c-button-alt: var(--lugdi-paper);
+  --c-on-button-alt: var(--lugdi-ink);
+  --c-selected: var(--lugdi-ink);
+  --c-on-selected: var(--lugdi-paper);
+  --c-display: var(--lugdi-yellow);
+  --c-flap: var(--lugdi-ink);
+  --c-display-flap: var(--lugdi-yellow);
+  --c-edge: var(--lugdi-ink);
+  --c-edge-ground: var(--lugdi-paper);
+  --c-muted-edge: var(--lugdi-dim);
+  --c-focus: var(--lugdi-yellow);
+  --c-roundel: var(--lugdi-red);
+  --c-streak: var(--lugdi-yellow);
+  --c-streak-forgiven: var(--lugdi-red);
+  --c-streak-empty: var(--lugdi-dim);
+  --font-display: var(--family-sarpanch);
+  --weight-display: 900;
+  --case-display: uppercase;
+  --shadow-display: var(--px-3) var(--px-3) 0 var(--lugdi-red), var(--px-5) var(--px-5) 0 var(--lugdi-black);
+  --shadow-button: var(--px-4) var(--px-4) 0 var(--lugdi-red);
+  --shadow-button-pressed: var(--px-2) var(--px-2) 0 var(--lugdi-red);
+  --radius-plate: 0px;
+  --radius-button: 0px;
+  --inset-board: 0px;
 }
-[data-surface='oof'] {
-  --font-display: var(--face-comic-display);
-  --font-body: var(--face-comic-text);
-  --text-body: var(--fs-17);
-  --text-action: var(--fs-20);
-  --tracking-action: var(--ls-display);
-  --case-display: var(--upper);
-  --tracking-display: var(--ls-display);
-  --radius-card: var(--s-0);
-  --radius-m: var(--s-0);
-  --radius-s: var(--s-0);
-  --edge: var(--ink-frame);
-  --frame: var(--ink-frame);
-  --frame-pad: var(--s-4);
-  --ruling: var(--note-ruling);
-  --leading-body: var(--pitch-28);
-  --leading-ui: var(--pitch-28);
-  --flow: var(--pitch-28);
-  --list-gap: var(--s-0);
-  --control: var(--pitch-2x);
-  --field-gap: var(--pitch-14);
-  --label-gap: var(--s-0);
-  --question-gap: var(--pitch-28);
-  --pair-gap: var(--pitch-14);
-  --legend-gap: var(--s-0);
-  --heading-gap: var(--s-0);
-  --leading-heading: var(--pitch-28);
-  --c-bg: var(--note-paper);
-  --c-surface: var(--note-paper);
-  --c-raised: var(--note-hero);
-  --c-text: var(--comic-ink);
-  --c-body: var(--comic-ink);
-  --c-muted: var(--note-soft);
-  --c-rule: var(--note-rule);
-  --c-range: var(--note-rule);
-  /* No violet out of fiction (rule 8): the chapter-end map's next stop is tan with ink. */
-  --c-stamp: var(--note-rule);
-  --c-on-stamp: var(--comic-ink);
-  --c-border: var(--comic-ink);
-  --c-ink-line: var(--comic-ink);
-  --c-option-rest: var(--note-line);
-  --c-accent: var(--comic-ink);
-  --c-accent-press: var(--note-soft);
-  --c-on-accent: var(--note-paper);
-  --c-focus: var(--comic-ink);
-  --c-label: var(--note-soft);
-  --c-hero: var(--note-hero);
-  --c-level-none: var(--comic-ink);
-  --c-level-unread: var(--note-soft);
-  --c-action: var(--comic-ink);
-  --c-on-action: var(--note-paper);
-  --c-action-press: var(--note-soft);
-  --shadow-action: var(--shadow-note);
-  --shadow-stamp: var(--shadow-note-stamp);
+[data-skin='lugdi'][data-ground='jungle'] {
+  --c-ground: var(--lugdi-jungle);
+  --c-band: var(--lugdi-jungle);
 }
-[data-surface='sober'] {
-  --c-bg: var(--grey-50);
-  --c-surface: var(--white);
-  --c-raised: var(--grey-100);
-  --c-text: var(--grey-900);
-  --c-body: var(--grey-700);
-  --c-muted: var(--grey-700);
-  --c-rule: var(--grey-300);
-  --c-border: var(--grey-300);
-  --c-accent: var(--grey-900);
-  --c-accent-press: var(--grey-700);
-  --c-on-accent: var(--white);
-  --c-focus: var(--grey-900);
-  --c-label: var(--grey-700);
-  --c-action: var(--grey-900);
-  --c-on-action: var(--white);
-  --c-action-press: var(--grey-700);
-  --c-ink-line: var(--grey-500);
-  --c-option-rest: var(--grey-500);
+[data-skin='lugdi'][data-ground='navy'] {
+  --c-ground: var(--lugdi-navy);
+  --c-band: var(--lugdi-navy);
+}
+[data-skin='lugdi'][data-ground='plum'] {
+  --c-ground: var(--lugdi-plum);
+  --c-band: var(--lugdi-plum);
+}
+[data-skin='lugdi'][data-ground='blood'] {
+  --c-ground: var(--lugdi-blood);
+  --c-band: var(--lugdi-blood);
 }
 
-/* Forced colours (Windows high contrast and similar): the system paints most colours. Inactive
-   controls and rules take GrayText and focus and selection take Highlight, on every surface. */
-@media (forced-colors: active) {
-  :root,
-  [data-surface] {
-    --c-rule: GrayText !important;
-    --c-focus: Highlight !important;
-  }
-}
-
-/* Print (EVAL-11, knowledge/design.md section 4e): the result as an A4 report. The page box
-   carries the margins; the note register prints on white with no ruling and no outer frame, at
-   a 16 px body on a 1.5 leading and a 16 px flow, so it reads as a document, not a screen. */
-@page {
-  size: A4;
-  margin: 16mm 16mm 18mm;
-}
-@media print {
-  :root,
-  [data-surface] {
-    --c-bg: var(--white);
-    --c-surface: var(--white);
-    --ruling: none;
-    --frame: var(--s-0);
-    --frame-pad: var(--s-0);
-    --text-body: var(--fs-16);
-    --leading-body: var(--lh-150);
-    --leading-ui: var(--lh-140);
-    --leading-heading: var(--lh-120);
-    --flow: var(--s-4);
-  }
-}
-
-/* @tier art */
-/* The drawn art (section 4c): the portraits, the mascots and the panel scenes. Raw colours
-   for pictures only, read by portrait.css and panelart.css and by nothing else (design-check).
-   One dark brown for every head of hair, one uniform for everyone, one expression. Skin tones
-   and animals are chosen by data-tone and data-animal on the picture. */
-:root {
-  --art-line: #121212;
-  --art-bg: #efe8f8;
-  --art-violet: #553286;
-  --art-paper: #ffffff;
-  --art-hair: #2a1d19;
-  --art-cloth: #553286;
-  --art-cloth-dark: #3d2460;
-  --art-lanyard: #e2b13c;
-  --art-badge: #f7f4ee;
-  --art-crate: #e8c48a;
-  --art-figure: #bdb6c8;
-  --art-caption: #ffe27a;
-  --art-skin: #b88e6f;
-  --art-skin-shade: #99765c;
-  --art-feature: #613f2a;
-  --art-lip: #895d3f;
-  --art-fur: #9a6a45;
-  --art-fur2: #c99a72;
-  --art-light: #e8cdb0;
-  --art-dark: #2a1c14;
-  --art-acc: #9a6a45;
-  --art-acc2: #9a6a45;
-}
-/* The cast tones and the one-off constant (EVAL-10, the owner's approved range), the same
-   targets as the generated portraits (scripts/portraits/recolour.py). */
-[data-tone='l1'] {
-  --art-skin: #edc6a2;
-  --art-skin-shade: #c29e80;
-  --art-feature: #745846;
-  --art-lip: #a9886e;
-}
-[data-tone='l2'] {
-  --art-skin: #c9a080;
-  --art-skin-shade: #a7856a;
-  --art-feature: #6c4b37;
-  --art-lip: #9c7255;
-}
-[data-tone='m'] {
-  --art-skin: #b88e6f;
-  --art-skin-shade: #99765c;
-  --art-feature: #613f2a;
-  --art-lip: #895d3f;
-}
-[data-tone='d1'] {
-  --art-skin: #a67c5f;
-  --art-skin-shade: #8a674f;
-  --art-feature: #553221;
-  --art-lip: #73482e;
-}
-[data-tone='d2'] {
-  --art-skin: #845940;
-  --art-skin-shade: #6e4a35;
-  --art-feature: #432618;
-  --art-lip: #543320;
-}
-[data-animal='bear'] {
-  --art-fur: #9a6a45;
-  --art-fur2: #c99a72;
-  --art-light: #e8cdb0;
-  --art-dark: #2a1c14;
-  --art-acc: #9a6a45;
-  --art-acc2: #9a6a45;
-}
-[data-animal='panda'] {
-  --art-fur: #f7f5f0;
-  --art-fur2: #f7f5f0;
-  --art-light: #f7f5f0;
-  --art-dark: #1f1f24;
-  --art-acc: #1f1f24;
-  --art-acc2: #1f1f24;
-}
-[data-animal='frog'] {
-  --art-fur: #5fa463;
-  --art-fur2: #5fa463;
-  --art-light: #d5e8b5;
-  --art-dark: #1d2a1c;
-  --art-acc: #e8a0a0;
-  --art-acc2: #e8a0a0;
-}
-[data-animal='koala'] {
-  --art-fur: #9ea5ae;
-  --art-fur2: #9ea5ae;
-  --art-light: #e9e4e0;
-  --art-dark: #2e2b30;
-  --art-acc: #9ea5ae;
-  --art-acc2: #9ea5ae;
-}
-[data-animal='elephant'] {
-  --art-fur: #a3a9b4;
-  --art-fur2: #8e95a2;
-  --art-light: #faf6ee;
-  --art-dark: #23262c;
-  --art-acc: #d9aeb4;
-  --art-acc2: #d9aeb4;
-}
-[data-animal='penguin'] {
-  --art-fur: #26303b;
-  --art-fur2: #26303b;
-  --art-light: #ffffff;
-  --art-dark: #26303b;
-  --art-acc: #f2a23a;
-  --art-acc2: #f2b8b0;
-}
-[data-animal='rabbit'] {
-  --art-fur: #d8d2cc;
-  --art-fur2: #d8d2cc;
-  --art-light: #f5f2ee;
-  --art-dark: #2b2626;
-  --art-acc: #edb8c0;
-  --art-acc2: #d9879a;
-}
-[data-animal='tiger'] {
-  --art-fur: #e8893a;
-  --art-fur2: #e8893a;
-  --art-light: #fbf2e6;
-  --art-dark: #2a1a12;
-  --art-acc: #5a2e2a;
-  --art-acc2: #5a2e2a;
+/* Station: railway enamel boards. Yellow and white boards carry ink; the blue board and the
+   platform black carry paper. Split-flap amber is the one accent, on flap letters only. */
+[data-skin='station'] {
+  --c-ink: var(--station-ink);
+  --c-paper: var(--station-paper);
+  --c-ground: var(--station-rail);
+  --c-on-ground: var(--station-paper);
+  --c-plate: var(--station-yellow);
+  --c-on-plate: var(--station-ink);
+  --c-sheet: var(--station-paper);
+  --c-on-sheet: var(--station-ink);
+  --c-ticket: var(--station-card);
+  --c-on-ticket: var(--station-ink);
+  --c-band: var(--station-blue);
+  --c-on-band: var(--station-paper);
+  --c-button: var(--station-yellow);
+  --c-on-button: var(--station-ink);
+  --c-button-alt: var(--station-paper);
+  --c-on-button-alt: var(--station-ink);
+  --c-selected: var(--station-ink);
+  --c-on-selected: var(--station-paper);
+  --c-display: var(--station-yellow);
+  --c-flap: var(--station-flap);
+  --c-display-flap: var(--station-yellow);
+  --c-edge: var(--station-ink);
+  --c-edge-ground: var(--station-paper);
+  --c-muted-edge: var(--station-dim);
+  --c-focus: var(--station-yellow);
+  --c-roundel: var(--station-blue);
+  --c-streak: var(--station-yellow);
+  --c-streak-forgiven: var(--station-paper);
+  --c-streak-empty: var(--station-dim);
+  --font-display: var(--family-hind);
+  --weight-display: 700;
+  --case-display: none;
+  --shadow-display: none;
+  --shadow-button: none;
+  --shadow-button-pressed: none;
+  --radius-plate: var(--px-6);
+  --radius-button: var(--px-6);
+  --inset-board: var(--px-6);
 }

@@ -1,0 +1,37 @@
+{
+  "id": "L-tue",
+  "n": 2,
+  "skin": "lugdi",
+  "ground": "plum",
+  "weekday": 2,
+  "level": 3,
+  "levelName": { "en": "Same yardstick", "hi": "एक ही पैमाना" },
+  "area": "online",
+  "object": { "en": "Gossip magazine", "hi": "गपशप पत्रिका" },
+  "masthead": {
+    "series": { "en": "Ghat Series", "hi": "घाट सीरीज़" },
+    "no": 213,
+    "title": { "en": "Mohalla Masala", "hi": "मोहल्ला मसाला" },
+    "blurb": { "en": "The gossip column. Keep each line, or cut it?", "hi": "गपशप कॉलम। हर लाइन रखें, या काटें?" }
+  },
+  "steps": [
+    {
+      "kind": "swipe",
+      "id": "masala",
+      "prompt": { "en": "Does this line go in the column?", "hi": "क्या यह लाइन कॉलम में छपेगी?" },
+      "cut": { "en": "Cut it", "hi": "काटो" },
+      "keep": { "en": "Keep it", "hi": "रखो" },
+      "items": [
+        { "id": "m1", "who": "arjun", "pair": "p1", "text": { "en": "Arjun cried at his sister's bidaai. Is he even a man?", "hi": "बहन की बिदाई पर अर्जुन रो पड़ा। मर्द है भी?" } },
+        { "id": "w2", "who": "anita", "pair": "p2", "text": { "en": "Anita works nights. Who is feeding her children?", "hi": "अनीता रात की नौकरी करती है। बच्चों को खाना कौन देता है?" } },
+        { "id": "m3", "who": "raju", "pair": "p3", "text": { "en": "Raju's wife earns more. Who runs that house?", "hi": "राजू की पत्नी ज़्यादा कमाती है। घर कौन चलाता है?" } },
+        { "id": "w4", "who": "meena", "pair": "p4", "text": { "en": "Meena runs the chit fund. Her husband must be scared.", "hi": "मीना चिट फंड चलाती है। पति तो डरता होगा।" } },
+        { "id": "w1", "who": "pammi", "pair": "p1", "text": { "en": "Pammi shouted at the referee. Is she even a lady?", "hi": "पम्मी रेफ़री पर चिल्लाई। लड़की है भी?" } },
+        { "id": "m2", "who": "vikram", "pair": "p2", "text": { "en": "Vikram stays home with the baby. Who is paying the rent?", "hi": "विक्रम बच्चे के साथ घर रहता है। किराया कौन भरता है?" } },
+        { "id": "w3", "who": "kamla", "pair": "p3", "text": { "en": "Kamla drives a truck. Which family will want her now?", "hi": "कमला ट्रक चलाती है। अब कौन सा परिवार उसे अपनाएगा?" } },
+        { "id": "m4", "who": "salim", "pair": "p4", "text": { "en": "Salim does all the cooking. His mother must be ashamed.", "hi": "सलीम सारा खाना बनाता है। माँ को शर्म आती होगी।" } }
+      ]
+    }
+  ],
+  "_review": "Four mirrored pairs (p1 to p4): each mocks a man or a woman for stepping outside a gender role. Keeping one line of a pair and cutting its mirror is the inconsistency. Keeping a line about a man costs the man, so it counts as favouring women, and the reverse."
+}

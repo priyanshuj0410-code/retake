@@ -1,131 +1,63 @@
-/* @owns button button--primary button--secondary button--quiet button--nav button__arrow */
+/* @owns button button__label */
 .button {
-  min-height: var(--control);
   width: 100%;
-  border-radius: var(--radius-m);
-  font-family: var(--font-display);
-  font-size: var(--text-action);
-  font-weight: var(--weight-label);
-  text-transform: var(--case-display);
-  letter-spacing: var(--tracking-action);
-  padding: var(--gap-m) var(--gap-l);
-  border: var(--ink-frame) solid var(--c-accent);
+  min-height: var(--button-height);
+  display: grid;
+  place-items: center;
+  padding: var(--gap-s) var(--gap-l);
+  border: var(--edge) solid var(--c-edge);
+  border-radius: var(--radius-button);
+  background: var(--c-button);
+  color: var(--c-on-button);
+  box-shadow: var(--shadow-button);
+  font: inherit;
   cursor: pointer;
-  text-align: center;
-  overflow-wrap: anywhere;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
   transition:
-    background-color var(--motion),
-    border-color var(--motion),
-    transform var(--motion);
+    transform var(--dur-press),
+    box-shadow var(--dur-press);
+  touch-action: manipulation;
 }
-.button:active:not(:disabled) {
-  transform: scale(var(--press));
+.button[data-variant='secondary'] {
+  background: var(--c-button-alt);
+  color: var(--c-on-button-alt);
 }
-.button:disabled {
-  border-color: var(--c-rule);
-  color: var(--c-muted);
-  cursor: not-allowed;
+.button__label {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  text-transform: var(--case-display);
+  font-size: var(--text-l);
+  line-height: var(--leading-snug);
+  color: var(--c-on-button);
 }
-.button--primary {
-  background: var(--c-action);
-  border-color: var(--c-action);
-  color: var(--c-on-action);
-  box-shadow: var(--shadow-action);
+.button[data-variant='secondary'] .button__label {
+  color: var(--c-on-button-alt);
 }
-.button--primary:active:not(:disabled) {
-  background: var(--c-action-press);
-  border-color: var(--c-action-press);
+/* Press feedback, inside 100 ms: the plate sinks into its shadow. Reduced motion sets the
+   shift to 0 and keeps the ring, so the press still shows. */
+.button:active:not([aria-disabled='true']) {
+  transform: translate(var(--press-shift), var(--press-shift));
+  box-shadow: var(--shadow-button-pressed);
+  outline: var(--edge) solid var(--c-edge-ground);
 }
-.button--primary:disabled {
-  box-shadow: var(--flat);
-  background: var(--c-rule);
-  border-color: var(--c-rule);
-  color: var(--c-muted);
-  cursor: not-allowed;
+.button[aria-disabled='true'] {
+  cursor: default;
+  box-shadow: none;
+  border-style: dashed;
+  border-color: var(--c-muted-edge);
+  background: var(--c-ground);
+  color: var(--c-on-ground);
 }
-.button--secondary {
-  background: var(--c-surface);
-  color: var(--c-accent);
+.button[aria-disabled='true'] .button__label {
+  color: var(--c-on-ground);
 }
-.button--quiet {
-  /* The quiet action (EVAL-10, owner): clearly quieter than the primary but easy to see (a
-     consent's decline stays usable): small body type in sentence case, muted ink, a thin
-     underline, its text on the primary's left edge, a 48 px hit area. */
-  width: auto;
-  align-self: flex-start;
-  min-height: var(--target);
-  padding: var(--gap-xs) var(--gap-none);
-  background: transparent;
-  border-color: transparent;
-  color: var(--c-muted);
-  font-family: var(--font-body);
-  font-size: var(--text-label);
-  font-weight: var(--weight-label);
-  letter-spacing: normal;
-  text-transform: none;
-  text-align: left;
-  text-decoration: underline;
-  text-decoration-thickness: var(--border-thin);
-  text-underline-offset: var(--gap-xs);
+/* The hit-stop: on commit the button is stamped and holds still for one beat, with no
+   transition, before the next screen. */
+.button[data-state='stamped'] {
+  transition: none;
+  transform: rotate(var(--stamp-tilt));
+  background: var(--c-selected);
+  box-shadow: none;
 }
-.button--nav {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--gap-xs);
-  width: auto;
-  align-self: flex-start;
-  min-height: var(--target);
-  min-width: var(--target);
-  padding: var(--gap-xs) var(--gap-s) var(--gap-xs) var(--gap-none);
-  background: transparent;
-  border-color: transparent;
-  color: var(--c-muted);
-  font-family: var(--font-body);
-  font-size: var(--text-small);
-  font-weight: var(--weight-label);
-  letter-spacing: normal;
-  text-transform: none;
-  text-align: left;
-}
-.button__arrow {
-  width: var(--gap-l);
-  height: var(--gap-l);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: var(--icon-stroke);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-@media (hover: hover) {
-  .button--primary:hover:not(:disabled) {
-    background: var(--c-action-press);
-    border-color: var(--c-action-press);
-  }
-  .button--secondary:hover:not(:disabled) {
-    background: var(--c-raised);
-  }
-  .button--quiet:hover:not(:disabled) {
-    color: var(--c-text);
-    text-decoration-thickness: var(--border);
-  }
-}
-@media (hover: hover) {
-  .button--nav:hover:not(:disabled) {
-    color: var(--c-text);
-  }
-}
-@media (forced-colors: active) {
-  .button:disabled {
-    background: var(--c-surface);
-    border-color: var(--c-rule);
-    color: var(--c-rule);
-  }
-}
-@media (min-width: 600px) {
-  .button {
-    width: auto;
-    align-self: flex-start;
-  }
+.button[data-state='stamped'] .button__label {
+  color: var(--c-on-selected);
 }

@@ -1,37 +1,53 @@
-import type { ReactNode } from 'react'
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import './button.css'
 
-export function Button({
-  kind = 'primary',
-  onClick,
-  disabled,
-  children,
-  label,
-  type = 'button',
-}: {
-  /** `nav`: Back, a small arrow-and-word control at the top left of a screen (EVAL-10). */
-  kind?: 'primary' | 'secondary' | 'quiet' | 'nav'
-  onClick?: () => void
-  disabled?: boolean
+/** The hit-stop's hold, in ms. Equal to --dur-hitstop (design-check holds them together). */
+export const HIT_STOP_MS = 140
+
+/**
+ * A full-width action. Disabled is `aria-disabled`, never `disabled`, so focus stays on it.
+ * `stamped` is the committed state shown during the hit-stop.
+ */
+export function Button(props: {
   children: ReactNode
-  /** The full spoken name, where the visible word is short ("Back: change your last decision"). */
+  onPress: () => void
+  disabled?: boolean
+  variant?: 'primary' | 'secondary'
+  stamped?: boolean
   label?: string
-  type?: 'button' | 'submit'
 }) {
   return (
     <button
-      type={type}
-      className={`button button--${kind}`}
-      onClick={onClick}
-      disabled={disabled}
-      aria-label={label}
+      type="button"
+      className="button"
+      data-variant={props.variant ?? 'primary'}
+      data-state={props.stamped ? 'stamped' : 'rest'}
+      aria-disabled={props.disabled ? 'true' : undefined}
+      aria-label={props.label}
+      onClick={() => {
+        if (!props.disabled && !props.stamped) props.onPress()
+      }}
     >
-      {kind === 'nav' ? (
-        <svg className="button__arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-          <path d="M10 3 L5 8 L10 13" />
-        </svg>
-      ) : null}
-      {children}
+      <span className="button__label">{props.children}</span>
     </button>
   )
+}
+
+/** Commit with a hit-stop: stamp at once, hold for HIT_STOP_MS, then carry on. */
+export function useCommit(onDone: () => void): [boolean, () => void] {
+  const [stamped, setStamped] = useState(false)
+  const timer = useRef<number | undefined>(undefined)
+  const done = useRef(onDone)
+  useEffect(() => {
+    done.current = onDone
+  })
+  useEffect(() => () => window.clearTimeout(timer.current), [])
+  const commit = useCallback(() => {
+    setStamped(true)
+    timer.current = window.setTimeout(() => {
+      setStamped(false)
+      done.current()
+    }, HIT_STOP_MS)
+  }, [])
+  return [stamped, commit]
 }

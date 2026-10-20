@@ -1,0 +1,33 @@
+/* @owns shell shell__bar shell__meta shell__main shell__foot */
+.shell {
+  min-height: 100vh;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--c-ground);
+  color: var(--c-on-ground);
+}
+.shell__bar {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap-m);
+  padding: var(--gap-l) var(--gutter) var(--gap-xs);
+}
+.shell__meta {
+  font-size: var(--text-s);
+  font-weight: 600;
+  color: var(--c-on-ground);
+}
+.shell__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-l);
+  padding: var(--gap-s) var(--gutter) var(--gap-xl);
+  outline: none;
+}
+.shell__foot {
+  background: var(--c-ground);
+  border-top: var(--edge-thin) solid var(--c-muted-edge);
+}

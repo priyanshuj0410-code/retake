@@ -1,0 +1,58 @@
+/* @owns streak streak__head streak__count streak__strip streak__mark streak__note */
+.streak {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+}
+.streak__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--text-m);
+  font-weight: 700;
+  color: var(--c-on-ground);
+}
+.streak__count {
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+.streak__strip {
+  display: flex;
+  gap: var(--gap-xs);
+  align-items: flex-end;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.streak__mark {
+  flex: 1;
+  height: var(--spine-height);
+  border: var(--edge-thin) solid var(--c-muted-edge);
+  border-radius: var(--radius-plate);
+}
+.streak__mark:nth-child(3n + 2) {
+  height: var(--spine-height-tall);
+}
+.streak__mark[data-mark='played'] {
+  background: var(--c-streak);
+  border-color: var(--c-streak);
+}
+.streak__mark[data-mark='forgiven'] {
+  background: var(--c-streak-forgiven);
+  border-color: var(--c-streak-forgiven);
+}
+.streak__mark[data-mark='today'] {
+  border: var(--edge) solid var(--c-streak);
+}
+.streak__mark[data-mark='missed'] {
+  background: var(--c-streak-empty);
+}
+.streak__mark[data-mark='future'] {
+  border-style: dashed;
+}
+.streak__note {
+  margin: 0;
+  font-size: var(--text-s);
+  font-weight: 500;
+  color: var(--c-on-ground);
+}

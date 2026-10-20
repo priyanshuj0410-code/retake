@@ -3,8 +3,10 @@ import { createRoot } from 'react-dom/client'
 import './styles/fonts.css'
 import './styles/tokens.css'
 import './styles/base.css'
-import { App } from './App'
+import { App, applySkin, effectiveDate } from './App'
 import { registerServiceWorker } from './pwa'
+
+applySkin(effectiveDate(location.hash.split('?')[1] ?? ''), location.hash.replace(/^#/, '').split('?')[0])
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
@@ -13,14 +15,3 @@ createRoot(document.getElementById('root') as HTMLElement).render(
 )
 
 registerServiceWorker()
-
-/* Print (EVAL-11): every fold and "Read the full details" prints open, and closes again after. */
-let closed: HTMLDetailsElement[] = []
-addEventListener('beforeprint', () => {
-  closed = [...document.querySelectorAll('details')].filter((d) => !d.open)
-  closed.forEach((d) => (d.open = true))
-})
-addEventListener('afterprint', () => {
-  closed.forEach((d) => (d.open = false))
-  closed = []
-})
