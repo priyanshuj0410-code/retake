@@ -1,0 +1,13 @@
+{
+  "prompt": "Origin: procedural texture drawn in Python (numpy, PIL) for the Station premium side study; no source image, no generator.",
+  "method": "Tileable RGBA overlay for thick Edmondson card: wrap-around Gaussian tooth (sigma 0.55 px, 50%), a faint mottle (sigma 30 px, 20%) and 420 short fibres (4 to 12 px, every direction, two in three lighter than the card) at 40%. Negative values are a warm umber, positive values card white; alpha is the magnitude, capped at 13 of 255, so the stock reads as fine fibre under the type and never lowers the ink contrast measurably.",
+  "parameters": {
+    "seed": 4212,
+    "size": 512,
+    "alphaCap": 13
+  },
+  "script": "design-system/art/metal_textures.py (station_fibre; first drawn by the study's make_station_textures.py, reproduced bit for bit)",
+  "movedFrom": "design-system/explore/assets/station-fibre.webp (22 Oct 2026)",
+  "usedBy": "library.css, Station metal finish (O14), and the study explore/premium-station.css: every ticket surface (person cards, the cover and result plates, the stamped ticket, the next line, the week's lean cards), drawn at 256 px over the ticket colour.",
+  "createdAt": "2026-10-21T18:06:22+00:00"
+}

@@ -24,6 +24,7 @@ export function WordNote(props: {
                 type="button"
                 className="note__blank"
                 aria-pressed={props.blanks[i].active}
+                data-next={props.blanks[i].active ? 'true' : 'false'}
                 aria-label={`${props.blanks[i].label}${props.blanks[i].text ? `: ${props.blanks[i].text}` : ''}`}
                 onClick={() => props.onBlank(i)}
               >

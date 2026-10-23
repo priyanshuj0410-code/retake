@@ -1,0 +1,349 @@
+/* Station, premium side study (quiet luxury). Load after library.css; everything is scoped to body.premium .w-station.
+   Material and finish only: the world, its words, its skeleton (question 104, dock 748, tab screens 682) and the One Yellow Rule hold.
+   One light for the whole screen: high and slightly left. Every rim is brightest top left, every shadow falls down and a touch right.
+   Enamel becomes clean vitreous enamel in a hairline of polished steel (two tiny screws where a plate is fixed); tickets become thick
+   card with a fine fibre and one crisp printed band; flaps become anodised aluminium; glass is only for floating chrome. */
+
+/* ===== tokens ===== */
+.premium .w-station {
+  --stock: url(../assets/station-fibre.webp) 0 0 / 256px, linear-gradient(160deg, #F7F2E4 0%, #F1EAD7 46%, #EAE1C8 100%);   /* the ticket cream, lit from the top left */
+  --stock-picked: url(../assets/station-fibre.webp) 0 0 / 256px, #FFFDF7;    /* under a pick the card is near white, so the multiplied yellow prints true */
+  --band: linear-gradient(var(--accent), var(--accent)) 0 0 / 100% 6px no-repeat;
+  --card-edge: 0 0 0 .5px rgba(52, 40, 18, .55);                           /* the card's own edge, a darker ticket tone */
+  --card-lit: inset 0 1px 0 rgba(255, 255, 255, .34);                      /* the lit top edge of thick card */
+  --sh-sm: .5px 1px 1px rgba(0, 0, 0, .10), 1px 4px 10px -3px rgba(0, 0, 0, .12);
+  --sh-md: .5px 1px 2px rgba(0, 0, 0, .10), 2px 10px 24px -8px rgba(0, 0, 0, .14);
+  --sh-lg: 1px 2px 3px rgba(0, 0, 0, .10), 3px 18px 40px -12px rgba(0, 0, 0, .14);
+  --ink-soft: #3D3B36;                                                     /* ink 80% over ticket: labels on card, 8.4:1 on ticket, 6:1 under a pick */
+  /* text colours are plain hex, never color-mix(): the pixel contrast check reads them literally */
+  --deboss: 0 1px 0 rgba(255, 255, 255, .5);                               /* a pressed figure's lit lower lip */
+  /* enamel: one cobalt field, one soft sheen from the top, one diagonal reflection, a hairline of polished steel */
+  --cobalt-field: radial-gradient(150% 180% at 14% -24%, #1F3FA6 0%, #15339A 30%, #122E8A 58%, #0B2266 100%);
+  --enamel-sheen: linear-gradient(180deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, 0) 52%);
+  --enamel-streak: linear-gradient(112deg, rgba(255, 255, 255, 0) 14%, rgba(255, 255, 255, .11) 22%, rgba(255, 255, 255, .025) 30%, rgba(255, 255, 255, 0) 35%);
+  --steel: linear-gradient(155deg, #F8F9FA 0%, #C8CDD2 20%, #858B92 46%, #BEC3C8 70%, #676D74 100%);
+  --screw: radial-gradient(circle closest-side at 50% 50%, #CDD1D5 0%, #A2A8AE 42%, #646A70 74%, #2F3439 90%, rgba(47, 52, 57, 0) 100%);
+  --screw-lit: radial-gradient(circle closest-side at 50% 50%, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0));
+  --screw-slot: linear-gradient(135deg, transparent 38%, rgba(22, 26, 30, .62) 38% 62%, transparent 62%);
+  /* glass: thin, lensing, dense enough to read on */
+  --glass: color-mix(in srgb, var(--ground-deep) 66%, transparent);
+  --glass-dense: color-mix(in srgb, var(--ground-deep) 76%, transparent);
+  --glass-fx: blur(20px) saturate(180%);
+  --glass-sheen: linear-gradient(180deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, 0) 55%);
+  --glass-rim: linear-gradient(160deg, rgba(255, 255, 255, .62), rgba(255, 255, 255, .16) 28%, rgba(255, 255, 255, .05) 60%, rgba(0, 0, 0, .34));
+  --glass-sh: 0 1px 2px rgba(0, 0, 0, .12), 1px 10px 28px -6px rgba(0, 0, 0, .14);
+  --r-glass: 26px;                                                         /* concentric with the 34 px device corner at an 8 px inset */
+  /* aluminium flaps: graphite anodised, brushed, lit from above */
+  --flap-face: url(../assets/station-alu.webp) 0 0 / 256px 64px, linear-gradient(180deg, #36393D 0 50%, #2A2D30 50% 100%);
+}
+
+/* ===== the cover and result paintings settle a touch deeper at the foot, under the floating tab capsule ===== */
+.premium .w-station .art.veil-low::after, .premium .app.w-station.is-cover .art-img::after, .premium .app.w-station.is-result .art-img::after {
+  background: linear-gradient(180deg, transparent 46%, color-mix(in srgb, var(--ground-deep) 34%, transparent) 64%, color-mix(in srgb, var(--ground-deep) 62%, transparent) 100%); }
+
+/* ===== enamel: the day plate, the day count and the name board ===== */
+.premium .w-station .dayplate, .premium .w-station .daycount, .premium .w-station .nameboard {
+  position: relative; border: 1.5px solid transparent; border-image: none; border-radius: 4px; color: var(--enamel);
+  background: var(--enamel-sheen) padding-box, var(--enamel-streak) padding-box, var(--cobalt-field) padding-box, var(--steel) border-box;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), inset 0 -1px 0 rgba(0, 0, 0, .28), var(--sh-sm); }
+/* the one white enamel rule, set just inside the steel */
+.premium .w-station .dayplate::before, .premium .w-station .daycount::before, .premium .w-station .nameboard::before {
+  content: ""; position: absolute; inset: 2.5px; border: 1.5px solid var(--enamel); border-radius: 2px; pointer-events: none;
+  box-shadow: 0 .5px 0 rgba(0, 0, 0, .22), inset 0 .5px 0 rgba(0, 0, 0, .18); }
+/* the bar's plate hugs its name and is fixed by two tiny screws */
+.premium .w-station .dayplate { flex: 0 1 auto; min-height: 40px; padding: 5px 28px; letter-spacing: .005em;
+  background: var(--screw-slot) left 8.5px center / 4px 4px no-repeat padding-box, var(--screw) left 8px center / 5px 5px no-repeat padding-box,
+              var(--screw-slot) right 8.5px center / 4px 4px no-repeat padding-box, var(--screw) right 8px center / 5px 5px no-repeat padding-box,
+              var(--enamel-sheen) padding-box, var(--enamel-streak) padding-box, var(--cobalt-field) padding-box, var(--steel) border-box; }
+.premium .w-station .topbar:has(> .dayplate) { justify-content: space-between; }
+.premium .w-station .daycount { min-height: 40px; padding: 5px 14px; font-variant-numeric: tabular-nums; }
+/* the name board: generous inside, the rule further in, screws at both ends */
+.premium .w-station .nameboard { border-width: 2px; padding: 34px 44px 30px;
+  background: var(--screw-lit) left 15.5px top calc(50% - 1.5px) / 3px 3px no-repeat padding-box, var(--screw-slot) left 15.5px center / 5px 5px no-repeat padding-box, var(--screw) left 14px center / 8px 8px no-repeat padding-box,
+              var(--screw-lit) right 17.5px top calc(50% - 1.5px) / 3px 3px no-repeat padding-box, var(--screw-slot) right 15.5px center / 5px 5px no-repeat padding-box, var(--screw) right 14px center / 8px 8px no-repeat padding-box,
+              var(--enamel-sheen) padding-box, var(--enamel-streak) padding-box, var(--cobalt-field) padding-box, var(--steel) border-box;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), inset 0 -1px 0 rgba(0, 0, 0, .3), var(--sh-lg); }
+.premium .w-station .nameboard::before { inset: 6px; border-width: 2px; border-radius: 2px; }
+.premium .w-station .nameboard .bn { letter-spacing: 0; }
+.premium .w-station .nameboard .bs { letter-spacing: -.012em; }
+.premium .w-station .nameboard .bm { margin-top: 10px; letter-spacing: .02em; color: #D0D2DA; }   /* enamel white 84% over cobalt: 8:1 */
+
+/* ===== the top bar: glass discs ===== */
+.premium .w-station .ibtn:not(.on-paper), .premium .w-station .lang, .premium .w-station .seg, .premium .w-station .tabbar { position: relative; }
+.premium .w-station .ibtn:not(.on-paper), .premium .w-station .lang, .premium .w-station .seg, .premium .w-station .tabbar, .premium .w-station .rail {
+  -webkit-backdrop-filter: var(--glass-fx); backdrop-filter: var(--glass-fx); }
+.premium .w-station .ibtn:not(.on-paper)::before, .premium .w-station .lang::before, .premium .w-station .seg::before,
+.premium .w-station .tabbar::before, .premium .w-station .rail::before {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit; padding: 1px; background: var(--glass-rim);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; }
+.premium .w-station .ibtn:not(.on-paper) { background: var(--glass-sheen), var(--glass); color: var(--enamel); box-shadow: var(--glass-sh);
+  transition: transform var(--d-press) var(--ease-std), background-color var(--d-colour) var(--ease-std); }
+.premium .w-station .ibtn svg { stroke-width: 1.75; }
+.premium .w-station .ibtn:not(.on-paper):active, .premium .w-station .ibtn:not(.on-paper).is-pressed {
+  transform: scale(.96); background: var(--glass-sheen), color-mix(in srgb, var(--enamel) 16%, var(--glass)); }
+
+/* the language switch: one glass capsule, the chosen half an enamel puck */
+.premium .w-station .lang { border-radius: 9999px; background: var(--glass-sheen), var(--glass); box-shadow: var(--glass-sh); }
+.premium .w-station .lang button { position: relative; isolation: isolate; border: 0; background: transparent; color: var(--enamel); min-width: 52px; box-shadow: none; }
+.premium .w-station .lang button[aria-pressed="true"] { color: var(--ink); background: transparent; box-shadow: none; }
+.premium .w-station .lang button[aria-pressed="true"]::before {
+  content: ""; position: absolute; inset: 4px; z-index: -1; border-radius: 9999px;
+  background: linear-gradient(180deg, #FFFFFF, var(--enamel) 60%); box-shadow: inset 0 -.5px 0 rgba(0, 0, 0, .18), 0 0 0 .5px rgba(0, 0, 0, .3), var(--sh-sm); }
+
+/* ===== the tab bar: a floating glass capsule over the painting (8 px in, 58 tall, so the dock still tops at 682) ===== */
+.premium .w-station .tabbar {
+  margin: 0 8px 8px; min-height: 58px; padding: 0 6px; border-radius: 9999px;
+  background: var(--glass-sheen), var(--glass-dense); box-shadow: var(--glass-sh); }
+.premium .w-station .tab { position: relative; gap: 4px; padding: 3px 0 5px; letter-spacing: .01em; }
+.premium .w-station .tab svg { width: 24px; height: 24px; padding: 1px 10px; border-radius: 9999px; transition: background-color var(--d-colour) var(--ease-std); }
+.premium .w-station .tab[aria-current="page"] { color: var(--enamel); }
+.premium .w-station .tab[aria-current="page"] svg { background: linear-gradient(180deg, #FFFFFF, var(--enamel) 60%); color: var(--ground); border-radius: 9999px;
+  box-shadow: inset 0 -.5px 0 rgba(0, 0, 0, .2), var(--sh-sm); }
+
+/* the rail on wide screens: the same glass, as a short capsule floating at the top left */
+.premium .app.w-station .rail {
+  top: 16px; bottom: auto; left: 16px; width: 80px; padding: 16px 4px; gap: 8px; border-radius: 9999px;
+  background: var(--glass-sheen), var(--glass-dense); box-shadow: var(--glass-sh); }
+.premium .app.w-station .rail .tab { min-height: 64px; border-radius: 9999px; }
+/* wide screens: the cover's and result's button spans the column, so board, plate and button share one edge */
+@container dev (min-aspect-ratio: 1/1) and (min-width: 700px) {
+  .premium .app.w-station:not(.is-step) .page-play > .dock { padding-inline: 0; }
+  .premium .app.w-station:not(.is-step) .page-play > .dock .main { max-width: none; }
+}
+
+/* ===== tickets: thick card, a fine fibre, one crisp printed band, a hairline edge and a soft shadow ===== */
+.premium .w-station .tile, .premium .w-station .row, .premium .w-station .plate, .premium .w-station .nextline, .premium .w-station .bigticket,
+.premium .w-station .leanrow .wk, .premium .w-station .rows.is-compact .row {
+  border: 0; border-image: none; border-radius: 4px; background: var(--band), var(--stock); color: var(--ink); }
+.premium .w-station .tile, .premium .w-station .row { box-shadow: var(--card-edge), var(--card-lit), var(--sh-md); }
+.premium .w-station .plate, .premium .w-station .nextline, .premium .w-station .leanrow .wk { box-shadow: var(--card-edge), var(--card-lit), var(--sh-md); }
+.premium .w-station .slip, .premium .w-station .tag { background: var(--stock); box-shadow: var(--card-edge), var(--card-lit), var(--sh-md); }
+
+/* person cards: more air inside, a recessed portrait, a debossed serial, hanging quotes */
+.premium .w-station:not(.is-small):not(.is-200):not([lang="hi"]) .tiles { gap: 16px 12px; }
+.premium .w-station .tile { padding: 18px 12px 14px; gap: 6px; }
+.premium .w-station .face { box-shadow: inset 0 0 0 .5px rgba(0, 0, 0, .4), inset .5px 1px 3px rgba(0, 0, 0, .22); }
+.premium .w-station .nm { letter-spacing: .005em; }
+.premium .w-station .serial { color: var(--ink-soft); text-shadow: var(--deboss); letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+.premium .w-station .stat { letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.premium .w-station .stat svg { opacity: .78; }
+.premium .w-station .quote { text-indent: -.42em; }
+.premium .w-station .tiles.is-committing .tile:not(.is-selected) .serial { color: var(--ink); }
+.premium .w-station .tile:active, .premium .w-station .tile.is-pressed, .premium .w-station .row:active, .premium .w-station .row.is-pressed {
+  transform: scale(.985); box-shadow: var(--card-edge), inset 0 0 0 999px rgba(0, 0, 0, .05), inset 0 1px 3px rgba(0, 0, 0, .14), var(--sh-sm); }
+/* the pick: yellow printed over the card below its band, framed in 2 px of ink, lifted a little further from the platform */
+.premium .w-station .tile[aria-checked="true"], .premium .w-station .tile.is-selected, .premium .w-station .row[aria-checked="true"], .premium .w-station .row.is-selected,
+.premium .w-station .tile.is-armed, .premium .w-station .row.is-armed { background: var(--band), var(--stock-picked); }
+.premium .w-station .tile[aria-checked="true"], .premium .w-station .tile.is-selected, .premium .w-station .row[aria-checked="true"], .premium .w-station .row.is-selected {
+  box-shadow: inset 0 0 0 2px var(--ink), var(--card-lit), var(--sh-lg); }
+.premium .w-station .tile[aria-checked="true"]::before, .premium .w-station .tile.is-selected::before, .premium .w-station .tile.is-armed::before,
+.premium .w-station .row[aria-checked="true"]::before, .premium .w-station .row.is-selected::before, .premium .w-station .row.is-armed::before {
+  top: 6px; border-radius: 0 0 4px 4px; }
+.premium .w-station .tile.is-armed, .premium .w-station .row.is-armed { box-shadow: inset 0 0 0 2px var(--ink), 0 0 0 2px var(--paper), var(--sh-lg); }
+.premium .w-station .tick { top: 24px; right: 18px; width: 28px; height: 28px; background: var(--paper); color: var(--ink);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 0 0 .5px rgba(0, 0, 0, .45), var(--sh-sm); }
+.premium .w-station .tick svg { width: 16px; height: 16px; stroke-width: 2.75; }
+.premium .w-station .row .tick { top: 12px; right: 10px; }
+@container play (min-width: 440px) { .premium .w-station .tile .tick { top: 14px; right: 10px; } .premium .w-station .tile { padding: 14px 12px 12px 10px; } }
+/* small phones and 200% text keep the library's spacing (they scroll once already; nothing new should land under the scroll fade) */
+.premium .w-station.is-small .tile, .premium .w-station.is-200 .tile { padding: 18px 8px 8px; gap: 4px; }
+.premium .w-station.is-small .tick, .premium .w-station.is-200 .tick { top: 22px; right: 12px; }
+
+/* rows: the same card, in a line */
+.premium .w-station .row { padding-top: 12px; padding-bottom: 6px; padding-left: 8px; }
+.premium .w-station .rows.is-compact .row { padding-top: 10px; padding-bottom: 4px; }
+
+/* the step's speaker and the stat key share one line: one quiet row instead of two stacked ones */
+.premium .w-station:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-content: start; column-gap: 12px; row-gap: 16px; }
+.premium .w-station:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) > * { grid-column: 1 / -1; }
+.premium .w-station:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) > .qbox { justify-self: start; }
+.premium .w-station:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) > .byline { grid-column: 1; justify-self: start; align-self: center; }
+.premium .w-station:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) > .statkey { grid-column: 2; justify-self: end; align-self: center; }
+.premium .w-station:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) > .tiles { margin-top: 8px; }
+.premium .w-station[lang="hi"]:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) { row-gap: 12px; }
+.premium .w-station[lang="hi"]:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) > .tiles { margin-top: 0; }
+.premium .w-station .q { letter-spacing: -.012em; }
+.premium .w-station .byline { gap: 10px; letter-spacing: .01em; }
+.premium .w-station .byline i { box-shadow: 0 0 0 1px color-mix(in srgb, var(--enamel) 70%, transparent), var(--sh-sm); }
+.premium .w-station .statkey { gap: 4px 16px; letter-spacing: .01em; }
+.premium .w-station .statkey svg { opacity: .8; }
+
+/* ===== plates on the platform: the cover's train plate and the result's score card ===== */
+.premium .w-station .plate { padding: 24px 22px 20px; gap: 6px; }
+.premium .w-station .plate .level, .premium .w-station .plate .fig span, .premium .w-station .plate .fig small { letter-spacing: .01em; }
+.premium .w-station:not(.is-200):not(.is-small) .plate .level, .premium .w-station:not(.is-200):not(.is-small) .plate .fig span,
+.premium .w-station:not(.is-200):not(.is-small) .plate .fig small { color: var(--ink-soft); }   /* at 200% and on small phones every label keeps full ink */
+.premium .w-station .plate .pg-row { gap: 14px; }
+.premium .w-station .coverstack { gap: 16px; }
+.premium .w-station .nextline { padding: 12px 14px 8px; }
+.premium .w-station .leanrow .wk { padding: 12px 8px 6px; }
+
+/* ===== split-flap tiles: anodised aluminium, a precise hinge, a soft drop ===== */
+.premium .w-station .flaps { gap: 3px; }
+.premium .w-station :not(.flaphouse) > .flaps i { height: 40px; }   /* loose flaps 4 px taller: the numeral's glyph box stays on the flap */
+.premium .w-station .flaps i {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .12)),
+              linear-gradient(transparent calc(50% - 1px), #060708 calc(50% - 1px) 50%, rgba(255, 255, 255, .09) 50% calc(50% + 1px), transparent calc(50% + 1px)),
+              var(--flap-face);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .13), inset 0 0 0 .5px rgba(0, 0, 0, .85), .5px 1px 1px rgba(0, 0, 0, .14), 1px 3px 6px -2px rgba(0, 0, 0, .14);
+  letter-spacing: 0; }
+.premium .w-station .flaps i::after { display: none; }
+/* the score housing: a recess with a lit lower lip */
+.premium .w-station .flaphouse { padding: 6px; background: linear-gradient(180deg, #08090A, #111315); border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .7), inset 0 -.5px 0 rgba(255, 255, 255, .14), 0 0 0 .5px rgba(0, 0, 0, .6), 0 1px 0 rgba(255, 255, 255, .35); }
+.premium .w-station .flaphouse .flaps { gap: 4px; }
+
+/* the signature move, refined: each score flap falls once, top then bottom, landing left to right (a still final state without motion) */
+.premium .w-station .flaphouse .flaps i::before, .premium .w-station .flaphouse .flaps i::after {
+  content: ""; display: block; position: absolute; left: 0; right: 0; z-index: 1; pointer-events: none; opacity: 0; }
+.premium .w-station .flaphouse .flaps i::before { top: 0; height: 50%; border-radius: 4px 4px 0 0; transform-origin: 50% 100%;
+  background: url(../assets/station-alu.webp) 0 0 / 256px 64px, linear-gradient(180deg, #383B3F, #33363A);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .13), inset 0 -1px 0 #060708; animation: p-flap-top 380ms cubic-bezier(.55, 0, .9, .4) 220ms 1 both; }
+.premium .w-station .flaphouse .flaps i::after { bottom: 0; height: 50%; border-radius: 0 0 4px 4px; transform-origin: 50% 100%;
+  background: url(../assets/station-alu.webp) 0 -32px / 256px 64px, linear-gradient(180deg, #2A2D30, #222528);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .09); animation: p-flap-bottom 600ms cubic-bezier(.55, 0, .9, .4) 220ms 1 both; }
+.premium .w-station .flaphouse .flaps i:nth-child(2)::before, .premium .w-station .flaphouse .flaps i:nth-child(2)::after { animation-delay: 330ms; }
+.premium .w-station .flaphouse .flaps i:nth-child(3)::before, .premium .w-station .flaphouse .flaps i:nth-child(3)::after { animation-delay: 440ms; }
+@keyframes p-flap-top {
+  0% { opacity: 1; transform: perspective(180px) rotateX(0deg); filter: brightness(1); }
+  99% { opacity: 1; transform: perspective(180px) rotateX(-90deg); filter: brightness(.6); }
+  100% { opacity: 0; transform: perspective(180px) rotateX(-90deg); } }
+@keyframes p-flap-bottom {
+  0%, 62% { opacity: 1; transform: scaleY(1); }
+  99% { opacity: 1; transform: scaleY(0); }
+  100% { opacity: 0; transform: scaleY(0); } }
+
+/* ===== the main button ===== */
+.premium .w-station .main { position: relative; isolation: isolate; overflow: hidden; letter-spacing: .005em;
+  transition: transform var(--d-press) var(--ease-std), box-shadow var(--d-press) var(--ease-std), background-color var(--d-colour) var(--ease-std); }
+.premium .w-station .main > * { position: relative; z-index: 1; }
+/* live: pick-yellow enamel with one soft sheen; the enamel lip becomes a fine 2 px lip */
+.premium .w-station .main.is-live {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0) 56%), var(--pick);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .75), inset 0 -2px 0 rgba(120, 78, 0, .2), 0 0 0 .5px rgba(90, 60, 0, .5), var(--sh-md); }
+.premium .w-station .main.is-live:active, .premium .w-station .main.is-live.is-pressed, .premium .w-station .main.is-committing {
+  transform: translateY(1px) scale(.99);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, .1) 100%), var(--pick);
+  box-shadow: inset 0 1px 2px rgba(120, 78, 0, .22), inset 0 -.5px 0 rgba(120, 78, 0, .2), 0 0 0 .5px rgba(90, 60, 0, .5), var(--sh-sm); }
+/* one specular sweep when the button turns live */
+.premium .w-station .main.is-live::after {
+  content: ""; position: absolute; top: -30%; bottom: -30%; left: 0; width: 30%; z-index: 0; pointer-events: none;
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .55) 50%, rgba(255, 255, 255, 0));
+  transform: translateX(-180%) skewX(-18deg); animation: p-sweep 900ms cubic-bezier(.45, 0, .25, 1) 150ms 1 both; }
+@keyframes p-sweep { from { transform: translateX(-180%) skewX(-18deg); } to { transform: translateX(420%) skewX(-18deg); } }
+.premium .w-station .main.is-wait {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0) 60%), var(--muted);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--edge) 58%, transparent), inset 0 1px 0 rgba(255, 255, 255, .1), var(--sh-sm); }
+/* outside a puzzle: white vitreous enamel in a steel hairline; the raster's cobalt keyline is dropped (the steel and the gloss say enamel) */
+.premium .w-station .main.is-out {
+  border: 1.5px solid transparent; border-image: none; padding: 0 12px; color: var(--ink); filter: none;
+  background: var(--enamel-sheen) padding-box, var(--enamel-streak) padding-box, linear-gradient(180deg, #FBFAF6, var(--enamel) 46%, #E8E4D9) padding-box, var(--steel) border-box;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -1px 0 rgba(0, 0, 0, .1), var(--sh-md); }
+.premium .w-station .main.is-out:active, .premium .w-station .main.is-out.is-pressed { transform: translateY(1px) scale(.99); filter: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .14), var(--sh-sm); }
+.premium .w-station .main.is-live.is-hover { filter: none; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), inset 0 -2px 0 rgba(120, 78, 0, .2), 0 0 0 .5px rgba(90, 60, 0, .5), var(--sh-lg); }
+.premium .w-station .main.is-out.is-hover { filter: none; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -1px 0 rgba(0, 0, 0, .1), var(--sh-lg); }
+.premium .w-station .tile.is-hover, .premium .w-station .row.is-hover { box-shadow: var(--card-edge), inset 0 0 0 1px color-mix(in srgb, var(--ink) 55%, transparent), var(--card-lit), var(--sh-lg); }
+@media (hover: hover) and (pointer: fine) {
+  .premium .w-station .main.is-live:hover { filter: none; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), inset 0 -2px 0 rgba(120, 78, 0, .2), 0 0 0 .5px rgba(90, 60, 0, .5), var(--sh-lg); }
+  .premium .w-station .main.is-out:hover { filter: none; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -1px 0 rgba(0, 0, 0, .1), var(--sh-lg); }
+  .premium .w-station .tile:hover:not([aria-checked="true"]):not(.is-selected), .premium .w-station .row:hover:not([aria-checked="true"]):not(.is-selected) {
+    box-shadow: var(--card-edge), inset 0 0 0 1px color-mix(in srgb, var(--ink) 55%, transparent), var(--card-lit), var(--sh-lg); }
+}
+.premium .w-station .textbtn { text-decoration-thickness: 1.5px; text-underline-offset: 6px; padding: 0 14px; }
+
+/* chips and slots: card with a control hairline at 4:1; the pick is yellow framed in 2 px of ink */
+.premium .w-station .chip { background: var(--stock); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 55%, var(--paper)), var(--card-lit), var(--sh-sm); }
+.premium .w-station .chip:active, .premium .w-station .chip.is-pressed { transform: scale(.985); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 55%, var(--paper)), inset 0 1px 2px rgba(0, 0, 0, .14); }
+.premium .w-station .chip[aria-checked="true"], .premium .w-station .chip.is-selected { background: var(--pick); box-shadow: inset 0 0 0 2px var(--ink), var(--sh-md); }
+.premium .w-station .slot.is-filled, .premium .w-station .blank.is-filled { box-shadow: inset 0 0 0 2px var(--ink), var(--sh-sm); }
+
+/* ===== the result: the stamped ticket and the score card, both physical, shadowed through their punched notches ===== */
+.premium .w-station .scr-body:has(> .bigticket) { filter: drop-shadow(.5px 1px 1px rgba(0, 0, 0, .12)) drop-shadow(2px 10px 14px rgba(0, 0, 0, .13)); gap: 16px; }
+.premium .w-station .scr-body:has(> .bigticket) > .plate { box-shadow: var(--card-edge), var(--card-lit); }
+.premium .w-station .bigticket { background: linear-gradient(var(--accent), var(--accent)) 0 0 / 100% 8px no-repeat, var(--stock); padding: 26px 24px 20px; box-shadow: var(--card-edge), var(--card-lit); }
+.premium .w-station .bigticket .fine { color: var(--ink-soft); letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+.premium .w-station .bigticket .route { letter-spacing: -.012em; margin: 2px 0; }
+/* the stamp: a finer ring, a calmer tilt, and enough room inside that the ring never crosses the word's box */
+.premium .w-station .ticket-stamp { right: 24px; bottom: 22px; transform: rotate(-4deg); padding: 7px 12px; font: 700 var(--t-title)/1.5 'Hind', sans-serif;
+  box-shadow: inset 0 0 0 2px var(--accent); color: var(--accent); letter-spacing: .04em; }
+/* the week's day tickets: three to a row, so each ticket has room for its letter and, on a forgiven day, a straight "off" stamp
+   that no longer covers the letter (the library's six-across row overlapped them in Hindi) */
+.premium .w-station .daygrid:has(> .dayobj.is-ticket) { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.premium .w-station .dayobj.is-ticket { aspect-ratio: 5 / 2; padding-left: 12px; box-shadow: var(--card-edge), var(--card-lit), var(--sh-sm); }
+.premium .w-station .dayobj .offstamp { transform: none; padding: 3px 6px; box-shadow: inset 0 0 0 1px var(--accent); }
+.premium .w-station .dayobj.is-ticket .offstamp { bottom: 6px; right: 6px; }
+.premium .w-station .score { gap: 14px; }
+.premium .w-station .plate h1.score { margin: 2px 0 6px; }
+.premium .w-station .figs { gap: 16px; }
+.premium .w-station .fig b { letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.premium .w-station .plate .spines { margin-top: 10px; gap: 8px; }
+.premium .w-station .spine i { width: 22px; height: 16px; margin-top: 4px; }
+.premium .w-station .spine.played i, .premium .w-station .spine.today i { background: color-mix(in srgb, var(--mk-fg) 88%, transparent); }
+.premium .w-station .spine.today::after { top: 0; height: 24px; left: 1px; right: 1px; box-shadow: 0 0 0 1px var(--mk-fg); }
+.premium .w-station .spine.todo i { height: 2px; margin-top: 11px; opacity: .45; }
+
+/* ===== the board: a glass switch, and the departure board behind glass in a slim enamel bezel ===== */
+.premium .w-station .seg { border-radius: 9999px; background: var(--glass-sheen), var(--glass); box-shadow: var(--glass-sh); }
+.premium .w-station .seg button { position: relative; isolation: isolate; border-radius: 9999px; color: var(--enamel); }
+.premium .w-station .seg button[aria-selected="true"] { background: transparent; color: var(--ink); }
+.premium .w-station .seg button[aria-selected="true"]::before {
+  content: ""; position: absolute; inset: 4px; z-index: -1; border-radius: 9999px;
+  background: linear-gradient(180deg, #FFFFFF, var(--enamel) 60%); box-shadow: inset 0 -.5px 0 rgba(0, 0, 0, .18), 0 0 0 .5px rgba(0, 0, 0, .3), var(--sh-sm); }
+.premium .w-station .scr-body:has(> .seg) { gap: 16px; padding-top: 8px; }
+/* one slim cobalt enamel bezel inside a steel hairline (the world's frame, at a quarter of its old weight); the board face sits
+   behind glass: a recess at the top edge, one lit line where the glass meets the bezel, one soft diagonal reflection */
+.premium .w-station .departures {
+  position: relative; border: 1px solid transparent; border-image: none; border-radius: 4px; padding: 10px 18px;
+  background: linear-gradient(116deg, rgba(255, 255, 255, .075) 0%, rgba(255, 255, 255, .03) 30%, rgba(255, 255, 255, 0) 30.5%) padding-box,
+              linear-gradient(180deg, #121415, #0B0C0D) padding-box, var(--steel) border-box;
+  box-shadow: inset 0 0 0 4px #13308F, inset 0 1px 0 4px rgba(255, 255, 255, .1), inset 0 0 0 5px rgba(255, 255, 255, .12), inset 0 14px 16px -10px rgba(0, 0, 0, .8), var(--sh-lg); }
+.premium .w-station .departures .lrow { min-height: 56px; gap: 14px; padding: 0 8px; border-radius: 4px; }
+.premium .w-station .departures li + li .lrow { box-shadow: inset 0 1px 0 rgba(244, 241, 232, .08); }
+.premium .w-station .departures .lrow .rd { letter-spacing: .005em; }
+.premium .w-station .departures .lrow .pr { font-variant-numeric: tabular-nums; letter-spacing: -.005em; }
+.premium .w-station .departures .lrow .flaps i { min-width: 24px; height: 32px; }
+.premium .w-station .lrow.is-you { background: rgba(244, 241, 232, .05); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--enamel) 62%, transparent) !important; }
+.premium .w-station .departures li:has(.is-you) + li .lrow { box-shadow: none; }
+.premium .w-station .youword { text-decoration-thickness: 1px; text-underline-offset: 4px; }
+
+/* ===== overlays: the "?" sheet is a pane of enamel-white glass that settles on a spring ===== */
+.premium .w-station .scrim { background: rgba(6, 7, 8, .24); }
+.premium .w-station .sheet {
+  left: 8px; right: 8px; bottom: 8px; border-radius: var(--r-glass); padding: 0 24px 24px; color: var(--ink);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 40%), color-mix(in srgb, var(--enamel) 92%, transparent);
+  -webkit-backdrop-filter: blur(24px) saturate(180%); backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), inset 0 0 0 .5px rgba(255, 255, 255, .6), 0 0 0 .5px rgba(0, 0, 0, .28), 0 2px 4px rgba(0, 0, 0, .08), 0 18px 48px -8px rgba(0, 0, 0, .14);
+  animation: p-settle 560ms cubic-bezier(.2, .9, .25, 1) 1 both; }
+@keyframes p-settle { 0% { transform: translateY(104%); } 62% { transform: translateY(-5px); } 82% { transform: translateY(1.5px); } 100% { transform: translateY(0); } }
+.premium .w-station .sheet .grab .handle i { width: 36px; height: 5px; background: var(--accent); opacity: .85; }
+.premium .w-station .sheet h2 { margin: 4px 0 24px; letter-spacing: -.012em; }
+.premium .w-station .sheet .howto { gap: 16px; letter-spacing: .01em; }
+.premium .w-station .sheet .howto svg { width: 40px; height: 40px; margin-bottom: 10px; stroke-width: 1.75; color: var(--accent); }
+.premium .w-station .sheet .sheetlinks { margin-top: 32px; }
+.premium .w-station .sheet .sheetlinks button { min-height: 52px; text-decoration-thickness: 1px; text-underline-offset: 6px;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink) 11%, transparent); }
+.premium .w-station .sheet .sheetlinks svg { stroke-width: 1.75; }
+.premium .w-station .sheet .setrow { box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink) 11%, transparent); }
+.premium .w-station .sheet .close svg { stroke-width: 1.75; }
+.premium .w-station .dialog, .premium .w-station .menu {
+  box-shadow: inset 0 6px 0 var(--accent), 0 0 0 .5px rgba(0, 0, 0, .4), inset 0 1px 0 rgba(255, 255, 255, .6), var(--sh-lg); }
+.premium .w-station .menu { box-shadow: 0 0 0 .5px rgba(0, 0, 0, .4), var(--sh-lg); }
+.premium .w-station .toast > .t { background: var(--flap-face); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .13), 0 0 0 .5px rgba(0, 0, 0, .8), var(--sh-md); }
+
+/* other enamel-white objects: one hairline, one soft shadow */
+.premium .w-station .chart, .premium .w-station .route-map, .premium .w-station .paperpage {
+  box-shadow: inset 0 0 0 .5px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .7), var(--sh-md); }
+.premium .w-station .chart .chead { letter-spacing: .02em; }
+
+/* 200% text: the enamel pucks fill their half, so the larger words stay on them */
+.premium .w-station.is-200 .lang button[aria-pressed="true"]::before, .premium .w-station.is-200 .seg button[aria-selected="true"]::before { inset: 0; border-radius: 4px; }
+.premium .w-station.is-200 .lang, .premium .w-station.is-200 .seg, .premium .w-station.is-200 .seg button { border-radius: 4px; }
+.premium .w-station.is-200 .dayplate { padding-block: 8.5px; }   /* the bar keeps the library's height at 200%, so the step below sits where it did */
+
+/* ===== reduced motion: a designed still state. The library stops every animation under the media query and html.rm; each move
+   here rests at its end state without one (the sweep parked off the button, the blank flaps hidden, the sheet in place). ===== */
+@media (prefers-reduced-motion: reduce) { .premium .w-station .main.is-live::after { display: none; } }
+html.rm .premium .w-station .main.is-live::after { display: none; }

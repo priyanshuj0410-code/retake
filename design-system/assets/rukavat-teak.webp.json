@@ -1,0 +1,16 @@
+{
+  "prompt": "Origin: procedural texture drawn in Python (numpy, PIL) for the Rukavat metal finish (O14); no source image, no generator.",
+  "method": "Tileable teak veneer: a straight horizontal grain (sigma 0.9 px across, 90 px along, weight 0.10), broad figure bands (sigma 7 by 220 px, 0.09), fine pores (sigma 0.35 by 3 px, 0.03) and sparse dark grain lines (the top of a sigma 0.6 by 140 px field, 0.10), round a mid value of 0.52 that maps to the world's teak #6B4429 (stops #3A2112, #5C3922, #6B4429, #7C5132, #966642). No light in the file; the CSS adds the one soft highlight.",
+  "parameters": {
+    "seed": 5102,
+    "size": [
+      512,
+      256
+    ],
+    "mid": 0.52,
+    "teak": "#6B4429"
+  },
+  "script": "rukavat_metal.py, written for this pass in the session work folder; the full recipe (seed, sizes, sigmas, colour stops) is in this sidecar, so the file can be redrawn exactly by the same numpy code. Same helpers as design-system/art/metal_textures.py.",
+  "usedBy": "worlds/rukavat.css, metal finish (O14): the teak bezel round the cover title card, the chapter title card, the score card off the phone and the demo TV, and the cabinet edge along the top of the \"?\" sheet, drawn at 256 x 128 px under one soft highlight from the top left. Never under words.",
+  "createdAt": "2026-10-22T00:48:28+00:00"
+}

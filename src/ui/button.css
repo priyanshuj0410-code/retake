@@ -61,3 +61,7 @@
 .button[data-state='stamped'] .button__label {
   color: var(--c-on-selected);
 }
+.button[data-next='true'] {
+  outline: var(--focus-width) solid var(--c-focus);
+  animation: var(--pulse-animation);
+}

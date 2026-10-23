@@ -1,0 +1,16 @@
+{
+  "prompt": "Origin: procedural texture drawn in Python (numpy, PIL) for the Rukavat metal finish (O14); no source image, no generator.",
+  "method": "The channel knob's knurled chrome ring, drawn at 4x and averaged down (premultiplied) for clean edges: a ring from 0.66 to 0.97 of the radius, 48 ridges (cos of 48 theta) whose facets catch the one light high on the left (sin of 48 theta times the cosine to the light), a side light from the top left, a bright chamfer just outside the cap on the lit side, a falloff to the outer edge and a 2% grain, mapped through #282D32, #5C636A, #A8AFB6, #D7DCE0 and #FAFBFC. Transparent inside and outside the ring; the knob's cap is the icon's own circle on top.",
+  "parameters": {
+    "seed": 5103,
+    "size": 128,
+    "supersample": 4,
+    "ridges": 48,
+    "ringInner": 0.66,
+    "ringOuter": 0.97,
+    "light": "top left"
+  },
+  "script": "rukavat_metal.py, written for this pass in the session work folder; the full recipe (seed, sizes, sigmas, colour stops) is in this sidecar, so the file can be redrawn exactly by the same numpy code. Same helpers as design-system/art/metal_textures.py.",
+  "usedBy": "worlds/rukavat.css, metal finish (O14): the knurled chrome edge of every channel knob (a check left in the pool, a check placed on a row), drawn at 32 px behind the icon's cream or teal cap.",
+  "createdAt": "2026-10-22T00:48:28+00:00"
+}

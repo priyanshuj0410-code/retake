@@ -91,7 +91,8 @@ export interface ChecksStep {
   choosePrompt: Text
   budget: number
   checkLabel: Text
-  people: { who: string; record: Text; finding: Text; mirror?: string }[]
+  stats?: Stat[]
+  people: { who: string; record?: Text; values?: Record<string, number>; finding: Text; mirror?: string }[]
   voice?: Voice
   twin?: Twin
 }
@@ -126,7 +127,8 @@ export interface WordsStep {
   kind: 'words'
   id: string
   prompt: Text
-  facts: Text
+  /** A character's line that sets out the facts both notes share. */
+  voice?: Voice
   template: Text
   people: string[]
   bank: { id: string; text: Text; valence: -1 | 0 | 1 }[]

@@ -1,0 +1,4 @@
+{
+ "prompt": "An Indian railway booking counter hall, rows of barred ticket windows, ceiling fans, a big station clock with no numbers, wooden benches, light falling through tall arches. A two-colour screen print in the style of an old Indian Railways poster: only deep enamel blue and black ink on cream paper, bold flat shapes, coarse halftone dots, slight ink misregistration, full-bleed edge to edge, no border, no people, absolutely no text, no letters, no numbers, no signboards, no writing anywhere.\n[model: FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x896, seed 9400; edits: margins cropped; resized 430x752; reduced to a 6-colour print palette; regraded to a neutral black and ticket-cream duotone so the blue belongs to the enamel only (round 3 finish review)]",
+ "createdAt": "2026-10-21T03:47:31.241Z"
+}

@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import './choices.css'
+import './hidden.css'
 
 /**
  * A set of equal options (rules, responses, languages, road names). Every option has the same
@@ -13,6 +14,8 @@ export function Choices(props: {
   onChange?: (id: string) => void
   locked?: boolean
   columns?: 1 | 2 | 3
+  /** The options say it all; the legend is for screen readers only. */
+  quiet?: boolean
 }) {
   const list = useRef<HTMLDivElement>(null)
   const move = (i: number) => {
@@ -28,7 +31,7 @@ export function Choices(props: {
   )
   return (
     <fieldset className="choices">
-      <legend className="choices__legend">{props.legend}</legend>
+      <legend className={props.quiet ? 'vh' : 'choices__legend'}>{props.legend}</legend>
       <div className="choices__list" role="radiogroup" data-columns={props.columns ?? 1} ref={list} data-options="">
         {props.options.map((o, i) => (
           <button

@@ -28,3 +28,14 @@ body {
 [tabindex='-1']:focus {
   outline: none;
 }
+/* The pulse on the next target (data-next): the ring breathes out and back. Reduced motion
+   sets --pulse-animation to none and the ring stays still. */
+@keyframes elt-pulse {
+  0%,
+  100% {
+    outline-offset: 0px;
+  }
+  50% {
+    outline-offset: var(--pulse-reach);
+  }
+}

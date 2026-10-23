@@ -1,0 +1,52 @@
+{
+ "jadugar-s-rope-w": {
+  "seed": 6900,
+  "prompt": "On a dusty small-town ground at night, a thick rope rises straight up out of a wicker basket into a starry indigo sky and vanishes into a cloud; hissing kerosene pressure lamps on bamboo poles light a small wooden stage with a painted moon backdrop. Painted like a 1960s Indian chromolithograph print for a travelling jadoo show: hand-painted gouache with soft airbrushed glows, saturated vermilion and magenta against a deep indigo night, emerald and old-gold highlights, bold dark outlines, dramatic and mysterious, a little faded, paper grain. Wide panoramic composition: the main subject sits in the left third of the frame. Towards the right the same scene carries on, quieter and darker: open sky, distance and shadow, nothing important there, one continuous picture with no panels and no split. Full-bleed edge to edge, no border, no frame, no people, no faces, no hands. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 1536x864"
+ },
+ "jadugar-s-trunk-w": {
+  "seed": 7001,
+  "prompt": "Backstage at a travelling magic show: a big steamer trunk open with silk scarves spilling out, a wicker basket pierced by swords, a sequinned coat on a hanger, a mirror, a kerosene lamp, a painted canvas backdrop of a moon and clouds. Painted like a 1960s Indian chromolithograph print for a travelling jadoo show: hand-painted gouache with soft airbrushed glows, saturated vermilion and magenta against a deep indigo night, emerald and old-gold highlights, bold dark outlines, dramatic and mysterious, a little faded, paper grain. Wide panoramic composition: the main subject sits in the left third of the frame. Towards the right the same scene carries on, quieter and darker: open sky, distance and shadow, nothing important there, one continuous picture with no panels and no split. Full-bleed edge to edge, no border, no frame, no people, no faces, no hands. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 1536x864"
+ },
+ "jadugar-s-booth-w": {
+  "seed": 7102,
+  "prompt": "The ticket window of a travelling magic show at night: a small wooden booth with a hatch, a hissing kerosene lamp, a rope queue line with nobody in it, the glowing tent behind, stars. Painted like a 1960s Indian chromolithograph print for a travelling jadoo show: hand-painted gouache with soft airbrushed glows, saturated vermilion and magenta against a deep indigo night, emerald and old-gold highlights, bold dark outlines, dramatic and mysterious, a little faded, paper grain. Wide panoramic composition: the main subject sits in the left third of the frame. Towards the right the same scene carries on, quieter and darker: open sky, distance and shadow, nothing important there, one continuous picture with no panels and no split. Full-bleed edge to edge, no border, no frame, no people, no faces, no hands. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 1536x864"
+ },
+ "jadugar-s-rickshaw-w": {
+  "seed": 7203,
+  "prompt": "A cycle-rickshaw with a big brass loudspeaker horn parked by a striped canvas magic show tent at night in an Indian small town, kerosene lamps, the tent flap open on a lit stage, a clean dusty ground. Painted like a 1960s Indian chromolithograph print for a travelling jadoo show: hand-painted gouache with soft airbrushed glows, saturated vermilion and magenta against a deep indigo night, emerald and old-gold highlights, bold dark outlines, dramatic and mysterious, a little faded, paper grain. Wide panoramic composition: the main subject sits in the left third of the frame. Towards the right the same scene carries on, quieter and darker: open sky, distance and shadow, nothing important there, one continuous picture with no panels and no split. Full-bleed edge to edge, no border, no frame, no people, no faces, no hands. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 1536x864"
+ },
+ "cricket-s-scoreboard-w": {
+  "seed": 7304,
+  "prompt": "A giant old manual cricket scoreboard at a stadium at dusk, rows of blank black hanging plates with nothing written on them, a ladder leaning against it, floodlights coming on, empty stands. Painted like a vintage Indian sports-magazine centre spread from the 1980s: deep outfield greens, chalk white and cherry red, dramatic angle, faded glossy print. Wide panoramic composition: the main subject sits in the left third of the frame. Towards the right the same scene carries on, quieter and darker: open sky, distance and shadow, nothing important there, one continuous picture with no panels and no split. Full-bleed edge to edge, no border, no frame, no people, no faces, no hands. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 1536x864"
+ },
+ "cricket-s-nets-w": {
+  "seed": 7405,
+  "prompt": "Practice nets on a dusty Indian maidan at dawn: a net cage, a set of stumps, a kit bag and a water bottle, a tree, long shadows and mist. Painted like a vintage Indian sports-magazine centre spread from the 1980s: deep outfield greens, chalk white and cherry red, dramatic angle, faded glossy print. Wide panoramic composition: the main subject sits in the left third of the frame. Towards the right the same scene carries on, quieter and darker: open sky, distance and shadow, nothing important there, one continuous picture with no panels and no split. Full-bleed edge to edge, no border, no frame, no people, no faces, no hands. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 1536x864"
+ },
+ "cricket-s-dressing-w": {
+  "seed": 7506,
+  "prompt": "An old cricket pavilion dressing room in the afternoon: kit bags, pads and bats hanging on pegs, a wooden bench, a towel, sunlight through tall windows, the green ground seen outside. Painted like a vintage Indian sports-magazine centre spread from the 1980s: deep outfield greens, chalk white and cherry red, dramatic angle, faded glossy print. Wide panoramic composition: the main subject sits in the left third of the frame. Towards the right the same scene carries on, quieter and darker: open sky, distance and shadow, nothing important there, one continuous picture with no panels and no split. Full-bleed edge to edge, no border, no frame, no people, no faces, no hands. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 1536x864"
+ },
+ "sunday-s-room-w": {
+  "seed": 7607,
+  "prompt": "A 1980s Indian living room on a Sunday morning: a wooden television cabinet with sliding shutter doors open, the screen showing colour test bars, a lace doily and a vase on top, a sofa with cushions, a ceiling fan, sunlight through a window. Painted like a 1980s Indian family-magazine illustration in flat gouache: warm teak browns, faded teal and cream with one signal orange, soft grain, nostalgic Sunday light. Wide interior composition: the main subject sits in the left third of the frame. Towards the right the same room carries on, quieter and dimmer: a plain painted wall, a doorway, soft shadow. It is one continuous painted room with no panels, no split, no dark band and no second picture. Full-bleed edge to edge, no border, no frame, no people, no faces, no hands. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 1536x864"
+ },
+ "sunday-s-tv-w": {
+  "seed": 7708,
+  "prompt": "A close-up of a 1980s wooden television cabinet with its sliding shutter doors half open on a softly glowing blank screen, a lace doily and a small vase on top. Painted like a 1980s Indian family-magazine illustration in flat gouache: warm teak browns, faded teal and cream with one signal orange, soft grain, nostalgic Sunday light. Wide interior composition: the main subject sits in the left third of the frame. Towards the right the same room carries on, quieter and dimmer: a plain painted wall, a doorway, soft shadow. It is one continuous painted room with no panels, no split, no dark band and no second picture. Full-bleed edge to edge, no border, no frame, no people, no faces, no hands. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 1536x864"
+ },
+ "sunday-s-sofa-w": {
+  "seed": 7809,
+  "prompt": "A family sofa on a Sunday afternoon in a 1980s Indian home: a folded newspaper, two cups of tea, cushions, a cooler in the window, the TV off in the corner. Painted like a 1980s Indian family-magazine illustration in flat gouache: warm teak browns, faded teal and cream with one signal orange, soft grain, nostalgic Sunday light. Wide interior composition: the main subject sits in the left third of the frame. Towards the right the same room carries on, quieter and dimmer: a plain painted wall, a doorway, soft shadow. It is one continuous painted room with no panels, no split, no dark band and no second picture. Full-bleed edge to edge, no border, no frame, no people, no faces, no hands. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 1536x864"
+ }
+}

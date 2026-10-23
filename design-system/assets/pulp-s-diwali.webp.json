@@ -1,0 +1,4 @@
+{
+  "prompt": "An Indian home on Diwali night, rows of clay oil lamps on a window ledge, a bamboo ladder, steel buckets, a broom and a rangoli half finished on the floor. Painted by one hand in 1970s Indian pulp-novel gouache: thick opaque brushwork, deep night violet and indigo shadows, hot vermilion and marigold lamp light, painted paper grain, a slightly faded print, dramatic low angle, full-bleed edge to edge, no border, no frame, no people, no faces, absolutely no text, no letters, no words, no signboards, no posters, no number plates, no writing anywhere.\n[model: FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x896, seed 9141; edits: margins cropped; resized 430x752; bottom cropped to remove a signature mark]",
+  "createdAt": "2026-10-21T03:47:31.051Z"
+}

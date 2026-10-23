@@ -1,0 +1,346 @@
+/* Rukavat (रुकावट): the 1980s family TV. Tokens and dress for library.py's shared components.
+   Every selector is scoped to .w-rukavat (or .app.w-rukavat); the one exception is the type specimen .ts-rukavat.
+   Radii: 0 caption bands, 12 screens, cards and controls, round for knobs, portraits and icon buttons.
+   Colour: cream cards and ink; screen grey ground; teak bezels; plain teal only where there are no words (cream on it
+   is 4.4:1), deep teal under every caption that carries words (7.7:1); signal orange for rules and marks, never text.
+   Colour bars live only inside paintings, because yellow means "you picked this".
+   The metal finish (O14): chrome and steel on teak, no glass. One light, high on the left: lit edges sit at the top, and soft shadows
+   (6 to 14 percent, under physical objects only) fall down and a touch right. Every TV screen (the cover title card, the score, the
+   chapter card, the demo TV) sits in a brushed steel trim inside a teak bezel with one soft highlight; the portrait screens on the name
+   captions have a chrome rim; the check knobs are chrome channel knobs with a knurled edge. Cream cards lose their ink frames for one
+   hairline tinted from the cream. The one rule the world keeps is the orange rule on its teal lower thirds. The tab bar, round
+   buttons, switches and "?" sheet are solid. Textures: assets/rukavat-steel.webp, rukavat-teak.webp, rukavat-knurl.webp. */
+
+.w-rukavat {
+  --ground: #2A2F33; --ground-deep: #1C2023; --paper: #FBF4E4; --paper-shade: #EEE2C7; --ink: #2A1F17; --title: #FBF4E4; --accent: #E2662B;
+  --teak: #6B4429; --teal: #3E7C7B; --teal-deep: #275453;
+  --muted: #6B4429; --on-muted: #FBF4E4; --edge: #FBF4E4; --on-ground: #FBF4E4; --on-ground-soft: #C5CDC9;
+  --r-card: 12px; --r-chip: 12px; --frame: 1px; --tex: none;
+  --main-offset: none; --main-offset-pressed: none;
+  --hair: color-mix(in srgb, var(--ink) 16%, transparent);
+  --hair-strong: color-mix(in srgb, var(--ink) 55%, var(--paper));
+  --lit: inset 0 1px 0 rgba(255, 255, 255, .6);
+  --sh-sm: .5px 1px 1px rgba(12, 10, 8, .10), 1px 4px 10px -2px rgba(12, 10, 8, .12);
+  --sh-md: .5px 1px 2px rgba(12, 10, 8, .10), 2px 10px 24px -6px rgba(12, 10, 8, .14);
+  --sh-lg: 1px 2px 3px rgba(12, 10, 8, .10), 3px 18px 40px -10px rgba(12, 10, 8, .14);
+  /* the same shadow, cast by a screen together with its 5 px teak bezel */
+  --sh-bezel: 1px 2px 3px 5px rgba(12, 10, 8, .10), 3px 18px 40px -5px rgba(12, 10, 8, .14);
+  --plate-rule: inset 0 0 0 1px color-mix(in srgb, var(--title) 12%, transparent), inset 0 1px 0 rgba(255, 255, 255, .07);
+  --disc: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, 0) 55%) var(--ground-deep);
+  --puck: linear-gradient(180deg, #FFFFFF, var(--paper) 60%);
+  --chrome-edge: #FAFBFC 0%, #C9CED3 22%, #8A9198 48%, #D3D7DB 72%, #7E858C 100%;
+  --chrome: linear-gradient(155deg, var(--chrome-edge));
+  --steel-light: linear-gradient(150deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 38%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .3));
+  --steel-grain: url(../assets/rukavat-steel.webp) 0 0 / 256px 64px;
+  --teak-light: linear-gradient(155deg, rgba(255, 236, 214, .22), rgba(255, 236, 214, 0) 34%);
+  --teak-grain: url(../assets/rukavat-teak.webp) 0 0 / 256px 128px;
+  --recess: inset .5px 2px 8px rgba(0, 0, 0, .38);
+  --ring-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+}
+.ts-rukavat { font: 400 2.8125rem/1.15 'Rozha One', 'Hind', serif; }
+.ts-rukavat:lang(hi) { line-height: 1.3; }
+
+/* ===== captions: solid deep screen plates, one hairline tinted from them and a lit top edge; words on teal sit on the deep teal ===== */
+.w-rukavat .qbox, .w-rukavat .statkey, .w-rukavat .pool { background: var(--disc); box-shadow: var(--plate-rule), var(--sh-sm); }
+.w-rukavat .qbox { padding: 13px 13px; }
+.w-rukavat .statkey { padding: 5px 13px; }
+.w-rukavat .daycount { border-radius: 0; background: var(--disc); }
+/* the day plate: a broadcast caption band with the day and the time, the orange rule under it */
+.w-rukavat .dayplate { background: var(--teal-deep); color: var(--paper); box-shadow: inset 0 -3px 0 var(--accent), inset 0 1px 0 rgba(255, 255, 255, .12), var(--sh-sm); }
+.w-rukavat .toast > .t { background: var(--teal-deep); color: var(--paper); box-shadow: inset 0 3px 0 var(--accent), var(--sh-md); padding-top: 8px; }
+/* the speaker's balloon: the same solid plate, its 2 px cream outline now one hairline */
+.w-rukavat .voice .balloon { border: 1px solid color-mix(in srgb, var(--title) 30%, var(--ground-deep)); background: var(--ground-deep); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07), var(--sh-sm); }
+.w-rukavat .voice .balloon::before { left: -8px; border-left: 1px solid color-mix(in srgb, var(--title) 30%, var(--ground-deep)); border-bottom: 1px solid color-mix(in srgb, var(--title) 30%, var(--ground-deep)); }
+.w-rukavat .voice .av { box-shadow: 0 0 0 2px #C9CED3, var(--sh-sm); }
+
+/* ===== person card: a TV name caption. The portrait on a small screen in a chrome rim, the name on a lower third ===== */
+.w-rukavat .face { position: relative; border-radius: var(--r-card); box-shadow: var(--recess); }
+/* the chrome rim: drawn by ::after over the portrait's edge, so no size changes */
+.w-rukavat .face::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 2px; pointer-events: none; background: var(--chrome);
+  -webkit-mask: var(--ring-mask); -webkit-mask-composite: xor; mask: var(--ring-mask); mask-composite: exclude; }
+.w-rukavat .tile, .w-rukavat .row { background: var(--paper); box-shadow: inset 0 0 0 1px var(--hair), var(--lit), var(--sh-md); }
+.w-rukavat .tile { grid-template-rows: auto auto 1fr; padding: 8px 8px 8px; }
+/* the taller faces need the room: on the phone's twin step the byline and the key share one line under the question */
+.w-rukavat.phone.js-pick:not(.is-200) .scr-body { display: grid; grid-template-columns: auto minmax(0, 1fr); align-content: start; row-gap: 8px; }
+.w-rukavat.phone.js-pick:not(.is-200) .scr-body > :is(.qbox, .tiles) { grid-column: 1 / -1; }
+.w-rukavat.phone.js-pick:not(.is-200) .tiles { row-gap: 8px; }
+.w-rukavat.phone.js-pick:not(.is-200) .scr-body > .qbox { justify-self: start; }
+.w-rukavat.phone.js-pick:not(.is-200) .scr-body > .statkey { justify-self: start; align-self: center; }
+/* the whole head shows, crown to chin; the caption is a lower third straddling the screen's chrome bottom edge, off the face */
+.w-rukavat .tile .face, .phone.w-rukavat[lang="hi"] .tile .face { grid-area: 1 / 1; aspect-ratio: 5 / 4; background-position: 50% 22%; }
+.w-rukavat .tile .nmrow { grid-area: 1 / 1; align-self: end; z-index: 1; margin: 0 5px -5px; transform: translateY(50%); padding: 5px 8px 2px; background: var(--teal-deep); box-shadow: inset 0 3px 0 var(--accent), var(--sh-sm); }
+.w-rukavat .tile .stats { grid-area: 2 / 1; margin-top: 5px; padding-top: 13px; }
+.w-rukavat .tile .quote { grid-area: 3 / 1; text-wrap: pretty; }
+.w-rukavat .tile .nm, .w-rukavat .row .nm { color: var(--paper); }
+.w-rukavat .row .nm { justify-self: start; padding: 5px 8px 2px; background: var(--teal-deep); box-shadow: inset 0 3px 0 var(--accent); }
+.w-rukavat .tile:active, .w-rukavat .tile.is-pressed, .w-rukavat .row:active, .w-rukavat .row.is-pressed {
+  transform: scale(.985); background-color: var(--paper-shade); box-shadow: inset 0 0 0 1px var(--hair), inset 0 1px 2px rgba(18, 12, 8, .12), var(--sh-sm); }
+/* the pick: yellow prints over the cream, framed in 2 px of ink and lifted a little further; the caption stays */
+.w-rukavat .tile[aria-checked="true"], .w-rukavat .tile.is-selected, .w-rukavat .row[aria-checked="true"], .w-rukavat .row.is-selected { box-shadow: inset 0 0 0 2px var(--ink), var(--lit), var(--sh-lg); }
+.w-rukavat .tile.is-armed, .w-rukavat .row.is-armed { box-shadow: inset 0 0 0 2px var(--ink), 0 0 0 2px var(--paper), var(--sh-lg); }
+.w-rukavat .tile.is-hover, .w-rukavat .row.is-hover { box-shadow: inset 0 0 0 1px var(--hair-strong), var(--lit), var(--sh-lg); }
+.w-rukavat .tick { box-shadow: 0 0 0 2px var(--ink), var(--sh-sm); }
+.w-rukavat .pairinfo .pi { background: var(--paper); box-shadow: inset 0 0 0 1px var(--hair), var(--lit), var(--sh-md); }
+.w-rukavat .pairinfo .nm { justify-self: start; padding: 5px 8px 2px; background: var(--teal-deep); color: var(--paper); box-shadow: inset 0 3px 0 var(--accent); }
+.w-rukavat .pairinfo .face { margin-bottom: 5px; }
+
+/* ===== buttons: yellow when live, as everywhere, with one soft sheen and a fine lip; outside a puzzle a cream push button; no offset edge ===== */
+.w-rukavat .main.is-live { background: linear-gradient(180deg, rgba(255, 255, 255, .28), rgba(255, 255, 255, 0) 56%), var(--pick);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), inset 0 -2px 0 rgba(120, 78, 0, .18), 0 0 0 .5px rgba(90, 60, 0, .5), var(--sh-md); }
+.w-rukavat .main.is-live.is-hover { transform: none; box-shadow: inset 0 0 0 1.5px var(--ink), inset 0 1px 0 rgba(255, 255, 255, .7), var(--sh-lg); }
+.w-rukavat .main.is-live.is-pressed, .w-rukavat .main.is-live:active, .w-rukavat .main.is-committing { transform: translateY(1px) scale(.99);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, 0) 30%), var(--pick);
+  box-shadow: inset 0 0 0 1.5px var(--ink), inset 0 1px 2px rgba(120, 78, 0, .22), var(--sh-sm); }
+/* not ready: teak with one soft highlight and a cream hairline */
+.w-rukavat .main.is-wait { background: var(--teak-light), var(--muted);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--edge) 55%, transparent), inset 0 1px 0 rgba(255, 255, 255, .14), var(--sh-sm); }
+/* outside a puzzle: a cream push button, one hairline, a lit top and a soft lip */
+.w-rukavat .main.is-out, .w-rukavat .rk-guide + .textbtn { background: linear-gradient(180deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0) 50%), var(--paper); color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--hair), var(--lit), inset 0 -3px 0 var(--paper-shade), var(--sh-md); }
+.w-rukavat .main.is-out:active, .w-rukavat .main.is-out.is-pressed, .w-rukavat .rk-guide + .textbtn:active, .w-rukavat .rk-guide + .textbtn.is-pressed {
+  transform: translateY(1px) scale(.99); background: var(--paper-shade); box-shadow: inset 0 0 0 1px var(--hair), inset 0 1px 2px rgba(18, 12, 8, .14), var(--sh-sm); }
+.w-rukavat .main.is-out.is-hover { background: var(--paper-shade); }
+
+/* ===== the top bar: solid dark discs and pills in a 1 px chrome rim (drawn by ::before, so no size changes) ===== */
+.w-rukavat .ibtn:not(.on-paper), .w-rukavat .seg { position: relative; }
+.w-rukavat .ibtn:not(.on-paper)::before, .w-rukavat .seg::before {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit; padding: 1px; background: var(--chrome);
+  -webkit-mask: var(--ring-mask); -webkit-mask-composite: xor; mask: var(--ring-mask); mask-composite: exclude; }
+.w-rukavat .ibtn:not(.on-paper) { background: var(--disc); color: var(--title); transition: transform var(--d-press) var(--ease-std), background-color var(--d-colour) var(--ease-std); }
+.w-rukavat .ibtn:not(.on-paper):active, .w-rukavat .ibtn:not(.on-paper).is-pressed { transform: scale(.96); background: color-mix(in srgb, var(--title) 16%, var(--ground-deep)); }
+.w-rukavat .ibtn:not(.on-paper).is-hover { background: color-mix(in srgb, var(--edge) 16%, var(--ground-deep)); }
+/* the language and board switches: one solid plate, the chosen half a cream puck */
+.w-rukavat .seg { background: var(--disc); box-shadow: none; }
+
+
+.w-rukavat .seg button { position: relative; isolation: isolate; color: var(--title); }
+.w-rukavat .seg button[aria-selected="true"] { color: var(--ink); background: transparent; box-shadow: none; }
+.w-rukavat .seg button[aria-selected="true"]::before {
+  content: ""; position: absolute; inset: 4px; z-index: -1; border-radius: 9999px; background: var(--puck); box-shadow: inset 0 -.5px 0 rgba(0, 0, 0, .18), 0 0 0 .5px rgba(0, 0, 0, .3); }
+.w-rukavat .seg button[aria-selected="true"]::before { border-radius: 8px; }
+
+/* ===== tab bar and rail: solid, with one chrome hairline where they meet the screen; the channel that is on lit like a small screen ===== */
+.w-rukavat .tabbar { background: linear-gradient(90deg, var(--chrome-edge)) 0 0 / 100% 1px no-repeat, var(--disc); box-shadow: none; }
+.w-rukavat .tab[aria-current="page"] svg { background: var(--puck); color: var(--ink); border-radius: var(--r-card); box-shadow: inset 0 -.5px 0 rgba(0, 0, 0, .18); }
+.w-rukavat .tab { gap: 5px; padding-bottom: 5px; }
+.app.w-rukavat .rail { background: linear-gradient(180deg, var(--chrome-edge)) 100% 0 / 1px 100% no-repeat, var(--disc); box-shadow: none; }
+.app.w-rukavat.is-step .art-img::after { background: color-mix(in srgb, var(--ground-deep) 38%, transparent); }
+
+/* ===== overlays: solid cream; the "?" sheet has the cabinet's teak edge with one soft highlight; the lift stays ===== */
+.w-rukavat .sheet { padding-top: 13px; box-shadow: 0 -12px 24px rgba(0, 0, 0, .28); }
+.w-rukavat .rk-cab { position: absolute; left: 0; right: 0; top: 0; height: 14px; border-radius: var(--r-card) var(--r-card) 0 0;
+  background: var(--teak-light), var(--teak-grain), var(--teak); box-shadow: inset 0 1px 0 rgba(255, 236, 214, .22), inset 0 -1px 0 rgba(0, 0, 0, .22); }
+.w-rukavat .sheet .sheetlinks button, .w-rukavat .sheet .setrow { box-shadow: inset 0 1px 0 var(--hair); }
+.w-rukavat .sw { box-shadow: inset 0 0 0 1.5px var(--hair-strong); }
+.w-rukavat .sw::after { box-shadow: .5px 1px 2px rgba(0, 0, 0, .2); }
+.w-rukavat .setrow[aria-checked="true"] .sw { box-shadow: inset .5px 1px 2px rgba(0, 0, 0, .2); }
+.w-rukavat .setrow[aria-checked="true"] .sw::after { background: var(--puck); }
+.w-rukavat .dialog { box-shadow: inset 0 6px 0 var(--teak), inset 0 0 0 1px var(--hair), var(--sh-lg); }
+.w-rukavat .dialog .textbtn { min-width: 48px; justify-content: center; }
+.w-rukavat .menu { box-shadow: inset 0 0 0 1px var(--hair), var(--lit), 0 12px 24px rgba(0, 0, 0, .35); }
+
+/* ===== the programme card: cream, a teal band with an orange rule along the top, one hairline and a soft shadow ===== */
+.w-rukavat .rk-card { position: relative; display: grid; gap: 8px; padding: 21px 13px 13px; color: var(--ink); border-radius: var(--r-card);
+  background: var(--paper) linear-gradient(var(--teal) 0 8px, var(--accent) 8px 10px) top / 100% 10px no-repeat; box-shadow: inset 0 0 0 1px var(--hair), var(--sh-md); }
+.w-rukavat .rk-cardhead { margin: 0; font: 700 var(--t-label)/1.43 'Hind'; }
+.w-rukavat .rk-card .letter { margin: 0; }
+.w-rukavat .rk-card .byline { padding: 0; }
+.w-rukavat .rk-sched { padding: 21px 13px 13px; }
+.w-rukavat .rk-chart { padding: 21px 8px 8px; gap: 5px; }
+.w-rukavat .rk-chart li + li .lrow { box-shadow: inset 0 1px 0 var(--hair); }
+.w-rukavat .rk-chart .rk-cardhead { padding: 0 5px; }
+.w-rukavat .lrow { grid-template-columns: 44px minmax(0, 1fr) auto; column-gap: 13px; }
+/* your own row: your name on the teal caption with the orange rule, the people-as-captions object; "You" inside it; the row's frame a fine 1.5 px */
+.w-rukavat .lrow.is-you { background: var(--pick); color: var(--pick-ink); box-shadow: none !important; }
+.w-rukavat .lrow.is-you .rd { justify-self: start; display: inline-flex; flex-wrap: wrap; align-items: baseline; column-gap: 8px; }   /* the yellow row marks you: no tag inside it */
+.w-rukavat .lrow.is-you .youword { margin-left: 0; }
+/* each rank in a round channel button: a cream face in a chrome rim */
+.w-rukavat .lrow .rk { justify-self: start; min-width: 36px; min-height: 36px; padding: 2px 8px; display: inline-grid; place-items: center; font: 700 var(--t-label)/1 'Hind'; font-variant-numeric: tabular-nums; }   /* one frame per level (owner, 22 Oct: "the box in a box is not looking good"): no puck */
+
+/* Split: six chore slots in two columns on the schedule; marks, never numbers, on each person */
+.w-rukavat .rk-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.w-rukavat .rk-slots .slot { min-height: 48px; padding: 5px 5px 5px 13px; }
+.w-rukavat .rk-slots .slot.is-target { padding: 3px 5px 3px 13px; }
+.w-rukavat .rk-slots .slot .who i { width: 32px; height: 32px; }
+.w-rukavat .rk-slots .slot .who > span:not(.stick) { display: none; }
+.w-rukavat .rk-slots .slot { gap: var(--f8); }   /* the half-width chore slots show only the face, so the chore and the face sit close */
+.w-rukavat .rk-slots .slot .stick { display: none; }   /* the face says the chore is filled; a tick beside it squeezed the chore's name into the face (22 Oct) */
+.w-rukavat .rk-slots .slot b { min-width: 0; overflow-wrap: normal; word-break: keep-all; }   /* a chore never breaks inside a word */
+/* the chore slots sit on paper with ink words: the shared hover (a dark ground tint) buried the label, so on paper an
+   empty slot's hover is the paper shade */
+.w-rukavat .rk-slots .slot:not(.is-filled):hover, .w-rukavat .rk-slots .slot.is-hover:not(.is-filled) { background: var(--paper-shade); }
+.w-rukavat .rk-family { display: grid; gap: 8px; }
+.w-rukavat.rk-split .row { padding-right: 13px !important; }
+.w-rukavat .rk-marks { display: flex; gap: 5px; min-width: 40px; min-height: 12px; }
+.w-rukavat .rk-marks i { width: 12px; height: 12px; border-radius: 9999px; background: var(--teal-deep); box-shadow: inset 0 0 0 2px var(--accent); }
+/* chips and slots: cream with a control hairline at 3.6:1; a pick is yellow framed in 2 px of ink */
+.w-rukavat .chip { box-shadow: inset 0 0 0 1px var(--hair-strong), var(--lit), var(--sh-sm); }
+.w-rukavat .chip:active, .w-rukavat .chip.is-pressed { transform: scale(.985); background: var(--paper-shade); box-shadow: inset 0 0 0 1px var(--hair-strong), inset 0 1px 2px rgba(18, 12, 8, .12); }
+.w-rukavat .chip[aria-checked="true"], .w-rukavat .chip.is-selected { background: var(--pick); box-shadow: inset 0 0 0 2px var(--ink), var(--sh-md); }
+.w-rukavat .chip.is-hover { box-shadow: inset 0 0 0 1.5px var(--ink), var(--lit), var(--sh-sm); }
+.w-rukavat .slot.is-filled, .w-rukavat .blank.is-filled { box-shadow: inset 0 0 0 2px var(--ink), var(--sh-sm); }
+.w-rukavat .slot.is-filled.is-revisited { box-shadow: inset 0 0 0 2px var(--ink), inset 0 0 0 999px rgba(0, 0, 0, .06); }
+
+/* checks: one chrome channel knob for every check, its knurled edge lit from the top left. Left in the pool: a cream cap.
+   Spent from the pool: no knob, only its outline, dim. Placed on a row: the same knob with a teal cap in the orange ring. */
+.w-rukavat .rk-knob, .w-rukavat .rk-click { width: 32px; height: 32px; flex: none; display: grid; place-items: center; border-radius: 9999px;
+  background: url(../assets/rukavat-knurl.webp) center / 100% 100% no-repeat; box-shadow: .5px 1px 1.5px rgba(0, 0, 0, .2), 1px 3px 6px -2px rgba(0, 0, 0, .14); }
+.w-rukavat .rk-knob svg, .w-rukavat .rk-click svg { width: 26px; height: 26px; }
+.w-rukavat .rk-knob svg circle { fill: var(--paper); stroke: rgba(42, 31, 23, .3); stroke-width: 1; }
+.w-rukavat .rk-knob svg path { stroke: var(--ink); }
+.w-rukavat .pool .spent { opacity: .4; }
+.w-rukavat .pool .spent svg circle { fill: none; stroke: var(--on-ground); }
+.w-rukavat .pool .spent svg path { stroke: var(--on-ground); }
+.w-rukavat .rk-click svg circle { fill: var(--teal-deep); stroke: var(--accent); }
+.w-rukavat .rk-click svg path { stroke: var(--paper); }
+
+/* ===== every TV screen: a brushed steel trim (the border) inside a teak bezel with one soft highlight (::before, a 5 px ring
+   outside the box, so the screen keeps its size); the screen sits in a shallow recess; screen and bezel cast one soft shadow ===== */
+.w-rukavat :is(.rk-titlecard, .rk-chapter, .rk-signoff) { position: relative; border: 3px solid transparent; box-shadow: var(--recess), var(--sh-bezel);
+  background: linear-gradient(var(--screen), var(--screen)) padding-box, var(--steel-light) border-box, var(--steel-grain) border-box; }
+.w-rukavat :is(.rk-titlecard, .rk-chapter, .rk-signoff)::before { content: ""; position: absolute; inset: -8px; padding: 5px; border-radius: calc(var(--r-card) + 5px); pointer-events: none;
+  background: var(--teak-light) border-box, var(--teak-grain) border-box, var(--teak);
+  -webkit-mask: var(--ring-mask); -webkit-mask-composite: xor; mask: var(--ring-mask); mask-composite: exclude; }
+
+/* ===== the cover's broadcast title card (the one place for Rozha One) ===== */
+.w-rukavat .rk-titlecard { --screen: var(--ground); display: grid; justify-items: center; gap: 8px; margin: 0 5px; padding: 21px 13px 13px; text-align: center; border-radius: var(--r-card); }
+.w-rukavat .rk-title { margin: 0; font: 400 var(--t-display)/1.15 'Rozha One', 'Hind', serif; color: var(--title); text-wrap: balance; }
+.w-rukavat .rk-title:lang(hi) { line-height: 1.3; }
+.w-rukavat .rk-slot { padding-top: 8px; font: 700 var(--t-label)/1.43 'Hind'; color: var(--title); box-shadow: inset 0 2px 0 var(--accent); }
+
+/* ===== the starter's chapter title card ===== */
+.w-rukavat .rk-chapter { --screen: var(--ground-deep); margin: auto 5px 5px; display: grid; justify-items: center; gap: 8px; padding: 21px 13px 21px; text-align: center; color: var(--title); border-radius: var(--r-card); }
+.w-rukavat .rk-chap-h { margin: 0; font: 700 var(--t-display-s)/1.15 'Hind'; color: var(--title); text-wrap: balance; }
+.w-rukavat .rk-chap-h:lang(hi) { line-height: 1.3; }
+.w-rukavat .rk-chap-h.rk-title { font: 400 var(--t-display-s)/1.15 'Rozha One', 'Hind', serif; }
+.w-rukavat .rk-five { display: flex; gap: 8px; padding: 5px 0; }
+.w-rukavat .rk-five i { width: 14px; height: 14px; border-radius: 9999px; background: var(--paper); }
+.w-rukavat .rk-five i.is-now { background: var(--accent); box-shadow: 0 0 0 3px var(--ground-deep), 0 0 0 5px var(--paper); }
+
+/* ===== the result: the score on the TV, "Good night" on a caption across the bottom of the picture; the figures on a programme card ===== */
+.w-rukavat .rk-signoff { --screen: var(--ground-deep); align-self: center; flex: none; display: grid; justify-items: center; min-width: 260px; margin: auto 0; padding: 13px 0 0; text-align: center; color: var(--title); border-radius: var(--r-card); }
+.w-rukavat .rk-signoff .level { order: 1; }
+.w-rukavat .rk-signoff .score { order: 2; display: block; margin: 0 0 13px; font: 700 calc(var(--t-score) * 1.3)/1.2 'Hind'; font-variant-numeric: tabular-nums; color: var(--title); }
+/* "Good night" across the bottom of the screen, its lower corners following the screen's */
+.w-rukavat .rk-gn { order: 3; justify-self: stretch; padding: 5px 13px 2px; font: 700 var(--t-title)/1.5 'Hind'; background: var(--teal-deep); color: var(--paper); box-shadow: inset 0 3px 0 var(--accent);
+  border-radius: 0 0 calc(var(--r-card) - 3px) calc(var(--r-card) - 3px); }
+/* on the phone the painting's own TV is the bezel: its screen (sunday-s-tv, 13.6% from the left) spans x 10 to 380, y 274 to 627;
+   the card fills about 80% of its width, centred on the part the figures card leaves showing; no trim, no teak */
+.w-rukavat.phone:has(.scr-body > .rk-signoff) > .art, .w-rukavat.phone.rk-cutphone > .art { background-position: 13.6% 50%; }
+.w-rukavat.phone:not(.is-200):not(.is-small) .scr-body > .rk-signoff { width: 300px; margin: 200px auto 0; border: 0; border-radius: 28px; background: var(--ground-deep); box-shadow: none; }
+.w-rukavat.phone:not(.is-200):not(.is-small) .scr-body > .rk-signoff::before { display: none; }
+.w-rukavat.phone:not(.is-200):not(.is-small) .scr-body > .rk-signoff .rk-gn { border-radius: 0 0 28px 28px; }
+.w-rukavat .rk-panel { padding-top: 21px; }
+.w-rukavat .rk-panel .letter { font-weight: 700; }
+.w-rukavat .art-meta .rk-signoff { align-self: flex-start; margin: 8px 0 0; }
+
+/* ===== the big moment: the announcer's slide on the TV ===== */
+/* .rk-cut is the picture tube; the slide is a painted plate (art/rukavat_slide.py) with the Hindi line lettered on it,
+   the English under it on a teal caption. On the phone it sits exactly over the painted screen and takes its curve. */
+.w-rukavat .rk-cut { position: absolute; inset: 0; z-index: 5; overflow: hidden; background: var(--ground-deep); }
+.w-rukavat .rk-cutcard { position: absolute; inset: 0; }
+.w-rukavat .rk-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.w-rukavat .rk-cut-en { position: absolute; left: 16px; right: 16px; bottom: 13%; padding: 5px 8px 2px; text-align: center; font: 500 var(--t-label)/1.43 'Hind'; background: var(--teal-deep); color: var(--paper); box-shadow: inset 0 3px 0 var(--accent); }
+.w-rukavat .rk-cut-en:empty { display: none; }
+.w-rukavat.rk-cutphone .rk-cut { inset: auto; left: 12px; top: 278px; width: 366px; height: 346px; border-radius: 118px 118px 110px 110px / 52px 52px 48px 48px; }
+/* the motion version, drawn still for the library: the slide drops in on the vertical roll; the dark under it is the tube */
+.w-rukavat .rk-cut.is-rolling .rk-slide { transform: translateY(-24%); }
+
+/* the live demo in the Motion section: open "Play the cut" to run it again */
+.w-rukavat .rk-demo-wrap { display: flex; flex-wrap: wrap; gap: 21px; align-items: center; }
+.w-rukavat .rk-demo > summary { list-style: none; }
+.w-rukavat .rk-demo > summary::-webkit-details-marker { display: none; }
+/* the demo TV is its own cabinet: teak with one soft highlight, a brushed steel trim, the screen in a shallow recess */
+.w-rukavat .rk-tv { position: relative; width: min(312px, 100%); aspect-ratio: 4 / 3; overflow: hidden; border-radius: calc(var(--r-card) + 8px);
+  background: var(--teak-light), var(--teak-grain), var(--teak); box-shadow: inset 0 1px 0 rgba(255, 236, 214, .2), var(--sh-md); }
+.w-rukavat .rk-tv::before { content: ""; position: absolute; inset: 5px; border-radius: calc(var(--r-card) + 3px); background: var(--steel-light), var(--steel-grain); }
+.w-rukavat .rk-tv .rk-cut { inset: 8px; border-radius: var(--r-card); visibility: hidden; }
+.w-rukavat .rk-tv.is-card .rk-cut { visibility: visible; }
+.w-rukavat .rk-tv-pic { position: absolute; inset: 8px; display: grid; place-items: center; border-radius: var(--r-card); background: var(--ground) center 40% / cover no-repeat; box-shadow: var(--recess); }
+.w-rukavat .rk-tv-pic .rk-signoff { margin: 0; min-width: 0; }
+.w-rukavat .rk-demo[open] + .rk-tv .rk-cut { animation: rk-cutin 1.2s linear forwards; }
+.w-rukavat .rk-demo[open] + .rk-tv .rk-slide { animation: rk-roll 1.2s linear both; }
+.w-rukavat .rk-demo[open] + .rk-tv .rk-tv-pic { animation: rk-warm 1.2s cubic-bezier(.2, 0, 0, 1) both; }
+@keyframes rk-cutin { 0%, 62% { visibility: visible; } 63%, 100% { visibility: hidden; } }
+@keyframes rk-roll { 0% { transform: translateY(-100%); } 21%, 100% { transform: none; } }
+@keyframes rk-warm { 0%, 62% { transform: scaleY(.012); filter: brightness(2.2); } 88% { transform: scaleY(1); filter: brightness(1.2); } 100% { transform: none; filter: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .w-rukavat .rk-demo[open] + .rk-tv .rk-slide, .w-rukavat .rk-demo[open] + .rk-tv .rk-tv-pic { animation: none; }
+}
+
+/* ===== Sunday: six small screens, Monday to Saturday ===== */
+.w-rukavat .rk-card .daygrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+/* each small set: a 3 px teak case with a steel line inside it (the big screens' bezel, drawn small), one soft shadow; no ink */
+.w-rukavat .dayobj.rk-set { aspect-ratio: 4 / 3; border-radius: var(--r-card); overflow: hidden; background-color: var(--ground-deep);
+  box-shadow: inset 0 0 0 3px var(--teak), inset 0 0 0 4px #A9AFB5, inset .5px 2px 5px 4px rgba(0, 0, 0, .3), var(--sh-sm); }
+.w-rukavat .rk-set b { background: var(--teal-deep); color: var(--paper); box-shadow: inset 0 2px 0 var(--accent); padding-top: 3px; padding-bottom: 1px; }
+.w-rukavat .rk-set.notplayed { background-image: radial-gradient(circle 3px at 50% 42%, var(--paper) 90%, transparent 100%); }
+.w-rukavat .rk-set .offstamp { top: 6px; right: 4px; padding: 3px 8px; }
+/* a forgiven day: the set switched off. Only the picture goes grey (screen grey's hue, the painting's light), so the
+   "off" sticker and the caption keep their own ink */
+.w-rukavat .dayobj.rk-set.forgiven { filter: none; background-color: var(--ground); background-blend-mode: luminosity; }
+.w-rukavat .rk-set.forgiven b { background: var(--ground); box-shadow: none; }
+/* Share under the week: the same cream push button as the result's Share (dressed with .main.is-out above), no underline */
+.w-rukavat .rk-guide + .textbtn { min-height: 48px; padding: 0 13px; border-radius: var(--r-chip); text-decoration: none; }
+
+/* ===== the report's objects: the same cream with one hairline; the milestone and the change stamp are dials in a chrome rim ===== */
+.w-rukavat .leanrow .wk { box-shadow: inset 0 0 0 1px var(--hair), var(--lit), var(--sh-sm); }
+.w-rukavat .leanrow .wk.is-now { box-shadow: inset 0 0 0 2px var(--ink), var(--lit), var(--sh-md); }
+.w-rukavat .stack { box-shadow: inset 0 0 0 1px var(--hair), var(--lit), var(--sh-md); }
+.w-rukavat .stack::before, .w-rukavat .stack::after { box-shadow: inset 0 0 0 1px var(--hair), var(--sh-sm); }
+.w-rukavat .milestone, .w-rukavat .changestamp { transform: none; border: 3px solid transparent;
+  background: radial-gradient(circle at 34% 28%, rgba(255, 255, 255, .7), rgba(255, 255, 255, 0) 42%) padding-box, linear-gradient(var(--title), var(--title)) padding-box, var(--chrome) border-box;
+  box-shadow: inset 0 0 0 4px var(--accent), inset 0 1px 3px 4px rgba(0, 0, 0, .08), 0 0 0 .5px rgba(30, 34, 38, .5), var(--sh-md); }
+.w-rukavat .changestamp { border-width: 4px;
+  box-shadow: inset 0 0 0 5px var(--accent), inset 0 0 0 9px var(--title), inset 0 0 0 10px var(--hair), 0 0 0 .5px rgba(30, 34, 38, .5), var(--sh-lg); }
+.w-rukavat .ctx i { box-shadow: 0 0 0 2px #C9CED3, var(--sh-sm); }
+.w-rukavat .field textarea { box-shadow: inset 0 0 0 1.5px var(--hair-strong), inset .5px 1px 2px rgba(18, 12, 8, .08); }
+.w-rukavat .field textarea.is-focus { box-shadow: 0 0 0 5px var(--focus-inner), inset 0 0 0 1.5px var(--hair-strong); }
+.w-rukavat .field textarea.is-error { box-shadow: inset 0 0 0 3px var(--accent); }
+
+/* ===== share card: a lower third over the rooftop ===== */
+.sharecard.w-rukavat .sc-in { background: var(--teal-deep); box-shadow: inset 0 3px 0 var(--accent), var(--sh-sm); padding-top: 13px; }
+
+/* ===== hover: pointer devices only ===== */
+@media (hover: hover) and (pointer: fine) {
+  .w-rukavat .tile:hover:not([aria-checked="true"]):not(.is-selected), .w-rukavat .row:hover:not([aria-checked="true"]):not(.is-selected) { box-shadow: inset 0 0 0 1px var(--hair-strong), var(--lit), var(--sh-lg); }
+  .w-rukavat .main.is-live:hover { transform: none; box-shadow: inset 0 0 0 1.5px var(--ink), inset 0 1px 0 rgba(255, 255, 255, .7), var(--sh-lg); }
+  .w-rukavat .main.is-out:hover { background: var(--paper-shade); }
+  .w-rukavat .chip:hover:not([aria-checked="true"]):not(.is-selected) { box-shadow: inset 0 0 0 1.5px var(--ink), var(--lit), var(--sh-sm); }
+  .w-rukavat .ibtn:not(.on-paper):hover { background: color-mix(in srgb, var(--edge) 16%, var(--ground-deep)); }
+}
+
+/* focus specimens keep their inner ring over the finish's shadows */
+.w-rukavat .tile.is-focus, .w-rukavat .row.is-focus, .w-rukavat .chip.is-focus, .w-rukavat .main.is-focus { box-shadow: 0 0 0 5px var(--focus-inner); }
+
+/* ===== 200% text and small phones ===== */
+.w-rukavat.phone.is-200 .rk-slots { grid-template-columns: 1fr; }
+.w-rukavat.phone.is-200 .rk-titlecard, .w-rukavat.phone.is-200 .rk-chapter { margin-inline: 0; }
+.w-rukavat.phone.is-200 .rk-signoff .score { font-size: var(--t-score); }
+/* the channel buttons grow with the text: the rank column widens so "1,958" stays inside its own column, clear of the name */
+.w-rukavat.phone.is-200 .lrow { grid-template-columns: 84px minmax(0, 1fr) auto; }
+/* doubled text keeps its whole line box on its own plate or caption */
+.w-rukavat.phone.is-200 .daycount { padding-block: 3px; }
+
+/* the cream pucks fill their half at 200%, so the larger words stay on them */
+.w-rukavat.phone.is-200 .seg button[aria-selected="true"]::before { inset: 0; border-radius: 8px; }
+
+.w-rukavat.phone.is-200 .rk-set b { padding-top: 5px; padding-bottom: 2px; }
+.w-rukavat.phone.is-200 .rk-set .offstamp { padding: 8px 8px; }
+.w-rukavat.phone.is-200 .tile .stats { padding-top: 34px; }
+/* small phones and 200% text keep the round 3 card padding: they scroll once already, and nothing new may land under the scroll fade */
+.w-rukavat.phone:is(.is-200, .is-small) .tile { padding: 8px 8px 5px; }
+/* the small phone keeps the library's shallow portrait in both languages; the stats clear the deeper caption */
+.w-rukavat.phone.is-small .tile .stats { padding-top: 21px; }
+
+/* ===== wide screens: the caption sits beside the portrait once the card turns on its side ===== */
+@container play (min-width: 440px) {
+  .w-rukavat .tile { grid-template-rows: auto auto 1fr; }
+  .w-rukavat .tile .face, .phone.w-rukavat[lang="hi"] .tile .face { grid-area: 1 / 1 / 4 / 2; aspect-ratio: 5 / 4; }
+  .w-rukavat .tile .nmrow { grid-area: 1 / 2; align-self: start; margin: 0; transform: none; }
+  .w-rukavat .tile .stats { grid-area: 2 / 2; margin-top: 0; padding-top: 0; }
+  .w-rukavat .tile .quote { grid-area: 3 / 2; }
+}
+
+/* the number icons on cards and rows in TV teal (4.4:1 on the paper; the orange accent is 3.1) */
+.w-rukavat :is(.tile, .row) .stat svg { color: var(--teal); }

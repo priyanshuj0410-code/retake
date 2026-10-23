@@ -1,0 +1,4 @@
+{
+  "prompt": "A giant old manual cricket scoreboard at a stadium at dusk, rows of blank black hanging plates with nothing written on them, a ladder leaning against it, floodlights coming on, empty stands. Painted like a vintage Indian sports-magazine centre spread from the 1980s: deep outfield greens, chalk white and cherry red, dramatic angle, faded glossy print. Full-bleed edge to edge, no border, no frame, no people, no faces, no hands. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.\n[FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x896, seed 7017; edits: margins cropped 4%; resized 430x752; magazine print finish: 12 colours, dot screen, red shift; re-graded to the stumps and nets palette: no cyan, outfield greens, highlights capped at #EFEDE4; the blown glow right of the board painted out]",
+  "createdAt": "2026-10-21T18:03:18.283Z"
+}

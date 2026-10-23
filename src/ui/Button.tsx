@@ -15,6 +15,8 @@ export function Button(props: {
   variant?: 'primary' | 'secondary'
   stamped?: boolean
   label?: string
+  /** Ready to commit: the button breathes to say "this next". */
+  pulse?: boolean
 }) {
   return (
     <button
@@ -24,6 +26,7 @@ export function Button(props: {
       data-state={props.stamped ? 'stamped' : 'rest'}
       aria-disabled={props.disabled ? 'true' : undefined}
       aria-label={props.label}
+      data-next={props.pulse && !props.disabled && !props.stamped ? 'true' : 'false'}
       onClick={() => {
         if (!props.disabled && !props.stamped) props.onPress()
       }}

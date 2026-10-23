@@ -9,7 +9,7 @@ import './masthead.css'
 export function Masthead(props: {
   skin: 'lugdi' | 'station'
   title: string
-  blurb: string
+  blurb?: string
   art?: string
   artPosition?: 'top' | 'centre' | 'bottom'
   roundel?: string
@@ -23,7 +23,7 @@ export function Masthead(props: {
       <section className="masthead">
         <div className="masthead__band">
           <h1 className="masthead__title">{props.title}</h1>
-          <p className="masthead__blurb">{props.blurb}</p>
+          {props.blurb ? <p className="masthead__blurb">{props.blurb}</p> : null}
           {props.roundel ? (
             <span className="masthead__roundel" aria-hidden="true">
               {props.roundel}
@@ -50,7 +50,7 @@ export function Masthead(props: {
         ) : null}
         <h1 className="board__title">{props.title}</h1>
         {props.city ? <p className="board__city">{props.city}</p> : null}
-        <p className="board__sub">{props.blurb}</p>
+        {props.blurb ? <p className="board__sub">{props.blurb}</p> : null}
       </div>
     </section>
   )

@@ -1,0 +1,13 @@
+{
+  "prompt": "Origin: procedural texture drawn in Python (numpy, PIL) for the Lugdi premium side study; no source image, no generator.",
+  "method": "Tileable RGBA overlay for heavy uncoated stock: wrap-around Gaussian tooth (sigma 0.6 px, 55%), a faint mottle (sigma 26 px, 22%) and 260 short fibres (5 to 14 px along the grain, 35%). Negative values are press ink, positive values paper white; alpha is the magnitude, capped at 14 of 255 (about a third of the first pass), so the stock reads as a fine tooth, not as blotches or specks.",
+  "parameters": {
+    "seed": 314,
+    "size": 512,
+    "alphaCap": 14
+  },
+  "script": "design-system/art/metal_textures.py (lugdi_stock; first drawn by the study's make_textures_v2.py, reproduced bit for bit)",
+  "usedBy": "library.css, Lugdi metal finish (O14): every paper surface (cards, plates, captions, the coupon button, the list page, the sheet, dialog, menu and toast), drawn at 256 px over --paper. Also the study, explore/premium-lugdi.css.",
+  "movedFrom": "design-system/explore/assets/lugdi-stock.webp (22 Oct 2026)",
+  "createdAt": "2026-10-21T17:50:05+00:00"
+}

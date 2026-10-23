@@ -32,8 +32,8 @@
     "script": "अमानती सामान घर",
     "board": "white",
     "blurb": {
-      "en": "Nothing about jobs or teams today.",
-      "hi": "आज नौकरी या टीम की कोई बात नहीं।"
+      "en": "No jobs, no teams today.",
+      "hi": "आज न नौकरी, न टीम।"
     }
   },
   "steps": [
@@ -41,8 +41,8 @@
       "kind": "pick",
       "id": "cloak-bag",
       "prompt": {
-        "en": "One black bag. Two people describe it the same way. Who gets it without ID?",
-        "hi": "एक काला बैग। दो लोग उसे एक जैसा बताते हैं। बिना पहचान पत्र के किसे मिलेगा?"
+        "en": "Same description. Who gets it without ID?",
+        "hi": "एक जैसा ब्योरा। बिना पहचान पत्र किसे मिले?"
       },
       "options": [
         {
@@ -66,8 +66,8 @@
         {
           "id": "neither",
           "label": {
-            "en": "Neither: both show ID",
-            "hi": "किसी को नहीं: दोनों पहचान पत्र दिखाएँ"
+            "en": "Both show ID",
+            "hi": "दोनों पहचान दिखाएँ"
           }
         }
       ]

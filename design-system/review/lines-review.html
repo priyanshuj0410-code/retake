@@ -1,0 +1,536 @@
+<title>Retake Line Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@500;700&family=Sarpanch:wght@900&family=Yatra+One&family=Khand:wght@700&family=Rozha+One&display=swap">
+<style>
+:root {
+  --bg: #F6F1E5;
+  --surface: #FFFDF8;
+  --ink: #1E1814;
+  --muted: #5C5146;
+  --line: #E2D8C3;
+  --line-soft: #ECE4D3;
+  --same: #F5E6B8;
+  --same-ink: #1E1814;
+  --nudge: #9E1B32;
+  --tag: #EFE6D3;
+  --hi: #4A4037;
+  --btn: #1E1814;
+  --btn-ink: #FFFDF8;
+  --a-station: #13308F;
+  --a-lugdi: #E4002B;
+  --a-jadugar: #9E1B32;
+  --a-cricket: #2F5D3A;
+  --a-rukavat: #3E7C7B;
+  --shadow: 0 1px 2px rgba(40, 28, 16, .06), 0 6px 18px rgba(40, 28, 16, .05);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15120F; --surface: #1F1B16; --ink: #F0E9DB; --muted: #B7AC9A; --line: #3A332A; --line-soft: #2D2721;
+    --same: #463A1A; --same-ink: #F7EFD9; --nudge: #F08AA0; --tag: #2C2620; --hi: #CDC2B0; --btn: #F0E9DB; --btn-ink: #1A1612;
+    --a-station: #7F98EE; --a-lugdi: #FF6B7D; --a-jadugar: #E7798F; --a-cricket: #7DBB8C; --a-rukavat: #7CC0BE;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .25);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15120F; --surface: #1F1B16; --ink: #F0E9DB; --muted: #B7AC9A; --line: #3A332A; --line-soft: #2D2721;
+  --same: #463A1A; --same-ink: #F7EFD9; --nudge: #F08AA0; --tag: #2C2620; --hi: #CDC2B0; --btn: #F0E9DB; --btn-ink: #1A1612;
+  --a-station: #7F98EE; --a-lugdi: #FF6B7D; --a-jadugar: #E7798F; --a-cricket: #7DBB8C; --a-rukavat: #7CC0BE;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .25);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 64px); }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 500 16px/1.55 Hind, "Noto Sans Devanagari", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { text-wrap: balance; margin: 0; line-height: 1.25; }
+p { margin: 0; }
+a { color: inherit; text-underline-offset: 3px; }
+code { font: 500 .85em ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--tag); padding: 1px 5px; border-radius: 4px; }
+b { font-weight: 700; }
+
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.narrow { max-width: 780px; }
+.narrow-in { max-width: 720px; }
+main > section { padding-block: 48px 8px; }
+main > section > h2, main > section > .wrap > h2 { font-size: 1.75rem; margin-bottom: 18px; }
+section.narrow h2 + .prose { margin-bottom: 36px; }
+h3.sub { font-size: 1.15rem; margin: 32px 0 12px; }
+
+/* ---------- header and nav ---------- */
+.top { padding-block: 40px 28px; border-bottom: 1px solid var(--line); }
+.eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.01em; margin-bottom: 14px; }
+.lede { font-size: 1.125rem; max-width: 62ch; color: var(--muted); }
+.key { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: .9rem; color: var(--muted); }
+.key li { display: flex; align-items: center; gap: 9px; }
+.k-same { width: 30px; height: 16px; border-radius: 3px; background: var(--same); box-shadow: inset 3px 0 0 var(--ink); }
+.k-nudge { color: var(--ink); font-weight: 700; text-decoration: underline wavy var(--nudge); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+.k-pair { width: 30px; height: 16px; border-radius: 3px; border: 1px solid var(--line); background: linear-gradient(90deg, var(--surface) 46%, var(--line) 46% 54%, var(--surface) 54%); }
+
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.nav-in {
+  max-width: 1180px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 10px;
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+}
+.nav-in::-webkit-scrollbar { display: none; }
+.nav a {
+  flex: none; text-decoration: none; font-size: .875rem; font-weight: 700;
+  padding: 6px 12px; border-radius: 999px; color: var(--muted); border: 1px solid transparent;
+}
+.nav a:hover { color: var(--ink); border-color: var(--line); background: var(--surface); }
+.nav a:focus-visible, summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* ---------- prose ---------- */
+.prose { max-width: 72ch; }
+.prose > * + * { margin-top: 12px; }
+.prose ul, .prose ol { padding-left: 1.3em; margin: 0; }
+.prose li + li { margin-top: 6px; }
+.prose li ul { margin-top: 6px; }
+.prose .tw { max-width: none; }
+.hi { display: block; color: var(--hi); font-weight: 500; }
+td .hi { font-size: .92em; }
+
+.tw { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line-soft); }
+th { font-size: .78rem; font-weight: 700; color: var(--muted); letter-spacing: .02em; background: var(--tag); white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+
+/* ---------- world bands ---------- */
+.band { color: #F4F1E8; }
+.band-in {
+  max-width: 1180px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 34px 30px;
+}
+.band-sm .band-in { padding-block: 18px 16px; }
+.band-station { background: #181A1B; color: #F4F1E8; box-shadow: inset 0 -4px 0 #13308F; }
+.band-lugdi { background: #1B0B2E; color: #FFF3DC; box-shadow: inset 0 -4px 0 #E4002B; }
+.band-jadugar { background: #1A1F4A; color: #F2D27A; box-shadow: inset 0 -4px 0 #9E1B32; }
+.band-cricket { background: #151816; color: #EFEDE4; box-shadow: inset 0 -4px 0 #2F5D3A; }
+.band-rukavat { background: #2A2F33; color: #FBF4E4; box-shadow: inset 0 -4px 0 #E2662B; }
+.band-k { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .82; }
+.band-area { font-size: 1.05rem; font-weight: 700; margin-top: 4px; }
+.band-station .band-area, .band-station .band-k { color: #C9CDD1; }
+.band-lugdi .band-area, .band-lugdi .band-k { color: #D9CDEB; }
+.band-jadugar .band-area, .band-jadugar .band-k { color: #C9CBE6; }
+.band-cricket .band-area, .band-cricket .band-k { color: #C2CBC4; }
+.band-rukavat .band-area, .band-rukavat .band-k { color: #C5CDC9; }
+.band-card { margin-top: 14px; font-size: .95rem; max-width: 60ch; }
+.band-card .hi { color: inherit; opacity: .8; }
+.band .lab { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .7; margin-bottom: 2px; }
+.disp { font-size: clamp(2.2rem, 6vw, 3.2rem); line-height: 1.1; margin-top: 4px; }
+.band-sm .disp { font-size: 2rem; }
+.disp-station { font-family: Hind, sans-serif; font-weight: 700; letter-spacing: .01em; }
+.disp-lugdi { font-family: Sarpanch, Hind, sans-serif; font-weight: 900; letter-spacing: .02em; }
+.disp-jadugar { font-family: "Yatra One", Hind, sans-serif; font-weight: 400; }
+.disp-cricket { font-family: Khand, Hind, sans-serif; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.disp-rukavat { font-family: "Rozha One", Hind, serif; font-weight: 400; }
+
+.w-station { --acc: var(--a-station); }
+.w-lugdi { --acc: var(--a-lugdi); }
+.w-jadugar { --acc: var(--a-jadugar); }
+.w-cricket { --acc: var(--a-cricket); }
+.w-rukavat { --acc: var(--a-rukavat); }
+
+/* ---------- chapters ---------- */
+main > section.chapter { padding-block: 0; margin-top: 56px; }
+.chapter-body {
+  max-width: 1180px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 26px 0;
+}
+.speaker { font-size: 1.02rem; margin-bottom: 12px; max-width: 72ch; }
+.chapter-body > .prose { margin-bottom: 8px; }
+.twin { margin-top: 36px; }
+.twin-h { font-size: 1.12rem; display: flex; flex-direction: column; gap: 4px; padding-left: 14px; border-left: 3px solid var(--acc); margin-bottom: 14px; max-width: 72ch; }
+.twin-n { font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+
+.dec {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 18px 18px 16px; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; gap: 12px; min-width: 0;
+}
+.dec header { display: flex; flex-direction: column; gap: 2px; }
+.dn { font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.dec h4 { font-size: 1.2rem; }
+.kind { font-size: .82rem; font-weight: 700; align-self: flex-start; background: var(--tag); padding: 2px 10px; border-radius: 999px; }
+.set { font-size: .92rem; color: var(--muted); font-style: italic; }
+.q { font-size: 1.08rem; font-weight: 700; }
+.q .hi { font-weight: 500; font-size: .95rem; }
+.voice { margin: 0; padding: 10px 12px; border-radius: 8px; background: var(--tag); font-size: .95rem; position: relative; }
+.voice .who { display: block; font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+.chores .lab { display: block; font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.chores { font-size: .95rem; }
+tr.same td { background: var(--same); color: var(--same-ink); }
+tr.same td:first-child { box-shadow: inset 3px 0 0 var(--ink); font-weight: 700; }
+tr.same .hi { color: inherit; opacity: .85; }
+.nudge { text-decoration: underline wavy var(--nudge); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+.btnline { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.fakebtn { background: var(--btn); color: var(--btn-ink); font-weight: 700; font-size: .9rem; padding: 7px 14px; border-radius: 6px; }
+.fakebtn .hi { display: inline; color: inherit; opacity: .78; margin-left: 8px; font-size: .88em; }
+.btnline .note { font-size: .8rem; color: var(--muted); }
+.dec dl { margin: 0; display: grid; gap: 4px 0; font-size: .93rem; }
+.dec dt { font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.dec dd { margin: 0; }
+.side { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line-soft); font-size: .82rem; font-weight: 700; color: var(--muted); }
+.side::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; background: var(--acc); }
+
+/* ---------- results ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; margin-top: 22px; }
+.rcard { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px; min-width: 0; font-size: .93rem; }
+.rcard h3 { font-size: 1.08rem; }
+.rcard ul { padding-left: 1.2em; margin: 0; }
+.rcard li + li { margin-top: 6px; }
+.rcard p { margin: 0; }
+.rcard.waiting { border-style: dashed; }
+.rcard.change { background: var(--tag); }
+
+/* ---------- world stories ---------- */
+.stories { display: grid; gap: 22px; margin-top: 24px; }
+.story { border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+.story .band-in { padding-left: 18px; padding-right: 18px; }
+.story-body { padding: 18px; max-width: none; }
+.story-body > p { max-width: 72ch; }
+
+/* ---------- questions ---------- */
+ol.qs { padding-left: 1.6em; }
+ol.qs > li { padding-left: 4px; }
+ol.qs > li + li { margin-top: 14px; }
+details { margin-top: 32px; border-top: 1px solid var(--line); padding-top: 16px; }
+summary { font-weight: 700; cursor: pointer; }
+details .prose { margin-top: 12px; }
+main { padding-bottom: 72px; }
+
+@media (max-width: 900px) {
+  .pair { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  .dec { padding: 14px; }
+  th, td { padding: 7px 8px; }
+  main > section > h2 { font-size: 1.5rem; }
+}
+
+section.extra { margin-top: 36px; }
+section.extra > h3.sub { padding-left: 14px; border-left: 3px solid var(--acc); }
+.prose h4.sub { font-size: 1.02rem; margin-top: 22px; }
+.prose .tw table td { min-width: 90px; }
+.helpline { font-size: .92rem; color: var(--muted); max-width: 72ch; margin-bottom: 10px; padding: 8px 12px; border-radius: 8px; background: var(--tag); }
+
+/* Line review page, on top of review.css */
+:root { --keep: #1F5F3A; --keep-bg: #E3F0E6; --change: #6B4A12; --change-bg: #F5EAD2; --cut: #7A1F2B; --cut-bg: #F6E1E3; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --keep: #9ED9AE; --keep-bg: #1E3326; --change: #E9C98A; --change-bg: #3A2E18; --cut: #F2A5AF; --cut-bg: #3D1E23; }
+}
+:root[data-theme="dark"] { --keep: #9ED9AE; --keep-bg: #1E3326; --change: #E9C98A; --change-bg: #3A2E18; --cut: #F2A5AF; --cut-bg: #3D1E23; }
+
+.savenote { margin-top: 14px; font-size: .9rem; color: var(--muted); }
+.lr-bar { align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; }
+.lr-bar .chips { display: flex; gap: 6px; flex-wrap: nowrap; }
+.chip { flex: none; font: 700 .85rem/1 Hind, system-ui, sans-serif; padding: 8px 12px; min-height: 36px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer; }
+.chip:hover { color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip:focus-visible, .lr-btn:focus-visible, .lr-note:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.progress { flex: none; font-size: .85rem; font-weight: 700; color: var(--muted); margin: 0; }
+
+.lr-world { margin-top: 40px; }
+.lr-body {
+  max-width: 1180px; margin: 0 auto; display: grid; gap: 16px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 0;
+}
+.lr-pair, .lr-single { display: grid; gap: 6px; }
+.lr-paircap { font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-left: 14px; border-left: 3px solid var(--acc); }
+.lr-pairin { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 12px; }
+.lr-line {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 8px; min-width: 0; box-shadow: var(--shadow);
+}
+.lr-line[data-v="keep"] { box-shadow: inset 4px 0 0 var(--keep), var(--shadow); }
+.lr-line[data-v="change"] { box-shadow: inset 4px 0 0 var(--change), var(--shadow); }
+.lr-line[data-v="cut"] { box-shadow: inset 4px 0 0 var(--cut), var(--shadow); }
+.lr-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; font-size: .8rem; color: var(--muted); }
+.lr-where { font-weight: 700; }
+.lr-tag { background: var(--tag); border-radius: 4px; padding: 1px 7px; font-size: .74rem; font-weight: 700; }
+.lr-hard { color: var(--cut); background: var(--cut-bg); }
+.lr-who { font-size: .9rem; font-weight: 700; }
+.lr-side { font-weight: 500; color: var(--muted); margin-left: 8px; font-size: .85rem; }
+.lr-quote { margin: 0; padding: 10px 12px; border-radius: 8px; background: var(--tag); }
+.lr-en { display: block; font-size: 1.08rem; font-weight: 700; line-height: 1.4; }
+.lr-hi { display: block; margin-top: 4px; color: var(--hi); font-size: 1rem; }
+.lr-acts { display: flex; gap: 6px; flex-wrap: wrap; }
+.lr-btn { font: 700 .9rem/1 Hind, system-ui, sans-serif; min-height: 40px; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.lr-btn:hover { border-color: var(--ink); }
+.lr-keep[aria-pressed="true"] { background: var(--keep-bg); color: var(--keep); border-color: var(--keep); }
+.lr-change[aria-pressed="true"] { background: var(--change-bg); color: var(--change); border-color: var(--change); }
+.lr-cut[aria-pressed="true"] { background: var(--cut-bg); color: var(--cut); border-color: var(--cut); }
+.lr-btn[aria-pressed="true"]::before { content: "\2713  "; }
+.lr-notelab { display: grid; gap: 4px; }
+.lr-notecap { font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.lr-note { font: 500 .95rem/1.4 Hind, system-ui, sans-serif; width: 100%; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); resize: vertical; }
+.lr-status { font-size: .8rem; color: var(--muted); min-height: 1em; margin: 0; }
+main { padding-bottom: 72px; }
+
+</style>
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Retake · for your review · 2026-10-22</p>
+    <h1>Every line a character says</h1>
+    <p class="lede">The exact words, English and Hindi, of every line that leans one way: what the speaker says, the
+    loaded words on the cards, and the stories people tell. Lines that swap sides sit together. Mark each one
+    Keep, Change or Cut, and add a note when you want different words.</p>
+    <p class="savenote" id="savenote">Connecting so your choices are saved…</p>
+  </div>
+</header>
+<nav class="nav" aria-label="Filter"><div class="nav-in lr-bar">
+  <div class="chips" role="group" aria-label="Show">
+    <button type="button" class="chip" data-f="all" aria-pressed="true">All</button>
+    <button type="button" class="chip" data-f="todo" aria-pressed="false">To review</button>
+    <button type="button" class="chip" data-f="keep" aria-pressed="false">Keep</button>
+    <button type="button" class="chip" data-f="change" aria-pressed="false">Change</button>
+    <button type="button" class="chip" data-f="cut" aria-pressed="false">Cut</button>
+    <button type="button" class="chip" data-f="hard" aria-pressed="false">Hard topics</button>
+  </div>
+  <p class="progress" id="progress" aria-live="polite"></p>
+</div></nav>
+<main id="main"></main>
+<script type="application/json" id="data">[{"id": "ft-station-1-kamla", "world": "Station", "where": "First take, Station 1", "title": "The night mail", "speaker": "Gurpreet, station master", "about": "Mumtaz", "side": "woman", "kind": "loaded word", "hard": false, "twin": "ft-station-5-vikram", "en": "Pushy with the guards.", "hi": "गार्ड पर हुक्म चलाती है।"}, {"id": "ft-station-1-nagsen", "world": "Station", "where": "First take, Station 1", "title": "The night mail", "speaker": "Gurpreet, station master", "about": "Nagsen", "side": "man", "kind": "loaded word", "hard": false, "twin": "ft-station-5-yasmin", "en": "Takes charge with the guards.", "hi": "गार्ड के साथ कमान सँभालता है।"}, {"id": "ft-station-2-voice", "world": "Station", "where": "First take, Station 2", "title": "The new-engine course", "speaker": "Gurpreet, station master", "about": "Sunil", "side": "man", "kind": "voice", "hard": true, "twin": "ft-station-6-voice", "en": "Sunil complained that the old foreman bullied him, and the foreman was moved. Trouble follows him.", "hi": "सुनील ने शिकायत की थी कि पुराना फ़ोरमैन उससे बदसलूकी करता है, और फ़ोरमैन हटाया गया। मुसीबत उसके पीछे चलती है।"}, {"id": "ft-station-3-voice", "world": "Station", "where": "First take, Station 3", "title": "Senior loco pilot", "speaker": "Gurpreet, station master", "about": "Prakash", "side": "man", "kind": "voice", "hard": false, "twin": "ft-station-7-voice", "en": "Prakash took six months off to look after his sick father.", "hi": "प्रकाश ने बीमार पिता की देखभाल के लिए छह महीने की छुट्टी ली थी।"}, {"id": "ft-station-4-voice", "world": "Station", "where": "First take, Station 4", "title": "The Bhusawal section", "speaker": "Gurpreet, station master", "about": "Annamma", "side": "woman", "kind": "detail that matters", "hard": false, "twin": "ft-station-8-voice", "en": "Only Annamma has learned the Bhusawal section.", "hi": "भुसावल सेक्शन सिर्फ़ अन्नम्मा ने सीखा है।"}, {"id": "ft-station-5-yasmin", "world": "Station", "where": "First take, Station 5", "title": "The goods train", "speaker": "Gurpreet, station master", "about": "Yasmin", "side": "woman", "kind": "loaded word", "hard": false, "twin": "ft-station-1-nagsen", "en": "Takes charge with the guards.", "hi": "गार्ड के साथ कमान सँभालती है।"}, {"id": "ft-station-5-vikram", "world": "Station", "where": "First take, Station 5", "title": "The goods train", "speaker": "Gurpreet, station master", "about": "Rohit", "side": "man", "kind": "loaded word", "hard": false, "twin": "ft-station-1-kamla", "en": "Pushy with the guards.", "hi": "गार्ड पर हुक्म चलाता है।"}, {"id": "ft-station-6-voice", "world": "Station", "where": "First take, Station 6", "title": "The signal course", "speaker": "Gurpreet, station master", "about": "Kiran", "side": "woman", "kind": "voice", "hard": true, "twin": "ft-station-2-voice", "en": "At the Manmad shed, Kiran's complaint of bullying got the night foreman transferred. Trouble follows her.", "hi": "मनमाड शेड में किरण ने रात वाले फ़ोरमैन की बदसलूकी की शिकायत की, तो फ़ोरमैन का तबादला हो गया। मुसीबत उसके पीछे चलती है।"}, {"id": "ft-station-7-voice", "world": "Station", "where": "First take, Station 7", "title": "The shed's safety inspector", "speaker": "Gurpreet, station master", "about": "Kiran", "side": "woman", "kind": "voice", "hard": false, "twin": "ft-station-3-voice", "en": "Kiran took six months off to look after her sick father.", "hi": "किरण ने बीमार पिता की देखभाल के लिए छह महीने की छुट्टी ली थी।"}, {"id": "ft-station-8-voice", "world": "Station", "where": "First take, Station 8", "title": "The Nashik section", "speaker": "Gurpreet, station master", "about": "Nagsen", "side": "man", "kind": "detail that matters", "hard": false, "twin": "ft-station-4-voice", "en": "Only Nagsen has learned the Nashik section.", "hi": "नासिक सेक्शन सिर्फ़ नागसेन ने सीखा है।"}, {"id": "daily-station-first-kamla", "world": "Station", "where": "Daily story", "title": "The night train to Nashik: first day", "speaker": "Gurpreet, station master", "about": "Mumtaz", "side": "woman", "kind": "loaded word", "hard": false, "twin": "daily-station-return-raju", "en": "Stubborn at every red signal.", "hi": "हर लाल सिग्नल पर ज़िद्दी।"}, {"id": "daily-station-first-raju", "world": "Station", "where": "Daily story", "title": "The night train to Nashik: first day", "speaker": "Gurpreet, station master", "about": "Sunil", "side": "man", "kind": "loaded word", "hard": false, "twin": "daily-station-return-kamla", "en": "Firm at every red signal.", "hi": "हर लाल सिग्नल पर सख़्त।"}, {"id": "daily-station-return-kamla", "world": "Station", "where": "Daily story", "title": "The night train to Nashik: return day, the words swap", "speaker": "Gurpreet, station master", "about": "Mumtaz", "side": "woman", "kind": "loaded word", "hard": false, "twin": "daily-station-first-raju", "en": "Firm at every red signal.", "hi": "हर लाल सिग्नल पर सख़्त।"}, {"id": "daily-station-return-raju", "world": "Station", "where": "Daily story", "title": "The night train to Nashik: return day, the words swap", "speaker": "Gurpreet, station master", "about": "Sunil", "side": "man", "kind": "loaded word", "hard": false, "twin": "daily-station-first-kamla", "en": "Stubborn at every red signal.", "hi": "हर लाल सिग्नल पर ज़िद्दी।"}, {"id": "daily-station-luggage-tag", "world": "Station", "where": "Daily story", "title": "The night train to Nashik: the words step's luggage tag", "speaker": "Francis, guard", "about": "Kiran", "side": "woman", "kind": "voice", "hard": false, "twin": "", "en": "Kiran is the loco pilot on the night train. Passengers call her ___.", "hi": "किरण रात की गाड़ी की लोको पायलट है। यात्री उसे ___ कहते हैं।"}, {"id": "daily-station-sort", "world": "Station", "where": "Daily story", "title": "The night train to Nashik: the quick sort, proposed wording", "speaker": "Annamma aunty", "about": "Gurpreet", "side": "woman", "kind": "loaded word", "hard": false, "twin": "", "en": "Gurpreet laughs too loud at the ticket counter.", "hi": "गुरप्रीत टिकट खिड़की पर बहुत ज़ोर से हँसती है।"}, {"id": "daily-station-checks-voice", "world": "Station", "where": "Daily story, a step every world shares", "title": "Whose record do you check?", "speaker": "Francis chacha", "about": "Gurpreet", "side": "woman", "kind": "voice", "hard": false, "twin": "", "en": "Gurpreet may leave after the wedding.", "hi": "शादी के बाद गुरप्रीत छोड़ सकती है।"}, {"id": "daily-station-team-voice", "world": "Station", "where": "Daily story, a step every world shares", "title": "Pick 3 for the team", "speaker": "Annamma aunty", "about": "", "side": "woman", "kind": "voice", "hard": false, "twin": "", "en": "Keep the girls home tonight. It's late.", "hi": "आज लड़कियों को घर पर ही रखो। देर हो गई है।"}, {"id": "ft-lugdi-1-voice", "world": "Lugdi", "where": "First take, Lugdi 1", "title": "The night convoy", "speaker": "Mehul seth", "about": "Jasleen", "side": "woman", "kind": "voice", "hard": false, "twin": "ft-lugdi-5-voice", "en": "Keep Jasleen off the night ghat. Her family worries.", "hi": "जसलीन को रात के घाट से दूर रखो। उसके घरवाले फ़िक्र करते हैं।"}, {"id": "ft-lugdi-2-voice", "world": "Lugdi", "where": "First take, Lugdi 2", "title": "The car on the ghat", "speaker": "Mehul seth", "about": "Dinesh", "side": "man", "kind": "voice", "hard": true, "twin": "ft-lugdi-6-voice", "en": "Dinesh says a car followed his truck down the ghat at night. He scares easily.", "hi": "दिनेश कहता है कि रात को घाट पर एक गाड़ी उसके ट्रक के पीछे लगी रही। जल्दी डर जाता है।"}, {"id": "ft-lugdi-2-account", "world": "Lugdi", "where": "First take, Lugdi 2", "title": "The car on the ghat", "speaker": "Etwari and Dinesh, word for word", "about": "", "side": "man", "kind": "account", "hard": true, "twin": "ft-lugdi-6-account", "en": "A car followed me down the ghat at night.", "hi": "रात को घाट पर एक गाड़ी मेरे पीछे लगी रही।"}, {"id": "ft-lugdi-3-voice", "world": "Lugdi", "where": "First take, Lugdi 3", "title": "The mango-tree bend", "speaker": "Mehul seth", "about": "", "side": "both", "kind": "voice", "hard": false, "twin": "ft-lugdi-7-voice", "en": "Two trucks scraped the mango-tree bend last month. Nobody was hurt.", "hi": "पिछले महीने आम वाले मोड़ पर दो ट्रक रगड़ खा गए। किसी को चोट नहीं आई।"}, {"id": "ft-lugdi-3-kamla", "world": "Lugdi", "where": "First take, Lugdi 3", "title": "The mango-tree bend", "speaker": "Mehul seth", "about": "Saroj", "side": "woman", "kind": "loaded word", "hard": false, "twin": "ft-lugdi-7-salim", "en": "Lost her nerve on the mango-tree bend.", "hi": "आम वाले मोड़ पर उसकी हिम्मत जवाब दे गई।"}, {"id": "ft-lugdi-3-baldev", "world": "Lugdi", "where": "First take, Lugdi 3", "title": "The mango-tree bend", "speaker": "Mehul seth", "about": "Baldev", "side": "man", "kind": "loaded word", "hard": false, "twin": "ft-lugdi-7-etwari", "en": "Had bad luck on the mango-tree bend.", "hi": "आम वाले मोड़ पर उसकी किस्मत ने साथ नहीं दिया।"}, {"id": "ft-lugdi-4-voice", "world": "Lugdi", "where": "First take, Lugdi 4", "title": "The hill convoy", "speaker": "Mehul seth", "about": "Etwari", "side": "woman", "kind": "detail that matters", "hard": false, "twin": "ft-lugdi-8-voice", "en": "One truck carries gas cylinders. Only Etwari has the hazardous-goods licence.", "hi": "एक ट्रक में गैस सिलेंडर हैं। ख़तरनाक माल का लाइसेंस सिर्फ़ एतवारी के पास है।"}, {"id": "ft-lugdi-5-voice", "world": "Lugdi", "where": "First take, Lugdi 5", "title": "The onion run", "speaker": "Mehul seth", "about": "Velu", "side": "man", "kind": "voice", "hard": false, "twin": "ft-lugdi-1-voice", "en": "Keep Velu off the night ghat. His family worries.", "hi": "वेलु को रात के घाट से दूर रखो। उसके घरवाले फ़िक्र करते हैं।"}, {"id": "ft-lugdi-6-voice", "world": "Lugdi", "where": "First take, Lugdi 6", "title": "The car on the river road", "speaker": "Mehul seth", "about": "Kusum", "side": "woman", "kind": "voice", "hard": true, "twin": "ft-lugdi-2-voice", "en": "Kusum reported a car that stayed behind her truck all along the river road at night. She scares easily.", "hi": "कुसुम ने बताया कि रात को नदी वाली सड़क पर एक गाड़ी पूरे रास्ते उसके ट्रक के पीछे रही। जल्दी डर जाती है।"}, {"id": "ft-lugdi-6-account", "world": "Lugdi", "where": "First take, Lugdi 6", "title": "The car on the river road", "speaker": "Kusum and Baldev, word for word", "about": "", "side": "woman", "kind": "account", "hard": true, "twin": "ft-lugdi-2-account", "en": "A car stayed behind me all along the river road at night.", "hi": "रात को नदी वाली सड़क पर एक गाड़ी पूरे रास्ते मेरे पीछे रही।"}, {"id": "ft-lugdi-7-voice", "world": "Lugdi", "where": "First take, Lugdi 7", "title": "The river bend", "speaker": "Mehul seth", "about": "", "side": "both", "kind": "voice", "hard": false, "twin": "ft-lugdi-3-voice", "en": "Two trucks scraped the river bend last month. Nobody was hurt.", "hi": "पिछले महीने नदी वाले मोड़ पर दो ट्रक रगड़ खा गए। किसी को चोट नहीं आई।"}, {"id": "ft-lugdi-7-etwari", "world": "Lugdi", "where": "First take, Lugdi 7", "title": "The river bend", "speaker": "Mehul seth", "about": "Etwari", "side": "woman", "kind": "loaded word", "hard": false, "twin": "ft-lugdi-3-baldev", "en": "Had bad luck on the river bend.", "hi": "नदी वाले मोड़ पर उसकी किस्मत ने साथ नहीं दिया।"}, {"id": "ft-lugdi-7-salim", "world": "Lugdi", "where": "First take, Lugdi 7", "title": "The river bend", "speaker": "Mehul seth", "about": "Anthony", "side": "man", "kind": "loaded word", "hard": false, "twin": "ft-lugdi-3-kamla", "en": "Lost his nerve on the river bend.", "hi": "नदी वाले मोड़ पर उसकी हिम्मत जवाब दे गई।"}, {"id": "ft-lugdi-8-voice", "world": "Lugdi", "where": "First take, Lugdi 8", "title": "The late convoy", "speaker": "Mehul seth", "about": "Dinesh", "side": "man", "kind": "detail that matters", "hard": false, "twin": "ft-lugdi-4-voice", "en": "One truck carries kerosene drums. Only Dinesh has the hazardous-goods licence.", "hi": "एक ट्रक में मिट्टी के तेल के ड्रम हैं। ख़तरनाक माल का लाइसेंस सिर्फ़ दिनेश के पास है।"}, {"id": "daily-lugdi-first-kamla", "world": "Lugdi", "where": "Daily story", "title": "The ghat road: first day", "speaker": "Mehul seth", "about": "Saroj", "side": "woman", "kind": "loaded word", "hard": false, "twin": "daily-lugdi-return-raju", "en": "Drives the ghats with attitude.", "hi": "घाट पर तेवर से चलाती है।"}, {"id": "daily-lugdi-first-raju", "world": "Lugdi", "where": "Daily story", "title": "The ghat road: first day", "speaker": "Mehul seth", "about": "Dinesh", "side": "man", "kind": "loaded word", "hard": false, "twin": "daily-lugdi-return-kamla", "en": "Drives the ghats with confidence.", "hi": "घाट पर आत्मविश्वास से चलाता है।"}, {"id": "daily-lugdi-return-kamla", "world": "Lugdi", "where": "Daily story", "title": "The ghat road: return day, the words swap", "speaker": "Mehul seth", "about": "Saroj", "side": "woman", "kind": "loaded word", "hard": false, "twin": "daily-lugdi-first-raju", "en": "Drives the ghats with confidence.", "hi": "घाट पर आत्मविश्वास से चलाती है।"}, {"id": "daily-lugdi-return-raju", "world": "Lugdi", "where": "Daily story", "title": "The ghat road: return day, the words swap", "speaker": "Mehul seth", "about": "Dinesh", "side": "man", "kind": "loaded word", "hard": false, "twin": "daily-lugdi-first-kamla", "en": "Drives the ghats with attitude.", "hi": "घाट पर तेवर से चलाता है।"}, {"id": "ft-jadugar-1-voice", "world": "Jadugar", "where": "First take, Jadugar 1", "title": "The costume tent", "speaker": "Kader, magician of the Chandni Mandal", "about": "Sarla", "side": "woman", "kind": "voice", "hard": true, "twin": "ft-jadugar-5-voice", "en": "A man from the audience harassed our dancer backstage. Sarla makes a drama of everything.", "hi": "दर्शकों में से एक आदमी ने परदे के पीछे हमारी डांसर से छेड़छाड़ की। सरला तो हर बात का ड्रामा बनाती है।"}, {"id": "ft-jadugar-1-account", "world": "Jadugar", "where": "First take, Jadugar 1", "title": "The costume tent", "speaker": "Sarla and Thomas, word for word", "about": "", "side": "woman", "kind": "account", "hard": true, "twin": "ft-jadugar-5-account", "en": "He followed her to the costume tent and would not go.", "hi": "वह उसके पीछे-पीछे पोशाक वाले तंबू तक आया और गया ही नहीं।"}, {"id": "ft-jadugar-2-voice", "world": "Jadugar", "where": "First take, Jadugar 2", "title": "Cash to the next town", "speaker": "Kader, magician of the Chandni Mandal", "about": "", "side": "woman", "kind": "voice", "hard": false, "twin": "ft-jadugar-6-voice", "en": "Send a woman. Women are careful with money.", "hi": "किसी औरत को भेजो। औरतें पैसे का ध्यान रखती हैं।"}, {"id": "ft-jadugar-3-voice", "world": "Jadugar", "where": "First take, Jadugar 3", "title": "The lamp at rehearsal", "speaker": "Kader, magician of the Chandni Mandal", "about": "", "side": "both", "kind": "voice", "hard": false, "twin": "ft-jadugar-7-voice", "en": "The big lamp fell at rehearsal. Nobody was hurt.", "hi": "रिहर्सल में बड़ा लैंप गिर गया। किसी को चोट नहीं आई।"}, {"id": "ft-jadugar-3-jonali", "world": "Jadugar", "where": "First take, Jadugar 3", "title": "The lamp at rehearsal", "speaker": "Jonali, in the troupe", "about": "", "side": "woman", "kind": "detail that matters", "hard": false, "twin": "ft-jadugar-7-lalit", "en": "Someone told me. The hook gave way.", "hi": "मुझे किसी ने बताया। हुक निकल गया।"}, {"id": "ft-jadugar-3-arjun", "world": "Jadugar", "where": "First take, Jadugar 3", "title": "The lamp at rehearsal", "speaker": "Cyrus, in the troupe", "about": "", "side": "man", "kind": "detail that matters", "hard": false, "twin": "ft-jadugar-7-pammi", "en": "I saw it. The hook gave way.", "hi": "मैंने देखा। हुक निकल गया।"}, {"id": "ft-jadugar-4-voice", "world": "Jadugar", "where": "First take, Jadugar 4", "title": "The ticket tin", "speaker": "Kader, magician of the Chandni Mandal", "about": "Mitali", "side": "woman", "kind": "voice", "hard": false, "twin": "ft-jadugar-8-voice", "en": "Mitali's brother works for the rival troupe.", "hi": "मिताली का भाई हमारी टक्कर वाली मंडली में काम करता है।"}, {"id": "ft-jadugar-5-voice", "world": "Jadugar", "where": "First take, Jadugar 5", "title": "The make-up tent", "speaker": "Kader, magician of the Chandni Mandal", "about": "Naresh", "side": "man", "kind": "voice", "hard": true, "twin": "ft-jadugar-1-voice", "en": "In the next town, a man harassed our singer. Naresh makes a drama of everything.", "hi": "अगले शहर में एक आदमी ने हमारी गायिका से छेड़छाड़ की। नरेश तो हर बात का ड्रामा बनाता है।"}, {"id": "ft-jadugar-5-account", "world": "Jadugar", "where": "First take, Jadugar 5", "title": "The make-up tent", "speaker": "Jonali and Naresh, word for word", "about": "", "side": "man", "kind": "account", "hard": true, "twin": "ft-jadugar-1-account", "en": "He came after her to the make-up tent and would not leave.", "hi": "वह उसके पीछे मेकअप वाले तंबू तक आया और गया ही नहीं।"}, {"id": "ft-jadugar-6-voice", "world": "Jadugar", "where": "First take, Jadugar 6", "title": "The takings", "speaker": "Kader, magician of the Chandni Mandal", "about": "", "side": "man", "kind": "voice", "hard": false, "twin": "ft-jadugar-2-voice", "en": "Send a man. It's cash on the highway.", "hi": "किसी आदमी को भेजो। हाईवे पर नकदी ले जानी है।"}, {"id": "ft-jadugar-7-voice", "world": "Jadugar", "where": "First take, Jadugar 7", "title": "The generator", "speaker": "Kader, magician of the Chandni Mandal", "about": "", "side": "both", "kind": "voice", "hard": false, "twin": "ft-jadugar-3-voice", "en": "The generator stopped in the second act.", "hi": "दूसरे अंक में जनरेटर बंद हो गया।"}, {"id": "ft-jadugar-7-pammi", "world": "Jadugar", "where": "First take, Jadugar 7", "title": "The generator", "speaker": "Rabia, in the troupe", "about": "", "side": "woman", "kind": "detail that matters", "hard": false, "twin": "ft-jadugar-3-arjun", "en": "I saw it. The diesel ran out.", "hi": "मैंने देखा। डीज़ल ख़त्म हो गया।"}, {"id": "ft-jadugar-7-lalit", "world": "Jadugar", "where": "First take, Jadugar 7", "title": "The generator", "speaker": "Lalit, in the troupe", "about": "", "side": "man", "kind": "detail that matters", "hard": false, "twin": "ft-jadugar-3-jonali", "en": "Someone told me. The diesel ran out.", "hi": "मुझे किसी ने बताया। डीज़ल ख़त्म हो गया।"}, {"id": "ft-jadugar-8-voice", "world": "Jadugar", "where": "First take, Jadugar 8", "title": "The cash box key", "speaker": "Kader, magician of the Chandni Mandal", "about": "Naresh", "side": "man", "kind": "voice", "hard": false, "twin": "ft-jadugar-4-voice", "en": "Naresh's sister works for the rival troupe.", "hi": "नरेश की बहन हमारी टक्कर वाली मंडली में काम करती है।"}, {"id": "daily-jadugar-first-kamla", "world": "Jadugar", "where": "Daily story", "title": "Who closes the show: first day", "speaker": "Kader, magician", "about": "Sarla", "side": "woman", "kind": "loaded word", "hard": false, "twin": "daily-jadugar-return-raju", "en": "Great on stage, but moody.", "hi": "मंच पर कमाल, पर मूडी।"}, {"id": "daily-jadugar-first-raju", "world": "Jadugar", "where": "Daily story", "title": "Who closes the show: first day", "speaker": "Kader, magician", "about": "Naresh", "side": "man", "kind": "loaded word", "hard": false, "twin": "daily-jadugar-return-kamla", "en": "Great on stage, but intense.", "hi": "मंच पर कमाल, पर जुनूनी।"}, {"id": "daily-jadugar-return-kamla", "world": "Jadugar", "where": "Daily story", "title": "Who closes the show: return day, the words swap", "speaker": "Kader, magician", "about": "Sarla", "side": "woman", "kind": "loaded word", "hard": false, "twin": "daily-jadugar-first-raju", "en": "Great on stage, but intense.", "hi": "मंच पर कमाल, पर जुनूनी।"}, {"id": "daily-jadugar-return-raju", "world": "Jadugar", "where": "Daily story", "title": "Who closes the show: return day, the words swap", "speaker": "Kader, magician", "about": "Naresh", "side": "man", "kind": "loaded word", "hard": false, "twin": "daily-jadugar-first-kamla", "en": "Great on stage, but moody.", "hi": "मंच पर कमाल, पर मूडी।"}, {"id": "ft-cricket-1-voice", "world": "Cricket", "where": "First take, Cricket 1", "title": "The batting order", "speaker": "Shirin, coach", "about": "Gita", "side": "woman", "kind": "voice", "hard": false, "twin": "ft-cricket-5-voice", "en": "Gita was out first ball last Sunday.", "hi": "पिछले इतवार गीता पहली गेंद पर आउट हुई।"}, {"id": "ft-cricket-2-voice", "world": "Cricket", "where": "First take, Cricket 2", "title": "The captain", "speaker": "Shirin, coach", "about": "Chandan", "side": "man", "kind": "voice", "hard": true, "twin": "ft-cricket-6-voice", "en": "Chandan has a police complaint against him for violence at home.", "hi": "चंदन पर घरेलू हिंसा की पुलिस शिकायत दर्ज है।"}, {"id": "ft-cricket-3-voice", "world": "Cricket", "where": "First take, Cricket 3", "title": "The final", "speaker": "Shirin, coach", "about": "Zarina", "side": "woman", "kind": "voice", "hard": false, "twin": "ft-cricket-7-voice", "en": "Rest Zarina for the final. It gets rough.", "hi": "फ़ाइनल में ज़रीना को आराम दो। मुक़ाबला कड़ा होता है।"}, {"id": "ft-cricket-4-voice", "world": "Cricket", "where": "First take, Cricket 4", "title": "The semi-final", "speaker": "Shirin, coach", "about": "Bindu", "side": "woman", "kind": "detail that matters", "hard": false, "twin": "ft-cricket-8-voice", "en": "Our keeper is away. Bindu is the only keeper here.", "hi": "हमारा कीपर नहीं आया। यहाँ कीपर सिर्फ़ बिंदु है।"}, {"id": "ft-cricket-5-voice", "world": "Cricket", "where": "First take, Cricket 5", "title": "The second batting order", "speaker": "Shirin, coach", "about": "Tenzing", "side": "man", "kind": "voice", "hard": false, "twin": "ft-cricket-1-voice", "en": "Tenzing was out first ball last Sunday.", "hi": "पिछले इतवार तेनज़िंग पहली गेंद पर आउट हुआ।"}, {"id": "ft-cricket-6-voice", "world": "Cricket", "where": "First take, Cricket 6", "title": "The second captain", "speaker": "Shirin, coach", "about": "Leena", "side": "woman", "kind": "voice", "hard": true, "twin": "ft-cricket-2-voice", "en": "There is a police complaint against Leena for violence at home.", "hi": "लीना के ख़िलाफ़ घरेलू हिंसा की पुलिस शिकायत दर्ज है।"}, {"id": "ft-cricket-7-voice", "world": "Cricket", "where": "First take, Cricket 7", "title": "The cup match", "speaker": "Shirin, coach", "about": "Uday", "side": "man", "kind": "voice", "hard": false, "twin": "ft-cricket-3-voice", "en": "Rest Uday for the cup match. It gets rough.", "hi": "कप मैच में उदय को आराम दो। मुक़ाबला कड़ा होता है।"}, {"id": "ft-cricket-8-voice", "world": "Cricket", "where": "First take, Cricket 8", "title": "The league match", "speaker": "Shirin, coach", "about": "Hari", "side": "man", "kind": "detail that matters", "hard": false, "twin": "ft-cricket-4-voice", "en": "Our keeper is away. Hari is the only keeper here.", "hi": "हमारा कीपर नहीं आया। यहाँ कीपर सिर्फ़ हरि है।"}, {"id": "daily-cricket-first-kamla", "world": "Cricket", "where": "Daily story", "title": "Who goes out as captain: first day", "speaker": "Shirin, coach", "about": "Agnes", "side": "woman", "kind": "loaded word", "hard": false, "twin": "daily-cricket-return-raju", "en": "Bossy with the bowlers.", "hi": "गेंदबाज़ों के साथ दबंग।"}, {"id": "daily-cricket-first-raju", "world": "Cricket", "where": "Daily story", "title": "Who goes out as captain: first day", "speaker": "Shirin, coach", "about": "Hari", "side": "man", "kind": "loaded word", "hard": false, "twin": "daily-cricket-return-kamla", "en": "Assertive with the bowlers.", "hi": "गेंदबाज़ों के साथ दमदार।"}, {"id": "daily-cricket-return-kamla", "world": "Cricket", "where": "Daily story", "title": "Who goes out as captain: return day, the words swap", "speaker": "Shirin, coach", "about": "Agnes", "side": "woman", "kind": "loaded word", "hard": false, "twin": "daily-cricket-first-raju", "en": "Assertive with the bowlers.", "hi": "गेंदबाज़ों के साथ दमदार।"}, {"id": "daily-cricket-return-raju", "world": "Cricket", "where": "Daily story", "title": "Who goes out as captain: return day, the words swap", "speaker": "Shirin, coach", "about": "Hari", "side": "man", "kind": "loaded word", "hard": false, "twin": "daily-cricket-first-kamla", "en": "Bossy with the bowlers.", "hi": "गेंदबाज़ों के साथ दबंग।"}, {"id": "ft-rukavat-1-voice", "world": "Rukavat", "where": "First take, Rukavat 1", "title": "This Sunday", "speaker": "Dadi", "about": "Vivek", "side": "man", "kind": "voice", "hard": false, "twin": "ft-rukavat-5-voice", "en": "Vivek works all day. Let him watch his film.", "hi": "विवेक दिन भर काम करता है। उसे अपनी फ़िल्म देखने दो।"}, {"id": "ft-rukavat-2-voice", "world": "Rukavat", "where": "First take, Rukavat 2", "title": "The lawyer's office", "speaker": "Dadi", "about": "Uma", "side": "woman", "kind": "voice", "hard": true, "twin": "ft-rukavat-6-voice", "en": "Uma and Chetan are separating. Uma wants to marry again.", "hi": "उमा और चेतन अलग हो रहे हैं। उमा दोबारा शादी करना चाहती है।"}, {"id": "ft-rukavat-3-voice", "world": "Rukavat", "where": "First take, Rukavat 3", "title": "The loft", "speaker": "Dadi", "about": "Deepa", "side": "woman", "kind": "detail that matters", "hard": false, "twin": "ft-rukavat-7-voice", "en": "Deepa is allergic to dust. She falls ill.", "hi": "दीपा को धूल से एलर्जी है। बीमार पड़ जाती है।"}, {"id": "ft-rukavat-4-voice", "world": "Rukavat", "where": "First take, Rukavat 4", "title": "The front door", "speaker": "Dadi", "about": "Mahesh", "side": "man", "kind": "voice", "hard": true, "twin": "ft-rukavat-8-voice", "en": "Mahesh told the groom's side: no motorbike, no dowry. His tongue is too sharp.", "hi": "महेश ने लड़के वालों से कह दिया, न मोटरसाइकिल, न दहेज। उसकी ज़बान बहुत तेज़ है।"}, {"id": "ft-rukavat-5-voice", "world": "Rukavat", "where": "First take, Rukavat 5", "title": "Tonight", "speaker": "Dadi", "about": "Shampa", "side": "woman", "kind": "voice", "hard": false, "twin": "ft-rukavat-1-voice", "en": "Shampa works all day. Let her watch her film.", "hi": "शम्पा दिन भर काम करती है। उसे अपनी फ़िल्म देखने दो।"}, {"id": "ft-rukavat-6-voice", "world": "Rukavat", "where": "First take, Rukavat 6", "title": "The court bench", "speaker": "Dadi", "about": "Vivek", "side": "man", "kind": "voice", "hard": true, "twin": "ft-rukavat-2-voice", "en": "Vivek and Deepa's case is in the family court next month. Vivek wants to remarry.", "hi": "अगले महीने विवेक और दीपा का केस फ़ैमिली कोर्ट में है। विवेक फिर से शादी करना चाहता है।"}, {"id": "ft-rukavat-7-voice", "world": "Rukavat", "where": "First take, Rukavat 7", "title": "The storeroom", "speaker": "Dadi", "about": "Rajan", "side": "man", "kind": "detail that matters", "hard": false, "twin": "ft-rukavat-3-voice", "en": "Rajan is allergic to dust. He falls ill.", "hi": "राजन को धूल से एलर्जी है। बीमार पड़ जाता है।"}, {"id": "ft-rukavat-8-voice", "world": "Rukavat", "where": "First take, Rukavat 8", "title": "The gate", "speaker": "Dadi", "about": "Pooja", "side": "woman", "kind": "voice", "hard": true, "twin": "ft-rukavat-4-voice", "en": "Pooja told the boy's family: no scooter, no dowry. Her tongue is too sharp.", "hi": "पूजा ने लड़के के घरवालों से कह दिया, न स्कूटर, न दहेज। उसकी ज़बान बहुत तेज़ है।"}, {"id": "daily-rukavat-first-kamla", "world": "Rukavat", "where": "Daily story", "title": "Who takes Dadi to the doctor: first day", "speaker": "Dadi", "about": "Shampa", "side": "woman", "kind": "loaded word", "hard": false, "twin": "daily-rukavat-return-raju", "en": "Drives slowly, very nervous.", "hi": "धीमी ड्राइविंग, बहुत नर्वस।"}, {"id": "daily-rukavat-first-raju", "world": "Rukavat", "where": "Daily story", "title": "Who takes Dadi to the doctor: first day", "speaker": "Dadi", "about": "Rajan", "side": "man", "kind": "loaded word", "hard": false, "twin": "daily-rukavat-return-kamla", "en": "Drives slowly, very careful.", "hi": "धीमी ड्राइविंग, बहुत सावधान।"}, {"id": "daily-rukavat-return-kamla", "world": "Rukavat", "where": "Daily story", "title": "Who takes Dadi to the doctor: return day, the words swap", "speaker": "Dadi", "about": "Shampa", "side": "woman", "kind": "loaded word", "hard": false, "twin": "daily-rukavat-first-raju", "en": "Drives slowly, very careful.", "hi": "धीमी ड्राइविंग, बहुत सावधान।"}, {"id": "daily-rukavat-return-raju", "world": "Rukavat", "where": "Daily story", "title": "Who takes Dadi to the doctor: return day, the words swap", "speaker": "Dadi", "about": "Rajan", "side": "man", "kind": "loaded word", "hard": false, "twin": "daily-rukavat-first-kamla", "en": "Drives slowly, very nervous.", "hi": "धीमी ड्राइविंग, बहुत नर्वस।"}]</script>
+<script>
+(function () {
+  var LINES = JSON.parse(document.getElementById('data').textContent);
+  var WORLDS = ['Station', 'Lugdi', 'Jadugar', 'Cricket', 'Rukavat'];
+  var byId = {};
+  LINES.forEach(function (l) { byId[l.id] = l; });
+  var state = {};
+  var col = null;
+  var filter = 'all';
+  var queue = {};
+  var LS = 'retake-line-review';
+
+  function loadLocal() {
+    try { var s = JSON.parse(localStorage.getItem(LS) || '{}'); Object.keys(s).forEach(function (k) { state[k] = s[k]; }); } catch (e) {}
+  }
+  function saveLocal() {
+    try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) {}
+  }
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function world(w) { return w.toLowerCase(); }
+
+  function groups() {
+    var seen = {}, out = {};
+    WORLDS.forEach(function (w) { out[w] = []; });
+    LINES.forEach(function (l) {
+      if (seen[l.id]) return;
+      seen[l.id] = true;
+      var g = [l];
+      if (l.twin && byId[l.twin] && !seen[l.twin]) { g.push(byId[l.twin]); seen[l.twin] = true; }
+      (out[l.world] || (out[l.world] = [])).push(g);
+    });
+    return out;
+  }
+
+  function verdictOf(id) { return state[id] && state[id].verdict || ''; }
+
+  function lineCard(l) {
+    var card = el('article', 'lr-line');
+    card.id = l.id;
+    card.dataset.id = l.id;
+    var meta = el('p', 'lr-meta');
+    meta.appendChild(el('span', 'lr-where', l.where + (l.title ? ' · ' + l.title : '')));
+    if (l.hard) meta.appendChild(el('span', 'lr-tag lr-hard', 'Hard topic'));
+    meta.appendChild(el('span', 'lr-tag', l.kind));
+    card.appendChild(meta);
+    var who = el('p', 'lr-who');
+    who.textContent = l.speaker + (l.about ? ', about ' + l.about : '');
+    if (l.side === 'woman' || l.side === 'man') who.appendChild(el('span', 'lr-side', 'nudge on the ' + l.side));
+    card.appendChild(who);
+    var q = el('blockquote', 'lr-quote');
+    q.appendChild(el('span', 'lr-en', l.en));
+    if (l.hi) { var hi = el('span', 'lr-hi', l.hi); hi.lang = 'hi'; q.appendChild(hi); }
+    card.appendChild(q);
+    var acts = el('div', 'lr-acts');
+    acts.setAttribute('role', 'group');
+    acts.setAttribute('aria-label', 'Your choice for this line');
+    [['keep', 'Keep'], ['change', 'Change'], ['cut', 'Cut']].forEach(function (v) {
+      var b = el('button', 'lr-btn lr-' + v[0], v[1]);
+      b.type = 'button';
+      b.dataset.v = v[0];
+      b.setAttribute('aria-pressed', 'false');
+      acts.appendChild(b);
+    });
+    card.appendChild(acts);
+    var lab = el('label', 'lr-notelab');
+    lab.appendChild(el('span', 'lr-notecap', 'Note, or the words you want'));
+    var ta = el('textarea', 'lr-note');
+    ta.rows = 2;
+    lab.appendChild(ta);
+    card.appendChild(lab);
+    card.appendChild(el('p', 'lr-status'));
+    paint(card);
+    return card;
+  }
+
+  function paint(card) {
+    var id = card.dataset.id, s = state[id] || {}, v = s.verdict || '';
+    card.dataset.v = v;
+    Array.prototype.forEach.call(card.querySelectorAll('.lr-btn'), function (b) {
+      b.setAttribute('aria-pressed', b.dataset.v === v ? 'true' : 'false');
+    });
+    var ta = card.querySelector('.lr-note');
+    if (document.activeElement !== ta) ta.value = s.note || '';
+    card.querySelector('.lr-notelab').hidden = !(v === 'change' || v === 'cut' || (s.note || ''));
+    var stale = s.en && s.en !== byId[id].en;
+    card.querySelector('.lr-status').textContent = stale ? 'The words changed after you marked this. Look again.' : '';
+  }
+
+  function render() {
+    var main = document.getElementById('main');
+    main.textContent = '';
+    var g = groups();
+    WORLDS.forEach(function (w) {
+      if (!g[w] || !g[w].length) return;
+      var sec = el('section', 'lr-world w-' + world(w));
+      sec.id = 'w-' + world(w);
+      var band = el('div', 'band band-' + world(w) + ' band-sm');
+      var bi = el('div', 'band-in');
+      bi.appendChild(el('h2', 'disp disp-' + world(w), w));
+      var count = g[w].reduce(function (n, x) { return n + x.length; }, 0);
+      bi.appendChild(el('p', 'band-area', count + (count === 1 ? ' line' : ' lines')));
+      band.appendChild(bi);
+      sec.appendChild(band);
+      var body = el('div', 'lr-body');
+      g[w].forEach(function (grp) {
+        var row = el('div', grp.length > 1 ? 'lr-pair' : 'lr-single');
+        if (grp.length > 1) row.appendChild(el('p', 'lr-paircap', 'The same idea, the nudge on the other side'));
+        var inner = el('div', 'lr-pairin');
+        grp.forEach(function (l) { inner.appendChild(lineCard(l)); });
+        row.appendChild(inner);
+        body.appendChild(row);
+      });
+      sec.appendChild(body);
+      main.appendChild(sec);
+    });
+    applyFilter();
+  }
+
+  function applyFilter() {
+    var done = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.lr-line'), function (c) {
+      var l = byId[c.dataset.id], v = verdictOf(l.id);
+      if (v) done++;
+      var ok = filter === 'all' || (filter === 'todo' ? !v : filter === 'hard' ? l.hard : v === filter);
+      c.hidden = !ok;
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.lr-pair, .lr-single'), function (r) {
+      r.hidden = !r.querySelector('.lr-line:not([hidden])');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.lr-world'), function (s) {
+      s.hidden = !s.querySelector('.lr-line:not([hidden])');
+    });
+    document.getElementById('progress').textContent = done + ' of ' + LINES.length + ' marked';
+  }
+
+  function write(id) {
+    var card = document.getElementById(id);
+    var s = state[id];
+    saveLocal();
+    if (!col) return;
+    var body = { verdict: s.verdict || '', note: s.note || '', en: byId[id].en, hi: byId[id].hi || '', at: new Date().toISOString() };
+    queue[id] = (queue[id] || Promise.resolve()).then(function () {
+      return col.doc(id).set(body);
+    }).then(function () {
+      if (card) card.querySelector('.lr-status').textContent = 'Saved';
+    }, function (e) {
+      if (card) card.querySelector('.lr-status').textContent = 'Not saved: ' + (e && e.message || 'try again');
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.lr-btn');
+    if (b) {
+      var card = b.closest('.lr-line'), id = card.dataset.id;
+      var s = state[id] = Object.assign({}, state[id] || {});
+      s.verdict = s.verdict === b.dataset.v ? '' : b.dataset.v;
+      paint(card);
+      if (s.verdict === 'change') card.querySelector('.lr-note').focus();
+      write(id);
+      applyFilter();
+      return;
+    }
+    var c = e.target.closest && e.target.closest('.chip');
+    if (c) {
+      filter = c.dataset.f;
+      Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (x) {
+        x.setAttribute('aria-pressed', x === c ? 'true' : 'false');
+      });
+      applyFilter();
+    }
+  });
+  var timers = {};
+  document.addEventListener('input', function (e) {
+    if (!e.target.classList.contains('lr-note')) return;
+    var id = e.target.closest('.lr-line').dataset.id;
+    state[id] = Object.assign({}, state[id] || {}, { note: e.target.value });
+    clearTimeout(timers[id]);
+    timers[id] = setTimeout(function () { write(id); }, 900);
+  });
+
+  loadLocal();
+  render();
+  var note = document.getElementById('savenote');
+  var use = window.claude && window.claude.use ? window.claude.use('db') : Promise.resolve(null);
+  Promise.resolve(use).then(function (db) {
+    if (!db) {
+      note.textContent = 'Your choices stay in this browser only here. Open the page signed in to claude.ai so they reach Claude.';
+      return;
+    }
+    col = db.collection('verdicts');
+    note.textContent = 'Your choices save as you go, and Claude can read them.';
+    col.onSnapshot(function (snap) {
+      snap.docChanges().forEach(function (ch) {
+        var id = ch.doc.id;
+        if (!byId[id]) return;
+        if (ch.type === 'removed') delete state[id];
+        else state[id] = Object.assign({}, ch.doc.data());
+        var card = document.getElementById(id);
+        if (card) paint(card);
+      });
+      saveLocal();
+      applyFilter();
+    }, function () {
+      note.textContent = 'Saving stopped working. Reload the page; your marks so far are kept.';
+    });
+  }, function () {
+    note.textContent = 'Your choices stay in this browser only here.';
+  });
+})();
+</script>

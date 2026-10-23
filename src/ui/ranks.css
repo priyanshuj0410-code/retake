@@ -1,16 +1,8 @@
-/* @owns ranks ranks__caption ranks__head ranks__row ranks__cell ranks__gap */
+/* @owns ranks ranks__head ranks__row ranks__cell ranks__gap ranks__act */
 .ranks {
   width: 100%;
   border-collapse: collapse;
   border-radius: var(--radius-plate);
-  background: var(--c-band);
-  color: var(--c-on-band);
-}
-.ranks__caption {
-  padding: var(--gap-s) var(--gap-m);
-  text-align: left;
-  font-size: var(--text-m);
-  font-weight: 700;
   background: var(--c-band);
   color: var(--c-on-band);
 }
@@ -38,4 +30,16 @@
   padding: var(--gap-xs) var(--gap-m);
   font-size: var(--text-s);
   text-align: center;
+}
+.ranks__act {
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  margin-left: var(--gap-s);
+  border: var(--edge-thin) solid var(--c-edge-ground);
+  border-radius: var(--radius-button);
+  background: var(--c-band);
+  color: var(--c-on-band);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
 }

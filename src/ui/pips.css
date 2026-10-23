@@ -1,0 +1,17 @@
+/* @owns pips pips__pip */
+.pips {
+  display: inline-flex;
+  gap: var(--gap-xs);
+  align-items: center;
+  vertical-align: middle;
+}
+.pips__pip {
+  width: var(--pip);
+  height: var(--pip);
+  border-radius: var(--round);
+  border: var(--edge-thin) solid var(--c-edge-ground);
+}
+.pips__pip[data-on='true'] {
+  background: var(--c-display);
+  border-color: var(--c-display);
+}

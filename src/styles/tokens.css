@@ -53,6 +53,7 @@
   --ms-140: 140ms;
   --ms-180: 180ms;
   --ms-0: 0ms;
+  --ms-1200: 1200ms;
 
   --lh-tight: 1.05;
   --lh-snug: 1.25;
@@ -98,12 +99,17 @@
   --spine-height: var(--px-28);
   --spine-height-tall: var(--px-36);
   --swipe-height: var(--px-120);
+  --pip: var(--px-8);
+  --chip-height: var(--px-28);
 
   /* Motion (section 5): press feedback lands inside 100 ms; the hit-stop holds a commit still
      for a beat before the next screen. Reduced motion keeps the hold and drops the movement. */
   --dur-press: var(--ms-60);
   --dur-hitstop: var(--ms-140);
   --dur-move: var(--ms-180);
+  --dur-pulse: var(--ms-1200);
+  --pulse-reach: var(--px-4);
+  --pulse-animation: elt-pulse var(--dur-pulse) ease-in-out infinite;
   --press-shift: var(--px-2);
   --stamp-tilt: -2deg;
   --lift-tilt: 2deg;
@@ -111,6 +117,7 @@
   --mask-fade: linear-gradient(transparent, #000 30%, #000 70%, transparent);
   --art-zoom: 116%;
   --round: 50%;
+  --clip-all: inset(50%);
   --portrait-focus: center 22%;
 }
 
@@ -121,6 +128,7 @@
     --press-shift: 0px;
     --stamp-tilt: 0deg;
     --lift-tilt: 0deg;
+    --pulse-animation: none;
   }
 }
 

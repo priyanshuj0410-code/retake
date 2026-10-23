@@ -1,0 +1,16 @@
+{
+  "prompt": "Origin: procedural texture drawn in Python (numpy, PIL) for the Station premium side study; no source image, no generator.",
+  "method": "Tileable RGBA overlay for brushed, anodised aluminium: wrap-around anisotropic noise, long strokes (sigma 0.35 px across, 60 px along, 62%), a short tooth (sigma 0.3 by 6 px, 26%) and a slow drift (sigma 18 by 120 px, 12%). Negative values are black, positive values white; alpha is the magnitude, capped at 22 of 255, so on the graphite flap colours the grain reads as a fine machined finish, never as noise.",
+  "parameters": {
+    "seed": 4211,
+    "size": [
+      512,
+      128
+    ],
+    "alphaCap": 22
+  },
+  "script": "design-system/art/metal_textures.py (station_alu; first drawn by the study's make_station_textures.py, reproduced bit for bit)",
+  "movedFrom": "design-system/explore/assets/station-alu.webp (22 Oct 2026)",
+  "usedBy": "library.css, Station metal finish (O14), and the study explore/premium-station.css: every split-flap tile (the cover train number, the result score, the board ranks) and the toast, drawn at 256 x 64 px over the flap gradient.",
+  "createdAt": "2026-10-21T18:06:22+00:00"
+}

@@ -16,6 +16,7 @@ export function Slots(props: {
           className="slots__slot"
           data-filled={s.who ? 'true' : 'false'}
           data-armed={props.armed ? 'true' : 'false'}
+          data-next={props.armed && !s.who ? 'true' : 'false'}
           aria-label={s.action}
           onClick={() => props.onSlot(s.id)}
         >

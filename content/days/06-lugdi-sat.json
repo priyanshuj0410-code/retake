@@ -5,14 +5,29 @@
   "ground": "navy",
   "weekday": 6,
   "level": 10,
-  "levelName": { "en": "Safety framing", "hi": "सुरक्षा के नाम पर" },
+  "levelName": {
+    "en": "Safety framing",
+    "hi": "सुरक्षा के नाम पर"
+  },
   "area": "sport",
-  "object": { "en": "Sports action cover", "hi": "खेल एक्शन कवर" },
+  "object": {
+    "en": "Sports action cover",
+    "hi": "खेल एक्शन कवर"
+  },
   "masthead": {
-    "series": { "en": "Ghat Series", "hi": "घाट सीरीज़" },
+    "series": {
+      "en": "Ghat Series",
+      "hi": "घाट सीरीज़"
+    },
     "no": 217,
-    "title": { "en": "Night Match", "hi": "नाइट मैच" },
-    "blurb": { "en": "Mohalla T20 at 9.30 pm. Pick 6 of 8.", "hi": "मोहल्ला T20, रात 9.30 बजे। 8 में से 6 चुनें।" },
+    "title": {
+      "en": "Night Match",
+      "hi": "नाइट मैच"
+    },
+    "blurb": {
+      "en": "Mohalla T20, 9.30 pm.",
+      "hi": "मोहल्ला T20, रात 9.30।"
+    },
     "art": "pulp-s-cricket",
     "artPosition": "centre"
   },
@@ -20,27 +35,94 @@
     {
       "kind": "team",
       "id": "night-match",
-      "prompt": { "en": "Pick the six for tonight.", "hi": "आज रात के छह खिलाड़ी चुनें।" },
+      "prompt": {
+        "en": "Pick the six.",
+        "hi": "छह चुनें।"
+      },
       "seats": 6,
-      "stat": { "id": "avg", "label": { "en": "average", "hi": "औसत" } },
+      "stat": {
+        "id": "avg",
+        "label": {
+          "en": "average",
+          "hi": "औसत"
+        }
+      },
       "people": [
-        { "who": "pammi", "value": 41 },
-        { "who": "raju", "value": 40 },
-        { "who": "kamla", "value": 38 },
-        { "who": "arjun", "value": 37 },
-        { "who": "salim", "value": 35 },
-        { "who": "anita", "value": 34 },
-        { "who": "vikram", "value": 34 },
-        { "who": "meena", "value": 22 }
+        {
+          "who": "pammi",
+          "value": 41
+        },
+        {
+          "who": "raju",
+          "value": 40
+        },
+        {
+          "who": "kamla",
+          "value": 38
+        },
+        {
+          "who": "arjun",
+          "value": 37
+        },
+        {
+          "who": "salim",
+          "value": 35
+        },
+        {
+          "who": "anita",
+          "value": 34
+        },
+        {
+          "who": "vikram",
+          "value": 34
+        },
+        {
+          "who": "meena",
+          "value": 22
+        }
       ],
-      "voice": { "who": "salim", "line": { "en": "\"Keep the girls home tonight. It's for their safety.\"", "hi": "\"आज रात लड़कियों को घर रखो। उनकी सुरक्षा के लिए।\"" }, "target": "w" },
-      "responsePrompt": { "en": "And Salim chacha?", "hi": "और सलीम चाचा?" },
+      "voice": {
+        "who": "salim",
+        "line": {
+          "en": "\"Keep the girls home tonight. It's for their safety.\"",
+          "hi": "\"आज रात लड़कियों को घर रखो। उनकी सुरक्षा के लिए।\""
+        },
+        "target": "w"
+      },
+      "responsePrompt": {
+        "en": "And Salim chacha?",
+        "hi": "और सलीम चाचा?"
+      },
       "responses": [
-        { "id": "ride", "label": { "en": "A ride home for everyone", "hi": "सबके लिए घर तक गाड़ी" }, "restricts": false },
-        { "id": "comply", "label": { "en": "Do as Salim chacha says", "hi": "सलीम चाचा की बात मानो" }, "restricts": true },
-        { "id": "leave", "label": { "en": "Leave the team as it is", "hi": "टीम जैसी है वैसी रहे" }, "restricts": false }
+        {
+          "id": "ride",
+          "label": {
+            "en": "Rides for all",
+            "hi": "सबको सवारी"
+          },
+          "restricts": false
+        },
+        {
+          "id": "comply",
+          "label": {
+            "en": "Obey him",
+            "hi": "उसकी मानो"
+          },
+          "restricts": true
+        },
+        {
+          "id": "leave",
+          "label": {
+            "en": "No change",
+            "hi": "कोई बदलाव नहीं"
+          },
+          "restricts": false
+        }
       ],
-      "twin": { "id": "T3", "half": "a" }
+      "twin": {
+        "id": "T3",
+        "half": "a"
+      }
     }
   ],
   "_review": "Twin T3, first half. Anita and Vikram tie at 34 for the sixth seat: one lean unit. The voice asks to restrict the women; on Saturday of the Station week the same voice asks to restrict the men. Giving the same response both times is consistent."

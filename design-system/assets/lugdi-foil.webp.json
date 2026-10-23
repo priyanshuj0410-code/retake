@@ -1,0 +1,17 @@
+{
+  "prompt": "Origin: procedural texture drawn in Python (numpy, PIL) for the Lugdi premium side study; no source image, no generator.",
+  "method": "Champagne gold foil: anisotropic wrap-around noise (sigma 0.45 px across, 48 px along) for the brushed grain, a slow broad sheen (sigma 40 by 90 px), one specular band tilted 24 degrees from the top left (a soft body 9% of the width plus a crisp core 0.8% wide) and a top-lit gradient (brighter at the top of the letters), mapped through #C8AA6E, #E7D096, #F2E2B8, #FCF5DE and #FFFFFA: a light champagne gold whose darker tones stay above the 3:1 floor measured on every cover (text luminance 0.61). The CSS color of the title is set to the foil's 10th-percentile tone, so the contrast check measures the darker foil, not the highlight.",
+  "parameters": {
+    "seed": 315,
+    "size": [
+      1024,
+      256
+    ],
+    "bandAngleDeg": 24,
+    "bandCentre": 0.3
+  },
+  "script": "design-system/art/metal_textures.py (lugdi_foil; first drawn by the study's make_textures_v2.py, reproduced bit for bit)",
+  "movedFrom": "design-system/explore/assets/lugdi-foil.webp (22 Oct 2026)",
+  "usedBy": "library.css, Lugdi metal finish (O14), and the study explore/premium-lugdi.css: the cover title, filled through background-clip: text and still worn by the ink mask.",
+  "createdAt": "2026-10-21T17:50:05+00:00"
+}

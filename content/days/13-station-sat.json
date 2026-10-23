@@ -5,43 +5,128 @@
   "ground": "rail",
   "weekday": 6,
   "level": 10,
-  "levelName": { "en": "Safety framing", "hi": "सुरक्षा के नाम पर" },
+  "levelName": {
+    "en": "Safety framing",
+    "hi": "सुरक्षा के नाम पर"
+  },
   "area": "sport",
-  "object": { "en": "Departure board", "hi": "डिपार्चर बोर्ड" },
+  "object": {
+    "en": "Departure board",
+    "hi": "डिपार्चर बोर्ड"
+  },
   "masthead": {
-    "series": { "en": "No.", "hi": "अंक" },
+    "series": {
+      "en": "No.",
+      "hi": "अंक"
+    },
     "no": 224,
-    "title": { "en": "Night Match", "hi": "नाइट मैच" },
-    "city": { "en": "Madurai", "hi": "मदुरै" },
+    "title": {
+      "en": "Night Match",
+      "hi": "नाइट मैच"
+    },
+    "city": {
+      "en": "Madurai",
+      "hi": "मदुरै"
+    },
     "script": "இரவு போட்டி",
     "board": "yellow",
-    "blurb": { "en": "Mohalla T20 · 9.30 pm · 6 seats", "hi": "मोहल्ला T20 · रात 9.30 · 6 सीटें" }
+    "blurb": {
+      "en": "Mohalla T20 · 9.30 pm · 6 seats",
+      "hi": "मोहल्ला T20 · रात 9.30 · 6 सीटें"
+    }
   },
   "steps": [
     {
       "kind": "team",
       "id": "madurai-match",
-      "prompt": { "en": "Pick the six for tonight.", "hi": "आज रात के छह खिलाड़ी चुनें।" },
+      "prompt": {
+        "en": "Pick the six.",
+        "hi": "छह चुनें।"
+      },
       "seats": 6,
-      "stat": { "id": "avg", "label": { "en": "average", "hi": "औसत" } },
+      "stat": {
+        "id": "avg",
+        "label": {
+          "en": "average",
+          "hi": "औसत"
+        }
+      },
       "people": [
-        { "who": "raju", "value": 41 },
-        { "who": "pammi", "value": 40 },
-        { "who": "arjun", "value": 38 },
-        { "who": "kamla", "value": 37 },
-        { "who": "vikram", "value": 35 },
-        { "who": "anita", "value": 34 },
-        { "who": "salim", "value": 34 },
-        { "who": "meena", "value": 22 }
+        {
+          "who": "raju",
+          "value": 41
+        },
+        {
+          "who": "pammi",
+          "value": 40
+        },
+        {
+          "who": "arjun",
+          "value": 38
+        },
+        {
+          "who": "kamla",
+          "value": 37
+        },
+        {
+          "who": "vikram",
+          "value": 35
+        },
+        {
+          "who": "anita",
+          "value": 34
+        },
+        {
+          "who": "salim",
+          "value": 34
+        },
+        {
+          "who": "meena",
+          "value": 22
+        }
       ],
-      "voice": { "who": "meena", "line": { "en": "\"Keep the boys off the night bus. There was a fight last week.\"", "hi": "\"लड़कों को रात की बस से दूर रखो। पिछले हफ़्ते झगड़ा हुआ था।\"" }, "target": "m" },
-      "responsePrompt": { "en": "And Meena aunty?", "hi": "और मीना आंटी?" },
+      "voice": {
+        "who": "meena",
+        "line": {
+          "en": "\"Keep the boys off the night bus. There was a fight last week.\"",
+          "hi": "\"लड़कों को रात की बस से दूर रखो। पिछले हफ़्ते झगड़ा हुआ था।\""
+        },
+        "target": "m"
+      },
+      "responsePrompt": {
+        "en": "And Meena aunty?",
+        "hi": "और मीना आंटी?"
+      },
       "responses": [
-        { "id": "ride", "label": { "en": "A ride home for everyone", "hi": "सबके लिए घर तक गाड़ी" }, "restricts": false },
-        { "id": "comply", "label": { "en": "Do as Meena aunty says", "hi": "मीना आंटी की बात मानो" }, "restricts": true },
-        { "id": "leave", "label": { "en": "Leave the team as it is", "hi": "टीम जैसी है वैसी रहे" }, "restricts": false }
+        {
+          "id": "ride",
+          "label": {
+            "en": "Rides for all",
+            "hi": "सबको सवारी"
+          },
+          "restricts": false
+        },
+        {
+          "id": "comply",
+          "label": {
+            "en": "Obey her",
+            "hi": "उसकी मानो"
+          },
+          "restricts": true
+        },
+        {
+          "id": "leave",
+          "label": {
+            "en": "No change",
+            "hi": "कोई बदलाव नहीं"
+          },
+          "restricts": false
+        }
       ],
-      "twin": { "id": "T3", "half": "b" }
+      "twin": {
+        "id": "T3",
+        "half": "b"
+      }
     }
   ],
   "_review": "Twin T3, second half: a woman's voice asks to restrict the men, mirroring Salim chacha's line about the women. Anita and Salim tie at 34 for the sixth seat. The averages are shuffled from the Lugdi Saturday so the case is not an exact copy."

@@ -1,0 +1,15 @@
+{
+  "prompt": "Origin: procedural texture drawn in Python (numpy, PIL) for the Rukavat metal finish (O14); no source image, no generator.",
+  "method": "Tileable brushed steel: wrap-around anisotropic noise, long strokes along the width (sigma 0.35 px across, 70 px along, weight 0.10), a short tooth (sigma 0.3 by 5 px, 0.035) and a slow drift (sigma 14 by 140 px, 0.06) round a mid value of 0.62, mapped through #5C6269, #A0A6AD, #BAC0C6, #D4D9DD and #F0F3F5. The light from the top left is not in the file: the CSS lays a 150 degree gradient over it, so one tile serves every trim.",
+  "parameters": {
+    "seed": 5101,
+    "size": [
+      512,
+      128
+    ],
+    "mid": 0.62
+  },
+  "script": "rukavat_metal.py, written for this pass in the session work folder; the full recipe (seed, sizes, sigmas, colour stops) is in this sidecar, so the file can be redrawn exactly by the same numpy code. Same helpers as design-system/art/metal_textures.py.",
+  "usedBy": "worlds/rukavat.css, metal finish (O14): the brushed steel trim (3 px, 2 px on the small screens) round the cover title card, the chapter title card, the good-night score card off the phone, the demo TV and the cabinet edge of the \"?\" sheet, drawn at 256 x 64 px under a top-left light.",
+  "createdAt": "2026-10-22T00:48:28+00:00"
+}

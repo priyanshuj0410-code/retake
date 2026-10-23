@@ -1,0 +1,13 @@
+{
+  "prompt": "Origin: procedural texture drawn in Python (numpy, PIL) for the Lugdi premium side study; no source image, no generator.",
+  "method": "Tileable grey grain centred on mid grey: wrap-around Gaussian noise at sigma 0.55 px (80%) and 3 px (20%), +/-60 levels. Mid grey is neutral under soft-light, so the grain adds texture without shifting the painting's tone.",
+  "parameters": {
+    "seed": 215,
+    "size": 256,
+    "amplitude": 60
+  },
+  "script": "design-system/art/metal_textures.py (lugdi_laminate; first drawn by the study's make_textures.py, reproduced bit for bit)",
+  "movedFrom": "design-system/explore/assets/lugdi-laminate.png (22 Oct 2026)",
+  "usedBy": "library.css, Lugdi metal finish (O14), and the study explore/premium-lugdi.css: the laminate over every Lugdi painting (phone .art and the app's .art-img), a 128 px tile under one soft specular band from the top left, the pair blended soft-light at 55% opacity.",
+  "createdAt": "2026-10-21T17:07:12+00:00"
+}

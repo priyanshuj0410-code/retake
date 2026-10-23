@@ -1,0 +1,44 @@
+/* Prototype: one spacing scale and one type scale on the golden ratio (owner, 22 Oct 2026: "go ahead" on ideas 1 and 2 of
+   knowledge/ux/golden-ratio-ideas.md). Applies only inside .phi, so the library is unchanged until the owner chooses.
+
+   Spacing, the Fibonacci steps, each with one meaning:
+     5   inside one thing        an icon and its number; a name and its numbers
+     8   parts of one item       a question and who asks it; a face and its name; the numbers and the quote
+     13  items in a list         card to card; inside a card's edge; one number pair to the next
+     21  one group from the next the question group from the cards; the cards from the button
+     34  one section from the next
+   The 16 px screen edge and the 48 px tap targets stay.
+
+   Type, √φ (1.272) per step: 15, 19, 24, 31, 39, 50.
+     15  labels, the stat key, the serial, the quote (told apart by weight and ink, not size)
+     19  names, numbers, the main button
+     24  the question */
+.phi {
+  --f5: 5px; --f8: 8px; --f13: 13px; --f21: 21px; --f34: 34px;
+  --p15: .9375rem; --p19: 1.1875rem; --p24: 1.5rem; --p31: 1.9375rem; --p39: 2.4375rem; --p50: 3.125rem;
+  --t-headline: var(--p24); --t-name: var(--p19); --t-stat: var(--p19); --t-quote: var(--p15); --t-label: var(--p15); --t-title: var(--p19);
+}
+
+/* the screen: bar, then the question group, then the cards, then the button */
+.phone.phi.phi.phi .topbar { margin-bottom: 0; }
+.phone.phi.phi.phi .scr-body, .phone.phi.phi.phi.world .scr-body:has(> .byline + .statkey) { gap: 0; row-gap: 0; column-gap: var(--f8); padding-top: var(--f13); padding-bottom: 0; align-items: start; }   /* who asks and the key are parts of one group */
+.phone.phi.phi.phi .scr-body > .qbox { margin: 0; }
+.phone.phi.phi.phi .scr-body > :is(.byline, .statkey) { margin-top: var(--f8); }
+.phone.phi.phi.phi .scr-body > .tiles, .phone.phi.phi.phi.world .scr-body:has(> .byline + .statkey) > .tiles { margin-top: var(--f21); }
+.phone.phi.phi.phi .tiles, .phone.phi.phi.phi.world .tiles { gap: var(--f13); }
+.phone.phi.phi.phi .dock { padding: var(--f21) 16px var(--f21); }
+
+/* the card: 13 inside its edge; face, name, numbers, quote as 8, 5, 8 */
+.phone.phi.phi.phi.world .tile { gap: 0; padding: var(--f13); }
+.phone.phi.phi.phi .tile .nmrow { margin-top: var(--f8); }
+.phone.phi.phi.phi .tile .stats { margin-top: var(--f5); gap: var(--f13); }
+.phone.phi.phi.phi .tile .quote { margin-top: var(--f8); min-height: 0; }
+.phone.phi.phi.phi .stat { gap: var(--f5); }
+
+/* type on the scale: labels at 15 told apart by weight and ink */
+.phone.phi.phi.phi .byline, .phone.phi.phi.phi .statkey { font-size: var(--p15); }
+.phone.phi.phi.phi .statkey { column-gap: var(--f13); }
+.phone.phi.phi.phi .statkey span { gap: var(--f5); }
+.phone.phi.phi.phi .byline { gap: var(--f8); }
+.phone.phi.phi.phi .serial { font-size: var(--p15); }
+.phone.phi.phi.phi .main { font-size: var(--p19); }

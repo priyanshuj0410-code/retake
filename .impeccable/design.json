@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T12:00:00Z",
+  "title": "Design System: Equal Lens Daily",
+  "extensions": {
+    "colorMeta": {
+      "pick": { "role": "primary", "displayName": "Pick Yellow", "canonical": "oklch(87.9% 0.162 91)", "tonalRamp": ["#180700", "#3C1B00", "#5F3600", "#805600", "#A17600", "#C29900", "#DBC27A", "#F7EED5"] },
+      "pick-ink": { "role": "primary", "displayName": "Pick Ink", "canonical": "oklch(18.4% 0.011 39)", "tonalRamp": ["#0F0A08", "#292220", "#453E3B", "#635C59", "#837B78", "#A59C99", "#CBC2BF", "#F5ECE9"] },
+      "focus-outer": { "role": "neutral", "displayName": "Focus Outer", "canonical": "oklch(100% 0 0)", "tonalRamp": ["#0B0B0B", "#242424", "#404040", "#5D5D5D", "#7D7D7D", "#9E9E9E", "#C4C4C4", "#EEEEEE"] },
+      "focus-inner": { "role": "neutral", "displayName": "Focus Inner", "canonical": "oklch(18.4% 0.011 39)", "tonalRamp": ["#0F0A08", "#292220", "#453E3B", "#635C59", "#837B78", "#A59C99", "#CBC2BF", "#F5ECE9"] },
+      "scrim": { "role": "neutral", "displayName": "Scrim", "canonical": "rgba(0,0,0,0.32)" },
+      "lugdi-ground": { "role": "neutral", "displayName": "Night Violet", "canonical": "oklch(19.6% 0.068 301)", "tonalRamp": ["#110222", "#2A1B3F", "#46375E", "#64547E", "#84749F", "#A695C2", "#CCBAEA", "#F2EAFF"] },
+      "lugdi-ground-deep": { "role": "neutral", "displayName": "Deep Violet", "canonical": "oklch(16.2% 0.052 301)", "tonalRamp": ["#0F051D", "#291D39", "#453957", "#635777", "#827698", "#A497BA", "#CABDE1", "#F2EAFF"] },
+      "lugdi-paper": { "role": "neutral", "displayName": "Newsprint", "canonical": "oklch(92.9% 0.027 88)", "tonalRamp": ["#100A01", "#292315", "#463F30", "#645D4D", "#847D6C", "#A59E8C", "#CBC3B1", "#F6EEDB"] },
+      "lugdi-paper-shade": { "role": "neutral", "displayName": "Newsprint Shade", "canonical": "oklch(88.1% 0.036 87)", "tonalRamp": ["#120A00", "#2B230F", "#483F2A", "#665D47", "#867C65", "#A89D86", "#CEC3AB", "#F8EED5"] },
+      "lugdi-ink": { "role": "neutral", "displayName": "Press Ink", "canonical": "oklch(18.4% 0.011 39)", "tonalRamp": ["#0F0A08", "#292220", "#453E3B", "#635C59", "#837B78", "#A59C99", "#CBC2BF", "#F5ECE9"] },
+      "lugdi-title": { "role": "neutral", "displayName": "Title White", "canonical": "oklch(96.8% 0.033 84)", "tonalRamp": ["#120A00", "#2C2311", "#483E2C", "#675C49", "#877C67", "#A89D88", "#CEC3AD", "#F9EDD6"] },
+      "lugdi-red": { "role": "secondary", "displayName": "Pulp Print Red", "canonical": "oklch(57.9% 0.234 24)", "tonalRamp": ["#240000", "#540000", "#880000", "#BF0002", "#DD323B", "#EF736E", "#FDACA6", "#FFE6E3"] },
+      "lugdi-muted": { "role": "neutral", "displayName": "Not-Ready Violet", "canonical": "oklch(38.0% 0.050 309)", "tonalRamp": ["#11051B", "#2B1D37", "#473854", "#665674", "#867595", "#A796B7", "#CDBCDE", "#F5E9FF"] },
+      "lugdi-on-ground-soft": { "role": "neutral", "displayName": "Soft Lilac", "canonical": "oklch(86.7% 0.043 304)", "tonalRamp": ["#0F061A", "#281F35", "#443A52", "#635872", "#827793", "#A498B5", "#CABEDB", "#F3E9FF"] },
+      "station-ground": { "role": "neutral", "displayName": "Platform Black", "canonical": "oklch(21.6% 0.004 229)", "tonalRamp": ["#0A0B0C", "#222425", "#3E4041", "#5C5E5F", "#7B7E7F", "#9C9FA0", "#C2C4C6", "#ECEFF0"] },
+      "station-ground-deep": { "role": "neutral", "displayName": "Platform Deep", "canonical": "oklch(18.0% 0.004 229)", "tonalRamp": ["#0A0B0C", "#222425", "#3E4041", "#5B5E5F", "#7B7E7F", "#9C9FA0", "#C2C4C6", "#ECEFF0"] },
+      "station-raised": { "role": "neutral", "displayName": "Board Backing", "canonical": "oklch(26.6% 0.009 248)", "tonalRamp": ["#080C0F", "#212428", "#3C4045", "#5A5E63", "#797E83", "#9A9FA4", "#BFC5CA", "#EAEFF5"] },
+      "station-ticket": { "role": "neutral", "displayName": "Ticket Card", "canonical": "oklch(90.5% 0.037 90)", "tonalRamp": ["#110A00", "#2B230D", "#473F28", "#665D45", "#867D64", "#A79E84", "#CDC4A9", "#F7EED5"] },
+      "station-ticket-shade": { "role": "neutral", "displayName": "Ticket Shade", "canonical": "oklch(85.9% 0.045 90)", "tonalRamp": ["#120900", "#2C2307", "#493F23", "#675D40", "#887C5F", "#A99E7F", "#CFC3A4", "#F7EED5"] },
+      "station-ink": { "role": "neutral", "displayName": "Station Ink", "canonical": "oklch(18.2% 0 0)", "tonalRamp": ["#0B0B0B", "#242424", "#404040", "#5D5D5D", "#7D7D7D", "#9E9E9E", "#C4C4C4", "#EEEEEE"] },
+      "station-enamel-white": { "role": "neutral", "displayName": "Enamel White", "canonical": "oklch(95.8% 0.012 92)", "tonalRamp": ["#0D0B06", "#26241D", "#424038", "#605D56", "#807D75", "#A19E96", "#C7C4BB", "#F1EEE5"] },
+      "station-cobalt": { "role": "secondary", "displayName": "Enamel Cobalt", "canonical": "oklch(35.9% 0.160 265)", "tonalRamp": ["#01052D", "#051764", "#153392", "#3155B7", "#4E77DB", "#709AFE", "#A6C3FF", "#E4EFFF"] },
+      "station-flap": { "role": "neutral", "displayName": "Flap Black", "canonical": "oklch(26.9% 0 0)", "tonalRamp": ["#0B0B0B", "#242424", "#404040", "#5D5D5D", "#7D7D7D", "#9E9E9E", "#C4C4C4", "#EEEEEE"] },
+      "station-flap-hi": { "role": "neutral", "displayName": "Flap Highlight", "canonical": "oklch(30.9% 0 0)", "tonalRamp": ["#0B0B0B", "#242424", "#404040", "#5D5D5D", "#7D7D7D", "#9E9E9E", "#C4C4C4", "#EEEEEE"] },
+      "station-flap-seam": { "role": "neutral", "displayName": "Flap Seam", "canonical": "oklch(15.0% 0 0)", "tonalRamp": ["#0B0B0B", "#242424", "#404040", "#5D5D5D", "#7D7D7D", "#9E9E9E", "#C4C4C4", "#EEEEEE"] },
+      "station-muted": { "role": "neutral", "displayName": "Not-Ready Grey", "canonical": "oklch(35.8% 0.007 248)", "tonalRamp": ["#090B0E", "#222427", "#3D4043", "#5B5E61", "#7A7E81", "#9B9FA2", "#C1C4C8", "#EBEFF3"] },
+      "station-on-ground-soft": { "role": "neutral", "displayName": "Soft Steel", "canonical": "oklch(84.6% 0.007 248)", "tonalRamp": ["#090B0E", "#212427", "#3D4043", "#5B5E61", "#7A7E81", "#9B9FA3", "#C1C5C8", "#EBEFF3"] }
+    },
+    "typographyMeta": {
+      "display-lugdi": { "displayName": "Display, Lugdi", "purpose": "The Lugdi cover title only, printed on the painting with a red then black misregistered layer and worn by the ink mask. Devanagari line height 1.3, mask dropped." },
+      "display-station": { "displayName": "Display, Station", "purpose": "The station name on the enamel name board only. Devanagari 1.3." },
+      "score": { "displayName": "Score", "purpose": "The one score per result, in the roundel or on flap tiles. Tabular. Devanagari 1.4." },
+      "headline": { "displayName": "Headline", "purpose": "The question (the step's H1) and numbers players compare. Devanagari 1.6." },
+      "title": { "displayName": "Title", "purpose": "Names, button, chip and slot labels, plates, toasts. Devanagari 1.7." },
+      "body": { "displayName": "Body", "purpose": "Only the lines people say: quotes, voice balloons, the cover line, letters. The only use of weight 500. Devanagari 1.7." },
+      "label": { "displayName": "Label", "purpose": "Stat keys, units, tab labels, mastheads, meta lines, the credit. Hind 700 at 14. Devanagari 1.65." }
+    },
+    "shadows": [
+      { "name": "ticket-hairline", "value": "0 0 0 1px rgba(0,0,0,.55)", "purpose": "Station cards, plates and slips on the ground." },
+      { "name": "enamel-lip", "value": "inset 0 -4px 0 rgba(0,0,0,.28)", "purpose": "Station live main button; pressed shrinks to inset 0 -1px 0." },
+      { "name": "sheet-lift", "value": "0 -12px 24px rgba(0,0,0,.28)", "purpose": "Sheets rising from the bottom over the scrim." },
+      { "name": "menu-lift", "value": "0 12px 24px rgba(0,0,0,.35)", "purpose": "The board row menu." },
+      { "name": "focus-ring", "value": "outline: 3px solid #FFFFFF; outline-offset: 2px; box-shadow: 0 0 0 5px #17110F", "purpose": "Every focusable part in both worlds. Never yellow." },
+      { "name": "lugdi-double-rule", "value": "inset 0 2px 0 #17110F, inset 0 4px 0 #EFE7D4, inset 0 5px 0 #17110F, inset 0 -2px 0 #17110F, inset 0 -4px 0 #EFE7D4, inset 0 -5px 0 #17110F", "purpose": "Lugdi caption strips (question box, plates, stat key, byline, day plate, masthead): rules above and below, no side frame." }
+    ],
+    "motion": [
+      { "name": "ease-std", "value": "cubic-bezier(.2,0,0,1)", "purpose": "Picks, presses and colour changes." },
+      { "name": "ease-dec", "value": "cubic-bezier(.05,.7,.1,1)", "purpose": "Sheets entering (400 ms)." },
+      { "name": "ease-acc", "value": "cubic-bezier(.3,0,.8,.15)", "purpose": "Sheets leaving (200 ms)." },
+      { "name": "d-press", "value": "100ms", "purpose": "Press feedback." },
+      { "name": "d-pick", "value": "200ms", "purpose": "A pick, and the committing hold before the next step." },
+      { "name": "d-colour", "value": "150ms", "purpose": "Colour changes." },
+      { "name": "refuse", "value": "260ms side shake, 4px", "purpose": "A refused tap on a card." },
+      { "name": "reduced-motion", "value": "animation and transition none", "purpose": "A designed still state: instant cuts, still flaps and stamps." }
+    ],
+    "breakpoints": [
+      { "name": "phone-small", "value": "360x640" },
+      { "name": "phone", "value": "390x844" },
+      { "name": "library-narrow", "value": "440px" },
+      { "name": "library-hero", "value": "1240px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Main Button, Live",
+      "kind": "button",
+      "refersTo": "main-live",
+      "description": "The one main button on a puzzle step once a pick is made. Pick yellow, verb-first label naming the consequence. Shown with the Station enamel lip.",
+      "html": "<button class=\"ds-main-live\">Send Kamla</button>",
+      "css": ".ds-main-live { width: 320px; min-height: 56px; border: 0; border-radius: 4px; background: #FFD23F; color: #17110F; font: 700 1rem/1.5 Hind, sans-serif; box-shadow: inset 0 -4px 0 rgba(0,0,0,.28); cursor: pointer; transition: transform 100ms cubic-bezier(.2,0,0,1), box-shadow 100ms cubic-bezier(.2,0,0,1); } .ds-main-live:active { transform: translate(2px, 2px); box-shadow: inset 0 -1px 0 rgba(0,0,0,.28); } .ds-main-live:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; box-shadow: 0 0 0 5px #17110F; }"
+    },
+    {
+      "name": "Main Button, Wait",
+      "kind": "button",
+      "refersTo": "main-wait-lugdi",
+      "description": "The main button before the step is ready: same place and size, muted fill, paper outline, a label naming what is missing.",
+      "html": "<button class=\"ds-main-wait\" aria-disabled=\"true\">Pick 2 more</button>",
+      "css": ".ds-main-wait { width: 320px; min-height: 56px; border: 0; border-radius: 0; background: #4A3B57; color: #EFE7D4; box-shadow: inset 0 0 0 2px #EFE7D4; font: 700 1rem/1.5 Hind, sans-serif; cursor: default; } .ds-main-wait:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; box-shadow: 0 0 0 5px #17110F; }"
+    },
+    {
+      "name": "Main Button, Outside a Puzzle (Lugdi coupon)",
+      "kind": "button",
+      "refersTo": "main-out-lugdi",
+      "description": "Play, Continue, Share in Lugdi: a newsprint coupon with a triple ink frame. Never yellow. Station uses the white enamel plate raster.",
+      "html": "<button class=\"ds-main-out\">Play</button>",
+      "css": ".ds-main-out { width: 320px; min-height: 56px; border: 0; border-radius: 0; background: #EFE7D4; color: #17110F; box-shadow: inset 0 0 0 2px #17110F, inset 0 0 0 4px #EFE7D4, inset 0 0 0 5px #17110F; font: 700 1rem/1.5 Hind, sans-serif; cursor: pointer; transition: transform 100ms cubic-bezier(.2,0,0,1); } .ds-main-out:active { transform: translate(2px, 2px); background: #E2D7BE; } .ds-main-out:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; box-shadow: 0 0 0 5px #17110F; }"
+    },
+    {
+      "name": "Person Card, Lugdi tile",
+      "kind": "card",
+      "refersTo": "person-card-lugdi",
+      "description": "Newsprint with a 2.5 px ink frame. Picked prints pick yellow over the stock with multiply, a 3 px frame, an outer paper ring and a tick.",
+      "html": "<div class=\"ds-ground\"><button class=\"ds-tile\" role=\"radio\" aria-checked=\"false\"><span class=\"ds-face\"></span><b>Kamla</b><span class=\"ds-stat\">12</span><span class=\"ds-quote\">\"Drives the ghats with confidence.\"</span></button><button class=\"ds-tile is-picked\" role=\"radio\" aria-checked=\"true\"><span class=\"ds-face\"></span><b>Raju</b><span class=\"ds-stat\">12</span><span class=\"ds-quote\">\"Drives the ghats with attitude.\"</span></button></div>",
+      "css": ".ds-ground { display: grid; grid-template-columns: 160px 160px; gap: 12px; padding: 16px; background: #1B0B2E; } .ds-tile { position: relative; isolation: isolate; display: grid; gap: 4px; padding: 8px; border: 0; border-radius: 0; background: #EFE7D4; color: #17110F; text-align: left; box-shadow: inset 0 0 0 2.5px #17110F; font: 700 1rem/1.5 Hind, sans-serif; cursor: pointer; transition: transform 200ms cubic-bezier(.2,0,0,1), box-shadow 150ms cubic-bezier(.2,0,0,1); } .ds-tile:active { transform: translate(2px, 2px); background: #E2D7BE; box-shadow: inset 0 0 0 4px #17110F; } .ds-tile:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; box-shadow: 0 0 0 5px #17110F; } .ds-tile.is-picked { box-shadow: inset 0 0 0 3px #17110F, 0 0 0 3px #EFE7D4; } .ds-tile.is-picked::before { content: \"\"; position: absolute; inset: 0; background: #FFD23F; mix-blend-mode: multiply; z-index: -1; } .ds-face { display: block; aspect-ratio: 16 / 9; background: #E2D7BE; box-shadow: inset 0 0 0 1px rgba(23,17,15,.4); } .ds-stat { font: 700 1.5rem/1.33 Hind, sans-serif; font-variant-numeric: tabular-nums; } .ds-quote { font: 500 1rem/1.5 Hind, sans-serif; }"
+    },
+    {
+      "name": "Person Card, Station ticket row",
+      "kind": "card",
+      "refersTo": "person-card-station",
+      "description": "The Edmondson ticket: cream card with its printed band at the top (a border-image raster in the build, approximated here), a 1 px hairline, 4 px corners. A spent check is a hole cut through the ticket by mask.",
+      "html": "<div class=\"ds-platform\"><button class=\"ds-ticket\"><span class=\"ds-face\"></span><b>Anita</b><span class=\"ds-hole\"></span></button></div>",
+      "css": ".ds-platform { padding: 16px; background: #181A1B; } .ds-ticket { width: 320px; min-height: 80px; display: grid; grid-template-columns: 72px 1fr auto; gap: 12px; align-items: center; padding: 2px 40px 2px 4px; border: 0; border-top: 14px solid #13308F; border-radius: 4px; background: #E9DFC4; color: #121212; box-shadow: 0 0 0 1px rgba(0,0,0,.55); font: 700 1rem/1.5 Hind, sans-serif; text-align: left; cursor: pointer; -webkit-mask: radial-gradient(circle 9px at calc(100% - 20px) 50%, transparent 97%, #000 100%); mask: radial-gradient(circle 9px at calc(100% - 20px) 50%, transparent 97%, #000 100%); } .ds-ticket:active { transform: translate(2px, 2px); } .ds-ticket:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; } .ds-ticket .ds-face { width: 72px; aspect-ratio: 1; background: #DCD0B0; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip-lugdi",
+      "description": "48 tall, paper fill, 1.5 px ink frame, 4 px corners. Selected is pick yellow with a 3 px frame and an outer paper ring. Never commits a step.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" role=\"radio\" aria-checked=\"false\">Most years</button><button class=\"ds-chip\" role=\"radio\" aria-checked=\"true\">Fewest crashes</button></div>",
+      "css": ".ds-chips { display: flex; gap: 12px; padding: 16px; background: #1B0B2E; } .ds-chip { min-height: 48px; padding: 0 16px; border: 0; border-radius: 4px; background: #EFE7D4; color: #17110F; box-shadow: inset 0 0 0 1.5px #17110F; font: 700 1rem/1.5 Hind, sans-serif; cursor: pointer; transition: background-color 150ms cubic-bezier(.2,0,0,1), transform 100ms cubic-bezier(.2,0,0,1); } .ds-chip:active { transform: translate(2px, 2px); background: #E2D7BE; box-shadow: inset 0 0 0 3px #17110F; } .ds-chip[aria-checked=\"true\"] { background: #FFD23F; box-shadow: inset 0 0 0 3px #17110F, 0 0 0 3px #EFE7D4; } .ds-chip:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; box-shadow: 0 0 0 5px #17110F; }"
+    },
+    {
+      "name": "Slot",
+      "kind": "input",
+      "refersTo": "slot-filled",
+      "description": "A job or blank to fill. Empty is the only dashed thing in the system; a valid target turns solid; filled is pick yellow with an ink frame.",
+      "html": "<div class=\"ds-slots\"><button class=\"ds-slot\">Driver</button><button class=\"ds-slot is-target\">Guard</button><button class=\"ds-slot is-filled\">Cook: Arjun</button></div>",
+      "css": ".ds-slots { display: grid; gap: 10px; width: 320px; padding: 16px; background: #1B0B2E; } .ds-slot { min-height: 56px; padding: 8px 12px; border: 2px dashed #EFE7D4; border-radius: 4px; background: rgba(18,7,32,.8); color: #FFF3DC; font: 700 1rem/1.5 Hind, sans-serif; text-align: left; cursor: pointer; } .ds-slot.is-target { border-style: solid; border-width: 3px; padding: 7px 11px; } .ds-slot.is-filled { border: 0; background: #FFD23F; color: #17110F; box-shadow: inset 0 0 0 3px #17110F; } .ds-slot:active { transform: translate(2px, 2px); } .ds-slot:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; box-shadow: 0 0 0 5px #17110F; }"
+    },
+    {
+      "name": "Secondary Text Button",
+      "kind": "button",
+      "refersTo": "text-button-lugdi",
+      "description": "The one secondary action: 48 tall, underlined Title type on a newsprint strip (Lugdi) or a dark veil (Station). Destructive takes a double underline.",
+      "html": "<div class=\"ds-ground2\"><button class=\"ds-textbtn\">See how it works</button></div>",
+      "css": ".ds-ground2 { padding: 16px; background: #1B0B2E; } .ds-textbtn { min-height: 48px; padding: 0 10px; border: 0; border-radius: 0; background: #EFE7D4; color: #17110F; font: 700 1rem/1.5 Hind, sans-serif; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; cursor: pointer; } .ds-textbtn:active { background: #E2D7BE; } .ds-textbtn:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; box-shadow: 0 0 0 5px #17110F; }"
+    },
+    {
+      "name": "Tab Bar, Station",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Navigation: three tabs, Label type, filled icons; the active icon sits in an enamel-white chip. Lugdi marks the active tab with a red icon and underline instead. Never yellow.",
+      "html": "<nav class=\"ds-tabbar\"><button class=\"ds-tab\" aria-current=\"page\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path fill=\"currentColor\" d=\"M4 4h16v16H4z\"/></svg><span>Today</span></button><button class=\"ds-tab\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path fill=\"currentColor\" d=\"M4 14h4v6H4zM10 8h4v12h-4zM16 4h4v16h-4z\"/></svg><span>Board</span></button><button class=\"ds-tab\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path fill=\"currentColor\" d=\"M3 6h18v3H3zM3 11h18v9H3z\"/></svg><span>Week</span></button></nav>",
+      "css": ".ds-tabbar { width: 390px; display: grid; grid-template-columns: repeat(3, 1fr); min-height: 64px; background: #101213; box-shadow: inset 0 3px 0 #F4F1E8, inset 0 5px 0 #000; } .ds-tab { border: 0; background: transparent; color: #C9CDD1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 8px 0 6px; font: 700 .875rem/1.43 Hind, sans-serif; cursor: pointer; } .ds-tab svg { padding: 3px; box-sizing: content-box; } .ds-tab[aria-current=\"page\"] { color: #F4F1E8; } .ds-tab[aria-current=\"page\"] svg { background: #F4F1E8; color: #181A1B; border-radius: 4px; } .ds-tab:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; }"
+    },
+    {
+      "name": "Split-Flap Score",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Station figures on split-flap tiles: two flat halves, enamel-white tabular numerals, the seam drawn behind the numeral, in a dark housing.",
+      "html": "<span class=\"ds-flaphouse\"><i class=\"ds-flap\">8</i><i class=\"ds-flap\">6</i></span>",
+      "css": ".ds-flaphouse { display: inline-flex; gap: 2px; padding: 6px; background: #0B0C0D; border-radius: 4px; box-shadow: inset 0 0 0 2px #22262A, 0 0 0 1px #000; } .ds-flap { position: relative; isolation: isolate; min-width: 42px; height: 56px; display: grid; place-items: center; font: normal 700 2.25rem/1 Hind, sans-serif; font-variant-numeric: tabular-nums; color: #F4F1E8; border-radius: 4px; background: linear-gradient(#303030 0 50%, #262626 50% 100%); box-shadow: inset 0 0 0 1px #000; } .ds-flap::after { content: \"\"; position: absolute; left: 0; right: 0; top: calc(50% - 1px); height: 2px; background: #0B0B0B; z-index: -1; }"
+    },
+    {
+      "name": "Enamel Day Plate",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "The Station day plate in the top bar: in the build a cobalt enamel raster (plate-enamel.webp) as a border-image under live enamel-white Title type; approximated here with a white rim on cobalt.",
+      "html": "<div class=\"ds-platform2\"><span class=\"ds-enamel\">Kolkata</span></div>",
+      "css": ".ds-platform2 { padding: 16px; background: #181A1B; } .ds-enamel { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; background: #13308F; color: #F4F1E8; box-shadow: inset 0 0 0 3px #13308F, inset 0 0 0 5px #F4F1E8; font: 700 1rem/1.5 Hind, sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "One game, drawn by one hand, in two printed worlds",
+    "overview": "Each day the puzzle happens on a real printed object: a pulp cover, a reservation chart, an Edmondson ticket, a departure board, a luggage tag. The object changes; the skeleton never does. The same top bar, the question in the same place, the same five tappable looks and the one main button pinned at the bottom, with one meaning for every colour. Lugdi weeks dress the game as the next issue of the \"Ghat Series\", a 1970s Hindi pulp. A gouache painting fills the phone, the title is printed on it in Sarpanch and worn by an ink mask, and every caption is a newsprint strip with a double ink rule. Station weeks dress it as Indian Railways ephemera: cobalt enamel plates with chipped white rims, cream Edmondson ticket card with its printed band, split-flap tiles. The Station paintings are regraded to a black and ticket-cream duotone so that blue belongs to the enamel alone. The worlds alternate by ISO week and share one skeleton to the pixel.",
+    "keyCharacteristics": [
+      "Two world palettes over one shared pick yellow and one shared focus ring.",
+      "Materials are rasters under live type: enamel and ticket plates are CSS border-images, newsprint and ticket grain are tiled textures.",
+      "Hind for every word that is read; Sarpanch only on the Lugdi cover title.",
+      "Three radii per world, a fixed eight-step spacing scale, and fixed question and dock positions.",
+      "Every state is drawn in both worlds, in Hindi, at 200% text and at 360 x 640."
+    ],
+    "rules": [
+      { "name": "The One Yellow Rule", "body": "Pick yellow means \"you picked this\" and its live confirm, nothing else. Never on Play, scores, the \"you\" row, streak marks, tabs, the board switch, the language chip or the focus ring.", "section": "colors" },
+      { "name": "The Blue Belongs to Enamel Rule", "body": "In Station, blue lives only in the enamel and the cobalt marks drawn from it. Paintings are black and ticket-cream duotones; no blue in pictures.", "section": "colors" },
+      { "name": "The Ink or Paper Rule", "body": "Running text is ink on paper, or paper, title white or enamel white on a ground or plate. Red and cobalt carry marks and rules, not reading text.", "section": "colors" },
+      { "name": "The 500 Is Speech Rule", "body": "Weight 500 appears only in Body, the lines people say. Everything else is 700.", "section": "typography" },
+      { "name": "The One Cover Title Rule", "body": "Sarpanch appears once per Lugdi cover, on the title, worn by the ink mask. Station has no display face; its board name is Hind 700.", "section": "typography" },
+      { "name": "The 14 Floor Rule", "body": "Nothing is set under 14 px, in either script (measured: no text under 14 px on any phone). At 200% every role scales from its own variable.", "section": "typography" },
+      { "name": "The Fixed Skeleton Rule", "body": "Question top at 104 px and dock top at 748 px on every puzzle step; tab screens dock at 682 px. A world changes its dress, never its places.", "section": "layout" },
+      { "name": "The Printed Not Lit Rule", "body": "Plates and cards carry no blurred shadow; their edges are ink rules, frames or painted rims. Blur belongs to overlays.", "section": "elevation" },
+      { "name": "The Misregistration Rule", "body": "Lugdi's red and black offset is a print shift: on the cover title, worn by the ink mask, and under exactly one control, the live main button's 4 px red print edge (R-VIS-22, the OQ-3 default; keeping it is an open owner choice). No other control carries an offset.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the question top at 104 px and the dock top at 748 px on every puzzle step, and dock tab screens at 682 px.",
+      "Do start every card on newsprint (Lugdi) or ticket card (Station), and print a pick by multiplying pick yellow over the stock.",
+      "Do put enamel, ticket and newsprint materials under live type as rasters with provenance sidecars, never with baked-in text.",
+      "Do set Body (Hind 500) only for lines people say, and everything else in Hind 700.",
+      "Do keep blue in Station to the enamel and its cobalt marks, and regrade Station paintings to black and ticket cream.",
+      "Do draw every state in both worlds, in Hindi, at 200% text and at 360 x 640."
+    ],
+    "donts": [
+      "Don't use yellow for anything but the pick and its live confirm.",
+      "Don't add a sixth tappable look; compose new steps from the main button, person card, chip, slot and text button.",
+      "Don't use Sarpanch anywhere but the Lugdi cover title.",
+      "Don't add a radius beyond 0, 4 and full in either world.",
+      "Don't use dashes for anything except an empty slot or blank.",
+      "Don't put a hard offset on any control other than the Lugdi live main button's red print edge (R-VIS-22).",
+      "Don't set reading text in red or cobalt.",
+      "Don't use emoji or text glyphs as icons, or kickers above headings."
+    ]
+  }
+}

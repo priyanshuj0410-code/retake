@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "design-system/library.css"
+        ],
+        "createdAt": "2026-10-21T21:15:27.375Z",
+        "reason": "Sanctioned by the owner's decision O14 (knowledge/reference/design-rules-consolidated.md; DESIGN.md Metal and borders): Lugdi's foil-stamped cover title, a foil texture clipped to the letters, not decorative gradient text"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "design-system/explore/premium-lugdi.css"
+        ],
+        "createdAt": "2026-10-21T21:15:27.408Z",
+        "reason": "Sanctioned by the owner's decision O14 (knowledge/reference/design-rules-consolidated.md; DESIGN.md Metal and borders): Lugdi's foil-stamped cover title, a foil texture clipped to the letters, not decorative gradient text"
+      }
+    ]
+  }
+}

@@ -9,3 +9,11 @@ scripts/scratch/
 firebase-debug.log
 database-debug.log
 .DS_Store
+
+# image tries from the painter: regenerable from their logs (design-system/art/raw/cut/log.json, raw/portraits/log.json),
+# kept on disk and out of git (24 Oct 2026); the pictures in use are in design-system/assets/
+design-system/art/raw/**/*.png
+design-system/art/raw/**/*.webp
+# design-review screenshots and the detector's cache
+.impeccable/review/
+.impeccable/hook.cache.json

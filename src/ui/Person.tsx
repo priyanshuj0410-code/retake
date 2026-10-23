@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Portrait } from './Portrait'
 import './person.css'
+import './hidden.css'
 
 export interface PersonView {
   id: string
@@ -29,6 +30,10 @@ export function Person(props: {
   aside?: ReactNode
   label?: string
   portrait?: 's' | 'm' | 'l' | 'fill'
+  /** Numbers only; the set's legend names them once. */
+  bare?: boolean
+  /** The next thing to tap. */
+  pulse?: boolean
 }) {
   const p = props.person
   const layout = props.layout ?? 'row'
@@ -49,7 +54,7 @@ export function Person(props: {
             {p.stats.map((s) => (
               <span className="person__stat" key={s.label}>
                 <span className="person__n">{s.n}</span>
-                <span className="person__label">{s.label}</span>
+                {props.bare ? null : <span className="person__label">{s.label}</span>}
               </span>
             ))}
           </span>
@@ -61,6 +66,9 @@ export function Person(props: {
         <span className="person__mark" data-empty={props.markEmpty ? 'true' : 'false'}>
           {props.mark}
         </span>
+      ) : null}
+      {props.bare && p.stats ? (
+        <span className="vh">{p.stats.map((s) => `${s.label} ${s.n}`).join(', ')}</span>
       ) : null}
     </>
   )
@@ -76,6 +84,7 @@ export function Person(props: {
       type="button"
       className="person"
       data-layout={layout}
+      data-next={props.pulse ? 'true' : 'false'}
       role={role === 'button' ? undefined : role}
       aria-checked={role === 'button' ? undefined : !!props.checked}
       aria-pressed={role === 'button' && props.checked !== undefined ? props.checked : undefined}

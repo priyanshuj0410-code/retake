@@ -1,0 +1,1800 @@
+<title>New World Sounds</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Playable music and sound sketches for Retake's three new worlds: Jadugar, Cricket and Rukavat.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@500;700&family=Sarpanch:wght@900&family=Yatra+One&family=Khand:wght@700&family=Rozha+One&display=swap');
+
+:root {
+  color-scheme: light;
+  --bg: #F6F3EC;
+  --surface: #FFFFFF;
+  --surface2: #EDE8DC;
+  --text: #1D1B17;
+  --muted: #57534A;
+  --line: #D3CDBC;
+  --focus: #0B57D0;
+  --alert: #B3001F;
+  --alert-bg: #FFF3F1;
+  --note-bg: #FBF6E6;
+  --note-line: #D9C98F;
+  --j-night: #1A1F4A;
+  --j-crimson: #9E1B32;
+  --j-gold: #B08A3E;
+  --j-card: #FBF5E8;
+  --j-ink: #17110F;
+  --j-showgold: #F2D27A;
+  --c-ground: #151816;
+  --c-chalk: #EFEDE4;
+  --c-hung: #222824;
+  --c-green: #2F5D3A;
+  --r-ground: #2A2F33;
+  --r-teak: #6B4429;
+  --r-cream: #FBF4E4;
+  --r-ink: #2A1F17;
+  --r-tealdeep: #275453;
+  --r-orange: #E2662B;
+  --jadugar-edge: #9E1B32;
+  --cricket-edge: #2F5D3A;
+  --rukavat-edge: #275453;
+  --jadugar-btn-edge: #9E1B32;
+  --cricket-btn-edge: #151816;
+  --rukavat-btn-edge: #275453;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #121315;
+    --surface: #1C1D20;
+    --surface2: #2A2B30;
+    --text: #ECE9E1;
+    --muted: #B2ADA0;
+    --line: #3A3B41;
+    --focus: #8AB4FF;
+    --alert: #FF8B9B;
+    --alert-bg: #2A1519;
+    --note-bg: #25221A;
+    --note-line: #5B5030;
+    --jadugar-edge: #F08A9E;
+    --cricket-edge: #86C596;
+    --rukavat-edge: #7CC3C1;
+    --jadugar-btn-edge: #F08A9E;
+    --cricket-btn-edge: #EFEDE4;
+    --rukavat-btn-edge: #7CC3C1;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121315;
+  --surface: #1C1D20;
+  --surface2: #2A2B30;
+  --text: #ECE9E1;
+  --muted: #B2ADA0;
+  --line: #3A3B41;
+  --focus: #8AB4FF;
+  --alert: #FF8B9B;
+  --alert-bg: #2A1519;
+  --note-bg: #25221A;
+  --note-line: #5B5030;
+  --jadugar-edge: #F08A9E;
+  --cricket-edge: #86C596;
+  --rukavat-edge: #7CC3C1;
+  --jadugar-btn-edge: #F08A9E;
+  --cricket-btn-edge: #EFEDE4;
+  --rukavat-btn-edge: #7CC3C1;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 84px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Hind', 'Noto Sans Devanagari', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-bottom: max(48px, env(safe-area-inset-bottom, 0px));
+  overflow-wrap: break-word;
+}
+.wrap { max-width: 760px; margin: 0 auto; }
+h1 {
+  font-family: 'Sarpanch', 'Hind', sans-serif;
+  font-weight: 900;
+  font-size: clamp(30px, 8.6vw, 44px);
+  line-height: 1.05;
+  margin: 22px 0 10px;
+}
+h2 { font-weight: 700; font-size: 25px; line-height: 1.2; margin: 44px 0 10px; }
+h3 { font-weight: 700; font-size: 19px; line-height: 1.3; margin: 0; }
+h4 { font-weight: 700; font-size: 18px; line-height: 1.3; margin: 0 0 4px; }
+p { margin: 0 0 12px; }
+ul, ol { padding-left: 1.2em; margin: 0 0 12px; }
+li { margin: 0 0 8px; }
+b, strong, dt, th { font-weight: 700; }
+a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.lede { font-size: 19px; max-width: 34em; }
+.small { font-size: 15px; color: var(--muted); }
+.num {
+  display: inline-block; min-width: 1.7em; text-align: center; margin-right: 8px;
+  background: var(--text); color: var(--bg); border-radius: 6px; padding: 0 6px; font-size: 0.8em;
+}
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* bench: sticky controls */
+.bench {
+  position: sticky; top: 8px; z-index: 20;
+  display: flex; align-items: center; gap: 12px;
+  background: var(--surface); border: 2px solid var(--text); border-radius: 14px;
+  padding: 6px 8px 6px 14px; margin: 14px 0 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.14);
+}
+.bench .vol-l { display: flex; flex-direction: column; line-height: 1.1; min-width: 56px; }
+.bench .vol-l span { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.bench output { font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
+.bench input[type=range] { flex: 1 1 auto; min-width: 0; }
+
+input[type=range] {
+  -webkit-appearance: none; appearance: none;
+  height: 48px; margin: 0; background: transparent; --p: 40%; cursor: pointer;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  height: 8px; border-radius: 4px;
+  background: linear-gradient(to right, var(--text) var(--p), var(--line) var(--p));
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 28px; height: 28px; border-radius: 50%; margin-top: -10px;
+  background: var(--surface); border: 3px solid var(--text);
+}
+input[type=range]::-moz-range-track { height: 8px; border-radius: 4px; background: var(--line); }
+input[type=range]::-moz-range-progress { height: 8px; border-radius: 4px; background: var(--text); }
+input[type=range]::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%; background: var(--surface); border: 3px solid var(--text);
+}
+
+/* buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; min-width: 48px; padding: 0 16px;
+  border-radius: 10px; border: 2px solid var(--text);
+  font: 700 16px/1 'Hind', system-ui, sans-serif;
+  background: var(--surface); color: var(--text); cursor: pointer;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.btn .ic { width: 16px; height: 16px; fill: currentColor; flex: none; }
+.btn-stop { background: var(--text); color: var(--bg); flex: none; }
+.btn-jadugar { background: var(--j-crimson); color: var(--j-card); border-color: var(--jadugar-btn-edge); }
+.btn-cricket { background: var(--c-ground); color: var(--c-chalk); border-color: var(--cricket-btn-edge); }
+.btn-rukavat { background: var(--r-tealdeep); color: var(--r-cream); border-color: var(--rukavat-btn-edge); }
+.btn-jadugar.is-on { background: var(--j-card); color: var(--j-ink); border-color: var(--j-crimson); }
+.btn-cricket.is-on { background: var(--c-chalk); color: var(--c-ground); border-color: var(--c-green); }
+.btn-rukavat.is-on { background: var(--r-cream); color: var(--r-ink); border-color: var(--r-tealdeep); }
+.btn-plain { background: var(--surface); color: var(--text); border-color: var(--text); }
+.btn-plain.is-on { background: var(--text); color: var(--bg); }
+.btn:active { transform: translateY(1px); }
+.btn .i-stop { display: none; }
+.btn.is-on[data-loop] .i-play { display: none; }
+.btn.is-on[data-loop] .i-stop { display: inline; }
+
+/* switch */
+.sw { display: flex; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; }
+.sw input {
+  -webkit-appearance: none; appearance: none; margin: 0; flex: none;
+  width: 52px; height: 30px; border-radius: 15px; background: var(--line); position: relative; cursor: pointer;
+  border: 2px solid var(--muted);
+}
+.sw input::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--muted);
+}
+.sw input:checked { background: var(--text); border-color: var(--text); }
+.sw input:checked::after { transform: translateX(22px); border-color: var(--bg); }
+.sw span { font-weight: 700; }
+
+/* panels */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0 0 14px; }
+.note { background: var(--note-bg); border: 1px solid var(--note-line); border-radius: 12px; padding: 12px 16px; margin: 0 0 14px; }
+.note p:last-child, .panel p:last-child { margin-bottom: 0; }
+.note h3, .panel h3 { margin-bottom: 6px; }
+.rule11 { border: 3px solid var(--alert); background: var(--alert-bg); border-radius: 14px; padding: 16px; margin: 20px 0; }
+.rule11 h2 { margin: 0 0 8px; font-size: 24px; }
+.rule11 ul { margin-bottom: 0; }
+.rules { display: grid; gap: 10px; grid-template-columns: 1fr; margin: 14px 0; padding: 0; list-style: none; }
+.rules li { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
+.rules b { display: block; }
+.toc { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0; list-style: none; margin: 0 0 8px; }
+.toc li { margin: 0; }
+.toc a {
+  display: flex; align-items: center; min-height: 48px; padding: 0 12px; text-decoration: none; font-weight: 700;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+}
+
+/* world headers, each in its own dress */
+.wh { border-radius: 12px; margin: 30px 0 14px; }
+.wh .hi { font-family: 'Hind', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+.wh .tag { font-size: 14px; font-weight: 700; padding: 3px 8px; }
+.wh-row { display: flex; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap; }
+.wh-jadugar { background: var(--j-night); padding: 10px; }
+.wh-jadugar .wh-row {
+  background: var(--j-crimson); color: var(--j-card); padding: 10px 14px;
+  box-shadow: inset 0 0 0 3px var(--j-crimson), inset 0 0 0 4px var(--j-gold);
+}
+.wh-jadugar h3 { font-family: 'Yatra One', 'Hind', serif; font-weight: 400; font-size: 27px; line-height: 1.1; color: var(--j-showgold); }
+.wh-jadugar .hi { color: var(--j-card); }
+.wh-jadugar .tag { background: var(--j-card); color: var(--j-ink); }
+.wh-cricket { background: var(--c-ground); padding: 12px 14px; color: var(--c-chalk); }
+.wh-cricket h3 { font-family: 'Khand', 'Hind', sans-serif; font-weight: 700; font-size: 28px; line-height: 1; letter-spacing: .12em; text-transform: uppercase; padding-top: 4px; }
+.wh-cricket .tag { background: var(--c-hung); color: var(--c-chalk); box-shadow: inset 0 0 0 1px rgba(239,237,228,.4); }
+.wh-rukavat { background: var(--r-teak); padding: 8px; border-radius: 16px; }
+.wh-rukavat .wh-row { background: var(--r-ground); color: var(--r-cream); border-radius: 10px; padding: 12px 14px; }
+.wh-rukavat h3 { font-family: 'Rozha One', 'Hind', serif; font-weight: 400; font-size: 27px; line-height: 1.1; }
+.wh-rukavat .tag { background: var(--r-tealdeep); color: var(--r-cream); box-shadow: inset 0 3px 0 var(--r-orange); padding: 6px 8px 3px; }
+.world-line { font-size: 17px; }
+
+/* cards */
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px 16px; margin: 0 0 14px; border-top-width: 4px; }
+.card.jadugar { border-top-color: var(--jadugar-edge); --edge: var(--jadugar-edge); }
+.card.cricket { border-top-color: var(--cricket-edge); --edge: var(--cricket-edge); }
+.card.rukavat { border-top-color: var(--rukavat-edge); --edge: var(--rukavat-edge); }
+.card .meta { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0 0 10px; list-style: none; }
+.chips li { margin: 0; font-size: 13px; font-weight: 700; border: 1px solid var(--line); background: var(--surface2); border-radius: 999px; padding: 2px 10px; }
+.loopctl { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin: 12px 0 4px; }
+.loopctl .btn { min-width: 128px; }
+.prog { flex: 1 1 120px; height: 8px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
+.prog i { display: block; height: 100%; width: 0; background: var(--edge, var(--text)); }
+.clock { font-size: 14px; font-variant-numeric: tabular-nums; color: var(--muted); min-width: 5.6em; text-align: right; }
+.cmp dl { margin: 10px 0 0; border-top: 1px solid var(--line); }
+.cmp dt { margin-top: 10px; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.cmp dd { margin: 2px 0 0; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 10px; padding: 0; list-style: none; }
+.badges li { margin: 0; font-size: 13px; font-weight: 700; border: 1px solid var(--text); border-radius: 6px; padding: 1px 8px; }
+.rec { border: 3px solid var(--text); background: var(--surface); border-radius: 14px; padding: 14px 16px; margin: 0 0 14px; }
+.rec.jadugar { border-color: var(--jadugar-edge); }
+.rec.cricket { border-color: var(--cricket-edge); }
+.rec.rukavat { border-color: var(--rukavat-edge); }
+.rec h3 { margin-bottom: 8px; }
+.rec p:last-child { margin-bottom: 0; }
+.cell-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.status { font-size: 15px; color: var(--muted); min-height: 1.5em; margin: 4px 0 0; }
+
+/* big-moment timelines */
+.tl { position: relative; margin: 14px 0 12px; }
+.tl-lab { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 3px; }
+.tl-row { position: relative; height: 32px; border-radius: 6px; background: var(--surface2); overflow: hidden; margin: 0 0 8px; }
+.tl-seg {
+  position: absolute; top: 0; bottom: 0; display: flex; align-items: center; padding: 0 6px;
+  font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; color: var(--text);
+  background: color-mix(in srgb, var(--edge) 22%, var(--surface)); box-shadow: inset -2px 0 0 var(--surface);
+}
+.tl-seg.b { background: color-mix(in srgb, var(--edge) 40%, var(--surface)); }
+.tl-mark { position: absolute; top: 5px; bottom: 5px; width: 4px; margin-left: -2px; border-radius: 2px; background: var(--text); }
+.tl-axis { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tl-head { position: absolute; top: 14px; bottom: 18px; width: 3px; margin-left: -1px; background: var(--focus); left: 0; visibility: hidden; }
+.tl-head.on { visibility: visible; }
+
+/* effect table */
+.fxwrap { margin: 0 0 14px; }
+.fx { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.fx th, .fx td { text-align: left; vertical-align: top; padding: 12px 8px; border-top: 1px solid var(--line); }
+.fx thead th { border-top: 0; border-bottom: 3px solid var(--text); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+.fx thead th.h-j { border-bottom-color: var(--jadugar-edge); }
+.fx thead th.h-c { border-bottom-color: var(--cricket-edge); }
+.fx thead th.h-r { border-bottom-color: var(--rukavat-edge); }
+.fx col.c0 { width: 25%; } .fx col.cw { width: 25%; }
+.ev-t { display: block; font-weight: 700; }
+.ev-n { display: block; font-size: 14px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+.cap { font-size: 14px; color: var(--muted); margin: 6px 0 0; }
+.dur { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.fx td::before { display: none; }
+
+/* questions */
+.qs { list-style: none; padding: 0; margin: 0; counter-reset: q; }
+.qs > li { counter-increment: q; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px 12px 16px; margin: 0 0 12px; }
+.qs .q { font-weight: 700; font-size: 18px; line-height: 1.35; margin-bottom: 6px; }
+.qs .q::before { content: counter(q) ". "; }
+.qs p { margin-bottom: 6px; }
+.qs .lab { font-weight: 700; }
+
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 0 16px; margin: 0 0 14px; }
+summary { min-height: 48px; display: flex; align-items: center; font-weight: 700; cursor: pointer; }
+details[open] summary { border-bottom: 1px solid var(--line); margin-bottom: 10px; }
+details p:last-child, details ul:last-child { margin-bottom: 14px; }
+
+@media (min-width: 640px) {
+  .rules { grid-template-columns: 1fr 1fr; }
+  .toc { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 639px) {
+  .fx, .fx tbody, .fx tr, .fx th, .fx td { display: block; }
+  .fx colgroup { display: none; }
+  .fx thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .fx tr { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin: 0 0 12px; }
+  .fx th.ev { padding: 0 0 4px; border: 0; }
+  .fx td { padding: 10px 0 0; border: 0; border-top: 1px solid var(--line); margin-top: 10px; min-width: 0; }
+  .fx td::before { display: block; flex: 1 0 100%; content: attr(data-label); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .fx td { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
+  .fx td .cap { flex: 1 1 130px; margin: 0; }
+  .bench { padding-left: 12px; gap: 10px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sw input::after { transition: transform .15s; }
+  .sw input { transition: background .15s; }
+}
+</style>
+<div class="wrap">
+  <div class="top">
+    <h1>Sound for the new worlds</h1>
+    <p class="lede">Music and sound effects for Jadugar, Cricket and Rukavat, built on the rules you set on <a href="https://claude.ai/artifact/8M55cYQKiSWS7czrCGC2yV">the first sound page</a>. Things to hear and compare. You decide.</p>
+    <p class="small">Every sound here is made live in your browser. No audio files are downloaded. Sound starts only when you press a button.</p>
+  </div>
+
+  <div class="bench" role="group" aria-label="Sound test bench">
+    <label class="vol-l" for="vol"><span>Volume</span><output id="volOut" for="vol">0.40</output></label>
+    <input id="vol" type="range" min="0" max="1" step="0.01" value="0.4" aria-label="Master volume">
+    <button type="button" class="btn btn-stop" id="stop">Stop all</button>
+  </div>
+  <p class="vh" id="live" role="status" aria-live="polite"></p>
+
+  <section class="panel" aria-labelledby="howto">
+    <h3 id="howto">Before you press Play</h3>
+    <ul>
+      <li>The first press wakes the sound. Browsers do not allow it earlier.</li>
+      <li>Start with the volume low, as set. If you hear nothing, check your phone's silent switch and media volume.</li>
+      <li>One music loop plays at a time. The sound effects play over it, so you can hear them together.</li>
+      <li>Try a cheap phone speaker too. That is how many players will hear it.</li>
+      <li>Like the game, this page fades the music out after 3 minutes without a tap.</li>
+    </ul>
+    <label class="sw" for="calm"><input type="checkbox" id="calm"><span>Calm sound (what reduced motion would switch on)</span></label>
+    <p class="small" id="calmNote" hidden>Your device asks for reduced motion, so calm sound started on.</p>
+    <p class="status" id="nosound" hidden>This browser has no Web Audio, so nothing on this page can play.</p>
+  </section>
+
+  <nav aria-label="On this page">
+    <ul class="toc">
+      <li><a href="#decided">1. Already decided</a></li>
+      <li><a href="#jadugar">2. Jadugar</a></li>
+      <li><a href="#cricket">3. Cricket</a></li>
+      <li><a href="#rukavat">4. Rukavat</a></li>
+      <li><a href="#moments">5. Big moments</a></li>
+      <li><a href="#effects">6. All the effects</a></li>
+      <li><a href="#public">7. In public</a></li>
+      <li><a href="#decide">8. For you to decide</a></li>
+    </ul>
+  </nav>
+
+  <section class="rule11" aria-labelledby="r11">
+    <h2 id="r11">The one rule: sound never hints at a lean</h2>
+    <p>No sound may tell a player that a pick was good or bad, or which way it leaned. Every sketch below was checked against this first.</p>
+    <ul>
+      <li>No "right" or "wrong" sounds, no cheer, no groan, no applause.</li>
+      <li>Each sound is a fixed recipe: the same notes, length and loudness for every person, every pick, every day. None of them can even receive the score or the lean.</li>
+      <li>The big moments are part of the result, so they follow this too: the cloth, the scoreboard and the interruption card sound the same after a score of 12 as after 90.</li>
+    </ul>
+  </section>
+
+  <section id="decided" aria-labelledby="decided-h">
+    <h2 id="decided-h"><span class="num">1</span>Already decided</h2>
+    <p>Your answers on the first page hold for every world. Here is how each lands in the new three.</p>
+    <ul class="rules">
+      <li><b>Sound is on by default</b>Music and Sounds are two switches, both in the "?" sheet, with no line under them.</li>
+      <li><b>One set per world</b>Jadugar, Cricket and Rukavat each get their own set below, as Lugdi and Station did.</li>
+      <li><b>The result sounds the same every time</b>Whatever was picked, scored or leaned. This is why Cricket's scoreboard needs a decision (question 2).</li>
+      <li><b>Quiet places</b>Sunday's look-again is silent except for sheets. The milestone gets one soft note.</li>
+      <li><b>Nothing like a horn or an announcement</b>None in the game itself, and at most one soft sound on the cover. Rukavat's card needs a decision here (question 3).</li>
+      <li><b>Music fades</b>After 3 minutes without a tap, and it stops when the screen locks.</li>
+      <li><b>Reduced motion</b>The calm set plays, without the milestone note. Use the Calm switch above to hear it.</li>
+      <li><b>No clocks</b>No ticking, no countdown, no beat that speeds up. Cricket's "Decision pending" was the hardest test of this.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== JADUGAR ===================== -->
+  <section id="jadugar" aria-labelledby="jadugar-h">
+    <h2 id="jadugar-h"><span class="num">2</span>Jadugar: three music directions</h2>
+    <div class="wh wh-jadugar">
+      <div class="wh-row">
+        <h3>Jadugar <span class="hi">&#2332;&#2366;&#2342;&#2370;&#2327;&#2352;</span></h3>
+        <span class="tag">The travelling jadoo show</span>
+      </div>
+    </div>
+    <p class="world-line">One night of a travelling show in a small town: kerosene lamps, a painted moon, a cot that floats. Its big moment is the crimson cloth pulled off the show bill.</p>
+
+    <article class="card jadugar cmp" id="card-jA">
+      <h4>A. Tent band</h4>
+      <p class="meta">100 beats a minute &middot; a six-beat sway, four rounds &middot; loop 14.4 s &middot; a bright folk scale on D</p>
+      <p>The band outside the tent before the show: a bright plucked tune like an Indian banjo, a dholak keeping a gentle six-beat sway, small hand cymbals on the first beat, and a plucked bass.</p>
+      <ul class="chips" aria-label="Voices"><li>Banjo-like tune</li><li>Dholak sway</li><li>Hand cymbals</li><li>Plucked bass</li></ul>
+      <p><b>Listen for:</b> a show about to start, or a wedding band?</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-jadugar" data-loop="jA" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:14</span>
+      </div>
+      <ul class="badges"><li>Effort: medium to high</li><li>Public risk: high</li></ul>
+      <dl>
+        <dt>Fit</dt><dd>The truest to a travelling show. Anyone who grew up with fairs and melas knows this sound.</dd>
+        <dt>Risk</dt><dd>The busiest of the three. A tune that comes round every 14 seconds can tire within minutes, and it is festive, which may sit oddly with a puzzle about fairness. The cymbals sit high, where phone speakers are harshest.</dd>
+        <dt>Cost and effort</dt><dd>Four parts and a tune to tune. The banjo is the hardest to make convincing. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>A steady rhythm and a tune compete with a screen reader's speech. Calm sound drops the cymbals and the banjo's quick repeats, and plays it lower.</dd>
+      </dl>
+    </article>
+
+    <article class="card jadugar cmp" id="card-jB">
+      <h4>B. Lamp and night</h4>
+      <p class="meta">no beat &middot; loop 14.4 s &middot; four plucked strings on D</p>
+      <p>The hiss of the pressure lamp over the stage, a slow drone of four plucked strings that ring and fade, and once each loop a soft roll on the dugdugi, the little rattle drum that street showmen play to call a crowd.</p>
+      <ul class="chips" aria-label="Voices"><li>Lamp hiss</li><li>Plucked drone</li><li>Dugdugi roll</li></ul>
+      <p><b>Listen for:</b> does the hiss sound like a lamp, or like a radio between stations?</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-jadugar" data-loop="jB" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:14</span>
+      </div>
+      <ul class="badges"><li>Effort: low to medium</li><li>Public risk: low</li></ul>
+      <dl>
+        <dt>Fit</dt><dd>Night, lamps and a waiting crowd. It sounds unlike Lugdi's drone, because these strings are plucked and left to ring, so it breathes instead of holding.</dd>
+        <dt>Risk</dt><dd>Low for annoyance. On a cheap speaker the hiss can sound like a fault. The dugdugi is quick and may make someone nearby look, so it is soft and comes once.</dd>
+        <dt>Cost and effort</dt><dd>Low to medium: filtered noise, four plucked notes and one roll. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>No tune and no beat under the puzzle. A steady hiss can mask speech for someone who hears less well, so it sits very low. Calm sound drops the dugdugi.</dd>
+      </dl>
+    </article>
+
+    <article class="card jadugar cmp" id="card-jC">
+      <h4>C. Magic shimmer, used sparingly</h4>
+      <p class="meta">loop 16 s &middot; mostly silence on purpose</p>
+      <p>Five soft glass notes rising, an echo, and a long quiet. Later, a softer three-note answer falls back. Like Station's chime, it is a small sound of its own, not a bed.</p>
+      <ul class="chips" aria-label="Voices"><li>Glass notes</li><li>Rising five</li><li>Quiet echo</li></ul>
+      <p><b>Listen for:</b> magic, or a reward? A rising sparkle is what many games play for a right answer.</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-jadugar" data-loop="jC" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:16</span>
+      </div>
+      <ul class="badges"><li>Effort: low</li><li>Public risk: low</li></ul>
+      <dl>
+        <dt>Fit</dt><dd>Says "magic" at once, anywhere in the world. Less of the small Indian town than A or B.</dd>
+        <dt>Risk</dt><dd>A rising sparkle is the sound many games use for "well done". If it ever followed a pick it would read as praise, so it could live on the cover only. It is close to a cliché.</dd>
+        <dt>Cost and effort</dt><dd>The lowest: eight notes. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>Short, soft and predictable, easy to ignore. The notes are round, and nothing is piercing.</dd>
+      </dl>
+    </article>
+
+    <aside class="rec jadugar" aria-label="Suggested default for Jadugar">
+      <h3>Suggested default for Jadugar</h3>
+      <p><b>B, lamp and night, trimmed:</b> the plucked drone with only a breath of the lamp, quietly, under the puzzle. The dugdugi's one short roll moves to the cover, as its one soft sound.</p>
+      <p><b>Why:</b> it sets the scene without a tune to tire of, it is the calmest of the three in a public place, and it sounds unlike Lugdi. If the hiss ever sounds like a fault, drop it and keep the strings.</p>
+    </aside>
+  </section>
+
+  <!-- ===================== CRICKET ===================== -->
+  <section id="cricket" aria-labelledby="cricket-h">
+    <h2 id="cricket-h"><span class="num">3</span>Cricket: three music directions</h2>
+    <div class="wh wh-cricket">
+      <div class="wh-row">
+        <h3>Cricket <span class="hi">&#2325;&#2381;&#2352;&#2367;&#2325;&#2375;&#2335;</span></h3>
+        <span class="tag">The old stadium scoreboard</span>
+      </div>
+    </div>
+    <p class="world-line">A match at the old ground under floodlights: the hand-hung scoreboard, the scorecard and the commentator. Its big moment is the third umpire's "Decision pending", then the score hung plate by plate.</p>
+
+    <article class="card cricket cmp" id="card-cA">
+      <h4>A. Floodlit ground</h4>
+      <p class="meta">no beat &middot; loop 16 s</p>
+      <p>The hum of the floodlights, a crowd murmuring far away with no words and no cheering, and twice a loop a bat meeting a ball across the ground, with its echo off the empty stands.</p>
+      <ul class="chips" aria-label="Voices"><li>Floodlight hum</li><li>Far crowd</li><li>Far bat</li></ul>
+      <p><b>Listen for:</b> does the crowd sound far away, or like people behind you?</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-cricket" data-loop="cA" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:16</span>
+      </div>
+      <ul class="badges"><li>Effort: low</li><li>Public risk: medium</li></ul>
+      <dl>
+        <dt>Fit</dt><dd>The truest to the place: you are in the stands at night.</dd>
+        <dt>Risk</dt><dd>A murmur from a phone can sound like people next to you. We left out every cheer, groan and round of applause: a cheer just after a pick would sound like praise, and a roar from a phone turns heads. On a train it may blend with the real noise and vanish.</dd>
+        <dt>Cost and effort</dt><dd>Low: filtered noise, a hum and two taps. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>No tune, no beat. Steady noise can mask speech for someone who hears less well. Calm sound drops the bat.</dd>
+      </dl>
+    </article>
+
+    <article class="card cricket cmp" id="card-cB">
+      <h4>B. Transistor in the stands</h4>
+      <p class="meta">104 beats a minute, swung &middot; 8 bars &middot; loop 18.5 s &middot; F major</p>
+      <p>A light, swinging tune as if from a pocket transistor radio a few seats away: a soft clarinet-like lead, a plucked bass, brushes and light chords, all squeezed through a small radio's narrow sound, with faint static.</p>
+      <ul class="chips" aria-label="Voices"><li>Clarinet-like lead</li><li>Plucked bass</li><li>Brushes</li><li>Radio sound</li><li>Static</li></ul>
+      <p><b>Listen for:</b> does the radio sound feel cosy, or like the phone is broken?</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-cricket" data-loop="cB" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:18</span>
+      </div>
+      <ul class="badges"><li>Effort: medium</li><li>Public risk: low to medium</li></ul>
+      <dl>
+        <dt>Fit</dt><dd>Many people followed matches on a transistor, and the commentator is part of this world. With no words, it keeps only the feel.</dd>
+        <dt>Risk</dt><dd>The narrow radio sound is made for small speakers, so it stays clear at low volume, but a tune can tire. The static can sound like a fault. It must not lean on any real radio station's or sports channel's theme, and it does not.</dd>
+        <dt>Cost and effort</dt><dd>Medium: a tune, three backing parts and the radio sound. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>A tune and a swing compete with a screen reader. Calm sound drops the lead and the static, leaving bass and brushes, a little lower.</dd>
+      </dl>
+    </article>
+
+    <article class="card cricket cmp" id="card-cC">
+      <h4>C. Bat and ball groove</h4>
+      <p class="meta">92 beats a minute &middot; 4 bars &middot; loop 10.4 s &middot; no tune</p>
+      <p>A beat made from the game itself: the bat's low tock as the kick drum, the ball into the keeper's gloves on the backbeat, spikes scraping the crease in between, and a plucked bass.</p>
+      <ul class="chips" aria-label="Voices"><li>Bat tock</li><li>Gloves</li><li>Crease scrape</li><li>Plucked bass</li></ul>
+      <p><b>Listen for:</b> playful, or like a sports advert?</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-cricket" data-loop="cC" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:10</span>
+      </div>
+      <ul class="badges"><li>Effort: medium</li><li>Public risk: high</li></ul>
+      <dl>
+        <dt>Fit</dt><dd>Playful and sporty, and no other world has anything like it. It is made only of cricket's own sounds.</dd>
+        <dt>Risk</dt><dd>The highest. A steady beat can feel like a clock, which the game must never do, and the loop is short, so it repeats fast. The bat tock is also the Send sound, so the music would blur with the moment of choosing.</dd>
+        <dt>Cost and effort</dt><dd>Medium: four short sounds and a bass line. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>The busiest. A constant beat is the hardest on a sensitive listener and on a screen reader's speech. Calm sound drops the scrape and plays it lower.</dd>
+      </dl>
+    </article>
+
+    <aside class="rec cricket" aria-label="Suggested default for Cricket">
+      <h3>Suggested default for Cricket</h3>
+      <p><b>B, transistor in the stands, trimmed:</b> the tune, quiet, with no static, under the puzzle. The far bat and its echo is the cover's one soft sound.</p>
+      <p><b>Why:</b> its narrow radio sound is made for a phone speaker, so it stays clear at low volume. It has no crowd to turn heads and no beat that feels like a clock. Unlike your Lugdi pick it has a tune; if you would rather have no tune under any puzzle, the fallback is A without the bat, or no bed at all, as in Station.</p>
+    </aside>
+  </section>
+
+  <!-- ===================== RUKAVAT ===================== -->
+  <section id="rukavat" aria-labelledby="rukavat-h">
+    <h2 id="rukavat-h"><span class="num">4</span>Rukavat: three music directions</h2>
+    <div class="wh wh-rukavat">
+      <div class="wh-row">
+        <h3>Rukavat <span class="hi">&#2352;&#2369;&#2325;&#2366;&#2357;&#2335;</span></h3>
+        <span class="tag">The 1980s family TV</span>
+      </div>
+    </div>
+    <p class="world-line">An evening in front of the family TV: the antenna on the roof, the teak cabinet with its sliding shutters, and the announcer's card, "Rukavat ke liye khed hai". Its big moment is that card cutting in before the score.</p>
+
+    <article class="card rukavat cmp" id="card-rA">
+      <h4>A. Interlude santoor</h4>
+      <p class="meta">slow and free, no beat &middot; loop 16 s &middot; an evening scale on G</p>
+      <p>Slow santoor phrases, the hammered strings rolling on the long notes, over a soft held drone, with a little echo. It recalls the gentle music that played behind the old "please wait" cards, without copying any of it.</p>
+      <ul class="chips" aria-label="Voices"><li>Santoor</li><li>Rolled notes</li><li>Soft drone</li><li>Echo</li></ul>
+      <p><b>Listen for:</b> calm, or sleepy? Does it sound like waiting?</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-rukavat" data-loop="rA" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:16</span>
+      </div>
+      <ul class="badges"><li>Effort: medium</li><li>Public risk: low</li></ul>
+      <dl>
+        <dt>Fit</dt><dd>The truest to a world named after that very card. Gentle, and right for an evening at home.</dd>
+        <dt>Risk</dt><dd>Waiting music can make the game feel stuck. The rolled notes are bright. And it must stay well clear of the old national channel's opening tune, which many people know by heart. This tune is our own.</dd>
+        <dt>Cost and effort</dt><dd>Medium: one struck-string voice and a drone. The rolls need care to sound like hands, not a machine. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>No beat, few sudden changes. A roll is quick repeats of one note, so calm sound plays single notes instead and drops the echo.</dd>
+      </dl>
+    </article>
+
+    <article class="card rukavat cmp" id="card-rB">
+      <h4>B. Living-room evening</h4>
+      <p class="meta">no beat &middot; loop 16 s</p>
+      <p>The slow whoosh of a ceiling fan, the low hum of the TV set, and, twice, steel tumblers touching in the kitchen.</p>
+      <ul class="chips" aria-label="Voices"><li>Ceiling fan</li><li>TV hum</li><li>Steel tumblers</li></ul>
+      <p><b>Listen for:</b> homely, or just like your own fan?</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-rukavat" data-loop="rB" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:16</span>
+      </div>
+      <ul class="badges"><li>Effort: low</li><li>Public risk: low, but may seem broken</li></ul>
+      <dl>
+        <dt>Fit</dt><dd>Any Indian home in the evening. Tactile and warm.</dd>
+        <dt>Risk</dt><dd>It sounds like a real room, so from a phone it may sound like your own room, or like nothing. We left out the doorbell, the phone ringing and the pressure cooker's whistle: each would send people to their own door, phone or stove.</dd>
+        <dt>Cost and effort</dt><dd>The lowest: filtered noise, a hum and two clinks. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>No tune, no beat. A fan's steady whoosh can mask speech for someone who hears less well. Calm sound drops the clinks.</dd>
+      </dl>
+    </article>
+
+    <article class="card rukavat cmp" id="card-rC">
+      <h4>C. Tuning in, used sparingly</h4>
+      <p class="meta">loop 16 s &middot; mostly silence on purpose</p>
+      <p>The channel knob turned, a breath of static that clears, three soft santoor notes, and then a long quiet.</p>
+      <ul class="chips" aria-label="Voices"><li>Knob clicks</li><li>Static clears</li><li>Three notes</li></ul>
+      <p><b>Listen for:</b> does the static sound like a fault?</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-rukavat" data-loop="rC" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:16</span>
+      </div>
+      <ul class="badges"><li>Effort: low</li><li>Public risk: low</li></ul>
+      <dl>
+        <dt>Fit</dt><dd>The moment the TV comes on. It belongs to this world alone.</dd>
+        <dt>Risk</dt><dd>The least tiring. Static is a rush of noise, which startles when it is loud, so it is soft and short. As "music" it may feel like nothing.</dd>
+        <dt>Cost and effort</dt><dd>Low. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>Short and predictable. Calm sound keeps the knob and the notes and drops the static.</dd>
+      </dl>
+    </article>
+
+    <aside class="rec rukavat" aria-label="Suggested default for Rukavat">
+      <h3>Suggested default for Rukavat</h3>
+      <p><b>A, interlude santoor, trimmed:</b> the santoor and the drone, quiet, with short rolls and a light echo, under the puzzle. The knob and the clearing static from C is the cover's one soft sound.</p>
+      <p><b>Why:</b> it belongs to the very card the world is named after, it has no beat to feel like a clock, and the santoor's middle notes carry on a phone speaker. If waiting music makes the puzzle feel stuck, C on the cover alone is the fallback.</p>
+    </aside>
+  </section>
+
+  <!-- ===================== BIG MOMENTS ===================== -->
+  <section id="moments" aria-labelledby="moments-h">
+    <h2 id="moments-h"><span class="num">5</span>The three big moments</h2>
+    <p>Each world's big moment is its result reveal, so it follows the result's rules: at most 1.2 seconds, the same every day, and a tap skips it. The bars show the picture's timing, taken from each world's drawing, and where the sound lands.</p>
+    <p class="small">A tap that skips the picture also stops its sound at once. Press Skip while one plays to hear it.</p>
+
+    <article class="card jadugar moment" id="bm-jadugar">
+      <h4>Jadugar: the cloth comes off the show bill</h4>
+      <p><b>The picture:</b> nothing moves for 0.3 s, then the crimson cloth slides off to the right over 0.9 s and is left gathered at the edge.</p>
+      <p><b>The sound:</b> a heavy velvet swish that starts with the pull, a few small clicks from the fringe beads, and the bill's soft settle at the end. Calm sound: the cloth is already drawn back, so one short brush and the settle, under half a second.</p>
+      <div class="tl" aria-hidden="true">
+        <p class="tl-lab">Picture</p>
+        <div class="tl-row"><span class="tl-seg" style="left:0;width:25%">Still</span><span class="tl-seg b" style="left:25%;width:75%">Cloth pulled off</span></div>
+        <p class="tl-lab">Sound</p>
+        <div class="tl-row"><span class="tl-seg" style="left:25%;width:70%">Swish</span><i class="tl-mark" style="left:47%"></i><i class="tl-mark" style="left:56%"></i><i class="tl-mark" style="left:64%"></i><i class="tl-mark" style="left:93%"></i></div>
+        <div class="tl-axis"><span>0 s</span><span>0.6 s</span><span>1.2 s</span></div>
+        <i class="tl-head"></i>
+      </div>
+      <div class="cell-btns">
+        <button type="button" class="btn btn-jadugar" data-fx="result" data-world="jadugar" data-ms="1200" aria-label="Play the Jadugar reveal">Play</button>
+        <button type="button" class="btn btn-jadugar" data-fx="result" data-world="jadugar" data-calm="1" data-ms="350" aria-label="Play the calm Jadugar reveal">Calm version</button>
+        <button type="button" class="btn btn-jadugar" data-fx="resultFlourish" data-world="jadugar" data-ms="1600" aria-label="Play the Jadugar reveal with a magician's flourish">With a flourish</button>
+        <button type="button" class="btn btn-plain" data-skip="1">Skip</button>
+      </div>
+      <p class="cap">"With a flourish" adds three rising glass notes as the cloth clears, a magician's "ta-da". We suggest leaving it out: it says "well done", and it would play exactly the same after a poor day (question 4).</p>
+    </article>
+
+    <article class="card cricket moment" id="bm-cricket">
+      <h4>Cricket: decision pending, then the score is hung</h4>
+      <p><b>The picture:</b> the third umpire's screen holds "Decision pending" for 0.6 s while its three lamps light; then the score's plates drop in, one every 0.18 s.</p>
+      <p><b>The sound:</b> one soft relay click and a low, level screen hum for the pending beat, then three wooden plates knocking onto their nails. The lamps get no clicks of their own: three clicks in a row count down like a clock. The hum never rises, so it does not build suspense. Calm sound: one plate, straight to the hung score.</p>
+      <div class="tl" aria-hidden="true">
+        <p class="tl-lab">Picture</p>
+        <div class="tl-row"><span class="tl-seg" style="left:0;width:50%">Decision pending</span><span class="tl-seg b" style="left:50%;width:50%">Plates drop</span></div>
+        <p class="tl-lab">Sound</p>
+        <div class="tl-row"><span class="tl-seg" style="left:0;width:50%">Click, then hum</span><i class="tl-mark" style="left:50%"></i><i class="tl-mark" style="left:65%"></i><i class="tl-mark" style="left:80%"></i></div>
+        <div class="tl-axis"><span>0 s</span><span>0.6 s</span><span>1.2 s</span></div>
+        <i class="tl-head"></i>
+      </div>
+      <div class="cell-btns">
+        <button type="button" class="btn btn-cricket" data-fx="result" data-world="cricket" data-ms="1200" aria-label="Play the Cricket reveal">Play</button>
+        <button type="button" class="btn btn-cricket" data-fx="result" data-world="cricket" data-calm="1" data-ms="200" aria-label="Play the calm Cricket reveal">Calm version</button>
+        <button type="button" class="btn btn-plain" data-skip="1">Skip</button>
+      </div>
+      <p class="cap">The sound always plays three plates. Today the drawing hangs one plate per digit, so a score of 7 hangs one and 100 hangs three. See question 2.</p>
+    </article>
+
+    <article class="card rukavat moment" id="bm-rukavat">
+      <h4>Rukavat: the interruption card</h4>
+      <p><b>The picture:</b> the slide rolls in from the top in a quarter of a second and holds; at about 0.76 s it cuts, and the picture warms back up by 1.2 s.</p>
+      <p><b>The sound:</b> a slide-projector clunk as it rolls in, the card's one soft tone, a click as it cuts, then a little static settling as the picture comes back. The tone is one round note with an old TV speaker's slight waver, not a beep. Calm sound: the slide sits still, a short tone, then the cut.</p>
+      <div class="tl" aria-hidden="true">
+        <p class="tl-lab">Picture</p>
+        <div class="tl-row"><span class="tl-seg b" style="left:0;width:21%">Rolls in</span><span class="tl-seg" style="left:21%;width:42%">Card held</span><span class="tl-seg b" style="left:63%;width:37%">Cut, warms up</span></div>
+        <p class="tl-lab">Sound</p>
+        <div class="tl-row"><i class="tl-mark" style="left:2%"></i><span class="tl-seg" style="left:17%;width:44%">Soft tone</span><i class="tl-mark" style="left:63%"></i><span class="tl-seg b" style="left:67%;width:29%">Static</span></div>
+        <div class="tl-axis"><span>0 s</span><span>0.6 s</span><span>1.2 s</span></div>
+        <i class="tl-head"></i>
+      </div>
+      <div class="cell-btns">
+        <button type="button" class="btn btn-rukavat" data-fx="result" data-world="rukavat" data-ms="1200" aria-label="Play the Rukavat interruption card">Play</button>
+        <button type="button" class="btn btn-rukavat" data-fx="result" data-world="rukavat" data-calm="1" data-ms="420" aria-label="Play the calm Rukavat interruption card">Calm version</button>
+        <button type="button" class="btn btn-rukavat" data-fx="resultNoTone" data-world="rukavat" data-ms="1200" aria-label="Play the Rukavat interruption card with no tone">No tone</button>
+        <button type="button" class="btn btn-plain" data-skip="1">Skip</button>
+      </div>
+      <p class="cap">"No tone" keeps only the set's own sounds: the projector, the cut and the picture warming up (question 3).</p>
+    </article>
+  </section>
+
+  <!-- ===================== ALL EFFECTS ===================== -->
+  <section id="effects" aria-labelledby="fx-h">
+    <h2 id="fx-h"><span class="num">6</span>All the sound effects</h2>
+    <p>The same twelve events as Lugdi and Station, so every world covers the whole game. Each is a fixed recipe of time only: it cannot receive who you picked, the score or the lean. Play them over a music loop to hear the mix.</p>
+    <div class="fxwrap">
+      <table class="fx" id="fxtable" aria-label="Sound effects for each world"></table>
+    </div>
+
+    <div class="note">
+      <h3>The Send and the one vibration pulse</h3>
+      <p>As in Lugdi and Station: the Send's sound and the single short pulse start on the same tick, and nothing else ever vibrates. The pulse does not depend on the sound switch. Phones with no vibration, iPhones in the browser among them, get the sound alone.</p>
+      <div class="cell-btns">
+        <button type="button" class="btn btn-jadugar" data-pulse="jadugar">Jadugar Send + pulse</button>
+        <button type="button" class="btn btn-cricket" data-pulse="cricket">Cricket Send + pulse</button>
+        <button type="button" class="btn btn-rukavat" data-pulse="rukavat">Rukavat Send + pulse</button>
+      </div>
+      <p class="status" id="pulseMsg"></p>
+    </div>
+
+    <div class="note">
+      <h3>What calm sound changes in each world</h3>
+      <ul>
+        <li><b>Jadugar:</b> the reveal is one short brush and the settle; the milestone is the card slap only; the music loses the cymbals, the dugdugi, the banjo's quick repeats and the glass echo.</li>
+        <li><b>Cricket:</b> the reveal is one plate; the milestone is the plate only; the music loses the far bat, the static, the radio lead and the crease scrape.</li>
+        <li><b>Rukavat:</b> the card sits still with a shorter tone, then cuts; the milestone is the shutter knock only; the music plays single santoor notes, with no rolls, no echo, no clinks and no static.</li>
+        <li>Every loop also sits a little lower.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== PUBLIC + COPYING ===================== -->
+  <section id="public" aria-labelledby="public-h">
+    <h2 id="public-h"><span class="num">7</span>In public, and evoking without copying</h2>
+    <h3>What could startle someone nearby</h3>
+    <ul>
+      <li><b>Left out of every world:</b> cheers, groans, applause, crowd roars, horns, whistles, sirens, doorbells, a ringing phone, the pressure cooker's whistle, a TV test tone and any spoken words.</li>
+      <li><b>Jadugar's dugdugi</b> on the cover is a quick little roll. It is soft and lasts under half a second, but it is the most likely sound in this world to make someone look.</li>
+      <li><b>Cricket's Send</b> is a bat's tock. A sharp crack carries in a quiet room, so its edge is rounded off and it is no louder than the other worlds' Send.</li>
+      <li><b>Rukavat's card tone</b> plays on every result, and the card is an announcer's card by nature. It is one soft, round note, never a beep, but it is the closest thing here to an announcement (question 3).</li>
+      <li><b>Static</b> in Rukavat's cover sound and Cricket's radio is a rush of noise. Both are short and soft. Loud static startles, and it can make people think their phone is broken.</li>
+    </ul>
+    <h3 style="margin-top:18px">Evoke, never copy</h3>
+    <ul>
+      <li>Every tune on this page is new, written for this page. There are no recordings and no samples.</li>
+      <li><b>Jadugar:</b> no snake charmer's pipe, and nothing like the famous snake-charmer tune from old films.</li>
+      <li><b>Cricket:</b> nothing like any sports channel's theme, any radio station's signature tune or any commentator's voice.</li>
+      <li><b>Rukavat:</b> nothing like the old national channel's opening tune or its logo sound. The card's tone is one plain note of our own. No film songs and no film background music.</li>
+      <li>Instruments and scales are shared heritage: a santoor, a dholak or an evening scale belongs to no one. A melody can belong to someone, so each melody here should still get a quick listen from someone who knows the old tunes well before launch.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== QUESTIONS ===================== -->
+  <section id="decide" aria-labelledby="decide-h">
+    <h2 id="decide-h"><span class="num">8</span>For you to decide</h2>
+    <ol class="qs">
+      <li>
+        <p class="q">Do the three suggested picks suit you?</p>
+        <p><span class="lab">Example:</span> in a Jadugar week, plucked strings play quietly under the puzzle and the cover gets the dugdugi. In a Cricket week, a quiet radio tune. In a Rukavat week, the santoor.</p>
+        <p><span class="lab">Options:</span> the suggestions; another direction in a world; or no music under the puzzle in that world, only its cover sound, as in Station.</p>
+        <p><span class="lab">We suggest:</span> Jadugar B, Cricket B and Rukavat A, each trimmed. Cricket and Rukavat have tunes, Lugdi does not, so you may want one of them quieter still.</p>
+      </li>
+      <li>
+        <p class="q">Should Cricket's scoreboard always hang three plates?</p>
+        <p><span class="lab">Example:</span> today a score of 86 hangs two plates and 100 hangs three. If each plate knocks, a high score would sound different from a low one, and the result must sound the same every time.</p>
+        <p><span class="lab">Options:</span> always hang three plates, with blank ones in front of a short score, as old hand-hung boards did; or keep the drawing and play three knocks whatever it shows.</p>
+        <p><span class="lab">We suggest:</span> always three plates. Then the picture and the sound match every day. This changes Cricket's scoreboard drawing.</p>
+      </li>
+      <li>
+        <p class="q">May Rukavat's interruption card have its soft tone?</p>
+        <p><span class="lab">Example:</span> the world is named after an announcer's card, and your rule says nothing announcement-like in the game. The sketch gives the card one soft, round note on every result.</p>
+        <p><span class="lab">Options:</span> the soft tone; or no tone, only the projector, the cut and the picture warming up.</p>
+        <p><span class="lab">We suggest:</span> the soft tone. It is the card's whole character, it is soft and round, never a beep, and it is nothing like a station chime or a bell.</p>
+      </li>
+      <li>
+        <p class="q">Should the Jadugar cloth end with a magician's flourish?</p>
+        <p><span class="lab">Example:</span> a little "ta-da" as the cloth comes off feels like magic. But it plays the same after a score of 12 as after 90, and after 12 it may feel like a joke at the player's expense.</p>
+        <p><span class="lab">Options:</span> the plain swish and settle; or with the flourish.</p>
+        <p><span class="lab">We suggest:</span> the plain swish. Sound says "we heard you", never "well done".</p>
+      </li>
+      <li>
+        <p class="q">Should the First take play music?</p>
+        <p><span class="lab">Example:</span> the First take runs 20 minutes over five chapters, each in its own world, so the music would change about every 4 minutes.</p>
+        <p><span class="lab">Options:</span> each chapter plays its world's music; sound effects only, no music; or one world's music for the whole First take.</p>
+        <p><span class="lab">We suggest:</span> sound effects only. Its result, the one screen that shows which way you lean, plays the same sound for everyone, like any day's result.</p>
+      </li>
+    </ol>
+  </section>
+
+  <details>
+    <summary>How the sketches are made</summary>
+    <ul>
+      <li>The same engine as the first sound page: plain Web Audio, with oscillators, one shared noise buffer, filters, gain envelopes and a simple echo. No samples, no files, no outside scripts.</li>
+      <li>One audio context, created on your first press. Everything runs through a master compressor and the volume control, so nothing clips.</li>
+      <li>Every sound is mono, so one speaker or one earbud loses nothing.</li>
+      <li>Loops are scheduled a fraction of a second ahead, so the beat stays steady when the page is busy. One loop plays at a time.</li>
+      <li>Where a sound has a scattered pattern, such as the fringe beads or the static crackles, the pattern is fixed, so it is identical every time.</li>
+      <li>Music stops when this page is hidden or the screen locks, and fades after 3 minutes without a tap.</li>
+      <li>These are sketches for judging an idea. Final levels should be tuned on a cheap Android phone speaker and on earphones.</li>
+    </ul>
+  </details>
+</div>
+
+<script id="engine">
+const S = { ctx: null, bus: null, comp: null, master: null, fx: null, noise: null, vol: 0.4, calm: false, loop: null };
+const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
+
+function mulberry(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a = (a + 0x6D2B79F5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function makeNoise(c) {
+  const len = Math.floor(c.sampleRate * 2);
+  const buf = c.createBuffer(1, len, c.sampleRate);
+  const d = buf.getChannelData(0);
+  const r = mulberry(12345);
+  for (let i = 0; i < len; i++) d[i] = r() * 2 - 1;
+  return buf;
+}
+
+function buildChain(c, vol) {
+  const bus = c.createGain();
+  bus.gain.value = 0.9;
+  const comp = c.createDynamicsCompressor();
+  comp.threshold.value = -20;
+  comp.knee.value = 12;
+  comp.ratio.value = 8;
+  comp.attack.value = 0.003;
+  comp.release.value = 0.2;
+  const master = c.createGain();
+  master.gain.value = vol;
+  bus.connect(comp);
+  comp.connect(master);
+  master.connect(c.destination);
+  return { bus: bus, comp: comp, master: master };
+}
+
+function ensureCtx() {
+  if (S.ctx) {
+    if (S.ctx.state === 'suspended') S.ctx.resume();
+    return S.ctx;
+  }
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) return null;
+  const c = new AC();
+  S.ctx = c;
+  S.noise = makeNoise(c);
+  const ch = buildChain(c, S.vol);
+  S.bus = ch.bus; S.comp = ch.comp; S.master = ch.master;
+  S.fx = c.createGain();
+  S.fx.connect(S.bus);
+  const b = c.createBuffer(1, 1, 22050);
+  const s = c.createBufferSource();
+  s.buffer = b; s.connect(c.destination); s.start(0);
+  if (c.state === 'suspended') c.resume();
+  return c;
+}
+
+/* ---------- shared voices ---------- */
+function env(out, t, a, peak, hold, d) {
+  const c = S.ctx, g = c.createGain(), p = Math.max(peak, 0.0002), at = Math.max(a, 0.001);
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.linearRampToValueAtTime(p, t + at);
+  if (hold > 0) g.gain.setValueAtTime(p, t + at + hold);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + at + hold + d);
+  g.connect(out);
+  return g;
+}
+
+function tone(out, t, o) {
+  const c = S.ctx;
+  const f = o.f, f2 = o.f2 || o.f, glide = o.glide || 0.05;
+  const a = o.a === undefined ? 0.004 : o.a, hold = o.hold || 0, d = o.d || 0.1;
+  const osc = c.createOscillator();
+  osc.type = o.type || 'sine';
+  osc.frequency.setValueAtTime(f, t);
+  if (f2 !== f) osc.frequency.exponentialRampToValueAtTime(f2, t + glide);
+  let src = osc;
+  if (o.lp) {
+    const fl = c.createBiquadFilter();
+    fl.type = 'lowpass'; fl.frequency.value = o.lp; fl.Q.value = o.q || 0.7;
+    osc.connect(fl); src = fl;
+  }
+  src.connect(env(out, t, a, o.peak === undefined ? 0.3 : o.peak, hold, d));
+  osc.start(t);
+  osc.stop(t + Math.max(a, 0.001) + hold + d + 0.04);
+}
+
+function burst(out, t, o) {
+  const c = S.ctx;
+  const a = o.a === undefined ? 0.002 : o.a, hold = o.hold || 0, d = o.d || 0.03;
+  const src = c.createBufferSource();
+  src.buffer = S.noise; src.loop = true;
+  const fl = c.createBiquadFilter();
+  fl.type = o.type || 'bandpass';
+  fl.frequency.setValueAtTime(o.f || 2000, t);
+  if (o.f2) fl.frequency.exponentialRampToValueAtTime(o.f2, t + (o.sweep || (a + hold + d)));
+  fl.Q.value = o.q || 0.8;
+  src.connect(fl);
+  fl.connect(env(out, t, a, o.peak === undefined ? 0.2 : o.peak, hold, d));
+  src.start(t, (o.off || 0) % 1.8);
+  src.stop(t + Math.max(a, 0.001) + hold + d + 0.04);
+}
+
+function thump(out, t, o) {
+  tone(out, t, { f: o.f, f2: o.f2, glide: o.glide, d: o.d, peak: o.peak * 0.4 });
+  tone(out, t, { f: o.f, f2: o.f2, glide: o.glide, type: 'sawtooth', lp: 1600, d: o.d * 0.8, peak: o.peak * 0.36 });
+}
+
+function bell(out, t, f, o) {
+  const r = o.ratios || [1, 2.76, 5.4], g = o.gains || [1, 0.35, 0.12];
+  r.forEach((x, i) => tone(out, t, { f: f * x, a: 0.002, d: o.d / (1 + i * 0.9), peak: o.peak * g[i] }));
+}
+
+function makeDelay(out, time, fb, mix, cut) {
+  const c = S.ctx;
+  const input = c.createGain();
+  const dly = c.createDelay(1.0);
+  dly.delayTime.value = time;
+  const fbg = c.createGain(); fbg.gain.value = fb;
+  const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = cut;
+  const wet = c.createGain(); wet.gain.value = mix;
+  input.connect(out);
+  input.connect(dly);
+  dly.connect(lp);
+  lp.connect(fbg); fbg.connect(dly);
+  lp.connect(wet); wet.connect(out);
+  return input;
+}
+
+function drone(out, h, f, p, type, lpf) {
+  const c = S.ctx, o = c.createOscillator();
+  o.type = type; o.frequency.value = f;
+  const fl = c.createBiquadFilter(); fl.type = 'lowpass'; fl.frequency.value = lpf;
+  const g = c.createGain(); g.gain.value = p;
+  o.connect(fl); fl.connect(g); g.connect(out);
+  o.start(h.t0); h.keep(o);
+}
+
+function noiseBed(out, h, type, f, q, p, off) {
+  const c = S.ctx, src = c.createBufferSource();
+  src.buffer = S.noise; src.loop = true;
+  const fl = c.createBiquadFilter(); fl.type = type; fl.frequency.value = f; fl.Q.value = q;
+  const g = c.createGain(); g.gain.value = p;
+  src.connect(fl); fl.connect(g); g.connect(out);
+  src.start(h.t0, off || 0); h.keep(src);
+  return g;
+}
+
+function wobble(h, param, rate, depth) {
+  const c = S.ctx, l = c.createOscillator(), lg = c.createGain();
+  l.frequency.value = rate; lg.gain.value = depth;
+  l.connect(lg); lg.connect(param);
+  l.start(h.t0); h.keep(l);
+}
+
+function murmur(out, h, f, q, base, rate, depth, off) {
+  const g = noiseBed(out, h, 'bandpass', f, q, base, off);
+  wobble(h, g.gain, rate, depth);
+}
+
+function bassPluck(out, t, m, p) {
+  const f = mtof(m);
+  tone(out, t, { f: f, type: 'triangle', a: 0.004, d: 0.45, peak: p, lp: 900 });
+  tone(out, t, { f: f, type: 'sawtooth', a: 0.004, d: 0.3, peak: p * 0.3, lp: 700 });
+}
+
+/* ---------- Jadugar voices ---------- */
+function pluck(out, t, f, o) {
+  const c = S.ctx, d = o.d || 0.6, end = t + d + 0.06;
+  const lp = c.createBiquadFilter();
+  lp.type = 'lowpass'; lp.Q.value = o.q || 2;
+  lp.frequency.setValueAtTime(Math.min(f * (o.bright || 8), 6500), t);
+  lp.frequency.exponentialRampToValueAtTime(Math.max(f * 1.6, 320), t + d * 0.7);
+  lp.connect(env(out, t, 0.002, o.peak || 0.2, 0, d));
+  (o.det || [0]).forEach(dt => {
+    const osc = c.createOscillator();
+    osc.type = o.type || 'sawtooth'; osc.frequency.value = f; osc.detune.value = dt;
+    osc.connect(lp); osc.start(t); osc.stop(end);
+  });
+}
+
+function tarang(out, t, f, p, d) {
+  pluck(out, t, f, { det: [-7, 0, 7], bright: 10, q: 3, d: d, peak: p / 3 });
+  burst(out, t, { type: 'highpass', f: 5000, a: 0.001, d: 0.006, peak: p * 0.25, off: 0.3 });
+}
+
+function tarangNote(out, t, m, dur, p, trem) {
+  const f = mtof(m);
+  tarang(out, t, f, p, trem ? 0.3 : Math.min(0.9, dur + 0.3));
+  if (trem) for (let x = t + 0.11; x < t + dur - 0.08; x += 0.11) tarang(out, x, f, p * 0.55, 0.22);
+}
+
+function dhol(out, t, bol, p) {
+  if (bol === 'dha' || bol === 'dhin' || bol === 'ge') {
+    tone(out, t, { f: 110, f2: 150, glide: 0.16, a: 0.003, d: 0.28, peak: p });
+    tone(out, t, { f: 220, f2: 300, glide: 0.14, type: 'triangle', a: 0.003, d: 0.1, peak: p * 0.4 });
+    burst(out, t, { type: 'lowpass', f: 650, a: 0.002, d: 0.03, peak: p * 0.3, off: 0.4 });
+  }
+  if (bol === 'dha' || bol === 'dhin' || bol === 'na' || bol === 'tin') {
+    const k = bol === 'tin' ? 0.8 : 1;
+    tone(out, t, { f: 560, a: 0.002, d: bol === 'dhin' ? 0.16 : 0.1, peak: p * 0.55 * k });
+    tone(out, t, { f: 1130, a: 0.002, d: 0.05, peak: p * 0.2 * k });
+    burst(out, t, { f: 2600, q: 1.4, a: 0.001, d: 0.012, peak: p * 0.35 * k, off: 0.8 });
+  }
+}
+
+function manjira(out, t, open, p) {
+  const d = open ? 0.45 : 0.06;
+  [2130, 3270, 4410, 5650].forEach((f, i) => tone(out, t, { f: f, a: 0.001, d: d / (1 + i * 0.6), peak: p * [1, 0.6, 0.4, 0.25][i] }));
+  burst(out, t, { type: 'highpass', f: 6000, a: 0.001, d: open ? 0.12 : 0.03, peak: p * 0.5, off: 1.2 });
+}
+
+function dugdugi(out, t, n, p) {
+  for (let k = 0; k < n; k++) {
+    const hi = k % 2 === 0, at = t + k * 0.055, sw = 0.5 + 0.5 * Math.sin(Math.PI * (k + 0.5) / n);
+    tone(out, at, { f: hi ? 460 : 400, f2: hi ? 380 : 330, glide: 0.04, a: 0.001, d: 0.06, peak: p * sw });
+    burst(out, at, { f: 1900, q: 1.3, a: 0.001, d: 0.012, peak: p * 0.35 * sw, off: 0.1 + k * 0.13 });
+  }
+}
+
+function tanpura(out, t, f, p, d) {
+  const c = S.ctx, end = t + d + 0.05;
+  tone(out, t, { f: f, a: 0.004, d: d, peak: p * 0.5 });
+  tone(out, t, { f: f * 2, a: 0.004, d: d * 0.7, peak: p * 0.25 });
+  const o = c.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f;
+  const bp = c.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 4;
+  bp.frequency.setValueAtTime(Math.min(f * 10, 4000), t);
+  bp.frequency.exponentialRampToValueAtTime(Math.max(f * 3, 400), t + d * 0.9);
+  o.connect(bp); bp.connect(env(out, t, 0.004, p * 0.6, 0, d * 0.9));
+  o.start(t); o.stop(end);
+}
+
+function glass(out, t, f, p, d) {
+  tone(out, t, { f: f, a: 0.012, d: d, peak: p });
+  tone(out, t, { f: f * 2, a: 0.01, d: d * 0.5, peak: p * 0.25 });
+  tone(out, t, { f: f * 3, a: 0.008, d: d * 0.25, peak: p * 0.08 });
+}
+
+/* ---------- Cricket voices ---------- */
+function pock(out, t, p, f) {
+  const ff = f || 520;
+  tone(out, t, { f: ff, f2: ff * 0.72, glide: 0.03, a: 0.001, d: 0.05, peak: p * 0.5 });
+  burst(out, t, { type: 'lowpass', f: 1700, a: 0.001, d: 0.02, peak: p * 0.4, off: 0.25 });
+}
+
+function batTock(out, t, p) {
+  tone(out, t, { f: 1180, a: 0.0008, d: 0.05, peak: p * 0.42 });
+  tone(out, t, { f: 2410, a: 0.0008, d: 0.025, peak: p * 0.16 });
+  tone(out, t, { f: 640, f2: 560, glide: 0.03, type: 'triangle', a: 0.001, d: 0.07, peak: p * 0.42 });
+  burst(out, t, { f: 3000, q: 1.2, a: 0.0008, d: 0.01, peak: p * 0.32, off: 0.35 });
+}
+
+function farTock(out, t, p) {
+  [[0, 1], [0.27, 0.28], [0.54, 0.09]].forEach(e => {
+    tone(out, t + e[0], { f: 1100, a: 0.002, d: 0.05, peak: p * 0.3 * e[1] });
+    tone(out, t + e[0], { f: 600, f2: 540, glide: 0.03, type: 'triangle', a: 0.002, d: 0.07, peak: p * 0.4 * e[1] });
+    burst(out, t + e[0], { f: 1500, q: 1, a: 0.002, d: 0.02, peak: p * 0.2 * e[1], off: 0.6 });
+  });
+}
+
+function glove(out, t, p) {
+  burst(out, t, { f: 950, q: 0.8, a: 0.001, d: 0.05, peak: p * 0.55, off: 1.0 });
+  thump(out, t, { f: 180, f2: 95, glide: 0.06, d: 0.1, peak: p * 0.6 });
+  burst(out, t, { type: 'lowpass', f: 2400, a: 0.001, d: 0.012, peak: p * 0.25, off: 1.4 });
+}
+
+function plateClack(out, t, p) {
+  tone(out, t, { f: 410, f2: 360, glide: 0.03, type: 'triangle', a: 0.001, d: 0.07, peak: p * 0.4 });
+  tone(out, t, { f: 830, a: 0.001, d: 0.035, peak: p * 0.16 });
+  burst(out, t, { f: 1500, q: 1.1, a: 0.001, d: 0.02, peak: p * 0.3, off: 0.45 });
+  [0.028, 0.05, 0.078].forEach((dt, k) => burst(out, t + dt, { type: 'highpass', f: 4200, a: 0.001, d: 0.006, peak: p * [0.12, 0.08, 0.05][k], off: 0.9 + k * 0.17 }));
+}
+
+function brush(out, t, p, accent) {
+  burst(out, t, { f: 2600, q: 0.7, a: 0.02, d: 0.1, peak: p, off: (t * 0.37) % 1.7 });
+  if (accent) burst(out, t, { f: 1800, q: 1, a: 0.002, d: 0.05, peak: p * 1.6, off: 0.9 });
+}
+
+function clar(out, t, f, dur, p) {
+  const c = S.ctx, a = 0.03, rel = 0.09, end = t + dur + 0.06;
+  const o = c.createOscillator(); o.type = 'square'; o.frequency.value = f;
+  const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1500; lp.Q.value = 0.7;
+  o.connect(lp); lp.connect(env(out, t, a, p, Math.max(0, dur - a - rel), rel));
+  if (dur > 0.35) {
+    const l = c.createOscillator(), lg = c.createGain();
+    l.frequency.value = 5;
+    lg.gain.setValueAtTime(0, t);
+    lg.gain.linearRampToValueAtTime(9, t + dur);
+    l.connect(lg); lg.connect(o.detune);
+    l.start(t); l.stop(end);
+  }
+  o.start(t); o.stop(end);
+}
+
+function radioChain(out) {
+  const c = S.ctx;
+  const inp = c.createGain();
+  const hp = c.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 420; hp.Q.value = 0.7;
+  const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 3300; lp.Q.value = 0.9;
+  const pk = c.createBiquadFilter(); pk.type = 'peaking'; pk.frequency.value = 1400; pk.gain.value = 4; pk.Q.value = 0.9;
+  const ws = c.createWaveShaper();
+  const n = 1024, curve = new Float32Array(n);
+  for (let i = 0; i < n; i++) { const x = i / (n - 1) * 2 - 1; curve[i] = Math.tanh(1.6 * x) / Math.tanh(1.6); }
+  ws.curve = curve;
+  inp.connect(hp); hp.connect(lp); lp.connect(pk); pk.connect(ws); ws.connect(out);
+  return inp;
+}
+
+/* ---------- Rukavat voices ---------- */
+function knobClick(out, t, p, f) {
+  const k = f || 1;
+  burst(out, t, { type: 'highpass', f: 3000, a: 0.0008, d: 0.006, peak: p * 0.5, off: 0.15 });
+  tone(out, t, { f: 900 * k, f2: 700 * k, glide: 0.01, type: 'triangle', a: 0.0008, d: 0.022, peak: p * 0.35 });
+  burst(out, t + 0.008, { f: 1700 * k, q: 2, a: 0.0008, d: 0.012, peak: p * 0.35, off: 0.55 });
+}
+
+function softTone(out, t, f, p, hold, d, wow) {
+  const c = S.ctx, end = t + 0.03 + hold + d + 0.05;
+  const o1 = c.createOscillator(); o1.type = 'triangle'; o1.frequency.value = f;
+  const o2 = c.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 2;
+  const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1700; lp.Q.value = 0.7;
+  const g2 = c.createGain(); g2.gain.value = 0.18;
+  o1.connect(lp); o2.connect(g2); g2.connect(lp);
+  lp.connect(env(out, t, 0.03, p, hold, d));
+  if (wow) {
+    const l = c.createOscillator(), lg = c.createGain();
+    l.frequency.value = 4.2; lg.gain.value = 6;
+    l.connect(lg); lg.connect(o1.detune); lg.connect(o2.detune);
+    l.start(t); l.stop(end);
+  }
+  o1.start(t); o2.start(t); o1.stop(end); o2.stop(end);
+}
+
+function strike(out, t, f, p, d) {
+  tone(out, t, { f: f, a: 0.002, d: d, peak: p });
+  tone(out, t, { f: f * 2.003, a: 0.002, d: d * 0.55, peak: p * 0.32 });
+  tone(out, t, { f: f * 3.01, a: 0.002, d: d * 0.3, peak: p * 0.12 });
+  burst(out, t, { f: 4200, q: 1.5, a: 0.001, d: 0.008, peak: p * 0.35, off: f % 1.7 });
+}
+
+function santoor(out, t, m, rollDur, p) {
+  const f = mtof(m);
+  if (!rollDur || S.calm) { strike(out, t, f, p, 1.2); return; }
+  const n = Math.max(2, Math.round(rollDur / 0.09));
+  for (let k = 0; k < n; k++) strike(out, t + k * 0.09, f, p * (k % 2 ? 0.5 : 0.72) * (1 - 0.3 * k / n), k === n - 1 ? 1.0 : 0.3);
+}
+
+function rukCut(o, t, withTone) {
+  if (S.calm) {
+    if (withTone) softTone(o, t, 587, 0.09, 0.1, 0.16, false);
+    burst(o, t + 0.3, { type: 'highpass', f: 2600, a: 0.001, d: 0.012, peak: 0.2, off: 0.7 });
+    tone(o, t + 0.3, { f: 190, f2: 120, glide: 0.05, type: 'triangle', d: 0.07, peak: 0.24 });
+    return;
+  }
+  burst(o, t, { type: 'lowpass', f: 700, a: 0.003, d: 0.05, peak: 0.22, off: 0.3 });
+  tone(o, t, { f: 170, f2: 120, glide: 0.06, type: 'triangle', d: 0.07, peak: 0.22 });
+  burst(o, t + 0.04, { f: 1200, f2: 700, sweep: 0.2, q: 0.8, a: 0.04, d: 0.16, peak: 0.08, off: 0.9 });
+  if (withTone) softTone(o, t + 0.2, 587, 0.1, 0.26, 0.26, true);
+  burst(o, t + 0.76, { type: 'highpass', f: 2600, a: 0.001, d: 0.012, peak: 0.22, off: 0.7 });
+  tone(o, t + 0.76, { f: 190, f2: 120, glide: 0.05, type: 'triangle', d: 0.07, peak: 0.26 });
+  burst(o, t + 0.8, { f: 3000, f2: 900, sweep: 0.32, q: 0.6, a: 0.06, d: 0.28, peak: 0.07, off: 1.3 });
+  tone(o, t + 0.82, { f: 100, type: 'triangle', a: 0.12, hold: 0.06, d: 0.15, peak: 0.12 });
+}
+
+/* ---------- sound effects: functions of time only ---------- */
+const FX = {
+  jadugar: {
+    tap(t, o) {
+      burst(o, t, { type: 'lowpass', f: 1400, a: 0.002, d: 0.035, peak: 0.34, off: 0.2 });
+      tone(o, t, { f: 240, f2: 190, glide: 0.03, type: 'triangle', d: 0.05, peak: 0.3 });
+      burst(o, t, { f: 3400, q: 1.4, a: 0.001, d: 0.008, peak: 0.08, off: 0.7 });
+    },
+    unpick(t, o) {
+      burst(o, t, { type: 'lowpass', f: 1100, a: 0.002, d: 0.03, peak: 0.24, off: 0.2 });
+      tone(o, t, { f: 200, f2: 165, glide: 0.03, type: 'triangle', d: 0.045, peak: 0.22 });
+    },
+    commit(t, o) {
+      tone(o, t, { f: 880, f2: 760, glide: 0.02, type: 'triangle', a: 0.001, d: 0.04, peak: 0.26 });
+      burst(o, t, { f: 2200, q: 1.6, a: 0.001, d: 0.012, peak: 0.22, off: 0.5 });
+      thump(o, t + 0.09, { f: 220, f2: 105, glide: 0.1, d: 0.2, peak: 0.8 });
+      tone(o, t + 0.09, { f: 300, f2: 170, glide: 0.08, type: 'triangle', d: 0.1, peak: 0.28 });
+      burst(o, t + 0.09, { type: 'lowpass', f: 1600, a: 0.002, d: 0.04, peak: 0.25, off: 1.0 });
+    },
+    refuse(t, o) {
+      [0, 0.11].forEach(dt => {
+        tone(o, t + dt, { f: 250, f2: 215, glide: 0.04, type: 'triangle', d: 0.07, peak: 0.34, lp: 900 });
+        burst(o, t + dt, { type: 'lowpass', f: 650, a: 0.002, d: 0.02, peak: 0.12, off: 0.3 });
+      });
+    },
+    fill(t, o) {
+      burst(o, t, { f: 1800, f2: 2800, sweep: 0.06, q: 0.9, a: 0.02, d: 0.04, peak: 0.12, off: 0.9 });
+      burst(o, t + 0.06, { f: 2600, q: 1.5, a: 0.001, d: 0.01, peak: 0.2, off: 1.2 });
+      tone(o, t + 0.06, { f: 620, f2: 540, glide: 0.02, type: 'triangle', d: 0.05, peak: 0.24 });
+    },
+    spend(t, o) {
+      burst(o, t, { f: 3000, q: 1.3, a: 0.001, d: 0.01, peak: 0.18, off: 0.3 });
+      burst(o, t + 0.035, { f: 2400, q: 1.3, a: 0.001, d: 0.01, peak: 0.14, off: 0.6 });
+      burst(o, t + 0.07, { type: 'lowpass', f: 1300, a: 0.002, d: 0.04, peak: 0.36, off: 0.9 });
+      tone(o, t + 0.07, { f: 230, f2: 180, glide: 0.03, type: 'triangle', d: 0.06, peak: 0.32 });
+    },
+    result(t, o) {
+      if (S.calm) {
+        burst(o, t, { f: 900, f2: 1800, sweep: 0.2, q: 0.7, a: 0.06, d: 0.16, peak: 0.14, off: 0.4 });
+        burst(o, t + 0.24, { type: 'lowpass', f: 1500, a: 0.002, d: 0.04, peak: 0.28, off: 0.8 });
+        tone(o, t + 0.24, { f: 260, f2: 200, glide: 0.04, type: 'triangle', d: 0.07, peak: 0.24 });
+        return;
+      }
+      const s = t + 0.3;
+      burst(o, s, { f: 700, f2: 2200, sweep: 0.6, q: 0.6, a: 0.35, hold: 0.1, d: 0.4, peak: 0.2, off: 0.2 });
+      burst(o, s + 0.05, { type: 'lowpass', f: 500, f2: 900, sweep: 0.5, a: 0.3, d: 0.4, peak: 0.12, off: 1.1 });
+      [0.26, 0.37, 0.47].forEach((dt, k) => burst(o, s + dt, { f: [1500, 1800, 1650][k], q: 2.2, a: 0.001, d: 0.01, peak: 0.07, off: 0.5 + k * 0.29 }));
+      burst(o, t + 1.12, { type: 'lowpass', f: 1500, a: 0.002, d: 0.04, peak: 0.28, off: 0.8 });
+      tone(o, t + 1.12, { f: 260, f2: 200, glide: 0.04, type: 'triangle', d: 0.07, peak: 0.24 });
+    },
+    resultFlourish(t, o) {
+      FX.jadugar.result(t, o);
+      if (!S.calm) [74, 78, 81].forEach((m, k) => glass(o, t + 0.98 + k * 0.07, mtof(m), 0.12, 0.9));
+    },
+    milestone(t, o) {
+      burst(o, t, { f: 2600, q: 1.2, a: 0.001, d: 0.012, peak: 0.3, off: 0.5 });
+      thump(o, t + 0.01, { f: 230, f2: 110, glide: 0.09, d: 0.2, peak: 0.8 });
+      burst(o, t + 0.01, { type: 'lowpass', f: 1400, a: 0.002, d: 0.06, peak: 0.34, off: 1.1 });
+      if (!S.calm) bell(o, t + 0.16, 880, { peak: 0.2, d: 0.9, ratios: [1, 2.72, 4.95], gains: [1, 0.22, 0.07] });
+    },
+    open(t, o) {
+      burst(o, t, { f: 1200, f2: 3000, sweep: 0.15, q: 0.9, a: 0.05, d: 0.1, peak: 0.12, off: 0.5 });
+      [0, 0.025, 0.05, 0.075, 0.1, 0.125].forEach((dt, k) => burst(o, t + dt, { f: 2400 + k * 180, q: 1.6, a: 0.001, d: 0.008, peak: 0.1, off: 0.2 + k * 0.21 }));
+      tone(o, t + 0.15, { f: 330, f2: 290, glide: 0.03, type: 'triangle', d: 0.05, peak: 0.16 });
+    },
+    close(t, o) {
+      burst(o, t, { f: 3000, f2: 1200, sweep: 0.13, q: 0.9, a: 0.04, d: 0.09, peak: 0.11, off: 0.5 });
+      [0, 0.03, 0.06, 0.09, 0.12].forEach((dt, k) => burst(o, t + dt, { f: 3000 - k * 200, q: 1.6, a: 0.001, d: 0.008, peak: 0.09, off: 0.3 + k * 0.19 }));
+      tone(o, t + 0.14, { f: 280, f2: 240, glide: 0.03, type: 'triangle', d: 0.05, peak: 0.16 });
+    },
+    tab(t, o) {
+      burst(o, t, { f: 2800, q: 1.2, a: 0.001, d: 0.012, peak: 0.34, off: 0.4 });
+      burst(o, t + 0.02, { type: 'lowpass', f: 1300, a: 0.002, d: 0.03, peak: 0.3, off: 0.9 });
+      tone(o, t + 0.02, { f: 300, f2: 240, glide: 0.02, type: 'triangle', d: 0.03, peak: 0.16 });
+    },
+    toast(t, o) {
+      tone(o, t, { f: 988, f2: 970, glide: 0.1, type: 'triangle', d: 0.16, peak: 0.2 });
+      tone(o, t, { f: 2680, a: 0.001, d: 0.05, peak: 0.03 });
+    },
+    cover(t, o) {
+      dugdugi(o, t, 8, 0.3);
+    }
+  },
+  cricket: {
+    tap(t, o) { pock(o, t, 0.55); },
+    unpick(t, o) { pock(o, t, 0.36, 430); },
+    commit(t, o) {
+      batTock(o, t, 0.9);
+      tone(o, t, { f: 1180, a: 0.001, d: 0.16, peak: 0.05 });
+      burst(o, t + 0.006, { type: 'lowpass', f: 900, a: 0.002, d: 0.05, peak: 0.18, off: 1.3 });
+    },
+    refuse(t, o) {
+      [0, 0.12].forEach(dt => {
+        tone(o, t + dt, { f: 210, f2: 180, glide: 0.04, type: 'triangle', d: 0.06, peak: 0.32, lp: 800 });
+        burst(o, t + dt, { type: 'lowpass', f: 500, a: 0.002, d: 0.025, peak: 0.14, off: 0.5 });
+      });
+    },
+    fill(t, o) { plateClack(o, t, 0.6); },
+    spend(t, o) { glove(o, t, 0.6); },
+    result(t, o) {
+      if (S.calm) { plateClack(o, t, 0.9); return; }
+      burst(o, t, { type: 'highpass', f: 2500, a: 0.001, d: 0.008, peak: 0.2, off: 0.2 });
+      tone(o, t, { f: 140, type: 'triangle', a: 0.001, d: 0.05, peak: 0.2 });
+      tone(o, t + 0.02, { f: 200, a: 0.08, hold: 0.38, d: 0.1, peak: 0.05 });
+      tone(o, t + 0.02, { f: 300, a: 0.08, hold: 0.38, d: 0.1, peak: 0.03 });
+      burst(o, t + 0.02, { f: 1000, q: 2, a: 0.08, hold: 0.38, d: 0.1, peak: 0.015, off: 0.9 });
+      [0.6, 0.78, 0.96].forEach(dt => plateClack(o, t + dt, 0.85));
+    },
+    milestone(t, o) {
+      thump(o, t, { f: 200, f2: 95, glide: 0.09, d: 0.22, peak: 0.8 });
+      plateClack(o, t, 1);
+      if (!S.calm) bell(o, t + 0.16, 784, { peak: 0.2, d: 1.0, ratios: [1, 2.4, 4.6], gains: [1, 0.25, 0.08] });
+    },
+    open(t, o) {
+      burst(o, t, { f: 500, f2: 1500, sweep: 0.16, q: 0.5, a: 0.05, d: 0.12, peak: 0.18, off: 0.7 });
+      tone(o, t + 0.16, { f: 200, f2: 170, glide: 0.04, type: 'triangle', d: 0.05, peak: 0.2 });
+    },
+    close(t, o) {
+      burst(o, t, { f: 1500, f2: 500, sweep: 0.14, q: 0.5, a: 0.04, d: 0.11, peak: 0.17, off: 0.7 });
+      tone(o, t + 0.14, { f: 180, f2: 150, glide: 0.04, type: 'triangle', d: 0.05, peak: 0.2 });
+    },
+    tab(t, o) {
+      burst(o, t, { type: 'highpass', f: 2800, a: 0.002, d: 0.03, peak: 0.14, off: 0.6 });
+      burst(o, t + 0.02, { f: 1300, q: 1, a: 0.002, d: 0.02, peak: 0.12, off: 0.9 });
+    },
+    toast(t, o) {
+      plateClack(o, t, 0.4);
+      tone(o, t + 0.01, { f: 740, type: 'triangle', a: 0.002, d: 0.14, peak: 0.16 });
+    },
+    cover(t, o) { farTock(o, t, 0.7); }
+  },
+  rukavat: {
+    tap(t, o) { knobClick(o, t, 0.55); },
+    unpick(t, o) { knobClick(o, t, 0.38, 0.85); },
+    commit(t, o) {
+      burst(o, t, { type: 'highpass', f: 3200, a: 0.001, d: 0.008, peak: 0.28, off: 0.4 });
+      tone(o, t, { f: 1300, a: 0.001, d: 0.015, peak: 0.1 });
+      thump(o, t + 0.05, { f: 210, f2: 100, glide: 0.09, d: 0.18, peak: 0.75 });
+      tone(o, t + 0.05, { f: 280, f2: 160, glide: 0.08, type: 'triangle', d: 0.1, peak: 0.26 });
+      [0.12, 0.15, 0.19].forEach((dt, k) => burst(o, t + dt, { type: 'highpass', f: 5000, a: 0.001, d: 0.004, peak: 0.06, off: 1.1 + k * 0.2 }));
+    },
+    refuse(t, o) {
+      [0, 0.12].forEach(dt => {
+        tone(o, t + dt, { f: 230, f2: 200, glide: 0.04, type: 'triangle', d: 0.08, peak: 0.36, lp: 850 });
+        burst(o, t + dt, { type: 'lowpass', f: 600, a: 0.002, d: 0.02, peak: 0.12, off: 0.35 });
+      });
+    },
+    fill(t, o) {
+      burst(o, t, { f: 1500, f2: 2400, sweep: 0.06, q: 0.9, a: 0.02, d: 0.05, peak: 0.12, off: 0.8 });
+      burst(o, t + 0.06, { type: 'highpass', f: 3500, a: 0.001, d: 0.008, peak: 0.14, off: 1.1 });
+      tone(o, t + 0.06, { f: 560, f2: 500, glide: 0.02, type: 'triangle', d: 0.05, peak: 0.24 });
+    },
+    spend(t, o) {
+      knobClick(o, t, 0.7);
+      thump(o, t, { f: 300, f2: 160, glide: 0.05, d: 0.08, peak: 0.4 });
+      knobClick(o, t + 0.035, 0.35, 1.2);
+    },
+    result(t, o) { rukCut(o, t, true); },
+    resultNoTone(t, o) { rukCut(o, t, false); },
+    milestone(t, o) {
+      thump(o, t, { f: 220, f2: 105, glide: 0.09, d: 0.2, peak: 0.8 });
+      burst(o, t, { type: 'lowpass', f: 1200, a: 0.002, d: 0.05, peak: 0.3, off: 0.6 });
+      if (!S.calm) strike(o, t + 0.16, mtof(79), 0.2, 1.1);
+    },
+    open(t, o) {
+      burst(o, t, { type: 'lowpass', f: 450, f2: 800, sweep: 0.15, a: 0.04, hold: 0.08, d: 0.06, peak: 0.2, off: 0.4 });
+      burst(o, t, { f: 900, q: 3, a: 0.04, hold: 0.08, d: 0.06, peak: 0.05, off: 1.2 });
+      tone(o, t + 0.17, { f: 260, f2: 210, glide: 0.03, type: 'triangle', d: 0.05, peak: 0.22 });
+    },
+    close(t, o) {
+      burst(o, t, { type: 'lowpass', f: 700, f2: 400, sweep: 0.15, a: 0.04, hold: 0.07, d: 0.06, peak: 0.19, off: 0.4 });
+      burst(o, t, { f: 800, q: 3, a: 0.04, hold: 0.07, d: 0.06, peak: 0.05, off: 1.2 });
+      tone(o, t + 0.16, { f: 230, f2: 190, glide: 0.03, type: 'triangle', d: 0.05, peak: 0.22 });
+    },
+    tab(t, o) { knobClick(o, t, 0.42); },
+    toast(t, o) { softTone(o, t, 659, 0.16, 0.02, 0.16, false); },
+    cover(t, o) {
+      knobClick(o, t, 0.5);
+      knobClick(o, t + 0.09, 0.45);
+      burst(o, t + 0.12, { f: 2400, f2: 1200, sweep: 0.3, q: 0.5, a: 0.03, hold: 0.12, d: 0.2, peak: 0.07, off: 0.9 });
+      tone(o, t + 0.3, { f: 200, type: 'triangle', a: 0.1, d: 0.2, peak: 0.05 });
+    }
+  }
+};
+
+/* ---------- music loops ---------- */
+function keyed(bars, per) {
+  const m = {};
+  bars.forEach((arr, b) => arr.forEach(n => {
+    const k = b * per + n[0];
+    if (!m[k]) m[k] = [];
+    m[k].push(n);
+  }));
+  return m;
+}
+
+const JA = (function () {
+  const step = 0.3;
+  const THEKA = ['dha', 'dhin', 'na', 'dha', 'tin', 'na'];
+  const MEL = keyed([
+    [[0, 69, 3], [3, 71, 1], [4, 69, 2], [6, 66, 2], [8, 67, 2], [10, 69, 2]],
+    [[0, 74, 4], [4, 72, 2], [6, 71, 2], [8, 69, 4]],
+    [[0, 67, 3], [3, 66, 1], [4, 64, 2], [6, 66, 2], [8, 67, 2], [10, 66, 2]],
+    [[0, 64, 2], [2, 62, 6]]
+  ], 12);
+  const BASS = [[50, 57], [50, 55], [48, 55], [50, 45]];
+  return {
+    id: 'jA', trim: 0.3, stepDur: step, steps: 48,
+    setup(out, h) { h.dly = makeDelay(out, 0.3, S.calm ? 0 : 0.2, S.calm ? 0 : 0.18, 2800); },
+    onStep(i, t, h) {
+      const bar = Math.floor(i / 12), s = i % 12, out = h.out;
+      if (s % 2 === 0) dhol(out, t, THEKA[s / 2], s === 0 ? 0.46 : 0.38);
+      else if (!S.calm && (s === 5 || s === 11)) dhol(out, t, 'na', 0.16);
+      if (s === 0 || s === 6) bassPluck(out, t, BASS[bar][s / 6], 0.3);
+      if (!S.calm) {
+        if (s === 0 || s === 6) manjira(out, t, true, 0.045);
+        else if (s === 3 || s === 9) manjira(out, t, false, 0.03);
+      }
+      const ms = MEL[i];
+      if (ms) ms.forEach(n => tarangNote(h.dly, t, n[1], n[2] * step, 0.2, n[2] >= 4 && !S.calm));
+    }
+  };
+})();
+
+const JB = (function () {
+  const step = 0.3;
+  const PL = { 0: [57, 0.15], 4: [62, 0.12], 8: [62, 0.11], 12: [50, 0.16] };
+  return {
+    id: 'jB', trim: 0.6, stepDur: step, steps: 48,
+    setup(out, h) {
+      noiseBed(out, h, 'bandpass', 2600, 0.6, 0.012, 0.4);
+      const g = noiseBed(out, h, 'lowpass', 520, 0.7, 0.03, 1.0);
+      wobble(h, g.gain, 0.23, 0.01);
+    },
+    onStep(i, t, h) {
+      const p = PL[i % 16];
+      if (p) tanpura(h.out, t, mtof(p[0]), p[1], 4.4);
+      if (i === 40 && !S.calm) dugdugi(h.out, t, 8, 0.2);
+    }
+  };
+})();
+
+const JC = (function () {
+  const step = 0.25;
+  return {
+    id: 'jC', trim: 0.8, stepDur: step, steps: 64,
+    setup(out, h) { h.dly = makeDelay(out, 0.34, S.calm ? 0 : 0.35, S.calm ? 0 : 0.32, 3000); },
+    onStep(i, t, h) {
+      if (i === 4) [74, 75, 78, 81, 82].forEach((m, k) => glass(h.dly, t + k * 0.17, mtof(m), 0.15 - k * 0.01, 2.4));
+      if (i === 36) [81, 78, 74].forEach((m, k) => glass(h.dly, t + k * 0.22, mtof(m), 0.08, 2.4));
+    }
+  };
+})();
+
+const CA = (function () {
+  const step = 0.5;
+  return {
+    id: 'cA', trim: 0.2, stepDur: step, steps: 32,
+    setup(out, h) {
+      drone(out, h, 100, 0.022, 'sine', 400);
+      drone(out, h, 200, 0.03, 'sine', 600);
+      drone(out, h, 300, 0.012, 'sine', 800);
+      murmur(out, h, 450, 0.8, 0.55, 0.19, 0.22, 0.3);
+      murmur(out, h, 820, 0.9, 0.4, 2.9, 0.16, 0.9);
+      murmur(out, h, 1600, 1.1, 0.14, 4.7, 0.06, 1.4);
+    },
+    onStep(i, t, h) {
+      if (!S.calm && (i === 6 || i === 22)) farTock(h.out, t, 0.5);
+    }
+  };
+})();
+
+const CB = (function () {
+  const bpm = 104, step = 60 / bpm / 3;
+  const MEL = keyed([
+    [[0, 72, 3], [3, 69, 2], [5, 72, 1], [6, 74, 3], [9, 72, 3]],
+    [[0, 69, 5], [5, 65, 1], [6, 67, 6]],
+    [[0, 70, 3], [3, 67, 2], [5, 70, 1], [6, 72, 3], [9, 70, 3]],
+    [[0, 69, 9]],
+    [[0, 74, 3], [3, 72, 2], [5, 70, 1], [6, 69, 3], [9, 70, 3]],
+    [[0, 72, 5], [5, 69, 1], [6, 65, 6]],
+    [[0, 67, 3], [3, 69, 2], [5, 70, 1], [6, 64, 3], [9, 67, 3]],
+    [[0, 65, 6]]
+  ], 12);
+  const CH = [[65, 69, 72], [65, 70, 74], [64, 67, 70], [65, 69, 72], [65, 70, 74], [65, 69, 72], [64, 67, 70], [65, 69, 72]];
+  const BASS = [[53, 60], [58, 53], [60, 55], [53, 60], [58, 53], [53, 57], [60, 55], [53, 48]];
+  const CRACKLE = [17, 58, 83];
+  return {
+    id: 'cB', trim: 0.32, stepDur: step, steps: 96,
+    setup(out, h) {
+      h.radio = radioChain(out);
+      if (!S.calm) noiseBed(h.radio, h, 'bandpass', 3600, 0.5, 0.016, 0.7);
+    },
+    onStep(i, t, h) {
+      const bar = Math.floor(i / 12), s = i % 12, r = h.radio;
+      if (s % 3 === 0) brush(r, t, 0.05, s === 3 || s === 9);
+      else if (s % 3 === 2 && !S.calm) brush(r, t, 0.025, false);
+      if (s === 0 || s === 6) bassPluck(r, t, BASS[bar][s / 6], 0.34);
+      if (s === 3 || s === 9) CH[bar].forEach(m => tone(r, t, { f: mtof(m), type: 'triangle', a: 0.004, d: 0.14, peak: 0.05 }));
+      if (S.calm) return;
+      const ms = MEL[i];
+      if (ms) ms.forEach(n => clar(r, t, mtof(n[1]), n[2] * step * 0.95, 0.045));
+      if (CRACKLE.indexOf(i) >= 0) burst(r, t, { type: 'highpass', f: 2500, a: 0.001, d: 0.006, peak: 0.08, off: (i * 0.137) % 1.7 });
+    }
+  };
+})();
+
+const CC = (function () {
+  const bpm = 92, step = 60 / bpm / 4;
+  const BASS = { 0: 48, 3: 48, 6: 55, 8: 53, 11: 53, 14: 52 };
+  return {
+    id: 'cC', trim: 0.3, stepDur: step, steps: 64,
+    setup() {},
+    onStep(i, t, h) {
+      const s = i % 16, out = h.out;
+      if (s === 0 || s === 10) { thump(out, t, { f: 150, f2: 85, glide: 0.06, d: 0.14, peak: 0.6 }); batTock(out, t, 0.35); }
+      if (s === 4 || s === 12) glove(out, t, 0.55);
+      if (!S.calm && (s === 2 || s === 6 || s === 14)) burst(out, t, { f: 4800, f2: 3600, sweep: 0.05, q: 0.8, a: 0.008, d: 0.04, peak: 0.035, off: (s * 0.11) % 1.7 });
+      if (BASS[s] !== undefined) bassPluck(out, t, BASS[s] + (Math.floor(i / 16) === 3 ? -2 : 0), 0.28);
+    }
+  };
+})();
+
+const RA = (function () {
+  const step = 0.25;
+  const PH = { 0: [66, 0], 1: [69, 0], 2: [71, 4], 7: [73, 0], 8: [71, 0], 9: [69, 0], 10: [71, 3],
+    16: [74, 5], 22: [73, 0], 23: [71, 0], 24: [69, 1], 26: [67, 5],
+    40: [71, 0], 41: [74, 0], 42: [78, 1], 44: [79, 5], 52: [76, 0], 53: [74, 4] };
+  return {
+    id: 'rA', trim: 0.4, stepDur: step, steps: 64,
+    setup(out, h) {
+      drone(out, h, mtof(55), 0.035, 'sine', 900);
+      drone(out, h, mtof(62), 0.022, 'sine', 900);
+      drone(out, h, mtof(43), 0.02, 'triangle', 500);
+      h.dly = makeDelay(out, 0.36, S.calm ? 0 : 0.26, S.calm ? 0 : 0.28, 3200);
+    },
+    onStep(i, t, h) {
+      const p = PH[i];
+      if (p) santoor(h.dly, t, p[0], p[1] * step, 0.17);
+    }
+  };
+})();
+
+const RB = (function () {
+  const step = 0.5;
+  function clink(out, t, f, p) { bell(out, t, f, { peak: p, d: 0.5, ratios: [1, 2.62, 4.9], gains: [1, 0.3, 0.12] }); }
+  return {
+    id: 'rB', trim: 0.6, stepDur: step, steps: 32,
+    setup(out, h) {
+      const g = noiseBed(out, h, 'bandpass', 380, 0.7, 0.07, 0.2);
+      wobble(h, g.gain, 1.25, 0.02);
+      noiseBed(out, h, 'highpass', 2500, 0.7, 0.004, 0.9);
+      drone(out, h, 100, 0.016, 'sine', 300);
+      drone(out, h, 200, 0.012, 'triangle', 500);
+    },
+    onStep(i, t, h) {
+      if (S.calm) return;
+      if (i === 9) { clink(h.out, t, 2150, 0.06); clink(h.out, t + 0.13, 1720, 0.045); }
+      if (i === 25) clink(h.out, t, 1900, 0.05);
+    }
+  };
+})();
+
+const RC = (function () {
+  const step = 0.25;
+  return {
+    id: 'rC', trim: 0.8, stepDur: step, steps: 64,
+    setup(out, h) { h.dly = makeDelay(out, 0.36, S.calm ? 0 : 0.28, S.calm ? 0 : 0.3, 3200); },
+    onStep(i, t, h) {
+      const out = h.out;
+      if (i === 2) { knobClick(out, t, 0.5); knobClick(out, t + 0.22, 0.45); knobClick(out, t + 0.5, 0.5); }
+      if (i === 5 && !S.calm) burst(out, t, { f: 2600, f2: 1100, sweep: 0.6, q: 0.5, a: 0.06, hold: 0.25, d: 0.35, peak: 0.06, off: 0.7 });
+      if (i === 9) [71, 74, 78].forEach((m, k) => santoor(h.dly, t + k * 0.3, m, 0, 0.15));
+    }
+  };
+})();
+
+const MUSIC = { jA: JA, jB: JB, jC: JC, cA: CA, cB: CB, cC: CC, rA: RA, rB: RB, rC: RC };
+const loopLen = d => d.stepDur * d.steps;
+
+function pump(L) {
+  const c = S.ctx;
+  if (L.next < c.currentTime - 0.1) L.next = c.currentTime + 0.05;
+  while (L.next < c.currentTime + 0.2) {
+    L.def.onStep(L.step % L.def.steps, L.next, L.h);
+    L.next += L.def.stepDur;
+    L.step++;
+  }
+}
+
+function startLoop(def) {
+  const c = ensureCtx();
+  if (!c) return null;
+  stopLoop();
+  const out = c.createGain();
+  out.gain.setValueAtTime(0.0001, c.currentTime);
+  out.gain.linearRampToValueAtTime((def.trim || 1) * (S.calm ? 0.8 : 1), c.currentTime + 0.06);
+  out.connect(S.bus);
+  const t0 = c.currentTime + 0.1;
+  const L = { def: def, out: out, t0: t0, next: t0, step: 0, timer: 0, keep: [], h: null, fading: false };
+  L.h = { out: out, t0: t0, keep: n => { L.keep.push(n); return n; } };
+  def.setup(out, L.h);
+  S.loop = L;
+  pump(L);
+  L.timer = setInterval(() => pump(L), 25);
+  return L;
+}
+
+function stopLoop() {
+  const L = S.loop;
+  if (!L) return;
+  S.loop = null;
+  clearInterval(L.timer);
+  const c = S.ctx, now = c.currentTime;
+  L.out.gain.cancelScheduledValues(now);
+  L.out.gain.setValueAtTime(L.out.gain.value, now);
+  L.out.gain.linearRampToValueAtTime(0.0001, now + 0.08);
+  setTimeout(() => {
+    L.keep.forEach(n => { try { n.stop(); } catch (e) {} });
+    try { L.out.disconnect(); } catch (e) {}
+  }, 160);
+}
+
+function fadeLoop(sec, done) {
+  const L = S.loop;
+  if (!L || L.fading) return false;
+  L.fading = true;
+  const now = S.ctx.currentTime;
+  L.out.gain.cancelScheduledValues(now);
+  L.out.gain.setValueAtTime(L.out.gain.value, now);
+  L.out.gain.linearRampToValueAtTime(0.0001, now + sec);
+  setTimeout(() => { if (S.loop === L) { stopLoop(); if (done) done(); } }, sec * 1000 + 100);
+  return true;
+}
+
+function cutFx() {
+  if (!S.ctx) return;
+  const c = S.ctx, old = S.fx, now = c.currentTime;
+  old.gain.cancelScheduledValues(now);
+  old.gain.setValueAtTime(old.gain.value, now);
+  old.gain.linearRampToValueAtTime(0, now + 0.03);
+  setTimeout(() => { try { old.disconnect(); } catch (e) {} }, 100);
+  S.fx = c.createGain();
+  S.fx.connect(S.bus);
+}
+
+function stopAll() { stopLoop(); cutFx(); }
+</script>
+
+<script id="ui">
+const W = ['jadugar', 'cricket', 'rukavat'];
+const WN = { jadugar: 'Jadugar', cricket: 'Cricket', rukavat: 'Rukavat' };
+const EVENTS = [
+  { title: 'Tap a person or card', note: 'Fixed, nothing random. The same for every person, every time.',
+    vars: [{ id: 'tap', label: 'Play', ms: [60, 60, 40] }],
+    jadugar: 'A playing card laid on the felt.', cricket: 'A ball dropped into a palm.', rukavat: 'The channel knob clicks.' },
+  { title: 'Unpick', note: 'As gentle as the tap, a little lower. Never a "wrong" sound.',
+    vars: [{ id: 'unpick', label: 'Play', ms: [55, 50, 35] }],
+    jadugar: 'The card lifted.', cricket: 'A softer catch.', rukavat: 'A lighter click.' },
+  { title: 'Send', note: 'The same whoever you picked, on the same tick as the one vibration pulse.',
+    vars: [{ id: 'commit', label: 'Play', ms: [230, 100, 200] }],
+    jadugar: 'A wand taps the magician\'s box, then the lid shuts.', cricket: 'Bat meets ball: one rounded tock.', rukavat: 'The TV\'s push button: click, then clunk.' },
+  { title: 'Refusal, like "Team is full"', note: 'Two soft knocks at one pitch. Never a buzzer, never falling.',
+    vars: [{ id: 'refuse', label: 'Play', ms: [190, 190, 200] }],
+    jadugar: 'Two knocks on the trunk.', cricket: 'The bat taps the crease twice.', rukavat: 'Two knocks on the teak cabinet.' },
+  { title: 'Slot fill', note: 'The same whoever fills the slot.',
+    vars: [{ id: 'fill', label: 'Play', ms: [120, 90, 120] }],
+    jadugar: 'A card slid into the stand.', cricket: 'A small number plate hung.', rukavat: 'A programme card slid into the schedule.' },
+  { title: 'Spending a check', note: 'A small, firm, physical sound.',
+    vars: [{ id: 'spend', label: 'Play', ms: [140, 120, 120] }],
+    jadugar: 'A card turned face down.', cricket: 'The ball into the keeper\'s gloves.', rukavat: 'The knob turned one notch.' },
+  { title: 'Result reveal, the big moment', note: 'The same every day, whatever the score or lean. At most 1.2 s. Calm sound shortens it. More in section 5.',
+    vars: [{ id: 'result', label: 'Play', ms: [1200, 1200, 1200] }],
+    jadugar: 'The cloth comes off the show bill.', cricket: 'Decision pending, then three plates.', rukavat: 'The interruption card, then the picture.' },
+  { title: 'Milestone stamp', note: 'About days played, never about answers. One soft note, dropped under calm sound.',
+    vars: [{ id: 'milestone', label: 'Play', ms: [750, 820, 880] }],
+    jadugar: 'A card slapped down, one soft brass note.', cricket: 'A heavy plate hung, one soft bell note.', rukavat: 'The shutter knocks, one soft santoor note.' },
+  { title: 'Open and close a sheet', note: 'Also the only sounds on Sunday\'s look-again.',
+    vars: [{ id: 'open', label: 'Open', ms: [200, 220, 230] }, { id: 'close', label: 'Close', ms: [180, 200, 220] }],
+    jadugar: 'Cards fanned open, then gathered.', cricket: 'The pitch cover pulled off, then on.', rukavat: 'The teak shutters slide open, then shut.' },
+  { title: 'Tab switch', note: 'The lightest sound in each set.',
+    vars: [{ id: 'tab', label: 'Play', ms: [50, 50, 35] }],
+    jadugar: 'One card flicked.', cricket: 'One scorebook page turned.', rukavat: 'One channel click.' },
+  { title: 'Toast', note: 'A small message appears. One quiet tone.',
+    vars: [{ id: 'toast', label: 'Play', ms: [160, 160, 210] }],
+    jadugar: 'One small brass tone.', cricket: 'A small plate tap with one tone.', rukavat: 'One soft TV tone.' },
+  { title: 'Cover "Play"', note: 'The cover\'s one soft sound, the first of the day.',
+    vars: [{ id: 'cover', label: 'Play', ms: [430, 580, 520] }],
+    jadugar: 'A short roll on the dugdugi.', cricket: 'A far bat, its echo off the stands.', rukavat: 'The knob turned, the static clears.' }
+];
+const IC_PLAY = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg>';
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+const fmtMs = ms => '~' + (ms >= 1000 ? (ms / 1000).toFixed(1) + ' s' : ms + ' ms');
+
+(function renderTable() {
+  const tbl = document.getElementById('fxtable');
+  const cell = (ev, w, wi) => {
+    const btns = ev.vars.map(v =>
+      '<button type="button" class="btn btn-' + w + '" data-fx="' + v.id + '" data-world="' + w + '" data-ms="' + v.ms[wi] + '" aria-label="Play ' + WN[w] + ' sound: ' + esc(ev.title) + (v.label === 'Play' ? '' : ', ' + v.label.toLowerCase()) + '">' + IC_PLAY + '<span>' + v.label + '</span></button>'
+    ).join('');
+    const longest = Math.max.apply(null, ev.vars.map(v => v.ms[wi]));
+    return '<td data-label="' + WN[w] + '"><div class="cell-btns">' + btns + '</div><p class="cap">' + esc(ev[w]) + ' <span class="dur">' + fmtMs(longest) + '</span></p></td>';
+  };
+  let h = '<colgroup><col class="c0"><col class="cw"><col class="cw"><col class="cw"></colgroup>';
+  h += '<thead><tr><th scope="col">Event</th><th scope="col" class="h-j">Jadugar</th><th scope="col" class="h-c">Cricket</th><th scope="col" class="h-r">Rukavat</th></tr></thead><tbody>';
+  EVENTS.forEach(ev => {
+    h += '<tr><th scope="row" class="ev"><span class="ev-t">' + esc(ev.title) + '</span><span class="ev-n">' + esc(ev.note) + '</span></th>' + W.map((w, wi) => cell(ev, w, wi)).join('') + '</tr>';
+  });
+  tbl.innerHTML = h + '</tbody>';
+})();
+
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
+const live = $('#live');
+const say = msg => { live.textContent = msg; };
+const volEl = $('#vol'), volOut = $('#volOut'), calmEl = $('#calm');
+const reduceMq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+let raf = 0, headRaf = 0, lastTap = Date.now();
+
+function setVol(v) {
+  S.vol = v;
+  volOut.textContent = v.toFixed(2);
+  volEl.style.setProperty('--p', (v * 100) + '%');
+  if (S.master) S.master.gain.setTargetAtTime(v, S.ctx.currentTime, 0.02);
+}
+volEl.addEventListener('input', () => setVol(parseFloat(volEl.value)));
+setVol(0.4);
+
+if (reduceMq && reduceMq.matches) { S.calm = true; calmEl.checked = true; $('#calmNote').hidden = false; }
+calmEl.addEventListener('change', () => {
+  S.calm = calmEl.checked;
+  if (S.loop) { const def = S.loop.def; startLoop(def); syncLoops(); }
+});
+
+const fmtT = s => Math.floor(s / 60) + ':' + ('0' + Math.floor(s % 60)).slice(-2);
+function syncLoops() {
+  const cur = S.loop ? S.loop.def.id : null;
+  $$('[data-loop]').forEach(b => {
+    const on = b.dataset.loop === cur;
+    b.classList.toggle('is-on', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    b.querySelector('span').textContent = on ? 'Stop' : 'Play loop';
+    if (!on) {
+      const card = b.closest('.card');
+      card.querySelector('.prog i').style.width = '0';
+      card.querySelector('.clock').textContent = '0:00 / ' + fmtT(Math.round(loopLen(MUSIC[b.dataset.loop])));
+    }
+  });
+  if (cur && !raf) raf = requestAnimationFrame(tickProg);
+}
+function tickProg() {
+  raf = 0;
+  const L = S.loop;
+  if (!L) return;
+  const len = loopLen(L.def), el = Math.max(0, S.ctx.currentTime - L.t0), p = (el % len) / len;
+  const card = document.getElementById('card-' + L.def.id);
+  card.querySelector('.prog i').style.width = (p * 100).toFixed(1) + '%';
+  card.querySelector('.clock').textContent = fmtT(el % len) + ' / ' + fmtT(Math.round(len));
+  raf = requestAnimationFrame(tickProg);
+}
+
+function flash(b) {
+  const ms = parseInt(b.dataset.ms || '200', 10);
+  b.classList.add('is-on');
+  setTimeout(() => b.classList.remove('is-on'), ms + 80);
+}
+
+function stopHeads() {
+  if (headRaf) cancelAnimationFrame(headRaf);
+  headRaf = 0;
+  $$('.tl-head.on').forEach(x => x.classList.remove('on'));
+}
+function runHead(card, ms) {
+  stopHeads();
+  if (!card || ms < 600 || (reduceMq && reduceMq.matches)) return;
+  const head = card.querySelector('.tl-head'), start = performance.now(), span = Math.min(ms, 1200);
+  head.classList.add('on');
+  const step = now => {
+    const p = Math.min(1, (now - start) / span);
+    head.style.left = (p * 100).toFixed(2) + '%';
+    if (p < 1) headRaf = requestAnimationFrame(step);
+    else { headRaf = 0; setTimeout(() => head.classList.remove('on'), 250); }
+  };
+  headRaf = requestAnimationFrame(step);
+}
+
+function playFx(b) {
+  const w = b.dataset.world, id = b.dataset.fx, forceCalm = b.dataset.calm === '1', prev = S.calm;
+  if (forceCalm) S.calm = true;
+  try { FX[w][id](S.ctx.currentTime + 0.02, S.fx); } finally { S.calm = prev; }
+  flash(b);
+  runHead(b.closest('.moment'), forceCalm ? 0 : parseInt(b.dataset.ms || '0', 10));
+  say('Played ' + WN[w] + ' ' + (forceCalm ? 'calm ' : '') + id);
+}
+
+['pointerdown', 'keydown'].forEach(n => document.addEventListener(n, () => { lastTap = Date.now(); }, true));
+setInterval(() => {
+  if (S.loop && !S.loop.fading && Date.now() - lastTap > 180000) {
+    fadeLoop(6, () => { syncLoops(); say('The music faded after 3 minutes without a tap.'); });
+  }
+}, 5000);
+
+document.addEventListener('click', e => {
+  const b = e.target.closest ? e.target.closest('button') : null;
+  if (!b) return;
+  if (b.dataset.fx || b.dataset.loop || b.dataset.pulse) {
+    if (!ensureCtx()) { $('#nosound').hidden = false; return; }
+  }
+  if (b.dataset.fx) {
+    playFx(b);
+  } else if (b.dataset.loop) {
+    const id = b.dataset.loop;
+    if (S.loop && S.loop.def.id === id) { stopLoop(); say('Stopped the loop.'); }
+    else { startLoop(MUSIC[id]); say('Playing a loop of ' + Math.round(loopLen(MUSIC[id])) + ' seconds.'); }
+    syncLoops();
+  } else if (b.dataset.pulse) {
+    const w = b.dataset.pulse, msg = $('#pulseMsg');
+    FX[w].commit(S.ctx.currentTime + 0.02, S.fx);
+    let ok = false;
+    try { ok = !!(navigator.vibrate && navigator.vibrate(20)); } catch (err) { ok = false; }
+    msg.textContent = ok ? 'Sound and one short pulse requested together. Only a phone with vibration will feel it.' : 'No vibration is available here, so you heard the sound alone.';
+    say(msg.textContent);
+  } else if (b.dataset.skip) {
+    if (S.ctx) cutFx();
+    stopHeads();
+    $$('.btn.is-on[data-fx]').forEach(x => x.classList.remove('is-on'));
+    say('Skipped. The sound stopped with the picture.');
+  } else if (b.id === 'stop') {
+    if (S.ctx) stopAll();
+    stopHeads();
+    $$('.btn.is-on[data-fx]').forEach(x => x.classList.remove('is-on'));
+    syncLoops();
+    say('Everything stopped.');
+  }
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && S.ctx) { stopAll(); stopHeads(); syncLoops(); }
+});
+window.addEventListener('pagehide', () => { if (S.ctx) stopAll(); });
+syncLoops();
+</script>

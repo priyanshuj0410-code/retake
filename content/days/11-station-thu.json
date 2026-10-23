@@ -5,33 +5,101 @@
   "ground": "rail",
   "weekday": 4,
   "level": 4,
-  "levelName": { "en": "Loaded words", "hi": "भारी शब्द" },
+  "levelName": {
+    "en": "Loaded words",
+    "hi": "भारी शब्द"
+  },
   "area": "road",
-  "object": { "en": "Station board", "hi": "स्टेशन बोर्ड" },
+  "object": {
+    "en": "Station board",
+    "hi": "स्टेशन बोर्ड"
+  },
   "masthead": {
-    "series": { "en": "No.", "hi": "अंक" },
+    "series": {
+      "en": "No.",
+      "hi": "अंक"
+    },
     "no": 222,
-    "title": { "en": "Nashik Run", "hi": "नासिक रन" },
-    "city": { "en": "Nashik", "hi": "नासिक" },
+    "title": {
+      "en": "Nashik Run",
+      "hi": "नासिक रन"
+    },
+    "city": {
+      "en": "Nashik",
+      "hi": "नासिक"
+    },
     "script": "नाशिक रन",
     "board": "yellow",
-    "blurb": { "en": "900 km · 584 m above sea level", "hi": "900 किमी · समुद्र तल से 584 मी." }
+    "blurb": {
+      "en": "900 km · 584 m above sea level",
+      "hi": "900 किमी · समुद्र तल से 584 मी."
+    }
   },
   "steps": [
     {
       "kind": "pick",
       "id": "kasara-night",
-      "prompt": { "en": "Who drives the night stretch over Kasara ghat?", "hi": "रात में कसारा घाट वाला हिस्सा कौन चलाएगा?" },
+      "prompt": {
+        "en": "Who drives the night ghat?",
+        "hi": "रात का घाट कौन चलाएगा?"
+      },
       "stats": [
-        { "id": "years", "label": { "en": "years", "hi": "साल" } },
-        { "id": "accidents", "label": { "en": "crashes", "hi": "हादसे" } },
-        { "id": "trips", "label": { "en": "ghat trips", "hi": "घाट ट्रिप" } }
+        {
+          "id": "years",
+          "label": {
+            "en": "years",
+            "hi": "साल"
+          }
+        },
+        {
+          "id": "accidents",
+          "label": {
+            "en": "crashes",
+            "hi": "हादसे"
+          }
+        },
+        {
+          "id": "trips",
+          "label": {
+            "en": "trips",
+            "hi": "ट्रिप"
+          }
+        }
       ],
       "options": [
-        { "id": "kamla", "who": "kamla", "values": { "years": 14, "accidents": 0, "trips": 61 }, "quote": { "en": "\"Drives the ghat with full confidence.\"", "hi": "\"घाट पर पूरे आत्मविश्वास से चलाती है।\"" }, "profile": "confident" },
-        { "id": "raju", "who": "raju", "values": { "years": 14, "accidents": 0, "trips": 61 }, "quote": { "en": "\"Drives very fast on the ghat.\"", "hi": "\"घाट पर बहुत तेज़ चलाता है।\"" }, "profile": "fast" }
+        {
+          "id": "kamla",
+          "who": "kamla",
+          "values": {
+            "years": 14,
+            "accidents": 0,
+            "trips": 61
+          },
+          "quote": {
+            "en": "\"Drives the ghat with full confidence.\"",
+            "hi": "\"घाट पर पूरे आत्मविश्वास से चलाती है।\""
+          },
+          "profile": "confident"
+        },
+        {
+          "id": "raju",
+          "who": "raju",
+          "values": {
+            "years": 14,
+            "accidents": 0,
+            "trips": 61
+          },
+          "quote": {
+            "en": "\"Drives very fast on the ghat.\"",
+            "hi": "\"घाट पर बहुत तेज़ चलाता है।\""
+          },
+          "profile": "fast"
+        }
       ],
-      "twin": { "id": "T1", "half": "b" }
+      "twin": {
+        "id": "T1",
+        "half": "b"
+      }
     }
   ],
   "_review": "Twin T1, second half: the Lugdi Wednesday records with the words swapped between Kamla and Raju, in a new city and a new skin."

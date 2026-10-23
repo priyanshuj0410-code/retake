@@ -1,12 +1,34 @@
 ---
 type: design-system
-title: Equal Lens Daily trainer design system
-description: The tokens per skin, type, the text-colour rule, every component and its states, motion and copy rules of the daily fairness trainer. Every UI choice in src/ comes from here, and scripts/design-check.ts and scripts/content-check.ts hold the code and the content to it.
+title: Equal Lens Daily design system index (EVAL-13 content superseded)
+description: Entry point to the Equal Lens Daily design system. The binding system is the root DESIGN.md, its rulebook and the component library. Below the index, this file keeps the rejected EVAL-13 system for history only; it is not authority.
 plane_issues:
+  - https://app.plane.so/the-equal-lens/browse/EVAL-14/
   - https://app.plane.so/the-equal-lens/browse/EVAL-13/
 ---
 
-# Equal Lens Daily: design system
+# Equal Lens Daily: design system index
+
+**Authority, in order:**
+1. **[DESIGN.md](../DESIGN.md):** tokens, type, layout, depth, shapes, components, do's and don'ts.
+2. **[reference/design-rules-consolidated.md](reference/design-rules-consolidated.md):** about 200 binding rules with sources.
+3. **[../PRODUCT.md](../PRODUCT.md):** product truth.
+
+**Component library for owner review:** `design-system/index.html`, published as a claude.ai artifact. No app code is written until the owner approves it (EVAL-14).
+
+**Research behind the rules:**
+- [foundations/](foundations/): Apple HIG, Material 3, perception and heuristics, UX writing, usability and accessibility, daily-game patterns.
+- [ux/personas.md](ux/personas.md).
+- [ux/journeys.md](ux/journeys.md), with the owner questions OQ-1 to OQ-30.
+- [ux/critique-stage1.md](ux/critique-stage1.md).
+
+---
+
+## SUPERSEDED: the rejected EVAL-13 system (history only, not authority)
+
+On 20 Oct 2026 the owner rejected everything below as "no design system, no consistency, no vibe". Do not build from it.
+
+# Equal Lens Daily: design system (EVAL-13, superseded)
 
 The trainer is one fairness puzzle a day, played on the player's own phone in 5 to 7 minutes.
 It replaces the evaluator's screens (EVAL-1 to EVAL-12, kept in git history and on the

@@ -1,0 +1,15 @@
+{
+  "prompt": "Origin: procedural texture drawn in Python (numpy, PIL) for the Cricket metal finish (O14); no source image, no generator model.",
+  "method": "Tileable RGBA overlay for bare brushed steel: wrap-around anisotropic noise, long brushing strokes (sigma 0.4 px across, 90 px along, 64%), a short tooth (sigma 0.3 by 8 px, 24%) and a slow drift (sigma 10 by 160 px, 12%). Negative values are a cool near-black (20, 24, 28), positive values white; alpha is the magnitude, capped at 46 of 255, so over a light-to-dark steel gradient (which carries the one light, high on the left) the brushing reads plainly. It never sits under any letter.",
+  "parameters": {
+    "seed": 7302,
+    "size": [
+      512,
+      128
+    ],
+    "alphaCap": 46
+  },
+  "script": "cricket_metal.py, the same script that draws cricket-alu.webp; its full text, which draws both rasters bit for bit, is in the \"source\" field of cricket-alu.webp.json",
+  "usedBy": "worlds/cricket.css, the Cricket metal finish (O14): --steel-grain, drawn at 256 x 64 px in the third umpire's screen bezel (the 8 px border of .cr-third) and on the steel scorecard clip (.cr-card::before and .cr-comm::before).",
+  "createdAt": "2026-10-22T00:24:26+00:00"
+}

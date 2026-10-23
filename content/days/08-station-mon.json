@@ -5,47 +5,152 @@
   "ground": "rail",
   "weekday": 1,
   "level": 2,
-  "levelName": { "en": "Same rule for all", "hi": "सबके लिए एक नियम" },
+  "levelName": {
+    "en": "Same rule for all",
+    "hi": "सबके लिए एक नियम"
+  },
   "area": "travel",
-  "object": { "en": "Tatkal queue", "hi": "तत्काल की क़तार" },
+  "object": {
+    "en": "Tatkal queue",
+    "hi": "तत्काल की क़तार"
+  },
   "masthead": {
-    "series": { "en": "Chart", "hi": "चार्ट" },
+    "series": {
+      "en": "Chart",
+      "hi": "चार्ट"
+    },
     "no": 219,
-    "title": { "en": "Tatkal Counter", "hi": "तत्काल काउंटर" },
-    "city": { "en": "Ahmedabad", "hi": "अहमदाबाद" },
+    "title": {
+      "en": "Tatkal Counter",
+      "hi": "तत्काल काउंटर"
+    },
+    "city": {
+      "en": "Ahmedabad",
+      "hi": "अहमदाबाद"
+    },
     "script": "તત્કાલ કાઉન્ટર",
     "board": "yellow",
-    "blurb": { "en": "1 confirmed seat. 4 people in the queue.", "hi": "1 पक्की सीट। क़तार में 4 लोग।" }
+    "blurb": {
+      "en": "One seat. Four people.",
+      "hi": "एक सीट। चार लोग।"
+    }
   },
   "steps": [
     {
       "kind": "rank",
       "id": "tatkal",
-      "prompt": { "en": "Who gets the seat, and who waits?", "hi": "सीट किसे मिलेगी, और कौन इंतज़ार करेगा?" },
+      "prompt": {
+        "en": "One seat. Who goes first?",
+        "hi": "एक सीट। पहले कौन?"
+      },
       "positions": [
-        { "en": "CNF", "hi": "CNF" },
-        { "en": "RAC", "hi": "RAC" },
-        { "en": "WL 1", "hi": "WL 1" },
-        { "en": "WL 2", "hi": "WL 2" }
+        {
+          "en": "CNF",
+          "hi": "CNF"
+        },
+        {
+          "en": "RAC",
+          "hi": "RAC"
+        },
+        {
+          "en": "WL 1",
+          "hi": "WL 1"
+        },
+        {
+          "en": "WL 2",
+          "hi": "WL 2"
+        }
       ],
       "rules": [
-        { "id": "urgent", "label": { "en": "Most urgent first", "hi": "सबसे ज़रूरी पहले" }, "key": "urgency" },
-        { "id": "queue", "label": { "en": "Queue order first", "hi": "क़तार के क्रम से" }, "key": "queue" }
+        {
+          "id": "urgent",
+          "label": {
+            "en": "Urgent",
+            "hi": "ज़रूरी"
+          },
+          "key": "urgency"
+        },
+        {
+          "id": "queue",
+          "label": {
+            "en": "Queue",
+            "hi": "क़तार"
+          },
+          "key": "queue"
+        }
       ],
       "people": [
-        { "who": "meena", "record": { "en": "Token 1 · cousin's wedding", "hi": "टोकन 1 · चचेरे भाई की शादी" }, "values": { "urgency": 1, "queue": 4 } },
-        { "who": "joseph", "record": { "en": "Token 2 · exam tomorrow", "hi": "टोकन 2 · कल परीक्षा" }, "values": { "urgency": 2, "queue": 3 } },
-        { "who": "anita", "record": { "en": "Token 3 · child in hospital", "hi": "टोकन 3 · बच्चा अस्पताल में" }, "values": { "urgency": 3, "queue": 2 } },
-        { "who": "vikram", "record": { "en": "Token 4 · child in hospital", "hi": "टोकन 4 · बच्चा अस्पताल में" }, "values": { "urgency": 3, "queue": 1 } }
+        {
+          "who": "meena",
+          "record": {
+            "en": "“Cousin's wedding.”",
+            "hi": "“चचेरे भाई की शादी।”"
+          },
+          "values": {
+            "urgency": 1,
+            "queue": 4,
+            "token": 1
+          }
+        },
+        {
+          "who": "joseph",
+          "record": {
+            "en": "“Exam tomorrow.”",
+            "hi": "“कल परीक्षा।”"
+          },
+          "values": {
+            "urgency": 2,
+            "queue": 3,
+            "token": 2
+          }
+        },
+        {
+          "who": "anita",
+          "record": {
+            "en": "“Child in hospital.”",
+            "hi": "“बच्चा अस्पताल में।”"
+          },
+          "values": {
+            "urgency": 3,
+            "queue": 2,
+            "token": 3
+          }
+        },
+        {
+          "who": "vikram",
+          "record": {
+            "en": "“Child in hospital.”",
+            "hi": "“बच्चा अस्पताल में।”"
+          },
+          "values": {
+            "urgency": 3,
+            "queue": 1,
+            "token": 4
+          }
+        }
+      ],
+      "stats": [
+        {
+          "id": "token",
+          "label": {
+            "en": "token",
+            "hi": "टोकन"
+          }
+        }
       ]
     },
     {
       "kind": "crowd",
       "id": "crowd-masala",
-      "prompt": { "en": "Last Tuesday's gossip column: what share of players cut the line about Arjun crying?", "hi": "पिछले मंगलवार का गपशप कॉलम: कितने प्रतिशत खिलाड़ियों ने अर्जुन के रोने वाली लाइन काटी?" },
+      "prompt": {
+        "en": "What share cut the line about Arjun crying?",
+        "hi": "कितनों ने अर्जुन के रोने वाली लाइन काटी?"
+      },
       "sample": 71,
       "players": 41302,
-      "who": ["arjun"]
+      "who": [
+        "arjun"
+      ]
     }
   ],
   "_review": "Rank with a locked rule. Under 'most urgent', Anita and Vikram tie for the seat: one lean unit. Under 'queue order', the tokens decide and nothing ties. The urgency values (wedding 1, exam 2, hospital 3) are the builder's, for the owner to check. The crowd figure (71%) is sample data and is labelled so on screen."

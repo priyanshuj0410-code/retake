@@ -1,0 +1,13 @@
+{
+  "prompt": "Origin: procedural texture drawn in Python (numpy, PIL) for the Lugdi premium side study; no source image, no generator.",
+  "method": "Radial brushed (spun) brass: 1D smoothed noise mapped to radius for the fine rings, cos(2 theta) highlight lobes and a cos(theta) side light, both aimed at the top left (the study's one light), mapped through shadow #7A6238, mid #C4A870 and highlight #F6EACC.",
+  "parameters": {
+    "seed": 216,
+    "size": 512,
+    "light": "top left"
+  },
+  "script": "design-system/art/metal_textures.py (lugdi_brass; first drawn by the study's make_textures.py, reproduced bit for bit)",
+  "movedFrom": "design-system/explore/assets/lugdi-brass.webp (22 Oct 2026)",
+  "usedBy": "library.css, Lugdi metal finish (O14), and the study explore/premium-lugdi.css: the spun-brass rim (3 px, 5 px on the score) of the issue roundel, the score roundel, the milestone and the change stamp, drawn as the border-box layer under a red enamel ring and a cream enamel face; in the library also the 1 px brass rim of the round buttons, the streak pill, the language switch and the board switch.",
+  "createdAt": "2026-10-21T17:07:12+00:00"
+}

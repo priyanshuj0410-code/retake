@@ -1,0 +1,16 @@
+/* @owns details details__summary details__body */
+.details {
+  border-top: var(--edge-thin) solid var(--c-muted-edge);
+}
+.details__summary {
+  min-height: var(--tap-min);
+  display: flex;
+  align-items: center;
+  font-size: var(--text-m);
+  font-weight: 700;
+  color: var(--c-on-ground);
+  cursor: pointer;
+}
+.details__body {
+  padding-bottom: var(--gap-m);
+}

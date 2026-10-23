@@ -5,20 +5,38 @@
   "ground": "rail",
   "weekday": 7,
   "level": null,
-  "levelName": { "en": "PNR slip", "hi": "PNR पर्ची" },
+  "levelName": {
+    "en": "PNR slip",
+    "hi": "PNR पर्ची"
+  },
   "area": null,
-  "object": { "en": "PNR slip", "hi": "PNR पर्ची" },
+  "object": {
+    "en": "PNR slip",
+    "hi": "PNR पर्ची"
+  },
   "sunday": true,
   "masthead": {
-    "series": { "en": "PNR slip", "hi": "PNR पर्ची" },
+    "series": {
+      "en": "PNR slip",
+      "hi": "PNR पर्ची"
+    },
     "no": 225,
-    "title": { "en": "Journey summary · {handle}", "hi": "यात्रा सारांश · {handle}" },
+    "title": {
+      "en": "Journey summary · {handle}",
+      "hi": "यात्रा सारांश · {handle}"
+    },
     "board": "white",
-    "blurb": { "en": "Your week in numbers, and one look back.", "hi": "आपका हफ़्ता अंकों में, और एक बार पीछे देखें।" }
+    "blurb": {
+      "en": "",
+      "hi": ""
+    }
   },
   "steps": [],
   "reflect": {
     "twin": "T1",
-    "prompt": { "en": "Same two records, the words swapped between them. What was different?", "hi": "वही दो रिकॉर्ड, शब्द आपस में बदले हुए। क्या अलग था?" }
+    "prompt": {
+      "en": "What was different?",
+      "hi": "क्या अलग था?"
+    }
   }
 }

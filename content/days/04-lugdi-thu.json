@@ -5,33 +5,103 @@
   "ground": "navy",
   "weekday": 4,
   "level": 6,
-  "levelName": { "en": "Why did it happen?", "hi": "ऐसा क्यों हुआ?" },
+  "levelName": {
+    "en": "Why did it happen?",
+    "hi": "ऐसा क्यों हुआ?"
+  },
   "area": "work",
-  "object": { "en": "Letters page", "hi": "पाठकों के पत्र" },
+  "object": {
+    "en": "Letters page",
+    "hi": "पाठकों के पत्र"
+  },
   "masthead": {
-    "series": { "en": "Ghat Series", "hi": "घाट सीरीज़" },
+    "series": {
+      "en": "Ghat Series",
+      "hi": "घाट सीरीज़"
+    },
     "no": 215,
-    "title": { "en": "Readers Write", "hi": "पाठक लिखते हैं" },
-    "blurb": { "en": "Same facts, your words. Write both notes.", "hi": "वही बातें, आपके शब्द। दोनों नोट लिखें।" }
+    "title": {
+      "en": "Readers Write",
+      "hi": "पाठक लिखते हैं"
+    },
+    "blurb": {
+      "en": "Same facts. Your words.",
+      "hi": "वही बातें। आपके शब्द।"
+    }
   },
   "steps": [
     {
       "kind": "words",
       "id": "depot-notes",
-      "prompt": { "en": "Fill both notes from the same words.", "hi": "एक ही शब्दों से दोनों नोट भरें।" },
-      "facts": { "en": "At the depot meeting, both argued hard about a short load.", "hi": "डिपो की मीटिंग में दोनों ने कम माल पर ज़ोर से बहस की।" },
-      "template": { "en": "{name} is a ___ and ___ driver.", "hi": "{name} एक ___ और ___ ड्राइवर है।" },
-      "people": ["pammi", "arjun"],
+      "prompt": {
+        "en": "Two words for each driver.",
+        "hi": "हर ड्राइवर के लिए दो शब्द।"
+      },
+      "template": {
+        "en": "{name} ___ · ___",
+        "hi": "{name} ___ · ___"
+      },
+      "people": [
+        "pammi",
+        "arjun"
+      ],
       "bank": [
-        { "id": "passionate", "text": { "en": "passionate", "hi": "जोशीला" }, "valence": 1 },
-        { "id": "emotional", "text": { "en": "emotional", "hi": "भावुक" }, "valence": -1 },
-        { "id": "firm", "text": { "en": "firm", "hi": "मज़बूत" }, "valence": 1 },
-        { "id": "difficult", "text": { "en": "difficult", "hi": "मुश्किल" }, "valence": -1 },
-        { "id": "honest", "text": { "en": "honest", "hi": "ईमानदार" }, "valence": 1 },
-        { "id": "rude", "text": { "en": "rude", "hi": "बदतमीज़" }, "valence": -1 },
-        { "id": "brave", "text": { "en": "brave", "hi": "बहादुर" }, "valence": 1 },
-        { "id": "hot-headed", "text": { "en": "hot-headed", "hi": "गरम दिमाग़" }, "valence": -1 }
-      ]
+        {
+          "id": "passionate",
+          "text": {
+            "en": "passionate",
+            "hi": "जोशीला"
+          },
+          "valence": 1
+        },
+        {
+          "id": "emotional",
+          "text": {
+            "en": "emotional",
+            "hi": "भावुक"
+          },
+          "valence": -1
+        },
+        {
+          "id": "firm",
+          "text": {
+            "en": "firm",
+            "hi": "मज़बूत"
+          },
+          "valence": 1
+        },
+        {
+          "id": "rude",
+          "text": {
+            "en": "rude",
+            "hi": "बदतमीज़"
+          },
+          "valence": -1
+        },
+        {
+          "id": "brave",
+          "text": {
+            "en": "brave",
+            "hi": "बहादुर"
+          },
+          "valence": 1
+        },
+        {
+          "id": "hot-headed",
+          "text": {
+            "en": "hot-headed",
+            "hi": "गरम दिमाग़"
+          },
+          "valence": -1
+        }
+      ],
+      "voice": {
+        "who": "salim",
+        "line": {
+          "en": "“Both argued hard about the short load.”",
+          "hi": "“दोनों ने कम माल पर ज़ोर से बहस की।”"
+        }
+      }
     }
   ],
   "_review": "Word valence is coded +1 or -1 by the builder, for the owner and bilingual reviewers to check. Word-choice parity is the gap between the two notes' average valence. The Hindi words need a native check: 'मुश्किल' and 'भावुक' may not carry the same weight as the English."

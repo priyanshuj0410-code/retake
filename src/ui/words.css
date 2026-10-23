@@ -60,3 +60,7 @@
   border-style: dashed;
   border-color: var(--c-muted-edge);
 }
+.note__blank[data-next='true'] {
+  outline: var(--focus-width) solid var(--c-focus);
+  animation: var(--pulse-animation);
+}

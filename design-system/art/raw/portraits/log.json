@@ -1,0 +1,1497 @@
+{
+ "enamel-yasmin": {
+  "seed": 29809,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 32 years old, light brown skin, hair in a low ponytail, small hoop earrings, a collared work shirt with shoulder straps, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-yasmin": {
+  "seed": 29910,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 32 years old, light brown skin, hair in a low ponytail, small hoop earrings, a collared work shirt with shoulder straps, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-yasmin": {
+  "seed": 30011,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 32 years old, light brown skin, hair in a low ponytail, small hoop earrings, a collared work shirt with shoulder straps, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-yasmin": {
+  "seed": 30112,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 32 years old, light brown skin, hair in a low ponytail, small hoop earrings, a collared work shirt with shoulder straps, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-yasmin": {
+  "seed": 38132,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 32 years old, light brown skin, hair in a low ponytail, small hoop earrings, a collared work shirt with shoulder straps, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-mumtaz": {
+  "seed": 29453,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 45 years old, deep brown skin, hair in a tight bun, a bare forehead, a checked cotton shirt with rolled sleeves, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-mumtaz": {
+  "seed": 29554,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 45 years old, deep brown skin, hair in a tight bun, a bare forehead, a checked cotton shirt with rolled sleeves, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-mumtaz": {
+  "seed": 29655,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 45 years old, deep brown skin, hair in a tight bun, a bare forehead, a checked cotton shirt with rolled sleeves, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-mumtaz": {
+  "seed": 29756,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 45 years old, deep brown skin, hair in a tight bun, a bare forehead, a checked cotton shirt with rolled sleeves, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-saroj": {
+  "seed": 59040,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 45 years old, medium brown skin, hair cut short just below the ears, a small nose stud, a khaki work shirt with rolled sleeves, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-saroj": {
+  "seed": 59242,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 45 years old, medium brown skin, hair cut short just below the ears, a small nose stud, a khaki work shirt with rolled sleeves, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-saroj": {
+  "seed": 59343,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 45 years old, medium brown skin, hair cut short just below the ears, a small nose stud, a khaki work shirt with rolled sleeves, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-saroj": {
+  "seed": 59444,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 45 years old, medium brown skin, hair cut short just below the ears, a small nose stud, a khaki work shirt with rolled sleeves, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-sarla": {
+  "seed": 62315,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 45 years old, light brown skin, hair in a high bun tied with a red ribbon, gold hoop earrings, a black sequinned stage blouse, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-sarla": {
+  "seed": 62416,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 45 years old, light brown skin, hair in a high bun tied with a red ribbon, gold hoop earrings, a black sequinned stage blouse, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-sarla": {
+  "seed": 62618,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 45 years old, light brown skin, hair in a high bun tied with a red ribbon, gold hoop earrings, a black sequinned stage blouse, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-sarla": {
+  "seed": 70638,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 45 years old, light brown skin, hair in a high bun tied with a red ribbon, gold hoop earrings, a black sequinned stage blouse, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-agnes": {
+  "seed": 28160,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 45 years old, dark brown skin, short curly hair, a bare forehead, small pearl studs, a white collared cricket shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-agnes": {
+  "seed": 28261,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 45 years old, dark brown skin, short curly hair, a bare forehead, small pearl studs, a white collared cricket shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-agnes": {
+  "seed": 28362,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 45 years old, dark brown skin, short curly hair, a bare forehead, small pearl studs, a white collared cricket shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-agnes": {
+  "seed": 28564,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 45 years old, dark brown skin, short curly hair, a bare forehead, small pearl studs, a white collared cricket shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-shampa": {
+  "seed": 38859,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 45 years old, light brown skin, a round face, thick wavy hair in a loose bun, a small round bindi, a cotton saree with a red border, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-shampa": {
+  "seed": 38960,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 45 years old, light brown skin, a round face, thick wavy hair in a loose bun, a small round bindi, a cotton saree with a red border, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-shampa": {
+  "seed": 39061,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 45 years old, light brown skin, a round face, thick wavy hair in a loose bun, a small round bindi, a cotton saree with a red border, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-shampa": {
+  "seed": 39162,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 45 years old, light brown skin, a round face, thick wavy hair in a loose bun, a small round bindi, a cotton saree with a red border, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-kiran": {
+  "seed": 35504,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 30 years old, light brown skin, long braid, a plain kurta with a denim jacket, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-kiran": {
+  "seed": 35605,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 30 years old, light brown skin, long braid, a plain kurta with a denim jacket, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-kiran": {
+  "seed": 35706,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 30 years old, light brown skin, long braid, a plain kurta with a denim jacket, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-kiran": {
+  "seed": 43726,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 30 years old, light brown skin, long braid, a plain kurta with a denim jacket, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-jasleen": {
+  "seed": 67300,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 30 years old, light brown skin, a bare forehead, a light cotton dupatta draped over her hair, a padded windcheater over a salwar kameez, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-jasleen": {
+  "seed": 67502,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 30 years old, light brown skin, a bare forehead, a light cotton dupatta draped over her hair, a padded windcheater over a salwar kameez, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-jasleen": {
+  "seed": 67603,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 30 years old, light brown skin, a bare forehead, a light cotton dupatta draped over her hair, a padded windcheater over a salwar kameez, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-jasleen": {
+  "seed": 75623,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 30 years old, light brown skin, a bare forehead, a light cotton dupatta draped over her hair, a padded windcheater over a salwar kameez, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-rabia": {
+  "seed": 41358,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 30 years old, medium brown skin, a bare forehead, short layered hair, kohl-lined eyes, small silver earrings, a dark green stage kurta with gold piping, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-rabia": {
+  "seed": 41459,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 30 years old, medium brown skin, a bare forehead, short layered hair, kohl-lined eyes, small silver earrings, a dark green stage kurta with gold piping, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-rabia": {
+  "seed": 41661,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 30 years old, medium brown skin, a bare forehead, short layered hair, kohl-lined eyes, small silver earrings, a dark green stage kurta with gold piping, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-rabia": {
+  "seed": 41762,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 30 years old, medium brown skin, a bare forehead, short layered hair, kohl-lined eyes, small silver earrings, a dark green stage kurta with gold piping, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-bindu": {
+  "seed": 20791,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 30 years old, dark brown skin, thick hair in a short ponytail, a small black bindi, a cricket training jersey, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-bindu": {
+  "seed": 20892,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 30 years old, dark brown skin, thick hair in a short ponytail, a small black bindi, a cricket training jersey, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-bindu": {
+  "seed": 20993,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 30 years old, dark brown skin, thick hair in a short ponytail, a small black bindi, a cricket training jersey, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-bindu": {
+  "seed": 29114,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 30 years old, dark brown skin, thick hair in a short ponytail, a small black bindi, a cricket training jersey, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-pooja": {
+  "seed": 67885,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 30 years old, medium brown skin, hair in a side plait, small gold jhumka earrings, a printed cotton salwar kameez, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-pooja": {
+  "seed": 67986,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 30 years old, medium brown skin, hair in a side plait, small gold jhumka earrings, a printed cotton salwar kameez, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-pooja": {
+  "seed": 68087,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 30 years old, medium brown skin, hair in a side plait, small gold jhumka earrings, a printed cotton salwar kameez, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-pooja": {
+  "seed": 68188,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 30 years old, medium brown skin, hair in a side plait, small gold jhumka earrings, a printed cotton salwar kameez, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-gurpreet": {
+  "seed": 41540,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 35 years old, medium brown skin, shoulder-length hair, small spectacles, a plain cotton salwar, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-gurpreet": {
+  "seed": 41641,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 35 years old, medium brown skin, shoulder-length hair, small spectacles, a plain cotton salwar, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-gurpreet": {
+  "seed": 41742,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 35 years old, medium brown skin, shoulder-length hair, small spectacles, a plain cotton salwar, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-gurpreet": {
+  "seed": 41843,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 35 years old, medium brown skin, shoulder-length hair, small spectacles, a plain cotton salwar, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-nirmala": {
+  "seed": 37979,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 35 years old, dark brown skin, a broad face, hair in a tight low bun, a faded maroon cardigan over a cotton saree, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-nirmala": {
+  "seed": 38181,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 35 years old, dark brown skin, a broad face, hair in a tight low bun, a faded maroon cardigan over a cotton saree, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-nirmala": {
+  "seed": 38282,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 35 years old, dark brown skin, a broad face, hair in a tight low bun, a faded maroon cardigan over a cotton saree, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-nirmala": {
+  "seed": 38383,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 35 years old, dark brown skin, a broad face, hair in a tight low bun, a faded maroon cardigan over a cotton saree, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-mitali": {
+  "seed": 28214,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 35 years old, light brown skin, curly shoulder-length hair, large kohl-lined eyes, big silver earrings, a black blouse with mirror work, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-mitali": {
+  "seed": 28315,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 35 years old, light brown skin, curly shoulder-length hair, large kohl-lined eyes, big silver earrings, a black blouse with mirror work, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-mitali": {
+  "seed": 28517,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 35 years old, light brown skin, curly shoulder-length hair, large kohl-lined eyes, big silver earrings, a black blouse with mirror work, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-mitali": {
+  "seed": 36537,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 35 years old, light brown skin, curly shoulder-length hair, large kohl-lined eyes, big silver earrings, a black blouse with mirror work, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-gita": {
+  "seed": 24363,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 35 years old, medium brown skin, a short boyish haircut, a white sweatband round the forehead, a navy cricket shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-gita": {
+  "seed": 24464,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 35 years old, medium brown skin, a short boyish haircut, a white sweatband round the forehead, a navy cricket shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-gita": {
+  "seed": 24565,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 35 years old, medium brown skin, a short boyish haircut, a white sweatband round the forehead, a navy cricket shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-gita": {
+  "seed": 24767,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 35 years old, medium brown skin, a short boyish haircut, a white sweatband round the forehead, a navy cricket shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-deepa": {
+  "seed": 43846,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 35 years old, light brown skin, hair in a neat bun, small gold studs, rectangular spectacles, a mustard-yellow cotton saree, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-deepa": {
+  "seed": 43947,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 35 years old, light brown skin, hair in a neat bun, small gold studs, rectangular spectacles, a mustard-yellow cotton saree, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-deepa": {
+  "seed": 44048,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 35 years old, light brown skin, hair in a neat bun, small gold studs, rectangular spectacles, a mustard-yellow cotton saree, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-deepa": {
+  "seed": 44149,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 35 years old, light brown skin, hair in a neat bun, small gold studs, rectangular spectacles, a mustard-yellow cotton saree, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-annamma": {
+  "seed": 22041,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 60 years old, dark brown skin, short grey curly hair, a bare forehead, gold-rimmed spectacles, a navy uniform shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-annamma": {
+  "seed": 22142,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 60 years old, dark brown skin, short grey curly hair, a bare forehead, gold-rimmed spectacles, a navy uniform shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-annamma": {
+  "seed": 22243,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 60 years old, dark brown skin, short grey curly hair, a bare forehead, gold-rimmed spectacles, a navy uniform shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-annamma": {
+  "seed": 22344,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 60 years old, dark brown skin, short grey curly hair, a bare forehead, gold-rimmed spectacles, a navy uniform shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-kusum": {
+  "seed": 28084,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 60 years old, medium brown skin, salt-and-pepper hair in a plait, a small nose ring, a woollen shawl over a cotton saree, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-kusum": {
+  "seed": 28286,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 60 years old, medium brown skin, salt-and-pepper hair in a plait, a small nose ring, a woollen shawl over a cotton saree, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-kusum": {
+  "seed": 28387,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 60 years old, medium brown skin, salt-and-pepper hair in a plait, a small nose ring, a woollen shawl over a cotton saree, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-kusum": {
+  "seed": 28488,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 60 years old, medium brown skin, salt-and-pepper hair in a plait, a small nose ring, a woollen shawl over a cotton saree, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-pushpa": {
+  "seed": 59097,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 60 years old, dark brown skin, hair dyed copper red with henna pulled into a bun, a broad smile, a purple silk saree, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-pushpa": {
+  "seed": 59198,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 60 years old, dark brown skin, hair dyed copper red with henna pulled into a bun, a broad smile, a purple silk saree, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-pushpa": {
+  "seed": 59400,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 60 years old, dark brown skin, hair dyed copper red with henna pulled into a bun, a broad smile, a purple silk saree, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-pushpa": {
+  "seed": 59501,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 60 years old, dark brown skin, hair dyed copper red with henna pulled into a bun, a broad smile, a purple silk saree, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-shirin": {
+  "seed": 66320,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 60 years old, light brown skin, a short grey bob, a bare forehead, a whistle on a cord round her neck, a navy tracksuit jacket, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-shirin": {
+  "seed": 66421,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 60 years old, light brown skin, a short grey bob, a bare forehead, a whistle on a cord round her neck, a navy tracksuit jacket, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-shirin": {
+  "seed": 66522,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 60 years old, light brown skin, a short grey bob, a bare forehead, a whistle on a cord round her neck, a navy tracksuit jacket, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-shirin": {
+  "seed": 74643,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 60 years old, light brown skin, a short grey bob, a bare forehead, a whistle on a cord round her neck, a navy tracksuit jacket, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-sunil": {
+  "seed": 21300,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 40 years old, medium brown skin, short hair, thin moustache, an open shirt over a vest, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-sunil": {
+  "seed": 21401,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 40 years old, medium brown skin, short hair, thin moustache, an open shirt over a vest, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-sunil": {
+  "seed": 21502,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 40 years old, medium brown skin, short hair, thin moustache, an open shirt over a vest, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-sunil": {
+  "seed": 21603,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 40 years old, medium brown skin, short hair, thin moustache, an open shirt over a vest, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-dinesh": {
+  "seed": 54129,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 40 years old, dark brown skin, a shaved head, a thick handlebar moustache, a grey sweatshirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-dinesh": {
+  "seed": 54331,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 40 years old, dark brown skin, a shaved head, a thick handlebar moustache, a grey sweatshirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-dinesh": {
+  "seed": 54432,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 40 years old, dark brown skin, a shaved head, a thick handlebar moustache, a grey sweatshirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-dinesh": {
+  "seed": 54533,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 40 years old, dark brown skin, a shaved head, a thick handlebar moustache, a grey sweatshirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-naresh": {
+  "seed": 31921,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 40 years old, light brown skin, slicked-back hair, a pencil moustache, a red silk kurta with a mandarin collar, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-naresh": {
+  "seed": 32022,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 40 years old, light brown skin, slicked-back hair, a pencil moustache, a red silk kurta with a mandarin collar, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-naresh": {
+  "seed": 32224,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 40 years old, light brown skin, slicked-back hair, a pencil moustache, a red silk kurta with a mandarin collar, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-naresh": {
+  "seed": 40244,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 40 years old, light brown skin, slicked-back hair, a pencil moustache, a red silk kurta with a mandarin collar, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-hari": {
+  "seed": 46401,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 40 years old, medium brown skin, a receding hairline, a round face, clean-shaven, a cream sleeveless cricket sweater over a white shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-hari": {
+  "seed": 46502,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 40 years old, medium brown skin, a receding hairline, a round face, clean-shaven, a cream sleeveless cricket sweater over a white shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-hari": {
+  "seed": 46603,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 40 years old, medium brown skin, a receding hairline, a round face, clean-shaven, a cream sleeveless cricket sweater over a white shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-hari": {
+  "seed": 46805,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 40 years old, medium brown skin, a receding hairline, a round face, clean-shaven, a cream sleeveless cricket sweater over a white shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-rajan": {
+  "seed": 31519,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 40 years old, medium brown skin, thick hair greying at the sides, a full moustache, a short-sleeved checked bush shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-rajan": {
+  "seed": 31620,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 40 years old, medium brown skin, thick hair greying at the sides, a full moustache, a short-sleeved checked bush shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-rajan": {
+  "seed": 31721,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 40 years old, medium brown skin, thick hair greying at the sides, a full moustache, a short-sleeved checked bush shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-rajan": {
+  "seed": 31822,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 40 years old, medium brown skin, thick hair greying at the sides, a full moustache, a short-sleeved checked bush shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-prakash": {
+  "seed": 64697,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 27 years old, dark brown skin, curly short hair, light stubble, a plain t-shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-prakash": {
+  "seed": 64798,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 27 years old, dark brown skin, curly short hair, light stubble, a plain t-shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-prakash": {
+  "seed": 64899,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 27 years old, dark brown skin, curly short hair, light stubble, a plain t-shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-prakash": {
+  "seed": 65000,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 27 years old, dark brown skin, curly short hair, light stubble, a plain t-shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-velu": {
+  "seed": 49025,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 27 years old, dark brown skin, a lean face, short oiled hair, a neat moustache, a sky-blue half-sleeve shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-velu": {
+  "seed": 49227,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 27 years old, dark brown skin, a lean face, short oiled hair, a neat moustache, a sky-blue half-sleeve shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-velu": {
+  "seed": 49328,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 27 years old, dark brown skin, a lean face, short oiled hair, a neat moustache, a sky-blue half-sleeve shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-velu": {
+  "seed": 49429,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 27 years old, dark brown skin, a lean face, short oiled hair, a neat moustache, a sky-blue half-sleeve shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-cyrus": {
+  "seed": 61593,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 27 years old, light brown skin, a sharp nose, wavy hair parted in the middle, a thin moustache, a black tailcoat over a white shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-cyrus": {
+  "seed": 61694,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 27 years old, light brown skin, a sharp nose, wavy hair parted in the middle, a thin moustache, a black tailcoat over a white shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-cyrus": {
+  "seed": 61896,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 27 years old, light brown skin, a sharp nose, wavy hair parted in the middle, a thin moustache, a black tailcoat over a white shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-cyrus": {
+  "seed": 69916,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 27 years old, light brown skin, a sharp nose, wavy hair parted in the middle, a thin moustache, a black tailcoat over a white shirt, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-kabir": {
+  "seed": 59011,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 27 years old, medium brown skin, a short beard, longish hair tied in a small knot at the back, a sleeveless cricket training vest, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-kabir": {
+  "seed": 59112,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 27 years old, medium brown skin, a short beard, longish hair tied in a small knot at the back, a sleeveless cricket training vest, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-kabir": {
+  "seed": 59213,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 27 years old, medium brown skin, a short beard, longish hair tied in a small knot at the back, a sleeveless cricket training vest, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-kabir": {
+  "seed": 59415,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 27 years old, medium brown skin, a short beard, longish hair tied in a small knot at the back, a sleeveless cricket training vest, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-kunal": {
+  "seed": 43316,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 27 years old, light brown skin, a boyish face, messy short hair, round wire spectacles, a grey hooded sweatshirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-kunal": {
+  "seed": 43417,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 27 years old, light brown skin, a boyish face, messy short hair, round wire spectacles, a grey hooded sweatshirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-kunal": {
+  "seed": 43518,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 27 years old, light brown skin, a boyish face, messy short hair, round wire spectacles, a grey hooded sweatshirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-kunal": {
+  "seed": 43619,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 27 years old, light brown skin, a boyish face, messy short hair, round wire spectacles, a grey hooded sweatshirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-francis": {
+  "seed": 50672,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 55 years old, medium brown skin, bald on top with grey hair at the sides, a thick grey moustache, a white short-sleeved uniform shirt with shoulder straps, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-francis": {
+  "seed": 50773,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 55 years old, medium brown skin, bald on top with grey hair at the sides, a thick grey moustache, a white short-sleeved uniform shirt with shoulder straps, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-francis": {
+  "seed": 50874,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 55 years old, medium brown skin, bald on top with grey hair at the sides, a thick grey moustache, a white short-sleeved uniform shirt with shoulder straps, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-francis": {
+  "seed": 50975,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 55 years old, medium brown skin, bald on top with grey hair at the sides, a thick grey moustache, a white short-sleeved uniform shirt with shoulder straps, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-anthony": {
+  "seed": 24982,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 55 years old, dark brown skin, close-cropped grey hair, clean-shaven, deep laugh lines, a faded denim shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-anthony": {
+  "seed": 25184,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 55 years old, dark brown skin, close-cropped grey hair, clean-shaven, deep laugh lines, a faded denim shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-anthony": {
+  "seed": 25285,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 55 years old, dark brown skin, close-cropped grey hair, clean-shaven, deep laugh lines, a faded denim shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-anthony": {
+  "seed": 25386,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 55 years old, dark brown skin, close-cropped grey hair, clean-shaven, deep laugh lines, a faded denim shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-kader": {
+  "seed": 38253,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 55 years old, brown skin, trimmed grey beard, a white kurta, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-kader": {
+  "seed": 38354,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 55 years old, brown skin, trimmed grey beard, a white kurta, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-kader": {
+  "seed": 38556,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 55 years old, brown skin, trimmed grey beard, a white kurta, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-kader": {
+  "seed": 38657,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 55 years old, brown skin, trimmed grey beard, a white kurta, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-mani": {
+  "seed": 30158,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 55 years old, dark brown skin, a white moustache, a white floppy cricket hat, a white cricket shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-mani": {
+  "seed": 30259,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 55 years old, dark brown skin, a white moustache, a white floppy cricket hat, a white cricket shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-mani": {
+  "seed": 30360,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 55 years old, dark brown skin, a white moustache, a white floppy cricket hat, a white cricket shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-mani": {
+  "seed": 30562,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 55 years old, dark brown skin, a white moustache, a white floppy cricket hat, a white cricket shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-mahesh": {
+  "seed": 69220,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 55 years old, light brown skin, grey hair combed back, half-moon reading spectacles, clean-shaven, a cream kurta under a sleeveless Nehru jacket, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-mahesh": {
+  "seed": 69321,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 55 years old, light brown skin, grey hair combed back, half-moon reading spectacles, clean-shaven, a cream kurta under a sleeveless Nehru jacket, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-mahesh": {
+  "seed": 69422,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 55 years old, light brown skin, grey hair combed back, half-moon reading spectacles, clean-shaven, a cream kurta under a sleeveless Nehru jacket, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-mahesh": {
+  "seed": 69523,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 55 years old, light brown skin, grey hair combed back, half-moon reading spectacles, clean-shaven, a cream kurta under a sleeveless Nehru jacket, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-rohit": {
+  "seed": 51877,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 34 years old, medium brown skin, a buzz cut, a trimmed black beard, a navy work shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-rohit": {
+  "seed": 51978,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 34 years old, medium brown skin, a buzz cut, a trimmed black beard, a navy work shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-rohit": {
+  "seed": 52079,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 34 years old, medium brown skin, a buzz cut, a trimmed black beard, a navy work shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-rohit": {
+  "seed": 52180,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 34 years old, medium brown skin, a buzz cut, a trimmed black beard, a navy work shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-mehul": {
+  "seed": 31948,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 34 years old, light brown skin, short side-parted hair, clean-shaven, a plain checked shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-mehul": {
+  "seed": 32150,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 34 years old, light brown skin, short side-parted hair, clean-shaven, a plain checked shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-mehul": {
+  "seed": 32251,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 34 years old, light brown skin, short side-parted hair, clean-shaven, a plain checked shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-mehul": {
+  "seed": 40271,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 34 years old, light brown skin, short side-parted hair, clean-shaven, a plain checked shirt, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-gopal": {
+  "seed": 52868,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 34 years old, dark brown skin, curly hair, a wide grin, a small gold earring in one ear, a striped silk kurta, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-gopal": {
+  "seed": 52969,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 34 years old, dark brown skin, curly hair, a wide grin, a small gold earring in one ear, a striped silk kurta, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-gopal": {
+  "seed": 53171,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 34 years old, dark brown skin, curly hair, a wide grin, a small gold earring in one ear, a striped silk kurta, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-gopal": {
+  "seed": 53272,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 34 years old, dark brown skin, curly hair, a wide grin, a small gold earring in one ear, a striped silk kurta, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-tenzing": {
+  "seed": 69450,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 34 years old, from Sikkim in Northeast India, with East Asian features; light brown skin, straight black hair cut short, monolid eyes, high cheekbones, clean-shaven, a zip-up cricket training jacket, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-tenzing": {
+  "seed": 69551,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 34 years old, from Sikkim in Northeast India, with East Asian features; light brown skin, straight black hair cut short, monolid eyes, high cheekbones, clean-shaven, a zip-up cricket training jacket, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-tenzing": {
+  "seed": 69652,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 34 years old, from Sikkim in Northeast India, with East Asian features; light brown skin, straight black hair cut short, monolid eyes, high cheekbones, clean-shaven, a zip-up cricket training jacket, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-tenzing": {
+  "seed": 69854,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 34 years old, from Sikkim in Northeast India, with East Asian features; light brown skin, straight black hair cut short, monolid eyes, high cheekbones, clean-shaven, a zip-up cricket training jacket, with Indian features and natural brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-vivek": {
+  "seed": 51343,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 34 years old, light brown skin, short gelled hair, clean-shaven, a light-blue office shirt with a loosened tie, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-vivek": {
+  "seed": 51444,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 34 years old, light brown skin, short gelled hair, clean-shaven, a light-blue office shirt with a loosened tie, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-vivek": {
+  "seed": 51545,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 34 years old, light brown skin, short gelled hair, clean-shaven, a light-blue office shirt with a loosened tie, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-vivek": {
+  "seed": 51646,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 34 years old, light brown skin, short gelled hair, clean-shaven, a light-blue office shirt with a loosened tie, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-nagsen": {
+  "seed": 23452,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 38 years old, dark brown skin, short wavy hair, a thick moustache, a collared work shirt with a pen in the pocket, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-nagsen": {
+  "seed": 23553,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 38 years old, dark brown skin, short wavy hair, a thick moustache, a collared work shirt with a pen in the pocket, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-nagsen": {
+  "seed": 23654,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 38 years old, dark brown skin, short wavy hair, a thick moustache, a collared work shirt with a pen in the pocket, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-nagsen": {
+  "seed": 23755,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 38 years old, dark brown skin, short wavy hair, a thick moustache, a collared work shirt with a pen in the pocket, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-nagsen": {
+  "seed": 23856,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 38 years old, dark brown skin, short wavy hair, a thick moustache, a collared work shirt with a pen in the pocket, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-etwari": {
+  "seed": 32041,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 47 years old, from Jharkhand; dark brown skin, greying hair in a low bun, a small nose stud, a man's work shirt over a cotton saree, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-etwari": {
+  "seed": 32142,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 47 years old, from Jharkhand; dark brown skin, greying hair in a low bun, a small nose stud, a man's work shirt over a cotton saree, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-etwari": {
+  "seed": 32243,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 47 years old, from Jharkhand; dark brown skin, greying hair in a low bun, a small nose stud, a man's work shirt over a cotton saree, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-etwari": {
+  "seed": 32344,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 47 years old, from Jharkhand; dark brown skin, greying hair in a low bun, a small nose stud, a man's work shirt over a cotton saree, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-etwari": {
+  "seed": 32445,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 47 years old, from Jharkhand; dark brown skin, greying hair in a low bun, a small nose stud, a man's work shirt over a cotton saree, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-baldev": {
+  "seed": 40645,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 52 years old, wheatish skin, a full beard going grey, a dark blue turban, a khaki driver's shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-baldev": {
+  "seed": 40746,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 52 years old, wheatish skin, a full beard going grey, a dark blue turban, a khaki driver's shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-baldev": {
+  "seed": 40847,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 52 years old, wheatish skin, a full beard going grey, a dark blue turban, a khaki driver's shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-baldev": {
+  "seed": 40948,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 52 years old, wheatish skin, a full beard going grey, a dark blue turban, a khaki driver's shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-baldev": {
+  "seed": 48968,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 52 years old, wheatish skin, a full beard going grey, a dark blue turban, a khaki driver's shirt, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-jonali": {
+  "seed": 53845,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 35 years old, light brown skin, straight black hair in a long plait, a cream mekhela chador with a red border, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-jonali": {
+  "seed": 53946,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 35 years old, light brown skin, straight black hair in a long plait, a cream mekhela chador with a red border, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-jonali": {
+  "seed": 54047,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 35 years old, light brown skin, straight black hair in a long plait, a cream mekhela chador with a red border, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-jonali": {
+  "seed": 54148,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 35 years old, light brown skin, straight black hair in a long plait, a cream mekhela chador with a red border, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-jonali": {
+  "seed": 62168,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 35 years old, light brown skin, straight black hair in a long plait, a cream mekhela chador with a red border, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-thomas": {
+  "seed": 33912,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 37 years old, from Kerala; dark brown skin, short neat hair, a thick black moustache, a plain white half-sleeve shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-thomas": {
+  "seed": 34013,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 37 years old, from Kerala; dark brown skin, short neat hair, a thick black moustache, a plain white half-sleeve shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-thomas": {
+  "seed": 34114,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 37 years old, from Kerala; dark brown skin, short neat hair, a thick black moustache, a plain white half-sleeve shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-thomas": {
+  "seed": 34215,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 37 years old, from Kerala; dark brown skin, short neat hair, a thick black moustache, a plain white half-sleeve shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-thomas": {
+  "seed": 34316,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 37 years old, from Kerala; dark brown skin, short neat hair, a thick black moustache, a plain white half-sleeve shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-leena": {
+  "seed": 39528,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 33 years old, medium brown skin, short cropped hair, small stud earrings, a plain collared polo shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-leena": {
+  "seed": 39629,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 33 years old, medium brown skin, short cropped hair, small stud earrings, a plain collared polo shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-leena": {
+  "seed": 39730,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 33 years old, medium brown skin, short cropped hair, small stud earrings, a plain collared polo shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-leena": {
+  "seed": 39831,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 33 years old, medium brown skin, short cropped hair, small stud earrings, a plain collared polo shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-leena": {
+  "seed": 39932,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 33 years old, medium brown skin, short cropped hair, small stud earrings, a plain collared polo shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-chandan": {
+  "seed": 26853,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 38 years old, medium brown skin, short thick hair, a neat moustache, a white cricket shirt with the collar up, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-chandan": {
+  "seed": 26954,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 38 years old, medium brown skin, short thick hair, a neat moustache, a white cricket shirt with the collar up, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-chandan": {
+  "seed": 27055,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 38 years old, medium brown skin, short thick hair, a neat moustache, a white cricket shirt with the collar up, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-chandan": {
+  "seed": 27156,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 38 years old, medium brown skin, short thick hair, a neat moustache, a white cricket shirt with the collar up, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-chandan": {
+  "seed": 27257,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 38 years old, medium brown skin, short thick hair, a neat moustache, a white cricket shirt with the collar up, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-uma": {
+  "seed": 36957,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 34 years old, medium brown skin, long hair in a plait with a string of jasmine flowers, a cotton saree with a broad border, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-uma": {
+  "seed": 37058,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 34 years old, medium brown skin, long hair in a plait with a string of jasmine flowers, a cotton saree with a broad border, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-uma": {
+  "seed": 37159,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 34 years old, medium brown skin, long hair in a plait with a string of jasmine flowers, a cotton saree with a broad border, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-uma": {
+  "seed": 37260,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 34 years old, medium brown skin, long hair in a plait with a string of jasmine flowers, a cotton saree with a broad border, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-uma": {
+  "seed": 37361,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 34 years old, medium brown skin, long hair in a plait with a string of jasmine flowers, a cotton saree with a broad border, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-chetan": {
+  "seed": 22489,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 37 years old, medium brown skin, short hair brushed up, rimless spectacles, a plain round-neck sweater, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-chetan": {
+  "seed": 22590,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 37 years old, medium brown skin, short hair brushed up, rimless spectacles, a plain round-neck sweater, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-chetan": {
+  "seed": 22691,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 37 years old, medium brown skin, short hair brushed up, rimless spectacles, a plain round-neck sweater, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-chetan": {
+  "seed": 22792,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 37 years old, medium brown skin, short hair brushed up, rimless spectacles, a plain round-neck sweater, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-chetan": {
+  "seed": 22893,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 37 years old, medium brown skin, short hair brushed up, rimless spectacles, a plain round-neck sweater, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-hetal": {
+  "seed": 53021,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 34 years old, medium brown skin, hair in a long braid over one shoulder, a small nose pin, a buttoned work shirt with rolled sleeves, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-hetal": {
+  "seed": 53122,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 34 years old, medium brown skin, hair in a long braid over one shoulder, a small nose pin, a buttoned work shirt with rolled sleeves, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-hetal": {
+  "seed": 53223,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 34 years old, medium brown skin, hair in a long braid over one shoulder, a small nose pin, a buttoned work shirt with rolled sleeves, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-hetal": {
+  "seed": 53324,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 34 years old, medium brown skin, hair in a long braid over one shoulder, a small nose pin, a buttoned work shirt with rolled sleeves, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-hetal": {
+  "seed": 53425,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 34 years old, medium brown skin, hair in a long braid over one shoulder, a small nose pin, a buttoned work shirt with rolled sleeves, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-tapan": {
+  "seed": 59929,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 37 years old, light brown skin, thick wavy hair combed back, thick-rimmed spectacles, clean-shaven, a half-sleeve work shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-tapan": {
+  "seed": 60030,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 37 years old, light brown skin, thick wavy hair combed back, thick-rimmed spectacles, clean-shaven, a half-sleeve work shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-tapan": {
+  "seed": 60131,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 37 years old, light brown skin, thick wavy hair combed back, thick-rimmed spectacles, clean-shaven, a half-sleeve work shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-tapan": {
+  "seed": 60232,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 37 years old, light brown skin, thick wavy hair combed back, thick-rimmed spectacles, clean-shaven, a half-sleeve work shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-tapan": {
+  "seed": 68252,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 37 years old, light brown skin, thick wavy hair combed back, thick-rimmed spectacles, clean-shaven, a half-sleeve work shirt, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-ganga": {
+  "seed": 75045,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 48 years old, medium brown skin, jaw-length hair going grey, a cotton scarf knotted at the neck, a padded sleeveless jacket over a kurta, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-ganga": {
+  "seed": 67227,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 48 years old, medium brown skin, jaw-length hair going grey, a cotton scarf knotted at the neck, a padded sleeveless jacket over a kurta, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-ganga": {
+  "seed": 67328,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 48 years old, medium brown skin, jaw-length hair going grey, a cotton scarf knotted at the neck, a padded sleeveless jacket over a kurta, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-ganga": {
+  "seed": 67429,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 48 years old, medium brown skin, jaw-length hair going grey, a cotton scarf knotted at the neck, a padded sleeveless jacket over a kurta, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-ganga": {
+  "seed": 75449,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 48 years old, medium brown skin, jaw-length hair going grey, a cotton scarf knotted at the neck, a padded sleeveless jacket over a kurta, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-firoz": {
+  "seed": 20105,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 40 years old, medium brown skin, short curly hair, a short black beard and moustache, a checked cotton scarf round the neck, a faded blue shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-firoz": {
+  "seed": 20206,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 40 years old, medium brown skin, short curly hair, a short black beard and moustache, a checked cotton scarf round the neck, a faded blue shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-firoz": {
+  "seed": 20307,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 40 years old, medium brown skin, short curly hair, a short black beard and moustache, a checked cotton scarf round the neck, a faded blue shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-firoz": {
+  "seed": 20408,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 40 years old, medium brown skin, short curly hair, a short black beard and moustache, a checked cotton scarf round the neck, a faded blue shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-firoz": {
+  "seed": 20509,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 40 years old, medium brown skin, short curly hair, a short black beard and moustache, a checked cotton scarf round the neck, a faded blue shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-dolly": {
+  "seed": 50822,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 41 years old, medium brown skin, a short bob with a fringe, kohl-lined eyes, a dark velvet stage jacket, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-dolly": {
+  "seed": 50923,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 41 years old, medium brown skin, a short bob with a fringe, kohl-lined eyes, a dark velvet stage jacket, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-dolly": {
+  "seed": 51024,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 41 years old, medium brown skin, a short bob with a fringe, kohl-lined eyes, a dark velvet stage jacket, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-dolly": {
+  "seed": 51125,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 41 years old, medium brown skin, a short bob with a fringe, kohl-lined eyes, a dark velvet stage jacket, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-dolly": {
+  "seed": 51226,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 41 years old, medium brown skin, a short bob with a fringe, kohl-lined eyes, a dark velvet stage jacket, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-lalit": {
+  "seed": 37276,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 28 years old, dark brown skin, a tall quiff of black hair, clean-shaven, a bow tie and a satin waistcoat, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-lalit": {
+  "seed": 37377,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 28 years old, dark brown skin, a tall quiff of black hair, clean-shaven, a bow tie and a satin waistcoat, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-lalit": {
+  "seed": 37478,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 28 years old, dark brown skin, a tall quiff of black hair, clean-shaven, a bow tie and a satin waistcoat, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-lalit": {
+  "seed": 37579,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 28 years old, dark brown skin, a tall quiff of black hair, clean-shaven, a bow tie and a satin waistcoat, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-lalit": {
+  "seed": 37680,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 28 years old, dark brown skin, a tall quiff of black hair, clean-shaven, a bow tie and a satin waistcoat, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-zarina": {
+  "seed": 41056,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 47 years old, medium brown skin, hair tied back with grey at the temples, small gold studs, a white cable-knit cricket sweater, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-zarina": {
+  "seed": 41157,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 47 years old, medium brown skin, hair tied back with grey at the temples, small gold studs, a white cable-knit cricket sweater, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-zarina": {
+  "seed": 41258,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 47 years old, medium brown skin, hair tied back with grey at the temples, small gold studs, a white cable-knit cricket sweater, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-zarina": {
+  "seed": 41359,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 47 years old, medium brown skin, hair tied back with grey at the temples, small gold studs, a white cable-knit cricket sweater, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-zarina": {
+  "seed": 49379,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 47 years old, medium brown skin, hair tied back with grey at the temples, small gold studs, a white cable-knit cricket sweater, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-uday": {
+  "seed": 22494,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 29 years old, dark brown skin, short spiky hair, clean-shaven, a thin chain at the neck, a round-neck training t-shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-uday": {
+  "seed": 22595,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 29 years old, dark brown skin, short spiky hair, clean-shaven, a thin chain at the neck, a round-neck training t-shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-uday": {
+  "seed": 22696,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 29 years old, dark brown skin, short spiky hair, clean-shaven, a thin chain at the neck, a round-neck training t-shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-uday": {
+  "seed": 22797,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 29 years old, dark brown skin, short spiky hair, clean-shaven, a thin chain at the neck, a round-neck training t-shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-uday": {
+  "seed": 22898,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 29 years old, dark brown skin, short spiky hair, clean-shaven, a thin chain at the neck, a round-neck training t-shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-neha": {
+  "seed": 35240,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 28 years old, light brown skin, hair in a loose bun, small drop earrings, a printed cotton kurta with a dupatta over one shoulder, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-neha": {
+  "seed": 35341,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 28 years old, light brown skin, hair in a loose bun, small drop earrings, a printed cotton kurta with a dupatta over one shoulder, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-neha": {
+  "seed": 35442,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 28 years old, light brown skin, hair in a loose bun, small drop earrings, a printed cotton kurta with a dupatta over one shoulder, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-neha": {
+  "seed": 35543,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 28 years old, light brown skin, hair in a loose bun, small drop earrings, a printed cotton kurta with a dupatta over one shoulder, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-neha": {
+  "seed": 43563,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 28 years old, light brown skin, hair in a loose bun, small drop earrings, a printed cotton kurta with a dupatta over one shoulder, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-ilango": {
+  "seed": 45726,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 37 years old, dark brown skin, wavy hair, a short black beard, a striped half-sleeve shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-ilango": {
+  "seed": 45827,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 37 years old, dark brown skin, wavy hair, a short black beard, a striped half-sleeve shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-ilango": {
+  "seed": 45928,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 37 years old, dark brown skin, wavy hair, a short black beard, a striped half-sleeve shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-ilango": {
+  "seed": 46029,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 37 years old, dark brown skin, wavy hair, a short black beard, a striped half-sleeve shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-ilango": {
+  "seed": 46130,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 37 years old, dark brown skin, wavy hair, a short black beard, a striped half-sleeve shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-dadi": {
+  "seed": 63294,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 78 years old, dark brown skin, thin white hair pulled into a small bun, deep lines round the eyes and mouth, a small round bindi, a plain white cotton saree with a thin border over one shoulder, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-dadi": {
+  "seed": 63395,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 78 years old, dark brown skin, thin white hair pulled into a small bun, deep lines round the eyes and mouth, a small round bindi, a plain white cotton saree with a thin border over one shoulder, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-dadi": {
+  "seed": 63496,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 78 years old, dark brown skin, thin white hair pulled into a small bun, deep lines round the eyes and mouth, a small round bindi, a plain white cotton saree with a thin border over one shoulder, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-dadi": {
+  "seed": 63597,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 78 years old, dark brown skin, thin white hair pulled into a small bun, deep lines round the eyes and mouth, a small round bindi, a plain white cotton saree with a thin border over one shoulder, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-saroj": {
+  "seed": 59141,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 45 years old, medium brown skin, hair cut short just below the ears, a small nose stud, a khaki work shirt with rolled sleeves, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-sarla": {
+  "seed": 62517,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 45 years old, light brown skin, hair in a high bun tied with a red ribbon, gold hoop earrings, a black sequinned stage blouse, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-agnes": {
+  "seed": 28463,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 45 years old, dark brown skin, short curly hair, a bare forehead, small pearl studs, a white collared cricket shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-shampa": {
+  "seed": 47182,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 45 years old, light brown skin, a round face, thick wavy hair in a loose bun, a small round bindi, a cotton saree with a red border, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-jasleen": {
+  "seed": 67401,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 30 years old, light brown skin, a bare forehead, a light cotton dupatta draped over her hair, a padded windcheater over a salwar kameez, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-rabia": {
+  "seed": 41560,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 30 years old, medium brown skin, a bare forehead, short layered hair, kohl-lined eyes, small silver earrings, a dark green stage kurta with gold piping, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-bindu": {
+  "seed": 21094,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 30 years old, dark brown skin, thick hair in a short ponytail, a small black bindi, a cricket training jersey, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-pooja": {
+  "seed": 68289,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 30 years old, medium brown skin, hair in a side plait, small gold jhumka earrings, a printed cotton salwar kameez, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-nirmala": {
+  "seed": 38080,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 35 years old, dark brown skin, a broad face, hair in a tight low bun, a faded maroon cardigan over a cotton saree, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-mitali": {
+  "seed": 28416,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 35 years old, light brown skin, curly shoulder-length hair, large kohl-lined eyes, big silver earrings, a black blouse with mirror work, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-gita": {
+  "seed": 24666,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 35 years old, medium brown skin, a short boyish haircut, a white sweatband round the forehead, a navy cricket shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-deepa": {
+  "seed": 52169,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 35 years old, light brown skin, hair in a neat bun, small gold studs, rectangular spectacles, a mustard-yellow cotton saree, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-annamma": {
+  "seed": 21940,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian woman about 60 years old, dark brown skin, short grey curly hair, a bare forehead, gold-rimmed spectacles, a navy uniform shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-kusum": {
+  "seed": 28185,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian woman about 60 years old, medium brown skin, salt-and-pepper hair in a plait, a small nose ring, a woollen shawl over a cotton saree, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-pushpa": {
+  "seed": 59299,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian woman about 60 years old, dark brown skin, hair dyed copper red with henna pulled into a bun, a broad smile, a purple silk saree, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-shirin": {
+  "seed": 66623,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 60 years old, light brown skin, a short grey bob, a bare forehead, a whistle on a cord round her neck, a navy tracksuit jacket, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-dinesh": {
+  "seed": 54230,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 40 years old, dark brown skin, a shaved head, a thick handlebar moustache, a grey sweatshirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-naresh": {
+  "seed": 32123,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 40 years old, light brown skin, slicked-back hair, a pencil moustache, a red silk kurta with a mandarin collar, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-hari": {
+  "seed": 46704,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 40 years old, medium brown skin, a receding hairline, a round face, clean-shaven, a cream sleeveless cricket sweater over a white shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-rajan": {
+  "seed": 31923,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 40 years old, medium brown skin, thick hair greying at the sides, a full moustache, a short-sleeved checked bush shirt, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-velu": {
+  "seed": 49126,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 27 years old, dark brown skin, a lean face, short oiled hair, a neat moustache, a sky-blue half-sleeve shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-cyrus": {
+  "seed": 61795,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 27 years old, light brown skin, a sharp nose, wavy hair parted in the middle, a thin moustache, a black tailcoat over a white shirt, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-kabir": {
+  "seed": 59314,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 27 years old, medium brown skin, a short beard, longish hair tied in a small knot at the back, a sleeveless cricket training vest, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-kunal": {
+  "seed": 51639,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 27 years old, light brown skin, a boyish face, messy short hair, round wire spectacles, a grey hooded sweatshirt, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-francis": {
+  "seed": 50571,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 55 years old, medium brown skin, bald on top with grey hair at the sides, a thick grey moustache, a white short-sleeved uniform shirt with shoulder straps, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-anthony": {
+  "seed": 25083,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 55 years old, dark brown skin, close-cropped grey hair, clean-shaven, deep laugh lines, a faded denim shirt, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-mani": {
+  "seed": 30461,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 55 years old, dark brown skin, a white moustache, a white floppy cricket hat, a white cricket shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-mahesh": {
+  "seed": 77543,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 55 years old, light brown skin, grey hair combed back, half-moon reading spectacles, clean-shaven, a cream kurta under a sleeveless Nehru jacket, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-rohit": {
+  "seed": 51776,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 34 years old, medium brown skin, a buzz cut, a trimmed black beard, a navy work shirt, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "jadugar-gopal": {
+  "seed": 53070,
+  "prompt": "Portrait for a vintage Indian travelling magic show's playing cards, printed by chromolithography: an Indian man about 34 years old, dark brown skin, curly hair, a wide grin, a small gold earring in one ear, a striped silk kurta, head and shoulders, facing the viewer, flat inks of crimson, midnight blue, old gold and cream, bold dark outlines, a plain midnight-blue background with a few small stars. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-tenzing": {
+  "seed": 69753,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian man about 34 years old, from Sikkim in Northeast India, with East Asian features; light brown skin, straight black hair cut short, monolid eyes, high cheekbones, clean-shaven, a zip-up cricket training jacket, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-vivek": {
+  "seed": 59666,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 34 years old, light brown skin, short gelled hair, clean-shaven, a light-blue office shirt with a loosened tie, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-dadi": {
+  "seed": 63698,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 78 years old, dark brown skin, thin white hair pulled into a small bun, deep lines round the eyes and mouth, a small round bindi, a plain white cotton saree with a thin border over one shoulder, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "enamel-mohan": {
+  "seed": 58913,
+  "prompt": "Vintage Indian railway enamel sign portrait of an Indian man about 21 years old, medium brown skin, short black hair, a thin moustache, a grin, a fireman's vest over a work shirt, soot smudged on one cheek, head and shoulders, screen printed in two colours black and chrome yellow, bold halftone, plain background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-ramesh": {
+  "seed": 24733,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 33 years old, dark brown skin, short black hair, a thick black moustache, a checked shirt with the sleeves rolled, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "pulp-bauji": {
+  "seed": 45101,
+  "prompt": "1970s Hindi pulp novel cover painting of an Indian man about 57 years old, dark brown skin, short white hair under a soft cloth cap, a white handlebar moustache, a plain cotton shirt, a stern look, head and shoulders, gouache, dramatic coloured lighting, saturated poster colours, painterly brushwork, plain dark background. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "cricket-face-rani": {
+  "seed": 41030,
+  "prompt": "1980s Indian sports-magazine portrait photograph of an Indian woman about 18 years old, medium brown skin, black hair in a low ponytail, a bare forehead, a white cricket shirt, head and shoulders, outdoor late-afternoon light, a plain pale sky behind, slightly faded colour print. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-vikram": {
+  "seed": 62734,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian man about 21 years old, medium brown skin, short black hair, a college T-shirt, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ },
+ "sunday-badi": {
+  "seed": 30070,
+  "prompt": "1980s Indian family-magazine illustration in flat gouache of an Indian woman about 75 years old, dark brown skin, thin white hair pulled into a small bun, deep lines round the eyes, a bare forehead, a plain white cotton sari over one shoulder, with South Asian features and warm brown skin, head and shoulders, warm soft light, a plain faded teal background, nostalgic. No text, no letters, no numbers, no words, no logos, no badges, no religious symbols, no writing anywhere.",
+  "model": "FLUX.2 klein 4B, 8-bit, mflux, 4 steps, 512x512"
+ }
+}

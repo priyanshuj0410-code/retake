@@ -1,0 +1,1511 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Equal Lens Daily Sound</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@500;700&family=Sarpanch:wght@900&display=swap');
+
+:root {
+  color-scheme: light;
+  --bg: #F6F3EC;
+  --surface: #FFFFFF;
+  --surface2: #EDE8DC;
+  --text: #1D1B17;
+  --muted: #57534A;
+  --line: #D3CDBC;
+  --focus: #0B57D0;
+  --alert: #B3001F;
+  --on-alert: #FFFFFF;
+  --alert-bg: #FFF3F1;
+  --note-bg: #FBF6E6;
+  --note-line: #D9C98F;
+  --ink: #17110F;
+  --paper: #EFE7D4;
+  --red: #E4002B;
+  --ground: #1B0B2E;
+  --cobalt: #13308F;
+  --ticket: #E9DFC4;
+  --platform: #181A1B;
+  --white: #FFFFFF;
+  --lugdi-edge: #E4002B;
+  --station-edge: #13308F;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #121315;
+    --surface: #1C1D20;
+    --surface2: #2A2B30;
+    --text: #ECE9E1;
+    --muted: #B2ADA0;
+    --line: #3A3B41;
+    --focus: #8AB4FF;
+    --alert: #FF8B9B;
+    --on-alert: #1A0006;
+    --alert-bg: #2A1519;
+    --note-bg: #25221A;
+    --note-line: #5B5030;
+    --ink: #17110F;
+    --paper: #EFE7D4;
+    --red: #E4002B;
+    --ground: #1B0B2E;
+    --cobalt: #13308F;
+    --ticket: #E9DFC4;
+    --platform: #181A1B;
+    --white: #FFFFFF;
+    --lugdi-edge: #FF4D6A;
+    --station-edge: #86A3F2;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121315;
+  --surface: #1C1D20;
+  --surface2: #2A2B30;
+  --text: #ECE9E1;
+  --muted: #B2ADA0;
+  --line: #3A3B41;
+  --focus: #8AB4FF;
+  --alert: #FF8B9B;
+  --on-alert: #1A0006;
+  --alert-bg: #2A1519;
+  --note-bg: #25221A;
+  --note-line: #5B5030;
+  --ink: #17110F;
+  --paper: #EFE7D4;
+  --red: #E4002B;
+  --ground: #1B0B2E;
+  --cobalt: #13308F;
+  --ticket: #E9DFC4;
+  --platform: #181A1B;
+  --white: #FFFFFF;
+  --lugdi-edge: #FF4D6A;
+  --station-edge: #86A3F2;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Hind', 'Noto Sans Devanagari', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-bottom: max(48px, env(safe-area-inset-bottom, 0px));
+  overflow-wrap: break-word;
+}
+.wrap { max-width: 760px; margin: 0 auto; }
+h1 {
+  font-family: 'Sarpanch', 'Hind', sans-serif;
+  font-weight: 900;
+  font-size: clamp(30px, 8.6vw, 44px);
+  line-height: 1.05;
+  margin: 22px 0 10px;
+}
+h2 { font-weight: 700; font-size: 25px; line-height: 1.2; margin: 44px 0 10px; }
+h3 { font-weight: 700; font-size: 19px; line-height: 1.3; margin: 0; }
+h4 { font-weight: 700; font-size: 18px; line-height: 1.3; margin: 0 0 4px; }
+p { margin: 0 0 12px; }
+ul, ol { padding-left: 1.2em; margin: 0 0 12px; }
+li { margin: 0 0 8px; }
+b, strong, dt, th { font-weight: 700; }
+a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.lede { font-size: 19px; max-width: 34em; }
+.small { font-size: 15px; color: var(--muted); }
+.num {
+  display: inline-block; min-width: 1.7em; text-align: center; margin-right: 8px;
+  background: var(--text); color: var(--bg); border-radius: 6px; padding: 0 6px; font-size: 0.8em;
+}
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* bench: sticky controls */
+.bench {
+  position: sticky; top: 8px; z-index: 20;
+  display: flex; align-items: center; gap: 12px;
+  background: var(--surface); border: 2px solid var(--text); border-radius: 14px;
+  padding: 6px 8px 6px 14px; margin: 14px 0 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.14);
+}
+.bench .vol-l { display: flex; flex-direction: column; line-height: 1.1; min-width: 56px; }
+.bench .vol-l span { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.bench output { font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
+.bench input[type=range] { flex: 1 1 auto; min-width: 0; }
+
+input[type=range] {
+  -webkit-appearance: none; appearance: none;
+  height: 48px; margin: 0; background: transparent; --p: 40%; cursor: pointer;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  height: 8px; border-radius: 4px;
+  background: linear-gradient(to right, var(--text) var(--p), var(--line) var(--p));
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 28px; height: 28px; border-radius: 50%; margin-top: -10px;
+  background: var(--surface); border: 3px solid var(--text);
+}
+input[type=range]::-moz-range-track { height: 8px; border-radius: 4px; background: var(--line); }
+input[type=range]::-moz-range-progress { height: 8px; border-radius: 4px; background: var(--text); }
+input[type=range]::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%; background: var(--surface); border: 3px solid var(--text);
+}
+
+/* buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; min-width: 48px; padding: 0 16px;
+  border-radius: 10px; border: 2px solid var(--text);
+  font: 700 16px/1 'Hind', system-ui, sans-serif;
+  background: var(--surface); color: var(--text); cursor: pointer;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.btn .ic { width: 16px; height: 16px; fill: currentColor; flex: none; }
+.btn-stop { background: var(--text); color: var(--bg); flex: none; }
+.btn-lugdi { background: var(--red); color: var(--white); border-color: var(--red); }
+.btn-station { background: var(--cobalt); color: var(--white); border-color: var(--cobalt); }
+.btn-lugdi.is-on { background: var(--paper); color: var(--ink); border-color: var(--red); }
+.btn-station.is-on { background: var(--ticket); color: var(--platform); border-color: var(--cobalt); }
+.btn:active { transform: translateY(1px); }
+.btn .i-stop { display: none; }
+.btn.is-on[data-loop] .i-play { display: none; }
+.btn.is-on[data-loop] .i-stop { display: inline; }
+.btn-plain { background: var(--surface); color: var(--text); border-color: var(--text); }
+
+/* switch */
+.sw { display: flex; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; }
+.sw input {
+  -webkit-appearance: none; appearance: none; margin: 0; flex: none;
+  width: 52px; height: 30px; border-radius: 15px; background: var(--line); position: relative; cursor: pointer;
+  border: 2px solid var(--muted);
+}
+.sw input::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--muted);
+}
+.sw input:checked { background: var(--text); border-color: var(--text); }
+.sw input:checked::after { transform: translateX(22px); border-color: var(--bg); }
+.sw span { font-weight: 700; }
+
+/* panels */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0 0 14px; }
+.note { background: var(--note-bg); border: 1px solid var(--note-line); border-radius: 12px; padding: 12px 16px; margin: 0 0 14px; }
+.note p:last-child, .panel p:last-child { margin-bottom: 0; }
+.note h3, .panel h3 { margin-bottom: 6px; }
+.rule11 { border: 3px solid var(--alert); background: var(--alert-bg); border-radius: 14px; padding: 16px; margin: 20px 0; }
+.rule11 h2 { margin: 0 0 8px; font-size: 24px; }
+.rule11 ul { margin-bottom: 0; }
+.rules { display: grid; gap: 10px; grid-template-columns: 1fr; margin: 14px 0; padding: 0; list-style: none; }
+.rules li { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
+.rules b { display: block; }
+.toc { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0; list-style: none; margin: 0 0 8px; }
+.toc li { margin: 0; }
+.toc a {
+  display: flex; align-items: center; min-height: 48px; padding: 0 12px; text-decoration: none; font-weight: 700;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+}
+
+/* world headers */
+.wh { padding: 10px; border-radius: 12px; margin: 28px 0 14px; border: 1px solid var(--line); }
+.wh-lugdi { background: var(--ground); }
+.strip {
+  background: var(--paper); color: var(--ink);
+  border-top: 6px double var(--ink); border-bottom: 6px double var(--ink);
+  padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap;
+}
+.strip h3 { font-size: 21px; letter-spacing: .16em; text-transform: uppercase; }
+.strip .hi { font-size: 15px; font-weight: 700; letter-spacing: .02em; }
+.strip .tag { background: var(--red); color: var(--white); font-size: 14px; font-weight: 700; padding: 3px 8px; }
+.wh-station { background: var(--platform); }
+.plate {
+  background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0) 45%), var(--cobalt);
+  color: var(--white); border-radius: 8px; padding: 14px 16px;
+  box-shadow: inset 0 0 0 3px var(--cobalt), inset 0 0 0 5px var(--white);
+  display: flex; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap;
+}
+.plate h3 { font-size: 21px; letter-spacing: .16em; text-transform: uppercase; }
+.plate .hi { font-size: 15px; font-weight: 700; }
+.plate .tag { background: var(--ticket); color: var(--platform); font-size: 14px; font-weight: 700; padding: 3px 8px; border-radius: 3px; }
+
+/* cards */
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px 16px; margin: 0 0 14px; border-top-width: 4px; }
+.card.lugdi { border-top-color: var(--lugdi-edge); }
+.card.station { border-top-color: var(--station-edge); }
+.rec h3 { margin-bottom: 8px; }
+.card .meta { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0 0 10px; list-style: none; }
+.chips li { margin: 0; font-size: 13px; font-weight: 700; border: 1px solid var(--line); background: var(--surface2); border-radius: 999px; padding: 2px 10px; }
+.loopctl { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin-top: 12px; }
+.loopctl .btn { min-width: 128px; }
+.prog { flex: 1 1 120px; height: 8px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
+.prog i { display: block; height: 100%; width: 0; }
+.card.lugdi .prog i { background: var(--lugdi-edge); }
+.card.station .prog i { background: var(--station-edge); }
+.clock { font-size: 14px; font-variant-numeric: tabular-nums; color: var(--muted); min-width: 5.6em; text-align: right; }
+
+/* effect table */
+.fxwrap { margin: 0 0 14px; }
+.fx { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.fx th, .fx td { text-align: left; vertical-align: top; padding: 12px 10px; border-top: 1px solid var(--line); }
+.fx thead th { border-top: 0; border-bottom: 3px solid var(--text); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+.fx thead th.h-l { border-bottom-color: var(--lugdi-edge); }
+.fx thead th.h-s { border-bottom-color: var(--station-edge); }
+.fx col.c0 { width: 34%; } .fx col.c1 { width: 33%; } .fx col.c2 { width: 33%; }
+.ev-t { display: block; font-weight: 700; }
+.ev-n { display: block; font-size: 14px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+.cell-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.cap { font-size: 14px; color: var(--muted); margin: 6px 0 0; }
+.dur { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.fx td::before { display: none; }
+
+/* comparison */
+.cmp dl { margin: 8px 0 0; }
+.cmp dt { margin-top: 10px; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.cmp dd { margin: 2px 0 0; }
+.cmp .badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 0; padding: 0; list-style: none; }
+.cmp .badges li { margin: 0; font-size: 13px; font-weight: 700; border: 1px solid var(--text); border-radius: 6px; padding: 1px 8px; }
+.rec { border: 3px solid var(--text); background: var(--surface); border-radius: 14px; padding: 14px 16px; margin: 0 0 14px; }
+.rec.lugdi { border-color: var(--lugdi-edge); }
+.rec.station { border-color: var(--station-edge); }
+
+/* questions */
+.qs { list-style: none; padding: 0; margin: 0; counter-reset: q; }
+.qs > li { counter-increment: q; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px 12px 16px; margin: 0 0 12px; }
+.qs .q { font-weight: 700; font-size: 18px; line-height: 1.35; margin-bottom: 6px; }
+.qs .q::before { content: counter(q) ". "; }
+.qs p { margin-bottom: 6px; }
+.qs .lab { font-weight: 700; }
+
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 0 16px; margin: 0 0 14px; }
+summary { min-height: 48px; display: flex; align-items: center; font-weight: 700; cursor: pointer; }
+details[open] summary { border-bottom: 1px solid var(--line); margin-bottom: 10px; }
+details p:last-child, details ul:last-child { margin-bottom: 14px; }
+.status { font-size: 15px; color: var(--muted); min-height: 1.5em; margin: 4px 0 0; }
+
+@media (min-width: 640px) {
+  .rules { grid-template-columns: 1fr 1fr; }
+  .toc { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 639px) {
+  .fx, .fx tbody, .fx tr, .fx th, .fx td { display: block; }
+  .fx colgroup { display: none; }
+  .fx thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .fx tr { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin: 0 0 12px; }
+  .fx th.ev { grid-column: 1 / -1; padding: 0; border: 0; }
+  .fx td { padding: 0; border: 0; min-width: 0; }
+  .fx td::before { display: block; content: attr(data-label); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .bench { padding-left: 12px; gap: 10px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sw input::after { transition: transform .15s; }
+  .sw input { transition: background .15s; }
+}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <h1>Equal Lens Daily Sound</h1>
+    <p class="lede">An ideation sheet for the game's music and sound effects. Things to hear and compare, not one answer. The owner decides.</p>
+    <p class="small">Every sound here is made live in your browser. No audio files are downloaded. Sound starts only when you press a Play button.</p>
+  </div>
+
+  <div class="bench" role="group" aria-label="Sound test bench">
+    <label class="vol-l" for="vol"><span>Volume</span><output id="volOut" for="vol">0.40</output></label>
+    <input id="vol" type="range" min="0" max="1" step="0.01" value="0.4" aria-label="Master volume">
+    <button type="button" class="btn btn-stop" id="stop">Stop all</button>
+  </div>
+  <p class="vh" id="live" role="status" aria-live="polite"></p>
+
+  <section class="panel" aria-labelledby="howto">
+    <h3 id="howto">Before you press Play</h3>
+    <ul>
+      <li>The first press wakes the sound. Browsers do not allow it earlier.</li>
+      <li>Start with the volume low, as set. If you hear nothing, check your phone's silent switch and media volume.</li>
+      <li>One music loop plays at a time. The sound effects in section 4 play over it, so you can hear them together.</li>
+      <li>Try a cheap phone speaker too. That is how many players will hear it.</li>
+    </ul>
+    <label class="sw" for="calm"><input type="checkbox" id="calm"><span>Calm sound (what reduced motion would switch on)</span></label>
+    <p class="small" id="calmNote" hidden>Your device asks for reduced motion, so calm sound started on.</p>
+    <p class="status" id="nosound" hidden>This browser has no Web Audio, so nothing on this sheet can play.</p>
+  </section>
+
+  <nav aria-label="On this sheet">
+    <ul class="toc">
+      <li><a href="#know">1. What we know</a></li>
+      <li><a href="#principles">2. Principles</a></li>
+      <li><a href="#music">3. Music</a></li>
+      <li><a href="#effects">4. Sound effects</a></li>
+      <li><a href="#compare">5. Compare</a></li>
+      <li><a href="#questions">6. Your answers</a></li>
+    </ul>
+  </nav>
+
+  <section class="rule11" aria-labelledby="r11">
+    <h2 id="r11">The one rule that decides everything: sound never hints at a lean</h2>
+    <p>No sound, motion or vibration may tell the player that a pick was good or bad, or which way it leaned. Every idea on this sheet was tested against that first.</p>
+    <ul>
+      <li>No "right" or "wrong" sounds. No chime for one pick and a buzz for another.</li>
+      <li>The pick sound and the commit sound are identical whoever you pick.</li>
+      <li>The result sound never changes with the score or the lean. It takes no input at all.</li>
+      <li>So pitch, speed, length, loudness and tone colour are fixed for each event. We also leave out random variety, because a difference nobody planned can still read as a message.</li>
+    </ul>
+  </section>
+
+  <h2 id="rules-h" style="margin-top:28px">The other binding rules</h2>
+  <ul class="rules">
+    <li><b>Sound is on by default</b>Your decision. Music and sound effects are two separate switches, and both live in the "?" sheet, the one settings place.</li>
+    <li><b>One vibration pulse</b>One short pulse on the commit, and nowhere else. See how sound pairs with it in section 4.</li>
+    <li><b>No clocks</b>No ticking, no countdown, no tempo that speeds up. The game has no timers, so nothing may sound like one.</li>
+    <li><b>Nothing depends on sound</b>It is decoration and feedback. A player with sound off, or a phone on silent, loses nothing.</li>
+    <li><b>Reduced motion calms sound too</b>No long flourishes. Section 4 says how.</li>
+    <li><b>Only after a tap</b>Browsers block audio until the player presses something. The game cannot start sound by itself.</li>
+  </ul>
+
+  <section id="know" aria-labelledby="know-h">
+    <h2 id="know-h"><span class="num">1</span>What we know</h2>
+    <h3>How daily puzzle games usually handle sound</h3>
+    <ul>
+      <li>The big daily word and number puzzles are close to silent. Wordle and NYT Games are the usual examples. The puzzle is the quiet part of the day.</li>
+      <li>Duolingo goes the other way. It has many short, rich effects, and a separate sound switch so people who dislike them can turn them off.</li>
+      <li>Many casual games on mobile web keep music off until the player asks. Browsers also block sound until the first tap, so no web game can start music on its own anyway.</li>
+      <li>Quiz games often use a chime for "right" and a buzz for "wrong". This game cannot. That habit is exactly what the one rule above rules out.</li>
+      <li>A middle path is small sounds that only say "the screen heard you": a tap, a send, a sheet opening.</li>
+    </ul>
+    <p class="small">We have no player data on sound for this game yet. This is craft judgement, not measurement. We have not invented any figures.</p>
+
+    <h3 style="margin-top:22px">What matters for players in India</h3>
+    <ul>
+      <li><b>Playing in public.</b> On a train, at a shop counter, in a tea break. Sound must be off until asked, short, soft and never startling. Nothing that could pass for a real alarm, horn or announcement.</li>
+      <li><b>Small phone speakers.</b> Low-end Android phones have one small speaker with almost no bass, and a processor that is often busy. So: few notes at once, and sounds that carry their weight in the middle of the range, roughly 300 Hz to 4,000 Hz.</li>
+      <li><b>Data cost.</b> Synthesised sound weighs nothing, because the browser builds it from a few lines of code. Recorded sound costs data. A simple sum: a 30 second loop at 96 kbps is 30 x 96,000 / 8 = 360,000 bytes, about 360 KB. Six such loops are about 2.2 MB, a lot to ask of a prepaid data plan for decoration.</li>
+      <li><b>The phone's own mute.</b> Many people keep their phone on silent or the media volume at zero. On some iPhones the side switch silences web sound too. The game cannot read these settings and should not nag about them. The player hears nothing and loses nothing.</li>
+      <li><b>Earphones.</b> Bluetooth earphones can delay sound a little. Nothing in this game is timed, so no sound ever carries timing.</li>
+      <li><b>Two languages.</b> No spoken or sung words in any sound. English and Hindi players get the same game.</li>
+    </ul>
+  </section>
+
+  <section id="principles" aria-labelledby="pr-h">
+    <h2 id="pr-h"><span class="num">2</span>Principles</h2>
+    <ol>
+      <li><b>Say "we heard you", never "you were right".</b> Sound confirms an action. It never judges one.</li>
+      <li><b>One sound for one event, always.</b> Same notes, same length, same loudness, for every person, every pick, every day.</li>
+      <li><b>On, with an easy off.</b> Two switches in the "?" sheet: Music and Sounds. Nothing plays before the player's first tap.</li>
+      <li><b>Short and soft.</b> Every effect under 600 ms, apart from the result reveal (up to 1.2 s, matching the picture) and the milestone. Nothing sudden or loud.</li>
+      <li><b>No clocks.</b> No ticking, no pulse that speeds up, no countdown tone. Nothing may feel like time running out.</li>
+      <li><b>Middle of the range, mono, no words.</b> It works on a tiny speaker, in one earbud, in either language.</li>
+      <li><b>Make it, do not download it.</b> Build every sound in the browser. The game ships code and no audio files.</li>
+      <li><b>Stop when the player leaves.</b> Pause when the screen locks or the tab is hidden, and never restart by itself. Reduced motion calms sound too.</li>
+    </ol>
+  </section>
+
+  <section id="music" aria-labelledby="mu-h">
+    <h2 id="mu-h"><span class="num">3</span>Music: three directions for each world</h2>
+    <p>Six sketches. Each is one loop of 8 to 16 seconds, and all the tunes are original. They are rough drafts for judging the idea, not finished music. Press Play on one at a time.</p>
+
+    <div class="wh wh-lugdi">
+      <div class="strip">
+        <h3>Lugdi <span class="hi">&#2354;&#2369;&#2327;&#2342;&#2368;</span></h3>
+        <span class="tag">1970s pulp covers</span>
+      </div>
+    </div>
+
+    <article class="card lugdi" id="card-lA">
+      <h4>A. 70s pulp thriller</h4>
+      <p class="meta">140 beats a minute &middot; 8 bars &middot; loop 13.7 s &middot; D minor</p>
+      <p>Bongos, a twangy plucked guitar line, short organ stabs and a walking bass. Bright, busy, a little cheeky.</p>
+      <ul class="chips" aria-label="Voices"><li>Bongos</li><li>Twang pluck</li><li>Organ stabs</li><li>Walking bass</li></ul>
+      <p><b>In the game:</b> a low bed behind the whole puzzle.</p>
+      <p><b>Listen for:</b> does it make you suspect someone? A thriller mood can make the people in a puzzle feel guilty before you have decided.</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-lugdi" data-loop="lA" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:14</span>
+      </div>
+    </article>
+
+    <article class="card lugdi" id="card-lB">
+      <h4>B. Radio-serial drama</h4>
+      <p class="meta">90 beats a minute &middot; one 16-beat cycle &middot; loop 10.7 s &middot; D</p>
+      <p>A held reed drone like a harmonium, tabla-like hits in a 16-beat cycle, a slow falling phrase, and a short dramatic hit (a "sting") on the first beat of each cycle.</p>
+      <ul class="chips" aria-label="Voices"><li>Reed drone</li><li>Tabla-like hits</li><li>Slow phrase</li><li>Sting</li></ul>
+      <p><b>In the game:</b> a warm bed. The sting plays on a clock, not on any event, so it may be best kept for the cover only. Calm sound leaves it out.</p>
+      <p><b>Listen for:</b> does the tabla feel warm, or like a toy?</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-lugdi" data-loop="lB" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:11</span>
+      </div>
+    </article>
+
+    <article class="card lugdi" id="card-lC">
+      <h4>C. No music, only the print shop</h4>
+      <p class="meta">loop 12 s &middot; no tune, no beat</p>
+      <p>A very quiet room hum, a slow press clunk every three seconds, paper rustles, and one stack of sheets sliding. There is no tune.</p>
+      <ul class="chips" aria-label="Voices"><li>Room hum</li><li>Press clunk</li><li>Paper rustle</li></ul>
+      <p><b>In the game:</b> the "music" switch gives a hush with texture. The result reprint then sounds like it comes from the same room.</p>
+      <p><b>Listen for:</b> could you tell it was on? On a phone speaker in a noisy place, probably not.</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-lugdi" data-loop="lC" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:12</span>
+      </div>
+    </article>
+
+    <div class="wh wh-station">
+      <div class="plate">
+        <h3>Station <span class="hi">&#2360;&#2381;&#2335;&#2375;&#2358;&#2344;</span></h3>
+        <span class="tag">Enamel and tickets</span>
+      </div>
+    </div>
+
+    <article class="card station" id="card-sA">
+      <h4>A. Platform bed</h4>
+      <p class="meta">loop 14 s &middot; no beat</p>
+      <p>A low mains hum, a soft crowd murmur with no words in it, and a far-off two-tone train horn, once long and once short.</p>
+      <ul class="chips" aria-label="Voices"><li>Mains hum</li><li>Murmur</li><li>Distant horn</li></ul>
+      <p><b>In the game:</b> immersive, but it sounds like a real place. The horn may startle someone on a real platform, so it could be kept to the cover, or left out. Calm sound leaves it out.</p>
+      <p><b>Listen for:</b> does the murmur sound like people in the next seat?</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-station" data-loop="sA" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:14</span>
+      </div>
+    </article>
+
+    <article class="card station" id="card-sB">
+      <h4>B. Chime motif, used sparingly</h4>
+      <p class="meta">loop 15 s &middot; mostly silence on purpose</p>
+      <p>Four soft bell notes, a quieter three-note answer later, and silence in between. It is original, and made not to resemble the announcement chime on Indian Railways.</p>
+      <ul class="chips" aria-label="Voices"><li>Soft bell</li><li>Four-note motif</li><li>Quiet echo</li></ul>
+      <p><b>In the game:</b> once or twice a session at most, for example on the cover. It never plays on a pick or a result.</p>
+      <p><b>Listen for:</b> does it feel like a small sound of its own, or like a doorbell?</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-station" data-loop="sB" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:15</span>
+      </div>
+    </article>
+
+    <article class="card station" id="card-sC">
+      <h4>C. Rail rhythm groove</h4>
+      <p class="meta">108 beats a minute &middot; 7 bars &middot; loop 15.6 s &middot; D major scale of five notes</p>
+      <p>A repeating wheel-on-rail clack, a soft drone, a rumble as if crossing a bridge at the end, and a reedy, shehnai-like tune on top.</p>
+      <ul class="chips" aria-label="Voices"><li>Rail clack</li><li>Drone</li><li>Reedy lead</li><li>Bridge rumble</li></ul>
+      <p><b>In the game:</b> the liveliest option. A steady clack can feel like a ticking clock, and the game has no timers, so it would need to stay slow and calm.</p>
+      <p><b>Listen for:</b> charming, or tiring by the third time round? Does a shehnai feel too festive for a fairness puzzle?</p>
+      <div class="loopctl">
+        <button type="button" class="btn btn-station" data-loop="sC" aria-pressed="false"><svg class="ic i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg><svg class="ic i-stop" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg><span>Play loop</span></button>
+        <div class="prog" aria-hidden="true"><i></i></div><span class="clock" aria-hidden="true">0:00 / 0:16</span>
+      </div>
+    </article>
+  </section>
+
+  <section id="effects" aria-labelledby="fx-h">
+    <h2 id="fx-h"><span class="num">4</span>Sound effect map</h2>
+    <p>Twelve events. Each has a Lugdi sketch and a Station sketch. Every one is fixed: it is a function of time only, so it cannot receive who you picked, the score or the lean. Play them over a music loop to hear the mix.</p>
+    <div class="fxwrap">
+      <table class="fx" id="fxtable" role="table" aria-label="Sound effect map"></table>
+    </div>
+
+    <div class="note">
+      <h3>Sound and the one vibration pulse</h3>
+      <p>On the commit, start the commit sound and the single short pulse in the same line of code, so they land together and feel like one thing. Then nothing else vibrates, ever.</p>
+      <ul>
+        <li>The pulse does not depend on the sound switch. Sound off, pulse still fires, if the device has one.</li>
+        <li>Some phones, including iPhones in the browser, have no vibration. There the sound carries the moment alone. Check this on real devices when building.</li>
+        <li>The pulse length here is only a placeholder of 20 ms. The rulebook's own length applies.</li>
+      </ul>
+      <div class="cell-btns">
+        <button type="button" class="btn btn-lugdi" data-pulse="lugdi">Lugdi commit + pulse</button>
+        <button type="button" class="btn btn-station" data-pulse="station">Station commit + pulse</button>
+      </div>
+      <p class="status" id="pulseMsg"></p>
+    </div>
+
+    <div class="note">
+      <h3>Reduced motion should calm sound</h3>
+      <p>When the device asks for reduced motion, switch on a calm set of sounds. The player's own two switches still decide whether any sound plays. The Calm sound switch at the top of this page shows it.</p>
+      <ul>
+        <li>The result reveal becomes a short soft version, under half a second, instead of the full reprint or cascade.</li>
+        <li>The milestone is the stamp only, with no bell.</li>
+        <li>Music loses its stings, horns, drum fills, echo tails and the reedy lead, and sits a little lower.</li>
+        <li>Check the setting at start and listen for changes, so it follows the phone.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="compare" aria-labelledby="cm-h">
+    <h2 id="cm-h"><span class="num">5</span>Comparing the directions</h2>
+    <p class="small">These ratings are our judgement from the sketches, not measurements. Effort and risk are relative within each world.</p>
+
+    <div class="wh wh-lugdi"><div class="strip"><h3>Lugdi</h3><span class="tag">3 directions</span></div></div>
+
+    <article class="card lugdi cmp">
+      <h4>A. 70s pulp thriller</h4>
+      <ul class="badges"><li>Effort: medium to high</li><li>Public risk: high</li></ul>
+      <dl>
+        <dt>Fit with the world</dt><dd>The strongest match for the paperback and poster look. It says "pulp" within a second.</dd>
+        <dt>Risk</dt><dd>The busiest and cheekiest, so it gets repetitive inside a minute, can feel cheesy, and is the most likely to turn heads at a shop counter. A thriller mood can also make the people in a puzzle seem guilty, which works against the spirit of the one rule.</dd>
+        <dt>Cost and effort</dt><dd>Four layers and the most notes, so the most tuning. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>A busy rhythm competes with attention and with a screen reader's speech. The bass is built with middle harmonics so a phone speaker still carries it. Needs the music switch and a calm version without the echo.</dd>
+      </dl>
+    </article>
+
+    <article class="card lugdi cmp">
+      <h4>B. Radio-serial drama</h4>
+      <ul class="badges"><li>Effort: medium</li><li>Public risk: medium</li></ul>
+      <dl>
+        <dt>Fit with the world</dt><dd>Warm and right for the era. It echoes the radio serials of those years, and the harmonium and tabla are familiar to many Hindi-speaking adults. Sits well with the letter and gossip puzzles.</dd>
+        <dt>Risk</dt><dd>A made-up tabla can sound like a toy, and a drone can tire. A sting on a clock can feel like a verdict arriving, so keep it to the cover.</dd>
+        <dt>Cost and effort</dt><dd>Three layers. A convincing tabla and harmonium are hard to build from scratch. A real recording would sound better, but it would cost data and rights.</dd>
+        <dt>Accessibility</dt><dd>Slow and steady, with few sudden changes once the sting is gone. The middle-range sound carries on small speakers. Calm sound drops the sting.</dd>
+      </dl>
+    </article>
+
+    <article class="card lugdi cmp">
+      <h4>C. No music, only the print shop</h4>
+      <ul class="badges"><li>Effort: low</li><li>Public risk: low, but may seem broken</li></ul>
+      <dl>
+        <dt>Fit with the world</dt><dd>Quiet, tactile and true to a printed world. It makes the result reprint feel like part of the same room.</dd>
+        <dt>Risk</dt><dd>Low for annoyance, high for "is it even on?". On a train or a noisy counter it vanishes. A press clunk from a phone might puzzle people nearby.</dd>
+        <dt>Cost and effort</dt><dd>The lowest. Filtered noise and a few clunks. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>The gentlest. No tune, no beat, little for a sensitive listener to mind. Its low parts are lost on a phone speaker, but it is pleasant in earphones in bed.</dd>
+      </dl>
+    </article>
+
+    <aside class="rec lugdi" aria-label="Your pick for Lugdi">
+      <h3>Your pick for Lugdi</h3>
+      <p><b>B, radio-serial drama, trimmed:</b> the drone and the tabla only, played quietly, with the sting kept for the cover.</p>
+      <p><b>Why:</b> it fits the era and the audience best. Its middle-range sound survives a small speaker. It is slow. And it pushes the player towards suspicion less than A does. If the tabla ever sounds like a toy, C is the fallback.</p>
+    </aside>
+
+    <div class="wh wh-station"><div class="plate"><h3>Station</h3><span class="tag">3 directions</span></div></div>
+
+    <article class="card station cmp">
+      <h4>A. Platform bed</h4>
+      <ul class="badges"><li>Effort: low to medium</li><li>Public risk: medium to high</li></ul>
+      <dl>
+        <dt>Fit with the world</dt><dd>Very authentic. It feels like waiting on a platform, which is the world.</dd>
+        <dt>Risk</dt><dd>On a real platform it blends with real noise, and the horn may make someone look up. A murmur with no words can still sound like people next to you. Keep the horn for the cover, or leave it out.</dd>
+        <dt>Cost and effort</dt><dd>Filtered noise and a hum. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>Steady noise can mask speech for a person who hears less well, and some players dislike murmurs. No beat. Calm sound removes the horn.</dd>
+      </dl>
+    </article>
+
+    <article class="card station cmp">
+      <h4>B. Chime motif, used sparingly</h4>
+      <ul class="badges"><li>Effort: low</li><li>Public risk: low</li></ul>
+      <dl>
+        <dt>Fit with the world</dt><dd>Good. A small sound of its own, like a station bell, without copying the announcement chime. Sits well with enamel boards and tickets.</dd>
+        <dt>Risk</dt><dd>The least annoying because it is rare. Two real risks: it could come too close to a real announcement chime, so a player at a station might look up, and as "music" it can feel like nothing at all. It must never play on a pick or a result.</dd>
+        <dt>Cost and effort</dt><dd>The lowest. Four notes. The skill is in choosing the notes and the gaps. Nothing to download.</dd>
+        <dt>Accessibility</dt><dd>Short, soft and predictable. Easy to ignore or turn off. Nothing sudden. Best for people who find music tiring.</dd>
+      </dl>
+    </article>
+
+    <article class="card station cmp">
+      <h4>C. Rail rhythm groove</h4>
+      <ul class="badges"><li>Effort: high</li><li>Public risk: high</li></ul>
+      <dl>
+        <dt>Fit with the world</dt><dd>Lively and warm, like a journey. The shehnai adds local colour.</dd>
+        <dt>Risk</dt><dd>The highest. A reedy lead sits where phone speakers are loudest and ears are most sensitive, and it repeats quickly. A shehnai often marks weddings and auspicious days, which may feel wrong for a fairness puzzle. A fast steady clack can feel like a ticking clock.</dd>
+        <dt>Cost and effort</dt><dd>Rhythm, drone, tune and a reedy voice to build. A real shehnai recording would cost data and rights.</dd>
+        <dt>Accessibility</dt><dd>The busiest. A constant rhythm and a piercing tone are the hardest on a sensitive listener. It would need a calm version without the lead, and a slower tempo.</dd>
+      </dl>
+    </article>
+
+    <aside class="rec station" aria-label="Your pick for Station">
+      <h3>Your pick for Station</h3>
+      <p><b>B, the chime motif,</b> used on the cover. The result keeps its own flap sound (question 2).</p>
+      <p><b>Why:</b> it is the cheapest, the least tiring and the safest in public. It cannot be mistaken for a real platform. A bed under the puzzle could come later from A, without the horn.</p>
+    </aside>
+  </section>
+
+  <section id="questions" aria-labelledby="qs-h">
+    <h2 id="qs-h"><span class="num">6</span>Your answers</h2>
+    <p>All eight are decided, and each answer is now part of the design rules. The music is picked too: Lugdi B, trimmed, and Station B, the chime (section 5).</p>
+    <ol class="qs">
+      <li>
+        <p class="q">Should the game ever offer sound on the cover, or only in the "?" sheet?</p>
+        <p><span class="lab">Example:</span> Someone opens the game on the 8:10 local and never taps "?". They will never find the sound. A one-time "Want sound?" button on their first day would help them. But the rulebook says the "?" sheet is the one settings place.</p>
+        <p><span class="lab">Options:</span> never; one question on the first day only; a small speaker on the cover.</p>
+        <p><span class="lab">Your answer:</span> sound is on from the start, and players switch it off in the "?" sheet. Nothing on the cover.</p>
+      </li>
+      <li>
+        <p class="q">Should the result have a sound at all?</p>
+        <p><span class="lab">Example:</span> You send three people to the interview and the page reprints. The reprint sound is the same whatever happened. Is a sound that never changes a nice little ritual, or does it feel like the game is hiding something?</p>
+        <p><span class="lab">Options:</span> silent; the soft reprint or flap sketch; one tiny tick.</p>
+        <p><span class="lab">Your answer:</span> the soft reprint or flap sound, the same every time, with the calm version for reduced motion.</p>
+      </li>
+      <li>
+        <p class="q">Should Sunday's look-again screen be silent on purpose?</p>
+        <p><span class="lab">Example:</span> On Sunday you look back over the week's picks. Silence there could tell the player "this is a calmer moment, not a new round".</p>
+        <p><span class="lab">Options:</span> fully silent; only sheet and tab sounds; the full set.</p>
+        <p><span class="lab">Your answer:</span> yes, silent on purpose, apart from sheets opening and closing.</p>
+      </li>
+      <li>
+        <p class="q">Should the two worlds sound different?</p>
+        <p><span class="lab">Example:</span> On Monday in Lugdi, "Send" is a press clunk. The next Monday in Station, it is a lever and a latch. One shared set is simpler and steadier. Two sets make the weekly change feel real.</p>
+        <p><span class="lab">Your answer:</span> yes, two sets, one for each world.</p>
+      </li>
+      <li>
+        <p class="q">Should the milestone stamp have a bell?</p>
+        <p><span class="lab">Example:</span> Your seventh day in a row gets a stamp. At a shop counter, a bell may make people look at your phone.</p>
+        <p><span class="lab">Options:</span> stamp only; stamp and one soft note; silent.</p>
+        <p><span class="lab">Your answer:</span> yes, the stamp and one soft note, with no note under reduced motion.</p>
+      </li>
+      <li>
+        <p class="q">Is a train horn on the cover a charm or a risk?</p>
+        <p><span class="lab">Example:</span> A player waiting on a real platform opens the game, and a horn from their phone makes the person beside them look up for their train.</p>
+        <p><span class="lab">Options:</span> a very soft horn on the cover only; a station bell instead; none.</p>
+        <p><span class="lab">Your answer:</span> no horn in the game itself, and at most one soft sound on the cover.</p>
+      </li>
+      <li>
+        <p class="q">Should music fade out by itself if nobody touches the screen?</p>
+        <p><span class="lab">Example:</span> A player leaves the puzzle open on a table in the tea break and walks off. Their phone keeps playing to the room.</p>
+        <p><span class="lab">Options:</span> play until the screen locks; fade out after a few minutes of no taps.</p>
+        <p><span class="lab">Your answer:</span> yes, music fades out after a few minutes without a tap (3 minutes to start with).</p>
+      </li>
+      <li>
+        <p class="q">Is one short line under the sound switch too much text?</p>
+        <p><span class="lab">Example:</span> A player turns music on in a quiet train compartment. A line such as "Plays from your phone's speaker" would warn them. But game screens are meant to carry very few words.</p>
+        <p><span class="lab">Options:</span> no line; one line, shown only the first time the switch is turned on.</p>
+        <p><span class="lab">Your answer:</span> no line.</p>
+      </li>
+    </ol>
+  </section>
+
+  <details>
+    <summary>How the sketches are made</summary>
+    <ul>
+      <li>Plain Web Audio: oscillators, a shared noise buffer, filters, gain envelopes and one simple echo. No samples, no files, no outside scripts.</li>
+      <li>One audio context, created on your first press. Everything runs through a master compressor and a volume control, so nothing clips.</li>
+      <li>Every sound is mono. There is no panning and no stereo trick, so one speaker or one earbud loses nothing.</li>
+      <li>Music loops are scheduled a fraction of a second ahead by a small timer, so the beat stays steady even if the page is busy. Only one loop plays at a time.</li>
+      <li>Each sound effect is a function of time only. It has no way to receive who you picked, the score or the lean. Where a sound has a random-looking pattern, such as the flaps, the pattern is fixed, so it is identical every time.</li>
+      <li>Music stops when this page is hidden or the screen locks.</li>
+      <li>These are sketches for judging an idea. Final levels should be tuned on a cheap Android phone speaker and on earphones.</li>
+    </ul>
+  </details>
+</div>
+
+<script id="engine">
+const S = { ctx: null, bus: null, comp: null, master: null, fx: null, noise: null, vol: 0.4, calm: false, loop: null };
+const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
+
+function mulberry(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a = (a + 0x6D2B79F5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function makeNoise(c) {
+  const len = Math.floor(c.sampleRate * 2);
+  const buf = c.createBuffer(1, len, c.sampleRate);
+  const d = buf.getChannelData(0);
+  const r = mulberry(12345);
+  for (let i = 0; i < len; i++) d[i] = r() * 2 - 1;
+  return buf;
+}
+
+function buildChain(c, vol) {
+  const bus = c.createGain();
+  bus.gain.value = 0.9;
+  const comp = c.createDynamicsCompressor();
+  comp.threshold.value = -20;
+  comp.knee.value = 12;
+  comp.ratio.value = 8;
+  comp.attack.value = 0.003;
+  comp.release.value = 0.2;
+  const master = c.createGain();
+  master.gain.value = vol;
+  bus.connect(comp);
+  comp.connect(master);
+  master.connect(c.destination);
+  return { bus: bus, comp: comp, master: master };
+}
+
+function ensureCtx() {
+  if (S.ctx) {
+    if (S.ctx.state === 'suspended') S.ctx.resume();
+    return S.ctx;
+  }
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) return null;
+  const c = new AC();
+  S.ctx = c;
+  S.noise = makeNoise(c);
+  const ch = buildChain(c, S.vol);
+  S.bus = ch.bus; S.comp = ch.comp; S.master = ch.master;
+  S.fx = c.createGain();
+  S.fx.connect(S.bus);
+  const b = c.createBuffer(1, 1, 22050);
+  const s = c.createBufferSource();
+  s.buffer = b; s.connect(c.destination); s.start(0);
+  if (c.state === 'suspended') c.resume();
+  return c;
+}
+
+/* ---------- voices ---------- */
+function env(out, t, a, peak, hold, d) {
+  const c = S.ctx, g = c.createGain(), p = Math.max(peak, 0.0002), at = Math.max(a, 0.001);
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.linearRampToValueAtTime(p, t + at);
+  if (hold > 0) g.gain.setValueAtTime(p, t + at + hold);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + at + hold + d);
+  g.connect(out);
+  return g;
+}
+
+function tone(out, t, o) {
+  const c = S.ctx;
+  const f = o.f, f2 = o.f2 || o.f, glide = o.glide || 0.05;
+  const a = o.a === undefined ? 0.004 : o.a, hold = o.hold || 0, d = o.d || 0.1;
+  const osc = c.createOscillator();
+  osc.type = o.type || 'sine';
+  osc.frequency.setValueAtTime(f, t);
+  if (f2 !== f) osc.frequency.exponentialRampToValueAtTime(f2, t + glide);
+  let src = osc;
+  if (o.lp) {
+    const fl = c.createBiquadFilter();
+    fl.type = 'lowpass'; fl.frequency.value = o.lp; fl.Q.value = o.q || 0.7;
+    osc.connect(fl); src = fl;
+  }
+  src.connect(env(out, t, a, o.peak === undefined ? 0.3 : o.peak, hold, d));
+  osc.start(t);
+  osc.stop(t + Math.max(a, 0.001) + hold + d + 0.04);
+}
+
+function burst(out, t, o) {
+  const c = S.ctx;
+  const a = o.a === undefined ? 0.002 : o.a, hold = o.hold || 0, d = o.d || 0.03;
+  const src = c.createBufferSource();
+  src.buffer = S.noise; src.loop = true;
+  const fl = c.createBiquadFilter();
+  fl.type = o.type || 'bandpass';
+  fl.frequency.setValueAtTime(o.f || 2000, t);
+  if (o.f2) fl.frequency.exponentialRampToValueAtTime(o.f2, t + (o.sweep || (a + hold + d)));
+  fl.Q.value = o.q || 0.8;
+  src.connect(fl);
+  fl.connect(env(out, t, a, o.peak === undefined ? 0.2 : o.peak, hold, d));
+  src.start(t, (o.off || 0) % 1.8);
+  src.stop(t + Math.max(a, 0.001) + hold + d + 0.04);
+}
+
+function thump(out, t, o) {
+  tone(out, t, { f: o.f, f2: o.f2, glide: o.glide, d: o.d, peak: o.peak * 0.4 });
+  tone(out, t, { f: o.f, f2: o.f2, glide: o.glide, type: 'sawtooth', lp: 1600, d: o.d * 0.8, peak: o.peak * 0.36 });
+}
+
+function bell(out, t, f, o) {
+  const r = o.ratios || [1, 2.76, 5.4], g = o.gains || [1, 0.35, 0.12];
+  r.forEach((x, i) => tone(out, t, { f: f * x, a: 0.002, d: o.d / (1 + i * 0.9), peak: o.peak * g[i] }));
+}
+
+function makeDelay(out, time, fb, mix, tone) {
+  const c = S.ctx;
+  const input = c.createGain();
+  const dly = c.createDelay(1.0);
+  dly.delayTime.value = time;
+  const fbg = c.createGain(); fbg.gain.value = fb;
+  const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = tone;
+  const wet = c.createGain(); wet.gain.value = mix;
+  input.connect(out);
+  input.connect(dly);
+  dly.connect(lp);
+  lp.connect(fbg); fbg.connect(dly);
+  lp.connect(wet); wet.connect(out);
+  return input;
+}
+
+function twang(out, t, m, dur, peak, vib) {
+  const c = S.ctx, f = mtof(m), end = t + dur + 0.05;
+  const o = c.createOscillator();
+  o.type = 'sawtooth';
+  o.frequency.setValueAtTime(f * 1.014, t);
+  o.frequency.exponentialRampToValueAtTime(f, t + 0.06);
+  const fl = c.createBiquadFilter();
+  fl.type = 'lowpass'; fl.Q.value = 4;
+  fl.frequency.setValueAtTime(Math.min(f * 10, 5200), t);
+  fl.frequency.exponentialRampToValueAtTime(Math.max(f * 2.5, 600), t + Math.min(dur, 0.3));
+  const g = env(out, t, 0.003, peak, 0, dur);
+  o.connect(fl); fl.connect(g);
+  if (vib) {
+    const l = c.createOscillator(), lg = c.createGain();
+    l.frequency.value = 5.8;
+    lg.gain.setValueAtTime(0, t);
+    lg.gain.linearRampToValueAtTime(14, t + dur * 0.6);
+    l.connect(lg); lg.connect(o.detune);
+    l.start(t); l.stop(end);
+  }
+  o.start(t); o.stop(end);
+}
+
+function reed(out, t, f, dur, peak, o) {
+  const c = S.ctx, op = o || {};
+  const a = op.a || 0.05, rel = op.rel || 0.14, end = t + dur + 0.05;
+  const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = op.lp || 2000; lp.Q.value = 0.8;
+  const pk = c.createBiquadFilter(); pk.type = 'peaking'; pk.frequency.value = op.pk || 1100; pk.gain.value = 8; pk.Q.value = 1.4;
+  const g = env(out, t, a, peak, Math.max(0, dur - a - rel), rel);
+  lp.connect(pk); pk.connect(g);
+  [-6, 6].forEach(dt => {
+    const osc = c.createOscillator();
+    osc.type = 'sawtooth'; osc.detune.value = dt;
+    osc.frequency.setValueAtTime(op.from || f, t);
+    if (op.from) osc.frequency.exponentialRampToValueAtTime(f, t + 0.07);
+    if (op.vib) {
+      const l = c.createOscillator(), lg = c.createGain();
+      l.frequency.value = 5.5;
+      lg.gain.setValueAtTime(0, t);
+      lg.gain.linearRampToValueAtTime(op.vib, t + 0.3);
+      l.connect(lg); lg.connect(osc.detune);
+      l.start(t); l.stop(end);
+    }
+    osc.connect(lp);
+    osc.start(t); osc.stop(end);
+  });
+}
+
+function reedBed(out, h, f, p) {
+  const c = S.ctx, t = h.t0;
+  const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1300; lp.Q.value = 0.8;
+  const pk = c.createBiquadFilter(); pk.type = 'peaking'; pk.frequency.value = 850; pk.gain.value = 6; pk.Q.value = 1.2;
+  const g = c.createGain(); g.gain.value = p;
+  const lfo = c.createOscillator(), lg = c.createGain();
+  lfo.frequency.value = 0.17; lg.gain.value = p * 0.15;
+  lfo.connect(lg); lg.connect(g.gain);
+  lp.connect(pk); pk.connect(g); g.connect(out);
+  [-6, 6].forEach(dt => {
+    const o = c.createOscillator();
+    o.type = 'sawtooth'; o.frequency.value = f; o.detune.value = dt;
+    o.connect(lp); o.start(t); h.keep(o);
+  });
+  lfo.start(t); h.keep(lfo);
+}
+
+function drone(out, h, f, p, type, lpf) {
+  const c = S.ctx, o = c.createOscillator();
+  o.type = type; o.frequency.value = f;
+  const fl = c.createBiquadFilter(); fl.type = 'lowpass'; fl.frequency.value = lpf;
+  const g = c.createGain(); g.gain.value = p;
+  o.connect(fl); fl.connect(g); g.connect(out);
+  o.start(h.t0); h.keep(o);
+}
+
+function noiseBed(out, h, type, f, q, p, off) {
+  const c = S.ctx, src = c.createBufferSource();
+  src.buffer = S.noise; src.loop = true;
+  const fl = c.createBiquadFilter(); fl.type = type; fl.frequency.value = f; fl.Q.value = q;
+  const g = c.createGain(); g.gain.value = p;
+  src.connect(fl); fl.connect(g); g.connect(out);
+  src.start(h.t0, off || 0); h.keep(src);
+  return g;
+}
+
+function murmur(out, h, f, q, base, rate, depth, off) {
+  const c = S.ctx;
+  const g = noiseBed(out, h, 'bandpass', f, q, base, off);
+  const lfo = c.createOscillator(), lg = c.createGain();
+  lfo.frequency.value = rate; lg.gain.value = depth;
+  lfo.connect(lg); lg.connect(g.gain);
+  lfo.start(h.t0); h.keep(lfo);
+}
+
+/* ---------- sound effects: functions of time only ---------- */
+const FX = {
+  lugdi: {
+    tap(t, o) {
+      tone(o, t, { f: 430, f2: 300, glide: 0.045, type: 'triangle', d: 0.07, peak: 0.4 });
+      burst(o, t, { f: 1800, q: 1.2, a: 0.001, d: 0.012, peak: 0.14, off: 0.2 });
+    },
+    unpick(t, o) {
+      tone(o, t, { f: 320, f2: 215, glide: 0.05, type: 'triangle', d: 0.06, peak: 0.28 });
+      burst(o, t, { f: 1300, q: 1, a: 0.001, d: 0.01, peak: 0.08, off: 0.2 });
+    },
+    commit(t, o) {
+      burst(o, t, { f: 2200, q: 1.5, a: 0.001, d: 0.012, peak: 0.3, off: 0.5 });
+      thump(o, t + 0.04, { f: 250, f2: 115, glide: 0.12, d: 0.2, peak: 0.8 });
+      tone(o, t + 0.04, { f: 320, f2: 180, glide: 0.1, type: 'triangle', d: 0.12, peak: 0.3 });
+      burst(o, t + 0.17, { f: 900, f2: 2600, sweep: 0.14, q: 0.8, a: 0.02, d: 0.12, peak: 0.16, off: 0.9 });
+    },
+    refuse(t, o) {
+      [0, 0.11].forEach(dt => {
+        tone(o, t + dt, { f: 240, f2: 200, glide: 0.04, type: 'triangle', d: 0.07, peak: 0.34, lp: 900 });
+        burst(o, t + dt, { type: 'lowpass', f: 700, a: 0.002, d: 0.02, peak: 0.12, off: 0.15 });
+      });
+    },
+    fill(t, o) {
+      burst(o, t, { type: 'highpass', f: 3500, a: 0.001, d: 0.01, peak: 0.14, off: 0.3 });
+      tone(o, t + 0.012, { f: 520, f2: 400, glide: 0.04, type: 'triangle', d: 0.07, peak: 0.36 });
+      tone(o, t + 0.012, { f: 1040, f2: 800, glide: 0.04, d: 0.04, peak: 0.07 });
+    },
+    spend(t, o) {
+      thump(o, t, { f: 300, f2: 130, glide: 0.07, d: 0.16, peak: 0.75 });
+      tone(o, t, { f: 420, f2: 210, glide: 0.05, type: 'triangle', d: 0.08, peak: 0.24 });
+      burst(o, t, { f: 1100, q: 0.7, a: 0.001, d: 0.05, peak: 0.32, off: 1.1 });
+      burst(o, t + 0.05, { type: 'lowpass', f: 2400, a: 0.01, d: 0.07, peak: 0.06, off: 1.4 });
+    },
+    result(t, o) {
+      const calm = S.calm, n = calm ? 2 : 3, gap = calm ? 0.17 : 0.34;
+      for (let i = 0; i < n; i++) {
+        const s = t + i * gap, k = s + gap * 0.72;
+        burst(o, s, { f: 500, f2: 1100, sweep: gap * 0.7, q: 0.9, a: gap * 0.5, d: gap * 0.2, peak: 0.16, off: 0.2 + i * 0.31 });
+        thump(o, k, { f: 260, f2: 130, glide: 0.08, d: calm ? 0.1 : 0.14, peak: 0.6 });
+        tone(o, k, { f: 260, f2: 140, glide: 0.07, type: 'triangle', d: 0.08, peak: 0.2 });
+        burst(o, k, { f: 1600, q: 1.2, a: 0.001, d: 0.02, peak: 0.22, off: 0.6 + i * 0.27 });
+      }
+      if (!calm) burst(o, t + (n - 1) * gap + gap * 0.72 + 0.08, { type: 'highpass', f: 3000, a: 0.01, d: 0.12, peak: 0.05, off: 1.3 });
+    },
+    milestone(t, o) {
+      thump(o, t, { f: 270, f2: 115, glide: 0.09, d: 0.22, peak: 0.85 });
+      tone(o, t, { f: 340, f2: 150, glide: 0.06, type: 'triangle', d: 0.1, peak: 0.26 });
+      burst(o, t, { f: 1000, q: 0.7, a: 0.001, d: 0.06, peak: 0.36, off: 1.1 });
+      if (!S.calm) bell(o, t + 0.16, 1175, { peak: 0.22, d: 0.7 });
+    },
+    open(t, o) {
+      burst(o, t, { f: 700, f2: 2400, sweep: 0.16, q: 1.1, a: 0.03, d: 0.12, peak: 0.2, off: 0.5 });
+      tone(o, t + 0.15, { f: 360, f2: 300, glide: 0.04, type: 'triangle', d: 0.05, peak: 0.18 });
+    },
+    close(t, o) {
+      burst(o, t, { f: 2400, f2: 700, sweep: 0.14, q: 1.1, a: 0.02, d: 0.1, peak: 0.18, off: 0.5 });
+      tone(o, t + 0.12, { f: 280, f2: 230, glide: 0.04, type: 'triangle', d: 0.05, peak: 0.16 });
+    },
+    tab(t, o) {
+      burst(o, t, { type: 'highpass', f: 2500, a: 0.002, d: 0.04, peak: 0.18, off: 0.7 });
+      burst(o, t + 0.03, { f: 1200, q: 1, a: 0.002, d: 0.03, peak: 0.12, off: 0.9 });
+    },
+    toast(t, o) {
+      tone(o, t, { f: 880, f2: 850, glide: 0.1, type: 'triangle', d: 0.14, peak: 0.24 });
+      tone(o, t, { f: 1760, d: 0.05, peak: 0.05 });
+      burst(o, t, { type: 'highpass', f: 3500, a: 0.001, d: 0.015, peak: 0.05, off: 0.3 });
+    },
+    cover(t, o) {
+      burst(o, t, { f: 900, f2: 3000, sweep: 0.22, q: 0.8, a: 0.05, d: 0.12, peak: 0.18, off: 0.4 });
+      twang(o, t + 0.2, 62, 0.32, 0.5, false);
+    }
+  },
+  station: {
+    tap(t, o) {
+      tone(o, t, { f: 1250, a: 0.002, d: 0.09, peak: 0.22 });
+      tone(o, t, { f: 3450, a: 0.001, d: 0.035, peak: 0.07 });
+      burst(o, t, { type: 'highpass', f: 4000, a: 0.001, d: 0.008, peak: 0.06, off: 0.2 });
+    },
+    unpick(t, o) {
+      tone(o, t, { f: 980, a: 0.002, d: 0.06, peak: 0.18 });
+      tone(o, t, { f: 2700, a: 0.001, d: 0.025, peak: 0.05 });
+    },
+    commit(t, o) {
+      burst(o, t, { type: 'highpass', f: 3500, a: 0.001, d: 0.01, peak: 0.26, off: 0.5 });
+      tone(o, t + 0.01, { f: 310, f2: 200, glide: 0.04, type: 'triangle', d: 0.05, peak: 0.26 });
+      thump(o, t + 0.09, { f: 240, f2: 110, glide: 0.1, d: 0.2, peak: 0.8 });
+      tone(o, t + 0.09, { f: 300, f2: 150, glide: 0.08, type: 'triangle', d: 0.1, peak: 0.3 });
+      burst(o, t + 0.095, { f: 1800, q: 1.2, a: 0.001, d: 0.02, peak: 0.3, off: 1.0 });
+      burst(o, t + 0.2, { type: 'highpass', f: 4500, a: 0.001, d: 0.015, peak: 0.1, off: 1.6 });
+    },
+    refuse(t, o) {
+      [0, 0.12].forEach(dt => {
+        tone(o, t + dt, { f: 230, f2: 190, glide: 0.05, type: 'triangle', d: 0.09, peak: 0.38, lp: 1000 });
+        burst(o, t + dt, { type: 'lowpass', f: 500, a: 0.002, d: 0.025, peak: 0.12, off: 0.4 });
+      });
+    },
+    fill(t, o) {
+      burst(o, t, { f: 2600, q: 0.9, a: 0.02, d: 0.04, peak: 0.14, off: 0.8 });
+      burst(o, t + 0.06, { type: 'highpass', f: 4000, a: 0.001, d: 0.01, peak: 0.2, off: 1.1 });
+      tone(o, t + 0.06, { f: 700, f2: 600, glide: 0.03, type: 'triangle', d: 0.05, peak: 0.24 });
+    },
+    spend(t, o) {
+      burst(o, t, { type: 'highpass', f: 3800, a: 0.001, d: 0.012, peak: 0.38, off: 1.0 });
+      burst(o, t + 0.012, { f: 1500, q: 1.5, a: 0.001, d: 0.03, peak: 0.22, off: 1.2 });
+      tone(o, t + 0.01, { f: 2200, a: 0.001, d: 0.09, peak: 0.16 });
+      tone(o, t + 0.01, { f: 5300, a: 0.001, d: 0.03, peak: 0.05 });
+      tone(o, t + 0.02, { f: 260, f2: 160, glide: 0.05, type: 'triangle', d: 0.06, peak: 0.3 });
+      burst(o, t + 0.075, { type: 'highpass', f: 5000, a: 0.001, d: 0.008, peak: 0.08, off: 1.5 });
+    },
+    result(t, o) {
+      const calm = S.calm, R = mulberry(7), n = calm ? 5 : 18, span = calm ? 0.28 : 0.92;
+      for (let i = 0; i < n; i++) {
+        const u = n > 1 ? i / (n - 1) : 0;
+        const at = Math.max(t, t + span * Math.pow(u, 1.6) + (R() - 0.5) * 0.008);
+        burst(o, at, { f: 1500 + R() * 1100, q: 1.4, a: 0.001, d: 0.016, peak: 0.14 + R() * 0.1, off: R() * 1.7 });
+        if (i % 3 === 0) tone(o, at, { f: 600 + R() * 300, f2: 450, glide: 0.02, type: 'triangle', a: 0.001, d: 0.025, peak: 0.08 });
+      }
+      const end = t + span + 0.07;
+      tone(o, end, { f: 300, f2: 200, glide: 0.07, type: 'triangle', d: 0.12, peak: 0.4 });
+      burst(o, end, { f: 1200, q: 1, a: 0.001, d: 0.025, peak: 0.32, off: 1.3 });
+    },
+    milestone(t, o) {
+      burst(o, t, { type: 'highpass', f: 3000, a: 0.001, d: 0.012, peak: 0.3, off: 0.5 });
+      thump(o, t + 0.03, { f: 260, f2: 110, glide: 0.1, d: 0.24, peak: 0.85 });
+      tone(o, t + 0.03, { f: 340, f2: 160, glide: 0.08, type: 'triangle', d: 0.1, peak: 0.28 });
+      burst(o, t + 0.035, { f: 1700, q: 1.1, a: 0.001, d: 0.03, peak: 0.3, off: 1.2 });
+      if (!S.calm) bell(o, t + 0.15, 1046, { peak: 0.22, d: 0.7, ratios: [1, 2.32, 4.1], gains: [1, 0.3, 0.1] });
+    },
+    open(t, o) {
+      burst(o, t, { type: 'highpass', f: 1500, f2: 4000, sweep: 0.15, q: 0.7, a: 0.03, d: 0.12, peak: 0.16, off: 0.6 });
+      tone(o, t + 0.16, { f: 240, f2: 170, glide: 0.04, type: 'triangle', d: 0.06, peak: 0.32 });
+    },
+    close(t, o) {
+      burst(o, t, { type: 'highpass', f: 4000, f2: 1500, sweep: 0.14, q: 0.7, a: 0.02, d: 0.1, peak: 0.15, off: 0.6 });
+      tone(o, t + 0.13, { f: 290, f2: 220, glide: 0.04, type: 'triangle', d: 0.06, peak: 0.3 });
+    },
+    tab(t, o) {
+      burst(o, t, { f: 1900, q: 1.4, a: 0.001, d: 0.02, peak: 0.32, off: 0.4 });
+      tone(o, t, { f: 760, f2: 520, glide: 0.02, type: 'triangle', a: 0.001, d: 0.03, peak: 0.16 });
+      burst(o, t + 0.028, { f: 1100, q: 1, a: 0.001, d: 0.015, peak: 0.16, off: 0.9 });
+    },
+    toast(t, o) {
+      bell(o, t, 1397, { peak: 0.2, d: 0.18, ratios: [1, 2.4], gains: [1, 0.3] });
+    },
+    cover(t, o) {
+      const R = mulberry(3);
+      for (let i = 0; i < 5; i++) burst(o, t + i * 0.05, { f: 1400 + R() * 1000, q: 1.4, a: 0.001, d: 0.016, peak: 0.18, off: R() * 1.7 });
+      tone(o, t + 0.26, { f: 196, a: 0.06, d: 0.16, peak: 0.2 });
+      tone(o, t + 0.26, { f: 392, a: 0.05, d: 0.14, peak: 0.26 });
+      tone(o, t + 0.26, { f: 588, a: 0.05, d: 0.12, peak: 0.12 });
+      burst(o, t + 0.26, { f: 1100, q: 1, a: 0.001, d: 0.025, peak: 0.22, off: 0.5 });
+    }
+  }
+};
+
+/* ---------- music loops ---------- */
+function keyed(bars, per) {
+  const m = {};
+  bars.forEach((arr, b) => arr.forEach(n => {
+    const k = b * per + n[0];
+    if (!m[k]) m[k] = [];
+    m[k].push(n);
+  }));
+  return m;
+}
+
+function bongo(out, t, hi, p) {
+  if (hi) tone(out, t, { f: 480, f2: 360, glide: 0.05, a: 0.002, d: 0.09, peak: p });
+  else tone(out, t, { f: 310, f2: 215, glide: 0.07, a: 0.002, d: 0.13, peak: p });
+  burst(out, t, { f: hi ? 2600 : 1800, q: 1.5, a: 0.001, d: 0.012, peak: p * 0.5, off: hi ? 0.2 : 0.6 });
+}
+function bassNote(out, t, m, dur, p) {
+  const f = mtof(m), hold = Math.max(0, dur - 0.1);
+  tone(out, t, { f: f, type: 'triangle', a: 0.006, hold: hold, d: 0.1, peak: p, lp: 900 });
+  tone(out, t, { f: f, type: 'sawtooth', a: 0.006, hold: hold, d: 0.08, peak: p * 0.35, lp: 700 });
+}
+function organ(out, t, notes, dur, p) {
+  notes.forEach(m => {
+    const f = mtof(m), q = p / notes.length;
+    tone(out, t, { f: f, type: 'square', a: 0.005, hold: dur * 0.4, d: dur * 0.6, peak: q * 0.5, lp: 2200 });
+    tone(out, t, { f: f * 2, a: 0.005, hold: dur * 0.4, d: dur * 0.6, peak: q * 0.6 });
+  });
+}
+
+const LA = (function () {
+  const bpm = 140, step = 60 / bpm / 4;
+  const BASS = [[50,53,57,53],[50,57,60,57],[55,58,62,58],[50,53,57,61],[58,62,65,62],[57,61,64,61],[62,57,53,57],[57,55,53,52]];
+  const CH = [[62,65,69],[62,65,69],[55,58,62],[62,65,69],[58,62,65],[57,61,64,67],[62,65,69],[57,61,64,67]];
+  const PAT = 'L.HHL.H.L.HHLH.H', FILL = 'L.HHL.H.LLHHLLHH';
+  const MEL = keyed([
+    [[0,69,2],[3,74,1],[4,77,2],[6,76,1],[7,74,1],[8,72,4],[14,69,1]],
+    [[0,70,2],[2,69,2],[4,67,2],[6,65,2],[8,64,4]],
+    [[0,70,2],[3,74,1],[4,79,2],[6,77,1],[7,75,1],[8,74,4],[14,70,1]],
+    [[0,74,2],[2,72,2],[4,69,4],[8,62,2]],
+    [[0,77,3],[3,74,1],[4,70,4],[8,74,2],[10,77,2],[12,79,4]],
+    [[0,76,2],[2,73,2],[4,69,4],[8,67,2],[10,69,2],[12,73,4]],
+    [[0,74,3],[3,77,1],[4,81,4],[8,77,2],[10,74,2],[12,69,4]],
+    [[0,73,2],[2,76,2],[4,79,2],[6,76,2],[8,73,4]]
+  ], 16);
+  return {
+    id: 'lA', trim: 0.22, stepDur: step, steps: 128,
+    setup(out, h) {
+      h.dly = makeDelay(out, 60 / bpm * 0.75, S.calm ? 0 : 0.32, S.calm ? 0 : 0.28, 2600);
+    },
+    onStep(i, t, h) {
+      const bar = i >> 4, s = i & 15, out = h.out, fill = (bar === 3 || bar === 7) && !S.calm;
+      if (s % 4 === 0) bassNote(out, t, BASS[bar][s >> 2], step * 3.6, 0.4);
+      const ch = (fill ? FILL : PAT).charAt(s);
+      if (ch !== '.') bongo(out, t, ch === 'H', s % 4 === 0 ? 0.42 : 0.3);
+      if (s % 4 === 2) burst(out, t, { type: 'highpass', f: 7000, a: 0.001, d: 0.03, peak: 0.07, off: (i * 0.173) % 1.7 });
+      const stabs = fill ? [6, 10, 14] : [6, 14];
+      if (stabs.indexOf(s) >= 0) organ(out, t, CH[bar], step * 1.6, 0.3);
+      const ms = MEL[i];
+      if (ms) ms.forEach(n => twang(h.dly, t, n[1], n[2] * step * 1.15, 0.22, n[2] >= 4 && !S.calm));
+    }
+  };
+})();
+
+const LB = (function () {
+  const bpm = 90, step = 60 / bpm / 2;
+  const THEKA = ['dha','dhin','dhin','dha','dha','dhin','dhin','dha','dha','tin','tin','ta','ta','dhin','dhin','dha'];
+  const ORN = { 7: 'na', 15: 'na', 23: 'ge', 31: 'ge' };
+  const PHR = keyed([[[16,67,3],[19,65,1],[20,63,2],[22,62,4],[26,70,2],[28,69,2],[30,67,2]]], 32);
+  function bayan(out, t, p) {
+    tone(out, t, { f: 100, f2: 150, glide: 0.14, a: 0.003, d: 0.32, peak: p });
+    tone(out, t, { f: 200, f2: 290, glide: 0.12, type: 'triangle', a: 0.003, d: 0.12, peak: p * 0.3 });
+    burst(out, t, { type: 'lowpass', f: 500, a: 0.002, d: 0.03, peak: p * 0.25, off: 0.2 });
+  }
+  function dayan(out, t, kind, p) {
+    const f = 294, d = kind === 'ta' ? 0.05 : kind === 'na' ? 0.1 : kind === 'dhin' ? 0.2 : 0.3;
+    tone(out, t, { f: f, a: 0.002, d: d, peak: p });
+    tone(out, t, { f: f * 2, a: 0.002, d: d * 0.7, peak: p * 0.5 });
+    tone(out, t, { f: f * 3, a: 0.002, d: d * 0.5, peak: p * 0.25 });
+    burst(out, t, { f: 3200, q: 2, a: 0.001, d: 0.01, peak: p * 0.4, off: 0.7 });
+  }
+  function bol(out, t, name, p) {
+    if (name === 'dha') { bayan(out, t, p); dayan(out, t, 'tin', p * 0.8); }
+    else if (name === 'dhin') { bayan(out, t, p); dayan(out, t, 'dhin', p * 0.7); }
+    else if (name === 'tin') dayan(out, t, 'tin', p * 0.9);
+    else if (name === 'ta') dayan(out, t, 'ta', p * 0.9);
+    else if (name === 'na') dayan(out, t, 'na', p * 0.5);
+    else if (name === 'ge') bayan(out, t, p * 0.55);
+  }
+  return {
+    id: 'lB', trim: 0.3, stepDur: step, steps: 32,
+    setup(out, h) {
+      reedBed(out, h, mtof(50), 0.09);
+      reedBed(out, h, mtof(57), 0.07);
+      reedBed(out, h, mtof(62), 0.035);
+    },
+    onStep(i, t, h) {
+      const out = h.out;
+      if (i % 2 === 0) bol(out, t, THEKA[i >> 1], i === 0 ? 0.5 : 0.4);
+      else if (ORN[i]) bol(out, t, ORN[i], 0.4);
+      if (i === 0) {
+        if (S.calm) bayan(out, t, 0.5);
+        else {
+          [50, 51, 57, 62, 68].forEach(m => reed(out, t, mtof(m), 1.3, 0.1, { a: 0.012, rel: 1.1, lp: 1700 }));
+          bayan(out, t, 0.6);
+        }
+      }
+      const ph = PHR[i];
+      if (ph) ph.forEach(n => reed(out, t, mtof(n[1]), n[2] * step * 0.95, 0.13, { a: 0.06, rel: 0.14, vib: 7 }));
+    }
+  };
+})();
+
+const LC = (function () {
+  const step = 0.25;
+  const STROKES = { 2: 0.34, 14: 0.3, 26: 0.36, 38: 0.3 };
+  const RUSTLE = [9, 19, 31, 44];
+  function press(out, t, p) {
+    burst(out, t, { f: 400, f2: 900, sweep: 0.5, q: 0.9, a: 0.35, d: 0.15, peak: p * 0.4, off: 0.2 });
+    const k = t + 0.5;
+    thump(out, k, { f: 200, f2: 95, glide: 0.1, d: 0.2, peak: p });
+    burst(out, k, { f: 1500, q: 1, a: 0.001, d: 0.02, peak: p * 0.45, off: 0.9 });
+    burst(out, k + 0.28, { f: 2000, q: 1, a: 0.002, d: 0.05, peak: p * 0.22, off: 1.4 });
+  }
+  function rustle(out, t) {
+    const dt = [0, 0.07, 0.11, 0.19, 0.24, 0.33], fr = [3200, 4200, 2600, 5000, 3000, 3800];
+    dt.forEach((x, j) => burst(out, t + x, { f: fr[j], q: 1.2, a: 0.002, d: 0.022, peak: 0.07, off: j * 0.31 }));
+  }
+  return {
+    id: 'lC', trim: 0.7, stepDur: step, steps: 48,
+    setup(out, h) {
+      noiseBed(out, h, 'lowpass', 900, 0.7, 0.05, 0.3);
+      noiseBed(out, h, 'highpass', 3500, 0.7, 0.006, 1.1);
+    },
+    onStep(i, t, h) {
+      const out = h.out;
+      if (STROKES[i]) press(out, t, STROKES[i]);
+      if (RUSTLE.indexOf(i) >= 0) rustle(out, t);
+      if (i === 22) burst(out, t, { f: 1800, f2: 900, sweep: 0.5, q: 0.8, a: 0.05, d: 0.45, peak: 0.07, off: 0.6 });
+    }
+  };
+})();
+
+const SA = (function () {
+  const step = 0.5;
+  function horn(out, t, dur, p) {
+    const c = S.ctx, end = t + 0.4 + dur + 1.1;
+    const fl = c.createBiquadFilter(); fl.type = 'lowpass'; fl.frequency.value = 560; fl.Q.value = 0.7;
+    const g = env(out, t, 0.4, p, dur, 0.9);
+    fl.connect(g);
+    [233, 294, 349].forEach(f => {
+      const o = c.createOscillator();
+      o.type = 'sawtooth';
+      o.frequency.setValueAtTime(f, t);
+      o.frequency.exponentialRampToValueAtTime(f * 0.975, t + 0.4 + dur + 1.0);
+      o.connect(fl); o.start(t); o.stop(end);
+    });
+  }
+  return {
+    id: 'sA', trim: 0.25, stepDur: step, steps: 28,
+    setup(out, h) {
+      drone(out, h, 100, 0.03, 'sine', 400);
+      drone(out, h, 200, 0.045, 'sine', 600);
+      drone(out, h, 300, 0.022, 'sine', 800);
+      drone(out, h, 100, 0.02, 'sawtooth', 450);
+      murmur(out, h, 420, 0.8, 0.9, 0.23, 0.35, 0.2);
+      murmur(out, h, 700, 0.9, 0.7, 3.7, 0.3, 0.9);
+      murmur(out, h, 1500, 1.1, 0.35, 5.3, 0.15, 1.4);
+    },
+    onStep(i, t, h) {
+      if (S.calm) return;
+      if (i === 8) horn(h.out, t, 1.6, 0.1);
+      if (i === 21) horn(h.out, t, 0.45, 0.08);
+    }
+  };
+})();
+
+const SB = (function () {
+  const step = 0.25;
+  const N = { 4: [69, 0.24, 1.6], 6: [76, 0.22, 1.4], 8: [73, 0.22, 1.4], 11: [71, 0.24, 2.2], 34: [69, 0.13, 1.4], 36: [76, 0.12, 1.4], 38: [73, 0.12, 2.0] };
+  return {
+    id: 'sB', trim: 0.8, stepDur: step, steps: 60,
+    setup(out, h) {
+      h.dly = makeDelay(out, 0.33, S.calm ? 0 : 0.35, S.calm ? 0 : 0.35, 3200);
+    },
+    onStep(i, t, h) {
+      const n = N[i];
+      if (n) bell(h.dly, t, mtof(n[0]), { peak: n[1], d: n[2], ratios: [1, 2.76, 5.4], gains: [1, 0.28, 0.1] });
+    }
+  };
+})();
+
+const SC = (function () {
+  const bpm = 108, step = 60 / bpm / 3;
+  const LEAD = [
+    [0,0,1.5,69],[0,1.5,0.5,71],[0,2,2,74],
+    [1,0,1,71],[1,1,1,69],[1,2,1,66],[1,3,1,69],
+    [2,0,1.5,74],[2,1.5,0.5,76],[2,2,2,78],
+    [3,0,1,76],[3,1,1,74],[3,2,1.5,71],[3,3.5,0.5,69],
+    [4,1,1,69],[4,2,1,71],[4,3,1,74],
+    [5,0,2,78],[5,2,1,76],[5,3,1,74],
+    [6,0,1,71],[6,1,1,69],[6,2,0.5,66],[6,2.5,0.5,64],[6,3,1,62]
+  ];
+  const L = {};
+  LEAD.forEach((n, j) => {
+    const st = (n[0] * 4 + n[1]) * 3, k = Math.floor(st + 1e-6);
+    const prev = LEAD[j - 1];
+    const contiguous = prev && (prev[0] * 4 + prev[1] + prev[2]) === (n[0] * 4 + n[1]);
+    if (!L[k]) L[k] = [];
+    L[k].push({ m: n[3], dur: n[2] * 3 * step * 0.95, off: (st - k) * step, from: contiguous ? prev[3] : 0 });
+  });
+  function clack(out, t, acc, w) {
+    if (acc) {
+      burst(out, t, { f: 2300, q: 2.5, a: 0.001, d: 0.03, peak: 0.3 * w, off: 0.3 });
+      tone(out, t, { f: 95, f2: 60, glide: 0.04, a: 0.002, d: 0.06, peak: 0.34 * w });
+      burst(out, t, { f: 5200, q: 3, a: 0.001, d: 0.012, peak: 0.1, off: 1.2 });
+    } else {
+      burst(out, t, { f: 2800, q: 2.5, a: 0.001, d: 0.02, peak: 0.16, off: 0.8 });
+    }
+  }
+  return {
+    id: 'sC', trim: 0.25, stepDur: step, steps: 84,
+    setup(out, h) {
+      drone(out, h, mtof(50), 0.07, 'triangle', 500);
+      drone(out, h, mtof(57), 0.045, 'triangle', 600);
+    },
+    onStep(i, t, h) {
+      const out = h.out, s = i % 12, m = s % 3;
+      if (m === 0) clack(out, t, true, s === 0 ? 1.15 : 0.85);
+      else if (m === 2) clack(out, t, false, 1);
+      if (i === 72) burst(out, t, { f: 300, f2: 900, sweep: 1.7, q: 0.8, a: 1.4, d: 0.5, peak: 0.14, off: 0.3 });
+      const ld = L[i];
+      if (ld && !S.calm) ld.forEach(n => reed(out, t + n.off, mtof(n.m), n.dur, 0.2, { a: 0.04, rel: 0.1, lp: 3800, pk: 1200, vib: 18, from: n.from ? mtof(n.from) : 0 }));
+    }
+  };
+})();
+
+const MUSIC = { lA: LA, lB: LB, lC: LC, sA: SA, sB: SB, sC: SC };
+const loopLen = d => d.stepDur * d.steps;
+
+function pump(L) {
+  const c = S.ctx;
+  if (L.next < c.currentTime - 0.1) L.next = c.currentTime + 0.05;
+  while (L.next < c.currentTime + 0.2) {
+    L.def.onStep(L.step % L.def.steps, L.next, L.h);
+    L.next += L.def.stepDur;
+    L.step++;
+  }
+}
+
+function startLoop(def) {
+  const c = ensureCtx();
+  if (!c) return null;
+  stopLoop();
+  const out = c.createGain();
+  out.gain.setValueAtTime(0.0001, c.currentTime);
+  out.gain.linearRampToValueAtTime((def.trim || 1) * (S.calm ? 0.8 : 1), c.currentTime + 0.06);
+  out.connect(S.bus);
+  const t0 = c.currentTime + 0.1;
+  const L = { def: def, out: out, t0: t0, next: t0, step: 0, timer: 0, keep: [], h: null };
+  L.h = { out: out, t0: t0, keep: n => { L.keep.push(n); return n; } };
+  def.setup(out, L.h);
+  S.loop = L;
+  pump(L);
+  L.timer = setInterval(() => pump(L), 25);
+  return L;
+}
+
+function stopLoop() {
+  const L = S.loop;
+  if (!L) return;
+  S.loop = null;
+  clearInterval(L.timer);
+  const c = S.ctx, now = c.currentTime;
+  L.out.gain.cancelScheduledValues(now);
+  L.out.gain.setValueAtTime(L.out.gain.value, now);
+  L.out.gain.linearRampToValueAtTime(0.0001, now + 0.08);
+  setTimeout(() => {
+    L.keep.forEach(n => { try { n.stop(); } catch (e) {} });
+    try { L.out.disconnect(); } catch (e) {}
+  }, 160);
+}
+
+function cutFx() {
+  if (!S.ctx) return;
+  const c = S.ctx, old = S.fx, now = c.currentTime;
+  old.gain.cancelScheduledValues(now);
+  old.gain.setValueAtTime(old.gain.value, now);
+  old.gain.linearRampToValueAtTime(0, now + 0.03);
+  setTimeout(() => { try { old.disconnect(); } catch (e) {} }, 100);
+  S.fx = c.createGain();
+  S.fx.connect(S.bus);
+}
+
+function stopAll() { stopLoop(); cutFx(); }
+</script>
+
+<script id="ui">
+const EVENTS = [
+  { title: 'Tap a person or chip', note: 'Fixed pitch, nothing random. Identical for every person, every time.',
+    vars: [{ id: 'tap', label: 'Play', ms: [70, 80] }], lugdi: 'Soft type-block tock.', station: 'Small enamel tink.' },
+  { title: 'Unpick', note: 'As gentle as the tap, a little lower. Never a "wrong" sound.',
+    vars: [{ id: 'unpick', label: 'Play', ms: [60, 60] }], lugdi: 'Lower, softer tock.', station: 'Lighter, lower tink.' },
+  { title: 'Commit, the "Send"', note: 'Identical whoever you picked. Starts on the same tick as the one vibration pulse.',
+    vars: [{ id: 'commit', label: 'Play', ms: [280, 250] }], lugdi: 'Press-lever clunk and a paper slide.', station: 'Lever and latch, clunk then click.' },
+  { title: 'Refusal, like "Team is full"', note: 'Gentle. Two taps at one pitch. Never a buzzer, never falling in pitch.',
+    vars: [{ id: 'refuse', label: 'Play', ms: [180, 200] }], lugdi: 'Two soft knocks on wood.', station: 'Two muffled bumps.' },
+  { title: 'Slot fill', note: 'The same whoever fills the slot.',
+    vars: [{ id: 'fill', label: 'Play', ms: [80, 120] }], lugdi: 'A type slug snaps into the frame.', station: 'A card slides into the rack.' },
+  { title: 'Spending a check', note: 'A small, firm, physical sound.',
+    vars: [{ id: 'spend', label: 'Play', ms: [130, 110] }], lugdi: 'Rubber-stamp thunk.', station: 'Ticket punch: snip and ping.' },
+  { title: 'Result reveal', note: 'Takes no input. The same every day, whatever the score or lean. Matches the picture, up to 1.2 s. Calm sound shortens it.',
+    vars: [{ id: 'result', label: 'Play', ms: [1100, 1100] }], lugdi: 'Press reprint in three chunks.', station: 'Split-flap cascade.' },
+  { title: 'Milestone stamp', note: 'About days played, never about the answers. The only other long one.',
+    vars: [{ id: 'milestone', label: 'Play', ms: [620, 610] }], lugdi: 'Heavy stamp and one desk-bell note.', station: 'Date-stamp press and one plate chime.' },
+  { title: 'Open and close a sheet', note: 'Two small sounds, an opening and a closing.',
+    vars: [{ id: 'open', label: 'Open', ms: [210, 230] }, { id: 'close', label: 'Close', ms: [180, 200] }], lugdi: 'Paper slides up, then down.', station: 'A shutter slides up, then down.' },
+  { title: 'Tab switch', note: 'The lightest sound on the sheet.',
+    vars: [{ id: 'tab', label: 'Play', ms: [70, 60] }], lugdi: 'One page flick.', station: 'One flap clack.' },
+  { title: 'Toast', note: 'A small message appears. One quiet tone.',
+    vars: [{ id: 'toast', label: 'Play', ms: [110, 140] }], lugdi: 'A soft paper pat with one tone.', station: 'One small plate ting.' },
+  { title: 'Cover "Play"', note: 'The first sound of the day.',
+    vars: [{ id: 'cover', label: 'Play', ms: [440, 450] }], lugdi: 'Paper fan and one low twang.', station: 'The board refreshes, then a low hum.' }
+];
+const WN = { lugdi: 'Lugdi', station: 'Station' };
+const IC_PLAY = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z"/></svg>';
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+const fmtMs = ms => '~' + (ms >= 1000 ? (ms / 1000).toFixed(1) + ' s' : ms + ' ms');
+
+(function renderTable() {
+  const tbl = document.getElementById('fxtable');
+  const cell = (ev, w, wi) => {
+    const btns = ev.vars.map(v =>
+      '<button type="button" class="btn btn-' + w + '" data-fx="' + v.id + '" data-world="' + w + '" data-ms="' + v.ms[wi] + '" aria-label="Play ' + WN[w] + ' sound: ' + esc(ev.title) + (v.label === 'Play' ? '' : ', ' + v.label.toLowerCase()) + '">' + IC_PLAY + '<span>' + v.label + '</span></button>'
+    ).join('');
+    const longest = Math.max.apply(null, ev.vars.map(v => v.ms[wi]));
+    return '<td role="cell" data-label="' + WN[w] + '"><div class="cell-btns">' + btns + '</div><p class="cap">' + ev[w] + ' <span class="dur">' + fmtMs(longest) + '</span></p></td>';
+  };
+  let h = '<colgroup><col class="c0"><col class="c1"><col class="c2"></colgroup>';
+  h += '<thead role="rowgroup"><tr role="row"><th role="columnheader" scope="col">Event</th><th role="columnheader" scope="col" class="h-l">Lugdi</th><th role="columnheader" scope="col" class="h-s">Station</th></tr></thead><tbody role="rowgroup">';
+  EVENTS.forEach(ev => {
+    h += '<tr role="row"><th role="rowheader" scope="row" class="ev"><span class="ev-t">' + ev.title + '</span><span class="ev-n">' + ev.note + '</span></th>' + cell(ev, 'lugdi', 0) + cell(ev, 'station', 1) + '</tr>';
+  });
+  tbl.innerHTML = h + '</tbody>';
+})();
+
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
+const live = $('#live');
+const say = msg => { live.textContent = msg; };
+const volEl = $('#vol'), volOut = $('#volOut'), calmEl = $('#calm');
+let raf = 0;
+
+function setVol(v) {
+  S.vol = v;
+  volOut.textContent = v.toFixed(2);
+  volEl.style.setProperty('--p', (v * 100) + '%');
+  if (S.master) S.master.gain.setTargetAtTime(v, S.ctx.currentTime, 0.02);
+}
+volEl.addEventListener('input', () => setVol(parseFloat(volEl.value)));
+setVol(0.4);
+
+const mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+if (mq && mq.matches) { S.calm = true; calmEl.checked = true; $('#calmNote').hidden = false; }
+calmEl.addEventListener('change', () => {
+  S.calm = calmEl.checked;
+  if (S.loop) { const def = S.loop.def; startLoop(def); syncLoops(); }
+});
+
+const fmtT = s => Math.floor(s / 60) + ':' + ('0' + Math.floor(s % 60)).slice(-2);
+function syncLoops() {
+  const cur = S.loop ? S.loop.def.id : null;
+  $$('[data-loop]').forEach(b => {
+    const on = b.dataset.loop === cur;
+    b.classList.toggle('is-on', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    b.querySelector('span').textContent = on ? 'Stop' : 'Play loop';
+    if (!on) {
+      const card = b.closest('.card');
+      card.querySelector('.prog i').style.width = '0';
+      card.querySelector('.clock').textContent = '0:00 / ' + fmtT(Math.round(loopLen(MUSIC[b.dataset.loop])));
+    }
+  });
+  if (cur && !raf) raf = requestAnimationFrame(tickProg);
+}
+function tickProg() {
+  raf = 0;
+  const L = S.loop;
+  if (!L) return;
+  const len = loopLen(L.def), el = Math.max(0, S.ctx.currentTime - L.t0), p = (el % len) / len;
+  const card = document.getElementById('card-' + L.def.id);
+  card.querySelector('.prog i').style.width = (p * 100).toFixed(1) + '%';
+  card.querySelector('.clock').textContent = fmtT(el % len) + ' / ' + fmtT(Math.round(len));
+  raf = requestAnimationFrame(tickProg);
+}
+
+function flash(b) {
+  const ms = parseInt(b.dataset.ms || '200', 10);
+  b.classList.add('is-on');
+  setTimeout(() => b.classList.remove('is-on'), ms + 80);
+}
+
+document.addEventListener('click', e => {
+  const b = e.target.closest ? e.target.closest('button') : null;
+  if (!b) return;
+  if (b.dataset.fx || b.dataset.loop || b.dataset.pulse) {
+    if (!ensureCtx()) { $('#nosound').hidden = false; return; }
+  }
+  if (b.dataset.fx) {
+    FX[b.dataset.world][b.dataset.fx](S.ctx.currentTime + 0.02, S.fx);
+    flash(b);
+    say('Played ' + WN[b.dataset.world] + ' ' + b.dataset.fx);
+  } else if (b.dataset.loop) {
+    const id = b.dataset.loop;
+    if (S.loop && S.loop.def.id === id) { stopLoop(); say('Stopped the loop.'); }
+    else { startLoop(MUSIC[id]); say('Playing a loop of ' + Math.round(loopLen(MUSIC[id])) + ' seconds.'); }
+    syncLoops();
+  } else if (b.dataset.pulse) {
+    const w = b.dataset.pulse, msg = $('#pulseMsg');
+    FX[w].commit(S.ctx.currentTime + 0.02, S.fx);
+    let ok = false;
+    try { ok = !!(navigator.vibrate && navigator.vibrate(20)); } catch (err) { ok = false; }
+    msg.textContent = ok ? 'Sound and one short pulse requested together. Only a phone with vibration will feel it.' : 'No vibration is available here, so you heard the sound alone.';
+    say(msg.textContent);
+  } else if (b.id === 'stop') {
+    if (S.ctx) { stopAll(); }
+    $$('.btn.is-on[data-fx]').forEach(x => x.classList.remove('is-on'));
+    syncLoops();
+    say('Everything stopped.');
+  }
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && S.ctx) { stopAll(); syncLoops(); }
+});
+window.addEventListener('pagehide', () => { if (S.ctx) stopAll(); });
+syncLoops();
+</script>
+
+</body></html>

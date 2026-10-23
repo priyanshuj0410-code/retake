@@ -1,5 +1,6 @@
 import { useId, type ReactNode } from 'react'
 import './field.css'
+import './hidden.css'
 
 /** A labelled text box with its action beside it (finding a friend by road name). */
 export function Field(props: {
@@ -19,7 +20,7 @@ export function Field(props: {
         props.onSubmit()
       }}
     >
-      <label className="field__label" htmlFor={id}>
+      <label className="vh" htmlFor={id}>
         {props.label}
       </label>
       <div className="field__row">
@@ -29,6 +30,7 @@ export function Field(props: {
           type="search"
           autoComplete="off"
           spellCheck={false}
+          placeholder={props.label}
           value={props.value}
           onChange={(e) => props.onChange(e.target.value)}
         />
@@ -38,27 +40,23 @@ export function Field(props: {
   )
 }
 
-/** The private Sunday note: saved on this phone only, and never read by the scoring. */
-export function NoteBox(props: { label: string; hint: string; value: string; onChange: (v: string) => void }) {
+/** The private Sunday note: a placeholder only; saved on this phone, never read by the scoring. */
+export function NoteBox(props: { label: string; value: string; onChange: (v: string) => void }) {
   const id = useId()
-  const hint = useId()
   return (
     <div className="notebox">
-      <label className="field__label" htmlFor={id}>
+      <label className="vh" htmlFor={id}>
         {props.label}
       </label>
       <textarea
         id={id}
         className="notebox__input"
-        rows={3}
+        rows={2}
         maxLength={280}
-        aria-describedby={hint}
+        placeholder={props.label}
         value={props.value}
         onChange={(e) => props.onChange(e.target.value)}
       />
-      <p className="notebox__hint" id={hint}>
-        {props.hint}
-      </p>
     </div>
   )
 }

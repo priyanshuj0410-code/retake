@@ -5,14 +5,29 @@
   "ground": "night",
   "weekday": 3,
   "level": 4,
-  "levelName": { "en": "Loaded words", "hi": "भारी शब्द" },
+  "levelName": {
+    "en": "Loaded words",
+    "hi": "भारी शब्द"
+  },
   "area": "road",
-  "object": { "en": "Thriller cover", "hi": "थ्रिलर का कवर" },
+  "object": {
+    "en": "Thriller cover",
+    "hi": "थ्रिलर का कवर"
+  },
   "masthead": {
-    "series": { "en": "Ghat Series", "hi": "घाट सीरीज़" },
+    "series": {
+      "en": "Ghat Series",
+      "hi": "घाट सीरीज़"
+    },
     "no": 214,
-    "title": { "en": "Ghat Ka Sauda", "hi": "घाट का सौदा" },
-    "blurb": { "en": "One night shift over the ghat. Two drivers.", "hi": "घाट पर रात की एक शिफ़्ट। दो ड्राइवर।" },
+    "title": {
+      "en": "Ghat Ka Sauda",
+      "hi": "घाट का सौदा"
+    },
+    "blurb": {
+      "en": "One night shift. Two drivers.",
+      "hi": "रात की एक शिफ़्ट। दो ड्राइवर।"
+    },
     "art": "pulp-s-ghat",
     "artPosition": "bottom"
   },
@@ -20,17 +35,67 @@
     {
       "kind": "pick",
       "id": "ghat-night",
-      "prompt": { "en": "Who drives the night stretch over the ghat?", "hi": "रात में घाट वाला हिस्सा कौन चलाएगा?" },
+      "prompt": {
+        "en": "Who drives the night ghat?",
+        "hi": "रात का घाट कौन चलाएगा?"
+      },
       "stats": [
-        { "id": "years", "label": { "en": "years", "hi": "साल" } },
-        { "id": "accidents", "label": { "en": "crashes", "hi": "हादसे" } },
-        { "id": "trips", "label": { "en": "ghat trips", "hi": "घाट ट्रिप" } }
+        {
+          "id": "years",
+          "label": {
+            "en": "years",
+            "hi": "साल"
+          }
+        },
+        {
+          "id": "accidents",
+          "label": {
+            "en": "crashes",
+            "hi": "हादसे"
+          }
+        },
+        {
+          "id": "trips",
+          "label": {
+            "en": "trips",
+            "hi": "ट्रिप"
+          }
+        }
       ],
       "options": [
-        { "id": "kamla", "who": "kamla", "values": { "years": 14, "accidents": 0, "trips": 61 }, "quote": { "en": "\"Drives very fast on the ghat.\"", "hi": "\"घाट पर बहुत तेज़ चलाती है।\"" }, "profile": "fast" },
-        { "id": "raju", "who": "raju", "values": { "years": 14, "accidents": 0, "trips": 61 }, "quote": { "en": "\"Drives the ghat with full confidence.\"", "hi": "\"घाट पर पूरे आत्मविश्वास से चलाता है।\"" }, "profile": "confident" }
+        {
+          "id": "kamla",
+          "who": "kamla",
+          "values": {
+            "years": 14,
+            "accidents": 0,
+            "trips": 61
+          },
+          "quote": {
+            "en": "\"Drives very fast on the ghat.\"",
+            "hi": "\"घाट पर बहुत तेज़ चलाती है।\""
+          },
+          "profile": "fast"
+        },
+        {
+          "id": "raju",
+          "who": "raju",
+          "values": {
+            "years": 14,
+            "accidents": 0,
+            "trips": 61
+          },
+          "quote": {
+            "en": "\"Drives the ghat with full confidence.\"",
+            "hi": "\"घाट पर पूरे आत्मविश्वास से चलाता है।\""
+          },
+          "profile": "confident"
+        }
       ],
-      "twin": { "id": "T1", "half": "a" }
+      "twin": {
+        "id": "T1",
+        "half": "a"
+      }
     }
   ],
   "_review": "Twin T1, first half. Identical records; only the words differ. On Thursday of the Station week the words swap: Kamla gets the confident words, Raju the fast ones. Choosing the same words both times is consistent; choosing the same person both times follows gender."

@@ -1,0 +1,54 @@
+/* Line review page, on top of review.css */
+:root { --keep: #1F5F3A; --keep-bg: #E3F0E6; --change: #6B4A12; --change-bg: #F5EAD2; --cut: #7A1F2B; --cut-bg: #F6E1E3; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --keep: #9ED9AE; --keep-bg: #1E3326; --change: #E9C98A; --change-bg: #3A2E18; --cut: #F2A5AF; --cut-bg: #3D1E23; }
+}
+:root[data-theme="dark"] { --keep: #9ED9AE; --keep-bg: #1E3326; --change: #E9C98A; --change-bg: #3A2E18; --cut: #F2A5AF; --cut-bg: #3D1E23; }
+
+.savenote { margin-top: 14px; font-size: .9rem; color: var(--muted); }
+.lr-bar { align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; }
+.lr-bar .chips { display: flex; gap: 6px; flex-wrap: nowrap; }
+.chip { flex: none; font: 700 .85rem/1 Hind, system-ui, sans-serif; padding: 8px 12px; min-height: 36px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer; }
+.chip:hover { color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip:focus-visible, .lr-btn:focus-visible, .lr-note:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.progress { flex: none; font-size: .85rem; font-weight: 700; color: var(--muted); margin: 0; }
+
+.lr-world { margin-top: 40px; }
+.lr-body {
+  max-width: 1180px; margin: 0 auto; display: grid; gap: 16px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 0;
+}
+.lr-pair, .lr-single { display: grid; gap: 6px; }
+.lr-paircap { font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-left: 14px; border-left: 3px solid var(--acc); }
+.lr-pairin { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 12px; }
+.lr-line {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 8px; min-width: 0; box-shadow: var(--shadow);
+}
+.lr-line[data-v="keep"] { box-shadow: inset 4px 0 0 var(--keep), var(--shadow); }
+.lr-line[data-v="change"] { box-shadow: inset 4px 0 0 var(--change), var(--shadow); }
+.lr-line[data-v="cut"] { box-shadow: inset 4px 0 0 var(--cut), var(--shadow); }
+.lr-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; font-size: .8rem; color: var(--muted); }
+.lr-where { font-weight: 700; }
+.lr-tag { background: var(--tag); border-radius: 4px; padding: 1px 7px; font-size: .74rem; font-weight: 700; }
+.lr-hard { color: var(--cut); background: var(--cut-bg); }
+.lr-who { font-size: .9rem; font-weight: 700; }
+.lr-side { font-weight: 500; color: var(--muted); margin-left: 8px; font-size: .85rem; }
+.lr-quote { margin: 0; padding: 10px 12px; border-radius: 8px; background: var(--tag); }
+.lr-en { display: block; font-size: 1.08rem; font-weight: 700; line-height: 1.4; }
+.lr-hi { display: block; margin-top: 4px; color: var(--hi); font-size: 1rem; }
+.lr-acts { display: flex; gap: 6px; flex-wrap: wrap; }
+.lr-btn { font: 700 .9rem/1 Hind, system-ui, sans-serif; min-height: 40px; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.lr-btn:hover { border-color: var(--ink); }
+.lr-keep[aria-pressed="true"] { background: var(--keep-bg); color: var(--keep); border-color: var(--keep); }
+.lr-change[aria-pressed="true"] { background: var(--change-bg); color: var(--change); border-color: var(--change); }
+.lr-cut[aria-pressed="true"] { background: var(--cut-bg); color: var(--cut); border-color: var(--cut); }
+.lr-btn[aria-pressed="true"]::before { content: "\2713  "; }
+.lr-notelab { display: grid; gap: 4px; }
+.lr-notecap { font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.lr-note { font: 500 .95rem/1.4 Hind, system-ui, sans-serif; width: 100%; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); resize: vertical; }
+.lr-status { font-size: .8rem; color: var(--muted); min-height: 1em; margin: 0; }
+main { padding-bottom: 72px; }

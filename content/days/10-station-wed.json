@@ -31,8 +31,8 @@
     "script": "ప్లాట్‌ఫామ్ ప్రకటన",
     "board": "white",
     "blurb": {
-      "en": "Two station masters. One shared list of words.",
-      "hi": "दो स्टेशन मास्टर। शब्दों की एक ही सूची।"
+      "en": "Two station masters. One word list.",
+      "hi": "दो स्टेशन मास्टर। शब्दों की एक सूची।"
     }
   },
   "steps": [
@@ -40,16 +40,12 @@
       "kind": "words",
       "id": "announce",
       "prompt": {
-        "en": "Write both announcements from the same words.",
-        "hi": "एक ही शब्दों से दोनों घोषणाएँ लिखें।"
-      },
-      "facts": {
-        "en": "Both ran the Diwali rush: 312 trains, 0 delays.",
-        "hi": "दोनों ने दिवाली की भीड़ संभाली: 312 ट्रेनें, 0 देरी।"
+        "en": "Two words for each.",
+        "hi": "हर एक के लिए दो शब्द।"
       },
       "template": {
-        "en": "Employee of the month: {name}, our ___ and ___ station master.",
-        "hi": "महीने के कर्मचारी: {name}, हमारे ___ और ___ स्टेशन मास्टर।"
+        "en": "{name} ___ · ___",
+        "hi": "{name} ___ · ___"
       },
       "people": [
         "pammi",
@@ -89,22 +85,6 @@
           "valence": -1
         },
         {
-          "id": "caring",
-          "text": {
-            "en": "caring",
-            "hi": "ख़याल रखने वाले"
-          },
-          "valence": 1
-        },
-        {
-          "id": "soft",
-          "text": {
-            "en": "soft",
-            "hi": "नरम"
-          },
-          "valence": -1
-        },
-        {
           "id": "calm",
           "text": {
             "en": "calm",
@@ -120,7 +100,14 @@
           },
           "valence": -1
         }
-      ]
+      ],
+      "voice": {
+        "who": "salim",
+        "line": {
+          "en": "“Both ran the Diwali rush: 312 trains, 0 delays.”",
+          "hi": "“दोनों ने दिवाली की भीड़ संभाली: 312 ट्रेनें, 0 देरी।”"
+        }
+      }
     }
   ],
   "_review": "Same mechanic as Thursday of the Lugdi week, new words and a new life area. 'soft' is coded -1 here because it is the word that diminishes men for the same calm behaviour (ladder level 4). The Hindi word list needs a native check; 'धक्का-मुक्की वाले' is a placeholder rendering of 'pushy'."

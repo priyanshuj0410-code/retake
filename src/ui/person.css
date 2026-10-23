@@ -105,3 +105,7 @@ button.person:active:not([aria-disabled='true']) {
   gap: var(--gap-xs);
   align-items: center;
 }
+.person[data-next='true'] {
+  outline: var(--focus-width) solid var(--c-focus);
+  animation: var(--pulse-animation);
+}
