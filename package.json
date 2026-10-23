@@ -11,11 +11,12 @@
     "lint": "oxlint",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.ts\"",
     "preview": "vite preview",
-    "check": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json scripts/check-all.ts && pnpm e2e && pnpm pwa && pnpm a11y",
+    "check": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json scripts/check-all.ts && pnpm e2e && pnpm pwa && pnpm a11y && pnpm markup",
     "check:fast": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json scripts/check-all.ts",
     "e2e": "tsx --tsconfig tsconfig.app.json scripts/e2e.ts",
     "pwa": "tsx --tsconfig tsconfig.app.json scripts/pwa-check.ts",
     "a11y": "tsx --tsconfig tsconfig.app.json scripts/a11y-check.ts",
+    "markup": "tsx --tsconfig tsconfig.app.json scripts/markup-check.ts",
     "pwa:screens": "tsx --tsconfig tsconfig.app.json scripts/pwa/screenshots.ts",
     "icons": "tsx scripts/icons.ts"
   },

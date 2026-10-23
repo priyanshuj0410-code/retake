@@ -98,7 +98,7 @@ Owner: "ok... keep building".
 - **The private reading** (`Results.tsx`, `reading.ts`): the five cards worked out on the phone from the player's own answers, as the demo does it, and "Not you? Remove this reading" clears them and starts again. **One change from the demo:** card 5 says "40 choices. A first reading, from one sitting." The demo's "in 20 minutes" counted time, which PRODUCT.md and the privacy check rule out.
 - **The turned-down build is retired:** its screens, boards, UI, strings, styles, art, fonts and the checks that drove them. Its content, scoring engine and store stay for the dailies (M3), with their checks. `tsc -b` is clean for the first time since the 20 Oct build, and `pnpm check` passes: 46 checks, the play-through (48) and the PWA (23).
 - **Fixed on the way:** Cricket's plate showed its markup as text; the content check now skips strings left empty in English on purpose.
-- **Next:** the responsive review's findings (still running); the "more" cue on long screens; `scripts/markup-check.ts` against the demo.
+- **Done since:** the "more" cue on long screens; `pnpm markup` (`scripts/markup-check.ts`), which compares each of the 40 decisions' body structure with the signed-off demo's, leaving out text, the shuffled order and states, and fails when a class drifts (checked by renaming one). All 40 match. Both are in `pnpm check`.
 
 ## M2, the first visit, 24 Oct 2026
 
