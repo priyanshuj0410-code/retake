@@ -736,6 +736,43 @@ def help_sheet(world):
             f'{WORLDS[world].sheet_dress(1)}{grab}{howline(hid)}{lang_list()}{sound_row()}</div>')
 
 
+# ---------- Privacy and Delete all in the "?" sheet (F-111, F-112; SC-44, SC-49), 24 Oct 2026 ----------
+# The sheet keeps option C (how to play, the languages, sound) and gains one link, Privacy. Its level says what stays
+# on this phone, what is sent (nothing, until the Board) and what is kept nowhere, and holds Delete all, which asks
+# once in the one dialog. After it, one line; installed, how to take the icon off the home screen. Hindi: drafts.
+PRIVACY_DEFS = ((('On this phone', 'इस फ़ोन पर'), ('Your birth date, your answers, the language and sound.', 'आपकी जन्म तारीख़, आपके जवाब, भाषा और आवाज़।')),
+                (('Sent anywhere', 'कहीं भेजा गया'), ('Nothing leaves this phone.', 'इस फ़ोन से कुछ बाहर नहीं जाता।')),
+                (('Kept nowhere', 'कहीं नहीं रखा जाता'), ('How long you take, or what you type.', 'आप कितना समय लेते हैं, या क्या लिखते हैं।')))
+DELETE_Q = ('Delete all your days and notes?', 'अपने सारे दिन और नोट मिटाएँ?')   # F-112's one wording
+
+
+def privacy_phone(world, level='link'):
+    """The "?" sheet over a step: 'link' (the sheet with Privacy), 'privacy' (its level), 'dialog' (Delete all asked),
+    'deleted' (the line after it)."""
+    under = step_twin(world)
+    hid = uid('pv')
+    back = BACK.replace('ibtn', 'close')
+    grab = lambda first: (f'<div class="grab">{"<span class=spacer></span>" if first else back}<button class="handle" type="button"{al("Drag to close", "बंद करने के लिए खींचें")}><i></i></button>'
+                          f'<button class="close" type="button"{al("Close", "बंद करें")}>{ic("close")}</button></div>')
+    link = f'<div class="sheetlinks"><button type="button">{tx("span", "Privacy", "प्राइवेसी")}{ic("arrow")}</button></div>'
+    if level == 'link':
+        content = f'{grab(True)}{howline(hid)}{lang_list()}{sound_row()}{link}'
+    elif level == 'deleted':
+        content = (f'{grab(True)}{tx("h2", "Deleted.", "मिट गया।", "", f" id={hid}")}'
+                   f'{tx("p", "To remove Retake from your home screen, press and hold its icon.", "होम स्क्रीन से रीटेक हटाने के लिए, उसके आइकन को दबाकर रखें।", "letter")}')
+    else:
+        defs = ''.join(f'<div><dt>{tx("span", *t)}</dt><dd>{tx("span", *d)}</dd></div>' for t, d in PRIVACY_DEFS)
+        content = (f'{grab(False)}{tx("h2", "Privacy", "प्राइवेसी", "", f" id={hid}")}<dl class="defs">{defs}</dl>'
+                   f'<div class="sheetlinks"><button type="button" class="is-danger">{tx("span", "Delete all", "सब मिटाएँ")}{ic("alert")}</button></div>')
+    sh = f'<div class="scrim" aria-hidden="true"></div><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="{hid}">{WORLDS[world].sheet_dress(1)}{content}</div>'
+    if level == 'dialog':
+        did = uid('dl')
+        sh += (f'<div class="scrim" aria-hidden="true"></div><div class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="{did}">{tx("h2", *DELETE_Q, "", f" id={did}")}'
+               f'<div class="acts"><button type="button" class="textbtn on-paper">{tx("span", "Keep", "रखें")}</button>'
+               f'<button type="button" class="textbtn on-paper is-danger">{ic("alert")}{tx("span", "Delete all", "सब मिटाएँ")}</button></div></div>')
+    return under[:-6] + sh + under[-6:]
+
+
 def sheet_phone(world, layer=1):
     under = step_twin(world)
     hid = f'sh{world}{layer}'
@@ -1329,6 +1366,11 @@ for W in SEL:
                (birth_phone(w, 'error'), f'{T}, the birth date: not a real date', 'One line in place, the digits kept.'),
                (notyet_phone(w), f'{T}, not yet 18', 'The day count, worked out on the phone; "Wrong date?" once.')]
 SHEETS = shown('sheet_help', 'sheet_info', 'sheet_settings')
+SHEETS += [(privacy_phone(SEL[0].id, lv), t, n) for lv, t, n in (
+    ('link', 'The "?" sheet with Privacy', 'Option C keeps its three parts and gains one link.'),
+    ('privacy', 'Privacy', 'What stays on this phone, what is sent (nothing yet) and what is kept nowhere; Delete all.'),
+    ('dialog', 'Delete all, asked once', 'The one dialog, in F-112\'s words.'),
+    ('deleted', 'After Delete all', 'One line; installed, how to take the icon off the home screen. Then the birth date again.'))]
 ACCESS = shown('hi_step', 'hi_cover', 'big_step', 'big_cover', 'big_result', 'big_sunday', 'big_board', 'small_step', 'small_more')
 
 # ---------- the report over time ----------

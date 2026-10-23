@@ -87,54 +87,147 @@ export function Topbar({ plate, onHelp }: { plate?: Bi | null; onHelp: (open: bo
   )
 }
 
-/** The "?" sheet (owner, 23 Oct 2026, option C): one line of how to play, the languages, then sound. */
+/** Privacy's actions, given by the app: Delete all wipes the phone at once; the sheet then shows one line, and closing
+ * it starts again from a first visit. */
+export const PrivacyContext = createContext<{ deleteAll: () => void; restart: () => void }>({ deleteAll: () => {}, restart: () => {} })
+
+const PRIVACY: [Bi, Bi][] = [
+  [['On this phone', 'इस फ़ोन पर'], ['Your birth date, your answers, the language and sound.', 'आपकी जन्म तारीख़, आपके जवाब, भाषा और आवाज़।']],
+  [['Sent anywhere', 'कहीं भेजा गया'], ['Nothing leaves this phone.', 'इस फ़ोन से कुछ बाहर नहीं जाता।']],
+  [['Kept nowhere', 'कहीं नहीं रखा जाता'], ['How long you take, or what you type.', 'आप कितना समय लेते हैं, या क्या लिखते हैं।']],
+]
+
+/** The "?" sheet (owner, 23 Oct 2026, option C): one line of how to play, the languages, then sound; and one link,
+ * Privacy (F-111), whose level holds Delete all (F-112), asked once in the one dialog (library.py privacy_phone). */
 function HelpSheet({ world, onClose }: { world: string; onClose: () => void }) {
   const lang = useLang()
   const label = useLabel()
   const { on, toggle } = useSound()
   const setLang = useSetLang()
+  const { deleteAll, restart } = useContext(PrivacyContext)
+  const [level, setLevel] = useState<'how' | 'privacy' | 'deleted'>('how')
+  const [asking, setAsking] = useState(false)
   const close = useRef<HTMLButtonElement>(null)
+  const keep = useRef<HTMLButtonElement>(null)
+  const done = level === 'deleted' ? restart : onClose
   useEffect(() => {
-    close.current?.focus()
-    const esc = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
+    if (asking) keep.current?.focus()
+    else close.current?.focus()
+  }, [level, asking])
+  useEffect(() => {
+    const esc = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return
+      if (asking) setAsking(false)
+      else if (level === 'privacy') setLevel('how')
+      else done()
+    }
     addEventListener('keydown', esc)
     return () => removeEventListener('keydown', esc)
-  }, [onClose])
+  }, [asking, level, done])
+  const installed = matchMedia('(display-mode: standalone)').matches
   return (
     <>
-      <div className="scrim" aria-hidden="true" onClick={onClose} />
-      <div className="sheet helpsheet" role="dialog" aria-modal="true" aria-labelledby="howline">
+      <div className="scrim" aria-hidden="true" onClick={done} />
+      <div className="sheet helpsheet" role="dialog" aria-modal="true" aria-labelledby="sheethead">
         {TAKE.help[world] ? <div className={TAKE.help[world]} aria-hidden="true" /> : null}
         <div className="grab">
-          <span className="spacer" />
-          <button className="handle" type="button" aria-label={label(['Drag to close', 'बंद करने के लिए खींचें'])} onClick={onClose}>
+          {level === 'privacy' ? (
+            <button className="close" type="button" aria-label={label(['Back', 'वापस'])} onClick={() => setLevel('how')}>
+              <Svg name="back" />
+            </button>
+          ) : (
+            <span className="spacer" />
+          )}
+          <button className="handle" type="button" aria-label={label(['Drag to close', 'बंद करने के लिए खींचें'])} onClick={done}>
             <i />
           </button>
-          <button ref={close} className="close" type="button" aria-label={label(['Close', 'बंद करें'])} onClick={onClose}>
+          <button ref={close} className="close" type="button" aria-label={label(['Close', 'बंद करें'])} onClick={done}>
             <Svg name="close" />
           </button>
         </div>
-        <T as="p" t={HOW} className="howline" id="howline" />
-        <div className="langrow">
-          <Svg name="language" />
-          <div className="langchips" role="group" aria-label={label(['Language', 'भाषा'])}>
-            {TAKE.langs.map(([k, n]) => (
-              <button key={k} type="button" aria-pressed={k === lang} data-set-lang={k} lang={k === 'hi' ? 'hi' : undefined} onClick={() => setLang(k)}>
-                {n}
+        {level === 'how' ? (
+          <>
+            <T as="p" t={HOW} className="howline" id="sheethead" />
+            <div className="langrow">
+              <Svg name="language" />
+              <div className="langchips" role="group" aria-label={label(['Language', 'भाषा'])}>
+                {TAKE.langs.map(([k, n]) => (
+                  <button key={k} type="button" aria-pressed={k === lang} data-set-lang={k} lang={k === 'hi' ? 'hi' : undefined} onClick={() => setLang(k)}>
+                    {n}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="setlist sndsec">
+              <button className="setrow sndrow" type="button" role="switch" aria-checked={on} onClick={toggle}>
+                <Svg name="speaker" />
+                <T t={['Sound', 'आवाज़']} />
+                <span className="sw" aria-hidden="true">
+                  <Svg name="tick" />
+                </span>
               </button>
-            ))}
+            </div>
+            <div className="sheetlinks">
+              <button type="button" onClick={() => setLevel('privacy')}>
+                <T t={['Privacy', 'प्राइवेसी']} />
+                <Svg name="arrow" />
+              </button>
+            </div>
+          </>
+        ) : level === 'privacy' ? (
+          <>
+            <T as="h2" t={['Privacy', 'प्राइवेसी']} id="sheethead" />
+            <dl className="defs">
+              {PRIVACY.map(([t, d]) => (
+                <div key={t[0]}>
+                  <dt>
+                    <T t={t} />
+                  </dt>
+                  <dd>
+                    <T t={d} />
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <div className="sheetlinks">
+              <button type="button" className="is-danger" onClick={() => setAsking(true)}>
+                <T t={['Delete all', 'सब मिटाएँ']} />
+                <Svg name="alert" />
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <T as="h2" t={['Deleted.', 'मिट गया।']} id="sheethead" />
+            {installed ? (
+              <T as="p" className="letter" t={['To remove Retake from your home screen, press and hold its icon.', 'होम स्क्रीन से रीटेक हटाने के लिए, उसके आइकन को दबाकर रखें।']} />
+            ) : null}
+          </>
+        )}
+      </div>
+      {asking ? <div className="scrim" aria-hidden="true" onClick={() => setAsking(false)} /> : null}
+      {asking ? (
+        <div className="dialog" role="alertdialog" aria-modal="true" aria-labelledby="deletehead">
+          <T as="h2" t={['Delete all your days and notes?', 'अपने सारे दिन और नोट मिटाएँ?']} id="deletehead" />
+          <div className="acts">
+            <button ref={keep} type="button" className="textbtn on-paper" onClick={() => setAsking(false)}>
+              <T t={['Keep', 'रखें']} />
+            </button>
+            <button
+              type="button"
+              className="textbtn on-paper is-danger"
+              onClick={() => {
+                deleteAll()
+                setAsking(false)
+                setLevel('deleted')
+              }}
+            >
+              <Svg name="alert" />
+              <T t={['Delete all', 'सब मिटाएँ']} />
+            </button>
           </div>
         </div>
-        <div className="setlist sndsec">
-          <button className="setrow sndrow" type="button" role="switch" aria-checked={on} onClick={toggle}>
-            <Svg name="speaker" />
-            <T t={['Sound', 'आवाज़']} />
-            <span className="sw" aria-hidden="true">
-              <Svg name="tick" />
-            </span>
-          </button>
-        </div>
-      </div>
+      ) : null}
     </>
   )
 }

@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { TAKE, type Lang, type Screen } from './data'
 import { LangContext } from './lang'
 import { cacheAhead, onUpdateReady } from '../pwa'
-import { SetLangContext, UpdateContext } from './parts'
+import { PrivacyContext, SetLangContext, UpdateContext } from './parts'
 import { Cover, Cutscene } from './screens'
 import { Sound, SoundContext } from './sound'
 import { BirthDate, NotYet, isOpen } from './Gate'
@@ -13,7 +13,7 @@ import { Rank } from './steps/Rank'
 import { Split } from './steps/Split'
 import { Team } from './steps/Team'
 import type { Answer } from './steps/common'
-import { canKeep, load, save } from './store'
+import { canKeep, forget as wipe, fresh, load, save } from './store'
 
 // The First take, one screen at a time (the demo's flow): the opening, each chapter's way in, title card, eight
 // decisions and way out, then the diary, the private reading and the trunk handed on. It resumes where it was left
@@ -28,7 +28,11 @@ export function Take() {
   const at = Math.min(saved.at, flow.length - 1)
   const screen = flow[at]
 
-  useEffect(() => save(saved), [saved])
+  // after Delete all nothing is kept again until the sheet closes and the take starts from a first visit
+  const wiped = useRef(false)
+  useEffect(() => {
+    if (!wiped.current) save(saved)
+  }, [saved])
   // on opening and at each chapter's title card, keep that chapter's cutscene panels for offline play
   const chapter = TAKE.flow.slice(0, at + 1).filter((s) => s.type === 'cover').length
   useEffect(() => cacheAhead(chapterPanels(chapter)), [chapter])
@@ -56,6 +60,20 @@ export function Take() {
     next()
   }
   const setLang = useCallback((lang: Lang) => setSaved((s) => ({ ...s, lang })), [])
+  const privacy = useMemo(
+    () => ({
+      deleteAll: () => {
+        wiped.current = true
+        wipe()
+      },
+      restart: () => {
+        wiped.current = false
+        setHelp(false)
+        setSaved(fresh())
+      },
+    }),
+    [],
+  )
   // "Not you? Remove this reading": the answers go, and the take starts again (a shared phone, F-203)
   const forget = useCallback(() => {
     setHelp(false)
@@ -76,38 +94,40 @@ export function Take() {
       <BirthDate
         canKeep={keeps}
         setLang={setLang}
-        onAdult={(birth) => setSaved((s) => ({ ...s, birth, opens: undefined, retried: undefined }))}
+        onAdult={(birth) =>
+          setSaved((s) => ({ ...s, birth, opens: undefined, retried: undefined }))
+        }
         // under 18 the birth date is not kept: only the day the game opens (D1)
         onMinor={(opens) => setSaved((s) => ({ ...s, opens }))}
       />
     )
   else if (gate === 'notyet')
-    body = <NotYet opens={saved.opens!} retry={!saved.retried} onRetry={() => setSaved((s) => ({ ...s, opens: undefined, retried: true }))} />
+    body = (
+      <NotYet
+        opens={saved.opens!}
+        retry={!saved.retried}
+        onRetry={() => setSaved((s) => ({ ...s, opens: undefined, retried: true }))}
+      />
+    )
   else if (screen.type === 'cut') body = <Cutscene c={screen} onNext={next} {...props} />
   else if (screen.type === 'cover') body = <Cover c={screen} onNext={next} {...props} />
   else if (screen.type === 'step') {
     const Kind = KINDS[screen.kind]
     body = <Kind s={screen} onCommit={commit(screen.id)} {...props} />
-  } else
-    body = (
-      <Results
-        answers={saved.answers}
-        onNext={next}
-        onForget={forget}
-        {...props}
-      />
-    )
+  } else body = <Results answers={saved.answers} onNext={next} onForget={forget} {...props} />
 
   // a screen is drawn fresh each time it comes up, so a step never opens with the last step's picks
   return (
     <LangContext.Provider value={saved.lang}>
       <SetLangContext.Provider value={setLang}>
         <SoundContext.Provider value={soundCtx}>
-          <UpdateContext.Provider value={update}>
-            <main className="take" key={gate ?? at}>
-              {body}
-            </main>
-          </UpdateContext.Provider>
+          <PrivacyContext.Provider value={privacy}>
+            <UpdateContext.Provider value={update}>
+              <main className="take" key={gate ?? at}>
+                {body}
+              </main>
+            </UpdateContext.Provider>
+          </PrivacyContext.Provider>
         </SoundContext.Provider>
       </SetLangContext.Provider>
     </LangContext.Provider>
@@ -120,8 +140,14 @@ const KINDS = { pick: Pick, checks: Pick, rank: Rank, team: Team, order: Order, 
 const chapterPanels = (chapter: number) => {
   const covers = TAKE.flow.flatMap((s, i) => (s.type === 'cover' ? [i] : []))
   const from = chapter ? covers[chapter - 1] : 0
-  return TAKE.flow.slice(from, covers[chapter]).flatMap((s) => (s.type === 'cut' ? s.panels.map((p) => p.pic) : []))
+  return TAKE.flow
+    .slice(from, covers[chapter])
+    .flatMap((s) => (s.type === 'cut' ? s.panels.map((p) => p.pic) : []))
 }
 
 const worldOf = (s: Screen) =>
-  s.type === 'step' || s.type === 'cover' ? s.world : s.type === 'cut' ? s.panels[0].world.replace(/^w-/, '') : 'rukavat'
+  s.type === 'step' || s.type === 'cover'
+    ? s.world
+    : s.type === 'cut'
+      ? s.panels[0].world.replace(/^w-/, '')
+      : 'rukavat'

@@ -20,12 +20,15 @@ const KEY = 'retake.take'
 const phoneLang = (): Lang => (typeof navigator !== 'undefined' && /^hi\b/i.test(navigator.language) ? 'hi' : 'mix')
 const FRESH: Saved = { v: 1, at: 0, answers: {}, lang: phoneLang(), sound: true }
 
+/** A first visit's state: nothing kept, the phone's language. */
+export const fresh = (): Saved => ({ ...FRESH, answers: {}, lang: phoneLang() })
+
 export function load(): Saved {
   try {
     const s = JSON.parse(localStorage.getItem(KEY) ?? 'null') as Saved | null
-    return s && s.v === 1 ? { ...FRESH, ...s } : FRESH
+    return s && s.v === 1 ? { ...fresh(), ...s } : fresh()
   } catch {
-    return FRESH
+    return fresh()
   }
 }
 

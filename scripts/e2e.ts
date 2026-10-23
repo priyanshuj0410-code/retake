@@ -165,8 +165,40 @@ async function gate() {
   await page.close()
 }
 
+/** Privacy and Delete all (F-111, F-112): from "?", Keep leaves everything, Delete all empties the phone and the take
+ * starts again from a first visit. */
+async function privacy() {
+  const g = 'E Privacy and Delete all'
+  const page = await browser.newPage({ viewport: { width: 412, height: 915 } })
+  const errors: string[] = []
+  page.on('pageerror', (e) => errors.push(String(e)))
+  await page.goto(BASE)
+  await page.evaluate(() => localStorage.setItem('retake.take', JSON.stringify({ v: 1, at: 3, answers: { 'station-1': { pick: 'Nagsen' } }, lang: 'mix', sound: false, birth: '1990-08-14' })))
+  await page.reload()
+  await page.locator('[data-help]').click()
+  await page.locator('.sheetlinks button').filter({ hasText: 'Privacy' }).click()
+  const defs = await page.locator('.sheet .defs').innerText()
+  record(g, 'Privacy says what stays on this phone, what is sent and what is kept nowhere', /On this phone/.test(defs) && /Nothing leaves this phone/.test(defs) && /Kept nowhere/.test(defs))
+  await page.locator('.sheetlinks .is-danger').click()
+  record(g, 'Delete all asks once, in the one dialog, with Keep focused', (await page.locator('.dialog[role="alertdialog"]').count()) === 1 && (await page.evaluate(() => document.activeElement?.textContent)) === 'Keep')
+  await page.locator('.dialog .textbtn').filter({ hasText: 'Keep' }).click()
+  record(g, 'Keep closes the dialog and keeps everything', (await page.locator('.dialog').count()) === 0 && (await page.evaluate(() => !!localStorage.getItem('retake.take'))))
+  await page.locator('.sheetlinks .is-danger').click()
+  await page.locator('.dialog .is-danger').click()
+  record(g, 'Delete all empties the phone at once and says so', (await page.evaluate(() => localStorage.getItem('retake.take'))) === null && /Deleted/.test(await page.locator('.sheet h2').innerText()))
+  await page.waitForTimeout(300)
+  record(g, 'nothing is kept again while the line shows', (await page.evaluate(() => localStorage.getItem('retake.take'))) === null)
+  await page.locator('.sheet .close').last().click()
+  record(g, 'closing it starts again from a first visit: the birth date', (await page.locator('.datefields input').count()) === 3)
+  await page.reload()
+  record(g, 'and stays so after a reload', (await page.locator('.datefields input').count()) === 3)
+  record(g, 'no page error', errors.length === 0, errors.slice(0, 2).join(' | '))
+  await page.close()
+}
+
 try {
   await gate()
+  await privacy()
   for (const lang of ['mix', 'hi', 'en'] as const) {
     await play(lang, 412, 915)
     await play(lang, 1440, 900)

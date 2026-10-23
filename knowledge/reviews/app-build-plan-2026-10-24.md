@@ -106,6 +106,7 @@ Owner: "ok... keep building".
 - **What the phone keeps:** an adult's birth date; for someone under 18, only the day the game opens, and whether "Wrong date?" was used (D1). Today's date comes from the calendar module, the one place allowed to read the clock.
 - **Checked** (`pnpm e2e`, "the first visit"): a first visit opens on the birth date; a date that does not exist and one still to come are refused in place; a real date shows in words; under 18 keeps only the opening day, stays shut on every open, and offers "Wrong date?" once; an adult goes on to the take with the birth date kept.
 - **For the owner's look:** both screens are new designs from the spec, not yet seen. The Hindi lines are drafts for the native read.
+- **Privacy and Delete all (F-111, F-112; SC-44, SC-49)**, drawn in the library (`library.py` `privacy_phone`, with the "?" sheet's other states) and built in the app's "?" sheet: option C keeps its three parts and gains one link, Privacy, whose level says what stays on this phone, that nothing leaves it, and what is kept nowhere. Delete all asks once in the one dialog, in F-112's words ("Delete all your days and notes?"), over its own scrim; it empties the phone at once, says "Deleted." (installed, with how to take the icon off the home screen), keeps nothing while the line shows, and starts again from the birth date. `pnpm e2e` checks it (8). **Open:** F-111's one contact for data questions needs the owner's address; nothing is invented in its place.
 
 ## Started, 24 Oct 2026
 
