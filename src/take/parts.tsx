@@ -40,15 +40,20 @@ export function AppFrame(props: {
           {art ? (
             <div
               className={`art art-img ${art.cls}`}
-              style={{ backgroundImage: `url(${art.base})`, ['--art-p' as string]: `url(${art.p})`, ['--art-w' as string]: `url(${art.w})` }}
+              // the larger and wide paintings lie over the phone's, which is always cached: offline before a big
+              // screen has drawn them, the phone's painting shows instead of none
+              style={{
+                backgroundImage: `url(${art.base})`,
+                ['--art-p' as string]: `url(${art.p}), url(${art.base})`,
+                ['--art-w' as string]: `url(${art.w}), url(${art.base})`,
+              }}
             />
           ) : null}
           {props.stage}
         </section>
         <section className="page-play">
           {props.children}
-          <UpdateToast />
-          {props.help ? <HelpSheet world={props.world} onClose={() => props.onHelp(false)} /> : null}
+          {props.help ? <HelpSheet world={props.world} onClose={() => props.onHelp(false)} /> : <UpdateToast />}
         </section>
       </div>
     </div>

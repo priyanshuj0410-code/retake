@@ -1,8 +1,8 @@
 /**
- * Writes dist/sw.js at the end of a production build (EVAL-7): the template in scripts/pwa/sw.js
- * with every file the build emitted (the shell, hashed scripts and styles, fonts, art,
- * icons, the manifest) as the precache list, and a version hashed from their contents. The dev
- * server has no service worker.
+ * Writes dist/sw.js at the end of a production build (EVAL-7): the template in scripts/pwa/sw.js with the precache
+ * list (the shell, hashed scripts and styles, the library's styles, fonts, sound engines and the pictures every phone
+ * draws, icons, the manifest), the pictures cached when first shown, each file with a revision hashed from its
+ * contents, and a version hashed from all of them. The dev server has no service worker.
  */
 import { createHash } from 'node:crypto'
 import { readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs'
@@ -23,29 +23,30 @@ export function serviceWorker(): Plugin {
       outDir = resolve(c.root, c.build.outDir)
     },
     closeBundle() {
-      const files = walk(outDir)
+      const all = walk(outDir)
         .map((f) => relative(outDir, f).split('\\').join('/'))
-        // art/ and fonts/ belong to the turned-down build (EVAL-13) until M1 removes them; the First take uses take/
-        // the cutscene panels are cached as each is first shown (sw.js), not on install; the install dialog's
-        // screenshots and the link preview are for the browser and chats, never drawn by the app
-        .filter(
-          (f) =>
-            f !== 'sw.js' &&
-            !f.endsWith('.map') &&
-            !f.startsWith('.') &&
-            !/^(art|fonts|screenshots)\//.test(f) &&
-            !/^take\/assets\/cut-/.test(f) &&
-            // the larger and wide paintings are for tablets and wider screens: cached there when first drawn
-            !/^take\/assets\/.*-[lw]\.webp$/.test(f) &&
-            f !== 'icons/og.png',
-        )
+        .filter((f) => f !== 'sw.js' && !f.endsWith('.map') && !f.startsWith('.'))
         .sort()
-      const hash = createHash('sha256')
-      for (const f of files) hash.update(f).update(readFileSync(join(outDir, f)))
-      const list = ['./', ...files.map((f) => `./${f}`)]
+      /** The pictures not every phone needs: cached when first shown or ahead of a chapter, kept across updates. */
+      const isPic = (f: string) => /^take\/assets\/cut-/.test(f) || /^take\/assets\/.*-[lw]\.webp$/.test(f)
+      const files = all.filter(
+        (f) =>
+          // index.html is the shell, precached as './'; art/ and fonts/ belong to the turned-down build (EVAL-13)
+          // until M1 removes them; the install dialog's screenshots and the link preview are for the browser and
+          // chats, never drawn by the app; /demo/ is the team's page, never touched by the worker
+          f !== 'index.html' &&
+          !/^(art|fonts|screenshots|demo)\//.test(f) &&
+          f !== 'icons/og.png' &&
+          !isPic(f),
+      )
+      const rev = (f: string) => createHash('sha256').update(readFileSync(join(outDir, f))).digest('hex').slice(0, 12)
+      const precache = [['./', rev('index.html')], ...files.map((f) => [`./${f}`, rev(f)])]
+      const pics = Object.fromEntries(all.filter(isPic).map((f) => [`/${f}`, rev(f)]))
+      const version = createHash('sha256').update(JSON.stringify([precache, pics])).digest('hex').slice(0, 12)
       const sw = readFileSync(new URL('./sw.js', import.meta.url), 'utf8')
-        .replace('__VERSION__', hash.digest('hex').slice(0, 12))
-        .replace('__PRECACHE__', JSON.stringify(list))
+        .replace('__VERSION__', version)
+        .replace('__PRECACHE__', JSON.stringify(precache))
+        .replace('__PICS__', JSON.stringify(pics))
       writeFileSync(join(outDir, 'sw.js'), sw)
     },
   }

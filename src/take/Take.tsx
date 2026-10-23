@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { TAKE, type Lang, type Screen } from './data'
 import { LangContext } from './lang'
-import { onUpdateReady } from '../pwa'
+import { cacheAhead, onUpdateReady } from '../pwa'
 import { SetLangContext, UpdateContext } from './parts'
 import { Cover, Cutscene } from './screens'
 import { Sound, SoundContext } from './sound'
@@ -24,6 +24,9 @@ export function Take() {
   const screen = flow[at]
 
   useEffect(() => save(saved), [saved])
+  // on opening and at each chapter's title card, keep that chapter's cutscene panels for offline play
+  const chapter = TAKE.flow.slice(0, at + 1).filter((s) => s.type === 'cover').length
+  useEffect(() => cacheAhead(chapterPanels(chapter)), [chapter])
   useEffect(() => {
     sound.set(saved.sound)
   }, [sound, saved.sound])
@@ -85,6 +88,13 @@ export function Take() {
 function SkipResults({ onNext }: { onNext: () => void }) {
   useEffect(onNext, [onNext])
   return null
+}
+
+/** The cutscene panels of a chapter: from its title card (the opening, for 0) to the next one. */
+const chapterPanels = (chapter: number) => {
+  const covers = TAKE.flow.flatMap((s, i) => (s.type === 'cover' ? [i] : []))
+  const from = chapter ? covers[chapter - 1] : 0
+  return TAKE.flow.slice(from, covers[chapter]).flatMap((s) => (s.type === 'cut' ? s.panels.map((p) => p.pic) : []))
 }
 
 const worldOf = (s: Screen) =>

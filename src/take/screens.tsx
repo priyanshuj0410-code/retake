@@ -1,10 +1,12 @@
-import { useEffect, useLayoutEffect, useRef, useState, type MouseEvent } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type MouseEvent, type SyntheticEvent } from 'react'
 import { TAKE, type Cover as CoverData, type Cut as CutData } from './data'
 import { Drawn, T, useLabel } from './lang'
 import { AppFrame, HelpButton, Main } from './parts'
 import { useSound } from './sound'
 
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
+/** A panel that cannot load (offline, never cached) leaves its caption, not a broken picture. */
+const hide = (e: SyntheticEvent<HTMLImageElement>) => (e.currentTarget.style.visibility = 'hidden')
 
 /** A chapter's title card, drawn by the library (its hard cover, the setting named under the title). */
 export function Cover({ c, onNext, help, onHelp }: { c: CoverData; onNext: () => void; help: boolean; onHelp: (o: boolean) => void }) {
@@ -57,7 +59,7 @@ export function Cutscene({ c, onNext, help, onHelp }: { c: CutData; onNext: () =
       stage={
         // the newest panel, large on the open side when the screen is wider than tall (library.css)
         <figure className="cutstage is-now" key={now.id}>
-          <img src={now.pic} alt="" width={800} height={600} onClick={next} />
+          <img src={now.pic} alt="" width={800} height={600} onClick={next} onError={hide} />
         </figure>
       }
     >
@@ -70,7 +72,7 @@ export function Cutscene({ c, onNext, help, onHelp }: { c: CutData; onNext: () =
       <div className="scr-body cutbody" ref={body}>
         {c.panels.map((p, i) => (
           <figure key={p.id} className={`cutpanel${i === n ? ' is-now' : ''}`} data-world={p.world} hidden={i > n}>
-            <img src={p.pic} alt="" width={800} height={600} onClick={next} />
+            <img src={p.pic} alt="" width={800} height={600} onClick={next} onError={hide} />
             <T as="figcaption" t={p.cap} className="cap" />
           </figure>
         ))}

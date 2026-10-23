@@ -30,7 +30,13 @@ const load = () =>
   (loading ??= new Promise<void>((done) => {
     const s = document.createElement('script')
     s.src = '/take/sound.js'
-    s.onload = s.onerror = () => done()
+    s.onload = () => done()
+    // a failed load (a weak signal) is tried again on the next screen, not given up for the session
+    s.onerror = () => {
+      loading = null
+      s.remove()
+      done()
+    }
     document.head.appendChild(s)
   }))
 
@@ -51,12 +57,18 @@ export class Sound {
   /** The screen now showing: its world, whether it is a cover, and whether it is quiet (a cutscene, the reading). */
   screen(world: string, cover: boolean, quiet: boolean) {
     this.want = { world, cover, quiet }
+    this.retry()
     this.music()
   }
 
   set(on: boolean) {
     this.on = on
+    this.retry()
     this.music()
+  }
+
+  private retry() {
+    if (this.woke && this.on && !engine(this.want.world)) void load().then(() => this.music())
   }
 
   fx(world: string, id: Fx) {

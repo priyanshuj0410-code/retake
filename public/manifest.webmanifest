@@ -6,7 +6,6 @@
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
   "lang": "en-IN",
   "dir": "ltr",
   "categories": [
@@ -45,21 +44,21 @@
   "screenshots": [
     {
       "src": "screenshots/opening.jpg",
-      "sizes": "824x1830",
+      "sizes": "412x915",
       "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "Dadi's trunk: a monsoon night opens the First take"
     },
     {
       "src": "screenshots/decision.jpg",
-      "sizes": "824x1830",
+      "sizes": "412x915",
       "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "A decision: same numbers, pick who goes"
     },
     {
       "src": "screenshots/decision-hindi.jpg",
-      "sizes": "824x1830",
+      "sizes": "412x915",
       "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "The same decision in Hindi"

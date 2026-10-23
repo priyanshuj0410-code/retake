@@ -68,10 +68,23 @@ Owner: "make sure you develop the full responsive app not just the mobile versio
 | Wider than tall (700 wide and up): tablets on their side, laptops, desktops | the wide painting (`-w`) fills the screen; the game in a column on the right, `clamp(420px, 50%, 760px)`, over a dark fade; type a notch larger from 760 by 700 |
 | A phone on its side (520 tall or less) | a 60% column, smaller faces, one scroll |
 
-- **New in the library** (`library.css`, "the app frame for every screen"): a cutscene shows its newest panel large on the open side and keeps the captions, Skip and Next in the column; the "?" sheet, its scrim and the update toast rise inside the column at its width, so the painting stays whole (the Full Painting Rule; ia-and-flows.md, Wide screens). The phone-only content rules (Hindi spacing, the cover arrangement, Rukavat's pick, Jadugar's Hindi faces, cutscenes, rank) now hold in both frames; the library's phone specimens are unchanged.
+- **New in the library** (`library.css`, "the app frame for every screen"): a cutscene wider than tall is full screen (below); the "?" sheet, its scrim and the update toast rise inside the column at its width, so the painting stays whole (the Full Painting Rule; ia-and-flows.md, Wide screens). The phone-only content rules (Hindi spacing, the cover arrangement, Rukavat's pick, Jadugar's Hindi faces, cutscenes, rank) now hold in both frames; the library's phone specimens are unchanged.
 - **The export** gives every screen its painting with the larger and wide versions; those are cached when a tablet or wider screen first draws them, never in a phone's install download.
 - **Checked:** every screen kind at 360 x 640, 412 x 915, 768 x 1024, 1024 x 768, 844 x 390, 1280 x 650, 1440 x 900 and 1920 x 1080, with no overflow and no page error; `pnpm pwa` still 15 of 15.
 - **For the owner's look:** the wide cutscene and the sheet in the column are new designs, made from the library's rules; the library page does not yet show them as specimens.
+
+## The PWA review and the owner's phone, 24 Oct 2026
+
+An independent review (three angles, each finding put to a skeptic: 20 confirmed, 7 refuted) and the owner's phone found the same fault from two sides: the shell came from the network first, so a new deploy's code could run with the last version's cached styles (the owner's phone drew the cutscene with an old `library.css`: the large panel behind the strip, Skip in a box, the dots off-centre), and on a stalled signal an installed app sat on its splash for 20 s with everything cached. Fixed:
+
+- **One version at a time** (`scripts/pwa/sw.js`): only `/` and `/index.html` are answered, from the version's own cache, never written from the network; a new version arrives only on Update, or once every window has closed. A stalled launch now opens in about 120 ms.
+- **Updates cost only their changes:** each file carries a revision (`scripts/pwa/plugin.ts`); install copies what is unchanged and fetches the rest past the browser's cache (4 requests for a styles change, was the whole 3.7 MB). Cutscene panels and the larger and wide paintings live in `retake-pics`, kept across updates and fetched again only when they change; each chapter's panels are cached at its title card, unless the browser asks to save data.
+- **Fresh styles on every deploy:** the stylesheet links carry a fingerprint of their file (`vite.config.ts`), and `/take/` styles and scripts are revalidated, never reused for an hour.
+- **The update toast** sits between the body and the button, never over a choice, Next or the "?" sheet; a second window gets its own working Update.
+- **Smaller:** the install screenshots fell from 586 KB to 166 KB (Chrome fetches them on every visit); the manifest no longer locks portrait; persistent storage is asked for in browser tabs too (not Firefox's, which would ask the player); a failed sound load is tried again; a panel that cannot load leaves its caption, not a broken picture; the wide and larger paintings fall back to the phone's offline.
+- **`pnpm pwa` now builds two real versions**, A and B, and checks 23 things: install, the cache, a stalled signal, offline after the demo, B waiting until the tap with A's styles, only B's changes fetched, the toast's place, two windows, and offline with the browser's cache cleared. Run with the old shell put back, it fails.
+
+**Cutscenes on wide screens are full screen** (owner: "The cutscene illustrations should be fullscreen like the other illustrations"): the newest panel fills the screen, "?" and Skip on a fade at the top, the caption on its plate at the foot with the dots and Next beside it. Upright screens keep the comic strip. Skip on a cutscene is now light on every world (Lugdi's was ink on its dark ground, in the demo too).
 
 ## Started, 24 Oct 2026
 

@@ -28,10 +28,19 @@ interface VercelConf {
 
 const pattern = (source: string) => new RegExp(`^${source.replace(/\(\.\*\)/g, '.*')}$`)
 
-export function serve(dir: string, port: number, root: string): Promise<Server> {
+export interface ServeOpts {
+  /** While it returns true, the page itself ('/' and '/index.html') is never answered: a stalled weak signal. */
+  stall?: () => boolean
+  /** Every path asked for, in order. */
+  log?: string[]
+}
+
+export function serve(dir: string, port: number, root: string, opts: ServeOpts = {}): Promise<Server> {
   const conf = JSON.parse(readFileSync(join(root, 'vercel.json'), 'utf8')) as VercelConf
   const server = createServer((req, res) => {
     let path = decodeURIComponent((req.url ?? '/').split('?')[0])
+    opts.log?.push(path)
+    if (opts.stall?.() && (path === '/' || path === '/index.html')) return
     const to = conf.redirects?.find((r) => pattern(r.source).test(path))
     if (to) {
       res.writeHead(307, { location: to.destination })

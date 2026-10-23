@@ -1,7 +1,8 @@
 /**
  * `pnpm pwa:screens`: the manifest's screenshots, which Android shows in its install dialog (Chrome's richer install
- * sheet). Shot from a production build of the app itself at a 412 px phone, twice the pixels: the opening cutscene, a
- * decision with a pick, and the same decision in Hindi. Written to public/screenshots/ as JPEG; the manifest lists them.
+ * sheet). Shot from a production build of the app itself at a 412 px phone at its own pixels (Chrome fetches these on
+ * every visit to an installable page, so they are kept small: about 60 KB each): the opening cutscene, a decision with
+ * a pick, and the same decision in Hindi. Written to public/screenshots/ as JPEG; the manifest lists them.
  * Re-run after the First take's look changes.
  */
 import { mkdirSync } from 'node:fs'
@@ -19,8 +20,8 @@ await build({ root: ROOT, logLevel: 'silent', build: { outDir: DIST, emptyOutDir
 const server = await serve(DIST, PORT, ROOT)
 mkdirSync(OUT, { recursive: true })
 const browser = await chromium.launch(browserOpts())
-const page = await browser.newPage({ viewport: { width: 412, height: 915 }, deviceScaleFactor: 2, hasTouch: true })
-const shot = (name: string) => page.screenshot({ path: join(OUT, name), type: 'jpeg', quality: 82 })
+const page = await browser.newPage({ viewport: { width: 412, height: 915 }, deviceScaleFactor: 1, hasTouch: true })
+const shot = (name: string) => page.screenshot({ path: join(OUT, name), type: 'jpeg', quality: 72 })
 try {
   await page.goto(`http://localhost:${PORT}/`)
   await page.locator('.cutpanel img').first().waitFor()
