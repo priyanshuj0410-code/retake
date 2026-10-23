@@ -3,8 +3,10 @@ on the vercel link?"). demo.html is written for an artifact page, which wraps it
 small reset; here the site gets the same, so a phone lays it out at its own width, plus noindex: the demo carries the hard
 topics and is for the team.
 
-Build:   python3 design-system/demo.py demo && python3 design-system/tools/vercel_demo.py <out-dir>
-Deploy:  cd <out-dir> && vercel link --yes --project equal-lens-daily && vercel deploy --prod --yes   (the owner's call each time)
+Build:   python3 design-system/demo.py demo && python3 design-system/tools/vercel_demo.py site
+         (site/ is committed: Vercel's equal-lens-daily project serves it from the retake repo, root directory "site",
+         no build command, once the owner connects the repo in Vercel; commit and push site/ after every demo change)
+Deploy by hand:  cd site && vercel link --yes --project equal-lens-daily --scope priyanshuj0410-5861s-projects && vercel deploy --prod --yes
 """
 import json
 import shutil

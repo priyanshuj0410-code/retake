@@ -17,3 +17,6 @@ design-system/art/raw/**/*.webp
 # design-review screenshots and the detector's cache
 .impeccable/review/
 .impeccable/hook.cache.json
+
+# the Vercel CLI's link folder
+.vercel
