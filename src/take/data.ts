@@ -93,6 +93,7 @@ export interface Take {
     areas: Record<string, { real: Bi; scene: string }>
     card: { world: string; cls: string; art: Paint }
   }
+  gate: { world: string; art: Paint }
   flow: Screen[]
 }
 

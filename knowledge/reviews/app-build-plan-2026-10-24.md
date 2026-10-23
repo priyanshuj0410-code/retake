@@ -100,6 +100,13 @@ Owner: "ok... keep building".
 - **Fixed on the way:** Cricket's plate showed its markup as text; the content check now skips strings left empty in English on purpose.
 - **Next:** the responsive review's findings (still running); the "more" cue on long screens; `scripts/markup-check.ts` against the demo.
 
+## M2, the first visit, 24 Oct 2026
+
+- **The birth date (SC-15) and not yet 18 (SC-16)**, drawn first in the library (`library.py` `birth_phone`, `notyet_phone`, in the covers section; `library.css`, "the first visit") and then built (`src/take/Gate.tsx`). A paper card at the foot of the first chapter's painting holds the languages (this screen has no "?", so the chips the "?" sheet carries stand here, as ia-and-flows.md's language-switch note asks), the question, three number fields on the number pad, the date in words under them, and one line: "Stays on this phone", or what is wrong with the date with the digits kept. The fields wrap as the text grows. A first visit starts in the phone's language.
+- **What the phone keeps:** an adult's birth date; for someone under 18, only the day the game opens, and whether "Wrong date?" was used (D1). Today's date comes from the calendar module, the one place allowed to read the clock.
+- **Checked** (`pnpm e2e`, "the first visit"): a first visit opens on the birth date; a date that does not exist and one still to come are refused in place; a real date shows in words; under 18 keeps only the opening day, stays shut on every open, and offers "Wrong date?" once; an adult goes on to the take with the birth date kept.
+- **For the owner's look:** both screens are new designs from the spec, not yet seen. The Hindi lines are drafts for the native read.
+
 ## Started, 24 Oct 2026
 
 - [x] This plan, on the branch `app-build`.

@@ -930,6 +930,25 @@ h1.score { margin: 0; display: block; }
 @keyframes cutfade { from { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .app.js-cut .cutstage.is-now img { animation: none; } }
 
+/* ===== the first visit: the birth date (SC-15) and not yet 18 (SC-16), 24 Oct 2026 =====
+   The one screen before anything else (F-14a): a paper card at the foot of the painting holds the languages (the
+   chips the "?" sheet carries, since this screen has no "?"), the question, three number fields for day, month and
+   year on the phone's number pad (no wheel, no calendar, R-A11Y-5), the date in words under them so a slip in the
+   year shows before it is kept, and one line: where the date stays, or what is wrong with it, the digits kept
+   (R-STATE-4). Not yet 18 is the same card with its one line and, once, "Wrong date?" (F-14b). */
+.gatecard { display: grid; gap: var(--f13); padding: var(--f8) var(--s16) var(--f21); background: var(--paper) var(--tex); background-size: 256px; color: var(--ink); border-radius: var(--r-card); box-shadow: inset 0 0 0 var(--frame) var(--ink); }
+.gatecard .langrow { padding: var(--f8) 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
+.gatecard .q { color: var(--ink); }
+/* three across; at large text sizes (the minimum grows with the root size) they wrap, at 200% one to a row */
+.datefields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 5.5rem), 1fr)); gap: var(--f13); }
+.datefields label { display: block; margin-bottom: 5px; font: 700 var(--t-label)/1.43 'Hind'; color: var(--ink); }
+.datefields input { width: 100%; min-height: 56px; border: 0; box-shadow: inset 0 0 0 2px var(--ink); border-radius: var(--r-chip); background: var(--paper); color: var(--ink); font: 700 var(--t-name)/1.2 'Hind'; padding: 8px; text-align: center; font-variant-numeric: tabular-nums; }
+.datefields input[aria-invalid="true"] { box-shadow: inset 0 0 0 3px var(--accent); }
+.datewords { margin: 0; min-height: 1.5em; font: 700 var(--t-title)/1.5 'Hind'; }
+.gatehint { display: flex; gap: 5px; align-items: center; margin: 0; font: 700 var(--t-label)/1.43 'Hind'; }
+.gatehint svg { width: 18px; height: 18px; flex: none; }
+.gatecard .textbtn { justify-self: start; }
+
 /* ===== the metal finish (O14): Lugdi =====
    The owner's pick from the premium study (explore/premium-lugdi.css), without its glass. One light, high on the left: lit edges sit
    at the top, and soft shadows (6 to 14 percent, under physical objects only) fall down and a touch right. Paper becomes heavy stock

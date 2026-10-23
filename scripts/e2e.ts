@@ -68,7 +68,7 @@ async function play(lang: 'mix' | 'hi' | 'en', width: number, height: number) {
     if (m.type() === 'error') errors.push(m.text())
   })
   await page.goto(BASE)
-  await page.evaluate((lang) => localStorage.setItem('retake.take', JSON.stringify({ v: 1, at: 0, answers: {}, lang, sound: false })), lang)
+  await page.evaluate((lang) => localStorage.setItem('retake.take', JSON.stringify({ v: 1, at: 0, answers: {}, lang, sound: false, birth: '1990-08-14' })), lang)
   await page.reload()
   await page.locator('.take .app').waitFor()
   const kinds = new Map<string, number>()
@@ -110,8 +110,8 @@ async function play(lang: 'mix' | 'hi' | 'en', width: number, height: number) {
   const answers = Object.keys(kept.answers ?? {})
   record(T, `${tag}: the take reaches its end with all 40 answers kept`, answers.length === 40, `${answers.length} answers; kinds ${JSON.stringify(Object.fromEntries(kinds))}`)
   record(T, `${tag}: every kind was played`, ['pick', 'checks', 'rank', 'multi', 'order', 'split'].every((k) => kinds.has(k)))
-  record(T, `${tag}: the phone keeps the place, the answers, the language and the sound switch, nothing else`,
-    JSON.stringify(Object.keys(kept).sort()) === JSON.stringify(['answers', 'at', 'lang', 'sound', 'v']))
+  record(T, `${tag}: the phone keeps the place, the answers, the language, the sound switch and the birth date, nothing else`,
+    JSON.stringify(Object.keys(kept).sort()) === JSON.stringify(['answers', 'at', 'birth', 'lang', 'sound', 'v']))
   record(T, `${tag}: every main button waited until its decision was complete`, waitedAll.length === 0, waitedAll.slice(0, 3).join('; '))
   record(T, `${tag}: the reading's five cards each say something${lang === 'hi' ? ', in Devanagari' : ''}`,
     cards.length === 5 && cards.every((c) => c.length > 10 && (lang === 'hi') === DEVA.test(c)), cards.map((c) => c.slice(0, 40)).join(' | '))
@@ -120,7 +120,53 @@ async function play(lang: 'mix' | 'hi' | 'en', width: number, height: number) {
   await page.close()
 }
 
+/** The first visit (SC-15, SC-16): what each answer does, and what it leaves on the phone. */
+async function gate() {
+  const g = 'E the first visit: the birth date and not yet 18'
+  const page = await browser.newPage({ viewport: { width: 360, height: 640 } })
+  const errors: string[] = []
+  page.on('pageerror', (e) => errors.push(String(e)))
+  const kept = () => page.evaluate(() => JSON.parse(localStorage.getItem('retake.take') ?? 'null'))
+  const fill = async (d: string, m: string, y: string) => {
+    for (const [i, v] of [d, m, y].entries()) await page.locator('.datefields input').nth(i).fill(v)
+  }
+  const hint = () => page.locator('.gatehint').innerText()
+  await page.goto(BASE)
+  record(g, 'a first visit opens on the birth date, before anything else', (await page.locator('.datefields input').count()) === 3 && (await page.locator('.cutpanel').count()) === 0)
+  record(g, 'the button says what is missing and waits', !(await look(page)).live && /birth date/i.test((await look(page)).button))
+  await fill('31', '02', '1990')
+  record(g, 'not a real date: one line in place, the digits kept, the button still waits',
+    /does not exist/.test(await hint()) && (await page.locator('.datefields input').nth(0).inputValue()) === '31' && !(await look(page)).live)
+  await fill('01', '01', '2999')
+  record(g, 'a date still to come is refused', /still to come/.test(await hint()) && !(await look(page)).live)
+  await fill('12', '3', '1956')
+  record(g, 'a real date shows in words under the fields', (await page.locator('.datewords').innerText()).trim() === '12 March 1956' && (await look(page)).live)
+  // under 18: three years ago today, give or take
+  const y = String(new Date().getUTCFullYear() - 3)
+  await fill('01', '06', y)
+  await page.locator('.take .dock .main').click()
+  const minor = await kept()
+  record(g, 'under 18: the day count, and the phone keeps only the day the game opens',
+    /You can play in [\d,]+ days/.test(await page.locator('.gatecard .q').innerText()) && !minor.birth && /^\d{4}-06-01$/.test(minor.opens))
+  await page.reload()
+  record(g, 'under 18 stays shut on every later open', (await page.locator('.gatecard .q').count()) === 1 && (await page.locator('.datefields').count()) === 0)
+  await page.locator('.gatecard .textbtn').click()
+  await fill('01', '06', y)
+  await page.locator('.take .dock .main').click()
+  record(g, '"Wrong date?" is offered once: a second answer under 18 comes back without it', (await page.locator('.gatecard .textbtn').count()) === 0)
+  await page.evaluate(() => localStorage.removeItem('retake.take'))
+  await page.reload()
+  await fill('14', '08', '1990')
+  await page.locator('.take .dock .main').click()
+  await page.locator('.cutpanel').first().waitFor()
+  const adult = await kept()
+  record(g, '18 or older: the take opens, and the phone keeps the birth date', adult.birth === '1990-08-14' && !adult.opens)
+  record(g, 'no page error', errors.length === 0, errors.slice(0, 2).join(' | '))
+  await page.close()
+}
+
 try {
+  await gate()
   for (const lang of ['mix', 'hi', 'en'] as const) {
     await play(lang, 412, 915)
     await play(lang, 1440, 900)

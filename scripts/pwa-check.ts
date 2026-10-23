@@ -22,6 +22,7 @@ import { join } from 'node:path'
 import { chromium, type Page } from 'playwright-core'
 import { build, type Plugin } from 'vite'
 import { record, summary } from './lib/check'
+import { passGate } from './lib/gate'
 import { browserOpts, serve } from './lib/serve'
 
 const ROOT = new URL('..', import.meta.url).pathname
@@ -102,6 +103,7 @@ const watch = (p: Page) => {
 watch(page)
 try {
   await page.goto(BASE)
+  await passGate(page)
   await page.waitForFunction(() => !!navigator.serviceWorker?.controller, null, { timeout: 30000 })
 
   /* ---- installable ---- */

@@ -449,6 +449,48 @@ def cover(world, state='play', lang=None, cls='', first=False, hard=False, loadi
     ph = phone(world, inner, f'{W.title} cover', cls + (' is-loading' if loading else ''), a, 'veil-low', lang)
     return ph[:-6] + overlay + ph[-6:] if dialog else ph
 
+# ---------- the first visit: the birth date (SC-15) and not yet 18 (SC-16), 24 Oct 2026 ----------
+# The one screen before anything else (F-14a): the languages (this screen has no "?"), three number fields on the
+# number pad, the date in words under them, and one line, where the date stays or what is wrong with it. Under 18,
+# the same card says when the game opens, worked out on the phone, with "Wrong date?" once (F-14b). Hindi: drafts.
+DATE_FIELDS = (('Day', 'दिन', 'bday-day', 2), ('Month', 'महीना', 'bday-month', 2), ('Year', 'साल', 'bday-year', 4))
+BIRTH_Q = ('When were you born?', 'आपका जन्म कब हुआ?')
+BIRTH_STAYS = ('Stays on this phone', 'यह इसी फ़ोन पर रहता है')
+
+
+def birth_card(vals=('', '', ''), words=('', ''), error=None):
+    hid = uid('bq')
+    fields = ''
+    for (en, hi, ac, n), v in zip(DATE_FIELDS, vals):
+        i = uid('bd')
+        inv = ' aria-invalid="true"' if error else ''
+        fields += (f'<div><label for="{i}">{tx("span", en, hi)}</label><input id="{i}" type="text" inputmode="numeric" '
+                   f'autocomplete="{ac}" maxlength="{n}" value="{v}"{inv}></div>')
+    line, icon = (error, ic('alert')) if error else (BIRTH_STAYS, ic('lock'))
+    return (f'<div class="gatecard at-end">{lang_list()}{tx("h1", *BIRTH_Q, "q", f" id={hid}")}'
+            f'<div class="datefields" role="group" aria-labelledby="{hid}">{fields}</div>'
+            f'{tx("p", *words, "datewords", " aria-live=polite") if words[0] else "<p class=datewords></p>"}'
+            f'<p class="gatehint">{icon}{tx("span", *line)}</p></div>')
+
+
+def birth_phone(world, state='empty'):
+    W = WORLDS[world]
+    card = {'empty': lambda: birth_card(),
+            'filled': lambda: birth_card(('12', '03', '1956'), ('12 March 1956', '12 मार्च 1956')),
+            'error': lambda: birth_card(('31', '02', '1990'), error=('That date does not exist.', 'यह तारीख़ होती ही नहीं।')),
+            }[state]()
+    btn = main('Type your birth date', 'अपनी जन्म तारीख़ लिखें', 'Start', 'शुरू करें', 'is-live' if state == 'filled' else 'is-wait')
+    return phone(world, body(card, cls='is-cover') + dock(btn), f'{W.title}: the birth date', 'is-gate', W.scene(W.moment('cover')), 'veil-low')
+
+
+def notyet_phone(world, retry=True, days=214):
+    W = WORLDS[world]
+    line = (f'You can play in {days} days.', f'आप {days} दिन बाद खेल सकते हैं।') if days > 1 else ('You can play tomorrow.', 'आप कल से खेल सकते हैं।')
+    again = f'<button class="textbtn on-paper" type="button">{tx("span", "Wrong date?", "तारीख़ ग़लत है?")}</button>' if retry else ''
+    return phone(world, body(f'<div class="gatecard at-end">{tx("h1", *line, "q")}{again}</div>', cls='is-cover'),
+                 f'{W.title}: not yet 18', 'is-gate', W.scene(W.moment('cover')), 'veil-low')
+
+
 # ---------- mechanics ----------
 RULE_HOURS = ('Most free hours', 'सबसे ज़्यादा फ़ुर्सत')
 RULE_SKILL = ('Most skill', 'सबसे हुनरमंद')
@@ -1282,7 +1324,10 @@ for W in SEL:
     COVERS += [(cover(w), f'{T} cover', 'The home. Play.'), (cover(w, 'continue'), f'{T}, mid-puzzle', 'Continue.'), (cover(w, 'done'), f'{T}, after today', 'See your score; when the next one comes, with no countdown.'),
                (cover(w, first=True), f'{T}, first visit', 'No streak until the first result says "Day 1".'), (cover(w, hard=True), f'{T}, a hard day', 'The cover names the setting plainly before Play.'),
                (cover(w, kept=True), f'{T}, a forgiven day', 'Said in place under the day count, until Play.'), (cover(w, loading=True), f'{T}, loading', 'The ground and the title first; the painting follows.'),
-               (cover(w, dialog=True), f'{T}, the one dialog', 'Only for deleting everything.')]
+               (cover(w, dialog=True), f'{T}, the one dialog', 'Only for deleting everything.'),
+               (birth_phone(w, 'filled'), f'{T}, first visit: the birth date', 'Three number fields; the date in words under them, so a slip in the year shows. It stays on the phone.'),
+               (birth_phone(w, 'error'), f'{T}, the birth date: not a real date', 'One line in place, the digits kept.'),
+               (notyet_phone(w), f'{T}, not yet 18', 'The day count, worked out on the phone; "Wrong date?" once.')]
 SHEETS = shown('sheet_help', 'sheet_info', 'sheet_settings')
 ACCESS = shown('hi_step', 'hi_cover', 'big_step', 'big_cover', 'big_result', 'big_sunday', 'big_board', 'small_step', 'small_more')
 

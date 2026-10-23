@@ -9,6 +9,7 @@ import { mkdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium } from 'playwright-core'
 import { build } from 'vite'
+import { passGate } from '../lib/gate'
 import { browserOpts, serve } from '../lib/serve'
 
 const ROOT = new URL('../..', import.meta.url).pathname
@@ -24,6 +25,7 @@ const page = await browser.newPage({ viewport: { width: 412, height: 915 }, devi
 const shot = (name: string) => page.screenshot({ path: join(OUT, name), type: 'jpeg', quality: 72 })
 try {
   await page.goto(`http://localhost:${PORT}/`)
+  await passGate(page)
   await page.locator('.cutpanel img').first().waitFor()
   await page.waitForTimeout(600)
   await shot('opening.jpg')

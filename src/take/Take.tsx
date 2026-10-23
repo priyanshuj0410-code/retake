@@ -5,6 +5,7 @@ import { cacheAhead, onUpdateReady } from '../pwa'
 import { SetLangContext, UpdateContext } from './parts'
 import { Cover, Cutscene } from './screens'
 import { Sound, SoundContext } from './sound'
+import { BirthDate, NotYet, isOpen } from './Gate'
 import { Results } from './Results'
 import { Order } from './steps/Order'
 import { Pick } from './steps/Pick'
@@ -12,7 +13,7 @@ import { Rank } from './steps/Rank'
 import { Split } from './steps/Split'
 import { Team } from './steps/Team'
 import type { Answer } from './steps/common'
-import { load, save } from './store'
+import { canKeep, load, save } from './store'
 
 // The First take, one screen at a time (the demo's flow): the opening, each chapter's way in, title card, eight
 // decisions and way out, then the diary, the private reading and the trunk handed on. It resumes where it was left
@@ -66,8 +67,23 @@ export function Take() {
   )
 
   const props = { help, onHelp: setHelp }
+  const [keeps] = useState(canKeep)
   let body
-  if (screen.type === 'cut') body = <Cutscene c={screen} onNext={next} {...props} />
+  // the first visit: the birth date before anything else; under 18, when the game opens (SC-15, SC-16)
+  const gate = !isOpen(saved) ? (saved.opens ? 'notyet' : 'birth') : null
+  if (gate === 'birth')
+    body = (
+      <BirthDate
+        canKeep={keeps}
+        setLang={setLang}
+        onAdult={(birth) => setSaved((s) => ({ ...s, birth, opens: undefined, retried: undefined }))}
+        // under 18 the birth date is not kept: only the day the game opens (D1)
+        onMinor={(opens) => setSaved((s) => ({ ...s, opens }))}
+      />
+    )
+  else if (gate === 'notyet')
+    body = <NotYet opens={saved.opens!} retry={!saved.retried} onRetry={() => setSaved((s) => ({ ...s, opens: undefined, retried: true }))} />
+  else if (screen.type === 'cut') body = <Cutscene c={screen} onNext={next} {...props} />
   else if (screen.type === 'cover') body = <Cover c={screen} onNext={next} {...props} />
   else if (screen.type === 'step') {
     const Kind = KINDS[screen.kind]
@@ -88,7 +104,7 @@ export function Take() {
       <SetLangContext.Provider value={setLang}>
         <SoundContext.Provider value={soundCtx}>
           <UpdateContext.Provider value={update}>
-            <main className="take" key={at}>
+            <main className="take" key={gate ?? at}>
               {body}
             </main>
           </UpdateContext.Provider>
