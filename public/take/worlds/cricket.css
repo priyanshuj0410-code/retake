@@ -1,0 +1,420 @@
+/* Cricket (क्रिकेट): the old stadium under floodlights. Scoreboard black, sight-screen white, outfield green, cherry red, chalk.
+   Every selector is scoped to .w-cricket (the type specimen .ts-cricket excepted). Red and green never carry a meaning:
+   a state is always a shape (a filled or hollow ball, a ring, a tick, a solid edge). Khand sets the cover title and the
+   scoreboard numerals; Hind sets every word that is read.
+
+   The metal finish (O14), the owner's pick from the premium study, without its glass. The metals are brushed aluminium and
+   steel. One light, high on the left: lit edges sit at the top and left, and soft shadows (6 to 14 percent, under physical
+   objects only) fall down and a touch right. The number plates are aluminium under thin scoreboard paint (assets/cricket-alu),
+   hung on two domed steel nails, with a polished edge in place of the old chalk rim and black outline; the boards wear a
+   polished steel edge; the result's scorecard hangs from a steel clip; the third umpire's screen sits in a brushed steel bezel
+   (assets/cricket-steel). Scorecards keep the world's one rule, the printed outfield band; their ink frame becomes a hairline
+   tinted from the paper. The tab bar, round buttons, switches, rail and "?" sheet are solid; flat controls carry no soft
+   shadow. Text colours stay plain hex: the pixel contrast check reads them literally. */
+
+.ts-cricket { font: 700 2.8125rem/1.15 'Khand', 'Hind', sans-serif; }
+.ts-cricket:lang(hi) { line-height: 1.3; }
+
+.w-cricket {
+  --ground: #151816; --ground-deep: #0C0E0D; --paper: #F7F5EE; --paper-shade: #E5E2D6; --ink: #151816; --title: #EFEDE4; --accent: #B22234;
+  --chalk: #EFEDE4; --green: #2F5D3A; --hung: #222824;
+  --muted: #3A423D; --on-muted: #F7F5EE; --edge: #EFEDE4; --on-ground: #EFEDE4; --on-ground-soft: #C2CBC4;
+  --r-card: 0px; --r-chip: 4px; --frame: 1px; --tex: none;
+  --main-offset: none; --main-offset-pressed: none;
+  --num: 'Khand', 'Hind', sans-serif;
+  --band: inset 0 6px 0 var(--green);
+  /* hairlines tinted from their own surface, the one light's lit edge, and soft shadows */
+  --hair: color-mix(in srgb, var(--ink) 14%, transparent);
+  --hair-strong: color-mix(in srgb, var(--ink) 55%, var(--paper));
+  --night-hair: color-mix(in srgb, var(--chalk) 16%, transparent);
+  --plate-rule: inset 0 0 0 1px var(--night-hair);
+  --lit: inset 0 1px 0 rgba(255, 255, 255, .62);
+  --sh-sm: .5px 1px 1px rgba(4, 6, 5, .10), 1px 4px 10px -2px rgba(4, 6, 5, .12);
+  --sh-md: .5px 1px 1px rgba(4, 6, 5, .10), 2px 10px 24px -6px rgba(4, 6, 5, .14);
+  --sh-lg: 1px 2px 2px rgba(4, 6, 5, .10), 3px 18px 40px -10px rgba(4, 6, 5, .14);
+  /* aluminium under thin scoreboard paint (plates and boards), bare brushed steel (the bezel and the clip) */
+  --alu: url(../assets/cricket-alu.webp) 0 0 / 256px 64px;
+  --steel-grain: url(../assets/cricket-steel.webp) 0 0 / 256px 64px;
+  --plate: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, 0) 48%), var(--alu), var(--hung);
+  --board: linear-gradient(160deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0) 44%), var(--alu), var(--ground);
+  --panel: linear-gradient(160deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, 0) 44%), var(--ground);
+  --chrome: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, 0) 55%) var(--ground-deep);
+  /* a polished edge lit from the top left (top, left, bottom, right): aluminium on the plates, steel on the boards */
+  --alu-edge: inset 0 1px 0 #D5D9DC, inset 1px 0 0 #9DA3A8, inset 0 -1px 0 #4A5055, inset -1px 0 0 #6A7076;
+  --steel-edge: inset 0 1px 0 #B9BEC3, inset 1px 0 0 #868C92, inset 0 -1px 0 #3A3F44, inset -1px 0 0 #555B61;
+  --steel: linear-gradient(155deg, #F2F4F5 0%, #C3C8CC 22%, #868C92 48%, #B7BCC1 70%, #5E646A 100%);
+  --steel-line: #7F868C, #E4E7E9 16%, #A2A8AE 46%, #CDD1D5 74%, #737A80;
+  /* a domed steel nail: the head, its glint up and to the left, its shadow down and to the right */
+  --nail: radial-gradient(circle closest-side, #E9ECEE 0%, #B3B9BE 34%, #767C83 66%, #3A3F45 88%, rgba(58, 63, 69, 0) 100%);
+  --nail-lit: radial-gradient(circle closest-side, rgba(255, 255, 255, .95), rgba(255, 255, 255, 0));
+  --nail-drop: radial-gradient(circle closest-side, rgba(0, 0, 0, .55), rgba(0, 0, 0, 0));
+  --nails: var(--nail-lit) left 6.5px top 4px / 2px 2px no-repeat, var(--nail) left 5.5px top 3.5px / 5px 5px no-repeat, var(--nail-drop) left 6px top 4.5px / 6px 6px no-repeat,
+           var(--nail-lit) right 7.5px top 4px / 2px 2px no-repeat, var(--nail) right 5.5px top 3.5px / 5px 5px no-repeat, var(--nail-drop) right 4px top 4.5px / 6px 6px no-repeat;
+  --nails-sm: var(--nail-lit) left 5.25px top 4.25px / 1.5px 1.5px no-repeat, var(--nail) left 4.5px top 3.5px / 4px 4px no-repeat, var(--nail-drop) left 5px top 4px / 5px 5px no-repeat,
+              var(--nail-lit) right 6.25px top 4.25px / 1.5px 1.5px no-repeat, var(--nail) right 4.5px top 3.5px / 4px 4px no-repeat, var(--nail-drop) right 3px top 4px / 5px 5px no-repeat;
+}
+
+/* ===== captions: scoreboard panels on the painting, solid (no glass). The question is a board on two steel nails with a
+   polished steel edge; the cover's plate wears the same edge; the small captions carry one hairline tinted from the black ===== */
+.w-cricket .qbox, .w-cricket .statkey, .w-cricket .byline, .w-cricket .band, .w-cricket .nextline, .w-cricket .rulelabel, .w-cricket .refusal, .w-cricket .plate {
+  background: var(--panel); box-shadow: var(--plate-rule), var(--sh-sm); color: var(--on-ground); }
+.w-cricket .qbox { background: var(--nails), var(--board); box-shadow: var(--steel-edge), var(--sh-md); padding: 13px 21px 13px; }
+.w-cricket .q:not(:lang(hi)) { letter-spacing: -.012em; }
+.w-cricket .plate { box-shadow: var(--steel-edge), var(--sh-md); padding: 13px 21px; gap: 5px; }
+.w-cricket .on-paper .byline, .w-cricket .paperpage .byline, .w-cricket .stack .byline { background: none; box-shadow: none; color: var(--ink); }
+.w-cricket .byline i, .w-cricket .ctx i, .w-cricket .voice .av { box-shadow: 0 0 0 1px color-mix(in srgb, var(--chalk) 55%, transparent), .5px 1px 2px rgba(0, 0, 0, .3); }
+/* a named speaker's balloon: a solid panel with one hairline tinted from the black, its tail drawn to match */
+.w-cricket .voice .balloon { border-width: 1px; border-color: color-mix(in srgb, var(--chalk) 30%, transparent); padding: 8px 13px; background: var(--ground); box-shadow: var(--sh-sm); }
+.w-cricket .voice .balloon::before { left: -8px; top: 15px; border-left-width: 1px; border-bottom-width: 1px; border-color: color-mix(in srgb, var(--chalk) 30%, transparent); }
+.w-cricket .on-paper .byline i, .w-cricket .paperpage .byline i, .w-cricket .stack .byline i { box-shadow: 0 0 0 1px var(--hair-strong); }
+:where(.w-cricket) .textbtn:not(.on-paper) { background: var(--panel); }
+
+/* the step's speaker and the stat key share one line: one row of two small panels instead of two stacked ones */
+.w-cricket:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-content: start; column-gap: 8px; row-gap: var(--f8); }
+.w-cricket:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) > * { grid-column: 1 / -1; }
+.w-cricket:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) > .qbox { justify-self: start; }
+.w-cricket:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) > .byline { grid-column: 1; justify-self: start; align-self: center; }
+.w-cricket:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) > .statkey { grid-column: 2; justify-self: end; align-self: center; }
+.w-cricket[lang="hi"]:not(.is-200):not(.is-small) .scr-body:has(> .byline + .statkey) { row-gap: var(--f8); }
+
+/* the day plate: a strip of aluminium plates, "Day" and the number, each on two steel nails */
+.w-cricket .dayplate { padding: 5px 8px; }
+.w-cricket .dayplate > span { display: inline-flex; align-items: stretch; gap: 5px; }
+.w-cricket .dayplate i, .w-cricket .dayplate b { display: inline-grid; place-items: center; min-height: 40px; padding: 8px 13px 2px; font-style: normal;
+  background: var(--nails), var(--plate); color: var(--chalk); box-shadow: var(--alu-edge), var(--sh-sm); font: 700 var(--t-title)/1.5 'Hind', sans-serif; }
+.w-cricket .dayplate b { min-width: 36px; padding: 5px 8px; font: 600 calc(var(--t-title) * 1.5)/1 var(--num); font-variant-numeric: tabular-nums; }
+.w-cricket .daycount { background: var(--nails), var(--plate); box-shadow: var(--alu-edge), var(--sh-sm); color: var(--chalk); padding: 3px 13px; border-radius: 0; }
+
+/* ===== the cover: a hung name board over the stumps, a polished steel edge, two steel nails ===== */
+.w-cricket .cr-namebd { align-self: flex-start; max-width: 100%; display: grid; gap: 8px; padding: 21px 21px 13px; background: var(--nails), var(--board);
+  box-shadow: var(--steel-edge), var(--sh-lg); color: var(--chalk); }
+.w-cricket .cr-title { margin: 0; font: 700 var(--t-display)/1.05 var(--num); color: var(--chalk); text-wrap: balance; }
+.w-cricket .cr-title:lang(hi) { line-height: 1.3; }
+.w-cricket .cr-meta { display: flex; align-items: center; gap: 8px; font: 700 var(--t-label)/1.43 'Hind', sans-serif; }
+.w-cricket .cr-hps { display: inline-flex; gap: 3px; }
+.w-cricket .cr-hps i { display: inline-grid; place-items: center; min-width: 22px; height: 28px; padding: 0 3px; font: 600 calc(var(--t-label) * 1.4)/1 var(--num); font-style: normal;
+  background: var(--plate); color: var(--chalk); box-shadow: var(--alu-edge), .5px 1px 1px rgba(0, 0, 0, .3); font-variant-numeric: tabular-nums; }
+.w-cricket .scr-body.is-cover > .coverstack { margin-top: auto; }
+.w-cricket .coverstack { gap: 13px; }
+
+/* ===== person card: a scorecard of sight-screen white on a soft shadow, one hairline tinted from the paper, and the world's one
+   rule, the printed outfield band. The pick prints yellow below the band, framed in 2 px of ink ===== */
+.w-cricket .tile, .w-cricket .row { background: var(--paper); box-shadow: var(--band), inset 0 0 0 1px var(--hair), var(--sh-md); }
+.w-cricket:not(.is-small):not(.is-200):not([lang="hi"]) .tiles { gap: 13px 13px; }
+.w-cricket .tile { padding: 13px 8px 13px; gap: 5px; }
+.w-cricket.is-small .tile, .w-cricket.is-200 .tile { padding: 8px 8px 8px; gap: 5px; }
+.w-cricket .face { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 22%, transparent), inset .5px 1px 3px rgba(0, 0, 0, .28); }
+.w-cricket .tile:active, .w-cricket .tile.is-pressed, .w-cricket .row:active, .w-cricket .row.is-pressed {
+  transform: scale(.985); background-color: var(--paper-shade); box-shadow: var(--band), inset 0 0 0 1px var(--hair), inset 0 1px 3px rgba(4, 6, 5, .14), var(--sh-sm); }
+.w-cricket .tile[aria-checked="true"]::before, .w-cricket .tile.is-selected::before, .w-cricket .tile.is-armed::before,
+.w-cricket .row[aria-checked="true"]::before, .w-cricket .row.is-selected::before, .w-cricket .row.is-armed::before { top: 6px; }
+.w-cricket .tile[aria-checked="true"], .w-cricket .tile.is-selected, .w-cricket .row[aria-checked="true"], .w-cricket .row.is-selected { box-shadow: inset 0 0 0 2px var(--ink), var(--band), var(--sh-lg); }
+.w-cricket .tile.is-armed, .w-cricket .row.is-armed { box-shadow: inset 0 0 0 2px var(--ink), var(--band), 0 0 0 2px var(--paper), var(--sh-lg); }
+.w-cricket .tile.is-focus, .w-cricket .row.is-focus { box-shadow: var(--band), inset 0 0 0 1px var(--hair), 0 0 0 5px var(--focus-inner); }
+.w-cricket .tile.is-hover, .w-cricket .row.is-hover { box-shadow: var(--band), inset 0 0 0 1px var(--hair-strong), var(--sh-lg); }
+.w-cricket .tick { background: var(--paper); box-shadow: 0 0 0 2px var(--ink), var(--sh-sm); }
+
+/* numbers on aluminium plates: chalk Khand on scoreboard paint, a polished edge, wherever a person's figures are */
+.w-cricket .stats { gap: 21px; }   /* pairs well apart, each icon 4 px from its number: the gap says which icon counts which number */
+/* the line box is Khand's full height (1.5), so the plate holds the whole numeral and none of the card shows through behind it */
+/* a number is type, not a plate: one frame per level (owner, 22 Oct: "the box in a box is not looking good"). Chalk on the dark boards, ink with a pitch-green icon on paper */
+.w-cricket .stat { gap: 5px; color: var(--chalk);
+  font: 600 calc(var(--t-stat) * 1.08)/1.5 var(--num); font-variant-numeric: tabular-nums; }
+.w-cricket .stat svg { top: -.03em; }   /* the scoreboard numerals sit a little lower (measured) */
+.w-cricket :is(.tile, .row, .slot, .pi) .stat { color: var(--ink); }
+.w-cricket :is(.tile, .row, .slot, .pi) .stat svg { color: var(--green); }
+.w-cricket .ctx .stat { font-size: calc(var(--t-title) * 1.25); }
+.w-cricket .ctx .stats.c2 { gap: 13px; }
+.w-cricket .row .side .stamps { width: 60px; }
+
+/* spent checks: balls bowled, cherry with an ink edge on the scorecard */
+.w-cricket .stampmark { width: 28px; height: 28px; box-shadow: none; transform: none; color: var(--ink); }
+.w-cricket .stampmark svg { width: 26px; height: 26px; stroke-width: 1.5; }
+.w-cricket .stampmark svg circle { fill: var(--accent); stroke: var(--ink); }
+.w-cricket .stampmark svg path { stroke: var(--paper); }
+
+/* the over: six balls on an aluminium plate on two steel nails; bowled is filled in, to come is a hollow ring */
+.w-cricket .pool { gap: 5px; padding: 13px 13px 8px; background: var(--nails), var(--plate); box-shadow: var(--alu-edge), var(--sh-sm); color: var(--chalk); }
+.w-cricket .pool svg { width: 28px; height: 28px; fill: none; stroke-width: 2; }
+.w-cricket .pool svg path { opacity: .55; }
+.w-cricket .pool .spent { opacity: 1; display: inline-grid; }
+.w-cricket .pool .spent svg circle { fill: currentColor; }
+.w-cricket .pool .spent svg path { stroke: var(--accent); opacity: 1; stroke-width: 2.5; }
+
+/* ===== buttons ===== */
+/* outside a puzzle: a sight-screen white board on two steel nails, one hairline, a lit top edge and a soft shadow */
+.w-cricket .main.is-out { --out-edge: var(--hair); background: var(--nails), var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1px var(--out-edge), var(--lit), var(--sh-md);
+  --nails: var(--nail-lit) left 9px top 5px / 2px 2px no-repeat, var(--nail) left 7.5px top 4.5px / 5px 5px no-repeat, var(--nail-drop) left 8.5px top 5.5px / 6px 6px no-repeat,
+           var(--nail-lit) right 10px top 5px / 2px 2px no-repeat, var(--nail) right 7.5px top 4.5px / 5px 5px no-repeat, var(--nail-drop) right 6.5px top 5.5px / 6px 6px no-repeat; }
+/* on a white sheet or dialog the board meets white, so its edge is the control hairline at 4:1 */
+.w-cricket .sheet .main.is-out, .w-cricket .dialog .main.is-out { --out-edge: var(--hair-strong); }
+.w-cricket .main.is-out:active, .w-cricket .main.is-out.is-pressed { transform: translateY(1px) scale(.992); background-color: var(--paper-shade);
+  box-shadow: inset 0 0 0 1px var(--out-edge), inset 0 1px 2px rgba(4, 6, 5, .14), var(--sh-sm); }
+/* the main button: pick yellow with one soft sheen from above and a fine lip */
+.w-cricket .main.is-live { background: linear-gradient(180deg, rgba(255, 255, 255, .26), rgba(255, 255, 255, 0) 58%), var(--pick);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), inset 0 -2px 0 rgba(120, 78, 0, .18), 0 0 0 .5px rgba(90, 60, 0, .45), var(--sh-md); }
+.w-cricket .main.is-live:active, .w-cricket .main.is-live.is-pressed, .w-cricket .main.is-committing { transform: translateY(1px) scale(.992);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, 0) 36%), var(--pick);
+  box-shadow: inset 0 1px 2px rgba(120, 78, 0, .2), 0 0 0 .5px rgba(90, 60, 0, .45), var(--sh-sm); }
+.w-cricket .main.is-wait { background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0) 60%), var(--muted);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--edge) 58%, transparent), inset 0 1px 0 rgba(255, 255, 255, .1), var(--sh-sm); }
+.w-cricket .textbtn { text-decoration-thickness: 1.5px; text-underline-offset: 6px; padding: 0 13px; }
+/* hover: restated for the static .is-hover specimens and for pointer devices */
+.w-cricket .main.is-live.is-hover { transform: none; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .75), inset 0 -2px 0 rgba(120, 78, 0, .18), 0 0 0 .5px rgba(90, 60, 0, .45), var(--sh-lg); }
+.w-cricket .main.is-out.is-hover { background-color: var(--paper-shade); box-shadow: inset 0 0 0 1px var(--out-edge), var(--lit), var(--sh-lg); }
+.w-cricket .textbtn.is-hover { text-decoration-thickness: 2.5px; }
+@media (hover: hover) and (pointer: fine) {
+  .w-cricket .main.is-live:hover { transform: none; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .75), inset 0 -2px 0 rgba(120, 78, 0, .18), 0 0 0 .5px rgba(90, 60, 0, .45), var(--sh-lg); }
+  .w-cricket .main.is-out:hover { background-color: var(--paper-shade); box-shadow: inset 0 0 0 1px var(--out-edge), var(--lit), var(--sh-lg); }
+  .w-cricket .tile:hover:not([aria-checked="true"]):not(.is-selected), .w-cricket .row:hover:not([aria-checked="true"]):not(.is-selected) { box-shadow: var(--band), inset 0 0 0 1px var(--hair-strong), var(--sh-lg); }
+  .w-cricket .chip:hover:not([aria-checked="true"]):not(.is-selected) { box-shadow: inset 0 0 0 1.5px var(--ink), var(--lit), var(--sh-sm); }
+  .w-cricket .textbtn:hover, .w-cricket .sheet .sheetlinks button:hover { text-decoration-thickness: 2.5px; }
+  .w-cricket .ibtn:not(.on-paper):hover { background-color: color-mix(in srgb, var(--edge) 14%, var(--ground-deep)); }
+  
+  .w-cricket .cr-lb .lrow:hover { background: rgba(239, 237, 228, .07); }
+}
+
+/* chips: sight-screen white with a control hairline at 4:1; a pick is yellow framed in 2 px of ink */
+.w-cricket .chip { background: var(--paper); box-shadow: inset 0 0 0 1px var(--hair-strong), var(--lit), var(--sh-sm); }
+.w-cricket .chip:active, .w-cricket .chip.is-pressed { transform: scale(.985); background: var(--paper-shade); box-shadow: inset 0 0 0 1px var(--hair-strong), inset 0 1px 2px rgba(4, 6, 5, .14); }
+.w-cricket .chip[aria-checked="true"], .w-cricket .chip.is-selected { background: var(--pick); box-shadow: inset 0 0 0 2px var(--ink), var(--sh-md); }
+.w-cricket .chip.is-hover { box-shadow: inset 0 0 0 1.5px var(--ink), var(--lit), var(--sh-sm); }
+.w-cricket .slot.is-filled, .w-cricket .blank.is-filled { box-shadow: inset 0 0 0 2px var(--ink), var(--sh-sm); }
+.w-cricket .slot.is-filled.is-revisited { box-shadow: inset 0 0 0 2px var(--ink), inset 0 0 0 999px rgba(0, 0, 0, .06); }
+
+/* ===== the top bar: solid dark discs and pills in a 1 px polished steel rim (drawn by ::before, so no size changes) ===== */
+.w-cricket .ibtn:not(.on-paper), .w-cricket .seg { position: relative; }
+.w-cricket .ibtn:not(.on-paper)::before, .w-cricket .seg::before {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit; padding: 1px; background: var(--steel);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; }
+.w-cricket .ibtn:not(.on-paper) { background: var(--chrome); color: var(--chalk);
+  transition: transform var(--d-press) var(--ease-std), background-color var(--d-colour) var(--ease-std); }
+.w-cricket .ibtn svg { stroke-width: 1.75; }
+.w-cricket .ibtn:not(.on-paper):active, .w-cricket .ibtn:not(.on-paper).is-pressed { transform: scale(.96); background-color: color-mix(in srgb, var(--chalk) 16%, var(--ground-deep)); }
+.w-cricket .ibtn:not(.on-paper).is-hover { background-color: color-mix(in srgb, var(--edge) 14%, var(--ground-deep)); }
+/* the language switch: one solid pill, the chosen half a chalk puck lit from above */
+
+
+
+
+/* the board switch keeps the world's 4 px corner: a solid plate, the chosen half a chalk plate */
+.w-cricket .seg { background: var(--chrome); box-shadow: none; }
+.w-cricket .seg button[aria-selected="true"] { background: linear-gradient(180deg, #FFFFFF, var(--chalk) 60%); color: var(--ink); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .3); }
+.w-cricket:not(.is-small):not(.is-200) .scr-body:has(> .seg) { gap: 13px; }
+
+/* ===== tabs and the rail: solid, with one polished aluminium hairline where they meet the screen; the current tab's icon sits on
+   a chalk plate, a shape and never a colour alone ===== */
+.w-cricket .tabbar { background: linear-gradient(90deg, var(--steel-line)) 0 0 / 100% 1px no-repeat, var(--chrome); box-shadow: none; }
+.app.w-cricket .rail { background: linear-gradient(180deg, var(--steel-line)) 100% 0 / 1px 100% no-repeat, var(--chrome); box-shadow: none; }
+.w-cricket .tab svg { padding: 3px 8px; border-radius: var(--r-chip); }
+.w-cricket .tab[aria-current="page"] { color: var(--chalk); }
+.w-cricket .tab[aria-current="page"] svg { background: linear-gradient(180deg, #FFFFFF, var(--chalk) 60%); color: var(--ground); box-shadow: inset 0 -.5px 0 rgba(0, 0, 0, .2); }
+.app.w-cricket.is-step .art-img::after { background: color-mix(in srgb, var(--ground-deep) 38%, transparent); }
+
+/* ===== toast, sheet, dialog: solid. The toast is an aluminium plate on two nails; the sheet and dialog are sight-screen white
+   under the outfield crease, their ink frame gone and their lift kept ===== */
+.w-cricket .toast > .t { background: var(--nails), var(--plate); color: var(--chalk); box-shadow: var(--alu-edge), var(--sh-md); }
+.w-cricket .sheet { padding: 0 21px 21px; background: linear-gradient(180deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 40%), var(--paper); box-shadow: var(--lit), 0 -12px 24px rgba(0, 0, 0, .28); }
+.w-cricket .cr-crease { height: 14px; margin: 2px -21px 0; background: linear-gradient(var(--chalk), var(--chalk)) 0 6px / 100% 2px no-repeat, var(--green); }
+.w-cricket .sheet .grab .handle i { width: 36px; height: 5px; }
+.w-cricket .sheet h2 { margin: 5px 0 21px; }
+.w-cricket .sheet h2:not(:lang(hi)) { letter-spacing: -.012em; }
+.w-cricket .sheet .howto { gap: 13px; }
+.w-cricket .sheet .howto svg { stroke-width: 1.75; }
+.w-cricket .sheet .sheetlinks { margin-top: 34px; }
+.w-cricket .sheet .sheetlinks button { min-height: 52px; text-decoration-thickness: 1px; text-underline-offset: 6px; box-shadow: inset 0 1px 0 var(--hair); }
+.w-cricket .sheet .setrow { box-shadow: inset 0 1px 0 var(--hair); }
+.w-cricket .dialog { background: var(--paper); box-shadow: inset 0 0 0 1px var(--hair), var(--lit), var(--sh-lg); }
+.w-cricket .menu { background: var(--paper); box-shadow: inset 0 0 0 1px var(--hair), var(--lit), 0 12px 24px rgba(0, 0, 0, .35); }
+/* a switch that is on is ink with the knob moved right and a tick: no red, no green */
+.w-cricket .setrow[aria-checked="true"] .sw { background: var(--ink); }
+
+/* ===== the batting order: the numbered column and the players' tray ===== */
+.w-cricket .cr-order { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.w-cricket .slot.cr-pos { grid-template-columns: 36px minmax(0, 1fr) auto auto; gap: 8px; padding: 5px 8px 5px 5px; min-height: 56px; }
+.w-cricket .slot.cr-pos.is-target { padding: 5px 8px 5px 5px; }
+.w-cricket .slot.cr-pos.is-filled { padding: 8px 13px 8px 8px; }
+/* an empty place is an unhung slot on the board; only the next place to fill has the solid chalk frame */
+.w-cricket .slot.cr-pos:not(.is-filled):not(.is-target) { border: 0; padding: 8px 13px 8px 8px; background: var(--nails), color-mix(in srgb, var(--hung) 70%, transparent);
+  box-shadow: var(--plate-rule); }
+/* the player just placed keeps the pick yellow; the places before print on the scorecard */
+.w-cricket .slot.cr-pos.is-filled:not(.is-latest) { background: var(--paper); color: var(--ink); box-shadow: var(--band), inset 0 0 0 1px var(--hair), var(--sh-sm); }
+@media (hover: hover) and (pointer: fine) {
+  .w-cricket .slot.cr-pos.is-filled:not(.is-latest):hover { box-shadow: var(--band), inset 0 0 0 1px var(--hair-strong), var(--sh-md); }
+}
+.w-cricket .cr-no { display: grid; place-items: center; width: 36px; height: 40px; color: inherit;
+  font: 600 calc(var(--t-title) * 1.625)/1 var(--num); }   /* the place number is type in its slot: one frame per level */
+.w-cricket .slot.cr-pos .who { min-width: 0; }
+.w-cricket .slot.cr-pos .who > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.w-cricket .slot.cr-pos .stat { font-size: calc(var(--t-title) * 1.375); }
+.w-cricket .cr-tray { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+.w-cricket .row.cr-mini { grid-template-columns: 52px minmax(0, 1fr); gap: 8px; min-height: 72px; padding: 8px 8px 5px 5px !important; }
+.w-cricket .row.cr-mini[hidden] { display: none; }
+.w-cricket .cr-mini .face { width: 52px; }
+.w-cricket .cr-mini .who { display: grid; justify-items: start; gap: 2px; min-width: 0; }
+.w-cricket .cr-mini .stat { font-size: calc(var(--t-title) * 1.375); }
+
+/* ===== the field (assign): fielding positions on outfield green inside the chalk boundary; one hairline tinted from the green ===== */
+.w-cricket .cr-field { padding: 21px 13px; background: radial-gradient(ellipse 60% 92% at 50% 50%, transparent 96.4%, rgba(239, 237, 228, .7) 97% 98.6%, transparent 99.2%),
+  linear-gradient(160deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0) 46%), var(--green);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--chalk) 30%, transparent), inset 0 1px 0 rgba(255, 255, 255, .16), var(--sh-md); border-radius: var(--r-chip); color: var(--chalk); }
+.w-cricket .cr-field .slot:not(.is-filled) { background: color-mix(in srgb, var(--ground-deep) 45%, var(--green)); color: var(--chalk); }
+
+/* ===== the scoreboard: black boards on two steel nails with a polished steel edge (score, week, board, crowd) ===== */
+.w-cricket .cr-board { position: relative; display: grid; gap: 13px; padding: 21px 13px 13px; background: var(--nails), var(--board); color: var(--chalk);
+  box-shadow: var(--steel-edge), var(--sh-md); }
+.w-cricket .cr-bhead { font: 700 var(--t-label)/1.43 'Hind', sans-serif; color: var(--chalk); }
+.w-cricket .cr-board .fig span { color: var(--chalk); }
+.w-cricket .cr-board .fig b { font: 600 calc(var(--t-headline) * 1.25)/1.1 var(--num); color: var(--chalk); font-variant-numeric: tabular-nums; }
+.w-cricket .cr-board .fig b small { font: 700 var(--t-label)/1.43 'Hind', sans-serif; }
+.w-cricket .cr-crowd { padding: 13px 8px 8px; }
+
+/* Board rows on the scoreboard */
+.w-cricket .cr-lb { gap: 5px; padding: 13px 8px 8px; }
+.w-cricket .cr-lb .cr-bhead { padding: 0 5px; }
+.w-cricket .cr-lb .lrow { color: var(--chalk); grid-template-columns: 3.6em minmax(0, 1fr) auto; gap: 8px; min-height: 56px; }
+.w-cricket .cr-lb li + li .lrow { box-shadow: inset 0 1px 0 rgba(239, 237, 228, .12); }
+.w-cricket .cr-lb li:has(.is-you) + li .lrow { box-shadow: none; }
+.w-cricket .cr-lb .lrow.is-you { background: var(--pick); color: var(--pick-ink); box-shadow: none !important; }
+.w-cricket .cr-lb .lrow.is-you .cr-rk { color: var(--pick-ink); }   /* the chalk rank vanished on the yellow */
+.w-cricket .cr-lb .lrow:active, .w-cricket .cr-lb .lrow.is-pressed, .w-cricket .cr-lb .lrow.is-hover { background: rgba(239, 237, 228, .1); }
+.w-cricket .lrow .cr-rk { justify-self: start; display: inline-grid; place-items: center; min-width: 1.6em; height: 1.65em; color: var(--chalk);
+  font: 600 calc(var(--t-title) * 1.375)/1 var(--num); font-variant-numeric: tabular-nums; }
+.w-cricket .cr-lb .lrow .pr { font: 600 calc(var(--t-title) * 1.625)/1 var(--num); }
+.w-cricket .cr-lb .gapdots { color: var(--chalk); }
+
+/* ===== the result: the hand-hung scoreboard, then the scorecard ===== */
+.w-cricket .cr-score { position: relative; align-self: center; width: fit-content; margin-inline: auto; display: grid; justify-items: center; gap: 8px; min-width: 216px; padding: 21px 21px 21px;
+  background: var(--nails), var(--board); color: var(--chalk); box-shadow: var(--steel-edge), var(--sh-lg); }
+/* on the result the board hangs low, on the face of the painted scoreboard, just above the scorecard */
+.w-cricket .scr-body.is-cover > .cr-score { margin-top: auto; }
+.w-cricket .scr-body.is-cover > .cr-score + .cr-card { margin-top: 13px; }
+.w-cricket .cr-lab { font: 700 var(--t-label)/1.43 'Hind', sans-serif; color: var(--chalk); }
+.w-cricket .cr-hung { margin: 0; display: block; }
+.w-cricket .cr-digits { display: flex; gap: .02em; }
+.w-cricket .cr-hp { display: inline-block; font: 600 calc(var(--t-score) * 1.9)/1 var(--num); font-style: normal;
+  color: var(--chalk); font-variant-numeric: tabular-nums; transform-origin: 50% 0; }   /* the digits drop onto the board itself, set as one number: no plates, no gap */
+/* the third umpire's screen: a stadium screen set in a brushed steel bezel lit from the top left, the face recessed with one lit
+   lower lip; the call in Khand capitals, three cherry lamps */
+.w-cricket .cr-third { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 13px; padding: 8px; text-align: center; visibility: hidden;
+  border: 8px solid transparent; color: var(--chalk);
+  background: repeating-linear-gradient(0deg, rgba(239, 237, 228, .06) 0 1px, transparent 1px 3px) padding-box, linear-gradient(var(--ground-deep), var(--ground-deep)) padding-box,
+              var(--steel-grain) border-box, linear-gradient(160deg, #E2E5E8 0%, #AEB4B9 28%, #858B91 60%, #5C6268 100%) border-box;
+  box-shadow: inset 0 3px 6px -1px rgba(0, 0, 0, .75), inset 0 0 0 1px rgba(0, 0, 0, .7), inset 0 -2px 0 -1px rgba(255, 255, 255, .14), var(--sh-lg);
+  font: 700 calc(var(--t-headline) * 1.5)/1.05 var(--num); text-transform: uppercase; letter-spacing: .04em; }
+.w-cricket .cr-third:lang(hi), .w-cricket .cr-third [lang="hi"] { line-height: 1.3; letter-spacing: 0; }
+.w-cricket .cr-lamps { display: flex; gap: 13px; }
+.w-cricket .cr-lamps i { width: 10px; height: 10px; border-radius: 9999px; background: var(--accent); box-shadow: 0 0 0 1.5px var(--chalk); }
+/* the signature move: the screen holds for a beat while its lamps step on, then the plates drop one by one (at most 1.2 s in all) */
+.w-cricket .cr-third { animation: cr-third var(--m5) linear both; }   /* the reveal on the golden-ratio motion steps: 680 pending, lamps at 100, 260, 420, digits from 680, 160 apart, each 260: done by 1100 */
+.w-cricket .cr-lamps i { animation: cr-lamp 1ms linear both; animation-delay: var(--m1); }
+.w-cricket .cr-lamps i:nth-child(2) { animation-delay: var(--m3); }
+.w-cricket .cr-lamps i:nth-child(3) { animation-delay: var(--m4); }
+.w-cricket .cr-hp { animation: cr-drop var(--m3) cubic-bezier(.05, .7, .1, 1) both; animation-delay: calc(var(--m5) + var(--i, 0) * var(--m2)); }
+@keyframes cr-third { 0%, 88% { visibility: visible; } 100% { visibility: hidden; } }
+@keyframes cr-lamp { from { background: var(--hung); box-shadow: 0 0 0 1.5px rgba(239, 237, 228, .4); } to { background: var(--accent); box-shadow: 0 0 0 1.5px var(--chalk); } }
+@keyframes cr-drop { 0% { transform: translateY(-56px) rotate(-5deg); opacity: 0; } 55% { transform: translateY(3px) rotate(2deg); opacity: 1; } 80% { transform: translateY(-1px) rotate(-1deg); } 100% { transform: none; opacity: 1; } }
+.w-cricket .cr-score.cr-reset, .w-cricket .cr-score.cr-reset * { animation: none !important; }
+/* drawn states for the library: the moment held, and the still state (reduced motion is a cut to the hung score) */
+.w-cricket.cr-pending .cr-third { animation: none; visibility: visible; }
+.w-cricket.cr-pending .cr-lamps i { animation: none; }
+.w-cricket.cr-pending .cr-hp { animation: none; opacity: 0; }
+.w-cricket.cr-still .cr-third, .w-cricket.cr-still .cr-hp { animation: none; }
+.w-cricket .cr-score.cr-hind .cr-hp { font-family: 'Hind', sans-serif; font-weight: 700; font-size: var(--t-score); padding-top: 0; }
+
+/* the scorecard under it: the printed band, hairline rules between the columns, the figures in Khand */
+.w-cricket .slip { border-radius: 0; transform: none; background: var(--paper); box-shadow: var(--band), inset 0 0 0 1px var(--hair), var(--sh-md); padding: 21px 21px 21px; gap: 13px; }
+.w-cricket.is-small .slip, .w-cricket.is-200 .slip { padding: 21px 13px 13px; gap: 8px; }
+.w-cricket .cr-card .figs { gap: 0; }
+.w-cricket .cr-card .fig { padding: 0 13px; }
+.w-cricket .cr-card .fig:first-child { padding-left: 0; }
+.w-cricket .cr-card .fig + .fig { box-shadow: inset 1px 0 0 color-mix(in srgb, var(--ink) 24%, transparent); }
+/* the steel scorecard clip: a brushed steel jaw over the band, lit from the top left, two domed rivets, a fold line and a soft
+   shadow; it sits in the card's top padding, clear of every word */
+.w-cricket .cr-card, .w-cricket .cr-comm { position: relative; }
+.w-cricket .cr-card::before, .w-cricket .cr-comm::before {
+  content: ""; position: absolute; top: -7px; left: 50%; width: 72px; height: 18px; margin-left: -36px; z-index: 1; pointer-events: none; border-radius: 3px 3px 6px 6px;
+  background: var(--nail-lit) left 9.5px top 7px / 2px 2px no-repeat, var(--nail) left 8.5px top 6.5px / 5px 5px no-repeat,
+              var(--nail-lit) right 11.5px top 7px / 2px 2px no-repeat, var(--nail) right 8.5px top 6.5px / 5px 5px no-repeat,
+              linear-gradient(transparent 12px, rgba(0, 0, 0, .32) 12px 13px, rgba(255, 255, 255, .3) 13px 14px, transparent 14px),
+              var(--steel-grain), linear-gradient(160deg, #EEF0F2 0%, #BCC2C7 30%, #8E949A 64%, #6A7076 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), inset 0 -1px 0 rgba(0, 0, 0, .3), 0 0 0 .5px rgba(0, 0, 0, .45), .5px 1.5px 1.5px rgba(0, 0, 0, .18), 1px 5px 10px -3px rgba(0, 0, 0, .14); }
+.w-cricket .cr-card .fig b { font: 600 calc(var(--t-headline) * 1.25)/1.1 var(--num); font-variant-numeric: tabular-nums; }
+.w-cricket .cr-card .fig b small { font: 700 var(--t-label)/1.43 'Hind', sans-serif; }
+/* the week as an over: the same ball as everywhere on paper (cherry, chalk seam, an edge in the mark colour) */
+.w-cricket .spine i { width: 22px; height: 22px; margin-top: 21px; border-radius: 9999px; }
+.w-cricket .spine.played i, .w-cricket .spine.today i { background: linear-gradient(90deg, transparent 44%, var(--chalk) 44% 56%, transparent 56%), var(--accent); }
+.w-cricket .spine.played i { box-shadow: inset 0 0 0 1.5px var(--mk-fg); }
+.w-cricket .spine.today i { box-shadow: inset 0 0 0 1.5px var(--mk-fg), 0 0 0 3px var(--mk-bg), 0 0 0 5px var(--mk-fg); }
+.w-cricket .spine.forgiven i, .w-cricket .spine.notplayed i { background: transparent; box-shadow: inset 0 0 0 2px var(--mk-fg); opacity: 1; }
+.w-cricket .spine.forgiven i::after { content: none; }
+.w-cricket .spine.todo i { width: 8px; height: 8px; margin-top: 21px; background: transparent; box-shadow: inset 0 0 0 2px var(--mk-fg); opacity: .7; }
+
+/* ===== Sunday: six days as six aluminium plates on steel nails; a filled ball is a day played ===== */
+.w-cricket .cr-week .daygrid, .w-cricket .cr-board .daygrid { gap: 5px; }
+.w-cricket .dayobj.cr-day { aspect-ratio: auto; min-height: 0; display: grid; justify-items: center; align-content: end; gap: 8px; padding: 5px 0;
+  background: none; box-shadow: none; }   /* the ball and the day sit on the board itself: one frame per level */
+.w-cricket .cr-day b { background: none; box-shadow: none; color: var(--chalk); }
+.w-cricket .cr-day .cr-ball { display: block; width: 24px; height: 24px; border-radius: 9999px; }
+.w-cricket .cr-day.played .cr-ball { background: linear-gradient(90deg, transparent 44%, var(--accent) 44% 56%, transparent 56%), var(--chalk); }
+.w-cricket .cr-day.forgiven, .w-cricket .cr-day.notplayed { filter: none; }
+.w-cricket .cr-day.forgiven .cr-ball, .w-cricket .cr-day.notplayed .cr-ball { box-shadow: inset 0 0 0 2px var(--chalk); }
+.w-cricket .cr-day.notplayed .cr-ball { opacity: .7; }
+/* a day off is the ball struck through, no word on the plate; the week board's label says "Tuesday off" */
+.w-cricket .cr-day.forgiven .cr-ball { background: linear-gradient(135deg, transparent calc(50% - 1px), var(--chalk) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)); }
+
+/* ===== words, look again, sort: scorecards with the printed band ===== */
+.w-cricket .paperpage, .w-cricket .pairinfo .pi, .w-cricket .stack { background-color: var(--paper); box-shadow: var(--band), inset 0 0 0 1px var(--hair), var(--sh-md); }
+.w-cricket .stack::before, .w-cricket .stack::after { background: var(--paper-shade); box-shadow: inset 0 0 0 1px var(--hair), var(--sh-sm); }
+.w-cricket .paperpage { padding-top: 21px; }
+.w-cricket .cr-comm { padding: 21px 21px 13px; }
+.w-cricket .pairinfo .pi { padding-top: 13px; }
+.w-cricket .stack { padding-top: 21px; }
+
+/* ===== the starter's chapter title card ===== */
+.w-cricket .cr-chap { gap: 5px; }
+.w-cricket .cr-chap .bigline { color: var(--on-ground); }
+.w-cricket .cr-marks { display: flex; gap: 8px; padding: 2px 0 5px; }
+.w-cricket .cr-marks i { width: 20px; height: 20px; border-radius: 9999px; box-shadow: inset 0 0 0 2px var(--chalk); }
+.w-cricket .cr-marks i.is-done { background: var(--chalk); }
+.w-cricket .cr-marks i.is-now { box-shadow: inset 0 0 0 2px var(--chalk), inset 0 0 0 5px var(--ground), inset 0 0 0 10px var(--chalk); }
+
+/* ===== share card and the library's motion demo ===== */
+.w-cricket .sc-marks i { border-radius: 9999px; }
+.w-cricket .cr-demo { gap: 21px; }
+
+/* ===== 200% text and small phones ===== */
+.w-cricket.is-200 .cr-tray { grid-template-columns: 1fr; }
+.w-cricket.is-200 .cr-hp { font-size: calc(var(--t-score) * 1.3); }
+.w-cricket.is-200 .dayobj.cr-day { min-height: 0; }
+/* the two Sunday figures stay side by side at 200%, so the whole week board sits above the dock */
+.w-cricket.is-200 .cr-week .figs.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* at 200% the scorecard's figures stack, so they lose the column rules */
+.w-cricket.is-200 .cr-card .fig { padding: 0; box-shadow: none; }
+/* a text button never shrinks below its line in a scrolling body, and at 200% the language pill keeps its letters off the
+   rounded ends, so no painting shows inside the letters' box */
+.w-cricket .textbtn { flex: none; }
+
+/* at 200% the chalk puck fills its half as a 4 px plate, so the larger letters stay on it */
+
+
+.w-cricket.is-small .cr-namebd { padding: 13px 13px 8px; }
+/* small phones and 200% text keep the library's spacing: they scroll once already, so the extra air would only push more under
+   the scroll fade (and at 200% a wider question box would wrap the Hindi question onto a second line) */
+.w-cricket.is-small .qbox, .w-cricket.is-200 .qbox { padding: 8px 13px; }
+.w-cricket.is-small .plate, .w-cricket.is-200 .plate { padding: 13px 13px; gap: 8px; }
+.w-cricket.is-small .cr-board:not(.cr-lb):not(.cr-crowd), .w-cricket.is-200 .cr-board:not(.cr-lb):not(.cr-crowd) { padding: 13px 13px 13px; }
+/* ===== the change stamp and the milestone: a chalk disc in a polished steel rim, lit from the top left, one cherry ring inside
+   the rim ===== */
+.w-cricket .changestamp, .w-cricket .milestone { transform: none; border: 3px solid transparent;
+  background: radial-gradient(circle at 34% 28%, rgba(255, 255, 255, .6), rgba(255, 255, 255, 0) 42%) padding-box, linear-gradient(var(--title), var(--title)) padding-box, var(--steel) border-box;
+  box-shadow: inset 0 0 0 5px var(--accent), inset 0 0 0 6px color-mix(in srgb, var(--accent) 40%, #000), inset 0 1px 3px 6px rgba(0, 0, 0, .06), 0 0 0 .5px rgba(0, 0, 0, .5), var(--sh-lg); }
+
+/* ===== the weeks side by side (the month): sight-screen white chips, one hairline, a lit top edge ===== */
+.w-cricket .leanrow .wk { box-shadow: inset 0 0 0 1px var(--hair), var(--lit), var(--sh-sm); }
+.w-cricket .leanrow .wk.is-now { box-shadow: inset 0 0 0 2px var(--ink), var(--lit), var(--sh-sm); }
+
+/* focus specimens keep their inner ring over the finish's shadows */
+.w-cricket .chip.is-focus, .w-cricket .main.is-focus, .w-cricket .ibtn.is-focus { box-shadow: 0 0 0 5px var(--focus-inner); }

@@ -1,0 +1,384 @@
+/* Jadugar: the travelling jadoo show. Night ground, card stock, curtain crimson for what hides and reveals (the cloth,
+   card backs, the curtain buttons), old gold for rules and frames only, emerald felt for the card table.
+   Every selector is scoped to .w-jadugar; the type specimen .ts-jadugar is the one exception.
+   Crimson and emerald never sit bare on the night: each arrives rimmed in gold or on card stock.
+   Raster plates (assets/, drawn by art/jadugar_props.py): tex-cardstock (linen card stock under every card, bill, slip and
+   sheet), tex-showpaint (the title's dry-brush wear), the cloth cover and gathered cloth, the title banner, the fringe, the
+   basket frame. Drawn for the metal finish (their sidecars carry the generator): jadugar-box-brass (the boxes, with
+   spun-brass corner caps) and jadugar-cord-gilt (the banner's gold cord). Three radii: 0, 8 and round.
+
+   The metal finish (O14), the owner's pick from the premium study, without its glass. The metals are brass and gilt. One
+   light, high on the left: lit edges sit at the top and left, and soft shadows (6 to 14 percent, under physical objects
+   only) fall down and a touch right. Playing cards are gilt-edged (one gilt hairline at the card's edge, bright where it
+   faces the light) in place of the old gold rule 4 px in; the bills keep one gilt rule inside their edge; the boxes wear
+   spun-brass corner caps; the day ticket a punched hole ringed in brass; the banner a twisted gilt cord. Every other ink
+   frame or double gold rule becomes a hairline tinted from its own surface. The tab bar, round buttons, switches, rail and
+   "?" sheet are solid; flat controls carry no soft shadow. Text colours stay plain hex: the pixel contrast check reads them. */
+
+/* ===== tokens ===== */
+.w-jadugar {
+  --ground: #1A1F4A; --ground-deep: #10132E; --paper: #FBF5E8; --paper-shade: #EFE4CC; --ink: #17110F; --title: #FBF5E8; --accent: #9E1B32;
+  --muted: #4A4E80; --on-muted: #FBF5E8; --edge: #FBF5E8; --on-ground: #FBF5E8; --on-ground-soft: #C9CBE6; --showgold: #F2D27A;
+  --r-card: 8px; --r-chip: 8px; --frame: 1px; --tex: url(../assets/tex-cardstock.webp);
+  --main-offset: none; --main-offset-pressed: none;
+  --gold: #B08A3E; --felt: #1F6B4F;
+  /* metal: a gilt hairline lit from the top left (top, left, bottom, right, then the edge itself), a brass rim for round parts */
+  --gilt-edge: inset 0 1px 0 #F4E0A4, inset 1px 0 0 #D6B468, inset 0 -1px 0 #7C5B25, inset -1px 0 0 #977332, inset 0 0 0 1px var(--gold);
+  --gilt-line: #F4E0A4, #D6B468 24%, #B08A3E 52%, #8C6A2C 78%, #6E5020;
+  --brass: linear-gradient(155deg, #FBEAB8 0%, #D9B566 22%, #9C7832 48%, #C7A251 70%, #6E5020 100%);
+  --brass-ring: conic-gradient(#C9A458, #8C6A2C 90deg, #5E4517 135deg, #8C6A2C 180deg, #D9B566 270deg, #FFF1CC 315deg, #C9A458);
+  /* surfaces: solid night lacquer for plates and controls on the night; hairlines tinted from their own surface */
+  --night: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0) 55%) var(--ground-deep);
+  --night-hair: color-mix(in srgb, var(--on-ground) 16%, transparent);
+  --hair: color-mix(in srgb, var(--ink) 14%, transparent);
+  --hair-strong: color-mix(in srgb, var(--ink) 55%, var(--paper));
+  --rule: color-mix(in srgb, var(--ink) 12%, transparent);
+  --lit: inset 0 1px 0 rgba(255, 255, 255, .62);
+  --sh-sm: .5px 1px 1px rgba(5, 6, 20, .10), 1px 4px 10px -2px rgba(5, 6, 20, .12);
+  --sh-md: .5px 1px 1px rgba(5, 6, 20, .10), 2px 10px 24px -6px rgba(5, 6, 20, .14);
+  --sh-lg: 1px 2px 2px rgba(5, 6, 20, .10), 3px 18px 40px -10px rgba(5, 6, 20, .14);
+  --plate-rule: inset 0 0 0 1px var(--night-hair);
+  --back: repeating-linear-gradient(45deg, transparent 0 4px, color-mix(in srgb, var(--gold) 80%, transparent) 4px 5px),
+          repeating-linear-gradient(-45deg, transparent 0 4px, color-mix(in srgb, var(--gold) 80%, transparent) 4px 5px), var(--accent);
+}
+.ts-jadugar { font: 400 2.8125rem/1.15 'Yatra One', 'Hind', sans-serif; }
+.ts-jadugar:lang(hi) { line-height: 1.3; }
+
+/* ===== captions and plates on the night: solid night lacquer (no glass). The question and the cover's plate are the gilt
+   plates, one gilt hairline lit from above; the small captions carry only a hairline tinted from the night. :where() keeps
+   the small captions at the library's weight, so a byline printed on a bill or a paper stack stays bare ===== */
+.w-jadugar .qbox, .w-jadugar .statkey, .w-jadugar .pool, .w-jadugar .refusal, :where(.w-jadugar) .byline, :where(.w-jadugar) .band,
+:where(.w-jadugar) .nextline, :where(.w-jadugar) .rulelabel, :where(.w-jadugar) .plate {
+  background: var(--night); color: var(--on-ground); box-shadow: inset 0 0 0 1px var(--night-hair), var(--sh-sm); }
+.w-jadugar .qbox, .w-jadugar .plate { box-shadow: var(--gilt-edge), var(--sh-sm); }
+.w-jadugar .qbox { padding: 13px 21px; }
+.w-jadugar .q { letter-spacing: -.012em; }
+.w-jadugar .plate { padding: 13px 21px; gap: 5px; }
+:where(.w-jadugar) .byline { min-height: 44px; padding: 8px 13px 8px 8px; gap: 8px; }
+.w-jadugar .statkey { min-height: 44px; align-items: center; padding: 8px 13px; gap: 5px 13px; letter-spacing: .01em; }
+.w-jadugar .refusal, :where(.w-jadugar) .band, :where(.w-jadugar) .nextline, :where(.w-jadugar) .rulelabel { padding: 8px 13px; }
+:where(.w-jadugar) .textbtn { background: var(--night); box-shadow: inset 0 0 0 1px var(--night-hair); padding: 0 13px; text-decoration-thickness: 1.5px; text-underline-offset: 6px; }
+.w-jadugar .byline i, .w-jadugar .ctx i, .w-jadugar .voice .av { box-shadow: 0 0 0 1px #C9A458, var(--sh-sm); }
+.w-jadugar .voice .balloon { border-width: 1px; border-color: var(--gold); background: var(--ground-deep); box-shadow: var(--sh-sm); }
+.w-jadugar .voice .balloon::before { left: -8px; border-left: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
+
+/* the step's speaker and the stat key share one line: one row of two small plates instead of two stacked strips */
+.w-jadugar:not(.is-200) .scr-body:has(> .byline + .statkey) {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-content: start; column-gap: 8px; row-gap: var(--f8); }
+.w-jadugar:not(.is-200) .scr-body:has(> .byline + .statkey) > * { grid-column: 1 / -1; }
+.w-jadugar:not(.is-200) .scr-body:has(> .byline + .statkey) > .qbox { justify-self: start; }
+.w-jadugar:not(.is-200) .scr-body:has(> .byline + .statkey) > .byline { grid-column: 1; justify-self: start; align-self: center; }
+.w-jadugar:not(.is-200) .scr-body:has(> .byline + .statkey) > .statkey { grid-column: 2; justify-self: end; align-self: center; }
+.w-jadugar[lang="hi"]:not(.is-200) .scr-body:has(> .byline + .statkey) { row-gap: var(--f8); }
+
+/* the day plate: a show ticket stub on card stock that hugs its words. The stub end carries one crimson diamond pip, then
+   perforations; the far end is punched through, the hole ringed in brass; a notch in each short edge */
+.w-jadugar .dayplate { position: relative; flex: 0 1 auto; color: var(--ink); background-color: var(--paper); padding: 5px 34px 5px 38px; letter-spacing: .01em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 0l3.4 5L5 10 1.6 5z' fill='%239E1B32'/%3E%3C/svg%3E"),
+    radial-gradient(circle, var(--ground-deep) 1.5px, transparent 2px), var(--tex);
+  background-size: 10px 10px, 6px 6px, 256px; background-position: 8px 50%, 21px 1px, 0 0; background-repeat: no-repeat, repeat-y, repeat;
+  -webkit-mask: radial-gradient(circle 2.6px at calc(100% - 15px) 50%, transparent 92%, #000), radial-gradient(circle 6px at 0 50%, transparent 95%, #000) left / 51% 100% no-repeat, radial-gradient(circle 6px at 100% 50%, transparent 95%, #000) right / 51% 100% no-repeat;
+  -webkit-mask-composite: source-in, source-over, source-over;
+  mask: radial-gradient(circle 2.6px at calc(100% - 15px) 50%, transparent 92%, #000), radial-gradient(circle 6px at 0 50%, transparent 95%, #000) left / 51% 100% no-repeat, radial-gradient(circle 6px at 100% 50%, transparent 95%, #000) right / 51% 100% no-repeat;
+  mask-composite: intersect, add, add; }
+.w-jadugar .topbar.is-bare .dayplate { flex-basis: 100%; }
+/* 200% text: the stub fills the bar again and the punched hole is left out, so the troupe's name stays on one line and
+   the step below sits where it did */
+.w-jadugar.is-200 .dayplate { flex: 1 1 0%; padding: 5px 13px 5px 36px;
+  -webkit-mask: radial-gradient(circle 6px at 0 50%, transparent 95%, #000) left / 51% 100% no-repeat, radial-gradient(circle 6px at 100% 50%, transparent 95%, #000) right / 51% 100% no-repeat;
+  -webkit-mask-composite: source-over;
+  mask: radial-gradient(circle 6px at 0 50%, transparent 95%, #000) left / 51% 100% no-repeat, radial-gradient(circle 6px at 100% 50%, transparent 95%, #000) right / 51% 100% no-repeat;
+  mask-composite: add; }
+.w-jadugar.is-200 .dayplate::after { display: none; }
+/* the brass ring round the punched hole: spun brass lit from the top left, a dark lip at its outer edge */
+.w-jadugar .dayplate::after { content: ""; position: absolute; right: 9.5px; top: 50%; width: 11px; height: 11px; margin-top: -5.5px; border-radius: 9999px; pointer-events: none;
+  background: radial-gradient(circle closest-side, transparent 0 62%, rgba(40, 25, 5, 0) 74%, rgba(40, 25, 5, .45) 100%), var(--brass-ring);
+  box-shadow: .5px 1px 1px rgba(40, 25, 5, .3); }
+
+/* the cover: the troupe and the show number on a crimson mast in one gilt hairline; the title lettered in show gold on a
+   hanging velvet banner (a painted plate under a twisted gilt cord, with a gold fringe), worn by a dry-brush mask as Lugdi's
+   title is worn by its ink mask. The cord casts a soft shadow on the velvet, and the banner one on the painting */
+.w-jadugar .jd-mast { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 40px; padding: 8px 13px; color: var(--paper);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, 0) 60%), var(--accent); letter-spacing: .01em;
+  font: 700 var(--t-label)/1.43 'Hind', sans-serif; box-shadow: var(--gilt-edge), var(--sh-sm); }
+.w-jadugar.is-loading .jd-mast { visibility: hidden; }
+.w-jadugar .coverstack { gap: 13px; }
+.w-jadugar .jd-banner { justify-self: start; max-width: 100%; filter: drop-shadow(1px 6px 10px rgba(5, 6, 20, .14));
+  background: url(../assets/jadugar-cord-gilt.webp) 0 0 / 24px 6px repeat-x, linear-gradient(rgba(22, 2, 7, .5), rgba(22, 2, 7, 0)) 0 6px / 100% 4px no-repeat,
+              url(../assets/jadugar-fringe.webp) 0 100% / 32px 18px repeat-x, url(../assets/jadugar-banner.webp) 0 6px / 100% calc(100% - 18px) no-repeat; }
+.w-jadugar.is-loading .jd-banner { background: none; filter: none; }
+/* the title's padding keeps its letters (and their line box) clear of the cord above and the fringe below */
+.w-jadugar .jd-title { margin: 0; padding: calc(8px + .22em) 21px calc(21px + .22em); font: 400 var(--t-display)/1.15 'Yatra One', 'Hind', sans-serif; color: var(--showgold); text-wrap: balance;
+  text-shadow: 0 0 3px rgba(22, 2, 7, .8), 0 0 14px rgba(22, 2, 7, .7);
+  -webkit-mask-image: url(../assets/tex-showpaint.webp); mask-image: url(../assets/tex-showpaint.webp); -webkit-mask-size: 256px; mask-size: 256px; }
+.w-jadugar .jd-title:lang(hi) { line-height: 1.3; -webkit-mask-image: none; mask-image: none; }
+
+/* ===== the person card: a gilt-edged playing card on linen stock, radius 8, on a soft shadow. Since 22 Oct (owner: "this is
+   bad" of the corner index) it reads top down like every world's card: the portrait across the top, then the name, the
+   numbers in one row, the line; one left edge for all the words ===== */
+.w-jadugar .tile, .w-jadugar .row { background: var(--paper) var(--tex); background-size: 256px; color: var(--ink); box-shadow: var(--gilt-edge), var(--sh-md); }
+.w-jadugar .tile { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto 1fr auto; row-gap: 0; padding: 8px 8px 13px; }
+.w-jadugar .face { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 22%, transparent), inset .5px 1px 3px rgba(0, 0, 0, .28); }
+.w-jadugar .nm { letter-spacing: .005em; }
+.w-jadugar .stat { letter-spacing: -.01em; }
+.w-jadugar .tile .stats { grid-column: 1; grid-row: 4; padding: 0 5px; }   /* on the card's foot, as every world's (library.css) */
+.w-jadugar :is(.tile, .row) .stat svg { color: var(--accent); }
+.w-jadugar .tile .face, .w-jadugar .tiles .tile .face { grid-column: 1; grid-row: 1; aspect-ratio: 5 / 4; min-height: 0; background-position: center 30%; }
+.w-jadugar .tile .nmrow { grid-column: 1; grid-row: 2; padding: 0 5px; }
+.w-jadugar .tile :is(.quote, .note) { grid-column: 1; grid-row: 3; padding: 0 5px; }
+/* in the game the cards share the screen: a wide crop of the face (zoomed past the card art's cream edge) keeps four on it */
+.w-jadugar .tiles .tile { row-gap: 0; padding: 8px 8px 13px; }   /* the card's picture 8 clear of its gilt edge */
+.w-jadugar .tiles .tile .face { aspect-ratio: 5 / 4; background-size: 112%; background-position: center 28%; }
+.w-jadugar .tiles .tile .quote { min-height: 0; }
+/* small phones and 200% text: they scroll once already, and nothing new may land under the fade */
+.w-jadugar.is-small .tile, .w-jadugar.is-200 .tile { padding: 8px 8px 13px; row-gap: 0; }
+.w-jadugar .tile:active, .w-jadugar .tile.is-pressed, .w-jadugar .row:active, .w-jadugar .row.is-pressed {
+  transform: scale(.985); background-color: var(--paper-shade); box-shadow: var(--gilt-edge), inset 0 1px 3px rgba(23, 17, 15, .16), var(--sh-sm); }
+/* the pick: yellow printed over the card, framed in 2 px of ink, lifted a little further; a paper tick on the portrait */
+.w-jadugar .tile[aria-checked="true"], .w-jadugar .tile.is-selected, .w-jadugar .row[aria-checked="true"], .w-jadugar .row.is-selected { box-shadow: inset 0 0 0 2px var(--ink), var(--sh-lg); }
+.w-jadugar .tile.is-armed, .w-jadugar .row.is-armed { box-shadow: inset 0 0 0 2px var(--ink), 0 0 0 2px var(--paper), var(--sh-lg); }
+.w-jadugar .tile.is-focus, .w-jadugar .row.is-focus { box-shadow: var(--gilt-edge), 0 0 0 5px var(--focus-inner); }
+.w-jadugar .tile.is-hover:not(.is-selected), .w-jadugar .row.is-hover:not(.is-selected) { box-shadow: var(--gilt-edge), inset 0 0 0 2px var(--hair-strong), var(--sh-lg); }
+.w-jadugar .tick { top: 16px; right: 16px; width: 32px; height: 32px; background: var(--paper); color: var(--ink); box-shadow: var(--lit), 0 0 0 .5px rgba(0, 0, 0, .3), var(--sh-sm); }
+.w-jadugar .tick svg { width: 18px; height: 18px; stroke-width: 2.75; }
+.w-jadugar .row .tick { top: 10px; right: 10px; }
+@container play (min-width: 440px) { .w-jadugar .tile .tick { top: 10px; right: 10px; } }
+/* cards on their side, once the game column is wide (laptops, tablets on their side) */
+@container play (min-width: 440px) {
+  .w-jadugar .tile, .w-jadugar .tiles .tile { grid-template-columns: 80px minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 8px; padding: 8px 8px 8px 8px; }
+  .w-jadugar .tile .face, .w-jadugar .tiles .tile .face, .w-jadugar.phone[lang="hi"] .tiles .tile .face { grid-column: 1; grid-row: 1 / 4; width: 80px; aspect-ratio: 5 / 4; background-size: cover; align-self: start; }
+  .w-jadugar .tile .nmrow, .w-jadugar .tile .stats, .w-jadugar .tile .quote { grid-column: 2; padding: 0; }
+  .w-jadugar .tile .nmrow { grid-row: 1; }
+  .w-jadugar .tile .stats { grid-row: 2; }
+  .w-jadugar .tile .quote { grid-row: 3; }
+}
+@container play (min-width: 600px) {
+  .w-jadugar .tile, .w-jadugar .tiles .tile { grid-template-columns: 112px minmax(0, 1fr); }
+  .w-jadugar .tile .face, .w-jadugar .tiles .tile .face, .w-jadugar.phone[lang="hi"] .tiles .tile .face { width: 112px; }
+}
+
+/* ===== main buttons: live is the shared yellow, lacquered with one soft sheen; outside a puzzle it is the curtain, crimson
+   velvet in one gilt hairline ===== */
+.w-jadugar .main { letter-spacing: .005em; }
+.w-jadugar .main.is-live {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0) 56%), var(--pick);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .75), inset 0 -2px 0 rgba(120, 78, 0, .2), 0 0 0 .5px rgba(90, 60, 0, .5), var(--sh-md); }
+.w-jadugar .main.is-live:active, .w-jadugar .main.is-live.is-pressed, .w-jadugar .main.is-committing {
+  transform: translateY(1px) scale(.99);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, .1) 100%), var(--pick);
+  box-shadow: inset 0 1px 2px rgba(120, 78, 0, .22), inset 0 -.5px 0 rgba(120, 78, 0, .2), 0 0 0 .5px rgba(90, 60, 0, .5), var(--sh-sm); }
+.w-jadugar .main.is-wait {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0) 60%), var(--muted);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--edge) 58%, transparent), inset 0 1px 0 rgba(255, 255, 255, .12), var(--sh-sm); }
+.w-jadugar .main.is-out { color: var(--paper); border-radius: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, 0) 52%), var(--accent); box-shadow: var(--gilt-edge), var(--sh-md); }
+.w-jadugar .main.is-out:active, .w-jadugar .main.is-out.is-pressed { transform: translateY(1px) scale(.99);
+  background: linear-gradient(180deg, rgba(0, 0, 0, .08), rgba(0, 0, 0, 0) 40%), color-mix(in srgb, var(--accent) 86%, var(--ink));
+  box-shadow: var(--gilt-edge), inset 0 1px 3px rgba(20, 2, 8, .35), var(--sh-sm); }
+.w-jadugar .main.is-out.jd-cream { background: var(--paper) var(--tex); background-size: 256px; color: var(--ink); box-shadow: var(--gilt-edge), var(--sh-md); }
+.w-jadugar .main.is-live.is-hover { transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), inset 0 -2px 0 rgba(120, 78, 0, .2), 0 0 0 .5px rgba(90, 60, 0, .5), var(--sh-lg); }
+.w-jadugar .main.is-out.is-hover { background: linear-gradient(180deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, 0) 52%), color-mix(in srgb, var(--accent) 92%, var(--ink)); box-shadow: var(--gilt-edge), var(--sh-lg); }
+
+/* ===== the top bar: solid night discs and pills in a 1 px brass rim (drawn by ::before, so no size changes) ===== */
+.w-jadugar .ibtn:not(.on-paper), .w-jadugar .daycount, .w-jadugar .seg { position: relative; }
+.w-jadugar .ibtn:not(.on-paper)::before, .w-jadugar .daycount::before, .w-jadugar .seg::before {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit; padding: 1px; background: var(--brass);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; }
+.w-jadugar .ibtn:not(.on-paper) { background: var(--night); color: var(--on-ground);
+  transition: transform var(--d-press) var(--ease-std), background-color var(--d-colour) var(--ease-std); }
+.w-jadugar .ibtn:not(.on-paper):active, .w-jadugar .ibtn:not(.on-paper).is-pressed { background: color-mix(in srgb, var(--on-ground) 14%, var(--ground-deep)); transform: scale(.96); }
+.w-jadugar .ibtn:not(.on-paper).is-hover { background: color-mix(in srgb, var(--edge) 16%, var(--ground-deep)); }
+.w-jadugar .daycount { min-height: 40px; padding: 0 13px; border-radius: 9999px; background: var(--night); color: var(--on-ground); box-shadow: none; font-variant-numeric: tabular-nums; }
+/* the language and board switches: one solid pill, the chosen half a card-stock puck */
+.w-jadugar .seg { border-radius: 9999px; background: var(--night); box-shadow: none; }
+
+.w-jadugar .seg button { position: relative; isolation: isolate; border-radius: 9999px; color: var(--on-ground); }
+.w-jadugar .seg button[aria-selected="true"] { color: var(--ink); background: transparent; box-shadow: none; }
+.w-jadugar .seg button[aria-selected="true"]::before {
+  content: ""; position: absolute; inset: 4px; z-index: -1; border-radius: 9999px; background: var(--paper); box-shadow: var(--lit), 0 0 0 .5px rgba(0, 0, 0, .2); }
+.w-jadugar .scr-body:has(> .seg) { gap: 13px; }
+/* 200% text: the pucks fill their half, so the larger words stay on them */
+
+.w-jadugar.is-200 .seg button[aria-selected="true"]::before { inset: 0; border-radius: var(--r-chip); }
+.w-jadugar.is-200 .seg { border-radius: var(--r-chip); }
+
+/* ===== tab bar and rail: solid night, one gilt hairline where they meet the screen (brightest on the left, under the light);
+   the active icon on a crimson card in a gilt hairline, a short gold mark under its label ===== */
+.w-jadugar .tabbar { background: linear-gradient(90deg, var(--gilt-line)) 0 0 / 100% 1px no-repeat, var(--night); box-shadow: none; }
+.w-jadugar .tab { position: relative; letter-spacing: .01em; }
+.w-jadugar .tab[aria-current="page"] svg { background: linear-gradient(180deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, 0) 60%), var(--accent); color: var(--paper); border-radius: var(--r-chip); box-shadow: var(--gilt-edge); }
+/* one mark for the current tab: the crimson tile behind its icon (a gold underline as well said it twice; 22 Oct) */
+.app.w-jadugar .rail { background: linear-gradient(180deg, var(--gilt-line)) 100% 0 / 1px 100% no-repeat, var(--night); box-shadow: none; }
+.app.w-jadugar.is-step .art-img::after { background: color-mix(in srgb, var(--ground-deep) 38%, transparent); }
+
+/* ===== toast, sheet, dialog, menu: solid linen card stock; the sheet hangs under a curtain valance and keeps its lift ===== */
+.w-jadugar .toast > .t { background: var(--paper) var(--tex); background-size: 256px; color: var(--ink); border-radius: var(--r-chip); box-shadow: var(--gilt-edge), var(--sh-md); }
+.w-jadugar .sheet { padding: 0 21px 21px; background: var(--paper) var(--tex); background-size: 256px; border-radius: 0; box-shadow: var(--lit), 0 -12px 24px rgba(0, 0, 0, .28); }
+.w-jadugar .sheet .grab .handle i { width: 36px; height: 5px; }
+.w-jadugar .sheet h2 { margin: 5px 0 21px; letter-spacing: -.012em; }
+.w-jadugar .sheet .howto { gap: 13px; }
+.w-jadugar .sheet .howto svg { width: 40px; height: 40px; margin-bottom: 8px; stroke-width: 1.75; }
+.w-jadugar .sheet .sheetlinks { margin-top: 34px; }
+.w-jadugar .sheet .sheetlinks button { min-height: 52px; text-decoration-thickness: 1px; text-underline-offset: 6px; box-shadow: inset 0 1px 0 var(--hair); }
+.w-jadugar .sheet .setrow { box-shadow: inset 0 1px 0 var(--hair); }
+/* the valance: a crimson pelmet with one gilt line, its scallops rimmed in gold */
+.w-jadugar .jd-valance { height: 24px; margin: 0 -21px;
+  background: linear-gradient(90deg, var(--gilt-line)) 0 10px / 100% 1px no-repeat, linear-gradient(180deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, 0)) 0 0 / 100% 10px no-repeat,
+              linear-gradient(var(--accent), var(--accent)) 0 0 / 100% 10px no-repeat,
+              radial-gradient(circle 12px at 12px 10px, var(--accent) 10px, #C9A458 10px 11px, transparent 11px) 0 0 / 24px 24px repeat-x; }
+.w-jadugar .dialog { background: var(--paper) var(--tex); background-size: 256px; box-shadow: inset 0 6px 0 var(--accent), inset 0 7px 0 #C9A458, inset 0 0 0 1px var(--hair), var(--sh-lg); }
+.w-jadugar .menu { background: var(--paper) var(--tex); background-size: 256px; box-shadow: inset 0 0 0 1px var(--hair), var(--lit), 0 12px 24px rgba(0, 0, 0, .35); }
+
+/* ===== card backs: a check is a gilt-edged card turned face down, a margin of card stock round its back. At this size a
+   card's corner is square (radius 0) ===== */
+.w-jadugar .jd-back { display: block; flex: none; width: 22px; height: 30px; border-radius: 0; background: var(--back); box-shadow: inset 0 0 0 1px var(--gold), inset 0 0 0 2.5px var(--paper), var(--sh-sm); }
+.w-jadugar .row .side .jd-downs { display: flex; justify-content: flex-end; align-items: center; width: 44px; flex: none; }
+.w-jadugar .jd-downs .jd-back:first-child { transform: rotate(-6deg); }
+.w-jadugar .jd-downs .jd-back + .jd-back { margin-left: -13px; transform: rotate(9deg); }
+.w-jadugar .jd-pool { gap: 8px; padding: 8px 13px; }
+.w-jadugar .jd-pool .jd-back { width: 26px; height: 36px; }
+.w-jadugar .jd-pool .jd-back.is-spent { background: none; box-shadow: inset 0 0 0 1px var(--gold); opacity: .75; }
+.w-jadugar .pool > svg { fill: var(--accent); stroke: var(--paper); }
+.w-jadugar .pool .spent svg { fill: none; stroke: var(--gold); }
+
+/* ===== chips and slots: card stock with a control hairline at 4:1; a pick is yellow framed in 2 px of ink ===== */
+.w-jadugar .chip { background: var(--paper) var(--tex); background-size: 256px; box-shadow: inset 0 0 0 1px var(--hair-strong), var(--lit), var(--sh-sm); }
+.w-jadugar .chip:active, .w-jadugar .chip.is-pressed { transform: scale(.985); background-color: var(--paper-shade); box-shadow: inset 0 0 0 1px var(--hair-strong), inset 0 1px 2px rgba(23, 17, 15, .12); }
+.w-jadugar .chip[aria-checked="true"], .w-jadugar .chip.is-selected { background: var(--pick); box-shadow: inset 0 0 0 2px var(--ink), var(--sh-md); }
+.w-jadugar .chip.is-hover { box-shadow: inset 0 0 0 1.5px var(--ink), var(--lit), var(--sh-sm); }
+.w-jadugar .slot.is-filled, .w-jadugar .blank.is-filled { box-shadow: inset 0 0 0 2px var(--ink), var(--sh-sm); }
+.w-jadugar .slot.is-filled.is-revisited { box-shadow: inset 0 0 0 2px var(--ink), inset 0 0 0 999px rgba(0, 0, 0, .06); }
+
+/* ===== places: the magician's boxes and a basket, each holding a slot, each on a soft shadow. Both are painted 9-slice
+   frames: crimson lacquer with one fine gilt trim line and spun-brass corner caps, each with a domed rivet, lit from the
+   top left; woven cane with a wrapped rim (its weave repeats, so it rounds) ===== */
+.w-jadugar .jd-boxes { display: grid; gap: 13px; }
+.w-jadugar .jd-box { padding: 0; border: 12px solid transparent; border-image: url(../assets/jadugar-box-brass.webp) 24 fill / 12px stretch; box-shadow: var(--sh-md); }
+.w-jadugar .jd-box.is-basket { border-image: url(../assets/jadugar-basket-frame.webp) 24 fill / 12px round; }
+.w-jadugar .jd-box .slot:not(.is-filled) { background: var(--ground-deep); }
+
+/* ===== the felt: the card table (crowd guess, the week), in one gilt hairline, its cloth a little sunk ===== */
+.w-jadugar .jd-felt { display: grid; gap: 13px; padding: 13px; color: var(--paper);
+  background: radial-gradient(120% 90% at 18% 0%, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0) 60%), var(--felt);
+  box-shadow: var(--gilt-edge), inset 0 2px 8px rgba(0, 0, 0, .28), var(--sh-md); }
+.w-jadugar .jd-felt .chips.is-grid5 { gap: 8px; }
+.w-jadugar .jd-felt .chip { min-height: 64px; padding: 0 2px; box-shadow: var(--gilt-edge), var(--sh-sm); }
+.w-jadugar .jd-felt .chip:active, .w-jadugar .jd-felt .chip.is-pressed { transform: scale(.985); background-color: var(--paper-shade); box-shadow: var(--gilt-edge), inset 0 1px 2px rgba(23, 17, 15, .14); }
+.w-jadugar .jd-felt .chip[aria-checked="true"], .w-jadugar .jd-felt .chip.is-selected { background: var(--pick); box-shadow: inset 0 0 0 2px var(--ink), var(--sh-md); }
+.w-jadugar .jd-felt .chip.is-hover { box-shadow: var(--gilt-edge), inset 0 0 0 2px var(--hair-strong), var(--sh-sm); }
+.w-jadugar .jd-hand .fig span, .w-jadugar .jd-hand .fig b, .w-jadugar .jd-hand .fig small { color: var(--paper); }
+/* the hand of six: gilt-edged cards, face up when played, face down for the day off, an outline when not played */
+.w-jadugar .dayobj.jd-day { aspect-ratio: 5 / 7; border-radius: var(--r-card); background-color: var(--paper); background-size: cover; background-position: center;
+  box-shadow: var(--gilt-edge), inset 0 0 0 3px var(--paper), var(--sh-sm); filter: none; }
+/* the letter strip and the "off" stamp are padded so their letters sit wholly on paper, never on the painting or the back */
+.w-jadugar .dayobj.jd-day b { margin: 0 3px 3px; padding: 3px 0; background: var(--paper); box-shadow: none; }
+.w-jadugar .dayobj.jd-day.forgiven { background: var(--back); box-shadow: var(--gilt-edge), inset 0 0 0 3px var(--paper), var(--sh-sm); }
+.w-jadugar .dayobj.jd-day.notplayed { background: none; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--paper) 60%, transparent); }
+.w-jadugar .dayobj.jd-day.notplayed b { background: none; color: var(--paper); }
+.w-jadugar .dayobj.jd-day .offstamp { top: 4px; right: 50%; padding: 3px 8px; box-shadow: 0 0 0 1px var(--ink); transform: translateX(50%) rotate(-4deg); }
+
+/* ===== bills: linen card stock with a crimson head band, a hairline edge and one gilt rule inside it, on a soft shadow.
+   The rule is a ::before under the bill's words, lit from the top left like every gilt edge ===== */
+.w-jadugar .jd-bill, .w-jadugar .slip { position: relative; isolation: isolate; background: var(--paper) var(--tex); background-size: 256px; color: var(--ink); border-radius: 0;
+  box-shadow: inset 0 6px 0 var(--accent), inset 0 0 0 1px var(--hair), var(--sh-md); }
+.w-jadugar .jd-bill::before, .w-jadugar .slip::before { content: ""; position: absolute; inset: 12px 6px 6px; z-index: -1; pointer-events: none; box-shadow: var(--gilt-edge); }
+.w-jadugar .jd-bill { padding: 21px 21px 13px; }
+.w-jadugar .slip { padding: 21px 21px 21px; gap: 13px; }
+.w-jadugar .jd-billhead { display: flex; justify-content: space-between; gap: 8px; padding-bottom: 5px; margin-bottom: 8px; font: 700 var(--t-label)/1.43 'Hind', sans-serif; letter-spacing: .01em;
+  box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--ink) 30%, transparent); }
+.w-jadugar .jd-bill .letter { margin: 0 0 8px; }
+.w-jadugar .jd-bill .byline { background: none; box-shadow: none; color: var(--ink); padding: 0; min-height: 0; }
+.w-jadugar .jd-bill .byline i { box-shadow: 0 0 0 1px var(--hair-strong); }
+.w-jadugar .jd-bill li + li .lrow { box-shadow: inset 0 1px 0 var(--rule); }
+.w-jadugar .jd-bill .lrow { color: var(--ink); }
+.w-jadugar .jd-bill .lrow .pr { font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+.w-jadugar .jd-bill .lrow.is-you { background: var(--pick); color: var(--pick-ink); box-shadow: none !important; }
+/* at 200% a four-figure rank needs a wider first column, so its card never runs into the road's name */
+.w-jadugar.is-200 .jd-bill .lrow { grid-template-columns: 108px minmax(0, 1fr) auto; }
+/* the rank: a small gilt-edged card with the number as its index */
+.w-jadugar .lrow .rk.jd-rank { justify-self: start; min-width: 32px; min-height: 40px; display: grid; place-items: center; color: var(--ink); font-variant-numeric: tabular-nums; }   /* one frame per level (owner, 22 Oct: "the box in a box is not looking good") */
+
+/* ===== other card stock: the look-again pair are gilt-edged cards; the weeks are small cards; the quick sort's notes are a
+   stack of plain paper with one hairline ===== */
+.w-jadugar .pairinfo .pi { background: var(--paper) var(--tex); background-size: 256px; box-shadow: var(--gilt-edge), var(--sh-md); padding: 8px; }
+.w-jadugar .leanrow .wk { background: var(--paper) var(--tex); background-size: 256px; box-shadow: var(--gilt-edge), var(--sh-sm); }
+.w-jadugar .leanrow .wk.is-now { box-shadow: inset 0 0 0 2px var(--ink), var(--sh-md); }
+.w-jadugar .leanrow .wk.is-base { background-color: var(--paper-shade); }
+.w-jadugar .stack { background: var(--paper) var(--tex); background-size: 256px; box-shadow: inset 0 0 0 1px var(--hair), var(--lit), var(--sh-md); }
+.w-jadugar .stack::before, .w-jadugar .stack::after { background: var(--paper-shade); box-shadow: inset 0 0 0 1px var(--hair), var(--sh-sm); }
+
+/* ===== the milestone and the change stamp: show tokens, a card-stock face in a crimson ring, set in a spun-brass rim ===== */
+.w-jadugar .milestone, .w-jadugar .changestamp { transform: none; border: 3px solid transparent; color: var(--ink);
+  background: radial-gradient(circle at 34% 28%, rgba(255, 255, 255, .6), rgba(255, 255, 255, 0) 42%) padding-box,
+              radial-gradient(circle at 50% 50%, var(--paper) 60%, var(--paper-shade) 100%) padding-box, var(--brass-ring) border-box;
+  box-shadow: inset 0 0 0 4px var(--accent), inset 0 0 0 5px color-mix(in srgb, var(--accent) 40%, #000), 0 0 0 .5px rgba(60, 40, 10, .6), var(--sh-md); }
+.w-jadugar .changestamp { border-width: 4px;
+  box-shadow: inset 0 0 0 5px var(--accent), inset 0 0 0 6px color-mix(in srgb, var(--accent) 40%, #000), 0 0 0 .5px rgba(60, 40, 10, .6), var(--sh-lg); }
+
+/* ===== the show bill and the cloth: the score, then the reveal. The bill hangs centred in the cot's spotlight beam,
+   below the moon and above the cot ===== */
+.w-jadugar .jd-stage { position: relative; align-self: center; width: min(300px, 100%); }
+.w-jadugar .jd-demo .jd-stage { width: 188px; }
+.w-jadugar .scr-body > .jd-stage { margin-top: 136px; }
+.w-jadugar.is-small .scr-body > .jd-stage { margin-top: 40px; }
+/* small phones and 200% text keep the slip's round 3 spacing, so its last line stays above the dock */
+.w-jadugar.is-small .slip, .w-jadugar.is-200 .slip { padding: 21px 13px 13px; gap: 8px; }
+.w-jadugar.is-200 .scr-body > .jd-stage { margin-top: 21px; }
+.w-jadugar .jd-showbill { position: relative; overflow: hidden; display: grid; justify-items: center; gap: 5px; padding: 0 21px 21px; background: var(--paper) var(--tex); background-size: 256px; color: var(--ink);
+  transform: rotate(-1.5deg); box-shadow: inset 0 0 0 1px var(--hair), var(--sh-lg); }
+/* the bill's one gilt rule, 6 px in; its top runs under the head band */
+.w-jadugar .jd-showbill::before { content: ""; position: absolute; inset: 6px; z-index: -1; pointer-events: none; box-shadow: var(--gilt-edge); }
+/* the head band: the show number in card white on crimson (7.3:1), clear of the gathered cloth, over one gilt line */
+.w-jadugar .jd-billband { justify-self: stretch; min-height: 28px; margin: 0 -21px 8px; padding: 5px 64px 5px 13px; background: var(--accent); color: var(--paper);
+  font: 700 var(--t-label)/1.43 'Hind', sans-serif; letter-spacing: .01em; box-shadow: inset 0 -1px 0 #D6B468; }
+.w-jadugar .jd-showbill .level { color: var(--ink); }
+.w-jadugar .jd-showbill .jd-fill { margin: 0; padding: 0 13px; font: 700 var(--t-score)/1.2 'Hind', sans-serif; font-variant-numeric: tabular-nums; box-shadow: inset 0 -2px 0 var(--ink); }
+.w-jadugar .jd-showbill .jd-fill:lang(hi) { line-height: 1.4; }
+/* the cloth: a painted velvet plate with a gold cord and fringe, covering the bill, slides off to the right inside the
+   bill's clip in 0.9 s after 0.3 s; the gathered plate (the same cloth bunched and tied back) comes up at the right edge as
+   it goes. The resting picture is the end of the reveal, so the still state and reduced motion show only the gathered cloth. */
+.w-jadugar .jd-cloth { position: absolute; inset: 0; z-index: 2; transform: translateX(100%); background: url(../assets/jadugar-cloth-cover.webp) 0 0 / 100% 100% no-repeat;
+  animation: jd-pull var(--m5) cubic-bezier(.6, 0, .2, 1) var(--m4) both; }   /* a 420 beat, then a 680 pull: done by 1100 */
+.w-jadugar .jd-gathered { position: absolute; top: 0; right: 0; bottom: 0; z-index: 3; width: 56px; background: url(../assets/jadugar-cloth-gathered.webp) 0 0 / 100% 100% no-repeat;
+  animation: jd-gather var(--m5) linear var(--m4) both; }
+@keyframes jd-pull { from { transform: translateX(0); } }
+@keyframes jd-gather { 0%, 55% { opacity: 0; } }
+.w-jadugar.jd-mid .jd-cloth, .w-jadugar .jd-mid .jd-cloth { animation: none; transform: translateX(42%); }
+.w-jadugar.jd-mid .jd-gathered, .w-jadugar .jd-mid .jd-gathered, .w-jadugar .jd-covered .jd-gathered { animation: none; opacity: 0; }
+.w-jadugar .jd-covered .jd-cloth { animation: none; transform: none; }
+.w-jadugar.jd-still .jd-cloth, .w-jadugar .jd-still .jd-cloth { display: none; }
+.w-jadugar.jd-still .jd-gathered, .w-jadugar .jd-still .jd-gathered { animation: none; }
+@media (prefers-reduced-motion: reduce) { .w-jadugar .jd-cloth { display: none; } .w-jadugar .jd-gathered { animation: none; } }
+
+/* ===== the starter's chapter title card ===== */
+.w-jadugar .jd-chapterplate { gap: 8px; }
+.w-jadugar .jd-chapter { margin: 0; font: 700 var(--t-display-s)/1.15 'Hind', sans-serif; color: var(--title); }
+.w-jadugar .jd-chapter:lang(hi) { line-height: 1.3; }
+.w-jadugar .jd-chapterplate .jd-title { padding: 0; font-size: var(--t-display-s); text-shadow: none; }
+.w-jadugar .jd-marks { display: flex; gap: 8px; }
+.w-jadugar .jd-marks i { width: 20px; height: 28px; border-radius: 0; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--paper) 65%, transparent); }
+.w-jadugar .jd-marks i.is-done { background: var(--paper) var(--tex); background-size: 256px; box-shadow: var(--gilt-edge), var(--sh-sm); }
+.w-jadugar .jd-marks i.is-now { background: var(--back); box-shadow: inset 0 0 0 1px var(--gold), inset 0 0 0 2.5px var(--paper), 0 0 0 1.5px var(--gold), var(--sh-sm); }
+
+/* ===== share card: the painting in one gilt hairline, and a card-stock ticket ===== */
+.w-jadugar.sharecard { box-shadow: 0 0 0 1px var(--gold), var(--sh-md); }
+.w-jadugar .sharecard .sc-in, .w-jadugar.sharecard .sc-in { background: var(--paper) var(--tex); background-size: 256px; color: var(--ink); box-shadow: inset 0 6px 0 var(--accent), inset 0 0 0 1px var(--hair), var(--sh-sm); padding-top: 13px; }
+.w-jadugar.sharecard .sc-line, .w-jadugar.sharecard .level { color: var(--ink); }
+.w-jadugar.sharecard .sc-marks i { width: 16px; height: 22px; border-radius: 0; background: var(--back); box-shadow: inset 0 0 0 1px var(--gold), inset 0 0 0 2px var(--paper); }
+
+/* ===== focus specimens keep their inner ring over the finish's shadows ===== */
+.w-jadugar .chip.is-focus, .w-jadugar .main.is-focus { box-shadow: 0 0 0 5px var(--focus-inner); }
+
+/* ===== hover: pointer devices only (the static .is-hover specimens are set beside each part above) ===== */
+@media (hover: hover) and (pointer: fine) {
+  .w-jadugar .tile:hover:not([aria-checked="true"]):not(.is-selected):not(.is-armed), .w-jadugar .row:hover:not([aria-checked="true"]):not(.is-selected):not(.is-armed) {
+    box-shadow: var(--gilt-edge), inset 0 0 0 2px var(--hair-strong), var(--sh-lg); }
+  .w-jadugar .main.is-live:hover { transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), inset 0 -2px 0 rgba(120, 78, 0, .2), 0 0 0 .5px rgba(90, 60, 0, .5), var(--sh-lg); }
+  .w-jadugar .main.is-out:hover { background: linear-gradient(180deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, 0) 52%), color-mix(in srgb, var(--accent) 92%, var(--ink)); box-shadow: var(--gilt-edge), var(--sh-lg); }
+  .w-jadugar .chip:hover:not([aria-checked="true"]):not(.is-selected) { box-shadow: inset 0 0 0 1.5px var(--ink), var(--lit), var(--sh-sm); }
+  .w-jadugar .jd-felt .chip:hover:not([aria-checked="true"]):not(.is-selected) { box-shadow: var(--gilt-edge), inset 0 0 0 2px var(--hair-strong), var(--sh-sm); }
+  .w-jadugar .ibtn:not(.on-paper):hover { background: color-mix(in srgb, var(--edge) 16%, var(--ground-deep)); }
+  .w-jadugar .seg button:hover:not([aria-selected="true"]) { background: color-mix(in srgb, var(--edge) 12%, transparent); }
+  .w-jadugar .textbtn:hover, .w-jadugar .sheet .sheetlinks button:hover { text-decoration-thickness: 2.5px; }
+}

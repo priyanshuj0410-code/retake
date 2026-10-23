@@ -1,0 +1,6514 @@
+{
+ "version": 1,
+ "langs": [
+  [
+   "mix",
+   "Hinglish",
+   "English with Hindi signs"
+  ],
+  [
+   "hi",
+   "हिन्दी",
+   "Hindi"
+  ],
+  [
+   "en",
+   "English",
+   "English only"
+  ]
+ ],
+ "eng": [
+  [
+   "Sandook Ka Raaz",
+   "The Box's Secret"
+  ],
+  [
+   "Udti Khaat",
+   "Flying Cot"
+  ],
+  [
+   "Purana Maidan",
+   "The Old Ground"
+  ],
+  [
+   "Ghat Ka Sauda",
+   "A Deal on the Ghat"
+  ],
+  [
+   "Adalat Ki Raat",
+   "Night in Court"
+  ],
+  [
+   "Dadi Ki Kursi",
+   "Dadi's Chair"
+  ],
+  [
+   "Faisla",
+   "The Verdict"
+  ],
+  [
+   "Dekhiye, dekhiye!",
+   "Roll up, roll up!"
+  ],
+  [
+   "the jadugar",
+   "the magician"
+  ],
+  [
+   " chacha",
+   " uncle"
+  ]
+ ],
+ "worlds": {
+  "lugdi": {
+   "cls": "w-lugdi",
+   "title": [
+    "Lugdi",
+    "लुगदी"
+   ]
+  },
+  "station": {
+   "cls": "w-station",
+   "title": [
+    "Station",
+    "स्टेशन"
+   ]
+  },
+  "jadugar": {
+   "cls": "w-jadugar",
+   "title": [
+    "Jadugar",
+    "जादूगर"
+   ]
+  },
+  "cricket": {
+   "cls": "w-cricket",
+   "title": [
+    "Cricket",
+    "क्रिकेट"
+   ]
+  },
+  "rukavat": {
+   "cls": "w-rukavat",
+   "title": [
+    "Rukavat",
+    "रुकावट"
+   ]
+  }
+ },
+ "help": {
+  "lugdi": "",
+  "station": "",
+  "jadugar": "jd-valance",
+  "cricket": "cr-crease",
+  "rukavat": "rk-cab"
+ },
+ "results": {
+  "decisions": {
+   "station-1": {
+    "kind": "pick",
+    "pair": [
+     "Mumtaz",
+     "Nagsen"
+    ],
+    "sex": {
+     "Mumtaz": "w",
+     "Nagsen": "m"
+    },
+    "q": [
+     "Who drives the first run to Bhusawal?",
+     "भुसावल की पहली गाड़ी कौन चलाए?"
+    ],
+    "nudged": "Mumtaz",
+    "faces": {
+     "Mumtaz": "/take/assets/enamel-mumtaz.webp",
+     "Nagsen": "/take/assets/enamel-nagsen.webp"
+    },
+    "hi": {
+     "Mumtaz": "मुमताज़",
+     "Nagsen": "नागसेन"
+    }
+   },
+   "station-5": {
+    "kind": "pick",
+    "pair": [
+     "Kiran",
+     "Sunil"
+    ],
+    "sex": {
+     "Kiran": "w",
+     "Sunil": "m"
+    },
+    "q": [
+     "Who takes the Daund goods tonight?",
+     "आज रात दौंड की मालगाड़ी कौन ले जाए?"
+    ],
+    "nudged": "Sunil",
+    "faces": {
+     "Kiran": "/take/assets/enamel-kiran.webp",
+     "Sunil": "/take/assets/enamel-sunil.webp"
+    },
+    "hi": {
+     "Kiran": "किरण",
+     "Sunil": "सुनील"
+    }
+   },
+   "station-2": {
+    "kind": "rank",
+    "pair": [
+     "Yasmin",
+     "Rohit"
+    ],
+    "sex": {
+     "Yasmin": "w",
+     "Rohit": "m"
+    },
+    "q": [
+     "Rank them for the 2 seats on the new-engine course.",
+     "नए इंजन के कोर्स की 2 सीटों के लिए क्रम लगाएँ।"
+    ],
+    "nudged": "Yasmin",
+    "faces": {
+     "Yasmin": "/take/assets/enamel-yasmin.webp",
+     "Rohit": "/take/assets/enamel-rohit.webp"
+    },
+    "hi": {
+     "Yasmin": "यास्मीन",
+     "Rohit": "रोहित"
+    }
+   },
+   "station-6": {
+    "kind": "rank",
+    "pair": [
+     "Kiran",
+     "Prakash"
+    ],
+    "sex": {
+     "Kiran": "w",
+     "Prakash": "m"
+    },
+    "q": [
+     "Rank them for the 2 seats on the signal course.",
+     "सिग्नल कोर्स की 2 सीटों के लिए क्रम लगाएँ।"
+    ],
+    "nudged": "Prakash",
+    "faces": {
+     "Kiran": "/take/assets/enamel-kiran.webp",
+     "Prakash": "/take/assets/enamel-prakash.webp"
+    },
+    "hi": {
+     "Kiran": "किरण",
+     "Prakash": "प्रकाश"
+    }
+   },
+   "station-3": {
+    "kind": "pick",
+    "pair": [
+     "Annamma",
+     "Francis"
+    ],
+    "sex": {
+     "Annamma": "w",
+     "Francis": "m"
+    },
+    "q": [
+     "Who drives the ghat section tonight?",
+     "आज रात घाट सेक्शन कौन चलाए?"
+    ],
+    "nudged": "Annamma",
+    "faces": {
+     "Annamma": "/take/assets/enamel-annamma.webp",
+     "Francis": "/take/assets/enamel-francis.webp"
+    },
+    "hi": {
+     "Annamma": "अन्नम्मा",
+     "Francis": "फ़्रांसिस"
+    }
+   },
+   "station-7": {
+    "kind": "pick",
+    "pair": [
+     "Mumtaz",
+     "Rohit"
+    ],
+    "sex": {
+     "Mumtaz": "w",
+     "Rohit": "m"
+    },
+    "q": [
+     "Who takes the night mail over the river in flood?",
+     "बाढ़ में नदी के ऊपर रात की मेल कौन ले जाए?"
+    ],
+    "nudged": "Rohit",
+    "faces": {
+     "Mumtaz": "/take/assets/enamel-mumtaz.webp",
+     "Rohit": "/take/assets/enamel-rohit.webp"
+    },
+    "hi": {
+     "Mumtaz": "मुमताज़",
+     "Rohit": "रोहित"
+    }
+   },
+   "station-4": {
+    "kind": "pick",
+    "pair": [
+     "Annamma",
+     "Sunil"
+    ],
+    "sex": {
+     "Annamma": "w",
+     "Sunil": "m"
+    },
+    "q": [
+     "Who wears the shed's safety armband?",
+     "शेड का सेफ़्टी बिल्ला कौन पहने?"
+    ],
+    "nudged": "Sunil",
+    "faces": {
+     "Sunil": "/take/assets/enamel-sunil.webp",
+     "Annamma": "/take/assets/enamel-annamma.webp"
+    },
+    "hi": {
+     "Sunil": "सुनील",
+     "Annamma": "अन्नम्मा"
+    }
+   },
+   "station-8": {
+    "kind": "pick",
+    "pair": [
+     "Kiran",
+     "Nagsen"
+    ],
+    "sex": {
+     "Kiran": "w",
+     "Nagsen": "m"
+    },
+    "q": [
+     "Who goes to the safety school in Bhusawal?",
+     "भुसावल के सेफ़्टी स्कूल में कौन जाए?"
+    ],
+    "nudged": "Kiran",
+    "faces": {
+     "Kiran": "/take/assets/enamel-kiran.webp",
+     "Nagsen": "/take/assets/enamel-nagsen.webp"
+    },
+    "hi": {
+     "Kiran": "किरण",
+     "Nagsen": "नागसेन"
+    }
+   },
+   "lugdi-1": {
+    "kind": "set",
+    "pair": [
+     "Jasleen",
+     "Dinesh"
+    ],
+    "sex": {
+     "Jasleen": "w",
+     "Dinesh": "m"
+    },
+    "q": [
+     "Pick 3 for the night convoy.",
+     "रात के काफ़िले के लिए 3 चुनें।"
+    ],
+    "nudged": "Jasleen",
+    "faces": {
+     "Jasleen": "/take/assets/pulp-jasleen.webp",
+     "Dinesh": "/take/assets/pulp-dinesh.webp"
+    },
+    "hi": {
+     "Jasleen": "जसलीन",
+     "Dinesh": "दिनेश"
+    }
+   },
+   "lugdi-5": {
+    "kind": "set",
+    "pair": [
+     "Kusum",
+     "Velu"
+    ],
+    "sex": {
+     "Kusum": "w",
+     "Velu": "m"
+    },
+    "q": [
+     "Pick 3 for the cash run to the market.",
+     "मंडी तक पैसों वाले फेरे के लिए 3 चुनें।"
+    ],
+    "nudged": "Velu",
+    "faces": {
+     "Kusum": "/take/assets/pulp-kusum.webp",
+     "Velu": "/take/assets/pulp-velu.webp"
+    },
+    "hi": {
+     "Kusum": "कुसुम",
+     "Velu": "वेलु"
+    }
+   },
+   "lugdi-2": {
+    "kind": "set",
+    "pair": [
+     "Kusum",
+     "Dinesh"
+    ],
+    "sex": {
+     "Kusum": "w",
+     "Dinesh": "m"
+    },
+    "q": [
+     "Whose reports do you take up?",
+     "किस-किस की रिपोर्ट आगे बढ़ाएँ?"
+    ],
+    "nudged": "Dinesh",
+    "faces": {
+     "Dinesh": "/take/assets/pulp-dinesh.webp",
+     "Kusum": "/take/assets/pulp-kusum.webp"
+    },
+    "hi": {
+     "Dinesh": "दिनेश",
+     "Kusum": "कुसुम"
+    }
+   },
+   "lugdi-6": {
+    "kind": "set",
+    "pair": [
+     "Saroj",
+     "Anthony"
+    ],
+    "sex": {
+     "Saroj": "w",
+     "Anthony": "m"
+    },
+    "q": [
+     "Whose reports go to the police post?",
+     "किसकी रिपोर्ट पुलिस चौकी जाए?"
+    ],
+    "nudged": "Saroj",
+    "faces": {
+     "Saroj": "/take/assets/pulp-saroj.webp",
+     "Anthony": "/take/assets/pulp-anthony.webp"
+    },
+    "hi": {
+     "Saroj": "सरोज",
+     "Anthony": "एंथनी"
+    }
+   },
+   "lugdi-3": {
+    "kind": "set",
+    "pair": [
+     "Nirmala",
+     "Velu"
+    ],
+    "sex": {
+     "Nirmala": "w",
+     "Velu": "m"
+    },
+    "q": [
+     "Keep 2 on the hill route.",
+     "पहाड़ी रास्ते पर 2 रखें।"
+    ],
+    "nudged": "Nirmala",
+    "faces": {
+     "Nirmala": "/take/assets/pulp-nirmala.webp",
+     "Velu": "/take/assets/pulp-velu.webp"
+    },
+    "hi": {
+     "Nirmala": "निर्मला",
+     "Velu": "वेलु"
+    }
+   },
+   "lugdi-7": {
+    "kind": "set",
+    "pair": [
+     "Etwari",
+     "Dinesh"
+    ],
+    "sex": {
+     "Etwari": "w",
+     "Dinesh": "m"
+    },
+    "q": [
+     "Keep 2 on the river route.",
+     "नदी वाले रास्ते पर 2 रखें।"
+    ],
+    "nudged": "Dinesh",
+    "faces": {
+     "Etwari": "/take/assets/pulp-etwari.webp",
+     "Dinesh": "/take/assets/pulp-dinesh.webp"
+    },
+    "hi": {
+     "Etwari": "एतवारी",
+     "Dinesh": "दिनेश"
+    }
+   },
+   "lugdi-4": {
+    "kind": "set",
+    "pair": [
+     "Kusum",
+     "Baldev"
+    ],
+    "sex": {
+     "Kusum": "w",
+     "Baldev": "m"
+    },
+    "q": [
+     "Pick 3 for the gas cylinder run.",
+     "गैस सिलेंडर वाले फेरे के लिए 3 चुनें।"
+    ],
+    "nudged": "Kusum",
+    "faces": {
+     "Kusum": "/take/assets/pulp-kusum.webp",
+     "Baldev": "/take/assets/pulp-baldev.webp"
+    },
+    "hi": {
+     "Kusum": "कुसुम",
+     "Baldev": "बलदेव"
+    }
+   },
+   "lugdi-8": {
+    "kind": "set",
+    "pair": [
+     "Saroj",
+     "Dinesh"
+    ],
+    "sex": {
+     "Saroj": "w",
+     "Dinesh": "m"
+    },
+    "q": [
+     "Pick 3 for the kerosene run.",
+     "केरोसीन वाले फेरे के लिए 3 चुनें।"
+    ],
+    "nudged": "Dinesh",
+    "faces": {
+     "Saroj": "/take/assets/pulp-saroj.webp",
+     "Dinesh": "/take/assets/pulp-dinesh.webp"
+    },
+    "hi": {
+     "Saroj": "सरोज",
+     "Dinesh": "दिनेश"
+    }
+   },
+   "jadugar-1": {
+    "kind": "pick",
+    "pair": [
+     "Sarla",
+     "Thomas"
+    ],
+    "sex": {
+     "Sarla": "w",
+     "Thomas": "m"
+    },
+    "q": [
+     "Whose statement goes in the report?",
+     "रिपोर्ट में किसका बयान लिखें?"
+    ],
+    "nudged": "Sarla",
+    "faces": {
+     "Sarla": "/take/assets/jadugar-sarla.webp",
+     "Thomas": "/take/assets/jadugar-thomas.webp"
+    },
+    "hi": {
+     "Sarla": "सरला",
+     "Thomas": "थॉमस"
+    }
+   },
+   "jadugar-5": {
+    "kind": "pick",
+    "pair": [
+     "Pushpa",
+     "Naresh"
+    ],
+    "sex": {
+     "Pushpa": "w",
+     "Naresh": "m"
+    },
+    "q": [
+     "Whose statement goes to the police post?",
+     "किसका बयान पुलिस चौकी जाए?"
+    ],
+    "nudged": "Naresh",
+    "faces": {
+     "Naresh": "/take/assets/jadugar-naresh.webp",
+     "Pushpa": "/take/assets/jadugar-pushpa.webp"
+    },
+    "hi": {
+     "Naresh": "नरेश",
+     "Pushpa": "पुष्पा"
+    }
+   },
+   "jadugar-2": {
+    "kind": "pick",
+    "pair": [
+     "Dolly",
+     "Gopal"
+    ],
+    "sex": {
+     "Dolly": "w",
+     "Gopal": "m"
+    },
+    "q": [
+     "Who carries the cash to the next town?",
+     "अगले शहर तक पैसे कौन ले जाए?"
+    ],
+    "nudged": "Dolly",
+    "faces": {
+     "Dolly": "/take/assets/jadugar-dolly.webp",
+     "Gopal": "/take/assets/jadugar-gopal.webp"
+    },
+    "hi": {
+     "Dolly": "डॉली",
+     "Gopal": "गोपाल"
+    }
+   },
+   "jadugar-6": {
+    "kind": "pick",
+    "pair": [
+     "Rabia",
+     "Lalit"
+    ],
+    "sex": {
+     "Rabia": "w",
+     "Lalit": "m"
+    },
+    "q": [
+     "Who takes the takings to the bank?",
+     "कमाई बैंक तक कौन ले जाए?"
+    ],
+    "nudged": "Lalit",
+    "faces": {
+     "Rabia": "/take/assets/jadugar-rabia.webp",
+     "Lalit": "/take/assets/jadugar-lalit.webp"
+    },
+    "hi": {
+     "Rabia": "राबिया",
+     "Lalit": "ललित"
+    }
+   },
+   "jadugar-3": {
+    "kind": "pick",
+    "pair": [
+     "Jonali",
+     "Cyrus"
+    ],
+    "sex": {
+     "Jonali": "w",
+     "Cyrus": "m"
+    },
+    "q": [
+     "Whose story do you believe?",
+     "किसकी बात मानें?"
+    ],
+    "nudged": "Cyrus",
+    "faces": {
+     "Jonali": "/take/assets/jadugar-jonali.webp",
+     "Cyrus": "/take/assets/jadugar-cyrus.webp"
+    },
+    "hi": {
+     "Jonali": "जोनाली",
+     "Cyrus": "साइरस"
+    }
+   },
+   "jadugar-7": {
+    "kind": "pick",
+    "pair": [
+     "Mitali",
+     "Lalit"
+    ],
+    "sex": {
+     "Mitali": "w",
+     "Lalit": "m"
+    },
+    "q": [
+     "Whose story do you believe?",
+     "किसकी बात मानें?"
+    ],
+    "nudged": "Mitali",
+    "faces": {
+     "Mitali": "/take/assets/jadugar-mitali.webp",
+     "Lalit": "/take/assets/jadugar-lalit.webp"
+    },
+    "hi": {
+     "Mitali": "मिताली",
+     "Lalit": "ललित"
+    }
+   },
+   "jadugar-4": {
+    "kind": "pick",
+    "pair": [
+     "Mitali",
+     "Naresh"
+    ],
+    "sex": {
+     "Mitali": "w",
+     "Naresh": "m"
+    },
+    "q": [
+     "Who keeps the key to the ticket tin?",
+     "टिकट के डिब्बे की चाबी कौन रखे?"
+    ],
+    "nudged": "Mitali",
+    "faces": {
+     "Mitali": "/take/assets/jadugar-mitali.webp",
+     "Naresh": "/take/assets/jadugar-naresh.webp"
+    },
+    "hi": {
+     "Mitali": "मिताली",
+     "Naresh": "नरेश"
+    }
+   },
+   "jadugar-8": {
+    "kind": "pick",
+    "pair": [
+     "Pushpa",
+     "Cyrus"
+    ],
+    "sex": {
+     "Pushpa": "w",
+     "Cyrus": "m"
+    },
+    "q": [
+     "Who keeps the key to the cash box?",
+     "पैसों के डिब्बे की चाबी कौन रखे?"
+    ],
+    "nudged": "Cyrus",
+    "faces": {
+     "Pushpa": "/take/assets/jadugar-pushpa.webp",
+     "Cyrus": "/take/assets/jadugar-cyrus.webp"
+    },
+    "hi": {
+     "Pushpa": "पुष्पा",
+     "Cyrus": "साइरस"
+    }
+   },
+   "cricket-1": {
+    "kind": "order",
+    "pair": [
+     "Gita",
+     "Chandan"
+    ],
+    "sex": {
+     "Gita": "w",
+     "Chandan": "m"
+    },
+    "q": [
+     "Set the first XI's batting order.",
+     "पहली टीम का बैटिंग ऑर्डर तय करें।"
+    ],
+    "nudged": "Gita",
+    "faces": {
+     "Gita": "/take/assets/cricket-face-gita.webp",
+     "Chandan": "/take/assets/cricket-face-chandan.webp"
+    },
+    "hi": {
+     "Gita": "गीता",
+     "Chandan": "चंदन"
+    }
+   },
+   "cricket-5": {
+    "kind": "order",
+    "pair": [
+     "Bindu",
+     "Hari"
+    ],
+    "sex": {
+     "Bindu": "w",
+     "Hari": "m"
+    },
+    "q": [
+     "Set the second XI's batting order.",
+     "दूसरी टीम का बैटिंग ऑर्डर तय करें।"
+    ],
+    "nudged": "Hari",
+    "faces": {
+     "Bindu": "/take/assets/cricket-face-bindu.webp",
+     "Hari": "/take/assets/cricket-face-hari.webp"
+    },
+    "hi": {
+     "Bindu": "बिंदु",
+     "Hari": "हरि"
+    }
+   },
+   "cricket-2": {
+    "kind": "pick",
+    "pair": [
+     "Gita",
+     "Chandan"
+    ],
+    "sex": {
+     "Gita": "w",
+     "Chandan": "m"
+    },
+    "q": [
+     "Who captains the first XI?",
+     "पहली टीम का कप्तान कौन?"
+    ],
+    "nudged": "Chandan",
+    "faces": {
+     "Gita": "/take/assets/cricket-face-gita.webp",
+     "Chandan": "/take/assets/cricket-face-chandan.webp"
+    },
+    "hi": {
+     "Gita": "गीता",
+     "Chandan": "चंदन"
+    }
+   },
+   "cricket-6": {
+    "kind": "pick",
+    "pair": [
+     "Bindu",
+     "Hari"
+    ],
+    "sex": {
+     "Bindu": "w",
+     "Hari": "m"
+    },
+    "q": [
+     "Who captains the second XI?",
+     "दूसरी टीम का कप्तान कौन?"
+    ],
+    "nudged": "Bindu",
+    "faces": {
+     "Bindu": "/take/assets/cricket-face-bindu.webp",
+     "Hari": "/take/assets/cricket-face-hari.webp"
+    },
+    "hi": {
+     "Bindu": "बिंदु",
+     "Hari": "हरि"
+    }
+   },
+   "cricket-3": {
+    "kind": "set",
+    "pair": [
+     "Zarina",
+     "Tenzing"
+    ],
+    "sex": {
+     "Zarina": "w",
+     "Tenzing": "m"
+    },
+    "q": [
+     "Pick the last 3 for the first XI.",
+     "पहली टीम के आख़िरी 3 चुनें।"
+    ],
+    "nudged": "Zarina",
+    "faces": {
+     "Zarina": "/take/assets/cricket-face-zarina.webp",
+     "Tenzing": "/take/assets/cricket-face-tenzing.webp"
+    },
+    "hi": {
+     "Zarina": "ज़रीना",
+     "Tenzing": "तेनज़िंग"
+    }
+   },
+   "cricket-7": {
+    "kind": "set",
+    "pair": [
+     "Bindu",
+     "Uday"
+    ],
+    "sex": {
+     "Bindu": "w",
+     "Uday": "m"
+    },
+    "q": [
+     "Pick the last 3 for the second XI.",
+     "दूसरी टीम के आख़िरी 3 चुनें।"
+    ],
+    "nudged": "Uday",
+    "faces": {
+     "Bindu": "/take/assets/cricket-face-bindu.webp",
+     "Uday": "/take/assets/cricket-face-uday.webp"
+    },
+    "hi": {
+     "Bindu": "बिंदु",
+     "Uday": "उदय"
+    }
+   },
+   "cricket-4": {
+    "kind": "set",
+    "pair": [
+     "Leena",
+     "Mani"
+    ],
+    "sex": {
+     "Leena": "w",
+     "Mani": "m"
+    },
+    "q": [
+     "Pick 3 to fill the first XI after the injuries.",
+     "चोटों के बाद पहली टीम भरने के लिए 3 चुनें।"
+    ],
+    "nudged": "Leena",
+    "faces": {
+     "Leena": "/take/assets/cricket-face-leena.webp",
+     "Mani": "/take/assets/cricket-face-mani.webp"
+    },
+    "hi": {
+     "Leena": "लीना",
+     "Mani": "मणि"
+    }
+   },
+   "cricket-8": {
+    "kind": "set",
+    "pair": [
+     "Zarina",
+     "Hari"
+    ],
+    "sex": {
+     "Zarina": "w",
+     "Hari": "m"
+    },
+    "q": [
+     "Pick 3 to fill the second XI.",
+     "दूसरी टीम भरने के लिए 3 चुनें।"
+    ],
+    "nudged": "Hari",
+    "faces": {
+     "Zarina": "/take/assets/cricket-face-zarina.webp",
+     "Hari": "/take/assets/cricket-face-hari.webp"
+    },
+    "hi": {
+     "Zarina": "ज़रीना",
+     "Hari": "हरि"
+    }
+   },
+   "rukavat-1": {
+    "kind": "split",
+    "pair": [
+     "Uma",
+     "Vivek"
+    ],
+    "sex": {
+     "Uma": "w",
+     "Vivek": "m"
+    },
+    "q": [
+     "Sunday: who does what?",
+     "रविवार: कौन क्या करे?"
+    ],
+    "nudged": "Vivek",
+    "faces": {
+     "Uma": "/take/assets/sunday-uma.webp",
+     "Vivek": "/take/assets/sunday-vivek.webp"
+    },
+    "hi": {
+     "Uma": "उमा",
+     "Vivek": "विवेक"
+    }
+   },
+   "rukavat-5": {
+    "kind": "split",
+    "pair": [
+     "Shampa",
+     "Kunal"
+    ],
+    "sex": {
+     "Shampa": "w",
+     "Kunal": "m"
+    },
+    "q": [
+     "Tonight: who does what?",
+     "आज रात: कौन क्या करे?"
+    ],
+    "nudged": "Shampa",
+    "faces": {
+     "Shampa": "/take/assets/sunday-shampa.webp",
+     "Kunal": "/take/assets/sunday-kunal.webp"
+    },
+    "hi": {
+     "Shampa": "शम्पा",
+     "Kunal": "कुणाल"
+    }
+   },
+   "rukavat-2": {
+    "kind": "pick",
+    "pair": [
+     "Shampa",
+     "Rajan"
+    ],
+    "sex": {
+     "Shampa": "w",
+     "Rajan": "m"
+    },
+    "q": [
+     "Who should the children live with?",
+     "बच्चे किसके साथ रहें?"
+    ],
+    "nudged": "Rajan",
+    "faces": {
+     "Shampa": "/take/assets/sunday-shampa.webp",
+     "Rajan": "/take/assets/sunday-rajan.webp"
+    },
+    "hi": {
+     "Shampa": "शम्पा",
+     "Rajan": "राजन"
+    }
+   },
+   "rukavat-6": {
+    "kind": "pick",
+    "pair": [
+     "Uma",
+     "Chetan"
+    ],
+    "sex": {
+     "Uma": "w",
+     "Chetan": "m"
+    },
+    "q": [
+     "Who should the children live with?",
+     "बच्चे किसके साथ रहें?"
+    ],
+    "nudged": "Uma",
+    "faces": {
+     "Uma": "/take/assets/sunday-uma.webp",
+     "Chetan": "/take/assets/sunday-chetan.webp"
+    },
+    "hi": {
+     "Uma": "उमा",
+     "Chetan": "चेतन"
+    }
+   },
+   "rukavat-3": {
+    "kind": "pick",
+    "pair": [
+     "Deepa",
+     "Chetan"
+    ],
+    "sex": {
+     "Deepa": "w",
+     "Chetan": "m"
+    },
+    "q": [
+     "Who clears the loft before the guests come?",
+     "मेहमानों के आने से पहले टांड कौन साफ़ करे?"
+    ],
+    "nudged": "Deepa",
+    "faces": {
+     "Deepa": "/take/assets/sunday-deepa.webp",
+     "Chetan": "/take/assets/sunday-chetan.webp"
+    },
+    "hi": {
+     "Deepa": "दीपा",
+     "Chetan": "चेतन"
+    }
+   },
+   "rukavat-7": {
+    "kind": "pick",
+    "pair": [
+     "Pooja",
+     "Mahesh"
+    ],
+    "sex": {
+     "Pooja": "w",
+     "Mahesh": "m"
+    },
+    "q": [
+     "Who clears the storeroom for the raddiwala?",
+     "रद्दी वाले के लिए स्टोर रूम कौन ख़ाली करे?"
+    ],
+    "nudged": "Mahesh",
+    "faces": {
+     "Pooja": "/take/assets/sunday-pooja.webp",
+     "Mahesh": "/take/assets/sunday-mahesh.webp"
+    },
+    "hi": {
+     "Pooja": "पूजा",
+     "Mahesh": "महेश"
+    }
+   },
+   "rukavat-4": {
+    "kind": "pick",
+    "pair": [
+     "Deepa",
+     "Mahesh"
+    ],
+    "sex": {
+     "Deepa": "w",
+     "Mahesh": "m"
+    },
+    "q": [
+     "Who goes to talk to the groom's side about the scooter they want?",
+     "लड़के वालों से उनके माँगे स्कूटर की बात करने कौन जाए?"
+    ],
+    "nudged": "Mahesh",
+    "faces": {
+     "Deepa": "/take/assets/sunday-deepa.webp",
+     "Mahesh": "/take/assets/sunday-mahesh.webp"
+    },
+    "hi": {
+     "Deepa": "दीपा",
+     "Mahesh": "महेश"
+    }
+   },
+   "rukavat-8": {
+    "kind": "pick",
+    "pair": [
+     "Pooja",
+     "Vivek"
+    ],
+    "sex": {
+     "Pooja": "w",
+     "Vivek": "m"
+    },
+    "q": [
+     "Who goes to the boy's family for the second talk?",
+     "दूसरी बातचीत के लिए लड़के के घर कौन जाए?"
+    ],
+    "nudged": "Pooja",
+    "faces": {
+     "Pooja": "/take/assets/sunday-pooja.webp",
+     "Vivek": "/take/assets/sunday-vivek.webp"
+    },
+    "hi": {
+     "Pooja": "पूजा",
+     "Vivek": "विवेक"
+    }
+   }
+  },
+  "twins": [
+   {
+    "a": "station-1",
+    "b": "station-5",
+    "world": "station",
+    "kind": "plain",
+    "nudge": [
+     "the words",
+     "शब्दों"
+    ]
+   },
+   {
+    "a": "station-2",
+    "b": "station-6",
+    "world": "station",
+    "kind": "plain",
+    "nudge": [
+     "the time off",
+     "छुट्टी"
+    ]
+   },
+   {
+    "a": "station-3",
+    "b": "station-7",
+    "world": "station",
+    "kind": "matters",
+    "nudge": [
+     "the section",
+     "सेक्शन"
+    ]
+   },
+   {
+    "a": "station-4",
+    "b": "station-8",
+    "world": "station",
+    "kind": "hard",
+    "nudge": [
+     "the nudge",
+     "बात"
+    ]
+   },
+   {
+    "a": "lugdi-1",
+    "b": "lugdi-5",
+    "world": "lugdi",
+    "kind": "plain",
+    "nudge": [
+     "the family worry",
+     "घर की फ़िक्र"
+    ]
+   },
+   {
+    "a": "lugdi-2",
+    "b": "lugdi-6",
+    "world": "lugdi",
+    "kind": "hard",
+    "nudge": [
+     "the nudge",
+     "बात"
+    ]
+   },
+   {
+    "a": "lugdi-3",
+    "b": "lugdi-7",
+    "world": "lugdi",
+    "kind": "plain",
+    "nudge": [
+     "the words",
+     "शब्दों"
+    ]
+   },
+   {
+    "a": "lugdi-4",
+    "b": "lugdi-8",
+    "world": "lugdi",
+    "kind": "matters",
+    "nudge": [
+     "the licence",
+     "लाइसेंस"
+    ]
+   },
+   {
+    "a": "jadugar-1",
+    "b": "jadugar-5",
+    "world": "jadugar",
+    "kind": "hard",
+    "nudge": [
+     "the nudge",
+     "बात"
+    ]
+   },
+   {
+    "a": "jadugar-2",
+    "b": "jadugar-6",
+    "world": "jadugar",
+    "kind": "plain",
+    "nudge": [
+     "the money talk",
+     "पैसों की बात"
+    ]
+   },
+   {
+    "a": "jadugar-3",
+    "b": "jadugar-7",
+    "world": "jadugar",
+    "kind": "matters",
+    "nudge": [
+     "who saw it",
+     "देखने वाले"
+    ]
+   },
+   {
+    "a": "jadugar-4",
+    "b": "jadugar-8",
+    "world": "jadugar",
+    "kind": "plain",
+    "nudge": [
+     "the rival troupe",
+     "दूसरी मंडली"
+    ]
+   },
+   {
+    "a": "cricket-1",
+    "b": "cricket-5",
+    "world": "cricket",
+    "kind": "plain",
+    "nudge": [
+     "the bad day",
+     "बुरे दिन"
+    ]
+   },
+   {
+    "a": "cricket-2",
+    "b": "cricket-6",
+    "world": "cricket",
+    "kind": "hard",
+    "nudge": [
+     "the nudge",
+     "बात"
+    ]
+   },
+   {
+    "a": "cricket-3",
+    "b": "cricket-7",
+    "world": "cricket",
+    "kind": "plain",
+    "nudge": [
+     "the rest",
+     "आराम"
+    ]
+   },
+   {
+    "a": "cricket-4",
+    "b": "cricket-8",
+    "world": "cricket",
+    "kind": "matters",
+    "nudge": [
+     "the keeper",
+     "कीपर"
+    ]
+   },
+   {
+    "a": "rukavat-1",
+    "b": "rukavat-5",
+    "world": "rukavat",
+    "kind": "plain",
+    "nudge": [
+     "the match",
+     "मैच"
+    ]
+   },
+   {
+    "a": "rukavat-2",
+    "b": "rukavat-6",
+    "world": "rukavat",
+    "kind": "hard",
+    "nudge": [
+     "the nudge",
+     "बात"
+    ]
+   },
+   {
+    "a": "rukavat-3",
+    "b": "rukavat-7",
+    "world": "rukavat",
+    "kind": "matters",
+    "nudge": [
+     "the dust",
+     "धूल"
+    ]
+   },
+   {
+    "a": "rukavat-4",
+    "b": "rukavat-8",
+    "world": "rukavat",
+    "kind": "hard",
+    "nudge": [
+     "the nudge",
+     "बात"
+    ]
+   }
+  ],
+  "areas": {
+   "station": {
+    "real": [
+     "At work: same record, but the man is promoted.",
+     "काम पर: एक जैसा रिकॉर्ड, पर तरक्की आदमी को मिलती है।"
+    ],
+    "scene": "/take/assets/station-s-platform.webp"
+   },
+   "lugdi": {
+    "real": [
+     "On the road: same record, but the woman is kept off the night run.",
+     "सड़क पर: एक जैसा रिकॉर्ड, पर रात की ट्रिप से औरत को रोका जाता है।"
+    ],
+    "scene": "/take/assets/pulp-s-ghat.webp"
+   },
+   "jadugar": {
+    "real": [
+     "Same story, but it is believed when the man tells it.",
+     "बात एक ही, पर मानी तब जाती है जब आदमी कहे।"
+    ],
+    "scene": "/take/assets/jadugar-s-cot.webp"
+   },
+   "cricket": {
+    "real": [
+     "Same record, but the woman is left out of the big match.",
+     "एक जैसा रिकॉर्ड, पर बड़े मैच से औरत को बाहर रखा जाता है।"
+    ],
+    "scene": "/take/assets/cricket-s-stumps.webp"
+   },
+   "rukavat": {
+    "real": [
+     "Same free hours, but the woman gets the chores.",
+     "फ़ुर्सत एक जैसी, पर घर के काम औरत को मिलते हैं।"
+    ],
+    "scene": "/take/assets/sunday-s-roof.webp"
+   }
+  },
+  "card": {
+   "world": "rukavat",
+   "cls": "w-rukavat",
+   "art": [
+    "/take/assets/sunday-s-tv.webp",
+    "veil-low"
+   ]
+  }
+ },
+ "icons": {
+  "jd-stage": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M217,34.8a15.94,15.94,0,0,0-14.82-1.71C188.15,38.55,159.82,47.71,128,47.71S67.84,38.55,53.79,33.09A16,16,0,0,0,32,48v55.77c0,35.84,9.65,69.65,27.18,95.18,18.16,26.46,42.6,41,68.82,41s50.66-14.57,68.82-41C214.35,173.44,224,139.63,224,103.79V48A16,16,0,0,0,217,34.8ZM78,133.33A8,8,0,1,1,66,122.66C71.75,116.28,82.18,112,92,112s20.25,4.28,26,10.66A8,8,0,1,1,106,133.33c-2.68-3-8.85-5.33-14-5.33S80.64,130.34,78,133.33Zm90.49,47.86a52.9,52.9,0,0,1-80.9,0A8,8,0,1,1,99.72,170.8a36.89,36.89,0,0,0,56.56,0,8,8,0,0,1,12.17,10.39ZM189.34,134a8,8,0,0,1-11.3-.63c-2.68-3-8.85-5.33-14-5.33s-11.36,2.34-14,5.33A8,8,0,1,1,138,122.66c5.71-6.38,16.14-10.66,26-10.66s20.25,4.28,26,10.66A8,8,0,0,1,189.34,134Z\"/></svg>",
+  "person": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z\"/></svg>",
+  "close": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z\"/></svg>",
+  "bat": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><g transform=\"rotate(45 128 128)\"><rect x=\"116\" y=\"16\" width=\"24\" height=\"72\" rx=\"12\"/><path d=\"M100,84h56a8,8,0,0,1,8,8V212a28,28,0,0,1-28,28H120a28,28,0,0,1-28-28V92A8,8,0,0,1,100,84Z\"/></g><circle cx=\"64\" cy=\"60\" r=\"28\"/></svg>",
+  "lock": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80Zm-80,84a12,12,0,1,1,12-12A12,12,0,0,1,128,164Zm32-84H96V56a32,32,0,0,1,64,0Z\"/></svg>",
+  "help": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.72V144a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8c13.23,0,24-9,24-20s-10.77-20-24-20-24,9-24,20v4a8,8,0,0,1-16,0v-4c0-19.85,17.94-36,40-36s40,16.15,40,36C168,125.38,154.24,139.93,136,143.28Z\"/></svg>",
+  "tool": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M232,96a72,72,0,0,1-100.94,66L79,222.22c-.12.14-.26.29-.39.42a32,32,0,0,1-45.26-45.26c.14-.13.28-.27.43-.39L94,124.94a72.07,72.07,0,0,1,83.54-98.78,8,8,0,0,1,3.93,13.19L144,80l5.66,26.35L176,112l40.65-37.52a8,8,0,0,1,13.19,3.93A72.6,72.6,0,0,1,232,96Z\"/></svg>",
+  "back": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z\"/></svg>",
+  "speaker": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M160,32.25V223.69a8.29,8.29,0,0,1-3.91,7.18,8,8,0,0,1-9-.56l-65.57-51A4,4,0,0,1,80,176.16V79.84a4,4,0,0,1,1.55-3.15l65.57-51a8,8,0,0,1,10,.16A8.27,8.27,0,0,1,160,32.25ZM60,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H60a4,4,0,0,0,4-4V84A4,4,0,0,0,60,80Zm126.77,20.84a8,8,0,0,0-.72,11.3,24,24,0,0,1,0,31.72,8,8,0,1,0,12,10.58,40,40,0,0,0,0-52.88A8,8,0,0,0,186.74,100.84Zm40.89-26.17a8,8,0,1,0-11.92,10.66,64,64,0,0,1,0,85.34,8,8,0,1,0,11.92,10.66,80,80,0,0,0,0-106.66Z\"/></svg>",
+  "st-signal": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M216,144H200V80h16a8,8,0,0,0,0-16H200V40a16,16,0,0,0-16-16H72A16,16,0,0,0,56,40V64H40a8,8,0,0,0,0,16H56v64H40a8,8,0,0,0,0,16H56v56a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V160h16a8,8,0,0,0,0-16Zm-88-28a28,28,0,1,1,28-28A28,28,0,0,1,128,116Zm0,24a28,28,0,1,1-28,28A28,28,0,0,1,128,140Z\"/></svg>",
+  "down": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z\"/></svg>",
+  "crash": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z\"/></svg>",
+  "hand": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M224,104v50.93c0,46.2-36.85,84.55-83,85.06A83.71,83.71,0,0,1,80.6,215.4C58.79,192.33,34.15,136,34.15,136a16,16,0,0,1,6.53-22.23c7.66-4,17.1-.84,21.4,6.62l21,36.44a6.09,6.09,0,0,0,6,3.09l.12,0A8.19,8.19,0,0,0,96,151.74V32a16,16,0,0,1,16.77-16c8.61.4,15.23,7.82,15.23,16.43V104a8,8,0,0,0,8.53,8,8.17,8.17,0,0,0,7.47-8.25V88a16,16,0,0,1,16.77-16c8.61.4,15.23,7.82,15.23,16.43V112a8,8,0,0,0,8.53,8,8.17,8.17,0,0,0,7.47-8.25v-7.28c0-8.61,6.62-16,15.23-16.43A16,16,0,0,1,224,104Z\"/></svg>",
+  "jd-missed": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM157.66,170.34a8,8,0,0,1-11.32,11.32L128,163.31l-18.34,18.35a8,8,0,0,1-11.32-11.32L116.69,152,98.34,133.66a8,8,0,0,1,11.32-11.32L128,140.69l18.34-18.35a8,8,0,0,1,11.32,11.32L139.31,152ZM208,80H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24Z\"/></svg>",
+  "tick": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z\"/></svg>",
+  "cr-win": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M232,64H208V48a8,8,0,0,0-8-8H56a8,8,0,0,0-8,8V64H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z\"/></svg>",
+  "cr-match": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><rect x=\"60\" y=\"76\" width=\"28\" height=\"156\" rx=\"14\"/><rect x=\"114\" y=\"76\" width=\"28\" height=\"156\" rx=\"14\"/><rect x=\"168\" y=\"76\" width=\"28\" height=\"156\" rx=\"14\"/><rect x=\"56\" y=\"40\" width=\"68\" height=\"24\" rx=\"12\"/><rect x=\"132\" y=\"40\" width=\"68\" height=\"24\" rx=\"12\"/></svg>",
+  "week": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM112,184a8,8,0,0,1-16,0V132.94l-4.42,2.22a8,8,0,0,1-7.16-14.32l16-8A8,8,0,0,1,112,120Zm56-8a8,8,0,0,1,0,16H136a8,8,0,0,1-6.4-12.8l28.78-38.37A8,8,0,1,0,145.07,132a8,8,0,1,1-13.85-8A24,24,0,0,1,176,136a23.76,23.76,0,0,1-4.84,14.45L152,176ZM48,80V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80Z\"/></svg>",
+  "today": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM169.66,133.66l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35a8,8,0,0,1,11.32,11.32ZM48,80V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80Z\"/></svg>",
+  "st-line": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M184,24H72A32,32,0,0,0,40,56V184a32,32,0,0,0,32,32h8L65.6,235.2a8,8,0,1,0,12.8,9.6L100,216h56l21.6,28.8a8,8,0,1,0,12.8-9.6L176,216h8a32,32,0,0,0,32-32V56A32,32,0,0,0,184,24ZM84,184a12,12,0,1,1,12-12A12,12,0,0,1,84,184Zm36-64H56V80h64Zm52,64a12,12,0,1,1,12-12A12,12,0,0,1,172,184Zm28-64H136V80h64Z\"/></svg>",
+  "stamp": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M224,224a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,224Zm-16-96H151.57l15.71-73.29A32,32,0,0,0,136,16H120A32,32,0,0,0,88.72,54.71L104.43,128H48a16,16,0,0,0-16,16v40a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V144A16,16,0,0,0,208,128Z\"/></svg>",
+  "ticket": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M232,104a8,8,0,0,0,8-8V64a16,16,0,0,0-16-16H32A16,16,0,0,0,16,64V96a8,8,0,0,0,8,8,24,24,0,0,1,0,48,8,8,0,0,0-8,8v32a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V160a8,8,0,0,0-8-8,24,24,0,0,1,0-48ZM32,167.2a40,40,0,0,0,0-78.4V64H88V192H32Z\"/></svg>",
+  "score": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M232,208a8,8,0,0,1-8,8H32a8,8,0,0,1,0-16h8V136a8,8,0,0,1,8-8H72a8,8,0,0,1,8,8v64H96V88a8,8,0,0,1,8-8h32a8,8,0,0,1,8,8V200h16V40a8,8,0,0,1,8-8h40a8,8,0,0,1,8,8V200h8A8,8,0,0,1,232,208Z\"/></svg>",
+  "arrow": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z\"/></svg>",
+  "ledger": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM80,208H48V48H80Zm96-56H112a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H112a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Z\"/></svg>",
+  "wheel": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM49.63,168H90.45l17,45.58A88.35,88.35,0,0,1,49.63,168ZM128,156a16,16,0,1,1,16-16A16,16,0,0,1,128,156Zm20.46,57.59L165.55,168h40.82A88.34,88.34,0,0,1,148.46,213.59ZM128,96a136.38,136.38,0,0,0-88,32.33V128a88,88,0,0,1,176,0v.33A136.38,136.38,0,0,0,128,96Z\"/></svg>",
+  "clock": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm56,112H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48a8,8,0,0,1,0,16Z\"/></svg>",
+  "language": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M250.73,210.63l-56-112a12,12,0,0,0-21.46,0l-20.52,41A84.2,84.2,0,0,1,114,126.22,107.48,107.48,0,0,0,139.33,68H160a12,12,0,0,0,0-24H108V32a12,12,0,0,0-24,0V44H32a12,12,0,0,0,0,24h83.13A83.69,83.69,0,0,1,96,110.35,84,84,0,0,1,83.6,91a12,12,0,1,0-21.81,10A107.55,107.55,0,0,0,78,126.24,83.54,83.54,0,0,1,32,140a12,12,0,0,0,0,24,107.47,107.47,0,0,0,64-21.07,108.4,108.4,0,0,0,45.39,19.44l-24.13,48.26a12,12,0,1,0,21.46,10.73L151.41,196h65.17l12.68,25.36a12,12,0,1,0,21.47-10.73ZM163.41,172,184,130.83,204.58,172Z\"/></svg>",
+  "alert": "<svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm-8,56a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm8,104a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z\"/></svg>"
+ },
+ "flow": [
+  {
+   "type": "cut",
+   "label": [
+    "Dadi's trunk",
+    "दादी का संदूक"
+   ],
+   "panels": [
+    {
+     "id": "0.1",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-0-1.webp",
+     "cap": [
+      "Seventy-eight years, one small tempo. Dadi is moving in.",
+      "अठहत्तर साल, एक छोटा-सा टेम्पो। दादी रहने आ रही हैं।"
+     ]
+    },
+    {
+     "id": "0.2",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-0-2.webp",
+     "cap": [
+      "Dadi: \"Careful with my trunk! It's older than all of you.\"",
+      "दादी: \"मेरा संदूक ध्यान से! ये तुम सबसे पुराना है।\""
+     ]
+    },
+    {
+     "id": "0.3",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-0-3.webp",
+     "cap": [
+      "Vikram, her son: \"Ma, what's in here? Bricks?\" Dadi: \"Half a century.\"",
+      "विक्रम, उनका बेटा: \"माँ, इसमें क्या है? ईंटें?\" दादी: \"आधी सदी।\""
+     ]
+    },
+    {
+     "id": "0.4",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-0-4.webp",
+     "cap": [
+      "Meera, his wife: \"Half a century? Then I'm making more tea.\"",
+      "मीरा, उसकी पत्नी: \"आधी सदी? तो मैं और चाय बनाती हूँ।\""
+     ]
+    },
+    {
+     "id": "0.5",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-0-5.webp",
+     "cap": [
+      "Tara, their daughter: \"Dadi, who were you before you were Dadi?\"",
+      "तारा, उनकी बेटी: \"दादी, दादी बनने से पहले आप कौन थीं?\""
+     ]
+    },
+    {
+     "id": "0.6",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-0-6.webp",
+     "cap": [
+      "Dadi: \"Five days this family still argues about.\"",
+      "दादी: \"पाँच दिन, जिन पर ये परिवार आज भी बहस करता है।\""
+     ]
+    },
+    {
+     "id": "0.7",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-0-7.webp",
+     "cap": [
+      "Dadi: \"Here, beta. You make the calls. I'll tell you what happened.\"",
+      "दादी: \"लो बेटा। फ़ैसले तुम करोगे। क्या हुआ, वो मैं बताऊँगी।\""
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cut",
+   "label": [
+    "The week the new engines came",
+    "जिस हफ़्ते नए इंजन आए"
+   ],
+   "panels": [
+    {
+     "id": "1.1",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-1-1.webp",
+     "cap": [
+      "My first railway pass. I slept with it under my pillow.",
+      "मेरा पहला रेलवे पास। तकिये के नीचे रखकर सोती थी।"
+     ]
+    },
+    {
+     "id": "1.2",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-1-2.webp",
+     "cap": [
+      "Me at twenty-three. Manmad junction, 1971: smoke, chai and whistles.",
+      "मैं, तेईस साल की। मनमाड जंक्शन, 1971: धुआँ, चाय और सीटियाँ।"
+     ]
+    },
+    {
+     "id": "1.3",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-1-3.webp",
+     "cap": [
+      "My brother Mohan fed the steam engines. And sang to them.",
+      "मेरा भाई मोहन भाप के इंजन में कोयला झोंकता था। और उन्हें गाना सुनाता था।"
+     ]
+    },
+    {
+     "id": "1.4",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-1-4.webp",
+     "cap": [
+      "Then the new engines rolled in. Faster, and needing fewer hands.",
+      "फिर नए इंजन आए। ज़्यादा तेज़, और कम लोगों से चलने वाले।"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cover",
+   "world": "station",
+   "cls": "w-station ",
+   "art": [
+    "/take/assets/station-s-counter.webp",
+    "veil-low"
+   ],
+   "html": "<div class=\"topbar\"><div class=\"group\"></div><div class=\"group\"><button class=\"ibtn\" type=\"button\" data-help aria-label=\"How to play\" data-hi-label=\"कैसे खेलें\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.72V144a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8c13.23,0,24-9,24-20s-10.77-20-24-20-24,9-24,20v4a8,8,0,0,1-16,0v-4c0-19.85,17.94-36,40-36s40,16.15,40,36C168,125.38,154.24,139.93,136,143.28Z\"/></svg></button></div></div><div class=\"scr-body is-cover\"><div class=\"coverstack\"><div class=\"nameboard\"><span class=\"bn\" lang=\"hi\">कोलकाता</span><h1 class=\"bs\">Kolkata</h1><span class=\"bm\" data-hi=\"प्लेटफ़ॉर्म 5 · गुरुवार\">Platform 5 · Thursday</span></div><div class=\"plate hug\"><div class=\"pg-row\"><span class=\"level\" data-hi=\"गाड़ी\">Train</span><span class=\"vh\">214</span><span class=\"flaps\" aria-hidden=\"true\"><i>2</i><i>1</i><i>4</i></span></div><p class=\"coverline\" data-hi=\"नए इंजन, और शेड में बदसलूकी की शिकायतें।\">The new engines, and complaints of bullying in the shed.</p><span class=\"level\" data-hi=\"लेवल 4/6\">Level 4 of 6</span></div></div></div><div class=\"dock\"><button class=\"main is-out \" type=\"button\"><span data-hi=\"खेलें\">Play</span></button></div>"
+  },
+  {
+   "type": "step",
+   "id": "station-1",
+   "world": "station",
+   "cls": "w-station",
+   "n": 1,
+   "total": 40,
+   "title": "The first run",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who drives the first run to Bhusawal?",
+    "भुसावल की पहली गाड़ी कौन चलाए?"
+   ],
+   "speaker": [
+    "Gurpreet, station master",
+    "गुरप्रीत, स्टेशन मास्टर"
+   ],
+   "speakerFace": "/take/assets/enamel-gurpreet.webp",
+   "voice": [
+    "The new engine leaves at dawn, with the press on the platform.",
+    "नया इंजन सुबह निकलेगा, प्लेटफ़ॉर्म पर अख़बार वाले होंगे।"
+   ],
+   "keys": [
+    [
+     "st-line",
+     "years",
+     "साल"
+    ],
+    [
+     "st-signal",
+     "missed",
+     "चूके"
+    ]
+   ],
+   "plate": [
+    "Nashik",
+    "नाशिक"
+   ],
+   "art": [
+    "/take/assets/station-s-platform.webp",
+    "print"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Mumtaz",
+     "hi": "मुमताज़",
+     "vals": [
+      "11",
+      "0"
+     ],
+     "line": [
+      "Pushy with the guards, every single shift.",
+      "हर शिफ़्ट में गार्ड पर हुक्म चलाती है।"
+     ],
+     "face": "/take/assets/enamel-mumtaz.webp",
+     "serial": "02140"
+    },
+    {
+     "en": "Nagsen",
+     "hi": "नागसेन",
+     "vals": [
+      "11",
+      "0"
+     ],
+     "line": [
+      "Takes charge with the guards, every shift.",
+      "हर शिफ़्ट में गार्ड के साथ कमान सँभालता है।"
+     ],
+     "face": "/take/assets/enamel-nagsen.webp",
+     "serial": "02141"
+    },
+    {
+     "en": "Prakash",
+     "hi": "प्रकाश",
+     "vals": [
+      "7",
+      "2"
+     ],
+     "line": [
+      "Still learning the new controls, Mohan says.",
+      "मोहन कहता है, अभी नए कंट्रोल सीख रहा है।"
+     ],
+     "face": "/take/assets/enamel-prakash.webp",
+     "serial": "02142"
+    },
+    {
+     "en": "Annamma",
+     "hi": "अन्नम्मा",
+     "vals": [
+      "4",
+      "0"
+     ],
+     "line": [
+      "New on the line, keen as anything.",
+      "लाइन पर नई है, बड़ी लगन वाली।"
+     ],
+     "face": "/take/assets/enamel-annamma.webp",
+     "serial": "02143"
+    }
+   ],
+   "prog": [
+    1,
+    1,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "station-2",
+   "world": "station",
+   "cls": "w-station",
+   "n": 2,
+   "total": 40,
+   "title": "The new-engine course",
+   "kind": "rank",
+   "rawKind": "rank, 2 seats",
+   "q": [
+    "Rank them for the 2 seats on the new-engine course.",
+    "नए इंजन के कोर्स की 2 सीटों के लिए क्रम लगाएँ।"
+   ],
+   "speaker": [
+    "Gurpreet, station master",
+    "गुरप्रीत, स्टेशन मास्टर"
+   ],
+   "speakerFace": "/take/assets/enamel-gurpreet.webp",
+   "voice": [
+    "Two seats. The steam men know what that means.",
+    "दो सीटें। भाप वाले जानते हैं इसका मतलब।"
+   ],
+   "keys": [
+    [
+     "score",
+     "marks",
+     "नंबर"
+    ],
+    [
+     "clock",
+     "late",
+     "देर"
+    ]
+   ],
+   "plate": [
+    "Pune",
+    "पुणे"
+   ],
+   "art": [
+    "/take/assets/station-s-counter.webp",
+    "print"
+   ],
+   "button": [
+    "Send the list",
+    "लिस्ट भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Annamma",
+     "hi": "अन्नम्मा",
+     "vals": [
+      "88",
+      "0"
+     ],
+     "line": [
+      "Came top of the steam exam this year.",
+      "इस साल भाप की परीक्षा में सबसे आगे रही।"
+     ],
+     "face": "/take/assets/enamel-annamma.webp",
+     "serial": "02140"
+    },
+    {
+     "en": "Mohan",
+     "hi": "मोहन",
+     "vals": [
+      "78",
+      "1"
+     ],
+     "line": [
+      "Asha's brother. Fires the old steam engines.",
+      "आशा का भाई। पुराने भाप इंजन में कोयला झोंकता है।"
+     ],
+     "face": "/take/assets/enamel-mohan.webp",
+     "serial": "02141"
+    },
+    {
+     "en": "Yasmin",
+     "hi": "यास्मीन",
+     "vals": [
+      "72",
+      "2"
+     ],
+     "line": [
+      "Took six months off to nurse her father.",
+      "पिता की देखभाल के लिए छह महीने की छुट्टी ली।"
+     ],
+     "face": "/take/assets/enamel-yasmin.webp",
+     "serial": "02142"
+    },
+    {
+     "en": "Rohit",
+     "hi": "रोहित",
+     "vals": [
+      "72",
+      "2"
+     ],
+     "line": [
+      "Transferred here last year from the Pune shed.",
+      "पिछले साल पुणे शेड से तबादला होकर आया।"
+     ],
+     "face": "/take/assets/enamel-rohit.webp",
+     "serial": "02143"
+    },
+    {
+     "en": "Nagsen",
+     "hi": "नागसेन",
+     "vals": [
+      "64",
+      "4"
+     ],
+     "line": [
+      "Asks for the day shift every single week.",
+      "हर हफ़्ते दिन की शिफ़्ट माँगता है।"
+     ],
+     "face": "/take/assets/enamel-nagsen.webp",
+     "serial": "02144"
+    }
+   ],
+   "prog": [
+    1,
+    2,
+    8
+   ],
+   "seats": 2
+  },
+  {
+   "type": "step",
+   "id": "station-3",
+   "world": "station",
+   "cls": "w-station",
+   "n": 3,
+   "total": 40,
+   "title": "The ghat section",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who drives the ghat section tonight?",
+    "आज रात घाट सेक्शन कौन चलाए?"
+   ],
+   "speaker": [
+    "Gurpreet, station master",
+    "गुरप्रीत, स्टेशन मास्टर"
+   ],
+   "speakerFace": "/take/assets/enamel-gurpreet.webp",
+   "voice": [
+    "Rain on the ghat. Only a crew who has learned it may take it.",
+    "घाट पर बारिश। उसे वही ले जा सकता है जिसने सेक्शन सीखा हो।"
+   ],
+   "keys": [
+    [
+     "st-line",
+     "years",
+     "साल"
+    ],
+    [
+     "st-signal",
+     "missed",
+     "चूके"
+    ]
+   ],
+   "plate": [
+    "Nashik",
+    "नाशिक"
+   ],
+   "art": [
+    "/take/assets/station-s-platform.webp",
+    "print"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Annamma",
+     "hi": "अन्नम्मा",
+     "vals": [
+      "8",
+      "1"
+     ],
+     "line": [
+      "Has learned the whole ghat section.",
+      "पूरा घाट सेक्शन सीख चुकी है।"
+     ],
+     "face": "/take/assets/enamel-annamma.webp",
+     "serial": "02140"
+    },
+    {
+     "en": "Francis",
+     "hi": "फ़्रांसिस",
+     "vals": [
+      "8",
+      "1"
+     ],
+     "line": [
+      "Knows the plains line by heart.",
+      "मैदान वाली लाइन ज़ुबानी याद है।"
+     ],
+     "face": "/take/assets/enamel-francis.webp",
+     "serial": "02141"
+    },
+    {
+     "en": "Sunil",
+     "hi": "सुनील",
+     "vals": [
+      "5",
+      "0"
+     ],
+     "line": [
+      "Wants every Sunday off this month.",
+      "इस महीने हर इतवार छुट्टी चाहता है।"
+     ],
+     "face": "/take/assets/enamel-sunil.webp",
+     "serial": "02142"
+    },
+    {
+     "en": "Yasmin",
+     "hi": "यास्मीन",
+     "vals": [
+      "3",
+      "2"
+     ],
+     "line": [
+      "Never once late, never once early.",
+      "एक बार भी न देर, न जल्दी।"
+     ],
+     "face": "/take/assets/enamel-yasmin.webp",
+     "serial": "02143"
+    }
+   ],
+   "prog": [
+    1,
+    3,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "station-4",
+   "world": "station",
+   "cls": "w-station",
+   "n": 4,
+   "total": 40,
+   "title": "The safety armband",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who wears the shed's safety armband?",
+    "शेड का सेफ़्टी बिल्ला कौन पहने?"
+   ],
+   "speaker": [
+    "Gurpreet, station master",
+    "गुरप्रीत, स्टेशन मास्टर"
+   ],
+   "speakerFace": "/take/assets/enamel-gurpreet.webp",
+   "voice": [
+    "The armband needs a new owner. The old foreman has been moved.",
+    "बिल्ले को नया मालिक चाहिए। पुराने फ़ोरमैन का तबादला हो गया।"
+   ],
+   "keys": [
+    [
+     "st-line",
+     "years",
+     "साल"
+    ],
+    [
+     "st-signal",
+     "missed",
+     "चूके"
+    ]
+   ],
+   "plate": [
+    "Nashik",
+    "नाशिक"
+   ],
+   "art": [
+    "/take/assets/station-s-platform.webp",
+    "print"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Sunil",
+     "hi": "सुनील",
+     "vals": [
+      "12",
+      "0"
+     ],
+     "line": [
+      "Reported bullying by the foreman, who was moved.",
+      "फ़ोरमैन की बदसलूकी की शिकायत की, फ़ोरमैन हटाया गया।"
+     ],
+     "face": "/take/assets/enamel-sunil.webp",
+     "serial": "02140"
+    },
+    {
+     "en": "Annamma",
+     "hi": "अन्नम्मा",
+     "vals": [
+      "12",
+      "0"
+     ],
+     "line": [
+      "Runs the shed's first-aid box and stretcher drills.",
+      "शेड का फ़र्स्ट-एड बक्सा और स्ट्रेचर ड्रिल सँभालती है।"
+     ],
+     "face": "/take/assets/enamel-annamma.webp",
+     "serial": "02141"
+    },
+    {
+     "en": "Rohit",
+     "hi": "रोहित",
+     "vals": [
+      "9",
+      "1"
+     ],
+     "line": [
+      "Sharp on the rule book, quotes it daily.",
+      "नियमों का पक्का, रोज़ उनका हवाला देता है।"
+     ],
+     "face": "/take/assets/enamel-rohit.webp",
+     "serial": "02142"
+    },
+    {
+     "en": "Yasmin",
+     "hi": "यास्मीन",
+     "vals": [
+      "6",
+      "2"
+     ],
+     "line": [
+      "New to the shed, still finding her way.",
+      "शेड में नई है, अभी राह खोज रही है।"
+     ],
+     "face": "/take/assets/enamel-yasmin.webp",
+     "serial": "02143"
+    }
+   ],
+   "prog": [
+    1,
+    4,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "station-5",
+   "world": "station",
+   "cls": "w-station",
+   "n": 5,
+   "total": 40,
+   "title": "The Daund goods",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who takes the Daund goods tonight?",
+    "आज रात दौंड की मालगाड़ी कौन ले जाए?"
+   ],
+   "speaker": [
+    "Gurpreet, station master",
+    "गुरप्रीत, स्टेशन मास्टर"
+   ],
+   "speakerFace": "/take/assets/enamel-gurpreet.webp",
+   "voice": [
+    "The yard wants a crew by ten. The rain has started.",
+    "यार्ड को दस बजे तक क्रू चाहिए। बारिश शुरू हो गई है।"
+   ],
+   "keys": [
+    [
+     "st-line",
+     "years",
+     "साल"
+    ],
+    [
+     "st-signal",
+     "missed",
+     "चूके"
+    ]
+   ],
+   "plate": [
+    "Nashik",
+    "नाशिक"
+   ],
+   "art": [
+    "/take/assets/station-s-platform.webp",
+    "print"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Kiran",
+     "hi": "किरण",
+     "vals": [
+      "9",
+      "1"
+     ],
+     "line": [
+      "Takes charge with the yard staff, always.",
+      "यार्ड के लोगों के साथ हमेशा कमान सँभालती है।"
+     ],
+     "face": "/take/assets/enamel-kiran.webp",
+     "serial": "02140"
+    },
+    {
+     "en": "Sunil",
+     "hi": "सुनील",
+     "vals": [
+      "9",
+      "1"
+     ],
+     "line": [
+      "Pushy with the yard staff, every shift.",
+      "हर शिफ़्ट में यार्ड के लोगों पर हुक्म चलाता है।"
+     ],
+     "face": "/take/assets/enamel-sunil.webp",
+     "serial": "02141"
+    },
+    {
+     "en": "Francis",
+     "hi": "फ़्रांसिस",
+     "vals": [
+      "5",
+      "3"
+     ],
+     "line": [
+      "Back from a week's leave, Mohan says.",
+      "मोहन कहता है, हफ़्ते भर की छुट्टी से लौटा है।"
+     ],
+     "face": "/take/assets/enamel-francis.webp",
+     "serial": "02142"
+    },
+    {
+     "en": "Yasmin",
+     "hi": "यास्मीन",
+     "vals": [
+      "3",
+      "0"
+     ],
+     "line": [
+      "Asks a lot of questions in drills.",
+      "ड्रिल में बहुत सवाल पूछती है।"
+     ],
+     "face": "/take/assets/enamel-yasmin.webp",
+     "serial": "02143"
+    }
+   ],
+   "prog": [
+    1,
+    5,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "station-6",
+   "world": "station",
+   "cls": "w-station",
+   "n": 6,
+   "total": 40,
+   "title": "The signal course",
+   "kind": "rank",
+   "rawKind": "rank, 2 seats",
+   "q": [
+    "Rank them for the 2 seats on the signal course.",
+    "सिग्नल कोर्स की 2 सीटों के लिए क्रम लगाएँ।"
+   ],
+   "speaker": [
+    "Gurpreet, station master",
+    "गुरप्रीत, स्टेशन मास्टर"
+   ],
+   "speakerFace": "/take/assets/enamel-gurpreet.webp",
+   "voice": [
+    "The signal course takes two. The old foreman retires on Friday.",
+    "सिग्नल कोर्स में दो ही जाएँगे। पुराने फ़ोरमैन शुक्रवार को रिटायर हो रहे हैं।"
+   ],
+   "keys": [
+    [
+     "score",
+     "marks",
+     "नंबर"
+    ],
+    [
+     "clock",
+     "late",
+     "देर"
+    ]
+   ],
+   "plate": [
+    "Pune",
+    "पुणे"
+   ],
+   "art": [
+    "/take/assets/station-s-counter.webp",
+    "print"
+   ],
+   "button": [
+    "Send the list",
+    "लिस्ट भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Francis",
+     "hi": "फ़्रांसिस",
+     "vals": [
+      "86",
+      "0"
+     ],
+     "line": [
+      "Came top of his batch at training school.",
+      "ट्रेनिंग स्कूल में अपने बैच में सबसे आगे रहा।"
+     ],
+     "face": "/take/assets/enamel-francis.webp",
+     "serial": "02140"
+    },
+    {
+     "en": "Mohan",
+     "hi": "मोहन",
+     "vals": [
+      "77",
+      "1"
+     ],
+     "line": [
+      "Asha's brother. Fires the old steam engines.",
+      "आशा का भाई। पुराने भाप इंजन में कोयला झोंकता है।"
+     ],
+     "face": "/take/assets/enamel-mohan.webp",
+     "serial": "02141"
+    },
+    {
+     "en": "Kiran",
+     "hi": "किरण",
+     "vals": [
+      "71",
+      "2"
+     ],
+     "line": [
+      "Transferred here last year from the Kalyan shed.",
+      "पिछले साल कल्याण शेड से तबादला होकर आई।"
+     ],
+     "face": "/take/assets/enamel-kiran.webp",
+     "serial": "02142"
+    },
+    {
+     "en": "Prakash",
+     "hi": "प्रकाश",
+     "vals": [
+      "71",
+      "2"
+     ],
+     "line": [
+      "Took six months off to nurse his father.",
+      "पिता की देखभाल के लिए छह महीने की छुट्टी ली।"
+     ],
+     "face": "/take/assets/enamel-prakash.webp",
+     "serial": "02143"
+    },
+    {
+     "en": "Sunil",
+     "hi": "सुनील",
+     "vals": [
+      "63",
+      "4"
+     ],
+     "line": [
+      "Late twice this month, both times on Mondays.",
+      "इस महीने दो बार देर से आया, दोनों बार सोमवार को।"
+     ],
+     "face": "/take/assets/enamel-sunil.webp",
+     "serial": "02144"
+    }
+   ],
+   "prog": [
+    1,
+    6,
+    8
+   ],
+   "seats": 2
+  },
+  {
+   "type": "step",
+   "id": "station-7",
+   "world": "station",
+   "cls": "w-station",
+   "n": 7,
+   "total": 40,
+   "title": "The flood bridge",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who takes the night mail over the river in flood?",
+    "बाढ़ में नदी के ऊपर रात की मेल कौन ले जाए?"
+   ],
+   "speaker": [
+    "Gurpreet, station master",
+    "गुरप्रीत, स्टेशन मास्टर"
+   ],
+   "speakerFace": "/take/assets/enamel-gurpreet.webp",
+   "voice": [
+    "The river is high. The bridge section needs someone who has learned it.",
+    "नदी चढ़ी हुई है। पुल वाले सेक्शन के लिए वही चाहिए जिसने उसे सीखा हो।"
+   ],
+   "keys": [
+    [
+     "st-line",
+     "years",
+     "साल"
+    ],
+    [
+     "st-signal",
+     "missed",
+     "चूके"
+    ]
+   ],
+   "plate": [
+    "Nashik",
+    "नाशिक"
+   ],
+   "art": [
+    "/take/assets/station-s-platform.webp",
+    "print"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Mumtaz",
+     "hi": "मुमताज़",
+     "vals": [
+      "10",
+      "0"
+     ],
+     "line": [
+      "Knows every signal on the plains.",
+      "मैदान का हर सिग्नल जानती है।"
+     ],
+     "face": "/take/assets/enamel-mumtaz.webp",
+     "serial": "02140"
+    },
+    {
+     "en": "Rohit",
+     "hi": "रोहित",
+     "vals": [
+      "10",
+      "0"
+     ],
+     "line": [
+      "Has learned the whole bridge section.",
+      "पूरा पुल वाला सेक्शन सीख चुका है।"
+     ],
+     "face": "/take/assets/enamel-rohit.webp",
+     "serial": "02141"
+    },
+    {
+     "en": "Kiran",
+     "hi": "किरण",
+     "vals": [
+      "6",
+      "1"
+     ],
+     "line": [
+      "Never missed a shift, Mohan says.",
+      "मोहन कहता है, कभी शिफ़्ट नहीं छोड़ी।"
+     ],
+     "face": "/take/assets/enamel-kiran.webp",
+     "serial": "02142"
+    },
+    {
+     "en": "Nagsen",
+     "hi": "नागसेन",
+     "vals": [
+      "4",
+      "3"
+     ],
+     "line": [
+      "Just back from the Pune shed.",
+      "अभी-अभी पुणे शेड से लौटा है।"
+     ],
+     "face": "/take/assets/enamel-nagsen.webp",
+     "serial": "02143"
+    }
+   ],
+   "prog": [
+    1,
+    7,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "station-8",
+   "world": "station",
+   "cls": "w-station",
+   "n": 8,
+   "total": 40,
+   "title": "The safety school",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who goes to the safety school in Bhusawal?",
+    "भुसावल के सेफ़्टी स्कूल में कौन जाए?"
+   ],
+   "speaker": [
+    "Gurpreet, station master",
+    "गुरप्रीत, स्टेशन मास्टर"
+   ],
+   "speakerFace": "/take/assets/enamel-gurpreet.webp",
+   "voice": [
+    "One seat at the safety school. The yard foreman has been transferred.",
+    "सेफ़्टी स्कूल में एक सीट। यार्ड के फ़ोरमैन का तबादला हो गया।"
+   ],
+   "keys": [
+    [
+     "st-line",
+     "years",
+     "साल"
+    ],
+    [
+     "st-signal",
+     "missed",
+     "चूके"
+    ]
+   ],
+   "plate": [
+    "Nashik",
+    "नाशिक"
+   ],
+   "art": [
+    "/take/assets/station-s-platform.webp",
+    "print"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Kiran",
+     "hi": "किरण",
+     "vals": [
+      "11",
+      "1"
+     ],
+     "line": [
+      "Reported the yard foreman's bullying; he was moved.",
+      "यार्ड फ़ोरमैन की बदसलूकी की शिकायत की; उसका तबादला हुआ।"
+     ],
+     "face": "/take/assets/enamel-kiran.webp",
+     "serial": "02140"
+    },
+    {
+     "en": "Nagsen",
+     "hi": "नागसेन",
+     "vals": [
+      "11",
+      "1"
+     ],
+     "line": [
+      "Keeps the yard's logbook, neat to the minute.",
+      "यार्ड की लॉगबुक रखता है, मिनट-मिनट का हिसाब।"
+     ],
+     "face": "/take/assets/enamel-nagsen.webp",
+     "serial": "02141"
+    },
+    {
+     "en": "Francis",
+     "hi": "फ़्रांसिस",
+     "vals": [
+      "8",
+      "2"
+     ],
+     "line": [
+      "Wants the course badly, or so Mohan says.",
+      "मोहन कहता है, उसे कोर्स की बहुत चाह है।"
+     ],
+     "face": "/take/assets/enamel-francis.webp",
+     "serial": "02142"
+    },
+    {
+     "en": "Mumtaz",
+     "hi": "मुमताज़",
+     "vals": [
+      "5",
+      "0"
+     ],
+     "line": [
+      "Prefers the night shift, when the yard's quiet.",
+      "रात की शिफ़्ट पसंद करती है, जब यार्ड शांत रहता है।"
+     ],
+     "face": "/take/assets/enamel-mumtaz.webp",
+     "serial": "02143"
+    }
+   ],
+   "prog": [
+    1,
+    8,
+    8
+   ]
+  },
+  {
+   "type": "cut",
+   "label": [
+    "The week the new engines came",
+    "जिस हफ़्ते नए इंजन आए"
+   ],
+   "panels": [
+    {
+     "id": "1.9",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-1-9.webp",
+     "cap": [
+      "Friday, dawn. The first run left on time. Half the town came.",
+      "शुक्रवार, सुबह-सुबह। पहली गाड़ी समय पर निकली। आधा शहर देखने आया।"
+     ]
+    },
+    {
+     "id": "1.10",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-1-10.webp",
+     "cap": [
+      "Tara: \"Did Mohan nana get the course?\" Dadi: \"All in good time.\"",
+      "तारा: \"मोहन नाना को कोर्स मिला?\" दादी: \"सब्र करो, बताऊँगी।\""
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cut",
+   "label": [
+    "Onion season",
+    "प्याज़ का मौसम"
+   ],
+   "panels": [
+    {
+     "id": "2.1",
+     "world": "w-lugdi",
+     "pic": "/take/assets/cut-st-2-1.webp",
+     "cap": [
+      "By 1977 I'd married into a trucking family. Loud, all of them.",
+      "1977 तक मैं ट्रक वाले परिवार की बहू बन चुकी थी। सब के सब ऊँची आवाज़ वाले।"
+     ]
+    },
+    {
+     "id": "2.2",
+     "world": "w-lugdi",
+     "pic": "/take/assets/cut-st-2-2.webp",
+     "cap": [
+      "Bauji ran four trucks over the Kasara ghat. Nobody argued with Bauji.",
+      "बाऊजी के चार ट्रक कसारा घाट पर चलते थे। बाऊजी से कोई बहस नहीं करता था।"
+     ]
+    },
+    {
+     "id": "2.3",
+     "world": "w-lugdi",
+     "pic": "/take/assets/cut-st-2-3.webp",
+     "cap": [
+      "My husband Ramesh drove, humming film songs. Mohan rode beside him now.",
+      "मेरे पति रमेश फ़िल्मी गाने गुनगुनाते हुए ट्रक चलाते। अब मोहन भी साथ होता।"
+     ]
+    },
+    {
+     "id": "2.4",
+     "world": "w-lugdi",
+     "pic": "/take/assets/cut-st-2-4.webp",
+     "cap": [
+      "Onion season. Rain, lanterns, and talk of robbers on the ghat.",
+      "प्याज़ का मौसम। बारिश, लालटेन, और घाट पर लुटेरों की बातें।"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cover",
+   "world": "lugdi",
+   "cls": "w-lugdi ",
+   "art": [
+    "/take/assets/pulp-s-court.webp",
+    "veil-low"
+   ],
+   "html": "<div class=\"topbar\"><div class=\"group\"></div><div class=\"group\"><button class=\"ibtn\" type=\"button\" data-help aria-label=\"How to play\" data-hi-label=\"कैसे खेलें\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.72V144a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8c13.23,0,24-9,24-20s-10.77-20-24-20-24,9-24,20v4a8,8,0,0,1-16,0v-4c0-19.85,17.94-36,40-36s40,16.15,40,36C168,125.38,154.24,139.93,136,143.28Z\"/></svg></button></div></div><div class=\"scr-body is-cover\"><div class=\"masthead\"><span data-hi=\"घाट सीरीज़\">Ghat Series</span><span data-hi=\"गुरुवार\">Thursday</span></div><div class=\"roundel\" role=\"img\" aria-label=\"Issue 215\" data-hi-label=\"अंक 215\"><span aria-hidden=\"true\">215</span></div><div class=\"coverstack\"><h1 class=\"pulp-title\" data-hi=\"अदालत की रात\" data-eng=\"Night in Court\">Adalat Ki Raat</h1><div class=\"plate hug\"><p class=\"coverline\" data-hi=\"रात के फेरे, और पीछा किए जाने की रिपोर्टें।\">Night runs, and reports of being followed.</p><span class=\"level\" data-hi=\"लेवल 4/6\">Level 4 of 6</span></div></div></div><div class=\"dock\"><button class=\"main is-out \" type=\"button\"><span data-hi=\"खेलें\">Play</span></button></div>"
+  },
+  {
+   "type": "step",
+   "id": "lugdi-1",
+   "world": "lugdi",
+   "cls": "w-lugdi",
+   "n": 9,
+   "total": 40,
+   "title": "The night convoy",
+   "kind": "team",
+   "rawKind": "pick a team, 3 of 5",
+   "q": [
+    "Pick 3 for the night convoy.",
+    "रात के काफ़िले के लिए 3 चुनें।"
+   ],
+   "speaker": [
+    "Bauji",
+    "बाऊजी"
+   ],
+   "speakerFace": "/take/assets/pulp-bauji.webp",
+   "voice": [
+    "Onions for Mumbai. Three trucks leave at midnight.",
+    "मुंबई के लिए प्याज़। तीन ट्रक आधी रात को निकलेंगे।"
+   ],
+   "keys": [
+    [
+     "wheel",
+     "trips",
+     "ट्रिप"
+    ],
+    [
+     "crash",
+     "crashes",
+     "हादसे"
+    ]
+   ],
+   "plate": [
+    "Ghat Series",
+    "घाट सीरीज़"
+   ],
+   "art": [
+    "/take/assets/pulp-s-cricket.webp",
+    "veil"
+   ],
+   "button": [
+    "Lock the team",
+    "टीम पक्की करें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Etwari",
+     "hi": "एतवारी",
+     "vals": [
+      "75",
+      "0"
+     ],
+     "line": [
+      "Loads fastest at the depot, every time.",
+      "डिपो पर हर बार सबसे तेज़ लोड करती है।"
+     ],
+     "face": "/take/assets/pulp-etwari.webp",
+     "serial": null
+    },
+    {
+     "en": "Ramesh",
+     "hi": "रमेश",
+     "vals": [
+      "60",
+      "1"
+     ],
+     "line": [
+      "Asha's husband. Drives the old green truck.",
+      "आशा के पति। पुराना हरा ट्रक चलाते हैं।"
+     ],
+     "face": "/take/assets/pulp-ramesh.webp",
+     "serial": null
+    },
+    {
+     "en": "Jasleen",
+     "hi": "जसलीन",
+     "vals": [
+      "41",
+      "1"
+     ],
+     "line": [
+      "Her family worries about her night runs.",
+      "रात के फेरों से उसके घरवाले फ़िक्र करते हैं।"
+     ],
+     "face": "/take/assets/pulp-jasleen.webp",
+     "serial": null
+    },
+    {
+     "en": "Dinesh",
+     "hi": "दिनेश",
+     "vals": [
+      "41",
+      "1"
+     ],
+     "line": [
+      "Drives the blue truck, mostly on nights.",
+      "नीला ट्रक चलाता है, ज़्यादातर रात में।"
+     ],
+     "face": "/take/assets/pulp-dinesh.webp",
+     "serial": null
+    },
+    {
+     "en": "Nirmala",
+     "hi": "निर्मला",
+     "vals": [
+      "30",
+      "2"
+     ],
+     "line": [
+      "Keeps asking for night runs, Mohan says.",
+      "मोहन कहता है, रात के फेरे माँगती रहती है।"
+     ],
+     "face": "/take/assets/pulp-nirmala.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    2,
+    1,
+    8
+   ],
+   "need": 3
+  },
+  {
+   "type": "step",
+   "id": "lugdi-2",
+   "world": "lugdi",
+   "cls": "w-lugdi",
+   "n": 10,
+   "total": 40,
+   "title": "The road reports",
+   "kind": "checks",
+   "rawKind": "spend checks, up to 2",
+   "q": [
+    "Whose reports do you take up?",
+    "किस-किस की रिपोर्ट आगे बढ़ाएँ?"
+   ],
+   "speaker": [
+    "Bauji",
+    "बाऊजी"
+   ],
+   "speakerFace": "/take/assets/pulp-bauji.webp",
+   "voice": [
+    "This week's road reports, open in the logbook.",
+    "इस हफ़्ते की सड़क रिपोर्टें, लॉगबुक में खुली हुई।"
+   ],
+   "keys": [
+    [
+     "wheel",
+     "years",
+     "साल"
+    ],
+    [
+     "today",
+     "nights",
+     "रातें"
+    ]
+   ],
+   "plate": [
+    "Ghat Series",
+    "घाट सीरीज़"
+   ],
+   "art": [
+    "/take/assets/pulp-s-money.webp",
+    "veil"
+   ],
+   "button": [
+    "Take them up",
+    "आगे बढ़ाएँ"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Dinesh",
+     "hi": "दिनेश",
+     "vals": [
+      "9",
+      "5"
+     ],
+     "line": [
+      "Says a car followed his truck down the ghat. Scares easily.",
+      "कहता है घाट पर एक गाड़ी उसके ट्रक के पीछे लगी रही। जल्दी डर जाता है।"
+     ],
+     "face": "/take/assets/pulp-dinesh.webp",
+     "serial": null
+    },
+    {
+     "en": "Kusum",
+     "hi": "कुसुम",
+     "vals": [
+      "9",
+      "5"
+     ],
+     "line": [
+      "Says a car followed her truck down the ghat. Drives nights.",
+      "कहती है घाट पर एक गाड़ी उसके ट्रक के पीछे लगी रही। रात में चलाती है।"
+     ],
+     "face": "/take/assets/pulp-kusum.webp",
+     "serial": null
+    },
+    {
+     "en": "Baldev",
+     "hi": "बलदेव",
+     "vals": [
+      "22",
+      "2"
+     ],
+     "line": [
+      "Says a tyre burst near the toll last night. Hates delays.",
+      "कहता है कल रात टोल के पास टायर फट गया। देरी से चिढ़ता है।"
+     ],
+     "face": "/take/assets/pulp-baldev.webp",
+     "serial": null
+    },
+    {
+     "en": "Nirmala",
+     "hi": "निर्मला",
+     "vals": [
+      "14",
+      "7"
+     ],
+     "line": [
+      "Says she was fined at the check post. Short on cash.",
+      "कहती है चेक पोस्ट पर उसका चालान कटा। पैसों की तंगी है।"
+     ],
+     "face": "/take/assets/pulp-nirmala.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    2,
+    2,
+    8
+   ],
+   "max": 2
+  },
+  {
+   "type": "step",
+   "id": "lugdi-3",
+   "world": "lugdi",
+   "cls": "w-lugdi",
+   "n": 11,
+   "total": 40,
+   "title": "The hill route",
+   "kind": "team",
+   "rawKind": "keep, 2 of 4",
+   "q": [
+    "Keep 2 on the hill route.",
+    "पहाड़ी रास्ते पर 2 रखें।"
+   ],
+   "speaker": [
+    "Bauji",
+    "बाऊजी"
+   ],
+   "speakerFace": "/take/assets/pulp-bauji.webp",
+   "voice": [
+    "Two trucks scraped the hairpin last month. Two stay on the hill route.",
+    "पिछले महीने दो ट्रक मोड़ पर रगड़ खा गए। पहाड़ी रास्ते पर दो ही रहेंगे।"
+   ],
+   "keys": [
+    [
+     "ledger",
+     "loads",
+     "लोड"
+    ],
+    [
+     "clock",
+     "late",
+     "देर"
+    ]
+   ],
+   "plate": [
+    "Ghat Series",
+    "घाट सीरीज़"
+   ],
+   "art": [
+    "/take/assets/pulp-s-cricket.webp",
+    "veil"
+   ],
+   "button": [
+    "Keep these",
+    "इन्हें रखें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Baldev",
+     "hi": "बलदेव",
+     "vals": [
+      "80",
+      "0"
+     ],
+     "line": [
+      "Slow, but never scraped.",
+      "धीमा, पर कभी रगड़ नहीं खाई।"
+     ],
+     "face": "/take/assets/pulp-baldev.webp",
+     "serial": null
+    },
+    {
+     "en": "Nirmala",
+     "hi": "निर्मला",
+     "vals": [
+      "64",
+      "1"
+     ],
+     "line": [
+      "Reckless on the bends.",
+      "मोड़ों पर लापरवाह।"
+     ],
+     "face": "/take/assets/pulp-nirmala.webp",
+     "serial": null
+    },
+    {
+     "en": "Velu",
+     "hi": "वेलु",
+     "vals": [
+      "64",
+      "1"
+     ],
+     "line": [
+      "Bold on the bends.",
+      "मोड़ों पर दिलेर।"
+     ],
+     "face": "/take/assets/pulp-velu.webp",
+     "serial": null
+    },
+    {
+     "en": "Kusum",
+     "hi": "कुसुम",
+     "vals": [
+      "52",
+      "3"
+     ],
+     "line": [
+      "Brakes too late, Mohan says.",
+      "मोहन कहता है, ब्रेक बहुत देर से लगाती है।"
+     ],
+     "face": "/take/assets/pulp-kusum.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    2,
+    3,
+    8
+   ],
+   "need": 2
+  },
+  {
+   "type": "step",
+   "id": "lugdi-4",
+   "world": "lugdi",
+   "cls": "w-lugdi",
+   "n": 12,
+   "total": 40,
+   "title": "The gas cylinder run",
+   "kind": "team",
+   "rawKind": "pick a team, 3 of 5",
+   "q": [
+    "Pick 3 for the gas cylinder run.",
+    "गैस सिलेंडर वाले फेरे के लिए 3 चुनें।"
+   ],
+   "speaker": [
+    "Bauji",
+    "बाऊजी"
+   ],
+   "speakerFace": "/take/assets/pulp-bauji.webp",
+   "voice": [
+    "One truck carries gas cylinders. It needs the hazardous-goods licence.",
+    "एक ट्रक में गैस सिलेंडर हैं। उसके लिए ख़तरनाक माल का लाइसेंस चाहिए।"
+   ],
+   "keys": [
+    [
+     "wheel",
+     "runs",
+     "फेरे"
+    ],
+    [
+     "stamp",
+     "fines",
+     "जुर्माने"
+    ]
+   ],
+   "plate": [
+    "Ghat Series",
+    "घाट सीरीज़"
+   ],
+   "art": [
+    "/take/assets/pulp-s-cricket.webp",
+    "veil"
+   ],
+   "button": [
+    "Lock the team",
+    "टीम पक्की करें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Anthony",
+     "hi": "एंथनी",
+     "vals": [
+      "44",
+      "0"
+     ],
+     "line": [
+      "Steady on the ghat road.",
+      "घाट वाली सड़क पर सधा हुआ।"
+     ],
+     "face": "/take/assets/pulp-anthony.webp",
+     "serial": null
+    },
+    {
+     "en": "Velu",
+     "hi": "वेलु",
+     "vals": [
+      "36",
+      "2"
+     ],
+     "line": [
+      "Careful on bends, Mohan says.",
+      "मोहन कहता है, मोड़ों पर सावधान है।"
+     ],
+     "face": "/take/assets/pulp-velu.webp",
+     "serial": null
+    },
+    {
+     "en": "Kusum",
+     "hi": "कुसुम",
+     "vals": [
+      "30",
+      "1"
+     ],
+     "line": [
+      "Holds the hazardous-goods licence now.",
+      "अब ख़तरनाक माल का लाइसेंस है।"
+     ],
+     "face": "/take/assets/pulp-kusum.webp",
+     "serial": null
+    },
+    {
+     "en": "Baldev",
+     "hi": "बलदेव",
+     "vals": [
+      "30",
+      "1"
+     ],
+     "line": [
+      "Drives the long Mumbai run.",
+      "मुंबई वाला लंबा फेरा चलाता है।"
+     ],
+     "face": "/take/assets/pulp-baldev.webp",
+     "serial": null
+    },
+    {
+     "en": "Nirmala",
+     "hi": "निर्मला",
+     "vals": [
+      "18",
+      "3"
+     ],
+     "line": [
+      "Wants the day shift again.",
+      "फिर से दिन की शिफ़्ट चाहती है।"
+     ],
+     "face": "/take/assets/pulp-nirmala.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    2,
+    4,
+    8
+   ],
+   "need": 3
+  },
+  {
+   "type": "step",
+   "id": "lugdi-5",
+   "world": "lugdi",
+   "cls": "w-lugdi",
+   "n": 13,
+   "total": 40,
+   "title": "The cash run",
+   "kind": "team",
+   "rawKind": "pick a team, 3 of 5",
+   "q": [
+    "Pick 3 for the cash run to the market.",
+    "मंडी तक पैसों वाले फेरे के लिए 3 चुनें।"
+   ],
+   "speaker": [
+    "Bauji",
+    "बाऊजी"
+   ],
+   "speakerFace": "/take/assets/pulp-bauji.webp",
+   "voice": [
+    "Cash for the onion growers goes down at dawn. Three trucks.",
+    "प्याज़ किसानों का पैसा सुबह नीचे जाएगा। तीन ट्रक।"
+   ],
+   "keys": [
+    [
+     "wheel",
+     "trips",
+     "ट्रिप"
+    ],
+    [
+     "crash",
+     "crashes",
+     "हादसे"
+    ]
+   ],
+   "plate": [
+    "Ghat Series",
+    "घाट सीरीज़"
+   ],
+   "art": [
+    "/take/assets/pulp-s-cricket.webp",
+    "veil"
+   ],
+   "button": [
+    "Lock the team",
+    "टीम पक्की करें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Saroj",
+     "hi": "सरोज",
+     "vals": [
+      "72",
+      "0"
+     ],
+     "line": [
+      "Never once late in six whole years.",
+      "छह साल में एक बार भी देर नहीं की।"
+     ],
+     "face": "/take/assets/pulp-saroj.webp",
+     "serial": null
+    },
+    {
+     "en": "Ramesh",
+     "hi": "रमेश",
+     "vals": [
+      "58",
+      "1"
+     ],
+     "line": [
+      "Asha's husband. Drives the old green truck.",
+      "आशा के पति। पुराना हरा ट्रक चलाते हैं।"
+     ],
+     "face": "/take/assets/pulp-ramesh.webp",
+     "serial": null
+    },
+    {
+     "en": "Kusum",
+     "hi": "कुसुम",
+     "vals": [
+      "40",
+      "1"
+     ],
+     "line": [
+      "Drives the red truck, mostly on nights.",
+      "लाल ट्रक चलाती है, ज़्यादातर रात में।"
+     ],
+     "face": "/take/assets/pulp-kusum.webp",
+     "serial": null
+    },
+    {
+     "en": "Velu",
+     "hi": "वेलु",
+     "vals": [
+      "40",
+      "1"
+     ],
+     "line": [
+      "His family worries about his ghat runs.",
+      "घाट के फेरों से उसके घरवाले फ़िक्र करते हैं।"
+     ],
+     "face": "/take/assets/pulp-velu.webp",
+     "serial": null
+    },
+    {
+     "en": "Anthony",
+     "hi": "एंथनी",
+     "vals": [
+      "28",
+      "2"
+     ],
+     "line": [
+      "Back from leave this week, Mohan says.",
+      "मोहन कहता है, इस हफ़्ते छुट्टी से लौटा है।"
+     ],
+     "face": "/take/assets/pulp-anthony.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    2,
+    5,
+    8
+   ],
+   "need": 3
+  },
+  {
+   "type": "step",
+   "id": "lugdi-6",
+   "world": "lugdi",
+   "cls": "w-lugdi",
+   "n": 14,
+   "total": 40,
+   "title": "The river road reports",
+   "kind": "checks",
+   "rawKind": "spend checks, up to 2",
+   "q": [
+    "Whose reports go to the police post?",
+    "किसकी रिपोर्ट पुलिस चौकी जाए?"
+   ],
+   "speaker": [
+    "Bauji",
+    "बाऊजी"
+   ],
+   "speakerFace": "/take/assets/pulp-bauji.webp",
+   "voice": [
+    "Another week. The river road this time.",
+    "एक और हफ़्ता। इस बार नदी वाली सड़क।"
+   ],
+   "keys": [
+    [
+     "wheel",
+     "years",
+     "साल"
+    ],
+    [
+     "today",
+     "nights",
+     "रातें"
+    ]
+   ],
+   "plate": [
+    "Ghat Series",
+    "घाट सीरीज़"
+   ],
+   "art": [
+    "/take/assets/pulp-s-money.webp",
+    "veil"
+   ],
+   "button": [
+    "Take them up",
+    "आगे बढ़ाएँ"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Saroj",
+     "hi": "सरोज",
+     "vals": [
+      "14",
+      "7"
+     ],
+     "line": [
+      "Says a car stayed behind her along the river road. Imagines things.",
+      "कहती है नदी वाली सड़क पर एक गाड़ी उसके पीछे रही। वहम करती है।"
+     ],
+     "face": "/take/assets/pulp-saroj.webp",
+     "serial": null
+    },
+    {
+     "en": "Anthony",
+     "hi": "एंथनी",
+     "vals": [
+      "14",
+      "7"
+     ],
+     "line": [
+      "Says a car stayed behind him along the river road. Drives nights.",
+      "कहता है नदी वाली सड़क पर एक गाड़ी उसके पीछे रही। रात में चलाता है।"
+     ],
+     "face": "/take/assets/pulp-anthony.webp",
+     "serial": null
+    },
+    {
+     "en": "Jasleen",
+     "hi": "जसलीन",
+     "vals": [
+      "6",
+      "2"
+     ],
+     "line": [
+      "Says a fallen tree blocked the river road at dusk. Hates detours.",
+      "कहती है शाम को गिरे पेड़ ने नदी वाली सड़क रोक दी। घूमकर जाना नापसंद है।"
+     ],
+     "face": "/take/assets/pulp-jasleen.webp",
+     "serial": null
+    },
+    {
+     "en": "Etwari",
+     "hi": "एतवारी",
+     "vals": [
+      "30",
+      "1"
+     ],
+     "line": [
+      "Says the brakes felt soft on the long slope down. Wants repairs.",
+      "कहती है लंबी ढलान पर ब्रेक ढीले लगे। मरम्मत चाहती है।"
+     ],
+     "face": "/take/assets/pulp-etwari.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    2,
+    6,
+    8
+   ],
+   "max": 2
+  },
+  {
+   "type": "step",
+   "id": "lugdi-7",
+   "world": "lugdi",
+   "cls": "w-lugdi",
+   "n": 15,
+   "total": 40,
+   "title": "The river route",
+   "kind": "team",
+   "rawKind": "keep, 2 of 4",
+   "q": [
+    "Keep 2 on the river route.",
+    "नदी वाले रास्ते पर 2 रखें।"
+   ],
+   "speaker": [
+    "Bauji",
+    "बाऊजी"
+   ],
+   "speakerFace": "/take/assets/pulp-bauji.webp",
+   "voice": [
+    "Two dents at the river bend this month. Two stay on that route.",
+    "इस महीने नदी के मोड़ पर दो डेंट। उस रास्ते पर दो ही रहेंगे।"
+   ],
+   "keys": [
+    [
+     "ledger",
+     "loads",
+     "लोड"
+    ],
+    [
+     "clock",
+     "late",
+     "देर"
+    ]
+   ],
+   "plate": [
+    "Ghat Series",
+    "घाट सीरीज़"
+   ],
+   "art": [
+    "/take/assets/pulp-s-cricket.webp",
+    "veil"
+   ],
+   "button": [
+    "Keep these",
+    "इन्हें रखें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Saroj",
+     "hi": "सरोज",
+     "vals": [
+      "80",
+      "0"
+     ],
+     "line": [
+      "Never once scraped the paint.",
+      "पेंट पर एक खरोंच तक नहीं आई।"
+     ],
+     "face": "/take/assets/pulp-saroj.webp",
+     "serial": null
+    },
+    {
+     "en": "Etwari",
+     "hi": "एतवारी",
+     "vals": [
+      "64",
+      "1"
+     ],
+     "line": [
+      "Bold at the river bend.",
+      "नदी के मोड़ पर दिलेर।"
+     ],
+     "face": "/take/assets/pulp-etwari.webp",
+     "serial": null
+    },
+    {
+     "en": "Dinesh",
+     "hi": "दिनेश",
+     "vals": [
+      "64",
+      "1"
+     ],
+     "line": [
+      "Reckless at the river bend.",
+      "नदी के मोड़ पर लापरवाह।"
+     ],
+     "face": "/take/assets/pulp-dinesh.webp",
+     "serial": null
+    },
+    {
+     "en": "Jasleen",
+     "hi": "जसलीन",
+     "vals": [
+      "52",
+      "3"
+     ],
+     "line": [
+      "Takes it wide, Mohan says.",
+      "मोहन कहता है, मोड़ चौड़ा काटती है।"
+     ],
+     "face": "/take/assets/pulp-jasleen.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    2,
+    7,
+    8
+   ],
+   "need": 2
+  },
+  {
+   "type": "step",
+   "id": "lugdi-8",
+   "world": "lugdi",
+   "cls": "w-lugdi",
+   "n": 16,
+   "total": 40,
+   "title": "The kerosene run",
+   "kind": "team",
+   "rawKind": "pick a team, 3 of 4",
+   "q": [
+    "Pick 3 for the kerosene run.",
+    "केरोसीन वाले फेरे के लिए 3 चुनें।"
+   ],
+   "speaker": [
+    "Bauji",
+    "बाऊजी"
+   ],
+   "speakerFace": "/take/assets/pulp-bauji.webp",
+   "voice": [
+    "One truck carries kerosene drums. It needs the hazardous-goods licence.",
+    "एक ट्रक में केरोसीन के ड्रम हैं। उसके लिए ख़तरनाक माल का लाइसेंस चाहिए।"
+   ],
+   "keys": [
+    [
+     "wheel",
+     "runs",
+     "फेरे"
+    ],
+    [
+     "stamp",
+     "fines",
+     "जुर्माने"
+    ]
+   ],
+   "plate": [
+    "Ghat Series",
+    "घाट सीरीज़"
+   ],
+   "art": [
+    "/take/assets/pulp-s-cricket.webp",
+    "veil"
+   ],
+   "button": [
+    "Lock the team",
+    "टीम पक्की करें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Jasleen",
+     "hi": "जसलीन",
+     "vals": [
+      "44",
+      "0"
+     ],
+     "line": [
+      "Steady in the heavy rain.",
+      "तेज़ बारिश में सधी हुई।"
+     ],
+     "face": "/take/assets/pulp-jasleen.webp",
+     "serial": null
+    },
+    {
+     "en": "Saroj",
+     "hi": "सरोज",
+     "vals": [
+      "30",
+      "1"
+     ],
+     "line": [
+      "Drives the short local runs.",
+      "छोटे लोकल फेरे चलाती है।"
+     ],
+     "face": "/take/assets/pulp-saroj.webp",
+     "serial": null
+    },
+    {
+     "en": "Dinesh",
+     "hi": "दिनेश",
+     "vals": [
+      "30",
+      "1"
+     ],
+     "line": [
+      "Holds the hazardous-goods licence now.",
+      "अब ख़तरनाक माल का लाइसेंस है।"
+     ],
+     "face": "/take/assets/pulp-dinesh.webp",
+     "serial": null
+    },
+    {
+     "en": "Etwari",
+     "hi": "एतवारी",
+     "vals": [
+      "22",
+      "2"
+     ],
+     "line": [
+      "Just back from her leave.",
+      "अभी-अभी छुट्टी से लौटी है।"
+     ],
+     "face": "/take/assets/pulp-etwari.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    2,
+    8,
+    8
+   ],
+   "need": 3
+  },
+  {
+   "type": "cut",
+   "label": [
+    "Onion season",
+    "प्याज़ का मौसम"
+   ],
+   "panels": [
+    {
+     "id": "2.9",
+     "world": "w-lugdi",
+     "pic": "/take/assets/cut-st-2-9.webp",
+     "cap": [
+      "Every truck came home that season. Muddy to the axles, but home.",
+      "उस मौसम हर ट्रक घर लौटा। कीचड़ में सना, पर घर।"
+     ]
+    },
+    {
+     "id": "2.10",
+     "world": "w-lugdi",
+     "pic": "/take/assets/cut-st-2-10.webp",
+     "cap": [
+      "Meera: \"You waited up every night?\" Dadi: \"I counted every truck home.\"",
+      "मीरा: \"आप हर रात जागती थीं?\" दादी: \"हर ट्रक लौटने तक गिनती रहती थी।\""
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cut",
+   "label": [
+    "The magician's cash box",
+    "जादूगर का पैसों का डिब्बा"
+   ],
+   "panels": [
+    {
+     "id": "3.1",
+     "world": "w-jadugar",
+     "pic": "/take/assets/cut-st-3-1.webp",
+     "cap": [
+      "1984. My cousin Pallavi ran away. With a magic show!",
+      "1984। मेरी बहन पल्लवी भाग गई। एक जादू के शो के साथ!"
+     ]
+    },
+    {
+     "id": "3.2",
+     "world": "w-jadugar",
+     "pic": "/take/assets/cut-st-3-2.webp",
+     "cap": [
+      "Drums and lamps: the Chandni Mandal had come to the winter fair.",
+      "ढोल और लालटेनें: चाँदनी मंडल सर्दियों के मेले में आया था।"
+     ]
+    },
+    {
+     "id": "3.3",
+     "world": "w-jadugar",
+     "pic": "/take/assets/cut-st-3-3.webp",
+     "cap": [
+      "Pallavi was the magician's assistant. She knew every trick, and every secret.",
+      "पल्लवी जादूगर की सहायक थी। हर करतब जानती थी, और हर राज़।"
+     ]
+    },
+    {
+     "id": "3.4",
+     "world": "w-jadugar",
+     "pic": "/take/assets/cut-st-3-4.webp",
+     "cap": [
+      "Then, on the last night, the cash box came up short.",
+      "फिर, आख़िरी रात, पैसों का डिब्बा कम निकला।"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cover",
+   "world": "jadugar",
+   "cls": "w-jadugar ",
+   "art": [
+    "/take/assets/jadugar-s-trunk.webp",
+    "veil-low"
+   ],
+   "html": "<div class=\"topbar\"><div class=\"group\"></div><div class=\"group\"><button class=\"ibtn\" type=\"button\" data-help aria-label=\"How to play\" data-hi-label=\"कैसे खेलें\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.72V144a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8c13.23,0,24-9,24-20s-10.77-20-24-20-24,9-24,20v4a8,8,0,0,1-16,0v-4c0-19.85,17.94-36,40-36s40,16.15,40,36C168,125.38,154.24,139.93,136,143.28Z\"/></svg></button></div></div><div class=\"scr-body is-cover\"><div class=\"jd-mast\"><span data-hi=\"चाँदनी मंडल\">Chandni Mandal</span><span data-hi=\"शो 215\">Show 215</span></div><div class=\"coverstack\"><div class=\"jd-banner\"><h1 class=\"jd-title\" data-hi=\"संदूक का राज़\" data-eng=\"The Box&#x27;s Secret\">Sandook Ka Raaz</h1></div><div class=\"plate hug\"><p class=\"coverline\" data-hi=\"शो की रातें, और परदे के पीछे छेड़छाड़ की शिकायतें।\">Show nights, and harassment reports backstage.</p><span class=\"level\" data-hi=\"लेवल 4/6\">Level 4 of 6</span></div></div></div><div class=\"dock\"><button class=\"main is-out \" type=\"button\"><span data-hi=\"खेलें\">Play</span></button></div>"
+  },
+  {
+   "type": "step",
+   "id": "jadugar-1",
+   "world": "jadugar",
+   "cls": "w-jadugar",
+   "n": 17,
+   "total": 40,
+   "title": "The costume tent",
+   "kind": "pick",
+   "rawKind": "believe",
+   "q": [
+    "Whose statement goes in the report?",
+    "रिपोर्ट में किसका बयान लिखें?"
+   ],
+   "speaker": [
+    "Kader, the magician",
+    "क़ादर, जादूगर"
+   ],
+   "speakerFace": "/take/assets/jadugar-kader.webp",
+   "voice": [
+    "A man from the audience followed a dancer backstage. The fair's officials want one statement.",
+    "दर्शकों में से एक आदमी एक नर्तकी के पीछे परदे के पीछे गया। मेले के अफ़सरों को एक बयान चाहिए।"
+   ],
+   "keys": [
+    [
+     "jd-stage",
+     "years",
+     "साल"
+    ],
+    [
+     "jd-missed",
+     "missed",
+     "छूटे"
+    ]
+   ],
+   "plate": [
+    "Chandni Mandal",
+    "चाँदनी मंडल"
+   ],
+   "art": [
+    "/take/assets/jadugar-s-rope.webp",
+    "veil"
+   ],
+   "button": [
+    "Believe {n}",
+    "{n} की बात मानें"
+   ],
+   "teller": true,
+   "people": [
+    {
+     "en": "Sarla",
+     "hi": "सरला",
+     "vals": [
+      "9",
+      "0"
+     ],
+     "line": [
+      "“He followed her to the costume tent and would not go.” Makes a drama out of everything.",
+      "“वह उसके पीछे पोशाक वाले तंबू तक आया और गया ही नहीं।” हर बात का तमाशा बना देती है।"
+     ],
+     "face": "/take/assets/jadugar-sarla.webp",
+     "serial": null
+    },
+    {
+     "en": "Thomas",
+     "hi": "थॉमस",
+     "vals": [
+      "9",
+      "0"
+     ],
+     "line": [
+      "“He followed her to the costume tent and would not go.” Has worked the lights nine years.",
+      "“वह उसके पीछे पोशाक वाले तंबू तक आया और गया ही नहीं।” नौ साल से लाइटें सँभालता है।"
+     ],
+     "face": "/take/assets/jadugar-thomas.webp",
+     "serial": null
+    },
+    {
+     "en": "Jonali",
+     "hi": "जोनाली",
+     "vals": [
+      "7",
+      "1"
+     ],
+     "line": [
+      "“He came in by the back gate after the last show.” Saw him near the gate, Pallavi says.",
+      "“आख़िरी शो के बाद वह पीछे वाले गेट से आया था।” पल्लवी कहती है, उसने उसे गेट के पास देखा।"
+     ],
+     "face": "/take/assets/jadugar-jonali.webp",
+     "serial": null
+    },
+    {
+     "en": "Gopal",
+     "hi": "गोपाल",
+     "vals": [
+      "4",
+      "3"
+     ],
+     "line": [
+      "“He left the grounds when the watchman came with a lamp.” New with the troupe this season.",
+      "“चौकीदार लालटेन लेकर आया, तब वह मैदान से गया।” इस सीज़न मंडली में नया है।"
+     ],
+     "face": "/take/assets/jadugar-gopal.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    3,
+    1,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "jadugar-2",
+   "world": "jadugar",
+   "cls": "w-jadugar",
+   "n": 18,
+   "total": 40,
+   "title": "Cash to the next town",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who carries the cash to the next town?",
+    "अगले शहर तक पैसे कौन ले जाए?"
+   ],
+   "speaker": [
+    "Kader, the magician",
+    "क़ादर, जादूगर"
+   ],
+   "speakerFace": "/take/assets/jadugar-kader.webp",
+   "voice": [
+    "The lorry leaves at dawn. The cash box goes with someone.",
+    "लॉरी सुबह निकलेगी। पैसों का डिब्बा किसी के साथ जाएगा।"
+   ],
+   "keys": [
+    [
+     "wheel",
+     "trips",
+     "ट्रिप"
+    ],
+    [
+     "alert",
+     "short",
+     "कमी"
+    ]
+   ],
+   "plate": [
+    "Chandni Mandal",
+    "चाँदनी मंडल"
+   ],
+   "art": [
+    "/take/assets/jadugar-s-rope.webp",
+    "veil"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Dolly",
+     "hi": "डॉली",
+     "vals": [
+      "30",
+      "0"
+     ],
+     "line": [
+      "Careful with money, the way women are.",
+      "पैसों में सावधान, जैसी औरतें होती हैं।"
+     ],
+     "face": "/take/assets/jadugar-dolly.webp",
+     "serial": null
+    },
+    {
+     "en": "Gopal",
+     "hi": "गोपाल",
+     "vals": [
+      "30",
+      "0"
+     ],
+     "line": [
+      "Rides with the lorry on every move.",
+      "हर बार लॉरी के साथ जाता है।"
+     ],
+     "face": "/take/assets/jadugar-gopal.webp",
+     "serial": null
+    },
+    {
+     "en": "Mitali",
+     "hi": "मिताली",
+     "vals": [
+      "22",
+      "2"
+     ],
+     "line": [
+      "Always counts the takings twice, Pallavi says.",
+      "पल्लवी कहती है, कमाई हमेशा दो बार गिनती है।"
+     ],
+     "face": "/take/assets/jadugar-mitali.webp",
+     "serial": null
+    },
+    {
+     "en": "Cyrus",
+     "hi": "साइरस",
+     "vals": [
+      "15",
+      "4"
+     ],
+     "line": [
+      "Loses his ticket book every other week.",
+      "हर दूसरे हफ़्ते अपनी टिकट बुक खो देता है।"
+     ],
+     "face": "/take/assets/jadugar-cyrus.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    3,
+    2,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "jadugar-3",
+   "world": "jadugar",
+   "cls": "w-jadugar",
+   "n": 19,
+   "total": 40,
+   "title": "The lamp at rehearsal",
+   "kind": "pick",
+   "rawKind": "believe",
+   "q": [
+    "Whose story do you believe?",
+    "किसकी बात मानें?"
+   ],
+   "speaker": [
+    "Kader, the magician",
+    "क़ादर, जादूगर"
+   ],
+   "speakerFace": "/take/assets/jadugar-kader.webp",
+   "voice": [
+    "The big lamp fell at rehearsal. Nobody was hurt.",
+    "रिहर्सल में बड़ा लैंप गिर गया। किसी को चोट नहीं आई।"
+   ],
+   "keys": [
+    [
+     "ticket",
+     "towns",
+     "शहर"
+    ],
+    [
+     "jd-missed",
+     "slips",
+     "चूक"
+    ]
+   ],
+   "plate": [
+    "Chandni Mandal",
+    "चाँदनी मंडल"
+   ],
+   "art": [
+    "/take/assets/jadugar-s-rope.webp",
+    "veil"
+   ],
+   "button": [
+    "Believe {n}",
+    "{n} की बात मानें"
+   ],
+   "teller": true,
+   "people": [
+    {
+     "en": "Jonali",
+     "hi": "जोनाली",
+     "vals": [
+      "60",
+      "1"
+     ],
+     "line": [
+      "Someone told me. The hook gave way.",
+      "मुझे किसी ने बताया। हुक निकल गया।"
+     ],
+     "face": "/take/assets/jadugar-jonali.webp",
+     "serial": null
+    },
+    {
+     "en": "Cyrus",
+     "hi": "साइरस",
+     "vals": [
+      "60",
+      "1"
+     ],
+     "line": [
+      "I saw it. The hook gave way.",
+      "मैंने देखा। हुक निकल गया।"
+     ],
+     "face": "/take/assets/jadugar-cyrus.webp",
+     "serial": null
+    },
+    {
+     "en": "Thomas",
+     "hi": "थॉमस",
+     "vals": [
+      "40",
+      "1"
+     ],
+     "line": [
+      "The stand was never tied down properly.",
+      "स्टैंड ठीक से कभी बाँधा ही नहीं गया था।"
+     ],
+     "face": "/take/assets/jadugar-thomas.webp",
+     "serial": null
+    },
+    {
+     "en": "Gopal",
+     "hi": "गोपाल",
+     "vals": [
+      "22",
+      "2"
+     ],
+     "line": [
+      "I think someone knocked it by mistake.",
+      "मुझे लगता है किसी से ग़लती से धक्का लग गया।"
+     ],
+     "face": "/take/assets/jadugar-gopal.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    3,
+    3,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "jadugar-4",
+   "world": "jadugar",
+   "cls": "w-jadugar",
+   "n": 20,
+   "total": 40,
+   "title": "The ticket tin",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who keeps the key to the ticket tin?",
+    "टिकट के डिब्बे की चाबी कौन रखे?"
+   ],
+   "speaker": [
+    "Kader, the magician",
+    "क़ादर, जादूगर"
+   ],
+   "speakerFace": "/take/assets/jadugar-kader.webp",
+   "voice": [
+    "The ticket tin needs a keeper for the move.",
+    "सफ़र के लिए टिकट के डिब्बे को एक रखवाला चाहिए।"
+   ],
+   "keys": [
+    [
+     "jd-stage",
+     "shows",
+     "शो"
+    ],
+    [
+     "clock",
+     "late",
+     "देर"
+    ]
+   ],
+   "plate": [
+    "Chandni Mandal",
+    "चाँदनी मंडल"
+   ],
+   "art": [
+    "/take/assets/jadugar-s-rope.webp",
+    "veil"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Mitali",
+     "hi": "मिताली",
+     "vals": [
+      "48",
+      "1"
+     ],
+     "line": [
+      "Her brother works for the rival troupe.",
+      "उसका भाई दूसरी मंडली में काम करता है।"
+     ],
+     "face": "/take/assets/jadugar-mitali.webp",
+     "serial": null
+    },
+    {
+     "en": "Naresh",
+     "hi": "नरेश",
+     "vals": [
+      "48",
+      "1"
+     ],
+     "line": [
+      "Lodges with the drummer's family in town.",
+      "शहर में ढोलक वाले के परिवार के साथ रहता है।"
+     ],
+     "face": "/take/assets/jadugar-naresh.webp",
+     "serial": null
+    },
+    {
+     "en": "Jonali",
+     "hi": "जोनाली",
+     "vals": [
+      "40",
+      "2"
+     ],
+     "line": [
+      "Counts the tickets every night before bed.",
+      "सोने से पहले हर रात टिकट गिनती है।"
+     ],
+     "face": "/take/assets/jadugar-jonali.webp",
+     "serial": null
+    },
+    {
+     "en": "Thomas",
+     "hi": "थॉमस",
+     "vals": [
+      "26",
+      "0"
+     ],
+     "line": [
+      "Joined the troupe in Nashik last month.",
+      "पिछले महीने नाशिक में मंडली से जुड़ा।"
+     ],
+     "face": "/take/assets/jadugar-thomas.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    3,
+    4,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "jadugar-5",
+   "world": "jadugar",
+   "cls": "w-jadugar",
+   "n": 21,
+   "total": 40,
+   "title": "The make-up tent",
+   "kind": "pick",
+   "rawKind": "believe",
+   "q": [
+    "Whose statement goes to the police post?",
+    "किसका बयान पुलिस चौकी जाए?"
+   ],
+   "speaker": [
+    "Kader, the magician",
+    "क़ादर, जादूगर"
+   ],
+   "speakerFace": "/take/assets/jadugar-kader.webp",
+   "voice": [
+    "At the next town, a man pushed into the make-up tent after the late show.",
+    "अगले शहर में, देर रात के शो के बाद एक आदमी मेकअप वाले तंबू में घुस आया।"
+   ],
+   "keys": [
+    [
+     "jd-stage",
+     "years",
+     "साल"
+    ],
+    [
+     "jd-missed",
+     "missed",
+     "छूटे"
+    ]
+   ],
+   "plate": [
+    "Chandni Mandal",
+    "चाँदनी मंडल"
+   ],
+   "art": [
+    "/take/assets/jadugar-s-rope.webp",
+    "veil"
+   ],
+   "button": [
+    "Believe {n}",
+    "{n} की बात मानें"
+   ],
+   "teller": true,
+   "people": [
+    {
+     "en": "Naresh",
+     "hi": "नरेश",
+     "vals": [
+      "8",
+      "1"
+     ],
+     "line": [
+      "“He pushed into the make-up tent and would not leave.” Always making a scene about something.",
+      "“वह मेकअप वाले तंबू में घुस आया और गया ही नहीं।” हमेशा किसी बात पर हंगामा करता है।"
+     ],
+     "face": "/take/assets/jadugar-naresh.webp",
+     "serial": null
+    },
+    {
+     "en": "Pushpa",
+     "hi": "पुष्पा",
+     "vals": [
+      "8",
+      "1"
+     ],
+     "line": [
+      "“He pushed into the make-up tent and would not leave.” Does the make-up for the troupe.",
+      "“वह मेकअप वाले तंबू में घुस आया और गया ही नहीं।” मंडली का मेकअप करती है।"
+     ],
+     "face": "/take/assets/jadugar-pushpa.webp",
+     "serial": null
+    },
+    {
+     "en": "Rabia",
+     "hi": "राबिया",
+     "vals": [
+      "6",
+      "0"
+     ],
+     "line": [
+      "“He ran off the moment the drums started up again.” Sings the songs in the interval.",
+      "“ढोल फिर बजते ही वह भाग गया।” इंटरवल में गाने गाती है।"
+     ],
+     "face": "/take/assets/jadugar-rabia.webp",
+     "serial": null
+    },
+    {
+     "en": "Lalit",
+     "hi": "ललित",
+     "vals": [
+      "3",
+      "2"
+     ],
+     "line": [
+      "“I only heard the shouting from behind the stage curtain.” New this season, so Pallavi says.",
+      "“मैंने परदे के पीछे से बस चिल्लाना सुना।” पल्लवी कहती है, इस सीज़न नया है।"
+     ],
+     "face": "/take/assets/jadugar-lalit.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    3,
+    5,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "jadugar-6",
+   "world": "jadugar",
+   "cls": "w-jadugar",
+   "n": 22,
+   "total": 40,
+   "title": "The takings",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who takes the takings to the bank?",
+    "कमाई बैंक तक कौन ले जाए?"
+   ],
+   "speaker": [
+    "Kader, the magician",
+    "क़ादर, जादूगर"
+   ],
+   "speakerFace": "/take/assets/jadugar-kader.webp",
+   "voice": [
+    "A cloth bag of notes. The bank is across the highway.",
+    "नोटों की एक कपड़े की थैली। बैंक हाईवे के उस पार है।"
+   ],
+   "keys": [
+    [
+     "wheel",
+     "trips",
+     "ट्रिप"
+    ],
+    [
+     "alert",
+     "short",
+     "कमी"
+    ]
+   ],
+   "plate": [
+    "Chandni Mandal",
+    "चाँदनी मंडल"
+   ],
+   "art": [
+    "/take/assets/jadugar-s-rope.webp",
+    "veil"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Sarla",
+     "hi": "सरला",
+     "vals": [
+      "35",
+      "0"
+     ],
+     "line": [
+      "Never forgets a receipt, so Pallavi says.",
+      "पल्लवी कहती है, रसीद कभी नहीं भूलती।"
+     ],
+     "face": "/take/assets/jadugar-sarla.webp",
+     "serial": null
+    },
+    {
+     "en": "Rabia",
+     "hi": "राबिया",
+     "vals": [
+      "28",
+      "1"
+     ],
+     "line": [
+      "Knows the bank clerk from her village.",
+      "बैंक के क्लर्क को अपने गाँव से जानती है।"
+     ],
+     "face": "/take/assets/jadugar-rabia.webp",
+     "serial": null
+    },
+    {
+     "en": "Lalit",
+     "hi": "ललित",
+     "vals": [
+      "28",
+      "1"
+     ],
+     "line": [
+      "A man should carry it on highways.",
+      "हाईवे पर इसे आदमी को ले जाना चाहिए।"
+     ],
+     "face": "/take/assets/jadugar-lalit.webp",
+     "serial": null
+    },
+    {
+     "en": "Naresh",
+     "hi": "नरेश",
+     "vals": [
+      "12",
+      "3"
+     ],
+     "line": [
+      "Late with every errand he is given.",
+      "जो भी काम मिले, उसमें देर करता है।"
+     ],
+     "face": "/take/assets/jadugar-naresh.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    3,
+    6,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "jadugar-7",
+   "world": "jadugar",
+   "cls": "w-jadugar",
+   "n": 23,
+   "total": 40,
+   "title": "The generator",
+   "kind": "pick",
+   "rawKind": "believe",
+   "q": [
+    "Whose story do you believe?",
+    "किसकी बात मानें?"
+   ],
+   "speaker": [
+    "Kader, the magician",
+    "क़ादर, जादूगर"
+   ],
+   "speakerFace": "/take/assets/jadugar-kader.webp",
+   "voice": [
+    "The generator stopped in the second act.",
+    "दूसरे भाग में जनरेटर बंद हो गया।"
+   ],
+   "keys": [
+    [
+     "ticket",
+     "towns",
+     "शहर"
+    ],
+    [
+     "jd-missed",
+     "slips",
+     "चूक"
+    ]
+   ],
+   "plate": [
+    "Chandni Mandal",
+    "चाँदनी मंडल"
+   ],
+   "art": [
+    "/take/assets/jadugar-s-rope.webp",
+    "veil"
+   ],
+   "button": [
+    "Believe {n}",
+    "{n} की बात मानें"
+   ],
+   "teller": true,
+   "people": [
+    {
+     "en": "Dolly",
+     "hi": "डॉली",
+     "vals": [
+      "52",
+      "0"
+     ],
+     "line": [
+      "I think the fan belt slipped, that's all.",
+      "मुझे लगता है पंखे का पट्टा खिसक गया, बस।"
+     ],
+     "face": "/take/assets/jadugar-dolly.webp",
+     "serial": null
+    },
+    {
+     "en": "Pushpa",
+     "hi": "पुष्पा",
+     "vals": [
+      "40",
+      "1"
+     ],
+     "line": [
+      "The engine got far too hot, it seems.",
+      "लगता है इंजन बहुत ज़्यादा गरम हो गया।"
+     ],
+     "face": "/take/assets/jadugar-pushpa.webp",
+     "serial": null
+    },
+    {
+     "en": "Mitali",
+     "hi": "मिताली",
+     "vals": [
+      "16",
+      "2"
+     ],
+     "line": [
+      "I saw it. It ran out of diesel.",
+      "मैंने देखा। डीज़ल ख़त्म हो गया था।"
+     ],
+     "face": "/take/assets/jadugar-mitali.webp",
+     "serial": null
+    },
+    {
+     "en": "Lalit",
+     "hi": "ललित",
+     "vals": [
+      "16",
+      "2"
+     ],
+     "line": [
+      "Someone told me. It ran out of diesel.",
+      "मुझे किसी ने बताया। डीज़ल ख़त्म हो गया था।"
+     ],
+     "face": "/take/assets/jadugar-lalit.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    3,
+    7,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "jadugar-8",
+   "world": "jadugar",
+   "cls": "w-jadugar",
+   "n": 24,
+   "total": 40,
+   "title": "The cash box key",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who keeps the key to the cash box?",
+    "पैसों के डिब्बे की चाबी कौन रखे?"
+   ],
+   "speaker": [
+    "Kader, the magician",
+    "क़ादर, जादूगर"
+   ],
+   "speakerFace": "/take/assets/jadugar-kader.webp",
+   "voice": [
+    "The key hangs on a red thread under the magician's table.",
+    "चाबी जादूगर की मेज़ के नीचे लाल धागे में लटकी है।"
+   ],
+   "keys": [
+    [
+     "jd-stage",
+     "shows",
+     "शो"
+    ],
+    [
+     "clock",
+     "late",
+     "देर"
+    ]
+   ],
+   "plate": [
+    "Chandni Mandal",
+    "चाँदनी मंडल"
+   ],
+   "art": [
+    "/take/assets/jadugar-s-rope.webp",
+    "veil"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Pushpa",
+     "hi": "पुष्पा",
+     "vals": [
+      "52",
+      "0"
+     ],
+     "line": [
+      "Sews all the costumes for the troupe.",
+      "मंडली की सारी पोशाकें सिलती है।"
+     ],
+     "face": "/take/assets/jadugar-pushpa.webp",
+     "serial": null
+    },
+    {
+     "en": "Cyrus",
+     "hi": "साइरस",
+     "vals": [
+      "52",
+      "0"
+     ],
+     "line": [
+      "His sister works for the rival troupe.",
+      "उसकी बहन दूसरी मंडली में काम करती है।"
+     ],
+     "face": "/take/assets/jadugar-cyrus.webp",
+     "serial": null
+    },
+    {
+     "en": "Rabia",
+     "hi": "राबिया",
+     "vals": [
+      "35",
+      "1"
+     ],
+     "line": [
+      "Sings in the interval on show nights.",
+      "शो की रातों में इंटरवल में गाती है।"
+     ],
+     "face": "/take/assets/jadugar-rabia.webp",
+     "serial": null
+    },
+    {
+     "en": "Dolly",
+     "hi": "डॉली",
+     "vals": [
+      "18",
+      "4"
+     ],
+     "line": [
+      "Always late for the parade, Pallavi says.",
+      "पल्लवी कहती है, परेड में हमेशा देर करती है।"
+     ],
+     "face": "/take/assets/jadugar-dolly.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    3,
+    8,
+    8
+   ]
+  },
+  {
+   "type": "cut",
+   "label": [
+    "The magician's cash box",
+    "जादूगर का पैसों का डिब्बा"
+   ],
+   "panels": [
+    {
+     "id": "3.9",
+     "world": "w-jadugar",
+     "pic": "/take/assets/cut-st-3-9.webp",
+     "cap": [
+      "It had slipped under the stage. Everyone laughed, mostly from relief.",
+      "डिब्बा मंच के नीचे खिसक गया था। सब हँसे, ज़्यादातर राहत से।"
+     ]
+    },
+    {
+     "id": "3.10",
+     "world": "w-jadugar",
+     "pic": "/take/assets/cut-st-3-10.webp",
+     "cap": [
+      "Tara: \"Pallavi masi joined a magic show?\" Dadi: \"Then taught school. Same skills.\"",
+      "तारा: \"पल्लवी मासी जादू के शो में थीं?\" दादी: \"फिर स्कूल में पढ़ाया। हुनर वही।\""
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cut",
+   "label": [
+    "Two finals",
+    "दो फ़ाइनल"
+   ],
+   "panels": [
+    {
+     "id": "4.1",
+     "world": "w-cricket",
+     "pic": "/take/assets/cut-st-4-1.webp",
+     "cap": [
+      "Vikram's scorecard. Fourteen, and more serious than the players.",
+      "विक्रम का स्कोरकार्ड। चौदह साल का, और खिलाड़ियों से ज़्यादा गंभीर।"
+     ]
+    },
+    {
+     "id": "4.2",
+     "world": "w-cricket",
+     "pic": "/take/assets/cut-st-4-2.webp",
+     "cap": [
+      "Sunday at the old ground. Two finals, one neem tree, everyone watching.",
+      "पुराने मैदान पर इतवार। दो फ़ाइनल, एक नीम का पेड़, और सबकी नज़रें।"
+     ]
+    },
+    {
+     "id": "4.3",
+     "world": "w-cricket",
+     "pic": "/take/assets/cut-st-4-3.webp",
+     "cap": [
+      "My Rani padded up that year. Her father never missed a ball.",
+      "उस साल मेरी रानी ने पैड बाँधे। उसके पापा ने एक भी गेंद नहीं छोड़ी।"
+     ]
+    },
+    {
+     "id": "4.4",
+     "world": "w-cricket",
+     "pic": "/take/assets/cut-st-4-4.webp",
+     "cap": [
+      "Friday night, the coach had two teams to pick. And a headache.",
+      "शुक्रवार रात, कोच को दो टीमें चुननी थीं। और सिरदर्द अलग।"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cover",
+   "world": "cricket",
+   "cls": "w-cricket ",
+   "art": [
+    "/take/assets/cricket-s-board.webp",
+    "veil-low"
+   ],
+   "html": "<div class=\"topbar\"><div class=\"group\"></div><div class=\"group\"><button class=\"ibtn\" type=\"button\" data-help aria-label=\"How to play\" data-hi-label=\"कैसे खेलें\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.72V144a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8c13.23,0,24-9,24-20s-10.77-20-24-20-24,9-24,20v4a8,8,0,0,1-16,0v-4c0-19.85,17.94-36,40-36s40,16.15,40,36C168,125.38,154.24,139.93,136,143.28Z\"/></svg></button></div></div><div class=\"scr-body is-cover\"><div class=\"cr-namebd\"><h1 class=\"cr-title\" data-hi=\"पुराना मैदान\" data-eng=\"The Old Ground\">Purana Maidan</h1><div class=\"cr-meta\"><span class=\"cr-hps\" aria-hidden=\"true\"><i>2</i><i>1</i><i>5</i></span><span data-hi=\"गुरुवार\">Thursday</span></div></div><div class=\"coverstack\"><div class=\"plate hug\"><p class=\"coverline\" data-hi=\"इतवार के फ़ाइनल, और घरेलू हिंसा की शिकायतें।\">Sunday's finals, and complaints of violence at home.</p><span class=\"level\" data-hi=\"लेवल 4/6\">Level 4 of 6</span></div></div></div><div class=\"dock\"><button class=\"main is-out \" type=\"button\"><span data-hi=\"खेलें\">Play</span></button></div>"
+  },
+  {
+   "type": "step",
+   "id": "cricket-1",
+   "world": "cricket",
+   "cls": "w-cricket",
+   "n": 25,
+   "total": 40,
+   "title": "The first XI's order",
+   "kind": "order",
+   "rawKind": "the batting order, first stage",
+   "q": [
+    "Set the first XI's batting order.",
+    "पहली टीम का बैटिंग ऑर्डर तय करें।"
+   ],
+   "speaker": [
+    "Shirin, the coach",
+    "शीरीं, कोच"
+   ],
+   "speakerFace": "/take/assets/cricket-face-shirin.webp",
+   "voice": [
+    "Four places at the top. The mill team bowls fast.",
+    "ऊपर चार जगहें। मिल वाली टीम तेज़ गेंद डालती है।"
+   ],
+   "keys": [
+    [
+     "bat",
+     "average",
+     "औसत"
+    ],
+    [
+     "cr-match",
+     "matches",
+     "मैच"
+    ]
+   ],
+   "plate": [
+    "<i>Day</i><b>6</b>",
+    "<i>दिन</i><b>6</b>"
+   ],
+   "art": [
+    "/take/assets/cricket-s-nets.webp",
+    "veil"
+   ],
+   "button": [
+    "Lock the order",
+    "ऑर्डर पक्का करें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Gita",
+     "hi": "गीता",
+     "vals": [
+      "38",
+      "40"
+     ],
+     "line": [
+      "Out first ball last Sunday.",
+      "पिछले इतवार पहली गेंद पर आउट।"
+     ],
+     "face": "/take/assets/cricket-face-gita.webp",
+     "serial": null
+    },
+    {
+     "en": "Chandan",
+     "hi": "चंदन",
+     "vals": [
+      "38",
+      "40"
+     ],
+     "line": [
+      "Fields at slip, most matches.",
+      "ज़्यादातर मैचों में स्लिप पर फ़ील्डिंग करता है।"
+     ],
+     "face": "/take/assets/cricket-face-chandan.webp",
+     "serial": null
+    },
+    {
+     "en": "Leena",
+     "hi": "लीना",
+     "vals": [
+      "33",
+      "28"
+     ],
+     "line": [
+      "In good form, Vikram says.",
+      "विक्रम कहता है, अच्छे फ़ॉर्म में है।"
+     ],
+     "face": "/take/assets/cricket-face-leena.webp",
+     "serial": null
+    },
+    {
+     "en": "Uday",
+     "hi": "उदय",
+     "vals": [
+      "29",
+      "14"
+     ],
+     "line": [
+      "Bats left-handed and hooks well.",
+      "बाएँ हाथ से खेलता है, हुक अच्छा मारता है।"
+     ],
+     "face": "/take/assets/cricket-face-uday.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    4,
+    1,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "cricket-2",
+   "world": "cricket",
+   "cls": "w-cricket",
+   "n": 26,
+   "total": 40,
+   "title": "The first XI's captain",
+   "kind": "pick",
+   "rawKind": "the batting order, second stage, the same four",
+   "q": [
+    "Who captains the first XI?",
+    "पहली टीम का कप्तान कौन?"
+   ],
+   "speaker": [
+    "Shirin, the coach",
+    "शीरीं, कोच"
+   ],
+   "speakerFace": "/take/assets/cricket-face-shirin.webp",
+   "voice": [
+    "The order is locked. The armband is on the bench.",
+    "ऑर्डर तय है। आर्मबैंड बेंच पर रखा है।"
+   ],
+   "keys": [
+    [
+     "bat",
+     "average",
+     "औसत"
+    ],
+    [
+     "cr-match",
+     "matches",
+     "मैच"
+    ]
+   ],
+   "plate": [
+    "<i>Day</i><b>6</b>",
+    "<i>दिन</i><b>6</b>"
+   ],
+   "art": [
+    "/take/assets/cricket-s-nets.webp",
+    "veil"
+   ],
+   "button": [
+    "Make {n} captain",
+    "{n} को कप्तान बनाएँ"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Gita",
+     "hi": "गीता",
+     "vals": [
+      "38",
+      "40"
+     ],
+     "line": [
+      "Captained the club's juniors for two full seasons.",
+      "दो पूरे सीज़न क्लब की जूनियर टीम की कप्तानी की।"
+     ],
+     "face": "/take/assets/cricket-face-gita.webp",
+     "serial": null
+    },
+    {
+     "en": "Chandan",
+     "hi": "चंदन",
+     "vals": [
+      "38",
+      "40"
+     ],
+     "line": [
+      "Faces a police complaint for violence at home.",
+      "उस पर घरेलू हिंसा की पुलिस शिकायत दर्ज है।"
+     ],
+     "face": "/take/assets/cricket-face-chandan.webp",
+     "serial": null
+    },
+    {
+     "en": "Leena",
+     "hi": "लीना",
+     "vals": [
+      "33",
+      "28"
+     ],
+     "line": [
+      "Always chatting with the umpires between the overs.",
+      "ओवरों के बीच हमेशा अंपायर से बतियाती है।"
+     ],
+     "face": "/take/assets/cricket-face-leena.webp",
+     "serial": null
+    },
+    {
+     "en": "Uday",
+     "hi": "उदय",
+     "vals": [
+      "29",
+      "14"
+     ],
+     "line": [
+      "New to the side, quiet in the nets.",
+      "टीम में नया है, नेट में चुप रहता है।"
+     ],
+     "face": "/take/assets/cricket-face-uday.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    4,
+    2,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "cricket-3",
+   "world": "cricket",
+   "cls": "w-cricket",
+   "n": 27,
+   "total": 40,
+   "title": "The first XI's last places",
+   "kind": "team",
+   "rawKind": "pick a team, 3 of 5",
+   "q": [
+    "Pick the last 3 for the first XI.",
+    "पहली टीम के आख़िरी 3 चुनें।"
+   ],
+   "speaker": [
+    "Shirin, the coach",
+    "शीरीं, कोच"
+   ],
+   "speakerFace": "/take/assets/cricket-face-shirin.webp",
+   "voice": [
+    "Three places left on the first XI's sheet.",
+    "पहली टीम की शीट में तीन जगह बाक़ी।"
+   ],
+   "keys": [
+    [
+     "cr-match",
+     "wickets",
+     "विकेट"
+    ],
+    [
+     "hand",
+     "catches",
+     "कैच"
+    ]
+   ],
+   "plate": [
+    "<i>Day</i><b>6</b>",
+    "<i>दिन</i><b>6</b>"
+   ],
+   "art": [
+    "/take/assets/cricket-s-nets.webp",
+    "veil"
+   ],
+   "button": [
+    "Lock the team",
+    "टीम पक्की करें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Kabir",
+     "hi": "कबीर",
+     "vals": [
+      "20",
+      "9"
+     ],
+     "line": [
+      "Fielded every ball in last Sunday's match.",
+      "पिछले इतवार के मैच में हर गेंद पर फ़ील्डिंग की।"
+     ],
+     "face": "/take/assets/cricket-face-kabir.webp",
+     "serial": null
+    },
+    {
+     "en": "Rani",
+     "hi": "रानी",
+     "vals": [
+      "17",
+      "7"
+     ],
+     "line": [
+      "Asha's daughter. Bowls tidy off-spin, rarely loose.",
+      "आशा की बेटी। सधी हुई ऑफ़-स्पिन, शायद ही कभी ढीली।"
+     ],
+     "face": "/take/assets/cricket-face-rani.webp",
+     "serial": null
+    },
+    {
+     "en": "Zarina",
+     "hi": "ज़रीना",
+     "vals": [
+      "14",
+      "6"
+     ],
+     "line": [
+      "Rest her for the final, it's rough.",
+      "फ़ाइनल में उसे आराम दो, खेल सख़्त है।"
+     ],
+     "face": "/take/assets/cricket-face-zarina.webp",
+     "serial": null
+    },
+    {
+     "en": "Tenzing",
+     "hi": "तेनज़िंग",
+     "vals": [
+      "14",
+      "6"
+     ],
+     "line": [
+      "Always plays in his lucky blue cap.",
+      "हमेशा अपनी नीली लकी टोपी में खेलता है।"
+     ],
+     "face": "/take/assets/cricket-face-tenzing.webp",
+     "serial": null
+    },
+    {
+     "en": "Leena",
+     "hi": "लीना",
+     "vals": [
+      "11",
+      "5"
+     ],
+     "line": [
+      "Drops all the easy ones, Vikram says.",
+      "विक्रम कहता है, सारे आसान कैच छोड़ देती है।"
+     ],
+     "face": "/take/assets/cricket-face-leena.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    4,
+    3,
+    8
+   ],
+   "need": 3
+  },
+  {
+   "type": "step",
+   "id": "cricket-4",
+   "world": "cricket",
+   "cls": "w-cricket",
+   "n": 28,
+   "total": 40,
+   "title": "The first XI's injuries",
+   "kind": "team",
+   "rawKind": "pick a team, 3 of 5",
+   "q": [
+    "Pick 3 to fill the first XI after the injuries.",
+    "चोटों के बाद पहली टीम भरने के लिए 3 चुनें।"
+   ],
+   "speaker": [
+    "Shirin, the coach",
+    "शीरीं, कोच"
+   ],
+   "speakerFace": "/take/assets/cricket-face-shirin.webp",
+   "voice": [
+    "Three injured on Friday. Someone has to keep wicket.",
+    "शुक्रवार को तीन चोटिल। किसी को विकेट कीपिंग करनी होगी।"
+   ],
+   "keys": [
+    [
+     "score",
+     "season runs",
+     "सीज़न रन"
+    ],
+    [
+     "cr-win",
+     "wins",
+     "जीत"
+    ]
+   ],
+   "plate": [
+    "<i>Day</i><b>6</b>",
+    "<i>दिन</i><b>6</b>"
+   ],
+   "art": [
+    "/take/assets/cricket-s-nets.webp",
+    "veil"
+   ],
+   "button": [
+    "Lock the team",
+    "टीम पक्की करें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Leena",
+     "hi": "लीना",
+     "vals": [
+      "220",
+      "10"
+     ],
+     "line": [
+      "The only other keeper in the club.",
+      "क्लब का अकेला दूसरा कीपर।"
+     ],
+     "face": "/take/assets/cricket-face-leena.webp",
+     "serial": null
+    },
+    {
+     "en": "Mani",
+     "hi": "मणि",
+     "vals": [
+      "220",
+      "10"
+     ],
+     "line": [
+      "Bowls a bit of leg-spin when asked.",
+      "कहने पर थोड़ी लेग-स्पिन डालता है।"
+     ],
+     "face": "/take/assets/cricket-face-mani.webp",
+     "serial": null
+    },
+    {
+     "en": "Tenzing",
+     "hi": "तेनज़िंग",
+     "vals": [
+      "180",
+      "9"
+     ],
+     "line": [
+      "Back in good form lately, Vikram says.",
+      "विक्रम कहता है, आजकल अच्छे फ़ॉर्म में लौट आया है।"
+     ],
+     "face": "/take/assets/cricket-face-tenzing.webp",
+     "serial": null
+    },
+    {
+     "en": "Agnes",
+     "hi": "एग्नेस",
+     "vals": [
+      "140",
+      "7"
+     ],
+     "line": [
+      "New to the side this season, keen.",
+      "इस सीज़न टीम में नई है, लगन वाली।"
+     ],
+     "face": "/take/assets/cricket-face-agnes.webp",
+     "serial": null
+    },
+    {
+     "en": "Uday",
+     "hi": "उदय",
+     "vals": [
+      "90",
+      "5"
+     ],
+     "line": [
+      "Bats at nine, fields at fine leg.",
+      "नौवें नंबर पर बल्लेबाज़ी, फ़ाइन लेग पर फ़ील्डिंग।"
+     ],
+     "face": "/take/assets/cricket-face-uday.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    4,
+    4,
+    8
+   ],
+   "need": 3
+  },
+  {
+   "type": "step",
+   "id": "cricket-5",
+   "world": "cricket",
+   "cls": "w-cricket",
+   "n": 29,
+   "total": 40,
+   "title": "The second XI's order",
+   "kind": "order",
+   "rawKind": "the batting order, first stage",
+   "q": [
+    "Set the second XI's batting order.",
+    "दूसरी टीम का बैटिंग ऑर्डर तय करें।"
+   ],
+   "speaker": [
+    "Shirin, the coach",
+    "शीरीं, कोच"
+   ],
+   "speakerFace": "/take/assets/cricket-face-shirin.webp",
+   "voice": [
+    "The railway team has a spinner nobody can read.",
+    "रेलवे टीम के पास एक स्पिनर है जिसे कोई नहीं पढ़ पाता।"
+   ],
+   "keys": [
+    [
+     "bat",
+     "average",
+     "औसत"
+    ],
+    [
+     "cr-match",
+     "matches",
+     "मैच"
+    ]
+   ],
+   "plate": [
+    "<i>Day</i><b>6</b>",
+    "<i>दिन</i><b>6</b>"
+   ],
+   "art": [
+    "/take/assets/cricket-s-nets.webp",
+    "veil"
+   ],
+   "button": [
+    "Lock the order",
+    "ऑर्डर पक्का करें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Bindu",
+     "hi": "बिंदु",
+     "vals": [
+      "33",
+      "28"
+     ],
+     "line": [
+      "Fields at point, most matches.",
+      "ज़्यादातर मैचों में पॉइंट पर फ़ील्डिंग करती है।"
+     ],
+     "face": "/take/assets/cricket-face-bindu.webp",
+     "serial": null
+    },
+    {
+     "en": "Hari",
+     "hi": "हरि",
+     "vals": [
+      "33",
+      "28"
+     ],
+     "line": [
+      "Out first ball last Sunday.",
+      "पिछले इतवार पहली गेंद पर आउट।"
+     ],
+     "face": "/take/assets/cricket-face-hari.webp",
+     "serial": null
+    },
+    {
+     "en": "Agnes",
+     "hi": "एग्नेस",
+     "vals": [
+      "29",
+      "14"
+     ],
+     "line": [
+      "Bowls quick, so Vikram says.",
+      "विक्रम कहता है, तेज़ गेंद डालती है।"
+     ],
+     "face": "/take/assets/cricket-face-agnes.webp",
+     "serial": null
+    },
+    {
+     "en": "Mani",
+     "hi": "मणि",
+     "vals": [
+      "26",
+      "10"
+     ],
+     "line": [
+      "Bought a new bat this season.",
+      "इस सीज़न नया बल्ला ख़रीदा।"
+     ],
+     "face": "/take/assets/cricket-face-mani.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    4,
+    5,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "cricket-6",
+   "world": "cricket",
+   "cls": "w-cricket",
+   "n": 30,
+   "total": 40,
+   "title": "The second XI's captain",
+   "kind": "pick",
+   "rawKind": "the batting order, second stage, the same four",
+   "q": [
+    "Who captains the second XI?",
+    "दूसरी टीम का कप्तान कौन?"
+   ],
+   "speaker": [
+    "Shirin, the coach",
+    "शीरीं, कोच"
+   ],
+   "speakerFace": "/take/assets/cricket-face-shirin.webp",
+   "voice": [
+    "The second XI's armband, on the same bench.",
+    "दूसरी टीम का आर्मबैंड, उसी बेंच पर।"
+   ],
+   "keys": [
+    [
+     "bat",
+     "average",
+     "औसत"
+    ],
+    [
+     "cr-match",
+     "matches",
+     "मैच"
+    ]
+   ],
+   "plate": [
+    "<i>Day</i><b>6</b>",
+    "<i>दिन</i><b>6</b>"
+   ],
+   "art": [
+    "/take/assets/cricket-s-nets.webp",
+    "veil"
+   ],
+   "button": [
+    "Make {n} captain",
+    "{n} को कप्तान बनाएँ"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Bindu",
+     "hi": "बिंदु",
+     "vals": [
+      "33",
+      "28"
+     ],
+     "line": [
+      "A neighbour's police complaint says violence at home.",
+      "एक पड़ोसी की पुलिस शिकायत: घर में हिंसा।"
+     ],
+     "face": "/take/assets/cricket-face-bindu.webp",
+     "serial": null
+    },
+    {
+     "en": "Hari",
+     "hi": "हरि",
+     "vals": [
+      "33",
+      "28"
+     ],
+     "line": [
+      "Ran the club's nets all through the winter.",
+      "पूरी सर्दी क्लब की नेट प्रैक्टिस चलाई।"
+     ],
+     "face": "/take/assets/cricket-face-hari.webp",
+     "serial": null
+    },
+    {
+     "en": "Agnes",
+     "hi": "एग्नेस",
+     "vals": [
+      "29",
+      "14"
+     ],
+     "line": [
+      "Argues with the umpires over every single call.",
+      "हर फ़ैसले पर अंपायर से बहस करती है।"
+     ],
+     "face": "/take/assets/cricket-face-agnes.webp",
+     "serial": null
+    },
+    {
+     "en": "Mani",
+     "hi": "मणि",
+     "vals": [
+      "26",
+      "10"
+     ],
+     "line": [
+      "New to the side, still learning the field.",
+      "टीम में नया है, अभी फ़ील्ड सीख रहा है।"
+     ],
+     "face": "/take/assets/cricket-face-mani.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    4,
+    6,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "cricket-7",
+   "world": "cricket",
+   "cls": "w-cricket",
+   "n": 31,
+   "total": 40,
+   "title": "The second XI's last places",
+   "kind": "team",
+   "rawKind": "pick a team, 3 of 5",
+   "q": [
+    "Pick the last 3 for the second XI.",
+    "दूसरी टीम के आख़िरी 3 चुनें।"
+   ],
+   "speaker": [
+    "Shirin, the coach",
+    "शीरीं, कोच"
+   ],
+   "speakerFace": "/take/assets/cricket-face-shirin.webp",
+   "voice": [
+    "Three places left on the second XI's sheet.",
+    "दूसरी टीम की शीट में तीन जगह बाक़ी।"
+   ],
+   "keys": [
+    [
+     "cr-match",
+     "wickets",
+     "विकेट"
+    ],
+    [
+     "hand",
+     "catches",
+     "कैच"
+    ]
+   ],
+   "plate": [
+    "<i>Day</i><b>6</b>",
+    "<i>दिन</i><b>6</b>"
+   ],
+   "art": [
+    "/take/assets/cricket-s-nets.webp",
+    "veil"
+   ],
+   "button": [
+    "Lock the team",
+    "टीम पक्की करें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Gita",
+     "hi": "गीता",
+     "vals": [
+      "20",
+      "9"
+     ],
+     "line": [
+      "Took five catches in last Sunday's game.",
+      "पिछले इतवार के खेल में पाँच कैच लिए।"
+     ],
+     "face": "/take/assets/cricket-face-gita.webp",
+     "serial": null
+    },
+    {
+     "en": "Rani",
+     "hi": "रानी",
+     "vals": [
+      "17",
+      "7"
+     ],
+     "line": [
+      "Asha's daughter. Bowls tidy off-spin, rarely loose.",
+      "आशा की बेटी। सधी हुई ऑफ़-स्पिन, शायद ही कभी ढीली।"
+     ],
+     "face": "/take/assets/cricket-face-rani.webp",
+     "serial": null
+    },
+    {
+     "en": "Bindu",
+     "hi": "बिंदु",
+     "vals": [
+      "14",
+      "6"
+     ],
+     "line": [
+      "Bowls in the nets every single morning.",
+      "हर सुबह नेट में गेंदबाज़ी करती है।"
+     ],
+     "face": "/take/assets/cricket-face-bindu.webp",
+     "serial": null
+    },
+    {
+     "en": "Uday",
+     "hi": "उदय",
+     "vals": [
+      "14",
+      "6"
+     ],
+     "line": [
+      "Rest him for the final, it's rough.",
+      "फ़ाइनल में उसे आराम दो, खेल सख़्त है।"
+     ],
+     "face": "/take/assets/cricket-face-uday.webp",
+     "serial": null
+    },
+    {
+     "en": "Hari",
+     "hi": "हरि",
+     "vals": [
+      "11",
+      "5"
+     ],
+     "line": [
+      "Very slow between the wickets, Vikram says.",
+      "विक्रम कहता है, विकेटों के बीच बहुत धीमा है।"
+     ],
+     "face": "/take/assets/cricket-face-hari.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    4,
+    7,
+    8
+   ],
+   "need": 3
+  },
+  {
+   "type": "step",
+   "id": "cricket-8",
+   "world": "cricket",
+   "cls": "w-cricket",
+   "n": 32,
+   "total": 40,
+   "title": "The second XI's keeper",
+   "kind": "team",
+   "rawKind": "pick a team, 3 of 5",
+   "q": [
+    "Pick 3 to fill the second XI.",
+    "दूसरी टीम भरने के लिए 3 चुनें।"
+   ],
+   "speaker": [
+    "Shirin, the coach",
+    "शीरीं, कोच"
+   ],
+   "speakerFace": "/take/assets/cricket-face-shirin.webp",
+   "voice": [
+    "The second XI's keeper is away.",
+    "दूसरी टीम का कीपर बाहर गया है।"
+   ],
+   "keys": [
+    [
+     "score",
+     "season runs",
+     "सीज़न रन"
+    ],
+    [
+     "cr-win",
+     "wins",
+     "जीत"
+    ]
+   ],
+   "plate": [
+    "<i>Day</i><b>6</b>",
+    "<i>दिन</i><b>6</b>"
+   ],
+   "art": [
+    "/take/assets/cricket-s-nets.webp",
+    "veil"
+   ],
+   "button": [
+    "Lock the team",
+    "टीम पक्की करें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Zarina",
+     "hi": "ज़रीना",
+     "vals": [
+      "220",
+      "10"
+     ],
+     "line": [
+      "Bowls fast, but only in short spells.",
+      "तेज़ गेंद डालती है, पर बस छोटे स्पेल में।"
+     ],
+     "face": "/take/assets/cricket-face-zarina.webp",
+     "serial": null
+    },
+    {
+     "en": "Hari",
+     "hi": "हरि",
+     "vals": [
+      "220",
+      "10"
+     ],
+     "line": [
+      "The only other keeper in the club.",
+      "क्लब का अकेला दूसरा कीपर।"
+     ],
+     "face": "/take/assets/cricket-face-hari.webp",
+     "serial": null
+    },
+    {
+     "en": "Kabir",
+     "hi": "कबीर",
+     "vals": [
+      "180",
+      "9"
+     ],
+     "line": [
+      "Never misses the nets, rain or shine.",
+      "नेट कभी नहीं छोड़ता, धूप हो या बारिश।"
+     ],
+     "face": "/take/assets/cricket-face-kabir.webp",
+     "serial": null
+    },
+    {
+     "en": "Gita",
+     "hi": "गीता",
+     "vals": [
+      "140",
+      "7"
+     ],
+     "line": [
+      "Back from a knock on the knee.",
+      "घुटने की चोट से लौटी है।"
+     ],
+     "face": "/take/assets/cricket-face-gita.webp",
+     "serial": null
+    },
+    {
+     "en": "Chandan",
+     "hi": "चंदन",
+     "vals": [
+      "90",
+      "5"
+     ],
+     "line": [
+      "Bats at ten, bowls a few overs.",
+      "दसवें नंबर पर बल्लेबाज़ी, कुछ ओवर गेंदबाज़ी।"
+     ],
+     "face": "/take/assets/cricket-face-chandan.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    4,
+    8,
+    8
+   ],
+   "need": 3
+  },
+  {
+   "type": "cut",
+   "label": [
+    "Two finals",
+    "दो फ़ाइनल"
+   ],
+   "panels": [
+    {
+     "id": "4.9",
+     "world": "w-cricket",
+     "pic": "/take/assets/cut-st-4-9.webp",
+     "cap": [
+      "Both finals went to the last over. Vikram forgot to breathe.",
+      "दोनों फ़ाइनल आख़िरी ओवर तक गए। विक्रम साँस लेना भूल गया।"
+     ]
+    },
+    {
+     "id": "4.10",
+     "world": "w-cricket",
+     "pic": "/take/assets/cut-st-4-10.webp",
+     "cap": [
+      "Vikram: \"I got the totals wrong, didn't I?\" Dadi: \"By eleven runs.\"",
+      "विक्रम: \"मैंने जोड़ ग़लत किया था न?\" दादी: \"ग्यारह रन से।\""
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cut",
+   "label": [
+    "The World Cup and a wedding",
+    "वर्ल्ड कप और एक शादी"
+   ],
+   "panels": [
+    {
+     "id": "5.1",
+     "world": "w-rukavat",
+     "pic": "/take/assets/cut-st-5-1.webp",
+     "cap": [
+      "1999. We were fixing Rani's wedding, and everyone had an opinion.",
+      "1999। रानी की शादी तय हो रही थी, और सबकी अपनी राय थी।"
+     ]
+    },
+    {
+     "id": "5.2",
+     "world": "w-rukavat",
+     "pic": "/take/assets/cut-st-5-2.webp",
+     "cap": [
+      "The World Cup on TV, and relatives on every mattress.",
+      "टीवी पर वर्ल्ड कप, और हर गद्दे पर रिश्तेदार।"
+     ]
+    },
+    {
+     "id": "5.3",
+     "world": "w-rukavat",
+     "pic": "/take/assets/cut-st-5-3.webp",
+     "cap": [
+      "My mother-in-law, Badi Amma, ran the whole house from that chair.",
+      "मेरी सास, बड़ी अम्मा, उसी कुर्सी से पूरा घर चलाती थीं।"
+     ]
+    },
+    {
+     "id": "5.4",
+     "world": "w-rukavat",
+     "pic": "/take/assets/cut-st-5-4.webp",
+     "cap": [
+      "Except the TV. It cut out at every good part.",
+      "बस टीवी उनकी नहीं सुनता था। हर अच्छे पल पर कट जाता था।"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cover",
+   "world": "rukavat",
+   "cls": "w-rukavat ",
+   "art": [
+    "/take/assets/sunday-s-tv.webp",
+    "veil-low"
+   ],
+   "html": "<div class=\"topbar\"><div class=\"group\"></div><div class=\"group\"><button class=\"ibtn\" type=\"button\" data-help aria-label=\"How to play\" data-hi-label=\"कैसे खेलें\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.72V144a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8c13.23,0,24-9,24-20s-10.77-20-24-20-24,9-24,20v4a8,8,0,0,1-16,0v-4c0-19.85,17.94-36,40-36s40,16.15,40,36C168,125.38,154.24,139.93,136,143.28Z\"/></svg></button></div></div><div class=\"scr-body is-cover\"><div class=\"coverstack\"><div class=\"rk-titlecard\"><h1 class=\"rk-title\" data-hi=\"फ़ैसला\" data-eng=\"The Verdict\" data-count=\"0\">Faisla</h1><span class=\"rk-slot\" data-hi=\"गुरुवार · रात 9 बजे\" data-count=\"0\">Thursday · 9 pm</span></div><div class=\"plate hug\"><p class=\"coverline\" data-hi=\"परिवार की शामें, अलग होते माँ-बाप, और दहेज की माँग।\">Family evenings, parents who separate, and a dowry demand.</p><span class=\"level\" data-hi=\"लेवल 4/6\">Level 4 of 6</span></div></div></div><div class=\"dock\"><button class=\"main is-out \" type=\"button\"><span data-hi=\"खेलें\">Play</span></button></div>"
+  },
+  {
+   "type": "step",
+   "id": "rukavat-1",
+   "world": "rukavat",
+   "cls": "w-rukavat",
+   "n": 33,
+   "total": 40,
+   "title": "This Sunday",
+   "kind": "split",
+   "rawKind": "split",
+   "q": [
+    "Sunday: who does what?",
+    "रविवार: कौन क्या करे?"
+   ],
+   "speaker": [
+    "Badi Amma",
+    "बड़ी अम्मा"
+   ],
+   "speakerFace": "/take/assets/sunday-badi.webp",
+   "voice": [
+    "Relatives in every room, and the match at two.",
+    "हर कमरे में रिश्तेदार, और दो बजे मैच।"
+   ],
+   "keys": [
+    [
+     "clock",
+     "hours",
+     "घंटे"
+    ],
+    [
+     "tool",
+     "skill",
+     "हुनर"
+    ]
+   ],
+   "plate": [
+    "Sunday · 9 am",
+    "रविवार · सुबह 9 बजे"
+   ],
+   "art": [
+    "/take/assets/sunday-s-room.webp",
+    "veil"
+   ],
+   "button": [
+    "Lock chores",
+    "पक्का करें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Uma",
+     "hi": "उमा",
+     "vals": [
+      "3",
+      "4"
+     ],
+     "line": [
+      "Home from her long shift at the mill.",
+      "मिल की लंबी शिफ़्ट से घर आई है।"
+     ],
+     "face": "/take/assets/sunday-uma.webp",
+     "serial": null
+    },
+    {
+     "en": "Vivek",
+     "hi": "विवेक",
+     "vals": [
+      "3",
+      "4"
+     ],
+     "line": [
+      "Works all week. Let him watch the match.",
+      "पूरा हफ़्ता काम करता है। उसे मैच देखने दो।"
+     ],
+     "face": "/take/assets/sunday-vivek.webp",
+     "serial": null
+    },
+    {
+     "en": "Vikram",
+     "hi": "विक्रम",
+     "vals": [
+      "2",
+      "3"
+     ],
+     "line": [
+      "Asha's son, home from college for the week.",
+      "आशा का बेटा, हफ़्ते भर के लिए कॉलेज से घर आया है।"
+     ],
+     "face": "/take/assets/sunday-vikram.webp",
+     "serial": null
+    },
+    {
+     "en": "Chetan",
+     "hi": "चेतन",
+     "vals": [
+      "1",
+      "2"
+     ],
+     "line": [
+      "Hides from the chores every time, Rani says.",
+      "रानी कहती है, हर बार काम से छिपता है।"
+     ],
+     "face": "/take/assets/sunday-chetan.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    5,
+    1,
+    8
+   ],
+   "chores": [
+    [
+     "Sweeping",
+     "झाड़ू"
+    ],
+    [
+     "Cooking",
+     "खाना"
+    ],
+    [
+     "Dishes",
+     "बर्तन"
+    ],
+    [
+     "Laundry",
+     "कपड़े"
+    ],
+    [
+     "TV",
+     "टीवी"
+    ]
+   ]
+  },
+  {
+   "type": "step",
+   "id": "rukavat-2",
+   "world": "rukavat",
+   "cls": "w-rukavat",
+   "n": 34,
+   "total": 40,
+   "title": "The lawyer's office",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who should the children live with?",
+    "बच्चे किसके साथ रहें?"
+   ],
+   "speaker": [
+    "Badi Amma",
+    "बड़ी अम्मा"
+   ],
+   "speakerFace": "/take/assets/sunday-badi.webp",
+   "voice": [
+    "A cousin and her husband are separating. The family is asked.",
+    "एक चचेरी बहन और उसके पति अलग हो रहे हैं। परिवार से पूछा गया है।"
+   ],
+   "keys": [
+    [
+     "today",
+     "evenings home",
+     "शामें घर पर"
+    ],
+    [
+     "person",
+     "school meetings",
+     "स्कूल मीटिंग"
+    ]
+   ],
+   "plate": [
+    "Wednesday · 9 pm",
+    "बुधवार · रात 9 बजे"
+   ],
+   "art": [
+    "/take/assets/sunday-s-sofa.webp",
+    "veil"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Shampa",
+     "hi": "शम्पा",
+     "vals": [
+      "5",
+      "6"
+     ],
+     "line": [
+      "Moved back in with her mother.",
+      "अपनी माँ के घर लौट गई है।"
+     ],
+     "face": "/take/assets/sunday-shampa.webp",
+     "serial": null
+    },
+    {
+     "en": "Rajan",
+     "hi": "राजन",
+     "vals": [
+      "5",
+      "6"
+     ],
+     "line": [
+      "Wants to marry again, and soon.",
+      "दोबारा शादी करना चाहता है, और जल्दी।"
+     ],
+     "face": "/take/assets/sunday-rajan.webp",
+     "serial": null
+    },
+    {
+     "en": "Pooja",
+     "hi": "पूजा",
+     "vals": [
+      "3",
+      "2"
+     ],
+     "line": [
+      "The children's aunt. Offers to help.",
+      "बच्चों की मौसी। मदद को तैयार।"
+     ],
+     "face": "/take/assets/sunday-pooja.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    5,
+    2,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "rukavat-3",
+   "world": "rukavat",
+   "cls": "w-rukavat",
+   "n": 35,
+   "total": 40,
+   "title": "The loft",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who clears the loft before the guests come?",
+    "मेहमानों के आने से पहले टांड कौन साफ़ करे?"
+   ],
+   "speaker": [
+    "Badi Amma",
+    "बड़ी अम्मा"
+   ],
+   "speakerFace": "/take/assets/sunday-badi.webp",
+   "voice": [
+    "Nobody has cleared the loft in years.",
+    "बरसों से किसी ने टांड साफ़ नहीं की।"
+   ],
+   "keys": [
+    [
+     "week",
+     "Sundays",
+     "रविवार"
+    ],
+    [
+     "hand",
+     "jobs",
+     "काम"
+    ]
+   ],
+   "plate": [
+    "Wednesday · 9 pm",
+    "बुधवार · रात 9 बजे"
+   ],
+   "art": [
+    "/take/assets/sunday-s-sofa.webp",
+    "veil"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Deepa",
+     "hi": "दीपा",
+     "vals": [
+      "3",
+      "6"
+     ],
+     "line": [
+      "Has a dust allergy since childhood.",
+      "बचपन से धूल से एलर्जी है।"
+     ],
+     "face": "/take/assets/sunday-deepa.webp",
+     "serial": null
+    },
+    {
+     "en": "Chetan",
+     "hi": "चेतन",
+     "vals": [
+      "3",
+      "6"
+     ],
+     "line": [
+      "Home from hostel for the week.",
+      "हफ़्ते भर के लिए हॉस्टल से आया है।"
+     ],
+     "face": "/take/assets/sunday-chetan.webp",
+     "serial": null
+    },
+    {
+     "en": "Uma",
+     "hi": "उमा",
+     "vals": [
+      "2",
+      "4"
+     ],
+     "line": [
+      "Cleared out the storeroom last year.",
+      "पिछले साल स्टोर रूम ख़ाली किया था।"
+     ],
+     "face": "/take/assets/sunday-uma.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    5,
+    3,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "rukavat-4",
+   "world": "rukavat",
+   "cls": "w-rukavat",
+   "n": 36,
+   "total": 40,
+   "title": "The groom's side",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who goes to talk to the groom's side about the scooter they want?",
+    "लड़के वालों से उनके माँगे स्कूटर की बात करने कौन जाए?"
+   ],
+   "speaker": [
+    "Badi Amma",
+    "बड़ी अम्मा"
+   ],
+   "speakerFace": "/take/assets/sunday-badi.webp",
+   "voice": [
+    "The groom's family wants a scooter. Someone has to go and talk.",
+    "लड़के वालों को स्कूटर चाहिए। किसी को जाकर बात करनी होगी।"
+   ],
+   "keys": [
+    [
+     "person",
+     "weddings",
+     "शादियाँ"
+    ],
+    [
+     "speaker",
+     "talks",
+     "बातचीत"
+    ]
+   ],
+   "plate": [
+    "Wednesday · 9 pm",
+    "बुधवार · रात 9 बजे"
+   ],
+   "art": [
+    "/take/assets/sunday-s-sofa.webp",
+    "veil"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Deepa",
+     "hi": "दीपा",
+     "vals": [
+      "4",
+      "6"
+     ],
+     "line": [
+      "Knows the groom's aunt from school.",
+      "लड़के की बुआ को स्कूल के दिनों से जानती है।"
+     ],
+     "face": "/take/assets/sunday-deepa.webp",
+     "serial": null
+    },
+    {
+     "en": "Mahesh",
+     "hi": "महेश",
+     "vals": [
+      "4",
+      "6"
+     ],
+     "line": [
+      "Told them plainly: no dowry, ever.",
+      "साफ़ कह दिया: दहेज कभी नहीं।"
+     ],
+     "face": "/take/assets/sunday-mahesh.webp",
+     "serial": null
+    },
+    {
+     "en": "Rajan",
+     "hi": "राजन",
+     "vals": [
+      "2",
+      "3"
+     ],
+     "line": [
+      "Agrees with everyone, so Rani says.",
+      "रानी कहती है, सबकी हाँ में हाँ मिलाता है।"
+     ],
+     "face": "/take/assets/sunday-rajan.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    5,
+    4,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "rukavat-5",
+   "world": "rukavat",
+   "cls": "w-rukavat",
+   "n": 37,
+   "total": 40,
+   "title": "Tonight",
+   "kind": "split",
+   "rawKind": "split",
+   "q": [
+    "Tonight: who does what?",
+    "आज रात: कौन क्या करे?"
+   ],
+   "speaker": [
+    "Badi Amma",
+    "बड़ी अम्मा"
+   ],
+   "speakerFace": "/take/assets/sunday-badi.webp",
+   "voice": [
+    "The groom's side comes tomorrow. Tonight, the house.",
+    "लड़के वाले कल आएँगे। आज रात, घर।"
+   ],
+   "keys": [
+    [
+     "clock",
+     "hours",
+     "घंटे"
+    ],
+    [
+     "tool",
+     "skill",
+     "हुनर"
+    ]
+   ],
+   "plate": [
+    "Sunday · 9 am",
+    "रविवार · सुबह 9 बजे"
+   ],
+   "art": [
+    "/take/assets/sunday-s-room.webp",
+    "veil"
+   ],
+   "button": [
+    "Lock chores",
+    "पक्का करें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Shampa",
+     "hi": "शम्पा",
+     "vals": [
+      "3",
+      "4"
+     ],
+     "line": [
+      "Works all week. Let her watch her serial.",
+      "पूरा हफ़्ता काम करती है। उसे अपना सीरियल देखने दो।"
+     ],
+     "face": "/take/assets/sunday-shampa.webp",
+     "serial": null
+    },
+    {
+     "en": "Kunal",
+     "hi": "कुणाल",
+     "vals": [
+      "3",
+      "4"
+     ],
+     "line": [
+      "Fixed the window cooler first thing this morning.",
+      "आज सुबह सबसे पहले खिड़की वाला कूलर ठीक किया।"
+     ],
+     "face": "/take/assets/sunday-kunal.webp",
+     "serial": null
+    },
+    {
+     "en": "Vikram",
+     "hi": "विक्रम",
+     "vals": [
+      "2",
+      "3"
+     ],
+     "line": [
+      "Asha's son, home from college for the week.",
+      "आशा का बेटा, हफ़्ते भर के लिए कॉलेज से घर आया है।"
+     ],
+     "face": "/take/assets/sunday-vikram.webp",
+     "serial": null
+    },
+    {
+     "en": "Rajan",
+     "hi": "राजन",
+     "vals": [
+      "1",
+      "2"
+     ],
+     "line": [
+      "On the phone all day long, Rani says.",
+      "रानी कहती है, दिन भर फ़ोन पर रहता है।"
+     ],
+     "face": "/take/assets/sunday-rajan.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    5,
+    5,
+    8
+   ],
+   "chores": [
+    [
+     "Shopping",
+     "बाज़ार"
+    ],
+    [
+     "Cooking",
+     "खाना"
+    ],
+    [
+     "Dishes",
+     "बर्तन"
+    ],
+    [
+     "Ironing",
+     "इस्त्री"
+    ],
+    [
+     "TV",
+     "टीवी"
+    ]
+   ]
+  },
+  {
+   "type": "step",
+   "id": "rukavat-6",
+   "world": "rukavat",
+   "cls": "w-rukavat",
+   "n": 38,
+   "total": 40,
+   "title": "The court bench",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who should the children live with?",
+    "बच्चे किसके साथ रहें?"
+   ],
+   "speaker": [
+    "Badi Amma",
+    "बड़ी अम्मा"
+   ],
+   "speakerFace": "/take/assets/sunday-badi.webp",
+   "voice": [
+    "A neighbour's family asks Badi Amma to settle it.",
+    "पड़ोस का परिवार बड़ी अम्मा से फ़ैसला करने को कहता है।"
+   ],
+   "keys": [
+    [
+     "today",
+     "evenings home",
+     "शामें घर पर"
+    ],
+    [
+     "person",
+     "school meetings",
+     "स्कूल मीटिंग"
+    ]
+   ],
+   "plate": [
+    "Wednesday · 9 pm",
+    "बुधवार · रात 9 बजे"
+   ],
+   "art": [
+    "/take/assets/sunday-s-sofa.webp",
+    "veil"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Uma",
+     "hi": "उमा",
+     "vals": [
+      "5",
+      "6"
+     ],
+     "line": [
+      "Says she will remarry next year.",
+      "कहती है अगले साल दोबारा शादी करेगी।"
+     ],
+     "face": "/take/assets/sunday-uma.webp",
+     "serial": null
+    },
+    {
+     "en": "Chetan",
+     "hi": "चेतन",
+     "vals": [
+      "5",
+      "6"
+     ],
+     "line": [
+      "Moved in with his elder brother.",
+      "अपने बड़े भाई के घर रहने चला गया है।"
+     ],
+     "face": "/take/assets/sunday-chetan.webp",
+     "serial": null
+    },
+    {
+     "en": "Deepa",
+     "hi": "दीपा",
+     "vals": [
+      "3",
+      "2"
+     ],
+     "line": [
+      "The children's aunt, close to them.",
+      "बच्चों की मौसी, उनके क़रीब।"
+     ],
+     "face": "/take/assets/sunday-deepa.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    5,
+    6,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "rukavat-7",
+   "world": "rukavat",
+   "cls": "w-rukavat",
+   "n": 39,
+   "total": 40,
+   "title": "The storeroom",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who clears the storeroom for the raddiwala?",
+    "रद्दी वाले के लिए स्टोर रूम कौन ख़ाली करे?"
+   ],
+   "speaker": [
+    "Badi Amma",
+    "बड़ी अम्मा"
+   ],
+   "speakerFace": "/take/assets/sunday-badi.webp",
+   "voice": [
+    "Old newspapers to the ceiling, and a broken cooler.",
+    "छत तक पुराने अख़बार, और एक टूटा कूलर।"
+   ],
+   "keys": [
+    [
+     "week",
+     "Sundays",
+     "रविवार"
+    ],
+    [
+     "hand",
+     "jobs",
+     "काम"
+    ]
+   ],
+   "plate": [
+    "Wednesday · 9 pm",
+    "बुधवार · रात 9 बजे"
+   ],
+   "art": [
+    "/take/assets/sunday-s-sofa.webp",
+    "veil"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Pooja",
+     "hi": "पूजा",
+     "vals": [
+      "3",
+      "6"
+     ],
+     "line": [
+      "Sorts all the papers by date.",
+      "सारे अख़बार तारीख़ से छाँटती है।"
+     ],
+     "face": "/take/assets/sunday-pooja.webp",
+     "serial": null
+    },
+    {
+     "en": "Mahesh",
+     "hi": "महेश",
+     "vals": [
+      "3",
+      "6"
+     ],
+     "line": [
+      "Has a dust allergy since childhood.",
+      "बचपन से धूल से एलर्जी है।"
+     ],
+     "face": "/take/assets/sunday-mahesh.webp",
+     "serial": null
+    },
+    {
+     "en": "Kunal",
+     "hi": "कुणाल",
+     "vals": [
+      "2",
+      "4"
+     ],
+     "line": [
+      "Carried the cooler down last summer.",
+      "पिछली गर्मी कूलर नीचे उतारा था।"
+     ],
+     "face": "/take/assets/sunday-kunal.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    5,
+    7,
+    8
+   ]
+  },
+  {
+   "type": "step",
+   "id": "rukavat-8",
+   "world": "rukavat",
+   "cls": "w-rukavat",
+   "n": 40,
+   "total": 40,
+   "title": "The second talk",
+   "kind": "pick",
+   "rawKind": "pick one",
+   "q": [
+    "Who goes to the boy's family for the second talk?",
+    "दूसरी बातचीत के लिए लड़के के घर कौन जाए?"
+   ],
+   "speaker": [
+    "Badi Amma",
+    "बड़ी अम्मा"
+   ],
+   "speakerFace": "/take/assets/sunday-badi.webp",
+   "voice": [
+    "They still want the scooter. A second visit, across town.",
+    "उन्हें अब भी स्कूटर चाहिए। दूसरी मुलाक़ात, शहर के उस पार।"
+   ],
+   "keys": [
+    [
+     "person",
+     "weddings",
+     "शादियाँ"
+    ],
+    [
+     "speaker",
+     "talks",
+     "बातचीत"
+    ]
+   ],
+   "plate": [
+    "Wednesday · 9 pm",
+    "बुधवार · रात 9 बजे"
+   ],
+   "art": [
+    "/take/assets/sunday-s-sofa.webp",
+    "veil"
+   ],
+   "button": [
+    "Send {n}",
+    "{n} को भेजें"
+   ],
+   "teller": false,
+   "people": [
+    {
+     "en": "Pooja",
+     "hi": "पूजा",
+     "vals": [
+      "4",
+      "6"
+     ],
+     "line": [
+      "Said to their faces: not one paisa.",
+      "मुँह पर कह दिया: एक पैसा नहीं।"
+     ],
+     "face": "/take/assets/sunday-pooja.webp",
+     "serial": null
+    },
+    {
+     "en": "Vivek",
+     "hi": "विवेक",
+     "vals": [
+      "4",
+      "6"
+     ],
+     "line": [
+      "Drives everyone to the station, every time.",
+      "हर बार सबको स्टेशन छोड़ता है।"
+     ],
+     "face": "/take/assets/sunday-vivek.webp",
+     "serial": null
+    },
+    {
+     "en": "Kunal",
+     "hi": "कुणाल",
+     "vals": [
+      "2",
+      "3"
+     ],
+     "line": [
+      "Talks far too much, so Rani says.",
+      "रानी कहती है, बहुत ज़्यादा बोलता है।"
+     ],
+     "face": "/take/assets/sunday-kunal.webp",
+     "serial": null
+    }
+   ],
+   "prog": [
+    5,
+    8,
+    8
+   ]
+  },
+  {
+   "type": "cut",
+   "label": [
+    "The World Cup and a wedding",
+    "वर्ल्ड कप और एक शादी"
+   ],
+   "panels": [
+    {
+     "id": "5.9",
+     "world": "w-rukavat",
+     "pic": "/take/assets/cut-st-5-9.webp",
+     "cap": [
+      "The date was fixed: December. Everyone slept where they fell.",
+      "तारीख़ तय हुई: दिसंबर। जो जहाँ थका, वहीं सो गया।"
+     ]
+    },
+    {
+     "id": "5.10",
+     "world": "w-rukavat",
+     "pic": "/take/assets/cut-st-5-10.webp",
+     "cap": [
+      "Tara: \"Dadi, what's that book?\" Dadi: \"The part I never told anyone.\"",
+      "तारा: \"दादी, वो किताब क्या है?\" दादी: \"वो हिस्सा, जो मैंने किसी को नहीं बताया।\""
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cut",
+   "label": [
+    "Dadi's diary",
+    "दादी की डायरी"
+   ],
+   "panels": [
+    {
+     "id": "6.1",
+     "world": "w-rukavat",
+     "pic": "/take/assets/cut-st-6-1.webp",
+     "cap": [
+      "I wrote it all down. Every night, since I was eighteen.",
+      "मैंने सब लिखा। हर रात, अठारह साल की उम्र से।"
+     ]
+    },
+    {
+     "id": "6.2",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-6-2.webp",
+     "cap": [
+      "No woman got a seat on that course. Mohan left in 1975.",
+      "उस कोर्स में किसी औरत को सीट नहीं मिली। मोहन 1975 में चला गया।"
+     ]
+    },
+    {
+     "id": "6.3",
+     "world": "w-station",
+     "pic": "/take/assets/cut-st-6-3.webp",
+     "cap": [
+      "A driver asked for time with his newborn. They laughed him out.",
+      "एक ड्राइवर ने नवजात के लिए छुट्टी माँगी। सब हँसकर टाल गए।"
+     ]
+    },
+    {
+     "id": "6.4",
+     "world": "w-lugdi",
+     "pic": "/take/assets/cut-st-6-4.webp",
+     "cap": [
+      "A woman said a car followed her. Bauji said she imagined it.",
+      "एक औरत ने कहा, गाड़ी पीछा कर रही थी। बाऊजी बोले, वहम है।"
+     ]
+    },
+    {
+     "id": "6.5",
+     "world": "w-jadugar",
+     "pic": "/take/assets/cut-st-6-5.webp",
+     "cap": [
+      "They believed the man. Her statement said the same, word for word.",
+      "उन्होंने आदमी की बात मानी। उसका बयान भी हूबहू वही था।"
+     ]
+    },
+    {
+     "id": "6.6",
+     "world": "w-cricket",
+     "pic": "/take/assets/cut-st-6-6.webp",
+     "cap": [
+      "One bad day dropped a girl. A boy kept his place.",
+      "एक बुरे दिन पर लड़की बाहर हुई। लड़का टीम में रहा।"
+     ]
+    },
+    {
+     "id": "6.7",
+     "world": "w-rukavat",
+     "pic": "/take/assets/cut-st-6-7.webp",
+     "cap": [
+      "We refused them a scooter. Rani heard about it for years.",
+      "हमने स्कूटर देने से मना किया। रानी को बरसों ताने सुनने पड़े।"
+     ]
+    },
+    {
+     "id": "6.8",
+     "world": "w-rukavat",
+     "pic": "/take/assets/cut-st-6-8.webp",
+     "cap": [
+      "Dadi: \"We got plenty wrong, beta. Now, let's see your five days.\"",
+      "दादी: \"हमसे बहुत कुछ ग़लत हुआ, बेटा। अब तुम्हारे पाँच दिन देखते हैं।\""
+     ]
+    }
+   ]
+  },
+  {
+   "type": "results"
+  },
+  {
+   "type": "cut",
+   "label": [
+    "The trunk",
+    "संदूक"
+   ],
+   "panels": [
+    {
+     "id": "6.9",
+     "world": "w-rukavat",
+     "pic": "/take/assets/cut-st-6-9.webp",
+     "cap": [
+      "Dadi: \"The trunk is yours now. Fill it with better days.\"",
+      "दादी: \"अब ये संदूक तुम्हारा है। इसे बेहतर दिनों से भरना।\""
+     ]
+    }
+   ]
+  }
+ ]
+}

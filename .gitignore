@@ -20,3 +20,6 @@ design-system/art/raw/**/*.webp
 
 # the Vercel CLI's link folder
 .vercel
+
+# Python bytecode from the design-system tools
+__pycache__/
