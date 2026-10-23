@@ -45,6 +45,18 @@ M0 to M2 is the "faster alpha" of the estimate of 22 Oct (6 to 8 working days); 
 3. **Hinglish stays as a lasting mode** (owner, 24 Oct 2026: "yes"), the default of three; PRODUCT.md updated.
 4. **The reading's numbers.** The five cards show counts of the player's picks until the research line sets the scoring, as in the demo.
 
+## Retake as a PWA, 24 Oct 2026
+
+Owner: "make sure retake is a pwa". `pnpm pwa` (`scripts/pwa-check.ts`, rewritten for the First take) passes 15 of 15 on a production build served with `vercel.json`'s headers, so the Content-Security-Policy is in force:
+
+- **Installable:** Chrome's installability check and manifest parse report nothing. The manifest is Retake's, with icons at 192, 512, maskable and SVG, and three screenshots for Android's fuller install dialog (`pnpm pwa:screens` takes them from the app). The iPhone tags and the theme colour match.
+- **Offline:** the shell, the library's styles, every font and the sound engines are precached (3.9 MB). Cutscene panels are cached as each cutscene is reached; the opening's, which load before the worker is in charge on a first visit, are handed to it by `src/pwa.ts`. Offline, the app reopens on the same decision in the chosen language, with its faces, fonts and the panels already seen.
+- **The demo at `/demo/` never takes the app's place in the cache.** A mutation run with that guard removed fails the check, so the check has teeth.
+- **Updates wait for a tap:** the library's toast, "New version ready." with Update, in the chosen language, on every screen; the take resumes where it was.
+- **Installed on an iPhone,** the screen starts below the see-through status bar and ends above the home bar. **Installed anywhere,** the app asks the browser to keep its storage (P4's 2 GB phone).
+- **Fixed on the way:** Vercel's clean URLs (set the same day) redirected `/index.html`, and a redirected shell cannot open offline; they are off, and the check guards it. The cache is renamed `retake-` and clears the turned-down build's `elt-` caches.
+- **Left for M5 (F-123):** the game's own one-time install sheet after the third day. Until then Android's own install prompt shows, and an iPhone installs through Share, then Add to Home Screen.
+
 ## Started, 24 Oct 2026
 
 - [x] This plan, on the branch `app-build`.

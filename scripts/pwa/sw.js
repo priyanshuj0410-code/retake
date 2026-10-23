@@ -11,7 +11,8 @@
  */
 const VERSION = '__VERSION__'
 const PRECACHE = __PRECACHE__
-const CACHE = `elt-${VERSION}`
+// the turned-down build cached under elt-; activate clears those and every older Retake version
+const CACHE = `retake-${VERSION}`
 const SHELL = './index.html'
 
 self.addEventListener('install', (event) => {
@@ -24,7 +25,9 @@ self.addEventListener('activate', (event) => {
       .keys()
       .then((keys) =>
         Promise.all(
-          keys.filter((k) => k.startsWith('elt-') && k !== CACHE).map((k) => caches.delete(k)),
+          keys
+            .filter((k) => (k.startsWith('elt-') || k.startsWith('retake-')) && k !== CACHE)
+            .map((k) => caches.delete(k)),
         ),
       )
       .then(() => self.clients.claim()),
@@ -33,6 +36,22 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting()
+  // pictures the page loaded before this worker was in charge (src/pwa.ts): cached as if served here
+  if (event.data && event.data.type === 'CACHE_SEEN' && Array.isArray(event.data.urls)) {
+    const urls = event.data.urls.filter((u) => {
+      try {
+        const url = new URL(u)
+        return url.origin === self.location.origin && url.pathname.startsWith('/take/')
+      } catch {
+        return false
+      }
+    })
+    event.waitUntil(
+      caches.open(CACHE).then((c) =>
+        Promise.all(urls.map((u) => c.match(u).then((hit) => hit || c.add(u).catch(() => {})))),
+      ),
+    )
+  }
 })
 
 self.addEventListener('fetch', (event) => {

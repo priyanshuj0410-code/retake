@@ -16,6 +16,7 @@
     "ux": "tsx --tsconfig tsconfig.app.json scripts/ux-audit.ts",
     "e2e": "tsx --tsconfig tsconfig.app.json scripts/e2e.ts",
     "pwa": "tsx --tsconfig tsconfig.app.json scripts/pwa-check.ts",
+    "pwa:screens": "tsx --tsconfig tsconfig.app.json scripts/pwa/screenshots.ts",
     "shots": "tsx --tsconfig tsconfig.app.json scripts/shots.ts",
     "fonts": "tsx scripts/fonts.ts",
     "icons": "tsx scripts/icons.ts"

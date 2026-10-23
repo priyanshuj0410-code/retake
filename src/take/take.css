@@ -2,6 +2,9 @@
    library's (public/take/library.css and worlds/*.css), never restyled here. */
 :root { --stage: #0E0E0E; color-scheme: dark; }
 html, body { margin: 0; background: var(--stage); }
+/* installed on iPhone the status bar is see-through (apple-mobile-web-app-status-bar-style), so the screen starts below
+   it and ends above the home bar; the phone's height below takes the same insets off */
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
 .demo { min-height: 100dvh; display: grid; place-items: center; padding: 16px 0; box-sizing: border-box; }
 .demo .phone { zoom: var(--take-zoom, 1); }
 /* markup the library drew sits in the screen as if it were the screen's own children */

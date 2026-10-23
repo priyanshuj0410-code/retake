@@ -33,6 +33,7 @@ export function Phone(props: {
         <div className={`art ${props.art[1]}`} style={{ backgroundImage: `url(${props.art[0]})` }} aria-hidden="true" />
       ) : null}
       <div className="scr">{props.children}</div>
+      <UpdateToast />
       {props.help ? <HelpSheet world={props.world} onClose={() => props.onHelp(false)} /> : null}
     </div>
   )
@@ -112,6 +113,25 @@ function HelpSheet({ world, onClose }: { world: string; onClose: () => void }) {
         </div>
       </div>
     </>
+  )
+}
+
+/** A new version is waiting (src/pwa.ts): the library's toast with one action. Nothing reloads until the player taps
+ * Update; the take then resumes on the screen it was on. */
+export const UpdateContext = createContext<(() => void) | null>(null)
+
+function UpdateToast() {
+  const apply = useContext(UpdateContext)
+  if (!apply) return null
+  return (
+    <div className="toast" role="status">
+      <span className="t">
+        <T t={['New version ready.', 'नया वर्ज़न तैयार।']} />
+        <button className="textbtn" type="button" onClick={apply}>
+          <T t={['Update', 'अपडेट']} />
+        </button>
+      </span>
+    </div>
   )
 }
 

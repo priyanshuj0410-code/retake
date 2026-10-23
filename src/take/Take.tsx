@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { TAKE, type Lang, type Screen } from './data'
 import { LangContext } from './lang'
-import { SetLangContext } from './parts'
+import { onUpdateReady } from '../pwa'
+import { SetLangContext, UpdateContext } from './parts'
 import { Cover, Cutscene } from './screens'
 import { Sound, SoundContext } from './sound'
 import { Pick } from './steps/Pick'
@@ -15,6 +16,8 @@ import { load, save } from './store'
 export function Take() {
   const [saved, setSaved] = useState(load)
   const [help, setHelp] = useState(false)
+  const [update, setUpdate] = useState<(() => void) | null>(null)
+  useEffect(() => onUpdateReady((apply) => setUpdate(() => apply)), [])
   const sound = useMemo(() => new Sound(), [])
   const flow = TAKE.flow
   const at = Math.min(saved.at, flow.length - 1)
@@ -69,9 +72,11 @@ export function Take() {
     <LangContext.Provider value={saved.lang}>
       <SetLangContext.Provider value={setLang}>
         <SoundContext.Provider value={soundCtx}>
-          <main className="demo take" key={at}>
-            {body ?? <SkipResults onNext={next} />}
-          </main>
+          <UpdateContext.Provider value={update}>
+            <main className="demo take" key={at}>
+              {body ?? <SkipResults onNext={next} />}
+            </main>
+          </UpdateContext.Provider>
         </SoundContext.Provider>
       </SetLangContext.Provider>
     </LangContext.Provider>

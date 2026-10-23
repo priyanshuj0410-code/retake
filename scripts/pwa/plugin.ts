@@ -26,8 +26,17 @@ export function serviceWorker(): Plugin {
       const files = walk(outDir)
         .map((f) => relative(outDir, f).split('\\').join('/'))
         // art/ and fonts/ belong to the turned-down build (EVAL-13) until M1 removes them; the First take uses take/
-        // the cutscene panels are cached as each is first shown (sw.js), not on install
-        .filter((f) => f !== 'sw.js' && !f.endsWith('.map') && !f.startsWith('.') && !/^(art|fonts)\//.test(f) && !/^take\/assets\/cut-/.test(f))
+        // the cutscene panels are cached as each is first shown (sw.js), not on install; the install dialog's
+        // screenshots and the link preview are for the browser and chats, never drawn by the app
+        .filter(
+          (f) =>
+            f !== 'sw.js' &&
+            !f.endsWith('.map') &&
+            !f.startsWith('.') &&
+            !/^(art|fonts|screenshots)\//.test(f) &&
+            !/^take\/assets\/cut-/.test(f) &&
+            f !== 'icons/og.png',
+        )
         .sort()
       const hash = createHash('sha256')
       for (const f of files) hash.update(f).update(readFileSync(join(outDir, f)))
