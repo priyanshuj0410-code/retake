@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react'
+import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { TAKE, type Bi, type Lang, type Paint, type Step } from './data'
 import { T, say, useLabel, useLang } from './lang'
 import { Svg } from './Svg'
@@ -137,6 +137,39 @@ function HelpSheet({ world, onClose }: { world: string; onClose: () => void }) {
       </div>
     </>
   )
+}
+
+/** A body that runs past the screen says so (library.js moreCue): a fade at its foot and a round "more" cue above
+ * the button, both gone once it is scrolled to its end. Watches its own scroll and size. */
+export function useMoreCue() {
+  const ref = useRef<HTMLDivElement>(null)
+  const [cue, setCue] = useState<{ more: boolean; bottom: number }>({ more: false, bottom: 0 })
+  useLayoutEffect(() => {
+    const body = ref.current
+    if (!body) return
+    const check = () => {
+      const more = body.scrollHeight - body.clientHeight > 2 && body.scrollTop + body.clientHeight < body.scrollHeight - 2
+      const dock = body.parentElement?.querySelector<HTMLElement>(':scope > .dock')
+      const bottom = (dock?.offsetHeight ?? 0) + 8
+      setCue((c) => (c.more === more && c.bottom === bottom ? c : { more, bottom }))
+    }
+    check()
+    body.addEventListener('scroll', check, { passive: true })
+    const ro = new ResizeObserver(check)
+    ro.observe(body)
+    for (const k of body.children) ro.observe(k)
+    void document.fonts?.ready.then(check)
+    return () => {
+      body.removeEventListener('scroll', check)
+      ro.disconnect()
+    }
+  }, [])
+  const node = (
+    <span className="morecue is-live" style={{ bottom: cue.bottom }} aria-hidden="true" hidden={!cue.more}>
+      <Svg name="down" />
+    </span>
+  )
+  return { ref, more: cue.more, node }
 }
 
 /** A new version is waiting (src/pwa.ts): the library's toast with one action. Nothing reloads until the player taps
