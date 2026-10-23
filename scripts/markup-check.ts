@@ -1,6 +1,6 @@
 /**
  * `pnpm markup` (EVAL-18): the app draws the library's markup, decision by decision. For each of the First take's 40
- * decisions, the structure of the screen's body in the app (every element's tag and classes, depth first) is compared
+ * decisions, the structure of the screen's top bar, body and dock in the app (every element's tag and classes, depth first) is compared
  * with the same decision in the signed-off demo (site/, the demo built by design-system/demo.py from the same script).
  * Text, attributes, the shuffled order of the cards and states that change under the finger (picked, held, filled)
  * are left out, so the check catches markup drifting from the library, not play. Run after the demo or the app
@@ -57,7 +57,8 @@ try {
   const diffs: string[] = []
   let compared = 0
   for (const id of ids) {
-    const want = await skeleton(demo, `.phone[data-ft="${id}"] .scr > .scr-body`)
+    const parts = ['.topbar', '.scr-body', '.dock']
+    const want = (await Promise.all(parts.map((k) => skeleton(demo, `.phone[data-ft="${id}"] .scr > ${k}`)))).flatMap((x) => x ?? ['missing'])
     const index = STEPS.get(id)
     if (index === undefined || !want) {
       diffs.push(`${id}: not found in ${index === undefined ? 'the app' : 'the demo'}`)
@@ -66,7 +67,7 @@ try {
     await app.evaluate((at) => localStorage.setItem('retake.take', JSON.stringify({ v: 1, at, answers: {}, lang: 'mix', sound: false, birth: '1990-08-14' })), index)
     await app.reload()
     await app.locator('.take .app .scr-body').waitFor()
-    const got = await skeleton(app, '.take .app .page-play > .scr-body')
+    const got = (await Promise.all(parts.map((k) => skeleton(app, `.take .app .page-play > ${k}`)))).flatMap((x) => x ?? ['missing'])
     compared++
     if (JSON.stringify(got) !== JSON.stringify(want)) {
       const i = (got ?? []).findIndex((l, k) => l !== want[k])
@@ -74,7 +75,7 @@ try {
     }
   }
   record(T, `all ${ids.length} decisions found in both`, ids.length === 40 && compared === 40, `${compared} compared`)
-  record(T, 'every decision\'s body has the demo\'s structure', diffs.length === 0, diffs.slice(0, 6).join(' | '))
+  record(T, "every decision's top bar, body and dock have the demo's structure", diffs.length === 0, diffs.slice(0, 6).join(' | '))
 } catch (e) {
   record(T, 'threw', false, String(e))
 } finally {

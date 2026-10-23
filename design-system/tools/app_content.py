@@ -57,7 +57,13 @@ def paint(W, moment, cls=None):
     stem = url[:-len('.webp')]
     there = lambda f: f if (HERE / f).exists() else None
     p = there(f'{stem}-l.webp') or url
-    return {'base': url, 'p': p, 'w': there(f'{stem}-w.webp') or p, 'cls': cls or art_cls}
+    w = there(f'{stem}-w.webp')
+    if not w:   # a wide screen then stretches the phone's painting: worth painting (responsive review, 24 Oct 2026)
+        NO_WIDE.add(stem.split('/')[-1])
+    return {'base': url, 'p': p, 'w': w or p, 'cls': cls or art_cls}
+
+
+NO_WIDE = set()
 
 
 def cover(c):
@@ -183,6 +189,8 @@ def build():
     nfonts = fonts()
     icons()
     kinds = sorted({s['kind'] for s in flow if s['type'] == 'step'})
+    if NO_WIDE:
+        print('paintings with no wide (-w) version, stretched on wide screens:', ', '.join(sorted(NO_WIDE)))
     print(f'{OUT_JSON.relative_to(ROOT)}: {len(flow)} screens, {total} decisions ({", ".join(kinds)}), '
           f'{sum(1 for s in flow if s["type"] == "cut")} cutscenes; public/take/: {len(files | pics) + 2} files and {nfonts} fonts; public/icons/: the ticket')
 

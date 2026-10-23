@@ -2,7 +2,7 @@ import { useId, useState } from 'react'
 import { T, useLabel, useLang, say } from '../lang'
 import { Question, Stats, Statkey, Voice, spoken } from '../parts'
 import { Svg } from '../Svg'
-import { Frame, useFx, useShuffled, type StepProps } from './common'
+import { Frame, useFx, useShuffled, was, type StepProps } from './common'
 
 /** Pick one, and Believe (the same card with the person's own account as the line); with s.max, spend checks: each
  * tapped card takes a check, up to the max (first_take.step_pick). */
@@ -10,20 +10,22 @@ export function Pick(props: StepProps) {
   const { s } = props
   const many = s.kind === 'checks' ? s.max! : 0
   const people = useShuffled(s.people)
-  const [on, setOn] = useState<string[]>([])
+  const locked = !!props.revisit
+  const [on, setOn] = useState<string[]>(() => (many ? (was(props, 'set')?.set ?? []) : [was(props, 'pick')?.pick].filter((x): x is string => !!x)))
   const label = useLabel()
   const lang = useLang()
   const fx = useFx(s.world)
   const qid = useId()
   const tap = (name: string) => {
-    const was = on.includes(name)
+    if (locked) return
+    const had = on.includes(name)
     if (many) {
-      if (!was && on.length >= many) return
-      fx(was ? 'spend' : 'tap')
-      setOn(was ? on.filter((x) => x !== name) : [...on, name])
+      if (!had && on.length >= many) return
+      fx(had ? 'spend' : 'tap')
+      setOn(had ? on.filter((x) => x !== name) : [...on, name])
     } else {
-      fx(was ? 'unpick' : 'tap')
-      setOn(was ? [] : [name])
+      fx(had ? 'unpick' : 'tap')
+      setOn(had ? [] : [name])
     }
   }
   const picked = s.people.find((p) => p.en === on[0])

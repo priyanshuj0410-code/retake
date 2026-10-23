@@ -1,6 +1,6 @@
 import { useId, useState } from 'react'
 import { Question, Statkey, Voice } from '../parts'
-import { Frame, useFx, useShuffled, type StepProps } from './common'
+import { Frame, useFx, useShuffled, was, type StepProps } from './common'
 import { Row, refuseOnce } from './Row'
 
 /** Pick a team, and Keep: N of the people, as rows (first_take.step_team). A tap past N is refused in place. */
@@ -8,11 +8,12 @@ export function Team(props: StepProps) {
   const { s } = props
   const need = s.need!
   const people = useShuffled(s.people)
-  const [on, setOn] = useState<string[]>([])
+  const [on, setOn] = useState<string[]>(() => was(props, 'set')?.set ?? [])
   const [refused, setRefused] = useState<string | null>(null)
   const fx = useFx(s.world)
   const qid = useId()
   const tap = (name: string) => {
+    if (props.revisit) return
     if (on.includes(name)) {
       fx('unpick')
       setOn(on.filter((x) => x !== name))

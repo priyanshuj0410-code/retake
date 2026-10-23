@@ -314,20 +314,20 @@
 .w-rukavat .tile.is-focus, .w-rukavat .row.is-focus, .w-rukavat .chip.is-focus, .w-rukavat .main.is-focus { box-shadow: 0 0 0 5px var(--focus-inner); }
 
 /* ===== 200% text and small phones ===== */
-.w-rukavat.phone.is-200 .rk-slots { grid-template-columns: 1fr; }
-.w-rukavat.phone.is-200 .rk-titlecard, .w-rukavat.phone.is-200 .rk-chapter { margin-inline: 0; }
-.w-rukavat.phone.is-200 .rk-signoff .score { font-size: var(--t-score); }
+.w-rukavat:is(.phone, .app).is-200 .rk-slots { grid-template-columns: 1fr; }
+.w-rukavat:is(.phone, .app).is-200 .rk-titlecard, .w-rukavat:is(.phone, .app).is-200 .rk-chapter { margin-inline: 0; }
+.w-rukavat:is(.phone, .app).is-200 .rk-signoff .score { font-size: var(--t-score); }
 /* the channel buttons grow with the text: the rank column widens so "1,958" stays inside its own column, clear of the name */
-.w-rukavat.phone.is-200 .lrow { grid-template-columns: 84px minmax(0, 1fr) auto; }
+.w-rukavat:is(.phone, .app).is-200 .lrow { grid-template-columns: 84px minmax(0, 1fr) auto; }
 /* doubled text keeps its whole line box on its own plate or caption */
-.w-rukavat.phone.is-200 .daycount { padding-block: 3px; }
+.w-rukavat:is(.phone, .app).is-200 .daycount { padding-block: 3px; }
 
 /* the cream pucks fill their half at 200%, so the larger words stay on them */
-.w-rukavat.phone.is-200 .seg button[aria-selected="true"]::before { inset: 0; border-radius: 8px; }
+.w-rukavat:is(.phone, .app).is-200 .seg button[aria-selected="true"]::before { inset: 0; border-radius: 8px; }
 
-.w-rukavat.phone.is-200 .rk-set b { padding-top: 5px; padding-bottom: 2px; }
-.w-rukavat.phone.is-200 .rk-set .offstamp { padding: 8px 8px; }
-.w-rukavat.phone.is-200 .tile .stats { padding-top: 34px; }
+.w-rukavat:is(.phone, .app).is-200 .rk-set b { padding-top: 5px; padding-bottom: 2px; }
+.w-rukavat:is(.phone, .app).is-200 .rk-set .offstamp { padding: 8px 8px; }
+.w-rukavat:is(.phone, .app).is-200 .tile .stats { padding-top: 34px; }
 /* small phones and 200% text keep the round 3 card padding: they scroll once already, and nothing new may land under the scroll fade */
 .w-rukavat.phone:is(.is-200, .is-small) .tile { padding: 8px 8px 5px; }
 /* the small phone keeps the library's shallow portrait in both languages; the stats clear the deeper caption */

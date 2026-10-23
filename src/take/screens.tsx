@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState, type MouseEvent, type SyntheticEvent } from 'react'
 import { TAKE, type Cover as CoverData, type Cut as CutData } from './data'
-import { Drawn, T, useLabel } from './lang'
+import { Drawn, T, useLabel, useLang } from './lang'
 import { AppFrame, HelpButton, Main } from './parts'
 import { useSound } from './sound'
 
@@ -8,10 +8,20 @@ const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
 /** A panel that cannot load (offline, never cached) leaves its caption, not a broken picture. */
 const hide = (e: SyntheticEvent<HTMLImageElement>) => (e.currentTarget.style.visibility = 'hidden')
 
-/** A chapter's title card, drawn by the library (its hard cover, the setting named under the title). */
-export function Cover({ c, onNext, help, onHelp }: { c: CoverData; onNext: () => void; help: boolean; onHelp: (o: boolean) => void }) {
+/** A chapter's title card, drawn by the library (its hard cover, the setting named under the title). Come back to from
+ * the chapter's first step, its button reads Continue (R-STEP-9). */
+export function Cover({ c, onNext, revisit, help, onHelp }: { c: CoverData; onNext: () => void; revisit?: boolean; help: boolean; onHelp: (o: boolean) => void }) {
   const { sound } = useSound()
   const label = useLabel()
+  const lang = useLang()
+  const hold = useRef<HTMLDivElement>(null)
+  useLayoutEffect(() => {
+    const span = hold.current?.querySelector<HTMLElement>('.dock .main span[data-hi]')
+    if (!span || !revisit) return
+    span.dataset.en = 'Continue'
+    span.dataset.hi = 'जारी रखें'
+    span.textContent = lang === 'hi' ? 'जारी रखें' : 'Continue'
+  }, [revisit, lang])
   const click = (e: MouseEvent) => {
     const el = e.target as HTMLElement
     if (el.closest('[data-help]')) onHelp(true)
@@ -21,7 +31,7 @@ export function Cover({ c, onNext, help, onHelp }: { c: CoverData; onNext: () =>
     }
   }
   return (
-    <div onClick={click} className="take-hold">
+    <div onClick={click} className="take-hold" ref={hold}>
       <AppFrame world={c.world} kind="cover" cls={c.cls.split(' ').slice(1).join(' ')} label={label(TAKE.worlds[c.world].title)} art={c.art} help={help} onHelp={onHelp}>
         <Drawn html={c.html} className="take-drawn" />
       </AppFrame>
@@ -76,7 +86,8 @@ export function Cutscene({ c, onNext, help, onHelp }: { c: CutData; onNext: () =
           </figure>
         ))}
       </div>
-      <Main t={last ? ['Continue', 'जारी रखें'] : ['Next', 'आगे']} live onGo={next}>
+      {/* the world's own button outside a decision, as the demo draws it (library.py out_btn) */}
+      <Main t={last ? ['Continue', 'जारी रखें'] : ['Next', 'आगे']} live out onGo={next}>
         <span className="cutdots" aria-hidden="true">
           {c.panels.map((p, i) => (
             <i key={p.id} className={i <= n ? 'on' : undefined} />

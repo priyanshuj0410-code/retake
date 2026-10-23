@@ -1,7 +1,7 @@
 import { useId, useState } from 'react'
 import { say, useLabel, useLang } from '../lang'
 import { Question, Stats, Statkey, Voice, spoken } from '../parts'
-import { Frame, useFx, useShuffled, type StepProps } from './common'
+import { Frame, useFx, useShuffled, was, type StepProps } from './common'
 import { Stick, Who } from './Row'
 
 /** The batting order, first stage (first_take.step_order, Cricket's own kind): the order column fills from the top as
@@ -9,7 +9,8 @@ import { Stick, Who } from './Row'
 export function Order(props: StepProps) {
   const { s } = props
   const tray = useShuffled(s.people)
-  const [order, setOrder] = useState<string[]>([])
+  const [order, setOrder] = useState<string[]>(() => was(props, 'order')?.order ?? [])
+  const locked = !!props.revisit
   const fx = useFx(s.world)
   const label = useLabel()
   const lang = useLang()
@@ -38,7 +39,7 @@ export function Order(props: StepProps) {
                 data-n={j + 1}
                 aria-label={label(p ? [`${j + 1}, ${p.en}`, `${j + 1}, ${p.hi}`] : [`${j + 1}, empty`, `${j + 1}, ख़ाली`])}
                 onClick={() => {
-                  if (!p) return
+                  if (!p || locked) return
                   fx('unpick')
                   setOrder(order.filter((_, k) => k !== j))
                 }}
@@ -68,7 +69,7 @@ export function Order(props: StepProps) {
             aria-label={label(spoken(s, p))}
             data-en={p.en}
             onClick={() => {
-              if (order.length >= s.people.length) return
+              if (locked || order.length >= s.people.length) return
               fx('fill')
               setOrder([...order, p.en])
             }}

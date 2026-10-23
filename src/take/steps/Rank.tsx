@@ -2,7 +2,7 @@ import { useId, useLayoutEffect, useRef, useState } from 'react'
 import { T } from '../lang'
 import { Question, Statkey, Voice } from '../parts'
 import { Svg } from '../Svg'
-import { Frame, useFx, useShuffled, type StepProps } from './common'
+import { Frame, useFx, useShuffled, was, type StepProps } from './common'
 import { Row } from './Row'
 
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -14,22 +14,23 @@ export function Rank(props: StepProps) {
   const { s } = props
   const seats = s.seats!
   const base = useShuffled(s.people)
-  const [order, setOrder] = useState<string[]>([])
+  const [order, setOrder] = useState<string[]>(() => was(props, 'order')?.order ?? [])
   const fx = useFx(s.world)
   const qid = useId()
   const box = useRef<HTMLDivElement>(null)
-  const was = useRef(new Map<string, number>())
+  const before = useRef(new Map<string, number>())
   const tap = (name: string) => {
+    if (props.revisit) return
     fx('fill')
     // where each row stands before the move, so it can glide to its new place
-    was.current = new Map([...(box.current?.querySelectorAll<HTMLElement>('.row') ?? [])].map((r) => [r.dataset.en!, r.getBoundingClientRect().top]))
+    before.current = new Map([...(box.current?.querySelectorAll<HTMLElement>('.row') ?? [])].map((r) => [r.dataset.en!, r.getBoundingClientRect().top]))
     setOrder(order.includes(name) ? order.filter((x) => x !== name) : [...order, name])
   }
   useLayoutEffect(() => {
     if (reduced()) return
     for (const r of box.current?.querySelectorAll<HTMLElement>('.row') ?? []) {
-      const dy = (was.current.get(r.dataset.en!) ?? 0) - r.getBoundingClientRect().top
-      if (dy && was.current.size) r.animate([{ transform: `translateY(${dy}px)` }, { transform: 'none' }], { duration: 240, easing: 'cubic-bezier(.2, 0, 0, 1)' })
+      const dy = (before.current.get(r.dataset.en!) ?? 0) - r.getBoundingClientRect().top
+      if (dy && before.current.size) r.animate([{ transform: `translateY(${dy}px)` }, { transform: 'none' }], { duration: 240, easing: 'cubic-bezier(.2, 0, 0, 1)' })
     }
   }, [order])
   const rows = [...order.map((n) => base.find((p) => p.en === n)!), ...base.filter((p) => !order.includes(p.en))]

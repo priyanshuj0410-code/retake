@@ -109,6 +109,22 @@ Owner: "ok... keep building".
 - **Privacy and Delete all (F-111, F-112; SC-44, SC-49)**, drawn in the library (`library.py` `privacy_phone`, with the "?" sheet's other states) and built in the app's "?" sheet: option C keeps its three parts and gains one link, Privacy, whose level says what stays on this phone, that nothing leaves it, and what is kept nowhere. Delete all asks once in the one dialog, in F-112's words ("Delete all your days and notes?"), over its own scrim; it empties the phone at once, says "Deleted." (installed, with how to take the icon off the home screen), keeps nothing while the line shows, and starts again from the birth date. `pnpm e2e` checks it (8). **Open:** F-111's one contact for data questions needs the owner's address; nothing is invented in its place.
 - **Accessibility check** (`pnpm a11y`, in `pnpm check`): axe-core's WCAG 2.2 A and AA rules on every kind of screen (the birth date, not yet 18, a cutscene, a title card, the six decision kinds, the reading, the "?" sheet, Privacy, the dialog), on a phone and a laptop, in Hinglish and Hindi: no violation. Colour contrast over the paintings stays with the library's pixel check, since axe cannot read text over a picture. A mutation run (the "?" button without its name) fails it.
 
+## The responsive review, 24 Oct 2026
+
+An independent review (three angles: layout across sizes; Hindi, 200% text, small phones and keyboard; the five worlds against the demo; each finding put to a skeptic) found 35 issues: 16 confirmed, 19 refuted, most of those because the signed-off demo does the same. Fixed:
+
+- **Cards on their side** (high, found three times): a card's note fell into the face's column, in Jadugar most of all. The library's sideways rule and Jadugar's now move `.note` as they moved `.quote`.
+- **200% text** (high): the library's 200% and small-phone layouts were keyed to its phone specimens. The app frame now carries `is-200` (root text at 150% or more) and `is-small` (360 x 640 or less), and the layout rules hold in both frames: at 200% the cards stack in one column and nothing is cut.
+- **Back** (R-STEP-9): every decision's top bar has Back, as the demo's does. It shows the step before, read-only with its answer and a lock (the library's `is-revisited`), and one button, "Go to the current step"; from a chapter's first step it is the title card, reading Continue; the phone's own back does the same. Split now keeps which chore went to whom, so a revisited Split shows it. `pnpm e2e` checks it (8).
+- **The cutscene's Next** is the world's own button outside a decision, as in the demo, not the yellow one.
+- **Skip over a full-screen cutscene** failed contrast in four worlds: the fade at the top is deeper (never a box, owner 23 Oct).
+- **A phone on its side** narrower than 700 gets full-screen cutscenes too; **a laptop window** (1280 x 650) gets a tighter tier, so four people fit in most decisions; the column's own width now turns cards on their side; Lugdi's roundel keeps to its masthead; the birth date and the reading get the "more" cue, and a wrong date's line comes into view.
+- **`pnpm markup`** now compares each decision's top bar and dock as well as its body: all 40 match the demo.
+
+**Open:**
+- **Paintings, for the owner's Mac** (the painter runs there): wide (`-w`, 1440 x 810, the subject in the left third) versions of `pulp-s-cricket`, `pulp-s-money` and `cricket-s-board`, and larger (`-l`) ones of the two Lugdi paintings. Until then a wide screen stretches the phone's painting; the export names them.
+- On a laptop window, the row kinds (rank, team, batting order, split) and Jadugar's Believe still scroll once, with the cue; compact wide layouts for them are a design step for the library.
+
 ## Started, 24 Oct 2026
 
 - [x] This plan, on the branch `app-build`.

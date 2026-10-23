@@ -196,9 +196,44 @@ async function privacy() {
   await page.close()
 }
 
+/** Back (R-STEP-9): to the previous step, read-only with its answer and a lock, one button back to the current step;
+ * from a chapter's first step, its title card reading Continue; the phone's back does the same. */
+async function backward() {
+  const g = 'E Back: earlier steps, read-only'
+  const page = await browser.newPage({ viewport: { width: 412, height: 915 } })
+  const errors: string[] = []
+  page.on('pageerror', (e) => errors.push(String(e)))
+  await page.goto(BASE)
+  await page.evaluate(() => localStorage.setItem('retake.take', JSON.stringify({ v: 1, at: 3, answers: {}, lang: 'mix', sound: false, birth: '1990-08-14' })))
+  await page.reload()
+  await page.locator('.tiles .tile').nth(1).click()
+  const picked = await page.locator('.tiles .tile.is-selected').getAttribute('aria-label')
+  await page.locator('.take .dock .main').click()
+  const second = await look(page)
+  await page.locator('.take .topbar .ibtn').first().click()
+  const back1 = await look(page)
+  record(g, 'Back shows the step before, read-only, with the pick made and its lock',
+    /^1 of /.test(back1.label) && back1.cls.includes('is-revisited') && (await page.locator('.tiles .tile.is-selected').getAttribute('aria-label')) === picked)
+  await page.locator('.tiles .tile:not(.is-selected)').first().click()
+  record(g, 'a revisited step cannot be changed', (await page.locator('.tiles .tile.is-selected').getAttribute('aria-label')) === picked)
+  record(g, 'its one button goes to the current step', /current step/.test(back1.button))
+  await page.locator('.take .topbar .ibtn').first().click()
+  record(g, "from a chapter's first step, Back is the title card, reading Continue", (await page.locator('.take-drawn').count()) === 1 && /Continue/.test((await look(page)).button))
+  await page.locator('.take .dock .main').click()
+  record(g, 'Continue returns to where the player is', (await look(page)).label === second.label)
+  await page.goBack()
+  record(g, "the phone's back does the same as Back", /^1 of /.test((await look(page)).label) && (await look(page)).cls.includes('is-revisited'))
+  await page.locator('.take .dock .main').click()
+  const kept = await page.evaluate(() => JSON.parse(localStorage.getItem('retake.take') ?? '{}'))
+  record(g, 'going back changes no answer and moves the place nowhere', kept.at === 4 && Object.keys(kept.answers).length === 1)
+  record(g, 'no page error', errors.length === 0, errors.slice(0, 2).join(' | '))
+  await page.close()
+}
+
 try {
   await gate()
   await privacy()
+  await backward()
   for (const lang of ['mix', 'hi', 'en'] as const) {
     await play(lang, 412, 915)
     await play(lang, 1440, 900)

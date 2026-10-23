@@ -1,8 +1,8 @@
-import { useId, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { daysBetween, indiaToday } from '../engine/calendar'
 import { TAKE, type Bi, type Lang } from './data'
 import { T, useLabel, useLang } from './lang'
-import { AppFrame, Main } from './parts'
+import { AppFrame, Main, useMoreCue } from './parts'
 import { Svg } from './Svg'
 
 // The first visit (SC-15, SC-16; feature-set F-14a, F-14b; library.py birth_phone and notyet_phone): the one screen
@@ -49,6 +49,13 @@ export function BirthDate(props: { onAdult: (iso: string) => void; onMinor: (ope
   const label = useLabel()
   const qid = useId()
   const read = readDate(vals[0], vals[1], vals[2], indiaToday())
+  const cue = useMoreCue()
+  const hintRef = useRef<HTMLParagraphElement>(null)
+  // a date that cannot be kept says why in place; on a short screen the line is brought into view
+  const wrong = read.state === 'error'
+  useEffect(() => {
+    if (wrong) hintRef.current?.scrollIntoView({ block: 'nearest' })
+  }, [wrong])
   const set = (i: number, v: string) => {
     const digits = v.replace(/\D/g, '').slice(0, FIELDS[i].max)
     setVals(vals.map((x, j) => (j === i ? digits : x)))
@@ -63,7 +70,7 @@ export function BirthDate(props: { onAdult: (iso: string) => void; onMinor: (ope
         : { line: ['This phone cannot keep it; you will be asked again.', 'यह फ़ोन इसे रख नहीं सकता; अगली बार फिर पूछा जाएगा।'], icon: 'alert' }
   return (
     <AppFrame world={TAKE.gate.world} kind="cover" cls="is-gate" label={label(['The birth date', 'जन्म की तारीख़'])} art={TAKE.gate.art} help={false} onHelp={() => {}}>
-      <div className="scr-body is-cover">
+      <div className={`scr-body is-cover${cue.more ? ' has-more' : ''}`} ref={cue.ref}>
         <div className="gatecard at-end">
           <div className="langrow">
             <Svg name="language" />
@@ -103,12 +110,13 @@ export function BirthDate(props: { onAdult: (iso: string) => void; onMinor: (ope
           <p className="datewords" aria-live="polite">
             {read.state === 'ok' ? <T t={read.words} /> : null}
           </p>
-          <p className="gatehint" id={`${qid}-hint`} role={read.state === 'error' ? 'alert' : undefined}>
+          <p className="gatehint" id={`${qid}-hint`} ref={hintRef} role={read.state === 'error' ? 'alert' : undefined}>
             <Svg name={hint.icon} />
             <T t={hint.line} />
           </p>
         </div>
       </div>
+      {cue.node}
       <Main
         t={read.state === 'ok' ? ['Start', 'शुरू करें'] : ['Type your birth date', 'अपनी जन्म तारीख़ लिखें']}
         live={read.state === 'ok'}

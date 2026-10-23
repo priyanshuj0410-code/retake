@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react'
 import { TAKE, type Bi } from './data'
 import { say, T, useLang } from './lang'
-import { AppFrame, HelpButton, Main } from './parts'
+import { AppFrame, HelpButton, Main, useMoreCue } from './parts'
 import { useSound } from './sound'
 import type { Answer } from './steps/common'
 import { favoured } from './reading'
@@ -26,6 +26,7 @@ export function Results(props: {
   onHelp: (o: boolean) => void
 }) {
   const [n, setN] = useState(1)
+  const cue = useMoreCue([n])
   const lang = useLang()
   const { sound } = useSound()
   const R = TAKE.results
@@ -128,7 +129,7 @@ export function Results(props: {
           <HelpButton onHelp={props.onHelp} />
         </div>
       </div>
-      <div className="scr-body">
+      <div className={`scr-body${cue.more ? ' has-more' : ''}`} ref={cue.ref}>
         <div className={`respic${pcls ? ` ${pcls}` : ''}`}>{pic}</div>
         <div className="qbox">
           <T as="h1" t={text} className="q restext" />
@@ -139,6 +140,7 @@ export function Results(props: {
           </button>
         ) : null}
       </div>
+      {cue.node}
       <Main
         t={['Next', 'आगे']}
         live

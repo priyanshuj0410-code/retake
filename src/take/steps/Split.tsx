@@ -1,7 +1,7 @@
 import { useId, useState } from 'react'
 import { T, useLabel } from '../lang'
 import { Question, Stats, Statkey, Voice } from '../parts'
-import { Frame, useFx, type StepProps } from './common'
+import { Frame, useFx, was, type StepProps } from './common'
 import { Row, Who } from './Row'
 
 /** Split (first_take.step_split, Rukavat's own kind): tap a chore, then a person; a person tapped first takes the
@@ -9,7 +9,8 @@ import { Row, Who } from './Row'
 export function Split(props: StepProps) {
   const { s } = props
   const chores = s.chores!
-  const [given, setGiven] = useState<Record<number, string>>({})
+  const [given, setGiven] = useState<Record<number, string>>(() => was(props, 'chores')?.given ?? {})
+  const locked = !!props.revisit
   const [held, setHeld] = useState<number | null>(null)
   const fx = useFx(s.world)
   const label = useLabel()
@@ -23,6 +24,7 @@ export function Split(props: StepProps) {
     return out
   }
   const give = (name: string) => {
+    if (locked) return
     const j = held ?? chores.findIndex((_, k) => !(k in given))
     if (j < 0) return
     fx('fill')
@@ -35,7 +37,7 @@ export function Split(props: StepProps) {
       cls="rk-split js-split"
       button={left ? [`Share ${left} more`, `${left} और बाँटें`] : s.button}
       live={!left}
-      commit={() => props.onCommit({ chores: load() })}
+      commit={() => props.onCommit({ chores: load(), given })}
     >
       <Question s={s} id={qid} />
       <Voice s={s} />
@@ -52,6 +54,7 @@ export function Split(props: StepProps) {
                   aria-label={label(p ? [`${en}, ${p.en}`, `${hi}, ${p.hi}`] : [`${en}, empty`, `${hi}, ख़ाली`])}
                   aria-pressed={held === j}
                   onClick={() => {
+                    if (locked) return
                     if (p) {
                       fx('unpick')
                       const { [j]: _, ...rest } = given

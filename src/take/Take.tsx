@@ -26,7 +26,10 @@ export function Take() {
   const sound = useMemo(() => new Sound(), [])
   const flow = TAKE.flow
   const at = Math.min(saved.at, flow.length - 1)
-  const screen = flow[at]
+  // a screen before `at` shown again by Back, read-only (R-STEP-9); null is where the player is
+  const [view, setView] = useState<number | null>(null)
+  const shown = view ?? at
+  const screen = flow[shown]
 
   // after Delete all nothing is kept again until the sheet closes and the take starts from a first visit
   const wiped = useRef(false)
@@ -52,9 +55,41 @@ export function Take() {
 
   const next = useCallback(() => {
     setHelp(false)
+    setView(null)
     setSaved((s) => ({ ...s, at: s.at + 1 >= flow.length ? 0 : s.at + 1 }))
     scrollTo(0, 0)
   }, [flow.length])
+  // Back from a step: the step before it, read-only; from a chapter's first step, the chapter's title card
+  const backFrom = (i: number) => {
+    if (flow[i]?.type !== 'step') return null
+    if (flow[i - 1]?.type === 'step') return i - 1
+    for (let j = i - 1; j >= 0; j--) if (flow[j].type === 'cover') return j
+    return null
+  }
+  const back = () => {
+    const j = backFrom(shown)
+    if (j === null) return false
+    setHelp(false)
+    setView(j)
+    return true
+  }
+  const toCurrent = () => {
+    setHelp(false)
+    setView(null)
+  }
+  // the phone's own back does what Back does, while there is a step to go back from
+  const backRef = useRef(back)
+  useEffect(() => {
+    backRef.current = back
+  })
+  useEffect(() => {
+    history.pushState({ retake: 1 }, '')
+    const on = () => {
+      if (backRef.current()) history.pushState({ retake: 1 }, '')
+    }
+    addEventListener('popstate', on)
+    return () => removeEventListener('popstate', on)
+  }, [])
   const commit = (id: string) => (a: Answer) => {
     setSaved((s) => ({ ...s, answers: { ...s.answers, [id]: a } }))
     next()
@@ -110,10 +145,19 @@ export function Take() {
       />
     )
   else if (screen.type === 'cut') body = <Cutscene c={screen} onNext={next} {...props} />
-  else if (screen.type === 'cover') body = <Cover c={screen} onNext={next} {...props} />
+  else if (screen.type === 'cover')
+    body = <Cover c={screen} onNext={view === null ? next : toCurrent} revisit={view !== null} {...props} />
   else if (screen.type === 'step') {
     const Kind = KINDS[screen.kind]
-    body = <Kind s={screen} onCommit={commit(screen.id)} {...props} />
+    body = (
+      <Kind
+        s={screen}
+        onCommit={commit(screen.id)}
+        onBack={() => void back()}
+        revisit={view === null ? undefined : { answer: saved.answers[screen.id], onReturn: toCurrent }}
+        {...props}
+      />
+    )
   } else body = <Results answers={saved.answers} onNext={next} onForget={forget} {...props} />
 
   // a screen is drawn fresh each time it comes up, so a step never opens with the last step's picks
@@ -123,7 +167,7 @@ export function Take() {
         <SoundContext.Provider value={soundCtx}>
           <PrivacyContext.Provider value={privacy}>
             <UpdateContext.Provider value={update}>
-              <main className="take" key={gate ?? at}>
+              <main className="take" key={gate ?? shown}>
                 {body}
               </main>
             </UpdateContext.Provider>

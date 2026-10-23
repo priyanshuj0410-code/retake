@@ -13,6 +13,26 @@ const HOW: Bi = ['Pick someone, send them, and at the end see what you chose.', 
  * the painting fills the screen in .page-art at every size, and the screen's topbar, body and dock sit in .page-play,
  * which is the whole screen on a phone and a column on the right when the screen is wider than tall. The "?" sheet
  * and the update toast rise inside the column, so the painting stays whole. */
+/** The library's 200% and small-phone layouts (is-200, is-small): the library draws them as specimens; here they follow
+ * the phone. Large text is the root size at 150% of normal or more; a small phone is a frame of 360 x 640 or less. */
+function useScale() {
+  const read = () => {
+    const root = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16
+    return `${root >= 24 ? ' is-200' : ''}${innerWidth <= 360 && innerHeight <= 640 ? ' is-small' : ''}`
+  }
+  const [cls, setCls] = useState(read)
+  useEffect(() => {
+    const on = () => setCls(read())
+    addEventListener('resize', on)
+    window.visualViewport?.addEventListener('resize', on)
+    return () => {
+      removeEventListener('resize', on)
+      window.visualViewport?.removeEventListener('resize', on)
+    }
+  }, [])
+  return cls
+}
+
 export function AppFrame(props: {
   world: string
   kind: 'step' | 'cover' | 'cut' | 'result'
@@ -25,10 +45,11 @@ export function AppFrame(props: {
   onHelp: (open: boolean) => void
 }) {
   const lang = useLang()
+  const scale = useScale()
   const art = props.art
   return (
     <div
-      className={`app world ${TAKE.worlds[props.world]?.cls ?? props.world} is-${props.kind} ${props.cls ?? ''}`}
+      className={`app world ${TAKE.worlds[props.world]?.cls ?? props.world} is-${props.kind} ${props.cls ?? ''}${scale}`}
       role="group"
       aria-label={props.label}
       data-cur={lang}
@@ -69,11 +90,18 @@ export function HelpButton({ onHelp }: { onHelp: (open: boolean) => void }) {
   )
 }
 
-export function Topbar({ plate, onHelp }: { plate?: Bi | null; onHelp: (open: boolean) => void }) {
+export function Topbar({ plate, onHelp, onBack }: { plate?: Bi | null; onHelp: (open: boolean) => void; onBack?: () => void }) {
   const lang = useLang()
+  const label = useLabel()
   return (
     <div className="topbar">
-      <span className="spacer" />
+      {onBack ? (
+        <button className="ibtn" type="button" aria-label={label(['Back', 'वापस'])} onClick={onBack}>
+          <Svg name="back" />
+        </button>
+      ) : (
+        <span className="spacer" />
+      )}
       {plate ? (
         // a world's plate can carry its own markup (Cricket's "<i>Day</i><b>6</b>"), from the library's export
         <span className="dayplate" lang={lang === 'hi' ? 'hi' : undefined}>
@@ -234,7 +262,7 @@ function HelpSheet({ world, onClose }: { world: string; onClose: () => void }) {
 
 /** A body that runs past the screen says so (library.js moreCue): a fade at its foot and a round "more" cue above
  * the button, both gone once it is scrolled to its end. Watches its own scroll and size. */
-export function useMoreCue() {
+export function useMoreCue(deps: unknown[] = []) {
   const ref = useRef<HTMLDivElement>(null)
   const [cue, setCue] = useState<{ more: boolean; bottom: number }>({ more: false, bottom: 0 })
   useLayoutEffect(() => {
@@ -256,7 +284,7 @@ export function useMoreCue() {
       body.removeEventListener('scroll', check)
       ro.disconnect()
     }
-  }, [])
+  }, deps) // eslint-disable-line react-hooks/exhaustive-deps
   const node = (
     <span className="morecue is-live" style={{ bottom: cue.bottom }} aria-hidden="true" hidden={!cue.more}>
       <Svg name="down" />
