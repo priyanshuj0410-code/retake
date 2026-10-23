@@ -25,7 +25,9 @@ export function serviceWorker(): Plugin {
     closeBundle() {
       const files = walk(outDir)
         .map((f) => relative(outDir, f).split('\\').join('/'))
-        .filter((f) => f !== 'sw.js' && !f.endsWith('.map') && !f.startsWith('.'))
+        // art/ and fonts/ belong to the turned-down build (EVAL-13) until M1 removes them; the First take uses take/
+        // the cutscene panels are cached as each is first shown (sw.js), not on install
+        .filter((f) => f !== 'sw.js' && !f.endsWith('.map') && !f.startsWith('.') && !/^(art|fonts)\//.test(f) && !/^take\/assets\/cut-/.test(f))
         .sort()
       const hash = createHash('sha256')
       for (const f of files) hash.update(f).update(readFileSync(join(outDir, f)))

@@ -1,24 +1,40 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- for the team and the alpha only, until launch -->
+    <meta name="robots" content="noindex, nofollow" />
     <meta name="referrer" content="no-referrer" />
+    <title>Retake</title>
     <meta name="description" content="Retake: a daily fairness puzzle. Made-up people, and everything you play stays on this phone." />
-    <meta name="theme-color" content="#1b0b2e" />
+    <meta name="application-name" content="Retake" />
+    <meta name="theme-color" content="#0E0E0E" />
+    <meta name="color-scheme" content="dark" />
     <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="/icons/retake.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Retake" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <title>Retake</title>
-    <!-- the library's own styles, copied by design-system/tools/app_content.py; never edited here -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarpanch:wght@900&amp;family=Yatra+One&amp;family=Rozha+One&amp;display=swap" />
+    <!-- the link preview in WhatsApp and other chats (SC-71); %SITE% is the production address, set at build -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Retake" />
+    <meta property="og:title" content="Retake: a daily fairness puzzle" />
+    <meta property="og:description" content="Made-up people, one puzzle a day. Everything you play stays on your phone." />
+    <meta property="og:url" content="%SITE%/" />
+    <meta property="og:image" content="%SITE%/icons/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The Retake ticket and the name Retake" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:locale:alternate" content="hi_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- the library's own styles and fonts, copied and self-hosted by design-system/tools/app_content.py; never edited here -->
     <link rel="stylesheet" href="/take/fonts.css" />
+    <link rel="stylesheet" href="/take/display-fonts.css" />
     <link rel="stylesheet" href="/take/library.css" />
     <link rel="stylesheet" href="/take/worlds/jadugar.css" />
     <link rel="stylesheet" href="/take/worlds/cricket.css" />

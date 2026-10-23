@@ -1,5 +1,5 @@
 {
-  "name": "equal-lens-trainer",
+  "name": "retake",
   "private": true,
   "version": "0.0.0",
   "packageManager": "pnpm@11.4.0",
@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:web": "vite build && cp -R site dist/demo",
     "lint": "oxlint",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.ts\"",
     "preview": "vite preview",

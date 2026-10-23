@@ -1,7 +1,9 @@
 /*
- * Equal Lens Daily's service worker (EVAL-7, kept for the trainer in EVAL-13), written into dist/ by scripts/pwa/plugin.ts with the
- * build's file list and version. It precaches the app shell, the fonts and public/art so
- * the daily puzzle plays offline once loaded. index.html is network-first, so an update arrives on the
+ * Retake's service worker (EVAL-7, kept for the trainer in EVAL-13 and the First take in EVAL-18), written into dist/ by
+ * scripts/pwa/plugin.ts with the build's file list and version. It precaches the app shell, the library's styles, fonts
+ * and the pictures the steps use, so a take plays offline once loaded; the cutscene panels, the heaviest pictures, are
+ * cached as each is first shown rather than on install, so installing costs a weak signal less. The team's demo at
+ * /demo/ is a separate page and is never touched. index.html is network-first, so an update arrives on the
  * next load; everything else is cache-first from this version's precache. Only this origin's
  * GET requests are touched: Firebase (another origin) and anything cross-origin pass straight
  * to the network and are never cached. It never reads or writes localStorage, where the player's days
@@ -38,6 +40,7 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET') return
   const url = new URL(req.url)
   if (url.origin !== self.location.origin) return
+  if (url.pathname.startsWith('/demo')) return
   const isShell =
     req.mode === 'navigate' || url.pathname === '/' || url.pathname.endsWith('/index.html')
   if (isShell) {
@@ -55,6 +58,16 @@ self.addEventListener('fetch', (event) => {
     return
   }
   event.respondWith(
-    caches.match(req, { cacheName: CACHE, ignoreSearch: true }).then((hit) => hit ?? fetch(req)),
+    caches.match(req, { cacheName: CACHE, ignoreSearch: true }).then(
+      (hit) =>
+        hit ??
+        fetch(req).then((res) => {
+          if (res.ok && url.pathname.startsWith('/take/')) {
+            const copy = res.clone()
+            void caches.open(CACHE).then((c) => c.put(req, copy))
+          }
+          return res
+        }),
+    ),
   )
 })

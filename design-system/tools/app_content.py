@@ -10,10 +10,12 @@ app's.
 Run:  python3 design-system/tools/app_content.py   (writes content/take/first-take.json and public/take/)
 It refuses to write while a note's length could point at the pair or a string has no Hindi.
 """
+import hashlib
 import json
 import re
 import shutil
 import sys
+import urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parents[1]
@@ -26,7 +28,11 @@ import demo as D
 
 OUT_JSON = ROOT / 'content' / 'take' / 'first-take.json'
 OUT_PUB = ROOT / 'public' / 'take'
+OUT_ICONS = ROOT / 'public' / 'icons'
+FONT_CACHE = ROOT / 'out' / 'font-cache'
 BASE = '/take/'
+# a current browser's agent, so Google serves woff2 split by script (Devanagari, Latin) as the library's pages get it
+UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36'
 
 
 def pair(t):
@@ -140,8 +146,8 @@ def build():
     data = {'version': 1, 'langs': [list(x) for x in L.LANGS], 'eng': [list(x) for x in L.ENG],
             'worlds': {w: {'cls': W.cls, 'title': list(W.name)} for w, W in L.WORLDS.items()},
             'help': help_dress(), 'results': dict(FT.results_data(chapters, S.NUDGE), card=results_cards()),
-            'icons': {k: L.ic(k) for k in {'tick', 'arrow', 'lock', 'help', 'back', 'close', 'language', 'speaker', 'down'}
-                      | {x[0] for c in chapters for d in c['decisions'] for x in d['keys']}},
+            'icons': {k: L.ic(k) for k in sorted({'tick', 'arrow', 'lock', 'help', 'back', 'close', 'language', 'speaker', 'down'}
+                                                 | {x[0] for c in chapters for d in c['decisions'] for x in d['keys']})},
             'flow': flow}
     text = json.dumps(data, ensure_ascii=False, indent=1)
     # every picture is served from public/take/
@@ -163,10 +169,53 @@ def build():
         (OUT_PUB / f).parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(HERE / f, OUT_PUB / f)
     (OUT_PUB / 'sound.js').write_text(D.sound_engines(), encoding='utf-8')
-    (OUT_PUB / 'fonts.txt').write_text(L.font_link() + '\n', encoding='utf-8')
+    nfonts = fonts()
+    icons()
     kinds = sorted({s['kind'] for s in flow if s['type'] == 'step'})
     print(f'{OUT_JSON.relative_to(ROOT)}: {len(flow)} screens, {total} decisions ({", ".join(kinds)}), '
-          f'{sum(1 for s in flow if s["type"] == "cut")} cutscenes; public/take/: {len(files | pics) + 2} files')
+          f'{sum(1 for s in flow if s["type"] == "cut")} cutscenes; public/take/: {len(files | pics) + 2} files and {nfonts} fonts; public/icons/: the ticket')
+
+
+def fetch(url):
+    """A font file or stylesheet from Google, kept in out/font-cache so an export runs offline once fetched."""
+    FONT_CACHE.mkdir(parents=True, exist_ok=True)
+    hit = FONT_CACHE / hashlib.sha1(url.encode()).hexdigest()[:16]
+    if not hit.exists():
+        with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': UA}), timeout=30) as r:
+            hit.write_bytes(r.read())
+    return hit.read_bytes()
+
+
+def self_host(css):
+    """Every font the app uses, served from public/take/fonts/: nothing is fetched from another site (feature-set
+    F-122b), and a weak signal pays no extra DNS and TLS round trip. The URLs in the CSS become local ones."""
+    out = OUT_PUB / 'fonts'
+    out.mkdir(parents=True, exist_ok=True)
+    def local(m):
+        url = m.group(1)
+        name = re.sub(r'^https://fonts\.gstatic\.com/s/', '', url).replace('/', '-')
+        (out / name).write_bytes(fetch(url))
+        return f'url(fonts/{name})'
+    return re.sub(r'url\((https://fonts\.gstatic\.com/[^)]+)\)', local, css)
+
+
+def fonts():
+    """fonts.css (Hind and Khand, re-balanced by tools/fonts.py) and the worlds' display faces, both self-hosted."""
+    lib = (OUT_PUB / 'fonts.css').read_text(encoding='utf-8')
+    (OUT_PUB / 'fonts.css').write_text(self_host(lib), encoding='utf-8')
+    head = '/* The worlds\' display faces from Google Fonts (SIL Open Font Licence), self-hosted by tools/app_content.py. */\n'
+    (OUT_PUB / 'display-fonts.css').write_text(head + self_host(fetch(L.font_link()).decode()), encoding='utf-8')
+    return len(list((OUT_PUB / 'fonts').iterdir()))
+
+
+def icons():
+    """The app icon, DESIGN.md's default A, the day's ticket (library.icon_svg), one for every world; the maskable
+    version keeps the ticket inside the safe circle. scripts/icons.ts draws the PNGs from these."""
+    svg = L.icon_svg('ticket').replace(' class="appicon"', ' xmlns="http://www.w3.org/2000/svg"').replace(' aria-hidden="true"', '')
+    OUT_ICONS.mkdir(parents=True, exist_ok=True)
+    (OUT_ICONS / 'retake.svg').write_text(svg + '\n', encoding='utf-8')
+    ground, art = re.match(r'(<svg[^>]*><rect width="96" height="96" fill="#[0-9A-F]+"/>)(.*)</svg>', svg).groups()
+    (OUT_ICONS / 'retake-maskable.svg').write_text(f'{ground}<g transform="translate(48 48) scale(.8) translate(-48 -48)">{art}</g></svg>\n', encoding='utf-8')
 
 
 if __name__ == '__main__':

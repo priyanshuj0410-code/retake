@@ -72,9 +72,9 @@ The game is a trainer, not a test. Each day's puzzle quietly shows the player wh
 
 ## Capabilities and Constraints
 
-- **Stack:** Vite, React and TypeScript PWA in this repo. Previous deploys used Vercel.
+- **Stack:** Vite, React and TypeScript PWA in this repo, hosted on Vercel's equal-lens-daily project (owner, 24 Oct 2026). `vercel.json` builds the app and keeps the team's demo at `/demo/`; the owner deploys to production.
 - **No backend yet.** The board and the crowd figures are sample data until one exists.
-- **Languages:** English and Hindi in Devanagari first. The game shows only the chosen language, and other Indian languages come later. Whether Hinglish in Latin letters is ever offered is undecided.
+- **Languages:** three modes, chosen in "?": Hinglish (English words with Hindi on the signs, and the Hinglish names such as "Udti Khaat"; the default), Hindi in Devanagari, and English only. Hinglish stays a lasting mode (owner, 24 Oct 2026). The game shows only the chosen language, and other Indian languages come later as more chips in the same menu.
 - **Privacy:**
   - real identities never appear;
   - the lean is private;

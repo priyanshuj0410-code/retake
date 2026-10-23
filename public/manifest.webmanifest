@@ -1,18 +1,20 @@
 {
-  "name": "Equal Lens Daily",
-  "short_name": "Equal Lens Daily",
-  "description": "One fairness puzzle a day from The Equal Lens. A prototype: made-up people, sample board, and everything you play stays on this phone.",
+  "name": "Retake",
+  "short_name": "Retake",
+  "description": "Retake: a daily fairness puzzle. Made-up people, and everything you play stays on this phone.",
   "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "lang": "en-GB",
-  "theme_color": "#1b0b2e",
-  "background_color": "#1b0b2e",
+  "lang": "en-IN",
+  "categories": ["games", "puzzle", "education"],
+  "theme_color": "#0E0E0E",
+  "background_color": "#1B0B2E",
   "icons": [
     { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/retake.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
   ]
 }

@@ -34,10 +34,16 @@ M0 to M2 is the "faster alpha" of the estimate of 22 Oct (6 to 8 working days); 
 
 ## Decisions for the owner
 
-1. **The server for M4.** Firebase (the repo already has `database.rules.json` and `.firebaserc`) or something else. Nothing before M4 needs it.
-2. **Hosting.** The default is Vercel's equal-lens-daily project, the owner deploying to production as now.
-3. **The reading's numbers.** The five cards show counts of the player's picks until the research line sets the scoring, as in the demo.
-4. **Hinglish as a lasting mode.** PRODUCT.md calls it undecided; the app keeps all three until told.
+1. **The server for M4.** Owner, 24 Oct 2026: "evaluate firebase vs neon vs supabase... use the best". Being evaluated.
+2. **Hosting: Vercel's equal-lens-daily project** (owner, 24 Oct 2026: "yes... update vercel metadata"). Done the same day:
+   - `vercel.json` builds the app (`pnpm run build:web`) and copies the team's demo to `/demo/`, so production keeps the demo's link working when the app replaces it. Until then production deploys from `main`, which still serves the demo; a branch push gets a preview of the app.
+   - Headers: noindex, no referrer, a strict Content-Security-Policy on the app (everything from this origin), no camera, microphone or location, long caching for hashed files, none for the shell, the service worker and the manifest.
+   - The name is Retake everywhere: the page title, the install name and the manifest (it said "Equal Lens Daily"), with the ticket icon (DESIGN.md default A) drawn from `library.py` by the export and `scripts/icons.ts`, and a link preview for WhatsApp (`og.png`, a stand-in until the library draws SC-71) at the production address Vercel gives the build.
+   - Every font is self-hosted (`public/take/fonts/`), as F-122b requires; the demo still loads Google Fonts.
+   - The service worker leaves `/demo/` alone and caches cutscene panels when first shown, so the install download fell from 6.7 MB to 3.9 MB.
+   - Checked locally with the same headers: the take plays with no errors, the demo's 63 screens load. Not checked on Vercel itself: this container cannot reach it, and the project's name and settings in Vercel's dashboard are the owner's to change.
+3. **Hinglish stays as a lasting mode** (owner, 24 Oct 2026: "yes"), the default of three; PRODUCT.md updated.
+4. **The reading's numbers.** The five cards show counts of the player's picks until the research line sets the scoring, as in the demo.
 
 ## Started, 24 Oct 2026
 
