@@ -1,17 +1,16 @@
-/* The app's own page rules: the demo's stage and full-height phone (demo.py CSS). Everything on the screens is the
-   library's (public/take/library.css and worlds/*.css), never restyled here. */
+/* The app's own page rules: one container the size of the window, holding the library's responsive app frame
+   (library.css: the responsive app shell, and the app frame for every screen). Its container queries lay a screen out
+   by the room it gets: a phone upright, a tablet, a phone on its side, a laptop or a desktop. Everything on the screens
+   is the library's (public/take/library.css and worlds/*.css), never restyled here. */
 :root { --stage: #0E0E0E; color-scheme: dark; }
-html, body { margin: 0; background: var(--stage); }
-/* installed on iPhone the status bar is see-through (apple-mobile-web-app-status-bar-style), so the screen starts below
-   it and ends above the home bar; the phone's height below takes the same insets off */
-:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
-.demo { min-height: 100dvh; display: grid; place-items: center; padding: 16px 0; box-sizing: border-box; }
-.demo .phone { zoom: var(--take-zoom, 1); }
-/* markup the library drew sits in the screen as if it were the screen's own children */
-.take-hold, .take-drawn { display: contents; }
-@media (max-width: 500px) {
-  .demo { display: block; padding: 0; min-height: 0; }
-  .demo .phone:not(.is-thumb):not(.is-small) { zoom: 1; width: 100vw; height: calc(var(--app-h, 100dvh) - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); aspect-ratio: auto; border-radius: 0; box-shadow: none; }
-  .demo .phone .notch { display: none; }
-  .demo .phone .scr { padding-top: 8px; }
+html, body { margin: 0; height: 100%; background: var(--stage); overflow: hidden; }
+/* installed on an iPhone the status bar is see-through (apple-mobile-web-app-status-bar-style), so the frame starts
+   below it and ends above the home bar; on a phone on its side it keeps clear of the notch as well */
+.take {
+  position: fixed;
+  inset: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  container: dev / size;
+  overflow: hidden;
 }
+/* markup the library drew sits in the column as if it were the column's own children */
+.take-hold, .take-drawn { display: contents; }

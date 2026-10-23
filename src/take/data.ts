@@ -6,6 +6,14 @@ import raw from '../../content/take/first-take.json'
 export type Bi = [string, string]
 export type Lang = 'mix' | 'hi' | 'en'
 
+/** A screen's painting: the phone's picture and veil, and the larger and wide paintings for bigger screens. */
+export interface Paint {
+  base: string
+  p: string
+  w: string
+  cls: string
+}
+
 export interface Person {
   en: string
   hi: string
@@ -31,7 +39,7 @@ export interface Step {
   voice: Bi | null
   keys: [string, string, string][]
   plate: Bi | null
-  art: [string, string] | null
+  art: Paint
   button: Bi
   teller: boolean
   people: Person[]
@@ -52,7 +60,7 @@ export interface Cover {
   type: 'cover'
   world: string
   cls: string
-  art: [string, string] | null
+  art: Paint
   html: string
 }
 
@@ -83,7 +91,7 @@ export interface Take {
     decisions: Record<string, Decision>
     twins: { a: string; b: string; world: string; kind: string; nudge: Bi }[]
     areas: Record<string, { real: Bi; scene: string }>
-    card: { world: string; cls: string; art: [string, string] }
+    card: { world: string; cls: string; art: Paint }
   }
   flow: Screen[]
 }

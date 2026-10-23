@@ -37,7 +37,6 @@ export function Take() {
     addEventListener('pointerdown', wake, { once: true })
     return () => removeEventListener('pointerdown', wake)
   }, [sound])
-  useFit()
 
   const next = useCallback(() => {
     setHelp(false)
@@ -73,7 +72,7 @@ export function Take() {
       <SetLangContext.Provider value={setLang}>
         <SoundContext.Provider value={soundCtx}>
           <UpdateContext.Provider value={update}>
-            <main className="demo take" key={at}>
+            <main className="take" key={at}>
               {body ?? <SkipResults onNext={next} />}
             </main>
           </UpdateContext.Provider>
@@ -90,23 +89,3 @@ function SkipResults({ onNext }: { onNext: () => void }) {
 
 const worldOf = (s: Screen) =>
   s.type === 'step' || s.type === 'cover' ? s.world : s.type === 'cut' ? s.panels[0].world.replace(/^w-/, '') : 'rukavat'
-
-/** The app fills the viewport's height at every size (the demo's fit): on a phone the screen takes the visible height,
- * read as the browser's bars come and go; on a wider screen the phone frame scales to fill the height. */
-function useFit() {
-  useEffect(() => {
-    const fit = () => {
-      const vh = window.visualViewport?.height ?? innerHeight
-      document.documentElement.style.setProperty('--app-h', `${vh}px`)
-      const zoom = innerWidth <= 500 ? '' : String(Math.min((vh - 32) / 844, (innerWidth - 32) / 390))
-      document.documentElement.style.setProperty('--take-zoom', zoom || '1')
-    }
-    fit()
-    addEventListener('resize', fit)
-    window.visualViewport?.addEventListener('resize', fit)
-    return () => {
-      removeEventListener('resize', fit)
-      window.visualViewport?.removeEventListener('resize', fit)
-    }
-  }, [])
-}

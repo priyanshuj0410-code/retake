@@ -640,7 +640,7 @@ html.rm *, html.rm *::before, html.rm *::after { animation: none !important; tra
    screen (11 to 40 px), so this one grid trades the shape for fitting without a scroll (22 Oct; the owner may choose) */
 .tab span:lang(hi), .tab [lang="hi"] { line-height: 1.43; }
 .w-station .tile { border-top-width: 14px; border-image-width: 14px 6px 6px 6px; }
-.phone[lang="hi"] .scr-body, .phone[lang="hi"] .tiles { gap: 8px; }
+:is(.phone, .app)[lang="hi"] .scr-body, :is(.phone, .app)[lang="hi"] .tiles { gap: 8px; }
 .vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 .fig .flaphouse, .fig .flaps { display: inline-flex; }
 h1.score { margin: 0; display: block; }
@@ -879,6 +879,37 @@ h1.score { margin: 0; display: block; }
     .tile .face { width: 56px; }
   }
 }
+
+/* ===== the app frame for every screen (24 Oct 2026, owner: "develop the full responsive app not just the mobile version")
+   The app draws every screen in .app, not only the five above: the painting in .page-art, and in .page-play the
+   screen's own topbar, body and dock, the same markup a .phone frame holds in .scr. A screen's painting keeps its
+   phone classes (.art and its world's veil) and is also an .art-img, so it takes the larger and the wide painting
+   from --art-p and --art-w at those sizes. Sheets, the scrim and toasts rise inside the column at its width, so the
+   painting stays whole (ia-and-flows.md, Wide screens; the Full Painting Rule). A cutscene shows its newest panel
+   large on the open side when the screen is wider than tall; the column keeps the captions, Skip and Next. */
+.app .page-art > .art { background-position: center 40%; }
+.app .page-play > .scrim { z-index: 10; }
+.app .page-play > .sheet { max-height: calc(100% - 48px); overflow-y: auto; }
+.app .cutstage { display: none; }
+@container dev (min-width: 600px) and (max-aspect-ratio: 1/1) {
+  .app .page-play > :is(.cutbar, .toast) { width: 100%; max-width: 760px; margin-inline: auto; }
+  .app.js-cut .page-play > .scr-body { flex: 1 1 auto; margin-top: 0; }
+}
+@container dev (min-aspect-ratio: 1/1) and (min-width: 700px) {
+  .app.js-cut .page-art::after { content: none; }
+  .app.js-cut .cutstage { --pad: clamp(21px, 4cqh, 55px); display: grid; place-items: center; position: absolute; inset: 0 var(--col) 0 0; padding: var(--pad); }
+  /* as large as the open side allows, whole: the width a 4:3 panel may take at the stage's height, or all of it */
+  .app.js-cut .cutstage img { display: block; width: min(100%, calc((100cqh - 2 * var(--pad)) * 4 / 3)); height: auto; aspect-ratio: 4 / 3; border: 3px solid var(--ink); border-radius: var(--r-card); }
+  .app.js-cut .cutstage.is-now img { animation: cutin var(--m4) cubic-bezier(.2, 0, 0, 1); }
+  .app.js-cut .cutpanel img { display: none; }
+  .app.js-cut .cutpanel .cap { margin: 0; }
+  .app.js-cut .page-play { background: color-mix(in srgb, var(--ground-deep) 82%, transparent); }
+  .app.js-cut .page-play > .scr-body { flex: 0 1 auto; margin-top: auto; }
+  .app.js-cut .page-play > .dock { margin-bottom: auto; }
+  .app.js-cut .page-play > .dock .main { justify-self: center; width: 100%; }
+  .app .page-play > .sheet { border-radius: var(--r-card) var(--r-card) 0 0; }
+}
+@media (prefers-reduced-motion: reduce) { .app.js-cut .cutstage.is-now img { animation: none; } }
 
 /* ===== the metal finish (O14): Lugdi =====
    The owner's pick from the premium study (explore/premium-lugdi.css), without its glass. One light, high on the left: lit edges sit
@@ -1432,7 +1463,7 @@ h1.score { margin: 0; display: block; }
 
 /* Hindi runs taller (line height 1.7): its screens start 8 below the bar, and Lugdi's Hindi cards take 8 top and bottom, so
    a step that fits in English fits in Hindi too (22 Oct, after the move to the golden-ratio scale) */
-.phone[lang="hi"] .scr-body { padding-top: var(--f8); }
+:is(.phone, .app)[lang="hi"] .scr-body { padding-top: var(--f8); }
 .world.w-lugdi[lang="hi"] .tile { padding-top: var(--f8); padding-bottom: var(--f8); }
 
 /* ===== the golden lines (22 Oct 2026, idea 4 of knowledge/ux/golden-ratio-ideas.md): 38.2% and 61.8% down the screen.
@@ -1443,16 +1474,16 @@ h1.score { margin: 0; display: block; }
    Not moved: Station's cover (its name-board stack is too tall to reach the line), Rukavat's cover (already 2% above it,
    and moving down would hit the button), Cricket's cover (its name board hangs at the top of the ground by design) and
    Station's result (its score is printed on the arrival ticket at the foot). ===== */
-.phone.world.w-lugdi:not(.is-small):not(.is-200) .scr-body.is-cover > .coverstack { margin-bottom: max(0px, calc(38.2cqh - 310px)); }
-.phone.world.w-jadugar:not(.is-small):not(.is-200) .scr-body.is-cover > .coverstack:not(:has(.jd-chapter)) { margin-bottom: max(0px, calc(38.2cqh - 307px)); }
-.phone.world.w-jadugar:not(.is-small):not(.is-200) .scr-body.is-cover > .coverstack:has(.jd-chapter) { margin-bottom: max(0px, calc(38.2cqh - 171px)); }
-.phone.world.w-cricket:not(.is-small):not(.is-200) .scr-body.is-cover > .cr-namebd + .coverstack:has(.bigline) { margin-bottom: max(0px, calc(38.2cqh - 170px)); }
-.phone.world.w-rukavat:not(.is-small):not(.is-200) .scr-body.is-cover > .rk-chapter { margin-bottom: max(0px, calc(38.2cqh - 195px)); }
-.phone.world.w-lugdi:not(.is-small):not(.is-200) .scr-body.is-cover > .roundel.is-score { margin-top: max(0px, calc(38.2cqh - 186px)); }
-.phone.world.w-jadugar:not(.is-small):not(.is-200) .scr-body.is-cover > .jd-stage { margin-top: max(0px, calc(38.2cqh - 178px)); }
-.phone.world.w-cricket:not(.is-small):not(.is-200) .scr-body.is-cover > .cr-score { margin-top: max(0px, calc(38.2cqh - 181px)); }
-.phone.world.w-rukavat:not(.is-small):not(.is-200) .scr-body.is-cover > .rk-signoff { margin-top: max(0px, calc(38.2cqh - 180px)); }
-.phone.world:not(.is-small):not(.is-200) .scr-body.is-cover > :is(.roundel.is-score, .jd-stage, .cr-score, .rk-signoff) + * { margin-top: auto; }
+:is(.phone, .app).world.w-lugdi:not(.is-small):not(.is-200) .scr-body.is-cover > .coverstack { margin-bottom: max(0px, calc(38.2cqh - 310px)); }
+:is(.phone, .app).world.w-jadugar:not(.is-small):not(.is-200) .scr-body.is-cover > .coverstack:not(:has(.jd-chapter)) { margin-bottom: max(0px, calc(38.2cqh - 307px)); }
+:is(.phone, .app).world.w-jadugar:not(.is-small):not(.is-200) .scr-body.is-cover > .coverstack:has(.jd-chapter) { margin-bottom: max(0px, calc(38.2cqh - 171px)); }
+:is(.phone, .app).world.w-cricket:not(.is-small):not(.is-200) .scr-body.is-cover > .cr-namebd + .coverstack:has(.bigline) { margin-bottom: max(0px, calc(38.2cqh - 170px)); }
+:is(.phone, .app).world.w-rukavat:not(.is-small):not(.is-200) .scr-body.is-cover > .rk-chapter { margin-bottom: max(0px, calc(38.2cqh - 195px)); }
+:is(.phone, .app).world.w-lugdi:not(.is-small):not(.is-200) .scr-body.is-cover > .roundel.is-score { margin-top: max(0px, calc(38.2cqh - 186px)); }
+:is(.phone, .app).world.w-jadugar:not(.is-small):not(.is-200) .scr-body.is-cover > .jd-stage { margin-top: max(0px, calc(38.2cqh - 178px)); }
+:is(.phone, .app).world.w-cricket:not(.is-small):not(.is-200) .scr-body.is-cover > .cr-score { margin-top: max(0px, calc(38.2cqh - 181px)); }
+:is(.phone, .app).world.w-rukavat:not(.is-small):not(.is-200) .scr-body.is-cover > .rk-signoff { margin-top: max(0px, calc(38.2cqh - 180px)); }
+:is(.phone, .app).world:not(.is-small):not(.is-200) .scr-body.is-cover > :is(.roundel.is-score, .jd-stage, .cr-score, .rk-signoff) + * { margin-top: auto; }
 
 /* three modes (owner, 22 Oct 2026: "we need all three modes original (hinglish), hindi and english"). Hinglish, the original
    and the default, is unchanged: English words, Hindi on the Station board and Rukavat's slide with an English caption. Hindi
@@ -1483,18 +1514,18 @@ h1.score { margin: 0; display: block; }
 
 /* ===== The First take's parts (22 to 23 Oct 2026, built in the demo, drawn in the library's "First take" section) ===== */
 /* the cutscene: panels arrive one per tap down the page like a comic strip; the screen changes world with the newest panel */
-.phone.js-cut { background: var(--ground); transition: background-color var(--m5); }
+:is(.phone, .app).js-cut { background: var(--ground); transition: background-color var(--m5); }
 .cutbar { display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding: 0 var(--s16); }
 .cutdots { display: flex; gap: var(--f8); }
 .cutdots i { width: 8px; height: 8px; border-radius: 50%; background: var(--on-ground); opacity: .3; }
 .cutdots i.on { opacity: 1; }
 /* the header holds only "?" (its sheet holds the languages and sound) and Skip; the dots sit centred over the Next button
    (owner, 23 Oct 2026: "too many things in the header", "put language in the ? menu", "Sound should also go in the ? menu") */
-.phone.js-cut .dock { display: grid; gap: var(--f13); }
-.phone.js-cut .dock .cutdots { justify-self: center; }
+:is(.phone, .app).js-cut .dock { display: grid; gap: var(--f13); }
+:is(.phone, .app).js-cut .dock .cutdots { justify-self: center; }
 .cutbar .textbtn { align-self: center; }
 /* Skip is a plain underlined word on the cutscene's ground, never a boxed tag (owner, 23 Oct 2026: "Why is the skip button in a box?") */
-.phone.js-cut .cutbar .textbtn { background: none !important; box-shadow: none !important; }
+:is(.phone, .app).js-cut .cutbar .textbtn { background: none !important; box-shadow: none !important; }
 .cutbody { gap: var(--f21); padding: var(--f8) var(--s16) var(--f21); }
 .cutpanel { margin: 0; display: grid; }
 .cutpanel[hidden] { display: none; }
@@ -1504,12 +1535,12 @@ h1.score { margin: 0; display: block; }
   border: var(--frame) solid var(--ink); border-radius: var(--r-card); font: 600 var(--t-title)/1.35 'Hind', sans-serif; }
 .cutpanel .cap:lang(hi) { line-height: 1.5; }
 @keyframes cutin { from { opacity: 0; transform: translateY(13px); } }
-@media (prefers-reduced-motion: reduce) { .phone.js-cut { transition: none; } .cutpanel.is-now { animation: none; } }
+@media (prefers-reduced-motion: reduce) { :is(.phone, .app).js-cut { transition: none; } .cutpanel.is-now { animation: none; } }
 /* rank: the place is type in the pick mark's spot, never a puck (one frame per level), at the headline's size because it
    stands in for the mark as one glyph, and in the world's accent so it never reads as a third number; a seat's place goes
    to ink on the pick's colour. The ranked rows move up into their
    order and a perforation falls under the last seat (owner, 23 Oct 2026: "The rankings need to be more clear") */
-.phone.js-rank .rows .row .tick { display: none; }
+:is(.phone, .app).js-rank .rows .row .tick { display: none; }
 .rkno { position: absolute; top: 50%; right: var(--f13); width: 36px; transform: translateY(-50%); text-align: center; pointer-events: none;
   font: 700 var(--t-headline)/1 'Hind', sans-serif; font-variant-numeric: tabular-nums; color: var(--accent); }
 .row.is-selected .rkno { color: var(--ink); }
@@ -1518,7 +1549,7 @@ h1.score { margin: 0; display: block; }
 .rkcut::after { content: ''; flex: 1; margin-left: var(--f5); border-top: 2px dashed currentColor; }
 .rkcut svg { width: 18px; height: 18px; transform: rotate(-90deg); }
 /* Rukavat sets its byline beside the key; a speech bubble in the byline's place takes the full row, the key goes under */
-.w-rukavat.phone .scr-body > .voice { grid-column: 1 / -1; }
+.w-rukavat:is(.phone, .app) .scr-body > .voice { grid-column: 1 / -1; }
 /* progress: five segments, one a chapter; the chapters done are full, this one fills step by step */
 .ftprog { display: flex; gap: var(--f5); margin-bottom: var(--f8); }
 .ftprog i { flex: 1; height: 5px; border-radius: 3px;

@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type MouseEvent } from 'react'
-import type { Cover as CoverData, Cut as CutData } from './data'
+import { TAKE, type Cover as CoverData, type Cut as CutData } from './data'
 import { Drawn, T, useLabel } from './lang'
-import { HelpButton, Main, Phone } from './parts'
+import { AppFrame, HelpButton, Main } from './parts'
 import { useSound } from './sound'
 
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -9,6 +9,7 @@ const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
 /** A chapter's title card, drawn by the library (its hard cover, the setting named under the title). */
 export function Cover({ c, onNext, help, onHelp }: { c: CoverData; onNext: () => void; help: boolean; onHelp: (o: boolean) => void }) {
   const { sound } = useSound()
+  const label = useLabel()
   const click = (e: MouseEvent) => {
     const el = e.target as HTMLElement
     if (el.closest('[data-help]')) onHelp(true)
@@ -19,9 +20,9 @@ export function Cover({ c, onNext, help, onHelp }: { c: CoverData; onNext: () =>
   }
   return (
     <div onClick={click} className="take-hold">
-      <Phone world={c.world} cls={c.cls.split(' ').slice(1).join(' ')} label="" art={c.art} help={help} onHelp={onHelp}>
+      <AppFrame world={c.world} kind="cover" cls={c.cls.split(' ').slice(1).join(' ')} label={label(TAKE.worlds[c.world].title)} art={c.art} help={help} onHelp={onHelp}>
         <Drawn html={c.html} className="take-drawn" />
-      </Phone>
+      </AppFrame>
     </div>
   )
 }
@@ -46,7 +47,20 @@ export function Cutscene({ c, onNext, help, onHelp }: { c: CutData; onNext: () =
     if (b) requestAnimationFrame(() => b.scrollTo({ top: b.scrollHeight, behavior: reduced() || !n ? 'auto' : 'smooth' }))
   }, [n])
   return (
-    <Phone world={now.world} cls="js-cut" label={label(c.label)} help={help} onHelp={onHelp}>
+    <AppFrame
+      world={now.world}
+      kind="cut"
+      cls="js-cut"
+      label={label(c.label)}
+      help={help}
+      onHelp={onHelp}
+      stage={
+        // the newest panel, large on the open side when the screen is wider than tall (library.css)
+        <figure className="cutstage is-now" key={now.id}>
+          <img src={now.pic} alt="" width={800} height={600} onClick={next} />
+        </figure>
+      }
+    >
       <div className="cutbar">
         <HelpButton onHelp={onHelp} />
         <button className="textbtn" type="button" onClick={onNext}>
@@ -68,6 +82,6 @@ export function Cutscene({ c, onNext, help, onHelp }: { c: CutData; onNext: () =
           ))}
         </span>
       </Main>
-    </Phone>
+    </AppFrame>
   )
 }

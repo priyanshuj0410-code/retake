@@ -146,7 +146,7 @@
 /* cards on their side, once the game column is wide (laptops, tablets on their side) */
 @container play (min-width: 440px) {
   .w-jadugar .tile, .w-jadugar .tiles .tile { grid-template-columns: 80px minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 8px; padding: 8px 8px 8px 8px; }
-  .w-jadugar .tile .face, .w-jadugar .tiles .tile .face, .w-jadugar.phone[lang="hi"] .tiles .tile .face { grid-column: 1; grid-row: 1 / 4; width: 80px; aspect-ratio: 5 / 4; background-size: cover; align-self: start; }
+  .w-jadugar .tile .face, .w-jadugar .tiles .tile .face, .w-jadugar:is(.phone, .app)[lang="hi"] .tiles .tile .face { grid-column: 1; grid-row: 1 / 4; width: 80px; aspect-ratio: 5 / 4; background-size: cover; align-self: start; }
   .w-jadugar .tile .nmrow, .w-jadugar .tile .stats, .w-jadugar .tile .quote { grid-column: 2; padding: 0; }
   .w-jadugar .tile .nmrow { grid-row: 1; }
   .w-jadugar .tile .stats { grid-row: 2; }
@@ -154,7 +154,7 @@
 }
 @container play (min-width: 600px) {
   .w-jadugar .tile, .w-jadugar .tiles .tile { grid-template-columns: 112px minmax(0, 1fr); }
-  .w-jadugar .tile .face, .w-jadugar .tiles .tile .face, .w-jadugar.phone[lang="hi"] .tiles .tile .face { width: 112px; }
+  .w-jadugar .tile .face, .w-jadugar .tiles .tile .face, .w-jadugar:is(.phone, .app)[lang="hi"] .tiles .tile .face { width: 112px; }
 }
 
 /* ===== main buttons: live is the shared yellow, lacquered with one soft sheen; outside a puzzle it is the curtain, crimson

@@ -50,15 +50,25 @@ def cut(P, ids, world, label):
                          'cap': [en, hi]} for k, y, en, hi in rows]}]
 
 
+def paint(W, moment, cls=None):
+    """A screen's painting for the app frame: the phone's picture and veil, and the larger (-l) and wide (-w) paintings
+    the library's responsive shell takes at those sizes, each falling back as library.art_img does."""
+    url, art_cls = W.art(moment)
+    stem = url[:-len('.webp')]
+    there = lambda f: f if (HERE / f).exists() else None
+    p = there(f'{stem}-l.webp') or url
+    return {'base': url, 'p': p, 'w': there(f'{stem}-w.webp') or p, 'cls': cls or art_cls}
+
+
 def cover(c):
     """The chapter's hard cover, the setting named under the title, as the demo draws it (demo.chapter_cover)."""
     ph = D.chapter_cover(c, True)
     cls = re.search(r'class="phone world ([^"]*)"', ph).group(1)
-    art = re.search(r'<div class="art ([^"]*)" style="background-image:url\(([^)]+)\)"', ph)
     inner = ph[ph.index('<div class="scr">') + len('<div class="scr">'):-len('</div></div>')]
     # a chapter's title card is a full screen with no tabs (ia-and-flows.md SC-91); the library's cover carries them
     inner = re.sub(r'<nav class="tabbar".*?</nav>', '', inner, flags=re.S)
-    return {'type': 'cover', 'world': c['world'], 'cls': cls, 'art': [art.group(2), art.group(1)] if art else None, 'html': inner}
+    # the hard cover's painting with the phone cover's low veil (library.cover)
+    return {'type': 'cover', 'world': c['world'], 'cls': cls, 'art': paint(L.WORLDS[c['world']], 'cover_hard', 'veil-low'), 'html': inner}
 
 
 def kind_of(d):
@@ -85,13 +95,12 @@ MOMENT = {'pick': 'twin', 'checks': 'checks', 'rank': 'sort', 'team': 'team', 'o
 def step(c, d, prog, i, total):
     W = L.WORLDS[c['world']]
     k = kind_of(d)
-    art, ac = W.art(MOMENT[k])
     le, lh = FT.live_label(d)
     s = {'type': 'step', 'id': f'{c["world"]}-{d["n"]}', 'world': c['world'], 'cls': W.cls, 'n': i, 'total': total,
          'title': d['title'], 'kind': k, 'rawKind': d['kind'], 'q': list(d['q']),
          'speaker': list(c['speaker']), 'speakerFace': c['face'],
          'voice': [d['voice'][1], d['voice'][2]] if d['voice'] else None,
-         'keys': [list(x) for x in d['keys']], 'plate': pair(W.plate(MOMENT[k])), 'art': [art, ac] if art else None,
+         'keys': [list(x) for x in d['keys']], 'plate': pair(W.plate(MOMENT[k])), 'art': paint(W, MOMENT[k]),
          'button': [le, lh], 'teller': d['kind'].lower().startswith('believe'),
          'people': [{'en': p['en'], 'hi': p['hi'], 'vals': p['vals'], 'line': pair(p['line']), 'face': p['face'],
                      'serial': W.serial(j)} for j, p in enumerate(d['people'])],
@@ -122,7 +131,7 @@ def help_dress():
 def results_cards():
     """The five cards' frames: Rukavat's result painting behind each (first_take.results_phones)."""
     W = L.WORLDS['rukavat']
-    return {'world': 'rukavat', 'cls': W.cls, 'art': [W.scene(W.moment('result')), 'veil-low']}
+    return {'world': 'rukavat', 'cls': W.cls, 'art': paint(W, 'result', 'veil-low')}
 
 
 def build():

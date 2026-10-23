@@ -1308,10 +1308,12 @@
   "card": {
    "world": "rukavat",
    "cls": "w-rukavat",
-   "art": [
-    "/take/assets/sunday-s-tv.webp",
-    "veil-low"
-   ]
+   "art": {
+    "base": "/take/assets/sunday-s-tv.webp",
+    "p": "/take/assets/sunday-s-tv-l.webp",
+    "w": "/take/assets/sunday-s-tv-w.webp",
+    "cls": "veil-low"
+   }
   }
  },
  "icons": {
@@ -1467,10 +1469,12 @@
    "type": "cover",
    "world": "station",
    "cls": "w-station ",
-   "art": [
-    "/take/assets/station-s-counter.webp",
-    "veil-low"
-   ],
+   "art": {
+    "base": "/take/assets/station-s-counter.webp",
+    "p": "/take/assets/station-s-counter-l.webp",
+    "w": "/take/assets/station-s-counter-w.webp",
+    "cls": "veil-low"
+   },
    "html": "<div class=\"topbar\"><div class=\"group\"></div><div class=\"group\"><button class=\"ibtn\" type=\"button\" data-help aria-label=\"How to play\" data-hi-label=\"कैसे खेलें\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.72V144a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8c13.23,0,24-9,24-20s-10.77-20-24-20-24,9-24,20v4a8,8,0,0,1-16,0v-4c0-19.85,17.94-36,40-36s40,16.15,40,36C168,125.38,154.24,139.93,136,143.28Z\"/></svg></button></div></div><div class=\"scr-body is-cover\"><div class=\"coverstack\"><div class=\"nameboard\"><span class=\"bn\" lang=\"hi\">कोलकाता</span><h1 class=\"bs\">Kolkata</h1><span class=\"bm\" data-hi=\"प्लेटफ़ॉर्म 5 · गुरुवार\">Platform 5 · Thursday</span></div><div class=\"plate hug\"><div class=\"pg-row\"><span class=\"level\" data-hi=\"गाड़ी\">Train</span><span class=\"vh\">214</span><span class=\"flaps\" aria-hidden=\"true\"><i>2</i><i>1</i><i>4</i></span></div><p class=\"coverline\" data-hi=\"नए इंजन, और शेड में बदसलूकी की शिकायतें।\">The new engines, and complaints of bullying in the shed.</p><span class=\"level\" data-hi=\"लेवल 4/6\">Level 4 of 6</span></div></div></div><div class=\"dock\"><button class=\"main is-out \" type=\"button\"><span data-hi=\"खेलें\">Play</span></button></div>"
   },
   {
@@ -1512,10 +1516,12 @@
     "Nashik",
     "नाशिक"
    ],
-   "art": [
-    "/take/assets/station-s-platform.webp",
-    "print"
-   ],
+   "art": {
+    "base": "/take/assets/station-s-platform.webp",
+    "p": "/take/assets/station-s-platform-l.webp",
+    "w": "/take/assets/station-s-platform-w.webp",
+    "cls": "print"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -1624,10 +1630,12 @@
     "Pune",
     "पुणे"
    ],
-   "art": [
-    "/take/assets/station-s-counter.webp",
-    "print"
-   ],
+   "art": {
+    "base": "/take/assets/station-s-counter.webp",
+    "p": "/take/assets/station-s-counter-l.webp",
+    "w": "/take/assets/station-s-counter-w.webp",
+    "cls": "print"
+   },
    "button": [
     "Send the list",
     "लिस्ट भेजें"
@@ -1751,10 +1759,12 @@
     "Nashik",
     "नाशिक"
    ],
-   "art": [
-    "/take/assets/station-s-platform.webp",
-    "print"
-   ],
+   "art": {
+    "base": "/take/assets/station-s-platform.webp",
+    "p": "/take/assets/station-s-platform-l.webp",
+    "w": "/take/assets/station-s-platform-w.webp",
+    "cls": "print"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -1863,10 +1873,12 @@
     "Nashik",
     "नाशिक"
    ],
-   "art": [
-    "/take/assets/station-s-platform.webp",
-    "print"
-   ],
+   "art": {
+    "base": "/take/assets/station-s-platform.webp",
+    "p": "/take/assets/station-s-platform-l.webp",
+    "w": "/take/assets/station-s-platform-w.webp",
+    "cls": "print"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -1975,10 +1987,12 @@
     "Nashik",
     "नाशिक"
    ],
-   "art": [
-    "/take/assets/station-s-platform.webp",
-    "print"
-   ],
+   "art": {
+    "base": "/take/assets/station-s-platform.webp",
+    "p": "/take/assets/station-s-platform-l.webp",
+    "w": "/take/assets/station-s-platform-w.webp",
+    "cls": "print"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -2087,10 +2101,12 @@
     "Pune",
     "पुणे"
    ],
-   "art": [
-    "/take/assets/station-s-counter.webp",
-    "print"
-   ],
+   "art": {
+    "base": "/take/assets/station-s-counter.webp",
+    "p": "/take/assets/station-s-counter-l.webp",
+    "w": "/take/assets/station-s-counter-w.webp",
+    "cls": "print"
+   },
    "button": [
     "Send the list",
     "लिस्ट भेजें"
@@ -2214,10 +2230,12 @@
     "Nashik",
     "नाशिक"
    ],
-   "art": [
-    "/take/assets/station-s-platform.webp",
-    "print"
-   ],
+   "art": {
+    "base": "/take/assets/station-s-platform.webp",
+    "p": "/take/assets/station-s-platform-l.webp",
+    "w": "/take/assets/station-s-platform-w.webp",
+    "cls": "print"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -2326,10 +2344,12 @@
     "Nashik",
     "नाशिक"
    ],
-   "art": [
-    "/take/assets/station-s-platform.webp",
-    "print"
-   ],
+   "art": {
+    "base": "/take/assets/station-s-platform.webp",
+    "p": "/take/assets/station-s-platform-l.webp",
+    "w": "/take/assets/station-s-platform-w.webp",
+    "cls": "print"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -2475,10 +2495,12 @@
    "type": "cover",
    "world": "lugdi",
    "cls": "w-lugdi ",
-   "art": [
-    "/take/assets/pulp-s-court.webp",
-    "veil-low"
-   ],
+   "art": {
+    "base": "/take/assets/pulp-s-court.webp",
+    "p": "/take/assets/pulp-s-court-l.webp",
+    "w": "/take/assets/pulp-s-court-w.webp",
+    "cls": "veil-low"
+   },
    "html": "<div class=\"topbar\"><div class=\"group\"></div><div class=\"group\"><button class=\"ibtn\" type=\"button\" data-help aria-label=\"How to play\" data-hi-label=\"कैसे खेलें\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.72V144a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8c13.23,0,24-9,24-20s-10.77-20-24-20-24,9-24,20v4a8,8,0,0,1-16,0v-4c0-19.85,17.94-36,40-36s40,16.15,40,36C168,125.38,154.24,139.93,136,143.28Z\"/></svg></button></div></div><div class=\"scr-body is-cover\"><div class=\"masthead\"><span data-hi=\"घाट सीरीज़\">Ghat Series</span><span data-hi=\"गुरुवार\">Thursday</span></div><div class=\"roundel\" role=\"img\" aria-label=\"Issue 215\" data-hi-label=\"अंक 215\"><span aria-hidden=\"true\">215</span></div><div class=\"coverstack\"><h1 class=\"pulp-title\" data-hi=\"अदालत की रात\" data-eng=\"Night in Court\">Adalat Ki Raat</h1><div class=\"plate hug\"><p class=\"coverline\" data-hi=\"रात के फेरे, और पीछा किए जाने की रिपोर्टें।\">Night runs, and reports of being followed.</p><span class=\"level\" data-hi=\"लेवल 4/6\">Level 4 of 6</span></div></div></div><div class=\"dock\"><button class=\"main is-out \" type=\"button\"><span data-hi=\"खेलें\">Play</span></button></div>"
   },
   {
@@ -2520,10 +2542,12 @@
     "Ghat Series",
     "घाट सीरीज़"
    ],
-   "art": [
-    "/take/assets/pulp-s-cricket.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/pulp-s-cricket.webp",
+    "p": "/take/assets/pulp-s-cricket.webp",
+    "w": "/take/assets/pulp-s-cricket.webp",
+    "cls": "veil"
+   },
    "button": [
     "Lock the team",
     "टीम पक्की करें"
@@ -2647,10 +2671,12 @@
     "Ghat Series",
     "घाट सीरीज़"
    ],
-   "art": [
-    "/take/assets/pulp-s-money.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/pulp-s-money.webp",
+    "p": "/take/assets/pulp-s-money.webp",
+    "w": "/take/assets/pulp-s-money.webp",
+    "cls": "veil"
+   },
    "button": [
     "Take them up",
     "आगे बढ़ाएँ"
@@ -2760,10 +2786,12 @@
     "Ghat Series",
     "घाट सीरीज़"
    ],
-   "art": [
-    "/take/assets/pulp-s-cricket.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/pulp-s-cricket.webp",
+    "p": "/take/assets/pulp-s-cricket.webp",
+    "w": "/take/assets/pulp-s-cricket.webp",
+    "cls": "veil"
+   },
    "button": [
     "Keep these",
     "इन्हें रखें"
@@ -2873,10 +2901,12 @@
     "Ghat Series",
     "घाट सीरीज़"
    ],
-   "art": [
-    "/take/assets/pulp-s-cricket.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/pulp-s-cricket.webp",
+    "p": "/take/assets/pulp-s-cricket.webp",
+    "w": "/take/assets/pulp-s-cricket.webp",
+    "cls": "veil"
+   },
    "button": [
     "Lock the team",
     "टीम पक्की करें"
@@ -3000,10 +3030,12 @@
     "Ghat Series",
     "घाट सीरीज़"
    ],
-   "art": [
-    "/take/assets/pulp-s-cricket.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/pulp-s-cricket.webp",
+    "p": "/take/assets/pulp-s-cricket.webp",
+    "w": "/take/assets/pulp-s-cricket.webp",
+    "cls": "veil"
+   },
    "button": [
     "Lock the team",
     "टीम पक्की करें"
@@ -3127,10 +3159,12 @@
     "Ghat Series",
     "घाट सीरीज़"
    ],
-   "art": [
-    "/take/assets/pulp-s-money.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/pulp-s-money.webp",
+    "p": "/take/assets/pulp-s-money.webp",
+    "w": "/take/assets/pulp-s-money.webp",
+    "cls": "veil"
+   },
    "button": [
     "Take them up",
     "आगे बढ़ाएँ"
@@ -3240,10 +3274,12 @@
     "Ghat Series",
     "घाट सीरीज़"
    ],
-   "art": [
-    "/take/assets/pulp-s-cricket.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/pulp-s-cricket.webp",
+    "p": "/take/assets/pulp-s-cricket.webp",
+    "w": "/take/assets/pulp-s-cricket.webp",
+    "cls": "veil"
+   },
    "button": [
     "Keep these",
     "इन्हें रखें"
@@ -3353,10 +3389,12 @@
     "Ghat Series",
     "घाट सीरीज़"
    ],
-   "art": [
-    "/take/assets/pulp-s-cricket.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/pulp-s-cricket.webp",
+    "p": "/take/assets/pulp-s-cricket.webp",
+    "w": "/take/assets/pulp-s-cricket.webp",
+    "cls": "veil"
+   },
    "button": [
     "Lock the team",
     "टीम पक्की करें"
@@ -3503,10 +3541,12 @@
    "type": "cover",
    "world": "jadugar",
    "cls": "w-jadugar ",
-   "art": [
-    "/take/assets/jadugar-s-trunk.webp",
-    "veil-low"
-   ],
+   "art": {
+    "base": "/take/assets/jadugar-s-trunk.webp",
+    "p": "/take/assets/jadugar-s-trunk-l.webp",
+    "w": "/take/assets/jadugar-s-trunk-w.webp",
+    "cls": "veil-low"
+   },
    "html": "<div class=\"topbar\"><div class=\"group\"></div><div class=\"group\"><button class=\"ibtn\" type=\"button\" data-help aria-label=\"How to play\" data-hi-label=\"कैसे खेलें\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.72V144a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8c13.23,0,24-9,24-20s-10.77-20-24-20-24,9-24,20v4a8,8,0,0,1-16,0v-4c0-19.85,17.94-36,40-36s40,16.15,40,36C168,125.38,154.24,139.93,136,143.28Z\"/></svg></button></div></div><div class=\"scr-body is-cover\"><div class=\"jd-mast\"><span data-hi=\"चाँदनी मंडल\">Chandni Mandal</span><span data-hi=\"शो 215\">Show 215</span></div><div class=\"coverstack\"><div class=\"jd-banner\"><h1 class=\"jd-title\" data-hi=\"संदूक का राज़\" data-eng=\"The Box&#x27;s Secret\">Sandook Ka Raaz</h1></div><div class=\"plate hug\"><p class=\"coverline\" data-hi=\"शो की रातें, और परदे के पीछे छेड़छाड़ की शिकायतें।\">Show nights, and harassment reports backstage.</p><span class=\"level\" data-hi=\"लेवल 4/6\">Level 4 of 6</span></div></div></div><div class=\"dock\"><button class=\"main is-out \" type=\"button\"><span data-hi=\"खेलें\">Play</span></button></div>"
   },
   {
@@ -3548,10 +3588,12 @@
     "Chandni Mandal",
     "चाँदनी मंडल"
    ],
-   "art": [
-    "/take/assets/jadugar-s-rope.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/jadugar-s-rope.webp",
+    "p": "/take/assets/jadugar-s-rope-l.webp",
+    "w": "/take/assets/jadugar-s-rope-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Believe {n}",
     "{n} की बात मानें"
@@ -3660,10 +3702,12 @@
     "Chandni Mandal",
     "चाँदनी मंडल"
    ],
-   "art": [
-    "/take/assets/jadugar-s-rope.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/jadugar-s-rope.webp",
+    "p": "/take/assets/jadugar-s-rope-l.webp",
+    "w": "/take/assets/jadugar-s-rope-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -3772,10 +3816,12 @@
     "Chandni Mandal",
     "चाँदनी मंडल"
    ],
-   "art": [
-    "/take/assets/jadugar-s-rope.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/jadugar-s-rope.webp",
+    "p": "/take/assets/jadugar-s-rope-l.webp",
+    "w": "/take/assets/jadugar-s-rope-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Believe {n}",
     "{n} की बात मानें"
@@ -3884,10 +3930,12 @@
     "Chandni Mandal",
     "चाँदनी मंडल"
    ],
-   "art": [
-    "/take/assets/jadugar-s-rope.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/jadugar-s-rope.webp",
+    "p": "/take/assets/jadugar-s-rope-l.webp",
+    "w": "/take/assets/jadugar-s-rope-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -3996,10 +4044,12 @@
     "Chandni Mandal",
     "चाँदनी मंडल"
    ],
-   "art": [
-    "/take/assets/jadugar-s-rope.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/jadugar-s-rope.webp",
+    "p": "/take/assets/jadugar-s-rope-l.webp",
+    "w": "/take/assets/jadugar-s-rope-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Believe {n}",
     "{n} की बात मानें"
@@ -4108,10 +4158,12 @@
     "Chandni Mandal",
     "चाँदनी मंडल"
    ],
-   "art": [
-    "/take/assets/jadugar-s-rope.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/jadugar-s-rope.webp",
+    "p": "/take/assets/jadugar-s-rope-l.webp",
+    "w": "/take/assets/jadugar-s-rope-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -4220,10 +4272,12 @@
     "Chandni Mandal",
     "चाँदनी मंडल"
    ],
-   "art": [
-    "/take/assets/jadugar-s-rope.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/jadugar-s-rope.webp",
+    "p": "/take/assets/jadugar-s-rope-l.webp",
+    "w": "/take/assets/jadugar-s-rope-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Believe {n}",
     "{n} की बात मानें"
@@ -4332,10 +4386,12 @@
     "Chandni Mandal",
     "चाँदनी मंडल"
    ],
-   "art": [
-    "/take/assets/jadugar-s-rope.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/jadugar-s-rope.webp",
+    "p": "/take/assets/jadugar-s-rope-l.webp",
+    "w": "/take/assets/jadugar-s-rope-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -4481,10 +4537,12 @@
    "type": "cover",
    "world": "cricket",
    "cls": "w-cricket ",
-   "art": [
-    "/take/assets/cricket-s-board.webp",
-    "veil-low"
-   ],
+   "art": {
+    "base": "/take/assets/cricket-s-board.webp",
+    "p": "/take/assets/cricket-s-board-l.webp",
+    "w": "/take/assets/cricket-s-board-l.webp",
+    "cls": "veil-low"
+   },
    "html": "<div class=\"topbar\"><div class=\"group\"></div><div class=\"group\"><button class=\"ibtn\" type=\"button\" data-help aria-label=\"How to play\" data-hi-label=\"कैसे खेलें\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.72V144a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8c13.23,0,24-9,24-20s-10.77-20-24-20-24,9-24,20v4a8,8,0,0,1-16,0v-4c0-19.85,17.94-36,40-36s40,16.15,40,36C168,125.38,154.24,139.93,136,143.28Z\"/></svg></button></div></div><div class=\"scr-body is-cover\"><div class=\"cr-namebd\"><h1 class=\"cr-title\" data-hi=\"पुराना मैदान\" data-eng=\"The Old Ground\">Purana Maidan</h1><div class=\"cr-meta\"><span class=\"cr-hps\" aria-hidden=\"true\"><i>2</i><i>1</i><i>5</i></span><span data-hi=\"गुरुवार\">Thursday</span></div></div><div class=\"coverstack\"><div class=\"plate hug\"><p class=\"coverline\" data-hi=\"इतवार के फ़ाइनल, और घरेलू हिंसा की शिकायतें।\">Sunday's finals, and complaints of violence at home.</p><span class=\"level\" data-hi=\"लेवल 4/6\">Level 4 of 6</span></div></div></div><div class=\"dock\"><button class=\"main is-out \" type=\"button\"><span data-hi=\"खेलें\">Play</span></button></div>"
   },
   {
@@ -4526,10 +4584,12 @@
     "<i>Day</i><b>6</b>",
     "<i>दिन</i><b>6</b>"
    ],
-   "art": [
-    "/take/assets/cricket-s-nets.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/cricket-s-nets.webp",
+    "p": "/take/assets/cricket-s-nets-l.webp",
+    "w": "/take/assets/cricket-s-nets-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Lock the order",
     "ऑर्डर पक्का करें"
@@ -4638,10 +4698,12 @@
     "<i>Day</i><b>6</b>",
     "<i>दिन</i><b>6</b>"
    ],
-   "art": [
-    "/take/assets/cricket-s-nets.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/cricket-s-nets.webp",
+    "p": "/take/assets/cricket-s-nets-l.webp",
+    "w": "/take/assets/cricket-s-nets-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Make {n} captain",
     "{n} को कप्तान बनाएँ"
@@ -4750,10 +4812,12 @@
     "<i>Day</i><b>6</b>",
     "<i>दिन</i><b>6</b>"
    ],
-   "art": [
-    "/take/assets/cricket-s-nets.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/cricket-s-nets.webp",
+    "p": "/take/assets/cricket-s-nets-l.webp",
+    "w": "/take/assets/cricket-s-nets-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Lock the team",
     "टीम पक्की करें"
@@ -4877,10 +4941,12 @@
     "<i>Day</i><b>6</b>",
     "<i>दिन</i><b>6</b>"
    ],
-   "art": [
-    "/take/assets/cricket-s-nets.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/cricket-s-nets.webp",
+    "p": "/take/assets/cricket-s-nets-l.webp",
+    "w": "/take/assets/cricket-s-nets-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Lock the team",
     "टीम पक्की करें"
@@ -5004,10 +5070,12 @@
     "<i>Day</i><b>6</b>",
     "<i>दिन</i><b>6</b>"
    ],
-   "art": [
-    "/take/assets/cricket-s-nets.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/cricket-s-nets.webp",
+    "p": "/take/assets/cricket-s-nets-l.webp",
+    "w": "/take/assets/cricket-s-nets-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Lock the order",
     "ऑर्डर पक्का करें"
@@ -5116,10 +5184,12 @@
     "<i>Day</i><b>6</b>",
     "<i>दिन</i><b>6</b>"
    ],
-   "art": [
-    "/take/assets/cricket-s-nets.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/cricket-s-nets.webp",
+    "p": "/take/assets/cricket-s-nets-l.webp",
+    "w": "/take/assets/cricket-s-nets-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Make {n} captain",
     "{n} को कप्तान बनाएँ"
@@ -5228,10 +5298,12 @@
     "<i>Day</i><b>6</b>",
     "<i>दिन</i><b>6</b>"
    ],
-   "art": [
-    "/take/assets/cricket-s-nets.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/cricket-s-nets.webp",
+    "p": "/take/assets/cricket-s-nets-l.webp",
+    "w": "/take/assets/cricket-s-nets-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Lock the team",
     "टीम पक्की करें"
@@ -5355,10 +5427,12 @@
     "<i>Day</i><b>6</b>",
     "<i>दिन</i><b>6</b>"
    ],
-   "art": [
-    "/take/assets/cricket-s-nets.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/cricket-s-nets.webp",
+    "p": "/take/assets/cricket-s-nets-l.webp",
+    "w": "/take/assets/cricket-s-nets-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Lock the team",
     "टीम पक्की करें"
@@ -5519,10 +5593,12 @@
    "type": "cover",
    "world": "rukavat",
    "cls": "w-rukavat ",
-   "art": [
-    "/take/assets/sunday-s-tv.webp",
-    "veil-low"
-   ],
+   "art": {
+    "base": "/take/assets/sunday-s-tv.webp",
+    "p": "/take/assets/sunday-s-tv-l.webp",
+    "w": "/take/assets/sunday-s-tv-w.webp",
+    "cls": "veil-low"
+   },
    "html": "<div class=\"topbar\"><div class=\"group\"></div><div class=\"group\"><button class=\"ibtn\" type=\"button\" data-help aria-label=\"How to play\" data-hi-label=\"कैसे खेलें\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.72V144a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8c13.23,0,24-9,24-20s-10.77-20-24-20-24,9-24,20v4a8,8,0,0,1-16,0v-4c0-19.85,17.94-36,40-36s40,16.15,40,36C168,125.38,154.24,139.93,136,143.28Z\"/></svg></button></div></div><div class=\"scr-body is-cover\"><div class=\"coverstack\"><div class=\"rk-titlecard\"><h1 class=\"rk-title\" data-hi=\"फ़ैसला\" data-eng=\"The Verdict\" data-count=\"0\">Faisla</h1><span class=\"rk-slot\" data-hi=\"गुरुवार · रात 9 बजे\" data-count=\"0\">Thursday · 9 pm</span></div><div class=\"plate hug\"><p class=\"coverline\" data-hi=\"परिवार की शामें, अलग होते माँ-बाप, और दहेज की माँग।\">Family evenings, parents who separate, and a dowry demand.</p><span class=\"level\" data-hi=\"लेवल 4/6\">Level 4 of 6</span></div></div></div><div class=\"dock\"><button class=\"main is-out \" type=\"button\"><span data-hi=\"खेलें\">Play</span></button></div>"
   },
   {
@@ -5564,10 +5640,12 @@
     "Sunday · 9 am",
     "रविवार · सुबह 9 बजे"
    ],
-   "art": [
-    "/take/assets/sunday-s-room.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/sunday-s-room.webp",
+    "p": "/take/assets/sunday-s-room-l.webp",
+    "w": "/take/assets/sunday-s-room-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Lock chores",
     "पक्का करें"
@@ -5698,10 +5776,12 @@
     "Wednesday · 9 pm",
     "बुधवार · रात 9 बजे"
    ],
-   "art": [
-    "/take/assets/sunday-s-sofa.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/sunday-s-sofa.webp",
+    "p": "/take/assets/sunday-s-sofa-l.webp",
+    "w": "/take/assets/sunday-s-sofa-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -5796,10 +5876,12 @@
     "Wednesday · 9 pm",
     "बुधवार · रात 9 बजे"
    ],
-   "art": [
-    "/take/assets/sunday-s-sofa.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/sunday-s-sofa.webp",
+    "p": "/take/assets/sunday-s-sofa-l.webp",
+    "w": "/take/assets/sunday-s-sofa-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -5894,10 +5976,12 @@
     "Wednesday · 9 pm",
     "बुधवार · रात 9 बजे"
    ],
-   "art": [
-    "/take/assets/sunday-s-sofa.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/sunday-s-sofa.webp",
+    "p": "/take/assets/sunday-s-sofa-l.webp",
+    "w": "/take/assets/sunday-s-sofa-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -5992,10 +6076,12 @@
     "Sunday · 9 am",
     "रविवार · सुबह 9 बजे"
    ],
-   "art": [
-    "/take/assets/sunday-s-room.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/sunday-s-room.webp",
+    "p": "/take/assets/sunday-s-room-l.webp",
+    "w": "/take/assets/sunday-s-room-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Lock chores",
     "पक्का करें"
@@ -6126,10 +6212,12 @@
     "Wednesday · 9 pm",
     "बुधवार · रात 9 बजे"
    ],
-   "art": [
-    "/take/assets/sunday-s-sofa.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/sunday-s-sofa.webp",
+    "p": "/take/assets/sunday-s-sofa-l.webp",
+    "w": "/take/assets/sunday-s-sofa-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -6224,10 +6312,12 @@
     "Wednesday · 9 pm",
     "बुधवार · रात 9 बजे"
    ],
-   "art": [
-    "/take/assets/sunday-s-sofa.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/sunday-s-sofa.webp",
+    "p": "/take/assets/sunday-s-sofa-l.webp",
+    "w": "/take/assets/sunday-s-sofa-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"
@@ -6322,10 +6412,12 @@
     "Wednesday · 9 pm",
     "बुधवार · रात 9 बजे"
    ],
-   "art": [
-    "/take/assets/sunday-s-sofa.webp",
-    "veil"
-   ],
+   "art": {
+    "base": "/take/assets/sunday-s-sofa.webp",
+    "p": "/take/assets/sunday-s-sofa-l.webp",
+    "w": "/take/assets/sunday-s-sofa-w.webp",
+    "cls": "veil"
+   },
    "button": [
     "Send {n}",
     "{n} को भेजें"

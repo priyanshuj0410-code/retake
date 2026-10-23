@@ -35,6 +35,8 @@ export function serviceWorker(): Plugin {
             !f.startsWith('.') &&
             !/^(art|fonts|screenshots)\//.test(f) &&
             !/^take\/assets\/cut-/.test(f) &&
+            // the larger and wide paintings are for tablets and wider screens: cached there when first drawn
+            !/^take\/assets\/.*-[lw]\.webp$/.test(f) &&
             f !== 'icons/og.png',
         )
         .sort()

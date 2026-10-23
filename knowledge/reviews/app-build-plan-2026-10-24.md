@@ -57,6 +57,22 @@ Owner: "make sure retake is a pwa". `pnpm pwa` (`scripts/pwa-check.ts`, rewritte
 - **Fixed on the way:** Vercel's clean URLs (set the same day) redirected `/index.html`, and a redirected shell cannot open offline; they are off, and the check guards it. The cache is renamed `retake-` and clears the turned-down build's `elt-` caches.
 - **Left for M5 (F-123):** the game's own one-time install sheet after the third day. Until then Android's own install prompt shows, and an iPhone installs through Share, then Add to Home Screen.
 
+## The responsive app, 24 Oct 2026
+
+Owner: "make sure you develop the full responsive app not just the mobile version". Every screen is now drawn in the library's responsive app frame (`library.py` `app()`, the `.app` shell in `library.css`), not a phone frame: one window-sized container (`src/take/take.css`) whose container queries lay each screen out by the room it gets, as DESIGN.md's "Larger screens" sets out.
+
+| Size | What the app does |
+|---|---|
+| Phone, upright (under 600 wide) | the same screens as before, the painting behind the game |
+| Tablet, upright (600 wide and up) | the larger painting (`-l`); the game gathered low, at most 760 wide; cards on their side |
+| Wider than tall (700 wide and up): tablets on their side, laptops, desktops | the wide painting (`-w`) fills the screen; the game in a column on the right, `clamp(420px, 50%, 760px)`, over a dark fade; type a notch larger from 760 by 700 |
+| A phone on its side (520 tall or less) | a 60% column, smaller faces, one scroll |
+
+- **New in the library** (`library.css`, "the app frame for every screen"): a cutscene shows its newest panel large on the open side and keeps the captions, Skip and Next in the column; the "?" sheet, its scrim and the update toast rise inside the column at its width, so the painting stays whole (the Full Painting Rule; ia-and-flows.md, Wide screens). The phone-only content rules (Hindi spacing, the cover arrangement, Rukavat's pick, Jadugar's Hindi faces, cutscenes, rank) now hold in both frames; the library's phone specimens are unchanged.
+- **The export** gives every screen its painting with the larger and wide versions; those are cached when a tablet or wider screen first draws them, never in a phone's install download.
+- **Checked:** every screen kind at 360 x 640, 412 x 915, 768 x 1024, 1024 x 768, 844 x 390, 1280 x 650, 1440 x 900 and 1920 x 1080, with no overflow and no page error; `pnpm pwa` still 15 of 15.
+- **For the owner's look:** the wide cutscene and the sheet in the column are new designs, made from the library's rules; the library page does not yet show them as specimens.
+
 ## Started, 24 Oct 2026
 
 - [x] This plan, on the branch `app-build`.

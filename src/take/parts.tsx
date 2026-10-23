@@ -1,40 +1,56 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react'
-import { TAKE, type Bi, type Lang, type Step } from './data'
+import { TAKE, type Bi, type Lang, type Paint, type Step } from './data'
 import { T, useLabel, useLang } from './lang'
 import { Svg } from './Svg'
 import { useSound } from './sound'
 
-// The library's frame and shared parts (library.py phone, topbar, dock, main; first_take.py voice, byline, statkey,
+// The library's frame and shared parts (library.py app, topbar, dock, main; first_take.py voice, byline, statkey,
 // stats, progress), drawn with the same markup and class names, so library.css dresses them unchanged.
 
 const HOW: Bi = ['Pick someone, send them, and at the end see what you chose.', 'किसी को चुनें, उन्हें भेजें, और आख़िर में देखें आपने क्या चुना।']
 
-export function Phone(props: {
+/** Every screen in the library's responsive app frame (library.py app, library.css "the app frame for every screen"):
+ * the painting fills the screen in .page-art at every size, and the screen's topbar, body and dock sit in .page-play,
+ * which is the whole screen on a phone and a column on the right when the screen is wider than tall. The "?" sheet
+ * and the update toast rise inside the column, so the painting stays whole. */
+export function AppFrame(props: {
   world: string
+  kind: 'step' | 'cover' | 'cut' | 'result'
   cls?: string
   label: string
-  art?: [string, string] | null
+  art?: Paint | null
+  stage?: ReactNode
   children: ReactNode
   help: boolean
   onHelp: (open: boolean) => void
 }) {
   const lang = useLang()
+  const art = props.art
   return (
     <div
-      className={`phone world ${TAKE.worlds[props.world]?.cls ?? props.world} ${props.cls ?? ''}`}
+      className={`app world ${TAKE.worlds[props.world]?.cls ?? props.world} is-${props.kind} ${props.cls ?? ''}`}
       role="group"
       aria-label={props.label}
       data-cur={lang}
       data-mode={lang}
       lang={lang === 'hi' ? 'hi' : 'en'}
     >
-      <span className="notch" aria-hidden="true" />
-      {props.art ? (
-        <div className={`art ${props.art[1]}`} style={{ backgroundImage: `url(${props.art[0]})` }} aria-hidden="true" />
-      ) : null}
-      <div className="scr">{props.children}</div>
-      <UpdateToast />
-      {props.help ? <HelpSheet world={props.world} onClose={() => props.onHelp(false)} /> : null}
+      <div className="shell">
+        <section className="page-art" aria-hidden="true">
+          {art ? (
+            <div
+              className={`art art-img ${art.cls}`}
+              style={{ backgroundImage: `url(${art.base})`, ['--art-p' as string]: `url(${art.p})`, ['--art-w' as string]: `url(${art.w})` }}
+            />
+          ) : null}
+          {props.stage}
+        </section>
+        <section className="page-play">
+          {props.children}
+          <UpdateToast />
+          {props.help ? <HelpSheet world={props.world} onClose={() => props.onHelp(false)} /> : null}
+        </section>
+      </div>
     </div>
   )
 }

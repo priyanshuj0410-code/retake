@@ -45,9 +45,9 @@ const server = await serve(DIST, PORT, ROOT)
 /** The screen showing: the phone's label and its question or caption. */
 const sig = (page: Page) =>
   page.evaluate(() => ({
-    screen: document.querySelector('.phone')?.getAttribute('aria-label') ?? '',
+    screen: document.querySelector('.take .app')?.getAttribute('aria-label') ?? '',
     q: document.querySelector('h1.q')?.textContent ?? '',
-    lang: (document.querySelector('.phone') as HTMLElement | null)?.dataset.cur ?? '',
+    lang: (document.querySelector('.take .app') as HTMLElement | null)?.dataset.cur ?? '',
   }))
 const cachedUrls = (page: Page) =>
   page.evaluate(async () => {
@@ -113,7 +113,7 @@ try {
   }
   await page.click('.tiles .tile >> nth=0')
   await page.click('.dock .main')
-  await page.waitForFunction(() => /^2 of /.test(document.querySelector('.phone')?.getAttribute('aria-label') ?? ''))
+  await page.waitForFunction(() => /^2 of /.test(document.querySelector('.take .app')?.getAttribute('aria-label') ?? ''))
   await page.click('[data-help]')
   await page.click('[data-set-lang="hi"]')
   await page.click('.helpsheet .close')
