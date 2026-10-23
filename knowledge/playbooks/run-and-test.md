@@ -45,6 +45,7 @@ pnpm check        # all of it: about 8 minutes
 pnpm check:fast   # types, lint, content, scoring, privacy, bundle: seconds
 pnpm e2e          # the whole take in 3 languages on a phone and a laptop
 pnpm pwa          # installable, offline, two real versions and the Update toast
+pnpm a11y         # axe-core, WCAG 2.2 AA, on every kind of screen, 2 languages, 2 sizes
 ```
 
 - `scripts/check-all.ts`: content and copy (the turned-down build's daily content, kept for M3), the scoring engine,
