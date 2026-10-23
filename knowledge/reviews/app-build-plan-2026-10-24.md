@@ -34,7 +34,11 @@ M0 to M2 is the "faster alpha" of the estimate of 22 Oct (6 to 8 working days); 
 
 ## Decisions for the owner
 
-1. **The server for M4.** Owner, 24 Oct 2026: "evaluate firebase vs neon vs supabase... use the best". Being evaluated.
+1. **The server for M4: Supabase Pro in Mumbai (ap-south-1), reached only through a thin same-origin proxy of Vercel Functions in Mumbai (bom1), with Amazon SES in Mumbai sending the code emails** (owner, 24 Oct 2026: "evaluate firebase vs neon vs supabase... use the best"). The record, with the comparison, the architecture and the costs, is [backend-choice-2026-10-24.md](../architecture/backend-choice-2026-10-24.md). Neon is the fallback if a week-one check fails. Needed from the owner before M4 starts:
+   - a Supabase organisation on Pro ($25 a month) with one project in Mumbai, and a card that takes recurring US-dollar charges;
+   - an AWS account for SES in Mumbai, with a sending domain (DKIM, SPF, DMARC) and production access;
+   - Vercel Pro ($20 a month), or Vercel Support's answer on whether the NGO may stay on Hobby;
+   - the lawyer's answers on the questions at the end of the record (log and data retention under the DPDP Rules, breach timing, processing outside India, the notice wording).
 2. **Hosting: Vercel's equal-lens-daily project** (owner, 24 Oct 2026: "yes... update vercel metadata"). Done the same day:
    - `vercel.json` builds the app (`pnpm run build:web`) and copies the team's demo to `/demo/`, so production keeps the demo's link working when the app replaces it. Until then production deploys from `main`, which still serves the demo; a branch push gets a preview of the app.
    - Headers: noindex, no referrer, a strict Content-Security-Policy on the app (everything from this origin), no camera, microphone or location, long caching for hashed files, none for the shell, the service worker and the manifest.
@@ -86,6 +90,16 @@ An independent review (three angles, each finding put to a skeptic: 20 confirmed
 
 **Cutscenes on wide screens are full screen** (owner: "The cutscene illustrations should be fullscreen like the other illustrations"): the newest panel fills the screen, "?" and Skip on a fade at the top, the caption on its plate at the foot with the dots and Next beside it. Upright screens keep the comic strip. Skip on a cutscene is now light on every world (Lugdi's was ink on its dark ground, in the demo too).
 
+## M1, the First take playable, 24 Oct 2026
+
+Owner: "ok... keep building".
+
+- **Every decision kind** (`src/take/steps/`): pick one and Believe, spend checks (`Pick.tsx`); rank for the seats, with rows that glide into their order and the perforation under the last seat (`Rank.tsx`); pick a team and keep, a tap past the number refused in place (`Team.tsx`); Cricket's batting order, the column filling from the top (`Order.tsx`); Rukavat's split, a chore then a person, the TV counted against whoever gets it (`Split.tsx`). Each draws the library's markup (`first_take.py`) in the responsive frame.
+- **The private reading** (`Results.tsx`, `reading.ts`): the five cards worked out on the phone from the player's own answers, as the demo does it, and "Not you? Remove this reading" clears them and starts again. **One change from the demo:** card 5 says "40 choices. A first reading, from one sitting." The demo's "in 20 minutes" counted time, which PRODUCT.md and the privacy check rule out.
+- **The turned-down build is retired:** its screens, boards, UI, strings, styles, art, fonts and the checks that drove them. Its content, scoring engine and store stay for the dailies (M3), with their checks. `tsc -b` is clean for the first time since the 20 Oct build, and `pnpm check` passes: 46 checks, the play-through (48) and the PWA (23).
+- **Fixed on the way:** Cricket's plate showed its markup as text; the content check now skips strings left empty in English on purpose.
+- **Next:** the responsive review's findings (still running); the "more" cue on long screens; `scripts/markup-check.ts` against the demo.
+
 ## Started, 24 Oct 2026
 
 - [x] This plan, on the branch `app-build`.
@@ -93,7 +107,7 @@ An independent review (three angles, each finding put to a skeptic: 20 confirmed
 - [x] **M0.2 the shell** (`src/take/`): the phone frame, top bar and plate, progress, the "?" sheet with the three languages and the sound switch, the world's sound beds and taps, the height fit, resume where left (FL-03), the take kept on the phone only (`store.ts`). `src/main.tsx` now opens the First take.
 - [x] **M0.3 pick one and spend checks**, end to end, with the cutscene player and the title cards. Checked on a 412 px phone in Chromium: through the opening to Station's first decision, a pick, "?", Hindi, and a reload that came back on the same decision in Hindi, with no page errors.
 
-**Next (M1):** rank, pick a team and keep, the batting order, split, then the reading's five cards (`steps/Soon.tsx` stands in for the four kinds not yet drawn, and the reading is skipped); the "more" cue on long screens; `scripts/markup-check.ts`.
+**Next (M1):** done the same day; see "M1, the First take playable".
 
 **Known on the way:**
 - `pnpm build` runs `tsc -b`, which already failed on `main`: 58 errors in the turned-down build's `src/boards/` and `src/screens/`, none in `src/take/`. Those files are retired in M1, which brings `pnpm check` back. Until then, build with `npx vite build`.

@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import type { Bi, Step } from '../data'
 import { AppFrame, Main, Progress, Topbar } from '../parts'
 import { useSound, type Fx } from '../sound'
@@ -13,16 +13,17 @@ export interface StepProps {
   onHelp: (open: boolean) => void
 }
 
-/** Cards come in a new order on every load, as for a player (the demo's data-shuffle). */
+/** Cards come in a new order on every load, as for a player (the demo's data-shuffle): once, when the screen opens. */
 export function useShuffled<T>(items: T[]): T[] {
-  return useMemo(() => {
+  const [order] = useState(() => {
     const k = [...items]
     for (let i = k.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
       ;[k[i], k[j]] = [k[j], k[i]]
     }
     return k
-  }, [items])
+  })
+  return order
 }
 
 export const useFx = (world: string) => {
@@ -56,4 +57,3 @@ export function Frame(props: StepProps & { cls: string; children: ReactNode; but
   )
 }
 
-export const useToggle = () => useState<string[]>([])

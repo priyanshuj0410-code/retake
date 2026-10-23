@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState, type MouseEvent, type SyntheticEvent } from 'react'
+import { useLayoutEffect, useRef, useState, type MouseEvent, type SyntheticEvent } from 'react'
 import { TAKE, type Cover as CoverData, type Cut as CutData } from './data'
 import { Drawn, T, useLabel } from './lang'
 import { AppFrame, HelpButton, Main } from './parts'
@@ -43,7 +43,6 @@ export function Cutscene({ c, onNext, help, onHelp }: { c: CutData; onNext: () =
     if (last) onNext()
     else setN(n + 1)
   }
-  useEffect(() => setN(0), [c])
   useLayoutEffect(() => {
     const b = body.current
     if (b) requestAnimationFrame(() => b.scrollTo({ top: b.scrollHeight, behavior: reduced() || !n ? 'auto' : 'smooth' }))

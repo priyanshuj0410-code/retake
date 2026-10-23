@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react'
 import { TAKE, type Bi, type Lang, type Paint, type Step } from './data'
-import { T, useLabel, useLang } from './lang'
+import { T, say, useLabel, useLang } from './lang'
 import { Svg } from './Svg'
 import { useSound } from './sound'
 
@@ -70,12 +70,14 @@ export function HelpButton({ onHelp }: { onHelp: (open: boolean) => void }) {
 }
 
 export function Topbar({ plate, onHelp }: { plate?: Bi | null; onHelp: (open: boolean) => void }) {
+  const lang = useLang()
   return (
     <div className="topbar">
       <span className="spacer" />
       {plate ? (
-        <span className="dayplate" lang={useLang() === 'hi' ? 'hi' : undefined}>
-          <span>{useLabel()(plate)}</span>
+        // a world's plate can carry its own markup (Cricket's "<i>Day</i><b>6</b>"), from the library's export
+        <span className="dayplate" lang={lang === 'hi' ? 'hi' : undefined}>
+          <span dangerouslySetInnerHTML={{ __html: say(lang, plate) }} />
         </span>
       ) : (
         <span className="spacer" />
@@ -161,14 +163,15 @@ export const SetLangContext = createContext<(l: Lang) => void>(() => {})
 const useSetLang = () => useContext(SetLangContext)
 
 /** The one main button: waiting says what is missing, live names its consequence (R-STEP-4). */
-export function Main(props: { t: Bi; live: boolean; onGo: () => void; refuse?: () => void; children?: ReactNode }) {
+export function Main(props: { t: Bi; live: boolean; onGo: () => void; refuse?: () => void; out?: boolean; children?: ReactNode }) {
   const { t, live, onGo, refuse } = props
   const [refused, setRefused] = useState(0)
   return (
     <div className="dock">
       {props.children}
       <button
-        className={`main ${live ? 'is-live' : 'is-wait'}${refused ? ' is-refused' : ''}`}
+        // outside a decision the button is the world's plain way on (library.py out_btn)
+        className={`main ${props.out ? 'is-out' : live ? 'is-live' : 'is-wait'}${refused ? ' is-refused' : ''}`}
         key={refused}
         type="button"
         aria-disabled={live ? undefined : true}

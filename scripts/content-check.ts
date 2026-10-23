@@ -108,7 +108,7 @@ export async function run() {
       if (st.kind === 'checks')
         for (const t of new Set(st.people.map((p) => p.mirror).filter(Boolean))) {
           const m = st.people.filter((p) => p.mirror === t)
-          if (m.length !== 2 || g(m[0].who) === g(m[1].who) || m[0].record.en !== m[1].record.en || m[0].finding.en !== m[1].finding.en) sym.push(st.id)
+          if (m.length !== 2 || g(m[0].who) === g(m[1].who) || m[0].record?.en !== m[1].record?.en || m[0].finding.en !== m[1].finding.en) sym.push(st.id)
         }
       if (st.kind === 'pick') {
         const ppl = st.options.filter((o) => o.who)
@@ -139,7 +139,8 @@ export async function run() {
   const all = DAYS.flatMap((d) => texts(d, d.id))
   const long = all.filter(([p, t]) => LIMITS.some(([re, n]) => re.test(p) && words(t.en) > n)).map(([p]) => p)
   record(T, 'minimal reading: prompts 18 words, blurbs 12, quotes and lines 14, titles 6', long.length === 0, long.join(', '))
-  const noHi = all.filter(([, t]) => !t.hi).map(([p]) => p)
+  // a string left empty in English on purpose (the Sunday blurbs, emptied on 24 Oct 2026) has nothing to translate
+  const noHi = all.filter(([, t]) => t.en && !t.hi).map(([p]) => p)
   record(T, 'every content string has a Hindi draft', noHi.length === 0, noHi.slice(0, 5).join(', '))
 
   const en = JSON.parse(readFileSync(join(ROOT, 'content/i18n/en.json'), 'utf8')) as Record<string, string>
@@ -160,7 +161,7 @@ export async function run() {
   record(T, 'British spelling', us.length === 0, us.join(', '))
   const timers = shown.filter(([, v]) => TIMER.test(v)).map(([p]) => p)
   record(T, 'no visible timer: no string speaks of seconds, timers or hurrying', timers.length === 0, timers.join(', '))
-  record(T, 'sample data says it is sample data (the board and the crowd figure)', /made up/i.test(en['board.sample']) && /made up/i.test(en['crowd.sample']))
+  // the turned-down build's sample board and crowd figure went with its UI; M4's Board shows real players only
 
   const PERSON = /\b(raja|rani|baadshah|badshah|begum|kamli|bhai|didi|bhaiya|queen|king|boy|girl|man|woman|lady|sahab|memsahab|beta|beti|chhora|chhori)\b/i
   const hw = [...HANDLE_WORDS.first, ...HANDLE_WORDS.second]

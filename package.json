@@ -11,14 +11,11 @@
     "lint": "oxlint",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.ts\"",
     "preview": "vite preview",
-    "check": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json --import ./scripts/lib/ignore-css.mjs scripts/check-all.ts && pnpm ux && pnpm e2e && pnpm pwa",
-    "check:fast": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json --import ./scripts/lib/ignore-css.mjs scripts/check-all.ts",
-    "ux": "tsx --tsconfig tsconfig.app.json scripts/ux-audit.ts",
+    "check": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json scripts/check-all.ts && pnpm e2e && pnpm pwa",
+    "check:fast": "tsc -b && oxlint && tsx --tsconfig tsconfig.app.json scripts/check-all.ts",
     "e2e": "tsx --tsconfig tsconfig.app.json scripts/e2e.ts",
     "pwa": "tsx --tsconfig tsconfig.app.json scripts/pwa-check.ts",
     "pwa:screens": "tsx --tsconfig tsconfig.app.json scripts/pwa/screenshots.ts",
-    "shots": "tsx --tsconfig tsconfig.app.json scripts/shots.ts",
-    "fonts": "tsx scripts/fonts.ts",
     "icons": "tsx scripts/icons.ts"
   },
   "dependencies": {

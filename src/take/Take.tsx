@@ -5,8 +5,12 @@ import { cacheAhead, onUpdateReady } from '../pwa'
 import { SetLangContext, UpdateContext } from './parts'
 import { Cover, Cutscene } from './screens'
 import { Sound, SoundContext } from './sound'
+import { Results } from './Results'
+import { Order } from './steps/Order'
 import { Pick } from './steps/Pick'
-import { Soon } from './steps/Soon'
+import { Rank } from './steps/Rank'
+import { Split } from './steps/Split'
+import { Team } from './steps/Team'
 import type { Answer } from './steps/common'
 import { load, save } from './store'
 
@@ -51,6 +55,11 @@ export function Take() {
     next()
   }
   const setLang = useCallback((lang: Lang) => setSaved((s) => ({ ...s, lang })), [])
+  // "Not you? Remove this reading": the answers go, and the take starts again (a shared phone, F-203)
+  const forget = useCallback(() => {
+    setHelp(false)
+    setSaved((s) => ({ ...s, at: 0, answers: {} }))
+  }, [])
   const soundCtx = useMemo(
     () => ({ sound, on: saved.sound, toggle: () => setSaved((s) => ({ ...s, sound: !s.sound })) }),
     [sound, saved.sound],
@@ -60,14 +69,18 @@ export function Take() {
   let body
   if (screen.type === 'cut') body = <Cutscene c={screen} onNext={next} {...props} />
   else if (screen.type === 'cover') body = <Cover c={screen} onNext={next} {...props} />
-  else if (screen.type === 'step')
-    body =
-      screen.kind === 'pick' || screen.kind === 'checks' ? (
-        <Pick s={screen} onCommit={commit(screen.id)} {...props} />
-      ) : (
-        <Soon s={screen} onCommit={commit(screen.id)} {...props} />
-      )
-  else body = null
+  else if (screen.type === 'step') {
+    const Kind = KINDS[screen.kind]
+    body = <Kind s={screen} onCommit={commit(screen.id)} {...props} />
+  } else
+    body = (
+      <Results
+        answers={saved.answers}
+        onNext={next}
+        onForget={forget}
+        {...props}
+      />
+    )
 
   // a screen is drawn fresh each time it comes up, so a step never opens with the last step's picks
   return (
@@ -76,7 +89,7 @@ export function Take() {
         <SoundContext.Provider value={soundCtx}>
           <UpdateContext.Provider value={update}>
             <main className="take" key={at}>
-              {body ?? <SkipResults onNext={next} />}
+              {body}
             </main>
           </UpdateContext.Provider>
         </SoundContext.Provider>
@@ -85,10 +98,7 @@ export function Take() {
   )
 }
 
-function SkipResults({ onNext }: { onNext: () => void }) {
-  useEffect(onNext, [onNext])
-  return null
-}
+const KINDS = { pick: Pick, checks: Pick, rank: Rank, team: Team, order: Order, split: Split }
 
 /** The cutscene panels of a chapter: from its title card (the opening, for 0) to the next one. */
 const chapterPanels = (chapter: number) => {
