@@ -134,6 +134,14 @@ Owner: "update the chapter covers". The five title cards were the daily game's c
 - **Paintings:** Station's platform, Lugdi's ghat road, Jadugar's rope trick, Cricket's scoreboard, Rukavat's room (each world's `chapter` moment).
 - **Back** on a title card plays the chapter's way in again, which comes back to the card; SC-91's Back leaves the starter for the cover or the Week tab, which arrive with the daily (M3). `pnpm e2e` checks the card's words, Back and the return (11 in the Back group).
 
+## The owner's look at production, 24 Oct 2026
+
+- **"I entered manmad and now it says nashik"**: the decisions carried their world's daily plates (Station: Nashik, Pune; Cricket: "Day 6"; Rukavat: "Wednesday · 9 pm") under a title card that names the chapter's place. Each chapter now keeps one plate on all its decisions (`World.take_plate`): Manmad, Kasara Ghat, Chandni Mandal, Purana Maidan (Cricket's title card board now names the ground too, not "Cricket"), and First take for Rukavat, as on its title card.
+- **"fix the padding on the date of birth screen"**: on wide screens Station's full-width cover button ran past the inset card to the screen's edge; the birth date's button now keeps the card's edges. The card's top padding matches its sides, and the empty line held for the date in words no longer leaves a hole before a date is typed.
+- **"keep the questions top aligned on desktop"**: a decision reads from the top of the column, the question under the top bar and the button under the people (it was centred in the column).
+- **"make the next button on decisions fill that column horizontally"**: the main button spans the column on wide screens (it stopped at 520 px).
+- **"portraits should fill the cards vertically"**: with cards on their side, the portrait runs the card's full height (library, Jadugar and Rukavat rules).
+
 ## Started, 24 Oct 2026
 
 - [x] This plan, on the branch `app-build`.

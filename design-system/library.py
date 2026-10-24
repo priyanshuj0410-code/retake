@@ -336,6 +336,7 @@ class World:
     # the First take's chapter title card (chapter_card): this world's own chapter as the specimen, {n, area, year, line}
     chapter = None
     chapter_marks = 'chapmarks'   # the class on the five marks
+    take_plate = None   # the plate on the First take chapter's decisions, naming its place; None keeps the day's plates
 
     def chapter_top(self, b):
         """The card's body from chapter_bits: the marks and the place, the area as the h1, the setting, the year."""
@@ -1011,7 +1012,8 @@ class Lugdi(World):
     art_cls = 'veil'
     face_prefix = 'pulp'
     plates = {'default': ('Ghat Series', 'घाट सीरीज़'), 'board': ('Bestsellers', 'बेस्टसेलर'), 'chapter': None}
-    places = ('Ghat Series',)
+    take_plate = ('Kasara Ghat', 'कसारा घाट')   # chapter 2's road, 1977
+    places = ('Ghat Series', 'Kasara Ghat')
     week = ['diwali', 'money', 'ghat', 'cricket', 'night', 'court']
     signature = 'the result reprints the cover, red ink, then black, then paper white.'
     notes = {'hero': 'Wednesday, issue 214', 'twin.wait': 'The button says what is missing.', 'twin.pick': 'The button names what happens.',
@@ -1103,7 +1105,8 @@ class Station(World):
     face_prefix = 'enamel'
     plates = {'default': ('Nashik', 'नाशिक'), 'rule': ('Howrah', 'हावड़ा'), 'jobs': ('Howrah', 'हावड़ा'), 'checks': ('Kolkata', 'कोलकाता'), 'team': ('Churchgate', 'चर्चगेट'),
               'sort': ('Pune', 'पुणे'), 'words': ('Pune', 'पुणे'), 'sunday': ('Platform 3', 'प्लेटफ़ॉर्म 3'), 'board': ('Departures', 'प्रस्थान'), 'chapter': None}
-    places = ('Nashik', 'Howrah', 'Kolkata', 'Churchgate', 'Pune', 'Platform 3')
+    take_plate = ('Manmad', 'मनमाड')   # chapter 1's junction, 1971, named on its title card's board
+    places = ('Nashik', 'Howrah', 'Kolkata', 'Churchgate', 'Pune', 'Platform 3', 'Manmad')
     next_line = ('Next train tomorrow', 'अगली गाड़ी कल')
     # the railway story (O15, said yes 22 Oct 2026): loco pilots for the night train to Nashik. Drafts for the owner and a
     # native Hindi speaker; listed in knowledge/content/world-voices.md

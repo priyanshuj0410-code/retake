@@ -168,6 +168,7 @@ class Rukavat(lib.World):
     chapter = {'n': 5, 'area': ('Home and family', 'घर और परिवार'), 'year': '1999',
                'line': ('Family evenings, parents who separate, and a dowry demand.', 'परिवार की शामें, अलग होते माँ-बाप, और दहेज की माँग।')}
     chapter_marks = 'rk-five'
+    take_plate = ('First take', 'फ़र्स्ट टेक')   # as on its title card; the day's plates name a weekday and an hour
     places = ('Wednesday · 9 pm', 'Wednesday · 10 pm', 'Sunday · 9 am', 'Sunday · 4 pm', 'The sofa')
     week = ['room', 'tv', 'sofa', 'roof', 'room', 'tv']
     next_line = ('Same time tomorrow', 'कल इसी समय')

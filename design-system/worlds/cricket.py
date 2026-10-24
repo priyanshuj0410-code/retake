@@ -185,6 +185,7 @@ class Cricket(lib.World):
     chapter = {'n': 4, 'area': ('Teams and leaders', 'टीम और नेतृत्व'), 'year': '1992',
                'line': ("Sunday's finals, and complaints of violence at home.", 'इतवार के फ़ाइनल, और घरेलू हिंसा की शिकायतें।')}
     chapter_marks = 'cr-marks'
+    take_plate = (f'<i>{TITLE[0]}</i>', f'<i>{TITLE[1]}</i>')   # chapter 4's ground, named on its title card's board
     week = ['nets', 'dressing', 'scoreboard', 'stumps', 'nets', 'dressing']
     next_line = ('Play resumes tomorrow', 'खेल कल फिर शुरू होगा')
     stat_keys = STAT_KEYS
@@ -226,7 +227,7 @@ class Cricket(lib.World):
         # the ground's name board, then the chapter on a plate: the marks, the place, the area, the setting, the year
         plate = ('<div class="plate hug cr-chap">' + b['marks'] + tx('span', *b['of'], 'level') + tx('h1', *b['area'], 'bigline')
                  + tx('p', *b['line'], 'coverline') + tx('span', *b['when'], 'level') + '</div>')
-        return nameboard(self.name, 'p', None) + f'<div class="coverstack">{plate}</div>'
+        return nameboard(TITLE, 'p', None) + f'<div class="coverstack">{plate}</div>'
 
     def cover_top(self, hard, line, level, nxt, kept):
         day, num = (('Thursday', 'गुरुवार'), '215') if hard else (('Wednesday', 'बुधवार'), '214')

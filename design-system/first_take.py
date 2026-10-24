@@ -128,7 +128,7 @@ def live_label(d):
 def frame(c, d, i, total, parts, kind, cls, btn):
     W = L.WORLDS[c['world']]
     prog = [progress(*d['prog'])] if d.get('prog') else []
-    inner = L.topbar('step', W.plate(kind)) + L.body(*prog, *parts) + L.dock(btn)
+    inner = L.topbar('step', W.take_plate or W.plate(kind)) + L.body(*prog, *parts) + L.dock(btn)
     art, ac = W.art(kind)
     # data-ft names the decision, so the results can read the pick made on it
     return L.phone(c['world'], inner, f'{W.title} {i} of {total}: {d["title"]}', f'{cls}" data-ft="{c["world"]}-{d["n"]}', art, ac)

@@ -337,7 +337,7 @@
 /* ===== wide screens: the caption sits beside the portrait once the card turns on its side ===== */
 @container play (min-width: 440px) {
   .w-rukavat .tile { grid-template-rows: auto auto 1fr; }
-  .w-rukavat .tile .face, :is(.phone, .app).w-rukavat[lang="hi"] .tile .face { grid-area: 1 / 1 / 4 / 2; aspect-ratio: 5 / 4; }
+  .w-rukavat .tile .face, :is(.phone, .app).w-rukavat[lang="hi"] .tile .face { grid-area: 1 / 1 / 4 / 2; aspect-ratio: auto; min-height: 64px; align-self: stretch; }
   .w-rukavat .tile .nmrow { grid-area: 1 / 2; align-self: start; margin: 0; transform: none; }
   .w-rukavat .tile .stats { grid-area: 2 / 2; margin-top: 0; padding-top: 0; }
   .w-rukavat .tile .quote { grid-area: 3 / 2; }

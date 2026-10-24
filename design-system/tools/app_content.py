@@ -105,7 +105,7 @@ def step(c, d, prog, i, total):
          'title': d['title'], 'kind': k, 'rawKind': d['kind'], 'q': list(d['q']),
          'speaker': list(c['speaker']), 'speakerFace': c['face'],
          'voice': [d['voice'][1], d['voice'][2]] if d['voice'] else None,
-         'keys': [list(x) for x in d['keys']], 'plate': pair(W.plate(MOMENT[k])), 'art': paint(W, MOMENT[k]),
+         'keys': [list(x) for x in d['keys']], 'plate': pair(W.take_plate or W.plate(MOMENT[k])), 'art': paint(W, MOMENT[k]),
          'button': [le, lh], 'teller': d['kind'].lower().startswith('believe'),
          'people': [{'en': p['en'], 'hi': p['hi'], 'vals': p['vals'], 'line': pair(p['line']), 'face': p['face'],
                      'serial': W.serial(j)} for j, p in enumerate(d['people'])],

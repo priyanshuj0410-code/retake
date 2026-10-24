@@ -841,9 +841,10 @@ h1.score { margin: 0; display: block; }
   .app .page-play { position: absolute; top: 0; right: 0; bottom: 0; width: var(--col); padding: 13px clamp(13px, 2.6cqw, 40px) 0; }
   .art-meta { left: auto; right: 0; width: var(--col); padding: 13px clamp(13px, 2.6cqw, 40px) 21px; }
   .app.is-cover .art-meta, .app.is-result .art-meta { padding-bottom: 120px; }
-  .app.is-step .page-play > .scr-body { flex: 0 1 auto; margin-top: auto; }
+  /* a decision reads from the top of the column, its question under the top bar and the button under the people
+     (owner, 24 Oct 2026: "keep the questions top aligned on desktop"); the button spans the column, as the cards do */
+  .app.is-step .page-play > .scr-body { flex: 0 1 auto; }
   .app.is-step .page-play > .dock { margin-bottom: auto; padding-top: 21px; }
-  .app .page-play > .dock .main { max-width: 520px; }
   .app .tabbar { display: none; }
   .app .rail { display: flex; position: absolute; left: 0; top: 0; bottom: 0; z-index: 2; }
   .wide-only { display: revert !important; }
@@ -867,7 +868,7 @@ h1.score { margin: 0; display: block; }
   .credits { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 13px 13px; }
   .tiles:is([data-n="3"], [data-n="4"], [data-n="5"]) { gap: 13px; }
   .tile { grid-template-columns: 80px minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 13px; row-gap: 5px; align-items: start; }
-  .tile .face { grid-row: 1 / 4; grid-column: 1; width: 80px; aspect-ratio: 5 / 4; }
+  .tile .face { grid-row: 1 / 4; grid-column: 1; width: 80px; aspect-ratio: auto; align-self: stretch; min-height: 64px; }   /* the portrait runs the card's height (owner, 24 Oct 2026) */
   .tile .nmrow, .tile .stats, .tile :is(.quote, .note) { grid-column: 2; }
   .tile :is(.quote, .note) { min-height: 0; }
   .tile[aria-checked="true"] .nmrow, .tile.is-selected .nmrow { padding-right: 21px; }
@@ -965,7 +966,7 @@ h1.score { margin: 0; display: block; }
 .app .scr-body.is-cover > .roundel:not(.is-score) { top: 104px; }
 /* the birth-date card on a short screen: closer, so the date in words and its line show */
 @container dev (max-height: 520px) {
-  .app .gatecard { gap: var(--f8); padding-bottom: var(--f13); }
+  .app .gatecard { --gap: var(--f8); padding-bottom: var(--f13); }
   .app .gatecard .langrow { padding: 5px 0; }
 }
 
@@ -973,7 +974,7 @@ h1.score { margin: 0; display: block; }
    both, so it never reads as part of the sheet */
 .sheet ~ .scrim, .app .page-play > .sheet ~ .scrim { z-index: 12; }
 .sheet ~ .dialog { z-index: 13; }
-.gatecard { display: grid; gap: var(--f13); padding: var(--f8) var(--s16) var(--f21); background: var(--paper) var(--tex); background-size: 256px; color: var(--ink); border-radius: var(--r-card); box-shadow: inset 0 0 0 var(--frame) var(--ink); }
+.gatecard { --gap: var(--f13); display: grid; gap: var(--gap); padding: var(--f13) var(--s16) var(--f21); background: var(--paper) var(--tex); background-size: 256px; color: var(--ink); border-radius: var(--r-card); box-shadow: inset 0 0 0 var(--frame) var(--ink); }
 .gatecard .langrow { padding: var(--f8) 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
 .gatecard .q { color: var(--ink); }
 /* three across; at large text sizes (the minimum grows with the root size) they wrap, at 200% one to a row */
@@ -982,6 +983,7 @@ h1.score { margin: 0; display: block; }
 .datefields input { width: 100%; min-height: 56px; border: 0; box-shadow: inset 0 0 0 2px var(--ink); border-radius: var(--r-chip); background: var(--paper); color: var(--ink); font: 700 var(--t-name)/1.2 'Hind'; padding: 8px; text-align: center; font-variant-numeric: tabular-nums; }
 .datefields input[aria-invalid="true"] { box-shadow: inset 0 0 0 3px var(--accent); }
 .datewords { margin: 0; min-height: 1.5em; font: 700 var(--t-title)/1.5 'Hind'; }
+.datewords:empty { min-height: 0; margin-top: calc(-1 * var(--gap)); }   /* no hole under the fields before there is a date to say (owner, 24 Oct 2026: "fix the padding") */
 .gatehint { display: flex; gap: 5px; align-items: center; margin: 0; font: 700 var(--t-label)/1.43 'Hind'; }
 .gatehint svg { width: 18px; height: 18px; flex: none; }
 .gatecard .textbtn { justify-self: start; }
@@ -1322,7 +1324,7 @@ h1.score { margin: 0; display: block; }
 .world.w-station .tab[aria-current="page"] svg { background: var(--enamel-puck); color: var(--ground); box-shadow: inset 0 -.5px 0 rgba(0, 0, 0, .2); }
 /* wide screens: the cover's and result's button spans the column, so board, plate and button share one edge */
 @container dev (min-aspect-ratio: 1/1) and (min-width: 700px) {
-  .app.world.w-station:not(.is-step) .page-play > .dock { padding-inline: 0; }
+  .app.world.w-station:not(.is-step, .is-gate) .page-play > .dock { padding-inline: 0; }   /* the birth date's card is inset: its button keeps the card's edges */
   .app.world.w-station:not(.is-step) .page-play > .dock .main { max-width: none; }
 }
 
