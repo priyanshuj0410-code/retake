@@ -6,6 +6,8 @@ plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-18/
 ---
 
+> **Superseded (owner, 24 Oct 2026: "no pro accounts").** This record assumed paid plans (Supabase Pro, Vercel Pro). The choice is being redone for free tiers only; keep this one for its comparison and reasoning.
+
 > **How this was made.** Workflow run `wf_19e783c3-ace`, 24 Oct 2026. Judges' scores (privacy / engineering / cost): Firebase 8 / 4 / 5, Neon 6 / 6.5 / 6, Supabase 4.5 / 8 / 7.5. The fact-checkers found 8 to 9 claims wrong or outdated in each dossier; the corrections are applied below and listed near the end. Prices and dates are as the sources stated in October 2026; check them again before signing up.
 
 # Backend choice: Supabase Pro in Mumbai, behind a same-origin proxy on Vercel (Mumbai), with Amazon SES Mumbai for code emails

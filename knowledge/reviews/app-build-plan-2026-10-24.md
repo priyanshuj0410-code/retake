@@ -34,7 +34,7 @@ M0 to M2 is the "faster alpha" of the estimate of 22 Oct (6 to 8 working days); 
 
 ## Decisions for the owner
 
-1. **The server for M4: Supabase Pro in Mumbai (ap-south-1), reached only through a thin same-origin proxy of Vercel Functions in Mumbai (bom1), with Amazon SES in Mumbai sending the code emails** (owner, 24 Oct 2026: "evaluate firebase vs neon vs supabase... use the best"). The record, with the comparison, the architecture and the costs, is [backend-choice-2026-10-24.md](../architecture/backend-choice-2026-10-24.md). Neon is the fallback if a week-one check fails. Needed from the owner before M4 starts:
+1. **Superseded the same day: "no pro accounts"** (owner, 24 Oct 2026). No paid plans: no Supabase Pro and no Vercel Pro. The choice below is being redone for free tiers only (four free stacks, each fact-checked, and the free ways to send the code emails); the new record replaces it. The earlier choice, kept for its reasoning: **Supabase Pro in Mumbai (ap-south-1), reached only through a thin same-origin proxy of Vercel Functions in Mumbai (bom1), with Amazon SES in Mumbai sending the code emails** (owner, 24 Oct 2026: "evaluate firebase vs neon vs supabase... use the best"). The record, with the comparison, the architecture and the costs, is [backend-choice-2026-10-24.md](../architecture/backend-choice-2026-10-24.md). Neon is the fallback if a week-one check fails. Needed from the owner before M4 starts:
    - a Supabase organisation on Pro ($25 a month) with one project in Mumbai, and a card that takes recurring US-dollar charges;
    - an AWS account for SES in Mumbai, with a sending domain (DKIM, SPF, DMARC) and production access;
    - Vercel Pro ($20 a month), or Vercel Support's answer on whether the NGO may stay on Hobby;
