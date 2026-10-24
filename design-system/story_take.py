@@ -31,7 +31,7 @@ KEYS = {'years on the line': ('st-line', 'years', 'साल'), 'signals missed'
         'free hours': ('clock', 'hours', 'घंटे'), 'skill': ('tool', 'skill', 'हुनर'), 'evenings at home': ('today', 'evenings home', 'शामें घर पर'),
         'school meetings': ('person', 'school meetings', 'स्कूल मीटिंग'), 'Sundays free': ('week', 'Sundays', 'रविवार'),
         'jobs done': ('hand', 'jobs', 'काम'), 'weddings arranged': ('person', 'weddings', 'शादियाँ'), 'talks led': ('speaker', 'talks', 'बातचीत')}
-KIND = [(r'^pick one', 'pick one'), (r'^believe', 'believe'), (r'^rank for (\d+) seats', r'rank, \1 seats'),
+KIND = [(r'^pick one', 'pick one'), (r'^believe', 'believe'), (r'^rank for (\d+) (seats|trucks|keys)', r'rank, \1 \2'),
         (r'^pick (\d+) of (\d+)', r'pick a team, \1 of \2'), (r'^keep (\d+) of (\d+)', r'keep, \1 of \2'),
         (r'^spend checks, up to (\d+)', r'spend checks, up to \1'), (r'^batting order, first stage', 'the batting order, first stage'),
         (r'^second stage', 'the batting order, second stage'), (r'^split', 'split')]

@@ -164,13 +164,23 @@ def step_pick(c, d, i, total, many=0):
     return frame(c, d, i, total, parts, 'checks' if many else 'twin', f'js-checks" data-max="{many}' if many else 'js-pick', btn)
 
 
+# what a rank's places are, as the script names them ("Rank for 3 trucks"), for the line under the last one
+PLACES = {'seats': ('seats', 'सीटें'), 'trucks': ('trucks', 'ट्रक'), 'keys': ('keys', 'चाबियाँ')}
+
+
+def places(d):
+    """A rank's number of places and their name, (en, hi)."""
+    m = re.search(r'(\d+) (seats|trucks|keys)', d['kind'])
+    return int(m.group(1)), PLACES[m.group(2)]
+
+
 def step_rank(c, d, i, total, ranked=()):
     """Rank, filled from the top by tapping; a ranked person tapped comes out. The place is type in the pick mark's spot,
     the ranked rows move up into their order, the places that win a seat show as picks, and a perforation falls after the
     last seat (owner, 23 Oct 2026: "The rankings need to be more clear"). ranked, names in order, draws a state standing
     still, for the library."""
     qid = L.uid('h')
-    seats = int(re.search(r'(\d+) seats', d['kind']).group(1))
+    seats, word = places(d)
     rws = []
     for p in sorted(d['people'], key=lambda p: ranked.index(p['en']) if p['en'] in ranked else len(ranked)):
         k = ranked.index(p['en']) + 1 if p['en'] in ranked else 0
@@ -178,7 +188,7 @@ def step_rank(c, d, i, total, ranked=()):
         rws.append(r.replace('class="row"', 'class="row is-selected"', 1).replace('aria-checked="false"', 'aria-checked="true"', 1) if 0 < k <= seats else r)
     # the cut rides in the rows, hidden until the seats are filled; the page's script moves it under the last seat
     rws.insert(seats if len(ranked) >= seats else len(rws),
-               f'<div class="rkcut"{"" if len(ranked) >= seats else " hidden"}>{L.ic("arrow")}{L.tx("span", f"{seats} seats", f"{seats} सीटें")}</div>')
+               f'<div class="rkcut"{"" if len(ranked) >= seats else " hidden"}>{L.ic("arrow")}{L.tx("span", f"{seats} {word[0]}", f"{seats} {word[1]}")}</div>')
     rws = ''.join(rws)
     n = len(d['people']) - len(ranked)
     btn = L.main(f'Rank {n} more', f'{n} और क्रम में लगाएँ', *d['button'])

@@ -56,7 +56,7 @@ Each chapter's title card names its area (SC-91). The last three are the library
 
 | English | Hindi |
 |---|---|
-| Who drives the first run to Bhusawal? | भुसावल की पहली गाड़ी कौन चलाए? |
+| Pick 2 to crew the first run to Bhusawal. | भुसावल की पहली गाड़ी के क्रू के लिए 2 चुनें। |
 | The new engine leaves at dawn, with the press on the platform. | नया इंजन सुबह निकलेगा, प्लेटफ़ॉर्म पर अख़बार वाले होंगे। |
 | Still learning the new controls, Mohan says. | मोहन कहता है, अभी नए कंट्रोल सीख रहा है। |
 | Rank them for the 2 seats on the new-engine course. | नए इंजन के कोर्स की 2 सीटों के लिए क्रम लगाएँ। |
@@ -66,7 +66,7 @@ Each chapter's title card names its area (SC-91). The last three are the library
 | Knows the plains line by heart. | मैदान वाली लाइन ज़ुबानी याद है। |
 | Who wears the shed's safety armband? | शेड का सेफ़्टी बिल्ला कौन पहने? |
 | The armband needs a new owner. The old foreman has been moved. | बिल्ले को नया मालिक चाहिए। पुराने फ़ोरमैन का तबादला हो गया। |
-| Who takes the Daund goods tonight? | आज रात दौंड की मालगाड़ी कौन ले जाए? |
+| Pick 2 to crew the Daund goods tonight. | आज रात दौंड की मालगाड़ी के क्रू के लिए 2 चुनें। |
 | The yard wants a crew by ten. The rain has started. | यार्ड को दस बजे तक क्रू चाहिए। बारिश शुरू हो गई है। |
 | Back from a week's leave, Mohan says. | मोहन कहता है, हफ़्ते भर की छुट्टी से लौटा है। |
 | Rank them for the 2 seats on the signal course. | सिग्नल कोर्स की 2 सीटों के लिए क्रम लगाएँ। |
@@ -82,14 +82,14 @@ Each chapter's title card names its area (SC-91). The last three are the library
 
 | English | Hindi |
 |---|---|
-| Pick 3 for the night convoy. | रात के काफ़िले के लिए 3 चुनें। |
+| Rank them for the 3 trucks in the night convoy. | रात के काफ़िले के 3 ट्रकों के लिए क्रम लगाएँ। |
 | Onions for Mumbai. Three trucks leave at midnight. | मुंबई के लिए प्याज़। तीन ट्रक आधी रात को निकलेंगे। |
 | Her family worries about her night runs. | रात के फेरों से उसके घरवाले फ़िक्र करते हैं। |
 | Whose reports do you take up? | किस-किस की रिपोर्ट आगे बढ़ाएँ? |
 | This week's road reports, open in the logbook. | इस हफ़्ते की सड़क रिपोर्टें, लॉगबुक में खुली हुई। |
 | Says a car followed his truck down the ghat. Scares easily. | कहता है घाट पर एक गाड़ी उसके ट्रक के पीछे लगी रही। जल्दी डर जाता है। |
-| Keep 2 on the hill route. | पहाड़ी रास्ते पर 2 रखें। |
-| Two trucks scraped the hairpin last month. Two stay on the hill route. | पिछले महीने दो ट्रक मोड़ पर रगड़ खा गए। पहाड़ी रास्ते पर दो ही रहेंगे। |
+| Who stays on the hill route? | पहाड़ी रास्ते पर कौन रहे? |
+| Two trucks scraped the hairpin last month. One stays on the hill route. | पिछले महीने दो ट्रक मोड़ पर रगड़ खा गए। पहाड़ी रास्ते पर एक ही रहेगा। |
 | Slow, but never scraped. | धीमा, पर कभी रगड़ नहीं खाई। |
 | Reckless on the bends. | मोड़ों पर लापरवाह। |
 | Bold on the bends. | मोड़ों पर दिलेर। |
@@ -97,12 +97,12 @@ Each chapter's title card names its area (SC-91). The last three are the library
 | Pick 3 for the gas cylinder run. | गैस सिलेंडर वाले फेरे के लिए 3 चुनें। |
 | One truck carries gas cylinders. It needs the hazardous-goods licence. | एक ट्रक में गैस सिलेंडर हैं। उसके लिए ख़तरनाक माल का लाइसेंस चाहिए। |
 | Drives the long Mumbai run. | मुंबई वाला लंबा फेरा चलाता है। |
-| Pick 3 for the cash run to the market. | मंडी तक पैसों वाले फेरे के लिए 3 चुनें। |
+| Rank them for the 3 trucks on the cash run. | पैसों वाले फेरे के 3 ट्रकों के लिए क्रम लगाएँ। |
 | Cash for the onion growers goes down at dawn. Three trucks. | प्याज़ किसानों का पैसा सुबह नीचे जाएगा। तीन ट्रक। |
 | Whose reports go to the police post? | किसकी रिपोर्ट पुलिस चौकी जाए? |
 | Another week. The river road this time. | एक और हफ़्ता। इस बार नदी वाली सड़क। |
-| Keep 2 on the river route. | नदी वाले रास्ते पर 2 रखें। |
-| Two dents at the river bend this month. Two stay on that route. | इस महीने नदी के मोड़ पर दो डेंट। उस रास्ते पर दो ही रहेंगे। |
+| Who stays on the river route? | नदी वाले रास्ते पर कौन रहे? |
+| Two dents at the river bend this month. One stays on that route. | इस महीने नदी के मोड़ पर दो डेंट। उस रास्ते पर एक ही रहेगा। |
 | Bold at the river bend. | नदी के मोड़ पर दिलेर। |
 | Reckless at the river bend. | नदी के मोड़ पर लापरवाह। |
 | Pick 3 for the kerosene run. | केरोसीन वाले फेरे के लिए 3 चुनें। |
@@ -115,26 +115,26 @@ Each chapter's title card names its area (SC-91). The last three are the library
 | Whose statement goes in the report? | रिपोर्ट में किसका बयान लिखें? |
 | A man from the audience followed a dancer backstage. The fair's officials want one statement. | दर्शकों में से एक आदमी एक नर्तकी के पीछे परदे के पीछे गया। मेले के अफ़सरों को एक बयान चाहिए। |
 | He followed her to the costume tent and would not go. | वह उसके पीछे पोशाक वाले तंबू तक आया और गया ही नहीं। |
-| Who carries the cash to the next town? | अगले शहर तक पैसे कौन ले जाए? |
-| The lorry leaves at dawn. The cash box goes with someone. | लॉरी सुबह निकलेगी। पैसों का डिब्बा किसी के साथ जाएगा। |
+| Pick 2 to carry the cash to the next town. | अगले शहर तक पैसे ले जाने के लिए 2 चुनें। |
+| The lorry leaves at dawn. Two go with the cash box. | लॉरी सुबह निकलेगी। पैसों के डिब्बे के साथ दो लोग जाएँगे। |
 | Careful with money, the way women are. | पैसों में सावधान, जैसी औरतें होती हैं। |
 | Whose story do you believe? | किसकी बात मानें? |
 | The big lamp fell at rehearsal. Nobody was hurt. | रिहर्सल में बड़ा लैंप गिर गया। किसी को चोट नहीं आई। |
 | Someone told me. The hook gave way. | मुझे किसी ने बताया। हुक निकल गया। |
 | I saw it. The hook gave way. | मैंने देखा। हुक निकल गया। |
-| Who keeps the key to the ticket tin? | टिकट के डिब्बे की चाबी कौन रखे? |
-| The ticket tin needs a keeper for the move. | सफ़र के लिए टिकट के डिब्बे को एक रखवाला चाहिए। |
+| Rank them for the 2 keys to the ticket tin. | टिकट के डिब्बे की 2 चाबियों के लिए क्रम लगाएँ। |
+| The ticket tin has two keys for the move. | सफ़र के लिए टिकट के डिब्बे की दो चाबियाँ हैं। |
 | Her brother works for the rival troupe. | उसका भाई दूसरी मंडली में काम करता है। |
 | Whose statement goes to the police post? | किसका बयान पुलिस चौकी जाए? |
 | At the next town, a man pushed into the make-up tent after the late show. | अगले शहर में, देर रात के शो के बाद एक आदमी मेकअप वाले तंबू में घुस आया। |
 | He pushed into the make-up tent and would not leave. | वह मेकअप वाले तंबू में घुस आया और गया ही नहीं। |
-| Who takes the takings to the bank? | कमाई बैंक तक कौन ले जाए? |
+| Pick 2 to take the takings to the bank. | कमाई बैंक तक ले जाने के लिए 2 चुनें। |
 | A cloth bag of notes. The bank is across the highway. | नोटों की एक कपड़े की थैली। बैंक हाईवे के उस पार है। |
 | The generator stopped in the second act. | दूसरे भाग में जनरेटर बंद हो गया। |
 | I saw it. It ran out of diesel. | मैंने देखा। डीज़ल ख़त्म हो गया था। |
 | Someone told me. It ran out of diesel. | मुझे किसी ने बताया। डीज़ल ख़त्म हो गया था। |
-| Who keeps the key to the cash box? | पैसों के डिब्बे की चाबी कौन रखे? |
-| The key hangs on a red thread under the magician's table. | चाबी जादूगर की मेज़ के नीचे लाल धागे में लटकी है। |
+| Rank them for the 2 keys to the cash box. | पैसों के डिब्बे की 2 चाबियों के लिए क्रम लगाएँ। |
+| Two keys hang on a red thread under the magician's table. | दो चाबियाँ जादूगर की मेज़ के नीचे लाल धागे में लटकी हैं। |
 | His sister works for the rival troupe. | उसकी बहन दूसरी मंडली में काम करती है। |
 
 ## Chapter 4, 1992
@@ -177,7 +177,7 @@ Each chapter's title card names its area (SC-91). The last three are the library
 | Who should the children live with? | बच्चे किसके साथ रहें? |
 | A cousin and her husband are separating. The family is asked. | एक चचेरी बहन और उसके पति अलग हो रहे हैं। परिवार से पूछा गया है। |
 | The children's aunt. Offers to help. | बच्चों की मौसी। मदद को तैयार। |
-| Who clears the loft before the guests come? | मेहमानों के आने से पहले टांड कौन साफ़ करे? |
+| Pick 2 to clear the loft before the guests come. | मेहमानों के आने से पहले टांड साफ़ करने के लिए 2 चुनें। |
 | Nobody has cleared the loft in years. | बरसों से किसी ने टांड साफ़ नहीं की। |
 | Home from hostel for the week. | हफ़्ते भर के लिए हॉस्टल से आया है। |
 | Who goes to talk to the groom's side about the scooter they want? | लड़के वालों से उनके माँगे स्कूटर की बात करने कौन जाए? |
@@ -188,7 +188,7 @@ Each chapter's title card names its area (SC-91). The last three are the library
 | Works all week. Let her watch her serial. | पूरा हफ़्ता काम करती है। उसे अपना सीरियल देखने दो। |
 | A neighbour's family asks Badi Amma to settle it. | पड़ोस का परिवार बड़ी अम्मा से फ़ैसला करने को कहता है। |
 | Says she will remarry next year. | कहती है अगले साल दोबारा शादी करेगी। |
-| Who clears the storeroom for the raddiwala? | रद्दी वाले के लिए स्टोर रूम कौन ख़ाली करे? |
+| Pick 2 to clear the storeroom for the raddiwala. | रद्दी वाले के लिए स्टोर रूम ख़ाली करने के लिए 2 चुनें। |
 | Old newspapers to the ceiling, and a broken cooler. | छत तक पुराने अख़बार, और एक टूटा कूलर। |
 | Carried the cooler down last summer. | पिछली गर्मी कूलर नीचे उतारा था। |
 | Who goes to the boy's family for the second talk? | दूसरी बातचीत के लिए लड़के के घर कौन जाए? |

@@ -106,7 +106,7 @@
  "results": {
   "decisions": {
    "station-1": {
-    "kind": "pick",
+    "kind": "set",
     "pair": [
      "Mumtaz",
      "Nagsen"
@@ -116,8 +116,8 @@
      "Nagsen": "m"
     },
     "q": [
-     "Who drives the first run to Bhusawal?",
-     "भुसावल की पहली गाड़ी कौन चलाए?"
+     "Pick 2 to crew the first run to Bhusawal.",
+     "भुसावल की पहली गाड़ी के क्रू के लिए 2 चुनें।"
     ],
     "nudged": "Mumtaz",
     "faces": {
@@ -130,7 +130,7 @@
     }
    },
    "station-5": {
-    "kind": "pick",
+    "kind": "set",
     "pair": [
      "Kiran",
      "Sunil"
@@ -140,8 +140,8 @@
      "Sunil": "m"
     },
     "q": [
-     "Who takes the Daund goods tonight?",
-     "आज रात दौंड की मालगाड़ी कौन ले जाए?"
+     "Pick 2 to crew the Daund goods tonight.",
+     "आज रात दौंड की मालगाड़ी के क्रू के लिए 2 चुनें।"
     ],
     "nudged": "Sunil",
     "faces": {
@@ -298,7 +298,7 @@
     }
    },
    "lugdi-1": {
-    "kind": "set",
+    "kind": "rank",
     "pair": [
      "Jasleen",
      "Dinesh"
@@ -308,8 +308,8 @@
      "Dinesh": "m"
     },
     "q": [
-     "Pick 3 for the night convoy.",
-     "रात के काफ़िले के लिए 3 चुनें।"
+     "Rank them for the 3 trucks in the night convoy.",
+     "रात के काफ़िले के 3 ट्रकों के लिए क्रम लगाएँ।"
     ],
     "nudged": "Jasleen",
     "faces": {
@@ -322,7 +322,7 @@
     }
    },
    "lugdi-5": {
-    "kind": "set",
+    "kind": "rank",
     "pair": [
      "Kusum",
      "Velu"
@@ -332,8 +332,8 @@
      "Velu": "m"
     },
     "q": [
-     "Pick 3 for the cash run to the market.",
-     "मंडी तक पैसों वाले फेरे के लिए 3 चुनें।"
+     "Rank them for the 3 trucks on the cash run.",
+     "पैसों वाले फेरे के 3 ट्रकों के लिए क्रम लगाएँ।"
     ],
     "nudged": "Velu",
     "faces": {
@@ -394,7 +394,7 @@
     }
    },
    "lugdi-3": {
-    "kind": "set",
+    "kind": "pick",
     "pair": [
      "Nirmala",
      "Velu"
@@ -404,8 +404,8 @@
      "Velu": "m"
     },
     "q": [
-     "Keep 2 on the hill route.",
-     "पहाड़ी रास्ते पर 2 रखें।"
+     "Who stays on the hill route?",
+     "पहाड़ी रास्ते पर कौन रहे?"
     ],
     "nudged": "Nirmala",
     "faces": {
@@ -418,7 +418,7 @@
     }
    },
    "lugdi-7": {
-    "kind": "set",
+    "kind": "pick",
     "pair": [
      "Etwari",
      "Dinesh"
@@ -428,8 +428,8 @@
      "Dinesh": "m"
     },
     "q": [
-     "Keep 2 on the river route.",
-     "नदी वाले रास्ते पर 2 रखें।"
+     "Who stays on the river route?",
+     "नदी वाले रास्ते पर कौन रहे?"
     ],
     "nudged": "Dinesh",
     "faces": {
@@ -538,7 +538,7 @@
     }
    },
    "jadugar-2": {
-    "kind": "pick",
+    "kind": "set",
     "pair": [
      "Dolly",
      "Gopal"
@@ -548,8 +548,8 @@
      "Gopal": "m"
     },
     "q": [
-     "Who carries the cash to the next town?",
-     "अगले शहर तक पैसे कौन ले जाए?"
+     "Pick 2 to carry the cash to the next town.",
+     "अगले शहर तक पैसे ले जाने के लिए 2 चुनें।"
     ],
     "nudged": "Dolly",
     "faces": {
@@ -562,7 +562,7 @@
     }
    },
    "jadugar-6": {
-    "kind": "pick",
+    "kind": "set",
     "pair": [
      "Rabia",
      "Lalit"
@@ -572,8 +572,8 @@
      "Lalit": "m"
     },
     "q": [
-     "Who takes the takings to the bank?",
-     "कमाई बैंक तक कौन ले जाए?"
+     "Pick 2 to take the takings to the bank.",
+     "कमाई बैंक तक ले जाने के लिए 2 चुनें।"
     ],
     "nudged": "Lalit",
     "faces": {
@@ -634,7 +634,7 @@
     }
    },
    "jadugar-4": {
-    "kind": "pick",
+    "kind": "rank",
     "pair": [
      "Mitali",
      "Naresh"
@@ -644,8 +644,8 @@
      "Naresh": "m"
     },
     "q": [
-     "Who keeps the key to the ticket tin?",
-     "टिकट के डिब्बे की चाबी कौन रखे?"
+     "Rank them for the 2 keys to the ticket tin.",
+     "टिकट के डिब्बे की 2 चाबियों के लिए क्रम लगाएँ।"
     ],
     "nudged": "Mitali",
     "faces": {
@@ -658,7 +658,7 @@
     }
    },
    "jadugar-8": {
-    "kind": "pick",
+    "kind": "rank",
     "pair": [
      "Pushpa",
      "Cyrus"
@@ -668,8 +668,8 @@
      "Cyrus": "m"
     },
     "q": [
-     "Who keeps the key to the cash box?",
-     "पैसों के डिब्बे की चाबी कौन रखे?"
+     "Rank them for the 2 keys to the cash box.",
+     "पैसों के डिब्बे की 2 चाबियों के लिए क्रम लगाएँ।"
     ],
     "nudged": "Cyrus",
     "faces": {
@@ -970,7 +970,7 @@
     }
    },
    "rukavat-3": {
-    "kind": "pick",
+    "kind": "set",
     "pair": [
      "Deepa",
      "Chetan"
@@ -980,8 +980,8 @@
      "Chetan": "m"
     },
     "q": [
-     "Who clears the loft before the guests come?",
-     "मेहमानों के आने से पहले टांड कौन साफ़ करे?"
+     "Pick 2 to clear the loft before the guests come.",
+     "मेहमानों के आने से पहले टांड साफ़ करने के लिए 2 चुनें।"
     ],
     "nudged": "Deepa",
     "faces": {
@@ -994,7 +994,7 @@
     }
    },
    "rukavat-7": {
-    "kind": "pick",
+    "kind": "set",
     "pair": [
      "Pooja",
      "Mahesh"
@@ -1004,8 +1004,8 @@
      "Mahesh": "m"
     },
     "q": [
-     "Who clears the storeroom for the raddiwala?",
-     "रद्दी वाले के लिए स्टोर रूम कौन ख़ाली करे?"
+     "Pick 2 to clear the storeroom for the raddiwala.",
+     "रद्दी वाले के लिए स्टोर रूम ख़ाली करने के लिए 2 चुनें।"
     ],
     "nudged": "Mahesh",
     "faces": {
@@ -1494,11 +1494,11 @@
    "n": 1,
    "total": 40,
    "title": "The first run",
-   "kind": "pick",
-   "rawKind": "pick one",
+   "kind": "team",
+   "rawKind": "pick a team, 2 of 4",
    "q": [
-    "Who drives the first run to Bhusawal?",
-    "भुसावल की पहली गाड़ी कौन चलाए?"
+    "Pick 2 to crew the first run to Bhusawal.",
+    "भुसावल की पहली गाड़ी के क्रू के लिए 2 चुनें।"
    ],
    "speaker": [
     "Gurpreet, station master",
@@ -1532,8 +1532,8 @@
     "cls": "print"
    },
    "button": [
-    "Send {n}",
-    "{n} को भेजें"
+    "Lock the team",
+    "टीम पक्की करें"
    ],
    "teller": false,
    "people": [
@@ -1598,7 +1598,8 @@
     1,
     1,
     8
-   ]
+   ],
+   "need": 2
   },
   {
    "type": "step",
@@ -1727,7 +1728,11 @@
     2,
     8
    ],
-   "seats": 2
+   "seats": 2,
+   "cut": [
+    "2 seats",
+    "2 सीटें"
+   ]
   },
   {
    "type": "step",
@@ -1965,11 +1970,11 @@
    "n": 5,
    "total": 40,
    "title": "The Daund goods",
-   "kind": "pick",
-   "rawKind": "pick one",
+   "kind": "team",
+   "rawKind": "pick a team, 2 of 4",
    "q": [
-    "Who takes the Daund goods tonight?",
-    "आज रात दौंड की मालगाड़ी कौन ले जाए?"
+    "Pick 2 to crew the Daund goods tonight.",
+    "आज रात दौंड की मालगाड़ी के क्रू के लिए 2 चुनें।"
    ],
    "speaker": [
     "Gurpreet, station master",
@@ -2003,8 +2008,8 @@
     "cls": "print"
    },
    "button": [
-    "Send {n}",
-    "{n} को भेजें"
+    "Lock the team",
+    "टीम पक्की करें"
    ],
    "teller": false,
    "people": [
@@ -2069,7 +2074,8 @@
     1,
     5,
     8
-   ]
+   ],
+   "need": 2
   },
   {
    "type": "step",
@@ -2198,7 +2204,11 @@
     6,
     8
    ],
-   "seats": 2
+   "seats": 2,
+   "cut": [
+    "2 seats",
+    "2 सीटें"
+   ]
   },
   {
    "type": "step",
@@ -2520,11 +2530,11 @@
    "n": 9,
    "total": 40,
    "title": "The night convoy",
-   "kind": "team",
-   "rawKind": "pick a team, 3 of 5",
+   "kind": "rank",
+   "rawKind": "rank, 3 trucks",
    "q": [
-    "Pick 3 for the night convoy.",
-    "रात के काफ़िले के लिए 3 चुनें।"
+    "Rank them for the 3 trucks in the night convoy.",
+    "रात के काफ़िले के 3 ट्रकों के लिए क्रम लगाएँ।"
    ],
    "speaker": [
     "Bauji",
@@ -2558,8 +2568,8 @@
     "cls": "veil"
    },
    "button": [
-    "Lock the team",
-    "टीम पक्की करें"
+    "Send the list",
+    "लिस्ट भेजें"
    ],
    "teller": false,
    "people": [
@@ -2639,7 +2649,11 @@
     1,
     8
    ],
-   "need": 3
+   "seats": 3,
+   "cut": [
+    "3 trucks",
+    "3 ट्रक"
+   ]
   },
   {
    "type": "step",
@@ -2764,11 +2778,11 @@
    "n": 11,
    "total": 40,
    "title": "The hill route",
-   "kind": "team",
-   "rawKind": "keep, 2 of 4",
+   "kind": "pick",
+   "rawKind": "pick one",
    "q": [
-    "Keep 2 on the hill route.",
-    "पहाड़ी रास्ते पर 2 रखें।"
+    "Who stays on the hill route?",
+    "पहाड़ी रास्ते पर कौन रहे?"
    ],
    "speaker": [
     "Bauji",
@@ -2776,8 +2790,8 @@
    ],
    "speakerFace": "/take/assets/pulp-bauji.webp",
    "voice": [
-    "Two trucks scraped the hairpin last month. Two stay on the hill route.",
-    "पिछले महीने दो ट्रक मोड़ पर रगड़ खा गए। पहाड़ी रास्ते पर दो ही रहेंगे।"
+    "Two trucks scraped the hairpin last month. One stays on the hill route.",
+    "पिछले महीने दो ट्रक मोड़ पर रगड़ खा गए। पहाड़ी रास्ते पर एक ही रहेगा।"
    ],
    "keys": [
     [
@@ -2796,14 +2810,14 @@
     "कसारा घाट"
    ],
    "art": {
-    "base": "/take/assets/pulp-s-cricket.webp",
-    "p": "/take/assets/pulp-s-cricket.webp",
-    "w": "/take/assets/pulp-s-cricket.webp",
+    "base": "/take/assets/pulp-s-ghat.webp",
+    "p": "/take/assets/pulp-s-ghat-l.webp",
+    "w": "/take/assets/pulp-s-ghat-w.webp",
     "cls": "veil"
    },
    "button": [
-    "Keep these",
-    "इन्हें रखें"
+    "Send {n}",
+    "{n} को भेजें"
    ],
    "teller": false,
    "people": [
@@ -2868,8 +2882,7 @@
     2,
     3,
     8
-   ],
-   "need": 2
+   ]
   },
   {
    "type": "step",
@@ -3008,11 +3021,11 @@
    "n": 13,
    "total": 40,
    "title": "The cash run",
-   "kind": "team",
-   "rawKind": "pick a team, 3 of 5",
+   "kind": "rank",
+   "rawKind": "rank, 3 trucks",
    "q": [
-    "Pick 3 for the cash run to the market.",
-    "मंडी तक पैसों वाले फेरे के लिए 3 चुनें।"
+    "Rank them for the 3 trucks on the cash run.",
+    "पैसों वाले फेरे के 3 ट्रकों के लिए क्रम लगाएँ।"
    ],
    "speaker": [
     "Bauji",
@@ -3046,8 +3059,8 @@
     "cls": "veil"
    },
    "button": [
-    "Lock the team",
-    "टीम पक्की करें"
+    "Send the list",
+    "लिस्ट भेजें"
    ],
    "teller": false,
    "people": [
@@ -3127,7 +3140,11 @@
     5,
     8
    ],
-   "need": 3
+   "seats": 3,
+   "cut": [
+    "3 trucks",
+    "3 ट्रक"
+   ]
   },
   {
    "type": "step",
@@ -3252,11 +3269,11 @@
    "n": 15,
    "total": 40,
    "title": "The river route",
-   "kind": "team",
-   "rawKind": "keep, 2 of 4",
+   "kind": "pick",
+   "rawKind": "pick one",
    "q": [
-    "Keep 2 on the river route.",
-    "नदी वाले रास्ते पर 2 रखें।"
+    "Who stays on the river route?",
+    "नदी वाले रास्ते पर कौन रहे?"
    ],
    "speaker": [
     "Bauji",
@@ -3264,8 +3281,8 @@
    ],
    "speakerFace": "/take/assets/pulp-bauji.webp",
    "voice": [
-    "Two dents at the river bend this month. Two stay on that route.",
-    "इस महीने नदी के मोड़ पर दो डेंट। उस रास्ते पर दो ही रहेंगे।"
+    "Two dents at the river bend this month. One stays on that route.",
+    "इस महीने नदी के मोड़ पर दो डेंट। उस रास्ते पर एक ही रहेगा।"
    ],
    "keys": [
     [
@@ -3284,14 +3301,14 @@
     "कसारा घाट"
    ],
    "art": {
-    "base": "/take/assets/pulp-s-cricket.webp",
-    "p": "/take/assets/pulp-s-cricket.webp",
-    "w": "/take/assets/pulp-s-cricket.webp",
+    "base": "/take/assets/pulp-s-ghat.webp",
+    "p": "/take/assets/pulp-s-ghat-l.webp",
+    "w": "/take/assets/pulp-s-ghat-w.webp",
     "cls": "veil"
    },
    "button": [
-    "Keep these",
-    "इन्हें रखें"
+    "Send {n}",
+    "{n} को भेजें"
    ],
    "teller": false,
    "people": [
@@ -3356,8 +3373,7 @@
     2,
     7,
     8
-   ],
-   "need": 2
+   ]
   },
   {
    "type": "step",
@@ -3680,11 +3696,11 @@
    "n": 18,
    "total": 40,
    "title": "Cash to the next town",
-   "kind": "pick",
-   "rawKind": "pick one",
+   "kind": "team",
+   "rawKind": "pick a team, 2 of 4",
    "q": [
-    "Who carries the cash to the next town?",
-    "अगले शहर तक पैसे कौन ले जाए?"
+    "Pick 2 to carry the cash to the next town.",
+    "अगले शहर तक पैसे ले जाने के लिए 2 चुनें।"
    ],
    "speaker": [
     "Kader, the magician",
@@ -3692,8 +3708,8 @@
    ],
    "speakerFace": "/take/assets/jadugar-kader.webp",
    "voice": [
-    "The lorry leaves at dawn. The cash box goes with someone.",
-    "लॉरी सुबह निकलेगी। पैसों का डिब्बा किसी के साथ जाएगा।"
+    "The lorry leaves at dawn. Two go with the cash box.",
+    "लॉरी सुबह निकलेगी। पैसों के डिब्बे के साथ दो लोग जाएँगे।"
    ],
    "keys": [
     [
@@ -3712,14 +3728,14 @@
     "चाँदनी मंडल"
    ],
    "art": {
-    "base": "/take/assets/jadugar-s-rope.webp",
-    "p": "/take/assets/jadugar-s-rope-l.webp",
-    "w": "/take/assets/jadugar-s-rope-w.webp",
+    "base": "/take/assets/jadugar-s-rickshaw.webp",
+    "p": "/take/assets/jadugar-s-rickshaw-l.webp",
+    "w": "/take/assets/jadugar-s-rickshaw-w.webp",
     "cls": "veil"
    },
    "button": [
-    "Send {n}",
-    "{n} को भेजें"
+    "Lock the team",
+    "टीम पक्की करें"
    ],
    "teller": false,
    "people": [
@@ -3784,7 +3800,8 @@
     3,
     2,
     8
-   ]
+   ],
+   "need": 2
   },
   {
    "type": "step",
@@ -3908,11 +3925,11 @@
    "n": 20,
    "total": 40,
    "title": "The ticket tin",
-   "kind": "pick",
-   "rawKind": "pick one",
+   "kind": "rank",
+   "rawKind": "rank, 2 keys",
    "q": [
-    "Who keeps the key to the ticket tin?",
-    "टिकट के डिब्बे की चाबी कौन रखे?"
+    "Rank them for the 2 keys to the ticket tin.",
+    "टिकट के डिब्बे की 2 चाबियों के लिए क्रम लगाएँ।"
    ],
    "speaker": [
     "Kader, the magician",
@@ -3920,8 +3937,8 @@
    ],
    "speakerFace": "/take/assets/jadugar-kader.webp",
    "voice": [
-    "The ticket tin needs a keeper for the move.",
-    "सफ़र के लिए टिकट के डिब्बे को एक रखवाला चाहिए।"
+    "The ticket tin has two keys for the move.",
+    "सफ़र के लिए टिकट के डिब्बे की दो चाबियाँ हैं।"
    ],
    "keys": [
     [
@@ -3940,14 +3957,14 @@
     "चाँदनी मंडल"
    ],
    "art": {
-    "base": "/take/assets/jadugar-s-rope.webp",
-    "p": "/take/assets/jadugar-s-rope-l.webp",
-    "w": "/take/assets/jadugar-s-rope-w.webp",
+    "base": "/take/assets/jadugar-s-rickshaw.webp",
+    "p": "/take/assets/jadugar-s-rickshaw-l.webp",
+    "w": "/take/assets/jadugar-s-rickshaw-w.webp",
     "cls": "veil"
    },
    "button": [
-    "Send {n}",
-    "{n} को भेजें"
+    "Send the list",
+    "लिस्ट भेजें"
    ],
    "teller": false,
    "people": [
@@ -4012,6 +4029,11 @@
     3,
     4,
     8
+   ],
+   "seats": 2,
+   "cut": [
+    "2 keys",
+    "2 चाबियाँ"
    ]
   },
   {
@@ -4136,11 +4158,11 @@
    "n": 22,
    "total": 40,
    "title": "The takings",
-   "kind": "pick",
-   "rawKind": "pick one",
+   "kind": "team",
+   "rawKind": "pick a team, 2 of 4",
    "q": [
-    "Who takes the takings to the bank?",
-    "कमाई बैंक तक कौन ले जाए?"
+    "Pick 2 to take the takings to the bank.",
+    "कमाई बैंक तक ले जाने के लिए 2 चुनें।"
    ],
    "speaker": [
     "Kader, the magician",
@@ -4168,14 +4190,14 @@
     "चाँदनी मंडल"
    ],
    "art": {
-    "base": "/take/assets/jadugar-s-rope.webp",
-    "p": "/take/assets/jadugar-s-rope-l.webp",
-    "w": "/take/assets/jadugar-s-rope-w.webp",
+    "base": "/take/assets/jadugar-s-rickshaw.webp",
+    "p": "/take/assets/jadugar-s-rickshaw-l.webp",
+    "w": "/take/assets/jadugar-s-rickshaw-w.webp",
     "cls": "veil"
    },
    "button": [
-    "Send {n}",
-    "{n} को भेजें"
+    "Lock the team",
+    "टीम पक्की करें"
    ],
    "teller": false,
    "people": [
@@ -4240,7 +4262,8 @@
     3,
     6,
     8
-   ]
+   ],
+   "need": 2
   },
   {
    "type": "step",
@@ -4364,11 +4387,11 @@
    "n": 24,
    "total": 40,
    "title": "The cash box key",
-   "kind": "pick",
-   "rawKind": "pick one",
+   "kind": "rank",
+   "rawKind": "rank, 2 keys",
    "q": [
-    "Who keeps the key to the cash box?",
-    "पैसों के डिब्बे की चाबी कौन रखे?"
+    "Rank them for the 2 keys to the cash box.",
+    "पैसों के डिब्बे की 2 चाबियों के लिए क्रम लगाएँ।"
    ],
    "speaker": [
     "Kader, the magician",
@@ -4376,8 +4399,8 @@
    ],
    "speakerFace": "/take/assets/jadugar-kader.webp",
    "voice": [
-    "The key hangs on a red thread under the magician's table.",
-    "चाबी जादूगर की मेज़ के नीचे लाल धागे में लटकी है।"
+    "Two keys hang on a red thread under the magician's table.",
+    "दो चाबियाँ जादूगर की मेज़ के नीचे लाल धागे में लटकी हैं।"
    ],
    "keys": [
     [
@@ -4396,14 +4419,14 @@
     "चाँदनी मंडल"
    ],
    "art": {
-    "base": "/take/assets/jadugar-s-rope.webp",
-    "p": "/take/assets/jadugar-s-rope-l.webp",
-    "w": "/take/assets/jadugar-s-rope-w.webp",
+    "base": "/take/assets/jadugar-s-rickshaw.webp",
+    "p": "/take/assets/jadugar-s-rickshaw-l.webp",
+    "w": "/take/assets/jadugar-s-rickshaw-w.webp",
     "cls": "veil"
    },
    "button": [
-    "Send {n}",
-    "{n} को भेजें"
+    "Send the list",
+    "लिस्ट भेजें"
    ],
    "teller": false,
    "people": [
@@ -4468,6 +4491,11 @@
     3,
     8,
     8
+   ],
+   "seats": 2,
+   "cut": [
+    "2 keys",
+    "2 चाबियाँ"
    ]
   },
   {
@@ -5854,11 +5882,11 @@
    "n": 35,
    "total": 40,
    "title": "The loft",
-   "kind": "pick",
-   "rawKind": "pick one",
+   "kind": "team",
+   "rawKind": "pick a team, 2 of 3",
    "q": [
-    "Who clears the loft before the guests come?",
-    "मेहमानों के आने से पहले टांड कौन साफ़ करे?"
+    "Pick 2 to clear the loft before the guests come.",
+    "मेहमानों के आने से पहले टांड साफ़ करने के लिए 2 चुनें।"
    ],
    "speaker": [
     "Badi Amma",
@@ -5886,14 +5914,14 @@
     "फ़र्स्ट टेक"
    ],
    "art": {
-    "base": "/take/assets/sunday-s-sofa.webp",
-    "p": "/take/assets/sunday-s-sofa-l.webp",
-    "w": "/take/assets/sunday-s-sofa-w.webp",
+    "base": "/take/assets/sunday-s-roof.webp",
+    "p": "/take/assets/sunday-s-roof-l.webp",
+    "w": "/take/assets/sunday-s-roof-w.webp",
     "cls": "veil"
    },
    "button": [
-    "Send {n}",
-    "{n} को भेजें"
+    "Lock the team",
+    "टीम पक्की करें"
    ],
    "teller": false,
    "people": [
@@ -5944,7 +5972,8 @@
     5,
     3,
     8
-   ]
+   ],
+   "need": 2
   },
   {
    "type": "step",
@@ -6290,11 +6319,11 @@
    "n": 39,
    "total": 40,
    "title": "The storeroom",
-   "kind": "pick",
-   "rawKind": "pick one",
+   "kind": "team",
+   "rawKind": "pick a team, 2 of 3",
    "q": [
-    "Who clears the storeroom for the raddiwala?",
-    "रद्दी वाले के लिए स्टोर रूम कौन ख़ाली करे?"
+    "Pick 2 to clear the storeroom for the raddiwala.",
+    "रद्दी वाले के लिए स्टोर रूम ख़ाली करने के लिए 2 चुनें।"
    ],
    "speaker": [
     "Badi Amma",
@@ -6322,14 +6351,14 @@
     "फ़र्स्ट टेक"
    ],
    "art": {
-    "base": "/take/assets/sunday-s-sofa.webp",
-    "p": "/take/assets/sunday-s-sofa-l.webp",
-    "w": "/take/assets/sunday-s-sofa-w.webp",
+    "base": "/take/assets/sunday-s-roof.webp",
+    "p": "/take/assets/sunday-s-roof-l.webp",
+    "w": "/take/assets/sunday-s-roof-w.webp",
     "cls": "veil"
    },
    "button": [
-    "Send {n}",
-    "{n} को भेजें"
+    "Lock the team",
+    "टीम पक्की करें"
    ],
    "teller": false,
    "people": [
@@ -6380,7 +6409,8 @@
     5,
     7,
     8
-   ]
+   ],
+   "need": 2
   },
   {
    "type": "step",

@@ -144,13 +144,15 @@ try {
 
   /* ---- play into chapter 1, in Hindi ---- */
   const shown = new Set<string>()
-  for (let i = 0; i < 40 && !(await page.$('.tiles')); i++) {
+  for (let i = 0; i < 40 && !(await page.$('.take .app.is-step')); i++) {
     // a cutscene loads all its panels with its first one, so every panel of a cutscene reached counts as shown
     for (const src of await page.$$eval('.cutpanel img', (xs) => xs.map((x) => new URL((x as HTMLImageElement).src).pathname))) shown.add(src)
     await page.click('.dock .main')
     await page.waitForTimeout(100)
   }
-  await page.click('.tiles .tile >> nth=0')
+  // the first decision, whatever its kind: a card, or rows until the button is ready (Station 1 is a crew of 2)
+  if (await page.$('.tiles')) await page.click('.tiles .tile >> nth=0')
+  for (let i = 0; i < 6 && (await page.$('.dock .main.is-wait')); i++) await page.click('.rows .row[aria-checked="false"] >> nth=0')
   await page.click('.dock .main')
   await page.waitForFunction(() => /^2 of /.test(document.querySelector('.take .app')?.getAttribute('aria-label') ?? ''))
   await page.click('[data-help]')

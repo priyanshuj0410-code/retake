@@ -113,7 +113,8 @@ def step(c, d, prog, i, total):
     if k == 'checks':
         s['max'] = int(re.search(r'up to (\d+)', d['kind']).group(1))
     if k == 'rank':
-        s['seats'] = int(re.search(r'(\d+) seats', d['kind']).group(1))
+        s['seats'], word = FT.places(d)
+        s['cut'] = [f"{s['seats']} {word[0]}", f"{s['seats']} {word[1]}"]
     if k == 'team':
         s['need'] = int((re.search(r'(\d+) of \d+', d['kind']) or re.search(r'(\d+)', d['q'][0])).group(1))
     if k == 'split':

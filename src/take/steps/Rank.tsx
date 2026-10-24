@@ -38,7 +38,7 @@ export function Rank(props: StepProps) {
   const cut = (
     <div className="rkcut" key="cut" hidden={order.length < seats}>
       <Svg name="arrow" />
-      <T t={[`${seats} seats`, `${seats} सीटें`]} />
+      <T t={s.cut ?? [`${seats} seats`, `${seats} सीटें`]} />
     </div>
   )
   const items = rows.map((p) => {

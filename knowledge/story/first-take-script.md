@@ -64,15 +64,15 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
 
 | Twin | What it looks at | Kind | Nudge on the woman | Nudge on the man |
 |---|---|---|---|---|
-| 1 and 5 | The same firmness called "pushy" in one and "takes charge" in the other | plain, pick one | 1 | 5 |
+| 1 and 5 | The same firmness called "pushy" in one and "takes charge" in the other | plain, pick 2 of 4 | 1 | 5 |
 | 2 and 6 | Six months off to nurse a sick father | plain, rank 2 seats, Mohan in both | 2 | 6 |
 | 3 and 7 | Only one has learned the section | matters, pick one | 3 | 7 |
 | 4 and 8 | A complaint of bullying moved a foreman: is the one who made it held back? | hard, pick one | 8 | 4 |
 
 ### The decisions
 
-1. **The first run.** Pick one; twin 5.
-   - **Question:** Who drives the first run to Bhusawal? | **Scene:** "The new engine leaves at dawn, with the press on the platform."
+1. **The first run.** Pick 2 of 4; twin 5.
+   - **Question:** Pick 2 to crew the first run to Bhusawal. | **Scene:** "The new engine leaves at dawn, with the press on the platform."
    - **Key:** years on the line, signals missed.
    - **Cards:**
      - Mumtaz (11, 0) "Pushy with the guards, every single shift." [N]
@@ -108,8 +108,8 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
      - Rohit (9, 1) "Sharp on the rule book, quotes it daily." [d]
      - Yasmin (6, 2) "New to the shed, still finding her way." [d]
    - **Pair:** Annamma and Sunil.
-5. **The Daund goods.** Pick one; twin 1.
-   - **Question:** Who takes the Daund goods tonight? | **Scene:** "The yard wants a crew by ten. The rain has started."
+5. **The Daund goods.** Pick 2 of 4; twin 1.
+   - **Question:** Pick 2 to crew the Daund goods tonight. | **Scene:** "The yard wants a crew by ten. The rain has started."
    - **Cards:**
      - Kiran (9, 1) "Takes charge with the yard staff, always." [=]
      - Sunil (9, 1) "Pushy with the yard staff, every shift." [N]
@@ -175,15 +175,15 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
 
 | Twin | What it looks at | Kind | Nudge on the woman | Nudge on the man |
 |---|---|---|---|---|
-| 1 and 5 | Family worry keeps someone off paid night work | plain, pick 3 of 5, Ramesh in both | 1 | 5 |
+| 1 and 5 | Family worry keeps someone off paid night work | plain, rank for 3 trucks, Ramesh in both | 1 | 5 |
 | 2 and 6 | A report of being followed at night, doubted | hard, spend checks (up to 2) | 6 | 2 |
-| 3 and 7 | The same driving called "reckless" in one and "bold" in the other | plain, keep 2 of 4 | 3 | 7 |
+| 3 and 7 | The same driving called "reckless" in one and "bold" in the other | plain, pick one | 3 | 7 |
 | 4 and 8 | Only one holds the hazardous-goods licence | matters, pick 3 | 4 | 8 |
 
 ### The decisions
 
-1. **The night convoy.** Pick 3 of 5; twin 5.
-   - **Question:** Pick 3 for the night convoy. | **Scene:** "Onions for Mumbai. Three trucks leave at midnight."
+1. **The night convoy.** Rank for 3 trucks; twin 5.
+   - **Question:** Rank them for the 3 trucks in the night convoy. | **Scene:** "Onions for Mumbai. Three trucks leave at midnight."
    - **Key:** trips, crashes.
    - **Cards:**
      - Etwari (75, 0) "Loads fastest at the depot, every time." [d]
@@ -201,8 +201,8 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
      - Baldev (22, 2) "Says a tyre burst near the toll last night. Hates delays." [d]
      - Nirmala (14, 7) "Says she was fined at the check post. Short on cash." [d]
    - **Pair:** Kusum and Dinesh.
-3. **The hill route.** Keep 2 of 4; twin 7.
-   - **Question:** Keep 2 on the hill route. | **Scene:** "Two trucks scraped the hairpin last month. Two stay on the hill route."
+3. **The hill route.** Pick one; twin 7.
+   - **Question:** Who stays on the hill route? | **Scene:** "Two trucks scraped the hairpin last month. One stays on the hill route."
    - **Key:** loads, days late.
    - **Cards:**
      - Baldev (80, 0) "Slow, but never scraped." [d]
@@ -220,8 +220,8 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
      - Baldev (30, 1) "Drives the long Mumbai run." [=]
      - Nirmala (18, 3) "Wants the day shift again." [d]
    - **Pair:** Kusum and Baldev.
-5. **The cash run.** Pick 3 of 5; twin 1.
-   - **Question:** Pick 3 for the cash run to the market. | **Scene:** "Cash for the onion growers goes down at dawn. Three trucks."
+5. **The cash run.** Rank for 3 trucks; twin 1.
+   - **Question:** Rank them for the 3 trucks on the cash run. | **Scene:** "Cash for the onion growers goes down at dawn. Three trucks."
    - **Key:** trips, crashes.
    - **Cards:**
      - Saroj (72, 0) "Never once late in six whole years." [d]
@@ -239,8 +239,8 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
      - Jasleen (6, 2) "Says a fallen tree blocked the river road at dusk. Hates detours." [d]
      - Etwari (30, 1) "Says the brakes felt soft on the long slope down. Wants repairs." [d]
    - **Pair:** Saroj and Anthony.
-7. **The river route.** Keep 2 of 4; twin 3.
-   - **Question:** Keep 2 on the river route. | **Scene:** "Two dents at the river bend this month. Two stay on that route."
+7. **The river route.** Pick one; twin 3.
+   - **Question:** Who stays on the river route? | **Scene:** "Two dents at the river bend this month. One stays on that route."
    - **Key:** loads, days late.
    - **Cards:**
      - Saroj (80, 0) "Never once scraped the paint." [d]
@@ -290,9 +290,9 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
 | Twin | What it looks at | Kind | Nudge on the woman | Nudge on the man |
 |---|---|---|---|---|
 | 1 and 5 | A harassment report backstage; the witness called dramatic | hard, Believe | 1 | 5 |
-| 2 and 6 | Money trusted by gender ("careful, the way women are"; "a man for the highway") | plain, pick one | 2 | 6 |
+| 2 and 6 | Money trusted by gender ("careful, the way women are"; "a man for the highway") | plain, pick 2 of 4 | 2 | 6 |
 | 3 and 7 | Who saw it, and who was only told | matters, Believe | 7 (she saw) | 3 (he saw) |
-| 4 and 8 | A sibling in the rival troupe | plain, pick one | 4 | 8 |
+| 4 and 8 | A sibling in the rival troupe | plain, rank for 2 keys | 4 | 8 |
 
 **Believe cards** show each person's account as the line and the note under it. That needs a second line on the card, a small design change for the sketch sheet.
 
@@ -307,8 +307,8 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
      - Jonali (7, 1): "He came in by the back gate after the last show." / "Saw him near the gate, Pallavi says." [d]
      - Gopal (4, 3): "He left the grounds when the watchman came with a lamp." / "New with the troupe this season." [d]
    - **Pair:** Sarla and Thomas.
-2. **Cash to the next town.** Pick one; twin 6.
-   - **Question:** Who carries the cash to the next town? | **Scene:** "The lorry leaves at dawn. The cash box goes with someone."
+2. **Cash to the next town.** Pick 2 of 4; twin 6.
+   - **Question:** Pick 2 to carry the cash to the next town. | **Scene:** "The lorry leaves at dawn. Two go with the cash box."
    - **Key:** trips, times short.
    - **Cards:**
      - Dolly (30, 0) "Careful with money, the way women are." [N]
@@ -325,8 +325,8 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
      - Thomas (40, 1): "The stand was never tied down properly." [d]
      - Gopal (22, 2): "I think someone knocked it by mistake." [d]
    - **Pair:** Jonali and Cyrus.
-4. **The ticket tin.** Pick one; twin 8.
-   - **Question:** Who keeps the key to the ticket tin? | **Scene:** "The ticket tin needs a keeper for the move."
+4. **The ticket tin.** Rank for 2 keys; twin 8.
+   - **Question:** Rank them for the 2 keys to the ticket tin. | **Scene:** "The ticket tin has two keys for the move."
    - **Key:** shows, days late.
    - **Cards:**
      - Mitali (48, 1) "Her brother works for the rival troupe." [N]
@@ -343,8 +343,8 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
      - Rabia (6, 0): "He ran off the moment the drums started up again." / "Sings the songs in the interval." [d]
      - Lalit (3, 2): "I only heard the shouting from behind the stage curtain." / "New this season, so Pallavi says." [d]
    - **Pair:** Pushpa and Naresh.
-6. **The takings.** Pick one; twin 2.
-   - **Question:** Who takes the takings to the bank? | **Scene:** "A cloth bag of notes. The bank is across the highway."
+6. **The takings.** Pick 2 of 4; twin 2.
+   - **Question:** Pick 2 to take the takings to the bank. | **Scene:** "A cloth bag of notes. The bank is across the highway."
    - **Key:** trips, times short.
    - **Cards:**
      - Sarla (35, 0) "Never forgets a receipt, so Pallavi says." [d]
@@ -361,8 +361,8 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
      - Mitali (16, 2): "I saw it. It ran out of diesel." [N, the detail that matters]
      - Lalit (16, 2): "Someone told me. It ran out of diesel." [=]
    - **Pair:** Mitali and Lalit.
-8. **The cash box key.** Pick one; twin 4.
-   - **Question:** Who keeps the key to the cash box? | **Scene:** "The key hangs on a red thread under the magician's table."
+8. **The cash box key.** Rank for 2 keys; twin 4.
+   - **Question:** Rank them for the 2 keys to the cash box. | **Scene:** "Two keys hang on a red thread under the magician's table."
    - **Key:** shows, days late.
    - **Cards:**
      - Pushpa (52, 0) "Sews all the costumes for the troupe." [=]
@@ -520,7 +520,7 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
 |---|---|---|---|---|
 | 1 and 5 | Rest asked for one of two with the same free time | plain, Split, Vikram in both | 5 | 1 |
 | 2 and 6 | Who the children live with after a separation; one parent wants to remarry | hard, pick one | 6 | 2 |
-| 3 and 7 | One is allergic to dust | matters, pick one | 3 | 7 |
+| 3 and 7 | One is allergic to dust | matters, pick 2 of 3 | 3 | 7 |
 | 4 and 8 | Who goes to the wedding talk after saying "no dowry" | hard, pick one | 8 | 4 |
 
 ### The decisions
@@ -544,8 +544,8 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
      - Rajan (5, 6) "Wants to marry again, and soon." [N]
      - Pooja (3, 2) "The children's aunt. Offers to help." [d]
    - **Pair:** Shampa and Rajan.
-3. **The loft.** Pick one; twin 7; matters.
-   - **Question:** Who clears the loft before the guests come? | **Scene:** "Nobody has cleared the loft in years."
+3. **The loft.** Pick 2 of 3; twin 7; matters.
+   - **Question:** Pick 2 to clear the loft before the guests come. | **Scene:** "Nobody has cleared the loft in years."
    - **Key:** Sundays free, jobs done.
    - **Cards:**
      - Deepa (3, 6) "Has a dust allergy since childhood." [N]
@@ -578,8 +578,8 @@ People are in [people.md](people.md), years in [timeline.md](timeline.md), place
      - Chetan (5, 6) "Moved in with his elder brother." [=]
      - Deepa (3, 2) "The children's aunt, close to them." [d]
    - **Pair:** Uma and Chetan.
-7. **The storeroom.** Pick one; twin 3; matters.
-   - **Question:** Who clears the storeroom for the raddiwala? | **Scene:** "Old newspapers to the ceiling, and a broken cooler."
+7. **The storeroom.** Pick 2 of 3; twin 3; matters.
+   - **Question:** Pick 2 to clear the storeroom for the raddiwala. | **Scene:** "Old newspapers to the ceiling, and a broken cooler."
    - **Key:** Sundays free, jobs done.
    - **Cards:**
      - Pooja (3, 6) "Sorts all the papers by date." [=]

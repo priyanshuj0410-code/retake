@@ -46,6 +46,8 @@ export interface Step {
   prog: [number, number, number]
   max?: number
   seats?: number
+  /** a rank's line under its last place: "2 seats", "3 trucks" */
+  cut?: Bi
   need?: number
   chores?: Bi[]
 }
