@@ -61,13 +61,13 @@
 .w-rukavat .tile, .w-rukavat .row { background: var(--paper); box-shadow: inset 0 0 0 1px var(--hair), var(--lit), var(--sh-md); }
 .w-rukavat .tile { grid-template-rows: auto auto 1fr; padding: 8px 8px 8px; }
 /* the taller faces need the room: on the phone's twin step the byline and the key share one line under the question */
-.w-rukavat.phone.js-pick:not(.is-200) .scr-body { display: grid; grid-template-columns: auto minmax(0, 1fr); align-content: start; row-gap: 8px; }
-.w-rukavat.phone.js-pick:not(.is-200) .scr-body > :is(.qbox, .tiles) { grid-column: 1 / -1; }
-.w-rukavat.phone.js-pick:not(.is-200) .tiles { row-gap: 8px; }
-.w-rukavat.phone.js-pick:not(.is-200) .scr-body > .qbox { justify-self: start; }
-.w-rukavat.phone.js-pick:not(.is-200) .scr-body > .statkey { justify-self: start; align-self: center; }
+.w-rukavat:is(.phone, .app).js-pick:not(.is-200) .scr-body { display: grid; grid-template-columns: auto minmax(0, 1fr); align-content: start; row-gap: 8px; }
+.w-rukavat:is(.phone, .app).js-pick:not(.is-200) .scr-body > :is(.qbox, .tiles) { grid-column: 1 / -1; }
+.w-rukavat:is(.phone, .app).js-pick:not(.is-200) .tiles { row-gap: 8px; }
+.w-rukavat:is(.phone, .app).js-pick:not(.is-200) .scr-body > .qbox { justify-self: start; }
+.w-rukavat:is(.phone, .app).js-pick:not(.is-200) .scr-body > .statkey { justify-self: start; align-self: center; }
 /* the whole head shows, crown to chin; the caption is a lower third straddling the screen's chrome bottom edge, off the face */
-.w-rukavat .tile .face, .phone.w-rukavat[lang="hi"] .tile .face { grid-area: 1 / 1; aspect-ratio: 5 / 4; background-position: 50% 22%; }
+.w-rukavat .tile .face, :is(.phone, .app).w-rukavat[lang="hi"] .tile .face { grid-area: 1 / 1; aspect-ratio: 5 / 4; background-position: 50% 22%; }
 .w-rukavat .tile .nmrow { grid-area: 1 / 1; align-self: end; z-index: 1; margin: 0 5px -5px; transform: translateY(50%); padding: 5px 8px 2px; background: var(--teal-deep); box-shadow: inset 0 3px 0 var(--accent), var(--sh-sm); }
 .w-rukavat .tile .stats { grid-area: 2 / 1; margin-top: 5px; padding-top: 13px; }
 .w-rukavat .tile .quote { grid-area: 3 / 1; text-wrap: pretty; }
@@ -215,6 +215,7 @@
 .w-rukavat .rk-chap-h.rk-title { font: 400 var(--t-display-s)/1.15 'Rozha One', 'Hind', serif; }
 .w-rukavat .rk-five { display: flex; gap: 8px; padding: 5px 0; }
 .w-rukavat .rk-five i { width: 14px; height: 14px; border-radius: 9999px; background: var(--paper); }
+.w-rukavat .rk-five i:not(.is-done, .is-now) { background: none; box-shadow: inset 0 0 0 2px var(--paper); }   /* a chapter still to come */
 .w-rukavat .rk-five i.is-now { background: var(--accent); box-shadow: 0 0 0 3px var(--ground-deep), 0 0 0 5px var(--paper); }
 
 /* ===== the result: the score on the TV, "Good night" on a caption across the bottom of the picture; the figures on a programme card ===== */
@@ -226,10 +227,10 @@
   border-radius: 0 0 calc(var(--r-card) - 3px) calc(var(--r-card) - 3px); }
 /* on the phone the painting's own TV is the bezel: its screen (sunday-s-tv, 13.6% from the left) spans x 10 to 380, y 274 to 627;
    the card fills about 80% of its width, centred on the part the figures card leaves showing; no trim, no teak */
-.w-rukavat.phone:has(.scr-body > .rk-signoff) > .art, .w-rukavat.phone.rk-cutphone > .art { background-position: 13.6% 50%; }
-.w-rukavat.phone:not(.is-200):not(.is-small) .scr-body > .rk-signoff { width: 300px; margin: 200px auto 0; border: 0; border-radius: 28px; background: var(--ground-deep); box-shadow: none; }
-.w-rukavat.phone:not(.is-200):not(.is-small) .scr-body > .rk-signoff::before { display: none; }
-.w-rukavat.phone:not(.is-200):not(.is-small) .scr-body > .rk-signoff .rk-gn { border-radius: 0 0 28px 28px; }
+.w-rukavat.phone:has(.scr-body > .rk-signoff) > .art, .w-rukavat.phone.rk-cutphone > .art, .w-rukavat.app:has(.scr-body > .rk-signoff) .page-art > .art { background-position: 13.6% 50%; }
+.w-rukavat:is(.phone, .app):not(.is-200):not(.is-small) .scr-body > .rk-signoff { width: 300px; margin: 200px auto 0; border: 0; border-radius: 28px; background: var(--ground-deep); box-shadow: none; }
+.w-rukavat:is(.phone, .app):not(.is-200):not(.is-small) .scr-body > .rk-signoff::before { display: none; }
+.w-rukavat:is(.phone, .app):not(.is-200):not(.is-small) .scr-body > .rk-signoff .rk-gn { border-radius: 0 0 28px 28px; }
 .w-rukavat .rk-panel { padding-top: 21px; }
 .w-rukavat .rk-panel .letter { font-weight: 700; }
 .w-rukavat .art-meta .rk-signoff { align-self: flex-start; margin: 8px 0 0; }
@@ -314,20 +315,20 @@
 .w-rukavat .tile.is-focus, .w-rukavat .row.is-focus, .w-rukavat .chip.is-focus, .w-rukavat .main.is-focus { box-shadow: 0 0 0 5px var(--focus-inner); }
 
 /* ===== 200% text and small phones ===== */
-.w-rukavat.phone.is-200 .rk-slots { grid-template-columns: 1fr; }
-.w-rukavat.phone.is-200 .rk-titlecard, .w-rukavat.phone.is-200 .rk-chapter { margin-inline: 0; }
-.w-rukavat.phone.is-200 .rk-signoff .score { font-size: var(--t-score); }
+.w-rukavat:is(.phone, .app).is-200 .rk-slots { grid-template-columns: 1fr; }
+.w-rukavat:is(.phone, .app).is-200 .rk-titlecard, .w-rukavat:is(.phone, .app).is-200 .rk-chapter { margin-inline: 0; }
+.w-rukavat:is(.phone, .app).is-200 .rk-signoff .score { font-size: var(--t-score); }
 /* the channel buttons grow with the text: the rank column widens so "1,958" stays inside its own column, clear of the name */
-.w-rukavat.phone.is-200 .lrow { grid-template-columns: 84px minmax(0, 1fr) auto; }
+.w-rukavat:is(.phone, .app).is-200 .lrow { grid-template-columns: 84px minmax(0, 1fr) auto; }
 /* doubled text keeps its whole line box on its own plate or caption */
-.w-rukavat.phone.is-200 .daycount { padding-block: 3px; }
+.w-rukavat:is(.phone, .app).is-200 .daycount { padding-block: 3px; }
 
 /* the cream pucks fill their half at 200%, so the larger words stay on them */
-.w-rukavat.phone.is-200 .seg button[aria-selected="true"]::before { inset: 0; border-radius: 8px; }
+.w-rukavat:is(.phone, .app).is-200 .seg button[aria-selected="true"]::before { inset: 0; border-radius: 8px; }
 
-.w-rukavat.phone.is-200 .rk-set b { padding-top: 5px; padding-bottom: 2px; }
-.w-rukavat.phone.is-200 .rk-set .offstamp { padding: 8px 8px; }
-.w-rukavat.phone.is-200 .tile .stats { padding-top: 34px; }
+.w-rukavat:is(.phone, .app).is-200 .rk-set b { padding-top: 5px; padding-bottom: 2px; }
+.w-rukavat:is(.phone, .app).is-200 .rk-set .offstamp { padding: 8px 8px; }
+.w-rukavat:is(.phone, .app).is-200 .tile .stats { padding-top: 34px; }
 /* small phones and 200% text keep the round 3 card padding: they scroll once already, and nothing new may land under the scroll fade */
 .w-rukavat.phone:is(.is-200, .is-small) .tile { padding: 8px 8px 5px; }
 /* the small phone keeps the library's shallow portrait in both languages; the stats clear the deeper caption */
@@ -336,7 +337,7 @@
 /* ===== wide screens: the caption sits beside the portrait once the card turns on its side ===== */
 @container play (min-width: 440px) {
   .w-rukavat .tile { grid-template-rows: auto auto 1fr; }
-  .w-rukavat .tile .face, .phone.w-rukavat[lang="hi"] .tile .face { grid-area: 1 / 1 / 4 / 2; aspect-ratio: 5 / 4; }
+  .w-rukavat .tile .face, :is(.phone, .app).w-rukavat[lang="hi"] .tile .face { grid-area: 1 / 1 / 4 / 2; aspect-ratio: 5 / 4; }
   .w-rukavat .tile .nmrow { grid-area: 1 / 2; align-self: start; margin: 0; transform: none; }
   .w-rukavat .tile .stats { grid-area: 2 / 2; margin-top: 0; padding-top: 0; }
   .w-rukavat .tile .quote { grid-area: 3 / 2; }

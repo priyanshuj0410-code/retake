@@ -95,15 +95,9 @@ def step_order(world, placed=0, lang=None, cls=''):
     return lib.phone(world, inner, f'{W.title} batting order, {state}', 'js-order ' + cls, art, ac, lang)
 
 
-# ---------- the starter's chapter title card (SC-91): chapter 4 of 5, teams and leaders ----------
-def chapter_card(world, lang=None, cls=''):
-    W = lib.WORLDS[world]
-    marks = ''.join(f'<i class="{c}"></i>' for c in ('is-done', 'is-done', 'is-done', 'is-now', ''))
-    plate = (f'<div class="plate hug cr-chap"><div class="cr-marks" aria-hidden="true">{marks}</div>{tx("span", "Chapter 4 of 5", "अध्याय 4, 5 में से", "level")}'
-             f'{tx("h1", "Teams and leaders", "टीम और नेतृत्व", "bigline")}{tx("span", "About 4 minutes", "लगभग 4 मिनट", "level")}</div>')
-    inner = (lib.topbar('step') + lib.body(nameboard(W.name, 'p', None), f'<div class="coverstack">{plate}</div>', cls='is-cover')
-             + lib.dock(lib.out_btn('Start', 'शुरू करें')))
-    return lib.phone(world, inner, f'{W.title} chapter title card', cls, W.scene(W.moment('chapter')), 'veil-low', lang)
+# ---------- the starter's chapter title card (SC-91): chapter 4 of 5, teams and leaders (Cricket.chapter_top) ----------
+def chapter_card(world, lang=None, cls='', c=None):
+    return lib.chapter_card(world, lang, cls, c)
 
 
 lib.SCREENS['cr_order'] = step_order
@@ -187,7 +181,10 @@ class Cricket(lib.World):
     art_cls = 'veil'
     face_prefix = 'cricket-face'   # the cricket-<who> portraits re-graded: darker midtones, capped highlights, a sepia backdrop
     plates = {'default': ('<i>Day</i><b>6</b>', '<i>दिन</i><b>6</b>'), 'board': ('<i>Scoreboard</i>', '<i>स्कोरबोर्ड</i>'),
-              'sunday': ('<i>Scorecard</i>', '<i>स्कोरकार्ड</i>'), 'look': ('<i>Scorecard</i>', '<i>स्कोरकार्ड</i>')}
+              'sunday': ('<i>Scorecard</i>', '<i>स्कोरकार्ड</i>'), 'look': ('<i>Scorecard</i>', '<i>स्कोरकार्ड</i>'), 'chapter': None}
+    chapter = {'n': 4, 'area': ('Teams and leaders', 'टीम और नेतृत्व'), 'year': '1992',
+               'line': ("Sunday's finals, and complaints of violence at home.", 'इतवार के फ़ाइनल, और घरेलू हिंसा की शिकायतें।')}
+    chapter_marks = 'cr-marks'
     week = ['nets', 'dressing', 'scoreboard', 'stumps', 'nets', 'dressing']
     next_line = ('Play resumes tomorrow', 'खेल कल फिर शुरू होगा')
     stat_keys = STAT_KEYS
@@ -224,6 +221,12 @@ class Cricket(lib.World):
                         ('result', {'cls': 'cr-still'}, '{w} result, reduced motion', 'result.still')],
              'hi_step': [('twin', {'lang': 'hi'}, 'Hindi, {w} step', 'hi.step'), ('cr_order', {'placed': 2, 'lang': 'hi'}, 'Hindi, {w} batting order', 'hi.order')],
              'hi_cover': [('cover', {'lang': 'hi'}, 'Hindi, {w} cover', 'hi.cover'), ('cr_chapter', {'lang': 'hi'}, 'Hindi, {w} chapter card', 'hi.chapter')]}
+
+    def chapter_top(self, b):
+        # the ground's name board, then the chapter on a plate: the marks, the place, the area, the setting, the year
+        plate = ('<div class="plate hug cr-chap">' + b['marks'] + tx('span', *b['of'], 'level') + tx('h1', *b['area'], 'bigline')
+                 + tx('p', *b['line'], 'coverline') + tx('span', *b['when'], 'level') + '</div>')
+        return nameboard(self.name, 'p', None) + f'<div class="coverstack">{plate}</div>'
 
     def cover_top(self, hard, line, level, nxt, kept):
         day, num = (('Thursday', 'गुरुवार'), '215') if hard else (('Wednesday', 'बुधवार'), '214')
@@ -315,7 +318,7 @@ class Cricket(lib.World):
                 ("The commentator's card (words)", self.letter_obj(),
                  'A scorecard in a steel clip, with the line and one blank; the commentator under it.', 'paper, hairline, green band, steel clip', 'blank: empty, filled', 'The blank is named "blank".'),
                 ('Chapter title card (the starter, chapter 4)', chapter_card(w),
-                 'The painting, the world name on a hung board, five balls for the five chapters, the area named plainly, the length, and Start.',
+                 'The painting, the world name on a hung board, five balls for the five chapters, the area named plainly, the chapter\'s setting, the year and the length, and Start.',
                  'name board, plate, Khand title; Hind for the rest', 'new, begun (Continue), retake; Hindi; 200%',
                  'The area is the h1. The balls are hidden; "Chapter 4 of 5" says the same in words.')]
 

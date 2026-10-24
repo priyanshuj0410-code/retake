@@ -219,6 +219,15 @@ html.deutan .phone, html.deutan .frame, html.deutan .sharecard { filter: url(#de
 .nextline { margin: 0; align-self: flex-start; padding: 5px 13px; font: 700 var(--t-label)/1.43 'Hind'; color: var(--on-ground); }
 .coverline { margin: 0; font: 500 var(--t-body)/1.5 'Hind'; color: var(--title); }
 .level { display: block; font: 500 var(--t-label)/1.43 'Hind'; color: var(--title); }   /* secondary to the line above it, so not bolder than it */
+/* the First take's chapter title card (SC-91): five marks, the finished chapters filled and this one with a dot, in the
+   plate's own ink; the area is the heading, at the board names' size */
+.chapplate { gap: 5px; }
+.chapmarks { display: flex; gap: 5px; padding-bottom: 3px; }
+.chapmarks i { width: 20px; height: 20px; box-shadow: inset 0 0 0 1.5px currentColor; }
+.chapmarks i.is-done { background: currentColor; }
+.chapmarks i.is-now { background: linear-gradient(currentColor, currentColor) center / 8px 8px no-repeat; box-shadow: inset 0 0 0 2.5px currentColor; }
+.chap-h { margin: 0; font: 700 var(--t-display-s)/1.15 'Hind'; color: inherit; text-wrap: balance; }
+.chap-h:lang(hi) { line-height: 1.3; }
 .coverstack { margin-top: auto; display: grid; gap: 13px; }
 
 /* cover title: printed on the painting, worn by an ink mask */

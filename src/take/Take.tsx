@@ -59,8 +59,10 @@ export function Take() {
     setSaved((s) => ({ ...s, at: s.at + 1 >= flow.length ? 0 : s.at + 1 }))
     scrollTo(0, 0)
   }, [flow.length])
-  // Back from a step: the step before it, read-only; from a chapter's first step, the chapter's title card
+  // Back from a step: the step before it, read-only; from a chapter's first step, the chapter's title card; from a title
+  // card, the chapter's way in (SC-91 leaves the starter for the cover or the Week tab, which come with the daily, M3)
   const backFrom = (i: number) => {
+    if (flow[i]?.type === 'cover') return flow[i - 1]?.type === 'cut' ? i - 1 : null
     if (flow[i]?.type !== 'step') return null
     if (flow[i - 1]?.type === 'step') return i - 1
     for (let j = i - 1; j >= 0; j--) if (flow[j].type === 'cover') return j
@@ -144,9 +146,18 @@ export function Take() {
         onRetry={() => setSaved((s) => ({ ...s, opens: undefined, retried: true }))}
       />
     )
-  else if (screen.type === 'cut') body = <Cutscene c={screen} onNext={next} {...props} />
+  // a way in watched again goes on to its title card, then to the screen the take is on
+  else if (screen.type === 'cut') body = <Cutscene c={screen} onNext={view === null ? next : shown + 1 >= at ? toCurrent : () => setView(shown + 1)} {...props} />
   else if (screen.type === 'cover')
-    body = <Cover c={screen} onNext={view === null ? next : toCurrent} revisit={view !== null} {...props} />
+    body = (
+      <Cover
+        c={screen}
+        onNext={view === null ? next : toCurrent}
+        onBack={backFrom(shown) === null ? undefined : () => void back()}
+        revisit={view !== null && shown < at}
+        {...props}
+      />
+    )
   else if (screen.type === 'step') {
     const Kind = KINDS[screen.kind]
     body = (

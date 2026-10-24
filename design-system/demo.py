@@ -437,9 +437,9 @@ def with_help(ph):
 
 def story_build(shared=False):
     """"Dadi's trunk" (knowledge/story/first-take-script.md; owner, 23 Oct 2026: "I need this in the demo"): the opening,
-    each chapter's way in, cover, eight decisions with notes and progress, and way out, then the diary, the private
-    reading and the trunk handed on. Every chapter opens on its hard cover, naming the setting plainly; the shared
-    link carries all 40 decisions for the team (owner, 23 Oct 2026)."""
+    each chapter's way in, title card, eight decisions with notes and progress, and way out, then the diary, the private
+    reading and the trunk handed on. Every chapter opens on its title card (SC-91), naming the setting plainly; the
+    shared link carries all 40 decisions for the team (owner, 23 Oct 2026)."""
     chapters, P = S.parse(), S.panels()
     faults = S.length_faults(chapters)
     if faults:   # a note's length must never point at the pair: fix the script's notes first
@@ -448,7 +448,7 @@ def story_build(shared=False):
     phones, i = story_cut(P, [f'0.{k}' for k in range(1, 8)], 'station', ("Dadi's trunk", 'दादी का संदूक')), 0
     for c in chapters:
         n, label = c['n'], c['title']
-        phones += story_cut(P, [f'{n}.{k}' for k in range(1, 5)], c['world'], label) + [chapter_cover(c, True)]
+        phones += story_cut(P, [f'{n}.{k}' for k in range(1, 5)], c['world'], label) + [L.chapter_card(c['world'], c=S.card(c))]
         for j, d in enumerate(c['decisions'], 1):
             i += 1
             phones.append(FT.step(c, dict(d, prog=(n, j, len(c['decisions']))), i, total))

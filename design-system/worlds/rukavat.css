@@ -215,6 +215,7 @@
 .w-rukavat .rk-chap-h.rk-title { font: 400 var(--t-display-s)/1.15 'Rozha One', 'Hind', serif; }
 .w-rukavat .rk-five { display: flex; gap: 8px; padding: 5px 0; }
 .w-rukavat .rk-five i { width: 14px; height: 14px; border-radius: 9999px; background: var(--paper); }
+.w-rukavat .rk-five i:not(.is-done, .is-now) { background: none; box-shadow: inset 0 0 0 2px var(--paper); }   /* a chapter still to come */
 .w-rukavat .rk-five i.is-now { background: var(--accent); box-shadow: 0 0 0 3px var(--ground-deep), 0 0 0 5px var(--paper); }
 
 /* ===== the result: the score on the TV, "Good night" on a caption across the bottom of the picture; the figures on a programme card ===== */

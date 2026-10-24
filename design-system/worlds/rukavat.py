@@ -119,15 +119,9 @@ def step_cut(world, still=False, lang=None, cls=''):
                      W.scene(W.moment('result')), '', lang)
 
 
-# ---------- the starter's chapter title card ----------
-def step_chapter(world, lang=None, cls=''):
-    W = lib.WORLDS[world]
-    marks = ''.join(f'<i class="{c}"></i>' for c in ['is-done'] * 4 + ['is-now'])
-    body = ('<div class="rk-chapter">' + tx('span', 'Chapter 5 of 5', 'अध्याय 5, 5 में से', 'level')
-            + f'<span class="rk-five" aria-hidden="true">{marks}</span>' + tx('h1', 'Home and family', 'घर और परिवार', 'rk-chap-h')
-            + tx('span', 'About 4 minutes', 'लगभग 4 मिनट', 'level') + '</div>')
-    inner = lib.topbar('step', W.plate('chapter')) + lib.body(body, cls='is-cover') + lib.dock(lib.out_btn('Start', 'शुरू करें'))
-    return lib.phone(world, inner, f'{W.title} chapter title card', cls, W.scene(W.moment('chapter')), 'veil-low', lang)
+# ---------- the starter's chapter title card (library.chapter_card, Rukavat.chapter_top) ----------
+def step_chapter(world, lang=None, cls='', c=None):
+    return lib.chapter_card(world, lang, cls, c)
 
 
 lib.SCREENS.update({'rukavat_split': step_split, 'rukavat_cut': step_cut, 'rukavat_chapter': step_chapter})
@@ -171,6 +165,9 @@ class Rukavat(lib.World):
     plates = {'default': ('Wednesday · 9 pm', 'बुधवार · रात 9 बजे'), 'result': ('Wednesday · 10 pm', 'बुधवार · रात 10 बजे'),
               'split': ('Sunday · 9 am', 'रविवार · सुबह 9 बजे'), 'sunday': ('Sunday · 4 pm', 'रविवार · शाम 4 बजे'), 'look': ('Sunday · 4 pm', 'रविवार · शाम 4 बजे'),
               'board': ('The sofa', 'सोफ़ा'), 'chapter': ('First take', 'फ़र्स्ट टेक')}
+    chapter = {'n': 5, 'area': ('Home and family', 'घर और परिवार'), 'year': '1999',
+               'line': ('Family evenings, parents who separate, and a dowry demand.', 'परिवार की शामें, अलग होते माँ-बाप, और दहेज की माँग।')}
+    chapter_marks = 'rk-five'
     places = ('Wednesday · 9 pm', 'Wednesday · 10 pm', 'Sunday · 9 am', 'Sunday · 4 pm', 'The sofa')
     week = ['room', 'tv', 'sofa', 'roof', 'room', 'tv']
     next_line = ('Same time tomorrow', 'कल इसी समय')
@@ -218,6 +215,11 @@ class Rukavat(lib.World):
              'hi_cover': [('cover', {'lang': 'hi'}, 'Hindi, {w} cover', 'hi.cover'), ('rukavat_chapter', {'lang': 'hi'}, 'Hindi, {w} chapter card', 'hi.chapter')]}
 
     # ----- cover -----
+    def chapter_top(self, b):
+        # the television's title card: the place, the five marks, the area, the setting, the year
+        return ('<div class="rk-chapter">' + tx('span', *b['of'], 'level') + b['marks'] + tx('h1', *b['area'], 'rk-chap-h')
+                + tx('p', *b['line'], 'coverline') + tx('span', *b['when'], 'level') + '</div>')
+
     def cover_top(self, hard, line, level, nxt, kept):
         return (kept + '<div class="coverstack">' + titlecard(hard) + '<div class="plate hug">'
                 + ('' if nxt or not line else tx('p', line[0], line[1], 'coverline')) + tx('span', level[0], level[1], 'level') + nxt + '</div></div>')
@@ -324,7 +326,7 @@ class Rukavat(lib.World):
                  'Six small screens, Monday to Saturday, each showing its day\'s painting; the day on a lower third; a forgiven day greyed with "off"; an unplayed day is a switched-off screen with its dot.',
                  'teak case with a steel line, teal-deep, paper; radius 12', 'played, off, not played', 'The strip is one image with a spoken summary.'),
                 ('Chapter title card (First take, chapter 5 of 5)', step_chapter(w),
-                 'Back, the plate "First take", "?"; the room painting; a screen-grey card with the place in five marks, the area of life, the length; Start outside a puzzle.',
+                 'Back, the plate "First take", "?"; the room painting; a screen-grey card with the place in five marks, the area of life, the chapter\'s setting, the year and the length; Start outside a puzzle.',
                  'ground-deep, paper, orange, teak; Hind 700 36', 'start; begun (Continue); not loaded; a retake', 'The area is the h1; the five marks repeat the words and are hidden.'),
                 ('The sofa (Board rows)', self.board_list(lib.lrows(w, lib.road_rows(w, 'friends'))),
                  'A programme card; each rank in a round channel button with a chrome rim, the road name, practice; the you row framed, its name on a teal caption.', 'paper, ink, teal-deep, orange, chrome; radius 12 and round',

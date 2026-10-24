@@ -67,14 +67,13 @@ NO_WIDE = set()
 
 
 def cover(c):
-    """The chapter's hard cover, the setting named under the title, as the demo draws it (demo.chapter_cover)."""
-    ph = D.chapter_cover(c, True)
+    """The chapter's title card (SC-91), as the library draws it (library.chapter_card) from the script's chapter card:
+    the five marks, the area, the setting, the year and about 4 minutes, Back and "?" in the top bar, Start in the dock."""
+    W = L.WORLDS[c['world']]
+    ph = L.chapter_card(c['world'], c=S.card(c))
     cls = re.search(r'class="phone world ([^"]*)"', ph).group(1)
     inner = ph[ph.index('<div class="scr">') + len('<div class="scr">'):-len('</div></div>')]
-    # a chapter's title card is a full screen with no tabs (ia-and-flows.md SC-91); the library's cover carries them
-    inner = re.sub(r'<nav class="tabbar".*?</nav>', '', inner, flags=re.S)
-    # the hard cover's painting with the phone cover's low veil (library.cover)
-    return {'type': 'cover', 'world': c['world'], 'cls': cls, 'art': paint(L.WORLDS[c['world']], 'cover_hard', 'veil-low'), 'html': inner}
+    return {'type': 'cover', 'world': c['world'], 'cls': cls, 'art': paint(W, 'chapter', 'veil-low'), 'html': inner}
 
 
 def kind_of(d):

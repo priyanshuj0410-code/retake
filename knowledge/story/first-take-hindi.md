@@ -30,6 +30,18 @@ Owner, 23 Oct 2026: "Get the hindi and hinglish modes working as well... everyth
 | Shirin, the coach | शीरीं, कोच |
 | Badi Amma | बड़ी अम्मा |
 
+## Areas
+
+Each chapter's title card names its area (SC-91). The last three are the library's drafts; Work and Safety and justice are new.
+
+| English | Hindi |
+|---|---|
+| Work | काम |
+| Safety and justice | सुरक्षा और न्याय |
+| Trust | भरोसा |
+| Teams and leaders | टीम और नेतृत्व |
+| Home and family | घर और परिवार |
+
 ## Chapter titles
 
 | English | Hindi |

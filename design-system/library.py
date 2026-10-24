@@ -188,7 +188,7 @@ def dayplate(en, hi):
     return tx('span', f'<span>{en}</span>', f'<span>{hi}</span>', 'dayplate', dc)
 
 HELP = f'<button class="ibtn" type="button" data-help{al("How to play", "कैसे खेलें")}>{ic("help")}</button>'
-BACK = f'<button class="ibtn" type="button"{al("Back", "वापस")}>{ic("back")}</button>'
+BACK = f'<button class="ibtn" type="button" data-back{al("Back", "वापस")}>{ic("back")}</button>'
 
 def topbar(kind, plate=None, first=False):
     if kind == 'cover':
@@ -332,6 +332,15 @@ class World:
     def cover_top(self, hard, line, level, nxt, kept):
         return (kept + '<div class="coverstack">' + tx('h1', self.name[0], self.name[1], 'q') + '<div class="plate hug">'
                 + ('' if nxt or not line else tx('p', line[0], line[1], 'coverline')) + tx('span', level[0], level[1], 'level') + nxt + '</div></div>')
+
+    # the First take's chapter title card (chapter_card): this world's own chapter as the specimen, {n, area, year, line}
+    chapter = None
+    chapter_marks = 'chapmarks'   # the class on the five marks
+
+    def chapter_top(self, b):
+        """The card's body from chapter_bits: the marks and the place, the area as the h1, the setting, the year."""
+        return ('<div class="coverstack"><div class="plate hug chapplate">' + b['marks'] + tx('span', *b['of'], 'level')
+                + tx('h1', *b['area'], 'chap-h') + tx('p', *b['line'], 'coverline') + tx('span', *b['when'], 'level') + '</div></div>')
 
     def app_meta(self, kind, line=None, level=None):
         if kind == 'step':
@@ -489,6 +498,30 @@ def notyet_phone(world, retry=True, days=214):
     again = f'<button class="textbtn on-paper" type="button">{tx("span", "Wrong date?", "तारीख़ ग़लत है?")}</button>' if retry else ''
     return phone(world, body(f'<div class="gatecard at-end">{tx("h1", *line, "q")}{again}</div>', cls='is-cover'),
                  f'{W.title}: not yet 18', 'is-gate', W.scene(W.moment('cover')), 'veil-low')
+
+# ---------- the First take's chapter title card (SC-91), 24 Oct 2026 ----------
+# Full screen with no tabs, like a day's step: back at the top left, "?" at the top right, Start in the dock. It holds
+# the chapter's place as five marks, the area named plainly as the h1, the chapter's setting on the line under it
+# (every chapter carries a hard topic, so it is named before Start, as a hard day's cover names its setting: O16, F-06),
+# and the year with "about 4 minutes" (first-take-script.md, each chapter's card). The words are the script's, read by
+# story_take.parse; each world lays them out in its own dress (World.chapter_top), and its own chapter is its specimen.
+MINUTES = ('About 4 minutes', 'लगभग 4 मिनट')
+
+
+def chapter_bits(c, marks='chapmarks'):
+    """A chapter's words for its card, c being {n, area, year, line}: the five marks (the finished ones filled, this
+    one ringed), "Chapter n of 5", the area, the setting, and "1971 · About 4 minutes"."""
+    n = c['n']
+    states = ['is-done' if k < n else 'is-now' if k == n else '' for k in range(1, 6)]
+    return {'marks': f'<span class="{marks}" aria-hidden="true">' + ''.join(f'<i class="{s}"></i>' if s else '<i></i>' for s in states) + '</span>',
+            'of': (f'Chapter {n} of 5', f'अध्याय {n}, 5 में से'), 'area': c['area'], 'line': c['line'],
+            'when': (f'{c["year"]} · {MINUTES[0]}', f'{c["year"]} · {MINUTES[1]}')}
+
+
+def chapter_card(world, lang=None, cls='', c=None):
+    W = WORLDS[world]
+    inner = topbar('step', W.plate('chapter')) + body(W.chapter_top(chapter_bits(c or W.chapter, W.chapter_marks)), cls='is-cover') + dock(out_btn('Start', 'शुरू करें'))
+    return phone(world, inner, f'{W.title} chapter title card', cls, W.scene(W.moment('chapter')), 'veil-low', lang)
 
 
 # ---------- mechanics ----------
@@ -973,10 +1006,11 @@ class Lugdi(World):
     card_word = 'newsprint panels'
     scenes = {'ghat': 'pulp-s-ghat', 'diwali': 'pulp-s-diwali', 'money': 'pulp-s-money', 'cricket': 'pulp-s-cricket', 'night': 'pulp-s-night', 'court': 'pulp-s-court'}
     moments = {'twin': 'ghat', 'rule': 'diwali', 'jobs': 'diwali', 'checks': 'money', 'team': 'cricket', 'sort': 'cricket', 'words': 'night', 'crowd': 'ghat',
-               'look': 'ghat', 'board': 'court', 'cover': 'ghat', 'cover_hard': 'court', 'result': 'ghat', 'sunday': 'court', 'change': 'ghat', 'month': 'court'}
+               'look': 'ghat', 'board': 'court', 'cover': 'ghat', 'cover_hard': 'court', 'result': 'ghat', 'sunday': 'court', 'change': 'ghat', 'month': 'court',
+               'chapter': 'ghat'}
     art_cls = 'veil'
     face_prefix = 'pulp'
-    plates = {'default': ('Ghat Series', 'घाट सीरीज़'), 'board': ('Bestsellers', 'बेस्टसेलर')}
+    plates = {'default': ('Ghat Series', 'घाट सीरीज़'), 'board': ('Bestsellers', 'बेस्टसेलर'), 'chapter': None}
     places = ('Ghat Series',)
     week = ['diwali', 'money', 'ghat', 'cricket', 'night', 'court']
     signature = 'the result reprints the cover, red ink, then black, then paper white.'
@@ -1006,6 +1040,15 @@ class Lugdi(World):
         return (f'<div class="masthead">{tx("span", "Ghat Series", "घाट सीरीज़")}{tx("span", day[0], day[1])}</div>' + kept +
                 f'<div class="roundel" role="img"{al("Issue " + issue, "अंक " + issue)}><span aria-hidden="true">{issue}</span></div>'
                 '<div class="coverstack">' + tx('h1', title[0], title[1], 'pulp-title') + '<div class="plate hug">' + ('' if nxt or not line else tx('p', line[0], line[1], 'coverline')) + tx('span', level[0], level[1], 'level') + nxt + '</div></div>')
+
+    chapter = {'n': 2, 'area': ('Safety and justice', 'सुरक्षा और न्याय'), 'year': '1977',
+               'line': ('Night runs, and reports of being followed.', 'रात के फेरे, और पीछा किए जाने की रिपोर्टें।')}
+
+    def chapter_top(self, b):
+        # a part of the pulp novel: the masthead names the First take and the part, the area is the printed title
+        return (f'<div class="masthead">{tx("span", "First take", "फ़र्स्ट टेक")}{tx("span", *b["of"])}</div>'
+                '<div class="coverstack">' + tx('h1', *b['area'], 'pulp-title') + '<div class="plate hug chapplate">' + b['marks']
+                + tx('p', *b['line'], 'coverline') + tx('span', *b['when'], 'level') + '</div></div>')
 
     def app_meta(self, kind, line=None, level=None):
         if kind == 'step':
@@ -1054,11 +1097,12 @@ class Station(World):
     card_word = 'Edmondson tickets'
     scenes = {'platform': 'station-s-platform', 'counter': 'station-s-counter'}
     moments = {'twin': 'platform', 'rule': 'counter', 'jobs': 'counter', 'checks': 'counter', 'team': 'platform', 'sort': 'counter', 'words': 'platform', 'crowd': 'platform',
-               'look': 'platform', 'board': 'counter', 'cover': 'platform', 'cover_hard': 'counter', 'result': 'platform', 'sunday': 'counter', 'change': 'platform', 'month': 'counter'}
+               'look': 'platform', 'board': 'counter', 'cover': 'platform', 'cover_hard': 'counter', 'result': 'platform', 'sunday': 'counter', 'change': 'platform', 'month': 'counter',
+               'chapter': 'platform'}
     art_cls = 'print'
     face_prefix = 'enamel'
     plates = {'default': ('Nashik', 'नाशिक'), 'rule': ('Howrah', 'हावड़ा'), 'jobs': ('Howrah', 'हावड़ा'), 'checks': ('Kolkata', 'कोलकाता'), 'team': ('Churchgate', 'चर्चगेट'),
-              'sort': ('Pune', 'पुणे'), 'words': ('Pune', 'पुणे'), 'sunday': ('Platform 3', 'प्लेटफ़ॉर्म 3'), 'board': ('Departures', 'प्रस्थान')}
+              'sort': ('Pune', 'पुणे'), 'words': ('Pune', 'पुणे'), 'sunday': ('Platform 3', 'प्लेटफ़ॉर्म 3'), 'board': ('Departures', 'प्रस्थान'), 'chapter': None}
     places = ('Nashik', 'Howrah', 'Kolkata', 'Churchgate', 'Pune', 'Platform 3')
     next_line = ('Next train tomorrow', 'अगली गाड़ी कल')
     # the railway story (O15, said yes 22 Oct 2026): loco pilots for the night train to Nashik. Drafts for the owner and a
@@ -1113,6 +1157,15 @@ class Station(World):
         return (kept + '<div class="coverstack"><div class="nameboard"><span class="bn" lang="hi">' + board[0] + '</span><h1 class="bs">' + board[1] + '</h1>' + tx('span', sub[0], sub[1], 'bm') + '</div>'
                 '<div class="plate hug"><div class="pg-row">' + tx('span', 'Train', 'गाड़ी', 'level') + '<span class="vh">214</span>' + flaps('214') + '</div>' +
                 ('' if nxt or not line else tx('p', line[0], line[1], 'coverline')) + tx('span', level[0], level[1], 'level') + nxt + '</div></div>')
+
+    chapter = {'n': 1, 'area': ('Work', 'काम'), 'year': '1971',
+               'line': ('The new engines, and complaints of bullying in the shed.', 'नए इंजन, और शेड में बदसलूकी की शिकायतें।')}
+
+    def chapter_top(self, b):
+        # the enamel board names the chapter's junction, as the cover's names Nashik; the ticket below holds the chapter
+        return ('<div class="coverstack"><div class="nameboard"><span class="bn" lang="hi">मनमाड</span><span class="bs">Manmad</span>'
+                + tx('span', 'Junction', 'जंक्शन', 'bm') + '</div><div class="plate hug chapplate">' + b['marks'] + tx('span', *b['of'], 'level')
+                + tx('h1', *b['area'], 'chap-h') + tx('p', *b['line'], 'coverline') + tx('span', *b['when'], 'level') + '</div></div>')
 
     def app_meta(self, kind, line=None, level=None):
         if kind == 'step':
@@ -1235,7 +1288,7 @@ SHOWS = {
     'small_more': [('cover', {'cls': 'is-small'}, '360 x 640, {w} cover', 'small.cover'), ('result', {'cls': 'is-small'}, '360 x 640, {w} result', 'small.result')],
 }
 SCREENS = {'twin': step_twin, 'rule': step_rule, 'jobs': step_jobs, 'checks': step_checks, 'team': step_team, 'sort': step_sort, 'words': step_words,
-           'crowd': step_crowd, 'cover': cover, 'result': result, 'sunday': sunday_week, 'look': sunday_look, 'board': board, 'toast': board_toast, 'sheet': sheet_phone}
+           'crowd': step_crowd, 'cover': cover, 'chapter': chapter_card, 'result': result, 'sunday': sunday_week, 'look': sunday_look, 'board': board, 'toast': board_toast, 'sheet': sheet_phone}
 
 WORLDS = {}
 
@@ -1364,7 +1417,8 @@ for W in SEL:
                (cover(w, dialog=True), f'{T}, the one dialog', 'Only for deleting everything.'),
                (birth_phone(w, 'filled'), f'{T}, first visit: the birth date', 'Three number fields; the date in words under them, so a slip in the year shows. It stays on the phone.'),
                (birth_phone(w, 'error'), f'{T}, the birth date: not a real date', 'One line in place, the digits kept.'),
-               (notyet_phone(w), f'{T}, not yet 18', 'The day count, worked out on the phone; "Wrong date?" once.')]
+               (notyet_phone(w), f'{T}, not yet 18', 'The day count, worked out on the phone; "Wrong date?" once.'),
+               (chapter_card(w), f'{T}, First take chapter title card', "The chapter's place as five marks, the area, its setting and the year; Start.")]
 SHEETS = shown('sheet_help', 'sheet_info', 'sheet_settings')
 SHEETS += [(privacy_phone(SEL[0].id, lv), t, n) for lv, t, n in (
     ('link', 'The "?" sheet with Privacy', 'Option C keeps its three parts and gains one link.'),

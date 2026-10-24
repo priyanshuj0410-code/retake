@@ -125,6 +125,15 @@ An independent review (three angles: layout across sizes; Hindi, 200% text, smal
 - **Paintings, for the owner's Mac** (the painter runs there): wide (`-w`, 1440 x 810, the subject in the left third) versions of `pulp-s-cricket`, `pulp-s-money` and `cricket-s-board`, and larger (`-l`) ones of the two Lugdi paintings. Until then a wide screen stretches the phone's painting; the export names them.
 - On a laptop window, the row kinds (rank, team, batting order, split) and Jadugar's Believe still scroll once, with the cue; compact wide layouts for them are a design step for the library.
 
+## The chapter title cards, 24 Oct 2026
+
+Owner: "update the chapter covers". The five title cards were the daily game's covers ("Kolkata, Platform 5", "Train 214", "Level 4 of 6", Play). Each is now the First take's chapter title card (SC-91):
+
+- **What it says**, from the story script's chapter card (`first-take-script.md`): the chapter's place as five marks (the finished ones filled) and "Chapter 1 of 5", the area as the h1, the chapter's setting on the line under it (every chapter carries a hard topic, O16), and "1971 · About 4 minutes"; Back at the top left, "?" at the top right, Start in the dock, no tabs. The areas' Hindi is in `first-take-hindi.md` (Work and Safety and justice are new drafts).
+- **Drawn in the library** (`library.py` `chapter_card`, `chapter_bits`; `World.chapter_top`), each world in its own dress: Station's enamel board names the junction (Manmad) over a ticket; Lugdi's masthead names the First take and the part, the area printed as the pulp title; Jadugar's gilt plate with five cards; Cricket's hung name board and plate with five balls; Rukavat's television title card. The three newer worlds' specimens now come from the same function, with the setting and the year added. The demo (`site/`) and the app draw the same card.
+- **Paintings:** Station's platform, Lugdi's ghat road, Jadugar's rope trick, Cricket's scoreboard, Rukavat's room (each world's `chapter` moment).
+- **Back** on a title card plays the chapter's way in again, which comes back to the card; SC-91's Back leaves the starter for the cover or the Week tab, which arrive with the daily (M3). `pnpm e2e` checks the card's words, Back and the return (11 in the Back group).
+
 ## Started, 24 Oct 2026
 
 - [x] This plan, on the branch `app-build`.
@@ -136,5 +145,5 @@ An independent review (three angles: layout across sizes; Hindi, 200% text, smal
 
 **Known on the way:**
 - `pnpm build` runs `tsc -b`, which already failed on `main`: 58 errors in the turned-down build's `src/boards/` and `src/screens/`, none in `src/take/`. Those files are retired in M1, which brings `pnpm check` back. Until then, build with `npx vite build`.
-- The title cards are still the daily game's covers ("Kolkata, Platform 5", "Level 4 of 6"), as in the demo; open with the owner since 23 Oct.
+- ~~The title cards are still the daily game's covers~~: done, see "The chapter title cards".
 - The bundle carries the whole take (365 KB, 103 KB gzipped). For 2 GB phones on a weak signal (P4), M2 splits it by chapter.

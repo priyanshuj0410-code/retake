@@ -80,18 +80,11 @@ def step_believe(world, sel=None, cls='', lang=None, committing=False):
     return lib.phone(world, inner, f'{W.title} Believe step', 'js-pick ' + cls, W.scene(W.moment('believe')), W.art_cls, lang)
 
 
-# ---------- the starter: this world's chapter title card ----------
-def chapter_card(world, lang=None, cls='', display=False):
-    """Chapter 3 of 5, trust. Full screen, no tabs: back top left, "?" top right, Start in the dock. The five chapter
-    cards, then the area as the h1, then one level line under it (no kicker above the heading)."""
-    W = lib.WORLDS[world]
-    marks = ''.join(f'<i class="{c}"></i>' for c in ('is-done', 'is-done', 'is-now', '', ''))
-    stack = ('<div class="coverstack"><div class="plate hug jd-chapterplate">'
-             f'<span class="jd-marks" aria-hidden="true">{marks}</span>'
-             + tx('h1', 'Trust', 'भरोसा', 'jd-title' if display else 'jd-chapter')
-             + tx('span', 'Chapter 3 of 5 · About 4 minutes', 'अध्याय 3, 5 में से · लगभग 4 मिनट', 'level') + '</div></div>')
-    inner = lib.topbar('step', W.plate('chapter')) + lib.body(stack, cls='is-cover') + lib.dock(lib.out_btn('Start', 'शुरू करें'))
-    return lib.phone(world, inner, f'{W.title} chapter title card', cls, W.scene(W.moment('chapter')), 'veil-low', lang)
+# ---------- the starter: this world's chapter title card (library.chapter_card, Jadugar.chapter_top) ----------
+def chapter_card(world, lang=None, cls='', display=False, c=None):
+    """Chapter 3 of 5, trust. display sets the area in the cover title's face (the choice under "Lettering")."""
+    ph = lib.chapter_card(world, lang, cls, c)
+    return ph.replace('class="jd-chapter"', 'class="jd-title"', 1) if display else ph
 
 
 lib.SCREENS['jadugar_believe'] = step_believe
@@ -149,6 +142,9 @@ class Jadugar(lib.World):
     art_cls = 'veil'
     face_prefix = 'jadugar'
     plates = {'default': TROUPE, 'board': ('Front row', 'पहली क़तार')}
+    chapter = {'n': 3, 'area': ('Trust', 'भरोसा'), 'year': '1984',
+               'line': ('Show nights, and harassment reports backstage.', 'शो की रातें, और परदे के पीछे छेड़छाड़ की शिकायतें।')}
+    chapter_marks = 'jd-marks'
     places = (TROUPE[0],)
     week = ['rope', 'trunk', 'booth', 'rickshaw', 'cot', 'rope']
     next_line = ('Next show tomorrow', 'अगला शो कल')
@@ -204,6 +200,12 @@ class Jadugar(lib.World):
              'big_step': [('twin', {'cls': 'is-200'}, '200%, {w} step', 'big.step'), ('jadugar_believe', {'cls': 'is-200'}, '200%, {w} Believe', 'big.believe')],
              'big_cover': [('cover', {'cls': 'is-200'}, '200%, {w} cover', 'big.cover'), ('jadugar_chapter', {'cls': 'is-200'}, '200%, {w} chapter title card', 'big.chapter')],
              'small_step': [('twin', {'cls': 'is-small'}, '360 x 640, {w} step', 'small.step'), ('jadugar_believe', {'cls': 'is-small'}, '360 x 640, {w} Believe', 'small.believe')]}
+
+    def chapter_top(self, b):
+        # Full screen, no tabs. The five chapter cards (the finished ones face up), the area as the h1, the setting under
+        # it, then one level line (no kicker above the heading)
+        return ('<div class="coverstack"><div class="plate hug jd-chapterplate">' + b['marks'] + tx('h1', *b['area'], 'jd-chapter')
+                + tx('p', *b['line'], 'coverline') + tx('span', f"{b['of'][0]} · {b['when'][0]}", f"{b['of'][1]} · {b['when'][1]}", 'level') + '</div></div>')
 
     def cover_top(self, hard, line, level, nxt, kept):
         """The mast names the troupe and the show number; the title hangs on the crimson banner."""
@@ -316,7 +318,7 @@ class Jadugar(lib.World):
                  'A teller is the person card: portrait, name, the two numbers (years on stage, shows missed) and the account as the line. Two tellers tell the same story and match on both numbers; the others differ. One named voice sets the scene above them.',
                  'as the person card; Body line', 'rest, picked, committing', 'One stop per teller: the name and both numbers spoken, the account as its description. The main button says "Believe Sarla".'),
                 ('Chapter title card (the starter)', lib.thumb(chapter_card(w)),
-                 'The rope trick full bleed; at the foot, a gilt plate with five chapter cards (two face up, this one face down, two to come), the area named plainly, then one line, "Chapter 3 of 5 · About 4 minutes"; Start in the dock. No tabs.',
+                 'The rope trick full bleed; at the foot, a gilt plate with five chapter cards (two face up, this one face down, two to come), the area named plainly, the chapter\'s setting under it, then one line, "Chapter 3 of 5 · 1984 · About 4 minutes"; Start in the dock. No tabs.',
                  'night plate, gilt edge, card, crimson back; Hind 700 36 for the area', 'first time (Start), begun (Continue), no signal, a retake',
                  'The area is the screen\'s h1; the five cards are paint and the "Chapter 3 of 5" line is read.')]
 

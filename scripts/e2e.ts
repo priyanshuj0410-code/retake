@@ -197,7 +197,8 @@ async function privacy() {
 }
 
 /** Back (R-STEP-9): to the previous step, read-only with its answer and a lock, one button back to the current step;
- * from a chapter's first step, its title card reading Continue; the phone's back does the same. */
+ * from a chapter's first step, its title card reading Continue; the phone's back does the same. The title card (SC-91)
+ * names its chapter, and its Back plays the chapter's way in again. */
 async function backward() {
   const g = 'E Back: earlier steps, read-only'
   const page = await browser.newPage({ viewport: { width: 412, height: 915 } })
@@ -226,6 +227,17 @@ async function backward() {
   await page.locator('.take .dock .main').click()
   const kept = await page.evaluate(() => JSON.parse(localStorage.getItem('retake.take') ?? '{}'))
   record(g, 'going back changes no answer and moves the place nowhere', kept.at === 4 && Object.keys(kept.answers).length === 1)
+  await page.evaluate(() => localStorage.setItem('retake.take', JSON.stringify({ v: 1, at: 2, answers: {}, lang: 'mix', sound: false, birth: '1990-08-14' })))
+  await page.reload()
+  const card = await page.locator('.take-drawn').innerText()
+  record(g, 'a title card names its chapter, its area and its setting, with Start',
+    /Chapter 1 of 5/.test(card) && /Work/.test(card) && /bullying/.test(card) && /Start/.test((await look(page)).button), card.replace(/\s+/g, ' '))
+  await page.locator('.take [data-back]').click()
+  record(g, "Back from a title card plays the chapter's way in again", (await page.locator('.cutpanel:not([hidden])').count()) === 1)
+  await page.locator('.cutbar .textbtn').click()
+  const after = await page.evaluate(() => JSON.parse(localStorage.getItem('retake.take') ?? '{}'))
+  record(g, 'Skip there comes back to the title card, the place unmoved',
+    (await page.locator('.take-drawn').count()) === 1 && /Start/.test((await look(page)).button) && after.at === 2)
   record(g, 'no page error', errors.length === 0, errors.slice(0, 2).join(' | '))
   await page.close()
 }

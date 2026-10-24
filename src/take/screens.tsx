@@ -8,23 +8,27 @@ const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
 /** A panel that cannot load (offline, never cached) leaves its caption, not a broken picture. */
 const hide = (e: SyntheticEvent<HTMLImageElement>) => (e.currentTarget.style.visibility = 'hidden')
 
-/** A chapter's title card, drawn by the library (its hard cover, the setting named under the title). Come back to from
- * the chapter's first step, its button reads Continue (R-STEP-9). */
-export function Cover({ c, onNext, revisit, help, onHelp }: { c: CoverData; onNext: () => void; revisit?: boolean; help: boolean; onHelp: (o: boolean) => void }) {
+/** A chapter's title card (SC-91), drawn by the library (library.chapter_card): its place in the five, the area, the
+ * setting, the year and about 4 minutes. Come back to from the chapter's first step, its button reads Continue
+ * (R-STEP-9); Back goes to the chapter's way in, or is not shown when there is none. */
+export function Cover({ c, onNext, onBack, revisit, help, onHelp }: { c: CoverData; onNext: () => void; onBack?: () => void; revisit?: boolean; help: boolean; onHelp: (o: boolean) => void }) {
   const { sound } = useSound()
   const label = useLabel()
   const lang = useLang()
   const hold = useRef<HTMLDivElement>(null)
   useLayoutEffect(() => {
+    const backBtn = hold.current?.querySelector<HTMLElement>('[data-back]')
+    if (backBtn) backBtn.hidden = !onBack
     const span = hold.current?.querySelector<HTMLElement>('.dock .main span[data-hi]')
     if (!span || !revisit) return
     span.dataset.en = 'Continue'
     span.dataset.hi = 'जारी रखें'
     span.textContent = lang === 'hi' ? 'जारी रखें' : 'Continue'
-  }, [revisit, lang])
+  }, [revisit, lang, onBack])
   const click = (e: MouseEvent) => {
     const el = e.target as HTMLElement
     if (el.closest('[data-help]')) onHelp(true)
+    else if (el.closest('[data-back]')) onBack?.()
     else if (el.closest('.dock .main')) {
       sound.fx(c.world, 'cover')
       onNext()

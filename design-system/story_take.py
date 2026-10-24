@@ -74,6 +74,11 @@ def hindi():
     return hi
 
 
+def card(c):
+    """A chapter's words for its title card (library.chapter_card): its number, area, year and setting."""
+    return {'n': c['n'], 'area': c['area_name'], 'year': c['year'], 'line': c['line']}
+
+
 def parse():
     text = SCRIPT.read_text(encoding='utf-8')
     sex = sexes()
@@ -88,7 +93,8 @@ def parse():
         world, area = ERA[head.group(1)], head.group(3)
         sp = re.search(r'\*\*Speaker:\*\* ([^.]+)\.', block).group(1)
         line = re.search(r'with the line "([^"]+)" / "([^"]+)"', block)
-        c = {'n': n, 'world': world, 'area': area, 'year': head.group(1), 'title': (head.group(2), h(head.group(2))),
+        c = {'n': n, 'world': world, 'area': area, 'area_name': (area.capitalize(), h(area.capitalize())), 'year': head.group(1),
+             'title': (head.group(2), h(head.group(2))),
              'speaker': (sp, h(sp)), 'face': face(world, sp), 'line': (line.group(1), line.group(2)), 'decisions': [],
              'sex': {}, 'twins': []}
         for a, b, kind, w in re.findall(r'^\| (\d) and (\d) \| [^|]+\| (plain|hard|matters)[^|]*\| (\d)', block, re.M):
