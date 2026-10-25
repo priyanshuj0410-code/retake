@@ -1,7 +1,7 @@
-import { useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { TAKE, type Bi } from './data'
 import { say, T, useLang } from './lang'
-import { AppFrame, HelpButton, Main, useMoreCue } from './parts'
+import { AppFrame, HelpButton, Main, focusScreen, useMoreCue } from './parts'
 import { useSound } from './sound'
 import type { Answer } from './steps/common'
 import { favoured } from './reading'
@@ -30,6 +30,17 @@ export function Results(props: {
   const lang = useLang()
   const { sound } = useSound()
   const R = TAKE.results
+  // the next card's words take the focus, so a screen reader reads each card as it comes
+  const seen = useRef(n)
+  useEffect(() => {
+    if (seen.current === n) return
+    seen.current = n
+    if (cue.ref.current) focusScreen(cue.ref.current)
+  }, [n, cue.ref])
+  // every part of life's picture is asked for together, so what the network sees never says which one card 3 shows
+  useEffect(() => {
+    for (const a of Object.values(TAKE.results.areas)) new Image().src = a.scene
+  }, [])
   const D = R.decisions
   const picks = Object.fromEntries(Object.keys(D).map((id) => [id, favoured(id, props.answers[id])]))
   const sexOf = (id: string): Side | null => (picks[id] ? D[id].sex[picks[id]!] : null)

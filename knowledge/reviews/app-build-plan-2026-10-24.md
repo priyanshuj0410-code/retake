@@ -4,6 +4,7 @@ title: The app build, from the First take demo to the full V1 (24 Oct 2026)
 description: How Retake goes from the signed-off demo (design-system/demo.py) to the installable app in src/, in six milestones, the First take first. What carries over from the turned-down build, how the app keeps one source of truth with the library, what waits on the research check and the owner, and what was started on 24 Oct.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-18/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-19/
 ---
 
 # The app build plan, 24 Oct 2026
@@ -12,7 +13,7 @@ Owner: "Plan and start the full game development". The owner said on 22 Oct, "I'
 
 ## How it is built
 
-- **One app, in `src/`.** Vite, React and TypeScript, as installed. The turned-down build's screens and boards in `src/screens/` and `src/boards/` are retired as each new screen replaces them. Its engine (`src/engine/`: calendar, streak, score, rng), the store, the PWA wiring and the checks (`pnpm check`, e2e, pwa, ux) carry over.
+- **One app, in `src/`.** Vite, React and TypeScript, as installed. The turned-down build's screens and boards in `src/screens/` and `src/boards/` are retired as each new screen replaces them. Its engine (`src/engine/`: calendar, streak, score, rng), the store, the PWA wiring and the checks (`pnpm check`, e2e, pwa) carry over.
 - **The library's CSS is the app's CSS.** `design-system/library.css`, `fonts.css` and `worlds/*.css` are copied into the app by the content export, never edited there. The app renders the same markup and class names that `library.py` and `first_take.py` write, so a change made in the library reaches the app on the next export.
 - **Content is data.** `design-system/tools/app_content.py` reads the same sources as the demo (`story_take.parse()`, `panels()`, the worlds) and writes `content/take/first-take.json` and the pictures it names into `public/take/`. It refuses to write when `story_take.length_faults` finds a fault or a string has no Hindi. The research check of 25 Oct can change notes, nudges and decisions: that is a change to the script and a new export, not to the app.
 - **World dress stays in Python.** Pieces that differ by world and hold no state (covers, plates, the "?" sheet's dress, paintings, serials) are exported as resolved values, or as markup fragments where a world draws its own. Steps, rank, split, the batting order, cutscenes and the reading are React components with the library's markup.
@@ -40,7 +41,7 @@ M0 to M2 is the "faster alpha" of the estimate of 22 Oct (6 to 8 working days); 
    - Vercel Pro ($20 a month), or Vercel Support's answer on whether the NGO may stay on Hobby;
    - the lawyer's answers on the questions at the end of the record (log and data retention under the DPDP Rules, breach timing, processing outside India, the notice wording).
 2. **Hosting: Vercel's equal-lens-daily project** (owner, 24 Oct 2026: "yes... update vercel metadata"). Done the same day:
-   - `vercel.json` builds the app (`pnpm run build:web`) and copies the team's demo to `/demo/`, so production keeps the demo's link working when the app replaces it. Until then production deploys from `main`, which still serves the demo; a branch push gets a preview of the app.
+   - `vercel.json` builds the app (`pnpm run build:web`) and copies the team's demo to `/demo/`, so production keeps the demo's link working now the app has replaced it. Production deploys from `main` and has served the app at the root since 24 Oct; a branch push gets a preview.
    - Headers: noindex, no referrer, a strict Content-Security-Policy on the app (everything from this origin), no camera, microphone or location, long caching for hashed files, none for the shell, the service worker and the manifest.
    - The name is Retake everywhere: the page title, the install name and the manifest (it said "Equal Lens Daily"), with the ticket icon (DESIGN.md default A) drawn from `library.py` by the export and `scripts/icons.ts`, and a link preview for WhatsApp (`og.png`, a stand-in until the library draws SC-71) at the production address Vercel gives the build.
    - Every font is self-hosted (`public/take/fonts/`), as F-122b requires; the demo still loads Google Fonts.
@@ -143,6 +144,22 @@ Owner: "update the chapter covers". The five title cards were the daily game's c
 - **"portraits should fill the cards vertically"**: with cards on their side, the portrait runs the card's full height (library, Jadugar and Rukavat rules).
 - **"the question types are being very repetitive. I thought we fixed that"**: they were not fixed. The script still had one kind for most of a chapter: 22 of the 40 decisions were "pick one", all eight of Jadugar's were picks or Believe, six of Lugdi's were team picks. Six twins now change kind, with the same people, numbers, notes and hidden pairs, each twin keeping one kind in both halves, and only plain twins (and Rukavat's dust twin, whose reason holds in any kind) changed: Station 1 and 5 pick 2 of 4 (a crew); Lugdi 1 and 5 rank for 3 trucks, 3 and 7 pick one; Jadugar 2 and 6 pick 2 of 4, 4 and 8 rank for 2 keys; Rukavat 3 and 7 pick 2 of 3. Every chapter now has three or four kinds; pick one is 12 of 40. The rank's line under its last place names what it ranks for ("3 trucks", "2 keys"). Questions, scenes and Hindi drafts changed to match (`first-take-script.md`, `first-take-hindi.md`); the demo and the app follow. **For the owner:** the hard twins kept their kinds; Cricket is unchanged (batting order, captain, team).
 
+## The app's own faults, 25 Oct 2026 (EVAL-19)
+
+Owner, after the [audit](app-build-audit-2026-10-25.md): "Ignore the story level problems... just make sure the app itself is properly working". Fixed, each with a check in `pnpm e2e` that fails on the code before:
+
+- **Delete all holds whatever the way out.** Phone back, Escape, the scrim, a keyboard path behind the sheet (the screen beneath is `inert` while the sheet is open) and a second window all lead to a first visit, with nothing deleted written back. A window left on "Deleted." takes no writes and, leaving it, takes whatever the other window has started since.
+- **Two windows of the take** (two tabs, or the installed app beside the browser) follow each other through the `storage` event.
+- **The phone's back.** In the sheet, Android's back and Escape go up one level at a time through CloseWatcher (the dialog, Privacy, the sheet). On a step or title card with Back, one history entry stands for Back. It is added only on a tap, because Chrome skips an entry added without one (its rule against back-button traps). So it is never added on opening, and after a press only on the next tap: two presses with no tap between them leave the game. Where there is nothing to go back to, there is no entry. A reload adds none.
+- **Kept answers carry their decision's content hash** (`store.SIG`). An answer that no longer fits (another kind, a name not in the decision, a changed note, a malformed Split) is dropped on opening, so a new export never mixes old answers into the reading or crashes a screen. Rewording a question or the Hindi keeps them.
+- **The finished take rests on its reading**, instead of looping to the opening with the old answers.
+- **Focus and screen readers.** Each new screen's heading takes the focus, drawn with no ring (library.css, DESIGN.md). "?" gets it back when the sheet closes. A refused button keeps it. The batting order hands it to the next player. Row notes are read as the row's description, a rank row says its place, a cutscene's captions are read as they come, and the decision screens' names are in Hindi in Hindi mode. Sound starts on a key press too.
+- **The service worker** checks every file it fetches, and every picture it keeps, against its revision, so a deploy that lands mid-install cannot mix two versions.
+- **The reading** asks for every part of life's picture together, so the network never shows which one card 3 draws.
+- **The install screenshots**: `pnpm pwa:screens` broke when Station's first decision stopped being a pick; it now shoots the first pick-one decision, and its label no longer says "same numbers".
+
+**Still open for the app:** the batting order shows no notes (a design step: the library first); a window on an older build can still write over a newer one until it updates; the 200% layout keys on the root font size, which phone text settings may not change (needs a device); the Privacy text, "what you type" (copy, for the owner).
+
 ## Started, 24 Oct 2026
 
 - [x] This plan, on the branch `app-build`.
@@ -155,4 +172,4 @@ Owner: "update the chapter covers". The five title cards were the daily game's c
 **Known on the way:**
 - `pnpm build` runs `tsc -b`, which already failed on `main`: 58 errors in the turned-down build's `src/boards/` and `src/screens/`, none in `src/take/`. Those files are retired in M1, which brings `pnpm check` back. Until then, build with `npx vite build`.
 - ~~The title cards are still the daily game's covers~~: done, see "The chapter title cards".
-- The bundle carries the whole take (365 KB, 103 KB gzipped). For 2 GB phones on a weak signal (P4), M2 splits it by chapter.
+- The bundle carries the whole take (397 KB, 110 KB gzipped on 25 Oct). For 2 GB phones on a weak signal (P4), M2 splits it by chapter.

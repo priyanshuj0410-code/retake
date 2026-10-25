@@ -49,6 +49,7 @@ export function Rank(props: StepProps) {
         s={s}
         p={p}
         checked={k > 0 && k <= seats}
+        place={k || undefined}
         mark={
           <b className="rkno" aria-hidden="true">
             {k || ''}

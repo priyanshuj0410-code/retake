@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useId, type ReactNode } from 'react'
 import type { Person, Step } from '../data'
 import { T, say, useLabel, useLang } from '../lang'
 import { Stats, spoken } from '../parts'
@@ -16,19 +16,25 @@ export function Row(props: {
   role?: 'checkbox' | null
   cls?: string
   refused?: boolean
+  /** rank's place, said before the name */
+  place?: number
   onClick: () => void
 }) {
   const { s, p } = props
   const label = useLabel()
   const lang = useLang()
+  const nid = useId()
   const role = props.role === undefined ? 'checkbox' : props.role
+  const [en, hi] = spoken(s, p)
   return (
     <button
       className={`row${props.cls ? ` ${props.cls}` : ''}${props.checked ? ' is-selected' : ''}${props.refused ? ' is-refused' : ''}`}
       type="button"
       role={role ?? undefined}
       aria-checked={role ? !!props.checked : undefined}
-      aria-label={label(spoken(s, p))}
+      aria-label={label(props.place ? [`${props.place}, ${en}`, `${props.place}, ${hi}`] : [en, hi])}
+      // the note is the row's description, as on a card (Pick): a button's own children are not read
+      aria-describedby={p.line ? nid : undefined}
       data-en={p.en}
       onClick={props.onClick}
     >
@@ -48,7 +54,7 @@ export function Row(props: {
         {props.side ?? <Stats keys={s.keys} vals={p.vals} />}
       </span>
       {props.mark}
-      {p.line ? <T t={p.line} className="note" /> : null}
+      {p.line ? <T t={p.line} className="note" id={nid} /> : null}
     </button>
   )
 }

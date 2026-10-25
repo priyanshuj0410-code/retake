@@ -1,15 +1,18 @@
 import { useState, type ReactNode } from 'react'
-import type { Bi, Step } from '../data'
+import { TAKE, type Bi, type Step } from '../data'
+import { useLabel } from '../lang'
 import { AppFrame, Main, Progress, Topbar, useMoreCue } from '../parts'
 import { useSound, type Fx } from '../sound'
 
 /** What a decision's commit hands back: a name, a set of names, an order, or the chores each person was given (with
- * which chore went to whom, so a revisited Split shows them). */
-export type Answer =
+ * which chore went to whom, so a revisited Split shows them). Kept with the hash of the decision it answered (s,
+ * store.SIG). */
+export type Answer = (
   | { pick: string | null }
   | { set: string[] }
   | { order: string[] }
   | { chores: Record<string, number>; given?: Record<number, string> }
+) & { s?: string }
 
 export interface StepProps {
   s: Step
@@ -53,6 +56,7 @@ export function Frame(props: StepProps & { cls: string; children: ReactNode; but
   const fx = useFx(s.world)
   const [chapter, step, steps] = s.prog
   const cue = useMoreCue()
+  const label = useLabel()
   const back = props.revisit
   return (
     <AppFrame
@@ -60,7 +64,7 @@ export function Frame(props: StepProps & { cls: string; children: ReactNode; but
       kind="step"
       // a revisited step is read-only: picks keep their chosen look with a lock (library.css .is-revisited)
       cls={`${props.cls}${back ? ' is-revisited' : ''}`}
-      label={`${step} of ${steps}: ${s.title}`}
+      label={label([`${step} of ${steps}: ${s.title}`, `${TAKE.worlds[s.world].title[1]}, ${steps} में से ${step}`])}
       art={s.art}
       help={props.help}
       onHelp={props.onHelp}

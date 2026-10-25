@@ -4,12 +4,17 @@
  * (1440 x 900, the wide layout). Every screen is played through its own controls: cutscenes panel by panel, the five
  * title cards, all 40 decisions by their kind (pick one and Believe, spend checks, rank, pick a team and keep, the
  * batting order, split), and the reading's five cards.
- *   - The take reaches its end and every decision's answer is kept on the phone, and nothing else: no times.
- *   - Each kind's main button waits until the decision is complete, then names its consequence.
+ *   - The take reaches its end and every decision's answer is kept on the phone, and nothing else: no times. The
+ *     finished take rests on its reading.
+ *   - Each kind's main button waits until the decision is complete (it goes live only on the tap its "1 more" asked
+ *     for), then names its consequence.
  *   - The reading's five cards each say something in the chosen language (Devanagari in Hindi mode).
  *   - No screen scrolls sideways, and no page error or console error (a CSP refusal is one) anywhere.
  *   - A reload mid-take comes back on the same screen.
+ * Then Delete all by every way out of it (the phone's back, a second window), the phone's back inside the "?" sheet
+ * and where there is nothing to go back to, focus on each new screen, and kept answers that no longer fit.
  */
+import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium, type Page } from 'playwright-core'
 import { build } from 'vite'
@@ -22,6 +27,12 @@ const PORT = 5321
 const BASE = `http://localhost:${PORT}/`
 const T = 'E the First take end to end (production build, Vercel headers)'
 const DEVA = /[ऀ-ॿ]/
+const FLOW: { type: string; id?: string; kind?: string; need?: number; people?: { en: string }[] }[] = JSON.parse(
+  readFileSync(join(ROOT, 'content/take/first-take.json'), 'utf8'),
+).flow
+const LAST = FLOW.length - 1
+const READING = FLOW.findIndex((s) => s.type === 'results')
+const ADULT = { v: 1, lang: 'mix', sound: false, birth: '1990-08-14' }
 
 await build({ root: ROOT, logLevel: 'silent', build: { outDir: DIST, emptyOutDir: true } })
 const server = await serve(DIST, PORT, ROOT)
@@ -42,22 +53,33 @@ const look = (page: Page) =>
   })
 const tapMain = (page: Page) => page.locator('.take .dock .main').click()
 
-/** Answers the decision on screen through its own controls; returns whether the button waited until it was done. */
+/** Answers the decision on screen through its own controls; returns whether the button waited until it was done: it
+ * waits on arrival, and in the row kinds it goes live only on the tap its "1 more" asked for. */
 async function answer(page: Page, cls: string) {
-  const waited = !(await look(page)).live
+  let waited = !(await look(page)).live
+  const tap = async (target: ReturnType<Page['locator']>) => {
+    const before = await look(page)
+    await target.click()
+    const after = await look(page)
+    if (after.live && !before.live && !/(^|\D)1(\D|$)/.test(before.button)) waited = false
+  }
   if (/\bjs-(pick|checks)\b/.test(cls)) await page.locator('.tiles .tile').first().click()
   else if (/\bjs-rank\b/.test(cls)) {
     const n = await page.locator('.rows .row').count()
-    for (let i = 0; i < n; i++) await page.locator('.rows .row:not(.is-selected)').filter({ has: page.locator('.rkno:empty') }).first().click()
+    for (let i = 0; i < n; i++) await tap(page.locator('.rows .row:not(.is-selected)').filter({ has: page.locator('.rkno:empty') }).first())
   } else if (/\bjs-multi\b/.test(cls)) {
-    for (let i = 0; i < 8 && !(await look(page)).live; i++) await page.locator('.rows .row[aria-checked="false"]').first().click()
+    for (let i = 0; i < 8 && !(await look(page)).live; i++) await tap(page.locator('.rows .row[aria-checked="false"]').first())
   } else if (/\bjs-order\b/.test(cls)) {
-    while (await page.locator('.cr-tray .row:not([hidden])').count()) await page.locator('.cr-tray .row:not([hidden])').first().click()
+    while (await page.locator('.cr-tray .row:not([hidden])').count()) await tap(page.locator('.cr-tray .row:not([hidden])').first())
   } else if (/\bjs-split\b/.test(cls)) {
-    for (let i = 0; i < 12 && !(await look(page)).live; i++) await page.locator('.rk-family .row').nth(i % 2).click()
+    for (let i = 0; i < 12 && !(await look(page)).live; i++) await tap(page.locator('.rk-family .row').nth(i % 2))
   }
   return waited
 }
+/** The kept take, or null. */
+const kept = (page: Page) => page.evaluate(() => JSON.parse(localStorage.getItem('retake.take') ?? 'null'))
+const setTake = (page: Page, t: object) => page.evaluate((t) => localStorage.setItem('retake.take', JSON.stringify(t)), t)
+const onBirthDate = async (page: Page) => (await page.locator('.datefields input').count()) === 3
 
 async function play(lang: 'mix' | 'hi' | 'en', width: number, height: number) {
   const tag = `${lang} at ${width} x ${height}`
@@ -76,6 +98,7 @@ async function play(lang: 'mix' | 'hi' | 'en', width: number, height: number) {
   const cards: string[] = []
   let sideways = 0
   let reloaded = false
+  let ended = false
   for (let n = 0; n < 400; n++) {
     const s = await look(page)
     if (s.sideways) sideways++
@@ -104,14 +127,18 @@ async function play(lang: 'mix' | 'hi' | 'en', width: number, height: number) {
     await tapMain(page)
     await page.waitForTimeout(20)
     const after = await page.evaluate(() => JSON.parse(localStorage.getItem('retake.take') ?? '{}').at)
-    if (after === 0 && before !== 0) break   // the take wrapped round to its start: the end was reached
+    if (before === LAST && after !== LAST) {
+      ended = after === READING && (await look(page)).cls.includes('js-res')
+      break
+    }
   }
-  const kept = await page.evaluate(() => JSON.parse(localStorage.getItem('retake.take') ?? '{}'))
-  const answers = Object.keys(kept.answers ?? {})
+  const take = (await kept(page)) ?? {}
+  const answers = Object.keys(take.answers ?? {})
   record(T, `${tag}: the take reaches its end with all 40 answers kept`, answers.length === 40, `${answers.length} answers; kinds ${JSON.stringify(Object.fromEntries(kinds))}`)
   record(T, `${tag}: every kind was played`, ['pick', 'checks', 'rank', 'multi', 'order', 'split'].every((k) => kinds.has(k)))
+  record(T, `${tag}: past the last screen the finished take rests on its reading, its answers kept`, ended && answers.length === 40)
   record(T, `${tag}: the phone keeps the place, the answers, the language, the sound switch and the birth date, nothing else`,
-    JSON.stringify(Object.keys(kept).sort()) === JSON.stringify(['answers', 'at', 'birth', 'lang', 'sound', 'v']))
+    JSON.stringify(Object.keys(take).sort()) === JSON.stringify(['answers', 'at', 'birth', 'lang', 'sound', 'v']))
   record(T, `${tag}: every main button waited until its decision was complete`, waitedAll.length === 0, waitedAll.slice(0, 3).join('; '))
   record(T, `${tag}: the reading's five cards each say something${lang === 'hi' ? ', in Devanagari' : ''}`,
     cards.length === 5 && cards.every((c) => c.length > 10 && (lang === 'hi') === DEVA.test(c)), cards.map((c) => c.slice(0, 40)).join(' | '))
@@ -245,10 +272,144 @@ async function backward() {
   await page.close()
 }
 
+/** Delete all by every way out of it: the phone's back while "Deleted." shows, and a second window of the take on the
+ * same phone, which follows the first window's progress and its Delete all and never writes deleted data back. */
+async function deletion() {
+  const g = 'E Delete all, by every way out of it'
+  const errors: string[] = []
+  const ctx = await browser.newContext({ viewport: { width: 412, height: 915 } })
+  const a = await ctx.newPage()
+  const b = await ctx.newPage()
+  for (const p of [a, b]) p.on('pageerror', (e) => errors.push(String(e)))
+  await a.goto(BASE)
+  await setTake(a, { ...ADULT, at: 3, answers: {} })
+  await a.reload()
+  await a.locator('.take .app').waitFor()
+  await b.goto(BASE)
+  await b.locator('.take .app').waitFor()
+  const first = await look(b)
+  await a.locator('.rows .row').nth(0).click()
+  await a.locator('.rows .row').nth(1).click()
+  await a.locator('.take .dock .main').click()
+  await b.waitForFunction((l) => document.querySelector('.take .app')?.getAttribute('aria-label') !== l, first.label)
+  record(g, 'a second window follows the first onto its next decision', (await look(b)).label === (await look(a)).label)
+  await a.locator('[data-help]').first().click()
+  await a.locator('.sheetlinks button').filter({ hasText: 'Privacy' }).click()
+  await a.locator('.sheetlinks .is-danger').click()
+  await a.locator('.dialog .is-danger').click()
+  await b.waitForFunction(() => document.querySelectorAll('.datefields input').length === 3)
+  record(g, "the second window goes to a first visit with the first window's Delete all", await onBirthDate(b))
+  // a new start in the second window while the first still shows "Deleted.": it holds, and nothing deleted comes back
+  await b.locator('.langchips button').nth(1).click()
+  for (const [i, v] of ['14', '08', '1990'].entries()) await b.locator('.datefields input').nth(i).fill(v)
+  await b.locator('.take .dock .main').click()
+  await b.waitForTimeout(800)
+  const mid = await kept(a)
+  record(g, 'a new start in the second window holds while the first shows "Deleted."',
+    !(await onBirthDate(b)) && (await b.locator('.cutpanel').count()) > 0 && mid?.birth === '1990-08-14' && mid.at === 0 && !Object.keys(mid.answers ?? {}).length, JSON.stringify(mid))
+  await a.goBack()
+  await a.locator('.cutpanel').first().waitFor({ timeout: 3000 }).catch(() => {})
+  const end = await kept(a)
+  record(g, "the phone's back on \"Deleted.\" leaves it for the second window's new start, nothing of the deleted take kept",
+    (await a.locator('.sheet').count()) === 0 && (await a.locator('.cutpanel').count()) > 0 && end?.at === 0 && !Object.keys(end.answers ?? {}).length, JSON.stringify(end))
+  await b.close()
+  // alone: Delete all, then Escape (the close request Android's back sends where the browser has CloseWatcher); the
+  // second window chose Hindi, so the Privacy link is found by its place
+  await a.locator('[data-help]').first().click()
+  await a.locator('.sheetlinks button').first().click()
+  await a.locator('.sheetlinks .is-danger').click()
+  await a.locator('.dialog .is-danger').click()
+  await a.keyboard.press('Escape')
+  record(g, 'Escape on "Deleted." starts again from a first visit, with nothing kept', (await onBirthDate(a)) && (await kept(a)) === null)
+  record(g, 'no page error', errors.length === 0, errors.slice(0, 2).join(' | '))
+  await ctx.close()
+}
+
+/** The phone's back: a step with Back holds one history entry for it, added only on a tap (Chrome skips an entry added
+ * without one), never on opening and, after a press, again only on the next tap; a reload adds none; where there is
+ * nothing to go back to there is no entry, so a press leaves the game. Inside the "?" sheet a close request (Android's
+ * back, or Escape) goes one level up. Nothing behind an open sheet takes focus or taps. Focus moves to each new
+ * screen's heading, back to "?" when the sheet closes, and stays on a refused button. */
+async function phoneBack() {
+  const g = "E the phone's back and focus"
+  const page = await browser.newPage({ viewport: { width: 412, height: 915 } })
+  const errors: string[] = []
+  page.on('pageerror', (e) => errors.push(String(e)))
+  const guard = () => page.evaluate(() => history.state?.retake === 1)
+  await page.goto(BASE)
+  await setTake(page, { ...ADULT, at: 4, answers: {} })
+  await page.reload()
+  await page.locator('.take .app').waitFor()
+  const step = await look(page)
+  record(g, 'opening on a step adds no history entry before a tap', !(await guard()))
+  await page.locator('.take h1').click()
+  record(g, 'the first tap adds the one entry for Back', await guard())
+  const len = await page.evaluate(() => history.length)
+  await page.reload()
+  await page.locator('.take .app').waitFor()
+  await page.locator('.take h1').click()
+  record(g, 'a reload adds no second entry', (await page.evaluate(() => history.length)) === len && (await guard()))
+  await page.locator('.take .dock .main').focus()
+  await page.keyboard.press('Enter')
+  record(g, 'a refused press keeps the focus on the button', await page.evaluate(() => !!document.activeElement?.classList.contains('main')))
+  await page.locator('[data-help]').first().click()
+  record(g, 'with "?" open, nothing behind it takes focus or taps', await page.evaluate(() => !!document.querySelector('.take .dock .main')?.closest('[inert]')))
+  await page.locator('.sheetlinks button').filter({ hasText: 'Privacy' }).click()
+  await page.keyboard.press('Escape')
+  record(g, "a close request on Privacy goes up to the sheet's first level", (await page.locator('.sheet .howline').count()) === 1)
+  await page.keyboard.press('Escape')
+  record(g, 'another closes the sheet over the same step, with the focus back on "?"',
+    (await page.locator('.sheet').count()) === 0 && (await look(page)).label === step.label && (await page.evaluate(() => document.activeElement?.hasAttribute('data-help') ?? false)))
+  record(g, 'and the step still has its entry to go back from', await guard())
+  await page.goBack()
+  record(g, "the phone's back on a step shows the step before, read-only", (await look(page)).cls.includes('is-revisited') && (await look(page)).label !== step.label)
+  record(g, 'after a press there is no entry until the next tap', !(await guard()))
+  await page.locator('.take h1').click()
+  record(g, 'and a tap adds it again', await guard())
+  await page.locator('.take .dock .main').click()
+  await answer(page, step.cls)
+  await page.locator('.take .dock .main').click()
+  record(g, "a new screen's heading takes the focus", await page.evaluate(() => document.activeElement?.tagName === 'H1'))
+  await setTake(page, { ...ADULT, at: 0, answers: {} })
+  await page.reload()
+  await page.locator('.take .app').waitFor()
+  await page.waitForFunction(() => history.state?.retake !== 1, null, { timeout: 3000 }).catch(() => {})
+  record(g, "on the opening there is nothing to go back to and no entry: the phone's back leaves the game", !(await guard()))
+  record(g, 'no page error', errors.length === 0, errors.slice(0, 2).join(' | '))
+  await page.close()
+}
+
+/** A kept answer that no longer fits its decision (saved under another kind, naming someone not in it, or given under
+ * other content) is dropped on opening, never crashes a screen and never reaches the reading. */
+async function stale() {
+  const g = 'E kept answers that no longer fit'
+  const page = await browser.newPage({ viewport: { width: 412, height: 915 } })
+  const errors: string[] = []
+  page.on('pageerror', (e) => errors.push(String(e)))
+  const s3 = FLOW.find((s) => s.id === 'station-3')!
+  await page.goto(BASE)
+  await setTake(page, {
+    ...ADULT,
+    at: 6,
+    answers: { 'station-1': { pick: 'Mumtaz' }, 'station-2': { order: ['Nobody'] }, 'station-3': { pick: s3.people![0].en, s: 'old' }, 'gone-1': { pick: 'X' } },
+  })
+  await page.reload()
+  await page.locator('.take .app').waitFor()
+  const t = await kept(page)
+  record(g, 'they are dropped on opening, and the take opens where it was', Object.keys(t.answers).length === 0 && t.at === 6, JSON.stringify(t.answers))
+  await page.locator('.take .topbar .ibtn').first().click()
+  record(g, 'a step whose answer was dropped opens read-only and empty', (await look(page)).cls.includes('is-revisited') && (await page.locator('.is-selected').count()) === 0)
+  record(g, 'no page error', errors.length === 0, errors.slice(0, 2).join(' | '))
+  await page.close()
+}
+
 try {
   await gate()
   await privacy()
   await backward()
+  await deletion()
+  await phoneBack()
+  await stale()
   for (const lang of ['mix', 'hi', 'en'] as const) {
     await play(lang, 412, 915)
     await play(lang, 1440, 900)

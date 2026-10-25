@@ -68,10 +68,19 @@ export function Order(props: StepProps) {
             hidden={order.includes(p.en)}
             aria-label={label(spoken(s, p))}
             data-en={p.en}
-            onClick={() => {
+            onClick={(e) => {
               if (locked || order.length >= s.people.length) return
               fx('fill')
               setOrder([...order, p.en])
+              // the placed player leaves the tray; a keyboard or screen-reader player goes on to the next one (or to
+              // the button, once all are placed) instead of being dropped on the page
+              const el = e.currentTarget
+              if (document.activeElement !== el) return
+              requestAnimationFrame(() => {
+                const open = [...(el.parentElement?.querySelectorAll<HTMLElement>('button:not([hidden])') ?? [])]
+                const after = open.find((b) => el.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING)
+                ;(after ?? open[0] ?? el.closest('.app')?.querySelector<HTMLElement>('.dock .main'))?.focus({ preventScroll: true })
+              })
             }}
           >
             <span className="face" style={{ backgroundImage: `url(${p.face})` }} aria-hidden="true" />

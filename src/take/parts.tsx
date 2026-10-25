@@ -81,6 +81,14 @@ export function AppFrame(props: {
   )
 }
 
+/** A screen just shown takes the focus on its heading, or on its frame when it has none (a cutscene). */
+export function focusScreen(root: ParentNode) {
+  const el = root.querySelector<HTMLElement>('h1') ?? root.querySelector<HTMLElement>('.app')
+  if (!el) return
+  if (!el.hasAttribute('tabindex')) el.tabIndex = -1
+  el.focus({ preventScroll: true })
+}
+
 export function HelpButton({ onHelp }: { onHelp: (open: boolean) => void }) {
   const label = useLabel()
   return (
@@ -119,6 +127,30 @@ export function Topbar({ plate, onHelp, onBack }: { plate?: Bi | null; onHelp: (
  * it starts again from a first visit. */
 export const PrivacyContext = createContext<{ deleteAll: () => void; restart: () => void }>({ deleteAll: () => {}, restart: () => {} })
 
+/** The open sheet's one step up (the dialog, then Privacy, then the sheet itself), for a browser's back button. */
+export const SheetBackContext = createContext<(up: (() => void) | null) => void>(() => {})
+
+type Watcher = { onclose: (() => void) | null; destroy: () => void }
+const Watch = (globalThis as { CloseWatcher?: new () => Watcher }).CloseWatcher
+/** Whether the browser hands Android's back and Escape to the open sheet itself (CloseWatcher, Chrome 120 and later):
+ * then a sheet's levels close one per press, the dialog first, with no history entry of the app's own. */
+export const closeWatched = !!Watch
+
+/** While `on`, the topmost of these closes on the phone's back or Escape. Each level opens on a tap, so each gets its
+ * own press. */
+function useCloseRequest(on: boolean, close: () => void) {
+  const f = useRef(close)
+  useEffect(() => {
+    f.current = close
+  })
+  useEffect(() => {
+    if (!on || !Watch) return
+    const w = new Watch()
+    w.onclose = () => f.current()
+    return () => w.destroy()
+  }, [on])
+}
+
 const PRIVACY: [Bi, Bi][] = [
   [['On this phone', 'इस फ़ोन पर'], ['Your birth date, your answers, the language and sound.', 'आपकी जन्म तारीख़, आपके जवाब, भाषा और आवाज़।']],
   [['Sent anywhere', 'कहीं भेजा गया'], ['Nothing leaves this phone.', 'इस फ़ोन से कुछ बाहर नहीं जाता।']],
@@ -137,26 +169,52 @@ function HelpSheet({ world, onClose }: { world: string; onClose: () => void }) {
   const [asking, setAsking] = useState(false)
   const close = useRef<HTMLButtonElement>(null)
   const keep = useRef<HTMLButtonElement>(null)
+  const sheet = useRef<HTMLDivElement>(null)
   const done = level === 'deleted' ? restart : onClose
+  // Escape and the phone's back go one level up: the dialog, then Privacy, then the sheet
+  const up = () => {
+    if (asking) setAsking(false)
+    else if (level === 'privacy') setLevel('how')
+    else done()
+  }
+  useCloseRequest(true, done)
+  useCloseRequest(level === 'privacy', () => setLevel('how'))
+  useCloseRequest(asking, () => setAsking(false))
+  const setBack = useContext(SheetBackContext)
+  useEffect(() => {
+    setBack(up)
+    return () => setBack(null)
+  })
   useEffect(() => {
     if (asking) keep.current?.focus()
     else close.current?.focus()
   }, [level, asking])
   useEffect(() => {
+    if (closeWatched) return
     const esc = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape') return
-      if (asking) setAsking(false)
-      else if (level === 'privacy') setLevel('how')
-      else done()
+      if (e.key === 'Escape') up()
     }
     addEventListener('keydown', esc)
     return () => removeEventListener('keydown', esc)
-  }, [asking, level, done])
+  })
+  // a modal sheet: the screen beneath (and the sheet itself while the dialog asks) takes no focus and no taps, so
+  // nothing behind it can move the take on, least of all after Delete all
+  useLayoutEffect(() => {
+    const el = sheet.current
+    const play = el?.parentElement
+    if (!el || !play) return
+    const behind = [...play.children].filter((c): c is HTMLElement => c instanceof HTMLElement && !c.matches('.scrim, .sheet, .dialog'))
+    if (asking) behind.push(el)
+    for (const c of behind) c.inert = true
+    return () => {
+      for (const c of behind) c.inert = false
+    }
+  }, [asking])
   const installed = matchMedia('(display-mode: standalone)').matches
   return (
     <>
       <div className="scrim" aria-hidden="true" onClick={done} />
-      <div className="sheet helpsheet" role="dialog" aria-modal="true" aria-labelledby="sheethead">
+      <div className="sheet helpsheet" role="dialog" aria-modal="true" aria-labelledby="sheethead" ref={sheet}>
         {TAKE.help[world] ? <div className={TAKE.help[world]} aria-hidden="true" /> : null}
         <div className="grab">
           {level === 'privacy' ? (
@@ -320,13 +378,22 @@ const useSetLang = () => useContext(SetLangContext)
 export function Main(props: { t: Bi; live: boolean; onGo: () => void; refuse?: () => void; out?: boolean; children?: ReactNode }) {
   const { t, live, onGo, refuse } = props
   const [refused, setRefused] = useState(0)
+  const btn = useRef<HTMLButtonElement>(null)
+  // each refused press plays the shake again on the same button, which keeps its focus
+  useLayoutEffect(() => {
+    const b = btn.current
+    if (!refused || !b) return
+    b.classList.remove('is-refused')
+    void b.offsetWidth
+    b.classList.add('is-refused')
+  }, [refused])
   return (
     <div className="dock">
       {props.children}
       <button
         // outside a decision the button is the world's plain way on (library.py out_btn)
         className={`main ${props.out ? 'is-out' : live ? 'is-live' : 'is-wait'}${refused ? ' is-refused' : ''}`}
-        key={refused}
+        ref={btn}
         type="button"
         aria-disabled={live ? undefined : true}
         onClick={() => {

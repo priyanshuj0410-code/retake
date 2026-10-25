@@ -6,7 +6,8 @@
  * (or every window has closed). Nothing waits on the network once installed, so a launch on a weak or stalled signal
  * opens at once.
  *   - Install copies every file whose revision is unchanged from the version before and fetches only what changed,
- *     revalidated past the browser's own cache, so an update costs a weak signal only its changes.
+ *     revalidated past the browser's own cache, so an update costs a weak signal only its changes. Every file it
+ *     fetches, and every picture it keeps, is checked against its revision first.
  *   - Pictures not needed on every phone (the cutscene panels, the larger and wide paintings) are cached when first
  *     shown, or ahead of a chapter (src/pwa.ts), in retake-pics, which updates keep: a picture is fetched again only
  *     when its revision changes.
@@ -27,6 +28,16 @@ const REVS = './__revisions__'
 
 const picKey = (path) => `${path}?rev=${PICS[path]}`
 const fresh = (url) => fetch(new Request(url, { cache: 'no-cache' }))
+/** Whether a fetched file is the one this version names: its revision is the first 12 hex of its SHA-256
+ * (scripts/pwa/plugin.ts), so a deploy that lands while this version installs can never pass its files for ours. */
+const isRev = async (res, rev) => {
+  const d = new Uint8Array(await crypto.subtle.digest('SHA-256', await res.clone().arrayBuffer()))
+  return [...d].map((b) => b.toString(16).padStart(2, '0')).join('').slice(0, 12) === rev
+}
+/** Keep a fetched picture, only if it is this version's. */
+const keepPic = async (c, path, res) => {
+  if (res.ok && (await isRev(res, PICS[path]))) await c.put(picKey(path), res)
+}
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -54,6 +65,8 @@ self.addEventListener('install', (event) => {
           const res = await fresh(url)
           // a redirected shell cannot open a page, and a failed file must not pass for this version's
           if (!res.ok || res.redirected) throw new Error(`precache ${url}: ${res.status}`)
+          // another version's file (a deploy mid-install) fails this install; the browser tries again later
+          if (!(await isRev(res, rev))) throw new Error(`precache ${url}: not revision ${rev}`)
           return cache.put(url, res)
         }),
       )
@@ -92,7 +105,7 @@ const cachePics = (urls) =>
         }
         if (!PICS[path]) return null
         return c.match(picKey(path)).then((hit) =>
-          hit ? null : fresh(path).then((res) => (res.ok ? c.put(picKey(path), res) : null), () => null),
+          hit ? null : fresh(path).then((res) => keepPic(c, path, res), () => null),
         )
       }),
     ),
@@ -120,7 +133,7 @@ self.addEventListener('fetch', (event) => {
           (hit) =>
             hit ??
             fresh(url.pathname).then((res) => {
-              if (res.ok) void c.put(picKey(url.pathname), res.clone())
+              event.waitUntil(keepPic(c, url.pathname, res.clone()).catch(() => {}))
               return res
             }),
         ),

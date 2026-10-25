@@ -124,6 +124,9 @@ html.deutan .phone, html.deutan .frame, html.deutan .sharecard { filter: url(#de
 }
 .world { background: var(--ground); color: var(--on-ground); font-family: 'Hind', sans-serif; --mk-fg: var(--edge); --mk-ink: var(--ink); --mk-bg: var(--ground); }
 .world :focus-visible { outline: 3px solid var(--focus-outer) !important; outline-offset: 2px; box-shadow: 0 0 0 5px var(--focus-inner) !important; }
+/* a new screen's heading (a cutscene's frame) takes the focus, so a keyboard or a screen reader starts there; it is not
+   a control, so it draws no ring (the app, EVAL-19) */
+.world [tabindex="-1"]:focus-visible, .app[tabindex="-1"]:focus-visible { outline: none !important; box-shadow: none !important; }
 /* Hindi line heights (22 Oct, owner: "the font has more top bottom spacing than required"): Hind's re-balanced metrics
    already hold the vowel marks above and below the line, so running Hindi takes 1.5, one-line names 1.3, the question
    1.4, labels 1.43, and the digits keep the English 1.33 */

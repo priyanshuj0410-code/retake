@@ -3,6 +3,7 @@ type: design-system
 title: Retake, design system
 description: The visual system for Retake, recorded from the round 3 component library (design-system/library.css) and the three world modules in design-system/worlds/. Five printed worlds, Lugdi (1970s Hindi pulp covers), Station (Indian railway enamel and Edmondson tickets), Jadugar (the travelling magic show), Cricket (the old stadium scoreboard) and Rukavat (the 1980s family TV), take turns one week each over one fixed skeleton. Tokens, type, layout, depth, shapes, components, the worlds, guardrails and the owner's open choices. The binding behaviour rules are in knowledge/reference/design-rules-consolidated.md.
 plane_issues:
+  - https://app.plane.so/the-equal-lens/browse/EVAL-19/
   - https://app.plane.so/the-equal-lens/browse/EVAL-18/
   - https://app.plane.so/the-equal-lens/browse/EVAL-17/
   - https://app.plane.so/the-equal-lens/browse/EVAL-14/
@@ -416,7 +417,7 @@ The owner's decision of 22 Oct 2026, from the premium study ("I like the metal t
 - **Enamel lip** (`box-shadow: inset 0 -4px 0 rgba(0,0,0,.28)`, pressed `inset 0 -1px 0 rgba(0,0,0,.28)`): the Station live main button.
 - **Sheet lift** (`box-shadow: 0 -12px 24px rgba(0,0,0,.28)`): sheets rising from the bottom.
 - **Menu lift** (`box-shadow: 0 12px 24px rgba(0,0,0,.35)`): the board row menu.
-- **Focus ring** (`outline: 3px solid #FFFFFF; outline-offset: 2px; box-shadow: 0 0 0 5px #17110F`): every focusable part, every world.
+- **Focus ring** (`outline: 3px solid #FFFFFF; outline-offset: 2px; box-shadow: 0 0 0 5px #17110F`): every focusable part, every world. A new screen's heading (a cutscene's frame) takes the focus when the screen changes, so a keyboard or a screen reader starts there; it is not a control, so it draws no ring (EVAL-19).
 
 ### Named Rules
 **The Printed Not Lit Rule (relaxed by O14).** Edges are still printed: ink rules, hairlines, frames or painted rims. Physical objects (the cards, tickets, bills, boards and plates a world prints) may now sit on one soft, light shadow, about 6 to 14 percent, cast from the one light high on the left. Type, flat controls and the ground never carry one, no shadow is ever a hard offset, and overlays keep their lift.

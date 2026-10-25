@@ -5,7 +5,7 @@
  * a pick, and the same decision in Hindi. Written to public/screenshots/ as JPEG; the manifest lists them.
  * Re-run after the First take's look changes.
  */
-import { mkdirSync } from 'node:fs'
+import { mkdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium } from 'playwright-core'
 import { build } from 'vite'
@@ -16,6 +16,9 @@ const ROOT = new URL('../..', import.meta.url).pathname
 const DIST = join(ROOT, 'out/shots-dist')
 const OUT = join(ROOT, 'public/screenshots')
 const PORT = 5198
+const FIRST_PICK = (JSON.parse(readFileSync(join(ROOT, 'content/take/first-take.json'), 'utf8')).flow as { type: string; kind?: string }[]).findIndex(
+  (s) => s.type === 'step' && s.kind === 'pick',
+)
 
 await build({ root: ROOT, logLevel: 'silent', build: { outDir: DIST, emptyOutDir: true } })
 const server = await serve(DIST, PORT, ROOT)
@@ -29,10 +32,13 @@ try {
   await page.locator('.cutpanel img').first().waitFor()
   await page.waitForTimeout(600)
   await shot('opening.jpg')
-  for (let i = 0; i < 40 && !(await page.$('.tiles')); i++) {
-    await page.click('.dock .main')
-    await page.waitForTimeout(120)
-  }
+  // straight to the first pick-one decision: the First take's first decisions are of other kinds, whose button waits
+  await page.evaluate((at) => {
+    const t = JSON.parse(localStorage.getItem('retake.take') ?? '{}')
+    localStorage.setItem('retake.take', JSON.stringify({ ...t, at }))
+  }, FIRST_PICK)
+  await page.reload()
+  await page.locator('.tiles').waitFor()
   await page.waitForTimeout(500)
   await page.click('.tiles .tile >> nth=1')
   await page.waitForTimeout(300)

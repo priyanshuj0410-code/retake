@@ -4,6 +4,7 @@ title: Running and testing Retake
 description: How to run Retake (the First take) on the dev server, jump to any screen, where its content and look come from and how to change them, the checks, and how a change reaches production on Vercel. Rewritten on 24 Oct 2026 for the app build (EVAL-18); the turned-down trainer's version is in git history.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-18/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-19/
 ---
 
 # Running and testing Retake
@@ -20,10 +21,16 @@ Node 22 or later. The browser checks drive Chromium through `playwright-core`: t
 one at `CHROMIUM` (in the cloud sessions, `CHROMIUM=/opt/pw-browsers/chromium`).
 
 - **No backend yet:** the take is kept in the browser's localStorage under `retake.take` as
-  `{ v, at, answers, lang, sound }`: the screen it is on, each decision's answer, the language and the sound switch.
-  Nothing else, and no times.
+  `{ v, at, answers, lang, sound, birth? | opens?, retried? }`: the screen it is on, each decision's answer, the
+  language and the sound switch; an adult's birth date, or for someone under 18 only the day the game opens and whether
+  "Wrong date?" was used. Nothing else, and no times.
+- **Answers carry their decision's content hash** (`s`, `store.SIG`: the kind, its limits, the people, their numbers
+  and English notes). On opening, an answer that no longer fits its decision (another hash, another shape, a name not in
+  it) is dropped, so a new export never mixes old answers into the reading. Rewording a question or the Hindi keeps them.
 - **Any screen:** set `at` in that key to the screen's index in `content/take/first-take.json`'s `flow`, and reload.
-  Delete the key to start again.
+  Delete the key to start again. Past the last screen the finished take rests on its reading.
+- **Two windows** (two tabs, or the installed app beside the browser) share the key and follow each other; Delete all
+  in one empties both.
 
 ## 2. Where things come from (change them there, never in the app)
 
@@ -54,6 +61,9 @@ pnpm markup       # each of the 40 decisions has the signed-off demo's markup st
   self-hosted, the script under 130 KB gzipped).
 - `scripts/e2e.ts`: every screen played through its own controls; 40 answers kept and nothing else; each kind's
   button waits until the decision is done; the reading's five cards; no sideways scroll; no page or console error.
+  Then the first visit, Privacy and Delete all, Back, Delete all by every way out (the phone's back, a second window),
+  the phone's back inside "?" and where there is nothing to go back to, focus on each new screen, and kept answers that
+  no longer fit (EVAL-19).
 - `scripts/pwa-check.ts`: see its header. It serves builds with `vercel.json`'s headers (`scripts/lib/serve.ts`), so
   the Content-Security-Policy is in force.
 

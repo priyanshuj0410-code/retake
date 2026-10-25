@@ -4,9 +4,12 @@ title: Audit of the app build, 25 Oct 2026
 description: An independent audit of the 16 commits (fbdbfbb to f790b5c) that turned the signed-off First take demo into the Retake app. It covers what is done and works, what is wrong (ranked, with evidence), the owner's open decisions, and what the plan itself still lists. Five auditors each took one angle; each finding then went to a skeptic who tried to refute it.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-18/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-19/
 ---
 
 # Audit of the app build, 25 Oct 2026
+
+**Update, same day (EVAL-19).** The owner said to leave the story-level findings (groups 1 to 3 below, the gossip notes, the word counts of story text) and to make the app itself work properly. The app-level faults in "Next" and "Low" are fixed. They are recorded in [the plan, "The app's own faults"](app-build-plan-2026-10-24.md), with what is still open.
 
 Owner: "Pull and audit what's already done". The yardstick was [app-build-plan-2026-10-24.md](app-build-plan-2026-10-24.md), the signed-off demo (v32), [DESIGN.md](../../DESIGN.md), [PRODUCT.md](../../PRODUCT.md), [ia-and-flows.md](../ux/ia-and-flows.md), [feature-set.md](../ux/feature-set.md) and the owner's standing rules.
 

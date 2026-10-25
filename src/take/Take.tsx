@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { TAKE, type Lang, type Screen } from './data'
 import { LangContext } from './lang'
 import { cacheAhead, onUpdateReady } from '../pwa'
-import { PrivacyContext, SetLangContext, UpdateContext } from './parts'
+import { PrivacyContext, SetLangContext, SheetBackContext, UpdateContext, closeWatched, focusScreen } from './parts'
 import { Cover, Cutscene } from './screens'
 import { Sound, SoundContext } from './sound'
 import { BirthDate, NotYet, isOpen } from './Gate'
@@ -13,7 +13,10 @@ import { Rank } from './steps/Rank'
 import { Split } from './steps/Split'
 import { Team } from './steps/Team'
 import type { Answer } from './steps/common'
-import { canKeep, forget as wipe, fresh, load, save } from './store'
+import { KEY, SIG, adopt, canKeep, forget as wipe, freshElsewhere, load, save } from './store'
+
+// past the last screen the finished take rests on its reading (SC-93 opened again), never back at the opening
+const END = Math.max(0, TAKE.flow.findIndex((s) => s.type === 'results'))
 
 // The First take, one screen at a time (the demo's flow): the opening, each chapter's way in, title card, eight
 // decisions and way out, then the diary, the private reading and the trunk handed on. It resumes where it was left
@@ -28,14 +31,43 @@ export function Take() {
   const at = Math.min(saved.at, flow.length - 1)
   // a screen before `at` shown again by Back, read-only (R-STEP-9); null is where the player is
   const [view, setView] = useState<number | null>(null)
-  const shown = view ?? at
+  // looking back: a view another window's progress has overtaken no longer counts
+  const looking = view !== null && view < at
+  const shown = looking ? view : at
   const screen = flow[shown]
+  // the first visit: the birth date before anything else; under 18, when the game opens (SC-15, SC-16)
+  const gate = !isOpen(saved) ? (saved.opens ? 'notyet' : 'birth') : null
 
-  // after Delete all nothing is kept again until the sheet closes and the take starts from a first visit
+  // after Delete all nothing is kept again until the take starts from a first visit
   const wiped = useRef(false)
   useEffect(() => {
     if (!wiped.current) save(saved)
   }, [saved])
+  // another window of the take on this phone (a second tab, the installed app beside the browser): its changes are
+  // taken here, and its Delete all empties this window too, so nothing deleted is ever written back. A window still on
+  // "Deleted." writes nothing and takes nothing; leaving it, it takes whatever the other window has started since.
+  useEffect(() => {
+    const on = (e: StorageEvent) => {
+      if (e.storageArea !== localStorage || (e.key !== null && e.key !== KEY) || wiped.current) return
+      let now: string | null = null
+      try {
+        now = localStorage.getItem(KEY)
+      } catch {
+        // a blocked store: nothing to take
+      }
+      if (now === null) {
+        setHelp(false)
+        setView(null)
+        setSaved(freshElsewhere())
+      } else {
+        const s = adopt()
+        setView((v) => (v !== null && v < s.at ? v : null))
+        setSaved(s)
+      }
+    }
+    addEventListener('storage', on)
+    return () => removeEventListener('storage', on)
+  }, [])
   // on opening and at each chapter's title card, keep that chapter's cutscene panels for offline play
   const chapter = TAKE.flow.slice(0, at + 1).filter((s) => s.type === 'cover').length
   useEffect(() => cacheAhead(chapterPanels(chapter)), [chapter])
@@ -48,17 +80,35 @@ export function Take() {
     document.documentElement.lang = saved.lang === 'hi' ? 'hi' : 'en-GB'
   }, [sound, screen, saved.lang])
   useEffect(() => {
-    const wake = () => sound.wake()
-    addEventListener('pointerdown', wake, { once: true })
-    return () => removeEventListener('pointerdown', wake)
+    // the first tap or key press wakes the sound: a keyboard player never sends a pointerdown
+    const wake = () => {
+      sound.wake()
+      removeEventListener('pointerdown', wake)
+      removeEventListener('keydown', wake)
+    }
+    addEventListener('pointerdown', wake)
+    addEventListener('keydown', wake)
+    return () => {
+      removeEventListener('pointerdown', wake)
+      removeEventListener('keydown', wake)
+    }
   }, [sound])
 
-  const next = useCallback(() => {
+  // after Delete all the take starts again from a first visit, by whatever way the player leaves "Deleted.", or from
+  // the new start another window has made meanwhile
+  const restart = useCallback(() => {
+    wiped.current = false
     setHelp(false)
     setView(null)
-    setSaved((s) => ({ ...s, at: s.at + 1 >= flow.length ? 0 : s.at + 1 }))
+    setSaved(adopt())
+  }, [])
+  const next = useCallback(() => {
+    if (wiped.current) return restart()
+    setHelp(false)
+    setView(null)
+    setSaved((s) => ({ ...s, at: s.at + 1 >= flow.length ? END : s.at + 1 }))
     scrollTo(0, 0)
-  }, [flow.length])
+  }, [flow.length, restart])
   // Back from a step: the step before it, read-only; from a chapter's first step, the chapter's title card; from a title
   // card, the chapter's way in (SC-91 leaves the starter for the cover or the Week tab, which come with the daily, M3)
   const backFrom = (i: number) => {
@@ -69,31 +119,72 @@ export function Take() {
     return null
   }
   const back = () => {
-    const j = backFrom(shown)
-    if (j === null) return false
+    if (wiped.current) return restart()
+    const j = gate === null ? backFrom(shown) : null
+    if (j === null) return
     setHelp(false)
     setView(j)
-    return true
   }
   const toCurrent = () => {
+    if (wiped.current) return restart()
     setHelp(false)
     setView(null)
   }
-  // the phone's own back does what Back does, while there is a step to go back from
-  const backRef = useRef(back)
+
+  // The phone's back. One history entry stands for "back" while a step or title card has Back (and, where the browser
+  // has no CloseWatcher, while the sheet is open), so a press steps back inside the take; where there is nowhere to go
+  // back to (a cutscene, the birth date, the reading) the entry goes, and a press leaves the game, as on a cover
+  // (SC-01). Chrome skips an entry a page adds without a fresh tap (its rule against back-button traps), so the entry
+  // is added only on a tap: never on opening, and after a press only once the player taps again. Two presses with no
+  // tap between them leave the game.
+  const sheetBack = useRef<(() => void) | null>(null)
+  const setSheetBack = useCallback((up: (() => void) | null) => {
+    sheetBack.current = up
+  }, [])
+  const canBack = (help && !closeWatched) || (gate === null && backFrom(shown) !== null)
+  const nav = useRef({ canBack, back, skip: false, popped: false })
+  const sync = useCallback(() => {
+    const n = nav.current
+    const has = history.state?.retake === 1
+    if (n.canBack && !has) {
+      if (!n.popped && (navigator.userActivation?.isActive ?? true)) history.pushState({ retake: 1 }, '')
+    } else if (!n.canBack && has && !n.skip) {
+      n.skip = true
+      history.back()
+    }
+  }, [])
   useEffect(() => {
-    backRef.current = back
+    nav.current.canBack = canBack
+    nav.current.back = back
+    sync()
   })
   useEffect(() => {
-    history.pushState({ retake: 1 }, '')
     const on = () => {
-      if (backRef.current()) history.pushState({ retake: 1 }, '')
+      const n = nav.current
+      if (n.skip) {
+        n.skip = false
+        sync()
+        return
+      }
+      n.popped = true
+      if (sheetBack.current) sheetBack.current()
+      else n.back()
+    }
+    // a tap or a key press: the entry can be added again
+    const tap = () => {
+      nav.current.popped = false
+      sync()
     }
     addEventListener('popstate', on)
-    return () => removeEventListener('popstate', on)
-  }, [])
+    for (const t of ['pointerup', 'keydown', 'click']) addEventListener(t, tap, true)
+    return () => {
+      removeEventListener('popstate', on)
+      for (const t of ['pointerup', 'keydown', 'click']) removeEventListener(t, tap, true)
+    }
+  }, [sync])
+
   const commit = (id: string) => (a: Answer) => {
-    setSaved((s) => ({ ...s, answers: { ...s.answers, [id]: a } }))
+    setSaved((s) => ({ ...s, answers: { ...s.answers, [id]: { ...a, s: SIG[id] } } }))
     next()
   }
   const setLang = useCallback((lang: Lang) => setSaved((s) => ({ ...s, lang })), [])
@@ -103,19 +194,30 @@ export function Take() {
         wiped.current = true
         wipe()
       },
-      restart: () => {
-        wiped.current = false
-        setHelp(false)
-        setSaved(fresh())
-      },
+      restart,
     }),
-    [],
+    [restart],
   )
   // "Not you? Remove this reading": the answers go, and the take starts again (a shared phone, F-203)
   const forget = useCallback(() => {
     setHelp(false)
+    setView(null)
     setSaved((s) => ({ ...s, at: 0, answers: {} }))
   }, [])
+
+  // focus follows the take: a new screen's heading (a cutscene's frame) takes it, so a keyboard or a screen reader is
+  // never left on the page; when the sheet closes over the same screen, "?" has it again (SC-40)
+  const main = useRef<HTMLElement>(null)
+  const where = gate ?? String(shown)
+  const last = useRef({ where, help })
+  useEffect(() => {
+    const p = last.current
+    last.current = { where, help }
+    const root = main.current
+    if (!root) return
+    if (p.where !== where) focusScreen(root)
+    else if (p.help && !help) root.querySelector<HTMLElement>('[data-help]')?.focus({ preventScroll: true })
+  }, [where, help])
   const soundCtx = useMemo(
     () => ({ sound, on: saved.sound, toggle: () => setSaved((s) => ({ ...s, sound: !s.sound })) }),
     [sound, saved.sound],
@@ -124,8 +226,6 @@ export function Take() {
   const props = { help, onHelp: setHelp }
   const [keeps] = useState(canKeep)
   let body
-  // the first visit: the birth date before anything else; under 18, when the game opens (SC-15, SC-16)
-  const gate = !isOpen(saved) ? (saved.opens ? 'notyet' : 'birth') : null
   if (gate === 'birth')
     body = (
       <BirthDate
@@ -147,14 +247,14 @@ export function Take() {
       />
     )
   // a way in watched again goes on to its title card, then to the screen the take is on
-  else if (screen.type === 'cut') body = <Cutscene c={screen} onNext={view === null ? next : shown + 1 >= at ? toCurrent : () => setView(shown + 1)} {...props} />
+  else if (screen.type === 'cut') body = <Cutscene c={screen} onNext={!looking ? next : shown + 1 >= at ? toCurrent : () => setView(shown + 1)} {...props} />
   else if (screen.type === 'cover')
     body = (
       <Cover
         c={screen}
-        onNext={view === null ? next : toCurrent}
-        onBack={backFrom(shown) === null ? undefined : () => void back()}
-        revisit={view !== null && shown < at}
+        onNext={looking ? toCurrent : next}
+        onBack={backFrom(shown) === null ? undefined : back}
+        revisit={looking}
         {...props}
       />
     )
@@ -164,8 +264,8 @@ export function Take() {
       <Kind
         s={screen}
         onCommit={commit(screen.id)}
-        onBack={() => void back()}
-        revisit={view === null ? undefined : { answer: saved.answers[screen.id], onReturn: toCurrent }}
+        onBack={back}
+        revisit={looking ? { answer: saved.answers[screen.id], onReturn: toCurrent } : undefined}
         {...props}
       />
     )
@@ -177,11 +277,13 @@ export function Take() {
       <SetLangContext.Provider value={setLang}>
         <SoundContext.Provider value={soundCtx}>
           <PrivacyContext.Provider value={privacy}>
-            <UpdateContext.Provider value={update}>
-              <main className="take" key={gate ?? shown}>
-                {body}
-              </main>
-            </UpdateContext.Provider>
+            <SheetBackContext.Provider value={setSheetBack}>
+              <UpdateContext.Provider value={update}>
+                <main className="take" key={where} ref={main}>
+                  {body}
+                </main>
+              </UpdateContext.Provider>
+            </SheetBackContext.Provider>
           </PrivacyContext.Provider>
         </SoundContext.Provider>
       </SetLangContext.Provider>

@@ -82,7 +82,8 @@ export function Cutscene({ c, onNext, help, onHelp }: { c: CutData; onNext: () =
           <T t={['Skip', 'छोड़ें']} />
         </button>
       </div>
-      <div className="scr-body cutbody" ref={body}>
+      {/* each new panel's caption is read as it comes */}
+      <div className="scr-body cutbody" ref={body} aria-live="polite">
         {c.panels.map((p, i) => (
           <figure key={p.id} className={`cutpanel${i === n ? ' is-now' : ''}`} data-world={p.world} hidden={i > n}>
             <img src={p.pic} alt="" width={800} height={600} onClick={next} onError={hide} />
