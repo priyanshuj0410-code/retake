@@ -4,9 +4,12 @@ title: Retake's story bible
 description: The single source for Retake's story, "the family's trunk". It holds the people and their personas, the timeline, the situations (places, eras, events and art styles), the rules for using family members as options without diluting the reading, and the First take's full script. Every cutscene, decision and painting is checked against these files, so the story and the cast stay consistent across the First take, the dailies and the event chapters.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-18/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-20/
 ---
 
 # Retake's story bible
+
+**25 Oct 2026: under review.** The owner said Dadi's trunk is not working: its scenarios come from decades and trades players never lived. A fresh, present-day First take, told as a webtoon, is being chosen. The options are in [fresh-first-take-options-2026-10-25.md](fresh-first-take-options-2026-10-25.md). The draft rulebook for the First take and the dailies is [ground-rules-draft-2026-10-25.md](ground-rules-draft-2026-10-25.md). The research behind them is in [../reference/everyday-moments-2026-10-25.md](../reference/everyday-moments-2026-10-25.md) and [../architecture/webtoon-bubble-spec-draft-2026-10-25.md](../architecture/webtoon-bubble-spec-draft-2026-10-25.md). The files below describe the current story until the owner picks a new one.
 
 Owner, 23 Oct 2026: "Let's build the whole narrative of the cutscenes, questions, options, illustrations etc for the first take... Build knowledge base files for situations, timelines, people and their personas so that the story and the cast are consistent and we don't introduce plotholes."
 
