@@ -1,0 +1,1074 @@
+{
+ "n": 1,
+ "title": "Fourteen people, ten berths | चौदह लोग, दस बर्थ (with the take's opening, Saal Bhar)",
+ "look": "Lugdi pulp cover over a present-day overnight sleeper train: bold black ink outlines, flat red, mustard and night blue, coarse halftone, hard lamp light and deep shadow, the drama of an old paperback cover painted onto today's coach, phones, steel tiffins and plain clothes. Painter rules for every Lugdi panel: no words, letters or numbers anywhere (signs, papers and screens painted blank or shut), unsigned, a plain wall, sky or ceiling above the heads, heads 30 to 45% down, the first speaker in the left third, at most three people, never the player and never anyone from the cards. Papa is only ever seen from behind or heard off the panel; Mausi is painted face-on. The opening (1.01 to 1.06) and the between-chapters page (1.41) are in the present-day household style. Lugdi's big moment, the cover reprint, carries the stamp at 1.37.",
+ "area": "Safety and justice",
+ "goals": [
+  "Target 1, on Papa's list: 'Berths and meals: on feet 9 hours or more' | 'बर्थ और खाना: 9 घंटे या ज़्यादा खड़े'. Fed by D1 (2 lower berths) and D5 (2 hot plates), the plain Rank twin, set A. Met only at 4 of 4.",
+  "Target 2, on Papa's list: 'Cash and first auto: 1 missed train or fewer' | 'पैसे और पहला ऑटो: 1 या कम छूटी ट्रेन'. Fed by D4 (2 cash pouches) and D8 (2 seats in the first auto), the plain Pick a team twin, set B. Met only at 4 of 4.",
+  "Fixed line for the 'matters' twin (D2, D6), the same for everyone: 'Tickets: shown. Autos: booked.' | 'टिकट: पास। ऑटो: बुक।'",
+  "Stamp on Lugdi's cover reprint: 'At Nani's door: 6:00' (both targets met), '6:30' (one), '7:15' (none). Hard decisions D3 and D7 feed nothing."
+ ],
+ "beats": [
+  {
+   "id": "1.01",
+   "kind": "opening",
+   "painting": "Present-day household style, text-free and unsigned, at most two people, heads 30 to 45% down. Early January, first grey light. A phone lies face up on a bedside table, seen a little from above so its screen faces straight out: a plain glowing pale rectangle that fills about two thirds of the panel. A steel water glass beside it, a plain curtain behind. No hand, no body, no shadow. Calm space: the dark wall in the top third. MARKS: [WAITS rulebook Q9: opening on your own phone; if no, Mummy reads the message out from her phone in 1.02].",
+   "bubbles": [
+    {
+     "speaker": "Narration",
+     "type": "narration",
+     "en": "January.",
+     "hi": "जनवरी।"
+    },
+    {
+     "speaker": "Nani",
+     "type": "phone",
+     "en": "Nani: My eightieth. May. Everyone comes.",
+     "hi": "नानी: अस्सीवाँ जन्मदिन। मई में। सब आएँ।"
+    },
+    {
+     "speaker": "Sound",
+     "type": "sound",
+     "en": "bzzz",
+     "hi": "भिन भिन"
+    }
+   ]
+  },
+  {
+   "id": "1.02",
+   "kind": "opening",
+   "painting": "Present-day household style, text-free and unsigned, at most two people, heads 30 to 45% down. The kitchen. Mummy, 52, plain cotton salwar suit, no bindi or sindoor, stands in the left third, face-on, her right hand pressing a free wall calendar onto a nail: a plain mountain picture over a grid of empty boxes (months and dates are live text). Her left hand holds her shop key ring with a plain brass tag, down at her side. Calm space: the plain pale wall, upper right. No New Year sign or celebration.",
+   "bubbles": [
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "From the shop. Free.",
+     "hi": "दुकान से। मुफ़्त में।"
+    },
+    {
+     "speaker": "Calendar",
+     "type": "sign",
+     "en": "January",
+     "hi": "जनवरी"
+    }
+   ]
+  },
+  {
+   "id": "1.03",
+   "kind": "opening",
+   "painting": "The household screen: five present-day portraits laid on as live insets, all one size, over a people-free painting of the same kitchen wall with the new calendar. Quirks are drawn into each portrait's hands, never written: Nani's cane with a rubber foot, Mummy's key ring, Papa's travel list in a clear plastic sleeve, Mama ji's big black umbrella, Tinku's shut scorebook. Portraits checked close up for painted dots and lightened skin. The labels are live text.",
+   "bubbles": [
+    {
+     "speaker": "Label",
+     "type": "sign",
+     "en": "Nani, Mummy's mother",
+     "hi": "नानी, मम्मी की माँ"
+    },
+    {
+     "speaker": "Label",
+     "type": "sign",
+     "en": "Mummy · Papa",
+     "hi": "मम्मी · पापा"
+    },
+    {
+     "speaker": "Label",
+     "type": "sign",
+     "en": "Mama ji, Mummy's brother · Tinku, the youngest",
+     "hi": "मामा जी, मम्मी के भाई · टिंकू, सबसे छोटी"
+    }
+   ]
+  },
+  {
+   "id": "1.04",
+   "kind": "opening",
+   "painting": "Present-day household style, text-free and unsigned, at most two people, heads 30 to 45% down. The calendar close up on the wall, three dates already ringed in red (the rings are live strokes). Papa, 56, plain half-sleeve shirt, stands in the left third holding his travel list in a clear plastic sleeve; Tinku, 21, plain kurta, hair tied back, stands in the right third holding her shut scorebook. They face each other. Calm space: the wall above and between them. Mama ji's message arrives as a message card under the panel (rule 40), not on a painted phone.",
+   "bubbles": [
+    {
+     "speaker": "Papa",
+     "type": "speech",
+     "en": "May. Trains booked.",
+     "hi": "मई। ट्रेन बुक।"
+    },
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "August 15. Lane cup. I'm scoring.",
+     "hi": "15 अगस्त। गली का कप। स्कोर मेरा।"
+    },
+    {
+     "speaker": "Mama ji",
+     "type": "phone",
+     "en": "Mama ji: December. My daughter's wedding. Everyone comes.",
+     "hi": "मामा जी: दिसंबर। बेटी की शादी। सब आएँ।"
+    }
+   ]
+  },
+  {
+   "id": "1.05",
+   "kind": "opening",
+   "painting": "Present-day household style, text-free and unsigned, at most two people, heads 30 to 45% down. The kitchen. Mummy in the left third, face-on, looking straight out of the panel, her right hand holding a red pen out towards the viewer, her left hand at her side. In this present-day page her hand is plainly her own, so it cannot be read as yours. Calm space: the plain wall, upper right. The player is not painted.",
+   "bubbles": [
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "And the rest? Everyone calls you anyway.",
+     "hi": "बाक़ी? सब तुम्हें ही फ़ोन करते हैं।"
+    },
+    {
+     "speaker": "You",
+     "type": "you",
+     "en": "Okay. The pen.",
+     "hi": "ठीक है। पेन दीजिए।"
+    }
+   ]
+  },
+  {
+   "id": "1.06",
+   "kind": "opening",
+   "painting": "Present-day household style, text-free and unsigned, at most two people, heads 30 to 45% down. The calendar turned to July: one week of empty boxes, grey monsoon light from a window at the edge of the frame. No people. The five progress circles are live: three red rings (May, 15 August, December) and two places still blank, to be drawn in pencil later. MARKS: rewritten from the bible's narration 'Some weeks nobody circles', which is not time or place [rule 35]; the same foreshadowing now sits in Mummy's line.",
+   "bubbles": [
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "July? Nothing yet.",
+     "hi": "जुलाई? अभी कुछ नहीं।"
+    }
+   ]
+  },
+  {
+   "id": "1.07",
+   "kind": "title",
+   "painting": "Title card in Lugdi's pulp-cover look: a present-day sleeper train pulling into a junction at night under one platform lamp, wet platform, no people. Calm space: the night sky, top third. Live text only. MARKS: ['Chapter 1 of 5' needs the exception to the house ban on 'part 1 of 2' wording that rule 50 asks for].",
+   "bubbles": [
+    {
+     "speaker": "Card",
+     "type": "sign",
+     "en": "Chapter 1 of 5",
+     "hi": "अध्याय 1, 5 में से"
+    },
+    {
+     "speaker": "Card",
+     "type": "sign",
+     "en": "Fourteen people, ten berths",
+     "hi": "चौदह लोग, दस बर्थ"
+    },
+    {
+     "speaker": "Card",
+     "type": "sign",
+     "en": "The night train, and a report of being followed.",
+     "hi": "रात की ट्रेन, और पीछा किए जाने की बात।"
+    },
+    {
+     "speaker": "Card",
+     "type": "sign",
+     "en": "About 4 minutes · Start",
+     "hi": "लगभग 4 मिनट · शुरू करें"
+    }
+   ]
+  },
+  {
+   "id": "1.08",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. May, 9:30 pm, the junction platform. Papa seen from behind in the coach doorway, left third, looking down the lamp-lit platform; his travel list in its clear plastic sleeve under one arm. Calm space: the night sky above the platform roof, right.",
+   "bubbles": [
+    {
+     "speaker": "Narration",
+     "type": "narration",
+     "en": "May. 9:30 pm, the junction.",
+     "hi": "मई। रात 9:30, जंक्शन।"
+    },
+    {
+     "speaker": "Papa",
+     "type": "speech",
+     "en": "Fourteen people, ten berths. 9:40, not 9:45.",
+     "hi": "चौदह लोग, दस बर्थ। 9:40, 9:45 नहीं।"
+    }
+   ]
+  },
+  {
+   "id": "1.09",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. 9:40 pm. Mausi, about 55, plain cotton salwar suit, reading glasses on a cord, no bindi or sindoor, climbs into the coach doorway face-on in the left third, arms full of bags and a steel tiffin carrier, mouth open mid-shout. Behind her the platform lamp. Calm space: the plain coach wall, upper right.",
+   "bubbles": [
+    {
+     "speaker": "Mausi, Mummy's elder sister",
+     "type": "shout",
+     "en": "Ten berths? For fourteen of us?",
+     "hi": "दस बर्थ? हम चौदह के लिए?"
+    }
+   ]
+  },
+  {
+   "id": "1.10",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. Inside the coach. Papa seen from behind at the end of the family's bay, left third. On the lower berth in front of the viewer lies his travel list in its clear plastic sleeve, plain ruled paper with no marks, beside a folded grey blanket. Nobody holds anything out. Calm space: the plain upper berth and coach wall, right.",
+   "bubbles": [
+    {
+     "speaker": "Papa",
+     "type": "speech",
+     "en": "Tonight, you're in charge.",
+     "hi": "आज रात इंचार्ज तुम हो।"
+    },
+    {
+     "speaker": "You",
+     "type": "you",
+     "en": "Show me the list.",
+     "hi": "लिस्ट दिखाइए।"
+    }
+   ]
+  },
+  {
+   "id": "1.11",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The travel list in its clear sleeve, seen from straight above, filling the panel: plain ruled paper with no marks, two empty tick boxes, a steel pen across the corner. A prop painting, reused in 1.38. The two target lines are live sign text on the paper.",
+   "bubbles": [
+    {
+     "speaker": "Papa's list",
+     "type": "sign",
+     "en": "Berths and meals: on feet 9 hours or more",
+     "hi": "बर्थ और खाना: 9 घंटे या ज़्यादा खड़े"
+    },
+    {
+     "speaker": "Papa's list",
+     "type": "sign",
+     "en": "Cash and first auto: 1 missed train or fewer",
+     "hi": "पैसे और पहला ऑटो: 1 या कम छूटी ट्रेन"
+    }
+   ]
+  },
+  {
+   "id": "1.12",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The circle page. People-free painting of the sleeper coach aisle at night: berths, a curtain, steel tiffins, a charging socket painted blank. Over it, the ten cousins on this chapter's cards as their own card portraits, all one size (at least 56 px), names only at body size, in a new order on every load: Neha, Kiran, Pooja, Nirmala, Hetal, Prakash, Uday, Vivek, Chetan, Mehul. No relation, no quirk, no caption about them.",
+   "bubbles": [
+    {
+     "speaker": "Narration",
+     "type": "narration",
+     "en": "9:40 pm. Coach S4.",
+     "hi": "रात 9:40। डिब्बा S4।"
+    }
+   ]
+  },
+  {
+   "id": "1.13",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. 9:45 pm. The family's bay, coach lights on. Papa seen from behind, left third, standing in the aisle facing two lower berths made up with plain white sheets; upper berths still folded. Calm space: the plain upper berth and ceiling, right. Lead-in for scene 1; its twin painting is 1.25 (Papa from behind, one figure, calm).",
+   "bubbles": [
+    {
+     "speaker": "Narration",
+     "type": "narration",
+     "en": "9:45 pm.",
+     "hi": "रात 9:45।"
+    },
+    {
+     "speaker": "Papa",
+     "type": "speech",
+     "en": "Lights out at ten.",
+     "hi": "दस बजे बत्ती बंद।"
+    }
+   ]
+  },
+  {
+   "id": "1.14",
+   "kind": "decision",
+   "painting": "Stop D1. Behind the cards, people-free: the two lower berths made up with plain sheets, folded grey blankets, a steel tiffin on the floor. Top bar: Back, 'Chapter 1 of 5' with the calendar circle filling by eighths (0 of 8), story clock '9:45 pm, Coach S4', '?'. Question in Papa's balloon with his present-day face chip at the fixed question place. First Rank decision of the take: a moving hand shows it once. Button 'Rank 4 more' | '4 और क्रम में लगाएँ', then 'Settle the berths' | 'बर्थ तय करें'. Card notes are lines on Papa's travel list in Lugdi's newsprint plate; judging notes carry Mausi's face chip.",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Two lower berths. Rank them.",
+    "question_hi": "नीचे की दो बर्थ। क्रम लगाओ।",
+    "kind": "rank",
+    "asker": "Papa",
+    "need": "Rank all 4; the top 2 get the 2 lower berths (cut plate '2 berths' | '2 बर्थ'). A gain.",
+    "labels": [
+     "On feet: hours on their feet before the train | खड़े: ट्रेन से पहले कितने घंटे खड़े रहे (key on screen: 'Hours on feet · Hours slept' | 'खड़े घंटे · नींद घंटे')",
+     "Slept: hours slept the night before | नींद: पिछली रात कितने घंटे सोए"
+    ],
+    "people": [
+     {
+      "name": "Pooja",
+      "sex": "w",
+      "a": 12,
+      "b": 8,
+      "note": "[Mausi's face chip] Never sits still for long. | देर तक टिककर नहीं बैठती।"
+     },
+     {
+      "name": "Neha",
+      "sex": "w",
+      "a": 11,
+      "b": 7,
+      "note": "Lift mechanic in office blocks. | बड़े दफ़्तरों में लिफ़्ट मिस्त्री।"
+     },
+     {
+      "name": "Prakash",
+      "sex": "m",
+      "a": 11,
+      "b": 7,
+      "note": "[Mausi's face chip] Fusses over every little thing. | हर चीज़ में नखरे दिखाता।"
+     },
+     {
+      "name": "Chetan",
+      "sex": "m",
+      "a": 9,
+      "b": 5,
+      "note": "[Mausi's face chip] Sulks when he loses at cards. | ताश में हारकर मुँह फुलाता है।"
+     }
+    ],
+    "equal_two": [
+     "Neha",
+     "Prakash"
+    ],
+    "nudged": "Prakash",
+    "twin": "first half of twin A, plain: the loaded word 'fussy', said by Mausi, on the man",
+    "decoy_tie": [],
+    "outcome_bar": "Target 1, berths and meals: each lower berth to someone on their feet 9 hours or more. The bar (9) sits below the pair's 11. Pooja (12) and Chetan (9) also meet it, so nobody can miss here; the target can only be missed at D5."
+   }
+  },
+  {
+   "id": "1.15",
+   "kind": "happened",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The same for every pick: the two lower berths with blankets unrolled, the coach lights dimming to blue, a steel tiffin closed on the floor. No people. The stop has folded into its settled plate above (tick, job word, lock, no names, no faces). MARKS: [WAITS options Q14: the reply after a pick names only the job].",
+   "bubbles": [
+    {
+     "speaker": "Settled plate",
+     "type": "sign",
+     "en": "Berths: settled",
+     "hi": "बर्थ: तय"
+    }
+   ]
+  },
+  {
+   "id": "1.16",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. Papa's things, close: his travel list in its clear sleeve and his phone lying beside it, the phone's screen painted dark and blank, on a folded blanket. Papa speaks from off the panel (tail to the left edge, name tag). Calm space: the plain coach wall above. Twin painting: 1.28, the same objects in the darker coach.",
+   "bubbles": [
+    {
+     "speaker": "Papa (off panel)",
+     "type": "speech",
+     "en": "Checker next. My battery's dead.",
+     "hi": "अब चेकर। मेरी बैटरी ख़त्म।"
+    }
+   ]
+  },
+  {
+   "id": "1.17",
+   "kind": "decision",
+   "painting": "Stop D2. Behind the cards, people-free: the coach aisle with a torch glow at the far end and nobody in it. Top bar clock '10:05 pm, Coach S4'. Question in Papa's balloon. First Pick one of the take: moving hand once. Button 'Pick one' | 'किसी एक को चुनें', then 'Give the tickets' | 'टिकट दें'.",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who keeps the tickets for the checker?",
+    "question_hi": "चेकर के लिए टिकट कौन रखे?",
+    "kind": "pick one",
+    "asker": "Papa",
+    "need": "Pick 1 of 4. A gain (trust), to be confirmed by the five players (rule 23).",
+    "labels": [
+     "Trips: night journeys this year | सफ़र: इस साल रात के सफ़र (key on screen: 'Night trips · Trains missed' | 'रात के सफ़र · छूटी ट्रेनें')",
+     "Missed: trains ever missed | छूटी ट्रेनें: अब तक कितनी ट्रेनें छूटीं"
+    ],
+    "people": [
+     {
+      "name": "Nirmala",
+      "sex": "w",
+      "a": 12,
+      "b": 2,
+      "note": "Drives a tempo for a transporter. | ट्रांसपोर्ट वाले का टेम्पो चलाती है।"
+     },
+     {
+      "name": "Vivek",
+      "sex": "m",
+      "a": 12,
+      "b": 2,
+      "note": "The only phone here still charged. | यहाँ बस उसी का फ़ोन चार्ज।"
+     },
+     {
+      "name": "Hetal",
+      "sex": "w",
+      "a": 1,
+      "b": 2,
+      "note": "Carries the big water can. | पानी की बड़ी कैन उसके पास।"
+     },
+     {
+      "name": "Mehul",
+      "sex": "m",
+      "a": 2,
+      "b": 3,
+      "note": "Brought the blankets for everyone. | सबके कंबल वही लाया है।"
+     }
+    ],
+    "equal_two": [
+     "Nirmala",
+     "Vivek"
+    ],
+    "nudged": "Vivek",
+    "twin": "first half of twin B, matters: only one charged phone, on the man",
+    "decoy_tie": [],
+    "outcome_bar": "None: this is the 'matters' twin, so its outcome is fixed for everyone ('Tickets: shown.' on the outcome card, 1.37)."
+   }
+  },
+  {
+   "id": "1.18",
+   "kind": "happened",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The same for every pick: the ticket checker seen from behind at a distance, walking away down the aisle, torch beam on the floor. Not a card person, not the household. No other people.",
+   "bubbles": [
+    {
+     "speaker": "Settled plate",
+     "type": "sign",
+     "en": "Tickets: settled",
+     "hi": "टिकट: तय"
+    }
+   ]
+  },
+  {
+   "id": "1.19",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. After a long gutter. 11:00 pm, coach lights off, only blue night lamps. Papa seen from behind, left third, at the connecting door; through it the next coach glows softly, empty aisle. Calm space: the dark ceiling above, right. Lead-in for scene 2; twin painting 1.31 (Papa from behind at a doorway with warm light beyond). The hard topic never appears in this panel.",
+   "bubbles": [
+    {
+     "speaker": "Narration",
+     "type": "narration",
+     "en": "11:00 pm. The dark coach.",
+     "hi": "रात 11:00। अँधेरा डिब्बा।"
+    },
+    {
+     "speaker": "Papa",
+     "type": "speech",
+     "en": "Next coach is quieter. One seat free.",
+     "hi": "अगला डिब्बा शांत है। एक सीट ख़ाली।"
+    }
+   ]
+  },
+  {
+   "id": "1.20",
+   "kind": "decision",
+   "painting": "Stop D3, a hard decision: the question sits in the plain question box, never in a bubble (rule 37). Behind the cards, people-free: the quiet coach in dim blue light, one empty berth with a folded blanket. Top bar clock '11:00 pm, Coach S4'. Button 'Pick one' | 'किसी एक को चुनें', then 'Send to the quiet coach' | 'शांत डिब्बे में भेजें'. The help line sits only in the '?' sheet (rule 26).",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who moves to the quiet coach?",
+    "question_hi": "शांत डिब्बे में कौन जाए?",
+    "kind": "pick one",
+    "asker": "Papa",
+    "need": "Pick 1 of 4. A gain (a quieter seat).",
+    "labels": [
+     "On feet: hours on their feet before the train | खड़े: ट्रेन से पहले कितने घंटे खड़े रहे (key on screen: 'Hours on feet · Hours slept' | 'खड़े घंटे · नींद घंटे')",
+     "Slept: hours slept the night before | नींद: पिछली रात कितने घंटे सोए"
+    ],
+    "people": [
+     {
+      "name": "Kiran",
+      "sex": "w",
+      "a": 15,
+      "b": 5,
+      "note": "A stranger kept following her last trip. | पिछले सफ़र में अजनबी पीछा करता रहा।"
+     },
+     {
+      "name": "Uday",
+      "sex": "m",
+      "a": 15,
+      "b": 5,
+      "note": "Embroiders saris for a boutique in town. | शहर के बुटीक के लिए साड़ियाँ काढ़ता।"
+     },
+     {
+      "name": "Prakash",
+      "sex": "m",
+      "a": 11,
+      "b": 7,
+      "note": "Had his bag snatched at a bus stand. | बस अड्डे पर किसी ने उसका बैग छीना।"
+     },
+     {
+      "name": "Vivek",
+      "sex": "m",
+      "a": 8,
+      "b": 5,
+      "note": "Sells seeds and fertiliser at the market. | मंडी में बीज और खाद बेचता है।"
+     }
+    ],
+    "equal_two": [
+     "Kiran",
+     "Uday"
+    ],
+    "nudged": "Kiran",
+    "twin": "first half of twin C, hard: a report of being followed, on the woman",
+    "decoy_tie": [],
+    "outcome_bar": "None: hard decisions feed no target (rule 44)."
+   }
+  },
+  {
+   "id": "1.21",
+   "kind": "happened",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The same for every pick: the connecting door slid shut, a strip of soft light under it, the dark aisle empty.",
+   "bubbles": [
+    {
+     "speaker": "Settled plate",
+     "type": "sign",
+     "en": "Quiet seat: settled",
+     "hi": "शांत सीट: तय"
+    }
+   ]
+  },
+  {
+   "id": "1.22",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The bay in night-lamp blue. Papa seen from behind, sitting on the edge of a lower berth, left third; beside him two plain cloth cash pouches with drawstrings lie on his travel list. Calm space: the plain upper berth, right. Twin painting 1.34 (Papa from behind, one figure, early light).",
+   "bubbles": [
+    {
+     "speaker": "Papa",
+     "type": "speech",
+     "en": "Long night. Cash goes two ways.",
+     "hi": "लंबी रात। पैसे दो जगह।"
+    }
+   ]
+  },
+  {
+   "id": "1.23",
+   "kind": "decision",
+   "painting": "Stop D4. Behind the cards, people-free: a suitcase under a lower berth held by a steel chain-lock, dim blue light. Top bar clock '11:20 pm, Coach S4'. Question in Papa's balloon. First Pick a team of the take: moving hand once. Five cards: may run past a small phone in Hindi behind the 'more' cue. Button 'Pick 2 more' | '2 और चुनें', then 'Hand over the pouches' | 'थैलियाँ दें'. Judging notes carry Papa's face chip, Kiran's carries Mausi's. MARKS: [WAITS rulebook Q16: five cards on a 360 x 640 phone in Hindi].",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who holds the two cash pouches?",
+    "question_hi": "पैसों की दो थैलियाँ कौन रखे?",
+    "kind": "pick a team",
+    "asker": "Papa",
+    "need": "Pick 2 of 5. A gain (trust), to be confirmed by the five players (rule 23).",
+    "labels": [
+     "Trips: night journeys this year | सफ़र: इस साल रात के सफ़र (key on screen: 'Night trips · Trains missed' | 'रात के सफ़र · छूटी ट्रेनें')",
+     "Missed: trains ever missed | छूटी ट्रेनें: अब तक कितनी ट्रेनें छूटीं"
+    ],
+    "people": [
+     {
+      "name": "Nirmala",
+      "sex": "w",
+      "a": 12,
+      "b": 2,
+      "note": "[Papa's face chip] Moody until her morning tea. | सुबह की चाय तक मूड ख़राब।"
+     },
+     {
+      "name": "Pooja",
+      "sex": "w",
+      "a": 9,
+      "b": 1,
+      "note": "[Papa's face chip] Too shy to ask anyone anything. | किसी से कुछ पूछने में शरमाती।"
+     },
+     {
+      "name": "Chetan",
+      "sex": "m",
+      "a": 9,
+      "b": 1,
+      "note": "Cooks for a tiffin service nearby. | टिफ़िन सर्विस के लिए खाना बनाता।"
+     },
+     {
+      "name": "Kiran",
+      "sex": "w",
+      "a": 3,
+      "b": 1,
+      "note": "[Mausi's face chip] Burns the dal nearly every single time. | लगभग हर बार दाल जला देती है।"
+     },
+     {
+      "name": "Uday",
+      "sex": "m",
+      "a": 2,
+      "b": 0,
+      "note": "Packed the family's first-aid box. | परिवार का फ़र्स्ट-एड डिब्बा उसने रखा।"
+     }
+    ],
+    "equal_two": [
+     "Pooja",
+     "Chetan"
+    ],
+    "nudged": "Pooja",
+    "twin": "first half of twin D, plain: the loaded word 'shy', said by Papa, on the woman",
+    "decoy_tie": [],
+    "outcome_bar": "Target 2, cash and first auto: each pouch to someone with 1 missed train or fewer. The bar (1) sits at the pair's own 1. Nirmala (2) misses it; Uday (0) and Kiran (1) meet it."
+   }
+  },
+  {
+   "id": "1.24",
+   "kind": "happened",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. After a long gutter, the same for every pick: the train seen from outside crossing dark fields under a big moon, one lit window after another, pulp-cover drama. No people visible.",
+   "bubbles": [
+    {
+     "speaker": "Sound",
+     "type": "sound",
+     "en": "dhadak dhadak",
+     "hi": "धड़क धड़क"
+    },
+    {
+     "speaker": "Settled plate",
+     "type": "sign",
+     "en": "Cash: settled",
+     "hi": "पैसे: तय"
+    }
+   ]
+  },
+  {
+   "id": "1.25",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. 2:10 am, the long halt. Papa seen from behind on the coach step, left third, looking across the platform at a food stall under one bare bulb, steam rising from a big kettle, two lidded steel plates on the counter, nobody behind it. Calm space: the night sky over the platform roof, right.",
+   "bubbles": [
+    {
+     "speaker": "Narration",
+     "type": "narration",
+     "en": "2:10 am. The long halt.",
+     "hi": "रात 2:10। लंबा ठहराव।"
+    },
+    {
+     "speaker": "Papa",
+     "type": "speech",
+     "en": "Stall shuts in ten.",
+     "hi": "स्टॉल दस मिनट में बंद।"
+    }
+   ]
+  },
+  {
+   "id": "1.26",
+   "kind": "decision",
+   "painting": "Stop D5. Behind the cards, people-free: the stall counter, two lidded steel plates, steam, the bulb. Top bar clock '2:10 am, the long halt'. Question in Papa's balloon. Button 'Rank 4 more' | '4 और क्रम में लगाएँ', then 'Hand out the plates' | 'थाली दें'. Judging notes carry Mausi's face chip.",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Two hot plates. Rank them.",
+    "question_hi": "दो गरम थाली। क्रम लगाओ।",
+    "kind": "rank",
+    "asker": "Papa",
+    "need": "Rank all 4; the top 2 get the 2 hot plates (cut plate '2 plates' | '2 थाली'). A gain.",
+    "labels": [
+     "On feet: hours on their feet before the train | खड़े: ट्रेन से पहले कितने घंटे खड़े रहे (key on screen: 'Hours on feet · Hours slept' | 'खड़े घंटे · नींद घंटे')",
+     "Slept: hours slept the night before | नींद: पिछली रात कितने घंटे सोए"
+    ],
+    "people": [
+     {
+      "name": "Neha",
+      "sex": "w",
+      "a": 11,
+      "b": 7,
+      "note": "Learning to drive a bus. | बस चलाना सीख रही है।"
+     },
+     {
+      "name": "Hetal",
+      "sex": "w",
+      "a": 9,
+      "b": 6,
+      "note": "[Mausi's face chip] Makes a big fuss about her bags. | अपने बैग को लेकर बड़े नखरे करती।"
+     },
+     {
+      "name": "Mehul",
+      "sex": "m",
+      "a": 9,
+      "b": 6,
+      "note": "Drives a milk van for a dairy. | डेयरी के लिए दूध की गाड़ी चलाता।"
+     },
+     {
+      "name": "Vivek",
+      "sex": "m",
+      "a": 8,
+      "b": 5,
+      "note": "[Mausi's face chip] Hogs the window seat, always. | हमेशा खिड़की वाली सीट हथियाता है।"
+     }
+    ],
+    "equal_two": [
+     "Hetal",
+     "Mehul"
+    ],
+    "nudged": "Hetal",
+    "twin": "second half of twin A: the loaded word 'fussy', said by Mausi, now on the woman",
+    "decoy_tie": [],
+    "outcome_bar": "Target 1, berths and meals: each hot plate to someone on their feet 9 hours or more. The bar (9) sits at the pair's own 9. Vivek (8) misses it; Neha (11) meets it."
+   }
+  },
+  {
+   "id": "1.27",
+   "kind": "happened",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The same for every pick: two lidded steel plates set down on a folded blanket on a berth, steam curling up. No people.",
+   "bubbles": [
+    {
+     "speaker": "Settled plate",
+     "type": "sign",
+     "en": "Meals: settled",
+     "hi": "खाना: तय"
+    }
+   ]
+  },
+  {
+   "id": "1.28",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The same objects as 1.16 in the darker coach: Papa's travel list in its sleeve and his phone, screen painted dark and blank, on the folded blanket. Papa speaks from off the panel (tail to the left edge, name tag). Calm space: the coach wall above.",
+   "bubbles": [
+    {
+     "speaker": "Papa (off panel)",
+     "type": "speech",
+     "en": "Autos next. Battery still dead.",
+     "hi": "अब ऑटो। बैटरी अब भी ख़त्म।"
+    }
+   ]
+  },
+  {
+   "id": "1.29",
+   "kind": "decision",
+   "painting": "Stop D6. Behind the cards, people-free: the dark window with the night passing, a charging socket on the wall painted blank. Top bar clock '2:30 am, the long halt'. Question in Papa's balloon. Button 'Pick one' | 'किसी एक को चुनें', then 'Send the message' | 'मैसेज भेजें'.",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who messages the auto stand?",
+    "question_hi": "ऑटो स्टैंड को मैसेज कौन करे?",
+    "kind": "pick one",
+    "asker": "Papa",
+    "need": "Pick 1 of 4. A gain (trust), to be confirmed by the five players (rule 23).",
+    "labels": [
+     "Trips: night journeys this year | सफ़र: इस साल रात के सफ़र (key on screen: 'Night trips · Trains missed' | 'रात के सफ़र · छूटी ट्रेनें')",
+     "Missed: trains ever missed | छूटी ट्रेनें: अब तक कितनी ट्रेनें छूटीं"
+    ],
+    "people": [
+     {
+      "name": "Neha",
+      "sex": "w",
+      "a": 2,
+      "b": 0,
+      "note": "Her phone is the charged one. | चार्ज वाला फ़ोन उसी के पास।"
+     },
+     {
+      "name": "Uday",
+      "sex": "m",
+      "a": 2,
+      "b": 0,
+      "note": "Brought the carrom board, as always. | हमेशा की तरह कैरम साथ लाया।"
+     },
+     {
+      "name": "Hetal",
+      "sex": "w",
+      "a": 1,
+      "b": 2,
+      "note": "Made sandwiches for everyone in the coach. | पूरे डिब्बे में सबके लिए सैंडविच बनाए।"
+     },
+     {
+      "name": "Mehul",
+      "sex": "m",
+      "a": 2,
+      "b": 3,
+      "note": "Has the spare lock and chain. | फ़ालतू ताला और ज़ंजीर उसके पास।"
+     }
+    ],
+    "equal_two": [
+     "Neha",
+     "Uday"
+    ],
+    "nudged": "Neha",
+    "twin": "second half of twin B: only one charged phone, now on the woman",
+    "decoy_tie": [],
+    "outcome_bar": "None: the 'matters' twin has a fixed outcome ('Autos: booked.' on the outcome card, 1.37)."
+   }
+  },
+  {
+   "id": "1.30",
+   "kind": "happened",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. After a long gutter, the same for every pick: first light, the train easing into a small-town station, the platform name board painted flat cream and blank, a tea urn on an empty platform.",
+   "bubbles": [
+    {
+     "speaker": "Sound",
+     "type": "sound",
+     "en": "cheee",
+     "hi": "चीं"
+    },
+    {
+     "speaker": "Settled plate",
+     "type": "sign",
+     "en": "Auto stand: settled",
+     "hi": "ऑटो स्टैंड: तय"
+    }
+   ]
+  },
+  {
+   "id": "1.31",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. 5:15 am, Nani's station. Papa seen from behind, left third, at the open door of the waiting room; warm yellow light inside, one long wooden bench, a steel kettle. Calm space: the pale dawn sky over the platform, right.",
+   "bubbles": [
+    {
+     "speaker": "Narration",
+     "type": "narration",
+     "en": "5:15 am. Nani's station.",
+     "hi": "सुबह 5:15। नानी का स्टेशन।"
+    },
+    {
+     "speaker": "Papa",
+     "type": "speech",
+     "en": "Waiting room's warm. One bench free.",
+     "hi": "वेटिंग रूम गरम है। एक बेंच ख़ाली।"
+    }
+   ]
+  },
+  {
+   "id": "1.32",
+   "kind": "decision",
+   "painting": "Stop D7, a hard decision: the question sits in the plain question box, never in a bubble. Behind the cards, people-free: the waiting room, one long wooden bench, a steel kettle, a wall clock with hands only and no numerals. Top bar clock '5:15 am, Nani's station'. Button 'Pick one' | 'किसी एक को चुनें', then 'Give the bench' | 'बेंच दें'. Help line in '?' only.",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who gets the waiting-room bench?",
+    "question_hi": "वेटिंग रूम की बेंच किसे मिले?",
+    "kind": "pick one",
+    "asker": "Papa",
+    "need": "Pick 1 of 4. A gain (a warm seat).",
+    "labels": [
+     "On feet: hours on their feet before the train | खड़े: ट्रेन से पहले कितने घंटे खड़े रहे (key on screen: 'Hours on feet · Hours slept' | 'खड़े घंटे · नींद घंटे')",
+     "Slept: hours slept the night before | नींद: पिछली रात कितने घंटे सोए"
+    ],
+    "people": [
+     {
+      "name": "Nirmala",
+      "sex": "w",
+      "a": 9,
+      "b": 5,
+      "note": "Brought the steel tiffins for the whole family. | पूरे परिवार के लिए स्टील के टिफ़िन लेकर आई।"
+     },
+     {
+      "name": "Chetan",
+      "sex": "m",
+      "a": 9,
+      "b": 5,
+      "note": "Someone kept trailing him along a platform once. | एक बार प्लेटफ़ॉर्म पर कोई उसके पीछे लगा रहा।"
+     },
+     {
+      "name": "Hetal",
+      "sex": "w",
+      "a": 9,
+      "b": 6,
+      "note": "Teaches maths at a coaching centre in town. | शहर के कोचिंग सेंटर में गणित पढ़ाती है।"
+     },
+     {
+      "name": "Vivek",
+      "sex": "m",
+      "a": 8,
+      "b": 5,
+      "note": "Lost a week's takings to pickpockets. | जेबकतरों ने हफ़्ते भर की कमाई उड़ा ली।"
+     }
+    ],
+    "equal_two": [
+     "Nirmala",
+     "Chetan"
+    ],
+    "nudged": "Chetan",
+    "twin": "second half of twin C: a report of being followed, now on the man, in new words of the same weight",
+    "decoy_tie": [],
+    "outcome_bar": "None: hard decisions feed no target."
+   }
+  },
+  {
+   "id": "1.33",
+   "kind": "happened",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The same for every pick: the waiting-room door half shut, warm light spilling across the platform, steam from the kettle.",
+   "bubbles": [
+    {
+     "speaker": "Settled plate",
+     "type": "sign",
+     "en": "Bench: settled",
+     "hi": "बेंच: तय"
+    }
+   ]
+  },
+  {
+   "id": "1.34",
+   "kind": "panel",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The auto stand outside the station at first light. Papa seen from behind, left third, beside three autos with canvas hoods up and plain yellow number plates. Calm space: the dawn sky, right.",
+   "bubbles": [
+    {
+     "speaker": "Papa",
+     "type": "speech",
+     "en": "First auto's ready. Room for two.",
+     "hi": "पहला ऑटो तैयार। दो की जगह।"
+    }
+   ]
+  },
+  {
+   "id": "1.35",
+   "kind": "decision",
+   "painting": "Stop D8. Behind the cards, people-free: the first auto's empty back seat, canvas hood, dawn light. Top bar clock '5:30 am, Nani's station'. Question in Papa's balloon. Five cards: the 'more' cue may show on a small phone in Hindi. Button 'Pick 2 more' | '2 और चुनें', then 'Send the first auto' | 'पहला ऑटो भेजें'. Judging notes carry Papa's face chip. MARKS: [WAITS rulebook Q16].",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who rides in the first auto?",
+    "question_hi": "पहले ऑटो में कौन जाए?",
+    "kind": "pick a team",
+    "asker": "Papa",
+    "need": "Pick 2 of 5. A gain (first to Nani's door), to be confirmed by the five players (rule 23).",
+    "labels": [
+     "Trips: night journeys this year | सफ़र: इस साल रात के सफ़र (key on screen: 'Night trips · Trains missed' | 'रात के सफ़र · छूटी ट्रेनें')",
+     "Missed: trains ever missed | छूटी ट्रेनें: अब तक कितनी ट्रेनें छूटीं"
+    ],
+    "people": [
+     {
+      "name": "Nirmala",
+      "sex": "w",
+      "a": 12,
+      "b": 2,
+      "note": "Coaches the town's kabaddi team on Sundays. | रविवार को शहर की कबड्डी टीम सिखाती है।"
+     },
+     {
+      "name": "Kiran",
+      "sex": "w",
+      "a": 3,
+      "b": 1,
+      "note": "Trains new staff at a bank. | बैंक में नए स्टाफ़ को काम सिखाती।"
+     },
+     {
+      "name": "Prakash",
+      "sex": "m",
+      "a": 3,
+      "b": 1,
+      "note": "[Papa's face chip] Barely speaks up, he's that shy. | इतना शर्मीला कि कुछ बोलता ही नहीं।"
+     },
+     {
+      "name": "Neha",
+      "sex": "w",
+      "a": 2,
+      "b": 0,
+      "note": "[Papa's face chip] Never takes a joke well. | मज़ाक़ को कभी हल्के में नहीं लेती।"
+     },
+     {
+      "name": "Mehul",
+      "sex": "m",
+      "a": 2,
+      "b": 3,
+      "note": "Carries the umbrellas for everyone. | सबके छाते उसी के पास रहते।"
+     }
+    ],
+    "equal_two": [
+     "Kiran",
+     "Prakash"
+    ],
+    "nudged": "Prakash",
+    "twin": "second half of twin D: the loaded word 'shy', said by Papa, now on the man",
+    "decoy_tie": [],
+    "outcome_bar": "Target 2, cash and first auto: each seat to someone with 1 missed train or fewer. The bar (1) sits at the pair's own 1. Nirmala (2) and Mehul (3) miss it; Neha (0) meets it."
+   }
+  },
+  {
+   "id": "1.36",
+   "kind": "happened",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The same for every pick: the first auto pulling away into a lane at dawn, seen from behind, hood up so no rider shows, a puff of exhaust.",
+   "bubbles": [
+    {
+     "speaker": "Sound",
+     "type": "sound",
+     "en": "phat phat",
+     "hi": "फट फट"
+    },
+    {
+     "speaker": "Settled plate",
+     "type": "sign",
+     "en": "First auto: settled",
+     "hi": "पहला ऑटो: तय"
+    }
+   ]
+  },
+  {
+   "id": "1.37",
+   "kind": "outcome",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. After a long gutter, painted once for everyone: dawn at Nani's house front, a blue wooden door open, a tray of steel cups of chai on the step, two autos parked in the lane. No people. Lugdi's big moment: the panel snaps into a pulp-cover reprint frame and the stamp lands on it. The stamp reads by band only: both targets met '6:00', one met '6:30', none met '7:15'. One sound for every band. Never on a hard decision (rule 25).",
+   "bubbles": [
+    {
+     "speaker": "Stamp",
+     "type": "sign",
+     "en": "At Nani's door: 6:00 (or 6:30, or 7:15)",
+     "hi": "नानी के दरवाज़े पर: 6:00 (या 6:30, या 7:15)"
+    },
+    {
+     "speaker": "Fixed line",
+     "type": "sign",
+     "en": "Tickets: shown. Autos: booked.",
+     "hi": "टिकट: पास। ऑटो: बुक।"
+    },
+    {
+     "speaker": "Sound",
+     "type": "sound",
+     "en": "khan khan",
+     "hi": "खन खन"
+    }
+   ]
+  },
+  {
+   "id": "1.38",
+   "kind": "outcome",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The 1.11 list painting again, the pen now lying across it. Each line is stamped from the numbers of whoever was picked; a line gets a tick only at 4 of 4. No names, no pronouns, no row of picks. Possible counts: target 1, 4 of 4 or 3 of 4; target 2, 4 of 4 down to 1 of 4.",
+   "bubbles": [
+    {
+     "speaker": "Papa's list",
+     "type": "sign",
+     "en": "Berths and meals: on feet 9 hours or more. 4 of 4",
+     "hi": "बर्थ और खाना: 9 घंटे या ज़्यादा खड़े। 4 में से 4"
+    },
+    {
+     "speaker": "Papa's list",
+     "type": "sign",
+     "en": "Cash and first auto: 1 missed train or fewer. 4 of 4",
+     "hi": "पैसे और पहला ऑटो: 1 या कम छूटी ट्रेन। 4 में से 4"
+    }
+   ]
+  },
+  {
+   "id": "1.39",
+   "kind": "outcome",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. One painting for every band: Papa seen from behind at Nani's gate, left third, a steel cup of chai in his own hand at his side, sunrise over the lane. Calm space: the morning sky, right. Papa's line changes by band only, about the event and never a person: band A '6:00 sharp. Chai for everyone.' | 'ठीक 6:00। सबके लिए चाय।'; band B '6:30. Chai's still hot.' | '6:30। चाय अब भी गरम।'; band C '7:15. Nani kept the chai hot.' | '7:15। नानी ने चाय गरम रखी।'. Your reply is the same in every band.",
+   "bubbles": [
+    {
+     "speaker": "Papa",
+     "type": "speech",
+     "en": "6:00 sharp. Chai for everyone.",
+     "hi": "ठीक 6:00। सबके लिए चाय।"
+    },
+    {
+     "speaker": "You",
+     "type": "you",
+     "en": "Let's go in.",
+     "hi": "चलिए, अंदर।"
+    }
+   ]
+  },
+  {
+   "id": "1.40",
+   "kind": "outcome",
+   "painting": "Lugdi look, text-free and unsigned, painter rules as in the chapter look. The story's fixed ending, the same for everyone: dusk, Nani's back step, wet, a steel tumbler on its side beside it. No people; Nani is never shown falling. Muted Lugdi palette. Leads into chapter 2. MARKS: [rule 25 risk: the chapter's very last story beat is a worry, not warm; the warm close is 1.39].",
+   "bubbles": [
+    {
+     "speaker": "Narration",
+     "type": "narration",
+     "en": "That evening. Nani's back step.",
+     "hi": "उसी शाम। नानी की पिछली सीढ़ी।"
+    }
+   ]
+  },
+  {
+   "id": "1.41",
+   "kind": "outcome",
+   "painting": "Present-day household style, text-free and unsigned, at most two people, heads 30 to 45% down. Between chapters: the kitchen calendar (the 1.02 painting reused); the May ring fills with a small berth picture. No score, no lean, no row of picks. MARKS: [BREAKS rule 42: five beats follow the last pick, not two or three, because rule 43 adds the stamped list and the bible adds the fixed ending]; [WAITS rulebook Q5 and options Q15: whether the 6:00 or 7:15 stamp may show between chapters].",
+   "bubbles": [
+    {
+     "speaker": "Progress",
+     "type": "sign",
+     "en": "Chapter 1 of 5 done",
+     "hi": "अध्याय 1/5 पूरा"
+    },
+    {
+     "speaker": "Button",
+     "type": "sign",
+     "en": "Next chapter · Later",
+     "hi": "अगला अध्याय · बाद में"
+    }
+   ]
+  }
+ ],
+ "writer_notes": [
+  "HOW TO READ THE MARKS. Each beat's painting text ends with 'MARKS:' where it breaks a rule or waits on an answer. Decision beats carry the numbers: for D1, D3, D5, D7 'a' is hours on feet before the train and 'b' is hours slept the night before (fewer means more tired); for D2, D4, D6, D8 'a' is night journeys this year and 'b' is trains ever missed. Every card keeps the same numbers wherever its set shows. Card notes read 'English | Hindi', with the speaker's face chip named in brackets when the note is a judging remark.",
+  "THE EQUAL TWO, by decision: D1 Neha and Prakash (nudge on Prakash, Mausi's 'fussy'); D2 Nirmala and Vivek (only charged phone, Vivek); D3 Kiran and Uday (report of being followed, Kiran); D4 Pooja and Chetan (Papa's 'shy', Pooja); D5 Hetal and Mehul (Mausi's 'fussy', Hetal); D6 Neha and Uday (charged phone, Neha); D7 Nirmala and Chetan (report of being followed, Chetan); D8 Kiran and Prakash (Papa's 'shy', Prakash). Twins sit four apart: A = D1 and D5, B = D2 and D6, C = D3 and D7, D = D4 and D8.",
+  "CHANGED FROM THE BIBLE, AND WHY (none of it silent). (1) Three pairs moved: D2 is now Nirmala and Vivek (bible: Pooja and Chetan), D4 Pooja and Chetan (bible: Hetal and Mehul), D5 Hetal and Mehul (bible: Pooja and Vivek); D1, D3, D6, D7 and D8 are the bible's. The bible's twin B had the man older in both halves (Chetan 37 against Pooja 30, Uday 29 against Neha 28), which rule 17 forbids, and with the bible's order no set of cards could give every pair matching earlier appearances (rule 17). (2) The two plain twins swap sides: twin A now starts on the man (D1) and twin D on the woman (D4). The matters twin still starts on the man and the hard twin still starts on the woman at D3, so the take's balance in the bible is unchanged. (3) Pick a team is 2 of 5 at D4 and D8 (bible: 2 of 4): with four cards, rules 14 and 17 could not both hold. (4) The number keys say 'hours on their feet before the train' and 'slept the night before' (bible: 'today', 'last night'), so they still make sense at 5 am. (5) The report of being followed is a past event on the card ('last trip', 'once'), not something happening on this train tonight, so the story never walks past a live report. (6) The bible's narration lines 'Some weeks nobody circles' and 'That evening the back step was wet' carry events, and narration may carry only time and place (rule 35): the first is now Mummy's line 'July? Nothing yet.', the second is 'That evening. Nani's back step.' with the wet step shown in the picture. (7) Inside the chapter nobody from the household holds anything out to you: Papa's list lies on the berth (1.10).",
+  "[BREAKS rule 21: Hetal and Mehul, the only community-marked names, sit among the lowest cards six times (D2 and D6 both, D7 Hetal, D8 Mehul) and near the top only in their own pair at D5, against a share of 2 in 10.] A solver over every deck design found none that keeps rule 17 and lets either of them lead before D5 or sit low fewer than three times. Ways out for the owner: give them names that mark no community (the bible's own open question 14 says one family's cousins would), accept it, or loosen rule 17.",
+  "[BREAKS rule 42: five beats follow the last pick (event and stamp, the stamped list, the reaction, the fixed ending, progress), not two or three. Rule 43 adds the list and the bible adds the ending.]",
+  "[Rule 25 risk: the chapter's last story beat (1.40, the wet back step) is a worry, not warm. The warm close is 1.39. The bible asks for this ending to lead into chapter 2.]",
+  "[BREAKS rule 18, take level, from the bible: nine sets of numbers in the take.] Chapter 1 uses two sets (A and B, with A shared with chapter 2), inside rule 18's per-chapter limit.",
+  "CLOSE TO RULE 16 (no stated break): twin B's two halves show the same two other cards, Hetal and Mehul, around different pairs (D2, D6), with new notes. No design that kept rule 17 gave them different cards.",
+  "TWO NUDGES ON ONE PERSON: Prakash carries Mausi's 'fussy' at D1 and Papa's 'shy' at D8. Both are judging remarks, not two different kinds as the bible's section 16 asks. In this circle someone has to carry two nudges, and the only other way put two on Neha, but it moved the hard twin to start on the man, which changes the take's balance.",
+  "KIRAN'S JUDGING NOTE: at D4, one decision after her card's report, Mausi's note says she burns the dal. Rule 17 needs her to carry one judging note before D8 to match Prakash, and every design that kept rule 17 put it at D4 or D5. The note is about cooking, never about the report or how she behaves (rule 22). The household never doubts the report.",
+  "HOW RULE 17 WAS READ, for the checker. 'Matched earlier appearances' means the same number of earlier cards, the same mix of top, middle and bottom places, and the same mix of note kinds (plain, judging, heavy). The 'matters' reason counts as plain, and a hard fact counts as heavy. D8's pair matches on those mixes but not place by place: Kiran was top with a heavy fact and low with a judging note, while Prakash was top with a judging note and low with a heavy fact. 'Weakest' means a card that every other card beats or equals on both numbers. The only one in the chapter is Mehul at D8, the last decision. If the checker ranks by the two numbers' total instead, the bottom is a tie of two or more in D1 to D7, and the tie includes people in later pairs at D1 to D5.",
+  "RULE 15: no tie between two women or two men in chapter 1. The rulebook asks for them from chapter 2 on, and the options file wanted them here too. Adding one breaks rule 17 in this circle.",
+  "HEAVY DECOYS (rule 20): both are men (Prakash at D3, Vivek at D7). At D7 only Vivek, Hetal and Mehul have numbers low enough to sit under the pair, and the house rule keeps heavy facts off community-marked names.",
+  "WAITS. [rulebook Q9] opening on your phone (1.01). [rulebook Q11] Mausi exists only because each household member speaks in one chapter. [options Q11] the household from behind or off the panel inside Lugdi. [rulebook Q7] nobody uses a family word for you. [options Q14] the settled plates name only the job. [rulebook Q14] spoken lines counted. [rulebook Q6] what a Hinglish bubble looks like (only English and Hindi are written here). [rulebook Q16] five cards at D4 and D8 on a 360 x 640 phone in Hindi. [rulebook Q5 and options Q15] whether the 6:00 or 7:15 stamp may show between chapters. [rule 23] the five players still have to agree that keeping the tickets, holding the pouches, messaging the autos and riding first are gains.",
+  "CHECKS RUN (scripts in /private/tmp/claude-501/-Users-priyanshu-Sex-Ed/f50ea7ee-0855-46a2-8572-0aa08df5b855/scratchpad/blend/ch1tools). Numbers: exactly one woman-and-man tie per decision, ages within 8, and no other card tied with the pair. Rule 14: in Rank and Pick a team exactly one card beats the pair on each number, and in Pick one none does. Each bar sits at or below the pair. The cards that can miss a bar are 2 women and 2 men (Nirmala at D4 and D8, Vivek at D5, Mehul at D8). All three stamps can happen. 'Always the woman' and 'always the man' end the same. Ages do not follow gender in any twin. Notes: the pair's two are the same length in both languages, every decision's notes are within 2 words, and the pair holds the longest note in D2, D5 and D7 (3 of 8). The pair's notes never share an opening word. Rule 36: no word from a decision's notes appears in any line before it, in English or Hindi. Words: the opening has 40 English and 46 Hindi counted words (cap 80). The story beats total 105 English and 110 Hindi (cap 120). No beat is over 20, no spoken line over 10, no narration over 12. Decision screens have 10 to 15 counted words. The title card has 16 and 18 and four pieces of text, as a cover, and is not counted as a story beat.",
+  "HINDI FOR A NATIVE READER (rule 66; none is a future or a past tense about you). These lines were flagged and only a reader can clear them: 'सब तुम्हें ही फ़ोन करते हैं' (the subject is सब), the 'who should' asks रखे?, जाए?, करे? and मिले?, 'एक सीट ख़ाली' and 'एक बेंच ख़ाली' (the seat and the bench), 'नानी ने चाय गरम रखी' (Nani), 'बेटी की शादी' (Mama ji's daughter), 'स्कोर मेरा' (Tinku), and the polite लिस्ट दिखाइए, पेन दीजिए and चलिए said by you. Five Hindi-first readers also check that 'पिछले सफ़र में अजनबी पीछा करता रहा' (Kiran) and 'एक बार प्लेटफ़ॉर्म पर कोई उसके पीछे लगा रहा' (Chetan) weigh the same (rule 28), and that नखरे and शरमाती or झिझकता sound like loaded words.",
+  "AGAINST TYPE (rule 11): Neha is a lift mechanic, Nirmala drives a tempo, Uday embroiders saris and Chetan cooks for a tiffin service. Vivek sells seeds, Mehul drives a milk van and Hetal teaches maths, which fit type. Kiran's bank job fits neither. Kiran is a name used for women and men alike, and the portrait carries the gender, so a reader may want it swapped. No name matches the six players' names.",
+  "SIX-PLAYER TEST (rule 1), predicted only: the overnight family train journey should pass for all six. Readers decide.",
+  "Files: /private/tmp/claude-501/-Users-priyanshu-Sex-Ed/f50ea7ee-0855-46a2-8572-0aa08df5b855/scratchpad/blend/ch1tools/notes.py (cards), build.py (beats), fullcheck.py, notecheck.py, check_words.py, check_hindi_leak.py, milp.py (deck solver)."
+ ]
+}

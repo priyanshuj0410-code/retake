@@ -1,0 +1,247 @@
+<title>Saal Bhar Marked Script</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Sarpanch:wght@700;900&display=swap">
+<style>
+/* A marked-up comic script: paper and ink, a strip down the middle, editor's marks in the margin colours. */
+:root {
+  --paper: #F6F1E4; --sheet: #FFFDF7; --ink: #17110F; --soft: #5E574D; --rule: #DCD3C0;
+  --pick: #FFD23F; --pick-ink: #17110F; --block: #C8102E; --weak: #B5650D; --pol: #6F6A61; --wait: #2F5DA8;
+  --block-bg: #FBE6E8; --weak-bg: #FBF0DE; --pol-bg: #EFEBE2; --wait-bg: #E6EDF8; --you: #DDEBDF;
+  --display: 'Sarpanch', 'Hind', sans-serif; --body: 'Hind', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #121315; --sheet: #1B1C1F; --ink: #F1ECE0; --soft: #B3AC9E; --rule: #34363B;
+  --block: #FF7A84; --weak: #F0A54B; --pol: #A39E94; --wait: #8DB1F2;
+  --block-bg: #3A1F23; --weak-bg: #3A2D1A; --pol-bg: #2A2B2E; --wait-bg: #1E2A3D; --you: #1F3324; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #121315; --sheet: #1B1C1F; --ink: #F1ECE0; --soft: #B3AC9E; --rule: #34363B;
+  --block: #FF7A84; --weak: #F0A54B; --pol: #A39E94; --wait: #8DB1F2;
+  --block-bg: #3A1F23; --weak-bg: #3A2D1A; --pol-bg: #2A2B2E; --wait-bg: #1E2A3D; --you: #1F3324; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--body); }
+.wrap { max-width: 980px; margin: 0 auto; padding-block: 36px 96px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2 { font-family: var(--display); font-weight: 900; line-height: 1.1; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 5.5vw, 3.2rem); }
+h2 { font-size: clamp(1.4rem, 3.4vw, 1.9rem); margin-top: 56px; }
+h3 { font: 700 1.1rem/1.3 var(--body); margin: 24px 0 8px; }
+p, li { max-width: 70ch; }
+.eyebrow { font: 600 .78rem/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin-bottom: 12px; }
+.lede { font-size: 1.1rem; color: var(--soft); margin-top: 12px; }
+.scores { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
+.score { border: 2px solid var(--ink); border-radius: 6px; padding: 12px 14px; background: var(--sheet); min-width: 0; }
+.score b { display: block; font: 900 2.2rem/1 var(--display); font-variant-numeric: tabular-nums; }
+.score span { font-size: .85rem; color: var(--soft); }
+.tally { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font: 600 .85rem/1.4 var(--body); border: 1.5px solid currentColor; }
+.pill.blocks { color: var(--block); } .pill.weakens { color: var(--weak); } .pill.polish { color: var(--pol); } .pill.wait { color: var(--wait); }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.two > * { min-width: 0; }
+.big ol, .big ul { padding-left: 22px; }
+.big li { margin-bottom: 10px; }
+.controls { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 2px solid var(--ink);
+  display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; padding: 10px 0; margin-top: 40px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.controls a { color: var(--ink); font-weight: 600; text-decoration: none; padding: 2px 8px; border: 1.5px solid var(--ink); border-radius: 4px; font-size: .9rem; }
+.controls a:focus-visible, .controls button:focus-visible, .controls label:focus-within { outline: 3px solid var(--pick); outline-offset: 2px; }
+.controls label { font-size: .9rem; display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.controls .grp { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.seg button { font: 600 .85rem/1 var(--body); padding: 6px 10px; border: 1.5px solid var(--ink); background: var(--sheet); color: var(--ink); cursor: pointer; }
+.seg button:first-child { border-radius: 4px 0 0 4px; } .seg button:last-child { border-radius: 0 4px 4px 0; border-left: 0; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.chapter { margin-top: 48px; }
+.chhead { border: 3px solid var(--ink); border-radius: 6px; padding: 16px 18px; background: var(--sheet); }
+.chhead .meta { color: var(--soft); font-size: .9rem; }
+.chhead ul { margin: 8px 0 0; padding-left: 20px; font-size: .95rem; }
+.beat { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.beat .id { font: 700 .85rem/1.2 var(--body); font-variant-numeric: tabular-nums; color: var(--soft); }
+.beat .id small { display: block; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; font-size: .7rem; margin-top: 2px; }
+.beat.hasflag .id { color: var(--ink); }
+.pic { font-size: .88rem; color: var(--soft); font-style: italic; margin: 0 0 8px; }
+.short .pic { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.bub { margin: 4px 0; display: flex; gap: 8px; align-items: baseline; }
+.bub .who { flex: 0 0 auto; width: 96px; font: 700 .74rem/1.5 var(--body); text-transform: uppercase; letter-spacing: .04em; color: var(--soft); overflow-wrap: anywhere; }
+.bub .say { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.bub.speech .say, .bub.shout .say, .bub.phone .say { background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 14px; padding: 2px 10px; }
+.bub.shout .say { font-weight: 700; }
+.bub.you .say { background: var(--you); border: 1.5px solid var(--ink); border-radius: 14px; padding: 2px 10px; }
+.bub.narration .say { border: 1.5px solid var(--ink); border-radius: 2px; padding: 2px 10px; background: var(--pick); color: var(--pick-ink); }
+.bub.sound .say { font-family: var(--display); font-weight: 700; }
+.bub.sign .say { font-size: .9rem; border: 1px dashed var(--rule); padding: 1px 8px; }
+.dec { border: 2px solid var(--ink); border-radius: 6px; padding: 12px 14px; background: var(--sheet); margin: 6px 0; }
+.dec .q { font-weight: 700; font-size: 1.05rem; }
+.dec .k { font-size: .85rem; color: var(--soft); margin: 2px 0 8px; }
+.dec .tw { overflow-x: auto; }
+.dec table { border-collapse: collapse; width: 100%; min-width: 440px; font-size: .92rem; }
+.dec th, .dec td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.dec th { font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--soft); font-weight: 600; }
+.dec td.n { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.dec tr.pair td:first-child::after { content: " (pair)"; color: var(--soft); font-size: .8rem; }
+.dec tr.nudged td:first-child::after { content: " (pair, nudged)"; color: var(--soft); font-size: .8rem; }
+.dec tr.pair td, .dec tr.nudged td { background: color-mix(in srgb, var(--pick) 22%, transparent); }
+.dec .bar { font-size: .85rem; color: var(--soft); margin-top: 6px; }
+.marks { font-size: .82rem; color: var(--soft); margin-top: 6px; }
+.flag { border-left: 4px solid var(--pol); background: var(--pol-bg); border-radius: 0 6px 6px 0; padding: 8px 12px; margin-top: 8px; font-size: .92rem; }
+.flag.blocks { border-color: var(--block); background: var(--block-bg); }
+.flag.weakens { border-color: var(--weak); background: var(--weak-bg); }
+.flag.wait { border-color: var(--wait); background: var(--wait-bg); }
+.flag .hd { font-weight: 700; }
+.flag .rt { font-size: .85rem; color: var(--soft); margin: 2px 0 4px; }
+.flag .fix { margin-top: 4px; }
+.hidepol .flag.polish, .hidepol .flag.polish + .flag.polish { display: none; }
+.onlymarked .beat:not(.hasflag) { display: none; }
+.hi [data-l="en"] { display: none; } .en [data-l="hi"] { display: none; }
+details.more { margin-top: 12px; border: 1.5px solid var(--ink); border-radius: 6px; background: var(--sheet); }
+details.more summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.more > div { padding: 0 14px 12px; font-size: .92rem; }
+.foot { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--soft); font-size: .9rem; }
+@media (max-width: 760px) { .scores { grid-template-columns: repeat(2, minmax(0, 1fr)); } .two { grid-template-columns: minmax(0, 1fr); } .beat { grid-template-columns: minmax(0, 1fr); gap: 4px; } .bub { flex-direction: column; gap: 2px; } .bub .who { width: auto; } }
+.flag, .pic, .marks, .chhead, details.more > div { overflow-wrap: anywhere; }
+</style>
+
+<div class="wrap" id="top">
+<header>
+  <p class="eyebrow">Retake · the First take · draft 1 · 26 Oct 2026</p>
+  <h1>Saal Bhar, the whole First take, marked</h1>
+  <p class="lede">The blend, written in full as a scroll strip under your answers: you are the 22 to 30-year-old of the house, and the five worlds are only the look. Every beat that breaks a rule is marked in place, after a second checker tried to disprove each mark.</p>
+  <div class="scores">
+    <div class="score"><b>6</b><span>Players: is it everyone's life, easy to follow?</span></div>
+    <div class="score"><b>5</b><span>Measure: does it read a lean without giving the pair away?</span></div>
+    <div class="score"><b>6</b><span>Making: can we paint and build it?</span></div>
+    <div class="score"><b>17</b><span>of 30. The first round's 19.5 for Dadi's Calendar was on 3 sample decisions a chapter; this is the whole take as written.</span></div>
+  </div>
+  <div class="tally">
+    <span class="pill blocks">__N_BLOCKS__ break the reading</span>
+    <span class="pill weakens">__N_WEAKENS__ weaken it</span>
+    <span class="pill polish">__N_POLISH__ polish</span>
+    <span class="pill wait">__N_WAITS__ wait on your answer</span>
+  </div>
+</header>
+
+<section class="two big">
+  <div>
+    <h2>What works</h2>
+    <ul>
+      <li><strong>The opening places you inside 40 words:</strong> Nani's "Everyone comes", Mummy's free calendar from the shop, "Everyone calls you anyway", the pen.</li>
+      <li><strong>Being the grown-up child everyone phones works</strong> for every player, the 61-year-old included, and nobody ever says your age.</li>
+      <li><strong>One chapter leads to the next all year:</strong> the wet step, the ward, the July circle, the cracked drain, the drain as the cup's stake, the cake box.</li>
+      <li><strong>The endings are clean:</strong> swapping the hidden pair, or always picking the woman or always the man, never changes an outcome.</li>
+      <li><strong>No Hindi line to you marks you as a woman or a man</strong>, and the household never sits on a card.</li>
+    </ul>
+  </div>
+  <div>
+    <h2>The six big problems</h2>
+    <ol>
+      <li><strong>Too long.</strong> 162 beats, about 150 new paintings, 25 to 32 minutes against 20, and about 2,260 words on screen.</li>
+      <li><strong>The numbers give the pair away.</strong> In 38 of 40 decisions the hidden pair are the only two cards with matching numbers. It is built in: with 10 people on fixed numbers, the two left over are always a woman and a man.</li>
+      <li><strong>Asks nobody would make.</strong> The family shop hands its cash drawer to people hired that week; Nani's spare key goes to neighbours while you stand there.</li>
+      <li><strong>The cards read like a poster.</strong> Against-type jobs on nearly every card, chapter after chapter, which tells players what is being tested.</li>
+      <li><strong>The strip shows a clock, not people.</strong> The person asking is always seen from behind, and most "it happened" beats are an empty room with a sound.</li>
+      <li><strong>Chapter 4's logic breaks.</strong> Players are in two matches at once, and "Our side, all ten" is followed by picking three more.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="big">
+  <h2>What the story says about the rules</h2>
+  <ul>
+    <li><strong>Some rules fight the structure, not the writer.</strong> "The pair is never the only tie" cannot hold with circles of 10 people on fixed numbers; chapters 2, 4 and 5 broke it on every decision. The way out is bigger circles (12 people), numbers that change per decision, or dropping that rule.</li>
+    <li><strong>The 20 minutes and 8 decisions a chapter cannot both hold in a strip.</strong> Six decisions a chapter, one painting per scene rather than per stop, or accepting about 25 minutes.</li>
+    <li><strong>"The household is painted only in today's style" is what empties the strip.</strong> Painting each chapter's asker face-on in that chapter's look (five reference paintings) brings the people back.</li>
+    <li><strong>"Ask only what someone in your place would be asked" caught real problems</strong>, and so did "nothing else that follows gender sits on the same side in both halves" (the most broken rule, 15 times). Both are worth keeping.</li>
+  </ul>
+  <h3>Four questions this raises</h3>
+  <ol>
+    <li>Paint the person asking face-on in each chapter's look?</li>
+    <li>Shorter (6 decisions a chapter, about 20 minutes), or keep 8 and accept about 25?</li>
+    <li>For the numbers: 12 people a chapter, numbers that change per decision, or drop "never the only tie"?</li>
+    <li>Mostly ordinary jobs on the cards, with against-type only now and then?</li>
+  </ol>
+  <details class="more"><summary>The judges in full, and the continuity read</summary><div id="judges"></div></details>
+  <details class="more"><summary>Open points the story bible still needs from you</summary><div id="open"></div></details>
+</section>
+
+<nav class="controls" aria-label="Script view">
+  <div class="grp" id="nav"></div>
+  <div class="grp seg" role="group" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true">English</button><button type="button" data-lang="hi" aria-pressed="false">हिन्दी</button>
+  </div>
+  <label><input type="checkbox" id="onlymarked"> Only marked beats</label>
+  <label><input type="checkbox" id="polish" checked> Show polish marks</label>
+  <label><input type="checkbox" id="fullpic"> Full picture notes</label>
+</nav>
+
+<main id="script" class="en short"></main>
+
+<p class="foot">Draft 1, written and checked by the research rounds. Pictures are described, not painted. "Pair" marks the hidden woman and man in each decision, shown here for you only; a player never sees it. The full chapters, the bible and every check are in the project's knowledge folder.</p>
+</div>
+
+<script>
+const D = __DATA__;
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const SEV = { blocks: 'Breaks the reading', weakens: 'Weakens it', polish: 'Polish' };
+const KIND = { opening: 'opening', title: 'title', panel: 'panel', decision: 'decision', happened: 'it happened', outcome: 'outcome' };
+
+function flag(f) {
+  const cls = f.wait ? 'wait' : f.sev;
+  const label = f.wait ? 'Waits on your answer' : SEV[f.sev];
+  const rules = f.rules.length ? ' · rule ' + f.rules.join(', ') : '';
+  const rt = f.rule_text.filter(Boolean).map((t, i) => `<div class="rt">Rule ${f.rules[i]}: ${esc(t)}</div>`).join('');
+  const also = f.also && f.also.length ? ` <span class="rt">(also ${f.also.join(', ')})</span>` : '';
+  return `<div class="flag ${cls} ${f.sev}"><div class="hd">${label}${rules}${also}</div>${rt}<div>${esc(f.breaks)}</div><div class="fix"><strong>Fix:</strong> ${esc(f.fix)}</div></div>`;
+}
+
+function bubbles(list) {
+  return list.map((b) => {
+    const t = (b.type || 'speech').toLowerCase();
+    const who = t === 'you' ? 'You' : b.speaker;
+    return `<div class="bub ${esc(t)}"><span class="who">${esc(who)}</span><span class="say"><span data-l="en">${esc(b.en)}</span><span data-l="hi" lang="hi">${esc(b.hi || b.en)}</span></span></div>`;
+  }).join('');
+}
+
+function decision(d) {
+  if (!d) return '';
+  const pair = new Set(d.equal_two || []);
+  const rows = (d.people || []).map((p) => {
+    const cls = pair.has(p.name) ? (p.name === d.nudged ? 'nudged' : 'pair') : '';
+    return `<tr class="${cls}"><td>${esc(p.name)}</td><td>${p.sex === 'w' ? 'woman' : 'man'}</td><td class="n">${esc(p.a)}</td><td class="n">${esc(p.b)}</td><td>${esc(p.note)}</td></tr>`;
+  }).join('');
+  const labels = d.labels || [];
+  return `<div class="dec"><div class="q"><span data-l="en">${esc(d.question_en)}</span><span data-l="hi" lang="hi">${esc(d.question_hi || d.question_en)}</span></div>
+    <div class="k">${esc(d.kind)} · asked by ${esc(d.asker)}${d.need ? ' · ' + esc(d.need) : ''} · ${esc(d.twin)}${d.decoy_tie && d.decoy_tie.length ? ' · decoy tie: ' + esc(d.decoy_tie.join(' and ')) : ''}</div>
+    <div class="tw"><table><thead><tr><th>Name</th><th></th><th>${esc(labels[0] || 'first')}</th><th>${esc(labels[1] || 'second')}</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table></div>
+    ${d.outcome_bar ? `<div class="bar">Feeds: ${esc(d.outcome_bar)}</div>` : ''}</div>`;
+}
+
+const script = document.getElementById('script');
+const nav = document.getElementById('nav');
+let out = '';
+for (const c of D.chapters) {
+  nav.insertAdjacentHTML('beforeend', `<a href="#ch${c.n}">Ch ${c.n}</a>`);
+  out += `<section class="chapter" id="ch${c.n}"><div class="chhead"><h2 style="margin:0">${c.n}. ${esc(c.title)}</h2>
+    <div class="meta">${esc(c.area)} · ${esc(c.look)}</div>${c.goals.length ? '<ul>' + c.goals.map((g) => `<li>${esc(g)}</li>`).join('') + '</ul>' : ''}
+    ${c.loose.length ? '<div style="margin-top:8px"><strong>Whole-chapter marks</strong>' + c.loose.map(flag).join('') + '</div>' : ''}</div>`;
+  for (const b of c.beats) {
+    const has = b.flags.length > 0;
+    out += `<article class="beat${has ? ' hasflag' : ''}" id="b${b.id}"><div class="id">${esc(b.id)}<small>${KIND[b.kind] || esc(b.kind)}</small></div><div>
+      ${b.pic ? `<p class="pic">${esc(b.pic)}</p>` : ''}${bubbles(b.bubbles)}${decision(b.decision)}
+      ${b.marks.length ? `<div class="marks">Writer's own marks: ${b.marks.map(esc).join(' · ')}</div>` : ''}
+      ${b.flags.map(flag).join('')}</div></article>`;
+  }
+  out += '</section>';
+}
+script.innerHTML = out;
+
+const J = D.judges;
+document.getElementById('judges').innerHTML = ['players', 'measure', 'making'].map((k) => J[k] ? `<h3>${k[0].toUpperCase() + k.slice(1)}: ${J[k].score} of 10</h3><p>${esc(J[k].reasons)}</p><ul>${J[k].problems.map((p) => `<li>${esc(p)}</li>`).join('')}</ul><p><strong>Most valuable fix:</strong> ${esc(J[k].fix)}</p>` : '').join('')
+  + (J.continuity ? `<h3>Continuity across the take</h3><p>${esc(J.continuity.totals)}</p><ul>${J.continuity.problems.map((p) => `<li><strong>${esc(p.beats)}</strong>: ${esc(p.problem)} <em>Fix:</em> ${esc(p.fix)}</li>`).join('')}</ul>` : '');
+document.getElementById('open').innerHTML = '<ul>' + D.open.map((o) => `<li>${esc(o)}</li>`).join('') + '</ul>';
+
+const setLang = (l) => { script.classList.toggle('hi', l === 'hi'); script.classList.toggle('en', l === 'en');
+  document.querySelectorAll('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === l))); };
+document.querySelectorAll('[data-lang]').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+document.getElementById('onlymarked').addEventListener('change', (e) => script.classList.toggle('onlymarked', e.target.checked));
+document.getElementById('polish').addEventListener('change', (e) => script.classList.toggle('hidepol', !e.target.checked));
+document.getElementById('fullpic').addEventListener('change', (e) => script.classList.toggle('short', !e.target.checked));
+</script>

@@ -1,0 +1,891 @@
+{
+ "n": 5,
+ "title": "Sixty guests, one lane (साठ मेहमान, एक गली)",
+ "look": "Jadugar, the magic-show bill, as a look only: flat crimson, gold and black, starburst rays and a playbill's ruled borders painted over a present-day lane wedding (striped canopy, white plastic chairs, steel plates, LED bulbs). No letters anywhere; every surface that would carry writing is painted blank.",
+ "area": "Trust",
+ "goals": [
+  "Target 1, fed by D1 and D5 (twin A): \"Envelopes and keys: 4 slips or fewer.\" | \"लिफ़ाफ़े और चाबियाँ: 4 चूक या कम।\" Met when every holder has 4 slips or fewer.",
+  "Target 2, fed by D4 and D8 (twin D): \"Front row and cake: 10 weddings or more.\" | \"आगे की कतार और केक: 10 शादियाँ या ज़्यादा।\" Met when all four places go to people with 10 weddings or more.",
+  "Fixed line for the matters twin (D3, D7), never on the opening list: \"Sweets: found. Band: settled.\" | \"मिठाई: हाज़िर। बैंड: हिसाब साफ़।\"",
+  "Stamp under Jadugar's crimson cloth: \"Dinner for sixty: 9:00\" with both targets met, \"9:30\" with one, \"10:15\" with none. The hard twin (D2, D6) feeds nothing."
+ ],
+ "beats": [
+  {
+   "id": "5.01",
+   "kind": "title",
+   "painting": "Nani's lane at dusk: a striped crimson-and-cream wedding canopy on bamboo poles over the lane, strings of small bulbs not yet lit, stacks of white plastic chairs by a blue iron gate, a gold sky with playbill starburst rays; no people. Calm space: the sky, top half. Live text only (the existing chapter card): chapter line, title, setting line, time, Start. MARKS: [BREAKS rule 62: five pieces of text, the existing chapter card's fixed layout; its 15 English and 16 Hindi words are counted in the chapter total] Rule 26: the card names the setting (\"talk of a dowry\") before Start; the help line sits only in the \"?\" sheet.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Chapter 5 of 5",
+     "hi": "अध्याय 5, 5 में से"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Sixty guests, one lane",
+     "hi": "साठ मेहमान, एक गली"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "The wedding week, and talk of a dowry.",
+     "hi": "शादी का हफ़्ता, और दहेज की बात।"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "About 4 minutes",
+     "hi": "लगभग 4 मिनट"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Start",
+     "hi": "शुरू करें"
+    }
+   ]
+  },
+  {
+   "id": "5.02",
+   "kind": "opening",
+   "painting": "Nani's kitchen wall in the Jadugar look: the shop's free calendar (a plain mountain picture over a grid of empty boxes) on its last page, one box ringed in thick red, a pencil ring and a red ring already on earlier pages peeking at the edge; a plain cream card with a crimson border tucked into the calendar's corner, its face blank. No people. Calm space: the plain distempered wall to the left. MARKS: The December ring is this chapter's progress circle: it fills with a small envelope picture, one eighth per decision (rule 50). Rule 40: if the painted card is under 60% of the panel, \"Everyone comes.\" moves to a message card under the picture.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "December",
+     "hi": "दिसंबर"
+    },
+    {
+     "speaker": "Mama ji",
+     "type": "sign",
+     "en": "Everyone comes.",
+     "hi": "सब आएँ।"
+    }
+   ]
+  },
+  {
+   "id": "5.03",
+   "kind": "opening",
+   "painting": "The lane under the half-raised canopy, Thursday afternoon. Left third: Mama ji seen from behind at the blue gate, his big black umbrella hooked over one forearm, looking down the lane. Right third: Mami, about 45, face-on, plain cotton salwar suit, bare forehead, holding a plain cream card with a crimson border flat against her chest, looking straight out at the viewer. Bulbs strung above. Calm space: the plain underside of the canopy across the top half. Two people. MARKS: [WAITS rulebook Q11: Mami is a one-chapter voice, there only because the household speaks in one chapter each] [WAITS options Q11: Mama ji seen from behind inside the look, his present-day face chip on every bubble] The chapter's one shout (rule 35).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "Thursday. Nani's lane.",
+     "hi": "गुरुवार। नानी की गली।"
+    },
+    {
+     "speaker": "Mama ji, Mummy's brother",
+     "type": "shout",
+     "en": "Sixty guests? Make it seventy!",
+     "hi": "साठ मेहमान? सत्तर कर लो!"
+    },
+    {
+     "speaker": "Mami, Mama ji's wife",
+     "type": "speech",
+     "en": "Then you run my list.",
+     "hi": "तो मेरी लिस्ट तुम सँभालो।"
+    }
+   ]
+  },
+  {
+   "id": "5.04",
+   "kind": "opening",
+   "painting": "Waist up, close: Mami centre-left, face-on, holding the job list out towards the viewer in both of her own hands (her face in the same picture, so the hands are plainly hers); the card faces out, cream with ruled lines and no marks. Behind her the striped canopy and bulbs. Calm space: the canopy, upper right. One person. MARKS: [WAITS rulebook Q6: what this bubble looks like in Hinglish] The asker hands over the list through Mami, the chapter voice, because household hands never reach towards you (bible section 4).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Envelopes and keys: 4 slips or fewer. Front row and cake: 10 weddings or more.",
+     "hi": "लिफ़ाफ़े और चाबियाँ: 4 चूक या कम। आगे की कतार और केक: 10 शादियाँ या ज़्यादा।"
+    },
+    {
+     "speaker": "You",
+     "type": "you",
+     "en": "Let's see, Mami.",
+     "hi": "दिखाइए, मामी।"
+    }
+   ]
+  },
+  {
+   "id": "5.05",
+   "kind": "panel",
+   "painting": "The circle page. The lane seen from above the gate, people-free: rows of plastic chairs under the canopy, a pile of steel trunks and folded mattresses by a neighbour's door, bulbs across the lane. Calm space: the canopy roof filling the top half, where the ten card portraits sit as live insets, one size, names only, new order on every load: Dolly, Sarla, Rekha, Mitali, Shampa, Naresh, Gopal, Satish, Tapan, Lalit. MARKS: [WAITS bible open point: the wedding relatives carry names, three of them Bengali, while the household marks no community] No narration: a line about \"the relatives\" would describe the people on the cards (rule 36).",
+   "bubbles": []
+  },
+  {
+   "id": "5.06",
+   "kind": "panel",
+   "painting": "Under the canopy, late afternoon. Left third: Mama ji from behind, umbrella on his arm, facing a small tempo parked side-on at the lane end with rolled canvas and bamboo in its back; its number plate is hidden behind a stack of chairs. Calm space: the canopy's plain underside, upper right. One person. (Lead-in shared in figures and mood with 5.16.) MARKS: Twin A lead-in (pairs with 5.16): same figure, same pose, same mood.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "4:00. Under the tent.",
+     "hi": "4:00। टेंट के नीचे।"
+    },
+    {
+     "speaker": "Mama ji",
+     "type": "speech",
+     "en": "Advances for tent and cook, by five.",
+     "hi": "टेंट और रसोइए का एडवांस, पाँच तक।"
+    }
+   ]
+  },
+  {
+   "id": "5.07",
+   "kind": "decision",
+   "painting": "People-free painting behind the cards: a plain steel cash box, shut, on a folding table under the canopy; two plain white envelopes, sealed, beside it. MARKS: [BREAKS rule 15: the equal two are the only two people with the same numbers on these cards; no woman-and-woman or man-and-man tie could be fitted anywhere in the chapter (writer note 1)] A player who spends only one check (likely on Sarla) gives no reading here; both checks spent means choosing between the equal two.",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who carries the two advance envelopes?",
+    "question_hi": "दोनों एडवांस लिफ़ाफ़े कौन ले जाए?",
+    "kind": "Spend checks, up to 2",
+    "asker": "Mama ji (question in his balloon with his face chip, at the fixed question place)",
+    "labels": [
+     "weddings: family weddings helped at (शादियाँ), more is better",
+     "slips: counting slips at those weddings (चूक), fewer is better"
+    ],
+    "people": [
+     {
+      "name": "Sarla",
+      "sex": "w",
+      "a": 11,
+      "b": 2,
+      "note": "Fixed the water pump early this morning. | आज सुबह-सुबह पानी की मोटर ठीक की। (role: strongest card, better on both numbers; age 45)"
+     },
+     {
+      "name": "Dolly",
+      "sex": "w",
+      "a": 8,
+      "b": 3,
+      "note": "Hung the lights over the gate Tuesday. | मंगलवार को गेट के ऊपर सारी बत्तियाँ लगाईं। (role: one of the equal two; age 33)"
+     },
+     {
+      "name": "Naresh",
+      "sex": "m",
+      "a": 8,
+      "b": 3,
+      "note": "Talks far too much, all day long. | सारा दिन ज़रूरत से कहीं ज़्यादा बोलता है। [Mami's remark, with Mami's face chip] (role: one of the equal two; age 40)"
+     },
+     {
+      "name": "Lalit",
+      "sex": "m",
+      "a": 3,
+      "b": 7,
+      "note": "Never puts his phone down, not once. | एक पल को भी फ़ोन हाथ से नहीं छोड़ता। [Mami's remark, with Mami's face chip] (role: weakest card; age 28)"
+     }
+    ],
+    "equal_two": [
+     "Dolly",
+     "Naresh"
+    ],
+    "nudged": "Naresh",
+    "twin": "first half of twin A, plain",
+    "decoy_tie": [],
+    "outcome_bar": "target 1: every holder 4 slips or fewer",
+    "need": "Story clock in the top bar: Thursday 4:00 pm. 2 checks: hand one envelope or both; one person may carry both. Each check is a gain (being trusted with cash). Plate under the last place: \"2 envelopes\" | \"2 लिफ़ाफ़े\". Button: \"Hand them over\" | \"सौंप दें\". Settled plate after the pick: tick, \"Envelopes\" | \"लिफ़ाफ़े\", lock; no names, no faces."
+   }
+  },
+  {
+   "id": "5.08",
+   "kind": "panel",
+   "painting": "The canopy's entrance. A small table under a crimson cloth holds a shut register (a thick bound book, plain maroon cover) and a steel box with a slot; two empty plastic chairs behind it. Left third: Mama ji from behind, umbrella on his arm. Calm space: the plain canvas wall, upper right. One person. (Lead-in shared in figures and mood with 5.18.) MARKS: Twin B lead-in (pairs with 5.18). The ask stays in the bubble; on the hard decision that follows, the question sits in the plain question box (rule 37).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "5:00. The gift table.",
+     "hi": "5:00। तोहफ़ों की मेज़।"
+    },
+    {
+     "speaker": "Mama ji",
+     "type": "speech",
+     "en": "Guests start arriving at six.",
+     "hi": "छह से मेहमानों का आना शुरू।"
+    }
+   ]
+  },
+  {
+   "id": "5.09",
+   "kind": "decision",
+   "painting": "People-free painting behind the cards: the gift table close, the shut maroon register and the steel box with its slot, a plain pen lying across. MARKS: [BREAKS rule 15: the equal two are the only two people with the same numbers on these cards; no woman-and-woman or man-and-man tie could be fitted anywhere in the chapter (writer note 1)] [WAITS rule 23: is sitting at the gift table a gain or a load; written as a gain until the five players agree] [WAITS options Q3: the blend had this wedding's groom's side asking for a scooter; here it is a relative's own past refusal, on one card only] [WAITS five Hindi-first readers, rule 28: \"turned down a scooter demand when her niece married\" against D6's \"his niece's in-laws asked for a scooter; he refused\"] The heavy-sounding decoy fact (Lalit's father) sits on the weakest card (writer note 7).",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who sits at the gift table with the register?",
+    "question_hi": "रजिस्टर लेकर तोहफ़ों की मेज़ पर कौन बैठे?",
+    "kind": "Pick one",
+    "asker": "Mama ji (hard decision: the question sits in the plain question box, never in his balloon, rule 37)",
+    "labels": [
+     "right: times their account proved right (सही), more is better",
+     "late: times late this week (देर), fewer is better"
+    ],
+    "people": [
+     {
+      "name": "Rekha",
+      "sex": "w",
+      "a": 6,
+      "b": 3,
+      "note": "Turned down a scooter demand when her niece married. | भतीजी के ब्याह पर स्कूटर की माँग ठुकराई थी। (role: one of the equal two; age 38)"
+     },
+     {
+      "name": "Satish",
+      "sex": "m",
+      "a": 6,
+      "b": 3,
+      "note": "Sewed every curtain on the stage by hand, himself. | मंच के सारे पर्दे उसने अपने हाथ से सिले। (role: one of the equal two; age 43)"
+     },
+     {
+      "name": "Mitali",
+      "sex": "w",
+      "a": 4,
+      "b": 4,
+      "note": "Carried the steel plates up from the station. | स्टेशन से सारी स्टील की थालियाँ उठाकर लाई। (role: decoy; age 35)"
+     },
+     {
+      "name": "Lalit",
+      "sex": "m",
+      "a": 2,
+      "b": 6,
+      "note": "Lost his father to a fever in March. | मार्च में बुख़ार से उसके पिता गुज़र गए। (role: weakest card; age 28)"
+     }
+    ],
+    "equal_two": [
+     "Rekha",
+     "Satish"
+    ],
+    "nudged": "Rekha",
+    "twin": "first half of twin B, hard",
+    "decoy_tie": [],
+    "outcome_bar": "none (hard twin feeds nothing)",
+    "need": "Story clock in the top bar: Thursday 5:00 pm. 1 person. Gain or load waits on the five players (rule 23); written as a gain (being trusted with the gifts). Button: \"Seat {n}\" | \"{n} को बिठाएँ\". Settled plate after the pick: tick, \"Register\" | \"रजिस्टर\", lock; no names, no faces."
+   }
+  },
+  {
+   "id": "5.10",
+   "kind": "happened",
+   "painting": "The same for every pick. The lane end at dusk: a bus's red tail lights turning the corner, suitcases and bedrolls set down on the road, the canopy's bulbs now lit in a long gold arc; guests only as small dark shapes seen from behind, far off, none of them from the cards. Calm space: the darkening sky. MARKS: Change of place, so an \"it happened\" panel; the same for every pick (rule 39).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "6:00. The lane end.",
+     "hi": "6:00। गली का मोड़।"
+    },
+    {
+     "speaker": "game",
+     "type": "sound",
+     "en": "paan",
+     "hi": "पों"
+    }
+   ]
+  },
+  {
+   "id": "5.11",
+   "kind": "panel",
+   "painting": "Nani's storeroom at night. Steel shelves of plain unlabelled tins and sacks under one bare bulb, a gap on the middle shelf, a steel trunk on the floor. Left third: Mama ji in the doorway, seen from behind. Calm space: the whitewashed wall, upper right. One person. (Lead-in shared in figures and mood with 5.21.) MARKS: Twin C lead-in (pairs with 5.21).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "9:00. The storeroom.",
+     "hi": "9:00। भंडार घर।"
+    },
+    {
+     "speaker": "Mama ji",
+     "type": "speech",
+     "en": "Two sweet tins aren't where they were.",
+     "hi": "मिठाई के दो डिब्बे अपनी जगह नहीं।"
+    }
+   ]
+  },
+  {
+   "id": "5.12",
+   "kind": "decision",
+   "painting": "People-free painting behind the cards: the storeroom shelf with its gap, one bare bulb, plain unlabelled tins either side. MARKS: [BREAKS rule 15: the equal two are the only two people with the same numbers on these cards; no woman-and-woman or man-and-man tie could be fitted anywhere in the chapter (writer note 1)] First Believe of the take, in its home world, with the moving hand (rule 51). Fixed result (rule 45).",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Whose word do you take on the tins?",
+    "question_hi": "डिब्बों पर किसकी बात मानें?",
+    "kind": "Believe",
+    "asker": "Mama ji (question in his balloon with his face chip, at the fixed question place)",
+    "labels": [
+     "right: times their account proved right (सही), more is better",
+     "late: times late this week (देर), fewer is better"
+    ],
+    "people": [
+     {
+      "name": "Tapan",
+      "sex": "m",
+      "a": 8,
+      "b": 2,
+      "note": "\"I saw them carried up to the terrace.\" | \"मैंने उन्हें छत पर ले जाते देखा।\" (role: one of the equal two; age 40)"
+     },
+     {
+      "name": "Shampa",
+      "sex": "w",
+      "a": 8,
+      "b": 2,
+      "note": "\"They were on this very shelf at eight.\" | \"आठ बजे ये इसी शेल्फ़ पर थे।\" (role: one of the equal two; age 45)"
+     },
+     {
+      "name": "Mitali",
+      "sex": "w",
+      "a": 4,
+      "b": 4,
+      "note": "\"The caterer's men moved them, I heard.\" | \"सुना है कैटरर के लोग ले गए।\" (role: decoy; age 35)"
+     },
+     {
+      "name": "Lalit",
+      "sex": "m",
+      "a": 2,
+      "b": 6,
+      "note": "\"Somebody shifted them off to clear the shelf.\" | \"किसी ने शेल्फ़ ख़ाली करने को हटा दिए।\" (role: weakest card; age 28)"
+     }
+    ],
+    "equal_two": [
+     "Shampa",
+     "Tapan"
+    ],
+    "nudged": "Tapan",
+    "twin": "first half of twin C, matters",
+    "decoy_tie": [],
+    "outcome_bar": "fixed: \"Sweets: found.\"",
+    "need": "Story clock in the top bar: Thursday 9:00 pm. 1 account. Being believed is a gain; the result is fixed. Button: \"Believe {n}\" | \"{n} की बात मानें\". Settled plate after the pick: tick, \"Sweets\" | \"मिठाई\", lock; no names, no faces."
+   }
+  },
+  {
+   "id": "5.13",
+   "kind": "happened",
+   "painting": "The same for every pick. The lane on Friday morning: the canopy fully up, rows of plastic chairs set out, a big steel kettle steaming on a gas stove by the gate, low winter sun; no people. Calm space: the bright sky. MARKS: Change of day; the same for every pick.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "Friday morning.",
+     "hi": "शुक्रवार सुबह।"
+    }
+   ]
+  },
+  {
+   "id": "5.14",
+   "kind": "panel",
+   "painting": "Under the canopy at evening. Rows of plastic chairs face a low stage with a crimson curtain and gold fringe. In the front row Nani's cane (rubber foot) leans against the middle chair; the chairs either side are empty. Left third: Mama ji from behind. Calm space: the curtain's plain upper part. One person. (Lead-in shared in figures and mood with 5.23.) MARKS: Twin D lead-in (pairs with 5.23).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "7:00. The front row.",
+     "hi": "7:00। आगे की कतार।"
+    },
+    {
+     "speaker": "Mama ji",
+     "type": "speech",
+     "en": "Seven sharp, Nani takes her seat.",
+     "hi": "ठीक सात, नानी अपनी जगह बैठें।"
+    }
+   ]
+  },
+  {
+   "id": "5.15",
+   "kind": "decision",
+   "painting": "People-free painting behind the cards: the front row close, Nani's cane against the middle chair, two empty chairs either side, the crimson curtain behind. MARKS: [BREAKS rule 15: the equal two are the only two people with the same numbers on these cards; no woman-and-woman or man-and-man tie could be fitted anywhere in the chapter (writer note 1)] [WAITS rulebook Q16: five cards in Hindi on a 360 x 640 phone may need the \"more\" cue]",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who sits beside Nani in the front row?",
+    "question_hi": "आगे की कतार में नानी के पास कौन बैठे?",
+    "kind": "Rank, 2 places",
+    "asker": "Mama ji (question in his balloon with his face chip, at the fixed question place)",
+    "labels": [
+     "weddings: family weddings helped at (शादियाँ), more is better",
+     "slips: counting slips at those weddings (चूक), fewer is better"
+    ],
+    "people": [
+     {
+      "name": "Sarla",
+      "sex": "w",
+      "a": 11,
+      "b": 2,
+      "note": "Far too modern for the old folks. | बुज़ुर्गों के हिसाब से कुछ ज़्यादा ही मॉडर्न। [Mama ji's remark, with Mama ji's face chip] (role: one of the equal two; age 45)"
+     },
+     {
+      "name": "Satish",
+      "sex": "m",
+      "a": 11,
+      "b": 2,
+      "note": "Painted the gate and the stairs today. | आज गेट और सीढ़ियाँ ख़ुद ही पेंट कीं। (role: one of the equal two; age 43)"
+     },
+     {
+      "name": "Mitali",
+      "sex": "w",
+      "a": 13,
+      "b": 1,
+      "note": "Drove the hired tempo to market twice. | किराए का टेम्पो दो बार बाज़ार ले गई। (role: strongest card, better on both numbers; age 35)"
+     },
+     {
+      "name": "Dolly",
+      "sex": "w",
+      "a": 8,
+      "b": 3,
+      "note": "Argues with everybody over every small thing. | हर छोटे मुद्दे पर सबसे बहस करती है। [Mama ji's remark, with Mama ji's face chip] (role: decoy; age 33)"
+     },
+     {
+      "name": "Lalit",
+      "sex": "m",
+      "a": 3,
+      "b": 7,
+      "note": "Got in late on Wednesday night, by bus. | बुधवार को देर रात बस से पहुँचा। (role: weakest card; age 28)"
+     }
+    ],
+    "equal_two": [
+     "Sarla",
+     "Satish"
+    ],
+    "nudged": "Sarla",
+    "twin": "first half of twin D, plain",
+    "decoy_tie": [],
+    "outcome_bar": "target 2: every place 10 weddings or more",
+    "need": "Story clock in the top bar: Friday 7:00 pm. Rank all five; the top 2 get the two chairs either side of Nani. A gain (an honour). Plate under the last place: \"2 chairs\" | \"2 कुर्सियाँ\". Button: \"Seat these two\" | \"इन दोनों को बिठाएँ\". Settled plate after the pick: tick, \"Front row\" | \"आगे की कतार\", lock; no names, no faces."
+   }
+  },
+  {
+   "id": "5.16",
+   "kind": "panel",
+   "painting": "Down the lane at night. Two neighbours' doorways with plain wooden doors shut, a string of bulbs above, folded mattresses stacked on a charpai between them. Left third: Mama ji from behind, umbrella on his arm. Calm space: the night sky over the roofs. One person. (Lead-in shared in figures and mood with 5.06.)",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "8:00. Down the lane.",
+     "hi": "8:00। गली में आगे।"
+    },
+    {
+     "speaker": "Mama ji",
+     "type": "speech",
+     "en": "Late bus guests need their rooms.",
+     "hi": "आख़िरी बस वालों को कमरे चाहिए।"
+    }
+   ]
+  },
+  {
+   "id": "5.17",
+   "kind": "decision",
+   "painting": "People-free painting behind the cards: two plain iron keys on a plain ring, lying on a folded mattress. MARKS: [BREAKS rule 15: the equal two are the only two people with the same numbers on these cards; no woman-and-woman or man-and-man tie could be fitted anywhere in the chapter (writer note 1)] [BREAKS rule 17: Rekha arrives having been one of the equal two at D2, high on the numbers and carrying the hard fact; Gopal has not appeared this chapter. A search of every pair plan for these ten people found no layout without one such mismatch (writer note 2)]",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who holds the keys to the two houses?",
+    "question_hi": "दोनों घरों की चाबियाँ कौन रखे?",
+    "kind": "Spend checks, up to 2",
+    "asker": "Mama ji (question in his balloon with his face chip, at the fixed question place)",
+    "labels": [
+     "weddings: family weddings helped at (शादियाँ), more is better",
+     "slips: counting slips at those weddings (चूक), fewer is better"
+    ],
+    "people": [
+     {
+      "name": "Rekha",
+      "sex": "w",
+      "a": 6,
+      "b": 4,
+      "note": "Chats for hours with whoever she meets. | जो भी मिले, उससे घंटों गप्पें लड़ाती है। [Mami's remark, with Mami's face chip] (role: one of the equal two; age 38)"
+     },
+     {
+      "name": "Gopal",
+      "sex": "m",
+      "a": 6,
+      "b": 4,
+      "note": "Rolled every single chapati at lunch today. | आज दोपहर की सारी रोटियाँ उसी ने बेलीं। (role: one of the equal two; age 34)"
+     },
+     {
+      "name": "Naresh",
+      "sex": "m",
+      "a": 8,
+      "b": 3,
+      "note": "Fetched the bamboo poles from the depot. | डिपो से बाँस की बल्लियाँ ले आया। (role: strongest card, better on both numbers; age 40)"
+     },
+     {
+      "name": "Lalit",
+      "sex": "m",
+      "a": 3,
+      "b": 7,
+      "note": "Sleeps till noon unless somebody shakes him. | कोई न उठाए तो दोपहर तक सोता है। [Mami's remark, with Mami's face chip] (role: weakest card; age 28)"
+     }
+    ],
+    "equal_two": [
+     "Rekha",
+     "Gopal"
+    ],
+    "nudged": "Rekha",
+    "twin": "second half of twin A",
+    "decoy_tie": [],
+    "outcome_bar": "target 1: every holder 4 slips or fewer",
+    "need": "Story clock in the top bar: Friday 8:00 pm. 2 checks: one key or both; one person may hold both. A gain (being trusted with the houses). Plate under the last place: \"2 keys\" | \"2 चाबियाँ\". Button: \"Hand them over\" | \"सौंप दें\". Settled plate after the pick: tick, \"Keys\" | \"चाबियाँ\", lock; no names, no faces."
+   }
+  },
+  {
+   "id": "5.18",
+   "kind": "panel",
+   "painting": "Nani's upstairs landing. A narrow stair rail, one plain wooden door shut with an iron hasp and an open padlock hanging from it, a single bulb. Left third: Mama ji from behind on the top step. Calm space: the plain wall, upper right. One person. (Lead-in shared in figures and mood with 5.08.)",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "8:30. Upstairs.",
+     "hi": "8:30। ऊपर।"
+    },
+    {
+     "speaker": "Mama ji",
+     "type": "speech",
+     "en": "That room stays locked from nine.",
+     "hi": "नौ से वो कमरा बंद रहे।"
+    }
+   ]
+  },
+  {
+   "id": "5.19",
+   "kind": "decision",
+   "painting": "People-free painting behind the cards: the shut wooden door with its hasp and the open padlock, close. MARKS: [BREAKS rule 15: the equal two are the only two people with the same numbers on these cards; no woman-and-woman or man-and-man tie could be fitted anywhere in the chapter (writer note 1)] [WAITS five Hindi-first readers, rule 28: the scooter pair] [WAITS rulebook Q16: five cards] The heavy-sounding decoy fact (Rekha's mill job) sits on the weakest card (writer note 7).",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who keeps the key to the jewellery room?",
+    "question_hi": "गहनों वाले कमरे की चाबी कौन रखे?",
+    "kind": "Pick one",
+    "asker": "Mama ji (hard decision: the question sits in the plain question box, never in his balloon, rule 37)",
+    "labels": [
+     "right: times their account proved right (सही), more is better",
+     "late: times late this week (देर), fewer is better"
+    ],
+    "people": [
+     {
+      "name": "Naresh",
+      "sex": "m",
+      "a": 12,
+      "b": 0,
+      "note": "His niece's in-laws asked for a scooter; he refused. | भतीजी की ससुराल ने स्कूटर माँगा, उसने मना किया। (role: one of the equal two; age 40)"
+     },
+     {
+      "name": "Sarla",
+      "sex": "w",
+      "a": 12,
+      "b": 0,
+      "note": "Got the generator going when it died last night. | कल रात जनरेटर रुका तो उसी ने चालू किया। (role: one of the equal two; age 45)"
+     },
+     {
+      "name": "Gopal",
+      "sex": "m",
+      "a": 10,
+      "b": 1,
+      "note": "Laughs loudest of all at his own jokes. | अपने ही चुटकुलों पर सबसे ज़ोर से हँसता है। [Mama ji's remark, with Mama ji's face chip] (role: decoy; age 34)"
+     },
+     {
+      "name": "Tapan",
+      "sex": "m",
+      "a": 8,
+      "b": 2,
+      "note": "Set out all the plastic chairs before breakfast. | नाश्ते से पहले सारी प्लास्टिक कुर्सियाँ लगा दीं। (role: decoy; age 40)"
+     },
+     {
+      "name": "Rekha",
+      "sex": "w",
+      "a": 6,
+      "b": 3,
+      "note": "Lost her job when the mill shut in spring. | बसंत में मिल ठप हुई, उसकी नौकरी चली गई। (role: weakest card; age 38)"
+     }
+    ],
+    "equal_two": [
+     "Sarla",
+     "Naresh"
+    ],
+    "nudged": "Naresh",
+    "twin": "second half of twin B",
+    "decoy_tie": [],
+    "outcome_bar": "none (hard twin feeds nothing)",
+    "need": "Story clock in the top bar: Friday 8:30 pm. 1 person. A gain (being trusted with the jewellery). Button: \"Give {n} the key\" | \"{n} को चाबी दें\". Settled plate after the pick: tick, \"Jewellery\" | \"गहने\", lock; no names, no faces."
+   }
+  },
+  {
+   "id": "5.20",
+   "kind": "happened",
+   "painting": "The same for every pick. The lane on Saturday at dusk: the canopy lit gold from end to end, paper lanterns, the chairs filling with guests seen only from behind as small shapes; no ritual object, no dress that marks a faith. Calm space: the deep crimson sky. MARKS: No ritual, prayer or dress that marks a faith on screen (rule 3); the wedding itself stays off the page.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "Saturday. The wedding day.",
+     "hi": "शनिवार। शादी का दिन।"
+    }
+   ]
+  },
+  {
+   "id": "5.21",
+   "kind": "panel",
+   "painting": "Beside the stage. A big bass drum and brass trumpets in open cases on two plastic chairs. Left third: Mama ji from behind. Calm space: the canopy wall, upper right. One person. (Lead-in shared in figures and mood with 5.11.)",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "6:00. Beside the stage.",
+     "hi": "6:00। मंच के पास।"
+    },
+    {
+     "speaker": "Mama ji",
+     "type": "speech",
+     "en": "The band says half is unpaid.",
+     "hi": "बैंड के हिसाब से, आधा बाक़ी।"
+    }
+   ]
+  },
+  {
+   "id": "5.22",
+   "kind": "decision",
+   "painting": "People-free painting behind the cards: the band's instruments in their open cases on the plastic chairs, close. MARKS: [BREAKS rule 15: the equal two are the only two people with the same numbers on these cards; no woman-and-woman or man-and-man tie could be fitted anywhere in the chapter (writer note 1)] Fixed result (rule 45). Dolly's first-hand account is the one reason that truly matters; it sits only on the equal two (rule 20).",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who do you believe about the band's money?",
+    "question_hi": "बैंड के पैसों पर किसकी बात सही मानें?",
+    "kind": "Believe",
+    "asker": "Mama ji (question in his balloon with his face chip, at the fixed question place)",
+    "labels": [
+     "right: times their account proved right (सही), more is better",
+     "late: times late this week (देर), fewer is better"
+    ],
+    "people": [
+     {
+      "name": "Dolly",
+      "sex": "w",
+      "a": 10,
+      "b": 1,
+      "note": "\"I gave them the full amount myself, at noon.\" | \"दोपहर को पूरी रक़म मैंने ख़ुद उनके हाथ में दी।\" (role: one of the equal two; age 33)"
+     },
+     {
+      "name": "Gopal",
+      "sex": "m",
+      "a": 10,
+      "b": 1,
+      "note": "\"Here, the canopy man always settles up with them.\" | \"यहाँ उनसे सारा लेन-देन हमेशा शामियाने वाला ही करता है।\" (role: one of the equal two; age 34)"
+     },
+     {
+      "name": "Tapan",
+      "sex": "m",
+      "a": 8,
+      "b": 2,
+      "note": "\"Part was paid two days back, I heard.\" | \"सुना है, परसों उन्हें कुछ हिस्सा मिल गया था।\" (role: decoy; age 40)"
+     },
+     {
+      "name": "Rekha",
+      "sex": "w",
+      "a": 6,
+      "b": 3,
+      "note": "\"Musicians claim this every single time, I find.\" | \"गाने-बजाने वाले हर बार यही दावा करते हैं।\" (role: weakest card; age 38)"
+     }
+    ],
+    "equal_two": [
+     "Dolly",
+     "Gopal"
+    ],
+    "nudged": "Dolly",
+    "twin": "second half of twin C",
+    "decoy_tie": [],
+    "outcome_bar": "fixed: \"Band: settled.\"",
+    "need": "Story clock in the top bar: Saturday 6:00 pm. 1 account. Being believed is a gain; the result is fixed. Button: \"Believe {n}\" | \"{n} की बात मानें\". Settled plate after the pick: tick, \"Band\" | \"बैंड\", lock; no names, no faces."
+   }
+  },
+  {
+   "id": "5.23",
+   "kind": "panel",
+   "painting": "Nani's kitchen at night. A plain white cake box on the steel counter, a cake knife and a stack of steel plates beside it, Nani's cane by the door. Left third: Mama ji from behind. Calm space: the plain tiled wall, upper right. One person. (Lead-in shared in figures and mood with 5.14.)",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "8:00. The kitchen.",
+     "hi": "8:00। रसोई।"
+    },
+    {
+     "speaker": "Mama ji",
+     "type": "speech",
+     "en": "After dinner, Nani's cake.",
+     "hi": "खाने के बाद, नानी का केक।"
+    }
+   ]
+  },
+  {
+   "id": "5.24",
+   "kind": "decision",
+   "painting": "People-free painting behind the cards: the plain white cake box, shut, on the steel counter, with the stack of steel plates. MARKS: [BREAKS rule 15: the equal two are the only two people with the same numbers on these cards; no woman-and-woman or man-and-man tie could be fitted anywhere in the chapter (writer note 1)] [WAITS rulebook Q16: five cards] Moved from the bible's 10 pm to 8 pm so the decision falls before the 9:00 dinner it feeds (rule 43).",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who carries Nani's cake out tonight?",
+    "question_hi": "आज रात नानी का केक कौन लेकर आए?",
+    "kind": "Rank, 2 places",
+    "asker": "Mama ji (question in his balloon with his face chip, at the fixed question place)",
+    "labels": [
+     "weddings: family weddings helped at (शादियाँ), more is better",
+     "slips: counting slips at those weddings (चूक), fewer is better"
+    ],
+    "people": [
+     {
+      "name": "Tapan",
+      "sex": "m",
+      "a": 13,
+      "b": 1,
+      "note": "Has no patience at all for old ways. | पुराने तौर-तरीक़ों से उसे बड़ी चिढ़ है। [Mama ji's remark, with Mama ji's face chip] (role: one of the equal two; age 40)"
+     },
+     {
+      "name": "Mitali",
+      "sex": "w",
+      "a": 13,
+      "b": 1,
+      "note": "Wired up a second meter for the canopy. | शामियाने का दूसरा बिजली मीटर ख़ुद जोड़ा। (role: one of the equal two; age 35)"
+     },
+     {
+      "name": "Shampa",
+      "sex": "w",
+      "a": 15,
+      "b": 0,
+      "note": "Gives orders to anyone within earshot. | जो भी नज़र पड़े, उसी पर हुक्म चलाती है। [Mama ji's remark, with Mama ji's face chip] (role: strongest card, better on both numbers; age 45)"
+     },
+     {
+      "name": "Dolly",
+      "sex": "w",
+      "a": 8,
+      "b": 3,
+      "note": "Carried both gas cylinders up the stairs. | दोनों गैस सिलेंडर ख़ुद सीढ़ियाँ चढ़कर पहुँचाए। (role: decoy; age 33)"
+     },
+     {
+      "name": "Rekha",
+      "sex": "w",
+      "a": 6,
+      "b": 4,
+      "note": "Washed down the whole courtyard at dawn. | भोर में पूरा आँगन धोकर साफ़ किया। (role: weakest card; age 38)"
+     }
+    ],
+    "equal_two": [
+     "Mitali",
+     "Tapan"
+    ],
+    "nudged": "Tapan",
+    "twin": "second half of twin D",
+    "decoy_tie": [],
+    "outcome_bar": "target 2: every place 10 weddings or more",
+    "need": "Story clock in the top bar: Saturday 8:00 pm. Rank all five; the top 2 carry the cake out together. A gain (an honour). Plate under the last place: \"2 carriers\" | \"2 लोग\". Button: \"These two carry it\" | \"ये दोनों लाएँ\". Settled plate after the pick: tick, \"Cake\" | \"केक\", lock; no names, no faces."
+   }
+  },
+  {
+   "id": "5.25",
+   "kind": "outcome",
+   "painting": "The event, painted once, the same for every band. Under the canopy at night: long tables of steel plates, sixty guests seen from behind at a distance, gold arcs of bulbs; in the upper third Jadugar's crimson cloth sweeps away (its big moment) from a plain gold oval where the stamp is laid as live text, one time only, by band: 9:00 with both targets met, 9:30 with one, 10:15 with none. Nobody from the cards. Calm space: the gold oval. MARKS: [WAITS rulebook Q5 and options Q15: may the end of a chapter say how the event went] Jadugar's big moment, the crimson cloth, lands on the outcome, never on a hard decision (rule 25). Outcome beat: 4 English and 4 Hindi counted words.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Dinner for sixty: 9:00 | 9:30 | 10:15",
+     "hi": "साठ का खाना: 9:00 | 9:30 | 10:15"
+    },
+    {
+     "speaker": "game",
+     "type": "sound",
+     "en": "khan khan",
+     "hi": "खन खन"
+    }
+   ]
+  },
+  {
+   "id": "5.26",
+   "kind": "outcome",
+   "painting": "Mami's job list, the same reference painting as 5.04, lying on a crimson tablecloth with a steel pen across it; no people. Live lines, each with a stamp; a missed target is never ticked. Lines carry the job and the number, never a name. MARKS: [WAITS options Q15: does the stamped list feel like a score] The fixed lines never say where the tins were or whose account was right (rule 46). 18 English and 20 Hindi counted words, at the outcome cap of 20.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Envelopes and keys, 4 slips or fewer: {k}/{n}. Front row and cake, 10 weddings or more: {k}/4. Sweets: found. Band: settled.",
+     "hi": "लिफ़ाफ़े और चाबियाँ, 4 चूक या कम: {k}/{n}। आगे की कतार और केक, 10 शादियाँ या ज़्यादा: {k}/4। मिठाई: हाज़िर। बैंड: हिसाब साफ़।"
+    }
+   ]
+  },
+  {
+   "id": "5.27",
+   "kind": "outcome",
+   "painting": "The blue gate at night. Left third: Mama ji from behind, his big black umbrella now hanging folded from the gate, looking back at the lit canopy. One painting for every band. Calm space: the night sky, upper right. MARKS: [WAITS rulebook Q5: may a character joke; written warm, never funny] Each band's line is at most 4 English and 6 Hindi counted words; your reply is the same in every band (rule 38).",
+   "bubbles": [
+    {
+     "speaker": "Mama ji",
+     "type": "speech",
+     "en": "9:00 band: \"Sixty plates at nine sharp.\" 9:30 band: \"Half past nine. Nobody minded the wait.\" 10:15 band: \"Quarter past ten. Longest dinner, best talk.\"",
+     "hi": "9:00: \"ठीक नौ बजे, साठ थालियाँ।\" 9:30: \"साढ़े नौ। इंतज़ार किसी को याद नहीं।\" 10:15: \"सवा दस। सबसे लंबा खाना, सबसे अच्छी बातें।\""
+    },
+    {
+     "speaker": "You",
+     "type": "you",
+     "en": "Now, Nani's cake.",
+     "hi": "अब, नानी का केक।"
+    }
+   ]
+  },
+  {
+   "id": "5.28",
+   "kind": "outcome",
+   "painting": "The story's fixed ending, the same for everyone. Under the canopy: Nani seen from behind at the head of a long table, her cane against her chair, a cake on a steel stand before her with one lit candle, guests' heads as dark shapes around; a crimson stage curtain falls across the top of the panel, closing the Jadugar look. Calm space: the curtain. MARKS: The five calendar circles now all full; the strip ends here and the album opens on a tap, never by itself (rule 52).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "After dinner.",
+     "hi": "खाने के बाद।"
+    }
+   ]
+  },
+  {
+   "id": "5.29",
+   "kind": "outcome",
+   "painting": "The album opens on a tap: present-day style, no Jadugar look. Nani's front room: Nani face-on at last, seated, her cane across her knees, a slice of cake on a steel plate, plain clothes, bare forehead; she looks straight out at the viewer and smiles. Calm space: the plain wall, upper right. One person. MARKS: [WAITS rulebook Q7: no \"beta\" anywhere; Nani uses no family word for you] Album, present day, outside the chapter's 120 words.",
+   "bubbles": [
+    {
+     "speaker": "Nani",
+     "type": "speech",
+     "en": "Eighty. Everyone came.",
+     "hi": "अस्सी। सब आए।"
+    }
+   ]
+  },
+  {
+   "id": "5.30",
+   "kind": "outcome",
+   "painting": "After the album pages (\"Here's who you trusted with what\") and the five private reading cards, as built. Present day: the kitchen calendar on a fresh January page, its boxes empty; no people. Calm space: the empty grid. MARKS: Album close, outside the chapter's 120 words. The Next take opens on next year's calendar with the same household and a new circle.",
+   "bubbles": [
+    {
+     "speaker": "You",
+     "type": "you",
+     "en": "Next year. Same calendar.",
+     "hi": "अगले साल। यही कैलेंडर।"
+    }
+   ]
+  }
+ ],
+ "writer_notes": [
+  "1. [BREAKS rule 15, every decision] No decision shows two women or two men with the same numbers, so on every screen the equal two are the only matching pair. A player who knows how the game works can find them by looking for the one tie. This could not be fixed inside the chapter: with ten people who each keep one pair of numbers per set, eight of them in two equal pairs, and rule 17's matched earlier showings, everyone's numbers fall into one fixed order in each set. A same-sex tie then either copies another pair's numbers (rule 17) or puts a second woman-and-man tie on the cards (rule 13). Room for ties needs one set of numbers with 16 to 20 people (options Q8) or a looser rule 17. This is the chapter's biggest weakness for the reading.",
+  "2. [BREAKS rule 17, D5 only] Rekha reaches the D5 pair having already been one of the equal two at D2 (high on the numbers, carrying the hard fact); Gopal has not been seen. Every other pair arrives with matching earlier showings. A script tried every pair plan for these ten people with Lalit kept out of pairs, plus every choice of strongest card in D1, D4 and D5: none had zero mismatches, and the bible's own pairs reach the minimum of one. Keeping Lalit out of pairs is what lets him be the weakest card in D1 to D3, where everyone else still has a pair to come.",
+  "3. Pairs, twins, kinds, sets and nudge sides are the bible's, unchanged. Four unpainted faces change age so that who is older swaps sides between the halves of every twin (rule 17): Dolly 41 to 33, Rekha 42 to 38, Satish 44 to 43, Tapan 37 to 40. With the bible's ages the woman was older in both halves of twins A and C. Two gaps are small enough to be invisible (Dolly and Gopal 1 year at D7, Sarla and Satish 2 years at D4). All pairs are within 8 years.",
+  "4. Numbers. Set A (weddings helped at, counting slips): Lalit 3 and 7, Rekha and Gopal 6 and 4, Dolly and Naresh 8 and 3, Sarla and Satish 11 and 2, Mitali and Tapan 13 and 1, Shampa 15 and 0. Set B (times proved right, times late this week): Lalit 2 and 6, Mitali 4 and 4, Rekha and Satish 6 and 3, Shampa and Tapan 8 and 2, Dolly and Gopal 10 and 1, Sarla and Naresh 12 and 0. In D1, D4, D5 and D8 one card is better on both numbers (Sarla, Mitali, Naresh, Shampa) and the equal two sit just under it, so a player going by either number alone must choose between them for the second check or place (rule 14); in the pick-one and Believe decisions the two are tied at the top. Side effect: the two numbers never disagree about anyone, which a sharp player will notice.",
+  "5. The targets' numbers changed from the bible's '1 slip or fewer' and '5 weddings or more' to '4 slips or fewer' and '10 weddings or more'. The strongest-card chain above needs six levels of slips, and each bar must sit at or below its own equal two (rule 45) while some cards miss it. Checked: swapping the equal two never changes the result; 'always the woman' and 'always the man' end the same; all three stamp times can happen; the cards that miss a bar are 3 women and 3 men (rule 45).",
+  "6. Lalit is the weakest card in D1 to D5 and carries two of Mami's remarks; Rekha is the weakest card in D6 to D8. Neither points at the equal two, but Lalit may read as the one the chapter picks on. It is forced by 'nobody who was weakest earlier sits in a later pair' (rule 17): in D1 to D3 Lalit is the only person with no pair still to come.",
+  "7. Rule 20: the heavy-sounding decoy facts (Lalit's father in D2, Rekha's mill job in D6) sit on the weakest card in each hard decision, not on a close rival. They were kept off the Bengali names because the people file says names that mark a community never carry a hard fact. In D2 the only mid card is Mitali (Bengali); in D6 the mid cards are Tapan (Bengali) and Gopal, whose note has to match the warmth of Dolly's D4 remark so that the D7 pair arrives level.",
+  "8. Rule 21 is only partly kept: the three Bengali names are the strongest card twice (Mitali D4, Shampa D8), the equal two twice (D3, D8) and plain decoys four times, but never the weakest card (0 of 8 against a 3-in-10 share).",
+  "9. D8 moved from the bible's 10 pm to 8 pm, so the decision about the cake comes before the 9:00 dinner it feeds (rule 43). The cake itself still comes out after dinner, in the fixed ending (5.28).",
+  "10. The hard pair for the five Hindi-first readers (rule 28): D2 'Turned down a scooter demand when her niece married' (भतीजी के ब्याह पर स्कूटर की माँग ठुकराई थी) and D6 'His niece's in-laws asked for a scooter; he refused' (भतीजी की ससुराल ने स्कूटर माँगा, उसने मना किया). Both acted for the bride's side; both use भतीजी (a brother's daughter), so the relation is the same weight. ब्याह is used instead of शादी only because शादी appears on the title card and in narration (rule 36 scan). It is the relative's own past, never this wedding (rule 27), and it reaches no panel or bubble (rule 26).",
+  "11. Rule 36: every card note was scanned against every bubble, caption, sign and question shown before or during its decision, and rewritten wherever a word matched (for example 'canopy man' for 'tent man', परसों for गुरुवार). The scan matched exact words; a native reader should still check word forms such as पैसा against पैसों.",
+  "12. Rule 66 flags, all gender-free, for the native reader to clear: the 'who should' asks कौन ले जाए?, कौन बैठे? (twice), कौन रखे? (twice) and कौन लेकर आए?; sentence-final रहे (5.18), नहीं (5.11, 5.27), बाक़ी (5.21); आएँ on the card (5.02); आए and अस्सी in Nani's album line. No line by or to you uses a gendered future or a gendered verb ending. Your lines to elders are polite (दिखाइए, मामी).",
+  "13. Words (proposed caps, waiting on rulebook Q14): the chapter's story beats come to 99 English and 104 Hindi counted words, or 114 and 120 counting the title card, so Hindi sits exactly at the 120 cap. No beat is over 20, no spoken line over 10, no narration over 12. Decision screens are at most 15 (D4 in Hindi is at 15). Outcome beats: 4, 18 to 20, and 9 or fewer per band. The album beats (5.29, 5.30) are counted outside the chapter.",
+  "14. Your own lines: three in all (5.04, 5.27, and the album's 'Next year. Same calendar.'). There is no 'Envelopes, sorted' reply after a pick: options Q14 is open, a reply after some picks and not others would make the two halves of a twin differ in shape (rule 37), and Hindi had no words left.",
+  "15. Portraits to sort out before painting (rules 13 and 33). In the cast file Shampa's portrait is painted in the Rukavat look with a small round bindi, Tapan's is planned in the Station look, and the six Jadugar portraits (Sarla, Mitali, Naresh, Gopal, Dolly, Lalit) are written as magic-troupe members in stage clothes. Two faces in another look on one screen would mark them, and D3's equal two are exactly Shampa and Tapan. So all ten need faces in the Jadugar look and present-day wedding clothes: Rekha and Satish as planned, plus Shampa and Tapan, and the troupe faces repainted out of stage costume, through the heavy queue, each with the close-up check for painted dots and lightened skin.",
+  "16. Painter's glossary rows needed before any painting (each a plain description of what to paint, one reference picture for recurring things): the wedding canopy (striped cloth on bamboo poles over a lane, not a camping tent), the job list card, Mama ji's big black umbrella, Nani's cane with a rubber foot, the shop calendar, the gift register (shut, plain maroon cover), the steel cash box, plain sealed envelopes, the cake box, the brass band instruments in open cases (not a rubber band), the hasp and open padlock, the tempo with its plate hidden, the charpai. No panel asks for writing; every card, screen and page is painted blank.",
+  "17. Rule 50: each decision happens in its own place, so each has its own short lead-in. 'It happened' panels come only at a change of place or day (after D2, D3 and D6). The lead-ins of each twin's two halves share figure, pose and mood (Mama ji from behind, left third), the same number and kind of bubbles, and word counts within 2.",
+  "18. The two 'matters' decisions (D3, D7) have fixed results and never say where the tins were or whose account was right. The research flag stands: a fixed result may teach that real reasons never matter.",
+  "19. 'Spend checks, up to 2' (D1, D5): a player who hands both envelopes or keys to one person, probably the strongest card, gives no reading there; the reading comes only when both checks are spent.",
+  "20. Still for readers, not decided here: the six-player test (rule 1) predicts this lane wedding with lent rooms is weakest for the retired officer in Coimbatore and the Bengaluru analyst; a brass wedding band may read north Indian; the gift-table job waits on the five players' gain-or-load answer (rule 23).",
+  "21. The scripts that proved the pairs, searched the layouts and counted every rule above are in /private/tmp/claude-501/-Users-priyanshu-Sex-Ed/f50ea7ee-0855-46a2-8572-0aa08df5b855/scratchpad/blend/ch5/ (check.py runs the counts; pairsearch5.py and decoys4.py the searches). They use one reading of rule 17's 'top half or bottom half' (standing by both numbers together, with ties ranked equal), which the checkers may define differently."
+ ]
+}

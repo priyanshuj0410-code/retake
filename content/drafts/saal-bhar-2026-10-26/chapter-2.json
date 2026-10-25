@@ -1,0 +1,1095 @@
+{
+ "n": 2,
+ "title": "One night in the ward | वार्ड में एक रात",
+ "look": "Rukavat: a 1980s family-TV magazine look (soft gouache, warm paper grain, rounded TV-screen corners on establishing shots) laid over a present-day district hospital: steel drip stands, blue plastic chairs, green cloth curtains, tube lights, phones. Every painting: no words, no letters, no numbers, nothing written; signs, papers and screens painted blank or shut; unsigned; heads 30 to 45 percent down; a plain wall or sky beside each speaker; the player never shown (no face, hand, sleeve or shadow); card people never painted.",
+ "area": "Home and family",
+ "goals": [
+  "Turns, jobs: slept 6 or more | बारी, काम: नींद 6 या ज़्यादा  (every night turn and morning job to someone who slept 6 hours or more last night; fed by the plain Split twin, D1 and D5, set A)",
+  "Cots, taxi seats: on feet 12 or more | खाट, टैक्सी सीटें: खड़े 12 या ज़्यादा  (every cot and taxi seat to someone on their feet 12 hours or more today; fed by the plain Spend checks twin, D4 and D8, set A)",
+  "Fixed line for the matters twin (D3, D7), the same for everyone: Doctor: answered. Mama ji: told. | डॉक्टर: जवाब। मामा जी: ख़बर।",
+  "Stamp on Rukavat's interruption card: Nani home: 10:00 (both targets met) / 11:00 (one) / 12:30 (none) | नानी घर: 10:00 / 11:00 / 12:30"
+ ],
+ "beats": [
+  {
+   "id": "2.01",
+   "kind": "title",
+   "painting": "Title card (the strip's head, today's chapter card). Rukavat look over a present-day district hospital at night seen from the road: a plain two-storey building, one lit window upstairs, a blank cream board above the gate painted flat, a row of parked scooters with plain number plates, no people. Calm space: the dark blue sky across the top half, where the title sits. [BREAKS rules 25 and 50: the home chapter carries one hard topic, not the two you chose on 22 Oct (dowry the second); the bible moves dowry to the wedding chapter] [WAITS rulebook Q3]. [CHANGED from the bible: its draft line repeated the title, so the line names the event and the topic instead.] [CLASH rules 26 and 36: rule 26 makes the card name \"a quarrel over a house\" before Start; rule 36 bars any line before a decision from using its notes' words, so the hard notes say \"fell out\", \"estranged\", \"home\" and \"मकान\", \"अनबन\", \"मनमुटाव\", never \"quarrel\", \"house\", \"घर\" or \"झगड़ा\".]",
+   "bubbles": [
+    {
+     "speaker": "the game",
+     "type": "sign",
+     "en": "Chapter 2 of 5",
+     "hi": "अध्याय 2, 5 में से"
+    },
+    {
+     "speaker": "the game",
+     "type": "sign",
+     "en": "One night in the ward",
+     "hi": "वार्ड में एक रात"
+    },
+    {
+     "speaker": "the game",
+     "type": "sign",
+     "en": "One attendant pass, and a quarrel over a house.",
+     "hi": "एक अटेंडेंट पास, और एक घर पर झगड़ा।"
+    },
+    {
+     "speaker": "the game",
+     "type": "sign",
+     "en": "About 4 minutes",
+     "hi": "लगभग 4 मिनट"
+    },
+    {
+     "speaker": "the game",
+     "type": "sign",
+     "en": "Start",
+     "hi": "शुरू करें"
+    }
+   ]
+  },
+  {
+   "id": "2.02",
+   "kind": "opening",
+   "painting": "Long gutter from chapter 1's wet step. The ward at night: Nani's bed in the right two-thirds, seen from behind its steel head rail, only the back of her grey head on a white pillow and a cotton blanket. Her wooden cane with a rubber foot leans on the rail. A steel drip stand with a clear bag, a green cloth curtain on a rail, one empty blue plastic chair beside the bed, a round wall clock with hands only, no numerals, at nine. Calm space: the plain pale-green wall across the top third and on the left. Nobody else. [WAITS options Q11: inside a chapter's look the household is painted from behind or off the panel, with the present-day face chip on every bubble.] [FLAG rule 66: the checker will catch यहीं at the end of a sentence; it shows no gender.]",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "9:00 pm. The ward.",
+     "hi": "रात 9:00। वार्ड।"
+    },
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), from behind the bed head",
+     "type": "speech",
+     "en": "Doctor's orders: one night here.",
+     "hi": "डॉक्टर का हुक्म: एक रात यहीं।"
+    }
+   ]
+  },
+  {
+   "id": "2.03",
+   "kind": "opening",
+   "painting": "The same ward from the bed's side. Mausa ji, about 58, in the left third, face-on, looking straight out: a grey half-sleeve shirt, reading glasses on a cord, a slow kind face, standing in the open ward door; the lit corridor behind him is empty. Nani from behind the bed head in the right third, the cane on the rail. Calm space: the plain wall above both heads. Two people. Nani's drawn quirk: her left hand lifted off the blanket, fingers spread, counting heads at the door (rule 9, drawn, never written). [WAITS rulebook Q11: Mausa ji is a one-chapter voice the bible adds while the household speaks in one chapter only.]",
+   "bubbles": [
+    {
+     "speaker": "Mausa ji (tag \"Mausa ji, Mummy's sister's husband\" | \"मौसा जी\", face chip)",
+     "type": "speech",
+     "en": "Half your lane is outside.",
+     "hi": "आपकी आधी गली बाहर है।"
+    },
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip)",
+     "type": "speech",
+     "en": "My lane is here. Use them.",
+     "hi": "मेरी गली हाज़िर। इनसे काम लो।"
+    }
+   ]
+  },
+  {
+   "id": "2.04",
+   "kind": "opening",
+   "painting": "The hand-over, with no hands: close on the foot of the bed. Nani's hospital file, a plain buff cardboard folder, lies open on the blanket with its back page turned to face the viewer, plain ruled paper with no marks, filling about two-thirds of the panel; a steel pen lies across the top. Nani's cane leans in at the right edge. Calm space: the blanket and the plain wall above. Nobody in the picture. [WAITS rulebook Q14: the beat is written to the proposed 20-word cap.] [FLAG rule 66: the checker may catch छोड़िए (a polite command; no gender).] [WAITS rulebook Q9 does not apply: no phone here.]",
+   "bubbles": [
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), off the panel (tail to the right edge)",
+     "type": "speech",
+     "en": "Tonight, you're in charge.",
+     "hi": "आज रात इंचार्ज तुम हो।"
+    },
+    {
+     "speaker": "the game",
+     "type": "sign",
+     "en": "Turns, jobs: slept 6 or more / Cots, taxi seats: on feet 12 or more",
+     "hi": "बारी, काम: नींद 6 या ज़्यादा / खाट, टैक्सी सीटें: खड़े 12 या ज़्यादा"
+    },
+    {
+     "speaker": "You (tag \"You\" | \"आप\")",
+     "type": "you",
+     "en": "Leave it to me, Nani.",
+     "hi": "मुझ पर छोड़िए, नानी।"
+    }
+   ]
+  },
+  {
+   "id": "2.05",
+   "kind": "panel",
+   "painting": "The circle page (long gutter). The hospital corridor with no people: a long row of joined blue plastic chairs, a steel water cooler, a notice board painted plain cream with nothing pinned, the ward door half open at the far end, tube lights. Calm space: the plain wall above the chairs. Laid on live: the ten card portraits from the library (Rukavat style), all one size, at least 56 px, names only at body size, in a new order on every load: Deepa, Ganga, Uma, Yasmin, Mumtaz, Dinesh, Sunil, Rajan, Firoz, Nagsen. No relation tags, no quirks. [BREAKS rule 21, from the bible's circle: Nagsen sits on five cards and never in a pair, and the three names that mark a community among the women and men with fewest pairs (Nagsen, Yasmin, Mumtaz) are the only cards free to be the weakest early in the chapter (rule 17), so a community-marked name is the weakest card in 5 of the 7 decisions that have one. See writer notes.]",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "Nani's lane.",
+     "hi": "नानी की गली।"
+    }
+   ]
+  },
+  {
+   "id": "2.06",
+   "kind": "panel",
+   "painting": "Back at the bed, as in 2.02: Nani from behind the bed head, the one empty blue plastic chair beside the bed under a small bedside lamp, the wall clock with hands only at a quarter past nine, the cane on the rail. Calm space: the plain wall above the chair. Nobody else. Same figures and mood as 2.18 (its twin's lead-in): Nani alone from behind, quiet.",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "9:15. Nani's bed.",
+     "hi": "9:15। नानी का बिस्तर।"
+    },
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip)",
+     "type": "speech",
+     "en": "One chair by me, 10 till 7.",
+     "hi": "मेरे पास एक कुर्सी, 10 से 7।"
+    }
+   ]
+  },
+  {
+   "id": "2.07",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the empty blue plastic chair beside a bed whose green curtain is drawn, the bedside lamp on, the wall clock with hands only. The nudge: Rajan, a loaded word from Nani (\"moody\"). Laid on live: the cards (Rukavat's warm-paper visitor slips as notes, each judging note with its speaker's face chip), the key for the two numbers, the button. Cards in a new order on every load. After the pick: the settled plate (a tick, the job word, a lock; no names, no faces). First Split of the take, in its home world (Rukavat): a moving hand shows it once (rule 51). Five cards. [WAITS rulebook Q16: with a note on every card a five-card Hindi decision may run past a 360 x 640 phone and show the \"more\" cue.] [BREAKS rule 15: no two women or two men tie on any decision in this chapter; see writer notes.] [FLAG rule 66: बैठे ends the question; it is a \"who should\" ask and shows no gender.]",
+   "bubbles": [
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), her question balloon at the fixed place",
+     "type": "speech",
+     "en": "Tonight's chair: who sits when?",
+     "hi": "आज रात कुर्सी पर कौन कब बैठे?"
+    },
+    {
+     "speaker": "the game, top bar",
+     "type": "sign",
+     "en": "9:15 pm, Nani's bed",
+     "hi": "रात 9:15, नानी का बिस्तर"
+    }
+   ],
+   "decision": {
+    "question_en": "Tonight's chair: who sits when?",
+    "question_hi": "आज रात कुर्सी पर कौन कब बैठे?",
+    "kind": "Split (a load: the night turns)",
+    "asker": "Nani",
+    "need": "3 turns to share out: 10 to 1, 1 to 4, 4 to 7 | 10 से 1, 1 से 4, 4 से 7. Button: Share 3 more, then Lock turns | 3 और बाँटें, फिर पक्का करें",
+    "labels": [
+     "On feet: hours on their feet today | खड़े",
+     "Slept: hours slept last night | नींद"
+    ],
+    "people": [
+     {
+      "name": "Deepa",
+      "sex": "w",
+      "a": 14,
+      "b": 6,
+      "note": "Grows tomatoes in paint tins. | डिब्बों में टमाटर उगाती है।"
+     },
+     {
+      "name": "Mumtaz",
+      "sex": "w",
+      "a": 13,
+      "b": 7,
+      "note": "Runs the photocopy shop nearby. | नुक्कड़ पर फ़ोटोकॉपी की दुकान है।"
+     },
+     {
+      "name": "Nagsen",
+      "sex": "m",
+      "a": 16,
+      "b": 1,
+      "note": "Too chatty, Nani says. | नानी कहती हैं, बहुत बातूनी।"
+     },
+     {
+      "name": "Rajan",
+      "sex": "m",
+      "a": 14,
+      "b": 6,
+      "note": "Nani says he is moody. | नानी कहती हैं, मूडी है।"
+     },
+     {
+      "name": "Uma",
+      "sex": "w",
+      "a": 12,
+      "b": 8,
+      "note": "Wired half the homes nearby. | आधे मोहल्ले की वायरिंग इसने की।"
+     }
+    ],
+    "equal_two": [
+     "Deepa",
+     "Rajan"
+    ],
+    "nudged": "Rajan",
+    "twin": "first half of twin A, plain (Split, set A); second half D5",
+    "decoy_tie": [],
+    "outcome_bar": "target 1: slept 6 or more (each turn given to someone below 6 misses)"
+   }
+  },
+  {
+   "id": "2.08",
+   "kind": "happened",
+   "painting": "The same for every pick. The blue plastic chair by Nani's bed now has a folded shawl and a steel water bottle on it, the bedside lamp low, the wall clock with hands only at ten. Nobody in the picture. Calm space: the plain wall above. [rule 50 and the bible's strip: an 'it happened' panel comes only at a change of place; this step's brief asks for one after every decision, so this one is kept to a sound or a clock.] The same for every pick (rule 39).",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "10:00. First turn.",
+     "hi": "10:00। पहली बारी।"
+    }
+   ]
+  },
+  {
+   "id": "2.09",
+   "kind": "panel",
+   "painting": "The bedside steel locker beside Nani's bed: on it one brass key on a red thread, a steel tumbler and a spectacles case; Nani from behind the bed head at the right edge. Calm space: the plain wall above the locker. Same figures and mood as 2.21 (its twin's lead-in): Nani alone from behind, quiet. [rule 50: the ward scene holds D1 to D3, but each stop keeps its own clock box so that each half of a twin has the same number and shape of bubbles as the other (rule 37).]",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "9:20. The bedside.",
+     "hi": "9:20। सिरहाना।"
+    },
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip)",
+     "type": "speech",
+     "en": "My spare key. Someone keeps it tonight.",
+     "hi": "मेरी दूसरी चाबी। आज रात कोई रखे।"
+    }
+   ]
+  },
+  {
+   "id": "2.10",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the steel bedside locker with the brass key on its red thread. The nudge: Ganga, the hard fact (a quarrel with her sister over their father's home). Laid on live: the cards (Rukavat's warm-paper visitor slips as notes, each judging note with its speaker's face chip), the key for the two numbers, the button. Cards in a new order on every load. After the pick: the settled plate (a tick, the job word, a lock; no names, no faces). Hard decision: the question sits in the plain question box, never in Nani's bubble, and the hard fact stays on its card (rules 26, 37). [rule 28: in both halves the quarrel is with a sibling of the same sex (her sister, his brother), so the fact means the same for a woman and a man; the bible had \"her brother\" for both. Five Hindi-first readers to check.] [BREAKS rule 15.] [WAITS rule 23 five-player check: holding the key is written as a gain (trust).]",
+   "bubbles": [
+    {
+     "speaker": "the game, in the plain question box (hard decision)",
+     "type": "sign",
+     "en": "Who keeps Nani's spare key tonight?",
+     "hi": "आज रात नानी की दूसरी चाबी कौन रखे?"
+    },
+    {
+     "speaker": "the game, top bar",
+     "type": "sign",
+     "en": "9:20 pm, the bedside",
+     "hi": "रात 9:20, सिरहाना"
+    }
+   ],
+   "decision": {
+    "question_en": "Who keeps Nani's spare key tonight?",
+    "question_hi": "आज रात नानी की दूसरी चाबी कौन रखे?",
+    "kind": "Pick one (a gain: trusted with the key)",
+    "asker": "Nani",
+    "need": "Pick one. Button: Pick one, then Give it to {n} | किसी एक को चुनें, फिर {n} को दें",
+    "labels": [
+     "Ward nights: nights ever spent at a ward with someone | रातें",
+     "Years known: years they have known Nani | पहचान"
+    ],
+    "people": [
+     {
+      "name": "Dinesh",
+      "sex": "m",
+      "a": 7,
+      "b": 14,
+      "note": "Stitches the school uniforms for half of the town. | आधे क़स्बे की स्कूल की वर्दी वही सिलता है।"
+     },
+     {
+      "name": "Ganga",
+      "sex": "w",
+      "a": 7,
+      "b": 14,
+      "note": "Fell out with her sister over their father's home. | पिता के मकान को लेकर बहन से अनबन है।"
+     },
+     {
+      "name": "Nagsen",
+      "sex": "m",
+      "a": 2,
+      "b": 7,
+      "note": "Runs the cycle repair shop by the tank. | पानी की बड़ी टंकी के सामने साइकिल की दुकान है।"
+     },
+     {
+      "name": "Uma",
+      "sex": "w",
+      "a": 3,
+      "b": 10,
+      "note": "Has not been well since the winter fever. | सर्दी वाले बुख़ार के बाद से तबीयत ढीली है।"
+     }
+    ],
+    "equal_two": [
+     "Ganga",
+     "Dinesh"
+    ],
+    "nudged": "Ganga",
+    "twin": "first half of twin B, hard (Pick one, set B); second half D6",
+    "decoy_tie": [],
+    "outcome_bar": "none (hard decision; feeds no target)"
+   }
+  },
+  {
+   "id": "2.11",
+   "kind": "happened",
+   "painting": "The same for every pick. The bedside locker again: the brass key is gone, the steel tumbler and the spectacles case left; the locker's little door swung shut. Nobody in the picture. [rule 50 and the bible's strip: an 'it happened' panel comes only at a change of place; this step's brief asks for one after every decision, so this one is kept to a sound or a clock.] The same for every pick (rule 39).",
+   "bubbles": [
+    {
+     "speaker": "sound",
+     "type": "sound",
+     "en": "khat",
+     "hi": "खट"
+    }
+   ]
+  },
+  {
+   "id": "2.12",
+   "kind": "panel",
+   "painting": "The ward door at 9:40: a steel trolley of plain buff folders and a blood-pressure cuff parked just inside the open door, the lit corridor beyond with nobody in it; Nani from behind the bed head at the right edge. Calm space: the plain wall above the door. Same figures and mood as 2.24 (its twin's lead-in): Nani alone from behind. [rule 50: the ward scene holds D1 to D3, but each stop keeps its own clock box so that each half of a twin has the same number and shape of bubbles as the other (rule 37).]",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "9:40. The round.",
+     "hi": "9:40। राउंड।"
+    },
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip)",
+     "type": "speech",
+     "en": "The doctor has many questions.",
+     "hi": "डॉक्टर के बहुत सवाल हैं।"
+    }
+   ]
+  },
+  {
+   "id": "2.13",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the ward door with the steel trolley of plain folders. The nudge: Yasmin, the reason that matters (took Nani to every check-up). Laid on live: the cards (Rukavat's warm-paper visitor slips as notes, each judging note with its speaker's face chip), the key for the two numbers, the button. Cards in a new order on every load. After the pick: the settled plate (a tick, the job word, a lock; no names, no faces). [BREAKS rule 17 (age): in both halves of this \"matters\" twin the man is the older (Yasmin 32 with Firoz 40 here; Uma 34 with Rajan 40 in D7). Every woman-older pair in the circle (Ganga, and Mumtaz with Firoz) is needed by the hard and plain twins, so the one break sits on the twin whose reason may fairly be followed.] [BREAKS rule 15.]",
+   "bubbles": [
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), her question balloon at the fixed place",
+     "type": "speech",
+     "en": "Who comes in with you?",
+     "hi": "तुम्हारे साथ अंदर कौन आए?"
+    },
+    {
+     "speaker": "the game, top bar",
+     "type": "sign",
+     "en": "9:40 pm, the round",
+     "hi": "रात 9:40, राउंड"
+    }
+   ],
+   "decision": {
+    "question_en": "Who comes in with you?",
+    "question_hi": "तुम्हारे साथ अंदर कौन आए?",
+    "kind": "Pick one (a gain: a seat at the round)",
+    "asker": "Nani",
+    "need": "Pick one. Button: Pick one, then Call {n} in | किसी एक को चुनें, फिर {n} को बुलाएँ",
+    "labels": [
+     "Ward nights: nights ever spent at a ward with someone | रातें",
+     "Years known: years they have known Nani | पहचान"
+    ],
+    "people": [
+     {
+      "name": "Dinesh",
+      "sex": "m",
+      "a": 7,
+      "b": 14,
+      "note": "Fixed Nani's ceiling fan last month. | पिछले महीने नानी का पंखा ठीक किया।"
+     },
+     {
+      "name": "Firoz",
+      "sex": "m",
+      "a": 9,
+      "b": 22,
+      "note": "Drives an auto from the bus stand. | बस अड्डे से हर रोज़ अपना ऑटो चलाता है।"
+     },
+     {
+      "name": "Sunil",
+      "sex": "m",
+      "a": 5,
+      "b": 18,
+      "note": "Teaches maths at the primary school. | मोहल्ले के प्राइमरी स्कूल में गणित पढ़ाता है।"
+     },
+     {
+      "name": "Yasmin",
+      "sex": "w",
+      "a": 9,
+      "b": 22,
+      "note": "Took Nani to every check-up this year. | इस साल नानी को हर चेक-अप पर ले गई।"
+     }
+    ],
+    "equal_two": [
+     "Yasmin",
+     "Firoz"
+    ],
+    "nudged": "Yasmin",
+    "twin": "first half of twin C, matters (Pick one, set B); second half D7",
+    "decoy_tie": [],
+    "outcome_bar": "fixed outcome (matters twin): \"Doctor: answered.\""
+   }
+  },
+  {
+   "id": "2.14",
+   "kind": "happened",
+   "painting": "The same for every pick. The corridor seen from the ward door: the steel trolley rolling away towards the far end, pushed by a ward attendant seen small from far behind in a plain blue uniform. Calm space: the ceiling and the far wall. The same picture and words for every pick (rule 39).",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "10:10. Round done.",
+     "hi": "10:10। राउंड ख़त्म।"
+    },
+    {
+     "speaker": "sound",
+     "type": "sound",
+     "en": "khad-khad",
+     "hi": "खड़-खड़"
+    }
+   ]
+  },
+  {
+   "id": "2.15",
+   "kind": "panel",
+   "painting": "Long gutter. The corridor at night: the row of blue plastic chairs, two folded steel cots leaning on the wall under a dim tube light, the ward door ajar on the right with Nani's cane visible leaning just inside. Nobody in the picture. Calm space: the plain wall above the cots. Same figures and mood as 2.27 (its twin's lead-in): only Nani's cane, her voice from off the panel.",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "11:30. The corridor.",
+     "hi": "11:30। गलियारा।"
+    },
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), off the panel through the ward door (tail to the right edge)",
+     "type": "speech",
+     "en": "Two cots, from the guard.",
+     "hi": "गार्ड से दो खाट।"
+    }
+   ]
+  },
+  {
+   "id": "2.16",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the two folded steel cots against the corridor wall under the night lamp. The nudge: Dinesh, a loaded word from Mausa ji (\"lazy\"). Laid on live: the cards (Rukavat's warm-paper visitor slips as notes, each judging note with its speaker's face chip), the key for the two numbers, the button. Cards in a new order on every load. After the pick: the settled plate (a tick, the job word, a lock; no names, no faces). First Spend checks of the take: a moving hand shows it once (rule 51). The not-ready label \"Give at least one\" needs the checks kind to take its label from the step (today it is fixed as \"Take up at least one\"). [BREAKS rule 17 (warmth): Uma and Dinesh arrive matched on halves (one top, one bottom showing each), but Uma's bottom showing carried a heavy fact (D2, unwell since the winter) and Dinesh's a warm one (D3, fixed Nani's fan).] [BREAKS rule 15.]",
+   "bubbles": [
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), her question balloon at the fixed place",
+     "type": "speech",
+     "en": "Who gets a cot tonight?",
+     "hi": "आज रात खाट किसे मिले?"
+    },
+    {
+     "speaker": "the game, top bar",
+     "type": "sign",
+     "en": "11:30 pm, the corridor",
+     "hi": "रात 11:30, गलियारा"
+    }
+   ],
+   "decision": {
+    "question_en": "Who gets a cot tonight?",
+    "question_hi": "आज रात खाट किसे मिले?",
+    "kind": "Spend checks, up to 2 (a gain: a cot)",
+    "asker": "Nani",
+    "need": "Up to 2 cots, at least 1. Button: Give at least one, then Give the cots | कम से कम एक को दें, फिर खाट दें",
+    "labels": [
+     "On feet: hours on their feet today | खड़े",
+     "Slept: hours slept last night | नींद"
+    ],
+    "people": [
+     {
+      "name": "Dinesh",
+      "sex": "m",
+      "a": 12,
+      "b": 8,
+      "note": "Lazy, by Mausa ji's account. | मौसा जी उसे आलसी कहते हैं।"
+     },
+     {
+      "name": "Rajan",
+      "sex": "m",
+      "a": 14,
+      "b": 6,
+      "note": "Runs a tiffin service from his kitchen. | अपनी रसोई से टिफ़िन सर्विस चलाता है।"
+     },
+     {
+      "name": "Uma",
+      "sex": "w",
+      "a": 12,
+      "b": 8,
+      "note": "Sings at every street function. | हर जलसे में गाना गाती है।"
+     },
+     {
+      "name": "Yasmin",
+      "sex": "w",
+      "a": 10,
+      "b": 9,
+      "note": "Too bossy, says Mausa ji. | मौसा जी कहते हैं, रौब जमाती है।"
+     }
+    ],
+    "equal_two": [
+     "Uma",
+     "Dinesh"
+    ],
+    "nudged": "Dinesh",
+    "twin": "first half of twin D, plain (Spend checks, set A); second half D8",
+    "decoy_tie": [],
+    "outcome_bar": "target 2: on feet 12 or more (each cot given to someone below 12 misses)"
+   }
+  },
+  {
+   "id": "2.17",
+   "kind": "happened",
+   "painting": "The same for every pick. The corridor a little later: the two cots unfolded along the wall, each with a rolled cotton mattress and a folded blanket, empty, under the night lamp. Mausa ji in the left third on the bench, face-on, a shawl round his shoulders, looking straight out with a small smile. Calm space: the plain wall above him. One person. The same for every pick (rule 39). Your reply names only the job [WAITS options Q14]. Mausa ji's line is about himself, never a card person.",
+   "bubbles": [
+    {
+     "speaker": "Mausa ji (tag \"Mausa ji, Mummy's sister's husband\" | \"मौसा जी\", face chip)",
+     "type": "speech",
+     "en": "I'm fine on this bench.",
+     "hi": "मैं इस बेंच पर ठीक हूँ।"
+    },
+    {
+     "speaker": "You (tag \"You\" | \"आप\")",
+     "type": "you",
+     "en": "Cots, sorted.",
+     "hi": "खाट: तय।"
+    }
+   ]
+  },
+  {
+   "id": "2.18",
+   "kind": "panel",
+   "painting": "Long gutter: dawn. The ward in pale morning light from the window, Nani from behind the bed head as in 2.02; on the locker a steel tea flask and a plain cloth bag. Calm space: the plain sky in the window and the wall. Same figures and mood as 2.06 (its twin's lead-in): Nani alone from behind, quiet. [STORY LOGIC: the cards' numbers are the visitor slips filled in at the gate at 9 pm, so at 6 am \"slept last night\" and \"on feet today\" still give the evening's figures; a player may notice. Options: relabel the set \"on feet by 9 pm\" and \"slept the night before\", or give the morning twin its own slip.]",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "6:00 am. The ward.",
+     "hi": "सुबह 6:00। वार्ड।"
+    },
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip)",
+     "type": "speech",
+     "en": "Three jobs before the doctor.",
+     "hi": "डॉक्टर से पहले तीन काम।"
+    }
+   ]
+  },
+  {
+   "id": "2.19",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the bedside locker at dawn with the steel tea flask and a plain cloth bag. The nudge: Mumtaz, a loaded word from Nani (\"snappy\"), the same weight as \"moody\". Laid on live: the cards (Rukavat's warm-paper visitor slips as notes, each judging note with its speaker's face chip), the key for the two numbers, the button. Cards in a new order on every load. After the pick: the settled plate (a tick, the job word, a lock; no names, no faces). [BREAKS rule 17 (weakest): Ganga is the weakest card here (on her feet 15 hours, slept 2) and sits in D8's pair, where the same numbers make her and Sunil the most deserving of a seat. No line-up in this circle keeps every weakest card out of later pairs while matching the pairs' earlier showings; this was the one break left.] Five cards [WAITS rulebook Q16]. [BREAKS rule 15.]",
+   "bubbles": [
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), her question balloon at the fixed place",
+     "type": "speech",
+     "en": "This morning: who does what?",
+     "hi": "आज सुबह: कौन क्या करे?"
+    },
+    {
+     "speaker": "the game, top bar",
+     "type": "sign",
+     "en": "6:00 am, the ward",
+     "hi": "सुबह 6:00, वार्ड"
+    }
+   ],
+   "decision": {
+    "question_en": "This morning: who does what?",
+    "question_hi": "आज सुबह: कौन क्या करे?",
+    "kind": "Split (a load: the morning jobs)",
+    "asker": "Nani",
+    "need": "3 jobs to share out: Tea, Chemist, Clothes | चाय, केमिस्ट, कपड़े. Button: Share 3 more, then Lock jobs | 3 और बाँटें, फिर पक्का करें",
+    "labels": [
+     "On feet: hours on their feet today | खड़े",
+     "Slept: hours slept last night | नींद"
+    ],
+    "people": [
+     {
+      "name": "Dinesh",
+      "sex": "m",
+      "a": 12,
+      "b": 8,
+      "note": "Fusses over everything, Nani says. | नानी कहती हैं, हर बात पर नखरे।"
+     },
+     {
+      "name": "Firoz",
+      "sex": "m",
+      "a": 13,
+      "b": 7,
+      "note": "Grows roses on his roof. | अपनी छत पर लाल गुलाब उगाता है।"
+     },
+     {
+      "name": "Ganga",
+      "sex": "w",
+      "a": 15,
+      "b": 2,
+      "note": "Plays the dholak at weddings. | शादियों में ढोलक बजाती है।"
+     },
+     {
+      "name": "Mumtaz",
+      "sex": "w",
+      "a": 13,
+      "b": 7,
+      "note": "Snappy with everyone, says Nani. | नानी कहती हैं, सब पर चिढ़ती है।"
+     },
+     {
+      "name": "Yasmin",
+      "sex": "w",
+      "a": 10,
+      "b": 9,
+      "note": "Collects old coins and postage stamps. | पुराने सिक्के और टिकट जमा करती है।"
+     }
+    ],
+    "equal_two": [
+     "Mumtaz",
+     "Firoz"
+    ],
+    "nudged": "Mumtaz",
+    "twin": "second half of twin A (Split, set A); first half D1",
+    "decoy_tie": [],
+    "outcome_bar": "target 1: slept 6 or more"
+   }
+  },
+  {
+   "id": "2.20",
+   "kind": "happened",
+   "painting": "The same for every pick. On the locker the steel flask, its lid off and steaming, beside three steel tumblers of tea; the cloth bag is gone from the chair. Nobody in the picture. Calm space: the window. [rule 50 and the bible's strip: an 'it happened' panel comes only at a change of place; this step's brief asks for one after every decision, so this one is kept to a sound or a clock.] The same for every pick (rule 39).",
+   "bubbles": [
+    {
+     "speaker": "sound",
+     "type": "sound",
+     "en": "gud-gud",
+     "hi": "गुड़-गुड़"
+    }
+   ]
+  },
+  {
+   "id": "2.21",
+   "kind": "panel",
+   "painting": "Outside X-ray: a plain closed door with an unlit round lamp above it and a blank cream plate on it, a steel bench along the wall; Nani from behind in a hospital wheelchair, her cane across her knees and a cloth purse on her lap. Calm space: the plain wall above the door. Same figures and mood as 2.09 (its twin's lead-in): Nani alone from behind, quiet.",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "7:30. Outside X-ray.",
+     "hi": "7:30। एक्स-रे के बाहर।"
+    },
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip)",
+     "type": "speech",
+     "en": "My purse stays out. Someone holds it.",
+     "hi": "मेरा बटुआ बाहर। कोई सँभाले।"
+    }
+   ]
+  },
+  {
+   "id": "2.22",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the steel bench outside the closed X-ray door, its lamp unlit. The nudge: Sunil, the hard fact in new words of the same weight (estranged from his brother over the family home). Laid on live: the cards (Rukavat's warm-paper visitor slips as notes, each judging note with its speaker's face chip), the key for the two numbers, the button. Cards in a new order on every load. After the pick: the settled plate (a tick, the job word, a lock; no names, no faces). Hard decision: plain question box. [rule 28: estranged from his brother over the family home, against her falling out with her sister over their father's home; Hindi-first readers check अनबन against मनमुटाव.] [WAITS rule 23 five-player check: holding the purse is written as a gain (trust).] [BREAKS rule 15.]",
+   "bubbles": [
+    {
+     "speaker": "the game, in the plain question box (hard decision)",
+     "type": "sign",
+     "en": "Who holds Nani's purse during the X-ray?",
+     "hi": "एक्स-रे के समय नानी का बटुआ कौन सँभाले?"
+    },
+    {
+     "speaker": "the game, top bar",
+     "type": "sign",
+     "en": "7:30 am, outside X-ray",
+     "hi": "सुबह 7:30, एक्स-रे के बाहर"
+    }
+   ],
+   "decision": {
+    "question_en": "Who holds Nani's purse during the X-ray?",
+    "question_hi": "एक्स-रे के समय नानी का बटुआ कौन सँभाले?",
+    "kind": "Pick one (a gain: trusted with the purse)",
+    "asker": "Nani",
+    "need": "Pick one. Button: Pick one, then Give it to {n} | किसी एक को चुनें, फिर {n} को दें",
+    "labels": [
+     "Ward nights: nights ever spent at a ward with someone | रातें",
+     "Years known: years they have known Nani | पहचान"
+    ],
+    "people": [
+     {
+      "name": "Deepa",
+      "sex": "w",
+      "a": 5,
+      "b": 18,
+      "note": "Has driven the school van for a decade. | बरसों से स्कूल की वैन चलाती है।"
+     },
+     {
+      "name": "Nagsen",
+      "sex": "m",
+      "a": 2,
+      "b": 7,
+      "note": "Reads the paper out to the elders. | बुज़ुर्गों को अख़बार पढ़कर सुनाता है।"
+     },
+     {
+      "name": "Rajan",
+      "sex": "m",
+      "a": 3,
+      "b": 10,
+      "note": "Lost his job at the bus depot last year. | पिछले साल बस डिपो वाली नौकरी छूट गई।"
+     },
+     {
+      "name": "Sunil",
+      "sex": "m",
+      "a": 5,
+      "b": 18,
+      "note": "Estranged from his brother over the family home. | पुश्तैनी मकान पर भाई से मनमुटाव है।"
+     }
+    ],
+    "equal_two": [
+     "Deepa",
+     "Sunil"
+    ],
+    "nudged": "Sunil",
+    "twin": "second half of twin B, hard (Pick one, set B); first half D2",
+    "decoy_tie": [],
+    "outcome_bar": "none (hard decision; feeds no target)"
+   }
+  },
+  {
+   "id": "2.23",
+   "kind": "happened",
+   "painting": "The same for every pick. The X-ray door shut, its round lamp now glowing red, the steel bench empty, the empty wheelchair parked beside it with Nani's cane across the seat. Nobody in the picture. [rule 50 and the bible's strip: an 'it happened' panel comes only at a change of place; this step's brief asks for one after every decision, so this one is kept to a sound or a clock.] The same for every pick (rule 39).",
+   "bubbles": [
+    {
+     "speaker": "sound",
+     "type": "sound",
+     "en": "beep",
+     "hi": "बीप"
+    }
+   ]
+  },
+  {
+   "id": "2.24",
+   "kind": "panel",
+   "painting": "The ward window at eight: on the sill a phone lying face up, its screen a plain glowing pale rectangle; Nani from behind the bed head at the right edge, morning light. Calm space: the plain sky in the window. Same figures and mood as 2.12 (its twin's lead-in): Nani alone from behind.",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "8:00. The window.",
+     "hi": "8:00। खिड़की।"
+    },
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip)",
+     "type": "speech",
+     "en": "Mama ji's call. Worried, as always.",
+     "hi": "मामा जी का फ़ोन। हमेशा की फ़िक्र।"
+    }
+   ]
+  },
+  {
+   "id": "2.25",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the ward window sill with the phone lying face up, its screen a plain glowing pale rectangle. The nudge: Rajan, the same reason in new words (fills Nani's weekly pill box). Laid on live: the cards (Rukavat's warm-paper visitor slips as notes, each judging note with its speaker's face chip), the key for the two numbers, the button. Cards in a new order on every load. After the pick: the settled plate (a tick, the job word, a lock; no names, no faces). [BREAKS rule 17 (warmth): Uma and Rajan arrive matched on halves, but one of Rajan's bottom showings carried a judging note (D1, \"moody\") where Uma's matching showing (D4) carried a plain one.] [BREAKS rule 15.]",
+   "bubbles": [
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), her question balloon at the fixed place",
+     "type": "speech",
+     "en": "Who explains my medicines to Mama ji?",
+     "hi": "मामा जी को मेरी दवाइयाँ कौन समझाए?"
+    },
+    {
+     "speaker": "the game, top bar",
+     "type": "sign",
+     "en": "8:00 am, the window",
+     "hi": "सुबह 8:00, खिड़की"
+    }
+   ],
+   "decision": {
+    "question_en": "Who explains my medicines to Mama ji?",
+    "question_hi": "मामा जी को मेरी दवाइयाँ कौन समझाए?",
+    "kind": "Pick one (a gain: trusted on the call)",
+    "asker": "Nani",
+    "need": "Pick one. Button: Pick one, then Give {n} the phone | किसी एक को चुनें, फिर {n} को फ़ोन दें",
+    "labels": [
+     "Ward nights: nights ever spent at a ward with someone | रातें",
+     "Years known: years they have known Nani | पहचान"
+    ],
+    "people": [
+     {
+      "name": "Mumtaz",
+      "sex": "w",
+      "a": 0,
+      "b": 4,
+      "note": "Opened a second photocopy counter this spring. | इस बसंत उसने फ़ोटोकॉपी का दूसरा काउंटर खोला।"
+     },
+     {
+      "name": "Nagsen",
+      "sex": "m",
+      "a": 2,
+      "b": 7,
+      "note": "Walks Nani to the market on Fridays. | शुक्रवार को नानी को बाज़ार ले जाता है।"
+     },
+     {
+      "name": "Rajan",
+      "sex": "m",
+      "a": 3,
+      "b": 10,
+      "note": "Fills Nani's weekly pill box every Sunday. | हर इतवार नानी की हफ़्ते की गोलियाँ छाँटता है।"
+     },
+     {
+      "name": "Uma",
+      "sex": "w",
+      "a": 3,
+      "b": 10,
+      "note": "Rewired all the street lights last year. | पिछले साल सड़क की सब बत्तियों की वायरिंग की।"
+     }
+    ],
+    "equal_two": [
+     "Uma",
+     "Rajan"
+    ],
+    "nudged": "Rajan",
+    "twin": "second half of twin C, matters (Pick one, set B); first half D3",
+    "decoy_tie": [],
+    "outcome_bar": "fixed outcome (matters twin): \"Mama ji: told.\""
+   }
+  },
+  {
+   "id": "2.26",
+   "kind": "happened",
+   "painting": "The same for every pick. The phone on the window sill, face up, its screen now dark, morning light on the sill. Nobody in the picture. [rule 50 and the bible's strip: an 'it happened' panel comes only at a change of place; this step's brief asks for one after every decision, so this one is kept to a sound or a clock.] The same for every pick (rule 39).",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "8:15.",
+     "hi": "8:15।"
+    },
+    {
+     "speaker": "sound",
+     "type": "sound",
+     "en": "tuk",
+     "hi": "टक"
+    }
+   ]
+  },
+  {
+   "id": "2.27",
+   "kind": "panel",
+   "painting": "Long gutter. The hospital's taxi stand in morning sun, booked for the ride home whenever the doctor lets Nani go: a taxi parked side-on with a plain yellow number plate, its rear door open towards the viewer and the back seat empty; Nani's cane leans in at the left edge of the panel (she is just off it, in her wheelchair). Nobody in the picture. Calm space: the open sky above the stand. Same figures and mood as 2.15 (its twin's lead-in): only Nani's cane, her voice from off the panel.",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "8:30. The taxi stand.",
+     "hi": "8:30। टैक्सी स्टैंड।"
+    },
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), off the panel (tail to the left edge)",
+     "type": "speech",
+     "en": "Two seats spare in the taxi.",
+     "hi": "टैक्सी में दो सीटें ख़ाली।"
+    }
+   ]
+  },
+  {
+   "id": "2.28",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the taxi's open rear door and its empty back seat at the stand. The nudge: Ganga, a loaded word from Mausa ji (\"dodges work\"), the same weight as \"lazy\". Laid on live: the cards (Rukavat's warm-paper visitor slips as notes, each judging note with its speaker's face chip), the key for the two numbers, the button. Cards in a new order on every load. After the pick: the settled plate (a tick, the job word, a lock; no names, no faces). Nagsen's one top place (rule 21). [BREAKS rule 15.]",
+   "bubbles": [
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), her question balloon at the fixed place",
+     "type": "speech",
+     "en": "Who rides home with Nani?",
+     "hi": "नानी के साथ घर कौन जाए?"
+    },
+    {
+     "speaker": "the game, top bar",
+     "type": "sign",
+     "en": "8:30 am, the taxi stand",
+     "hi": "सुबह 8:30, टैक्सी स्टैंड"
+    }
+   ],
+   "decision": {
+    "question_en": "Who rides home with Nani?",
+    "question_hi": "नानी के साथ घर कौन जाए?",
+    "kind": "Spend checks, up to 2 (a gain: a taxi seat)",
+    "asker": "Nani",
+    "need": "Up to 2 seats, at least 1. Button: Give at least one, then Fill the seats | कम से कम एक को दें, फिर सीटें भरें",
+    "labels": [
+     "On feet: hours on their feet today | खड़े",
+     "Slept: hours slept last night | नींद"
+    ],
+    "people": [
+     {
+      "name": "Ganga",
+      "sex": "w",
+      "a": 15,
+      "b": 2,
+      "note": "Dodges work, says Mausa ji. | मौसा जी कहते हैं, ये कामचोर है।"
+     },
+     {
+      "name": "Nagsen",
+      "sex": "m",
+      "a": 16,
+      "b": 1,
+      "note": "Plays chess at the library daily. | रोज़ शाम लाइब्रेरी में बैठकर शतरंज खेलता है।"
+     },
+     {
+      "name": "Rajan",
+      "sex": "m",
+      "a": 14,
+      "b": 6,
+      "note": "A show-off, Mausa ji says. | मौसा जी कहते हैं, दिखावा करता है।"
+     },
+     {
+      "name": "Sunil",
+      "sex": "m",
+      "a": 15,
+      "b": 2,
+      "note": "Repairs old radios for fun. | शौक़ से पुराने रेडियो सुधार देता है।"
+     },
+     {
+      "name": "Uma",
+      "sex": "w",
+      "a": 12,
+      "b": 8,
+      "note": "Mends the neighbours' torches. | पड़ोसियों की टॉर्च भी बना देती है।"
+     }
+    ],
+    "equal_two": [
+     "Ganga",
+     "Sunil"
+    ],
+    "nudged": "Ganga",
+    "twin": "second half of twin D (Spend checks, set A); first half D4",
+    "decoy_tie": [],
+    "outcome_bar": "target 2: on feet 12 or more"
+   }
+  },
+  {
+   "id": "2.29",
+   "kind": "happened",
+   "painting": "The same for every pick. The taxi at the stand with its rear door shut, waiting, seen side-on with its plain yellow number plate. Nobody in the picture. Calm space: the sky. [rule 50 and the bible's strip: an 'it happened' panel comes only at a change of place; this step's brief asks for one after every decision, so this one is kept to a sound or a clock.] The same for every pick (rule 39).",
+   "bubbles": [
+    {
+     "speaker": "sound",
+     "type": "sound",
+     "en": "dhap",
+     "hi": "धप"
+    }
+   ]
+  },
+  {
+   "id": "2.30",
+   "kind": "outcome",
+   "painting": "Long gutter after the last pick; one painting for every band. Nani's own front door in a narrow present-day lane, late morning: a plain green door with no name plate, a steel step, Nani's cane leaning by the door, the taxi pulling away at the far end seen from behind. No people in view. Calm space: the sky above the roofs. Laid on live: Rukavat's big moment, the 1980s TV interruption card, as a frame only; its usual words are left off (rule 64), and the stamp sits in it. [WAITS rulebook Q5 and options Q15: the stamp says how the event went, on the screen between chapters.] [rule 64: Rukavat's interruption card keeps only its frame; its usual words (\"sorry for the interruption\") are a banned word in an outcome, so they are left off.] Bands: both targets met gives 10:00, one gives 11:00, none gives 12:30. Worked from the numbers only (rule 44): the equal two share their numbers, so swapping them, or always picking the woman or always the man, ends the same.",
+   "bubbles": [
+    {
+     "speaker": "the game, the stamp (band A; band B reads 11:00, band C 12:30)",
+     "type": "sign",
+     "en": "Nani home: 10:00",
+     "hi": "नानी घर: 10:00"
+    }
+   ]
+  },
+  {
+   "id": "2.31",
+   "kind": "outcome",
+   "painting": "The 2.04 prop painting again, the file's back page facing out, now with the steel pen lying across it. Lines laid on live from the numbers only, with no names; a target is ticked only when met. Target 1 counts the 6 places shared in D1 and D5 (3 turns, 3 jobs) given to someone who slept 6 hours or more; target 2 counts the cots and seats given in D4 and D8 (2 to 4, since each step takes at least one) to someone on their feet 12 hours or more. A target is ticked only when every place given meets it. The matters line is fixed for everyone (rule 45).",
+   "bubbles": [
+    {
+     "speaker": "the game, line 1 with its tick (figures as for a player who met it: 6 of 6)",
+     "type": "sign",
+     "en": "Turns, jobs, slept 6 or more: 6 of 6",
+     "hi": "बारी, काम, नींद 6 या ज़्यादा: 6 में से 6"
+    },
+    {
+     "speaker": "the game, line 2 with its tick (2 to 4 places, as given)",
+     "type": "sign",
+     "en": "Cots, taxi seats, on feet 12 or more: 4 of 4",
+     "hi": "खाट, टैक्सी सीटें, खड़े 12 या ज़्यादा: 4 में से 4"
+    },
+    {
+     "speaker": "the game, the fixed line, the same for everyone",
+     "type": "sign",
+     "en": "Doctor: answered. Mama ji: told.",
+     "hi": "डॉक्टर: जवाब। मामा जी: ख़बर।"
+    }
+   ]
+  },
+  {
+   "id": "2.32",
+   "kind": "outcome",
+   "painting": "One painting for all bands. Nani's own room at home: Nani from behind in her cane chair by a window, a steel tumbler of tea on a stool beside her, her cane against the chair. Calm space: the plain wall and window above her. Warm in every band, about the event, never a person, never funny (rule 46).",
+   "bubbles": [
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), band A only (both targets met)",
+     "type": "speech",
+     "en": "Home by 10. My own bed.",
+     "hi": "10 बजे घर। अपना बिस्तर।"
+    },
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), band B only (one target met)",
+     "type": "speech",
+     "en": "Home by 11. Tea at my own table.",
+     "hi": "11 बजे घर। अपनी मेज़ पर चाय।"
+    },
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip), band C only (none met)",
+     "type": "speech",
+     "en": "12:30, and home all the same.",
+     "hi": "12:30, फिर भी घर।"
+    },
+    {
+     "speaker": "You (tag \"You\" | \"आप\")",
+     "type": "you",
+     "en": "Now rest, Nani.",
+     "hi": "अब आराम कीजिए, नानी।"
+    }
+   ]
+  },
+  {
+   "id": "2.33",
+   "kind": "outcome",
+   "painting": "The same room, the same for everyone: on the stool beside Nani's chair, a plain white cardboard cake box, lid shut, nothing written on it. Nani from behind. Calm space: the wall above. The story's own ending, the same for everyone; it sets up the cake in chapter 5. [FLAG rule 66: नहीं and आएँ end sentences; neither is about you.]",
+   "bubbles": [
+    {
+     "speaker": "Nani (tag \"Nani\" | \"नानी\", face chip)",
+     "type": "speech",
+     "en": "No party. When everyone comes again.",
+     "hi": "कोई पार्टी नहीं। जब सब फिर आएँ।"
+    }
+   ]
+  },
+  {
+   "id": "2.34",
+   "kind": "outcome",
+   "painting": "Present day, the household's own look (the progress object). The kitchen wall calendar from the opening, turned to July: a plain mountain picture over a grid of empty boxes, months and dates as live text. On the May page, folded back, the night of the ward now has a pencil circle with a small cane drawn in it, different in shape and line from the red circles. Nobody in the picture. Then the between-chapters foot: the five chapter marks with two now filled. The calendar is the progress object: the pencil circle differs from the red ones by shape and line as well as colour (rule 50). \"Chapter 2 of 5 done\" needs the exception to the house ban on \"part 1 of 2\" wording (rule 50).",
+   "bubbles": [
+    {
+     "speaker": "narration",
+     "type": "narration",
+     "en": "July. Back home.",
+     "hi": "जुलाई। वापस घर।"
+    },
+    {
+     "speaker": "the game",
+     "type": "sign",
+     "en": "Chapter 2 of 5 done / Next chapter / Later",
+     "hi": "अध्याय 2/5 पूरा / अगला अध्याय / बाद में"
+    }
+   ]
+  }
+ ],
+ "writer_notes": [
+  "BREAKS rule 15 (no tie between two women or two men on any of the 8 decisions). Why: each person keeps the same numbers wherever a set shows, and each set carries 4 equal pairs among 10 people, so the 2 left over in each set are a woman and a man (set A: Yasmin and Nagsen; set B: Mumtaz and Nagsen). Two women or two men can then share numbers only by copying a pair's numbers, which rule 17's last clause forbids, and every set-B decision is a pick one, where the lowest pair needs both spares below it. A solver run over all 144 pair plans that keep rules 13, 17 and 21 found no line-up with even one such tie. Ways out, for you or the research side: 12 people a circle (rule 11 says 8 to 10), a Rank or Team decision in set B so the pair is not always on top, or let a spare share a pair's numbers (marked as a rule 17 break).",
+  "BREAKS rule 17, weakest: Ganga is the weakest card in D5 (on her feet 15 hours, slept 2) and sits in D8's pair. Of all the line-ups the solver found, none kept every weakest card out of later pairs while also matching each pair's earlier showings; this was the single break left. The same tiredness that makes her weakest for a morning job makes her most deserving of a seat in D8.",
+  "BREAKS rule 17, warmth (2 pairs): in D4, Uma's bottom-half showing carried a heavy fact (D2, unwell since the winter fever) where Dinesh's carried a warm one (D3, fixed Nani's fan); in D7, Rajan's carried a judging note (D1, moody) where Uma's matching showing (D4) carried a plain one. The halves (top or bottom) match for every pair, measured as chapter 3's checker measures them (more cards beaten than beating, over both numbers).",
+  "BREAKS rule 17, age: in twin C (the matters twin, D3 and D7) the man is older in both halves (Yasmin 32 with Firoz 40; Uma 34 with Rajan 40). The circle has only three woman-older pairs (Ganga twice, Mumtaz with Firoz) and the hard twin and both plain twins need them, so the one break is on the twin whose reason may fairly be followed both times.",
+  "BREAKS rule 21 (from the bible's circle): Nagsen is on five cards and never in a pair, since no woman in the circle has a Marathi name, and the one-pair names (Yasmin, Mumtaz) plus Nagsen are the only cards free to be the weakest early on (rule 17). So a community-marked name is the weakest card in 5 of the 7 decisions that have a weakest card (Nagsen in D1, D2 and D6, Yasmin in D4, Mumtaz in D7). Counted by places instead, marked names hold 3 of the 6 top places and 6 of the 13 bottom places, near their 40% share. Nagsen gets one top place (D8) and one warm note (D7). The fix sits in the bible: give Nagsen a Marathi-named woman to pair with, or put the never-paired card on a name that marks no community.",
+  "BREAKS rules 25 and 50 (as the bible marks): the home chapter carries one hard topic, not two; WAITS rulebook Q3. If the answer is two, twin D (the cots and seats) turns hard with the bible's care facts, and the counts here change.",
+  "BREAKS rule 18 (as the bible marks): 9 sets in the take; WAITS options Q8. CHANGED from the bible: set B's second number was 'km away from the hospital', but every card person is Nani's neighbour from one lane, so it would be the same for all. It is now 'Years known: years they have known Nani' (पहचान), capped at each person's age minus 6. Native readers choose the final key words.",
+  "CLASH rules 26 and 36: the title card must name the setting ('a quarrel over a house') before Start, and rule 36 bars any earlier line from using a coming card's note words, so the two hard notes avoid 'quarrel', 'house', 'घर' and 'झगड़ा'. A script (ch2_notecheck.py) scans every story line, question, slot label and button before each decision for the content words of that decision's notes; it is clean. Kin names used as names (Nani) are not counted as content words.",
+  "STORY LOGIC flag: the cards' numbers are the visitor slips filled in at the gate at 9 pm, so in the morning decisions (D5 at 6:00, D8 at 8:30) 'slept last night' and 'on feet today' are still the evening's figures. A careful player may notice. Options: relabel set A 'on feet by 9 pm' and 'slept the night before' in this chapter, or give the morning twins a second slip.",
+  "CHANGED pairs (the bible allows it; the checker should prove the new set): D1 Deepa and Rajan, D2 Ganga and Dinesh, D3 Yasmin and Firoz, D4 Uma and Dinesh, D5 Mumtaz and Firoz, D6 Deepa and Sunil, D7 Uma and Rajan, D8 Ganga and Sunil. Why: the bible's set put the man older in both halves of a plain twin (A), and its warmth and earlier-showing history could not be matched. Kept: one pair per set per person, at most two pairs each, never two decisions running, no repeat, within 8 years, Muslim names only with Muslim names, no hard fact on a community-marked name, first-half nudge on the man in A and D and on the woman in B and C, as the bible's take-wide count needs.",
+  "CHANGED hard facts (rule 28): the bible had the quarrel with 'her brother' and 'his brother'. A daughter claiming her father's house and a son doing so do not read the same in many homes, so each quarrels with a sibling of the same sex: Ganga fell out with her sister over their father's home (D2); Sunil is estranged from his brother over the family home (D6). Hindi: अनबन against मनमुटाव. For the five Hindi-first readers. No court or legal claim (rule 29); a neighbour's own case, never the household's (rule 27).",
+  "CHANGED the taxi decision (D8) from 9:30 at the gate to 8:30 at the taxi stand, booked for whenever Nani is let go, because a stamp of 'Nani home: 11:00' or '12:30' cannot follow a taxi already at the gate at 9:30 (rule 43: every decision happens before the outcome).",
+  "Nudges and notes: rules 19, 20 and 22 hold by script. Notes in each decision are within 2 words of each other in each language, the pair's two notes are the same length, the longest note sits on the pair in 4 of 8 decisions in English and 3 of 8 in Hindi, the two never share an opening word or frame. Every decision has a decoy of the nudge's kind (a judging note beside a judging note, a heavy fact beside the hard fact, a warm Nani fact beside the reason that matters). Judging notes come from Nani (twin A's nudges and two decoys) and Mausa ji (twin D's nudges and two decoys), each voice the same in both halves of its twin. Rajan (moody in D1; the pill box in D7) and Ganga (the hard fact in D2; 'dodges work' in D8) each carry two nudges of different kinds; Dinesh carries 'lazy' and two decoy notes.",
+  "Against type (rule 11): the women's jobs are electrician (Uma), school van driver (Deepa) and photocopy shop (Mumtaz); the men's are tailor (Dinesh), tiffin cook who lost a bus-depot job (Rajan), primary-school maths teacher (Sunil), auto driver (Firoz) and cycle repair shop (Nagsen): five against type, two with it. No note gives a real reason for its job; the two reasons that matter sit only on the matters pairs.",
+  "Numbers (rule 14, 45): in every decision a player who goes only by the first number, or only by the second, must still choose between the equal two, and no other card ties the pair on either number. Bars sit at or below the pair (slept 6 or more for the turns and jobs; on feet 12 or more for the cots and seats). Cards that would miss a bar: Nagsen (D1, slept 1), Yasmin (D4, on feet 10), Ganga (D5, slept 2): two women, one man. The swap test and the always-the-woman, always-the-man test end the same because the two share numbers and only numbers count.",
+  "Kinds (rule 51): Split (first met here, its home world, with the moving hand), Spend checks (new, moving hand at D4) and Pick one: three kinds, two new. The pick ones fall back to back (D2 and D3, D6 and D7), which may feel like the repetition you named on 24 Oct; the bible's plan keeps them, and Believe and Rank belong to other chapters.",
+  "Gains and loads (rule 23): the night turns and morning jobs are loads, so they are Splits; the cots and taxi seats are gains. Whether keeping Nani's spare key and holding her purse are gains (trust) or loads (a worry) is written as a gain and waits on the five-player check.",
+  "Words (rule 62, 63; written to the proposed caps, WAITS rulebook Q14): story beats come to 118 counted words in English and 112 in Hindi, under 120. No beat over 20 or over 3 pieces; the longest spoken line is 7 words; narration at most 4. Decision screens count the question, the key, the slot labels and the button: 14 at most in English and 15 in Hindi (D1). Not counted: names, kin names, numbers and times; am, pm, रात and सुबह are counted. The top-bar clock is not counted, as in the scroll design; if it is, D1 runs over 15 in Hindi. Outcome beats at most 19 a band.",
+  "Hindi (rule 66): no line by, to or about you shows a gender. The checker will still catch these, for a native reader to clear: the 'who should' asks बैठे, रखे, आए, मिले, करे, सँभाले, समझाए, जाए; रखे and सँभाले in Nani's asks; यहीं (2.02), ख़ाली (2.27), नहीं and आएँ (2.33); and छोड़िए and कीजिए in your lines. The doctor never takes a gendered verb (डॉक्टर का हुक्म, डॉक्टर के बहुत सवाल हैं), so the job is not quietly made a man's.",
+  "You (rule 38): three 'You' bubbles (2.04, 2.17, 2.32), each one tap, the same whatever you pick, never naming a card person. 2.17 names only the job ('Cots, sorted'), WAITS options Q14. Nobody calls you by a family word (rule 8; WAITS rulebook Q7).",
+  "Household and voices: Nani asks every decision and is seen only from behind or off the panel, with her present-day face chip on every bubble (WAITS options Q11). Mausa ji, the bible's chapter voice, is painted face-on in two panels, tagged 'Mausa ji, Mummy's sister's husband' (WAITS rulebook Q11). Mama ji is on the phone in D7 but never speaks, since his chapter is 5. No household hand reaches towards you; the file and key lie on surfaces.",
+  "Paintings to add to the painter's glossary before any prompt (rule 30, painter-glossary rule): Nani's hospital file (a plain buff cardboard folder; back page plain ruled paper with no marks), her spare key (one brass key on a red thread), her cane (wooden, rubber foot), the folding steel cot with a rolled cotton mattress, the hospital wheelchair, the steel tea flask, the doctor's steel trolley of plain folders, the X-ray door with its unlit round lamp and blank cream plate, the taxi with a plain yellow number plate, the plain white cake box, a phone face up with a plain glowing screen. Card faces: Deepa, Uma and Rajan have Rukavat-style portraits; Ganga, Yasmin, Mumtaz, Dinesh, Sunil, Firoz and Nagsen need Rukavat versions of their faces, plus Mausa ji's present-day portrait and face-on Rukavat panels, all through the heavy queue and the close-up check for painted dots and lightened skin.",
+  "Phone fit (rule 41): D1 and D5 (Split) and D8 (Spend checks) show five cards; WAITS rulebook Q16 for the 360 x 640 Hindi screen.",
+  "Help line (rule 26): one help line for women and men alike in the '?' sheet, checked against the official source; not named here, never on a card or in a panel.",
+  "Six-player test (rule 1), predicted only: a night in hospital with an elder should pass for all six (Farida the nurse knows the ward from the other side). Readers decide.",
+  "Scripts, in this folder: ch2_milp3.py (the line-up and numbers search, with the rules it holds), ch2_check.py (rules 13, 14, 15, 17, 20, 45 on ch2_design.json), ch2_notecheck.py (rules 19 and 36), ch2_words.py (the counter)."
+ ]
+}

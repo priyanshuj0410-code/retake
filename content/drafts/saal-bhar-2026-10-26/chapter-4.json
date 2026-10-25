@@ -1,0 +1,1040 @@
+{
+ "n": 4,
+ "title": "The lane cup (गली का कप)",
+ "look": "Cricket scoreboard: a present-day lane on 15 August painted in the Cricket world's scoreboard style (flat slate-green and chalk-white grounds, scoreboard plates, warm evening light). Present-day clothes and objects: plastic chairs, steel tumblers, tennis balls, a plastic bat, phones. No flags, bunting, speeches, logos or brands. Every sign, slate, page and card is painted blank or shut; every word is live text.",
+ "area": "Teams and leaders",
+ "goals": [
+  "Target 1, Tinku's scorebook: 'Openers, morning and final: 40 runs or more' | 'ओपनर, सुबह और फ़ाइनल: 40 रन या ज़्यादा'. The first two places in each batting order open; their runs at last year's cup are added over both orders (decisions 1 and 5, twin A). Met if the four openers' runs add up to 40 or more.",
+  "Target 2, Tinku's scorebook: 'Last over and umpire: 10 matches or more' | 'आख़िरी ओवर और अंपायर: 10 मैच या ज़्यादा'. Met if the one sent in for the last over (decision 4) and the umpire for the third-place match (decision 8), twin D, have each played 10 lane matches or more.",
+  "Fixed line for the matters twin (decisions 2 and 6, twin B): 'Keepers: found.' | 'कीपर: तय।', the same whoever was picked.",
+  "Stamp, on Cricket's 'decision pending' plate: both targets met 'Final: won by 6 runs'; one met 'Final: tied'; none met 'Final: lost by 4 wickets'. Warm in every band. The hard twin (decisions 3 and 7, twin C) feeds nothing."
+ ],
+ "beats": [
+  {
+   "id": "4.01",
+   "kind": "title",
+   "painting": "Cricket scoreboard look, morning, people-free. A narrow present-day lane where two lanes meet. In the foreground a concrete drain cover runs across the lane with one long crack and two loose bricks beside it. On the right a plain whitewashed wall with three stumps drawn on it as plain white chalk lines. A folded plastic chair and a steel bucket by the wall, a tennis ball in the gutter. Plain pale sky over the top half. Nothing written anywhere; unsigned. || MARKS: [WAITS rulebook Q14: the title card's words are counted here in the chapter's 120]",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Chapter 4 of 5",
+     "hi": "अध्याय 4, 5 में से"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "The lane cup",
+     "hi": "गली का कप"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "15 August: cricket, and a separation.",
+     "hi": "15 अगस्त: क्रिकेट, और एक अलगाव।"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "About 4 minutes",
+     "hi": "लगभग 4 मिनट"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Start",
+     "hi": "शुरू करें"
+    }
+   ]
+  },
+  {
+   "id": "4.02",
+   "kind": "opening",
+   "painting": "Cricket scoreboard look over a present-day kitchen wall, early morning, people-free. The free calendar from the family shop hangs on a nail: a plain mountain picture over a grid of empty boxes, one box ringed in red pen (a plain red ring, no numbers). Below it on the counter a steel water bottle and a folded towel. Plain wall above. The month and dates are laid on as live text. || MARKS: Tinku speaks from off the panel: tag 'Tinku' on the bubble, tail butting against the left edge (the bottom edge belongs to you).",
+   "bubbles": [
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "15 August.",
+     "hi": "15 अगस्त।"
+    },
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "Up! Cup day.",
+     "hi": "उठो! आज कप है।"
+    }
+   ]
+  },
+  {
+   "id": "4.03",
+   "kind": "panel",
+   "painting": "Cricket scoreboard look, the lane where two lanes meet, morning. The cracked drain cover in the lower half, two loose bricks. Captain sahab, about 65, lean, grey moustache, plain white half-sleeve shirt and grey trousers, bareheaded, stands in the left third looking straight out at the viewer, the end of a cricket stump in his right hand resting on the crack. Heads about a third of the way down. Calm space: the plain whitewashed wall in the upper right. Nobody else. Nothing written; unsigned. || MARKS: First speaker on the left (rule 31). His first tag reads 'Captain sahab, the lane's old cricketer' (rule 65); a tag on every bubble after it. Your line is polite to an elder and marks no gender (rule 66).",
+   "bubbles": [
+    {
+     "speaker": "Captain sahab",
+     "type": "speech",
+     "en": "The losing lane mends this drain.",
+     "hi": "जो गली हारे, वो ये नाली बनवाए।"
+    },
+    {
+     "speaker": "You",
+     "type": "you",
+     "en": "Let's play, Captain sahab.",
+     "hi": "चलिए, कप्तान साहब।"
+    }
+   ]
+  },
+  {
+   "id": "4.04",
+   "kind": "panel",
+   "painting": "Cricket scoreboard look. A small folding table at the edge of the lane with a plastic chair. Tinku, 21, seen from behind on the chair, plain T-shirt, hair in a plain ponytail, head turned a little to the right so no face shows. On the table her scorebook lies shut, plain cover. Beside it one sheet of plain ruled paper with no marks lies flat, turned to face the viewer, a pencil across its foot. No hand reaches towards the viewer. Plain wall above. Nothing written; unsigned. || MARKS: The two target lines are live text on the painted blank sheet; if the sheet is under 60% of the panel they drop to a message card under it (rule 40). Target 1 says 'Openers' where the bible says 'Top four': with four on an order card a top-four target would not depend on the order at all, so the first two places open and their runs count.",
+   "bubbles": [
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "Two targets. Today, your call.",
+     "hi": "दो टारगेट। आज फ़ैसला तुम्हारा।"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Openers, morning and final: 40 runs or more",
+     "hi": "ओपनर, सुबह और फ़ाइनल: 40 रन या ज़्यादा"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Last over and umpire: 10 matches or more",
+     "hi": "आख़िरी ओवर और अंपायर: 10 मैच या ज़्यादा"
+    }
+   ]
+  },
+  {
+   "id": "4.05",
+   "kind": "panel",
+   "painting": "Cricket scoreboard look, the lane pitch at mid-morning, people-free: a strip of swept concrete, the three chalk stumps on the whitewashed wall, a plastic bat leaning on it, two tennis balls, a row of empty plastic chairs along the wall. Plain sky above the wall. Laid on live: the ten card portraits, all one size (at least 56 px), names only, in a new order on every load. || MARKS: Circle page (rule 11): names only, no relation tags, no quirks. Tinku off the panel, tagged.",
+   "bubbles": [
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "Our side, all ten.",
+     "hi": "हमारी टीम, पूरे दस।"
+    }
+   ]
+  },
+  {
+   "id": "4.06",
+   "kind": "panel",
+   "painting": "Cricket scoreboard look, the lane pitch at nine in the morning. Captain sahab in the left third, face-on, looking out at the viewer, a stump tucked under his left arm. Tinku seen from behind in the right third, sitting on her plastic chair at the scorer's table, the scorebook shut in front of her. Heads about a third of the way down; plain sky and wall above them. No card person is painted. Nothing written. || MARKS: Lead-in for decision 1; matched by 4.15 (decision 5): same two figures, same places, same calm mood (rule 37).",
+   "bubbles": [
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "9:00. First match.",
+     "hi": "9:00। पहला मैच।"
+    },
+    {
+     "speaker": "Captain sahab",
+     "type": "speech",
+     "en": "Toss in half an hour.",
+     "hi": "आधे घंटे में टॉस।"
+    }
+   ]
+  },
+  {
+   "id": "4.07",
+   "kind": "decision",
+   "painting": "Stop 1. People-free backdrop behind the cards (phone portrait and a wide version for laptops): the lane pitch from the batting end at nine in the morning, the three chalk stumps on the whitewashed wall, a plastic bat and two old pads leaning on a plastic chair. Plain sky. Nothing written. Top bar story clock, live: '9:00 am, the pitch' | 'सुबह 9:00, पिच'. The order column carries a live plate 'Openers' over places 1 and 2. The batting order is met here for the first time, in its home world, so a moving hand shows it once. || MARKS: [BREAKS rule 15: no two women or two men tie here; the circle cannot hold one (writer note 1)] The order is a straddle: Manju is above the two on runs and Kader on matches, so a player going by either number still puts one of the two above the other and must choose which of them opens (rule 14). The captain stage on its own does not keep rule 14: by runs alone Manju leads, by matches alone Kader.",
+   "bubbles": [
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "Morning match: set our batting order.",
+     "hi": "सुबह का मैच: बैटिंग ऑर्डर लगाओ।"
+    },
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "Now the captain. Who leads?",
+     "hi": "अब कप्तान। कौन संभाले?"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Openers",
+     "hi": "ओपनर"
+    }
+   ],
+   "decision": {
+    "question_en": "Morning match: set our batting order.",
+    "question_hi": "सुबह का मैच: बैटिंग ऑर्डर लगाओ।",
+    "kind": "batting order, then captain (one card, two stages, counted as one decision)",
+    "asker": "Tinku, in her balloon at the question's fixed place, face chip from her present-day portrait",
+    "need": "Place all 4 in order (button 'Lock the order' | 'ऑर्डर पक्का करें'); places 1 and 2 open. Then stage 2 on the same card: 'Now the captain. Who leads?' | 'अब कप्तान। कौन संभाले?', pick 1 (button 'Make {n} captain' | '{n} को कप्तान बनाएँ'). Being picked is a gain.",
+    "labels": [
+     "runs: at last year's cup (bat icon) | रन: पिछला कप",
+     "matches: lane matches ever played (stumps icon) | मैच: कुल"
+    ],
+    "people": [
+     {
+      "name": "Gita",
+      "sex": "w",
+      "a": 10,
+      "b": 11,
+      "note": "Lives in the corner house. | नुक्कड़ वाले मकान में रहती है।"
+     },
+     {
+      "name": "Kabir",
+      "sex": "m",
+      "a": 10,
+      "b": 11,
+      "note": "A show-off, says Captain sahab. | कप्तान साहब कहते हैं, शो-ऑफ़ है।"
+     },
+     {
+      "name": "Manju",
+      "sex": "w",
+      "a": 13,
+      "b": 8,
+      "note": "Knows best, always, says Captain sahab. | कप्तान साहब कहते हैं, सब जानती है।"
+     },
+     {
+      "name": "Kader",
+      "sex": "m",
+      "a": 6,
+      "b": 14,
+      "note": "Moved back here in June. | जून में यहाँ वापस लौट आया।"
+     }
+    ],
+    "equal_two": [
+     "Gita",
+     "Kabir"
+    ],
+    "nudged": "Kabir: 'show-off', a loaded word from Captain sahab (face chip on the note)",
+    "twin": "first half of twin A, plain",
+    "decoy_tie": [],
+    "outcome_bar": "Target 1, a sum with decision 5: the runs of the two placed first and second. By runs alone: Manju 13 + one of the two 10 = 23. By matches alone: Kader 6 + 10 = 16. Both of the two: 20. The captain stage feeds nothing."
+   }
+  },
+  {
+   "id": "4.08",
+   "kind": "happened",
+   "painting": "Cricket scoreboard look: the lane's scoreboard, a plain black board propped on two bricks against the wall, with blank white slates hung on nails and a stick of chalk on its ledge. People-free. Plain sky above. Nothing written; the slates stay blank. || MARKS: Settled plate (tick and job word, no names) arrives with this panel in one tap. The same for every pick (rule 39). Also the lead-in for decision 2, matched by 4.17.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Order ✓",
+     "hi": "ऑर्डर ✓"
+    },
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "9:15. The board.",
+     "hi": "9:15। बोर्ड।"
+    },
+    {
+     "speaker": "-",
+     "type": "sound",
+     "en": "clack",
+     "hi": "खट"
+    }
+   ]
+  },
+  {
+   "id": "4.09",
+   "kind": "decision",
+   "painting": "Stop 2. People-free backdrop: the lane seen from the chalk stumps towards the far wall, plastic cones set out as fielding places, a pair of old wicketkeeping gloves on a plastic chair. Plain sky. Nothing written. Top bar clock: '9:20 am, the pitch' | 'सुबह 9:20, पिच'. || MARKS: [BREAKS rule 15: no same-sex tie] [BREAKS rule 36 in spirit: the question names the need ('a keeper') that Leena's note answers. A matters twin cannot work without it; the words differ ('keeper' against 'kept wicket'), but a note-word check on stems would catch it] [BREAKS rule 17: in twin B the man is older in both halves, Chandan 38 over Leena 33 here (writer note 2)] Hari's warm note matches the warmth of Leena's here, because they are the next pair (rule 17); it is a deed, not a reason to pick him.",
+   "bubbles": [
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "Three more for the side, one a keeper.",
+     "hi": "तीन और खिलाड़ी, एक कीपर समेत।"
+    }
+   ],
+   "decision": {
+    "question_en": "Three more for the side, one a keeper.",
+    "question_hi": "तीन और खिलाड़ी, एक कीपर समेत।",
+    "kind": "pick a team, 3 of 5",
+    "asker": "Tinku, in her balloon at the question's fixed place",
+    "need": "Pick 3 of 5 (buttons 'Pick 3 more', 'Pick 2 more', 'Pick 1 more', then 'Lock the side' | 'टीम पक्की करें'). A place in the side is a gain.",
+    "labels": [
+     "wickets: all lane cups (ball icon) | विकेट: कुल",
+     "catches: all lane cups (hands icon) | कैच: कुल"
+    ],
+    "people": [
+     {
+      "name": "Leena",
+      "sex": "w",
+      "a": 6,
+      "b": 9,
+      "note": "Kept wicket three years for her college team. | कॉलेज की टीम में तीन साल विकेटकीपर रही।"
+     },
+     {
+      "name": "Chandan",
+      "sex": "m",
+      "a": 6,
+      "b": 9,
+      "note": "Sewed every one of the new cup shirts. | कप की सारी नई जर्सियाँ उसने ख़ुद सिलीं।"
+     },
+     {
+      "name": "Agnes",
+      "sex": "w",
+      "a": 17,
+      "b": 2,
+      "note": "Bowls slow off-spin from the wall end. | दीवार वाले छोर से धीमी ऑफ़-स्पिन डालती है।"
+     },
+     {
+      "name": "Hari",
+      "sex": "m",
+      "a": 14,
+      "b": 12,
+      "note": "Fills the water bottles before each game. | हर खेल से पहले पानी की बोतलें भरता है।"
+     },
+     {
+      "name": "Thomas",
+      "sex": "m",
+      "a": 3,
+      "b": 15,
+      "note": "Moved here from the next town last winter. | पिछली सर्दी में पास के कस्बे से आया।"
+     }
+    ],
+    "equal_two": [
+     "Leena",
+     "Chandan"
+    ],
+    "nudged": "Leena: 'Kept wicket three years for her college team.', a reason that truly matters (the side needs a keeper)",
+    "twin": "first half of twin B, matters",
+    "decoy_tie": [],
+    "outcome_bar": "Fixed: 'Keepers: found.' | 'कीपर: तय।' whoever is picked (rule 45). The two straddle the cut: by wickets alone Agnes and Hari go in and one place is left for the two; by catches alone Thomas and Hari."
+   }
+  },
+  {
+   "id": "4.10",
+   "kind": "happened",
+   "painting": "Cricket scoreboard look: the pitch seen from beside the chalk stumps on the wall, a tennis ball rolling on the concrete towards the stumps, a row of steel water bottles along the wall. People-free. Plain sky. Nothing written. || MARKS: Same for every pick. Lead-in for decision 3, matched by 4.19 (decision 7).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Side ✓",
+     "hi": "टीम ✓"
+    },
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "10:30. Their innings.",
+     "hi": "10:30। उनकी पारी।"
+    },
+    {
+     "speaker": "-",
+     "type": "sound",
+     "en": "tock",
+     "hi": "टक"
+    }
+   ]
+  },
+  {
+   "id": "4.11",
+   "kind": "decision",
+   "painting": "Stop 3. People-free backdrop: the strip beside the chalk stumps where the slips stand, seen side-on, empty concrete and two chalk rings on the ground, a tennis ball resting by the wall. Plain sky. Nothing written. Top bar clock: '10:30 am, their innings' | 'सुबह 10:30, उनकी पारी'. || MARKS: [BREAKS rule 15: no same-sex tie] [BREAKS the measure judge's 'heavy-sounding line on another card in every hard decision' (options A4): no heavy decoy fact here. Rule 20 asks for one a chapter, which decision 8 carries. Here Chandan's loaded remark is the other notable line; a heavy decoy fact would need a matching heavy line on Manju before decision 5 (rule 17's warmth), which this schedule cannot hold without a sad fact on a Muslim or Christian name] Hindi-first readers check that 'separated, the children with him' weighs the same as decision 7's 'split, children with her' (rule 28). The topic never reaches a panel or a bubble (rule 26); the title card named it before Start.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "First and second slip: who gets them?",
+     "hi": "पहली और दूसरी स्लिप किसे दें?"
+    }
+   ],
+   "decision": {
+    "question_en": "First and second slip: who gets them?",
+    "question_hi": "पहली और दूसरी स्लिप किसे दें?",
+    "kind": "rank, 2 places",
+    "asker": "Tinku asks this decision, but on a hard decision the question sits in the plain question box in the game's own voice (rule 37), never in her balloon",
+    "need": "Rank 2 places, first slip then second slip (button 'Lock the slips' | 'स्लिप पक्की करें'). A slip place is a gain.",
+    "labels": [
+     "wickets: all lane cups (ball icon) | विकेट: कुल",
+     "catches: all lane cups (hands icon) | कैच: कुल"
+    ],
+    "people": [
+     {
+      "name": "Manju",
+      "sex": "w",
+      "a": 8,
+      "b": 7,
+      "note": "Drew the chalk stumps on the wall last Sunday. | पिछले इतवार दीवार पर चॉक से स्टंप उसी ने बनाए।"
+     },
+     {
+      "name": "Kabir",
+      "sex": "m",
+      "a": 8,
+      "b": 7,
+      "note": "Separated in the spring. The children live with him. | बसंत में अलग हुआ। बच्चे उसी के साथ रहते हैं।"
+     },
+     {
+      "name": "Zarina",
+      "sex": "w",
+      "a": 11,
+      "b": 5,
+      "note": "Brought two heavy folding chairs from home this morning. | आज सुबह अपने घर से दो भारी फ़ोल्डिंग कुर्सियाँ लाई।"
+     },
+     {
+      "name": "Chandan",
+      "sex": "m",
+      "a": 6,
+      "b": 9,
+      "note": "Always the last to arrive, says Captain sahab. | कप्तान साहब कहते हैं, हमेशा सबसे देर से पहुँचता है।"
+     }
+    ],
+    "equal_two": [
+     "Manju",
+     "Kabir"
+    ],
+    "nudged": "Kabir: the hard fact, a separation this spring with the children living with him (a plain fact, never whether he is fit to look after them; no court, no child on a card)",
+    "twin": "first half of twin C, hard",
+    "decoy_tie": [],
+    "outcome_bar": "None: the hard twin feeds no target. The two straddle: by wickets alone Zarina takes first slip, by catches alone Chandan, and one place is left for the two."
+   }
+  },
+  {
+   "id": "4.12",
+   "kind": "happened",
+   "painting": "Cricket scoreboard look, close on the scorer's table: the scorebook shut, a pencil, a steel tumbler of water; the blank scoreboard behind. People-free. Plain wall above. Nothing written. || MARKS: Same for every pick. Lead-in for decision 4, matched by 4.21 (decision 8).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Slips ✓",
+     "hi": "स्लिप ✓"
+    },
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "11:30. Our chase.",
+     "hi": "11:30। हमारा चेज़।"
+    }
+   ]
+  },
+  {
+   "id": "4.13",
+   "kind": "decision",
+   "painting": "Stop 4. People-free backdrop: the batting crease at the chalk stumps late in the morning, one bat leaning on the wall, the blank scoreboard beyond. Plain sky. Nothing written. Top bar clock: '11:40 am, last over' | 'सुबह 11:40, आख़िरी ओवर'. || MARKS: [BREAKS rule 15: no same-sex tie] Kader's remark is the decoy of the nudge's kind, from the same voice (rule 20). Tinku is the asker and also a voice on the notes; she is never the comic one.",
+   "bubbles": [
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "Six needed off the last over. Who goes in?",
+     "hi": "आख़िरी ओवर में छह रन। कौन उतरे?"
+    }
+   ],
+   "decision": {
+    "question_en": "Six needed off the last over. Who goes in?",
+    "question_hi": "आख़िरी ओवर में छह रन। कौन उतरे?",
+    "kind": "pick one",
+    "asker": "Tinku, in her balloon",
+    "need": "Pick 1 of 5 (button 'Send {n} in' | '{n} को भेजें'). Going in is written as a gain. [WAITS rule 23: five players say whether the last over is a gain or a pressure load]",
+    "labels": [
+     "runs: at last year's cup (bat icon) | रन: पिछला कप",
+     "matches: lane matches ever played (stumps icon) | मैच: कुल"
+    ],
+    "people": [
+     {
+      "name": "Leena",
+      "sex": "w",
+      "a": 23,
+      "b": 19,
+      "note": "Gets too emotional, Tinku says. | टिंकू कहती है, बहुत इमोशनल हो जाती है।"
+     },
+     {
+      "name": "Hari",
+      "sex": "m",
+      "a": 23,
+      "b": 19,
+      "note": "Repairs phones near the station. | स्टेशन के पास वह फ़ोन ठीक करता है।"
+     },
+     {
+      "name": "Thomas",
+      "sex": "m",
+      "a": 19,
+      "b": 16,
+      "note": "Has two dogs at home. | घर में उसने दो कुत्ते पाले हैं।"
+     },
+     {
+      "name": "Zarina",
+      "sex": "w",
+      "a": 16,
+      "b": 5,
+      "note": "Paints the signboards for the local shops. | मोहल्ले की दुकानों के साइनबोर्ड वही पेंट करती है।"
+     },
+     {
+      "name": "Kader",
+      "sex": "m",
+      "a": 6,
+      "b": 14,
+      "note": "Grumbles all game, Tinku says. | टिंकू कहती है, पूरे खेल में बड़बड़ाता है।"
+     }
+    ],
+    "equal_two": [
+     "Leena",
+     "Hari"
+    ],
+    "nudged": "Leena: 'emotional', a loaded word from Tinku (face chip on the note)",
+    "twin": "first half of twin D, plain",
+    "decoy_tie": [],
+    "outcome_bar": "Target 2: the one sent in has 10 matches or more. Leena and Hari 19, Thomas 16 and Kader 14 clear it; Zarina 5 does not. The two lead on both numbers, as a pick one needs (rule 14), and the bar sits below them (rule 45)."
+   }
+  },
+  {
+   "id": "4.14",
+   "kind": "happened",
+   "painting": "Cricket scoreboard look, noon: plastic chairs in the shade of the wall, a cotton durrie with open steel tiffins and a steel water jug. Tinku seen from behind sitting on the durrie at the right, scorebook shut beside her. No other person. Plain wall above. Nothing written. || MARKS: Same for every pick. Nothing here says how the morning match ended; the strip moves to the final at 4.15, which every player reaches whatever they picked. [BREAKS rule 39 in spirit: reaching the final is a story result after a pick; it is the same for every pick, but a player may read it as their last-over pick paying off]",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Last over ✓",
+     "hi": "आख़िरी ओवर ✓"
+    },
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "12:00. Lunch.",
+     "hi": "12:00। खाना।"
+    },
+    {
+     "speaker": "You",
+     "type": "you",
+     "en": "Water first, everyone.",
+     "hi": "पहले सब पानी पियो।"
+    }
+   ]
+  },
+  {
+   "id": "4.15",
+   "kind": "panel",
+   "painting": "The same composition as 4.06 at half past two in the afternoon, repainted from the same reference: Captain sahab left third, face-on, stump under his left arm; Tinku from behind at the scorer's table, right third. Warmer, lower light, the same calm mood. Nothing written. || MARKS: Twin of 4.06 (rule 37): same figures and mood, one narration and one line each.",
+   "bubbles": [
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "2:30. The final.",
+     "hi": "2:30। फ़ाइनल।"
+    },
+    {
+     "speaker": "Captain sahab",
+     "type": "speech",
+     "en": "Toss in ten minutes.",
+     "hi": "दस मिनट में टॉस।"
+    }
+   ]
+  },
+  {
+   "id": "4.16",
+   "kind": "decision",
+   "painting": "Stop 5. The backdrop of stop 1 reused in afternoon light (twin A's halves sit over matching paintings). People-free, nothing written. Top bar clock: '2:30 pm, the final' | 'दोपहर 2:30, फ़ाइनल'. The live 'Openers' plate over places 1 and 2. || MARKS: [BREAKS rule 15: no same-sex tie] [BREAKS rule 45 in spirit, for the research check: the only card that can cost target 1 is Kader's, in both orders (a man, 6 runs). The two per-card bars of target 2 are missed by one woman (Zarina, decision 4) and one man (Chandan, decision 8), so the bars balance; the sum does not] Same asker, same two balloons and the same painting as decision 1 (rule 37); a new nudge word, not a one-word swap (rule 16). As in decision 1, the order keeps rule 14 but the captain stage alone does not: by runs alone Zarina leads, by matches alone Kader.",
+   "bubbles": [
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "The final. Who bats in what order?",
+     "hi": "फ़ाइनल। कौन किस नंबर पर खेले?"
+    },
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "And the final's captain?",
+     "hi": "और फ़ाइनल का कप्तान?"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Openers",
+     "hi": "ओपनर"
+    }
+   ],
+   "decision": {
+    "question_en": "The final. Who bats in what order?",
+    "question_hi": "फ़ाइनल। कौन किस नंबर पर खेले?",
+    "kind": "batting order, then captain (one card, two stages, one decision)",
+    "asker": "Tinku, in her balloon, the same two balloons as decision 1 (rule 37: words within 2)",
+    "need": "Place all 4 in order ('Lock the order'); places 1 and 2 open. Stage 2: 'And the final's captain?' | 'और फ़ाइनल का कप्तान?', pick 1 ('Make {n} captain'). A gain.",
+    "labels": [
+     "runs: at last year's cup (bat icon) | रन: पिछला कप",
+     "matches: lane matches ever played (stumps icon) | मैच: कुल"
+    ],
+    "people": [
+     {
+      "name": "Manju",
+      "sex": "w",
+      "a": 13,
+      "b": 8,
+      "note": "Such a drama queen, says Captain sahab. | कप्तान साहब कहते हैं, पूरी ड्रामा क्वीन है।"
+     },
+     {
+      "name": "Chandan",
+      "sex": "m",
+      "a": 13,
+      "b": 8,
+      "note": "Tends all the potted plants every evening. | हर शाम सारे गमलों की देखभाल करता है।"
+     },
+     {
+      "name": "Zarina",
+      "sex": "w",
+      "a": 16,
+      "b": 5,
+      "note": "Argues with everybody, says Captain sahab. | कप्तान साहब कहते हैं, सबसे बहस करती है।"
+     },
+     {
+      "name": "Kader",
+      "sex": "m",
+      "a": 6,
+      "b": 14,
+      "note": "Has lived here for forty years. | चालीस साल से इसी मोहल्ले में रहता है।"
+     }
+    ],
+    "equal_two": [
+     "Manju",
+     "Chandan"
+    ],
+    "nudged": "Manju: 'drama queen', a loaded word from Captain sahab, the mirror of 'show-off' in decision 1",
+    "twin": "second half of twin A",
+    "decoy_tie": [],
+    "outcome_bar": "Target 1 with decision 1. Here by runs alone Zarina 16 + one of the two 13 = 29; by matches alone Kader 6 + 13 = 19; both of the two 26. Over both orders: runs alone 52, both pairs 46, Kader opening once 42 or 45: all meet 40. Only Kader opening in both orders (35) misses."
+   }
+  },
+  {
+   "id": "4.17",
+   "kind": "happened",
+   "painting": "The scoreboard painting from 4.08, reused under new words (rule 31), afternoon light. People-free. Nothing written. || MARKS: Twin of 4.08 (lead-in for decision 6). The same painting and the same words but the clock, so the two halves of twin B sit over matching lead-ins (rule 37).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Order ✓",
+     "hi": "ऑर्डर ✓"
+    },
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "2:45. The board.",
+     "hi": "2:45। बोर्ड।"
+    },
+    {
+     "speaker": "-",
+     "type": "sound",
+     "en": "clack",
+     "hi": "खट"
+    }
+   ]
+  },
+  {
+   "id": "4.18",
+   "kind": "decision",
+   "painting": "Stop 6. People-free backdrop: the other lanes' pitch at the far end, a second set of chalk stumps on a yellow-washed wall, a row of plastic chairs and a pair of old wicketkeeping gloves on one of them. Plain sky. Nothing written. Top bar clock: '2:50 pm, the other pitch' | 'दोपहर 2:50, दूसरी पिच'. || MARKS: [BREAKS rule 15: no same-sex tie] [BREAKS rule 36 in spirit: 'a keeper' in the question meets 'Wicketkeeper' in Kader's note, as in decision 2] [BREAKS rule 17: twin B, the man older again, Kader 55 over Zarina 47] Kader's note is in new words, not a her-to-his swap of decision 2 (rule 16). Leena's 'bats left-handed' is the decoy of the nudge's kind: a cricket fact that has nothing to do with keeping (rule 20).",
+   "bubbles": [
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "Lend the other lanes three, one a keeper.",
+     "hi": "दूसरी गलियों को तीन दो, एक कीपर समेत।"
+    }
+   ],
+   "decision": {
+    "question_en": "Lend the other lanes three, one a keeper.",
+    "question_hi": "दूसरी गलियों को तीन दो, एक कीपर समेत।",
+    "kind": "pick a team, 3 of 5",
+    "asker": "Tinku, in her balloon, the same shape as decision 2",
+    "need": "Pick 3 of 5 to play the third-place match for the lanes that are three short ('Lend these three' | 'इन तीनों को भेजें'). Written as a gain (an extra match). [WAITS rule 23: whether being lent is a gain or a load goes to the five players]",
+    "labels": [
+     "wickets: all lane cups (ball icon) | विकेट: कुल",
+     "catches: all lane cups (hands icon) | कैच: कुल"
+    ],
+    "people": [
+     {
+      "name": "Zarina",
+      "sex": "w",
+      "a": 11,
+      "b": 5,
+      "note": "Drives the hired goods tempo herself. | किराए का माल-टेम्पो वह ख़ुद चलाती है।"
+     },
+     {
+      "name": "Kader",
+      "sex": "m",
+      "a": 11,
+      "b": 5,
+      "note": "Wicketkeeper for the bank's Sunday team. | बैंक की इतवार वाली टीम का विकेटकीपर।"
+     },
+     {
+      "name": "Gita",
+      "sex": "w",
+      "a": 14,
+      "b": 12,
+      "note": "Hammered all the scoreboard nails on Saturday. | शनिवार को स्कोरबोर्ड की सारी कीलें ठोकीं।"
+     },
+     {
+      "name": "Leena",
+      "sex": "w",
+      "a": 6,
+      "b": 9,
+      "note": "Bats left-handed, at number five. | बाएँ हाथ से, पाँचवें नंबर पर।"
+     },
+     {
+      "name": "Agnes",
+      "sex": "w",
+      "a": 17,
+      "b": 2,
+      "note": "Grows tomatoes on her roof. | अपनी छत पर टमाटर उगाती है।"
+     }
+    ],
+    "equal_two": [
+     "Zarina",
+     "Kader"
+    ],
+    "nudged": "Kader: 'Wicketkeeper for the bank's Sunday team.', the reason that matters, now on the man",
+    "twin": "second half of twin B (matters)",
+    "decoy_tie": [],
+    "outcome_bar": "Fixed: 'Keepers: found.' The two straddle: by wickets alone Agnes and Gita, by catches alone Gita and Leena, and one place left for the two."
+   }
+  },
+  {
+   "id": "4.19",
+   "kind": "happened",
+   "painting": "The pitch painting from 4.10, reused, afternoon light. People-free. Nothing written. || MARKS: Twin of 4.10 (lead-in for decision 7).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Side ✓",
+     "hi": "टीम ✓"
+    },
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "3:40. Their chase.",
+     "hi": "3:40। उनका चेज़।"
+    },
+    {
+     "speaker": "-",
+     "type": "sound",
+     "en": "tock",
+     "hi": "टक"
+    }
+   ]
+  },
+  {
+   "id": "4.20",
+   "kind": "decision",
+   "painting": "Stop 7. People-free backdrop: the bowler's end late in the afternoon, a tennis ball by a chalk mark on the concrete, the chalk stumps far down the lane. Plain sky. Nothing written. Top bar clock: '4:00 pm, their chase' | 'शाम 4:00, उनका चेज़'. || MARKS: [BREAKS rule 15: no same-sex tie] [BREAKS the measure judge's 'heavy line on another card in every hard decision': all three decoys here carry community-marked names, and this chapter keeps sad facts off marked names; Zarina's warm deed is the other notable line] Mirror of decision 3: plain box, same question shape (7 words each), matching backdrops; the fact is told in new words, not a swap (rule 16).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Last two overs: who bowls first, who second?",
+     "hi": "आख़िरी दो ओवर: पहला कौन डाले, दूसरा कौन?"
+    }
+   ],
+   "decision": {
+    "question_en": "Last two overs: who bowls first, who second?",
+    "question_hi": "आख़िरी दो ओवर: पहला कौन डाले, दूसरा कौन?",
+    "kind": "rank, 2 places",
+    "asker": "Tinku asks, but the question sits in the plain question box in the game's voice (hard decision, rule 37)",
+    "need": "Rank 2 places, the second-last over then the last ('Lock the overs' | 'ओवर पक्के करें'). Bowling the end overs is a gain.",
+    "labels": [
+     "wickets: all lane cups (ball icon) | विकेट: कुल",
+     "catches: all lane cups (hands icon) | कैच: कुल"
+    ],
+    "people": [
+     {
+      "name": "Gita",
+      "sex": "w",
+      "a": 14,
+      "b": 12,
+      "note": "Split from her husband in March; children with her. | मार्च में पति से अलग हुई। बच्चे उसके पास।"
+     },
+     {
+      "name": "Hari",
+      "sex": "m",
+      "a": 14,
+      "b": 12,
+      "note": "Came from his mother's place by the early bus. | सुबह की बस से माँ के घर से आया।"
+     },
+     {
+      "name": "Agnes",
+      "sex": "w",
+      "a": 17,
+      "b": 2,
+      "note": "Runs a savings group from her front room. | अपने कमरे से एक बचत समिति चलाती है।"
+     },
+     {
+      "name": "Zarina",
+      "sex": "w",
+      "a": 11,
+      "b": 5,
+      "note": "Mended the two broken stumps at dawn this morning. | आज सुबह-सुबह उसी ने दोनों टूटे स्टंप जोड़े।"
+     },
+     {
+      "name": "Thomas",
+      "sex": "m",
+      "a": 3,
+      "b": 15,
+      "note": "Keeps the only tall ladder around in his backyard shed. | आसपास की इकलौती लंबी सीढ़ी उसके आँगन में रहती है।"
+     }
+    ],
+    "equal_two": [
+     "Gita",
+     "Hari"
+    ],
+    "nudged": "Gita: the hard fact, the separation, in new words of the same weight as decision 3",
+    "twin": "second half of twin C (hard)",
+    "decoy_tie": [],
+    "outcome_bar": "None. The two straddle: by wickets alone Agnes bowls one end, by catches alone Thomas, and one place is left for the two."
+   }
+  },
+  {
+   "id": "4.21",
+   "kind": "happened",
+   "painting": "The scorer's-table painting from 4.12, reused, late-afternoon light. People-free. Nothing written. || MARKS: Twin of 4.12 (lead-in for decision 8).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Last overs ✓",
+     "hi": "आख़िरी ओवर ✓"
+    },
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "4:10. Last overs.",
+     "hi": "4:10। आख़िरी ओवर।"
+    }
+   ]
+  },
+  {
+   "id": "4.22",
+   "kind": "decision",
+   "painting": "Stop 8. People-free backdrop: the umpire's spot at the other lanes' pitch, a plastic chair beside the chalk stumps with a white towel over its back. Plain sky. Nothing written. Top bar clock: '4:10 pm, the other pitch' | 'शाम 4:10, दूसरी पिच'. || MARKS: [BREAKS rule 15: no same-sex tie] [BREAKS rule 43 as the bible had it: the umpire was picked at 4:30, after the final the stamp reports; moved to 4:10, before the final's last ball. The umpire stands in a later match, so this half of target 2 rewards trust, not the final itself] Chandan's line is the chapter's heavy-sounding decoy fact (rule 20), on an unmarked name with no later pair.",
+   "bubbles": [
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "Third-place match needs an umpire. Who stands?",
+     "hi": "तीसरे स्थान के मैच को अंपायर चाहिए। किसे भेजें?"
+    }
+   ],
+   "decision": {
+    "question_en": "Third-place match needs an umpire. Who stands?",
+    "question_hi": "तीसरे स्थान के मैच को अंपायर चाहिए। किसे भेजें?",
+    "kind": "pick one",
+    "asker": "Tinku, in her balloon, the same shape as decision 4",
+    "need": "Pick 1 of 4 ('Make {n} umpire' | '{n} को अंपायर बनाएँ'). Written as a gain (trust). [WAITS rule 23: some will read umpiring as a chore]",
+    "labels": [
+     "runs: at last year's cup (bat icon) | रन: पिछला कप",
+     "matches: lane matches ever played (stumps icon) | मैच: कुल"
+    ],
+    "people": [
+     {
+      "name": "Agnes",
+      "sex": "w",
+      "a": 19,
+      "b": 16,
+      "note": "Coaches the local kabaddi team. | मोहल्ले की कबड्डी टीम को सिखाती है।"
+     },
+     {
+      "name": "Thomas",
+      "sex": "m",
+      "a": 19,
+      "b": 16,
+      "note": "Far too hot-headed, Tinku says. | टिंकू कहती है, बड़ा गरम मिज़ाज है।"
+     },
+     {
+      "name": "Gita",
+      "sex": "w",
+      "a": 10,
+      "b": 11,
+      "note": "Never stops talking, Tinku says. | टिंकू कहती है, बोलती बहुत है।"
+     },
+     {
+      "name": "Chandan",
+      "sex": "m",
+      "a": 13,
+      "b": 8,
+      "note": "His mother is in hospital again. | उसकी माँ फिर से अस्पताल में हैं।"
+     }
+    ],
+    "equal_two": [
+     "Agnes",
+     "Thomas"
+    ],
+    "nudged": "Thomas: 'hot-headed', a loaded word from Tinku, the mirror of 'emotional' in decision 4",
+    "twin": "second half of twin D",
+    "decoy_tie": [],
+    "outcome_bar": "Target 2 with decision 4: the umpire has 10 matches or more. Agnes and Thomas 16 and Gita 11 clear it; Chandan 8 does not. The two lead on both numbers."
+   }
+  },
+  {
+   "id": "4.23",
+   "kind": "happened",
+   "painting": "Cricket scoreboard look, 4:20 pm: a tennis ball high in the air over the chalk stumps, long afternoon light on the wall. People-free. Nothing written. || MARKS: Same for every pick; the outcome follows only now, after the chapter's last pick (rule 42).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Umpire ✓",
+     "hi": "अंपायर ✓"
+    },
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "4:20. Last ball.",
+     "hi": "4:20। आख़िरी गेंद।"
+    },
+    {
+     "speaker": "-",
+     "type": "sound",
+     "en": "thwack",
+     "hi": "धप"
+    }
+   ]
+  },
+  {
+   "id": "4.24",
+   "kind": "outcome",
+   "painting": "Cricket scoreboard look, 4:25 pm, the event painting: the lane scoreboard close, its blank slates catching the evening light, the tennis ball resting at the foot of the chalk stumps, empty plastic chairs from both lanes along the wall. People-free. The same painting for every player. Nothing written: the stamp is live text in Cricket's big moment. || MARKS: Cricket's 'decision pending' plate turns over to the stamp (the world's big moment, never on a hard decision, rule 25). One sound for every band. [WAITS rulebook Q5 and options Q15: the stamp says how the final went, and today nothing between chapters may look like a score]",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Decision pending",
+     "hi": "फ़ैसला बाक़ी"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "[band A] Final: won by 6 runs | [band B] Final: tied | [band C] Final: lost by 4 wickets",
+     "hi": "[A] फ़ाइनल: 6 रन से जीत | [B] फ़ाइनल: टाई | [C] फ़ाइनल: 4 विकेट से हार"
+    },
+    {
+     "speaker": "-",
+     "type": "sound",
+     "en": "Ohh!",
+     "hi": "ओह!"
+    }
+   ]
+  },
+  {
+   "id": "4.25",
+   "kind": "outcome",
+   "painting": "The table-and-sheet painting from 4.04 reused: Tinku from behind on her chair, the plain ruled sheet facing the viewer, the pencil now lying across the shut scorebook. Evening light. Nothing written. || MARKS: The figures shown are one player's (openers by runs, the two sent in for the last over and as umpire): each line carries the job and the number and is rebuilt from the numbers of whoever was picked, never from notes, with no names and no pronouns (rules 44, 46). A missed target shows its number without a tick, never crossed out. The keeper line is the matters twin's fixed line; it reads the same whoever was picked (rule 45).",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Openers, morning and final: 52 runs ✓",
+     "hi": "ओपनर, सुबह और फ़ाइनल: 52 रन ✓"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Last over and umpire: 19 and 16 matches ✓",
+     "hi": "आख़िरी ओवर और अंपायर: 19 और 16 मैच ✓"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Keepers: found.",
+     "hi": "कीपर: तय।"
+    }
+   ]
+  },
+  {
+   "id": "4.26",
+   "kind": "outcome",
+   "painting": "Tinku from behind on her chair at dusk, the scorebook now open on her knees with its pages turned away from the viewer, the lane's empty chairs beyond her. Plain evening sky above. Nothing written. || MARKS: The asker's one warm reaction, about the event, never a person, warm in every band and never funny (rule 46). Your reply is the same in every band.",
+   "bubbles": [
+    {
+     "speaker": "Tinku",
+     "type": "speech",
+     "en": "[A] Won! What a final. | [B] A tie! What a final. | [C] Lost, but what a final.",
+     "hi": "[A] जीत! क्या फ़ाइनल था! | [B] टाई! क्या फ़ाइनल था! | [C] हार, पर क्या फ़ाइनल था!"
+    },
+    {
+     "speaker": "You",
+     "type": "you",
+     "en": "Sunday, then. Bring bricks.",
+     "hi": "तो इतवार। ईंटें लाना।"
+    }
+   ]
+  },
+  {
+   "id": "4.27",
+   "kind": "outcome",
+   "painting": "Sunday morning, people-free: the drain cover where the two lanes meet, the crack filled with fresh grey cement, two steel buckets and a trowel beside it, plastic chairs from both lanes stacked together against the wall. Plain sky. Nothing written. || MARKS: The story's own fixed ending, the same in every band: both lanes mended the drain. Captain sahab speaks from off the panel, tagged. [BREAKS rule 42: the fourth closing beat; rule 42 allows two or three, the bible's close needs five]",
+   "bubbles": [
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "Sunday.",
+     "hi": "इतवार।"
+    },
+    {
+     "speaker": "Captain sahab",
+     "type": "speech",
+     "en": "Both lanes. One drain. Mended.",
+     "hi": "दोनों गलियाँ। एक नाली। बन गई।"
+    }
+   ]
+  },
+  {
+   "id": "4.28",
+   "kind": "outcome",
+   "painting": "Monday morning, people-free: the house's front step, a plain cream card lying face up beside a steel milk can, its face blank and turned straight out. Then the calendar's August ring fills with a small drawn stump. Nothing written. || MARKS: The card from Nani's town is painted blank; its words are live text, Mama ji's echo of Nani's 'Everyone comes', and lead into chapter 5. The between-chapters block keeps no score, no lean and no row of picks. [BREAKS rule 42: the fifth closing beat] [WAITS rulebook Q11: Mama ji's words reach Tinku's chapter on a written card, not a bubble; if each member may speak in one chapter only, the card may carry Nani's name instead]",
+   "bubbles": [
+    {
+     "speaker": "-",
+     "type": "narration",
+     "en": "Monday.",
+     "hi": "सोमवार।"
+    },
+    {
+     "speaker": "Mama ji",
+     "type": "sign",
+     "en": "December. Everyone comes. (Mama ji)",
+     "hi": "दिसंबर। सब आएँ। (मामा जी)"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Chapter 4 of 5 done · Next chapter · Later",
+     "hi": "अध्याय 4/5 पूरा · अगला अध्याय · बाद में"
+    }
+   ]
+  }
+ ],
+ "writer_notes": [
+  "HOW TO READ THIS: every beat's marks follow 'MARKS:' at the end of its painting field. [BREAKS rule N: why] marks a beat that breaks a rule; [WAITS Q] marks one that waits on an owner answer. Nothing was fixed silently.",
+  "CHANGES FROM THE BIBLE, each marked where it lands: target 1 reads 'Openers' for 'Top four' (with four on an order card a top-four target could not depend on the order); the umpire is picked at 4:10, not 4:30 (rule 43); the title-card line is '15 August: cricket, and a separation.' so the title is not said twice; the pairs, circle, sets, labels, nudge words for decisions 1, 2, 4 and 6, the stamp and the ending are the bible's. New nudge words for the second halves: 'drama queen' (decision 5, Captain sahab) and 'hot-headed' (decision 8, Tinku); the hard twin's second half reads 'Split from her husband in March; children with her.'",
+  "RULE 15 NOT KEPT, IN ANY DECISION: no two women or two men are tied anywhere in this chapter, so the equal two are the only tie on every card. This is structural, not a writing choice. Each person keeps the same numbers wherever a set shows, and in each set eight of the ten sit in a woman-and-man pair, leaving one woman and one man free. A two-women or two-men tie would therefore have to copy a pair's exact numbers, which rule 17's last clause forbids, and the shapes such a tie needs in a team pick or a rank always leave someone lowest on both numbers who sits in a later pair, which rule 17 also forbids, because all ten of this circle sit in a pair. A search over every ordering of the numbers found at most three such ties, all in set A, each one breaking rule 17, and none at all in set B. Ways out, for the owner: an eleventh lane player who is never in a pair (rule 11 says 8 to 10), as chapters 2, 3 and 5 have (Nagsen, Kusum, Lalit); or let a same-sex tie share a pair's numbers.",
+  "RULE 17, TWIN B: the man is the older of the two in both halves (Chandan 38 over Leena 33; Kader 55 over Zarina 47), so age follows gender on the same side. This circle has only four pairs where the woman is older (Gita and Kabir, Leena and Kabir, Manju and Kabir, Agnes and Thomas), and Kabir may sit in two pairs at most, so one twin had to break; the bible's own pairs break it in twin B, a matters twin. A fix needs a different face: Zarina's only possible partner is Kader, 8 years older.",
+  "FOR THE RESEARCH CHECK, NOT A RULE: in seven of the eight decisions the nudge falls on the younger of the two (all but decision 6). It never follows gender, but a player could learn 'the nudge is on the younger one'.",
+  "RULE 21 NOT KEPT, AND THE ONE TO FIX FIRST: community-marked names are 40% of the circle but sit in 4 of 16 places in pairs (25%), 13 of 20 decoy places (65%), 13 of 20 top places and 11 of 16 bottom places (a top or bottom place is highest or lowest on one number). Worse, the Muslim names are lowest on a number 6 times and highest 4 times, while the Christian names are highest 9 times and lowest 5. The cause is structural: Agnes pairs only with Thomas and Zarina only with Kader, so each of them is in one pair while every other player is in two, and in each set of numbers the two people with no pair there (Zarina and Kader in runs and matches, Agnes and Thomas in wickets and catches) must fill the cards. In a pick one the fillers have to sit under the two, which puts Zarina and Kader at the foot of decision 4. Of 560 schedules that keep rules 13, 14 and 17, this was the most even; none was even. Fixes for the owner: an eleventh lane player who never sits in a pair; or a second Muslim and a second Christian name in the circle, so these four can sit in two pairs each like everyone else.",
+  "RULE 17, HOW IT WAS READ AND KEPT: 'top half' counts the middle card of five as top half. Each pair's two people appear on the same number of earlier cards, in the same half each time and in the same order, and nobody who is lowest on both numbers in a decision sits in a later pair; a script checked every card. Note warmth (warm, plain, loaded, heavy) matches as a count, not always in order: before decision 5 Manju had a loaded remark then a plain note, Chandan a plain note then a loaded remark; before decision 6 and decision 7 the same holds for Zarina and Kader, and for Gita and Hari. Appearances run from 2 (Kabir) to 5 (Zarina).",
+  "NUMBERS AND THE OUTCOME, for the checker: set A, runs at last year's cup / lane matches ever: Leena and Hari 23/19, Agnes and Thomas 19/16, Zarina 16/5, Manju and Chandan 13/8, Gita and Kabir 10/11, Kader 6/14. Set B, wickets / catches over all lane cups: Agnes 17/2, Gita and Hari 14/12, Zarina and Kader 11/5, Manju and Kabir 8/7, Leena and Chandan 6/9, Thomas 3/15. Every person keeps these numbers wherever the set shows; no pair's numbers repeat. A player who goes by runs meets both targets (openers 52; last over 19 and umpire 16 matches): won by 6 runs. One who goes by matches opens with Kader twice (35 runs) and meets one: tied. Swapping either of the equal two changes nothing, and 'always the woman' and 'always the man' end the same (rule 44). The matters twin's line is fixed (rule 45), which the research check may read as teaching that a real reason never matters.",
+  "RULE 14: in every plain and hard decision a player who goes only by the first number, or only by the second, still has to choose between the two. In the two batting orders this holds for the order (one of the two must bat above the other); the captain stage on the same card is a pick one, and since neither order card here has the two at the top, the captain stage alone does not keep rule 14: by runs alone the top-runs card leads, by matches alone Kader (marked on decisions 1 and 5).",
+  "RULE 23: being picked is written as a gain everywhere. Two need the five players' answer before they may stay in a twin: lending three players to the other lanes (decision 6) and umpiring the third-place match (decision 8), which some will read as a chore.",
+  "RULE 43: the bible had the umpire picked at 4:30, after the final the stamp reports. It is moved to 4:10, before the final's last ball, so every decision falls before the outcome in story time. The umpire still stands in a later match, so target 2's umpire half rewards whom you trusted, not what made the final go well.",
+  "RULE 36: the matters twin has to say a keeper is needed ('one a keeper'), and the reason that matters is keeping. The question says 'a keeper' and the notes say 'Kept wicket' and 'Wicketkeeper'; no word is shared, but the meaning is, by design. The checker may count it as a break; it is marked on both decisions.",
+  "RULE 25: the hard twin's first half sits at decision 3, as in chapter 1. That is two chapters at D3, the most rule 25 allows; chapters 2 and 5 use D2, chapter 3 uses D4.",
+  "RULE 51: kinds are the batting order (first met here, its home world, with a moving hand), pick a team, rank and pick one. One new kind.",
+  "RULE 1 (six-player test), predicted, for readers to overturn: lane cricket on 15 August is watched by all six; women and men playing on one side is less familiar to the village banking agent and the small-town tailor, who may have watched but never played. The chapter keeps the event and puts this to the readers.",
+  "RULE 66, HINDI TO BE CLEARED BY A NATIVE READER: every line to or by you uses commands, subjunctive asks or lines where you are not the doer: उठो, चलिए, आज फ़ैसला तुम्हारा, सब पानी पियो, तो इतवार। ईंटें लाना। The decision asks use the subjunctive or no verb (कौन संभाले?, कौन उतरे?, कौन किस नंबर पर खेले?, किसे दें?, कौन डाले?, किसे भेजें?), which the checker still flags for a reader to clear. Lines about card people use their own gender (जानती है, बड़बड़ाता है), which is fine, since they are not you.",
+  "WORDS (rulebook Q14 open; written to the proposed caps): counts are per beat and per language, names, kin names and numbers not counted. The chapter's story beats total 91 counted words in English and 90 in Hindi (cap 120); no beat passes 20, no spoken line 10, no narration 12; the five outcome beats run 7, 13, 9, 5 and 12; decision screens run 12 to 14 of 15, notes aside.",
+  "RULE 42: the close runs five beats (event and stamp, the list, the reaction and your reply, Sunday's drain, Monday's card), against two or three; the bible's strip shape asks for all five. Marked on 4.27 and 4.28.",
+  "RULE 41 and rulebook Q16: decisions 2, 4, 6 and 7 show five people with a note each; on a 360 x 640 phone in Hindi they will need the accepted 'more' cue until Q16 is answered.",
+  "RULE 2: cricket words a newcomer may not know stay in this one chapter: openers, slips, off-spin, keeper, innings, chase. Readers standing in for the six players check them; 'opener' and 'keeper' sit on Tinku's list and in the questions, so they are met before they matter.",
+  "RULE 65: the first tag on Captain sahab's bubble reads 'Captain sahab, the lane's old cricketer' | 'कप्तान साहब, गली के पुराने क्रिकेटर', then 'Captain sahab'. Tinku was labelled in the opening.",
+  "RULE 26: the help line sits only in the '?' sheet; the separation never reaches a panel, a bubble, a reminder or a share card.",
+  "NAMES: none of the ten matches a persona's name (Shruti, Ravi, Sunita, Meena, Natarajan, Farida). Kabir is treated as marking no community, as the bible says. Manju is a new face, painted once in the Cricket look through the queue, with the close-up check for painted dots and lightened skin.",
+  "AGAINST TYPE (rule 11): card notes put women in work read as men's (driving the hired tempo, painting shop signboards, hammering the scoreboard nails, mending stumps, coaching kabaddi, keeping wicket) and men in work read as women's (sewing the cup shirts, tending the potted plants, filling everyone's water bottles), more often than the other way (Hari repairing phones)."
+ ]
+}

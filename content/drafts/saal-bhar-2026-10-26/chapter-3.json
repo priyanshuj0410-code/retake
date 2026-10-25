@@ -1,0 +1,964 @@
+{
+ "n": 3,
+ "title": "The week nobody circled (वो हफ़्ता जिस पर गोला नहीं था)",
+ "look": "Station railway posters: flat poster colour, bold simple shapes, a railway poster's sky, painted over a present-day station road and the family's electrical shop facing the platform. Phones, steel glasses, plastic stools, fans and switches in plain cardboard boxes with no labels. No letters, numbers, logos or signatures anywhere; every board, box and paper is painted blank.",
+ "area": "Work",
+ "goals": [
+  "Target 1, Clean-up and counter: 2 days late or fewer (each pick in decisions 1 and 5, the plain team twin, set A). The equal two are late 1 and 2, so either clears it.",
+  "Target 2, Roof and sorting: 3 days free or more (the top 2 in decisions 3 and 7, the plain rank twin, set B). The equal two have 4 and 5 days free.",
+  "Fixed line for the matters twin (decisions 2 and 6), the same for every pick: Tempo: back. New stock: in.",
+  "Stamp on Station's split-flap tiles: Shutter up 9:00 (both targets met) / 9:30 (one) / 10:15 (none). Hard twin (decisions 4 and 8) feeds nothing."
+ ],
+ "beats": [
+  {
+   "id": "3.01",
+   "kind": "title",
+   "painting": "Title card (the chapter cover). The station road in July rain, seen from across the road: the family's electrical shop with its rolling shutter half raised and brown water over the step, the platform beyond with an empty bench and a blank cream name board. No people. Plain grey sky across the top third for the live title. MARKS: Counted as the chapter cover: 18 EN / 20 HI counted words. [WAITS rulebook Q6: what a Hinglish line looks like]",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Chapter 3 of 5",
+     "hi": "अध्याय 3/5"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "The week nobody circled",
+     "hi": "वो हफ़्ता जिस पर गोला नहीं था"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "The flood week, and a complaint of bullying at work.",
+     "hi": "बाढ़ का हफ़्ता, और काम पर बदसलूकी की शिकायत।"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "4 minutes",
+     "hi": "4 मिनट"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Start",
+     "hi": "शुरू करें"
+    }
+   ]
+  },
+  {
+   "id": "3.02",
+   "kind": "opening",
+   "painting": "The shop front from across the road, morning, rain stopped. Left third: Mummy seen from behind at the half-raised shutter, the shop key ring with its plain brass tag in her right hand, water over her sandals. Right third: Masterji, about 60, in a plain half-sleeve shirt with a tape measure round his neck, standing in the doorway of his tailoring shop next door and looking straight out at the viewer. Plain wet wall above both heads. Two people. MARKS: [WAITS rulebook Q11: Masterji is a one-chapter voice only while each household member speaks in one chapter] [WAITS options Q11: Mummy seen from behind with her key ring, never face-on inside the look]",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "July. The station road is under water.",
+     "hi": "जुलाई। स्टेशन रोड पर घुटनों तक पानी।"
+    },
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "Saturday, 9:00. Shutter up.",
+     "hi": "शनिवार, 9 बजे। शटर ऊपर।"
+    },
+    {
+     "speaker": "Masterji",
+     "type": "speech",
+     "en": "All this mud, by Saturday?",
+     "hi": "इतना कीचड़, शनिवार तक?"
+    }
+   ]
+  },
+  {
+   "id": "3.03",
+   "kind": "opening",
+   "painting": "Inside the shop, seen across the wet counter from the customer's side. On the counter, facing the viewer: a sheet of plain ruled paper with no marks, a steel pen and the key ring with its plain brass tag. Mummy is seen from behind at the far end of the counter, looking up at shelves of fans in plain boxes. Plain wall upper right. One person. Nobody's hand reaches out.",
+   "bubbles": [
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "Hands for the week. The list is yours.",
+     "hi": "हफ़्ते भर के लिए लोग चाहिए। लिस्ट तुम्हारे हाथ में।"
+    },
+    {
+     "speaker": "You",
+     "type": "you",
+     "en": "Okay. Show the slips.",
+     "hi": "ठीक है। पर्चियाँ दिखाइए।"
+    }
+   ]
+  },
+  {
+   "id": "3.04",
+   "kind": "opening",
+   "painting": "The same ruled paper flat on the counter, seen from above, plain with no marks, the steel pen beside it and the ring left by a tea glass. Prop painting, painted once from a reference picture and reused at the end. No people. The paper fills at least 60% of the panel so its live lines stay at body size.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Clean-up and counter: 2 days late or fewer",
+     "hi": "सफ़ाई और काउंटर: देर 2 दिन या कम"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Roof and sorting: 3 days free or more",
+     "hi": "छत और छँटाई: ख़ाली दिन 3 या ज़्यादा"
+    }
+   ]
+  },
+  {
+   "id": "3.05",
+   "kind": "opening",
+   "painting": "The circle page. The counter, people-free: a short stack of plain paper slips held down by a steel tumbler, fans in plain boxes behind, the wet floor shining. Mummy speaks from off the panel (name tag, tail to the left edge). The ten applicants are laid on top as their own card portraits, all one size (at least 56 px), names only, in a new order on every load.",
+   "bubbles": [
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "Ten replies to my notice.",
+     "hi": "मेरे नोटिस पर दस अर्ज़ियाँ।"
+    }
+   ]
+  },
+  {
+   "id": "3.06",
+   "kind": "panel",
+   "painting": "Lead-in, Monday. Inside the shop, morning light through the half-raised shutter, mud across the floor, a stack of empty steel buckets by the door. Mummy seen from behind in the left third, sleeves rolled, looking at the mud. Plain wall right. One person.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "Monday, 8:00. The shop.",
+     "hi": "सोमवार, सुबह 8 बजे। दुकान।"
+    },
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "Mud out by Wednesday. Paid daily.",
+     "hi": "बुधवार तक कीचड़ बाहर। रोज़ की मज़दूरी।"
+    }
+   ]
+  },
+  {
+   "id": "3.07",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the shop's flooded floor, mud to the ankle, empty steel buckets and a broom by the door, fans in plain boxes on the top shelf, morning light under the half-raised shutter. The question sits in Mummy's balloon at the fixed question place, with her face chip and tag. Story clock in the top bar. Cards in a new order on every load. MARKS: [BREAKS rule 15: no two women or two men tied here; only decisions 4 and 8 have a second tie, where the rule wants 4 of 8] Writer change: Asha is 33, not the bible's 36, so the woman is not the older one in both halves of twins A and B (rule 17). Kusum is the weakest card here (allowed: she is never in a pair). [WAITS rulebook Q16: five cards may need the \"more\" cue on a small phone]",
+   "bubbles": [
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "Who clears the shop this week? Pick 3.",
+     "hi": "इस हफ़्ते दुकान कौन साफ़ करे? 3 चुनो।"
+    }
+   ],
+   "decision": {
+    "question_en": "Who clears the shop this week? Pick 3.",
+    "question_hi": "इस हफ़्ते दुकान कौन साफ़ करे? 3 चुनो।",
+    "kind": "Pick a team, 3 of 5",
+    "asker": "Mummy",
+    "need": "Pick 3 of the 5 (paid daily work, a gain). Button: Pick 3 more | 3 और चुनें, then Send the three | तीनों को भेजें.",
+    "labels": [
+     "years: in shop work (साल)",
+     "late: days late last month (देर)"
+    ],
+    "people": [
+     {
+      "name": "Asha",
+      "sex": "w",
+      "a": 10,
+      "b": 1,
+      "note": "Bossy with helpers, Masterji says. | मास्टरजी कहते हैं, रौब जमाती है।"
+     },
+     {
+      "name": "Rohit",
+      "sex": "m",
+      "a": 10,
+      "b": 1,
+      "note": "Cooked years at a dhaba. | सालों तक ढाबे पर खाना पकाया।"
+     },
+     {
+      "name": "Kavita",
+      "sex": "w",
+      "a": 12,
+      "b": 0,
+      "note": "Plays in the lane's kabaddi team. | गली की कबड्डी टीम में खेलती है।"
+     },
+     {
+      "name": "Vinod",
+      "sex": "m",
+      "a": 11,
+      "b": 0,
+      "note": "Stitches school uniforms in June. | जून में स्कूल यूनिफ़ॉर्म सिलता है।"
+     },
+     {
+      "name": "Kusum",
+      "sex": "w",
+      "a": 4,
+      "b": 5,
+      "note": "Argues with everyone, Masterji says. | मास्टरजी कहते हैं, सबसे बहस करती है।"
+     }
+    ],
+    "equal_two": [
+     "Asha",
+     "Rohit"
+    ],
+    "nudged": "Asha",
+    "twin": "first half of twin A, plain",
+    "decoy_tie": [],
+    "outcome_bar": "Target 1: each of the 3 picked is late 2 days or fewer last month (the bar sits at the equal two: they are late 1)."
+   }
+  },
+  {
+   "id": "3.08",
+   "kind": "happened",
+   "painting": "The shop step, people-free: a row of steel buckets of brown water, a broom leaning on the half-raised shutter, water pouring into the roadside drain. Plain sky. After the pick, the stop folds into a settled plate (tick, job word, lock, no names, no faces). This beat is the same whoever was picked.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "Monday, 10:00.",
+     "hi": "सोमवार, सुबह 10 बजे।"
+    },
+    {
+     "speaker": "game",
+     "type": "sound",
+     "en": "chhapak",
+     "hi": "छपाक"
+    }
+   ]
+  },
+  {
+   "id": "3.09",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the hired tempo parked at the shop step, cab door shut, its windows full of sky, a plain yellow number plate, wet cartons stacked beside it. The question sits in Mummy's balloon at the fixed question place, with her face chip and tag. Story clock in the top bar. Cards in a new order on every load. MARKS: [BREAKS rule 15: no two women or two men tied here; only decisions 4 and 8 have a second tie, where the rule wants 4 of 8]",
+   "bubbles": [
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "Who gets the tempo to the godown?",
+     "hi": "टेम्पो गोदाम तक कौन पहुँचाए?"
+    }
+   ],
+   "decision": {
+    "question_en": "Who gets the tempo to the godown?",
+    "question_hi": "टेम्पो गोदाम तक कौन पहुँचाए?",
+    "kind": "Pick one",
+    "asker": "Mummy",
+    "need": "Pick 1 of the 4 (a paid trip, a gain). Button: Pick one | किसी एक को चुनें, then Send {name} | {name} को भेजें.",
+    "labels": [
+     "km: away from the shop (दूरी)",
+     "free: days free this week (ख़ाली दिन)"
+    ],
+    "people": [
+     {
+      "name": "Sapna",
+      "sex": "w",
+      "a": 2,
+      "b": 6,
+      "note": "Ran a cyber cafe. | साइबर कैफ़े चलाया।"
+     },
+     {
+      "name": "Pankaj",
+      "sex": "m",
+      "a": 2,
+      "b": 6,
+      "note": "Holds a driving licence. | ड्राइविंग लाइसेंस है।"
+     },
+     {
+      "name": "Kusum",
+      "sex": "w",
+      "a": 10,
+      "b": 3,
+      "note": "Plays carrom every single evening. | हर शाम कैरम खेलती है।"
+     },
+     {
+      "name": "Annamma",
+      "sex": "w",
+      "a": 3,
+      "b": 5,
+      "note": "Driving test next month. | अगले महीने ड्राइविंग टेस्ट।"
+     }
+    ],
+    "equal_two": [
+     "Sapna",
+     "Pankaj"
+    ],
+    "nudged": "Pankaj",
+    "twin": "first half of twin B, matters",
+    "decoy_tie": [],
+    "outcome_bar": "None: a fixed line, the same for every pick (\"Tempo: back.\")."
+   }
+  },
+  {
+   "id": "3.10",
+   "kind": "happened",
+   "painting": "The hired tempo pulling away down the station road, seen from behind, its load tied under a plain blue tarpaulin that hides the cab, a plain yellow number plate, spray from the wheels. No people visible. After the pick, the stop folds into a settled plate (tick, job word, lock, no names, no faces). This beat is the same whoever was picked.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sound",
+     "en": "ghrrr",
+     "hi": "घर्र"
+    }
+   ]
+  },
+  {
+   "id": "3.11",
+   "kind": "panel",
+   "painting": "Lead-in, Wednesday. The flat roof under a clearing sky, wet cartons and fan boxes stacked by the stair door, plastic sheets rolled up. Mummy seen from behind in the left third, shading her eyes towards the sun. Plain sky above. One person.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "Wednesday, 11:00. The roof.",
+     "hi": "बुधवार, सुबह 11 बजे। छत।"
+    },
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "Sun at last. Wet stock to the roof.",
+     "hi": "आख़िर धूप। गीला माल छत पर।"
+    }
+   ]
+  },
+  {
+   "id": "3.12",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the flat roof under a clear sky, blue plastic sheets weighed down with bricks, opened fan boxes laid in rows to dry. The question sits in Mummy's balloon at the fixed question place, with her face chip and tag. Story clock in the top bar. Cards in a new order on every load. MARKS: [BREAKS rule 17: Kavita arrives having been one of the two strongest cards in decision 1, Rohit having been the equal two there, in the middle of the numbers, so the two do not match on how they appeared earlier] [BREAKS rule 15: no two women or two men tied here; only decisions 4 and 8 have a second tie, where the rule wants 4 of 8]",
+   "bubbles": [
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "Rank them for the 2 places on the roof.",
+     "hi": "छत की 2 जगहों के लिए क्रम लगाओ।"
+    }
+   ],
+   "decision": {
+    "question_en": "Rank them for the 2 places on the roof.",
+    "question_hi": "छत की 2 जगहों के लिए क्रम लगाओ।",
+    "kind": "Rank, 2 places",
+    "asker": "Mummy",
+    "need": "Rank all 5; the top 2 get the paid roof days (a gain). Cut plate: 2 places | 2 जगह. Button: Send the list | लिस्ट भेजें.",
+    "labels": [
+     "km: away from the shop (दूरी)",
+     "free: days free this week (ख़ाली दिन)"
+    ],
+    "people": [
+     {
+      "name": "Kavita",
+      "sex": "w",
+      "a": 7,
+      "b": 4,
+      "note": "Chatty at work, Mummy says. | मम्मी कहती हैं, बहुत बातूनी है।"
+     },
+     {
+      "name": "Rohit",
+      "sex": "m",
+      "a": 7,
+      "b": 4,
+      "note": "Taught tuition to Class 5. | पाँचवीं कक्षा को ट्यूशन पढ़ाता था।"
+     },
+     {
+      "name": "Francis",
+      "sex": "m",
+      "a": 8,
+      "b": 1,
+      "note": "Ran a tiffin service from home. | घर से टिफ़िन सर्विस चलाई।"
+     },
+     {
+      "name": "Kusum",
+      "sex": "w",
+      "a": 10,
+      "b": 3,
+      "note": "Never sits still, Mummy says. | मम्मी कहती हैं, टिककर नहीं बैठती।"
+     },
+     {
+      "name": "Asha",
+      "sex": "w",
+      "a": 1,
+      "b": 6,
+      "note": "Painted houses last summer. | पिछली गर्मी घर रंगे।"
+     }
+    ],
+    "equal_two": [
+     "Kavita",
+     "Rohit"
+    ],
+    "nudged": "Kavita",
+    "twin": "first half of twin C, plain",
+    "decoy_tie": [],
+    "outcome_bar": "Target 2: each of the top 2 has 3 days free or more this week (the equal two have 4)."
+   }
+  },
+  {
+   "id": "3.13",
+   "kind": "happened",
+   "painting": "The shop front at dusk, people-free, the shutter half down, a tube light on inside. The same framing as the Saturday-morning panel before decision 8. After the pick, the stop folds into a settled plate (tick, job word, lock, no names, no faces). This beat is the same whoever was picked.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "Wednesday, 6 pm.",
+     "hi": "बुधवार, शाम 6 बजे।"
+    },
+    {
+     "speaker": "game",
+     "type": "sound",
+     "en": "khrrr",
+     "hi": "खर्र"
+    }
+   ]
+  },
+  {
+   "id": "3.14",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the shop front at dusk, the shutter half down, a plain padlock hanging open on its hasp, the platform lights coming on across the road. The question sits in the plain question box (rule 37), not in a bubble. Story clock in the top bar. Cards in a new order on every load. MARKS: [WAITS rule 23: the five players say whether holding the 6 am keys is a gain or a load; it stays in the twin until they agree] [WAITS rule 28: five Hindi-first readers read the bullying pair, here and in decision 8]",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who gets the keys to open up at 6 am?",
+    "question_hi": "सुबह 6 बजे दुकान खोलने की चाबी किसे मिले?",
+    "kind": "Pick one",
+    "asker": "Mummy",
+    "need": "Pick 1 of the 5. Whether holding the 6 am keys is a gain or a load is put to the five players (rule 23). Question in the plain question box, not a bubble.",
+    "labels": [
+     "years: in shop work (साल)",
+     "late: days late last month (देर)"
+    ],
+    "people": [
+     {
+      "name": "Sapna",
+      "sex": "w",
+      "a": 11,
+      "b": 0,
+      "note": "Worked nights at a bottling plant before. | पहले बोतल वाली फ़ैक्ट्री में रात की ड्यूटी की।"
+     },
+     {
+      "name": "Vinod",
+      "sex": "m",
+      "a": 11,
+      "b": 0,
+      "note": "Complained a past boss bullied the workers. | पुराने मालिक पर मज़दूरों से बदसलूकी की शिकायत की।"
+     },
+     {
+      "name": "Anthony",
+      "sex": "m",
+      "a": 10,
+      "b": 1,
+      "note": "Sings in a wedding band on most Sundays. | ज़्यादातर इतवार शादी के बैंड में गाता है।"
+     },
+     {
+      "name": "Kusum",
+      "sex": "w",
+      "a": 4,
+      "b": 5,
+      "note": "Lost her husband two winters ago. | दो सर्दियाँ पहले उनके पति गुज़र गए।"
+     },
+     {
+      "name": "Rohit",
+      "sex": "m",
+      "a": 10,
+      "b": 1,
+      "note": "Repairs people's umbrellas in the rains. | बरसात में लोगों के छाते ठीक करता है।"
+     }
+    ],
+    "equal_two": [
+     "Sapna",
+     "Vinod"
+    ],
+    "nudged": "Vinod",
+    "twin": "first half of twin D, hard",
+    "decoy_tie": [
+     "Anthony",
+     "Rohit"
+    ],
+    "outcome_bar": "None: feeds nothing."
+   }
+  },
+  {
+   "id": "3.15",
+   "kind": "happened",
+   "painting": "Inside the shop at night, people-free: on a nail by the door hangs a small ring with two plain keys; the floor is dry under the tube light. After the pick, the stop folds into a settled plate (tick, job word, lock, no names, no faces). This beat is the same whoever was picked.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sound",
+     "en": "chhan",
+     "hi": "छन"
+    }
+   ]
+  },
+  {
+   "id": "3.16",
+   "kind": "panel",
+   "painting": "Lead-in, Friday. The shop dry at last: the counter wiped, fans in plain boxes back on the shelves. Mummy seen from behind in the left third, setting a plastic stool behind the counter. Plain wall right. One person; the same framing as the Monday lead-in.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "Friday, 10:00. The shop.",
+     "hi": "शुक्रवार, सुबह 10 बजे। दुकान।"
+    },
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "Shelves ready. Counter from 9:00 tomorrow.",
+     "hi": "अलमारियाँ तैयार। कल 9 बजे से काउंटर।"
+    }
+   ]
+  },
+  {
+   "id": "3.17",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the dry counter, three plastic stools behind it, the steel cash tray shut, fans in plain boxes back on the shelves. The question sits in Mummy's balloon at the fixed question place, with her face chip and tag. Story clock in the top bar. Cards in a new order on every load. MARKS: [BREAKS rule 15: no two women or two men tied here; only decisions 4 and 8 have a second tie, where the rule wants 4 of 8]",
+   "bubbles": [
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "Who works the counter on Saturday? Pick 3.",
+     "hi": "शनिवार को काउंटर पर कौन रहे? 3 चुनो।"
+    }
+   ],
+   "decision": {
+    "question_en": "Who works the counter on Saturday? Pick 3.",
+    "question_hi": "शनिवार को काउंटर पर कौन रहे? 3 चुनो।",
+    "kind": "Pick a team, 3 of 5",
+    "asker": "Mummy",
+    "need": "Pick 3 of the 5 (paid work, a gain). Same buttons as decision 1.",
+    "labels": [
+     "years: in shop work (साल)",
+     "late: days late last month (देर)"
+    ],
+    "people": [
+     {
+      "name": "Annamma",
+      "sex": "w",
+      "a": 5,
+      "b": 2,
+      "note": "Laid floor tiles for builders. | बिल्डरों के लिए फ़र्श की टाइलें लगाईं।"
+     },
+     {
+      "name": "Francis",
+      "sex": "m",
+      "a": 5,
+      "b": 2,
+      "note": "Quick to anger, Masterji says. | मास्टरजी कहते हैं, जल्दी भड़क जाता है।"
+     },
+     {
+      "name": "Pankaj",
+      "sex": "m",
+      "a": 12,
+      "b": 0,
+      "note": "Always on his phone, Masterji says. | मास्टरजी कहते हैं, हरदम फ़ोन में रहता है।"
+     },
+     {
+      "name": "Kusum",
+      "sex": "w",
+      "a": 4,
+      "b": 5,
+      "note": "Feeds the lane's stray dogs. | गली के कुत्तों को खाना खिलाती है।"
+     },
+     {
+      "name": "Asha",
+      "sex": "w",
+      "a": 10,
+      "b": 1,
+      "note": "Loaded trucks at the cement depot. | सीमेंट डिपो पर ट्रकों में माल लादा।"
+     }
+    ],
+    "equal_two": [
+     "Annamma",
+     "Francis"
+    ],
+    "nudged": "Francis",
+    "twin": "second half of twin A, plain",
+    "decoy_tie": [],
+    "outcome_bar": "Target 1: each of the 3 picked is late 2 days or fewer last month (the equal two are late 2)."
+   }
+  },
+  {
+   "id": "3.18",
+   "kind": "happened",
+   "painting": "The counter, people-free: three plastic stools behind it, the steel cash tray shut, fans in plain boxes stacked. The same framing as the Monday-step panel. After the pick, the stop folds into a settled plate (tick, job word, lock, no names, no faces). This beat is the same whoever was picked.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "Friday, 12:00.",
+     "hi": "शुक्रवार, दोपहर 12 बजे।"
+    },
+    {
+     "speaker": "game",
+     "type": "sound",
+     "en": "thak",
+     "hi": "ठक"
+    }
+   ]
+  },
+  {
+   "id": "3.19",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the family scooter on its stand outside the shop, a plain helmet on the seat, the station road beyond. The question sits in Mummy's balloon at the fixed question place, with her face chip and tag. Story clock in the top bar. Cards in a new order on every load. MARKS: [BREAKS rule 17: Asha has been on three earlier cards (once as the equal two, once with a judging remark), Vinod on two (once carrying the hard fact), so they do not match in number, place or warmth] [BREAKS rule 15: no two women or two men tied here; only decisions 4 and 8 have a second tie, where the rule wants 4 of 8] [BREAKS rule 21: Francis, a Christian name, is the weakest card in decisions 6, 7 and 8, and no Christian name tops any decision this chapter]",
+   "bubbles": [
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "Who takes the scooter to the wholesale market?",
+     "hi": "स्कूटर लेकर थोक बाज़ार कौन जाए?"
+    }
+   ],
+   "decision": {
+    "question_en": "Who takes the scooter to the wholesale market?",
+    "question_hi": "स्कूटर लेकर थोक बाज़ार कौन जाए?",
+    "kind": "Pick one",
+    "asker": "Mummy",
+    "need": "Pick 1 of the 4 (a paid errand, a gain). Same buttons as decision 2.",
+    "labels": [
+     "km: away from the shop (दूरी)",
+     "free: days free this week (ख़ाली दिन)"
+    ],
+    "people": [
+     {
+      "name": "Asha",
+      "sex": "w",
+      "a": 1,
+      "b": 6,
+      "note": "Licensed to ride a two-wheeler. | दोपहिया चलाने का लाइसेंस है।"
+     },
+     {
+      "name": "Vinod",
+      "sex": "m",
+      "a": 1,
+      "b": 6,
+      "note": "Bakes birthday cakes to order. | ऑर्डर पर केक बनाता है।"
+     },
+     {
+      "name": "Francis",
+      "sex": "m",
+      "a": 8,
+      "b": 1,
+      "note": "Keeps racing pigeons on the terrace. | छत पर उड़ने वाले कबूतर पालता है।"
+     },
+     {
+      "name": "Anthony",
+      "sex": "m",
+      "a": 3,
+      "b": 5,
+      "note": "Cycles everywhere, every day. | हर दिन साइकिल चलाता है।"
+     }
+    ],
+    "equal_two": [
+     "Asha",
+     "Vinod"
+    ],
+    "nudged": "Asha",
+    "twin": "second half of twin B, matters",
+    "decoy_tie": [],
+    "outcome_bar": "None: a fixed line, the same for every pick (\"New stock: in.\")."
+   }
+  },
+  {
+   "id": "3.20",
+   "kind": "happened",
+   "painting": "The pavement outside the shop, people-free: the empty spot where the family scooter stood, a puff of exhaust at the end of the road, the platform beyond. After the pick, the stop folds into a settled plate (tick, job word, lock, no names, no faces). This beat is the same whoever was picked.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sound",
+     "en": "bhrrr",
+     "hi": "भर्र"
+    }
+   ]
+  },
+  {
+   "id": "3.21",
+   "kind": "panel",
+   "painting": "Lead-in, Friday night. The shop under tube lights, new cartons in plain boxes stacked high by the counter. Mummy seen from behind in the left third, cutting the tape on a carton. Plain wall right. One person; the same framing as the roof lead-in.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "Friday, 8 pm. The shop.",
+     "hi": "शुक्रवार, रात 8 बजे। दुकान।"
+    },
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "New stock is here. Sort it before morning.",
+     "hi": "नया माल यहाँ। सुबह से पहले छँटाई।"
+    }
+   ]
+  },
+  {
+   "id": "3.22",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the shop floor at night under tube lights, cartons of new stock opened, plain boxes in half-sorted rows. The question sits in Mummy's balloon at the fixed question place, with her face chip and tag. Story clock in the top bar. Cards in a new order on every load. MARKS: [BREAKS rule 15: no two women or two men tied here; only decisions 4 and 8 have a second tie, where the rule wants 4 of 8] [BREAKS rule 21: Francis, a Christian name, is the weakest card in decisions 6, 7 and 8, and no Christian name tops any decision this chapter]",
+   "bubbles": [
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "Rank them for tonight's 2 sorting places.",
+     "hi": "आज रात छँटाई की 2 जगहों के लिए क्रम लगाओ।"
+    }
+   ],
+   "decision": {
+    "question_en": "Rank them for tonight's 2 sorting places.",
+    "question_hi": "आज रात छँटाई की 2 जगहों के लिए क्रम लगाओ।",
+    "kind": "Rank, 2 places",
+    "asker": "Mummy",
+    "need": "Rank all 5; the top 2 get the paid sorting shifts (a gain). Cut plate: 2 places | 2 जगह. Same button as decision 3.",
+    "labels": [
+     "km: away from the shop (दूरी)",
+     "free: days free this week (ख़ाली दिन)"
+    ],
+    "people": [
+     {
+      "name": "Annamma",
+      "sex": "w",
+      "a": 3,
+      "b": 5,
+      "note": "Ran a stall at the haat. | हर हफ़्ते के हाट में दुकान लगाती थी।"
+     },
+     {
+      "name": "Anthony",
+      "sex": "m",
+      "a": 3,
+      "b": 5,
+      "note": "Careless with small things, Mummy says. | मम्मी कहती हैं, छोटी चीज़ों में लापरवाह है।"
+     },
+     {
+      "name": "Sapna",
+      "sex": "w",
+      "a": 2,
+      "b": 6,
+      "note": "Climbs hills whenever she can. | जब मौक़ा मिले, पहाड़ चढ़ती है।"
+     },
+     {
+      "name": "Francis",
+      "sex": "m",
+      "a": 8,
+      "b": 1,
+      "note": "Plays football every Sunday. | हर इतवार को फ़ुटबॉल खेलता है।"
+     },
+     {
+      "name": "Rohit",
+      "sex": "m",
+      "a": 7,
+      "b": 4,
+      "note": "Daydreams a lot, Mummy says. | मम्मी कहती हैं, ख़्वाबों में रहता है।"
+     }
+    ],
+    "equal_two": [
+     "Annamma",
+     "Anthony"
+    ],
+    "nudged": "Anthony",
+    "twin": "second half of twin C, plain",
+    "decoy_tie": [],
+    "outcome_bar": "Target 2: each of the top 2 has 3 days free or more this week (the equal two have 5)."
+   }
+  },
+  {
+   "id": "3.23",
+   "kind": "happened",
+   "painting": "The shop front at first light, people-free, the shutter half raised, sorted plain boxes in rows on the shelves inside; across the road a train stands at the platform. After the pick, the stop folds into a settled plate (tick, job word, lock, no names, no faces). This beat is the same whoever was picked.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "narration",
+     "en": "Saturday, 8:00.",
+     "hi": "शनिवार, सुबह 8 बजे।"
+    },
+    {
+     "speaker": "game",
+     "type": "sound",
+     "en": "pon",
+     "hi": "पों"
+    }
+   ]
+  },
+  {
+   "id": "3.24",
+   "kind": "decision",
+   "painting": "Behind the cards, people-free: the counter at first light, the steel cash drawer half open and empty, the key ring with its plain brass tag beside it. The question sits in the plain question box (rule 37), not in a bubble. Story clock in the top bar. Cards in a new order on every load. MARKS: [BREAKS rule 21: Francis, a Christian name, is the weakest card in decisions 6, 7 and 8, and no Christian name tops any decision this chapter] [WAITS rule 23 and rule 28, as decision 4]",
+   "bubbles": [],
+   "decision": {
+    "question_en": "Who keeps the cash drawer today?",
+    "question_hi": "आज कैश की दराज़ किसके पास रहे?",
+    "kind": "Pick one",
+    "asker": "Mummy",
+    "need": "Pick 1 of the 5 (put to the five players with decision 4). Question in the plain question box, not a bubble.",
+    "labels": [
+     "years: in shop work (साल)",
+     "late: days late last month (देर)"
+    ],
+    "people": [
+     {
+      "name": "Kavita",
+      "sex": "w",
+      "a": 12,
+      "b": 0,
+      "note": "Reported her last boss for bullying the staff. | स्टाफ़ से बदसलूकी पर पिछले बॉस की रिपोर्ट की।"
+     },
+     {
+      "name": "Pankaj",
+      "sex": "m",
+      "a": 12,
+      "b": 0,
+      "note": "Restores old wooden chairs in his spare time. | छुट्टी के दिन पुरानी लकड़ी की कुर्सियाँ सुधारता है।"
+     },
+     {
+      "name": "Rohit",
+      "sex": "m",
+      "a": 10,
+      "b": 1,
+      "note": "Lost his job when the mill shut. | मिल बंद हुई तो नौकरी चली गई।"
+     },
+     {
+      "name": "Anthony",
+      "sex": "m",
+      "a": 10,
+      "b": 1,
+      "note": "Raises bees in boxes behind his house. | घर के पीछे बक्सों में मधुमक्खियाँ पालता है।"
+     },
+     {
+      "name": "Francis",
+      "sex": "m",
+      "a": 5,
+      "b": 2,
+      "note": "Walks to the lake and back every morning. | हर सुबह झील तक पैदल जाकर लौटता है।"
+     }
+    ],
+    "equal_two": [
+     "Kavita",
+     "Pankaj"
+    ],
+    "nudged": "Kavita",
+    "twin": "second half of twin D, hard",
+    "decoy_tie": [
+     "Rohit",
+     "Anthony"
+    ],
+    "outcome_bar": "None: feeds nothing."
+   }
+  },
+  {
+   "id": "3.25",
+   "kind": "happened",
+   "painting": "Under the counter, people-free: the steel cash drawer shut, the key ring with its plain brass tag hanging from its lock. After the pick, the stop folds into a settled plate (tick, job word, lock, no names, no faces). This beat is the same whoever was picked.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sound",
+     "en": "khat",
+     "hi": "खट"
+    }
+   ]
+  },
+  {
+   "id": "3.26",
+   "kind": "outcome",
+   "painting": "The event, painted once for every band. Saturday morning on the station road, seen from across the road: the shutter fully up, the shop lit, fans in plain boxes on the shelves, a few passengers from the platform crossing at a distance with their backs turned. Mummy seen from behind at the counter, left third. On the platform, Station's split-flap board painted blank, where the stamp lands as live tiles (the world's big moment), reading 9:00, 9:30 or 10:15 by band. Nobody from the cards. Only Mummy's line changes with the band; the picture, the sound of the tiles and your reply never do. MARKS: [WAITS rulebook Q5 and options Q15: the stamp says how the event went, between chapters] [BREAKS rule 42: the close runs four beats (event with the reaction, the stamped list, the fixed ending, progress), not two or three, because the stamped list (rule 43) and the bible's fixed ending each need a picture] Counted per band: at most 12 EN / 15 HI.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Shutter up: 9:00 (band A) | 9:30 (band B) | 10:15 (band C)",
+     "hi": "शटर ऊपर: 9:00 | 9:30 | 10:15"
+    },
+    {
+     "speaker": "Mummy",
+     "type": "speech",
+     "en": "A: 9:00 sharp. Like every Saturday. | B: 9:30. The platform crowd waited for us. | C: 10:15. The shop is ours again.",
+     "hi": "A: ठीक 9 बजे। हर शनिवार की तरह। | B: 9:30। प्लेटफ़ॉर्म की भीड़ हमारे इंतज़ार में। | C: 10:15। दुकान फिर अपनी।"
+    },
+    {
+     "speaker": "You",
+     "type": "you",
+     "en": "Next monsoon, sandbags first.",
+     "hi": "अगली बारिश में, पहले रेत की बोरियाँ।"
+    }
+   ]
+  },
+  {
+   "id": "3.27",
+   "kind": "outcome",
+   "painting": "The list painting from 3.04 again, the steel pen now lying across it. Live lines, each stamped with its own count; a missed target is never ticked. The counts follow only the numbers of the people picked.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Clean-up and counter: 2 days late or fewer. 6/6",
+     "hi": "सफ़ाई और काउंटर: देर 2 दिन या कम। 6/6"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Roof and sorting: 3 days free or more. 4/4",
+     "hi": "छत और छँटाई: ख़ाली दिन 3 या ज़्यादा। 4/4"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Tempo: back. New stock: in.",
+     "hi": "टेम्पो: वापस। नया माल: अंदर।"
+    }
+   ]
+  },
+  {
+   "id": "3.28",
+   "kind": "outcome",
+   "painting": "The fixed ending, the same for everyone. Behind the station road, the drain between two lanes cracked right across, water standing in the crack, the doorways of the two lanes facing each other. Masterji face-on at the drain's edge in the right third, looking out at the viewer. Plain sky above.",
+   "bubbles": [
+    {
+     "speaker": "Masterji",
+     "type": "speech",
+     "en": "The flood cracked the drain between two lanes.",
+     "hi": "बाढ़ से दो गलियों के बीच की नाली में दरार।"
+    },
+    {
+     "speaker": "Masterji",
+     "type": "speech",
+     "en": "Whose drain? Let the lane cup decide.",
+     "hi": "नाली किसकी? गली का कप तय करे।"
+    }
+   ]
+  },
+  {
+   "id": "3.29",
+   "kind": "outcome",
+   "painting": "Present day, between chapters. The kitchen calendar: the July week now circled in pencil with a small shutter drawn inside it, beside the red circle on 15 August. The three red circles and the two pencil ones differ in line and shape as well as colour. No score, no lean, no row of picks.",
+   "bubbles": [
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Chapter 3 of 5 done",
+     "hi": "अध्याय 3/5 पूरा"
+    },
+    {
+     "speaker": "game",
+     "type": "sign",
+     "en": "Next chapter",
+     "hi": "अगला अध्याय"
+    }
+   ]
+  }
+ ],
+ "writer_notes": [
+  "RULES 15 AND 17 PULL AGAINST EACH OTHER HERE, so one has to give, and you choose which. With ten people, two fixed number sets and the bible's eight pairs, a search script scored tens of millions of line-ups and number sets. The best designs it found with four decisions holding a second same-sex tie (rule 15) all had at least two pairs who arrive with different earlier showings (rule 17), and each either gave several people the same years (everyone on 4) or left a numbers-only player never facing the two in decision 5 (rule 14). This chapter keeps the numbers clean and every decision fair to a numbers-only player (rule 14), and marks the cost: two same-sex ties (decisions 4 and 8) instead of four, and two pairs who do not match on earlier showings (decisions 3 and 6). Ways out, for you: twelve people a chapter, a third number set, or rule 17 counting only how many cards each of the two was on.",
+  "Breaks marked on beats: rule 15 (six decisions with no second tie), rule 17 (decisions 3 and 6), rule 21 (Francis is the weakest card in decisions 6, 7 and 8, and no Christian name ever tops a decision), rule 42 (four closing beats). Waits marked: rulebook Q5, Q6, Q11, Q14, Q16 and options Q11, Q15; rule 23 (are the 6 am keys and the cash drawer a gain?) and rule 28 (the bullying pair for the five Hindi-first readers).",
+  "Kusum is the weakest card in decisions 1, 2, 4 and 5, and she and Francis are the only cards that miss a bar (Kusum in 1 and 5, Francis in 3 and 7). The misses are 2 women and 2 men, as rule 45 asks, but the two who always miss are the oldest woman and an older Christian man, which a reader may take as \"the old ones lose\". Only a bigger circle fixes it.",
+  "Changes from the bible, none silent: Asha is 33 not 36 (a new face, so nothing to repaint), so \"who is older\" changes side between the halves of twins A and B (rule 17). Decision 2 asks \"Who gets the tempo to the godown?\" rather than \"drives\", because \"driving\" is in two of its card notes (rule 36). Decision 6's licence note is new words (\"Licensed to ride a two-wheeler\"), not a one-word swap of decision 2's \"Holds a driving licence\" (rules 6 and 16). The rank questions say \"places\", because \"work\" and \"job\" sat in card notes.",
+  "The pairs, sets, kinds and nudge sides are the bible's. Card line-ups and every number are new, checked by scratchpad/blend/build_ch3.py and ch3_search.py: one woman-and-man tie per decision; numbers-only players always face the equal two (pick one: they lead on both numbers; team: two cards above them on each number; rank: one above); nobody who was weakest earlier sits in a later pair; each paired bar sits at or below the equal two.",
+  "Outcome check over all 40,000 answer sets for the four decisions that feed targets: swapping the equal two never changes the band, \"always the woman\" and \"always the man\" both end at 9:00, and all three bands can happen. The matters and hard twins change nothing. No line names a person; the counts on the list follow only the numbers.",
+  "Words, counted with speech (rulebook Q14 still open): the story beats come to 97 English and 110 Hindi counted words (cap 120 each); no beat over 20 or more than 3 pieces; every spoken line 10 words or fewer and every narration 12 or fewer; questions 8 words or fewer. The title card counts 18/20 as a cover. Closing beats stay under 20 per band.",
+  "Notes: every card has one, in the applicants' slips; within 2 words of each other in both languages; the equal two the same length with different opening words and frames; the longest note sits on the two in 2 of 8 decisions (7 alone, 8 shared). Each plain decision has a second judging remark from the same voice; Mummy's remarks fall on 2 women and 2 men, Masterji's on 2 women and 2 men (rule 22). Heavy-sounding decoy facts on unmarked names in both hard decisions (Kusum in 4, Rohit in 8). Against type: dhaba cook, uniform stitcher, tuition teacher, cake baker and tiffin cook among the men; kabaddi, truck loading, tiling, house painting and a bottling plant among the women.",
+  "Hindi: every line by or to you uses forms that mark no gender (polite commands to Mummy, the subjunctive in every \"who should\" question, no verbs in your two lines). The scan in build_ch3.py still catches 10 lines (करे, रहे, मिले, जाए, and nouns such as बजे or मज़दूरी before a full stop); none fixes a gender, and each waits for a native reader to clear, as rule 66 asks. Buttons use the game's आप (चुनें, भेजें); Mummy's questions use तुम commands (चुनो, क्रम लगाओ).",
+  "Twins match in shape: the same asker (Mummy), one question bubble each, words within 2, and lead-ins with the same figures (Mummy from behind before 1 and 5, and before 3 and 7; a people-free shop picture with a clock and one sound before 2 and 6, and before 4 and 8). The hard questions sit in the plain question box. The hard twin's first half is at decision 4 (chapters 1 and 4 use 3, chapters 2 and 5 use 2), so rule 25 holds.",
+  "As the task asked, every decision is followed by one short \"it happened\" beat, the same for every pick (mostly one sound word); the bible had them only at a change of place. There is no reply bubble from you after a pick, so options Q14 does not arise here; the settled plates show job words only.",
+  "Six-player test (rule 1): the family shop is this take's weakest chapter for the metro puzzle player and the retired officer; readers decide. The flood itself is written as \"the station road is under water\", with no real place, law or figure.",
+  "For painting later (not now): five new faces in the Station look (Asha, Sapna, Kavita, Vinod, Pankaj) with the close-up check for painted dots and lightened skin; Masterji's chapter portrait; glossary rows and one reference picture each for the key ring with its plain brass tag, the half-raised rolling shutter, the hired tempo under a plain tarpaulin, the blank split-flap board, fans in plain boxes, the ruled paper list, the steel cash drawer, the scooter with a plain helmet and the open padlock."
+ ]
+}
