@@ -1,0 +1,155 @@
+<title>Saal Bhar Cast</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Sarpanch:wght@700;900&display=swap">
+<style>
+/* A casting book: one spread per person, paper and ink, a model-sheet feel, chat bubbles for how they type. */
+:root {
+  --paper: #F6F1E4; --sheet: #FFFDF7; --ink: #17110F; --soft: #5E574D; --rule: #DCD3C0;
+  --pick: #FFD23F; --pick-ink: #17110F; --chat: #E3F1DF; --chat-me: #FFF3C4;
+  --display: 'Sarpanch', 'Hind', sans-serif; --body: 'Hind', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #121315; --sheet: #1B1C1F; --ink: #F1ECE0; --soft: #B3AC9E; --rule: #34363B; --chat: #1E3322; --chat-me: #3A3317; color-scheme: dark; } }
+:root[data-theme="dark"] { --paper: #121315; --sheet: #1B1C1F; --ink: #F1ECE0; --soft: #B3AC9E; --rule: #34363B; --chat: #1E3322; --chat-me: #3A3317; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 400 16.5px/1.6 var(--body); }
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 40px 96px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2 { font-family: var(--display); font-weight: 900; line-height: 1.08; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); }
+h3 { font: 700 .8rem/1.2 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--soft); margin: 22px 0 8px; }
+p, li { max-width: 70ch; }
+.eyebrow { font: 600 .78rem/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin-bottom: 12px; }
+.quote { border-left: 4px solid var(--ink); padding: 4px 0 4px 16px; margin: 20px 0; font-size: 1.1rem; }
+.steps { padding-left: 22px; }
+.steps li { margin-bottom: 8px; }
+.lineup { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 20px; }
+.lineup a { display: flex; flex-direction: column; gap: 4px; background: var(--sheet); border: 2px solid var(--ink); border-radius: 6px; padding: 14px; color: inherit; text-decoration: none; min-width: 0; }
+.lineup a:hover { background: color-mix(in srgb, var(--pick) 18%, var(--sheet)); }
+.lineup a:focus-visible { outline: 3px solid var(--pick); outline-offset: 2px; }
+.lineup b { font: 900 1.25rem/1.1 var(--display); }
+.lineup span { font-size: .9rem; color: var(--soft); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.person { margin-top: 64px; padding-top: 24px; border-top: 3px solid var(--ink); scroll-margin-top: 12px; }
+.person .role { color: var(--soft); margin-top: 6px; font-size: .98rem; }
+.essence { font-size: 1.15rem; margin-top: 14px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 32px; }
+.grid > div { min-width: 0; }
+.catch { list-style: none; padding: 0; margin: 0; }
+.catch li { background: var(--pick); color: var(--pick-ink); border-radius: 14px; padding: 6px 12px; margin-bottom: 6px; font-weight: 600; }
+.lines { padding-left: 18px; margin: 0; font-size: .95rem; }
+.lines li { margin-bottom: 6px; }
+.phone { background: var(--sheet); border: 2px solid var(--ink); border-radius: 18px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.msg { background: var(--chat); border-radius: 12px 12px 12px 3px; padding: 6px 10px; font-size: .92rem; max-width: 92%; overflow-wrap: anywhere; }
+.facts { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 14px; font-size: .95rem; }
+.facts dt { font-weight: 700; }
+.facts dd { margin: 0; }
+details { margin-top: 18px; border: 2px solid var(--ink); border-radius: 6px; background: var(--sheet); }
+summary { cursor: pointer; padding: 12px 16px; font-weight: 700; }
+summary:focus-visible { outline: 3px solid var(--pick); outline-offset: 2px; }
+.full { padding: 0 16px 16px; font-size: .94rem; overflow-wrap: anywhere; }
+.full h4 { font: 700 1rem/1.3 var(--body); margin: 18px 0 6px; }
+.full ul { padding-left: 18px; }
+.full li { margin-bottom: 6px; }
+.open { background: var(--sheet); border: 2px solid var(--ink); border-radius: 6px; padding: 18px 20px; }
+.open ol { padding-left: 22px; }
+.open li { margin-bottom: 10px; }
+.foot { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--soft); font-size: .9rem; }
+@media (max-width: 720px) { .grid { grid-template-columns: minmax(0, 1fr); } .facts { grid-template-columns: minmax(0, 1fr); } .facts dt { margin-top: 6px; } }
+</style>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">Retake · Saal Bhar, the story mode · cast · 26 Oct 2026</p>
+  <h1>The Saal Bhar cast</h1>
+  <p class="quote">"Let's see how comicbooks solve it... it's by giving characters a unique visual identity that stays consistent across boards... define each character in depth, how they would talk, how they would type, the words they'll use, the clothes they'll wear, their postures everything." <br><small>You, 26 Oct</small></p>
+  <p>Ten people and you. Each was written in full, then read by a comic editor (can you tell them apart in silhouette, and by their lines with the names covered?), a real-India reader (would all six of our players know these people?), and a rules and painter check, then revised.</p>
+  <h3>How they stay the same in every panel</h3>
+  <ol class="steps">
+    <li><strong>Anchors before faces.</strong> Each person has an identity stack that survives any style: silhouette and height, hair as a shape, one face accessory, one garment with its own pattern, one prop, one posture. No two people share an anchor, the way Chacha Chaudhary's stick and Suppandi's flat head read at a glance.</li>
+    <li><strong>One master model sheet each</strong>, painted in today's style: front, three-quarter, profile, back, full figure, usual posture, and four to six expressions. Three tries each, picked by eye.</li>
+    <li><strong>One reference picture per look</strong> each person appears in, made from the master by the painter's edit model, which already paints from references for the trunk.</li>
+    <li><strong>Paint by scene from those references</strong>, at most two referenced people a panel, every panel checked against each person's anchors.</li>
+    <li><strong>Only if someone keeps drifting:</strong> more reference views, and only then a model trained on that one person.</li>
+  </ol>
+</header>
+
+<section>
+  <h2 style="margin-top:48px">The line-up</h2>
+  <div class="lineup" id="lineup"></div>
+</section>
+
+<main id="cast"></main>
+
+<section class="person" id="open">
+  <h2>What the reviewers left for you</h2>
+  <div class="open">
+    <ol>
+      <li><strong>Married women with nothing on.</strong> The rules keep every religious or married mark off the cast, so Mummy, Mausi and Mami wear no bangles, chain or forehead mark, just like widowed Nani. To older eyes in the Hindi belt, a bare married woman of 52 reads as widowed. Allow plain glass or metal bangles and a plain chain, which many communities wear?</li>
+      <li><strong>The household is all north Indian.</strong> Players from the south and east recognise the types but nothing of their own. Give one in-law a south or east Indian family, with their own words for things?</li>
+      <li><strong>Greeting Nani.</strong> Touching her feet is out, and nothing has replaced it, so arrivals at her gate feel scrubbed. A hand on her shoulder, a bow of the head, a hug? Which?</li>
+      <li><strong>Too many people speak in numbers.</strong> Papa in minutes, Mummy in prices, Tinku in scores, Mami in lists. The revisions softened some; a cast-wide voice pass comes next unless you like it.</li>
+      <li><strong>Spectacles.</strong> Only Nani (round) and Masterji (half-moon) wear them. May others, if the frames differ?</li>
+      <li><strong>Speech bubbles.</strong> Name tags only, or a bubble style of their own for each person (Mausi's rounder and louder, Masterji's thinner)?</li>
+      <li><strong>Next:</strong> paint the line-up (all ten as black shapes and simple figures, in each of the five looks) and then the master model sheets, through the queue on your Mac, for you to approve before any story panel is painted.</li>
+    </ol>
+  </div>
+</section>
+
+<p class="foot">The full definitions are in the project's knowledge folder, one file per person (knowledge/story/characters/), with the method, the cast map and the realism research beside them.</p>
+</div>
+
+<script>
+const C = __DATA__;
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const list = (a) => '<ul>' + (a || []).map((x) => `<li>${esc(x)}</li>`).join('') + '</ul>';
+const sec = (h, body) => body ? `<h4>${h}</h4>${body}` : '';
+
+document.getElementById('lineup').innerHTML = C.map((c) => `<a href="#${c.id}"><b>${esc(c.short)}</b><span>${esc(c.essence)}</span></a>`).join('');
+
+document.getElementById('cast').innerHTML = C.map((c) => {
+  const v = c.voice || {}, t = c.typing || {}, l = c.look || {}, p = c.posture || {};
+  const hasLook = l.build && !/^none\b/i.test(l.silhouette || '');
+  const lookFacts = hasLook ? `<dl class="facts">
+      <dt>Silhouette</dt><dd>${esc(l.silhouette)}</dd>
+      <dt>Hair</dt><dd>${esc(l.hair)}</dd>
+      <dt>Wears</dt><dd>${esc((l.outfits || [])[0])}</dd>
+      <dt>Colours</dt><dd>${esc(l.colour_key)}</dd>
+      <dt>Prop</dt><dd>${esc(l.prop)}</dd>
+    </dl>` : `<p>${esc(l.silhouette || 'Never drawn.')}</p>`;
+  const full = [
+    sec('Backstory', `<p>${esc(c.backstory)}</p>`),
+    sec('Relationships', list(c.relationships)),
+    sec('The year', `<p>${esc(c.year_arc)}</p>`),
+    sec('Voice', `<p>${esc(v.register)}</p><p>${esc(v.mix)}</p>`),
+    sec('Speech habits', list(v.tics)), sec('Words they use', list(v.uses)), sec('Never says', list(v.never)), sec('How they address people', list(v.address)),
+    sec('More sample lines', list((v.samples || []).slice(4))),
+    sec('Typing habits', list(t.habits)),
+    hasLook ? sec('Build and face', `<p>${esc(l.build)}</p><p>${esc(l.face)}</p><p><strong>Skin:</strong> ${esc(l.skin)}</p>`) : '',
+    hasLook ? sec('Glasses and jewellery', `<p>${esc(l.glasses_jewellery)}</p>`) : '',
+    hasLook ? sec('All outfits', list(l.outfits)) : '',
+    hasLook ? sec('Shoes', `<p>${esc(l.shoes)}</p>`) : '',
+    hasLook ? sec('Stance, sitting, walk', `<p>${esc(p.stance)}</p><p>${esc(p.sitting)}</p><p>${esc(p.walk)}</p>`) : '',
+    hasLook ? sec('Expressions', list(p.expressions)) : '',
+    hasLook ? sec('In every look', list(c.across_looks)) : '',
+    hasLook ? sec('Painter prompt', `<p>${esc(c.painter_prompt)}</p>`) : '',
+    hasLook ? sec('Painter must avoid', list(c.painter_avoid)) : '',
+    hasLook ? sec('Model sheet', list(c.model_sheet)) : '',
+    sec('Best scenes', list(c.best_scenes)), sec('Never does', list(c.never_does)),
+  ].join('');
+  return `<section class="person" id="${c.id}">
+    <h2>${esc(c.name)}</h2><p class="role">${esc(c.role)}</p>
+    <p class="essence">${esc(c.essence)}</p>
+    <p>${esc(c.want_fear_contradiction)}</p>
+    <div class="grid">
+      <div><h3>Catchphrases</h3><ul class="catch">${(v.catchphrases || []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
+        <h3>How they sound</h3><ul class="lines">${(v.samples || []).slice(0, 4).map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>
+      <div><h3>How they type</h3><div class="phone">${(t.samples || []).slice(0, 3).map((x) => `<div class="msg">${esc(x)}</div>`).join('')}</div>
+        ${hasLook ? `<h3>Gestures</h3><ul class="lines">${(p.gestures || []).slice(0, 3).map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}</div>
+    </div>
+    <h3>${hasLook ? 'Look' : 'Never drawn'}</h3>${lookFacts}
+    <details><summary>Full definition</summary><div class="full">${full}</div></details>
+  </section>`;
+}).join('');
+</script>
