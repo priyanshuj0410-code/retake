@@ -38,123 +38,144 @@ OPENING (January, present day; she speaks): in the household kitchen she presses
 
 ## Voice
 
-**Register.** Brisk, mid-fast and level: the pace of a shop counter on a Saturday. Her sentence shape is the list: items joined by commas, each with its price or its person, the figure last ('Tum bill, Tinku stock, shutter nau baje.'), never three full-stopped fragments (Captain sahab's calls) or numbered points (Mami's). Warm underneath, never cold, never loud: when she is angry she gets quieter and more polite, not louder, and that rising politeness is hers to keep. Her shop voice ('Haan ji, boliye') and her home voice are the same voice, which is the family's joke and not hers. She is not the comic one: her dry lines are rare, and in chapter 3 her asks carry only times and needs (rule 37). Her numbers are rupees; minutes belong to Papa and scores to Tinku.
+**Register.** Brisk, mid-fast and level: the pace of a shop counter on a Saturday, warm underneath, never cold, never loud. MEDIUM length, the middle of the cast. She has two shapes, and the job of the line picks the shape. ORDERS, PLANS, A NO AND A SCHEDULE come as one comma list of people and jobs (or goods), five to ten words, closed by one full stop and usually with no verb: 'Tum bill, Tinku stock, main shutter.'. CARE AND COMFORT get their verb back: short whole sentences with hai or hoon in them ('Shutter hai, counter hai, haath hain.', 'Main glass laati hoon.', 'Sab bag mein hai.'), so she is not one more clipped voice in a house that already has five. A second thought is a second bubble, never a longer one. Her list is people and jobs; it is not Nani's closed one-to-three-word fragments, not Captain sahab's call and then a reason, not Mami's item-and-status readback, and not Papa's run of whole sentences. HUMOUR: none on purpose. She is the straight face; the family laughs at her shop voice at home ('Haan ji, boliye.' to her own children, 'Aur kuch?' at a goodbye) and she never hears the joke. FEELING is changed into shop news with no figure ('Copper phir mehenga.'); love is mostly a deed, and when it is spoken it is a packed list that keeps its hai. CROSS: very still, the voice drops, and politeness rises. The one slow subject is her roof chillies: there the list stops and she says whole, unhurried sentences.
 
-**Hindi and English.** A Hindi frame (the everyday Hindi of a small Hindi-speaking town) with English trade and money nouns dropped in whole: stock, bill, delivery, shutter, wire, switch, fuse, rate, counter, cash, godown, wholesale, advance, copper. English verbs come only as 'English verb + kar/ho': 'check karo', 'delivery ho gayi', 'bill banao', 'count karo'. No whole English clauses; that is Mama ji. This follows two patterns the realism notes report: older speakers build on Hindi and drop in single English nouns (the Dehradun study), and people switch language on the topic of their work. In English mode the shape stays the same: a short list, the figure last. Figures in her bubbles are digits, as in her typing ('saath' is both 60 and 'with').
+**Hindi and English.** A Hindi frame, the everyday Hindi of a small Hindi-speaking junction town, with English nouns from today's counter dropped in whole: shutter, stock, bill, counter, delivery, godown, customer, fuse, wire, switch, fan, bulb, copper, MCB, mains, extension. The English verb + kar/ho ('check karo', 'delivery ho gayi') is the commonest Hinglish pattern in India and the whole house shares it; what marks her is where she aims it. The shop's words come home with her, as they do in any electrician's house: a power cut at dinner is 'MCB check karo', the water at the door is 'mains off karo'. No whole English clauses (Mama ji and Mami switch clause by clause). The common Hindi fillers are hers as much as anyone's (achha, haan, haan ji, chalo, suno, dekho, bas, theek hai, arre inside a line), and so are the everyday Urdu-rooted town words (zaroor, waqt, zaroorat). What her English carries: goods. Hindi mode keeps the trade nouns in Devanagari as Hindi speakers say them (शटर, स्टॉक, बिल, चेक करो). Her credit book is 'khaata' | खाता in both scripts, as every small-town shop says it, and the word means only that book. English mode is Indian English as it is spoken, not a word-for-word copy: 'Haan ji, boliye.' is 'Yes, tell me.', 'Aur kuch?' is 'Anything else?', 'Had hai!' is 'This is too much!', and the rising 'ji' stays on names when she is cross (Tinku ji, Chhote ji). Her two marked figures are said in words in speech ('nau baje', 'nau bajkar das'), which collide with no other word (unlike 'saath'); in typing a figure is a digit.
 
 **Habits**
 
-- Answers every phone call with the shop greeting, 'Haan ji, boliye.' | 'हाँ जी, बोलिए।' | 'Yes, go ahead.', even when it is Nani or you, and carries on without correcting herself. This is her first tell.
-- When cross, politeness rises instead of volume: names get a 'ji' ('Tinku ji', 'Chhote ji'), तुम becomes आप, and commands become -इए and -लीजिए.
-- Answers a feeling with a price, never a time or a score: 'How are you, Mummy?' 'Copper phir mehenga.' ('Copper's up again.'). The dodge is hers alone; Tinku's and the player's files should drop their versions.
-- Speaks in lists joined by commas, the figure last, ticking the items off on the fingers of her left hand.
-- Her one exclamation, where another elder would reach for a god-word: 'Had hai!' | 'हद है!' | 'That's the limit!'. No other person in the cast uses it.
-- Gives the shop's hours in whole hours by her fast watch ('nine', when Papa's phone says 8:58). She uses minutes only in an emergency, which is how the family knows it is one ('Nau bajkar das.').
-- Thanks people by giving them something off her shelf with no bill: 'Iska bill nahin.' | 'इसका बिल नहीं।' | 'There's no bill for this.'
-- Counts heads with one raised left forefinger, exactly as Nani does, without knowing it.
+- Answers every phone call with the shop greeting, 'Haan ji, boliye.' | 'हाँ जी, बोलिए।' | 'Yes, tell me.', to Nani and to you exactly as to a customer. When she knows the voice she drops to तुम with 'Achha, tum.' and carries on, so the reader hears the switch and never takes it for a slip. This is her first tell.
+- Orders, plans and a no come as one comma list of people and jobs, five to ten words, ticked off on the fingers of her left hand: 'Tum bill, Tinku stock, main shutter.'. Comfort keeps the list's bones but gets its verb: 'Shutter hai, counter hai, haath hain.'.
+- Closes a talk the way she closes a sale: 'Aur kuch?' | 'और कुछ?' | 'Anything else?', after a compliment, at a goodbye, when asked how she is. At most one bubble in four, because Mami's 'Correct?' holds the cast's other closing question.
+- Changes a feeling into shop news with no figure: 'How are you, Mummy?' 'Copper phir mehenga.' The dodge is hers alone; Papa and Tinku drop theirs (C10).
+- The shop's English comes home: the English verb + kar/ho that the whole house uses, carrying the trade words of an electrician's house: 'MCB check karo.', 'Mains off karo.'. Never a joke on the kitchen: a too-sweet tea is plain 'Cheeni kam, dobara banao.'.
+- When cross, politeness rises instead of volume: 'ji' goes onto names that never carry it ('Tinku ji', 'Chhote ji'), तुम becomes आप, commands become -इए and -लीजिए, and her hands clasp at her waist.
+- Gives the hour in whole hours by her father's watch, which runs two minutes fast ('nau baje'). Minutes only in an emergency ('Nau bajkar das.'), which is how the family knows it is one.
+- On the roof, with the chillies, the list stops: slow whole sentences with their verbs ('Mirchi bach gayi.'). It is the only time she speaks slowly.
+- Counts heads with one raised left forefinger, exactly as Nani does, in silence: the count is never said aloud (a head-count in speech is Nani's one album line).
 
 **Catchphrases**
 
-- 'Haan ji, boliye.' | 'हाँ जी, बोलिए।' | 'Yes, go ahead.'
-- 'Nau baje. Shutter up.' | 'नौ बजे। शटर ऊपर।' | 'Nine o'clock. Shutter up.'
-- 'Iska bill nahin.' | 'इसका बिल नहीं।' | 'There's no bill for this.' (her thank-you)
-- 'Udhaar? Kal.' | 'उधार? कल।' | 'Credit? Tomorrow.' (the old shop saying, said to strangers only, since her regulars buy on credit; her one standing joke, kept out of her chapter 3 asks)
+- 'Haan ji, boliye.' | 'हाँ जी, बोलिए।' | 'Yes, tell me.' (every phone call, every customer, and you)
+- 'Nau baje. Shutter up.' | 'नौ बजे। शटर ऊपर।' | 'Nine o'clock. Shutter up.' (her one catchphrase with a number: the shutter hour, which her target allows)
+- 'Aur kuch?' | 'और कुछ?' | 'Anything else?' (the counter's closer, which the family quotes back at her; it takes the place of 'Iska bill nahin.', now a rare line)
+
+**Exclamation.** 'Had hai!' | 'हद है!' | English mode 'This is too much!', which is how Indian English says it. For exasperation only: the water at the door, the lights failing in an electrician's own house, a delivery gone wrong. Secular: it means 'this is the limit', it calls on no one, and it is never followed by any name. No one else in the cast uses it as an exclamation. She has no exclamation for joy: good news comes out as orders ('Tinku, mithai lao.').
+
+**Sorry, thanks and love.** SORRY, plain first: 'Meri galti.' | 'मेरी ग़लती।' | 'My mistake.', with the name ('Meri galti, Tinku.'). When her mistake cost someone, she names what she did and owns it in plain words, to an elder as to anyone: 'Masterji, kal raat ki zid meri galti thi.' | 'मास्टरजी, कल रात की ज़िद मेरी ग़लती थी।' | 'Masterji, I was stubborn last night. My mistake.'. No idiom: 'mere khaate mein daal do' is the sulky 'go on, blame me then', and khaata is her credit book. THANKS, GIVEN: plain words first, then a deed. To elders, 'Didi, aapne bahut kiya.' | 'दीदी, आपने बहुत किया।' | 'Didi, you did so much.', with something off the shelf put into their hands. To the young, 'Bahut achha kiya.' | 'बहुत अच्छा किया।' | 'That was really good.', and then something done for them ('Aaj raat ka khana mera.' | 'Dinner tonight is on me.'). When family reaches for a wallet at her counter: 'Aapse paise? Rehne dijiye.' | 'आपसे पैसे? रहने दीजिए।' | 'Money, from you? Put it away.'. 'Iska bill nahin.' survives only as a rare line, once a chapter at most, when a gift goes over the counter. THANKS, RECEIVED: the brush-off every elder in the north uses, 'Arre, isme kya.' | 'अरे, इसमें क्या।' | 'Oh, it's nothing.', and she turns straight to an order for someone else ('Tinku, agle ka bill banao.'). LOVE: mostly a deed: the red 'paid' pen laid down for you in January and the spare shop key in the album, each turned towards you, her hand coming back to her side; a handful of roof chillies for Nani every Sunday. When love comes out in speech it is a packed list that keeps its verb ('Torch, charger, extension, sab bag mein hai.') and the line every mother says on a platform ('Pahunchkar phone karna.').
 
 **Words they use**
 
-- shutter | शटर
+- shutter | शटर, and 'Shutter neeche.' | 'शटर नीचे।' | 'Shutter's down.' in place of 'I'm tired'
 - stock, maal | स्टॉक, माल | stock, goods
-- bill, rate | बिल, रेट
-- udhaar, nakad | उधार, नक़द | credit, cash
-- chhutta | छुट्टा | change
-- galla | गल्ला | the cash drawer
-- muft | मुफ़्त | free
-- godown, thok | गोदाम, थोक | godown, wholesale
-- copper, delivery, fuse, wire, switch, bulb, counter
-- Shanivaar, nau baje | शनिवार, नौ बजे | Saturday, nine o'clock
-- 'Had hai!' | 'हद है!' | 'That's the limit!'
-- 'Theek hai, toh...' | 'ठीक है, तो...' | 'Right, so...' (moving to the next item)
-- 'Ek, do, teen' | 'एक, दो, तीन' (counting things, or heads)
-- 'Haan ji, boliye' | 'हाँ जी, बोलिए' (the shop greeting)
-- 'Main hi hoon. Boliye.' | 'मैं ही हूँ। बोलिए।' | 'You're looking at her. Go ahead.' (when someone asks for the owner)
+- bill, bill book, galla | बिल, बिल बुक, गल्ला | bill, bill book, the cash drawer
+- counter, delivery, godown, customer | काउंटर, डिलीवरी, गोदाम, कस्टमर
+- fuse, wire, switch, fan, bulb, copper, MCB, mains, extension | फ़्यूज़, वायर, स्विच, फ़ैन, बल्ब, कॉपर, एमसीबी, मेन्स, एक्सटेंशन
+- light gayi, light aayi | लाइट गई, लाइट आई | the power's gone, the power's back (power cuts are her daily news)
+- khaata | खाता | the book (her regulars' plain blue credit book; Hinglish and Hindi both say khaata, as a small-town shop does; in the flood week it is the whole lane's; the word is only ever this book, never a sorry)
+- mirchi, tamatar, chhat, dabbe | मिर्ची, टमाटर, छत, डब्बे | chillies, tomatoes, the roof, the tins (her one interest with no number in it)
+- the shop's English verbs at home: check karo, count karo, lock karo, off karo | चेक करो, काउंट करो, लॉक करो, ऑफ़ करो
+- 'ye wala' | 'ये वाला' | 'this one' (the thing in her hand or in the photo)
+- 'Aur kuch?' | 'और कुछ?' | 'Anything else?' (the counter's closer)
+- 'Main hi hoon. Boliye.' | 'मैं ही हूँ। बोलिए।' | 'That's me. Tell me.' (to anyone who asks for the owner, the malik, one beat at most)
+- 'Ek paisa bhi kam nahin.' | 'एक पैसा भी कम नहीं।' | 'Not a paisa short.' (her highest praise, the everyday idiom; 'ek' is idiom, not a count)
+- Shanivaar, nau baje | शनिवार, नौ बजे | Saturday, nine o'clock (the shutter hour)
+- 'Udhaar? Kal.' | 'उधार? कल।' | 'Today cash, tomorrow credit.' (clipped from the old shop sign आज नक़द, कल उधार, which every Hindi-first reader knows; chapter 3 only, flat, to a stranger before the flood, so the credit book opening to the whole lane later reads as her turn)
+- 'Koi baat nahin.' | 'कोई बात नहीं।' | 'Never mind.' (to a child who spills, to a hand who drops a carton)
+- 'Badhai ho!' | 'बधाई हो!' | 'Many congratulations!' (owner question, cast-wide 4: if it is allowed it is hers, and Mami takes the English 'Congratulations.')
+- the house's common words, said as anyone says them: achha, haan, haan ji, chalo, suno, dekho, bas, theek hai, arre inside a line, galti, pakka, zaroor, waqt, zaroorat | अच्छा, हाँ, हाँ जी, चलो, सुनो, देखो, बस, ठीक है, अरे, ग़लती, पक्का, ज़रूर, वक़्त, ज़रूरत
 
 **Never says**
 
-- 'don't worry' | 'chinta mat karo' | 'चिंता मत करो' (Mama ji's line; she distrusts it)
-- a vague time: 'around ten', 'about', 'roughly', 'lagbhag' | 'लगभग', 'thodi der mein' | 'थोड़ी देर में'
-- 'help' or 'madad' | 'मदद' about herself: she never asks for help in words (the album line is an owner option)
-- 'I'm tired' | 'thak gayi' | 'थक गई': she says 'Shutter neeche.' | 'शटर नीचे।' (shutter down) instead
-- 'sorry' | 'maaf karna' | 'माफ़ करना': she gives something off the shelf with no bill instead
-- words the trait table gives to others: 'pakka', 'suno' as an opener (Mausi's 'Suno, suno, suno!'), a thumbs-up
-- any god-word or religious exclamation: hers is 'Had hai!' (rule 3)
-- any pet name or gendered word for you: beta | बेटा, bachcha | बच्चा, raja, gudiya (rules 8, 66)
-- 'special price for you', haggling for laughs, or any line that makes her the greedy trader (realism notes, caricature traps)
+- a price or a sum in speech: no rupee figures, no 'pachaas hazaar', no 'saath rupaye'; prices live on the bills, painted blank
+- minutes outside an emergency (Papa's source), a score or 'not out' (Tinku's and Captain sahab's), an ordinal (nobody's), a head-count said aloud (Nani's, once): these are other people's sources of words, not banned words
+- 'chinta mat karo' | 'don't worry' (she distrusts the line, which is Mama ji's); 'help' or 'madad' about herself; 'thak gayi' | 'I'm tired'; a vague time ('lagbhag', 'thodi der mein', 'around ten'): these are her character, not a word list
+- other people's set phrases and exclamations, which are phrases, not fillers: 'Baap re', 'Haaye!', 'Hain?', 'Uff.', 'Ish', 'Gazab!', 'Kamaal hai.', 'Arre waah.', 'Oho!' and 'Badhiya.' as her habitual cry (a cry said now and then is free); a one-word 'Theek.' and 'Galti hui.' (Mausa ji's); 'Bas.' as the closer of an argument (Nani's); 'Suno, suno, suno!' and 'Sorry, sorry, sorry!' (Mausi's); 'Pakka?' at the end of a worry stack (Mama ji's); 'Correct?' and 'Tick.' (Mami's); 'Darj hai.' (Papa's); 'Next ball.' and 'Dead ball.' (Captain sahab's); 'Pehle ___.' as a tic (yours); 'Chai piyo.' as a sorry (Nani's); 'Hmm. Ho jayega.' (Mausa ji's). The common words inside these phrases are free.
+- 'Mubarak ho' (cast-wide 4: unused for now; it and her 'Badhai ho!' are both everyday congratulations and take one ruling from the owner, and an Urdu-speaking reader checks that both sides are treated alike, India verdict 3)
+- 'saath' in Hinglish (it reads as both 60 and 'with', the india review)
+- a joke on purpose, a tease for laughs, 'special price for you', haggling, the calendar-and-nail joke (cut), or any line that makes her the greedy trader (realism notes, caricature traps)
+- a whole English clause ('Don't worry, I'll handle it' belongs to Mama ji)
+- any god-word or religious exclamation, any caste word, any brand (rule 3); English-mode mild oaths too (Gosh, Heavens, Good grief, Thank God)
+- any pet name or gendered word for you: beta | बेटा, bachcha | बच्चा, raja, gudiya, भैया, दीदी (rules 8, 66)
 - a word on anyone's character beyond counter habits, or anything about women or men in general (rule 22)
-- any doubt of a report of harassment or bullying, or of a dowry demand, or 'misunderstanding' | 'ग़लतफ़हमी' about one (rule 22)
-- whole English clauses ('Don't worry, I'll handle it' belongs to Mama ji)
-- minutes outside an emergency ('9:40, not 9:45' belongs to Papa), or a score (Tinku's)
+- any doubt of a report of harassment or bullying, or of a dowry demand, or 'misunderstanding' | 'ग़लतफ़हमी' about one (rule 22); and near any report beat, none of her paper words used as a demand for proof: no 'bill dikhao', 'likh ke do', 'receipt' or 'saboot' (cast-wide 5)
+- a thumbs-up or any emoji (Mausa ji's and yours)
+- the old coined or forced lines: 'Ye mere hisaab mein.' and 'mere khaate mein daal do / daaliye' as a sorry (in real speech that is the sulky 'go on, blame me then'; now plain 'meri galti thi', and khaata is only her credit book), 'Tinku, ye cup return karo.' (a writer's joke in the mouth of the one person who never jokes; now 'Cheeni kam, dobara banao.'), 'Keel ka bill alag.' (cut), 'Ek rupaya kam nahin.' (now 'Ek paisa bhi kam nahin.'), and 'Iska bill nahin.' as a standing thank-you
 
 **How they address people**
 
-- To you: तुम in commands (देखो, लो, गिनो, चुनो, क्रम लगाओ), in 'who should' asks (कौन करे? कौन जाए?, never कौन करेगा?) and in lines where you are not the doer (लिस्ट तुम्हारे हाथ में। सब तुम्हें ही फ़ोन करते हैं।). आप and -इए only when she is cross (आप ही गिन लीजिए।). No address word at all: never beta, never a pet name (rules 8, 66).
+- To you: तुम in commands (देखो, लो, भेजो, लॉक करो, लेट जाओ), in 'who should' asks (किसे रखें?, कौन करे?, never कौन करेगा?) and in lines where you are not the doer (बाक़ी फ़ोन, सब तुम्हारे।); one line waits on the owner: 'Bahut achha kiya.', a past with ने where you are the doer and किया agrees with the thing done, cleared only if rule 66 gains that fourth shape or the native reader puts it on the build's cleared list; आप and -इए only when she is cross (आप ही गिन लीजिए।). No address word for you at all: never beta or a pet name, never बेटा, भैया or दीदी. On the phone her shop greeting reaches you too, and बोलिए marks no gender; once she knows the voice she drops to तुम with 'Achha, tum.', so the switch is heard.
 - To Nani: 'Amma' | 'अम्मा', with आप ('Amma, aap baithiye.'), the word all three of Nani's children use.
-- To Papa: no address word; she starts with the item, with तुम (they say तुम to each other, equal respect; Papa's file has him start with the time). Of him, to you and Tinku: 'tumhare Papa'. Families name a husband by the eldest child, and the eldest is the unnamed player, so 'Tinku ke Papa' is out.
-- To Mama ji: 'Chhote' | 'छोटे', with तुम; 'Chhote ji' and आप when cross. Readers confirm that 'Chhote' leans towards no community.
-- To Mausi: 'Didi' | 'दीदी', with आप (Mausi's file has तुम; the address table settles it, and this file proposes आप).
+- To Papa: no address word; she starts with the item ('Bhindi itni mehngi?'), or with a plain 'Suno,' on the phone, with तुम, equal respect. Of him, to you and Tinku: 'tumhare Papa'.
+- To Mama ji: 'Chhote' | 'छोटे', with तुम; 'Chhote ji' and आप when cross (and when he arrives late).
+- To Mausi: 'Didi' | 'दीदी', with आप.
 - To Mausa ji: 'Jija ji' | 'जीजा जी', with आप.
-- To Tinku: 'Tinku', with तुम; 'Tinku ji' and आप when cross.
+- To Tinku: 'Tinku', with तुम; 'Tinku ji' and आप when cross, in speech and in typing.
 - To Mami: 'Bhabhi' | 'भाभी', with तुम; 'tumhari Mami' when she speaks of her to you.
 - To Masterji and Captain sahab: their titles, with आप; both call her 'Bhabhi ji'.
-- To customers and the hired hands: 'ji' and आप, always ('Haan ji, boliye.'); wages counted out in front of them, off the panel.
+- To customers, wholesalers and hired hands: 'ji' and आप, always, with no comma before the ji ('Le jaiye ji.', 'Zaroor ji.'), and no kin word, so 'Bhaiya ji' stays Mami's.
 
 **Sample lines**
 
-- GIVING AN ORDER (to you and Tinku, Saturday 8:50): 'Tum bill, Tinku stock, shutter nau baje.' | 'तुम बिल, टिंकू स्टॉक, शटर नौ बजे।' | 'You on bills, Tinku on stock, shutter at nine.' (a comma list, verbless; no rule 66 flag)
-- GIVING THE GOAL OF THE MOMENT (chapter 3 style, a time and a need, never the skill the two tie on, rule 37): 'Geela maal chhat par, dhoop do baje tak.' | 'गीला माल छत पर, धूप दो बजे तक।' | 'Wet stock to the roof, sun till two.'
-- WORRYING (the flood, to Masterji): 'Fan, wire, switch, sab paani mein. Pachaas hazaar.' | 'फ़ैन, वायर, स्विच, सब पानी में। पचास हज़ार।' | 'Fans, wire, switches, all under water. Fifty thousand.' (her worry comes out as a price)
-- WORRYING (any night, to you): 'Nau bajkar das. Amma ka phone nahin aaya.' | 'नौ बजकर दस। अम्मा का फ़ोन नहीं आया।' | 'Ten past nine. Amma hasn't rung.' (minutes mean an emergency; Nani rings at nine, so silence is the alarm. The checker flags आया at the sentence end; it agrees with फ़ोन, so a native reader clears it)
-- TEASING (to you): 'Sab tumhein hi phone karte hain. Commission lo.' | 'सब तुम्हें ही फ़ोन करते हैं। कमीशन लो।' | 'Everyone calls you anyway. Charge commission.' (करते हैं is flagged and cleared: its subject is सब)
-- TEASING (to Papa, home with vegetables): 'Bhindi 60 rupaye? Phir thag liya tumhein.' | 'भिंडी 60 रुपये? फिर ठग लिया तुम्हें।' | 'Okra at 60? They've fleeced you again.'
-- PRAISING (to you, after you count the drawer): 'Ek rupaya kam nahin.' | 'एक रुपया कम नहीं।' | 'Not one rupee short.'
-- THANKING (to Mausi, after the flood basket, handing her a new emergency light): 'Didi, ye rakhiye. Iska bill nahin.' | 'दीदी, ये रखिए। इसका बिल नहीं।' | 'Didi, keep this. There's no bill for it.'
-- SAYING NO (to Mama ji): 'Chhote, paise rakho. Ek din aa jao.' | 'छोटे, पैसे रखो। एक दिन आ जाओ।' | 'Chhote, keep the money. Come for one day.'
-- SAYING NO (to a stranger asking for credit): 'Udhaar? Kal.' | 'उधार? कल।' | 'Credit? Tomorrow.'
-- ANSWERING THE WHOLESALER'S MAN who asks for the owner: 'Main hi hoon. Boliye.' | 'मैं ही हूँ। बोलिए।' | 'You're looking at her. Go ahead.' (one beat at most, no general statement)
-- COMFORTING (to you, the first flood night): 'Paani kal, maal parson, shutter Shanivaar.' | 'पानी कल, माल परसों, शटर शनिवार।' | 'Water tomorrow, stock the day after, shutter Saturday.' (her comfort is a schedule, as one comma list)
-- LOSING HER TEMPER (to Mama ji, who offers to send city workmen): 'Chhote ji, aap hi chala lijiye. Chaabi ye rahi.' | 'छोटे जी, आप ही चला लीजिए। चाबी ये रही।' | 'Chhote ji, you run it, then. Here's the key.' (anger as politeness)
-- LOSING HER TEMPER (to Tinku, 9:05 on a Saturday): 'Tinku ji, nau baj gaye. Aap kahaan hain?' | 'टिंकू जी, नौ बज गए। आप कहाँ हैं?' | 'Tinku ji, it's nine. Where are you?'
-- EXCLAIMING (the water at the door): 'Had hai!' | 'हद है!' | 'That's the limit!'
-- THE ONE LINE WITH NO NUMBER (3.11, the roof, an aside and never an ask): 'Mirchi bach gayi.' | 'मिर्ची बच गई।' | 'The chillies made it.'
-- A JOKE (hanging the calendar; an option for 1.02, waiting on rulebook Q5, and never in her chapter 3 asks): 'Calendar muft. Keel ke paanch rupaye.' | 'कैलेंडर मुफ़्त। कील के पाँच रुपये।' | 'The calendar's free. The nail's five rupees.'
-- MOVED (December, quietly, to you; waits on the owner's answer about Nana): 'Tumhare Nana ki ghadi. Ab bhi do minute aage.' | 'तुम्हारे नाना की घड़ी। अब भी दो मिनट आगे।' | 'Your Nana's watch. Still two minutes fast.'
-- DRAFT LINES THAT ALREADY SOUND LIKE HER, kept: 1.02 'From the shop. Free.'; 1.05 'And the rest? Everyone calls you anyway.'; 1.06 'July? Nothing yet.' (mark it off panel); 3.02 'Saturday, 9:00. Shutter up.'; 3.03 'Hands for the week. The list is yours.'; 3.06 'Mud out by Wednesday. Paid daily.'; 3.11 'Sun at last. Wet stock to the roof.'. One rewrite: 3.26 band A drops 'sharp', which Papa's 1.39 and Mama ji's 5.27 also lean on: 'Nau baje. Har Shanivaar ki tarah.' | 'नौ बजे। हर शनिवार की तरह।' | 'Nine o'clock. Like every Saturday.' Every Mummy bubble in chapter 3 carries her tag (the chapter 3 check).
+- ORDER (to you and Tinku, Saturday, before the shutter): 'Tum bill, Tinku stock, main shutter.' | 'तुम बिल, टिंकू स्टॉक, मैं शटर।' | 'You on bills, Tinku on stock, me on the shutter.' (her shape for orders: people and jobs in one comma list with no verb)
+- THE GOAL OF THE MOMENT (chapter 3 opening, rules 37 and 43): 'Kichad saaf, maal upar, Shanivaar nau baje shutter.' | 'कीचड़ साफ़, माल ऊपर, शनिवार नौ बजे शटर।' | 'Mud out, stock up, shutter at nine on Saturday.' (the shutter hour, one of her two marked figures, as the chapter's target; never the number the two tie on)
+- TO MASTERJI (3.02, when he asks from his doorway whether all this mud can be gone by Saturday): 'Shutter apne waqt pe uthega, Masterji. Nau baje.' | 'शटर अपने वक़्त पर उठेगा, मास्टरजी। नौ बजे।' | 'The shutter goes up on time, Masterji. Nine o'clock.' (वक़्त as an everyday town word in her mouth, cast-wide 8)
+- A WHO-SHOULD ASK (chapter 3, to you): 'Haath chahiye, kichad aur maal ke liye. / Kise rakhein?' | 'हाथ चाहिए, कीचड़ और माल के लिए। / किसे रखें?' | 'We need hands, for the mud and the stock. / Who do we take on?' (रखें is a subjunctive and चाहिए never changes form, so neither marks a gender)
+- TO A CUSTOMER (the counter, any day): 'Haan ji, boliye. Fuse, switch ya wire?' | 'हाँ जी, बोलिए। फ़्यूज़, स्विच या वायर?' | 'Yes, tell me. Fuse, switch or wire?' (the shop greeting, then the list as a question)
+- TO A CUSTOMER who wants a part she is out of: 'Zaroor ji, kal tak mangwa deti hoon. / Naam likhwa dijiye.' | 'ज़रूर जी, कल तक मँगवा देती हूँ। / नाम लिखवा दीजिए।' | 'Of course, ji, I'll have it by tomorrow. / Just leave your name.' (ज़रूर as a town word; देती हूँ is her own voice, said to a customer)
+- TO THE WHOLESALER'S MAN who asks for the owner, the malik: 'Main hi hoon. Boliye, delivery kab?' | 'मैं ही हूँ। बोलिए, डिलीवरी कब?' | 'That's me. Tell me, when's the delivery?' (one beat at most, no general statement; straight to business)
+- WORRY (the flood, to Masterji over the wall): 'Masterji, fan, wire, switch, sab paani mein. Poora maal.' | 'मास्टरजी, फ़ैन, वायर, स्विच, सब पानी में। पूरा माल।' | 'Masterji, fans, wire, switches, all under water. The whole stock.' (the worry is the goods, not a sum)
+- WORRY, AN EMERGENCY (any night, to you): 'Nau bajkar das. Amma ka phone nahin aaya.' | 'नौ बजकर दस। अम्मा का फ़ोन नहीं आया।' | 'Ten past nine. Amma hasn't rung.' (emergency minutes, her second marked figure: Nani rings at nine, so silence is the alarm; check 3 flags आया, which agrees with फ़ोन, so a native reader clears it)
+- THE DODGE (asked by you how she is): 'Copper phir mehenga. Aur kuch?' | 'कॉपर फिर महँगा। और कुछ?' | 'Copper's up again. Anything else?' (a feeling changed into shop news with no figure, closed like a sale; महँगा agrees with कॉपर)
+- PRAISE (to you, after you count the drawer at closing): 'Ek paisa bhi kam nahin. / Galla lock karo, shutter neeche.' | 'एक पैसा भी कम नहीं। / गल्ला लॉक करो, शटर नीचे।' | 'Not a paisa short. / Lock the drawer, shutter down.' (her highest praise in the everyday idiom, then the next job)
+- THANKS, PLAIN (to Mausi after the flood basket, putting a new emergency light from the shelf into her hands): 'Didi, aapne bahut kiya. Ye light rakhiye.' | 'दीदी, आपने बहुत किया। ये लाइट रखिए।' | 'Didi, you did so much. Keep this light.' (plain words first, the gift after them)
+- THANKS, TO YOU (the evening you took every call in the shop): 'Bahut achha kiya. / Aaj raat ka khana mera.' | 'बहुत अच्छा किया। / आज रात का खाना मेरा।' | 'That was really good. / Dinner tonight is on me.' (plain thanks, then a deed: on a weekday, when Papa cooks. Rule 66 owner question: you are the doer here, and किया is a past with ने that agrees with the thing done, so it marks no gender, but rule 66 names only three shapes for तुम. The owner either adds this as a fourth shape or has the native reader clear the line onto the build's cleared list; no wording change if the owner agrees)
+- WHEN FAMILY TRIES TO PAY (Mausa ji, reaching for his wallet at her counter): 'Jija ji, aapse paise? Rehne dijiye.' | 'जीजा जी, आपसे पैसे? रहने दीजिए।' | 'Jija ji, money from you? Put it away.' (the gift with no code)
+- SORRY (to Masterji, the morning after she sent him back on the first flood night): 'Masterji, kal raat ki zid meri galti thi.' | 'मास्टरजी, कल रात की ज़िद मेरी ग़लती थी।' | 'Masterji, I was stubborn last night. My mistake.' (plain words, owned out loud to an elder; थी agrees with ज़िद and ग़लती, and the line is said to Masterji, not to you)
+- SORRY, PLAIN (to Tinku, whose carton count was right after all): 'Meri galti, Tinku. Tumhari ginti sahi thi.' | 'मेरी ग़लती, टिंकू। तुम्हारी गिनती सही थी।' | 'My mistake, Tinku. Your count was right.'
+- SAYING NO (to Mama ji, who has sent money again): 'Chhote, paise apne paas rakho. / Khud aao, Amma ke paas.' | 'छोटे, पैसे अपने पास रखो। / ख़ुद आओ, अम्मा के पास।' | 'Chhote, keep your money. / Come yourself, and see Amma.' (a no as a list of jobs)
+- GIVING CREDIT (the flood week, to a stranger from the lane who needs a fuse): 'Le jaiye ji. Khaate mein likh diya, aaram se.' | 'ले जाइए जी। खाते में लिख दिया, आराम से।' | 'Take it. It's in the book. Pay when you can.' (her turn in chapter 3: owing the lane is how a lane works; both scripts say khaata, as a small-town shop does, with no comma before ji)
+- THE OLD SHOP SAYING (chapter 3 only, before the flood, to a stranger who asks for credit; flat, never for a laugh): 'Udhaar? Kal.' | 'उधार? कल।' | 'Today cash, tomorrow credit.' (clipped from the shop sign आज नक़द, कल उधार; English mode uses the sign's own English, which Indian shops paint too; it stays in the chapter that later opens her credit book to the whole lane)
+- CROSS (to Tinku, five past nine on a Saturday): 'Tinku ji, nau baj gaye. Aap kahaan hain?' | 'टिंकू जी, नौ बज गए। आप कहाँ हैं?' | 'Tinku ji, it's nine. Where are you, may I ask?' (politeness rises: ji on a name that never carries it, आप; the shutter hour)
+- CROSS (to Mama ji, who offers to send city workmen): 'Chhote ji, aap hi chala lijiye. Chaabi ye rahi.' | 'छोटे जी, आप ही चला लीजिए। चाबी ये रही।' | 'Chhote ji, you run it, then. Here's the key.' (anger as politeness; the keys held out, then her fist closes on them)
+- EXCLAIMING (the water at the door, the first flood night): 'Had hai! / Paani darwaze tak. Balti, kapda, mains off karo.' | 'हद है! / पानी दरवाज़े तक। बाल्टी, कपड़ा, मेन्स ऑफ़ करो।' | 'This is too much! / Water's at the door. Buckets, cloths, mains off.' (her one exclamation, then the list)
+- COMFORT (to you, the first flood night, at two): 'Paani kal, maal parson, shutter Shanivaar. / Ab let jao. Baaki subah.' | 'पानी कल, माल परसों, शटर शनिवार। / अब लेट जाओ। बाक़ी सुबह।' | 'Water out tomorrow, stock the day after, shutter Saturday. / Lie down now. The rest can wait till morning.' (the schedule, then one plain care line; a command, so no gender, and not Mausa ji's So jao)
+- COMFORT, THE MORNING AFTER (to you, beside the lost cartons of wire): 'Shutter hai, counter hai, haath hain. / Kaafi hai.' | 'शटर है, काउंटर है, हाथ हैं। / काफ़ी है।' | 'We still have the shutter, the counter, our hands. / That's enough.' (comfort as a stocktake: her list with its verb kept; काफ़ी never changes form and the Hinglish flags fall on hai itself, so a native reader clears them)
+- TO PAPA (home with vegetables; no address word, she starts with the item): 'Bhindi itni mehngi? Kal se sabzi main laaungi.' | 'भिंडी इतनी महँगी? कल से सब्ज़ी मैं लाऊँगी।' | 'Bhindi, this expensive? From tomorrow I'm buying the vegetables.' (she still prices aloud, with no figure; meant, not a tease)
+- TO PAPA ON THE PHONE (a late Saturday): 'Suno, aaj der hogi. Daal tum banao.' | 'सुनो, आज देर होगी। दाल तुम बनाओ।' | 'Listen, I'll be late today. You make the dal.' (a plain opener anyone uses; equal तुम between husband and wife)
+- THE ROOF (3.11, the first sun after the flood, an aside and never an ask; her slow lines): 'Mirchi bach gayi. / Dabbon mein paani bhara tha, phir bhi.' | 'मिर्ची बच गई। / डब्बों में पानी भरा था, फिर भी।' | 'The chillies made it. / Even with the tins full of water.' (the list stops and she speaks whole sentences, slowly; if said in your hearing, the flags on गई, भरा था and भी belong to मिर्ची, पानी and a particle, so a native reader clears them)
+- LAYING THE PEN DOWN (1.05, January, a proposed rewrite in her shape): 'Baaki mahine, baaki phone, sab tumhare.' | 'बाक़ी महीने, बाक़ी फ़ोन, सब तुम्हारे।' | 'The other months, the other calls, all yours.' (she assigns, she never asks; तुम्हारे agrees with महीने and फ़ोन)
+- THE CALENDAR (1.02, January, pressing the plain shop calendar onto the nail; wordless by default): 'Dukaan se.' | 'दुकान से।' | 'From the shop.' (the nail joke is cut as the stingy-trader joke: no price, no free, no bill)
+- THE ALBUM (owner option only; by default she lays the spare key down, turned towards you, and says nothing): 'Shanivaar ka shutter, chaabi, galla, sab tumhare.' | 'शनिवार का शटर, चाबी, गल्ला, सब तुम्हारे।' | 'Saturday's shutter, the key, the drawer, all yours.' (closes January's sab tumhare on the same words; check 3 flags गल्ला, a noun, so a native reader clears it)
 
 ## Typing
 
 - Device: a plain black Android phone in a plain black case, the screen painted blank with every word laid on as live text (rule 30). It lives in the side pocket of her kameez and comes out wedged between her left ear and shoulder.
-- Script: Roman Hinglish (Hindi in Latin letters), all lowercase, no punctuation at all (no full stops, no question marks); figures always as digits (2 balti, 6 baje, 1840) and never wrong, though her spelling of words drifts (chabi, chaabi).
-- HER TELL, which nobody else in the cast has: every message ends on a figure, a price, a count or the hour ('counter 9', 'ye wala check karo 1840').
-- Acknowledges by typing the figure back: you send 'Done, Mummy. 1840 ka bill bhej diya.' and she replies '1840'.
-- Length: two to six words, one message per thought (a second thought is a second message, never a full stop), never a paragraph, never a greeting or a sign-off.
-- Emoji: none, ever (the thumbs-up is Mausa ji's, and your own reply to her). No stickers, no good-morning pictures (those are Papa's), and only one kind of forward: the electricity board's power-cut times, sent the moment she hears them.
-- Photos: of bills and stock cartons, painted blank, with one line under them that ends on the figure.
-- Voice notes when her hands are busy in the shop. They start with her shop greeting, shown as live text: 'haan ji boliye, arre tum, shutter 9 baje'.
-- Speed: reads within a minute between nine in the morning and half past eight at night, and replies only when she has the answer. Nothing between 8:30 and 9:15 pm (the shutter, then Nani's call), and never after nine, so a late message from her means trouble. The flood night is the one time all year.
-- She never texts Nani. Nani rings her at nine, every night, and Mummy waits for it.
-- Types fast with her left thumb, phone in her left hand, because her right hand is usually holding the keys or the pen.
-- No group chat appears in the game (23 Oct): a family message is shown as a single message on the painted blank phone or as a message card under the panel (rule 40).
+- Script: Roman Hinglish (Hindi in Latin letters), all lowercase. Commas only: no full stops, no question marks, no exclamation marks, even when she asks ('khud kab aa rahe'). Her spelling drifts (chabi, chaabi); her trade nouns never do.
+- HER HABIT: she acknowledges with the shop's 'haan ji', typed alone as the whole reply, to her own children as to a customer. Never 'ok', never 'done', never a thumbs-up. Anyone in the house may type haan ji inside a message; a bare 'haan ji' as the whole answer, every time, is her.
+- Shape: the same comma list of people and jobs as her speech ('daal tum banao, shutter neeche, ghar aa rahi'), two to eight words, one message per thought, never a paragraph, never a greeting or a sign-off.
+- Thanks are typed in plain words with a deed or a care after them ('bahut achha kiya, ab ghar jao'), never in a code.
+- Figures: only when the fact itself is a figure and only in an emergency, so a digit from her is rare and means trouble (the flood night's '6 baje'). Prices stay on the photographed bills, painted blank.
+- When cross, her texts get polite too: 'ji' on the name and -इए on the verb ('tinku ji counter pe aaiye').
+- Photos: of bills and stock cartons, painted blank, each with the same caption, 'ye wala check karo' or 'ye wala'.
+- Voice notes when her hands are busy in the shop. They start with her shop greeting even though she is the one calling ('haan ji boliye, achha tum'), shown as live text.
+- Emoji: none, ever (the thumbs-up is Mausa ji's, and your own reply to her). No stickers, no good-morning pictures (those are Papa's). The one news she sends unasked is the power-cut times, retyped the moment she hears them, shown as a message card (no group chat appears in the game).
+- Speed: reads within a minute between nine in the morning and half past eight at night, and replies only when she has the answer. Nothing between the shutter coming down and the end of Nani's nine o'clock call, and never after nine, so a late message from her means trouble. The flood night is the one time all year.
+- She never texts Nani. Nani rings her at nine every night, and Mummy waits for it.
+- Types fast with her left thumb, phone in her left hand, because her right hand is holding the keys or the pen.
 
 **Sample messages**
 
-- To you, Saturday 2:10 pm: 'stock aa gaya 12 dabbe' | 'स्टॉक आ गया 12 डब्बे' | 'stock's in, 12 boxes'
-- To you, under a photo of a bill painted blank: 'ye wala check karo 1840' | 'ये वाला चेक करो 1840' | 'check this one, 1840'
-- To you, after your 'Done, Mummy. 1840 ka bill bhej diya.': '1840' | '1840' | '1840' (received)
-- To Papa, 8:20 pm: 'daal tum banao, ghar 8:45' | 'दाल तुम बनाओ, घर 8:45' | 'you make the dal, home 8:45'
-- To Tinku, 9:02 am on a Saturday: 'tinku counter 9' | 'टिंकू काउंटर 9' | 'tinku, counter, 9'
-- To Mama ji, after he sends money: 'mil gaye 5000' | 'मिल गए 5000' | 'got it, 5000' (it goes, untouched, into its own account)
-- To you, the flood night, 11:40 pm, the only message she sends after nine all year: 'kal dukaan 6 baje, balti 2' | 'कल दुकान 6 बजे, बाल्टी 2' | 'shop tomorrow 6 am, buckets 2' (verbless, so no rule 66 flag)
-- Forwarding the power-cut notice (for writers, or as a message card, since the game shows no group chat): 'kal light nahi 10 se 2' | 'कल लाइट नहीं 10 से 2' | 'no power tomorrow, 10 to 2'
-- Voice note to you, sent while she writes a bill, shown as live text: 'haan ji boliye, arre tum, shutter 9 baje' | 'हाँ जी बोलिए, अरे तुम, शटर 9 बजे' | 'yes go ahead, oh it's you, shutter at 9'
+- To you, Saturday afternoon: 'stock aa gaya, dabbe godown mein' | 'स्टॉक आ गया, डब्बे गोदाम में' | 'stock's in, boxes in the godown' (check 3 flags गया before the comma; it agrees with स्टॉक)
+- To you, under a photo of a bill painted blank: 'ye wala check karo' | 'ये वाला चेक करो' | 'check this one' (the caption she puts under every photo)
+- To you, after you text that the bill has gone: 'haan ji' | 'हाँ जी' | 'yes ji' (received: her typed habit; जी is a polite particle that marks no gender)
+- To Papa, as the shutter comes down at half past eight: 'daal tum banao, shutter neeche, ghar aa rahi' | 'दाल तुम बनाओ, शटर नीचे, घर आ रही' | 'you make the dal, shutter's down, coming home' (a list of people and jobs, as in her speech)
+- To Tinku, under the stock tally Tinku sent: 'bahut achha kiya, ab ghar jao' | 'बहुत अच्छा किया, अब घर जाओ' | 'that was really good, go home now' (plain thanks, then a care)
+- To Tinku, late on a Saturday (cross): 'tinku ji counter pe aaiye' | 'टिंकू जी काउंटर पे आइए' | 'tinku ji kindly come to the counter' (her anger tell carried into typing)
+- To Mama ji, after he sends money: 'paise mil gaye, khud kab aa rahe' | 'पैसे मिल गए, ख़ुद कब आ रहे' | 'got the money, when are you coming yourself' (no question mark; the money goes, untouched, into its own account)
+- To you, the flood night, 11:40 pm, the only message after nine all year: 'kal dukaan 6 baje, balti kapda torch' | 'कल दुकान 6 बजे, बाल्टी कपड़ा टॉर्च' | 'shop tomorrow 6 am, buckets cloths torch' (the emergency hour, her one typed figure of the year; check 3 flags बजे, the clock word, which marks no gender)
+- Power-cut news, retyped the moment she hears it (a message card; the game shows no group chat): 'kal light nahi, subah se dopahar tak' | 'कल लाइट नहीं, सुबह से दोपहर तक' | 'no power tomorrow, morning to afternoon' (her one kind of news sent unasked; no figures)
+- Voice note to you, sent while she writes a bill, shown as live text: 'haan ji boliye, achha tum, shutter neeche ho gaya' | 'हाँ जी बोलिए, अच्छा तुम, शटर नीचे हो गया' | 'yes tell me, oh it's you, shutter's down' (she greets you as a customer in her own voice note, then knows the voice; गया belongs to शटर, so a native reader clears it)
 
 ## Look
 
@@ -304,3 +325,18 @@ ROLE WORD: 'the square-shouldered woman' (from her look; never 'Mummy', which ge
 - Sets herself against Mausi or Mami as women against women: the rivalry is concern, and the alliance is real.
 - Feeds everyone before herself as a soap-opera sacrifice. She eats standing at the counter at two, and Papa cooks on weekdays.
 - Messages anyone after nine at night, except on the flood night; texts Nani, ever; or uses an emoji.
+
+## Twelve everyday moments (the voice test)
+
+- 1. The lights go out in the middle of dinner (to Tinku).: "Had hai! / Tinku, torch nikalo, MCB check karo." | "हद है! / टिंकू, टॉर्च निकालो, एमसीबी चेक करो।" | "This is too much! / Tinku, get the torch, check the MCB."
+- 2. Someone everyone was waiting for arrives two hours late (to Mama ji, at the door; politeness rises, and she points at Amma rather than the food, so she is off the cast's cold-dinner line).: "Aaiye, Chhote ji. / Amma aapka raasta dekhte-dekhte so gayin." | "आइए, छोटे जी। / अम्मा आपका रास्ता देखते-देखते सो गईं।" | "Do come in, Chhote ji. / Amma waited up for you, then fell asleep."
+- 3. A cousin phones to say they have got their first job (to the cousin, on the phone; the cousin's gender stays open; the shop greeting, then the recognition beat that drops her to तुम, then the congratulation, an owner question).: "Haan ji, boliye. / Achha, tum! Naukri? Badhai ho! / Letter bhejo, counter pe lagaungi." | "हाँ जी, बोलिए। / अच्छा, तुम! नौकरी? बधाई हो! / लेटर भेजो, काउंटर पर लगाऊँगी।" | "Yes, tell me. / Oh, it's you! A job? Many congratulations! / Send the letter, it's going on my counter."
+- 4. The tea someone has just made has far too much sugar in it (to Tinku, who made it).: "Tinku, cheeni kam, dobara banao." | "टिंकू, चीनी कम, दोबारा बनाओ।" | "Tinku, less sugar, make it again."
+- 5. In front of the family, someone shows that they had a fact wrong (she is the one corrected; said to the family, Nani and the other elders and you included, so the line holds no command and needs no politeness level; check 3 flags अच्छा, a filler, ग़लती, a noun, and रहेगा, which agrees with the fact remembered, so a native reader clears all three).: "Achha? Meri galti. / Chalo, ab yaad rahega." | "अच्छा? मेरी ग़लती। / चलो, अब याद रहेगा।" | "Oh? My mistake. / Right, I'll remember that."
+- 6. Someone they love is leaving, and they say goodbye on a railway platform (to you, at the coach door; check 3 flags करना, an infinitive used as a gentle command, and the Hinglish hai, both of which mark no gender, so a native reader clears them).: "Torch, charger, extension, sab bag mein hai. / Pahunchkar phone karna. Aur kuch?" | "टॉर्च, चार्जर, एक्सटेंशन, सब बैग में है। / पहुँचकर फ़ोन करना। और कुछ?" | "Torch, charger, extension lead, it's all in the bag. / Ring when you get there. Anything else?"
+- 7. Someone thanks them for something they did (Mausa ji, at the counter, for the fuses she keeps aside).: "Arre Jija ji, isme kya. / Tinku, agle ka bill banao." | "अरे जीजा जी, इसमें क्या। / टिंकू, अगले का बिल बनाओ।" | "Oh, it's nothing, Jija ji. / Tinku, next customer's bill."
+- 8. A neighbour passes on a rumour that the corner sweet shop is closing (to Masterji, over the wall).: "Band? Unka shutter aaj bhi utha, delivery bhi aayi." | "बंद? उनका शटर आज भी उठा, डिलीवरी भी आई।" | "Closing? Their shutter went up today, delivery and all."
+- 9. Heavy rain floods the lane outside the house (to the whole house; the one Hinglish flag falls on phone, a noun).: "Neeche ka maal upar, mains off, Jija ji ko phone." | "नीचे का माल ऊपर, मेन्स ऑफ़, जीजा जी को फ़ोन।" | "Bottom shelf up high, mains off, someone ring Jija ji."
+- 10. Someone asks them how they are (you ask; check 3 flags गया, which agrees with कॉपर, so a native reader clears it).: "Copper phir chadh gaya. Aur kuch?" | "कॉपर फिर चढ़ गया। और कुछ?" | "Copper's gone up again. Anything else?"
+- 11. A child knocks a glass of water across the table (to the child, with Tinku there).: "Koi baat nahin. / Tinku, kapda. Main glass laati hoon. Tum biscuit lo." | "कोई बात नहीं। / टिंकू, कपड़ा। मैं गिलास लाती हूँ। तुम बिस्किट लो।" | "Never mind. / Tinku, cloth. I'll get a glass. You, a biscuit."
+- 12. A phone call brings good news (to the caller, then Tinku).: "Haan ji, boliye. / Achha? Tinku, mithai lao, Masterji ko bulao." | "हाँ जी, बोलिए। / अच्छा? टिंकू, मिठाई लाओ, मास्टरजी को बुलाओ।" | "Yes, tell me. / Really? Tinku, sweets, and call Masterji over."

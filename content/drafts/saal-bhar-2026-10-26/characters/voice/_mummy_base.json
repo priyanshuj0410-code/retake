@@ -1,0 +1,100 @@
+{
+ "name": "Mummy (मम्मी), 52",
+ "voice": {
+  "register": "Brisk, mid-fast and level: the pace of a shop counter on a Saturday, warm underneath, never cold, never loud. MEDIUM length, the middle of the cast: one bubble of five to ten words, made of one list of people and jobs (or goods) joined by commas and closed by one full stop ('Tum bill, Tinku stock, main shutter.'). A second thought is a second bubble, never a longer one. Her list is not Nani's closed one-to-three-word fragments, not Captain sahab's call and then a reason, not Mami's 'thing, status' items or readback, and not Papa's run of whole sentences. A list may carry one verb, and then it is often the English verb + kar/ho ('check karo'). HUMOUR: none on purpose. She is the straight face; the family laughs at her shop voice at home ('Haan ji, boliye' to her own children, 'Aur kuch?' at a goodbye) and she never hears the joke. FEELING is changed into shop news with no figure ('Copper phir mehenga.'); love stays a deed. CROSS: very still, the voice drops, and politeness rises. The one slow subject is her roof chillies: there the list stops and she says one whole, unhurried sentence.",
+  "mix": "A Hindi frame (the everyday Hindi of a small Hindi-speaking town) with English nouns from today's counter dropped in whole: shutter, stock, bill, counter, delivery, godown, customer, fuse, wire, switch, fan, bulb, copper, MCB, mains, extension, credit book. Hers alone in the cast is the English verb + kar/ho: 'check karo', 'count karo', 'lock karo', 'return karo', 'mains off karo', 'scan karke', 'delivery ho gayi'. No whole English clauses: Mama ji and Mami switch clause by clause. What her English carries: goods. Hindi mode keeps the trade nouns in Devanagari as Hindi speakers say them (शटर, स्टॉक, बिल, चेक करो). English mode keeps the comma list and the rising 'ji' on names (Tinku ji, Chhote ji), and renders 'Haan ji, boliye' as 'Yes, go ahead' and 'Aur kuch?' as 'Anything else?'. Her two marked figures are said in words in speech ('nau baje', 'nau bajkar das'), which collide with no other word (unlike 'saath'); in typing a figure is a digit.",
+  "tics": [
+   "Answers every phone call with the shop greeting, 'Haan ji, boliye.' | 'हाँ जी, बोलिए।' | 'Yes, go ahead.', to Nani and to you exactly as to a customer, and carries on without correcting herself. This is her first tell.",
+   "Speaks in one comma list of people and jobs, five to ten words, ticking the items off on the fingers of her left hand: 'Tum bill, Tinku stock, main shutter.' Comfort, a no and a goodbye all come out in this one shape.",
+   "Closes a talk the way she closes a sale: 'Aur kuch?' | 'और कुछ?' | 'Anything else?', after a compliment, at a goodbye, when asked how she is. At most one bubble in four, because Mami's 'Correct?' holds the cast's other closing question.",
+   "Changes a feeling into shop news with no figure: 'How are you, Mummy?' 'Copper phir mehenga.' The dodge is hers alone; Papa and Tinku drop theirs (C10).",
+   "The English verb + kar/ho, hers alone, used on home things as on stock: a too-sweet cup of tea gets 'ye cup return karo', a power cut at dinner gets 'MCB check karo'.",
+   "When cross, politeness rises instead of volume: 'ji' goes onto names that never carry it ('Tinku ji', 'Chhote ji'), तुम becomes आप, commands become -इए and -लीजिए, and her hands clasp at her waist.",
+   "Gives the hour in whole hours by her father's watch, which runs two minutes fast ('nau baje'). Minutes only in an emergency ('Nau bajkar das.'), which is how the family knows it is one.",
+   "On the roof, with the chillies, the list stops: one slow whole sentence with a verb ('Mirchi bach gayi.'). It is the only time she speaks slowly.",
+   "Counts heads with one raised left forefinger, exactly as Nani does, in silence: the count is never said aloud (a head-count in speech is Nani's one album line)."
+  ],
+  "catchphrases": [
+   "'Haan ji, boliye.' | 'हाँ जी, बोलिए।' | 'Yes, go ahead.' (every phone call, every customer, and you)",
+   "'Nau baje. Shutter up.' | 'नौ बजे। शटर ऊपर।' | 'Nine o'clock. Shutter up.' (her one catchphrase with a number: the shutter hour, which her target allows)",
+   "'Iska bill nahin.' | 'इसका बिल नहीं।' | 'There's no bill for this.' (her thank-you, hers alone)"
+  ],
+  "exclamation": "'Had hai!' | 'हद है!' | 'That's the limit!' For exasperation only: the water at the door, the lights failing in an electrician's own house, a delivery gone wrong. Secular: it means 'this is the limit', no god is in it, and it is never followed by any name. No one else in the cast uses it. She has no exclamation for joy: good news comes out as orders ('Tinku, mithai lao.').",
+  "sorry_thanks_love": "SORRY, said out loud as a debt she takes on: 'Ye mere hisaab mein.' | 'ये मेरे हिसाब में।' | 'Put that on my account.' It is the only line where she says हिसाब. THANKS, a thing off the shelf with no bill: 'Iska bill nahin.' | 'इसका बिल नहीं।' | 'There's no bill for this.' (hers alone; Masterji drops 'Paise nahin loonga'). When someone thanks her she says the same words and turns straight to the next job ('Tinku, agle ka bill banao.'). LOVE, never in words: the red 'paid' pen laid down for you in January and the spare shop key laid down in the album, each turned towards you, her hand coming back to her side. When love has to come out in speech, it is a packed list of goods ('Torch, charger, extension, sab bag mein. Aur kuch?') or a list of jobs that hands you the shop ('Baaki mahine, baaki phone, sab tumhare.').",
+  "uses": [
+   "shutter | शटर, and 'Shutter neeche.' | 'शटर नीचे।' | 'Shutter's down.' in place of 'I'm tired'",
+   "stock, maal | स्टॉक, माल | stock, goods",
+   "bill, bill book, galla | बिल, बिल बुक, गल्ला | bill, bill book, the cash drawer",
+   "counter, delivery, godown, customer | काउंटर, डिलीवरी, गोदाम, कस्टमर",
+   "fuse, wire, switch, fan, bulb, copper, MCB, mains, extension | फ़्यूज़, वायर, स्विच, फ़ैन, बल्ब, कॉपर, एमसीबी, मेन्स, एक्सटेंशन",
+   "light gayi, light aayi | लाइट गई, लाइट आई | the power's gone, the power's back (power cuts are her daily news)",
+   "credit book | क्रेडिट बुक | her regulars' plain blue book; in the flood week, the whole lane's",
+   "mirchi, tamatar, chhat, dabbe | मिर्ची, टमाटर, छत, डब्बे | chillies, tomatoes, the roof, the tins (her one interest with no number in it)",
+   "English verb + karo: check karo, count karo, lock karo, return karo, off karo | चेक करो, काउंट करो, लॉक करो, रिटर्न करो, ऑफ़ करो",
+   "'ye wala' | 'ये वाला' | 'this one' (the thing in her hand or in the photo)",
+   "'Aur kuch?' | 'और कुछ?' | 'Anything else?' (the counter's closer)",
+   "'Main hi hoon. Boliye.' | 'मैं ही हूँ। बोलिए।' | 'You're looking at her. Go ahead.' (to anyone who asks for the 'malik', one beat at most)",
+   "'Ek rupaya kam nahin.' | 'एक रुपया कम नहीं।' | 'Not one rupee short.' (her highest praise; 'ek' is idiom, not a count)",
+   "Shanivaar, nau baje | शनिवार, नौ बजे | Saturday, nine o'clock (the shutter hour)",
+   "'Udhaar? Kal.' | 'उधार? कल।' | 'Credit? Tomorrow.' (the old shop saying, to a stranger only, rare, said flat and never for a laugh, never in the flood week, when the credit book opens to the whole lane)"
+  ],
+  "never": [
+   "a price or a sum in speech: no rupee figures, no 'pachaas hazaar', no 'saath rupaye'; prices live on the bills, painted blank",
+   "minutes outside an emergency (Papa's), a score or 'not out' (Tinku's and Captain sahab's), an ordinal (nobody's), a head-count said aloud (Nani's, once)",
+   "'sorry' (Mausi's), 'maaf kijiye' and 'shukriya' (yours), 'thank you', 'dhanyavaad'",
+   "'chinta mat karo' | 'don't worry' (Mama ji's line; she distrusts it); 'help' or 'madad' about herself; 'thak gayi' | 'I'm tired'; a vague time ('lagbhag', 'thodi der mein', 'around ten')",
+   "words other people own: 'Lo.' and 'Theek.' as one-word lines, 'Galti hui', 'Mazboot' (Mausa ji); 'galat', 'Kamaal', 'Noted', 'Reached?' (Papa); 'Pehle ___' (yours); 'pakka', 'aur haan', 'Oho' (Mama ji); 'suno' as an opener, 'hai na?', 'bahut yaad', 'Haaye' (Mausi); 'haan?' as a tag, 'Gazab' (Tinku); 'Correct?', 'Tick', 'pending', 'done' as statuses, 'Ish', 'Bhaiya ji' (Mami); 'Dekhiye', 'Chalo', 'Uff' (Masterji); 'arre' as an exclamation, 'Next ball' (Captain sahab); 'Bas.', 'Chai piyo', 'Baap re' (Nani)",
+   "her old 'Theek hai, toh...' lead-in (too close to Mausa ji's 'Theek.')",
+   "'saath' in Hinglish (it reads as both 60 and 'with', the india review)",
+   "a joke on purpose, a tease for laughs, 'special price for you', haggling, or any line that makes her the greedy trader (realism notes, caricature traps)",
+   "a whole English clause ('Don't worry, I'll handle it' belongs to Mama ji)",
+   "any god-word or religious exclamation, any caste word, any brand (rule 3); English-mode mild oaths too (Gosh, Heavens, Good grief, Thank God)",
+   "any pet name or gendered word for you: beta | बेटा, bachcha | बच्चा, raja, gudiya, भैया, दीदी (rules 8, 66)",
+   "a word on anyone's character beyond counter habits, or anything about women or men in general (rule 22)",
+   "any doubt of a report of harassment or bullying, or of a dowry demand, or 'misunderstanding' | 'ग़लतफ़हमी' about one (rule 22)",
+   "a thumbs-up or any emoji (Mausa ji's and yours)"
+  ],
+  "address": [
+   "To you: तुम in commands (देखो, गिनो, भेजो, लॉक करो), in 'who should' asks (किसे रखें?, कौन करे?, never कौन करेगा?) and in lines where you are not the doer (बाक़ी फ़ोन, सब तुम्हारे।); आप and -इए only when she is cross (आप ही गिन लीजिए।). No address word for you at all: never beta or a pet name, never बेटा, भैया or दीदी. Her shop greeting reaches you on the phone too, and बोलिए marks no gender.",
+   "To Nani: 'Amma' | 'अम्मा', with आप ('Amma, aap baithiye.'), the word all three of Nani's children use.",
+   "To Papa: no address word; she starts with the item ('Bhindi itni mehngi?'), with तुम, equal respect. Of him, to you and Tinku: 'tumhare Papa'.",
+   "To Mama ji: 'Chhote' | 'छोटे', with तुम; 'Chhote ji' and आप when cross (and when he arrives late).",
+   "To Mausi: 'Didi' | 'दीदी', with आप.",
+   "To Mausa ji: 'Jija ji' | 'जीजा जी', with आप.",
+   "To Tinku: 'Tinku', with तुम; 'Tinku ji' and आप when cross, in speech and in typing.",
+   "To Mami: 'Bhabhi' | 'भाभी', with तुम; 'tumhari Mami' when she speaks of her to you.",
+   "To Masterji and Captain sahab: their titles, with आप; both call her 'Bhabhi ji'.",
+   "To customers, wholesalers and hired hands: 'ji' and आप, always ('Haan ji, boliye.', 'Le jaiye, ji.'), with no kin word, so 'Bhaiya ji' stays Mami's."
+  ]
+ },
+ "typing": {
+  "habits": [
+   "Device: a plain black Android phone in a plain black case, the screen painted blank with every word laid on as live text (rule 30). It lives in the side pocket of her kameez and comes out wedged between her left ear and shoulder.",
+   "Script: Roman Hinglish (Hindi in Latin letters), all lowercase. Commas only: no full stops, no question marks, no exclamation marks, even when she asks ('khud kab aa rahe'). Her spelling drifts (chabi, chaabi); her trade nouns never do.",
+   "HER TELL, which nobody else in the cast has: she acknowledges everything with the shop greeting typed, 'haan ji', to her own children as to a customer. Never 'ok', never 'done', never a thumbs-up. This replaces the old tell of ending every message on a figure, which broke the cast's number cap on screen.",
+   "Shape: the same comma list of people and jobs as her speech ('daal tum banao, shutter neeche, ghar aa rahi'), two to eight words, one message per thought, never a paragraph, never a greeting or a sign-off.",
+   "Figures: only when the fact itself is a figure and only in an emergency, so a digit from her is rare and means trouble (the flood night's '6 baje'). Prices stay on the photographed bills, painted blank.",
+   "When cross, her texts get polite too: 'ji' on the name and -इए on the verb ('tinku ji counter pe aaiye').",
+   "Photos: of bills and stock cartons, painted blank, each with the same caption, 'ye wala check karo' or 'ye wala'.",
+   "Voice notes when her hands are busy in the shop. They start with her shop greeting even though she is the one calling ('haan ji boliye, achha tum'), shown as live text.",
+   "Emoji: none, ever (the thumbs-up is Mausa ji's, and your own reply to her). No stickers, no good-morning pictures (those are Papa's). The one news she sends unasked is the power-cut times, retyped the moment she hears them, shown as a message card (no group chat appears in the game).",
+   "Speed: reads within a minute between nine in the morning and half past eight at night, and replies only when she has the answer. Nothing between the shutter coming down and the end of Nani's nine o'clock call, and never after nine, so a late message from her means trouble. The flood night is the one time all year.",
+   "She never texts Nani. Nani rings her at nine every night, and Mummy waits for it.",
+   "Types fast with her left thumb, phone in her left hand, because her right hand is holding the keys or the pen."
+  ]
+ },
+ "changed": [
+  "PRICES OUT OF SPEECH (C1, C11; matrix 2.15 gives prices in speech to nobody; the india review's stingy-trader warning). 'Bhindi 60 rupaye?' becomes 'Bhindi itni mehngi?'; 'Pachaas hazaar.' becomes 'Poora maal.'; 'Keel ke paanch rupaye.' becomes 'Keel ka bill alag.'. Her figures are now only the shutter hour and emergency minutes, and in the test set she says no figure at all.",
+  "RHYTHM (C2). From verbless two-to-seven-word fragments with the figure last, to one comma list of people and jobs of five to ten words, one bubble, closed by one full stop, so she sits in the medium band beside Mami but in a different shape (jobs and people, not 'thing, status' items or a readback). The 'figure last' rule is gone.",
+  "FEELING (C3, C10). The dodge keeps its shop words and loses its figure: 'Copper phir mehenga.'. When love must come out in speech it is a packed list of goods or a list of jobs that hands you the shop; the pen and the key, laid down, stay her real way of saying it (the matrix keeps deeds as love for Mummy, Papa and Mausa ji only).",
+  "A NEW COUNTER CLOSER, 'Aur kuch?' ('Anything else?'). It gives her a tell that is neither a number nor a trade noun, and it carries the target's 'humour none on purpose': her shop voice at home is the family's joke, never hers. Capped at one bubble in four because Mami's 'Correct?' is the cast's other closing question; it should be added to her target card so the blind reader can use it, and checked against Mama ji's 'aur haan' (his joins a run, hers closes a list).",
+  "SORRY AND THANKS SPLIT (C4, C5). Sorry is now spoken: 'Ye mere hisaab mein.' (put that on my account). Thanks stays 'Iska bill nahin.', hers alone now that Masterji drops 'Paise nahin loonga'. हिसाब is held to the sorry line only, because the comics review said 'Hisaab saaf' borrowed Nani's word and the india review warned the trading idiom adds up across the family.",
+  "HUMOUR NONE ON PURPOSE (C13). The tease 'Commission lo.' is cut; the calendar line is said dead straight; 'Udhaar? Kal.' leaves her catchphrases and stays only as a rare, flat shop saying to strangers, never in the flood week, when she opens the credit book to the whole lane (sample added).",
+  "TYPING (C1; the matrix's open typing point; the comics review's mismatch between habits and samples). The tell 'every message ends on a figure' is replaced by 'haan ji' as her acknowledgement; figures are typed only in an emergency; punctuation is commas only and every sample now matches; the cross tell ('tinku ji ... aaiye') carries into her texts.",
+  "WORDS OTHERS OWN, STRUCK (C6, C9, and matrix 2.15). 'arre' left her voice note ('arre tum' becomes 'achha tum'; Captain sahab owns 'arre'); 'Theek hai, toh...' is dropped (Mausa ji owns 'Theek.'); 'pakka', 'suno', 'Pehle', 'galti', 'galat' and 'saath' are on her never list; 'Ek, do, teen' head-counting leaves her uses (head-counts in speech are Nani's one album line), and her one-finger count stays a silent gesture.",
+  "TALKS TO (C15). Her samples and test lines now go mostly to customers, Tinku, Masterji, Mama ji, Mausi, Mausa ji and Papa, not only to you, as the target says (customers first, then Tinku).",
+  "DRAFT LINES. 1.05 'And the rest? Everyone calls you anyway.' is proposed as 'Baaki mahine, baaki phone, sab tumhare.', in her list shape, and the album's owner option becomes 'Shanivaar ka shutter, chaabi, galla, sab tumhare.', closing January on the same three words with no figure. Kept as they were: 'Haan ji, boliye.', 'Nau baje. Shutter up.', 'Iska bill nahin.', 'Main hi hoon. Boliye.', 'Ek rupaya kam nahin.', 'Nau bajkar das. Amma ka phone nahin aaya.', 'Chhote ji, aap hi chala lijiye.', 'Mirchi bach gayi.' (3.11), and the address table.",
+  "UNCHANGED, ON PURPOSE. Her essence (she runs the family like the shop), want (the shutter at nine, owing no one), fear (the shutter staying down, owing anyone), contradiction (swore never to sit behind a counter like her mother, runs hers exactly like her), the cost of her pride on the first flood night, her exclamation 'Had hai!', her rising politeness when cross, and her English verb + kar/ho mix.",
+  "FOR THE READERS (rule 65). A Hindi-first reader checks 'Ye mere hisaab mein.' reads as taking the fault and not as trade talk, that 'Aur kuch?' at a goodbye lands as her and not as coldness, and clears every rule 66 flag noted on the samples and test lines (महँगा, नीचे, तुम्हारे, आया, गई, भरा था, गया, जी, भी, मेरी: each agrees with a thing or is a particle or adverb, never with you)."
+ ]
+}

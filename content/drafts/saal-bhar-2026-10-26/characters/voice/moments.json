@@ -1,0 +1,722 @@
+[
+ {
+  "moment": "The lights go out in the middle of dinner.",
+  "lines": {
+   "Nani": {
+    "en": "Someone fetch a torch. The rest of you, eat.",
+    "hinglish": "Koi torch lao. Baaki sab khao.",
+    "hi": "कोई टॉर्च लाओ। बाक़ी सब खाओ।"
+   },
+   "Mummy": {
+    "en": "This is too much! / Tinku, get the torch, check the MCB.",
+    "hinglish": "Had hai! / Tinku, torch nikalo, MCB check karo.",
+    "hi": "हद है! / टिंकू, टॉर्च निकालो, एमसीबी चेक करो।"
+   },
+   "Papa": {
+    "en": "Remarkable. Even the power cut is on time tonight.",
+    "hinglish": "Kamaal hai. Aaj bijli bhi time par gayi.",
+    "hi": "कमाल है। आज बिजली भी टाइम पर गई।"
+   },
+   "Mama ji": {
+    "en": "Oho! Don't worry, fetch Bade Jija ji, oh, and a torch for Amma.",
+    "hinglish": "Oho! Don't worry, Bade Jija ji ko bulao, aur haan, Amma ko torch.",
+    "hi": "ओहो! चिंता नहीं, बड़े जीजा जी को बुलाओ, और हाँ, अम्मा को टॉर्च।"
+   },
+   "Tinku": {
+    "en": "Brilliant! Bad light stops play.",
+    "hinglish": "Gazab! Batti gul, khel band.",
+    "hi": "ग़ज़ब! बत्ती गुल, खेल बंद।"
+   },
+   "Mausi": {
+    "en": "Haay! Dark? Never mind! You've still got my voice!",
+    "hinglish": "Haay! Andhera? Koi baat nahin! Meri awaaz toh hai!",
+    "hi": "हाय! अँधेरा? कोई बात नहीं! मेरी आवाज़ तो है!"
+   },
+   "Mausa ji": {
+    "en": "Eh? Fuse has blown. / Leave the switches.",
+    "hinglish": "Hain? Fuse ud gaya. / Switch mat chhoona.",
+    "hi": "हैं? फ़्यूज़ उड़ गया। / स्विच मत छूना।"
+   },
+   "Masterji": {
+    "en": "Uff. Power's gone. Then again, the clouds sulked all day.",
+    "hinglish": "Uff. Bijli gayi. Waise baadal din bhar munh phulaaye the.",
+    "hi": "उफ़्फ़। बिजली गई। वैसे बादल दिन भर मुँह फुलाए थे।"
+   },
+   "Captain sahab": {
+    "en": "Hold on. Lineman sahab, you're in.",
+    "hinglish": "Rukiye. Lineman sahab, aapki batting.",
+    "hi": "रुकिए। लाइनमैन साहब, आपकी बैटिंग।"
+   },
+   "Mami": {
+    "en": "Ish. The power's gone.",
+    "hinglish": "Ish. Light chali gayi.",
+    "hi": "इश्श। बत्ती चली गई।"
+   },
+   "You": {
+    "en": "Great. Stay put, Nani. Shall I get the torch?",
+    "hinglish": "Badhiya. Nani, aap baithiye. Torch main laaun?",
+    "hi": "बढ़िया। नानी, आप बैठिए। टॉर्च मैं लाऊँ?"
+   }
+  }
+ },
+ {
+  "moment": "Someone everyone was waiting for arrives two hours late.",
+  "lines": {
+   "Nani": {
+    "en": "Enough. Your plate's gone cold. Sit.",
+    "hinglish": "Chhote. Bas. Thali thandi ho gayi. Baitho.",
+    "hi": "छोटे। बस। थाली ठंडी हो गई। बैठो।"
+   },
+   "Mummy": {
+    "en": "Do come in, Chhote ji. / Amma waited up for you, then fell asleep.",
+    "hinglish": "Aaiye, Chhote ji. / Amma aapka raasta dekhte-dekhte so gayin.",
+    "hi": "आइए, छोटे जी। / अम्मा आपका रास्ता देखते-देखते सो गईं।"
+   },
+   "Papa": {
+    "en": "You are two hours late. Dinner is cold. Cold.",
+    "hinglish": "Tum do ghante der se aaye. Khana thanda hai. Thanda.",
+    "hi": "तुम दो घंटे देर से आए। खाना ठंडा है। ठंडा।"
+   },
+   "Mama ji": {
+    "en": "You're here, bhai? All well at home? Right. Tent. Now.",
+    "hinglish": "Aa gaye, bhai? Ghar mein sab theek? Achha. Tent. Abhi.",
+    "hi": "आ गए, भाई? घर में सब ठीक? अच्छा। टेंट। अभी।"
+   },
+   "Tinku": {
+    "en": "Seriously, Mama ji? \"On my way,\" three times.",
+    "hinglish": "Seriously, Mama ji? \"Raste mein hoon\", 3 baar.",
+    "hi": "सच में, मामा जी? \"रास्ते में हूँ\", तीन बार।"
+   },
+   "Mausi": {
+    "en": "Munna, Munna! Now you come? Late mark! Hold your ears!",
+    "hinglish": "Munna, Munna! Ab aaye ho? Late mark! Kaan pakdo!",
+    "hi": "मुन्ना, मुन्ना! अब आए हो? लेट मार्क! कान पकड़ो!"
+   },
+   "Mausa ji": {
+    "en": "Wash your hands. Warming it up.",
+    "hinglish": "Haath dho lo. Garam karta hoon.",
+    "hi": "हाथ धो लो। गरम करता हूँ।"
+   },
+   "Masterji": {
+    "en": "Look, Captain, the train'll be late. Everything's late in the rains.",
+    "hinglish": "Dekhiye, Captain, gaadi late hogi. Barsaat mein sab late.",
+    "hi": "देखिए, कप्तान, गाड़ी लेट होगी। बरसात में सब लेट।"
+   },
+   "Captain sahab": {
+    "en": "Now? That's how the catch went too.",
+    "hinglish": "Ab aaye? Catch bhi aise hi chhoota tha.",
+    "hi": "अब आए? कैच भी ऐसे ही छूटा था।"
+   },
+   "Mami": {
+    "en": "It's written here, Bhaiya ji: lunch. It's teatime. Thank you.",
+    "hinglish": "Bhaiya ji, yahan likha hai: lunch. Ab chai. Thank you.",
+    "hi": "भैया जी, यहाँ लिखा है: लंच। अब चाय। थैंक यू।"
+   },
+   "You": {
+    "en": "Mama ji. Go and see Nani first.",
+    "hinglish": "Mama ji. Pehle Nani se miliye.",
+    "hi": "मामा जी। पहले नानी से मिलिए।"
+   }
+  }
+ },
+ {
+  "moment": "A cousin phones to say they have got their first job.",
+  "lines": {
+   "Nani": {
+    "en": "Well done. The sweets are on you.",
+    "hinglish": "Khush raho. Mithai tumhari taraf se.",
+    "hi": "ख़ुश रहो। मिठाई तुम्हारी तरफ़ से।"
+   },
+   "Mummy": {
+    "en": "Yes, tell me. / Oh, it's you! A job? Many congratulations! / Send the letter, it's going on my counter.",
+    "hinglish": "Haan ji, boliye. / Achha, tum! Naukri? Badhai ho! / Letter bhejo, counter pe lagaungi.",
+    "hi": "हाँ जी, बोलिए। / अच्छा, तुम! नौकरी? बधाई हो! / लेटर भेजो, काउंटर पर लगाऊँगी।"
+   },
+   "Papa": {
+    "en": "That is very good news. / Which day do you report? I'll book the train.",
+    "hinglish": "Ye toh bahut achhi baat hai. / Kis din pahunchna hai? Ticket main book kar deta hoon.",
+    "hi": "ये तो बहुत अच्छी बात है। / किस दिन पहुँचना है? टिकट मैं बुक कर देता हूँ।"
+   },
+   "Mama ji": {
+    "en": "A job? Next a promotion, then higher, then the top!",
+    "hinglish": "Naukri lagi? Ab promotion, phir aur upar, phir sabse upar!",
+    "hi": "नौकरी लगी? अब प्रमोशन, फिर और ऊपर, फिर सबसे ऊपर!"
+   },
+   "Tinku": {
+    "en": "Brilliant! When's the party?",
+    "hinglish": "Gazab! Party kab hai?",
+    "hi": "ग़ज़ब! पार्टी कब है?"
+   },
+   "Mausi": {
+    "en": "Listen, listen, listen! A job! Didn't I tell you?",
+    "hinglish": "Suno, suno, suno! Naukri lag gayi! Maine kaha tha na?",
+    "hi": "सुनो, सुनो, सुनो! नौकरी लग गई! मैंने कहा था न?"
+   },
+   "Mausa ji": {
+    "en": "Good. Here, talk to your Mausi.",
+    "hinglish": "Achha hai. Lo, Mausi se baat karo.",
+    "hi": "अच्छा है। लो, मौसी से बात करो।"
+   },
+   "Masterji": {
+    "en": "Good to hear. That calls for a new shirt.",
+    "hinglish": "Sunkar achha laga. Ab toh nayi kameez banti hai.",
+    "hi": "सुनकर अच्छा लगा। अब तो नई कमीज़ बनती है।"
+   },
+   "Captain sahab": {
+    "en": "Well played. Now stay at the crease.",
+    "hinglish": "Well played. Ab tik ke khelna.",
+    "hi": "बढ़िया पारी। अब टिक के खेलना।"
+   },
+   "Mami": {
+    "en": "Congratulations. When's the joining? Monday? Very good.",
+    "hinglish": "Congratulations. Joining kab se? Somvaar? Bahut achha.",
+    "hi": "बधाई हो। जॉइनिंग कब से? सोमवार? बहुत अच्छा।"
+   },
+   "You": {
+    "en": "Great, congrats. Call Nani yourself, first thing.",
+    "hinglish": "Badhiya, congrats. Pehle Nani ko khud call karo.",
+    "hi": "बहुत बढ़िया। पहले नानी को ख़ुद फ़ोन करो।"
+   }
+  }
+ },
+ {
+  "moment": "The tea someone has just made has far too much sugar in it.",
+  "lines": {
+   "Nani": {
+    "en": "Sugar in the tea? Or tea in the sugar?",
+    "hinglish": "Badi. Chai mein cheeni? Ya cheeni mein chai?",
+    "hi": "बड़ी। चाय में चीनी? या चीनी में चाय?"
+   },
+   "Mummy": {
+    "en": "Tinku, less sugar, make it again.",
+    "hinglish": "Tinku, cheeni kam, dobara banao.",
+    "hi": "टिंकू, चीनी कम, दोबारा बनाओ।"
+   },
+   "Papa": {
+    "en": "Attention, please. This is not tea. It is sherbet.",
+    "hinglish": "Kripya dhyan dein. Ye chai nahin, sharbat hai.",
+    "hi": "कृपया ध्यान दें। ये चाय नहीं, शरबत है।"
+   },
+   "Mama ji": {
+    "en": "Jija ji, it's practically dessert! A drop more. Don't tell Boss.",
+    "hinglish": "Jija ji, ekdum mithai! Thodi aur dijiye. Boss ko mat bataiye.",
+    "hi": "जीजा जी, एकदम मिठाई! थोड़ी और दीजिए। बॉस को मत बताइए।"
+   },
+   "Tinku": {
+    "en": "Four spoons, Mausi? We'll all get diabetes, haan?",
+    "hinglish": "Mausi, 4 chammach? Sabko sugar ho jaayegi, haan?",
+    "hi": "मौसी, चार चम्मच? सबको शुगर हो जाएगी, हाँ?"
+   },
+   "Mausi": {
+    "en": "Aji, tea or halwa? Halwa! I'll have mine without sugar.",
+    "hinglish": "Aji, ye chai hai ya halwa? Halwa! Mujhe phiki chahiye.",
+    "hi": "अजी, ये चाय है या हलवा? हलवा! मुझे फीकी चाहिए।"
+   },
+   "Mausa ji": {
+    "en": "Too much sugar, Tinku. It'll do.",
+    "hinglish": "Cheeni zyada hai, Tinku. Chalega.",
+    "hi": "चीनी ज़्यादा है, टिंकू। चलेगा।"
+   },
+   "Masterji": {
+    "en": "A finger too sweet, Bhai sahab. Cloth I could have trimmed.",
+    "hinglish": "Bhai sahab, cheeni ungli bhar zyada. Kapda hota, kaat deta.",
+    "hi": "भाई साहब, चीनी उँगली भर ज़्यादा। कपड़ा होता, काट देता।"
+   },
+   "Captain sahab": {
+    "en": "Too sweet, Master. Like the depot canteen's.",
+    "hinglish": "Zyada meethi hai, Master. Bilkul depot canteen wali.",
+    "hi": "ज़्यादा मीठी है, मास्टर। बिल्कुल डिपो कैंटीन वाली।"
+   },
+   "Mami": {
+    "en": "Sugar, extra. Like your guest list. Not on mine.",
+    "hinglish": "Cheeni, extra. Tumhari guest list jaisi. Meri list mein nahin.",
+    "hi": "चीनी, एक्स्ट्रा। तुम्हारी गेस्ट लिस्ट जैसी। मेरी लिस्ट में नहीं।"
+   },
+   "You": {
+    "en": "Is that the whole sugar stock, Mummy?",
+    "hinglish": "Mummy, cheeni ka stock khatam?",
+    "hi": "मम्मी, चीनी का स्टॉक ख़त्म?"
+   }
+  }
+ },
+ {
+  "moment": "In front of the family, someone shows that they had a fact wrong.",
+  "lines": {
+   "Nani": {
+    "en": "The scorer's right. I was wrong. Drink your tea.",
+    "hinglish": "Scorer sahi. Main galat. Chai piyo.",
+    "hi": "स्कोरर सही। मैं ग़लत। चाय पियो।"
+   },
+   "Mummy": {
+    "en": "Oh? My mistake. / Right, I'll remember that.",
+    "hinglish": "Achha? Meri galti. / Chalo, ab yaad rahega.",
+    "hi": "अच्छा? मेरी ग़लती। / चलो, अब याद रहेगा।"
+   },
+   "Papa": {
+    "en": "I said 9:40. I was wrong. The board is right.",
+    "hinglish": "Maine 9:40 kaha tha. Galat nikla. Board sahi hai.",
+    "hi": "मैंने 9:40 कहा था। ग़लत निकला। बोर्ड सही है।"
+   },
+   "Mama ji": {
+    "en": "Sorry, Didi, I had it wrong. All my fault!",
+    "hinglish": "Sorry, Didi, main hi galat tha. Poora kasoor mera!",
+    "hi": "सॉरी, दीदी, मैं ही ग़लत था। पूरा क़सूर मेरा!"
+   },
+   "Tinku": {
+    "en": "Sorry, my mistake. Fifteen, not fourteen.",
+    "hinglish": "Sorry, meri galti. 14 nahin, 15.",
+    "hi": "सॉरी, मेरी ग़लती। चौदह नहीं, पंद्रह।"
+   },
+   "Mausi": {
+    "en": "Who got it wrong? Me! Sorry, sorry! Eat first!",
+    "hinglish": "Galat kaun nikla? Main! Sorry, sorry! Pehle khao!",
+    "hi": "ग़लत कौन निकला? मैं! सॉरी, सॉरी! पहले खाओ!"
+   },
+   "Mausa ji": {
+    "en": "My mistake. Wired it backwards.",
+    "hinglish": "Galti ho gayi. Taar ulta hai.",
+    "hi": "ग़लती हो गई। तार उल्टा है।"
+   },
+   "Masterji": {
+    "en": "You're right, Bhabhi ji. My tape's old, and so am I.",
+    "hinglish": "Aap sahi hain, Bhabhi ji. Feeta purana hai, main bhi.",
+    "hi": "आप सही हैं, भाभी जी। फ़ीता पुराना है, मैं भी।"
+   },
+   "Captain sahab": {
+    "en": "I slipped up, Bhai sahab. The clock is slow.",
+    "hinglish": "Mujhse chook ho gayi, Bhai sahab. Ghadi dheemi hai.",
+    "hi": "मुझसे चूक हो गई, भाई साहब। घड़ी धीमी है।"
+   },
+   "Mami": {
+    "en": "I missed that, Didi. Please write Saturday.",
+    "hinglish": "Mujhse chhoot gaya, Didi. Shanivaar likhiye.",
+    "hi": "मुझसे छूट गया, दीदी। शनिवार लिखिए।"
+   },
+   "You": {
+    "en": "Sorry, Nani. You were right.",
+    "hinglish": "Nani, sorry. Aap hi sahi thin.",
+    "hi": "नानी, सॉरी। आप ही सही थीं।"
+   }
+  }
+ },
+ {
+  "moment": "Someone they love is leaving, and they say goodbye on a railway platform.",
+  "lines": {
+   "Nani": {
+    "en": "Stay happy. Phone the minute you arrive.",
+    "hinglish": "Chhote. Khush raho. Pahunchte hi phone.",
+    "hi": "छोटे। ख़ुश रहो। पहुँचते ही फ़ोन।"
+   },
+   "Mummy": {
+    "en": "Torch, charger, extension lead, it's all in the bag. / Ring when you get there. Anything else?",
+    "hinglish": "Torch, charger, extension, sab bag mein hai. / Pahunchkar phone karna. Aur kuch?",
+    "hi": "टॉर्च, चार्जर, एक्सटेंशन, सब बैग में है। / पहुँचकर फ़ोन करना। और कुछ?"
+   },
+   "Papa": {
+    "en": "The 7:25 is moving. I'm here till the last coach goes.",
+    "hinglish": "7:25 wali chal padi. Aakhri dibbe tak main yahin hoon.",
+    "hi": "7:25 वाली चल पड़ी। आख़िरी डिब्बे तक मैं यहीं हूँ।"
+   },
+   "Mama ji": {
+    "en": "Didi, I'll miss you. Food packed? Medicines? Sure?",
+    "hinglish": "Didi, I'll miss you. Khaana rakha? Dawai? Pakka?",
+    "hi": "दीदी, आपके बिना मन नहीं लगेगा। खाना रखा? दवाई? पक्का?"
+   },
+   "Tinku": {
+    "en": "Come back soon, yaar. I'll be counting the days.",
+    "hinglish": "Jaldi aana, yaar. Main din ginungi.",
+    "hi": "जल्दी आना, यार। मैं दिन गिनूँगी।"
+   },
+   "Mausi": {
+    "en": "Missing you already! Packed the parathas, right?",
+    "hinglish": "Abhi se yaad aa rahi hai! Parathe rakhe, hai na?",
+    "hi": "अभी से याद आ रही है! पराठे रखे, है न?"
+   },
+   "Mausa ji": {
+    "en": "Here. Half. For the journey.",
+    "hinglish": "Lo. Aadha. Raste ke liye.",
+    "hi": "लो। आधा। रास्ते के लिए।"
+   },
+   "Masterji": {
+    "en": "Go on. Wherever the cloth goes, the stitching's from here.",
+    "hinglish": "Jao. Kapda kahin bhi jaaye, silai yahin ki rehti hai.",
+    "hi": "जाओ। कपड़ा कहीं भी जाए, सिलाई यहीं की रहती है।"
+   },
+   "Captain sahab": {
+    "en": "Front foot. Be back for the cup.",
+    "hinglish": "Front foot. Cup pe zaroor aao.",
+    "hi": "फ़्रंट फ़ुट। कप पे ज़रूर आओ।"
+   },
+   "Mami": {
+    "en": "Ticket, tiffin, done. When will you come next?",
+    "hinglish": "Ticket, tiffin, done. Agli baar kab?",
+    "hi": "टिकट, टिफ़िन, सब रख दिया। अगली बार कब?"
+   },
+   "You": {
+    "en": "Send 'Reached' when you get in, Papa.",
+    "hinglish": "Papa, pahunchkar 'Reached' bhejiye.",
+    "hi": "पापा, पहुँचकर 'Reached' भेजिए।"
+   }
+  }
+ },
+ {
+  "moment": "Someone thanks them for something they did.",
+  "lines": {
+   "Nani": {
+    "en": "None of your thank-yous. Now this one too.",
+    "hinglish": "Rehne do ye thank you-vank you. Ab ye bhi.",
+    "hi": "रहने दो ये थैंक यू-वैंक यू। अब ये भी।"
+   },
+   "Mummy": {
+    "en": "Oh, it's nothing, Jija ji. / Tinku, next customer's bill.",
+    "hinglish": "Arre Jija ji, isme kya. / Tinku, agle ka bill banao.",
+    "hi": "अरे जीजा जी, इसमें क्या। / टिंकू, अगले का बिल बनाओ।"
+   },
+   "Papa": {
+    "en": "It's nothing, I do it every day. / Now for the return tickets.",
+    "hinglish": "Roz ka kaam hai. / Ab wapsi ka ticket dekhta hoon.",
+    "hi": "रोज़ का काम है। / अब वापसी का टिकट देखता हूँ।"
+   },
+   "Mama ji": {
+    "en": "Oho, no no! Credit's Jija ji's, and Boss's, everyone's!",
+    "hinglish": "Oho, no no! Credit Jija ji ka, Boss ka, sabka!",
+    "hi": "ओहो, ना ना! क्रेडिट जीजा जी का, बॉस का, सबका!"
+   },
+   "Tinku": {
+    "en": "You taught me all of it, Captain sahab. / Only the mistakes are mine.",
+    "hinglish": "Sab aapka sikhaya hai, Captain sahab. / Galtiyaan bas meri.",
+    "hi": "सब आपका सिखाया है, कप्तान साहब। / ग़लतियाँ बस मेरी।"
+   },
+   "Mausi": {
+    "en": "Really? Say it louder! Let Amma hear too!",
+    "hinglish": "Achha? Zor se kaho! Amma bhi sunein!",
+    "hi": "अच्छा? ज़ोर से कहो! अम्मा भी सुनें!"
+   },
+   "Mausa ji": {
+    "en": "Hmm.",
+    "hinglish": "Hmm.",
+    "hi": "हम्म।"
+   },
+   "Masterji": {
+    "en": "Only an edge, Nani ji. Think nothing of it.",
+    "hinglish": "Nani ji, kinari hi toh thi. Isme kaunsi badi baat hai.",
+    "hi": "नानी जी, किनारी ही तो थी। इसमें कौन सी बड़ी बात है।"
+   },
+   "Captain sahab": {
+    "en": "What for, Scorer? The shade's for the book.",
+    "hinglish": "Kis baat ka, Scorer? Chhaon kitaab ke liye hai.",
+    "hi": "किस बात का, स्कोरर? छाँव किताब के लिए है।"
+   },
+   "Mami": {
+    "en": "No thank-yous at home.",
+    "hinglish": "Ghar mein thank you nahin chalta.",
+    "hi": "घर में थैंक यू नहीं चलता।"
+   },
+   "You": {
+    "en": "Not me, Mami. Thank Mausa ji first.",
+    "hinglish": "Mami, mujhe nahin. Pehle Mausa ji ko boliye.",
+    "hi": "मामी, मुझे नहीं। पहले मौसा जी को बोलिए।"
+   }
+  }
+ },
+ {
+  "moment": "A neighbour passes on a rumour that the corner sweet shop is closing.",
+  "lines": {
+   "Nani": {
+    "en": "A mountain out of a molehill. Weigh your words.",
+    "hinglish": "Raai ka pahaad. Tol-mol ke bolo.",
+    "hi": "राई का पहाड़। तोल-मोल के बोलो।"
+   },
+   "Mummy": {
+    "en": "Closing? Their shutter went up today, delivery and all.",
+    "hinglish": "Band? Unka shutter aaj bhi utha, delivery bhi aayi.",
+    "hi": "बंद? उनका शटर आज भी उठा, डिलीवरी भी आई।"
+   },
+   "Papa": {
+    "en": "Really? When does it close, Captain sahab? / We'll go that way on tomorrow's walk.",
+    "hinglish": "Achha? Kab se band ho rahi hai, Captain sahab? / Kal subah walk mein udhar se chalenge.",
+    "hi": "अच्छा? कब से बंद हो रही है, कप्तान साहब? / कल सुबह की सैर में उधर से चलेंगे।"
+   },
+   "Mama ji": {
+    "en": "Oho. Closing? Is the sweet-shop man all right? Sure?",
+    "hinglish": "Oho. Band? Mithai wale bhai theek toh hain? Pakka?",
+    "hi": "ओहो। बंद? मिठाई वाले भाई ठीक तो हैं? पक्का?"
+   },
+   "Tinku": {
+    "en": "Mummy, that shop's \"closed\" three times this year.",
+    "hinglish": "Mummy, wo dukaan is saal 3 baar \"band\" ho chuki hai.",
+    "hi": "मम्मी, वो दुकान इस साल तीन बार \"बंद\" हो चुकी है।"
+   },
+   "Mausi": {
+    "en": "No, no, no! Closing? Then what about my class's prizes?",
+    "hinglish": "Na, na, na! Band? Toh meri class ka inaam?",
+    "hi": "ना, ना, ना! बंद? तो मेरी क्लास का इनाम?"
+   },
+   "Mausa ji": {
+    "en": "It was only just rewired.",
+    "hinglish": "Wiring abhi nayi lagi thi.",
+    "hi": "वायरिंग अभी नई लगी थी।"
+   },
+   "Masterji": {
+    "en": "Just talk, Captain. Why is it never the ready-made shop?",
+    "hinglish": "Afwaah hai, Captain. Ready-made wale ki afwaah kyon nahin udti?",
+    "hi": "अफ़वाह है, कप्तान। रेडीमेड वाले की अफ़वाह क्यों नहीं उड़ती?"
+   },
+   "Captain sahab": {
+    "en": "Not out, Bhabhi ji. Their stove was lit at dawn.",
+    "hinglish": "Not out, Bhabhi ji. Subah bhatti jal rahi thi.",
+    "hi": "नॉट आउट, भाभी जी। सुबह भट्टी जल रही थी।"
+   },
+   "Mami": {
+    "en": "Is it? Status not known. Any notice on the shop?",
+    "hinglish": "Achha? Status not known. Dukaan pe koi notice hai?",
+    "hi": "अच्छा? अभी पता नहीं। दुकान पर कोई नोटिस लगा है?"
+   },
+   "You": {
+    "en": "Get the jalebis today, Tinku. Just in case.",
+    "hinglish": "Tinku, aaj hi jalebi le aao. Kya pata.",
+    "hi": "टिंकू, आज ही जलेबी ले आओ। क्या पता।"
+   }
+  }
+ },
+ {
+  "moment": "Heavy rain floods the lane outside the house.",
+  "lines": {
+   "Nani": {
+    "en": "Sacks up. Shoes up. Children inside.",
+    "hinglish": "Bori upar. Chappal upar. Bachche andar.",
+    "hi": "बोरी ऊपर। चप्पल ऊपर। बच्चे अंदर।"
+   },
+   "Mummy": {
+    "en": "Bottom shelf up high, mains off, someone ring Jija ji.",
+    "hinglish": "Neeche ka maal upar, mains off, Jija ji ko phone.",
+    "hi": "नीचे का माल ऊपर, मेन्स ऑफ़, जीजा जी को फ़ोन।"
+   },
+   "Papa": {
+    "en": "The tracks will be under water too. I'll check the 8:15.",
+    "hinglish": "Patri par bhi paani hoga. 8:15 wali gaadi dekhta hoon.",
+    "hi": "पटरी पर भी पानी होगा। 8:15 वाली गाड़ी देखता हूँ।"
+   },
+   "Mama ji": {
+    "en": "Is Amma indoors? Mummy's shop all right? Pump's on its way.",
+    "hinglish": "Amma andar hain? Mummy ki dukaan theek? Pump bhej raha hoon, abhi.",
+    "hi": "अम्मा अंदर हैं? मम्मी की दुकान ठीक? पंप भेज रहा हूँ, अभी।"
+   },
+   "Tinku": {
+    "en": "It's knee-deep, yaar! Who's checking on Masterji's cloth?",
+    "hinglish": "Yaar, paani ghutnon tak! Masterji ka kapda kaun dekhe?",
+    "hi": "यार, पानी घुटनों तक! मास्टरजी का कपड़ा कौन देखे?"
+   },
+   "Mausi": {
+    "en": "Lane's a river? Haay! Pickles up! Come on, come on!",
+    "hinglish": "Gali mein nadi? Haay! Achaar ke martbaan upar! Chalo, chalo!",
+    "hi": "गली में नदी? हाय! अचार के मर्तबान ऊपर! चलो, चलो!"
+   },
+   "Mausa ji": {
+    "en": "Power's off. Leave the board.",
+    "hinglish": "Bijli band. Board mat chhoona.",
+    "hi": "बिजली बंद। बोर्ड मत छूना।"
+   },
+   "Masterji": {
+    "en": "Uff. Drain's overflowing again. The cloth has to go up.",
+    "hinglish": "Uff. Naali phir bhar gayi. Thaan upar chadhaane honge.",
+    "hi": "उफ़्फ़। नाली फिर भर गई। थान ऊपर चढ़ाने होंगे।"
+   },
+   "Captain sahab": {
+    "en": "Off the drain. I've got the depot tarpaulin.",
+    "hinglish": "Naali se door. Depot ka tirpal hai mere paas.",
+    "hi": "नाली से दूर। डिपो का तिरपाल है मेरे पास।"
+   },
+   "Mami": {
+    "en": "Didi, bills in plastic. Photos, definitely. I'll file the claim.",
+    "hinglish": "Didi, bill plastic mein, photo zaroor. Claim main file karti hoon.",
+    "hi": "दीदी, बिल प्लास्टिक में, फ़ोटो ज़रूर। क्लेम मैं भरती हूँ।"
+   },
+   "You": {
+    "en": "The key, Mummy. Shall I pull the shutter down?",
+    "hinglish": "Mummy, chaabi dijiye. Shutter down kar doon?",
+    "hi": "मम्मी, चाबी दीजिए। शटर मैं गिरा दूँ?"
+   }
+  }
+ },
+ {
+  "moment": "Someone asks them how they are.",
+  "lines": {
+   "Nani": {
+    "en": "Enough about me. Tell me your news.",
+    "hinglish": "Bas. Apni sunao.",
+    "hi": "बस। अपनी सुनाओ।"
+   },
+   "Mummy": {
+    "en": "Copper's gone up again. Anything else?",
+    "hinglish": "Copper phir chadh gaya. Aur kuch?",
+    "hi": "कॉपर फिर चढ़ गया। और कुछ?"
+   },
+   "Papa": {
+    "en": "All trains are running on time. So am I.",
+    "hinglish": "Sab gaadiyan time par hain. Matlab main bhi.",
+    "hi": "सब गाड़ियाँ टाइम पर हैं। मतलब मैं भी।"
+   },
+   "Mama ji": {
+    "en": "Fighting fit! Has Amma had her medicines? How's your Mummy? Sure?",
+    "hinglish": "Full fit! Amma ne dawai li? Tumhari Mummy kaisi hain? Pakka?",
+    "hi": "फ़ुल फ़िट! अम्मा ने दवाई ली? तुम्हारी मम्मी कैसी हैं? पक्का?"
+   },
+   "Tinku": {
+    "en": "Me? Papa's corrected me four times today. A record.",
+    "hinglish": "Main? Papa aaj 4 baar tok chuke. Record.",
+    "hi": "मैं? पापा आज चार बार टोक चुके। रिकॉर्ड।"
+   },
+   "Mausi": {
+    "en": "How am I? I'll tell you! Knee aches, heart doesn't!",
+    "hinglish": "Kaisi hoon? Batati hoon! Ghutna dukhta hai, dil nahin!",
+    "hi": "कैसी हूँ? बताती हूँ! घुटना दुखता है, दिल नहीं!"
+   },
+   "Mausa ji": {
+    "en": "Fine. Go on, off to sleep.",
+    "hinglish": "Theek. Chalo, ab so jao.",
+    "hi": "ठीक। चलो, अब सो जाओ।"
+   },
+   "Masterji": {
+    "en": "Like my waistcoat. New lining, same old cloth.",
+    "hinglish": "Apni sadri jaisa. Astar naya, kapda wahi purana.",
+    "hi": "अपनी सदरी जैसा। अस्तर नया, कपड़ा वही पुराना।"
+   },
+   "Captain sahab": {
+    "en": "I'm fine. Just the knee, in for servicing.",
+    "hinglish": "Theek hoon. Bas ghutna servicing mein.",
+    "hi": "ठीक हूँ। बस घुटना सर्विसिंग में।"
+   },
+   "Mami": {
+    "en": "Me? All clear. Did your daughter's result come out, Bhaiya ji?",
+    "hinglish": "Main? Sab clear hai. Aapki beti ka result aaya, Bhaiya ji?",
+    "hi": "मैं? सब ठीक है। आपकी बेटी का रिज़ल्ट आया, भैया जी?"
+   },
+   "You": {
+    "en": "All set, Mausi.",
+    "hinglish": "Mausi, sab set.",
+    "hi": "मौसी, सब सेट।"
+   }
+  }
+ },
+ {
+  "moment": "A child knocks a glass of water across the table.",
+  "lines": {
+   "Nani": {
+    "en": "It's only water. Not ghee. Someone fetch a cloth.",
+    "hinglish": "Paani hi toh hai. Ghee nahin. Arre, koi kapda lao.",
+    "hi": "पानी ही तो है। घी नहीं। अरे, कोई कपड़ा लाओ।"
+   },
+   "Mummy": {
+    "en": "Never mind. / Tinku, cloth. I'll get a glass. You, a biscuit.",
+    "hinglish": "Koi baat nahin. / Tinku, kapda. Main glass laati hoon. Tum biscuit lo.",
+    "hi": "कोई बात नहीं। / टिंकू, कपड़ा। मैं गिलास लाती हूँ। तुम बिस्किट लो।"
+   },
+   "Papa": {
+    "en": "Never mind. Stand the glass up. I'll get a cloth.",
+    "hinglish": "Koi baat nahin. Gilaas seedha karo. Kapda main laata hoon.",
+    "hi": "कोई बात नहीं। गिलास सीधा करो। कपड़ा मैं लाता हूँ।"
+   },
+   "Mama ji": {
+    "en": "No problem! Not hurt? Here, take my hanky.",
+    "hinglish": "No problem! Lagi toh nahi? Ye lo, mera rumaal.",
+    "hi": "नो प्रॉब्लम! लगी तो नहीं? ये लो, मेरा रूमाल।"
+   },
+   "Tinku": {
+    "en": "And there it goes! No worries, the glass survived.",
+    "hinglish": "Aur ye gaya! Koi nahi, glass toh bach gaya.",
+    "hi": "और ये गया! कोई नहीं, गिलास तो बच गया।"
+   },
+   "Mausi": {
+    "en": "Come, come. Never mind! Did you get hurt?",
+    "hinglish": "Aao, aao. Koi baat nahin! Chot toh nahin lagi?",
+    "hi": "आओ, आओ। कोई बात नहीं! चोट तो नहीं लगी?"
+   },
+   "Mausa ji": {
+    "en": "Here. No harm done.",
+    "hinglish": "Lo. Kuch nahin hua.",
+    "hi": "लो। कुछ नहीं हुआ।"
+   },
+   "Masterji": {
+    "en": "Leave it. Don't be scared. Water doesn't stain.",
+    "hinglish": "Rehne do, daro mat. Paani ka daag nahin padta.",
+    "hi": "रहने दो, डरो मत। पानी का दाग़ नहीं पड़ता।"
+   },
+   "Captain sahab": {
+    "en": "Never mind, player. It happens.",
+    "hinglish": "Koi baat nahin, khiladi. Hota hai.",
+    "hi": "कोई बात नहीं, खिलाड़ी। होता है।"
+   },
+   "Mami": {
+    "en": "Ish. Did your sleeve get wet? I'll get the papers.",
+    "hinglish": "Ish. Aasteen geeli hui? Papers main utha leti hoon.",
+    "hi": "इश्श। आस्तीन गीली हुई? कागज़ मैं उठा लेती हूँ।"
+   },
+   "You": {
+    "en": "It's okay. Let me see your hands first.",
+    "hinglish": "Arre, theek hai. Pehle haath dikhao.",
+    "hi": "अरे, ठीक है। पहले हाथ दिखाओ।"
+   }
+  }
+ },
+ {
+  "moment": "A phone call brings good news.",
+  "lines": {
+   "Nani": {
+    "en": "Baap re. Say it again. Slowly.",
+    "hinglish": "Baap re. Dobaara bolo. Dheere.",
+    "hi": "बाप रे। दोबारा बोलो। धीरे।"
+   },
+   "Mummy": {
+    "en": "Yes, tell me. / Really? Tinku, sweets, and call Masterji over.",
+    "hinglish": "Haan ji, boliye. / Achha? Tinku, mithai lao, Masterji ko bulao.",
+    "hi": "हाँ जी, बोलिए। / अच्छा? टिंकू, मिठाई लाओ, मास्टरजी को बुलाओ।"
+   },
+   "Papa": {
+    "en": "Remarkable. I'll tell Mummy ji right away.",
+    "hinglish": "Kamaal hai. Mummy ji ko abhi batata hoon.",
+    "hi": "कमाल है। मम्मी जी को अभी बताता हूँ।"
+   },
+   "Mama ji": {
+    "en": "Oho! Didi! Tell everyone in the lane, sweets are on me!",
+    "hinglish": "Oho! Didi! Gali mein sabko bataiye, mithai meri taraf se!",
+    "hi": "ओहो! दीदी! गली में सबको बताइए, मिठाई मेरी तरफ़ से!"
+   },
+   "Tinku": {
+    "en": "Brilliant! Wait, wait, put it on speaker!",
+    "hinglish": "Gazab! Wait, wait, speaker pe daaliye!",
+    "hi": "ग़ज़ब! रुकिए, रुकिए, स्पीकर पर डालिए!"
+   },
+   "Mausi": {
+    "en": "Haay! Good news? Whose? Ours! Tell Amma right now!",
+    "hinglish": "Haay! Achhi khabar? Kiski? Hamari! Amma ko abhi batao!",
+    "hi": "हाय! अच्छी ख़बर? किसकी? हमारी! अम्मा को अभी बताओ!"
+   },
+   "Mausa ji": {
+    "en": "Eh? Really? Lights on, then.",
+    "hinglish": "Hain? Sach? Light jalaata hoon.",
+    "hi": "हैं? सच? लाइट जलाता हूँ।"
+   },
+   "Masterji": {
+    "en": "Really? The cloth was crisp all morning. I knew it.",
+    "hinglish": "Achha? Kapda subah se kadak tha. Dhoop aani hi thi.",
+    "hi": "अच्छा? कपड़ा सुबह से कड़क था। धूप आनी ही थी।"
+   },
+   "Captain sahab": {
+    "en": "Arre waah. Right off the middle of the bat.",
+    "hinglish": "Arre waah. Bilkul bat ke beech se.",
+    "hi": "अरे वाह। बिल्कुल बैट के बीच से।"
+   },
+   "Mami": {
+    "en": "That's wonderful news. It goes right at the top.",
+    "hinglish": "Bahut achhi baat hai. Isko sabse upar likhti hoon.",
+    "hi": "बहुत अच्छी बात है। इसे सबसे ऊपर लिखती हूँ।"
+   },
+   "You": {
+    "en": "Great. Quick, it's for you, Papa.",
+    "hinglish": "Badhiya. Papa, jaldi aaiye, aapka phone.",
+    "hi": "बढ़िया। पापा, जल्दी आइए, आपका फ़ोन।"
+   }
+  }
+ }
+]

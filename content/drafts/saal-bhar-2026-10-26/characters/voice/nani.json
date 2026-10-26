@@ -1,0 +1,227 @@
+{
+  "name": "Nani (नानी), turning 80",
+  "voice": {
+    "register": "Low, slow and final, and the shortest speaker in the cast. Her shape is hers alone: one to three fragments to a bubble (not counting an address word), each fragment one to three words and closed with a full stop. The stop is part of the line, the way she ruled off each line of a bill. No commas: every item gets its own stop, because a comma list is Mummy's shape. A verb comes only in an order, a 'who should' ask or a bare fact about herself ('Maine bheja.'). The one whole sentence she allows herself is a real saying from the counter ('Dandi mat maarna.'). Never hurried and never raised, except one 'Bas!' a year. Her questions are 'who should' asks or sly verbless questions handed back to the speaker. Feeling comes out as an order: help becomes a job she hands to 'koi', worry becomes 'Sacks up', care becomes 'I'm right here'. Sly, with a straight face, and never the comic one in her own chapter. Plain once, in the album: 'Aur tum.' She tells time by the lane (after the milk, when the lamps come on, after Mummy's call), never by a clock, and says no figure at all, apart from the album count.",
+    "mix": "The most Hindi in the cast: the everyday spoken Hindi of a small Hindi-speaking town, full of the counter's idioms. No English verbs, no English clauses, no English tags. English comes only as single nouns the world handed her: doctor, BP, ward, X-ray, ticket, berth, cake, party, flat, list, phone, torch, timetable, and 'scorer' for Tinku. Her Hinglish is her Hindi in Roman letters ('Sab aayein.'), never English with Hindi dropped in. Her images come from the scale and the sacks, never from the account book or a price: तौल, डंडी, तराज़ू, बोरी, छुट्टा, and the goods she weighed out (गुड़, नमक, आटा, घी, राई, जीरा, चीनी). In English mode her lines keep the fragments and the stops, and each saying goes into its plain English sense or the nearest real English idiom ('No thumb on the scale.', 'Weigh your words.'), never a word-for-word oddity.",
+    "tics": [
+      "SHAPE: closed fragments, one to three words each, one to three to a bubble. No comma lists; each item takes its own stop ('Meri gali. Tumhari list.'). A saying keeps its own comma.",
+      "VERBS only in orders ('Kaam pe lagao.'), 'who should' asks ('Nani ke saath ghar kaun jaaye?') and bare facts about herself ('Giri nahin. Baith gayi.'). Everything else is nouns: 'Thali thandi.'",
+      "ORDERS start with the thing, then the verb or nothing: 'Bori upar.', 'Seedhi. Jaldi.' Never 'look' or 'listen' first (देखो is Masterji's, सुनो is Mausi's).",
+      "JOBS go to 'कोई' in the 'should' form, never to a name: 'Koi torch laaye.', 'Koi pakde.'",
+      "POSSESSIVES carry her orders: मेरी गली, मेरा बिस्तर, मेरा बटुआ; and 'तुम्हारी लिस्ट' when she hands something over.",
+      "THE ONE WHOLE SENTENCE is a real saying from the counter, at most one a scene: 'डंडी मत मारना।', 'राई का पहाड़।', 'बूँद-बूँद से घड़ा भरता है।', 'जितना गुड़, उतना मीठा।', 'आटे में नमक।', 'ऊँट के मुँह में जीरा।', 'दूध का दूध, पानी का पानी।', 'तौल के बोलो।'. A Hindi-first reader confirms each one. She never coins a saying.",
+      "SLY TURNS: a verbless question handed back to the speaker ('Suraj bhi aapke timetable se?', 'Chai mein cheeni? Ya cheeni mein chai?').",
+      "THIRD PERSON: she calls herself 'Nani' only when she needs help, because she cannot ask for it in the first person ('Who rides home with Nani?').",
+      "'BAS.' closes every argument and stands in for 'I'm fine'. The open palm presses down once in the air, then her eyes go to the lane door, where her counter faced (the window is Mausa ji's look when he is moved). One raised 'Bas!' a year.",
+      "COUNTS SILENTLY: her left forefinger taps the air once a person, lips moving, no sound. Only the household, never card people. Aloud once in the game, in the album.",
+      "TIME BY THE LANE: 'doodh ke baad' (after the milk), 'batti jale' (when the lamps come on), 'phone ke baad' (after Mummy's call). Never a clock time.",
+      "ADDRESS BY BIRTH ORDER: बड़ी (Mausi) and छोटे (Mama ji) in Hindi and Hinglish; the tease 'दुकानवाली' for Mummy; 'Scorer' for Tinku in every mode.",
+      "TOLD FROM MAUSA JI, the other very short Hindi speaker: she owns things (मेरी, तुम्हारी), says मैं, runs fragments one after another, hands jobs to 'koi' and quotes the counter. He leaves himself out, speaks one verdict on the work ('Mazboot.', 'Dheela.') and lets his hands do the rest."
+    ],
+    "catchphrases": [
+      "'डंडी मत मारना।' | 'Dandi mat maarna.' | 'No thumb on the scale.' The grocer's own idiom (डंडी मारना, to short-weigh), known across the north: do the job honestly and in full. Said before any job she hands over.",
+      "'बस।' | 'Bas.' | 'That's that.' ('Enough.' when it stops someone.) Closes every argument and stands in for 'I'm fine', with the palm pressed down once.",
+      "'सब आएँ।' | 'Sab aayein.' | 'Everyone comes.' Her want and the game's first message (the phone types it 'सब आएं।'). In the album it turns into 'सब आए।', everyone came."
+    ],
+    "exclamation": "'Baap re.' | 'बाप रे।' | 'Well I never.' For real astonishment only: news that truly surprises her. Said low and closed with a full stop, never an exclamation mark, so it is the one exclamation in the cast that is not raised. No religious meaning: literally 'O father', an everyday cry of surprise in every community. Never followed by a name, and always in this one form ('Baap re baap' is not used). A power cut or a late guest does not earn it.",
+    "sorry_thanks_love": "SORRY: an order, 'Chai piyo.' | 'चाय पियो।' | 'Drink your tea.', with the steel tumbler pushed across. When she is plainly wrong in front of others, she concedes in the scale's words first, then orders the tea: 'Scorer. Tumhara taraazu sachcha. Chai piyo.' Tea now means sorry and nothing else: not comfort, not thanks. THANKS: the next job, 'Ab ye bhi.' | 'अब ये भी।' | 'Now this one too.', the walking stick pointing at it; trusting you with more is her thank-you. Thanked herself, she does the same: 'Rehne do. Ab ye bhi.' | 'Leave it. Now this one too.' LOVE: in words once, the album's 'Aur tum.' | 'और तुम।' | 'And you.' All year it is an order that keeps someone near ('Main yahin. Kahin nahin.') and a touch between painted people: her palm on Mama ji's bent head, a hand on Tinku's shoulder. Never 'sorry', 'thank you' or 'I love you' to family.",
+    "uses": [
+      "सब (everyone)",
+      "गली (the lane)",
+      "तौल, तौलो (weight, weigh)",
+      "डंडी (the scale's beam; डंडी मारना, to short-weigh)",
+      "तराज़ू (scales)",
+      "सच्चा (true, of a scale or a person)",
+      "बोरी (a grain sack)",
+      "छुट्टा (change)",
+      "गुड़, नमक, आटा, घी, राई, जीरा, चीनी (the goods she weighed, as images)",
+      "पूरा (full), पूरा तौल (full weight, her praise)",
+      "उधार (credit), only about the credit book she tore up",
+      "बस (enough; that's that; I'm fine)",
+      "बाप रे (astonishment)",
+      "कोई (someone), with the 'should' form: कोई लाए, कोई पकड़े",
+      "मेरा, मेरी, तुम्हारा, तुम्हारी (my, your)",
+      "चाय (tea), for sorry only",
+      "रहने दो (leave it), to brush off thanks",
+      "अपनी सुनाओ (tell me your news)",
+      "धीरे (slowly)",
+      "बड़ी, छोटे (two of her children by birth order); दुकानवाली (her tease for Mummy)",
+      "English nouns only: doctor, BP, ward, X-ray, ticket, berth, cake, party, flat, list, phone, torch, timetable, scorer"
+    ],
+    "never": [
+      "प्लीज़ / please, to family",
+      "सॉरी / sorry (Mausi's), माफ़ / maaf (yours, 'Maaf kijiye')",
+      "थैंक यू, शुक्रिया, धन्यवाद (she thanks with the next job; 'Shukriya' is yours)",
+      "मैं ठीक हूँ, सब ठीक, a bare 'ठीक।' (she says बस; 'Theek.' is Mausa ji's)",
+      "any figure in speech: a clock time, a price, a score, a head-count, berth arithmetic, an ordinal (पहली included), an age in years. The album count is the one exception",
+      "बेटा, बेटी, बच्चा, भैया, दीदी or any gendered or pet word for you; no pet names for anyone",
+      "an English verb, clause or tag ('check karo', 'don't worry', 'okay?')",
+      "a comma list (Mummy's shape)",
+      "शायद / maybe",
+      "हिसाब (Mummy's), देखो or देखिए (Masterji's), सुनो (Mausi's), अरे (Captain sahab's 'Arre waah'), चलो (Masterji's sorry), 'पहले ___' (yours), लो and हम्म (Mausa ji's), अभी as a one-word order (Mausa ji's arc word), पक्का, कमाल (Papa's), बहुत याद (Mausi's), हाय, ओहो, 'not out' and 'next ball' (Captain sahab's), 'Correct?' and 'Tick' (Mami's), 'बिल नहीं' (Mummy's), 'haan?' as a tag (Tinku's), 'aur haan' (Mama ji's)",
+      "हुक्म or हाज़िर (court and feudal Hindi, the wrong class and region for a small-town grocer)",
+      "दाल and मिर्च as images (Papa's dal, Mummy's roof chillies)",
+      "haggling, profit or a debt owed to her (the trader stereotype)",
+      "a gendered verb about anyone whose gender the story keeps open: 'डॉक्टर की सलाह', 'डॉक्टर ने कहा', never 'डॉक्टर बोले'",
+      "any religious word, exclamation or blessing formula (हे भगवान, राम राम, हाय राम, या अल्लाह, God, Lord, Gosh, Heavens, Good grief); बाप रे is never followed by a name",
+      "a saying nobody really says: every saying is a real one, read by a Hindi-first reader",
+      "बुढ़ापा (old age) about herself, or 'in our day' / हमारे ज़माने में",
+      "any word about a woman's dress, anyone's looks, or anyone's caste, religion or region",
+      "any doubt of a report of harassment or a dowry demand ('a misunderstanding', 'a family matter', 'keep it quiet'); she is the first to believe",
+      "the name or note words of anyone on the coming cards (rule 36)"
+    ],
+    "address": [
+      "To YOU: तुम, and only in lines that show no gender (rule 66): commands ('काम पे लगाओ।', 'अपनी सुनाओ।'), 'who should' asks ('नानी के साथ घर कौन जाए?') and lines where you are not the doer ('मेरी गली। तुम्हारी लिस्ट।', where तुम्हारी agrees with the list). Never a future or a past about you (करोगे, आ गए). No family word, whatever rulebook Q7 decides, never your name, never बेटा. In the album: 'और तुम।'",
+      "Rule 66 checker flags on her lines to or around you, each for a native reader to clear: 'डंडी मत मारना।' (an infinitive command), 'अब ये भी।' (a particle), 'मैं यहीं।' (about her), 'कौन जाए?' and 'कोई लाए।' ('should' forms), 'मैंने भेजा।' (her own act), 'गिरी नहीं। बैठ गई।' (about her), 'पूरा तौल।' (agrees with तौल).",
+      "To MUMMY: no word, or the tease 'दुकानवाली' | 'Dukaanwali' | 'Shopkeeper' when she talks prices at home; तुम.",
+      "To MAUSI: 'बड़ी' | 'Badi'; तुम. In English mode, no word. 'बड़ी। धीरे।' | 'Slower.' when Mausi starts talking.",
+      "To MAMA JI: 'छोटे' | 'Chhote'; तुम. In English mode, no word.",
+      "To TINKU: 'स्कोरर' | 'Scorer' in every mode; तुम.",
+      "To PAPA, MAUSA JI and MAMI: आप, with no name and the -इए forms ('आप बैठिए।' | 'Aap baithiye.' | 'Do sit.'). Everyone who married in gets आप, as her customers did, women and men alike. Proposed December: her first तुम to all three at once ('तुम सब भी बैठो।' | 'Tum sab bhi baitho.' | 'All of you too. Sit with us.').",
+      "To MASTERJI and CAPTAIN SAHAB: their titles and आप, as elders of the street.",
+      "To the LANE: first names, तुम to the younger and आप to her own age.",
+      "To the NIGHT NURSE (proposed): आप and the job title the readers settle.",
+      "To the DOCTOR: 'डॉक्टर' and आप; she insists the doctor speaks to her ('मुझसे पूछिए।').",
+      "WHAT THEY CALL HER (unchanged, for the cast's one address table): Mummy, Mausi and Mama ji say अम्मा; Mausa ji says अम्मा जी; Papa and Mami say मम्मी जी; you and Tinku say नानी; the lane, Masterji and Captain sahab say नानी जी."
+    ],
+    "samples": [
+      "ORDER, the catchphrase, to you, ch 2 before the morning jobs. EN: 'Every job. No thumb on the scale.' | HINGLISH: 'Saare kaam. Dandi mat maarna.' | HI: 'सारे काम। डंडी मत मारना।'",
+      "ORDER, to you, ch 2 (2.03, face-on). EN: 'My whole lane. Put them to work.' | HINGLISH: 'Meri poori gali. Kaam pe lagao.' | HI: 'मेरी पूरी गली। काम पे लगाओ।'",
+      "HANDING OVER, to you, ch 2 (fix for 2.04). EN: 'My lane. Your list.' | HINGLISH: 'Meri gali. Tumhari list.' | HI: 'मेरी गली। तुम्हारी लिस्ट।'",
+      "TURNING HELP INTO HER OWN ORDER, ch 2 (2.02). EN: 'Overnight. Doctor's advice. My say-so.' | HINGLISH: 'Raat bhar. Doctor ki salaah. Meri haan.' | HI: 'रात भर। डॉक्टर की सलाह। मेरी हाँ।'",
+      "WORRY, to you, before the train (one person, no berth arithmetic). EN: 'Mausi's knee? The lower berth.' | HINGLISH: 'Badi ka ghutna? Neeche ki berth.' | HI: 'बड़ी का घुटना? नीचे की बर्थ।'",
+      "SLY TEASE, to Papa (voice bank, Next take). EN: 'The sun too, by your timetable?' | HINGLISH: 'Suraj bhi aapke timetable se?' | HI: 'सूरज भी आपके टाइमटेबल से?'",
+      "TEASE, to Mummy talking prices at dinner (voice bank). EN: 'Shopkeeper. Enough. No prices at home.' | HINGLISH: 'Dukaanwali. Bas. Ghar mein daam nahin.' | HI: 'दुकानवाली। बस। घर में दाम नहीं।'",
+      "PRAISE, to you, at a chapter's end, about the night and never after a pick (rules 39, 46). EN: 'Yes. Like that. Full weight.' | HINGLISH: 'Haan. Aise. Poora taul.' | HI: 'हाँ। ऐसे। पूरा तौल।'",
+      "THANKS, to you, the stick pointing at the next thing. EN: 'Now this one too.' | HINGLISH: 'Ab ye bhi.' | HI: 'अब ये भी।'",
+      "SORRY, to you, after she snapped on the ward, the tumbler pushed across. EN: 'Drink your tea.' | HINGLISH: 'Chai piyo.' | HI: 'चाय पियो।'",
+      "COMFORT, to you, 4 am on the ward (the patient minding the minder; tea is no longer her comfort). EN: 'I'm right here. Going nowhere.' | HINGLISH: 'Main yahin. Kahin nahin.' | HI: 'मैं यहीं। कहीं नहीं।'",
+      "WANTING THE PLAIN TRUTH, to you (a saying, her one whole sentence). EN: 'Milk is milk, water is water. Tell me.' | HINGLISH: 'Doodh ka doodh, paani ka paani. Bolo.' | HI: 'दूध का दूध, पानी का पानी। बोलो।'",
+      "SAYING NO, to Mama ji (voice bank, ch 5 or Next take). EN: 'Your flat is yours. My bed is mine.' | HINGLISH: 'Tumhara flat tumhara. Mera bistar mera.' | HI: 'तुम्हारा फ़्लैट तुम्हारा। मेरा बिस्तर मेरा।'",
+      "SAYING NO, ch 2 ending (2.33). EN: 'No party. When everyone comes again.' | HINGLISH: 'Koi party nahin. Jab sab phir aayein.' | HI: 'कोई पार्टी नहीं। जब सब फिर आएँ।'",
+      "CROSS, to the doctor talking over her head to Mama ji on the phone (polite even when cross). EN: 'Ask me. Ill. Not deaf.' | HINGLISH: 'Mujhse poochhiye. Beemar. Behri nahin.' | HI: 'मुझसे पूछिए। बीमार। बहरी नहीं।'",
+      "THE CROSS TELL, to Mausi and Mama ji arguing, palm pressed down once. EN: 'You two. Enough.' | HINGLISH: 'Badi. Chhote. Bas.' | HI: 'बड़ी। छोटे। बस।'",
+      "DENYING, dry and not a joke, to you, early ch 2 (waits on rulebook Q5). EN: 'Didn't fall. Sat down. Hard.' | HINGLISH: 'Giri nahin. Baith gayi. Zor se.' | HI: 'गिरी नहीं। बैठ गई। ज़ोर से।'",
+      "PLACING MUMMY, to you, ch 2. EN: 'Your Mummy? With the guests. I sent her.' | HINGLISH: 'Tumhari Mummy? Mehmaanon ke paas. Maine bheja.' | HI: 'तुम्हारी मम्मी? मेहमानों के पास। मैंने भेजा।'",
+      "ASKING FOR HERSELF, in the third person (2.28). EN: 'Who rides home with Nani?' | HINGLISH: 'Nani ke saath ghar kaun jaaye?' | HI: 'नानी के साथ घर कौन जाए?'",
+      "THE TURN, 7:30 am outside X-ray, the purse in a close-up insert. EN: 'My purse. Out here. Someone hold it.' | HINGLISH: 'Mera batua. Bahar. Koi pakde.' | HI: 'मेरा बटुआ। बाहर। कोई पकड़े।'",
+      "ORDER, to Mausa ji in a power cut (voice bank; his file quotes it). EN: 'Ladder. Quick.' | HINGLISH: 'Seedhi. Jaldi.' | HI: 'सीढ़ी। जल्दी।'",
+      "A SAYING, to you as the jobs go one by one. EN: 'Drop by drop, the pot fills.' | HINGLISH: 'Boond-boond se ghada bharta hai.' | HI: 'बूँद-बूँद से घड़ा भरता है।'",
+      "THE AGE JOKE, her only one and with no figure (album or Next take, waits on rulebook Q5). EN: 'My age? Don't weigh it. Too heavy.' | HINGLISH: 'Meri umar? Mat taulo. Bhaari.' | HI: 'मेरी उम्र? मत तौलो। भारी।'",
+      "THE FIRST तुम, December, to Papa, Mausa ji and Mami together (proposed; all year before it, 'Do sit.' | 'Aap baithiye.' | 'आप बैठिए।'). EN: 'All of you too. Sit with us.' | HINGLISH: 'Tum sab bhi baitho.' | HI: 'तुम सब भी बैठो।'",
+      "MOVED, the album (present day, face-on; the one time she counts aloud and the one time her shape breaks into a past verb about everyone). EN: 'One, two, three... everyone came. / And you.' | HINGLISH: 'Ek, do, teen... sab aaye. / Aur tum.' | HI: 'एक, दो, तीन... सब आए। / और तुम।'"
+    ]
+  },
+  "typing": {
+    "habits": [
+      "DEVICE: the large-screen phone Mama ji gave her (no brand ever named or shown), lying on her lap on speaker. Tinku set up the microphone key and she taught herself the rest, so no one has to read or write for her (her contradiction, on a phone).",
+      "SCRIPT: Devanagari only, because she dictates in Hindi, written the way the phone actually produces it: anusvara forms (अस्सीवां, आएं) and English nouns in Devanagari letters (डॉक्टर, बीपी). A Hindi-first reader checks every typed sample against a real phone's voice typing.",
+      "SHAPE: the same as her speech. One short phrase at a time, each closed with one firm tap on the full stop (।), the way she ruled off each line of a bill. Voice typing adds no danda by itself, so the stops are hers. No commas, because the stop is the only key she taps. Fragments of one to three words.",
+      "NUMBERS: none. The one figure she ever sends is the occasion in the opening message, which the phone writes as it hears it (अस्सीवां or 80वां, checked on a real phone). No time, no price, no BP reading (Mami logs those).",
+      "NEVER: a greeting or sign-off, anyone's name, emoji, the folded hands, stickers, forwards or good-morning pictures.",
+      "VOICE NOTES: anything longer than three fragments becomes a voice note. It starts with 'हाँ,' as if you had rung her and ends with 'बस।'. Shown as live text on the painted blank phone; the caption is her speech, in standard spelling like her bubbles.",
+      "REPLIES: she never answers a text with a text. She phones back, usually within the hour.",
+      "WHEN: before seven in the morning and just after the nine o'clock call with Mummy; never after ten, except once, the ward night, which is how Tinku knows she is not sleeping.",
+      "THE FAMILY GROUP: Mama ji added her. She reads it on her lap and posts only to stop news she does not want (the fall). The owner ruled out a group chat on screen on 23 Oct, so it exists for the writers only.",
+      "HOW YOU TYPE TO HER: you don't. You call, or send a voice note."
+    ],
+    "samples": [
+      "To you, January, on screen at 1.01 (voice-typed; the one figure she ever sends). HI: 'अस्सीवां। मई। सब आएं।' | HINGLISH: 'Assiwaan. May. Sab aayein.' | EN: 'My eightieth. May. Everyone comes.'",
+      "To you, April (proposed, voice-typed). HI: 'केक नहीं। हलवा। बस।' | HINGLISH: 'Cake nahin. Halwa. Bas.' | EN: 'No cake. Halwa. That's that.' (Mausi has already bought the candles.)",
+      "To Tinku, the ward night, past midnight, a voice note shown as live text (her petty fault, seen; she lost that board). HI: 'हाँ, पिछला बोर्ड मेरा। कॉपी ग़लत। बस।' | HINGLISH: 'Haan, pichhla board mera. Copy galat. Bas.' | EN: 'Yes. Last board was mine. Your book's wrong. That's that.'",
+      "Family group, off screen, the morning after the fall (voice-typed). HI: 'गिरी नहीं। बैठ गई। कोई न आए। बस।' | HINGLISH: 'Giri nahin. Baith gayi. Koi na aaye. Bas.' | EN: 'Didn't fall. Sat down. Nobody come. That's all.' (Mama ji comes anyway.)",
+      "To Mama ji, November (voice-typed). HI: 'फ़ोन बंद। आ जाओ। बस।' | HINGLISH: 'Phone band. Aa jao. Bas.' | EN: 'Stop phoning. Just come. That's all.'",
+      "To you, July, the first big rain (voice bank, voice-typed; a 'who should' ask). HI: 'बारिश। छत पर कौन जाए?' | HINGLISH: 'Baarish. Chhat par kaun jaaye?' | EN: 'Rain. Who goes up to the roof?'",
+      "To Papa, a voice note answering his good-morning flower (sly). HI: 'हाँ, सुबह हो गई।' | HINGLISH: 'Haan, subah ho gayi.' | EN: 'Yes. It's morning.'"
+    ]
+  },
+  "test_lines": [
+    {
+      "moment": "1. The lights go out in the middle of dinner (to the whole table; no exclamation, since a power cut does not surprise her)",
+      "en": "Someone fetch a torch. The rest, keep eating.",
+      "hinglish": "Koi torch laaye. Baaki khaate raho.",
+      "hi": "कोई टॉर्च लाए। बाक़ी खाते रहो।"
+    },
+    {
+      "moment": "2. Someone everyone was waiting for arrives two hours late (to Mama ji; her cross tell, palm pressed down, no figure)",
+      "en": "Enough. Plate's cold. Sit.",
+      "hinglish": "Chhote. Bas. Thali thandi. Baitho.",
+      "hi": "छोटे। बस। थाली ठंडी। बैठो।"
+    },
+    {
+      "moment": "3. A cousin phones to say they have got their first job (to the cousin; no verb about them, so no gender)",
+      "en": "Full weight. The sweets are on you.",
+      "hinglish": "Poora taul. Mithai tumhari taraf se.",
+      "hi": "पूरा तौल। मिठाई तुम्हारी तरफ़ से।"
+    },
+    {
+      "moment": "4. The tea someone has just made has far too much sugar in it (to Mausi, who made it; she pushes the glass back)",
+      "en": "Sugar in the tea? Or tea in the sugar?",
+      "hinglish": "Badi. Chai mein cheeni? Ya cheeni mein chai?",
+      "hi": "बड़ी। चाय में चीनी? या चीनी में चाय?"
+    },
+    {
+      "moment": "5. In front of the family, someone shows that she had a fact wrong (to Tinku, whose scorebook proves it; concedes in the scale's words, then her sorry)",
+      "en": "Scorer. Your scales are true. Drink your tea.",
+      "hinglish": "Scorer. Tumhara taraazu sachcha. Chai piyo.",
+      "hi": "स्कोरर। तुम्हारा तराज़ू सच्चा। चाय पियो।"
+    },
+    {
+      "moment": "6. Someone she loves is leaving, goodbye on a railway platform (to Mama ji; he bends and she lays her palm on his head)",
+      "en": "Bend down. Now go.",
+      "hinglish": "Chhote. Jhuko. Ab jaao.",
+      "hi": "छोटे। झुको। अब जाओ।"
+    },
+    {
+      "moment": "7. Someone thanks her for something she did (to you; the stick points at the next job)",
+      "en": "Leave it. Now this one too.",
+      "hinglish": "Rehne do. Ab ye bhi.",
+      "hi": "रहने दो। अब ये भी।"
+    },
+    {
+      "moment": "8. A neighbour passes on a rumour that the corner sweet shop is closing (to the younger neighbour who brings it; a habit, not a character)",
+      "en": "Mountain out of a mustard seed. Weigh your words.",
+      "hinglish": "Raai ka pahaad. Taul ke bolo.",
+      "hi": "राई का पहाड़। तौल के बोलो।"
+    },
+    {
+      "moment": "9. Heavy rain floods the lane outside the house (to the household; the counter's first rule in rain, sacks off the floor)",
+      "en": "Sacks up. Shoes up. Children inside.",
+      "hinglish": "Bori upar. Chappal upar. Bachche andar.",
+      "hi": "बोरी ऊपर। चप्पल ऊपर। बच्चे अंदर।"
+    },
+    {
+      "moment": "10. Someone asks her how she is (to you; 'Bas' instead of 'I'm fine', then the question goes back, with no figure)",
+      "en": "That's that. Tell me yours.",
+      "hinglish": "Bas. Apni sunao.",
+      "hi": "बस। अपनी सुनाओ।"
+    },
+    {
+      "moment": "11. A child knocks a glass of water across the table (to the child; water is cheap, ghee was dear)",
+      "en": "Water. Not ghee. Someone fetch a cloth.",
+      "hinglish": "Paani. Ghee nahin. Koi kapda laaye.",
+      "hi": "पानी। घी नहीं। कोई कपड़ा लाए।"
+    },
+    {
+      "moment": "12. A phone call brings good news (to the caller; the one moment that earns 'Baap re')",
+      "en": "Well I never. Say it again. Slowly.",
+      "hinglish": "Baap re. Dobaara bolo. Dheere.",
+      "hi": "बाप रे। दोबारा बोलो। धीरे।"
+    }
+  ],
+  "changed": [
+    "SHAPE MADE HERS ALONE: no commas anywhere; each item takes its own stop, because a comma list is Mummy's target shape ('Meri gali, tumhari list.' becomes 'Meri gali. Tumhari list.'). One to three fragments a bubble, one to three words each. Fixes the C2 look-alike with Mummy.",
+    "VERBS ONLY IN ORDERS, 'who should' asks and bare facts about herself: 2.03 'Meri poori gali aayi hai.' becomes 'Meri poori gali.'; 'Doctor ne kaha, ek raat. Maine haan kaha.' becomes 'Raat bhar. Doctor ki salaah. Meri haan.'; 'Beemar hoon, behri nahin.' becomes 'Beemar. Behri nahin.'; the carrom voice note drops 'tha'. Her jokes keep the shape too: 'Aapke timetable se suraj bhi uthta hai?' becomes 'Suraj bhi aapke timetable se?'.",
+    "NO NUMBERS IN SPEECH (C1): 'ek raat' becomes 'raat bhar'; both 'Assi' age jokes and the one-candle joke are struck; the one age joke left, for rulebook Q5, has no figure ('Meri umar? Mat taulo. Bhaari.'). The album count is the only figure she ever says, and the opening's अस्सीवां the only one she ever types, marked as the occasion's name for the typing pass.",
+    "REAL COUNTER SAYINGS IN PLACE OF HEAD-COUNTS (india review): her one whole sentence is a saying, at most one a scene, from a list of real ones (राई का पहाड़, बूँद-बूँद से घड़ा भरता है, जितना गुड़ उतना मीठा, आटे में नमक, ऊँट के मुँह में जीरा, दूध का दूध पानी का पानी, तौल के बोलो, डंडी मत मारना) for a Hindi-first reader to confirm. None is invented. 'Pehle tolo, phir bolo' is trimmed to 'Taul ke bolo', because 'Pehle ___' is yours.",
+    "SORRY, THANKS AND LOVE PULLED APART (C3, C4): tea now means sorry only. The comfort line 'Bas. Main yahin hoon. Chai piyo.' becomes 'Main yahin. Kahin nahin.'; it is not an order to sleep, which is Mausa ji's to you on the same ward night. Thanks is the next job ('Ab ye bhi.'), and it is also how she takes thanks ('Rehne do. Ab ye bhi.'). Love is 'Aur tum.', once. When she is plainly wrong she concedes in the scale's words before the tea ('Tumhara taraazu sachcha.'), so her sorry has a spoken form of its own.",
+    "EXCLAMATION 'Baap re.' kept, now given an English mode ('Well I never.') and a rule: said low with a full stop, for real astonishment only, so it is the one unraised exclamation in the cast. A power cut and a late guest no longer earn it.",
+    "WORDS GIVEN UP to their new single owners (matrix 2.15): अरे (Captain sahab), चलो (Masterji's sorry), देखो, सुनो, हिसाब, the 'बस, सब ठीक' she said to Mama ji ('Theek.' is Mausa ji's, so it becomes plain 'Bas.'), 'Pehle', 'Abhi' as a one-word order (Mausa ji's arc word, so 'Ladder. Now.' becomes 'Seedhi. Jaldi.' | 'Ladder. Quick.', and his file, which quotes it, updates), and every ordinal including पहली. Dal and mirch are kept out of her images (Papa's dal, Mummy's chillies).",
+    "BODY TELL MOVED OFF MAUSA JI'S: after 'Bas.' her eyes now go to the lane door her counter faced, not the window, which is where Mausa ji looks when he is moved. A told-apart note against Mausa ji, the other very short Hindi speaker, is added to her habits.",
+    "TRADER STEREOTYPE (C11): her images are the scale and the sacks (weighing true, honest measure), never haggling, profit or a debt owed to her; उधार stays only for the credit book she tore up, and no price is ever said.",
+    "'KOI' JOBS MADE CLEAR in Hindi: a bare 'Koi torch.' reads as 'some torch', so jobs take the 'should' form ('Koi torch laaye.', 'Koi kapda laaye.', 'Koi pakde.'), which rule 66 already clears as in its own example कौन लाए?.",
+    "HEARD WITH OTHERS (C15): eight of the twelve test lines go to someone other than you (the table, Mama ji twice, the cousin, Mausi, Tinku, the neighbour, the child), so the blind sort hears her address words (बड़ी, छोटे, Scorer) as well as her shape.",
+    "TYPING: no commas in typed messages either (she taps only the stop); the carrom voice note is in fragments; a July rain message with a 'who should' ask is added for the voice bank; the opening's figure is marked as the one she ever sends.",
+    "KEPT, and why: essence, want, fear and contradiction (help turned into her own order, the third-person 'Nani' when she needs help); 'Sab aayein', 'Dandi mat maarna', 'Bas'; the silent finger count and the album's spoken count; बड़ी, छोटे, दुकानवाली and 'Scorer'; आप to all three in-laws and the December first तुम; every rule 22 and rule 3 guard. One flag for readers: in the album's Hinglish 'Ek, do, teen', 'do' (two) can be read as the English verb, though the counting run makes it clear."
+  ]
+}

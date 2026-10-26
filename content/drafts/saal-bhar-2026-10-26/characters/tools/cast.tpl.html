@@ -55,6 +55,17 @@ summary:focus-visible { outline: 3px solid var(--pick); outline-offset: 2px; }
 .open { background: var(--sheet); border: 2px solid var(--ink); border-radius: 6px; padding: 18px 20px; }
 .open ol { padding-left: 22px; }
 .open li { margin-bottom: 10px; }
+.seg button { font: 600 .85rem/1 var(--body); padding: 7px 12px; border: 1.5px solid var(--ink); background: var(--sheet); color: var(--ink); cursor: pointer; }
+.seg button + button { border-left: 0; }
+.seg button:first-child { border-radius: 4px 0 0 4px; } .seg button:last-child { border-radius: 0 4px 4px 0; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.seg button:focus-visible { outline: 3px solid var(--pick); outline-offset: 2px; }
+.mgrid { display: grid; gap: 14px; }
+.moment { background: var(--sheet); border: 2px solid var(--ink); border-radius: 6px; padding: 14px 16px; }
+.moment > b { display: block; font: 700 1rem/1.3 var(--body); margin-bottom: 8px; }
+.mline { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 8px; padding: 4px 0; border-top: 1px solid var(--rule); font-size: .95rem; }
+.mline span:first-child { font-weight: 700; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--soft); padding-top: 2px; }
+@media (max-width: 560px) { .mline { grid-template-columns: minmax(0, 1fr); gap: 0; } }
 .foot { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--soft); font-size: .9rem; }
 @media (max-width: 720px) { .grid { grid-template-columns: minmax(0, 1fr); } .facts { grid-template-columns: minmax(0, 1fr); } .facts dt { margin-top: 6px; } }
 </style>
@@ -80,6 +91,15 @@ summary:focus-visible { outline: 3px solid var(--pick); outline-offset: 2px; }
   <div class="lineup" id="lineup"></div>
 </section>
 
+<section class="person" id="moments">
+  <h2>Twelve everyday moments</h2>
+  <p>The voice pass gave everyone the same twelve moments to react to, so you can hear them side by side. With the names hidden, three readers matched every one of these 132 lines to the right person. Before the pass, a reader matched 43 of 55 of the old lines.</p>
+  <div class="seg" role="group" aria-label="Language" style="margin:12px 0">
+    <button type="button" data-ml="hinglish" aria-pressed="true">Hinglish</button><button type="button" data-ml="hi" aria-pressed="false">हिन्दी</button><button type="button" data-ml="en" aria-pressed="false">English</button>
+  </div>
+  <div class="mgrid" id="mgrid"></div>
+</section>
+
 <main id="cast"></main>
 
 <section class="person" id="open">
@@ -89,7 +109,7 @@ summary:focus-visible { outline: 3px solid var(--pick); outline-offset: 2px; }
       <li><strong>Married women with nothing on.</strong> The rules keep every religious or married mark off the cast, so Mummy, Mausi and Mami wear no bangles, chain or forehead mark, just like widowed Nani. To older eyes in the Hindi belt, a bare married woman of 52 reads as widowed. Allow plain glass or metal bangles and a plain chain, which many communities wear?</li>
       <li><strong>The household is all north Indian.</strong> Players from the south and east recognise the types but nothing of their own. Give one in-law a south or east Indian family, with their own words for things?</li>
       <li><strong>Greeting Nani.</strong> Touching her feet is out, and nothing has replaced it, so arrivals at her gate feel scrubbed. A hand on her shoulder, a bow of the head, a hug? Which?</li>
-      <li><strong>Too many people speak in numbers.</strong> Papa in minutes, Mummy in prices, Tinku in scores, Mami in lists. The revisions softened some; a cast-wide voice pass comes next unless you like it.</li>
+      <li><strong>Done: the voice pass.</strong> Only Papa (minutes) and Tinku (scores) still lean on numbers. Everyone has their own exclamation and their own way of saying sorry and thanks, and Mausi and Mama ji say feelings out loud. One small rule question came out of it: lines like "Tumne bahut kiya" (you did so much) praise you as the doer, and in Hindi the verb follows the deed, so they never show your gender. The rule does not list that shape yet. Add it, or have a native reader clear each such line?</li>
       <li><strong>Spectacles.</strong> Only Nani (round) and Masterji (half-moon) wear them. May others, if the frames differ?</li>
       <li><strong>Speech bubbles.</strong> Name tags only, or a bubble style of their own for each person (Mausi's rounder and louder, Masterji's thinner)?</li>
       <li><strong>Next:</strong> paint the line-up (all ten as black shapes and simple figures, in each of the five looks) and then the master model sheets, through the queue on your Mac, for you to approve before any story panel is painted.</li>
@@ -102,6 +122,13 @@ summary:focus-visible { outline: 3px solid var(--pick); outline-offset: 2px; }
 
 <script>
 const C = __DATA__;
+const M = __MOMENTS__;
+const drawMoments = (lang) => {
+  document.getElementById('mgrid').innerHTML = M.map((m) => `<div class="moment"><b>${String(m.moment).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))}</b>${Object.entries(m.lines).map(([who, l]) => `<div class="mline"><span>${who.replace(/[&<>]/g, '')}</span><span${lang === 'hi' ? ' lang="hi"' : ''}>${String(l[lang] || l.en).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))}</span></div>`).join('')}</div>`).join('');
+  document.querySelectorAll('[data-ml]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.ml === lang)));
+};
+if (M.length) { drawMoments('hinglish'); document.querySelectorAll('[data-ml]').forEach((b) => b.addEventListener('click', () => drawMoments(b.dataset.ml))); }
+else document.getElementById('moments').hidden = true;
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const list = (a) => '<ul>' + (a || []).map((x) => `<li>${esc(x)}</li>`).join('') + '</ul>';
 const sec = (h, body) => body ? `<h4>${h}</h4>${body}` : '';
@@ -144,6 +171,8 @@ document.getElementById('cast').innerHTML = C.map((c) => {
     <p>${esc(c.want_fear_contradiction)}</p>
     <div class="grid">
       <div><h3>Catchphrases</h3><ul class="catch">${(v.catchphrases || []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
+        ${v.exclamation ? `<h3>Exclamation</h3><p>${esc(v.exclamation)}</p>` : ''}
+        ${v.sorry_thanks_love ? `<h3>Sorry, thanks, love</h3><p>${esc(v.sorry_thanks_love)}</p>` : ''}
         <h3>How they sound</h3><ul class="lines">${(v.samples || []).slice(0, 4).map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>
       <div><h3>How they type</h3><div class="phone">${(t.samples || []).slice(0, 3).map((x) => `<div class="msg">${esc(x)}</div>`).join('')}</div>
         ${hasLook ? `<h3>Gestures</h3><ul class="lines">${(p.gestures || []).slice(0, 3).map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}</div>

@@ -1,0 +1,251 @@
+{
+ "name": "You (the player, a voice only)",
+ "voice": {
+  "register": "Short, calm and level: the steadiest voice in a loud house, and the only one that puts a name on every line. ONE SHAPE, YOURS ALONE: one beat (a polite command, a bare noun, or 'Pehle ___'), with the listener's name on it. In Hinglish and Hindi the name opens the bubble, after it a comma ('Mami, dikhaiye.' | 'मामी, दिखाइए।'); in English it closes the bubble ('Let's see, Mami.'). The one opener that comes before the name is your exclamation ('Badhiya. Papa, aapke liye phone.'). Two to six words a bubble, at most two short sentences, never past seven words and always inside rule 62's ten. A bigger job never makes a longer bubble; it waits for the next exchange. Full stops, not exclamation marks: 'Badhiya.' is said flat, and the year's one '!' is 'Ek-ek karke!' in December. Questions are short and closed and ask for facts, never feelings ('Nani, dard?'). You speak last in an exchange, never open a scene, never speak between a decision's question and its pick, and sit in an outcome beat only as its fixed reply (rules 38 and 42). HOW THIS SHORT VOICE DIFFERS FROM THE OTHER SHORT ONES: Nani's closed fragments carry no name and send 'koi' to do the job; Mausa ji drops the subject and then does the job himself; Captain sahab gives the call, then one reason; Tinku ends on a score and 'haan?'; Mami reads your words back and asks 'Correct?'. You alone name the listener, every time. WHEN CROSS: you stay polite (your politeness never rises or falls, unlike Mummy's), but the name stands alone at the front, closed with a full stop, in every mode, and 'Pehle' names whoever was left waiting or left off ('Mama ji. Pehle Nani se miliye.' | 'Mama ji. See Nani first.'). Your anger is on someone else's behalf, never at a person. Once a year the noise beats you: 'Ek-ek karke!' BUDGET (proposal, kept from the cast file): three to six `you` bubbles a chapter, at most one a scene, the same whatever the player will pick (rule 38).",
+  "mix": "You mirror the listener, because being understood by each of them is your job, and that mirror is where your words come from. With Nani: plain everyday Hindi, no English beyond her own nouns (doctor, BP, ward, ticket, cake). With Mummy: her shop nouns (shutter, stock, bill, slip) on a Hindi frame, but never her English verb plus kar or ho ('check karo' is hers alone): you use the Hindi verb or none ('Mummy, shutter ki chaabi dijiye.'). With Papa: careful Hindi with his railway English (PNR, coach, berth) and his 'Reached', which stays in English letters in every mode. With Mama ji: English phrases, the most English you speak to an elder, and his own 'sorted' handed back ('Mama ji, sorted.'). With Tinku: young Hinglish, तुम and -ओ commands, her scorebook nouns (score, run, scorer). With Mausi, Mausa ji, Masterji, Captain sahab and Mami: polite Hinglish with -इए, using their own nouns only when you hand one back. Your base, when nobody sets it: Hinglish on a Hindi frame with English nouns, the shape of the younger speakers in the Dehradun study (realism notes [1]), bent back towards Hindi by a small-town home. What your English carries: the listener's words, nothing of your own. In Devanagari 'sorted' and 'set' are both 'सेट' (India review), never तय, which means 'decided'. Hindi mode lines are rebuilt from shapes that mark no gender (rule 66: commands, offers in the subjunctive, ने pasts that agree with the thing, verbless lines), never translated word for word. Numbers: none in speech in any mode. In a message, digits, and only when the fact is a number (ward 3, bed 12, berth 36, 2 days off).",
+  "tics": [
+   "The name on every line. Hinglish and Hindi: the name first, then a comma ('Mausa ji, shukriya.' | 'मौसा जी, शुक्रिया।'). English: the name last ('Thanks, Mausa ji.'). Name first in Hindi also keeps rule 66's third check quiet, since नानी, मौसी, मामी and मौसा जी end in -ी. The only lines without a name are to someone the scene leaves unnamed (a child at the table, a cousin on the phone) and to a group, which you call 'sab' | 'सब' | 'everyone'. You never speak to the room otherwise.",
+   "You ask to see before anything: 'Dikhaiye.' In every chapter your first line at the hand-over is 'Let's see' with the giver's name. To Tinku and to children it is 'Dikhao', the one place your respect form drops, and readers hear the sibling.",
+   "Someone else first: 'Pehle ___' is yours alone in the cast (matrix 2.15; Masterji, Mami and Mausi's courtesy have dropped it). 'Masterji, pehle chai.' | 'Tea first, Masterji.' One thing first, then at most 'phir' and one more ('Tinku, pehle score. Phir chai.'); you never count on to a second or third, so no ordinal ever enters (Mami's old ordinals belong to nobody now).",
+   "One word for a whole job: 'Sab set.' | 'सब सेट।' | 'All set.', said to the person the job was for ('Nani, sab set.'). Never item by item: Mami itemises ('Keys, pending. Envelopes, done.') and you total.",
+   "Asked about yourself, you answer with the same two words you close a job with, 'Sab set.', and let the asker move on. The switchboard files itself as a job. It is not a dodge: never turned back on the asker ('You first, Mausi.' was Tinku's move in another form), never a figure (Mummy's, Papa's and Tinku's old dodges, C10), never somebody else's news.",
+   "You hand people their own words back, and only to their owner, with the owner's name in the same bubble, at most one line in three: Papa's 'Reached', Mama ji's 'sorted', Tinku's 'run tumhara' and 'score', Masterji's 'naap', Mummy's 'stock' and 'shutter', Captain sahab's 'toss', Nani's 'sach-sach'. Never a figure, never a judging note's words (rules 36 and 38), and never Mami's or Mausi's words, so the two chapters where you work beside them never blur.",
+   "No 'I', 'me', 'my' or 'please' in English and no मैं in Hindi, except in an offer in the subjunctive ('Torch main laaun?' | 'टॉर्च मैं लाऊँ?') and the album's one line, so nearly every line of yours can go on the button if the owner says yes to rulebook Q8.",
+   "Short closed questions for facts, never for feelings: 'Nani, dard?', 'Mausa ji, dawai ka time yaad hai?'. Never two question marks (Mausi's typed '??')."
+  ],
+  "catchphrases": [
+   "'Dikhaiye.' | 'दिखाइए।' | 'Let's see.' (to Tinku and children: 'Dikhao.' | 'दिखाओ।'). The year's refrain, said to each person who hands you the work. Rule 66: the polite command the rule itself names (लिस्ट दिखाइए).",
+   "'Pehle ___.' | 'पहले ___।' | '___ first.' Someone else always goes first: 'Pehle sab paani pee lein.' | 'पहले सब पानी पी लें।' | 'Water first, everyone.' Yours alone in the cast.",
+   "'Sab set.' | 'सब सेट।' | 'All set.' The one word for a whole job, and your one answer when anyone asks how you are. To Mama ji, in his own English: 'Mama ji, sorted.' | 'मामा जी, सब सेट है।' | 'Sorted, Mama ji.', the sentence he most wants to hear (his file). Rule 66: सेट never changes with gender. None of the three carries a number."
+  ],
+  "exclamation": "'Badhiya.' | 'बढ़िया।' | 'Lovely.' New; you had none. Always said flat, with a full stop, never '!'. Straight for good news ('Badhiya. Scorer, khud likho.' | 'Lovely. Write it yourself, scorer.'); deadpan when something goes wrong, which is your humour ('Badhiya. Captain sahab, toss andar?' | 'Lovely. Toss indoors, Captain sahab?'). Religious meaning: none; it means 'excellent', an everyday word in every community. Gender: बढ़िया never changes with gender; rule 66's third check flags it when it ends a sentence (-ा), and a native reader clears it. English 'Lovely.' avoids every mild word that hides a holy name (Gosh, Goodness, Heavens, Blimey; matrix 2.13), and said dry it carries the deadpan in British English. Nobody else in the cast says 'badhiya' or 'lovely' (every finished file lists 'Badhiya' as yours). Fallback if Hindi-first readers find 'Badhiya.' too bright for the deadpan use: keep it for good news only, and let the deadpan sit in the name and the short question.",
+  "sorry_thanks_love": "SORRY: plain and polite, the only plain sorry in the house, then the fact put right: 'Maaf kijiye.' | 'माफ़ कीजिए।' | 'Sorry.' with the name ('Nani, maaf kijiye. Aapki baat sahi.' | 'नानी, माफ़ कीजिए। आपकी बात सही।' | 'Sorry, Nani. You had it right.'). English mode keeps one 'Sorry' with a name, never tripled and never with food (Mausi's 'Sorry, sorry, sorry!'), and Hinglish never uses the English word, which is Mausi's (matrix 2.15). THANKS: plain, polite, in words: 'Shukriya.' | 'शुक्रिया।' | 'Thanks.' with the name ('Mausa ji, shukriya.' | 'मौसा जी, शुक्रिया।' | 'Thanks, Mausa ji.', and he leaves the room). The house's only plain Hindi thank-you; English mode says 'Thanks', not 'Thank you', so it stays apart from Mami's 'Thank you, Bhaiya ji.' to strangers. Thanked yourself, you take it in one word and send it on to whoever would be left out of the thanks ('Mami, shukriya. Par pehle Mausa ji ko.' | 'Thanks, Mami. Mausa ji first, though.'): the fear of the one left off the list, never Tinku's handing the credit back to the thanker. LOVE: never said all year, until the album: Nani counts heads and ends 'Aur tum.', and you say the only line of the year about yourself, 'Nani, main bhi.' | 'नानी, मैं भी।' | 'Me too, Nani.' (proposal; cast map owner question 6). All year it shows only as their own love handed back in their own code: Papa's 'Reached' asked of Papa ('Papa, pahunchkar \"Reached\" bhejiye.'), the run Tinku never keeps given back to her ('Scorer, run tumhara.'), Nani's plain truth asked of Nani ('Nani, dard? Sach-sach bataiye.').",
+  "uses": [
+   "Polite commands to every elder: dikhaiye, dijiye, chaliye, kijiye, baithiye, bataiye, miliye, bhejiye, sunaiye, so jaiye | दिखाइए, दीजिए, चलिए, कीजिए, बैठिए, बताइए, मिलिए, भेजिए, सुनाइए, सो जाइए",
+   "Commands to Tinku and to children only: dikhao, batao, likho, rakho, le aao | दिखाओ, बताओ, लिखो, रखो, ले आओ (not 'chalo', Masterji's sorry opener, and not 'suno', Mausi's)",
+   "Offers in the subjunctive, the only place 'main' appears: 'Torch main laaun?', 'Kal jama kar doon?', 'Main dekhoon?' | टॉर्च मैं लाऊँ?, कल जमा कर दूँ?, मैं देखूँ?",
+   "pehle | पहले (yours alone), phir | फिर, ab | अब, abhi | अभी (never as a one-word order, Mausa ji's), khud | ख़ुद (news first-hand: 'Ab Nani ko khud bataiye.')",
+   "'Sab set' | 'सब सेट' | 'All set'; 'sorted' to Mama ji only, his word",
+   "'Badhiya.' | 'बढ़िया।' | 'Lovely.'; 'Maaf kijiye' | 'माफ़ कीजिए' | 'Sorry'; 'Shukriya' | 'शुक्रिया' | 'Thanks'",
+   "'Ji Papa' | 'जी पापा' (your yes to Papa, as the cast file has it)",
+   "sab | सब (everyone: Nani's word, and your only way to speak to a group)",
+   "sach-sach | सच-सच (the plain truth: what Nani wants from you, asked back of her once)",
+   "ek-ek karke | एक-एक करके (one at a time: an idiom, not a count; your year's one shout)",
+   "The family's working nouns, as each owner says them: ticket, PNR, coach, berth, bill, slip (parchi), keys (chaabi), cot, shutter, torch | टिकट, पीएनआर, कोच, बर्थ, बिल, पर्ची, चाबी, कॉट, शटर, टॉर्च",
+   "Handed back, to their owners only: 'Reached' (Papa), 'sorted' (Mama ji), 'run tumhara' and 'score' (Tinku), 'naap' (Masterji), 'stock' and 'shutter' (Mummy), 'toss' (Captain sahab), 'sach-sach' (Nani)"
+  ],
+  "never": [
+   "Any Hindi form that marks your gender (rule 66): futures in -ूँगा/-ूँगी, -ोगे/-ोगी, -ेगा/-ेगी, -ेंगे/-ेंगी; मैं आ गया/गई, पहुँच गया/गई, थक गया/गई; कर रहा/रही हूँ; थका/थकी हूँ; अकेला/अकेली; 'Main ready hoon'.",
+   "A word that fixes your gender, said by you or accepted from others: beta, beti, bhaiya, didi, bhai, bro (rule 8); no slang address word to anyone ('yaar', 'bro', 'dude', 'champ').",
+   "How you feel or what you want ('I'm tired', 'I'm fine', 'I'm worried', 'I want'), except the album's one line. Each also invites a gendered Hindi ending.",
+   "Turning a question about yourself back on the asker ('You first, Mausi.'), a figure, or somebody else's news in its place.",
+   "Any figure in speech: no counts, clock times, prices, scores or ordinals (the cast's two number leaners are Papa and Tinku). 'Ek-ek karke' is an idiom, not a count.",
+   "An exclamation mark, except the year's one 'Ek-ek karke!'.",
+   "Mummy's words and shapes: 'haan ji' (her typed tell), 'boliye', 'Aur kuch?', 'Had hai', 'Theek hai, toh', 'Ye mere hisaab mein', 'Iska bill nahin', and her English verb plus kar or ho ('check karo', 'confirm ho gaya').",
+   "Mami's words and shapes: 'Ek minute', 'done', 'pending', 'Tick', 'Correct?', 'Sahi?' as a tag, 'Ish', 'list' as the hand-over noun, ordinals, numbered or ticked items, and the 'thing, status' item line (so your old 'Cot: sorted.' and 'keys: sorted' go).",
+   "Papa's: 'Kamaal', 'Noted', 'Darj hai', 'galat', 'Reached?' as a question of your own (you only hand 'Reached' back to him), minutes.",
+   "Mama ji's: 'pakka', 'aur haan', 'full', 'Oho', 'Achha' as a hinge, 'don't worry', 'no problem', 'Ek kaam karo'; 'sorted' to anyone but him.",
+   "Mausi's: English 'sorry' in Hinglish, 'Haaye', 'suno', 'hai na?', 'bahut yaad', 'Ekdum first class', 'Pehle khao', tripled words, '??'.",
+   "Mausa ji's: 'Lo', 'Theek' as a one-word line, 'Hmm', 'Galti hui', 'Mazboot', 'Hain?', 'abhi' as a one-word order; you answer his 'So jao' with 'So jaiye', never his own form.",
+   "Nani's: 'Bas', 'Baap re', 'Chai piyo', 'Ab ye bhi', jobs sent to 'koi', 'Aur tum'.",
+   "Tinku's: 'Gazab', 'haan?' as a tag, 'Kitaab mein', 'Faisla tumhara', 'Mera wicket', 'oye' (hers to you; you now call her 'scorer' or 'Tinku'); 'run tumhara' only when you hand it back to her.",
+   "Captain sahab's: 'arre' and 'Arre waah', bare 'Not out' (so 'Not out, scorer.' goes), 'Next ball', 'Well fielded', 'Front foot', 'Nine means nine'; one call of his handed back to him, once, never mocking.",
+   "Masterji's: 'Dekhiye', 'Uff', 'fikr', 'farq', 'mausam', 'barsaat', 'Chalo, phir se'.",
+   "तुम to any elder, Mummy and Papa included; तू to anyone.",
+   "A card person's name, relation, job, looks, pronoun or note word before or during their decision (rule 36); after a pick, only the fixed template line (rule 38).",
+   "Agreement or disagreement with any judging note ('Sahi.', 'Haan, moody hai.', 'Not true.'), a rule for choosing ('Pick the fastest.'), or any line that changes with the pick (rule 38).",
+   "Any doubt of a report of harassment or of a dowry demand; the words 'misunderstanding' or 'adjust kar lo' (rule 22).",
+   "'well done', 'oops', 'sorry', 'please' or a joke in a chapter outcome beat (rules 46 and 64).",
+   "A god's name or religious exclamation (Hai Ram, Bhagwan, Inshallah, Allah, Rab, Wahe Guru, Oh God, Jesus, Ishwar, Mata ji as a goddess), a mild English word that hides one (Gosh, Goodness, Heavens, Thank God), a caste word or a brand (rule 3); a greeting that leans to one community (Ram Ram, Salaam, Sat Sri Akal): you greet by name or with 'Good morning'.",
+   "Mataji, Ammi, Abba, Khala, Mamu (realism notes: these lean towards one community)."
+  ],
+  "address": [
+   "NANI: 'Nani' | 'नानी', आप and -इए, plain Hindi ('Nani, aaram kijiye.' | 'नानी, आराम कीजिए।'); a call or a voice note, never a text.",
+   "MUMMY: 'Mummy' | 'मम्मी', आप and -इए, exactly as to Papa (realism notes [6]).",
+   "PAPA: 'Papa' | 'पापा', आप; your yes is 'Ji Papa'.",
+   "MAMA JI: 'Mama ji' | 'मामा जी', आप; your most English.",
+   "TINKU: 'Tinku' | 'टिंकू' or 'scorer' | 'स्कोरर' (Nani's word for her), तुम and -ओ commands; never तू, never 'oye' (hers to you), never bhai, bro, didi or bhaiya.",
+   "MAUSI | मौसी, MAUSA JI | मौसा जी, MASTERJI | मास्टरजी, CAPTAIN SAHAB | कप्तान साहब, MAMI | मामी: their family name or title and आप with -इए. ('Haan ji, Mausi.' leaves: 'haan ji' is Mummy's tell.)",
+   "A CHILD (new, for the table moments): no name unless the scene gives one, तुम and -ओ commands only ('Pehle haath dikhao.').",
+   "MINOR VOICES (the night nurse, the cook, the tent man, neighbours): आप and their name or job word, 'ji' in Hinglish, no word that gives them a gender the story has not shown.",
+   "CARD PEOPLE of any age: first name and आप, only after a pick, in the fixed template ('Mumtaz, station ka kaam aapke naam.').",
+   "A GROUP with any elder in it: 'sab' and the polite plural subjunctive ('Pehle sab paani pee lein.').",
+   "GREETINGS: by name or 'Good morning', in words only; touching feet, a palm on the head or a hand on the shoulder stay between painted people, never towards you (rule 7).",
+   "HOW THEY ADDRESS YOU (rule 66): the household says तुम only in commands ('Pehle khao', 'So jao'), 'who should' asks ('Chhat par kaun jaaye?') and lines where you are not the doer ('Faisla tumhara', 'Run tumhara', 'Pen tumhara'); never a future or a past about you (करोगे, आ गए). No family word for you while rulebook Q7 is open, never बेटा, भैया or दीदी. Mama ji calls you 'the in-charge' to guests; Tinku uses no word, or 'oye'; Masterji teases once with आप ('Ab toh aap in-charge hain.'); Nani counts you in once, 'Aur tum.'. The game's own voice says आप."
+  ],
+  "samples": [
+   "THE HAND-OVER, the refrain, the same whatever is picked and safe on a button (1.10, 2.04, 3.03, 4.04, 5.04): EN 'Let's see, Papa.' | HINGLISH 'Papa, dikhaiye.' | HI 'पापा, दिखाइए।' (Also: 'The slips, Mummy. Let's see.' | 'Mummy, parchiyaan dikhaiye.' | 'मम्मी, पर्चियाँ दिखाइए।'; 'Let's see, scorer.' | 'Scorer, dikhao.' | 'स्कोरर, दिखाओ।'; 'Let's see, Mami.' | 'Mami, dikhaiye.' | 'मामी, दिखाइए।'. Rule 66: clean.)",
+   "THE OPENING, before Mummy lays the red pen down (1.05): EN 'The pen, Mummy.' | HINGLISH 'Mummy, pen dijiye.' | HI 'मम्मी, पेन दीजिए।' (Rule 66: clean; safe on a button.)",
+   "PUTTING SOMEONE FIRST, lunch at the lane cup, a group with elders in it (4.14): EN 'Water first, everyone.' | HINGLISH 'Pehle sab paani pee lein.' | HI 'पहले सब पानी पी लें।' (Rule 66: the polite plural subjunctive marks no gender; if the checker reads -ें as -े, a native reader clears it.)",
+   "GIVING AN ORDER, to Tinku on cup morning (ch4 story beat): EN 'Score first, Tinku. Then tea.' | HINGLISH 'Tinku, pehle score. Phir chai.' | HI 'टिंकू, पहले स्कोर। फिर चाय।' (Rule 66: clean.)",
+   "WORRYING, to Nani in the ward at night (ch2): EN 'The pain, Nani? The plain truth.' | HINGLISH 'Nani, dard? Sach-sach bataiye.' | HI 'नानी, दर्द? सच-सच बताइए।' (Rule 66: clean. She has asked you for the plain truth all your life; this is the one time you ask it back.)",
+   "ASKED ABOUT YOURSELF, Mausi's three questions at once on the train (ch1; replaces 'Haan ji, Mausi.'): EN 'All set, Mausi.' | HINGLISH 'Mausi, sab set.' | HI 'मौसी, सब सेट।' (One answer for three questions, in the words you close a job with; she talks over it. Rule 66: clean.)",
+   "SAYING NO, to Mausi's third helping on the train (ch1): EN 'Not yet, Mausi. Everyone else first.' | HINGLISH 'Mausi, abhi nahin. Pehle sab kha lein.' | HI 'मौसी, अभी नहीं। पहले सब खा लें।' (Rule 66: 'नहीं।' ends a sentence and 'लें' may be read as -े; neither changes with gender, so a native reader clears both.)",
+   "COMFORTING, to Nani after the X-ray (ch2): EN 'Everyone's close by, Nani. Rest now.' | HINGLISH 'Nani, sab paas hain. Aaram kijiye.' | HI 'नानी, सब पास हैं। आराम कीजिए।' (Rule 66: clean. Her own 'sab'.)",
+   "OFFERING, to Mausa ji at 2 am, which he refuses ('Nahin. So jao.') (ch2): EN 'The chair, Mausa ji. You sleep.' | HINGLISH 'Mausa ji, kursi dijiye. Aap so jaiye.' | HI 'मौसा जी, कुर्सी दीजिए। आप सो जाइए।' (Rule 66: clean. His 'So jao' answered in your polite form.)",
+   "THANKS, to Mausa ji for the half sweet lime set down beside you (ch2; he leaves the room): EN 'Thanks, Mausa ji.' | HINGLISH 'Mausa ji, shukriya.' | HI 'मौसा जी, शुक्रिया।' (Rule 66: शुक्रिया ends on -ा and is caught by check 3; a noun that never changes, cleared.)",
+   "SORRY, to Masterji, for walking off in the middle of his story (ch3 story beat, proposed): EN 'Sorry, Masterji. Start again from the cloth.' | HINGLISH 'Masterji, maaf kijiye. Kapde se phir sunaiye.' | HI 'मास्टरजी, माफ़ कीजिए। कपड़े से फिर सुनाइए।' (Rule 66: clean. He wants a listener who does not walk off; the sorry turns you back into one.)",
+   "TEASING, to Papa on the night train after 'Battery still dead.' (ch1): EN 'Even the battery kept time, Papa.' | HINGLISH 'Papa, battery bhi time pe.' | HI 'पापा, बैटरी भी टाइम पर।' (Rule 66: clean. His love of time handed back without a figure.)",
+   "TEASING, to Tinku before the final (ch4 story beat): EN 'Write your own score too, scorer.' | HINGLISH 'Scorer, apna score bhi likho.' | HI 'स्कोरर, अपना स्कोर भी लिखो।' (Rule 66: clean. The only person who names her habit, gently.)",
+   "PRAISING, to Tinku when Captain sahab looks at her book (ch4 story beat, never the outcome; replaces 'Not out, scorer.'): EN 'That run's yours, scorer.' | HINGLISH 'Scorer, run tumhara.' | HI 'स्कोरर, रन तुम्हारा।' (Her own thanks, the credit she always gives away, given back to her. Bare 'Not out' is Captain sahab's call (matrix 2.15). Rule 66: तुम्हारा agrees with रन; flagged by check 3, cleared.)",
+   "A JOKE, on Masterji's flooded step (ch3 story beat; waits on rulebook Q5): EN 'Measurements for the mud, Masterji?' | HINGLISH 'Masterji, keechad ka naap?' | HI 'मास्टरजी, कीचड़ का नाप?' (Rule 66: clean. Deadpan, in his own idiom; never at a card person, never in an outcome beat (rule 46).)",
+   "EXCLAMATION, deadpan, rain on cup morning (ch4 story beat; waits on Q5): EN 'Lovely. Toss indoors, Captain sahab?' | HINGLISH 'Badhiya. Captain sahab, toss andar?' | HI 'बढ़िया। कप्तान साहब, टॉस अंदर?' (His toss handed back once, never mocking. Rule 66: बढ़िया flagged by check 3, cleared.)",
+   "EXCLAMATION, straight, Tinku's letter in December, after 'Ye score main khud likhoongi.' (ch5): EN 'Lovely. Write it yourself, scorer.' | HINGLISH 'Badhiya. Scorer, khud likho.' | HI 'बढ़िया। स्कोरर, ख़ुद लिखो।' (Pays off 'Write your own score too.' Rule 66: बढ़िया flagged, cleared; लिखो is a command.)",
+   "REASSURING, Mama ji on the phone at 8 am (ch2; replaces 'Fikar mat kijiye', since 'fikr' is Masterji's and 'Don't worry' Mama ji's own): EN 'Sorted, Mama ji. Nani's resting.' | HINGLISH 'Mama ji, sorted. Nani aaram mein.' | HI 'मामा जी, सब सेट है। नानी आराम में।' (Rule 66: clean.)",
+   "CROSS, when someone is left off: Mama ji's guest call has missed Masterji (ch5 story beat, proposed): EN 'Mama ji. Masterji first. Then the rest.' | HINGLISH 'Mama ji. Pehle Masterji. Phir baaki.' | HI 'मामा जी। पहले मास्टरजी। फिर बाक़ी।' (Your cross tell: the name alone with a full stop, and 'Pehle' naming the one left off. Rule 66: मास्टरजी ends a sentence on -ी; a name, cleared.)",
+   "LOSING YOUR TEMPER, once a year: three phones and the band at once (ch5 story beat): EN 'One at a time! Everyone, one at a time.' | HINGLISH 'Ek-ek karke! Sab, ek-ek karke.' | HI 'एक-एक करके! सब, एक-एक करके।' (Aimed at the noise, never at a person; the year's only '!'. Rule 66: करके is the invariable 'having done', flagged by check 3, cleared.)",
+   "CLOSING A JOB, the fixed reply after the cots (2.17; replaces 'Cot: sorted.'): EN 'All set, Nani.' | HINGLISH 'Nani, sab set.' | HI 'नानी, सब सेट।' (One word for the whole job, never item by item. Give one after every pick or none (options Q14). Rule 66: clean.)",
+   "THE FIXED OUTCOME REPLIES, warm in every band and never funny (rule 46); Hinglish now opens on the name like the Hindi: EN 'Let's go in.' | HINGLISH 'Chaliye, andar.' | HI 'चलिए, अंदर।' (Also: 2.32 'Now rest, Nani.' | 'Nani, ab aaram kijiye.' | 'नानी, अब आराम कीजिए।'; 3.26 'Next monsoon, sandbags first.' | 'Agli baarish, pehle sandbags.' | 'अगली बारिश में, पहले रेत की बोरियाँ।' (बोरियाँ flagged, cleared); 4.26 'Sunday, then. Bring bricks.' | 'To itvaar. Eentein le aaiye.' | 'तो इतवार। ईंटें ले आइए।'; 5.27 'Now, Nani's cake.' | 'Ab, Nani ka cake.' | 'अब, नानी का केक।'; 5.30 'Next year. Same calendar.' | 'Agle saal. Yahi calendar.' | 'अगले साल। यही कैलेंडर।'. All clean or cleared.)",
+   "THE ALBUM (proposal; cast map owner question 6): Nani counts heads and ends 'Aur tum.': EN 'Me too, Nani.' | HINGLISH 'Nani, main bhi.' | HI 'नानी, मैं भी।' (The only line of the year about yourself. Rule 66: भी flagged by check 3, cleared. A bubble only, never on a button (Q8 bars 'me'); button-safe fallback 'Yes, Nani.' | 'Nani, haan.' | 'नानी, हाँ।'.)"
+  ]
+ },
+ "typing": {
+  "habits": [
+   "Your phone: a plain smartphone in a plain charcoal-grey case, no sticker or charm, painted only in the present day lying face up on the bedside table, its screen a pale blank glow, every word live text (1.01; rule 30). Never in a hand, never an app's look, an app name, a maker's shape or a 'forwarded' label (rule 3). In a world chapter your messages appear as a plain message card under the panel (rule 40).",
+   "You always pick up and never leave a message unanswered; that is why everyone calls you. The story never says when, from where or how fast you answer, so a player on night shifts or an early bus fits (India review). You never write first about yourself.",
+   "You mirror each recipient's script and punctuation: a voice note to Nani; Mummy's own lowercase with no full stops; Papa's full stops and one fact a line, so he never reads you as cross; English to Mama ji, one message where he sends five; Tinku's lowercase; sentence case to the chapter voices.",
+   "What stays yours whatever the recipient: one message, never a burst; the recipient's name opens it in every mode, then a comma (a message is addressed like a letter, unlike your speech, where English puts the name last), except when the first word is their own word handed back or the greeting ('Reached, Papa.', 'Good morning, Papa.'), and the family group gets no name; Tinku's typed names stand alone on their own line, yours carry a comma; no line about yourself; never all capitals (realism notes [9]); never '??' (Mausi's); never a numbered list, a tick or a 'thing, status' item line (Mami's); never 'done' (Mami's), 'haan ji' (Mummy's typed tell) or 'ok' (Tinku's holding reply, Mausa ji's 'Ok.').",
+   "Your closer: 'sab set' with a thumbs-up, the one emoji you send. Ownership is free: Mummy's, Mausa ji's and Tinku's revised files each give the thumbs-up away, so it becomes yours (default yellow, no skin tone). No other emoji: the plain smiles are Mausi's (😊) and Tinku's (🙂); no person, skin-tone hand, coloured heart or folded hands (realism notes 3.2; rule 3). No stickers. In these samples the emoji is written as 👍.",
+   "English participles with no kar or ho, because they mark no gender and are not Mummy's verb frame: 'Reached' (to Papa only, his word, in English letters in every mode), 'Booked', 'Sorted' (to Mama ji only). In Hindi mode the rest is rebuilt from ने pasts that agree with the thing (बिल भेज दिया) or no verb, never पहुँच गया/गई.",
+   "Digits only when the fact is a number (ward, bed, berth, days off, the head-count of 14); no prices, no scores, no clock times except when Papa asks for one.",
+   "Voice notes: you send them only to Nani, who speaks to her phone rather than typing. Mausi's long voice notes get one typed line back.",
+   "Forwards: never. Papa's good-morning picture gets 'Good morning, Papa.' back every morning, with no clock time attached.",
+   "No typos. The family group can be mentioned, never shown (owner, 23 Oct; rule 47); if the story needs your post there, it is a single message card."
+  ],
+  "samples": [
+   "To Papa, January, after his booking (his layout: full stops, one fact a line): EN 'Ji Papa. S4, berth 36. / PNR sent to Mausi.' | HINGLISH 'Ji Papa. S4, berth 36. / PNR Mausi ko bhej diya.' | HI 'जी पापा। S4, बर्थ 36। / PNR मौसी को भेज दिया।' (Berth 36 is the lower berth Papa's file gives you (34 is a middle berth in a sleeper). Nani phones back rather than reading texts, so the PNR goes to Mausi. Rule 66: दिया flagged; the dropped subject is मैंने, so it agrees with PNR; cleared.)",
+   "To Papa's 'Reached?' after the night train, May: EN 'Reached, Papa. / Everyone together.' | HINGLISH 'Reached, Papa. / Sab saath.' | HI 'Reached, पापा। / सब साथ।' (His word handed back. Rule 66: clean.)",
+   "To Mummy, when the flood comes, in her own lowercase: EN 'mummy, 2 days off / saturday's shutter 👍' | HINGLISH 'mummy, 2 din ki chhutti / shanivaar ka shutter 👍' | HI 'मम्मी, 2 दिन की छुट्टी / शनिवार का शटर 👍' (Brings you home without naming your work. Rule 66: छुट्टी flagged at a line end; the leave, cleared.)",
+   "To Mummy, under a photo of the bill (painted blank; replaces 'Done, Mummy.', since 'done' is Mami's): EN 'mummy, bill sent 👍' | HINGLISH 'mummy, bill bhej diya 👍' | HI 'मम्मी, बिल भेज दिया 👍' (Rule 66: दिया agrees with बिल; cleared.)",
+   "To Mama ji, the morning after the fall (one message where he sends five): EN 'Mama ji, sorted. Nani's resting. Ward 3, bed 12.' | HINGLISH 'Mama ji, sorted. Nani aaram mein. Ward 3, bed 12.' | HI 'मामा जी, सब सेट है। नानी आराम में। वार्ड 3, बेड 12।' (No 'Don't worry' (his own English). Rule 66: clean.)",
+   "To Tinku, cup morning, in her lowercase (she answers Captain sahab 'bottles mere paas'): EN 'scorer, bottles with you?' | HINGLISH 'scorer, bottles tumhare paas?' | HI 'स्कोरर, बोतलें तुम्हारे पास?' (No 'oye' and no clock time. Rule 66: clean.)",
+   "To Nani, a voice note shown as live text: EN 'Nani, the electricity bill. Shall I pay it tomorrow?' | HINGLISH 'Nani, bijli ka bill. Kal jama kar doon?' | HI 'नानी, बिजली का बिल। कल जमा कर दूँ?' (The figure '840' goes: a voice note is speech. Rule 66: an offer in the subjunctive, clean.)",
+   "To Mami, late in the wedding week (one line, never her items or ticks): EN 'Mami, all set. Band tomorrow morning.' | HINGLISH 'Mami, sab set. Band kal subah.' | HI 'मामी, सब सेट। बैंड कल सुबह।' (Rule 66: clean.)",
+   "To Mausa ji, from the ward, after his texted 'So jao.': EN 'Mausa ji, you sleep too.' | HINGLISH 'Mausa ji, aap bhi so jaiye.' | HI 'मौसा जी, आप भी सो जाइए।' (Rule 66: clean.)",
+   "To Papa, every morning, under his good-morning picture: EN 'Good morning, Papa.' | HINGLISH 'Good morning, Papa.' | HI 'पापा, गुड मॉर्निंग।' (Rule 66: clean.)",
+   "The family group (mentioned, never shown; a single message card if the story needs it): EN 'Nani's 80th, May. / 14 confirmed. / Anyone missed?' | HINGLISH 'Nani ka 80th, May. / 14 log confirm. / Koi chhoota?' | HI 'नानी का 80वाँ, मई। / 14 लोग कन्फ़र्म। / कोई छूटा?' (Your fear, as a question to everyone. Fourteen is the bible's count. 'list mein sab ke naam?' goes: 'list' is Mami's word. Rule 66: छूटा agrees with कोई; cleared.)"
+  ]
+ },
+ "test_lines": [
+  {
+   "moment": "1. The lights go out in the middle of dinner (to Nani; deadpan exclamation, then an offer).",
+   "en": "Lovely. Stay put, Nani. Shall I get the torch?",
+   "hinglish": "Badhiya. Nani, aap baithiye. Torch main laaun?",
+   "hi": "बढ़िया। नानी, आप बैठिए। टॉर्च मैं लाऊँ?"
+  },
+  {
+   "moment": "2. Someone everyone was waiting for arrives two hours late (to Mama ji at the gate; the cross tell: the name alone, and 'Pehle' names the one kept waiting; no figure).",
+   "en": "Mama ji. See Nani first.",
+   "hinglish": "Mama ji. Pehle Nani se miliye.",
+   "hi": "मामा जी। पहले नानी से मिलिए।"
+  },
+  {
+   "moment": "3. A cousin phones to say they have got their first job (on the phone to the cousin, unnamed; a command, so no gender).",
+   "en": "Lovely. Now tell Nani yourself.",
+   "hinglish": "Badhiya. Ab Nani ko khud bataiye.",
+   "hi": "बढ़िया। अब नानी को ख़ुद बताइए।"
+  },
+  {
+   "moment": "4. The tea someone has just made has far too much sugar in it (to Mummy, who made it; her own shop word handed back, deadpan).",
+   "en": "Is that the whole sugar stock, Mummy?",
+   "hinglish": "Mummy, cheeni ka stock khatam?",
+   "hi": "मम्मी, चीनी का स्टॉक ख़त्म?"
+  },
+  {
+   "moment": "5. In front of the family, someone shows that they had a fact wrong (you were wrong; to Nani, who was right).",
+   "en": "Sorry, Nani. You had it right.",
+   "hinglish": "Nani, maaf kijiye. Aapki baat sahi.",
+   "hi": "नानी, माफ़ कीजिए। आपकी बात सही।"
+  },
+  {
+   "moment": "6. Someone they love is leaving, and they say goodbye on a railway platform (to Papa at the coach door; his own love-word asked of him).",
+   "en": "Send 'Reached' when you're in, Papa.",
+   "hinglish": "Papa, pahunchkar 'Reached' bhejiye.",
+   "hi": "पापा, पहुँचकर 'Reached' भेजिए।"
+  },
+  {
+   "moment": "7. Someone thanks them for something they did (Mami thanks you; you send it on to the one who would be left out).",
+   "en": "Thanks, Mami. Mausa ji first, though.",
+   "hinglish": "Mami, shukriya. Par pehle Mausa ji ko.",
+   "hi": "मामी, शुक्रिया। पर पहले मौसा जी को।"
+  },
+  {
+   "moment": "8. A neighbour passes on a rumour that the corner sweet shop is closing (to Tinku; deadpan, someone else first).",
+   "en": "Jalebis first, scorer. Just in case.",
+   "hinglish": "Scorer, pehle jalebi le aao.",
+   "hi": "स्कोरर, पहले जलेबी ले आओ।"
+  },
+  {
+   "moment": "9. Heavy rain floods the lane outside the house (to Mummy; her shutter, your noun-then-name).",
+   "en": "The shutter key, Mummy.",
+   "hinglish": "Mummy, shutter ki chaabi dijiye.",
+   "hi": "मम्मी, शटर की चाबी दीजिए।"
+  },
+  {
+   "moment": "10. Someone asks them how they are (Mausi asks; the job word, and she moves on).",
+   "en": "All set, Mausi.",
+   "hinglish": "Mausi, sab set.",
+   "hi": "मौसी, सब सेट।"
+  },
+  {
+   "moment": "11. A child knocks a glass of water across the table (to the child, unnamed; you ask to see first).",
+   "en": "Hands first, let's see. Hurt?",
+   "hinglish": "Pehle haath dikhao. Chot?",
+   "hi": "पहले हाथ दिखाओ। चोट?"
+  },
+  {
+   "moment": "12. A phone call brings good news (you answer, then hand the phone on to Papa).",
+   "en": "Lovely. It's for you, Papa.",
+   "hinglish": "Badhiya. Papa, aapke liye phone.",
+   "hi": "बढ़िया। पापा, आपके लिए फ़ोन।"
+  }
+ ],
+ "changed": [
+  "SHAPE (C2): you stay short, as the target asks, but now in a shape nobody else has: one beat with the listener's name on it, the name first in Hinglish and Hindi and last in English. Hinglish lines that put the name last ('Ab aaram kijiye, Nani.', 'Abhi nahin, Mausi.', 'Dikhao, scorer.') are reordered to match the Hindi, so the shape is one rule in two languages. Why: eight of eleven were clipped and told apart only by trade nouns; yours is now told apart by the name, not by any trade.",
+  "EXCLAMATION (C6): new 'Badhiya.' | 'बढ़िया।' | 'Lovely.', said flat; straight for good news, deadpan when things go wrong. You had none. No religious sense; it never changes with gender.",
+  "SORRY AND THANKS (C4): now spoken, plain and polite: 'Maaf kijiye' and 'Shukriya', each with a name. English mode says 'Thanks, Mausa ji.', not the matrix's 'Thank you', so it stays apart from Mami's 'Thank you, Bhaiya ji.' to strangers in English mode; English 'Sorry, Nani.' stays single and named, apart from Mausi's tripled 'Sorry, sorry, sorry!'. Thanked yourself, you send the thanks on to whoever would be left out, which keeps you apart from Tinku, who hands the credit back to the thanker.",
+  "STATUS LINES OUT (new collision with Mami's target): 'Cot: sorted.', 'Mami, keys: sorted. / Envelopes: sorted.' and the typed colon form 'keys: sorted' were the 'thing, status' item shape the matrix gives Mami, in her own chapter. Now one word for the whole job, 'Sab set.', said to a person; 'sorted' only to Mama ji, as his own word handed back (his file calls it 'the word he wants back from you').",
+  "HOW ARE YOU (C10, the contradiction): 'Haan ji, Mausi.' becomes 'Mausi, sab set.'. 'Haan ji' is Mummy's typed and spoken tell; and answering with the job word shows the contradiction (the switchboard files itself as a job) without a dodge, a figure or somebody else's news.",
+  "'PEHLE ___' (C9): yours alone now; the old cast file already used it, and every finished file has dropped it. Your cross tell is built on it: the name alone with a full stop at the front, then 'Pehle' naming whoever was left waiting or left off.",
+  "WORDS RETURNED TO THEIR OWNERS: 'Not out, scorer.' becomes 'Scorer, run tumhara.' (bare 'Not out' is Captain sahab's call, matrix 2.15; the beat still hands Tinku the credit she gives away); 'oye' leaves (Tinku's to you); 'Fikar mat kijiye' leaves ('fikr' is Masterji's) and 'Don't worry' leaves (Mama ji's English), so the 8 am reassurance is 'Mama ji, sorted. Nani aaram mein.'; 'chalo' leaves your commands to Tinku (Masterji's sorry opener); 'list' leaves your family-group message (Mami's word).",
+  "HANDING WORDS BACK made a rule with a budget: only to the word's owner, with the owner's name in the same bubble, at most one line in three, never Mami's or Mausi's words. Why: a handed-back word without its owner's name would be sorted as its owner in the blind test.",
+  "NUMBERS (C1): none in speech. The Nani voice note loses '840' (a voice note is speech); the typed '8:55 lane ground' to Tinku goes (minutes are Papa's); digits stay in messages only for ward, bed, berth, days off and the head-count of 14. 'Ek-ek karke' is an idiom, not a count.",
+  "TYPING: 'Done' leaves (Mami's status word); the plain smile leaves (Mausi's 😊, Tinku's 🙂); the thumbs-up becomes your one emoji, because Mummy's, Mausa ji's and Tinku's revised files each give it away and no file now owns it; stickers go (Tinku now sends hers only to college friends). Your typed closer is 'sab set 👍'. Berth 34 becomes berth 36, the lower berth Papa's file books you (34 is a middle berth in a sleeper).",
+  "CHILDREN: तुम and -ओ commands to a child, as to Tinku (new; the test set's table moment needed it). Every other listener keeps आप.",
+  "KEPT: the essence (the family's switchboard), the want, the fear of the one left off, the contradiction the family does to you, 'Dikhaiye' as the year's refrain, 'Ek-ek karke!' once, the album's 'Nani, main bhi.', the fixed outcome replies, no 'I', 'me', 'my' or 'please' outside offers and the album.",
+  "KNOCK-ON EDITS for other files: Mummy's typing sample quotes your 'Done, Mummy. Bill bhej diya.' (now 'mummy, bill bhej diya 👍'); Mami's file should give your hand-over as 'मामी, दिखाइए।' and your late-week reply as 'Mami, sab set.'; Tinku's and Captain sahab's files should show your cup-day praise as 'Scorer, run tumhara.'; the cast trait table should give the thumbs-up one owner (proposed: you); Mama ji's 'सेट?' as a question and your 'सब सेट' as the answer share a word in Hindi mode by design (question and answer).",
+  "OPEN FOR READERS AND THE OWNER: 'Shukriya' (a Hindi-first and an Urdu-speaking reader; fallback 'Thanks' in Hinglish too); 'Badhiya.' said deadpan (Hindi-first readers; fallback good news only); 'Lovely.' in English mode; 'Sab set' as your answer to how you are; the album line (cast map question 6); every joke waits on rulebook Q5; your lines on the button wait on Q8."
+ ],
+ "checks": {
+  "problems": [],
+  "bubble_cap": "Every spoken bubble in the samples and test lines is at most 10 words (names not counted, rule 62); most run 2 to 6.",
+  "figures_in_speech": "None; 'Ek-ek karke' | 'One at a time' is the marked idiom. Digits only in typed messages (berth 36, ward 3, bed 12, 2 days, 14).",
+  "rule66_flags_cleared": [
+   "पहले सब पानी पी लें। :: check3 लें",
+   "मौसी, अभी नहीं। पहले सब खा लें। :: check2 अभी नहीं, check3 नहीं, check3 लें",
+   "मौसा जी, शुक्रिया। :: check3 शुक्रिया",
+   "स्कोरर, रन तुम्हारा। :: check3 तुम्हारा",
+   "बढ़िया। कप्तान साहब, टॉस अंदर? :: check3 बढ़िया",
+   "बढ़िया। स्कोरर, ख़ुद लिखो। :: check3 बढ़िया",
+   "मामा जी, सब सेट है। नानी आराम में। :: check3 में",
+   "मामा जी। पहले मास्टरजी। फिर बाक़ी। :: check3 जी, check3 मास्टरजी, check3 बाक़ी",
+   "एक-एक करके! सब, एक-एक करके। :: check3 करके, check3 करके",
+   "नानी, मैं भी। :: check3 भी",
+   "जी पापा। S4, बर्थ 36। :: check3 पापा",
+   "PNR मौसी को भेज दिया। :: check3 दिया",
+   "Reached, पापा। :: check3 पापा",
+   "मामा जी, सब सेट है। नानी आराम में। वार्ड 3, बेड 12। :: check3 में",
+   "कोई छूटा? :: check3 छूटा",
+   "बढ़िया। नानी, आप बैठिए। टॉर्च मैं लाऊँ? :: check3 बढ़िया",
+   "मामा जी। पहले नानी से मिलिए। :: check3 जी",
+   "बढ़िया। अब नानी को ख़ुद बताइए। :: check3 बढ़िया",
+   "नानी, माफ़ कीजिए। आपकी बात सही। :: check3 सही",
+   "मामी, शुक्रिया। पर पहले मौसा जी को। :: check3 शुक्रिया",
+   "बढ़िया। पापा, आपके लिए फ़ोन। :: check3 बढ़िया"
+  ],
+  "rule66_why_each_clears": "बढ़िया, सही: adjectives that never change with gender; शुक्रिया, बाक़ी: nouns; भी: a particle; तुम्हारा: agrees with रन; लें: the polite plural subjunctive; नहीं and अभी नहीं: invariant negation; में: a postposition; करके: the invariable 'having done'; जी, पापा, मास्टरजी: names and the honorific; दिया: agrees with PNR and बिल (dropped subject मैंने); छूटा: agrees with कोई. A native reader clears each, and the build keeps the cleared list (rule 66).",
+  "test_lines_naming_a_listener": 11,
+  "test_lines_with_one_of_your_own_words": 9,
+  "voice_test_markers": "Your own words in the 12 test lines: Badhiya (1, 3, 12), Pehle (2, 7, 8, 11), Maaf kijiye (5), Shukriya (7), Sab set (10), dikhao (11); the other three are a listener's word handed back with that listener's name (4 stock to Mummy, 6 Reached to Papa) and your noun-then-name shape with -iye (9)."
+ }
+}

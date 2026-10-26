@@ -1,0 +1,419 @@
+{
+ "audit": {
+  "items": [
+   {
+    "who": "Mama ji",
+    "issue": "Hindi 1 (rules 8, 66): test[9] 'Didi kaisi hain?' said to the player can read as calling the player Didi, and कैसी then gives the player a gender.",
+    "status": "addressed",
+    "now": "mama-ji-.json test_lines[9]: 'Full fit! Amma ne dawai li? Tumhari Mummy kaisi hain? Pakka?' | 'फ़ुल फ़िट! अम्मा ने दवाई ली? तुम्हारी मम्मी कैसी हैं? पक्का?' | 'Fighting fit! Has Amma had her medicines? How's your Mummy? Sure?'. The tics, never[14] and address[9] now say Mummy is 'Tumhari Mummy' to you and 'Didi' is only a possessive. test[8] 'Didi ki dukaan theek?' stays, as the fix allowed."
+   },
+   {
+    "who": "Nani",
+    "issue": "Hindi 2: samples[16] 'Jab sab phir aayein.' is an unfinished when-clause.",
+    "status": "addressed",
+    "now": "nani-turning-.json samples[16]: 'Koi party nahin. Sab phir aayein, tab.' | 'कोई पार्टी नहीं। सब फिर आएँ, तब।' | 'No party. Not till everyone comes again.'"
+   },
+   {
+    "who": "Mama ji",
+    "issue": "Hindi 3: samples[15] has no verb after 'log khade-khade'.",
+    "status": "addressed",
+    "now": "mama-ji-.json samples[15]: 'Kursiyaan kam padin toh log khade-khade khaayenge. Jaldi niptega!' | 'कुर्सियाँ कम पड़ीं तो लोग खड़े-खड़े खाएँगे। जल्दी निपटेगा!' | EN 'Short of chairs? People stand, dinner's over sooner.' (9 words)"
+   },
+   {
+    "who": "Cast (Tinku, Mausi, Papa, Mummy, Mausa ji, Mama ji)",
+    "issue": "Hindi 4 (rule 66): ने pasts where the player is the doer fit none of rule 66's three allowed shapes. The fix was to ask the owner, or have each line cleared by the native reader.",
+    "status": "partly",
+    "now": "The owner question is now written into the files: mausi address[0] ('OWNER QUESTION (rule 66): ... The same question covers Tinku's, Papa's, Mummy's, Mausa ji's and Mama ji's lines'), mummy samples[12] and address[0] ('one line waits on the owner: Bahut achha kiya.'), papa samples[8], mausa address[10] and [11], mama samples[6] and changed[24]. Tinku's file does not follow. samples[11] 'Baitho, yaar. Tumne bahut kiya.' is marked '(both flagged, both cleared)', and samples[18] 'Kal raat ki dawai tumne sambhali.' is marked '(flagged, cleared)'. tinku address[6] files 'दवाई तुमने सँभाली' under 'lines where you are not the doer', which is wrong: you are the doer. The owner has not ruled yet."
+   },
+   {
+    "who": "Mami",
+    "issue": "Hindi 5 (rule 22): samples[20] 'Mujhe yakeen hai. Bolo, kya likhoon?' raises a pen straight after a report.",
+    "status": "addressed",
+    "now": "mami-about-.json samples[20]: 'Mujhe yakeen hai. Bolo, ab kya karna hai?' | 'मुझे यक़ीन है। बोलो, अब क्या करना है?' | 'I believe you. Tell me, what do we do now?'. never[10] now bars 'kya likhoon' and 'note karo' after a report. The 'Mujhe yakeen hai' formula is still there (see cast-wide item 1)."
+   },
+   {
+    "who": "Mausa ji",
+    "issue": "Hindi 6: 'Hmm. Isme kya.' is the same thanks brush-off in four voices in moment 7. Give it to Mummy alone; Mausa ji says only 'Hmm.'",
+    "status": "partly",
+    "now": "The spoken lines are fixed: mausa samples[10] and test[6] are 'Hmm.' | 'हम्म।'. Nani and Mama ji no longer say it, and only Mummy has 'Arre Jija ji, isme kya.' Stale prose in other files still gives the phrase to Mausa ji: papa never[6] ('Mausa ji's one-word Theek. and Lo., his Hmm. Isme kya.'), captain never[4] ('Mausa ji's ... Isme kya'), you never[6] ('Mausa ji's ... Isme kya'), mama sorry_thanks_love ('Hmm. Isme kya. Mausa ji's') and mama test_lines[6].moment ('isme kya is Mummy's and Mausa ji's in this moment'). Masterji's 'Isme kaunsi badi baat hai.' is still in moment 7; the fix did not ask to change it."
+   },
+   {
+    "who": "Nani",
+    "issue": "Hindi 7: samples[9] 'Arre, isme kya. Ghee poora daaliye.' copies Mummy's line word for word.",
+    "status": "addressed",
+    "now": "nani samples[9]: 'Thank you-vank you rehne dijiye. Ghee poora daaliye.' | 'थैंक यू-वैंक यू रहने दीजिए। घी पूरा डालिए।' | 'None of your thank-yous. Don't skimp on the ghee.' (आप to Mami)"
+   },
+   {
+    "who": "Mama ji",
+    "issue": "Hindi 8: test[6] 'Arre, isme kya! ...' uses Mummy's brush-off, and its Hindi 'सारा काम' drifts from the Hinglish 'Credit'.",
+    "status": "addressed",
+    "now": "mama test_lines[6]: 'Oho, no no! Credit Jija ji ka, Boss ka, sabka!' | 'ओहो, ना ना! क्रेडिट जीजा जी का, बॉस का, सबका!' | 'Oho, no no! Credit's Jija ji's, and Boss's, everyone's!' The Hindi now matches the Hinglish. Its moment note is stale (see Hindi 6)."
+   },
+   {
+    "who": "You",
+    "issue": "Hindi 9: test[6] 'Arre Mami, kis baat ka? ...' copies Captain sahab's move in moment 7, and its 'Arre' is Captain sahab's word.",
+    "status": "addressed",
+    "now": "you test_lines[6]: 'Mami, mujhe nahin. Pehle Mausa ji ko boliye.' | 'मामी, मुझे नहीं। पहले मौसा जी को बोलिए।' | 'Not me, Mami. Thank Mausa ji first.' sorry_thanks_love adds: 'Never Kis baat ka?, which Captain sahab and Tinku say in this moment.'"
+   },
+   {
+    "who": "Nani",
+    "issue": "Hindi 10: test[5] 'Pahunchkar phone zaroor karna' is Mummy's platform line, and Mummy says it in the same moment.",
+    "status": "addressed",
+    "now": "nani test_lines[5]: 'Chhote. Khush raho. Pahunchte hi phone.' | 'छोटे। ख़ुश रहो। पहुँचते ही फ़ोन।' | 'Stay happy. Phone the minute you arrive.' Mummy keeps 'Pahunchkar phone karna. Aur kuch?'"
+   },
+   {
+    "who": "Papa",
+    "issue": "Hindi 11: three people thank the player in the same words ('Achha kiya' from Papa and Mausa ji, 'Bahut achha kiya' from Mummy), and Papa has lost his own deed-logged shape. Optional: Mausa ji samples[9] becomes 'Hmm. Baitho.'",
+    "status": "partly",
+    "now": "Papa is fixed. papa samples[21]: 'Raat bhar, list ke saath. Darj hai. / Wo list ab tumhari hai.' | 'रात भर, लिस्ट के साथ। दर्ज है। / वो लिस्ट अब तुम्हारी है।' The optional change was not made: mausa samples[9] is still 'Achha kiya.' | 'अच्छा किया।', and mummy samples[12] is still 'Bahut achha kiya. / Aaj raat ka khana mera.', so two people still thank you in the same words. Mausi also says 'Bahut achha kiya!' 'whenever it is said to you' (mausi address[0]). The files also disagree on who owns the phrase: papa never[6] calls 'Bahut achha kiya' Mummy's, while mausi uses[11] calls it 'her everyday thanks'."
+   },
+   {
+    "who": "Papa",
+    "issue": "Hindi 12: test[6] opens on 'Arre', as Mummy's line does in the same moment.",
+    "status": "addressed",
+    "now": "papa test_lines[6]: 'Roz ka kaam hai. / Ab wapsi ka ticket dekhta hoon.' | 'रोज़ का काम है। / अब वापसी का टिकट देखता हूँ।'"
+   },
+   {
+    "who": "Mausi",
+    "issue": "Hindi 13: in test[8] 'Arre' works as an exclamation, and matrix 2.15 gives that to Captain sahab.",
+    "status": "addressed",
+    "now": "mausi test_lines[8]: 'Gali mein nadi? Haay! Achaar ke martbaan upar! Chalo, chalo!' | 'गली में नदी? हाय! अचार के मर्तबान ऊपर! चलो, चलो!' | 'Lane's a river? Haay! Pickles up! Come on, come on!' This is exactly 10 counted words, at the cap. It also meets the real-India note on classroom lines."
+   },
+   {
+    "who": "Mausa ji",
+    "issue": "Hindi 14: samples[0] 'Amma ji, poori gali aayi hai.' repeats Nani's sentence in the same beat and is not his shape.",
+    "status": "addressed",
+    "now": "mausa samples[0]: 'Amma ji, bahar poori gali.' | 'अम्मा जी, बाहर पूरी गली।' | 'Amma ji, the whole lane's outside.'"
+   },
+   {
+    "who": "Papa",
+    "issue": "Hindi 15: 'checker' is an outsider's word; a railwayman says TT.",
+    "status": "addressed",
+    "now": "papa samples[2]: 'Ab TT aayega.' | 'अब टीटी आएगा।' | 'The TT comes next.' address[0]: 'टीटी के लिए टिकट कौन रखे?'. never[7] bars ''checker' for the TT'. No 'checker' is left in any Papa line."
+   },
+   {
+    "who": "Mummy",
+    "issue": "Hindi 16 (politeness): test[4] 'Chalo, ye mere khaate mein daal do.' uses the तुम form to a group that includes elders.",
+    "status": "addressed",
+    "now": "mummy test_lines[4]: 'Achha? Meri galti. / Chalo, ab yaad rahega.' | 'अच्छा? मेरी ग़लती। / चलो, अब याद रहेगा।' | 'Oh? My mistake. / Right, I'll remember that.' This is a different wording from the fix's, but it has no command and no khaata. The re-run checker flags the English 'Oh? My' as the oath 'oh my'; that is a false hit across the question mark."
+   },
+   {
+    "who": "Mami",
+    "issue": "Hindi 17: test[5] 'Jaldi aana' repeats the words of Tinku's goodbye.",
+    "status": "addressed",
+    "now": "mami test_lines[5]: 'Ticket, tiffin, done. Agli baar kab?' | 'टिकट, टिफ़िन, सब रख दिया। अगली बार कब?' | 'Ticket, tiffin, done. When will you come next?' This uses the note's own Hindi in place of 'Agli visit: pending', and changed[22] gives the reason. Side slip: mami never[4] calls Tinku 'his' ('at a parting, his Jaldi aana'), but Tinku is she."
+   },
+   {
+    "who": "Mausi and Masterji (typed)",
+    "issue": "Hindi 18 (rule 62): typed messages run over 10 words. The fix was to ask the owner and, if the cap applies, split them.",
+    "status": "partly",
+    "now": "Masterji's typed messages are now split into cards (e.g. typing[2] 'shutter roz thoda utha ke hawa di h ji..' / 'maal sukha h.. idhar dhoop kam'), with habit[3] 'A card holds 10 words or fewer'. Mausi's file states the question (typing habits[9]: 'OWNER QUESTION (rule 62)... no message changes until the owner answers'), but samples 0, 3, 5 and 7 are still single cards of 19, 20, 16 and 13 counted words. Each has a split ready, e.g. 'suno suno suno....kal raat wali train....' / 'tum bhi saath ho na??' / 'apni baatein ... 😊'. A private re-run of check.py still gives '62-typed': 4, all of them Mausi's. The owner has not ruled yet."
+   },
+   {
+    "who": "Papa",
+    "issue": "Hindi 19: the voice.exclamation example is one bubble of 11 counted words.",
+    "status": "addressed",
+    "now": "papa voice.exclamation: 'dry irony, in two bubbles ('Kal ki gaadi ka ticket aaj raat book kiya? / Kamaal hai.'...)'"
+   },
+   {
+    "who": "Masterji",
+    "issue": "Hindi 20: samples[5] spells 'incharge' where the rest of the cast writes 'in-charge'.",
+    "status": "addressed",
+    "now": "masterji samples[5]: 'Ab toh aap in-charge hain.' / 'Chai aapki taraf se.' | 'अब तो आप इंचार्ज हैं।'. 'incharge' now appears in none of the 11 files."
+   },
+   {
+    "who": "Mausi and Masterji (address tables)",
+    "issue": "Hindi 21: Mausi's file has Masterji call her 'Behenji', and Masterji's file has 'Mausi ji'.",
+    "status": "partly",
+    "now": "Masterji's file is fixed. masterji address[5]: 'Mausi: Behenji, आप, as her own file has it'. Mausi's note is now stale: mausi address[10] still reads 'Masterji Behenji ... (Masterji's file has Mausi ji, which borrows the household's word, and is to be matched to Behenji)'."
+   },
+   {
+    "who": "Mausa ji and You (thanks note)",
+    "issue": "Hindi 22: Mausa ji's note gives the player's thanks as शुक्रिया in Hindi mode, while the player's file uses थैंक यू.",
+    "status": "addressed",
+    "now": "mausa address[10]: 'your thanks, Thank you, Mausa ji. | थैंक यू, मौसा जी। | Thanks, Mausa ji. (your own file keeps shukriya for a stranger who has helped)'. This matches you samples[13] 'थैंक यू, मौसा जी।'."
+   },
+   {
+    "who": "Nani",
+    "issue": "Hindi 23: typing[0]'s English does not match सब आएँ (an order), and the anusvara spelling is mixed.",
+    "status": "addressed",
+    "now": "nani typing.samples[0]: HI 'अस्सीवां। मई। सब आएं।' | EN 'My eightieth. May. Everyone, come.' The anusvara is kept, marked as the phone's spelling 'on purpose, as the SCRIPT habit says', which the fix allowed."
+   },
+   {
+    "who": "Tinku",
+    "issue": "Hindi 24: samples[7] English 'Your one trial again' is odd.",
+    "status": "addressed",
+    "now": "tinku samples[7] EN: 'That one trial again, Captain sahab? Eleven times this season.'"
+   },
+   {
+    "who": "Nani",
+    "issue": "Real-India 1: the orders to 'koi' are subjunctive ('Koi torch laaye.'), which reads as a wish, not an order.",
+    "status": "addressed",
+    "now": "nani test_lines[0] 'Koi torch lao. Baaki sab khao.' | 'कोई टॉर्च लाओ।'. test[10] 'Arre, koi kapda lao.' samples[22] 'Mera batua. Bahar. Koi pakdo.' tics[3] now reads 'the plain plural command'."
+   },
+   {
+    "who": "Nani",
+    "issue": "Real-India 2: 'Mujhe yakeen hai. Poori baat batao.' sounds like a counsellor and opens the way Mami's line does.",
+    "status": "addressed",
+    "now": "nani samples[13]: 'Idhar aao. Poori baat batao.' | 'इधर आओ। पूरी बात बताओ।' | 'Come here. Tell me all of it.' never[14] bars 'the formula मुझे यक़ीन है'."
+   },
+   {
+    "who": "Mummy",
+    "issue": "Real-India 1: 'mere khaate mein daal do / daaliye' as a sorry reads as sarcasm or as a coined apology.",
+    "status": "addressed",
+    "now": "mummy samples[14]: 'Masterji, kal raat ki zid meri galti thi.' | 'मास्टरजी, कल रात की ज़िद मेरी ग़लती थी।'. test[4]: 'Achha? Meri galti. / Chalo, ab yaad rahega.' never[13] bars the khaata sorry. uses[6] says khaata is 'only ever this book, never a sorry'."
+   },
+   {
+    "who": "Mummy",
+    "issue": "Real-India 2: Hinglish 'Credit book mein likh diya' sounds translated.",
+    "status": "addressed",
+    "now": "mummy samples[17]: 'Le jaiye ji. Khaate mein likh diya, aaram se.' | 'ले जाइए जी। खाते में लिख दिया, आराम से।'"
+   },
+   {
+    "who": "Mummy",
+    "issue": "Real-India 3 (minor): 'Tinku, ye cup return karo.' is a writer's joke; use 'Cheeni kam, dobara banao.'",
+    "status": "partly",
+    "now": "Mummy's file is fixed. test_lines[3] is 'Tinku, cheeni kam, dobara banao.', and never[13] cuts the cup line. Five other files still describe Mummy by the removed line: papa mix ('Mummy's mark is home things in counter English, ye cup return karo') and papa never[3]; mama mix ('ye cup return karo', 'MCB check karo'); mausa mix ('Mummy's English verbs are counter jobs she hands to people (ye cup return karo)'); mami mix; you mix."
+   },
+   {
+    "who": "Papa",
+    "issue": "Real-India 1: '9:40 mera time tha.' still sounds translated.",
+    "status": "addressed",
+    "now": "papa samples[20]: 'Maine 9:40 kaha tha. / Galat nikla. / Board par 9:25 hai.'. test[4]: 'Maine 9:40 kaha tha. Galat nikla. Board sahi hai.' | 'मैंने 9:40 कहा था। ग़लत निकला। बोर्ड सही है।'"
+   },
+   {
+    "who": "Papa",
+    "issue": "Real-India 2: 'Mere father ...' said to his Hindi-first mother-in-law; it should be 'pitaji'.",
+    "status": "addressed",
+    "now": "papa samples[19]: 'Mere pitaji maal gaadi ke guard the. / Unki gaadi aksar der se aati thi. / ...' | 'मेरे पिताजी ...'. mix: 'mere pitaji in Hinglish and Hindi alike'."
+   },
+   {
+    "who": "Papa",
+    "issue": "Real-India 3: 'Dhanyavaad' as his spoken thanks is announcement Hindi.",
+    "status": "addressed",
+    "now": "papa sorry_thanks_love and uses[6]: 'to strangers and the TT, Thank you, ji. | थैंक यू, जी।'. never[7] bars 'announcement Hindi in his own mouth (Dhanyavaad)'."
+   },
+   {
+    "who": "Mama ji",
+    "issue": "Real-India 1: 'Amma, aapko roz miss kiya.' is off; give him back 'bahut'.",
+    "status": "addressed",
+    "now": "mama samples[2]: 'Amma, aapko bahut miss kiya.' | 'अम्मा, आपके बिना एक दिन भी मन नहीं लगा।' | 'Amma, I missed you so much.'"
+   },
+   {
+    "who": "Mama ji",
+    "issue": "Real-India 2: 'Just checking in' is American office English.",
+    "status": "addressed",
+    "now": "mama samples[1]: 'Haan, Didi! Bas aise hi phone kiya, kuch khaas nahi.' | 'हाँ, दीदी! बस ऐसे ही फ़ोन किया, कुछ ख़ास नहीं।' | 'Didi! Just thought I'd ring, nothing special.'"
+   },
+   {
+    "who": "Tinku",
+    "issue": "Real-India 1 (minor): 'Mera wicket' (for sorry) and 'Run aapka' (for thanks) are coined cricket codes; the fix is 'Galti meri, Captain sahab.'",
+    "status": "partly",
+    "now": "The codes are gone. tinku samples[17]: 'Galti meri, Captain sahab. Bottlein abhi laati hoon.' never[7] bars cricket codes. But 'Run aapka' was replaced in test[6] by 'Thank you kis baat ka, Captain sahab? / Kitaab aapne hi di thi.', which shares 'kis baat ka' and 'kitaab' with Captain sahab's 'Kis baat ka, Scorer? Chhaon kitaab ke liye hai.' in the same moment 7. Stale prose still lists 'Mera wicket' as Tinku's in mummy never[3], mami never[4] and you never[6]."
+   },
+   {
+    "who": "Mausi",
+    "issue": "Real-India 1: the schoolroom has become her stamp; move one or two lines (e.g. the flood line) to the kitchen.",
+    "status": "addressed",
+    "now": "Flood test[8]: 'Gali mein nadi? Haay! Achaar ke martbaan upar! Chalo, chalo!'. test[4] is now 'Galat kaun nikla? Main! Sorry, sorry! Pehle khao!', so 'Aaj teacher fail' is out of the test set. Kept and marked true: test[1] 'Late mark! Kaan pakdo!' and test[7] 'Toh meri class ka inaam?'. tics[5] and changed[16]: 'the classroom is one of her two sources, never her stamp'."
+   },
+   {
+    "who": "Mausi",
+    "issue": "Real-India 2 (minor, for readers): 'Aji' with आप can sound like a 1970s film wife.",
+    "status": "addressed",
+    "now": "mausi address[6]: 'READERS' QUESTION: Aji with आप is real, but it can sound like the 1970s film wife ... her lines to him take Suniye or no address word'. 'Aji' remains in test[3] 'Aji, ye chai hai ya halwa?' and samples[12] and [21], pending the readers, as the note asked."
+   },
+   {
+    "who": "Mausa ji",
+    "issue": "Real-India 1: his never list bans 'pakka', a very common word.",
+    "status": "addressed",
+    "now": "mausa changed[24]: 'FINAL POLISH, pakka: the ban is gone.' 'pakka' no longer appears in mausa voice.never."
+   },
+   {
+    "who": "Masterji",
+    "issue": "Real-India: no remaining real problem was raised.",
+    "status": "addressed",
+    "now": "Nothing to change. His cross-file items (Behenji, in-charge) landed; see Hindi 20 and 21. test[6] 'Nani ji, kinari hi toh thi. Isme kaunsi badi baat hai.' is unchanged."
+   },
+   {
+    "who": "Captain sahab",
+    "issue": "Real-India 1: cut 'Saboot nahin, toh ungli nahin.' It is a coined maxim and a demand for proof.",
+    "status": "addressed",
+    "now": "captain never[1]: ''Saboot nahin, toh ungli nahin.' ... in any chapter or form'. never[8] says it 'is cut', and changed[17] says the proof maxim and its words 'leave his uses'. It appears in no spoken line."
+   },
+   {
+    "who": "Captain sahab",
+    "issue": "Real-India 2: Captain sahab and You collide in moment 7 ('Kis baat ka?') and both call Tinku 'Scorer'. The fix belongs on You's side.",
+    "status": "partly",
+    "now": "You's side is fixed (see You 1 and 3), and captain test[6] is unchanged by design: 'Kis baat ka, Scorer? Chhaon kitaab ke liye hai.' But Tinku's final polish moved the collision to her: tinku test[6] 'Thank you kis baat ka, Captain sahab? / Kitaab aapne hi di thi.' In the same moment, Captain sahab still shares 'kis baat ka' and 'kitaab' with another voice."
+   },
+   {
+    "who": "Mami",
+    "issue": "Real-India 1: in moment 11 the desk voice enters a home moment and the child is checked after the papers.",
+    "status": "addressed",
+    "now": "mami test_lines[10]: 'Ish. Aasteen geeli hui? Papers main utha leti hoon.' | 'इश्श। आस्तीन गीली हुई? कागज़ मैं उठा लेती हूँ।' | 'Ish. Did your sleeve get wet? I'll get the papers.'"
+   },
+   {
+    "who": "Mami",
+    "issue": "Real-India 2: the joke about her husband appears three times ('still pending', 'still in progress', 'still growing').",
+    "status": "addressed",
+    "now": "Only mami samples[9] keeps it: 'Tumhare Mama ji: still pending. Gali se mil rahe hain.' test[0] is now 'Ish. Light chali gayi.' tics[7]: 'Once a chapter at most ... his count, his dinner and the rest get the plain line.'"
+   },
+   {
+    "who": "Mami",
+    "issue": "Real-India 3: 'Ish' in Hindi mode may be heard as the coy filmi इश्श; have the 'Ajeeb' fallback ready.",
+    "status": "addressed",
+    "now": "mami voice.exclamation: 'Hindi mode keeps इश्श only if the Hindi-first reader clears it ... In Hindi mode अजीब। takes its place where the dismay is at a thing (अजीब। बत्ती चली गई।); where it is sympathy for a person, Hindi mode drops the sound'. The fallbacks are written into test[0] and test[10]."
+   },
+   {
+    "who": "You",
+    "issue": "Real-India 1: You call Tinku 'Scorer' in nearly every line; use 'Tinku' by default and 'scorer' at most once a chapter.",
+    "status": "partly",
+    "now": "You's file is fixed. you address[4]: ''Tinku' | 'टिंकू' by default ... scorer at most once a chapter'. 'Scorer' is left only in samples[18] (ch4) and samples[22] (ch5), and typing reads 'tinku, bottles tumhare paas?'. Stale: tinku address[6] still ends 'You call her scorer.' you changed[23] flagged this knock-on, but it was not made."
+   },
+   {
+    "who": "You",
+    "issue": "Real-India 2: 'Scorer, run tumhara.' hands Tinku a cricket code her own file removed.",
+    "status": "addressed",
+    "now": "you samples[19]: 'Tinku, ye tumne kiya.' | 'टिंकू, ये तुमने किया।' | 'You did this, Tinku.'"
+   },
+   {
+    "who": "You",
+    "issue": "Real-India 3: moment 7 'Arre Mami, kis baat ka?' collides with Captain sahab.",
+    "status": "addressed",
+    "now": "you test_lines[6]: 'Mami, mujhe nahin. Pehle Mausa ji ko boliye.' (the Hindi note's wording, not 'rehne dijiye'; it keeps the someone-else-first shape)"
+   },
+   {
+    "who": "Cast-wide (verdict 1)",
+    "issue": "Nani and Mami share the rule 22 formula 'Mujhe yakeen hai', which sounds like a training script. Rewrite both to show belief by acting.",
+    "status": "partly",
+    "now": "Nani is rewritten: 'Idhar aao. Poori baat batao.' Mami keeps the formula: samples[20] 'Mujhe yakeen hai. Bolo, ab kya karna hai?' | 'मुझे यक़ीन है।'. mami changed[0] marks it 'KEPT, as the readers asked', and her register quotes 'Mujhe yakeen hai.' as her home voice. Hindi 5's fix kept the formula while this verdict asks for it to go, so the owner has to choose."
+   },
+   {
+    "who": "Cast-wide (verdict 2)",
+    "issue": "Never lists still ban common exclamations ('uff', 'haay', 'oho', 'baap re', 'waah') for everyone but their owner, and Mausa ji's list bans 'pakka'. Reword the bans as 'not as their habitual cry'. The ban habit also bent Mama ji's 'roz miss kiya' and Papa's 'mere father'.",
+    "status": "partly",
+    "now": "Fixed: the 'pakka' ban (mausa changed[24]), Mama ji's 'Amma, aapko bahut miss kiya.' and Papa's 'Mere pitaji'. Not reworded, flat bans remain: mausa never[5] 'Another person's exclamation: Baap re (Nani), ... Oho (Mama ji), Gazab (Tinku), Haaye (Mausi), Uff (Masterji), Arre waah (Captain sahab), Ish (Mami), Badhiya (yours)'; nani never[7] '... Oho!, Haaye!, Hain?, Uff, Ish, Gazab!, Badhiya'; mummy never[3] 'Baap re, Haaye!, Hain?, Uff., ... Oho! and Badhiya. as exclamations'; mausi never[4] 'Oho!', 'Baap re', 'Uff'. The rider 'the common words inside them stay free' does not free one-word cries. No file uses the 'habitual cry' wording."
+   },
+   {
+    "who": "Cast-wide (verdict 3)",
+    "issue": "For P6 Farida, Hindi-side words pass as neutral while Urdu-side words are fenced as leaning ('Mubarak ho', 'Ammi', Urdu courtesy forms against 'Badhai ho', 'Amma', 'Dhanyavaad'), and 'pitaji' is held back. An Urdu-speaking reader should check both sides get the same treatment.",
+    "status": "partly",
+    "now": "Fixed: 'pitaji' is used (papa samples[19]) and 'Dhanyavaad' is gone from Papa. The asymmetry stays: 'Mubarak ho (left unused, so the congratulation leans to no one community)' in mummy never[4], papa never[6], tinku never[10], mausi never[4], mami never[5] and you sorry_thanks_love, while Mummy's moment 3 is 'Badhai ho!' (pending the owner). mausi address[1]: 'Never Ammi (leans towards one community)'. masterji never[13] still bars 'Markedly Urdu courtesy forms (janaab, aadaab, farmaiye, huzoor, tashreef, khuda hafiz)'. No cast-wide symmetry check is logged; only masterji changed[15] and tinku's 'Gazab' ask an Urdu-speaking reader."
+   },
+   {
+    "who": "Cast-wide (verdict 4)",
+    "issue": "Moment 7 blurs in the blind sort: Mummy, Mama ji and Mausa ji all say 'isme kya', and You and Captain sahab share 'Kis baat ka?'.",
+    "status": "partly",
+    "now": "The 'isme kya' overlap is gone: Mummy 'Arre Jija ji, isme kya.', Mama ji 'Oho, no no! ...', Mausa ji 'Hmm.', Nani 'Rehne do ye thank you-vank you.'. You is changed to 'Mami, mujhe nahin. Pehle Mausa ji ko boliye.' The polish added a new clash: Tinku 'Thank you kis baat ka, Captain sahab? / Kitaab aapne hi di thi.' against Captain sahab 'Kis baat ka, Scorer? Chhaon kitaab ke liye hai.' (Tinku's pre-polish line was 'Run aapka, Captain sahab.'). Nani's 'thank you-vank you' and Mami's 'Ghar mein thank you nahin chalta.' both turn on 'thank you' (mami changed[7] argues the shapes differ)."
+   },
+   {
+    "who": "Cast-wide (verdict 5)",
+    "issue": "The remaining coined or translated lines: Papa's '9:40 mera time tha', Mummy's khaata sorry and 'credit book', Captain sahab's 'Saboot nahin, toh ungli nahin', Nani's 'koi ... laaye' orders and Mami's three-fold 'still pending' joke.",
+    "status": "addressed",
+    "now": "All five are fixed: Papa 'Maine 9:40 kaha tha. Galat nikla.'; Mummy 'Masterji, kal raat ki zid meri galti thi.' and 'Khaate mein likh diya, aaram se.'; Captain sahab's maxim cut (never[1]); Nani 'Koi torch lao.' and 'Koi pakdo.'; Mami's joke left once, 'Tumhare Mama ji: still pending.' A private re-run of check.py on the polished files gives dash 0, caste 0, brand 0, American 0. Its one religious hit is the false 'Oh? My' in Mummy's test[4]."
+   }
+  ]
+ },
+ "check": {
+  "problems": [
+   {
+    "who": "Mausi (typed)",
+    "line": "typing[0] 'suno suno suno....kal raat wali train....tum bhi saath ho na?? apni baatein seedha mujhe batana....tumhari mummy se nahi 😊' (19 to 20 counted words); typing[3] the riddle message (20 to 21); typing[5] 'chhoti....amma se baat hui....' (17); typing[7] 'amma ne aaj bhi pehle tumhe bulaaya....' (13)",
+    "problem": "Rule 62. These are still over the 10-word bubble cap if a message card counts as a spoken line. This is the open owner question from the retest. The polish did not change it. No spoken or test bubble anywhere is over 10.",
+    "fix": "Ask the owner. If the cap applies, split each message at her '....' into separate cards of 10 words or fewer. For example, typing[0] becomes 'suno suno suno....kal raat wali train....' / 'tum bhi saath ho na??' / 'apni baatein seedha mujhe batana....tumhari mummy se nahi 😊'."
+   },
+   {
+    "who": "Nani",
+    "line": "samples[22], outside X-ray: 'Mera batua. Bahar. Koi pakdo.' | 'मेरा बटुआ। बाहर। कोई पकड़ो।' | 'My purse. Out here. Someone hold it.'",
+    "problem": "The Hindi can be misread. After 'मेरा बटुआ। बाहर।', 'कोई पकड़ो' sounds like the cry when a bag is snatched ('somebody catch him!'), not a request to hold it for her. Rule 66 is fine.",
+    "fix": "'Mera batua. Bahar. Koi sambhalo.' | 'मेरा बटुआ। बाहर। कोई सँभालो।' | 'My purse. Out here. Someone mind it.' This is still the plural command to कोई that the India note asked for, and it marks no gender."
+   },
+   {
+    "who": "Papa",
+    "line": "voice.tics[11], judging note: '10:00 se. Wahi dhun gungunayi.' | '10:00 से। वही धुन गुनगुनाई।' | '10:00 onwards. Hummed the same tune.'",
+    "problem": "The tenses clash. 'से' (since, onwards) is paired with a one-off perfective (गुनगुनाई), so the note reads 'since ten, hummed once'. His other notes are a time stamp, then one act.",
+    "fix": "Use the same shape as the other notes and keep the length at four words: '10:00। फिर वही धुन गुनगुनाई।' | '10:00. Hummed the same tune again.' The transitive past still reads the same for a woman or a man."
+   },
+   {
+    "who": "Mami",
+    "line": "test[3], to Mama ji: HINGLISH 'Cheeni, extra. Tumhari guest list jaisi. Meri list mein nahin.' | HI 'चीनी एक्स्ट्रा, तुम्हारे मेहमानों जैसी। मेरी लिस्ट में नहीं।'",
+    "problem": "The Hindi no longer matches the other two languages. It says 'like your guests', not 'like your guest list', so 'मेरी लिस्ट में नहीं' has nothing to answer and the list joke is lost. It also drops the comma her file puts between a thing and its status.",
+    "fix": "'चीनी, एक्स्ट्रा। तुम्हारी गेस्ट लिस्ट जैसी। मेरी में नहीं।' (9 counted words), which matches the Hinglish and the English 'Like your guest list. Not on mine.'"
+   },
+   {
+    "who": "Masterji (English mode)",
+    "line": "test[1] EN: 'Look, Captain, train must be late. Everything's late in the rains.'",
+    "problem": "The English has dropped 'the' before 'train', so it reads as an error in English mode. Adding it as written would make 11 counted words.",
+    "fix": "'Look, Captain, the train'll be late. Everything's late in the rains.' This is 10 counted words ('Captain' is not counted), and it matches the Hindi होगी."
+   },
+   {
+    "who": "Mama ji",
+    "line": "test[8], to you by phone: 'Amma andar hain? Didi ki dukaan theek? Pump bhej raha hoon, abhi.' | 'अम्मा अंदर हैं? दीदी की दुकान ठीक? पंप भेज रहा हूँ, अभी।'",
+    "problem": "This is minor and is not a rule 8 breach, because 'Didi' here is Mummy and no verb marks a gender. But it is the same 'Didi' said to the player that the retest replaced in test[9] ('Tumhari Mummy kaisi hain?'). To the child of the house, an uncle says 'Mummy'. The line is already at 10 counted words.",
+    "fix": "'Amma andar hain? Mummy ki dukaan theek? Pump bhej raha hoon, abhi.' | 'अम्मा अंदर हैं? मम्मी की दुकान ठीक? पंप भेज रहा हूँ, अभी।' | 'Is Amma indoors? Mummy's shop all right? Pump's on its way.' This stays at 10 counted words, since Mummy is not counted."
+   },
+   {
+    "who": "Cast (Mummy, Mausa ji, Tinku, Mausi, Mama ji, Papa)",
+    "line": "Pasts where the player did the deed, unchanged: Mummy samples[12] and voice.address[0] 'Bahut achha kiya.', typing[4] 'बहुत अच्छा किया'; Mausa ji samples[9] 'Achha kiya.'; Tinku samples[11] 'Tumne bahut kiya.', samples[18] 'Kal raat ki dawai tumne sambhali.'; Mausi catchphrases[2] and samples[5] 'Pichhle saal tumne kaha tha', samples[8] 'Kuch khaya bhi?', typing[1] 'khana khaya??', test[5] 'Parathe rakhe, hai na?'; Mama ji samples[6] 'Poora week inhone chalaya.'; Papa samples[8] 'Is saal chaar baar gaadi pakdi.'",
+    "problem": "None of these marks a gender, because each verb agrees with the thing done. But rule 66 allows तुम lines in only three shapes, and this is none of them. It is still an open owner question.",
+    "fix": "The owner either adds the fourth shape to rule 66 (a past with ने where the verb agrees with the thing done), or the native reader puts each line on the cleared list."
+   },
+   {
+    "who": "Mausi (prose note)",
+    "line": "voice.address[10]: \"Masterji 'Behenji' (आप) ... (Masterji's file has 'Mausi ji', which borrows the household's word, and is to be matched to 'Behenji')\"",
+    "problem": "This note is out of date. Masterji's voice.address[5] now says 'Behenji', so the two files already agree.",
+    "fix": "Delete the parenthesis from Mausi's address note."
+   }
+  ],
+  "clean": [
+   "The checker is /private/tmp/claude-501/-Users-priyanshu-Sex-Ed/f50ea7ee-0855-46a2-8572-0aa08df5b855/scratchpad/voice/check3/check3.py; run it with python3 -I check3.py. It writes /private/tmp/claude-501/-Users-priyanshu-Sex-Ed/f50ea7ee-0855-46a2-8572-0aa08df5b855/scratchpad/voice/check3/report.txt, report.json and hindi_lines.txt. The rule 66 flags I read are in /private/tmp/claude-501/-Users-priyanshu-Sex-Ed/f50ea7ee-0855-46a2-8572-0aa08df5b855/scratchpad/voice/check3/r66_inscope.txt, and the Hindi I skimmed is in /private/tmp/claude-501/-Users-priyanshu-Sex-Ed/f50ea7ee-0855-46a2-8572-0aa08df5b855/scratchpad/voice/check3/hindi_dedup.txt. It read 6,213 quoted lines and 3,465 bubbles across the 11 polished files.",
+   "Dashes: none of the 11 files contains an em dash, en dash, figure dash, horizontal bar, minus sign, spaced hyphen or double hyphen.",
+   "British spelling: no American spelling appears in any English line or in the prose, and no -ize or -yze word appears. The words held for a second look are all fine in British English: check as a verb, fall as a tumble, line, story, parking, and meter as the electricity meter.",
+   "Rule 3: no religious word or exclamation, no caste or caste-trade word and no brand appears in any spoken, test or typed line. Every hit is a name in a 'never' list, a guard note or an exclamation guard that bans it: Hai Ram, Haay Rabba, Haay Allah, Ui Maa, Thank God, Shukar hai, Bhagwan ka shukar, Waheguru, Arre Ram, ख़ुदा का ग़ज़ब, Inshallah, Mashallah, Mubarak ho, Ammi, halwai, bata, WhatsApp uncle. The rest are false hits: Tinku's 'ग़ज़ब!' is everyday, Mummy's 'Oh? My mistake.' and Tinku's '2x' are not words on the list, and 'lays' is a verb. Captain sahab's 'Saboot nahin, toh ungli nahin.' now sits only in his never list.",
+   "Rules 8 and 66, address words: nobody calls the player beta, bhaiya, didi or any pet name. Each hit points to someone else: 'Didi' is Mummy or Mausi, 'Bhaiya ji', 'Bhai sahab' and 'Lineman sahab' are vendors or neighbours, 'Beti' is the cook's daughter or Mami and Mama ji's daughter (the bride, Mama ji typing[8]), 'Munna' is Mama ji, and 'Rani' is the carrom queen. Mama ji test[9] now reads 'Tumhari Mummy kaisi hain?'. No English line gives the player he, she, his or her.",
+   "Rule 66: I read all 328 flagged lines that are by, to or about the player, and every one is clear. Each flagged word agrees with a noun (गली आई, चाय ठंडी हो गई, दवाई सँभाली, वक़्त लगेगा, याद रहेगा, हो जाएगा) or is the speaker's own gender (Nani's जा रही, Mummy's लगाऊँगी, Tinku's लिखूँगी and गिनूँगी, Mama ji's भेज रहा हूँ, Mami's मान गई and लिखती हूँ). The rest are 'who should' asks (कौन जाए, कौन देखे, किसे रखें), infinitive or -ओ commands (मत मारना, फ़ोन करना, सो जाओ, ले आओ), or verbless lines. No future, participle or bare past genders the player anywhere. The player's own samples, typed lines and test lines are fully clean (offers are subjunctive: लाऊँ, बुक कर दूँ, करूँ, गिरा दूँ). The -ते/-ती रहो blessings (जीती रहो, जीते रहो) go only to Tinku or Masterji's son; the player gets सुखी रहो. I also scanned the 823 flags that are not about the player and found no second-person line about the player hiding among them.",
+   "Rule 62: no spoken or test bubble is over 10 counted words in any language. This holds even when the ambiguous number words (do, saath, ek, one) are counted as words. About 75 bubbles sit at exactly 10, including Mama ji test[2] and [8]; Mausi samples[2], [5], [18] and test[2], [5], [8]; Masterji samples[20], [27] and test[0], [5], [11]; Papa test[1], [2], [10]; Captain sahab catchphrases[2] and samples[25]; Mami samples[2], [19] and test[7], [8]. Any edit to these must not add a word. The three prose hits (the address notes of Papa, Mausi and Mausa ji) quote a description, not a line.",
+   "Rule 22: no line doubts a report, and no proof or writing word sits near a report beat. Nani now goes straight to the person ('इधर आओ। पूरी बात बताओ।'), Mama ji acts ('Didi, main aa raha hoon. Abhi.'), and Mami believes first, then asks the next step ('मुझे यक़ीन है। बोलो, अब क्या करना है?'). Mami keeps the 'Mujhe yakeen hai' formula. That is the Hindi reviewer's own fix, but the India verdict asked for it to go, so it is the owner's call; it is not a rule break.",
+   "Hindi skim: apart from the items above, I found no broken sentence in the 696 distinct Hindi lines. The retest's broken lines are all fixed: Nani samples[16] 'सब फिर आएँ, तब।', Mama ji samples[15] 'खड़े-खड़े खाएँगे। जल्दी निपटेगा!', Mausa ji samples[0] 'अम्मा जी, बाहर पूरी गली।', Papa's TT, 'मैंने 9:40 कहा था।' and 'मेरे पिताजी', and Mummy's खाता in both scripts. The idioms are real and used in their real sense: डंडी मारना, खरा उतरना, राई का पहाड़, बूँद-बूँद से घड़ा भरता है, आटे में नमक, ऊँट के मुँह में जीरा, दूध का दूध पानी का पानी, तोल-मोल के बोलो, पानी सिर से ऊपर, बाल की खाल निकालना, बखिया उधेड़ना, मुँह फुलाना, अफ़वाह उड़ना. The Hindi spelling is consistent (ँ throughout and nuktas kept). The only exceptions are Nani's deliberate phone-typed 'अस्सीवां। मई। सब आएं।' and the bracketed placeholder 'खाली' in Mama ji typing[7]."
+  ]
+ },
+ "open": 21,
+ "mended": {
+  "changed": [
+   "All edits are in place, made by /private/tmp/claude-501/-Users-priyanshu-Sex-Ed/f50ea7ee-0855-46a2-8572-0aa08df5b855/scratchpad/voice/_mend_retest.py (87 exact-match edits; the run stops if any old text is not found exactly once). Pre-edit copies are in .../voice/_mend_check/orig/. Each file keeps its own JSON format, and no new array entries were added. Both checkers were re-run (check2/check.py and check3/check3.py, run from copies in .../voice/_mend_check/). There are no new rule 62, rule 3, dash or American-spelling hits. The new rule 66 flags are only the quoted lines that wait on the owner, and Mausi's लगा. The rule 8 address-word hits went from 15 to 12 (the Didi lines Mama ji said to you).",
+   "tinku-.json voice.samples[11]: '(both flagged, both cleared)' now says 'आज रात गिनती मेरी।' is cleared, but 'तुमने बहुत किया।' is a ने past with you as the doer, so it waits on the owner (a fourth rule 66 shape, or the native reader's cleared list). The wording is unchanged.",
+   "tinku-.json voice.samples[18]: '(flagged, cleared)' now says the line marks no gender, but you are the doer, so it waits on the owner's rule 66 ruling.",
+   "tinku-.json voice.address[6]: 'दवाई तुमने सँभाली' is out of the 'not the doer' list. A new sentence files 'तुमने बहुत किया।' and 'दवाई तुमने सँभाली।' as waiting on the owner. 'You call her scorer.' is now 'You call her 'Tinku', and 'scorer' at most once a chapter.'",
+   "tinku-.json test_lines[6] (moment 7), to end the clash with Captain sahab: EN 'You taught me all of it, Captain sahab. / Only the mistakes are mine.' | HL 'Sab aapka sikhaya hai, Captain sahab. / Galtiyaan bas meri.' | HI 'सब आपका सिखाया है, कप्तान साहब। / ग़लतियाँ बस मेरी।' It no longer has 'kis baat ka', 'kitaab' or 'thank you'.",
+   "tinku-.json voice.sorry_thanks_love: the Captain sahab thanks example is now the new moment 7 line, noting that 'Kis baat ka?' and the book are his words. The dawai thanks note adds that you are the doer, so it waits on the owner's rule 66 ruling.",
+   "tinku-.json voice.uses[7]: 'Thank you kis baat ka?' becomes 'the credit put back in their column ('Sab aapka sikhaya hai.')'.",
+   "tinku-.json changed[18]: added a 'since mended' note for the moment 7 line. changed[15]: added that two lines wait on the owner, since you are the doer in दवाई तुमने सँभाली and तुमने बहुत किया.",
+   "tinku-.json voice.never[9]: exclamations are now barred 'as her habitual cry', and a cry said now and then is free (verdict 2). voice.never[10]: the 'Mubarak ho ... leans to no community' reason is replaced with the shared verdict 3 wording (see the Mummy entry).",
+   "mausa-ji-about-chapter-s-voice.json voice.samples[9]: made the optional Hindi 11 fix. 'Achha kiya.' | 'अच्छा किया।' | 'Good of you.' becomes 'Hmm. Baitho.' | 'हम्म। बैठो।' | 'Hmm. Sit.' as he clears the chair. It is a command, so the line leaves the rule 66 owner question.",
+   "mausa-ji-about-chapter-s-voice.json, the follow-on edits: sorry_thanks_love (THANKS, GIVEN is now 'Hmm. Baitho.', with 'achha kiya' left to Mummy); uses[0] ('achha kiya' becomes 'baitho | बैठो | sit (his thanks, with the chair cleared)'); never[4] (his thanks is 'Hmm. Baitho.'); address[10] (no line of his to you is outside the three shapes); address[11] ('अच्छा किया' and the ने-past reason are out of the flag list, and the OWNER QUESTION now says it is no longer in this file and stays in Tinku's, Mausi's, Papa's, Mummy's and Mama ji's files); changed[23] (a 'since mended' note).",
+   "mausa-ji-about-chapter-s-voice.json voice.never[5]: 'Another person's exclamation as his habitual cry (the word said now and then stays free)' (verdict 2). voice.mix: the 'ye cup return karo' example becomes 'MCB check karo'.",
+   "mausi-about-chapter-voice.json: her everyday thanks 'Bahut achha kiya!' becomes 'Bahut achha laga!' | 'बहुत अच्छा लगा!' (the English 'So nice of you!' is kept), so only Mummy thanks you with 'Bahut achha kiya' and the files agree on who owns it. This covers sorry_thanks_love, uses[11] ('bahut achha kiya' is Mummy's), samples[12] (to Aji) and the history notes changed[7] and changed[17].",
+   "mausi-about-chapter-voice.json voice.address[0]: her thanks is out of the owner-question list. 'लगा' is added to the flagged lines where you are not the doer, for the native reader to clear. 'The same question covers' no longer names Mausa ji.",
+   "mausi-about-chapter-voice.json voice.address[10]: deleted the stale parenthesis about Masterji's file having 'Mausi ji'.",
+   "mausi-about-chapter-voice.json voice.address[1]: 'Never 'Ammi' (leans towards one community...)' becomes 'Never 'Ammi' or 'Mataji' (the house says 'Amma'; realism 1.3, and an Urdu-speaking reader checks that both sides are treated alike, India verdict 3)'.",
+   "mausi-about-chapter-voice.json voice.never[4]: 'Kept out (an exclamation here is barred only as her habitual cry; the word itself stays free):' (verdict 2). The Mubarak ho reason now uses the verdict 3 wording.",
+   "mummy-.json voice.never[3]: the exclamations are now 'as her habitual cry (a cry said now and then is free)', and the stale 'Mera wicket.' (Tinku's) is removed. voice.never[4]: 'Mubarak ho' is 'unused for now; it and her 'Badhai ho!' are both everyday congratulations and take one ruling from the owner, and an Urdu-speaking reader checks that both sides are treated alike, India verdict 3'.",
+   "papa-.json voice.tics[11]: '10:00 onwards. Hummed the same tune.' | '10:00 से। वही धुन गुनगुनाई।' becomes '10:00. Hummed the same tune again.' | '10:00। फिर वही धुन गुनगुनाई।'.",
+   "papa-.json voice.never[6]: Mausa ji's entries are now 'his lone 'Hmm.' when thanked and his 'Hmm. Baitho.''. 'Arre, isme kya.' moves to Mummy's entries. Mubarak ho uses the verdict 3 wording. voice.sorry_thanks_love: ''Achha kiya' is Mummy's and Mausa ji's' becomes ''Bahut achha kiya' is Mummy's'. changed[19]: added '; since made in his file'.",
+   "papa-.json voice.mix and voice.never[3]: the cup line is replaced with 'MCB check karo' (mix) and 'MCB check karo', 'mains off karo' (never[3]).",
+   "mama-ji-.json test_lines[8] (moment 9, to you): 'Didi' becomes 'Mummy'. EN 'Is Amma indoors? Mummy's shop all right? Pump's on its way.' | HL 'Amma andar hain? Mummy ki dukaan theek? Pump bhej raha hoon, abhi.' | HI 'अम्मा अंदर हैं? मम्मी की दुकान ठीक? पंप भेज रहा हूँ, अभी।' (10 counted words). The follow-on edits: address[9] (to you, Mummy is 'Tumhari Mummy' or 'Mummy'); never[14] ('Mummy' in a possessive); changed[9] (a 'later mended' note).",
+   "mama-ji-.json: sorry_thanks_love and test_lines[6].moment now give 'isme kya' to Mummy alone. mix: the cup line is now 'MCB check karo', 'mains off karo'. never[6]: removed Tinku's stale 'Mera wicket.' and 'Run tumhara.'. changed[24]: Mausa ji is no longer named among the open rule 66 files.",
+   "nani-turning-.json voice.samples[22]: 'Koi pakdo' becomes 'Mera batua. Bahar. Koi sambhalo.' | 'मेरा बटुआ। बाहर। कोई सँभालो।' | 'My purse. Out here. Someone mind it.' The same example is updated in tics[3], uses[13] and address[1], and changed[19] gets a 'since mended' note.",
+   "nani-turning-.json voice.never[7]: 'another person's set phrase, or an exclamation as her habitual cry', ending '...stay free, and so does a cry said now and then' (verdict 2).",
+   "mami-about-.json test_lines[3] HI: 'चीनी एक्स्ट्रा, तुम्हारे मेहमानों जैसी।' becomes 'चीनी, एक्स्ट्रा। तुम्हारी गेस्ट लिस्ट जैसी। मेरी लिस्ट में नहीं।'. This matches the Hinglish word for word at 10 counted words. I kept 'मेरी लिस्ट' rather than the suggested 'मेरी में नहीं'.",
+   "mami-about-.json voice.samples[20]: kept 'Mujhe yakeen hai.' and added an OWNER CHOICE note (Hindi 5 kept it, India verdict 1 asks for it to go). The fallback is written out: 'Bolo, ab kya karna hai?' | 'बोलो, अब क्या करना है?' | 'Tell me, what do we do now?'. changed[0] points to it.",
+   "mami-about-.json voice.never[4]: exclamations are barred 'as her habitual cry', the stale 'Mera wicket' is removed, and 'his 'Jaldi aana'' is corrected to 'her' (Tinku). voice.never[5]: Mubarak ho uses the verdict 3 wording. voice.mix: the cup line is now 'MCB check karo', 'mains off karo'.",
+   "masterji-about-the-tailor-next-door-chapter-s-voice.json test_lines[1] EN: 'Look, Captain, the train'll be late. Everything's late in the rains.' (10 counted words).",
+   "masterji-about-the-tailor-next-door-chapter-s-voice.json voice.never[13] and voice.mix (verdict 3): the fence now covers formal courtesy forms from either side. Urdu: janaab, aadaab, farmaiye, huzoor, tashreef. Sanskritised Hindi: dhanyavaad, kripya, shriman, padhariye. 'khuda hafiz' moves under religious words. mix says both readers confirm that both sides are treated alike.",
+   "captain-sahab-about-.json voice.never[4]: 'Isme kya' moves from Mausa ji's entry to Mummy's. The lead-in now bars others' exclamations only 'as his habitual cry'. His test line is unchanged, by design.",
+   "you-the-player-a-voice-only-.json voice.never[6]: 'Isme kya' moves from Mausa ji to Mummy, the stale Tinku 'Mera wicket' is removed, and the lead-in uses the habitual-cry wording. voice.sorry_thanks_love: ''Kis baat ka?', which Captain sahab says' (Tinku dropped), 'never Mummy's \"Isme kya\"', and Mubarak ho uses the verdict 3 wording. voice.mix: the cup line is now 'MCB check karo', 'mains off karo'. changed[23]: added '(since made in Tinku's file)'.",
+   "LEFT FOR THE OWNER, no edit: Mausi's typed messages (rule 62, typing samples 0, 3, 5, 7). The split cards are still staged, and rule 62 itself says the spoken cap waits on question 14. The rule 66 fourth-shape question for the remaining ने pasts (Mummy, Papa, Tinku, Mausi, Mama ji) is unchanged. Mami's 'Mujhe yakeen hai' stays as an owner choice. Masterji's 'Isme kaunsi badi baat hai' and Nani's and Mami's 'thank you' brush-offs are unchanged: the fix did not ask for them, and India verdict 4 accepted them."
+  ]
+ }
+}

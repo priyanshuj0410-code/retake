@@ -39,124 +39,153 @@ JANUARY (present-day opening): off screen. The ready-made shop opens at the far 
 
 ## Voice
 
-**Register.** Slow, warm and chatty: the most digressive speaker in the cast but never the loudest (Mausi is louder, Mama ji faster, Captain sahab more clipped, Papa more exact about clocks). SENTENCE SHAPE (his alone): a verdict, then a wander; he starts on the matter and drifts to cloth or weather. Inside the bubble cap that is one or two short sentences of 4 to 9 words, often a rhetorical question; when he has two bubbles, the second wanders, and his beats are budgeted as pairs so the wander is never the line that gets cut. NO FIGURES IN HIS SPEECH: chapter 3's numeric voice is Mummy (times and prices); he measures by feel, in finger widths, hair's breadths and hand spans, never in inches, minutes or years (rule 2: no year on screen). Full stops, not exclamations. HOW HE ARGUES: with what was on his machine that year ('The year of Bhai sahab's jacket, I said the same'). HOW HE PRAISES: one word, 'Barabar' (level), and a tug of his tape ends. HOW HE SAYS SORRY: he never says it; he re-measures: 'Chalo, phir se naap lete hain.' | 'चलो, फिर से नाप लेते हैं।' | 'Come, we measure again.' HOW HE IS CROSS (rhythm and body, not volume): he never raises his voice; the wander stops, one short verdict and then silence, and he straightens out of his stoop; always at a thing (the drain, the sky, cheap cloth), never at a person. Mummy, his chapter's other voice, gets more polite when cross, so the two tells never match. HUMOUR: dry, aimed at the road, the weather or himself, never at a person's body or a woman's clothes. He is a voice, not the asker, so he may carry the chapter's light touch (rule 37 binds only the asker), but he is never the butt of a joke.
+**Register.** Slow, warm and unhurried: the station road's slow measurer, one of the cast's four long runners (Papa speaks in exact whole sentences, Mausi fast and tripled, Mama ji in one run-on). SHAPE: a verdict first, short and sure, said as a whole sentence with its verb and its 'hai' (he is the house's slow full-sentence speaker, never one more clipped voice); then, in about one run in two, a turn to cloth or weather, often hinged on 'Waise'. The other runs stop at the verdict, so the turn stays a habit and never a stamp. What tells him apart is this shape and where his words come from (cloth, weather, the garment calendar), not any word he owns: 'waise', 'dekhiye', 'achha', 'arre', 'chalo', 'bas' and 'theek hai' are everyone's. A run is two or three bubbles, budgeted as pairs so a turn is never the line that gets cut; in a single bubble the verdict shows, and the turn too when that line has one. Full stops throughout, even after 'Uff.'; no exclamation marks; he asks a question only when he wants the answer, and never answers his own the way Mausi does (the fixed ending's 'Whose drain? Let the lane cup decide.' hands the question on to the cup). NUMBERS: none in speech. Time is only 'bas abhi' (right away, which means an hour), and he blames the trains; the past is dated by what was on his machine ('the year of Bhai sahab's jacket'), never a year or a count of years. A measure by feel ('ungli bhar', 'baal bhar', 'baalisht') comes at most once in a run. His exactness shows in plain verdicts: straight, crooked, level, loose, tight (of cloth, never of a person). FEELING: said sideways, in cloth and weather pictures a Hindi-first reader follows at once ('Geela kapda sookh jaata hai. Fikr phate ki hoti hai.'), with plain warmth in his thanks ('Sukhi raho.', 'Ehsaan raha.'); never the plain feeling words Mausi and Mama ji own. HUMOUR: kind and whimsical, and rationed: at most one picture a run that gives the sky, the clouds, the mud or the drain a mood (the sky sulks, the clouds sit 'munh phulaaye', the mud sleeps late, the drain is stubborn), and none in a cross line. The joke is at the road, the sky, his own trade or himself, never at a person's body or a woman's clothes, and he is never its butt. WHEN CROSS (at things only: the drain, the sky, cheap cloth): the turn stops. One short verdict, silence, and he straightens out of his stoop. He never raises his voice; Mummy, his chapter's other voice, gets more polite instead, so their tells never match. TALKS MOST TO whoever stands still long enough (you, most of all), Mummy over the wall, and Captain sahab across the drain.
 
-**Hindi and English.** Hindi frame with tailoring and shop English used as Hindi nouns: fitting, trial, alter, size, finish, pattern, ready-made (said with a sniff), shutter. His measures are the old body ones, said without figures: ungli bhar (a finger's width), baal bhar (a hair's breadth), baalisht (a hand span). He reads inches on a customer's slip but never says them. No whole English clauses (the opposite of Mama ji and Mami). In Hinglish mode his lines are Roman Hindi with those nouns, and any number in a bubble is written as a figure ('2 galiyon'), since 'do' is also a word; in English mode his habits carry over as 'level', 'a finger out', 'right away'. No accent is ever spelled out (the Apu trap in the realism notes).
+**Hindi and English.** Ordinary station-road Hindustani: a Hindi frame with the everyday words any old bazaar in the Hindi belt shares (fikr, farq, mausam, mizaaj, waqt, zaroor, khair, afwaah, astar). These are the town's words, not his badge: others in the cast say fikr, waqt and zaroor too, so his speech marks the town and never a community, and he is never played for comedy. Tailoring English comes as Hindi nouns (fitting, trial, size, finish, pattern, shutter, and 'ready-made', said with a sniff). His working verbs are the Hindi ones the old master taught him at fourteen (naapna, kaatna, silna, kholna for let out, kasna for take in), and at the counter, as at any tailor's counter, the shop pattern of an English word with ho or kar comes out too ('kandhe ka alter ho jaayega', 'trial ho gaya'); never a whole English clause, which is Mama ji's and Mami's shape. No markedly formal courtesy forms from either side, Urdu or Sanskritised Hindi (the list is in 'never'), so the register reads as an old bazaar; a Hindi-first and an Urdu-speaking reader confirm that both sides are treated alike (rule 65, India verdict 3). In Hinglish mode his lines are Roman Hindi with those nouns. In English mode he speaks unhurried, slightly old-fashioned Indian English: 'Look,' for 'Dekhiye'; 'By the way,' or 'Then again,' for 'Waise', alternating, at most once a run, chosen by sense (a side remark or a counterweight); 'Uff.' kept as it is, since Indian English speakers say it; 'right away' for 'bas abhi'; 'Spot on.' for 'Barabar.'; 'Please don't mind.' for 'Bura mat maaniye.'; and the cloth and weather pictures intact. Never 'Mind you,' or 'Ugh.' (the first read as translated, the second is a teenager's disgust). No accent is ever spelled out (the funny-shopkeeper trap in the realism notes).
 
 **Habits**
 
-- Opens with 'Dekhiye', to everyone, Tinku and you included: a counter habit, not a respect form. 'Dekho' is not his (Nani's file drops देखो, so the opener is his alone).
-- Gives every verdict as a measure by feel, never a figure: 'a finger's width out', 'a hair uneven', 'a hand span short', 'crooked'.
-- His second sentence wanders to cloth or weather, so a reader can spot him from the drift alone.
-- Dates things by what was on his machine: 'the year of Bhai sahab's jacket', 'the summer of Mama ji's interview shirt'. Never a year (rule 2), never a count of years.
-- Gives every time as 'bas abhi' (right away) and never a clock time (Papa's and Mummy's ground).
-- Reads the weather from the feel of cloth: limp cotton means rain, stiff cotton means sun; he is right, and the chapter uses it.
-- Tailoring metaphors for everything: a road has seams, a plan has a loose stitch, a family has a hem.
-- Holds up his right thumb and forefinger a finger's width apart while he talks.
-- 'Uff' (उफ़्फ़) is his one exclamation, for the drain, the sky and cheap cloth; nobody else in the cast uses it, and it fills the place where an elder would reach for a god-word (rule 3).
-- When cross, the wander stops: one short verdict, silence, and he straightens out of the stoop.
+- Verdict first, as a whole sentence with its verb; then, in about one run in two, a turn to cloth or weather, often on 'Waise' (English 'By the way,' or 'Then again,'). The other runs end at the verdict. 'Waise' itself is anyone's word; the shape is his.
+- Opens with 'Dekhiye' / 'Look,' to everyone, Tinku and you included: a counter habit, not a respect form. At most one line in three, so it stays a habit. A plain 'dekho' is as free to him as to anyone.
+- Gives the sky, the clouds, the mud and the drain a mood, at most once a run and never when cross: 'Aasmaan rootha hai', 'Baadal din bhar munh phulaaye the', 'Keechad abhi so raha hai', 'Naali ziddi hai'. Only pictures a Hindi-first reader follows without help.
+- Reads the weather from the feel of cloth (limp means rain, stiff or crisp means sun) and is right; the chapter uses his forecasts. Asked how he knew: 'Kapde se pata chalta hai.'
+- Dates the past by what was on his machine ('Bhai sahab ki jacket wala saal', 'Mama ji ki interview wali kameez'); never a year, never a count of years.
+- Gives every time as 'bas abhi', which means an hour, and blames the trains when he is late; never a clock time.
+- A measure by feel at most once in a run: 'ungli bhar' (a finger's width), 'baal bhar' (a hair's breadth), 'baalisht' (a hand span). Never a figure, because his tape lost its marks.
+- Tailoring pictures for whatever he cannot say straight: a person is an old garment relined, the stitching stays home wherever the cloth goes, a city kurta only looks good in photos. Never a picture of anyone's body.
+- A real idiom from his own trade or weather when one fits, at most one a run, never a coined line dressed as a saying: 'paani sir se upar' at the drain, 'bakhiya udhedna' when he is caught out, 'baal ki khaal nikaalna' of Nani's checking, 'afwaah udna', 'munh phulaana' of the clouds. Proverbs stay Nani's register.
+- Thanks plainly and warmly: the young get an elder's good wish and the reason ('Sukhi raho. Us chai ne bachaa liya.'), a neighbour gets 'Ehsaan raha.'; sorry is plain too ('Bura mat maaniye.', 'Aap sahi hain.'), and his re-measuring comes at most once a chapter.
+- Holds his right thumb and forefinger a finger's width apart while he talks.
+- 'Uff.' with a full stop is his only exclamation, at things, never at a person.
+- When cross, the turn stops: one short verdict, silence, and he straightens out of the stoop.
 
 **Catchphrases**
 
-- 'Ungli bhar ka farq.' | 'उँगली भर का फ़र्क़।' | 'A finger's width out.' His verdict on anything: a hem, a drain, a plan. A measure by feel, never a figure, because his tape lost its marks.
-- 'Barabar.' | 'बराबर।' | 'Level.' His only praise. In Hindi it also means 'equal', a quiet echo in a fairness game that nobody ever points out, because nobody preaches.
-- 'Bas abhi.' | 'बस अभी।' | 'Right away.' His only way of saying a time; it means an hour.
-- 'Chalo, phir se naap lete hain.' | 'चलो, फिर से नाप लेते हैं।' | 'Come, we measure again.' His sorry, and his answer to any mistake, his own or yours.
+- 'Bas abhi.' | 'बस अभी।' | 'Right away.' His only way of giving a time; it means an hour. (No figure.) Every player has a tailor who says it.
+- 'Barabar.' | 'बराबर।' | 'Spot on.' His one-word praise of work, then a tug of the tape ends. In Hindi it also means 'equal', a quiet echo in a fairness game that nobody ever points out. (English mode was 'Level.', which no English speaker says as praise.)
+- 'Kapde se pata chalta hai.' | 'कपड़े से पता चलता है।' | 'The cloth tells you.' His plain answer when anyone asks how he knew the weather would turn: a remark, not a saying. (It replaces 'Kapde ka bhi mizaaj hota hai.', which read as a coined saying.)
+
+**Exclamation.** 'Uff.' | 'उफ़्फ़।' | English mode 'Uff.' as well, since Indian English speakers say it ('Ugh.' is struck: it is a teenager's disgust, not an old tailor's sigh). A sound with no religious meaning, for exasperation at things: the drain, the sky, cheap cloth, a power cut. Always a full stop, never an exclamation mark; it is his alone among the cast's exclamations, and it fills the place where an elder might reach for a religious word (rule 3). For joy he has no cry: he says 'Achha?' and claims the good news was in the cloth all along.
+
+**Sorry, thanks and love.** SORRY, in plain words first: 'Bura mat maaniye, Bhabhi ji.' | 'बुरा मत मानिए, भाभी जी।' | 'Please don't mind, Bhabhi ji.' (to Tinku or you, 'Bura mat maanna.', a command that marks no gender). When he is shown wrong in front of people he says so, then makes the joke at himself: 'Aap sahi hain. Feeta purana hai, main bhi.' | 'आप सही हैं। फ़ीता पुराना है, मैं भी।' | 'You're right. My tape's old, and so am I.' His trade sorry, at most once a chapter, is to re-measure out loud: 'Bura mat maaniye. Chaliye, phir se naap lete hain.' He never says 'I'm late' (the trains were). THANKS, plain and warm: to the young, an elder's good wish and the reason: 'Sukhi raho. Us chai ne bachaa liya.' | 'सुखी रहो। उस चाय ने बचा लिया।' | 'You're a gem. That tea saved me.' To Tinku 'Jeeti raho, Tinku.', and to a young man such as his son 'Jeete raho.'; never जीते रहो or जीती रहो to you, because the form fixes a gender (rule 66's fourth flag), so you get 'Sukhi raho.', where सुखी never changes. To a neighbour or an elder: 'Bhabhi ji, aapki chhat ne bachaa liya. Ehsaan raha.' | 'भाभी जी, आपकी छत ने बचा लिया। एहसान रहा।' | 'Bhabhi ji, your roof saved my cloth. I owe you.' When he is thanked, he makes the favour small: 'Kinari hi toh thi. Isme kaunsi badi baat hai.' | 'Only an edge. Think nothing of it.' Never a 'no charge' thanks (Mummy's 'Iska bill nahin.'). The owner and the Hindi-first readers confirm that 'Jeete raho' and 'Sukhi raho' pass rule 3 (good wishes with no religious word in them). LOVE: his time, said out loud: the tumbler set down beside you, 'Chai yahin rakh di hai. Abhi garam hai.', then a story offered, 'Bhai sahab ki jacket wali baat sunaaoon?' At a parting it is said sideways in cloth: 'Kapda kahin bhi jaaye, silai yahin ki rehti hai.' | 'कपड़ा कहीं भी जाए, सिलाई यहीं की रहती है।' | 'Wherever the cloth goes, the stitching's from here.' Never 'yaad aayi', 'I missed you' or 'love' (Mausi's and Mama ji's plain words).
 
 **Words they use**
 
 - naap | नाप | measurement
-- ungli bhar | उँगली भर | a finger's width
-- baal bhar | बाल भर | a hair's breadth
-- baalisht | बालिश्त | a hand span
-- fitting, trial | फ़िटिंग, ट्रायल | fitting, trial
-- kapda | कपड़ा | cloth
-- thaan | थान | bolt of cloth
-- silai | सिलाई | stitching, seam
-- kinari | किनारी | edge of cloth
-- turpai | तुरपाई | hand hem
-- kaaj | काज | buttonhole
-- dheela, kasa | ढीला, कसा | loose, tight (of cloth, never of a person)
-- seedha, tedha | सीधा, टेढ़ा | straight, crooked
-- barabar | बराबर | level, even
-- mausam | मौसम | weather
-- barsaat | बरसात | the monsoon
-- ready-made | रेडीमेड | ready-made (with a sniff)
-- abhi | अभी | right away (meaning an hour)
+- ungli bhar | उँगली भर | a finger's width (at most once a run)
+- baal bhar | बाल भर | a hair's breadth (at most once a run)
+- baalisht | बालिश्त | a hand span (rare)
+- kapda, thaan | कपड़ा, थान | cloth, bolt of cloth
+- silai, kinari, turpai, kaaj, astar, bakhiya | सिलाई, किनारी, तुरपाई, काज, अस्तर, बखिया | seam, edge, hand hem, buttonhole, lining, backstitch
+- feeta, kainchi | फ़ीता, कैंची | tape, scissors
+- sadri | सदरी | his sleeveless waistcoat (English mode 'waistcoat'; a Hindi-first reader confirms the word, fallback 'jacket')
+- kholna, kasna, kaatna, silna, naapna | खोलना, कसना, काटना, सिलना, नापना | let out, take in, cut, stitch, measure (his working verbs)
+- alter, trial, fitting with ho or kar | ऑल्टर, ट्रायल, फ़िटिंग | at the counter, as every tailor says them ('kandhe ka alter ho jaayega')
+- dheela, kasa, kadak | ढीला, कसा, कड़क | loose, tight, crisp (of cloth or work, never of a person's body)
+- seedha, tedha, barabar | सीधा, टेढ़ा, बराबर | straight, crooked, level
+- mausam, mizaaj, barsaat, aasmaan, baadal, dhoop | मौसम, मिज़ाज, बरसात, आसमान, बादल, धूप | weather, mood or temper, monsoon, sky, clouds, sunshine
+- rootha, ziddi, so raha, munh phulaaye | रूठा, ज़िद्दी, सो रहा, मुँह फुलाए | sulking, stubborn, asleep, pouting (said of the sky, the drain, the mud, the clouds; one a run at most)
+- keechad, naali, daraar | कीचड़, नाली, दरार | mud, drain, crack
+- fikr, farq, waqt, zaroor, khair | फ़िक्र, फ़र्क़, वक़्त, ज़रूर, ख़ैर | worry, difference, time, surely, anyway (the town's everyday words, shared with others in the cast)
+- waise | वैसे | by the way, then again (his usual hinge; anyone's word)
+- dekhiye | देखिए | look (his counter opener)
+- bas abhi | बस अभी | right away (an hour)
+- ready-made | रेडीमेड | ready-made, with a sniff, never as praise
+- gharwali | घरवाली | his wife, whose hands made the buttonholes
 - uff | उफ़्फ़ | his one exclamation
-- keechad | कीचड़ | mud
-- naali | नाली | drain
-- JUDGING NOTES (on chapter 3's cards only, with his face chip): his idiom is how people are as his customers (never collecting finished stitching, having every seam redone, fidgeting at fittings, wanting everything by tomorrow), landing on women and men equally. Punctuality stays off chapter 3's cards because target 1 counts days late, so lateness truly matters (rule 20). The draft's 'bossy' and 'argues' (women only), 'quick to anger' (unlike 'bossy', and twice on a Christian man) and 'on his phone' (Mami's idiom) go. Candidates: 'Fidgets through every fitting, Masterji says.' | 'मास्टरजी कहते हैं, नाप देते वक़्त हिलती रहती है।' with its twin half 'Never keeps still to be measured, Masterji says.' | 'मास्टरजी कहते हैं, नाप के वक़्त टिकता ही नहीं।'; decoys 'Never collects the stitching, Masterji says.', 'Has every seam redone twice, Masterji says.', 'Wants everything by tomorrow, Masterji says.' | 'मास्टरजी कहते हैं, उसे हर चीज़ कल चाहिए।' The measure judge and five Hindi-first readers check lengths, frames, weights and loaded words (rules 19, 20, 65).
+- real idioms, one a run at most: paani sir se upar, bakhiya udhedna, baal ki khaal nikaalna, afwaah udna, munh phulaana | पानी सिर से ऊपर, बखिया उधेड़ना, बाल की खाल निकालना, अफ़वाह उड़ना, मुँह फुलाना | gone too far, to take apart (said of himself), to split hairs, a rumour flies, to sulk
+- plain sorry and thanks: bura mat maaniye, aap sahi hain, sukhi raho, jeeti raho (Tinku), jeete raho (a young man), ehsaan raha, isme kaunsi badi baat hai | बुरा मत मानिए, आप सही हैं, सुखी रहो, जीती रहो, जीते रहो, एहसान रहा, इसमें कौन सी बड़ी बात है | please don't mind, you're right, you're a gem, you're a star, I owe you, think nothing of it
+- JUDGING NOTES (chapter 3's cards only, with his face chip; unchanged by this pass): his idiom is how people are as customers (fidgets through every fitting, never collects the stitching, has every seam redone, wants everything by tomorrow), landing on women and men equally; punctuality stays off his notes (rule 20).
 
 **Never says**
 
-- Any word on a woman's dress, its length, tightness or modesty: no छोटा/तंग said of clothes on a woman, no शर्म, इज़्ज़त, 'decent', 'modern'.
-- Any remark on a body's size or weight: no मोटा, पतला, 'too thin', 'put on weight'. He measures bodies and never comments on them.
-- 'Bossy', 'argues', रौब, बहस: the words the continuity read found landing only on women.
-- A figure as a verdict or a time: no inches, no minutes, no 'sharp', no 'ठीक 9 बजे' (Mummy is chapter 3's numeric voice; the minutes are Papa's).
-- A year, or a count of years offered as proof, in a bubble (rule 2); he dates things by what was on his machine.
-- 'About', 'roughly', लगभग, for a measurement.
-- 'Sorry' (he re-measures instead) and 'I'm late' (the trains were late).
-- 'Pakka' (Mama ji's and four others'), 'Dekho' (Nani's) and 'Suno' (Mausi's).
-- A proverb: proverbs are Nani's register now (the India review); his sayings are his own measures.
+- Any figure in speech: no inches, minutes, hours, prices, scores, ordinals, years or counts of years (rule 2); no 'sharp', no 'about', 'roughly' or लगभग for a measure. The number leaners are Papa and Tinku.
+- A measure by feel more than once a run.
+- A turn to cloth or weather on every run, more than one mood picture a run, or any mood picture in a cross line.
+- A picture a Hindi-first reader cannot follow ('Barsaat mein ghadi bhi phoolti hai' and 'Ab ye tumhari chai wali barsaat', both struck), or a coined line dressed as a saying ('Kapde ka bhi mizaaj hota hai' and 'Jo waqt par aaye, use kuch chahiye', both struck). Idioms only real ones; proverbs left to Nani.
+- 'Pehle ___' as someone-else-first (yours).
+- A 'no charge' or bill-free thanks (Mummy's 'Iska bill nahin.').
+- Another person's phrase or tag, which is not the same as a common word: Captain sahab's 'Arre waah.' and bare cricket calls; Mausa ji's one-word 'Lo.' and 'Theek.'; Nani's closing 'Bas.' and 'Khush raho'; Mausi's 'Suno, suno, suno!', 'Shabaash' and 'bahut yaad'; Papa's 'Kamaal hai' and 'Aakhri dibbe tak'; Mama ji's 'Don't worry'; your 'Badhiya'; the tags 'hai na?' (Mausi), 'haan?' (Tinku) and 'Correct?' (Mami). The common fillers (arre, achha, chalo, suno, dekho, bas, theek hai, haan, waise) are everyone's, and he says them mid-line like anyone.
+- A whole English clause (Mama ji's and Mami's shape). An English word with ho or kar only in counter talk.
+- जीते रहो, जीती रहो or any -ते or -ती word before रहो, रहना, रहिए or रहें in a line to you (rule 66's fourth flag); to you it is 'Sukhi raho'.
+- Hurrying anyone, 'jaldi' about his own work, or 'I'm late'.
+- Any word on a woman's dress, its length, tightness or modesty (no छोटा or तंग of clothes on a woman, no शर्म, इज़्ज़त, 'decent', 'modern'), or on anyone's body size (no मोटा, पतला).
+- 'Bossy', 'argues', रौब, बहस, or any note about women or men in general.
 - 'Ready-made' as praise.
-- Beta, beti, bhaiya, didi or any gendered word for the player; any future that changes with gender in a line to the player.
+- Markedly formal courtesy forms from either side, Urdu (janaab, aadaab, farmaiye, huzoor, tashreef) or Sanskritised Hindi (dhanyavaad, kripya, shriman, padhariye), and any religious word (khuda hafiz among them): no god's name, blessing, festival word, 'shukr hai', 'tauba', 'Khuda', 'Rab', 'Bhagwan'; in English mode no 'Goodness', 'Heavens', 'Good grief', 'Lord', 'Oh my', 'Bless you' (rule 3).
+- English mode 'Mind you,' and 'Ugh.' (struck as translated and as a teenager's word).
+- Beta, beti, bhaiya, didi or any gendered word for you; any future or helper-verb past that changes with your gender in a line to you (rule 66).
 - A card person's name, or any word from a note on that decision's cards, in a bubble (rule 36).
-- Any doubt of a report of harassment or bullying, or of a dowry demand (rule 22).
-- Any religious greeting, blessing, god-word or festival word (rule 3); 'Uff' does that work.
+- Any doubt of a report of harassment or bullying, or of a dowry demand, or calling one a misunderstanding (rule 22). His 'Afwaah hai' is for sweet-shop talk only and never sits in a chapter beat near a report twin.
+- An exclamation mark, a raised voice, or temper at a person.
 
 **How they address people**
 
-- Nani: 'Nani ji', आप. She calls him 'Master'.
-- Mummy: 'Bhabhi ji', आप (a Hindi-first reader checks it, since he is four years older than Papa). She calls him 'Masterji', आप.
+- Nani: 'Nani ji', आप ('Ab dhoondhiye'). She calls him 'Master'.
+- Mummy: 'Bhabhi ji', आप ('Bura mat maaniye, Bhabhi ji.'). She calls him 'Masterji', आप.
 - Papa: 'Bhai sahab', आप. Papa says 'Masterji', आप.
-- Mama ji: 'Mama ji' (the lane's word), आप, now that Mama ji is a grown customer. Mama ji says 'Masterji', आप.
-- Tinku: 'Tinku', तुम. She says 'Masterji', आप.
-- Mausi: 'Mausi ji', आप. Mausa ji: 'Mausa ji', आप. Mami: 'Mami ji', आप.
-- Captain sahab: 'Captain', आप. Captain sahab calls him 'Master', आप.
-- You: no address word, तुम, only in commands, 'who should' asks and lines where you are not the doer; once, as a tease, आप ('अब तो आप इंचार्ज हैं।'). You say 'Masterji' and आप with -इए.
-- Customers and strangers: 'Dekhiye', आप, every time.
-- All of these go into the cast map's one address table for the Hindi-first and South Indian readers (rule 65); this list follows that table if it differs.
+- Mama ji: 'Mama ji', आप, now that he is a grown customer. Mama ji says 'Masterji', आप.
+- Tinku: 'Tinku', तुम; his thanks to her is 'Jeeti raho, Tinku.' She says 'Masterji', आप.
+- Mausi: 'Behenji', आप, as her own file has it: what a neighbour of 60 says to a schoolteacher of 55, while 'Mausi' stays the household's word. Mausa ji: 'Mausa ji', आप both ways. Mami: 'Mami ji', आप.
+- Captain sahab: 'Captain' (कप्तान), dropping the sahab, with आप; thirty monsoons of familiarity, not rudeness. Captain sahab calls him 'Master', आप.
+- Customers and strangers: 'Dekhiye' and आप, every time; 'Chaliye', not 'Chalo', when he re-measures for them.
+- YOU (rule 66): no address word at all. तुम only in commands ('वो ईंट लाओ। सिरे पर रख दो।'), 'who should' asks ('थान छत पर कौन ले जाए?'), and lines where you are not the doer ('चाय यहीं रख दी है।', where दी agrees with चाय). His thanks to you is 'सुखी रहो।' (सुखी never changes), never जीते रहो or जीती रहो, which fix a gender. 'Dekhiye' reaches you too, as his counter habit. Once in the year, teasing, आप: 'अब तो आप इंचार्ज हैं।' Never बेटा, भैया, दीदी; never आओगे/आओगी, थके हो, आ गए; any flagged line (such as one ending in a verb that agrees with the mud or the stitching) goes to the native reader.
+- From you to him: 'Masterji' and आप with -इए ('बैठिए, मास्टरजी।'); your one fixed reply 'Bas abhi, Masterji.' is verbless and gender-free.
+- This list follows the cast map's one address table where it differs; the Hindi-first and South Indian readers sign it off (rule 65).
 
 **Sample lines**
 
-- VERDICT AND WANDER (3.02; the first line as drafted, the wander proposed): 'All this mud, by Saturday?' then 'And the sky's still sulking.' | 'इतना कीचड़, शनिवार तक?' then 'आसमान अभी भी रूठा है।' | 'Itna keechad, Shanivaar tak?' then 'Aasmaan abhi bhi rootha hai.'
-- ORDER (to you, at the drain, his tape laid across the crack): 'Bring that brick. Put it on the end.' | 'वो ईंट लाओ। सिरे पर रख दो।' | 'Wo eent laao. Sire par rakh do.' (commands, gender-free; the brick then holds the tape's end inside the frame, so no hand is ever painted on it)
-- WORRY (to Mummy, the Thursday before the flood): 'Bhabhi ji, the cloth's gone limp. More rain.' | 'भाभी जी, कपड़ा ढीला पड़ गया। और बारिश।' | 'Bhabhi ji, kapda dheela pad gaya. Aur baarish.'
-- TEASE (to Mummy, her shutter up at nine): 'Up already? Even the mud's still asleep.' | 'इतनी जल्दी? कीचड़ भी अभी सो रहा है।' | 'Itni jaldi? Keechad bhi abhi so raha hai.'
-- TEASE (to you): 'In charge now? Then the tea's on you.' | 'अब तो आप इंचार्ज हैं। चाय आपकी तरफ़ से।' | 'Ab toh aap incharge hain. Chai aapki taraf se.'
-- PRAISE: 'Level. Both sides level.' | 'बराबर। दोनों तरफ़ बराबर।' | 'Barabar. Dono taraf barabar.'
-- SAYING NO (to Mama ji, by phone): 'No. Kurtas don't get stitched over the phone.' | 'नहीं। कुर्ता फ़ोन पर नहीं सिलता।' | 'Nahin. Kurta phone par nahin silta.'
-- ARGUING (to Captain sahab, at the drain): 'I said so the year of Bhai sahab's jacket.' | 'भाई साहब की जैकेट वाले साल भी यही कहा था।' | 'Bhai sahab ki jacket wale saal bhi yahi kaha tha.'
-- COMFORT (to Mummy, after the flood): 'Wet cloth dries. Torn cloth is the worry.' | 'गीला कपड़ा सूख जाता है। फ़िक्र फटे की होती है।' | 'Geela kapda sookh jaata hai. Fikr phate ki hoti hai.'
-- TEMPER (at the drain, never at a person; no exclamation mark and no wander, which is the tell): 'Uff. Every monsoon I say it. Low drain.' | 'उफ़्फ़। हर बरसात कहता हूँ। नाली नीची है।' | 'Uff. Har barsaat kehta hoon. Naali neechi hai.'
-- JOKE: 'This road needs stitching, not a broom.' | 'इस सड़क को झाड़ू नहीं, सिलाई चाहिए।' | 'Is sadak ko jhaadu nahin, silai chahiye.'
-- TO NANI: 'Nani ji, your shawl's edge is done. No charge.' | 'नानी जी, शॉल की किनारी हो गई। पैसे नहीं लूँगा।' | 'Nani ji, shawl ki kinari ho gayi. Paise nahin loonga.'
-- THE TEA BEAT (to you, proposed Tuesday evening): 'Tea first. The mud isn't going anywhere.' | 'पहले चाय। कीचड़ कहीं नहीं जा रहा।' | 'Pehle chai. Keechad kahin nahin ja raha.' Your fixed reply turns his own phrase back on him: 'Right away, Masterji.' | 'बस अभी, मास्टरजी।' | 'Bas abhi, Masterji.' (verbless, gender-free)
-- LEAD-IN PAIR (proposed, rule 37 twins; each line is itself a wander to the weather): 3.11 'Cloth's gone stiff. No rain till Sunday.' | 'कपड़ा कड़क हो गया। इतवार तक बारिश नहीं।' | 'Kapda kadak ho gaya. Itwaar tak baarish nahin.' 3.21 'Cloth's dry at last. Clear skies tomorrow.' | 'कपड़ा आख़िर सूख गया। कल आसमान साफ़।' | 'Kapda aakhir sookh gaya. Kal aasmaan saaf.'
-- SAYING SORRY: 'Come, we measure again.' | 'चलो, फिर से नाप लेते हैं।' | 'Chalo, phir se naap lete hain.'
-- AS DRAFTED, kept: 3.28 'The flood cracked the drain between two lanes.' | 'बाढ़ से दो गलियों के बीच की नाली में दरार।' | 'Baadh se 2 galiyon ke beech ki naali mein daraar.' and 'Whose drain? Let the lane cup decide.' | 'नाली किसकी? गली का कप तय करे।' | 'Naali kiski? Gali ka cup tay kare.'
+- THE OPENING (3.02, his flooded doorway, to Mummy at her half-raised shutter; the drafted first line kept, then the run's one mood picture): EN 'All this mud, by Saturday?' / 'Then again, the sky's still sulking.' | HINGLISH 'Itna keechad, Shanivaar tak?' / 'Waise aasmaan abhi bhi rootha hai.' | HINDI 'इतना कीचड़, शनिवार तक?' / 'वैसे आसमान अभी भी रूठा है।'
+- A VERDICT ON A HEM (to a customer at a fitting; his one measure by feel in this run, and the turn is a forecast): EN 'Look, the hem is a finger's width off.' / 'By the way, the cloth's limp today. Rain's coming.' | HINGLISH 'Dekhiye, kinari ungli bhar tedhi hai.' / 'Waise kapda aaj dheela hai. Barsaat aayegi.' | HINDI 'देखिए, किनारी उँगली भर टेढ़ी है।' / 'वैसे कपड़ा आज ढीला है। बरसात आएगी।'
+- AT THE COUNTER, NO TURN (to a customer collecting a kurta; the shop pattern with ho, as at any tailor's): EN 'Look, I've let the kurta out. It'll fit properly now.' / 'The shoulder can be altered too. Right away.' | HINGLISH 'Dekhiye, kurta khol diya hai. Ab fitting barabar aayegi.' / 'Kandhe ka alter bhi ho jaayega. Bas abhi.' | HINDI 'देखिए, कुर्ता खोल दिया है। अब फ़िटिंग बराबर आएगी।' / 'कंधे का ऑल्टर भी हो जाएगा। बस अभी।'
+- WORRY (to Mummy, the Thursday before the flood; the forecast as a plain warning, in whole sentences): EN 'Bhabhi ji, the cloth's gone limp.' / 'The weather's turning. Better put the stock up high.' | HINGLISH 'Bhabhi ji, kapda dheela pad gaya hai.' / 'Mausam ka mizaaj bigda hai. Maal upar rakh lijiye.' | HINDI 'भाभी जी, कपड़ा ढीला पड़ गया है।' / 'मौसम का मिज़ाज बिगड़ा है। माल ऊपर रख लीजिए।'
+- TEASE (to Mummy, her shutter up at nine and his still down; the run's one mood picture): EN 'Open already, Bhabhi ji?' / 'Even the mud's still asleep.' | HINGLISH 'Itni jaldi, Bhabhi ji?' / 'Keechad bhi abhi so raha hai.' | HINDI 'इतनी जल्दी, भाभी जी?' / 'कीचड़ भी अभी सो रहा है।'
+- TEASE, THE ONE आप (to you, once in the year, when you are put in charge): EN 'You're in charge now, then.' / 'So the tea's on you.' | HINGLISH 'Ab toh aap in-charge hain.' / 'Chai aapki taraf se.' | HINDI 'अब तो आप इंचार्ज हैं।' / 'चाय आपकी तरफ़ से।'. Rule 66: इंचार्ज does not change with gender; the checker may catch तरफ़ से at the sentence end (a postposition), which a native reader clears.
+- ORDER (to you, at the drain, his tape lying slack across the crack; no turn, because the work is serious): EN 'Bring that brick. Put it on the end.' | HINGLISH 'Wo eent laao. Sire par rakh do.' | HINDI 'वो ईंट लाओ। सिरे पर रख दो।'. Rule 66: two commands, gender-free.
+- THE TEA BEAT (to you, Tuesday evening on the shared step): EN 'Let's have tea.' / 'The mud isn't going anywhere.' | HINGLISH 'Chai ho jaaye.' / 'Keechad kahin nahin ja raha.' | HINDI 'चाय हो जाए।' / 'कीचड़ कहीं नहीं जा रहा।'. Your fixed reply turns his phrase back on him: 'Right away, Masterji.' | 'Bas abhi, Masterji.' | 'बस अभी, मास्टरजी।' Rule 66: जा रहा agrees with कीचड़, so a native reader clears the flag.
+- LOVE: HIS TIME (to you, the steel tumbler set down beside you, then a story offered): EN 'Your tea's right here. Still hot.' / 'Shall I tell you about Bhai sahab's jacket?' | HINGLISH 'Chai yahin rakh di hai. Abhi garam hai.' / 'Bhai sahab ki jacket wali baat sunaaoon?' | HINDI 'चाय यहीं रख दी है। अभी गरम है।' / 'भाई साहब की जैकेट वाली बात सुनाऊँ?'. Rule 66: दी है agrees with चाय and सुनाऊँ is his own offer; भाई साहब is Papa, named, not a word for you.
+- COMFORT (to Mummy, after the flood; kept as the readers heard it, feeling said sideways in cloth): EN 'Wet cloth dries, Bhabhi ji.' / 'It's torn cloth you worry about.' | HINGLISH 'Geela kapda sookh jaata hai, Bhabhi ji.' / 'Fikr phate ki hoti hai.' | HINDI 'गीला कपड़ा सूख जाता है, भाभी जी।' / 'फ़िक्र फटे की होती है।'
+- TEMPER (at the drain, never at a person; the turn stops, then silence and a straightened back): EN 'Uff. I say it every monsoon. The drain's too low.' | HINGLISH 'Uff. Har barsaat kehta hoon. Naali neechi hai.' | HINDI 'उफ़्फ़। हर बरसात कहता हूँ। नाली नीची है।'. One bubble only, no exclamation mark.
+- A REAL IDIOM AT THE DRAIN (to Captain sahab across the drain, the morning after; no turn, and in a flood the idiom is nearly literal): EN 'Look, Captain, enough is enough now.' / 'This time that drain gets mended.' | HINGLISH 'Dekhiye, Captain, ab paani sir se upar ho gaya hai.' / 'Is baar naali banwaani hi padegi.' | HINDI 'देखिए, कप्तान, अब पानी सिर से ऊपर हो गया है।' / 'इस बार नाली बनवानी ही पड़ेगी।'
+- SORRY, PLAIN (to Mummy, his wet bolts of cloth spread over her whole roof; bas abhi means an hour, and both of them know it): EN 'Please don't mind, Bhabhi ji. I've taken over your roof.' / 'The cloth comes down right away.' | HINGLISH 'Bura mat maaniye, Bhabhi ji. Poori chhat gher li.' / 'Thaan bas abhi utaar leta hoon.' | HINDI 'बुरा मत मानिए, भाभी जी। पूरी छत घेर ली।' / 'थान बस अभी उतार लेता हूँ।'
+- SORRY, THE RE-MEASURE (to a customer whose hem came out wrong; his trade sorry, once a chapter at most, with a kind turn): EN 'Please don't mind. Come, let's measure again.' / 'The cloth won't hold it against us.' | HINGLISH 'Bura mat maaniye. Chaliye, phir se naap lete hain.' / 'Kapda bura nahin maanta.' | HINDI 'बुरा मत मानिए। चलिए, फिर से नाप लेते हैं।' / 'कपड़ा बुरा नहीं मानता।'
+- THANKS TO YOU (after you carried the tea through the flood week; the India reviewer's line, with सुखी रहो in place of जीते रहो): EN 'You're a gem. That tea saved me.' | HINGLISH 'Sukhi raho. Us chai ne bachaa liya.' | HINDI 'सुखी रहो। उस चाय ने बचा लिया।'. Rule 66: सुखी never changes with gender and बचा लिया agrees with nothing of yours; जीते रहो would make you a man (the fourth flag).
+- THANKS TO TINKU (who brings his late-morning tea; her gender is known, so the good wish takes her form, and the tea is on time, unlike him): EN 'You're a star, Tinku. Your tea always comes on time.' | HINGLISH 'Jeeti raho, Tinku. Tumhari chai hamesha waqt par aati hai.' | HINDI 'जीती रहो, टिंकू। तुम्हारी चाय हमेशा वक़्त पर आती है।'
+- THANKS TO A NEIGHBOUR (to Mummy, whose roof dried his cloth; the India reviewer's line): EN 'Bhabhi ji, your roof saved my cloth. I owe you.' | HINGLISH 'Bhabhi ji, aapki chhat ne bachaa liya. Ehsaan raha.' | HINDI 'भाभी जी, आपकी छत ने बचा लिया। एहसान रहा।'
+- WHEN HE IS THANKED (to Mausa ji, for the shirts stitched at cost; he makes it small by naming the older favour): EN 'Oh, Mausa ji. Your wiring still runs my shop.' | HINGLISH 'Arre, Mausa ji, aapki wiring abhi tak chal rahi hai.' | HINDI 'अरे, मौसा जी, आपकी वायरिंग अभी तक चल रही है।'
+- PRAISE (to Tinku, checking her scorebook columns on a Saturday): EN 'Spot on, Tinku. Dead straight columns.' / 'Straighter than my own seams.' | HINGLISH 'Barabar, Tinku. Column ekdum seedhe hain.' / 'Meri silai se bhi seedhe.' | HINDI 'बराबर, टिंकू। कॉलम एकदम सीधे हैं।' / 'मेरी सिलाई से भी सीधे।'
+- CREDIT TO HIS WIFE (to a customer collecting a shirt; kept as the readers heard it): EN 'Look, the buttonholes are my wife's work.' / 'I only cut. The fine work's hers.' | HINGLISH 'Dekhiye, kaaj meri gharwali ke haath ke hain.' / 'Main bas kaatta hoon. Baareek kaam unka.' | HINDI 'देखिए, काज मेरी घरवाली के हाथ के हैं।' / 'मैं बस काटता हूँ। बारीक काम उनका।'
+- SAYING NO (to Mama ji, by phone, who wants the kurta by Friday): EN 'No, Mama ji. Kurtas don't get stitched over the phone.' / 'By the way, city cloth only looks good in photos.' | HINGLISH 'Nahin, Mama ji. Kurta phone par nahin silta.' / 'Waise shehar ka kapda photo mein hi achha lagta hai.' | HINDI 'नहीं, मामा जी। कुर्ता फ़ोन पर नहीं सिलता।' / 'वैसे शहर का कपड़ा फ़ोटो में ही अच्छा लगता है।'
+- ARGUING (to Captain sahab, across the drain; the past dated by a garment, never a year, and the run's one mood picture): EN 'I said the same the year of Bhai sahab's jacket.' / 'That drain's been stubborn ever since, Captain.' | HINGLISH 'Bhai sahab ki jacket wale saal bhi yahi kaha tha.' / 'Naali tab se ziddi hai, Captain.' | HINDI 'भाई साहब की जैकेट वाले साल भी यही कहा था।' / 'नाली तब से ज़िद्दी है, कप्तान।'
+- TO NANI (her shawl's edge finished; their old quarrel over a hair-uneven hem, closed with a real idiom): EN 'Nani ji, the shawl's edge is done.' / 'Now find it a hair crooked, if you can.' / 'Then again, nobody splits hairs like you, Nani ji.' | HINGLISH 'Nani ji, shawl ki kinari ho gayi.' / 'Ab dhoondhiye, baal bhar bhi tedhi ho toh.' / 'Waise aap toh baal ki khaal bhi nikaal lengi.' | HINDI 'नानी जी, शॉल की किनारी हो गई।' / 'अब ढूँढिए, बाल भर भी टेढ़ी हो तो।' / 'वैसे आप तो बाल की खाल भी निकाल लेंगी।'
+- TEASE (to Papa, who arrives at every fitting on the dot; the joke is at Papa's railway and at his own excuse): EN 'On time, Bhai sahab? Your trains never are.' | HINGLISH 'Waqt par, Bhai sahab? Aapki gaadiyan toh kabhi nahin.' | HINDI 'वक़्त पर, भाई साहब? आपकी गाड़ियाँ तो कभी नहीं।'
+- HIS TIME (to a waiting customer; bas abhi means an hour): EN 'Look, right away.' / 'By the way, cloth dries slowly in the rains.' | HINGLISH 'Dekhiye, bas abhi.' / 'Waise barsaat mein kapda der se sookhta hai.' | HINDI 'देखिए, बस अभी।' / 'वैसे बरसात में कपड़ा देर से सूखता है।'
+- CAUGHT OUT (to Captain sahab, who has shown him wrong about which monsoon the drain was last cleaned; a real tailoring idiom, the joke at himself): EN 'Well, Captain, you've caught me out.' / 'All right, I grant it. I measured wrong.' | HINGLISH 'Achha, Captain, aapne toh meri bakhiya udhed di.' / 'Theek hai, maan liya. Naap mera galat tha.' | HINDI 'अच्छा, कप्तान, आपने तो मेरी बखिया उधेड़ दी।' / 'ठीक है, मान लिया। नाप मेरा ग़लत था।'
+- FORECAST LEAD-INS (3.11 and 3.21 as a matched pair, rule 37 twins; each line is itself his forecast, now with its verb): EN 'The cloth's gone stiff. No rain till Sunday.' / 'The cloth's dry at last. Clear skies tomorrow.' | HINGLISH 'Kapda kadak ho gaya. Itwaar tak baarish nahin hogi.' / 'Kapda aakhir sookh gaya. Kal aasmaan saaf rahega.' | HINDI 'कपड़ा कड़क हो गया। इतवार तक बारिश नहीं होगी।' / 'कपड़ा आख़िर सूख गया। कल आसमान साफ़ रहेगा।'. Two separate beats, shown here together; the two lines stay within 2 words of each other in every language.
+- THE FIXED ENDING (3.28, crouched at the cracked drain; the drafted figure for the lanes proposed as dono so his speech carries no figure, owner's call): EN 'The flood cracked the drain between both lanes.' / 'Whose drain? Let the lane cup decide.' | HINGLISH 'Baadh se dono galiyon ke beech ki naali mein daraar.' / 'Naali kiski? Gali ka cup tay kare.' | HINDI 'बाढ़ से दोनों गलियों के बीच की नाली में दरार।' / 'नाली किसकी? गली का कप तय करे।'
 
 ## Typing
 
-- Device: his son's old phone with a cracked screen guard, kept in his shirt pocket under the waistcoat (never painted there: phones go in the scene, painted blank, rule 30). He reads it chin up, through the bottom of his half-moon spectacles, then drops his chin to look over them at whoever is near, as if they sent it.
-- Script: Roman Hindi in lowercase, with shop English as nouns; 'h' for है; digits only for times and for sizes copied off a slip (his speech has no figures, his thumb does); spelling drifts ('kal', 'kl'), as romanised Hindi does (realism notes [10]).
-- Punctuation: no full stops; thoughts joined with two dots '..'; never a question mark, never an exclamation.
-- Sign-off: 'ji' on almost everything, even 'ok ji'. No emoji, no stickers, no forwards except one: each June he sends the weather office's heavy-rain warning to everyone he has ever measured (real information, never politics or rumour; never shown on screen).
-- Photo first, words after: a photo of a measurement slip or a bolt of cloth (painted blank), then one short line.
-- Voice notes only to customers about a fitting, under twenty seconds, with the machine running behind him; never long ones (that is Mausi).
-- Timing: types slowly with his right thumb before opening, about 9:30, and replies to yesterday's messages the next morning ('kal dekha ji'). Any time he types, he corrects later: '5 baje', then '6 baje..'.
-- The game shows no group chat (23 Oct) and no app look; any message of his on screen is a single message on a painted blank phone or a message card, as live text.
+- Device: his son's old phone with a cracked screen guard, kept in his shirt pocket under the sadri (never painted there; any phone in a scene is painted blank, rule 30). He reads it chin up through the bottom of his spectacles, then drops his chin to look over them at whoever is near, as if they sent it.
+- Script: Roman Hindi in lowercase, 'h' for है, shop English as nouns; spellings drift as romanised Hindi does ('zaroor', 'jaroor').
+- No digits at all. Sizes and dates travel in the photo of the measurement slip (painted blank), never in his words; times are written as words ('kal shaam', 'parson subah') and pushed back once before they are kept ('aaj zaroor ji').
+- Punctuation: thoughts joined with two dots '..'; no full stops, no question marks, no exclamation marks. A card holds 10 words or fewer (rule 62, if the owner rules that a message card counts as a spoken line): a longer message goes as two cards sent one after the other, cut at his own '..', and the first card keeps its '..' at the end, as if he is still typing.
+- The typed turn: about half his messages end on the weather or the cloth ('.. hawa me nami h', '.. aaj baadal nahi'), the same verdict-then-turn shape he speaks in; the rest stop at the news.
+- 'ji' on nearly everything, even 'ok ji'. No emoji, no stickers, no ticks, no numbered lists, no flowers.
+- Photo first, words after: a photo of a slip or a bolt of cloth, then one short line.
+- Voice notes only to customers about a fitting, short, with the machine running behind him; never long ones (that is Mausi).
+- Timing: types slowly with his right thumb before opening, and answers yesterday's messages the next morning ('kal dekha ji').
+- One forward a year: each June the weather office's heavy-rain warning to everyone he has ever measured, with 'thaan upar rakhein ji' (real information, never politics or rumour; never shown on screen).
+- The game shows no group chat and no app look; any message of his on screen is a single message on a painted blank phone or a message card, as live text.
 
 **Sample messages**
 
-- To Mama ji, 2 December, 9:40 am, after a photo of Mami's numbered list: 'mama ji naap mil gaya.. mami ji ka naap ekdum barabar h ji' then 'kurta 3 din pehle ready'
-- To a customer, the time-correction habit: 'trial kal 5 baje ji' ... two hours later: '6 baje..' ... next morning: 'aaj zaroor ji'
-- To Mummy in May, while the family is at Nani's: 'shutter roz 1 foot utha ke hawa di h.. maal sukha h ji'
-- To you: 'tumhare bag ki zip lag gayi h.. kal le jana' (gender-free: a command, and the verb agrees with the zip; the rule 66 checker will flag गई before है and a native reader clears it)
-- To Mama ji, after a photo of city cloth: 'photo me har kapda achha lagta h ji.. haath me lo tab pata chalega'
-- In his own family group (his wife, son and daughter-in-law; off screen only, since the game has no group chat): 'dukaan me ghutno tak paani.. thaan sab upar rakh diye.. main theek hu.. sab khana time pe khana' (he tells his family to eat on time)
-- Possible chapter 3 opener on your phone, the night before the flood (waits on rulebook question 9): 'kapda dheela h.. kal bahut baarish.. bhabhi ji ko bolo maal upar rakhein' (a command to you plus a polite subjunctive: no gender)
+- To a customer, the time that slips (no digits): 'trial kal shaam ji.. hawa me nami h' then, the next evening, 'parson subah ji.. kapda abhi geela h' then, the morning after, 'aaj zaroor ji' (Trial tomorrow evening.. damp in the air / The day after, morning.. cloth's still wet / Today, surely.)
+- To Mama ji in December, after a photo of Mami's list: 'mama ji naap mil gaya.. mami ji ka naap ekdum barabar h ji' and, days later, 'kurta taiyaar h ji.. is baar trains bhi late nahi' (the first deadline he has met in thirty years, and the joke is on his own excuse)
+- To Mummy in May, while the family is at Nani's: 'shutter roz thoda utha ke hawa di h ji..' / 'maal sukha h.. idhar dhoop kam' (two cards, one after the other)
+- To you: 'tumhare bag ki zip lag gayi h ji..' / 'jab chaho le jana' (rule 66: a subjunctive and a command, and the verb agrees with the zip; the checker flags गई before है and a native reader clears it)
+- To Mama ji, after a photo of city cloth: 'photo me har kapda achha lagta h ji..' / 'haath me lo tab pata chalega'
+- Possible chapter 3 opener on your phone, the night before the flood (waits on rulebook question 9): 'kapda dheela h ji.. kal bahut baarish..' / 'bhabhi ji ko bolo maal upar rakhein' (a command to you and a polite subjunctive: no gender)
 
 ## Look
 
@@ -294,3 +323,18 @@ MASTER TIER (paints the model sheet only; never his name; role word 'the bald st
 - RULE CHECKS PASSED IN THIS FILE: polite forms (आप to Nani, Mummy, Papa, Mama ji, Mausi, Mausa ji, Captain sahab and Mami; तुम to Tinku and you; you say आप and 'Masterji'); no year in any bubble (rule 2); no rule 3 marker in words or on the sheet; lead-in additions come in matched pairs (rule 37); every sample line at most 10 English words; the painter prompt, panel tag, posture, pose and glossary-row words fire none of the old take's glossary rows except 'stool', whose row (a low wooden stool for sitting on) is the one meant (checked with cutscenes.py's own functions, as the rules review's probe does); British spelling; no em or en dashes (checked by script).
 - CHANGES FROM THE CAST MAP, with reasons: Tinku's 'too thin for any pattern' becomes 'never stands still long enough to be measured' (a man of 60 remarking on a young woman's body breaks his own rule and the Sunita test); the Hindi label uses टेलर मास्टर, not दर्ज़ी, because Darzi is also a community name; the tape stays worn in the fixed look, made safe by its worn-off marks, plain-band wording and the text check (fallback: move it into each scene); punctuality leaves his chapter 3 notes (target 1 counts days late; rule 20); 'Captain' with आप both ways; he lives across the drain (proposal). In this revision: 'Do inch ka farq' becomes 'Ungli bhar ka farq' (no figures in his speech); 'speaks in measurements' stays, by feel; lavender and black gains a black V-neck waistcoat; the role word becomes 'the bald stooped man'. Every revision change and its reason is in revision_notes.
 - OWNER QUESTIONS: may he stand silent in chapter 4, small and face-on by the mended drain at 4.27? Take the 3.02 wander, the 3.11 and 3.21 forecasts, the Tuesday tea scene and the 3.26 shutter? His share of chapter 3's words (about 46 of 120)? Spectacles on two people? 'Bhabhi ji' for Mummy though he is older than Papa? टेलर मास्टर as the Hindi label? Keep 'barabar' and keep it quiet? His speech without figures (finger widths for inches, 'bas abhi' for 'five minutes')? A black waistcoat in July on a small-town tailor (an Indian reader confirms)?
+
+## Twelve everyday moments (the voice test)
+
+- 1. The lights go out in the middle of dinner (to the table). His one mood picture in the set, on a real idiom (munh phulaana).: "Uff. Bijli gayi. Waise baadal din bhar munh phulaaye the." | "उफ़्फ़। बिजली गई। वैसे बादल दिन भर मुँह फुलाए थे।" | "Uff. Power's gone. Then again, the clouds sulked all day."
+- 2. Someone everyone was waiting for arrives two hours late (to Captain sahab, who wants to scold). The India reviewer's line, with his 'Dekhiye'; no turn.: "Dekhiye, Captain, gaadi late hogi. Barsaat mein sab late." | "देखिए, कप्तान, गाड़ी लेट होगी। बरसात में सब लेट।" | "Look, Captain, the train'll be late. Everything's late in the rains."
+- 3. A cousin phones to say they have got their first job. He is glad, and congratulates in his own trade; the cousin stays without a gender.: "Sunkar achha laga. Ab toh nayi kameez banti hai." | "सुनकर अच्छा लगा। अब तो नई कमीज़ बनती है।" | "Good to hear. That calls for a new shirt."
+- 4. The tea someone has just made has far too much sugar in it (to Papa, who made it). Kept as the readers heard it; the run's one measure by feel.: "Bhai sahab, cheeni ungli bhar zyada. Kapda hota, kaat deta." | "भाई साहब, चीनी उँगली भर ज़्यादा। कपड़ा होता, काट देता।" | "A finger too sweet, Bhai sahab. Cloth I could have trimmed."
+- 5. In front of the family, he is shown to have had a fact wrong (to Mummy, who put him right). A plain sorry, then the joke at himself.: "Aap sahi hain, Bhabhi ji. Feeta purana hai, main bhi." | "आप सही हैं, भाभी जी। फ़ीता पुराना है, मैं भी।" | "You're right, Bhabhi ji. My tape's old, and so am I."
+- 6. Someone he loves is leaving; goodbye on a railway platform (his son, or you). The Hindi reader's fix: कहीं भी जाए, not दूर जाए. Rule 66 if said to you: जाओ is a command, जाए agrees with कपड़ा and रहती with सिलाई, so a native reader clears the flags.: "Jao. Kapda kahin bhi jaaye, silai yahin ki rehti hai." | "जाओ। कपड़ा कहीं भी जाए, सिलाई यहीं की रहती है।" | "Go on. Wherever the cloth goes, the stitching's from here."
+- 7. Someone thanks him for something he did (Nani, for the edge he finished on her shawl). He makes the favour small, plainly; no turn.: "Nani ji, kinari hi toh thi. Isme kaunsi badi baat hai." | "नानी जी, किनारी ही तो थी। इसमें कौन सी बड़ी बात है।" | "Only an edge, Nani ji. Think nothing of it."
+- 8. A neighbour passes on a rumour that the corner sweet shop is closing (to Captain sahab). The turn is to his own fear, on a real collocation (afwaah udna); sweet-shop talk only, never near a report beat.: "Afwaah hai, Captain. Ready-made wale ki afwaah kyon nahin udti?" | "अफ़वाह है, कप्तान। रेडीमेड वाले की अफ़वाह क्यों नहीं उड़ती?" | "Just talk, Captain. Why is it never the ready-made shop?"
+- 9. Heavy rain floods the lane outside the house. Cross, so the turn stops: the drain, then the cloth to save.: "Uff. Naali phir bhar gayi. Thaan upar chadhaane honge." | "उफ़्फ़। नाली फिर भर गई। थान ऊपर चढ़ाने होंगे।" | "Uff. Drain's overflowing again. The cloth has to go up."
+- 10. Someone asks him how he is. Kept as the readers heard it.: "Apni sadri jaisa. Astar naya, kapda wahi purana." | "अपनी सदरी जैसा। अस्तर नया, कपड़ा वही पुराना।" | "Like my waistcoat. New lining, same old cloth."
+- 11. A child knocks a glass of water across the table (to the child). Comfort first, then a tailor's stain fact; no turn.: "Rehne do, daro mat. Paani ka daag nahin padta." | "रहने दो, डरो मत। पानी का दाग़ नहीं पड़ता।" | "Leave it. Don't be scared. Water doesn't stain."
+- 12. A phone call brings good news. His joy: 'Achha?', and the news was in the cloth all along.: "Achha? Kapda subah se kadak tha. Dhoop aani hi thi." | "अच्छा? कपड़ा सुबह से कड़क था। धूप आनी ही थी।" | "Really? The cloth was crisp all morning. I knew it."

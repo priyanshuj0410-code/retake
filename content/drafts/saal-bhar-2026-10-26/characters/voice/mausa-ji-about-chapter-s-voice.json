@@ -1,0 +1,217 @@
+{
+ "name": "Mausa ji (मौसा जी), about 58, chapter 2's voice",
+ "voice": {
+  "register": "Low, slow and plain: the quietest voice in the cast, with long gaps his hands fill. Most bubbles are two to four counted words and none is more than six (names and kin words not counted, as in rule 62; his own cap, well inside rule 62's ten), usually in two short pieces: an opener ('Hmm.', 'Hain?', 'Lo.' or the thing itself), then the state of a thing. His usual sentence is about a thing, not a person: the wire, the bench, the board, the food, the job, given a state or a verdict. Verdicts on things are often bare ('Taar dheela.', 'Board theek.') and sometimes keep their verb ('Bench theek hai.'); comfort and kind lines always keep their 'hai' ('Achha hai.', 'Amma ji mazboot hain.'), so he never talks in telegrams. His own jobs come with the pronoun dropped ('Aata hoon.', 'Garam karta hoon.', 'Ho gaya.'). His orders are small and practical: rest ('So jao.'), hands off live current ('Switch mat chhoona.'), and the next little job as he hands something over ('Lo, Mausi se baat karo.', 'Haath dho lo.'). He answers more than he asks; his few questions are about sleep, water or a drip. Nearly every bubble is followed by something his hands do, and when a beat needs more he speaks again after a deed, so a run is two bubbles with an action between them. He talks most to whoever should be resting (you, at the ward). His few words are kind and busy, never the silent head of the house. Told apart from the other short voices by shape and source, not by owned words: Nani gives people orders and counter proverbs; Captain sahab makes a cricket call, then gives the reason; Tinku gives a score with a tag; Mummy lists jobs; Mami reads things back; you name the listener. He reports on things, names almost nobody, counts nothing and leaves himself out.",
+  "mix": "Bare, plain Hindi, the plainest in the cast after Nani's, with no proverb or image of his own (that is Nani's and Masterji's ground). The common fillers are his as much as anyone's: achha, haan, chalo, arre and theek hai come in mid-line, sparingly, as they would from any man of 58; so do everyday Urdu-rooted words such as waqt, fikr and zaroor ('Waqt lagega.'). English comes in from his work. First, the lineman's nouns, used as Hindi nouns: current, line, fuse, load, meter, earthing, board, switch, wiring, joint. Second, now and then, the everyday Hinglish English verb with ho or kar, and his is always about what the line or the current did, with the thing as the subject ('Line trip ho gayi.', 'Short hua hai.', 'Wiring check ho gayi.'). That is how a lineman really talks, and it keeps his thing-first shape; Mummy's English verbs are counter jobs she hands to people ('MCB check karo'), his are what the current did. The hospital words everyone uses: BP, drip, ward, X-ray. Where everyday Hindi has its own word he takes it: 'bijli' for power, 'taar' for wire, जोड़ for a joint in Hindi mode. No whole English clause (Mama ji's and Mami's), and no English feeling words such as tension, relax or chill. Never 'main switch' or 'mains' in Hinglish, because 'main' reads as मैं. Hinglish mode is Roman Hindi with those nouns. English mode is plain, natural British English, as short as the Hindi: the thing first and himself left out wherever English allows it ('Board's fine. Open the shutter.', 'Lights on, then.'), with the full everyday phrase wherever a clipped one would sound translated ('Get any sleep?', 'It'll take time.', 'No harm done.'). One English word for each work verdict, so the English sort still hears him: mazboot is 'solid' of work and 'strong' of a person, dheela is 'loose', theek is 'fine'.",
+  "tics": [
+   "The thing first, then its state: 'Taar dheela.' | 'Board theek hai.' | 'Fuse ud gaya.' Most of his sentences have a thing as the subject, and none passes a judgement on a person.",
+   "'Hmm.' | 'हम्म।' before an answer, or as the whole answer, in at most one bubble in three and never two running; otherwise one slow nod. In chapter 2's three or four bubbles that is once. When he is moved, the 'Hmm' becomes a cleared throat and a look at the window.",
+   "Himself left out: first-person verbs only for plain jobs, with the pronoun dropped ('Abhi aaya.', 'Aata hoon.', 'Dekh liya.'). The only 'my' in any mode is the fixed English sorry, 'My mistake.'.",
+   "One-word verdicts: 'Theek.' | 'ठीक।' (fine; the bare one-word line is his, while 'theek hai' mid-line is everyone's), 'Mazboot.' | 'मज़बूत।' (solid, of work; strong, of a person; his highest word), 'Dheela.' | 'ढीला।' (loose, sloppy: of a joint, a wire or a job, never of cloth, which is Masterji's, and never of a person), 'Chalega.' | 'चलेगा।' (it'll do: his kind word for a thing that is not quite right).",
+   "'Lo.' | 'लो।' as he sets something down or hands it on (half a sweet lime, his shoulder towel, the phone), sometimes with the one small job that goes with it ('Lo, Mausi se baat karo.').",
+   "His orders are small and practical: rest ('So jao.'), live current ('Switch mat chhoona.', 'Board mat chhoona.'), and the next little job ('Haath dho lo.'). In English mode the current order is always 'Leave the ___.'.",
+   "His exclamation 'Hain?' | 'हैं?' always stands alone at the start of a bubble, with its own question mark.",
+   "When thanked he says only 'Hmm.' | 'हम्म।' as he stands up, and leaves the room.",
+   "He leaves before a goodbye is over: from a room when he is thanked, from a platform before the train moves. He never waits out the last coach (that vigil is Papa's).",
+   "When cross he goes quiet, picks up the nearest job and does it twice as hard (re-tightening a screw that was already tight). If a word comes, it is one flat order about a thing ('Andar rakho.'), with no address word.",
+   "Until May a job that can wait is 'Kal.' | 'कल।'; from May on it is 'Abhi.' | 'अभी।', and he never says 'kal' about a job again.",
+   "He drops address words with everyone his own age or younger; the only name he says is 'Tinku'. With an elder he never drops the 'ji' ('Abhi, Amma ji.')."
+  ],
+  "catchphrases": [
+   "'Hmm. Ho jayega.' | 'हम्म। हो जाएगा।' | 'Hmm. It'll get done.' (his comfort and his promise; no person in it)",
+   "'So jao.' | 'सो जाओ।' | 'Go to sleep.' (to whoever should be resting, you most of all)",
+   "'Lo. Aadha.' | 'लो। आधा।' | 'Here. Half.' (the half he sets down beside you; a share, not a count, and the only time 'aadha' is in his mouth)"
+  ],
+  "exclamation": "'Hain?' | 'हैं?' | 'Eh?' A nasal sound of surprise with no word in it and no religious sense (matrix 2.13). Said low, for a good or a bad surprise alike. It always stands alone at the start of the bubble with its own question mark, so the Hinglish 'Hain?' is never read as the verb 'hain' (are). A plain 'arre' mid-line is anyone's, his too, but 'Arre waah' is Captain sahab's cry and never his; never a god-word, never another person's cry.",
+  "sorry_thanks_love": "SORRY: 'Galti ho gayi.' | 'ग़लती हो गई।' | 'My mistake.' Plain everyday north Indian Hindi, still with no subject, and then his hands put the thing right in front of whoever saw. THANKS, GIVEN: two blunt words and the deed, 'Hmm. Baitho.' | 'हम्म। बैठो।' | 'Hmm. Sit.' as he moves his bag off the chair beside him (a command, so it gives you no gender; 'achha kiya' is left to Mummy's 'Bahut achha kiya.'). His work verdict as thanks ('Silai mazboot hai, Masterji.' | 'That's solid stitching, Masterji.') comes at most once a chapter, so it stays a compliment and never becomes a code. THANKS, RECEIVED: just 'Hmm.' | 'हम्म।' | 'Hmm.' as he stands up, and he leaves the room; the leaving is the rest of his answer. LOVE: never said as a feeling; a deed with his hands, here and now: 'Lo. Aadha.' | 'लो। आधा।' | 'Here. Half.' as he sets half a peeled sweet lime down beside you; the steel chairs kept outside the ward all night; the lit back step that nobody mentions.",
+  "uses": [
+   "Pet words, Hinglish | Hindi | English: hmm | हम्म | hmm; ho jayega | हो जाएगा | it'll get done; theek, alone | ठीक | fine; mazboot | मज़बूत | solid, strong; dheela | ढीला | loose; chalega | चलेगा | it'll do; abhi | अभी | now; lo | लो | here; ho gaya | हो गया | done; dekh liya | देख लिया | checked; galti ho gayi | ग़लती हो गई | my mistake; baitho | बैठो | sit (his thanks, with the chair cleared); kaam | काम | the job.",
+   "Everyone's fillers, used sparingly and mid-line: achha, haan, chalo, arre, theek hai; and everyday Urdu-rooted words: waqt, fikr, zaroor.",
+   "His trade, as Hindi nouns: bijli, taar, joint (जोड़ in Hindi mode), current, line, fuse, load, meter, earthing, board, switch, wiring; trade verbs with ho or kar about what the line did: trip ho gayi, short hua, check ho gayi, ud gaya (of a fuse); and the ward's BP, drip, ward, X-ray.",
+   "Things in the house he reports on: khana, paani, cheeni, bench, kursi, gate, light, seedhi (the back step).",
+   "'Ji.' | 'जी।' to the doctor, the night nurse and ward staff, standing up to say it; 'Amma ji' with आप to Nani.",
+   "Card notes stay short work verdicts, how someone does a job as a lineman would judge it (slow, rushed, never checks twice), never temper, looks, dress or character, and never said in a bubble (rule 36). The four proposed chapter 2 notes are unchanged."
+  ],
+  "never": [
+   "मैं, 'main', 'I', 'me', मेरा, मुझे, 'mera', 'mujhe'; 'my' only in the fixed English sorry 'My mistake.' (a script can check these).",
+   "A judgement on a person as the subject of his sentence. People come into his lines only in small practical orders, an address word, or comfort ('Amma ji mazboot hain.').",
+   "More than six counted words in one bubble; two of his bubbles back to back with no deed between them.",
+   "Any figure or count in speech: no hours, minutes, prices, head-counts or 'dobara'; 'aadha' only in 'Lo. Aadha.'.",
+   "'sorry', 'thank you', 'please', 'dhanyavaad' or 'shukriya' (your word for a stranger who has helped): not because anyone owns them, but because his Hindi is plain and older and his sorry and thanks are 'Galti ho gayi.' and 'Hmm. Baitho.'.",
+   "Another person's exclamation as his habitual cry (the word said now and then stays free): 'Baap re' (Nani), 'Had hai' (Mummy), 'Kamaal hai' (Papa), 'Oho' (Mama ji), 'Gazab' (Tinku), 'Haaye' (Mausi), 'Uff' (Masterji), 'Arre waah' (Captain sahab), 'Ish' (Mami), 'Badhiya' (yours).",
+   "Another person's phrase (phrases stay owned; the common fillers do not): 'Pehle ___' for someone else first (yours), 'phir se naap' (Masterji's re-measuring), 'Iska bill nahin', 'Theek hai, toh' and 'Isme kya' as a brush-off of thanks (Mummy's), 'Next ball', 'Not out', 'Well fielded' (Captain sahab's), 'Tick' and 'Correct?' (Mami's), 'Reached?', 'Pahunche?' and 'Aakhri dibbe tak' (Papa's), 'Suno, suno, suno!', 'Shabaash' and 'bahut yaad' (Mausi's), 'Bas.' as a closing line and 'Khush raho' (Nani's), 'Jeete raho' (Masterji's), 'haan?' as a tag (Tinku's), 'Don't worry' (Mama ji's).",
+   "'Chhote' (Mummy's word for her brother).",
+   "A proverb, an idiom or an image of his own (Nani's and Masterji's ground); English feeling words such as tension, relax, chill.",
+   "Tea as his way of caring (Nani, Masterji and Mama ji already carry it); at home he pours it without a word.",
+   "'kal' about a job, from May on.",
+   "Any word on anyone's character, temper or looks in speech; any word on a woman's dress, looks or morals.",
+   "Any doubt of a report of harassment or a dowry demand, or calling one a misunderstanding (rule 22); no word about one in a bubble at all.",
+   "'beta', 'bhaiya', 'didi', a pet name or any word that gives you a gender (rules 8 and 66; rulebook Q7); 'sister' or 'doctor sahab' for the ward staff.",
+   "Any religious word or exclamation (the matrix 2.13 list), any caste word or trade-caste name (so 'mithai ki dukaan', never 'halwai'), any brand (rule 3).",
+   "A speech, a lecture or unasked advice; a raised voice, except the one time current is live; a joke at anyone's expense but his own; a feeling word about himself."
+  ],
+  "address": [
+   "These follow the cast map's one address table once it settles them, checked by the Hindi-first readers and the South Indian reader (India review; rule 65).",
+   "NANI: 'Amma ji' | 'अम्मा जी' and आप, always; she says आप to him.",
+   "MAUSI: no name and no address word; तुम both ways; to you and Tinku she is 'tumhari Mausi' | 'तुम्हारी मौसी', and to a nephew or niece on the phone just 'Mausi' ('Lo, Mausi se baat karo.').",
+   "MUMMY: no address word, तुम (his wife's younger sister); she says 'Jija ji' and आप.",
+   "PAPA: no address word, आप; Papa says 'Bhai sahab' and आप.",
+   "MAMA JI: no address word, तुम; Mama ji says 'Bade Jija ji' and आप.",
+   "TINKU: 'Tinku', with तुम, the only name he says; she says 'Mausa ji' and आप.",
+   "MAMI: no address word, आप; she says 'Jija ji' and आप.",
+   "MASTERJI and CAPTAIN SAHAB: 'Masterji', 'Captain sahab', with आप both ways.",
+   "THE DOCTOR, THE NIGHT NURSE AND STAFF: 'Ji.' and आप, standing; never a word that gives them a gender.",
+   "YOU: no address word, and तुम rarely; only rule 66 shapes: commands ('So jao.', 'Switch mat chhoona.') and lines where you are not the doer ('Neend aayi?', 'Ho jayega.', 'Lo. Aadha.'). His thanks to you is a command too ('Hmm. Baitho.'), so no line of his to you is outside the three shapes (RULE 66 NOTES). You say 'Mausa ji' with आप and -इए ('Aap so jaiye, Mausa ji.' | 'आप सो जाइए, मौसा जी।'); your thanks, 'Thank you, Mausa ji.' | 'थैंक यू, मौसा जी।' | 'Thanks, Mausa ji.' (your own file keeps 'shukriya' for a stranger who has helped), gets one 'Hmm.' and sends him out of the room.",
+   "RULE 66 NOTES: the checker will flag 'हो जाएगा' and 'वक़्त लगेगा' (futures), 'नींद आई?', 'आधा', 'मत छूना' and 'हाथ लगाना', 'हो गया' and 'कुछ नहीं हुआ' (an ending at a sentence's end), and 'करता हूँ' and 'जलाता हूँ' (an ending before हूँ). Each agrees with a thing (the job, the time, नींद, कुछ), is an infinitive command, or is himself. A native reader clears each. OWNER QUESTION, no longer in this file: his thanks 'अच्छा किया' was a past with ने where you are the doer, which none of rule 66's three shapes names; it is now 'हम्म। बैठो।', a command. The open question (a fourth shape for rule 66, or the native reader's cleared list) stays in Tinku's, Mausi's, Papa's, Mummy's and Mama ji's files."
+  ],
+  "samples": [
+   "CHAPTER 2, 2.03, to Nani (changed from 'Aapki gali bahar hai.', which reads as a translation, and then from 'Amma ji, poori gali aayi hai.', which said Nani's own 'Meri poori gali aayi hai.' back in the same beat; now his bare state of a thing; then he stands aside from the door): EN 'Amma ji, the whole lane's outside.' | Hinglish 'Amma ji, bahar poori gali.' | Hindi 'अम्मा जी, बाहर पूरी गली।'",
+   "CHAPTER 2, 2.17, offered the cot (kept; then he sits back down on the bench): EN 'The bench is fine.' | Hinglish 'Bench theek hai.' | Hindi 'बेंच ठीक है।'",
+   "SAYING NO, 2.17, when you offer to take the night chair, a run of two bubbles (kept; between them he turns his chair to face the ward door): EN 'No.' / 'Go to sleep.' | Hinglish 'Nahin.' / 'So jao.' | Hindi 'नहीं।' / 'सो जाओ।'",
+   "AN ORDER about current, to Tinku at the ceiling fan (changed: 'Tab haath.' was cryptic; then he switches it off himself): EN 'Switch it off. Then touch it.' | Hinglish 'Switch band. Tab haath lagaana.' | Hindi 'स्विच बंद। तब हाथ लगाना।'",
+   "WORRYING, to you at dawn (changed from 'Neend hui?' on the Hindi readers' note; then he moves along the bench to make room): EN 'Get any sleep?' | Hinglish 'Neend aayi?' | Hindi 'नींद आई?'",
+   "WORRYING, to the night nurse about Nani, standing (kept; he stays standing until the nurse has gone by): EN 'Ji. Is the drip all right?' | Hinglish 'Ji. Drip theek hai?' | Hindi 'जी। ड्रिप ठीक है?'",
+   "COMFORTING you (kept; then he picks up the heavier bag): EN 'Hmm. It'll get done.' | Hinglish 'Hmm. Ho jayega.' | Hindi 'हम्म। हो जाएगा।'",
+   "COMFORTING you, about Nani (changed: an everyday Urdu-rooted word, and the verb kept in a comfort line; then he folds her shawl over the bed rail): EN 'It'll take time. Amma ji's strong.' | Hinglish 'Waqt lagega. Amma ji mazboot hain.' | Hindi 'वक़्त लगेगा। अम्मा जी मज़बूत हैं।'",
+   "THANKS, GIVEN, to Masterji on the wedding's last night, in the new grey shirt (his work verdict as thanks, its one use this chapter; then he does up the top button): EN 'That's solid stitching, Masterji.' | Hinglish 'Silai mazboot hai, Masterji.' | Hindi 'सिलाई मज़बूत है, मास्टरजी।'",
+   "THANKS, GIVEN, plain, when you bring his shawl out to the ward chairs at night (new; then he moves his bag off the chair beside him; changed from 'Achha kiya.', which was Mummy's thanks too, as the Hindi note offered): EN 'Hmm. Sit.' | Hinglish 'Hmm. Baitho.' | Hindi 'हम्म। बैठो।'",
+   "BEING THANKED, by anyone (changed from 'Kaam tha.', which is made up, and then from 'Hmm. Isme kya.', which four voices shared and which is now Mummy's alone; the one word as he stands up, and then he leaves the room): EN 'Hmm.' | Hinglish 'Hmm.' | Hindi 'हम्म।'",
+   "SORRY, to Mausi, when the new fan in her tuition room turns the wrong way (changed to the spoken form; then he rewires it on the spot): EN 'My mistake.' | Hinglish 'Galti ho gayi.' | Hindi 'ग़लती हो गई।'",
+   "LOVE, dawn at the ward, the half of a sweet lime set down beside you (kept): EN 'Here. Half.' | Hinglish 'Lo. Aadha.' | Hindi 'लो। आधा।'",
+   "SURPRISED (kept): EN 'Eh? Now?' | Hinglish 'Hain? Abhi?' | Hindi 'हैं? अभी?'",
+   "TO NANI, after May, when she orders the ladder (his arc word, now with her 'ji'; then he climbs, knees or no knees): EN 'Right now, Amma ji.' | Hinglish 'Abhi, Amma ji.' | Hindi 'अभी, अम्मा जी।'",
+   "A BLUNT VERDICT, to Mama ji's hired lighting men at the wedding (the matrix sample; then he tightens the joint himself): EN 'Hmm. Loose joint.' | Hinglish 'Hmm. Joint dheela.' | Hindi 'हम्म। जोड़ ढीला।'",
+   "THE WEDDING LIGHTS TRIP, to Mama ji (new: the English trade verb with ho, the line as its subject; then he unplugs the second heater and resets the line): EN 'Too much load. Line's tripped.' | Hinglish 'Load zyada. Line trip ho gayi.' | Hindi 'लोड ज़्यादा। लाइन ट्रिप हो गई।'",
+   "CROSS, when Mama ji holds out money for the wedding lights (changed: money is put away with rakho; then he walks off and checks every joint twice): EN 'Put that away.' | Hinglish 'Andar rakho.' | Hindi 'अंदर रखो।'",
+   "A JOKE, at himself, once a year (waits on rulebook Q5; kept): EN 'BP? Ask your Mausi.' | Hinglish 'BP? Mausi se poochho.' | Hindi 'बीपी? मौसी से पूछो।'",
+   "TO MUMMY, the morning after the flood, from the switchboard (a voice reference while Q11 holds; then he nods and she lifts the shutter): EN 'Board's fine. Open the shutter.' | Hinglish 'Board theek hai. Shutter khol lo.' | Hindi 'बोर्ड ठीक है। शटर खोल लो।'",
+   "THE ONE SHOUT, at a painted person's hand reaching for a live switch (kept as a voice reference only: it goes in a panel only where he may speak (Q11), where that chapter's one shout is free (rule 35; Nani holds chapter 2's), and where the hand's owner has a face in frame (rule 7)): EN 'Hands off! It's live!' | Hinglish 'Haath hatao! Current hai!' | Hindi 'हाथ हटाओ! करंट है!'"
+  ]
+ },
+ "typing": {
+  "habits": [
+   "DEVICE: an old phone in a plain grey cover, in his right shirt pocket on vibrate; it comes out only to answer. Painted, its screen is always blank and his words are live text (rule 30). No font-size trait: six files claimed the largest font, and it is not his.",
+   "SCRIPT: Roman Hindi with his few trade nouns. Never English sentences (Papa types English) and never Devanagari (Nani's voice typing); the game shows each language mode's version.",
+   "SHAPE: a log-book line, from 34 years of night-shift entries: the thing first, then its state ('Board theek.', 'Kursiyan lag gayin.'), one to five words, a capital at the start and one full stop at the end. Never a question mark, never a figure, never a greeting, a name or a sign-off.",
+   "ACKNOWLEDGING: 'Ok.', with its capital and full stop, about an hour late. Papa's is 'Noted.' inside a minute, Tinku's is a lowercase 'ok' inside seconds, Masterji's is 'ok ji'.",
+   "HIS TELL: the missed call. For 'reached', 'coming' or 'yes' he rings once and hangs up, a habit from the years when every call cost money (readers confirm it reads true for a man of 58). On screen it is a message card reading 'Missed call: Mausa ji' | 'मिस्ड कॉल: मौसा जी', with no app look.",
+   "SPEED: about an hour, because the phone is in his pocket and his hands are busy; inside a minute for anything about current, a board or the lights going.",
+   "CALLS: he would rather call than type, and never sends a voice note. His calls last under a minute: 'Haan.' at the start, 'Theek.' at the end, and no goodbye. To a nephew or niece with news: 'Achha hai. Lo, Mausi se baat karo.', and the phone goes to Mausi. To his own two grown children, 'Haan. Sab theek hai.', and the phone goes to their mother.",
+   "EMOJI: none, ever; no stickers, no forwards, no good-morning pictures (Papa's). The thumbs-up is Mummy's.",
+   "One slow right thumb; never a typo, because there are too few words, and never a short form ('h' for 'hai' is Masterji's).",
+   "THE FAMILY GROUP: Mausi added him; he posts once or twice a year and reacts to nothing, and knows what is in it because Mausi reads it out. On screen a group message is one message card on the painted blank phone, never a group chat, with no app look and no 'forwarded' label (owner, 23 Oct; rule 3)."
+  ],
+  "samples": [
+   "TO YOU, 11:52 pm, from the steel chairs outside the ward while you are inside: EN 'Go to sleep.' | Hinglish 'So jao.' | Hindi 'सो जाओ।'",
+   "TO YOU, an hour after you sent 'Mausa ji, chai?': 'Ok.' (the same in all three modes)",
+   "TO PAPA, inside a minute of Papa's 'Reached?' once he and Mausi are home from Nani's house: one ring and he hangs up (message card: EN 'Missed call: Mausa ji' | Hinglish 'Missed call: Mausa ji' | Hindi 'मिस्ड कॉल: मौसा जी')",
+   "THE FAMILY GROUP, 9:52 am, the morning Nani is home (his one post of the year; kept): EN 'Amma ji's home. She's fine.' | Hinglish 'Amma ji ghar. Theek hain.' | Hindi 'अम्मा जी घर। ठीक हैं।'",
+   "TO MUMMY, 6:40 am, the morning after the July flood, sent inside a minute (a voice reference; placed in chapter 3 only if Q11 lets him speak there): EN 'Leave the board. Coming.' | Hinglish 'Board mat chhoona. Aata hoon.' | Hindi 'बोर्ड मत छूना। आता हूँ।'",
+   "TO MAMI, 6:05 am in the wedding week: EN 'Chairs are out.' | Hinglish 'Kursiyan lag gayin.' | Hindi 'कुर्सियाँ लग गईं।'",
+   "TO TINKU, in December, the first reply in the family to her scorers' course letter (his work verdict, its one use that chapter): EN 'Solid.' | Hinglish 'Mazboot.' | Hindi 'मज़बूत।'"
+  ]
+ },
+ "test_lines": [
+  {
+   "moment": "1. The lights go out in the middle of dinner. (To the table. Between the two bubbles he is up with the phone torch and at the fuse box before anyone moves. Tests his exclamation; his humour is none, by design.)",
+   "en": "Eh? Fuse has blown. / Leave the switches.",
+   "hinglish": "Hain? Fuse ud gaya. / Switch mat chhoona.",
+   "hi": "हैं? फ़्यूज़ उड़ गया। / स्विच मत छूना।"
+  },
+  {
+   "moment": "2. Someone everyone was waiting for arrives two hours late. (To Mama ji, in from the city. Nobody is scolded: no greeting, no address word, no figure, only the next job. Then he takes the pan off the shelf and warms the food himself.)",
+   "en": "Wash your hands. Warming it up.",
+   "hinglish": "Haath dho lo. Garam karta hoon.",
+   "hi": "हाथ धो लो। गरम करता हूँ।"
+  },
+  {
+   "moment": "3. A cousin phones to say they have got their first job. (Into the phone; the cousin's gender stays open. Handing the phone to Mausi is the deed, and then he goes back to the fuse box he was mending.)",
+   "en": "Good. Here, talk to your Mausi.",
+   "hinglish": "Achha hai. Lo, Mausi se baat karo.",
+   "hi": "अच्छा है। लो, मौसी से बात करो।"
+  },
+  {
+   "moment": "4. The tea someone has just made has far too much sugar in it. (To Tinku, who made it. The plain verdict, then his kind word, then he drinks every drop.)",
+   "en": "Too much sugar, Tinku. It'll do.",
+   "hinglish": "Cheeni zyada hai, Tinku. Chalega.",
+   "hi": "चीनी ज़्यादा है, टिंकू। चलेगा।"
+  },
+  {
+   "moment": "5. In front of the family, someone shows that they had a fact wrong. (He had said the new socket was wired right. To everyone; then he kneels and rewires it while they watch.)",
+   "en": "My mistake. Wired it backwards.",
+   "hinglish": "Galti ho gayi. Taar ulta hai.",
+   "hi": "ग़लती हो गई। तार उल्टा है।"
+  },
+  {
+   "moment": "6. Someone they love is leaving, and they say goodbye on a railway platform. (To one of his grown children at the junction. He thumbs the peel off a sweet lime, sets half on the seat by the window, and walks off down the platform before the train moves, the way he leaves a room when thanked.)",
+   "en": "Here. Half. For the journey.",
+   "hinglish": "Lo. Aadha. Raste ke liye.",
+   "hi": "लो। आधा। रास्ते के लिए।"
+  },
+  {
+   "moment": "7. Someone thanks them for something they did. (The one word as he stands up; then he leaves the room.)",
+   "en": "Hmm.",
+   "hinglish": "Hmm.",
+   "hi": "हम्म।"
+  },
+  {
+   "moment": "8. A neighbour passes on a rumour that the corner sweet shop is closing. (To Papa on the step. Nothing about the owner, only about work he has seen; then back to the cricket with the sound off.)",
+   "en": "It was only just rewired.",
+   "hinglish": "Wiring abhi nayi lagi thi.",
+   "hi": "वायरिंग अभी नई लगी थी।"
+  },
+  {
+   "moment": "9. Heavy rain floods the lane outside the house. (To the household. Then he kneels at the switchboard with the power off, and nobody touches a switch until he nods.)",
+   "en": "Power's off. Leave the board.",
+   "hinglish": "Bijli band. Board mat chhoona.",
+   "hi": "बिजली बंद। बोर्ड मत छूना।"
+  },
+  {
+   "moment": "10. Someone asks them how they are. (Asked by you, late at night. No figure and nothing about himself: his one word, then your rest. Then he pulls the ward door to.)",
+   "en": "Fine. Go on, off to sleep.",
+   "hinglish": "Theek. Chalo, ab so jao.",
+   "hi": "ठीक। चलो, अब सो जाओ।"
+  },
+  {
+   "moment": "11. A child knocks a glass of water across the table. (To the child. He sets the cotton towel from his shoulder down on the spill and lifts the phone charger's wire clear of the water.)",
+   "en": "Here. No harm done.",
+   "hinglish": "Lo. Kuch nahin hua.",
+   "hi": "लो। कुछ नहीं हुआ।"
+  },
+  {
+   "moment": "12. A phone call brings good news. (Then he goes out and switches on every light on the gate: a lineman's joy.)",
+   "en": "Eh? Really? Lights on, then.",
+   "hinglish": "Hain? Sach? Light jalaata hoon.",
+   "hi": "हैं? सच? लाइट जलाता हूँ।"
+  }
+ ],
+ "changed": [
+  "FILE: /private/tmp/claude-501/-Users-priyanshu-Sex-Ed/f50ea7ee-0855-46a2-8572-0aa08df5b855/scratchpad/voice/mausa-ji-about-chapter-s-voice.json, built by _build_mausa_ji.py in the same folder and given its final polish by _polish_mausa_ji.py (valid JSON; no em or en dashes; every bubble six counted words or fewer in all three modes; voice_check.py run on it).",
+  "KEPT everything the readers marked as ringing true: 'Hain?', 'Lo. Aadha.', 'So jao.', 'Hmm. Ho jayega.', 'Bench theek hai.', 'Ji. Drip theek hai?' said standing, the single missed call, 'Ok.' an hour late, 'Amma ji ghar. Theek hain.', 'Wiring abhi nayi lagi thi.' and 'Hain? Sach? Light jalaata hoon.'; and his essence, want, fear and contradiction (blunt in words, soft in deeds), the thing-first sentence, no figures, love as a deed, the four card notes and the 'Kal' to 'Abhi' arc.",
+  "ONE CONFLICT, settled one way: the realism readers kept 'Neend hui?' but the Hindi readers asked for 'Neend aayi?' (how the question is really asked). It is now 'Neend aayi?' | 'नींद आई?' | 'Get any sleep?'; the moment and its deed are unchanged. If the owner prefers the reader who kept it, 'Neend hui?' drops straight back in.",
+  "SORRY: 'Galti hui.' became 'Galti ho gayi.' | 'ग़लती हो गई।' | 'My mistake.' (realism note: 'Galti hui' is bookish, 'A mistake.' sounds odd). His never list now allows that one fixed English 'my'.",
+  "THANKS RECEIVED: 'Hmm. Kaam tha.' (made up, and in Hindi it reads 'there was work') became 'Hmm. Isme kya.', and at the final polish just 'Hmm.' | 'हम्म।' | 'Hmm.' as he stands up and leaves the room. 'Kaam tha' stays gone, so the Hindi readers' note on it stays settled.",
+  "THANKS GIVEN is now plain words, 'Achha kiya.' | 'Good of you.' (cast-wide 3: plain sorry and thanks, not a code). His work verdict as thanks ('Silai mazboot hai, Masterji.', 'Mazboot.' to Tinku) stays, but at most once a chapter.",
+  "HINDI READERS' FIXES: 'स्विच बंद। तब हाथ।' became 'स्विच बंद। तब हाथ लगाना।' | 'Switch band. Tab haath lagaana.' (said to Tinku, so the infinitive order is polite); 'अंदर करो।' became 'अंदर रखो।' | 'Andar rakho.'.",
+  "MOMENT 3: 'Hmm. Naukri. Mazboot.' (three nouns down a phone line, a gimmick) became 'Achha hai. Lo, Mausi se baat karo.' | 'Good. Here, talk to your Mausi.'; handing the phone over is the deed.",
+  "MOMENT 6: he no longer waits for the last coach, which is Papa's goodbye (cast-wide 6). He sets the half sweet lime on the seat and walks off before the train moves, as he leaves a room when thanked; this is now a tic.",
+  "FILLERS FREED (cast-wide 1): the bans on 'chalo', 'suno', 'bas', 'dekho', 'arre' and 'theek hai' are gone. Owners keep phrases only ('Suno, suno, suno!', a closing 'Bas.', 'Arre waah'), and he keeps the bare one-word 'Theek.'. He now says 'Achha hai.' (moment 3) and 'Chalo, ab so jao.' (moment 10). He is told apart by his thing-first shape and his lineman's words, not by owning a word.",
+  "ENGLISH VERB WITH HO OR KAR (cast-wide 2): now allowed, always about what the line or current did, with the thing as subject ('Line trip ho gayi.', 'Short hua hai.'); new sample at the wedding lights. This is how a lineman talks, and it stays apart from Mummy's counter verbs, which are jobs she gives people.",
+  "URDU-ROOTED WORDS (cast-wide 8): waqt, fikr and zaroor are now his to use like anyone's ('Waqt lagega. Amma ji mazboot hain.'), so they belong to the town, not to Masterji.",
+  "FEWER TELEGRAMS (cast-wide 9): comfort and kind lines keep their 'hai' ('Achha hai.', 'Amma ji mazboot hain.', 'Cheeni zyada hai, Tinku. Chalega.', 'Board theek hai.'); bare shapes stay for orders and verdicts on things. His cap rose from five to six counted words to fit the readers' moment 3 line; most bubbles are still two to four.",
+  "WARMTH (realism: 'kind and active, never the silent patriarch'): moment 2 no longer reaches for cold food (five others did) and scolds nobody: 'Haath dho lo. Garam karta hoon.'. Moment 4 adds his kind word 'Chalega.' (it'll do). Moment 11 drops 'only water' (four others said it) for 'Lo. Kuch nahin hua.' | 'Here. No harm done.', and he lifts the charger wire out of the spill. 'Abhi.' to Nani now carries her 'ji'.",
+  "PERSON IN HIS SENTENCE: loosened. Most sentences still have a thing as subject, but small practical orders ('Haath dho lo.', 'Lo, Mausi se baat karo.') and comfort ('Amma ji mazboot hain.') may have a person; he still never passes a judgement on one.",
+  "ENGLISH MODE (cast-wide 10): lines that read as translation now use the everyday phrase: 'Amma ji, the whole lane's outside.', 'Get any sleep?', 'Is the drip all right?', 'It'll take time. Amma ji's strong.' (not 'Amma ji's solid'), 'That's solid stitching, Masterji.', 'It was only just rewired.', 'Here. Half. For the journey.', 'Board's fine. Open the shutter.', 'Amma ji's home. She's fine.'. 2.03 is now his bare 'Amma ji, bahar poori gali.' (final polish); the chapter writer still re-runs rule 36's note-word check on 'gali'.",
+  "MOMENT 1 is now two bubbles with his deed between, so 'Fuse ud gaya' can be said in full: 'Hain? Fuse ud gaya.' / 'Switch mat chhoona.'.",
+  "ADDRESS: your thanks to him is now 'Thank you, Mausa ji.' | 'थैंक यू, मौसा जी।' | 'Thanks, Mausa ji.', following your own file; it gets one 'Hmm.'. The rule 66 list now names the new flagged lines ('वक़्त लगेगा', 'नींद आई?', 'हाथ लगाना', 'अच्छा किया', 'कुछ नहीं हुआ'); each agrees with a thing, is an infinitive, is a ने past (which rule 66 does not yet name; see the final polish), or is himself.",
+  "NEVER LIST: now bans phrases, not fillers; adds 'Aakhri dibbe tak' (Papa), 'Khush raho' (Nani), 'Jeete raho' (Masterji) and 'Shabaash' (Mausi) so the new blessings and praise stay with their owners; at the final polish 'Isme kya' joins it as Mummy's, and the ban on 'pakka' goes.",
+  "FOR THE READERS: a lone 'Hmm.' as his whole answer to thanks; 'Amma ji, bahar poori gali.' at 2.03; 'Chalega.' as kind rather than grudging over the sweet tea; 'Neend aayi?' against 'Neend hui?'; 'Line trip ho gayi.' for a man of 58; 'Good of you.' in English mode.",
+  "FINAL POLISH, 2.03 (samples[0]): 'Amma ji, poori gali aayi hai.' said Nani's own 'Meri poori gali aayi hai.' back to back in the same beat, and as a full subject-verb sentence, which is not his shape. Now his bare state of a thing: 'Amma ji, bahar poori gali.' | 'अम्मा जी, बाहर पूरी गली।' | 'Amma ji, the whole lane's outside.'; he still stands aside from the door.",
+  "FINAL POLISH, THANKS RECEIVED (samples[10], test moment 7, the tic, the thanks note and the pet words): 'Hmm. Isme kya.' was in four voices (Mummy, Nani, Mama ji and his), and with Masterji's 'Isme kaunsi badi baat hai' moment 7 had four answers alike, the weakest moment in the test set. It goes to one owner, Mummy, whose file names it, and his never list now marks it as hers. His answer is just 'Hmm.' | 'हम्म।' | 'Hmm.' as he stands and leaves, which fits his shape of one or two blunt words. 'Kaam tha' does not come back, so the readers' complaint stays answered.",
+  "FINAL POLISH, YOUR THANKS: his address note said शुक्रिया in Hindi mode, but your own file says 'Thank you, Mausa ji.' | 'थैंक यू, मौसा जी।' | 'Thanks, Mausa ji.' and keeps 'shukriya' for a stranger who has helped. Both files now agree, and his never list no longer calls 'shukriya' your Hindi-mode word.",
+  "FINAL POLISH, RULE 66 (an owner question; no wording change): 'Achha kiya.' | 'अच्छा किया।' (samples[9] and the thanks-given note) marks no gender, because a past with ने agrees with the thing done. But you are the doer, and rule 66 names only three shapes for तुम lines: commands, 'who should' asks, and lines where you are not the doer. His address note had filed it under 'not the doer', which was wrong; it now stands apart as waiting on the owner, and 'Ho jayega.' and 'Neend aayi?' sit under 'not the doer', which is rule 66's own wording. The same shape is in Tinku's samples[11] and [18], Mausi's samples[5] and [8] and typing[1], Papa's samples[8] and [21], Mummy's samples[12] and Mama ji's samples[6]. The owner either adds 'a past with ने, where the verb agrees with the thing' to rule 66 as a fourth shape, or has the native reader clear each line onto the build's cleared list. Since mended: samples[9] is now 'Hmm. Baitho.' | 'हम्म। बैठो।' | 'Hmm. Sit.', a command (the Hindi note's optional fix), so this file no longer holds the question.",
+  "FINAL POLISH, 'pakka': the ban is gone. It is one of the commonest words in Hindi, he speaks so little that freeing it costs nothing, and the shrewd sense of पक्की said of a woman is already shut out because he never judges a person. 'Chhote' stays Mummy's.",
+  "LEFT FOR THE OTHER FILES: Papa's never list still names 'Hmm. Isme kya.' as Mausa ji's, Captain sahab's says 'Isme kya' stays with Mama ji, Mummy and Mausa ji, and your file's thanked-yourself note calls it the elders' (Mummy, Mama ji, Mausa ji); each should now name Mummy alone. Nani's samples[9] and Mama ji's test[6] still say it, for their own polish.",
+  "KEPT as they were: every line the realism readers marked true ('Lo. Aadha.', 'So jao.', 'Hmm. Ho jayega.', 'Ji. Drip theek hai?' said standing, 'Waqt lagega. Amma ji mazboot hain.', 'Haath dho lo. Garam karta hoon.', 'Cheeni zyada hai, Tinku. Chalega.', 'Load zyada. Line trip ho gayi.', 'Hain? Sach? Light jalaata hoon.', the single missed call and 'Ok.' an hour late), and every other line, tic and note."
+ ]
+}

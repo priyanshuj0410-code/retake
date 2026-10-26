@@ -1,0 +1,216 @@
+{
+ "name": "Tinku (टिंकू), 21",
+ "voice": {
+  "register": "Quick, light and teasing: the fastest young voice in the house. Two sentence shapes, both hers alone. (1) The scoreline: the result as a score or a tally, then her tag 'haan?' to soften a tease ('3-0, haan?', 'Ye 4, Mami.', '3 mein 0.'). (2) The commentary aside: something that has just happened, called live in the present tense, the way the commentator she wanted to be at nine would call it ('Aur ye gaya!', 'Kya debut!', 'Seedhe kitaab mein.'). Lines run two to six words, one bubble, said fast. In chapter 4 her questions are the decisions themselves, asked plainly with no tag (rule 37), crisp and warm, never the comic one. To Nani she slows into whole, careful, polite Hindi sentences with -इए and no tag. Moved, she goes very short and plain, with no figure and no tag ('March. Jawaab: haan.'). Cross, she gets faster but not louder (Mausi is the one who gets louder): flat and exact, she reads out the whole record in two or three chained bubbles, then the book snaps shut and the ear cups go on. She talks most to you, as an equal and a rival; then to Nani, in polite Hindi.",
+  "mix": "Young small-town Hinglish: a Hindi frame carrying English nouns from the scorebook and the commentary box (run, over, wicket, total, tally, extras, score, record, final, keeper, boundary, replay, debut, match, innings) and one tag, 'haan?', which she keeps in all three modes. Commerce words (stock, bill, balance, accounts, hisaab, profit) leave her speech, so the shop family's talk does not tip into the trader idiom (india review); 'tally' and 'total' stay because a scorer uses them. No whole English clauses at home: whole-clause switching belongs to Mama ji and Mami. Her English shows more in her typing than in her speech. With Nani: plain polite Hindi, आप, every word in full, no English except Nani's own nouns (doctor, BP) and 'scorer', Nani's word for her; the one marked exception is '80, not out, Nani.' at the homecoming. With Mummy, Papa and the other elders: the same Hindi frame with आप and ji; her teasing rides on numbers, so it never needs a familiar 'you' to an elder. With you: तुम, only in commands, 'who should' questions and lines where you are not the doer (rule 66). Hindi mode: the cricket nouns stay as everyday loans in Devanagari (रन, विकेट, स्कोर, बाउंड्री, रिप्ले), and she says तीन-ज़ीरो, not the formal तीन-शून्य (Hindi-first readers confirm). Hinglish mode: every number is a figure ('3-0', '3 mein 0'), so a number is never misread as a word. English mode: plain young English with cricket idiom, numbers as words, 'haan?' kept.",
+  "tics": [
+   "The scoreline: gives the result as a score or a tally, never an ordinal: '3-0.' | 'तीन-ज़ीरो।' | 'Three-nil.'; '3 mein 0.' | 'तीन में ज़ीरो।' | 'Nil out of three.' ('Teesri baar' becomes '3 baar': ordinals leave every speaker, matrix 2.15.)",
+   "Ends a tease with 'haan?' | 'हाँ?', in every mode. Never 'hai na?' (Mausi's), 'Correct?' or 'Sahi?' (Mami's) or 'Pakka?' (Mama ji's).",
+   "The commentary aside (new): calls a small household moment live, in the present tense, like a commentator: 'Aur ye gaya!' | 'और ये गया!' | 'And that's gone!'; 'Kya entry!' | 'क्या एंट्री!' | 'What an entry!'. It is her shape with no number in it.",
+   "Keeps a running tally of people's habits, out loud, to their face: 'Ye 4, Mami.' | 'ये चार, मामी।' | 'That's four, Mami.'",
+   "Says 'Kitaab mein.' when anyone makes a promise: it is written down now.",
+   "Asked about herself, answers with somebody else's tally, a different person each time, never a clock or a price. This is her contradiction, and it shows the same way every time.",
+   "Hands a choice over with 'Faisla tumhara.' It is a test, not a shrug: she scores what you do with it.",
+   "When cross: faster and flatter, never louder; the whole record in two or three chained bubbles, then the book shut and the ear cups on."
+  ],
+  "catchphrases": [
+   "'Kitaab mein.' | 'किताब में।' | 'In the book.' (verbless, so it marks no gender)",
+   "'3-0, haan?' | 'तीन-ज़ीरो, हाँ?' | 'Three-nil, haan?' (her one catchphrase with a number; the score changes, the shape does not)",
+   "'Faisla tumhara.' | 'फ़ैसला तुम्हारा।' | 'Your call.' (you are not the doer; the rule 66 checker flags तुम्हारा at a sentence end and a native reader clears it, since it agrees with फ़ैसला)"
+  ],
+  "exclamation": "'Gazab!' | 'ग़ज़ब!' | 'Brilliant!' The commentator's cry, hers alone in the cast. Bright for a good surprise (a six, a letter, a phone call); flat and ironic for a bad one (the lights going out: 'Gazab! Batti gul, khel band.'). Typed, it stretches: 'gazabbb'. Religious meaning: none in everyday Hindi, where it means 'amazing' or 'unbelievable'. Guard: never in 'ग़ज़ब ख़ुदा का' or 'ख़ुदा का ग़ज़ब' ('God's wrath'), and never followed by any name. The English 'Brilliant!' avoids every mild word that hides a holy name (Gosh, Blimey, Crikey, Goodness). A Hindi-first and an Urdu-speaking reader confirm; fallback 'Zabardast!' | 'ज़बरदस्त!' | 'Terrific!'.",
+  "sorry_thanks_love": "SORRY: concedes like a scorer, at once and out loud, then puts the figure right on the spot: 'Mera wicket.' | 'मेरा विकेट।' | 'My wicket.' ('Mera wicket. 14 nahin, 15.'). She never fudges a score, her own included. THANKS: credits the run to whoever earned it: to you 'Run tumhara.' | 'रन तुम्हारा।' | 'That run's yours.'; to an elder 'Run aapka.' | 'रन आपका।' | 'That run's yours.' When she is the one thanked, she hands the run straight back ('Run aapka, Captain sahab. Kitaab aapne hi di thi.'), because the credit never goes in her own column. LOVE: a total, then 'not out', for someone who came through, and the only place she says 'not out': '80, not out, Nani.' | 'अस्सी, नॉट आउट, नानी।' | 'Eighty, not out, Nani.' Once a year. With you, love is the count she takes off your hands: 'Baitho. Aaj raat ginti meri.' | 'बैठो। आज रात गिनती मेरी।' | 'Sit. Tonight the count's mine.'",
+  "uses": [
+   "Scorebook words: run, over, wicket, total, tally, extras, score, record, final, keeper, season, innings | रन, ओवर, विकेट, स्कोर, गिनती, पारी",
+   "Commentary-box words (new): boundary, replay, debut, entry, seedha, 'Kya ___!', 'Aur ye gaya!' | बाउंड्री, रिप्ले, डेब्यू, 'क्या ___!', 'और ये गया!'",
+   "Score shapes: '3-0', '3 mein 0', 'Ye 4', 'Match tie' for a tie (never bare 'Barabar.', Masterji's verdict), and '[total], not out' (Nani's homecoming only)",
+   "extras, for anything unplanned or too much: 'Extras zyada ho gaye, haan?'",
+   "the book, meaning her scorebook: 'kitaab' | 'किताब'; 'Kitaab mein.'",
+   "गिनती for counting, never हिसाब",
+   "'Faisla tumhara.', 'Run tumhara.' / 'Run aapka.', 'Mera wicket.'",
+   "'Gazab!' (her exclamation), 'haan?' (her tag), 'oye' (to you only, and rarely)",
+   "'Ji nahin' for a polite no to an elder"
+  ],
+  "never": [
+   "bhai, bro, didi, bhaiya, beta or any word that gives you a gender (rule 8)",
+   "तू to anyone, or a तू command such as 'bata' or 'sun'; she says बताओ",
+   "a Hindi line to you that the rule 66 checker cannot clear: no -ोगे/-ोगी, no थके/थकी, no कौन जाएगा?",
+   "clock times, durations or prices, in speech or typing (Papa owns minutes; prices leave everyone's speech); her numbers are scores, totals and tallies only",
+   "ordinals: teesri baar, chauthi baar, 3rd (matrix 2.15); she says '3 baar'",
+   "commerce words in speech: stock, bill, balance, accounts, hisaab, profit, udhaar",
+   "the bare call 'Not out.', 'Next ball', 'Well played', 'Well fielded', 'Front foot', 'Straight bat', the toss call or any umpire's verdict (all Captain sahab's); 'not out' only after a total",
+   "words another person owns: 'bas' and 'Baap re' (Nani's); 'chalo', 'suno', 'hai na?', 'sau mein sau', 'Haaye', 'bahut yaad' and English 'sorry' (Mausi's); 'Noted', 'Kamaal' and 'Reached?' (Papa's); 'pakka', 'aur haan', 'full' and 'Oho' (Mama ji's); 'Lo', 'Theek', 'Hmm' and 'Galti' (Mausa ji's, though she may quote his 'Hmm' in a tally); 'Correct?', 'Sahi?', 'pending', 'done', 'Tick' and 'Ish' (Mami's); 'Pehle ___', 'Badhiya', 'Shukriya' and 'Maaf kijiye' (yours); 'arre' (Captain sahab's); 'Had hai' (Mummy's); 'Dekhiye' and 'Uff' (Masterji's); and the thumbs-up",
+   "any religious word or exclamation (rule 3; the list in matrix 2.13), any caste word, any brand",
+   "slang or English to Nani, apart from Nani's own nouns, 'scorer' and the one '80, not out'",
+   "trending slang such as 'literally', 'vibe', 'delulu' or 'bestie'; her quickness is in scoring and commentary, not slang (realism notes, section 7)",
+   "'the youngest' about herself, except to refuse it",
+   "'captain' as a job word on a chapter 4 card or question (rule 36: in Hindi the word is Captain sahab's title)",
+   "'sharp', already worn out by three askers",
+   "'too emotional', 'drama', 'bossy', 'argues', or any note word read as sexist on sight; nothing about women or men in general (rule 22)",
+   "the name, or a note word, of anyone on a decision's cards before or during that decision (rule 36)",
+   "any doubt of a report of harassment or a dowry demand, or the word 'misunderstanding' (rule 22); she is the one who writes it down exactly as it was said",
+   "'well done', 'oops', 'sorry' or 'please' in a chapter outcome line (rule 64)",
+   "a year on screen (rule 2)",
+   "a spoken bubble over 10 words (rule 62); a long run becomes more bubbles"
+  ],
+  "address": [
+   "Nani: 'Nani' | 'नानी', आप, polite Hindi only, -इए forms. Nani calls her 'scorer' | 'स्कोरर', or 'Tinku'.",
+   "Mummy: 'Mummy' | 'मम्मी', आप, the same as to Papa, so respect is equal between the parents (realism notes 1.1, source [6]).",
+   "Papa: 'Papa' | 'पापा', आप.",
+   "Mama ji: 'Mama ji' | 'मामा जी', आप. Mami: 'Mami' | 'मामी', आप.",
+   "Mausi: 'Mausi' | 'मौसी', आप. Mausa ji: 'Mausa ji' | 'मौसा जी', आप.",
+   "Masterji: 'Masterji' | 'मास्टरजी', आप. Captain sahab: 'Captain sahab' | 'कप्तान साहब', आप.",
+   "You (the player): no address word, or now and then 'oye' | 'ओए' (to you only, never to an elder). तुम, because 'elder' in her file means a generation up (Hindi-first readers settle it). Her Hindi to you is only commands (उठो, चुनो, बैठो), 'who should' questions (कौन देखे?) and lines where you are not the doer (फ़ैसला तुम्हारा, रन तुम्हारा). Never बेटा, भैया or दीदी. You call her 'scorer'.",
+   "People on the cards: first names only, and only in rule 38's fixed line after a pick, never before or during a decision.",
+   "While rulebook Q7 is open, nobody calls Tinku 'beta' either, so you are not the only one without a pet name."
+  ],
+  "samples": [
+   "Announcing (the opening, the kitchen, January): English 'August 15. Lane cup. I'm scoring.' | Hinglish '15 August. Gali ka cup. Score mera.' | Hindi '15 अगस्त। गली का कप। स्कोर मेरा।' (a date, not a clock: the cup is the year's deadline)",
+   "Waking you (chapter 4, 4.02): English 'Up! Cup day.' | Hinglish 'Utho! Cup ka din.' | Hindi 'उठो! कप का दिन।' (a command, rule 66 clear; no figure)",
+   "Asking (chapter 4, before decision 2, to you): English 'Pick three, one a keeper. Fast, haan?' | Hinglish '3 chuno, 1 keeper. Jaldi, haan?' | Hindi 'तीन चुनो, एक कीपर। जल्दी, हाँ?' (an asker's goal may carry a figure, matrix 2.12; the toss stays Captain sahab's)",
+   "Handing over (chapter 4, 4.04, kept): English 'Two targets. Today, your call.' | Hinglish '2 target. Aaj faisla tumhara.' | Hindi 'दो टारगेट। आज फ़ैसला तुम्हारा।'",
+   "Everyone aboard (chapter 1, the coach, to Papa; replaces 'Counted twice, Papa.'): English 'All in, Papa. That's the over.' | Hinglish 'Sab andar, Papa. Over poora.' | Hindi 'सब अंदर, पापा। ओवर पूरा।' (no figure; head-counts in speech are Nani's, once)",
+   "Teasing Papa (chapter 1's platform; replaces the '9:45' tease): English 'Papa, the train's on time. Shall I write that down?' | Hinglish 'Papa, gaadi time pe hai. Kitaab mein likhoon?' | Hindi 'पापा, गाड़ी टाइम पर है। किताब में लिखूँ?' (no figure and no clock)",
+   "Teasing with a tally (any family function, to Mami): English 'That's four, Mami. In the book.' | Hinglish 'Ye 4, Mami. Kitaab mein.' | Hindi 'ये चार, मामी। किताब में।'",
+   "Teasing Captain sahab (chapter 4): English 'Your one trial again, Captain sahab? Eleven times this season.' | Hinglish 'Phir wahi trial, Captain sahab? Is season 11 baar.' | Hindi 'फिर वही ट्रायल, कप्तान साहब? इस सीज़न ग्यारह बार।' (no year on screen, rule 2)",
+   "A commentary aside, her joke (chapter 5, Mama ji's car at Nani's gate): English 'And Mama ji's at the gate! What an entry!' | Hinglish 'Aur Mama ji gate par! Kya entry!' | Hindi 'और मामा जी गेट पर! क्या एंट्री!' (no figure)",
+   "Worrying (chapter 2's night, to you): English 'Nani's medicines, three a day. Who checks tonight?' | Hinglish 'Nani ki dawai, din mein 3. Aaj raat kaun dekhe?' | Hindi 'नानी की दवाई, दिन में तीन। आज रात कौन देखे?' (a 'who should' question, rule 66; the clock times '8, 2, 8' are gone)",
+   "Comforting you (the end of the flood week): English 'Sit. Tonight the count's mine.' | Hinglish 'Baitho. Aaj raat ginti meri.' | Hindi 'बैठो। आज रात गिनती मेरी।' (मेरी agrees with गिनती; flagged by check 3, cleared)",
+   "Comforting Nani (after the fall; Hindi words even in Hinglish mode): English 'Nani, you sit. I'll keep the count.' | Hinglish 'Nani, aap baithiye. Ginti main rakh loongi.' | Hindi 'नानी, आप बैठिए। गिनती मैं रख लूँगी।'",
+   "Settling the flood argument (chapter 3, to Mummy as the shutter goes up; replaces 'Shutter up at nine. Not out, Mummy.'): English 'Your forty-two, my forty-two, Mummy. Match tied.' | Hinglish 'Mummy, aapke 42, mere 42. Match tie.' | Hindi 'मम्मी, आपके बयालीस, मेरे बयालीस। मैच टाई।' (both counts were right; a tie is her praise for an equal)",
+   "Sorry (cup morning, to Captain sahab, the water bottles left at home): English 'My wicket, Captain sahab. I'll fetch the bottles now.' | Hinglish 'Mera wicket, Captain sahab. Bottlein abhi laati hoon.' | Hindi 'मेरा विकेट, कप्तान साहब। बोतलें अभी लाती हूँ।'",
+   "Thanks (to you, the morning after you sat up with Nani's medicines): English 'Last night's medicines? That run's yours.' | Hinglish 'Kal raat ki dawai? Run tumhara.' | Hindi 'कल रात की दवाई? रन तुम्हारा।' (तुम्हारा agrees with रन; flagged by check 3, cleared)",
+   "Being thanked (the flood week, to Masterji, after she counted his wet cloth): English 'That run's yours, Masterji. I only kept count.' | Hinglish 'Run aapka, Masterji. Main toh sirf gin rahi thi.' | Hindi 'रन आपका, मास्टरजी। मैं तो सिर्फ़ गिन रही थी।'",
+   "Love (chapter 2's end, Nani home from the ward; waits on rulebook Q5 and Q11): English 'Eighty, not out, Nani.' | Hinglish '80, not out, Nani.' | Hindi 'अस्सी, नॉट आउट, नानी।' (the one 'not out' she says, after a total)",
+   "Saying no (chapter 5, to Mami, about the accounts course): English 'No, Mami. I keep score already. Ten seasons.' | Hinglish 'Ji nahin, Mami. Score toh rakhti hoon. 10 season se.' | Hindi 'जी नहीं, मामी। स्कोर तो रखती हूँ। दस सीज़न से।'",
+   "Her contradiction (Mausi asks about her marks): English 'My marks, Mausi? Mausa ji said \"Hmm\" nine times today.' | Hinglish 'Mere marks, Mausi? Mausa ji ne aaj 9 baar \"Hmm\" kaha.' | Hindi 'मेरे नंबर, मौसी? मौसा जी ने आज नौ बार \"हम्म\" कहा।'",
+   "Losing her temper (to Mama ji, when he calls her 'the youngest' once too often; three chained bubbles, fast and flat, then the book shut and the ear cups on): English '\"The youngest\" this year: twelve times.' / 'Your promises? Nil out of three.' / 'I'm the scorer, Mama ji. The scorer.' | Hinglish 'Is saal \"sabse chhoti\": 12 baar.' / 'Aapke vaade? 3 mein 0.' / 'Scorer hoon main, Mama ji. Scorer.' | Hindi 'इस साल \"सबसे छोटी\": बारह बार।' / 'आपके वादे? तीन में ज़ीरो।' / 'स्कोरर हूँ मैं, मामा जी। स्कोरर।'",
+   "Joy (the cup won off the last ball): English 'Brilliant! Off the last ball!' | Hinglish 'Gazab! Aakhri ball pe!' | Hindi 'ग़ज़ब! आख़िरी गेंद पर!' (no figure)",
+   "Moved (chapter 5, to you, the letter's words in live text): English 'March. The answer's yes.' / 'This one I'm writing myself.' | Hinglish 'March. Jawaab: haan.' / 'Ye score main khud likhoongi.' | Hindi 'मार्च। जवाब: हाँ।' / 'ये स्कोर मैं ख़ुद लिखूँगी।' (no figure and no tag; लिखूँगी is flagged by check 1 and cleared, since Tinku is the doer)"
+  ]
+ },
+ "typing": {
+  "habits": [
+   "Her phone: a plain phone in a plain dark case, one corner of the screen protector cracked. It is painted with a blank screen and every message is live text (rule 30). No brand, app name, app look or 'forwarded' label (rule 3).",
+   "Two thumbs, fast. A one-word holding reply within seconds ('k', 'ok'), and the real reply comes later. Never 'done', which is Mami's status word.",
+   "Roman Hinglish, all in lowercase, with no full stops: a new line for each thought, one question mark at most and never two. Never all capitals, which people her age read as shouting (realism notes 2.1).",
+   "More English than her speech: short English phrases appear here and almost never aloud ('called u again', 'form sent').",
+   "Her numbers, typed: always digits, and only scores, totals and tallies, in shorthand (3-0, 14/14, 1 mein 0, 2x). No clock times and no prices, in typing as in speech.",
+   "Stretched letters for warmth and for her exclamation: 'yesss', 'nooo', 'gazabbb'. Short forms: k, ok, idk, u, ur, pls, no. for 'number'. To elders she types 'aap' and 'aapne', never 'u'.",
+   "Her commentary aside types too: 'aur ye gayaaa'.",
+   "Emoji: few, and only faces and objects: 🙂 😐 😂 🏏. No thumbs-up, which is Mummy's and Mausa ji's. No person emoji, since one carries a gender and a skin tone. Stickers go only to her college friends, and only drawn objects (a cup of tea, a duck for out-for-nil), never a famous face (rule 3).",
+   "To Nani she switches to the Hindi keyboard: Devanagari, whole words, the full stop (।), no emoji and no English. Then she calls anyway. Nani is the only person she does this for.",
+   "To Papa she copies his layout of one fact a line, but keeps her lowercase and drops his full stops, as a tease. She is the one who tells the family that his full stops do not mean he is cross.",
+   "Voice notes: never to elders (realism notes 2.3), only to friends. She plays Mausi's long voice notes at double speed.",
+   "When: late at night and between lectures. Never at the table while Nani is speaking; she is not a phone addict (the cast map's caricature guard).",
+   "She never forwards anything. She sends a photo of a total instead (painted blank, with the figures as live text). Almost no typos, and her numbers are always right.",
+   "The family group can be mentioned but never shown (owner, 23 Oct; rule 47). If the story needs her post, it becomes a single message card."
+  ],
+  "samples": [
+   "To you, late at night: 'oye / mama ji called u again / 3 today / 3-0 to u lol'",
+   "To Nani, the morning after the fall, in Devanagari: 'नानी, सुबह वाली दवाई याद से लीजिए। रात को फ़ोन करूँगी।' (Nani, remember the morning medicine. I'll call tonight.) The old 'आठ बजे वाली' clock is gone.",
+   "To Mummy, the flood Saturday: 'mummy / 42 wet 11 dry / 2 baar gine / aapka bhi 42? / match tie 🙂'",
+   "To Papa, from the platform, in his layout: 'papa / sab andar / s4 / 14/14' (coach S4, as chapter 1 has it)",
+   "To Mama ji: 'mama ji aapne march bola tha / ab may hai / 1 mein 0 😐'",
+   "To Captain sahab, cup morning: 'ji captain sahab / bottles mere paas / kitaab bhi 🏏' (the old '9 baje' clock is gone)",
+   "To you, while one of Mausi's voice notes plays: 'mausi ka voice note / 2x pe bhi khatam nahi 😂'",
+   "To you, cup night: 'form sent / 5 din bache the / papa ko mat batana' (मत बताना is a command; no gender)",
+   "To you, December, the letter: 'oye / letter aaya / selected / march / abhi sirf tumhe bataya / gazabbb'"
+  ]
+ },
+ "test_lines": [
+  {
+   "moment": "1. The lights go out in the middle of dinner (to the table).",
+   "en": "Brilliant! Bad light stops play.",
+   "hinglish": "Gazab! Batti gul, khel band.",
+   "hi": "ग़ज़ब! बत्ती गुल, खेल बंद।"
+  },
+  {
+   "moment": "2. Someone everyone was waiting for arrives two hours late (to Mama ji, at the gate; her cross tell, the record read out fast and flat).",
+   "en": "\"Leaving.\" \"On my way.\" \"Nearly there.\" Nil out of three.",
+   "hinglish": "\"Nikal gaya\", \"raste mein\", \"gate pe\". 3 mein 0.",
+   "hi": "\"निकल गया\", \"रास्ते में\", \"गेट पे\"। तीन में ज़ीरो।"
+  },
+  {
+   "moment": "3. A cousin phones to say they have got their first job (to the cousin; no verb takes the cousin as its doer, so no gender).",
+   "en": "What a debut! Straight into the book.",
+   "hinglish": "Kya debut! Seedhe kitaab mein.",
+   "hi": "क्या डेब्यू! सीधे किताब में।"
+  },
+  {
+   "moment": "4. The tea someone has just made has far too much sugar in it (to Mausi).",
+   "en": "Four spoons, Mausi? That's a lot of extras, haan?",
+   "hinglish": "Mausi, 4 chammach? Extras zyada ho gaye, haan?",
+   "hi": "मौसी, चार चम्मच? एक्स्ट्रा ज़्यादा हो गए, हाँ?"
+  },
+  {
+   "moment": "5. In front of the family, someone shows that they had a fact wrong (Tinku's count was the wrong one; to the family).",
+   "en": "My wicket. Fifteen, not fourteen.",
+   "hinglish": "Mera wicket. 14 nahin, 15.",
+   "hi": "मेरा विकेट। चौदह नहीं, पंद्रह।"
+  },
+  {
+   "moment": "6. Someone they love is leaving, and they say goodbye on a railway platform (to you; verbless, rule 66 clear).",
+   "en": "The innings isn't over, haan? Back soon.",
+   "hinglish": "Innings abhi baaki, haan? Jaldi wapas.",
+   "hi": "पारी अभी बाक़ी, हाँ? जल्दी वापस।"
+  },
+  {
+   "moment": "7. Someone thanks them for something they did (Captain sahab thanks her for ten years of the book).",
+   "en": "That run's yours, Captain sahab. You gave me the book.",
+   "hinglish": "Run aapka, Captain sahab. Kitaab aapne hi di thi.",
+   "hi": "रन आपका, कप्तान साहब। किताब आपने ही दी थी।"
+  },
+  {
+   "moment": "8. A neighbour passes on a rumour that the corner sweet shop is closing (to Mummy).",
+   "en": "Mummy, that shop's \"closed\" three times this year.",
+   "hinglish": "Mummy, wo dukaan is saal 3 baar \"band\" ho chuki.",
+   "hi": "मम्मी, वो दुकान इस साल तीन बार \"बंद\" हो चुकी।"
+  },
+  {
+   "moment": "9. Heavy rain floods the lane outside the house (to you; a 'who should' question).",
+   "en": "Rain one, lane nil. Who checks on Masterji's cloth?",
+   "hinglish": "Baarish 1, gali 0. Masterji ka kapda kaun dekhe?",
+   "hi": "बारिश एक, गली ज़ीरो। मास्टरजी का कपड़ा कौन देखे?"
+  },
+  {
+   "moment": "10. Someone asks them how they are (her dodge: somebody else's tally; टोक चुके is flagged by check 3 and cleared, since Papa is the doer).",
+   "en": "Me? Papa's corrected four times today. A record.",
+   "hinglish": "Main? Papa aaj 4 baar tok chuke. Record.",
+   "hi": "मैं? पापा आज चार बार टोक चुके। रिकॉर्ड।"
+  },
+  {
+   "moment": "11. A child knocks a glass of water across the table (to the child; गया agrees with the glass, not the child).",
+   "en": "And that's gone, over the boundary! No replays, haan?",
+   "hinglish": "Aur ye gaya, seedha boundary! Replay nahin, haan?",
+   "hi": "और ये गया, सीधा बाउंड्री! रिप्ले नहीं, हाँ?"
+  },
+  {
+   "moment": "12. A phone call brings good news (to the room).",
+   "en": "Brilliant! Straight for six! Where's the book?",
+   "hinglish": "Gazab! Seedha chhakka! Kitaab kidhar?",
+   "hi": "ग़ज़ब! सीधा छक्का! किताब किधर?"
+  }
+ ],
+ "changed": [
+  "NUMBERS: she stays one of the two who lean on figures (matrix 2.5), but only scores, totals and tallies. Clock times, durations and prices leave her speech and her typing: the medicine times '8, 2, 8' become 'din mein 3' and 'subah wali dawai'; the '9:45' tease becomes 'Gaadi time pe hai. Kitaab mein likhoon?'; 'Shutter up at nine.' and the typed '9 baje' go. Why: Papa owns minutes, and C1 caps the leaners at two.",
+  "ORDINALS OUT: 'Teesri baar', '3rd time' and 'chauthi baar' become '3 baar' and 'Ye 4'. Why: matrix 2.15 gives ordinals to nobody in speech, and they were Mami's collision. The essence's quoted line 'Third time. Three-nil.' becomes 'Three times. Three-nil.' | 'तीन बार। तीन-ज़ीरो।' | '3 baar. 3-0.'",
+  "BUDGET MET: 11 of the 22 samples and 6 of the 12 test lines carry no figure (target: at least one line in three).",
+  "NEW SHAPE WITH NO NUMBER: the commentary aside ('Aur ye gaya!', 'Kya debut!', 'Kya entry!'), from the commentator she wanted to be at nine (Mausi's relationship note). Why: C2 and C11; she was told apart only by figures and scoring nouns, and now has a sentence shape of her own.",
+  "NEW EXCLAMATION: 'Gazab!' | 'ग़ज़ब!' | 'Brilliant!' (C6: she had none), with a guard against 'ख़ुदा का ग़ज़ब' and a fallback, 'Zabardast!'.",
+  "SORRY AND THANKS SET (C4: she had neither): sorry 'Mera wicket.', thanks 'Run tumhara.' / 'Run aapka.'. When she is thanked she hands the run back, which also keeps her contradiction: the credit never goes in her own column.",
+  "'NOT OUT' ONLY AFTER A TOTAL: '80, not out, Nani.' stays as her love line. 'Shutter up at nine. Not out, Mummy.' becomes 'Mummy, aapke 42, mere 42. Match tie.' Why: C7, Captain sahab keeps the bare call; the new line also pays off the flood argument in which both counts are right. 'Not out.' leaves her catchphrases.",
+  "CATCHPHRASES are now 'Kitaab mein.', '3-0, haan?' and 'Faisla tumhara.'; only one carries a number.",
+  "COMMERCE WORDS OUT: stock, bill, accounts and hisaab leave her speech and typing; 'tally' and 'total' stay as scorer's words. Why: the india review's trader-idiom point (C11). Her words now come from play.",
+  "DROPPED TIC 'repeats a number back as a check (Fourteen? Fourteen.)'. Why: head-counts in speech are Nani's, once (matrix 2.15), and a readback is Mami's shape. For the same reason chapter 1's 'Counted twice, Papa.' becomes 'Sab andar, Papa. Over poora.'; 'counts twice' was also one of the trading phrases the india review named.",
+  "CROSS TELL SHARPENED: faster and flatter, never louder (Mausi is the one who gets louder), written as two or three chained bubbles of at most 10 words (rule 62). The record is now a tally of what the person did ('\"sabse chhoti\": 12 baar', 'vaade: 3 mein 0'), not the old 'March, nil. May, nil.' items, which read like Mami's 'thing, status' list.",
+  "THE DODGE (her contradiction) is kept but always aims at a named person's tally, never a clock or a price, so it no longer shares C10's figure key with Papa's times and Mummy's prices: 'Mere marks, Mausi? Mausa ji ne aaj 9 baar \"Hmm\" kaha.'",
+  "MIX: her English tags fold into one, 'haan?', kept in all three modes so that she can be sorted in English and Hindi as well as Hinglish; no whole English clauses at home (Mama ji's and Mami's pattern).",
+  "WORDS STRUCK because someone else owns them: 'done' in her typing (Mami's status word). Her never-list now names every owned word from matrix 2.15 and the targets ('pakka', 'Sahi?', 'arre', 'Lo', 'Theek', 'Galti', 'Pehle', English 'sorry' and the rest).",
+  "TYPING: to elders 'aap' and 'aapne' instead of 'u'; Nani's message says 'सुबह वाली दवाई' instead of 'आठ बजे वाली'; Captain sahab's message loses '9 baje'; Mummy's flood message loses 'shutter 9 baje?' and ends on 'match tie'; her exclamation and her commentary type as 'gazabbb' and 'aur ye gayaaa'.",
+  "RULE 66: every Hindi line to you is a command, a 'who should' question, verbless, or a line where you are not the doer. Lines the checker flags and a native reader clears: फ़ैसला तुम्हारा, रन तुम्हारा and गिनती मेरी (each agrees with its noun), कौन देखे? (the rulebook's own cleared kind), पापा ... टोक चुके (Papa is the doer) and मैं ख़ुद लिखूँगी (Tinku is the doer).",
+  "KEPT AS THEY WERE: essence, want, fear and contradiction; तुम to you and आप to every elder; whole polite Hindi to Nani; 'Pick three, one a keeper. Fast, haan?'; 'Two targets. Today, your call.'; 'Ji nahin, Mami ... 10 season se.'; 'Baitho. Aaj raat ginti meri.'; 'In the book.'; 'Your one trial again, Captain sahab?'; and the rule that she never doubts a report.",
+  "KNOCK-ON FOR HER CAST FILE: year_arc and best_scenes need chapter 1's line ('Sab andar, Papa. Over poora.'), chapter 2's 8 am message card (doses by meal, 'सुबह, दोपहर, रात', not clock times), chapter 3's shutter line ('Match tie') and the essence's quoted line updated. Captain sahab's file keeps the bare 'Not out.'",
+  "FOR THE READERS: 'Gazab' (a Hindi-first and an Urdu-speaking reader), 'oye' to you (kept, rare), '80, not out, Nani' as the one English phrase she says to Nani, and तुम to you (Hindi-first readers, as before)."
+ ]
+}

@@ -1,0 +1,390 @@
+{
+ "key": [
+  {
+   "id": "b01",
+   "who": "Mami",
+   "source": "voice.samples[0]",
+   "mood": "order",
+   "as_written": "Your Mama ji says seventy. You run my list."
+  },
+  {
+   "id": "b02",
+   "who": "Tinku",
+   "source": "voice.samples[0]",
+   "mood": "order",
+   "as_written": "Pick three, one a keeper. Fast, haan?"
+  },
+  {
+   "id": "b03",
+   "who": "Nani",
+   "source": "voice.samples[4]",
+   "mood": "worry",
+   "as_written": "Mausi's knee? The lower berth."
+  },
+  {
+   "id": "b04",
+   "who": "You",
+   "source": "voice.samples[7]",
+   "mood": "praise",
+   "as_written": "Not out, scorer."
+  },
+  {
+   "id": "b05",
+   "who": "Mausa ji",
+   "source": "voice.samples[10]",
+   "mood": "praise",
+   "as_written": "Solid work."
+  },
+  {
+   "id": "b06",
+   "who": "You",
+   "source": "voice.samples[1]",
+   "mood": "order",
+   "as_written": "Score first, Tinku. Then tea."
+  },
+  {
+   "id": "b07",
+   "who": "You",
+   "source": "voice.samples[10]",
+   "mood": "comfort",
+   "as_written": "Nani, everyone's close by. Rest now."
+  },
+  {
+   "id": "b08",
+   "who": "Mausi",
+   "source": "voice.samples[1]",
+   "mood": "worry",
+   "as_written": "Amma's knees… She'll be up by now. Won't she?"
+  },
+  {
+   "id": "b09",
+   "who": "Papa",
+   "source": "voice.samples[3]",
+   "mood": "worry",
+   "as_written": "The train is twelve minutes late. Now it's fourteen."
+  },
+  {
+   "id": "b10",
+   "who": "Masterji",
+   "source": "voice.samples[1]",
+   "mood": "order",
+   "as_written": "Bring that brick. Put it on the end."
+  },
+  {
+   "id": "b11",
+   "who": "Mausi",
+   "source": "voice.samples[5]",
+   "mood": "tease",
+   "as_written": "I brought your proposal. Shall I bring berths too?"
+  },
+  {
+   "id": "b12",
+   "who": "You",
+   "source": "voice.samples[5]",
+   "mood": "tease",
+   "as_written": "Scorer, write your own score too."
+  },
+  {
+   "id": "b13",
+   "who": "Mama ji",
+   "source": "voice.samples[7]",
+   "mood": "comfort",
+   "as_written": "Amma, today you only sit. The rest is ours."
+  },
+  {
+   "id": "b14",
+   "who": "Mausi",
+   "source": "voice.samples[10]",
+   "mood": "comfort",
+   "as_written": "Hey, hey, hey. Come, sit here."
+  },
+  {
+   "id": "b15",
+   "who": "Mami",
+   "source": "voice.samples[3]",
+   "mood": "worry",
+   "as_written": "Item four, still pending. And it's Thursday."
+  },
+  {
+   "id": "b16",
+   "who": "Nani",
+   "source": "voice.samples[5]",
+   "mood": "tease",
+   "as_written": "Does the sun rise by your timetable too?"
+  },
+  {
+   "id": "b17",
+   "who": "Captain sahab",
+   "source": "voice.samples[5]",
+   "mood": "tease",
+   "as_written": "Nine means nine, Bhai sahab."
+  },
+  {
+   "id": "b18",
+   "who": "Papa",
+   "source": "voice.samples[0]",
+   "mood": "order",
+   "as_written": "Sixteen of us have twelve berths. 9:40, not 9:45."
+  },
+  {
+   "id": "b19",
+   "who": "Masterji",
+   "source": "voice.samples[2]",
+   "mood": "worry",
+   "as_written": "Bhabhi ji, the cloth's gone limp. More rain."
+  },
+  {
+   "id": "b20",
+   "who": "Captain sahab",
+   "source": "voice.samples[12]",
+   "mood": "comfort",
+   "as_written": "Not out, Bhabhi ji. Next ball."
+  },
+  {
+   "id": "b21",
+   "who": "Mama ji",
+   "source": "voice.samples[1]",
+   "mood": "worry",
+   "as_written": "Didi, Amma's BP? Medicines? Someone with her? Sure?"
+  },
+  {
+   "id": "b22",
+   "who": "Mausi",
+   "source": "voice.samples[7]",
+   "mood": "praise",
+   "as_written": "Well done! First class, totally. Didn't I say so?"
+  },
+  {
+   "id": "b23",
+   "who": "Mummy",
+   "source": "voice.samples[11]",
+   "mood": "comfort",
+   "as_written": "Water tomorrow, stock the day after, shutter Saturday."
+  },
+  {
+   "id": "b24",
+   "who": "Mausa ji",
+   "source": "voice.samples[9]",
+   "mood": "tease",
+   "as_written": "The phone's asleep. You aren't."
+  },
+  {
+   "id": "b25",
+   "who": "Masterji",
+   "source": "voice.samples[8]",
+   "mood": "comfort",
+   "as_written": "Wet cloth dries. Torn cloth is the worry."
+  },
+  {
+   "id": "b26",
+   "who": "Tinku",
+   "source": "voice.samples[7]",
+   "mood": "comfort",
+   "as_written": "Sit. Tonight the count's mine."
+  },
+  {
+   "id": "b27",
+   "who": "Nani",
+   "source": "voice.samples[10]",
+   "mood": "comfort",
+   "as_written": "Enough now. I'm right here. Drink your tea."
+  },
+  {
+   "id": "b28",
+   "who": "Mausa ji",
+   "source": "voice.samples[5]",
+   "mood": "order",
+   "as_written": "Go to sleep. Now."
+  },
+  {
+   "id": "b29",
+   "who": "Mummy",
+   "source": "voice.samples[2]",
+   "mood": "worry",
+   "as_written": "Fans, wire, switches, all under water. Fifty thousand."
+  },
+  {
+   "id": "b30",
+   "who": "Mama ji",
+   "source": "voice.samples[6]",
+   "mood": "saying no (his praise sample is a typed message)",
+   "as_written": "No. Nobody gets left out. Seventy means seventy."
+  },
+  {
+   "id": "b31",
+   "who": "Mama ji",
+   "source": "voice.samples[0]",
+   "mood": "order",
+   "as_written": "Do one thing, take the gate, everyone in."
+  },
+  {
+   "id": "b32",
+   "who": "Mami",
+   "source": "voice.samples[4]",
+   "mood": "tease",
+   "as_written": "Seventy? Then the extra plates are yours to wash."
+  },
+  {
+   "id": "b33",
+   "who": "Papa",
+   "source": "voice.samples[6]",
+   "mood": "praise",
+   "as_written": "It's confirmed. Nobody was one minute late."
+  },
+  {
+   "id": "b34",
+   "who": "Nani",
+   "source": "voice.samples[7]",
+   "mood": "praise",
+   "as_written": "Yes. Like that. Full weight."
+  },
+  {
+   "id": "b35",
+   "who": "Tinku",
+   "source": "voice.samples[5]",
+   "mood": "praise",
+   "as_written": "Shutter up at nine. Not out, Mummy."
+  },
+  {
+   "id": "b36",
+   "who": "Captain sahab",
+   "source": "voice.samples[0]",
+   "mood": "order",
+   "as_written": "The losing lane mends this drain."
+  },
+  {
+   "id": "b37",
+   "who": "Mami",
+   "source": "voice.samples[10]",
+   "mood": "comfort",
+   "as_written": "Sit. Mummy ji's BP is fine. I asked her myself."
+  },
+  {
+   "id": "b38",
+   "who": "Mama ji",
+   "source": "voice.samples[3]",
+   "mood": "tease",
+   "as_written": "Jija ji, next year's tickets booked too? Amazing!"
+  },
+  {
+   "id": "b39",
+   "who": "Masterji",
+   "source": "voice.samples[5]",
+   "mood": "praise",
+   "as_written": "Level. Both sides level."
+  },
+  {
+   "id": "b40",
+   "who": "Papa",
+   "source": "voice.samples[4]",
+   "mood": "tease",
+   "as_written": "You booked the night before again? That takes courage."
+  },
+  {
+   "id": "b41",
+   "who": "Captain sahab",
+   "source": "voice.samples[3]",
+   "mood": "worry",
+   "as_written": "Wait. Clouds over the depot end."
+  },
+  {
+   "id": "b42",
+   "who": "Tinku",
+   "source": "voice.samples[1]",
+   "mood": "worry",
+   "as_written": "Nani's medicines. Eight, two, eight. Who checks tonight?"
+  },
+  {
+   "id": "b43",
+   "who": "Tinku",
+   "source": "voice.samples[2]",
+   "mood": "tease",
+   "as_written": "Papa, that's the fourth not-9:45 today."
+  },
+  {
+   "id": "b44",
+   "who": "Masterji",
+   "source": "voice.samples[3]",
+   "mood": "tease",
+   "as_written": "Up already? Even the mud's still asleep."
+  },
+  {
+   "id": "b45",
+   "who": "Mami",
+   "source": "voice.samples[6]",
+   "mood": "praise",
+   "as_written": "Done before I asked. Tick."
+  },
+  {
+   "id": "b46",
+   "who": "Nani",
+   "source": "voice.samples[0]",
+   "mood": "order",
+   "as_written": "My whole lane's here. Put them to work."
+  },
+  {
+   "id": "b47",
+   "who": "Mummy",
+   "source": "voice.samples[1]",
+   "mood": "order",
+   "as_written": "Wet stock to the roof, sun till two."
+  },
+  {
+   "id": "b48",
+   "who": "Mausa ji",
+   "source": "voice.samples[13]",
+   "mood": "comfort",
+   "as_written": "Hmm. It'll get done."
+  },
+  {
+   "id": "b49",
+   "who": "Mausi",
+   "source": "voice.samples[0]",
+   "mood": "order",
+   "as_written": "Come on, come on, come on! One at a time."
+  },
+  {
+   "id": "b50",
+   "who": "Mausa ji",
+   "source": "voice.samples[7]",
+   "mood": "worry",
+   "as_written": "Get any sleep?"
+  },
+  {
+   "id": "b51",
+   "who": "Mummy",
+   "source": "voice.samples[6]",
+   "mood": "praise",
+   "as_written": "Not one rupee short."
+  },
+  {
+   "id": "b52",
+   "who": "Captain sahab",
+   "source": "voice.samples[9]",
+   "mood": "praise",
+   "as_written": "Well played."
+  },
+  {
+   "id": "b53",
+   "who": "Papa",
+   "source": "voice.samples[9]",
+   "mood": "comfort",
+   "as_written": "Nani's is four hours away. Sleep for three."
+  },
+  {
+   "id": "b54",
+   "who": "You",
+   "source": "voice.samples[3]",
+   "mood": "worry",
+   "as_written": "Nani, the pain? The plain truth."
+  },
+  {
+   "id": "b55",
+   "who": "Mummy",
+   "source": "voice.samples[4]",
+   "mood": "tease",
+   "as_written": "Everyone calls you anyway. Charge commission."
+  }
+ ],
+ "rule": "first voice sample of each mood in order order, worry, tease, praise, comfort; saying no as fallback; vocatives and all notes removed; English only; seeded shuffle 20261026"
+}

@@ -1,0 +1,231 @@
+{
+ "name": "Mausi (मौसी), about 55, chapter 1 voice",
+ "voice": {
+  "register": "Hindi-first; the loudest and fastest voice in the cast, warm and bossy like a front-room tuition teacher talking to Class 3. She talks in bursts: two to four bubbles of short closed sentences, every one ending on ! or ?, the first bubble starting over the end of yours. The shape is hers alone: a tripled first word, a question she answers herself, 'hai na?', and she has moved on before anyone can reply. Her long run is a string of short loud sentences, never a comma chain (Mama ji's run-on) and never a list (Mummy's jobs, Mami's statuses). Pace quick and rising. When cross she gets louder and faster, the only one in the family who does; when moved she goes silent, the only time she does. No numbers at all, not even ordinals. One shout bubble a chapter at most (rule 35, which is 1.09), and never a whisper, because she cannot whisper. Each bubble is at most 10 words (rule 62): a triple spends three of them, so the rest of that bubble stays short, and a longer thought becomes more bubbles. She is never the asker (rule 37) and never reacts to who was picked (rule 39).",
+  "mix": "A Hindi frame with single English words in it, the older speakers' pattern in the realism notes (1.1). What her English carries is feeling and school, not trade: sorry, tension, first class, topper, homework, copy (exercise book), class, teacher, fail, late mark; in chapter 1 also the travel nouns berth and chart. She never uses the English verb + kar/ho frame, which is Mummy's alone now (so no 'adjust karo', 'share karo', 'late ho gaye'), never a whole English clause (Mama ji's and Mami's way), and never 'thank you'. Her Hindi is everyday small-town Hindi with a teacher's words in it (inaam, bujho, copiyan, 'khaali pet'), never spelled to sound funny. Fillers that mark no region or faith: suno, chalo, accha, haan; no 'arre' (Captain sahab's), no 'dekho' and no 'Dekhiye' (Masterji's). The tag 'hai na?' is hers; in English mode it becomes a real tag question ('didn't I?', 'aren't you?', 'doesn't she?'), which nobody else in the cast uses. In Hinglish mode she reads as Roman Hindi with those English words (how a Hinglish bubble looks waits on rulebook Q6). A Hindi-first reader reads every line aloud (rule 65).",
+  "tics": [
+   "Says her first word three times, once a run, at the start of its first bubble: 'Suno, suno, suno!' to call the room, 'Chalo, chalo, chalo!' to hurry it, 'Na, na, na!' to refuse, 'Sorry, sorry, sorry!' to apologise, 'Aao, aao, aao.' to comfort (her one soft triple, with full stops), or a name three times ('Munna, Munna, Munna!', 'Bhabhi, Bhabhi, Bhabhi!', 'Aji, aji, aji!'). Never 'arre' (Captain sahab's), and never 'haaye' tripled or doubled, because हाय-हाय is a lament and a protest chant.",
+   "Asks a question and answers it herself, like the riddle-setter she is every morning, blurting the answer before anyone can guess: 'Kiski? Hamari!', 'Main padosan hoon? Nahin!', 'Andhera? Koi baat nahin!'. The one question in the year she cannot answer herself is 'Kisne karwaayi?' at the lower berth, and then she goes silent.",
+   "Ends a statement with 'hai na?' and is gone before anyone answers; in English mode, a tag question.",
+   "Quotes people back word for word: 'Pichhle saal tumne kaha tha…'. Her memory is exact; she never misquotes.",
+   "Says what she feels, out loud, to the whole room: love ('Bahut yaad aayi'), hurt ('Amma pehle Chhoti ko bulaati hain!'), sorry. Silent only when moved, palm to her chest.",
+   "Runs the room like her class: marks the late ('Late mark!'), grades a favour ('Ekdum first class!'), fails herself when she is wrong ('Aaj teacher fail!'), and measures disasters by her pupils ('Copiyan upar!', 'meri class ka inaam'). This is what keeps her from being only the loud aunt who feeds: her teaching is in her mouth, not only in one wordless picture.",
+   "Food as punctuation: 'Pehle khao' (the only 'Pehle' that is hers; 'Pehle ___' as a courtesy is yours), 'Khaali pet baat nahin!', 'Muh meetha karo!', and something held out as she says it, her face in the frame.",
+   "Report-card verdicts on habits, never on character, in all her judging notes ('Never sits still for long.').",
+   "'Hamara, hamari' (ours) for anyone she is proud of ('hamari topper'), but never of you, since it would mark your gender.",
+   "When cross: louder and faster, hand on hip, the basket bag set down hard, and her own catchphrase fails ('Koi sunta bhi hai? Nahin!')."
+  ],
+  "catchphrases": [
+   "'Suno, suno, suno!' | 'सुनो, सुनो, सुनो!' | 'Listen, listen, listen!' (her opener and the line people quote back; the tripled 'suno' is hers alone, so Tinku keeps 'oye' and she calls Mausa ji 'Aji')",
+   "'Maine kaha tha na?' | 'मैंने कहा था न?' | 'Didn't I say so?' (whenever something she predicted comes true, good news above all)",
+   "'Pichhle saal tumne kaha tha…' | 'पिछले साल तुमने कहा था…' | 'Last year you said…' (the quote-back; gender-free, because with तुमने the verb agrees with what was said; rule 66's checker flags कहा था and a native reader clears it). None of the three has a number in it."
+  ],
+  "exclamation": "'Haaye!' | 'हाय!' | English mode 'Oh!'. For sympathy, surprise and delight, and just before she says a feeling ('Haaye! Bahut yaad aayi.'). Nobody else in the cast uses it. It has no religious meaning on its own; the guard is that it is never followed by a name or a word for god or mother: no 'Hai Ram', 'Haaye Ram', 'Haaye Rabba', 'Haaye Allah', 'Haaye Maa', 'Ui Maa'. Never doubled or tripled (हाय-हाय is a lament and a protest chant). The English 'Oh!' avoids every hidden holy word on the 2.13 list (Gosh, Goodness, Oh my, Heavens). Open point for the English blind sort: if 'Oh!' gets mixed up with Mama ji's 'Oho!', keep 'Haaye!' in English mode too, as Mami keeps 'Ish'.",
+  "sorry_thanks_love": "SORRY: 'Sorry, sorry, sorry! Pehle khao.' | 'सॉरी, सॉरी, सॉरी! पहले खाओ।' | 'Sorry, sorry, sorry! Eat first.' The English word 'sorry' is hers alone in the cast; food is held out as she says it, her face in the frame. To an elder: 'Pehle khaiye.' THANKS: a teacher's grade, out loud, to the whole room: 'Ekdum first class!' | 'एकदम फ़र्स्ट क्लास!' | 'Absolutely first class!' Never 'thank you' (Mami's, to strangers) and never 'shukriya' (yours). WHEN SHE IS THANKED: she wants it heard: 'Haaye! Zor se kaho! Amma bhi sunein!' | 'हाय! ज़ोर से कहो! अम्मा भी सुनें!' | 'Oh! Say it louder! Let Amma hear too!' Only Amma's thanks, in December, makes her silent. LOVE: said out loud, to the whole room: 'Haaye! Bahut yaad aayi.' | 'हाय! बहुत याद आई।' | 'Oh! I missed you so much.' At a parting, the same key: 'Abhi se yaad aa rahi!' | 'अभी से याद आ रही!' | 'Missing you already!' 'Bahut yaad' is hers alone (Mama ji now says 'Roz.'); his love is warm and one to one with a hug, hers is loud and to the room with food.",
+  "uses": [
+   "suno, suno, suno | सुनो, सुनो, सुनो | listen, listen, listen (tripled only)",
+   "chalo, chalo, chalo | चलो, चलो, चलो | come on, come on, come on",
+   "aao, aao, aao | आओ, आओ, आओ | come, come, come (comfort)",
+   "na, na, na | ना, ना, ना | no, no, no",
+   "haaye | हाय | oh! (her own exclamation, never followed by a name)",
+   "hai na? | है न? | isn't it? (a tag question in English mode)",
+   "maine kaha tha na? | मैंने कहा था न? | didn't I say so?",
+   "pichhle saal tumne kaha tha | पिछले साल तुमने कहा था | last year you said",
+   "bahut yaad aayi | बहुत याद आई | missed you so much",
+   "abhi se yaad aa rahi | अभी से याद आ रही | missing you already",
+   "sorry, sorry, sorry | सॉरी, सॉरी, सॉरी | sorry, sorry, sorry",
+   "ekdum first class | एकदम फ़र्स्ट क्लास | absolutely first class (a teacher's grade, not the train's)",
+   "shabaash | शाबाश | well done (allowed in a story line, rule 64)",
+   "pehle khao / pehle khaiye | पहले खाओ / पहले खाइए | eat first",
+   "khaali pet baat nahin | ख़ाली पेट बात नहीं | no talk on an empty stomach",
+   "muh meetha karo | मुँह मीठा करो | have something sweet",
+   "idhar baitho | इधर बैठो | sit here",
+   "tension mat lo | टेंशन मत लो | no tension (she says it; Mummy never does)",
+   "neend nahin aati | नींद नहीं आती | can't sleep",
+   "late mark | लेट मार्क | late mark (the register)",
+   "teacher fail | टीचर फ़ेल | the teacher fails (at herself, when she is wrong)",
+   "meri class, copiyan, homework, inaam | मेरी क्लास, कॉपियाँ, होमवर्क, इनाम | my class, copybooks, homework, prizes",
+   "bujho / bujhiye | बूझो / बूझिए | guess (the riddle-setter)",
+   "hamari topper | हमारी टॉपर | our topper (Tinku)",
+   "aji | अजी | to Mausa ji (readers confirm)",
+   "berth, chart | बर्थ, चार्ट | chapter 1's travel nouns, the same in every mode"
+  ],
+  "never": [
+   "Any doubt of a report of being followed or harassed, or of a dowry demand: no 'sach mein?', 'pakka?', 'galatfehmi', 'misunderstanding', 'imagined', 'chhodo', 'jaane do', 'hota rehta hai' about it. She is the first to believe, and the hard topic never reaches a bubble or a story panel anyway (rule 26); she has no line in the lead-in or settle of a hard decision. Her 'Na, na, na!' and 'Kabhi nahin!' are for harmless news only.",
+   "Any religious word or exclamation (rule 3): no Hai Ram, Haaye Ram, Haaye Rabba, Bhagwan, Allah, Rab, Wahe Guru, Ishwar, Jesus, tauba, 'shukr hai', 'Ui Maa', 'Mata ji' as a goddess; in English mode no Gosh, Golly, Goodness, Oh my, Heavens, Lord, Thank God. No caste word, no brand.",
+   "Any number in speech: no figures, no counts, no years (rule 2), no ordinals ('teesri class' is struck), no 'ek-ek', 'teen baar' or 'sau mein sau'. 'First class' stays as an idiom of praise.",
+   "Any word that gives you a gender: beta, bachcha, bhaiya, didi, raja, rani; 'hamara/hamari' of you; any verb or adjective that agrees with you: kitne/kitni bade/badi ho gaye, aa gaye/aa gayi, thak gaye/gayi, -oge/-ogi (rules 8 and 66). 'How grown up you've got' becomes 'Chehre pe thakaan.'",
+   "Other people's words, so the blind sort can tell her apart: 'arre' (Captain sahab's 'Arre waah'), 'Ek-ek karke' and 'Pehle ___' as a courtesy (yours; she keeps only 'Pehle khao'), 'Lo.' and 'Theek.' (Mausa ji's), 'aur haan', 'Oho!', 'full', 'extra' and 'Roz' (Mama ji's), 'Kamaal' and 'Reached?' (Papa's), 'Had hai!', 'bill' and 'hisaab' (Mummy's), 'Gazab!' and the 'haan?' tag (Tinku's), 'Not out', 'Next ball', 'Well played' (Captain sahab's), 'Baap re', 'Bas', 'Chai piyo', 'Main yahin hoon' (Nani's), 'Uff', 'Dekhiye', 'mausam', 'barsaat' (Masterji's), 'Hain?', 'Mazboot', 'Galti hui', 'Ho jayega' (Mausa ji's), 'Ish', 'Tick', 'Correct?', 'pending' (Mami's), 'Badhiya', 'Shukriya', 'Maaf kijiye' (yours), 'pakka' (several files), 'Everyone comes'.",
+   "The English verb + kar/ho frame (Mummy's alone): no 'adjust karo', 'share karo', 'late ho gaye'. No whole English clause; no 'thank you'; no 'please' to family; no 'pata nahin' (she always knows).",
+   "A comma chain or a list: her long run is short closed sentences, never Mama ji's run-on or Mummy's and Mami's lists.",
+   "Character words or verdicts on anyone: aalsi, kaamchor, raub, besharam, badchalan, chalu; nothing on anyone's morals, marriage or dress; no sentence about ladkiyan, ladke, aurtein or mard in general (rule 22). Her talk is energy and care, never gossip about people.",
+   "The stock aunty's questions to you: shaadi, rishta (a match), salary or 'kitna kamate', weight, looks, skin colour (gori, kaali, saanwli) for anyone, 'naukri kab'.",
+   "A joke at her own body or age, or at her loudness as mockery: she laughs first and the strip laughs with her ('Meri class aise hi sunti hai'), never at her.",
+   "Film lines or famous catchphrases (rule 3): never 'Main hoon na'.",
+   "A second shout in a chapter; any whisper (rule 35).",
+   "Any card person's name, or any word from a decision's card notes, in a bubble before or during that decision, in either language (rule 36). In chapter 1 that rules out, until the decision that carries them: phone, tea, water, blanket, trip, 'last', bag, sari, tiffin, food (खाना), coach (डिब्बा), seat, window, family, everyone (सबके), पास, साथ, बार, तरह, joke, bus (and बस), platform, town (शहर), maths, coaching, teaches, and बोल. The test-set lines below are not panel lines; any line placed in a panel re-runs the build's note-word check."
+  ],
+  "address": [
+   "To you: तुम, only in commands ('Ab batao', 'Idhar baitho', 'Pehle khao'), 'who should' asks, and lines where you are not the doer ('Chehre pe thakaan', 'Bahut yaad aayi', 'Tumhari khabar'); no address word, or her opening 'Suno, suno, suno!'. Never beta (rulebook Q7 is open, and it stays out until then), bachcha, bhaiya, didi. Lines rule 66's checker flags but a native reader clears: आई (agrees with याद), खाया (with कुछ), कहा था (with what was said), रखे (with पराठे).",
+   "To Nani: 'Amma', आप and -इए ('Amma, bujhiye kaun?', 'Pehle khaiye'). Never 'Ammi' (leans towards one community; realism 1.3).",
+   "To Mummy: 'Chhoti', तुम. In English mode, 'your Mummy' when she speaks of her to you.",
+   "To Papa: no address word, आप; to you, 'tumhare Papa'. Never 'Tinku ke Papa' (a wife's way of naming her own husband).",
+   "To Mama ji: 'Munna', तुम (his childhood pet name; readers confirm).",
+   "To Tinku: 'Tinku' or 'hamari topper', तुम.",
+   "To Mausa ji: 'Aji' | 'अजी', तुम both ways (he uses no word for her).",
+   "To Mami: 'Bhabhi', तुम.",
+   "To Masterji and Captain sahab: their titles and आप.",
+   "To strangers: 'Bhaiya' to the stall man, 'Sahab' to the ticket checker, आप; neither is ever a card person.",
+   "What they call her: Nani 'Badi' (तुम); Mummy and Papa 'Didi' (आप); Mama ji and Mami 'Badi Didi' (आप); Tinku and you 'Mausi' (आप, with -इए); Mausa ji no word ('tumhari Mausi' to you); Masterji 'Behenji'; Captain sahab and her old pupils 'Madam ji'. All for readers to confirm (rule 65), in the one family address table."
+  ],
+  "samples": [
+   "SAYING IT OUT LOUD (love; to you, arms wide, the moment she sees you in the bay): English 'Oh! I missed you so much.' | Hinglish 'Haaye! Bahut yaad aayi.' | Hindi 'हाय! बहुत याद आई।' (gender-free: आई agrees with याद; rule 66 check 3 flags it at the sentence end and a native reader clears it; 'bahut yaad' is hers alone now)",
+   "HER WANT, OUT LOUD (on the train, patting the basket bag, which the line never names: 'bag' is a chapter 1 note word): English 'Listen, listen, listen! Who put up Amma's pickle? I did!' | Hinglish 'Suno, suno, suno! Amma wala achaar kisne daala? Maine!' | Hindi 'सुनो, सुनो, सुनो! अम्मा वाला अचार किसने डाला? मैंने!' (the target card's sample, made specific: the question she answers herself; a voice sample, and placing it is the chapter writer's call)",
+   "THE SHOUT (1.09, boarding at the last minute; the chapter's one shout, rule 35): English 'So few berths? For so many of us? Never!' | Hinglish 'Itni kam berth? Itne logon ke liye? Kabhi nahin!' | Hindi 'इतनी कम बर्थ? इतने लोगों के लिए? कभी नहीं!' (no figures: Papa's 1.08 already gives them; 'Kabhi nahin!' is her own answer to her own question, and the ask stays Papa's (rule 37))",
+   "ORDER (to Papa and Mausa ji, the cases going up onto the rack; the bay stays out of the frame, rule 32): English 'Come on, come on, come on! Big ones up! Quick!' | Hinglish 'Chalo, chalo, chalo! Bade wale upar! Jaldi!' | Hindi 'चलो, चलो, चलो! बड़े वाले ऊपर! जल्दी!' (replaces 'Ek-ek karke', which is your cross line and carries a number word)",
+   "THE CONTRADICTION, PART 1 (2:20 am, the carriage step; her bubble starts over the end of yours. You: 'Mausi, wo…' | 'मौसी, वो…'): English 'Listen, listen, listen! Your news, through Chhoti? Why?' / 'A neighbour? Me? No! Now tell me, straight.' | Hinglish 'Suno, suno, suno! Tumhari khabar Chhoti se kyon?' / 'Main padosan hoon? Nahin! Ab batao. Seedha mujhe.' | Hindi 'सुनो, सुनो, सुनो! तुम्हारी ख़बर छोटी से क्यों?' / 'मैं पड़ोसन हूँ? नहीं! अब बताओ। सीधा मुझे।' (your line plus her two bubbles make three pieces of text, at most 20 counted words (rule 62); तुम्हारी agrees with ख़बर; पड़ोसन हूँ is her own gender, which check 2 flags and a native reader clears; every word passes the D6 to D8 note-word check (no phone, साथ, सबके, पास, बोल, platform, शहर))",
+   "THE CONTRADICTION, PART 2 (she remembers, and pats the step): English 'Last year you said: \"Next time, right beside you.\"' | Hinglish 'Pichhle saal tumne kaha tha: \"Agli dafa, aapki bagal mein.\"' | Hindi 'पिछले साल तुमने कहा था: \"अगली दफ़ा, आपकी बग़ल में।\"' (kept from the file; with तुमने the verb agrees with what was said, so check 2's कहा था is cleared; your fixed reply stays 'Theek hai, Mausi.')",
+   "HER HURT, OUT LOUD (2:20 am; laughing, and meaning it): English 'Amma calls your Mummy first! Doesn't she?' | Hinglish 'Amma pehle Chhoti ko bulaati hain! Hai na?' | Hindi 'अम्मा पहले छोटी को बुलाती हैं! है न?' ('hai na?' invites a denial nobody gives; 'pehle' here is a complaint, not your 'Pehle ___' courtesy)",
+   "SLEEPLESS (2:20 am; sets up chapter 2): English 'Can't sleep. Just like Amma.' | Hinglish 'Neend nahin aati. Amma jaisi.' | Hindi 'नींद नहीं आती। अम्मा जैसी।' (kept; her one quiet line, and still said out loud)",
+   "WORRYING (about you, loud, answering for you): English 'Oh! You look worn out! Eaten anything? No? Eat first!' | Hinglish 'Haaye! Chehre pe thakaan! Kuch khaya bhi? Nahin? Pehle khao!' | Hindi 'हाय! चेहरे पे थकान! कुछ खाया भी? नहीं? पहले खाओ!' (gender-free: थकान is the subject, खाया follows कुछ, and खाओ is a command; 'Pehle khao' is the one 'Pehle' that is hers)",
+   "WORRYING (about Amma, near dawn; never in a hard decision's lead-in): English 'Amma's knees… She'll be up by now. Won't she?' | Hinglish 'Amma ke ghutne… Ab tak jag gayi hongi. Hai na?' | Hindi 'अम्मा के घुटने… अब तक जग गई होंगी। है न?' (kept; no clock time, which is Papa's)",
+   "TEASING (Papa, about the berths; आप, no address word): English 'I brought your proposal. Shall I bring berths too?' | Hinglish 'Rishta main laayi thi. Berth bhi main laaun?' | Hindi 'रिश्ता मैं लाई थी। बर्थ भी मैं लाऊँ?' (kept; no year on screen (rule 2))",
+   "TEASING (Tinku, at any family gathering): English 'Here's our topper! Top again, aren't you?' | Hinglish 'Hamari topper aayi! Phir se top, hai na?' | Hindi 'हमारी टॉपर आई! फिर से टॉप, है न?' (kept; no score, since scores are Tinku's; 'hamari' marks Tinku, a woman, and is never used of you)",
+   "THANKS (to Aji, the summer he wires a bigger fan into her tuition room; he leaves the room as she says it): English 'Aji, a new fan? Absolutely first class! Isn't it?' | Hinglish 'Aji, naya pankha? Ekdum first class! Hai na?' | Hindi 'अजी, नया पंखा? एकदम फ़र्स्ट क्लास! है न?' (her thanks is a teacher's grade, said to the whole room; 'first class' is an idiom of praise, not a count and not the train's class)",
+   "PRAISING (when you take Papa's list, before any pick; never a reaction to a pick, rule 39): English 'Well done! Absolutely first class. Didn't I say so?' | Hinglish 'Shabaash! Ekdum first class. Maine kaha tha na?' | Hindi 'शाबाश! एकदम फ़र्स्ट क्लास। मैंने कहा था न?' (kept; 'shabaash' is allowed in a story line (rule 64))",
+   "SAYING NO: English 'No, no, no! No talk on an empty stomach!' | Hinglish 'Na, na, na! Khaali pet baat nahin!' | Hindi 'ना, ना, ना! ख़ाली पेट बात नहीं!' (replaces 'Pehle khao, phir baat', the 'first X, then Y' shape that is yours (C9))",
+   "SAYING SORRY (a foil parcel held out, her face in the frame): English 'Sorry, sorry, sorry! Eat first.' | Hinglish 'Sorry, sorry, sorry! Pehle khao.' | Hindi 'सॉरी, सॉरी, सॉरी! पहले खाओ।' (drops 'Lo,', which is Mausa ji's word; to an elder: 'Sorry, sorry, sorry! Pehle khaiye.' | 'सॉरी, सॉरी, सॉरी! पहले खाइए।')",
+   "COMFORTING (patting the place beside her; her one soft triple, with full stops): English 'Come, come, come. Sit here.' | Hinglish 'Aao, aao, aao. Idhar baitho.' | Hindi 'आओ, आओ, आओ। इधर बैठो।' (replaces 'Arre, arre, arre', since 'arre' is Captain sahab's ('Arre waah'); not 'Main yahin hoon' (Nani's) and not 'mere paas' (पास is a chapter 1 note word))",
+   "LOSING HER TEMPER (nobody listening; louder and faster, hand on hip, the basket bag set down hard): English 'Listen, listen, listen! Is anyone even listening? No!' | Hinglish 'Suno, suno, suno! Koi sunta bhi hai? Nahin!' | Hindi 'सुनो, सुनो, सुनो! कोई सुनता भी है? नहीं!' (her catchphrase failing is the punchline, and she answers her own question; no tally)",
+   "A JOKE (on herself, when the bay shushes her at lights-out) [WAITS rulebook Q5]: English 'Yes, I'm loud! That's how my class hears.' | Hinglish 'Haan, awaaz oonchi hai! Meri class aise hi sunti hai.' | Hindi 'हाँ, आवाज़ ऊँची है! मेरी क्लास ऐसे ही सुनती है।' ('Teesri class' becomes 'Meri class': ordinals leave everyone's speech; no बोल (D8's note word))",
+   "MOVED (finding the lower berth Papa booked): English 'A lower berth? For me? Who arranged this?' | Hinglish 'Neeche ki berth? Mere liye? Kisne karwaayi?' | Hindi 'नीचे की बर्थ? मेरे लिए? किसने करवाई?' (the one question in the year she cannot answer herself; Papa, from behind, answers (his writer owns that line); then her one silent panel of the chapter, palm to her chest)",
+   "TO MUNNA (love said out loud, in front of everyone) [WAITS rulebook Q11 outside chapter 1]: English 'Munna, Munna, Munna! The children still sit on your benches!' | Hinglish 'Munna, Munna, Munna! Bachche aaj bhi tumhari bench par!' | Hindi 'मुन्ना, मुन्ना, मुन्ना! बच्चे आज भी तुम्हारी बेंच पर!' (the benches he paid for from his first salary, which she tells every pupil about; a name tripled is still her one triple)",
+   "TO AJI (his pill, at nine at night): English 'Aji, your pill? Not yet? Oh! Take it now!' | Hinglish 'Aji, goli khaayi? Nahin? Haaye! Abhi khao!' | Hindi 'अजी, गोली खाई? नहीं? हाय! अभी खाओ!' (she answers for him, as always; तुम both ways)",
+   "TO MASTERJI (a fitting, at his counter; आप) [WAITS rulebook Q11 outside chapter 1]: English 'Oh, Masterji! The sleeve's long again? You measured it yourself!' | Hinglish 'Haaye, Masterji! Aastin phir lambi? Aapne khud naapa tha!' | Hindi 'हाय, मास्टरजी! आस्तीन फिर लंबी? आपने ख़ुद नापा था!' (a complaint about his measuring, never about her body (she is never the butt of the joke); it sets up his own sorry, 'Chalo, phir se naap lete hain.')",
+   "TO CHHOTI (the daily call; rivalry dressed as concern, then the second half out loud): English 'Chhoti, so much work? No tension!' / 'Amma called for you again, didn't she?' | Hinglish 'Chhoti, itna kaam? Tension mat lo!' / 'Amma ne phir tumhe hi bulaaya? Hai na?' | Hindi 'छोटी, इतना काम? टेंशन मत लो!' / 'अम्मा ने फिर तुम्हें ही बुलाया? है न?' (two bubbles of short closed sentences, never a comma chain)",
+   "WEDDING WEEK (to Bhabhi, in Nani's kitchen) [WAITS rulebook Q11]: English 'Bhabhi, Bhabhi, Bhabhi! The list can wait. Eat first.' | Hinglish 'Bhabhi, Bhabhi, Bhabhi! List baad mein. Pehle khao.' | Hindi 'भाभी, भाभी, भाभी! लिस्ट बाद में। पहले खाओ।' (kept; allies, never rivals)",
+   "ARRIVING (at Amma's gate, any visit; आप and -इए to Amma): English 'Amma, guess who? Me! Your eldest!' | Hinglish 'Amma, bujhiye kaun? Main! Badi!' | Hindi 'अम्मा, बूझिए कौन? मैं! बड़ी!' (the riddle-setter's question answered at once; 'Badi' is Nani's name for her, said back)",
+   "DECEMBER (Nani's kitchen, after Nani thanks her first): no line. Her one silent panel of the year, palm pressed to her chest, mouth shut."
+  ]
+ },
+ "typing": {
+  "habits": [
+   "Device: a big-screen Android phone in a plain flip case with no markings (rule 3). She reads it held a hand's width from her nose, since she is short-sighted and wears no glasses; that distance is her phone trait (six files share 'font at its largest', so it is not). Painted blank; every word on it is live text (rule 30).",
+   "Mostly voice notes, long ones, the phone held flat under her chin like a plate and spoken at full volume so the whole room hears. They open 'Haan suno....' and close '....chalo, khana kha lena 😊' (the old close 'aur haan' is Mama ji's joiner now). On screen a voice note is a live-text card: a play mark, a long bar and her first words, with no length figure, so no number reaches her lines.",
+   "When she types: Roman Hinglish, all lowercase except 'OK', spelled the way she says it and always in full, never short forms like 'h' or 'k' (Masterji's and Tinku's).",
+   "Punctuation: four dots '....' between every phrase instead of full stops or commas; double question marks '??', which are hers (Mama ji keeps '!!'). One long message, never a burst of short ones (Mama ji's), never one item a line (Papa's), never a list (Mami's). She types her triple too, with no commas ('jaldi jaldi jaldi'), and her self-answered question ('kaun jeeta?? hamari topper').",
+   "No figures, even typed: no times, no counts, no prices. Her daily send is a riddle, not a sum.",
+   "Emoji: 😊 at the end of nearly everything, even bad news (the family knows to read past it); 😋 for food. Never 👍 (Mummy's), never a person emoji (it carries a gender and a skin tone), and 🙏 not at all until the owner decides (realism 2.2); she has no typed thank-you to put it after anyway.",
+   "Her one daily send is her own: 'aaj ki paheli' (today's riddle), a traditional children's riddle in words to the family group early each morning, whose answers she marks by voice note at night. Never a good-morning flower (Papa's), never gods, politics, a famous face, false news or a home remedy (rule 3; realism 2.2).",
+   "Timing: replies within seconds all day, answers a one-word message with a long voice note, and is sending from four in the morning. No reply means she is cooking.",
+   "Typos: autocorrect turns her Hinglish into English words and she sends it anyway; it is never shown as a joke on her.",
+   "The family group is mentioned, never shown (owner, 23 Oct). A message reaches the player as one message card.",
+   "How others' typing meets hers: Mummy answers 'ok 👍' within a minute in shop hours and never after nine; Papa replies with one full-stopped sentence; Tinku replies 'mausi 😂'; Mausa ji sits beside her and does not need to."
+  ],
+  "samples": [
+   "To you, the evening before the train (a message card on the painted blank phone): 'suno suno suno....kal raat wali train....tum bhi saath ho na?? apni baatein seedha mujhe batana....chhoti se nahi 😊' (listen listen listen....tomorrow night's train....you're with us, aren't you?? tell me your news yourself....not through Chhoti). Gender-free: 'saath ho' and a command. If it is shown in chapter 1 it is a sign, so the note-word check applies (साथ).",
+   "To you, after any trip: 'khana khaya?? kya kya khaya?? 😋' (eaten?? what did you eat??). About food only: 'Reached?' is Papa's. Gender-free: खाया follows खाना.",
+   "Voice note to you before dawn, a live-text card: '▶ Haan suno.... neend nahi aayi....toh socha....' (Yes, listen.... couldn't sleep....so I thought....). No length figure on the card.",
+   "Family group, early morning (mentioned, or shown as a single card): 'aaj ki paheli....ek thaal moti se bhara, sabke sir par aundha dhara....kya hai?? jawab shaam tak....tinku tum mat batana 😊' (today's riddle....a plate full of pearls, held upside down over everyone's head....what is it?? answers by evening....Tinku, don't you answer). The answer is the night sky; a traditional children's riddle (readers confirm), where 'ek' is the article 'a', not a count.",
+   "To Mausa ji at night: 'aji....bp ki goli....abhi abhi abhi 😊' (aji....your BP pill....now now now)",
+   "To Mummy before dawn on the ward night, from Nani's house: 'chhoti....amma se baat hui....unko bhi neend nahi....subah aati hoon....tum so jao 😊' (Chhoti....spoke to Amma....she can't sleep either....I'll come in the morning....you go to sleep). Mummy, who never messages after nine, reads it in the morning.",
+   "To you, after your good news: 'haaye....maine kaha tha na?? ekdum first class....mithai kab?? 😋' (oh....didn't I say so?? absolutely first class....when are the sweets??). Gender-free: no verb agrees with you.",
+   "To Mummy, her hurt typed and then smiled over: 'amma ne aaj bhi pehle tumhe bulaaya....koi baat nahi....main toh hoon hi 😊' (Amma called you first again today....never mind....I'm always here anyway). The 😊 is why nobody hears it."
+  ]
+ },
+ "test_lines": [
+  {
+   "moment": "1. The lights go out in the middle of dinner. (to the room)",
+   "en": "Oh! Dark? Never mind, you've still got my voice!",
+   "hinglish": "Haaye! Andhera? Koi baat nahin, meri awaaz toh hai!",
+   "hi": "हाय! अँधेरा? कोई बात नहीं, मेरी आवाज़ तो है!"
+  },
+  {
+   "moment": "2. Someone everyone was waiting for arrives two hours late. (to Munna at the gate; louder and faster)",
+   "en": "Munna, Munna, Munna! Now? The food's cold! Late mark!",
+   "hinglish": "Munna, Munna, Munna! Ab? Khana thanda! Late mark!",
+   "hi": "मुन्ना, मुन्ना, मुन्ना! अब? खाना ठंडा! लेट मार्क!"
+  },
+  {
+   "moment": "3. A cousin phones to say they have got their first job. (to the room, the phone held out; the cousin's gender stays open: लगी agrees with नौकरी)",
+   "en": "Listen, listen, listen! A job! Didn't I say so?",
+   "hinglish": "Suno, suno, suno! Naukri lagi! Maine kaha tha na?",
+   "hi": "सुनो, सुनो, सुनो! नौकरी लगी! मैंने कहा था न?"
+  },
+  {
+   "moment": "4. The tea someone has just made has far too much sugar in it. (to Aji, who made it)",
+   "en": "Aji, aji, aji! Tea or halwa? Halwa! Mine without sugar.",
+   "hinglish": "Aji, aji, aji! Chai ya halwa? Halwa! Mujhe phiki do.",
+   "hi": "अजी, अजी, अजी! चाय या हलवा? हलवा! मुझे फीकी दो।"
+  },
+  {
+   "moment": "5. In front of the family, it turns out she had a fact wrong. (to the room)",
+   "en": "Sorry, sorry, sorry! Teacher fails today, doesn't she? Eat first!",
+   "hinglish": "Sorry, sorry, sorry! Aaj teacher fail, hai na? Pehle khao!",
+   "hi": "सॉरी, सॉरी, सॉरी! आज टीचर फ़ेल, है न? पहले खाओ!"
+  },
+  {
+   "moment": "6. Someone she loves is leaving, and they say goodbye on a railway platform. (to the one leaving; रखे agrees with पराठे, so it marks no gender)",
+   "en": "Oh! Missing you already! Packed the parathas, haven't you?",
+   "hinglish": "Haaye! Abhi se yaad aa rahi! Parathe rakhe, hai na?",
+   "hi": "हाय! अभी से याद आ रही! पराठे रखे, है न?"
+  },
+  {
+   "moment": "7. Someone thanks her for something she did. (to whoever thanked her; कहो is a command)",
+   "en": "Oh! Say it louder! Let Amma hear too!",
+   "hinglish": "Haaye! Zor se kaho! Amma bhi sunein!",
+   "hi": "हाय! ज़ोर से कहो! अम्मा भी सुनें!"
+  },
+  {
+   "moment": "8. A neighbour passes on a rumour that the corner sweet shop is closing. (to the neighbour at the gate)",
+   "en": "No, no, no! Closing? And my class's prizes?",
+   "hinglish": "Na, na, na! Band? Toh meri class ka inaam?",
+   "hi": "ना, ना, ना! बंद? तो मेरी क्लास का इनाम?"
+  },
+  {
+   "moment": "9. Heavy rain floods the lane outside the house. (to the room)",
+   "en": "Oh! A river in the lane? Copybooks up! Food up!",
+   "hinglish": "Haaye! Gali mein nadi? Copiyan upar! Khana upar!",
+   "hi": "हाय! गली में नदी? कॉपियाँ ऊपर! खाना ऊपर!"
+  },
+  {
+   "moment": "10. Someone asks her how she is. (no dodge: she answers plainly; कैसी हूँ and बताती हूँ mark her own gender, which check 2 flags and a native reader clears)",
+   "en": "How am I? I'll tell you! Knee aches, heart doesn't!",
+   "hinglish": "Kaisi hoon? Batati hoon! Ghutna dukhta hai, dil nahin!",
+   "hi": "कैसी हूँ? बताती हूँ! घुटना दुखता है, दिल नहीं!"
+  },
+  {
+   "moment": "11. A child knocks a glass of water across the table. (to the child)",
+   "en": "Come, come, come. Sit here. My class spills things too!",
+   "hinglish": "Aao, aao, aao. Idhar baitho. Meri class bhi girati hai!",
+   "hi": "आओ, आओ, आओ। इधर बैठो। मेरी क्लास भी गिराती है!"
+  },
+  {
+   "moment": "12. A phone call brings good news. (to the room)",
+   "en": "Oh! Good news! Whose? Ours! Have something sweet!",
+   "hinglish": "Haaye! Achhi khabar! Kiski? Hamari! Muh meetha karo!",
+   "hi": "हाय! अच्छी ख़बर! किसकी? हमारी! मुँह मीठा करो!"
+  }
+ ],
+ "changed": [
+  "Rhythm pinned against Mama ji, the other long talker: her long run is now a burst of short closed sentences, each ending on ! or ?, in two to four bubbles, never a comma chain or 'aur haan' (his run-on) and never a list (Mummy's, Mami's). Why: the matrix gives both plain feelers long runs, so the shape has to tell them apart when the names are covered.",
+  "One triple a run, only at the start of its first bubble (before: one a bubble). Why: a triple spends three of the ten words rule 62 allows, and a triple in every bubble turns her into a tic instead of a voice.",
+  "Struck 'arre' from her mouth entirely: the comfort triple 'Arre, arre, arre.' becomes 'Aao, aao, aao. Idhar baitho.', and 'arre' leaves her uses list. Why: C6 and table 2.15, 'arre' lives only in Captain sahab's 'Arre waah'.",
+  "Struck 'Ek-ek karke' from her order sample and uses ('Chalo, chalo, chalo! Bade wale upar! Jaldi!' instead). Why: it is your once-a-year cross line (2.11), and 'ek' is a number word in a voice that has none.",
+  "Sorry loses 'Lo,': 'Sorry, sorry, sorry! Lo, pehle khao.' becomes 'Sorry, sorry, sorry! Pehle khao.' Why: 'Lo.' is Mausa ji's alone (C6, C8, table 2.15).",
+  "'Pehle khao, phir baat.' becomes 'Na, na, na! Khaali pet baat nahin!', and 'Pehle khao' is the only 'Pehle' she keeps. Why: C9, the 'first X, then Y' courtesy is yours.",
+  "Thanks is now a spoken line of her own, a teacher's grade: 'Ekdum first class!' (before: 'in words, with food', never fixed). Added how she takes thanks: 'Haaye! Zor se kaho! Amma bhi sunein!'. Why: table 2.14 gives each person one way to thank, and her want (to be the one Amma thanks) and fear (that nobody hears her) belong in that line; December's silence stays the one time thanks quiets her.",
+  "Her joke's 'Teesri class' becomes 'Meri class'. Why: ordinals leave everyone's speech (2.15), and her numbers stay at none.",
+  "Dropped the English verb + kar/ho frame ('adjust karo', 'share karo') and never 'late ho gaye'. Why: 2.2 makes that frame Mummy's alone; her English now carries only feeling and school words (sorry, tension, first class, topper, homework, copy, teacher, fail, late mark), which no one else's English carries (2.12 mix row).",
+  "Her words now come from her teaching as well as her kitchen: 'Late mark!', 'Aaj teacher fail!', 'meri class ka inaam', 'Copiyan upar!', the riddle-setter's 'bujhiye'. Why: the comics review's type test found her teaching invisible in her only chapter, which leaves the stock loud aunt who feeds; this puts the teacher in her mouth without the chapter 1 note words (maths, coaching, teaches).",
+  "Her question-she-answers-herself is now tied to her riddles ('Kiski? Hamari!'), and 'Kisne karwaayi?' at the lower berth is marked as the one question she cannot answer herself. Why: it gives the tic a reason in who she is, and makes the moved silence land.",
+  "Added a guard to her exclamation: 'Haaye' never doubled or tripled. Why: हाय-हाय is a lament and a protest chant, and her triple habit would otherwise reach for it; the existing guard (never followed by a name of god or 'Maa') stays.",
+  "Love key kept and owned: 'Haaye! Bahut yaad aayi.' is hers alone, and a parting form in the same key added: 'Abhi se yaad aa rahi!'. Why: C16, Mama ji gives up 'Bahut' for 'Roz.'; hers is loud and to the room with food, his warm and one to one with a hug.",
+  "The shout (1.09) and the temper line now answer themselves ('Kabhi nahin!', 'Nahin!'), so even her biggest lines carry her shape. Neither is the ask (rule 37) and neither reacts to a pick (rule 39).",
+  "New lines between her and others: Amma, Chhoti, Papa, Munna, Aji, Bhabhi, Tinku and Masterji. Why: C15, almost no line in the cast passed between people other than you, so the voice test never heard her with them.",
+  "Typing: the voice-note close 'aur haan, khana kha lena' becomes 'chalo, khana kha lena' (Mama ji's joiner); the voice-note card shows no length figure and the 4:10 am note no longer opens 'ek baat, ek baat, ek baat'; no typed figures of any kind; 🙏 is out until the owner decides; two new samples (your good news, her typed hurt). Why: her numbers are none on screen too, and her typed signs must not borrow another file's.",
+  "Words to her are unchanged: every address word (Amma, Chhoti, no word for Papa, Munna, Aji, Bhabhi, the titles) and every word for her stays as the file has it, all waiting on the readers' address table (rule 65).",
+  "Open points for readers and the test: whether 'Meri class bhi girati hai' and 'Late mark' sound right to a Hindi-first reader; and if the English blind sort mixes her 'Oh!' up with Mama ji's 'Oho!', keep 'Haaye!' in English mode, as Mami keeps 'Ish'.",
+  "Kept: her essence, want, fear, contradiction, year arc, the shout's place, the lower-berth silence, the December silence, every never-rule on harassment and dowry reports, and the note-word limits. Only how she speaks changed."
+ ]
+}

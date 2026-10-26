@@ -38,124 +38,149 @@ OPENING (January, present day): not on screen. The date Mummy rings in red, 15 A
 
 ## Voice
 
-**Register.** Clipped and low: an umpire's carrying voice that never needs raising. His sentence shape is the call (comics review): an umpire's call first ('Out.', 'Not out.', 'No ball.', 'Wait.', 'Over.'), then at most one short reason or instruction, two to seven words in all, with a pause after the call. Never a triplet of fragments (Nani's closed one-word fragments and Mummy's lists sit too close), never counting, and no figures in his speech except the toss's countdown and 'Nine means nine' to Papa (comics and India reviews: numbers belong to Papa, Mummy and Tinku, and Tinku is chapter 4's numeric voice). Dry, never jolly, never a speech. ANGER: he goes still and quiet, his calls come further apart, and the verdict finger rises and stays up; a whisper bubble, never a shout, no exclamation mark. That tell is his alone in chapter 4: Tinku, his chapter's other face, goes fast when cross (her file). His humour is bone-dry and about himself or the game, never about a person's hard fact; while rulebook Q5 is open his jokes stay out of the chapter outcome (rule 46). He is never the asker, so rule 37's 'never the comic one' does not bind him, but he is not the comic one either.
+**Register.** Crisp and low: an umpire's carrying voice that never needs raising. HIS SHAPE IS TWO BEATS: the verdict first, short, then at most one short reason or instruction, never the reason first, 2 to 8 words in a bubble. At the ground and on any ruling the verdict is an umpire's call ('No ball. Line ke peeche se daalo.', 'Not out, Nani ji. Bat laga tha.'). Everywhere else, at the gate, on the six o'clock walk, across the drain, the verdict is plain lane Hindi and the reason comes from the bus depot ('Zyada meethi hai, Master. Bilkul depot canteen wali.', 'Theek hoon. Bas ghutna servicing mein.'). A call shows up in at most one bubble in two, so cricket is his trade, not his whole tongue: a retired depot mechanic talks cricket at the ground and plain Hindi with depot words at the gate. The calls he keeps: 'Out.', 'Not out.', 'No ball.', 'Over.', 'Next ball.', 'Well played.', 'Well fielded.', 'Front foot.', 'Retired hurt.' for his knee, and 'Ruko' ('Rukiye' when an elder can hear). A second thought is a second bubble after a second toss of the ball, never a longer line, and he never adds a third beat: Masterji's verdict wanders on after 'waise', Captain sahab's stops. Short, but not like the cast's other short voices: Nani closes bare fragments and orders, Mausa ji drops the subject, Tinku gives a score and 'haan?', Mami reads things back with a status, you name the listener. Beside Tinku in chapter 4 he gives rulings and she keeps the score: he never describes play as it happens (her commentary) and never says a score. FEELING: in plain words most of the time, said short and once ('Mujhse chook ho gayi.', 'Badi meherbani.', 'Koi baat nahin, khiladi. Hota hai.'). A cricket code for a feeling ('Next ball' as comfort, 'Well fielded' as thanks, 'Front foot' as love) comes at most once a chapter, beside its plain form. 'Well played.' comes once a year, and then he looks away. HUMOUR: sardonic and bone-dry, about his knee, his age and the game ('Purana model hoon, Scorer. Parts nahin milte.'), never about a person's hard fact; while rulebook Q5 is open his jokes stay out of the chapter outcome (rule 46). NUMBERS: rare and marked, only the toss countdown in the two lead-ins (a story deadline, rule 37) and 'Nau matlab nau' once a year to Papa; everything else in words. When he is not sure he waits ('Ruko.') rather than guess out loud. CROSS: he goes still. A whisper bubble, the words further apart, the verdict finger up and kept up; never a shout, never an exclamation mark. Tinku, his chapter's other voice, goes fast when cross, so their tells never match. TALKS MOST TO the lane's players, and on the page to Tinku at the scorer's table, Papa on the six o'clock walk and Masterji across the drain. He is never the asker (rule 37).
 
-**Hindi and English.** A Hindi frame with English only for cricket calls, times and a few depot words. That is the older speakers' pattern in the realism notes (a Hindi base with single English nouns), and the topic pulls the English in (the realism notes' point that domain moves language: 'Captain sahab talks cricket in English nouns'). His English: over, toss, out, not out, no ball, front foot, straight bat, well played, well left, last over, chase, umpire, crease, pitch; from the depot: full service, jack, gear, clutch. He never switches a whole clause into English, so his Hinglish and his Hindi read almost the same, a voice marker beside Mama ji's whole English clauses and Tinku's English with Hindi tags. In Devanagari mode the English calls stay as English words in Devanagari (नॉट आउट, नो बॉल, फ़्रंट फ़ुट), as people say them. His one exclamation is 'Arre waah.' | 'अरे वाह।', said quietly at a good shot or a clean catch, never at a person; no god-word ever (rule 3; the India review gives each elder a different exclamation, and this is his).
+**Hindi and English.** A Hindi frame: plain lane Hindi with a few older everyday words in it (meherbani, zaroor, waqt, chook, mol-bhaav). English comes in for two things only, the topic pulling it in, as the realism notes have the older speakers. Cricket: the calls and coaching words, said the way the lane says them (out, not out, no ball, over, next ball, front foot, straight bat, well played, well fielded, clean catch, catch, toss, pitch, crease). Machines: depot nouns (servicing, jack, clutch, tube, grip, tarpaulin, canteen, depot, model, parts), and for a machine job the everyday English verb with karo ('Grip change karo', 'Brake check karo'), the way every depot mechanic talks. His knee stays 'Retired hurt', a call, never 'retire hua'. He never switches a whole clause into English (Mama ji and Mami do). The common fillers are his as much as anyone's, in the middle of a line (achha, bas, arre, haan, chalo, dekho, theek hai). आप and a title to elders and equals; तुम to anyone he has coached or seen drop a catch. HINDI MODE, written fresh for Hindi-first readers: the cricket words every lane fan knows stay (आउट, नॉट आउट, नो बॉल, कैच, ओवर, टॉस, पिच, फ़्रंट फ़ुट, सीधा बैट), and the rest go into plain Hindi: Next ball अगली गेंद, Well played बढ़िया पारी, Well fielded अच्छा पकड़ा (बढ़िया फ़ील्डिंग when it is said of a job off the field), Clean catch साफ़ कैच, Dead ball ये गेंद नहीं गिनी जाएगी, Retired hurt घुटना छुट्टी पर, Last over आख़िरी ओवर; machine verbs in plain Hindi (ग्रिप बदलो). HINGLISH keeps the English calls. ENGLISH MODE: plain, clipped British English with the calls unchanged; 'Arre waah' stays as it is, the way Mami keeps 'Ish'.
 
 **Habits**
 
-- Answers yes or no with an umpire's call: 'Out.' (no), 'Not out.' (yes, fine, carry on), 'No ball.' (that does not count), 'Wait.' (not yet), 'Over.' (done, enough). The habit survives all three languages, because the calls are the same words in all three.
-- The call first, then one short reason, never the reason first: 'No ball. A rule's a rule.' 'Wait. Clouds over the depot end.'
-- 'Arre waah.' | 'अरे वाह।' at a good shot or a clean catch, quietly, and at nothing else.
-- Brings up his one state trial at any talk of umpires, luck or fairness: 'My one trial. Not out. Ask anyone.' Nobody alive was there. No year on screen (rule 2).
-- Calls people by trade or title: 'Master' (Masterji, as Masterji's file has it), 'Lineman sahab' (Mausa ji), 'Madam ji' (Mausi, as her old pupils do, her file), 'Scorer' (Tinku).
-- Says तुम to anyone he has coached or seen drop a catch on his lane (you, Tinku, Mama ji, the lane's players) and आप to everyone else.
-- Tosses the ball a hand above his open palm and catches it while he decides; the catch is the full stop on his sentence.
-- Never says sorry: he says 'Next ball.' | 'अगली गेंद।' and moves on.
+- Two beats, the verdict then one reason, never the reason first: at the ground 'No ball. Line ke peeche se daalo.' | 'नो बॉल। लाइन के पीछे से डालो।'; off the ground the same shape in plain Hindi: 'Zyada meethi hai, Master. Bilkul depot canteen wali.' | 'ज़्यादा मीठी है, मास्टर। बिल्कुल डिपो कैंटीन वाली।'
+- At the ground he answers yes and no with a call: 'Not out.' (yes, fine), 'Out.' (no, finished), 'No ball.' (not allowed), 'Over.' (enough). At the gate he says 'Haan.' and 'Nahin.' like anyone. His typed yes is 'Not out'.
+- The reason comes from the bus depot when it is not from the ground: servicing, jack, clutch, tube, grip, the depot canteen, an old model with no spare parts ('Theek hoon. Bas ghutna servicing mein.').
+- 'Arre waah.' | 'अरे वाह।' quietly, to nobody, at a clean catch, a shot off the middle of the bat, or good news he can see as one, and never louder.
+- Brings up his one state trial at any talk of umpires, luck or fairness: 'Ek hi trial tha. Not out. Kisi se poochh lo.' Nobody alive was there; no year on screen (rule 2).
+- Calls people by trade or title: 'Master' (Masterji), 'Lineman sahab' (Mausa ji), 'Madam ji' (Mausi), 'Scorer' (Tinku), 'khiladi' (any child or lane player, women and men alike). Mama ji gets no name, only 'Catch?'
+- Says the plain thing once and short, and does not say it again: a sorry, a thanks or a comfort is one bubble, then he tosses the ball or walks off.
+- Tosses the old leather ball a hand above his open palm while he decides; the catch is the full stop on his sentence. A second thought is a second bubble after a second toss, never a longer line.
+- Cross, he goes still: a whisper bubble, the words further apart, the verdict finger up and kept up.
 
 **Catchphrases**
 
-- 'Straight bat. Front foot.' | 'सीधा बैट। फ़्रंट फ़ुट।' | 'Seedha bat. Front foot.' (to every child he ever coached, you included; still his hello)
-- 'Not out. Next ball.' | 'नॉट आउट। अगली गेंद।' | 'Not out. Agli gend.' (his comfort: you are still in, carry on)
-- 'My one trial. Not out. Ask anyone.' | 'मेरा इकलौता ट्रायल। नॉट आउट। किसी से भी पूछ लो।' | 'Mera iklauta trial. Not out. Kisi se bhi poochh lo.'
-- 'Nine means nine.' | 'नौ मतलब नौ।' | 'Nau matlab nau.' (only ever his answer to Papa's 8:55)
+- 'Straight bat. Front foot.' | 'सीधा बैट। फ़्रंट फ़ुट।' | 'Seedha bat. Front foot.' (the line people quote back, kept word for word; still his hello to every child he coached, you included)
+- 'Koi baat nahin, khiladi. Hota hai.' | 'कोई बात नहीं, खिलाड़ी। होता है।' | 'Never mind, player. It happens.' (what every lane child has heard from him after a dropped catch or a broken glass)
+- 'Ek hi trial tha. Not out. Kisi se poochh lo.' | 'एक ही ट्रायल था। नॉट आउट। किसी से पूछ लो।' | 'One trial. Not out. Ask anyone.' (the grudge; no year)
+
+**Exclamation.** 'Arre waah.' | 'अरे वाह।' | 'Arre waah.' Said quietly, to nobody, at a clean catch, a shot off the middle of the bat, or good news he can see as one ('Arre waah. Bilkul bat ke beech se.'). English mode keeps it as it is, the way Mami keeps 'Ish'; if the English readers find it foreign, the fallback is 'Shot.', said quietly, and only at a stroke. 'Arre' on its own belongs to everyone and he uses it mid-line like anyone; the phrase said under his breath is his. Never at a person's looks, never sarcastic, never loud: it is the one warm sound he makes without words, so a power cut or a late guest gets something else. Religious meaning: none; 'waah' is everyday praise. Guards (rule 3): never run on into 'Waheguru', and 'arre' is never followed by a name from any faith ('Arre Ram' is banned).
+
+**Sorry, thanks and love.** SORRY: plain, at once, in front of whoever saw it, in his two beats: the slip owned, then the fact put right. 'Mujhse chook ho gayi, Bhai sahab. Ghadi dheemi hai.' | 'मुझसे चूक हो गई, भाई साहब। घड़ी धीमी है।' | 'I slipped up, Bhai sahab. The clock is slow.' At the ground, at most once a chapter, he takes back his own wrong call the umpire's way: 'Not out. Mujhse chook hui, khiladi.' The one sorry he cannot say is the one owed to the trial's umpire, or to Nani, who says that umpire was right: his contradiction, kept. THANKS: to an elder or an equal, plain and short: 'Badi meherbani, Lineman sahab.' | 'बड़ी मेहरबानी, लाइनमैन साहब।' | 'Much obliged, Lineman sahab.' With the deed, his two-rupee game with Mummy turned round as the full price goes down on her glass counter: 'Poore paise, Bhabhi ji. Aaj mol-bhaav nahin.' At the ground, once a chapter, the cricket form: 'Well fielded, khiladi.' (Hindi 'अच्छा पकड़ा, खिलाड़ी।'). His old deeds stay, never mentioned: Mausi's boxes washed, the tarpaulin over Masterji's cloth. WHEN HE IS THANKED: 'Kis baat ka?', then the credit sent somewhere else ('Kis baat ka, Scorer? Chhaon kitaab ke liye hai.'). LOVE: 'Front foot.', his hello to every child he coached, you included. For you it also comes as the thing he kept: 'Tumhara purana bat hai mere paas. / Nayi grip ke saath.'; on the platform, 'Front foot. Cup pe zaroor aao.' Never your marks, your job, your plans or a number. 'Well played.' (Hindi 'बढ़िया पारी।') is his highest praise, once a year, and then he looks away. COMFORT: 'Koi baat nahin, khiladi. Hota hai.' to a child or a player; for a real loss, once a chapter, the call: 'Next ball, Bhabhi ji. Shutter kal bhi uthega.' (Hindi 'अगली गेंद, भाभी जी। शटर कल भी उठेगा।'). A bare 'Not out.' stays a ruling, never comfort.
 
 **Words they use**
 
-- straight bat | सीधा बैट | seedha bat
-- front foot | फ़्रंट फ़ुट | front foot
-- next ball | अगली गेंद | agli gend
-- out, not out, no ball, wait, over | आउट, नॉट आउट, नो बॉल, रुको, ओवर | out, not out, no ball, ruko, over
+- Umpire's calls, at the ground and on a ruling, in at most one bubble in two: out, not out, no ball, over, next ball, dead ball, last over | आउट, नॉट आउट, नो बॉल, ओवर, अगली गेंद, ये गेंद नहीं गिनी जाएगी, आख़िरी ओवर
+- wait | रुको to the players, रुकिए to an elder or a table with an elder at it | ruko, rukiye
+- Coaching words: straight bat, front foot, cross bat, crease, line, steady batting | सीधा बैट, फ़्रंट फ़ुट, आड़ा बैट, क्रीज़, लाइन, टिक के खेलना | seedha bat, front foot, cross bat, crease, line, tik ke khelna
+- Praise: well played (once a year) | बढ़िया पारी; well fielded (once a chapter) | अच्छा पकड़ा; clean catch | साफ़ कैच
 - toss (his word alone in the cast) | टॉस | toss
-- arre waah (his one exclamation) | अरे वाह | arre waah
-- the ground (his word for the lane where the cup is played) | मैदान | maidan
-- player, for everyone, women and men | खिलाड़ी | khiladi
+- Bus-depot words: servicing, jack, clutch, tube, grip, tarpaulin, the depot canteen, an old model, spare parts | सर्विसिंग, जैक, क्लच, ट्यूब, ग्रिप, तिरपाल, डिपो की कैंटीन, पुराना मॉडल, पार्ट्स
+- An English verb with karo for a machine job only, the depot's way: change karo, check karo, fit karo | Hindi mode: बदलो, देखो, लगाओ
+- the ground, his word for the lane where the cup is played | मैदान | maidan; the pitch | पिच | pitch
+- player, for everyone, women, men and children alike | खिलाड़ी | khiladi
+- Plain feeling words: 'Mujhse chook ho gayi' (sorry), 'Badi meherbani' (thanks), 'Kis baat ka?' (when thanked), 'Koi baat nahin. Hota hai.' (comfort), 'Poore paise' (his thanks to Mummy, with the deed) | मुझसे चूक हो गई, बड़ी मेहरबानी, किस बात का?, कोई बात नहीं। होता है।, पूरे पैसे
+- Older everyday words, as the town says them: meherbani, zaroor, waqt, mol-bhaav | मेहरबानी, ज़रूर, वक़्त, मोल-भाव
+- The common fillers, mid-line, like everyone: achha, bas, arre, haan, chalo, dekho, theek hai
+- 'Arre waah' | 'अरे वाह' (his exclamation, said quietly)
 - rule | नियम | niyam
-- full service (of his knee, a bat, the drain) | फ़ुल सर्विस | full service
 - both lanes | दोनों गलियाँ | dono galiyaan
-- Address words with आप: Nani ji, Bhabhi ji, Bhai sahab, Madam ji, Lineman sahab, Master, Ji; with तुम: Scorer, and no word at all for you
+- Address words: with आप, Nani ji, Bhabhi ji, Bhai sahab, Madam ji, Lineman sahab, Master, Ji; with तुम, Scorer, khiladi, and no word at all for you or for Mama ji
 
 **Never says**
 
-- 'sharp' or 'ठीक X बजे' (Papa's word alone, his file), or a time to the minute such as 8:55 (Papa's).
-- A count, a tally or a figure outside the toss's countdown: head-counts are Nani's, prices Mummy's, minutes Papa's, scores Tinku's.
-- Three full-stopped fragments in a row with no call among them (comics review: too close to Nani's fragments and Mummy's lists).
-- 'sorry', 'माफ़ करना', 'maaf karna': he says 'Next ball.'
-- 'maybe', 'शायद', 'shayad', 'लगता है', 'I think': he gives verdicts, not guesses.
-- 'batsman', 'ladies', 'boys', 'girls', 'मर्द', 'औरत', 'लड़कियाँ', 'लड़के' about players: everyone is a player (खिलाड़ी) or a batter.
-- 'show-off' (Mausa ji's word at 2.28), 'drama queen', 'emotional', 'bossy', 'argues with everybody', 'knows best', 'moody', 'too modern': other people's words, or words the measure judge read as sexist on sight.
-- Anything about women or men in general (rule 22).
+- A figure in speech outside the two toss lead-ins (4.06 and 4.15) and 'Nau matlab nau' once a year to Papa: no minutes or clock times, no scores, totals or tallies, no prices, no head-counts, no ordinals. ('Ek hi trial' means 'only the one trial', not a count.)
+- 'Saboot nahin, toh ungli nahin.' | 'सबूत नहीं, तो उँगली नहीं।' in any chapter or form: it is a coined maxim and a demand for proof, and a one-line clip of it reads as 'the family wants proof' whatever it was said about. He never asks anyone for proof (saboot, likhit, writing, proof, सबूत, लिखित); he turns a rumour down with what he saw ('Not out, Bhabhi ji. Subah bhatti jal rahi thi.'), and the build flags proof words near a report beat (rule 22).
 - Any doubt of a report of harassment or a dowry demand, or 'misunderstanding' about one (rule 22).
-- 'beta', 'beti', 'bhaiya', 'didi', 'bhai', 'bro' to you (rule 8).
-- A future or past about you that changes with gender: -ूँगा/-ूँगी, -ोगे/-ोगी, आ गया/गई, रहते हो/रहती हो (rule 66).
-- A god-word or a religious exclamation (rule 3); his only exclamation is 'Arre waah'.
+- A cricket code for every feeling: a call in more than one bubble in two, or a coded feeling ('Next ball' as comfort, 'Well fielded' as thanks, 'Front foot' as love) more than once a chapter.
+- Other people's phrases, and their exclamations as his habitual cry (the words inside them, and a cry said now and then, stay free): Papa's 'Kamaal hai', 'Darj hai', 'Kripya dhyan dein', 'Aakhri dibbe tak' and any clock time or 'sharp'; Tinku's commentary ('Aur ye gaya!'), score shapes, 'Gazab' and the 'haan?' tag; Nani's closing 'Bas.', 'Chai piyo' and 'Khush raho'; Masterji's 'Jeete raho', 'Uff', 'Aap sahi hain' and 'Theek hai, maan liya'; Mausi's 'Suno, suno, suno!', 'Haay' and 'Shabaash'; Mausa ji's 'Hain?', 'Lo.' for here and a one-word 'Theek.'; Mama ji's 'Oho', the trailing 'aur haan,' and 'Pakka?'; Mummy's 'Had hai!', 'Haan ji, boliye', 'Isme kya' and 'Badhai ho'; Mami's 'Ish', 'Tick', 'Sahi?' and 'Congratulations'; your 'Badhiya.' as an opener, 'Maaf kijiye', 'Shukriya' and the 'Pehle ___' frame.
+- Other people's shapes: a comma list of jobs (Mummy), three bare fragments in a row (Nani), a whole English clause (Mama ji, Mami), a readback with a status (Mami), a tripled word (Mausi), a third beat that wanders (Masterji).
+- In Hindi mode, an English cricket phrase in Devanagari that a lane fan would not know: never नेक्स्ट बॉल, वेल प्लेड, वेल फ़ील्डेड, डेड बॉल, रिटायर्ड हर्ट, क्लीन कैच, लास्ट ओवर (rule 65). 'Timed out' leaves his voice in every mode.
+- Jargon most Indians would not know: googly, silly point, doosra, Duckworth, timed out (rule 2).
+- A coined saying or maxim. He has no proverbs (they are Nani's way) and no rulings turned into sayings; 'Saboot nahin, toh ungli nahin' was one and is cut.
+- 'batsman', 'ladies', 'boys', 'girls', 'मर्द', 'औरत', 'लड़कियाँ', 'लड़के' about players: everyone is a player (खिलाड़ी) or a batter.
+- 'show-off', 'drama queen', 'emotional', 'bossy', 'argues with everybody', 'knows best', 'moody', 'too modern': words the measure judge read as sexist on sight. Nothing about women or men in general (rule 22).
+- 'beta', 'beti', 'bhaiya', 'didi', 'bhai', 'bro' or any family word to you (rule 8).
+- A Hindi line to you that changes with gender (rule 66): -ूँगा/-ूँगी, -ोगे/-ोगी, -ेगा/-ेगी, आ गया/गई, रहते हो/रहती हो, and a participle before रहो or रहना (खाते रहो). His lines to you are commands, verbless calls, or lines where you are not the doer ('Tumhara purana bat hai mere paas.').
+- 'Ruko', तुम or a -ो command to anyone older than him; 'Rukiye' | 'रुकिए' whenever an elder is at the table or in earshot.
+- A god-word or religious exclamation (rule 3; the list in matrix 2.13), 'arre' followed by a holy name, 'waah' run on into 'Waheguru'; no caste word, no brand: the scooters, the phone and the canteen are never named.
+- A sarcastic 'Arre waah': it stays the one warm sound he makes without words.
 - A year on screen, '1979' included (rule 2).
 - A raised voice: no shout bubble, no exclamation mark, no all-capital word.
-- Jargon an outsider would not know: googly, gully, silly point, Duckworth (rule 2). Only calls most Indians know.
-- A line over 7 words; never a speech (rule 62 caps a spoken line at 10).
-- 'Hmm' (Mausa ji's), or Papa's 'X next' frame; his only 'next' is 'Next ball'.
+- A spoken bubble over 10 words (rule 62). His own aim is 2 to 8 counted words (names and titles not counted, as rule 62 counts them). Never a speech.
+- 'water', 'wall', 'chalk' (पानी, दीवार, चॉक) in any line: chapter 4 note words (Hari, Agnes, Manju, rule 36); never a card person's name or note word before or during a decision.
 - 'captain' as a job word for anyone else (rule 36: in Hindi the job and his title are one word).
 
 **How they address people**
 
-- YOU: तुम, because he coached you, only in shapes that show no gender (rule 66): commands ('देखो', 'चलो', 'पकड़ो'), 'who should' asks in the subjunctive, lines where you are not the doer, and verbless calls ('Front foot.', 'Catch.'). No name, no family word; 'Front foot.' is his hello. You say आप and 'Captain sahab' ('चलिए, कप्तान साहब।', 4.03).
+- YOU: तुम, because he coached you, only in shapes that show no gender (rule 66): commands ('रुको', 'आओ', 'खेलो'), verbless calls ('Front foot.') and lines where you are not the doer ('Tumhara purana bat hai mere paas.'). No name and no family word; 'Front foot.' is his hello. You say आप and 'Captain sahab'.
 - TINKU: 'Scorer' | 'स्कोरर', तुम. She says आप and 'Captain sahab'.
-- NANI: 'Nani ji' | 'नानी जी', आप.
-- MUMMY: 'Bhabhi ji' | 'भाभी जी', आप (her file agrees; readers confirm it leans towards no community, rule 65).
-- PAPA: 'Bhai sahab' | 'भाई साहब', आप.
-- MAMA JI: no name, तुम since the dropped catch; his greeting is 'Catch?'
-- MAUSI: 'Madam ji' | 'मैडम जी', as her old pupils call her, आप (her file).
-- MAUSA JI: 'Lineman sahab' | 'लाइनमैन साहब', आप (his file names no word; readers confirm, rule 65).
-- MASTERJI: 'Master' | 'मास्टर', आप; Masterji calls him 'Captain', आप (Masterji's file). They argue in आप.
-- MAMI: 'Ji', आप.
-- LANE PLAYERS (the card people): first names and तुम in his life, but never a card person's name or note word in a bubble before or during a decision (rule 36); his remarks about them live only as card notes with his tag (rule 22).
-- ONE ADDRESS TABLE: these words go into the cast map's single address table that every file reads (India review), checked by the Hindi-first readers and the South Indian reader (rule 65).
+- NANI: 'Nani ji' | 'नानी जी', आप; the one person on the lane older than him, so 'Rukiye', never 'Ruko', when she can hear. She says 'Captain sahab', आप.
+- MUMMY: 'Bhabhi ji' | 'भाभी जी', आप. She says 'Captain sahab', आप.
+- PAPA: 'Bhai sahab' | 'भाई साहब', आप. Papa says 'Captain sahab', आप.
+- MAMA JI: no name, तुम since the dropped catch; his greeting is 'Catch?' Mama ji says 'Captain sahab', आप.
+- MAUSI: 'Madam ji' | 'मैडम जी', as her old pupils call her, आप.
+- MAUSA JI: 'Lineman sahab' | 'लाइनमैन साहब', आप. Mausa ji says 'Captain sahab', आप.
+- MASTERJI: 'Master' | 'मास्टर', आप; Masterji calls him 'Captain', आप. They argue in आप.
+- MAMI: 'Ji' | 'जी', आप; they nod.
+- A CHILD OR A LANE PLAYER: 'khiladi' | 'खिलाड़ी', तुम; first names in his life, but never a card person's name or note word in a bubble before or during a decision (rule 36).
+- All of these go into the cast map's one address table, checked by the Hindi-first readers and the South Indian reader (rule 65).
 
 **Sample lines**
 
-- GIVING AN ORDER (4.03, the stakes, face-on at the crack): 'The losing lane mends this drain.' | 'जो गली हारे, वो ये नाली बनवाए।' | 'Jo gali haare, wo ye naali banwaaye.'
-- GIVING AN ORDER (4.06, the lead-in to decision 1; 4.15 is its twin, 'Toss in ten minutes.' | 'दस मिनट में टॉस।' | 'Das minute mein toss.'): 'Toss in half an hour.' | 'आधे घंटे में टॉस।' | 'Aadhe ghante mein toss.'
-- GIVING AN ORDER (to a bowler over the line): 'No ball. Back behind the line.' | 'नो बॉल। लाइन के पीछे से।' | 'No ball. Line ke peeche se.'
-- WORRYING (looking at the sky): 'Wait. Clouds over the depot end.' | 'रुको। डिपो की तरफ़ बादल।' | 'Ruko. Depot ki taraf baadal.'
-- WORRYING (his fear, to Papa on the walk): 'Ground's getting smaller, Bhai sahab.' | 'मैदान छोटा हो रहा है, भाई साहब।' | 'Maidan chhota ho raha hai, Bhai sahab.'
-- TEASING (Papa, at 8:55): 'Nine means nine, Bhai sahab.' | 'नौ मतलब नौ, भाई साहब।' | 'Nau matlab nau, Bhai sahab.'
-- TEASING (Mama ji, on a visit): 'Catch, and the trophy. Both dropped.' | 'कैच भी, ट्रॉफ़ी भी। दोनों छूटे।' | 'Catch bhi, trophy bhi. Dono chhoote.'
-- TEASING (Tinku, the old no-ball): 'Any no-balls today, Scorer?' | 'स्कोरर, आज कोई नो-बॉल?' | 'Scorer, aaj koi no-ball?'
-- IMPRESSED (a clean catch, quietly, to nobody): 'Arre waah. Catch.' | 'अरे वाह। कैच।' | 'Arre waah. Catch.'
-- PRAISING (his highest, once a year, then he looks away): 'Well played.' | 'वेल प्लेड।' | 'Well played.'
-- PRAISING AND MOVED (4.26, to Tinku, on the page; it matches her file): 'That book. Show the district.' | 'वो किताब। ज़िले को दिखाओ।' | 'Wo kitaab. Zile ko dikhao.'
-- SAYING NO (someone asks to start at ten): 'No ball. A rule's a rule.' | 'नो बॉल। नियम तो नियम है।' | 'No ball. Niyam to niyam hai.'
-- COMFORTING (Mummy, the morning after the flood): 'Not out, Bhabhi ji. Next ball.' | 'नॉट आउट, भाभी जी। अगली गेंद।' | 'Not out, Bhabhi ji. Agli gend.'
-- LOSING HIS TEMPER (a scooter on the pitch; a whisper bubble, the verdict finger up, never a shout): 'Wait. Whose scooter? Off my pitch.' | 'रुको। किसका स्कूटर? मेरी पिच से हटाओ।' | 'Ruko. Kiska scooter? Meri pitch se hatao.'
-- A JOKE (about his knee): 'My knee retired. I didn't.' | 'घुटना रिटायर हुआ। मैं नहीं।' | 'Ghutna retire hua. Main nahin.'
-- THE GRUDGE: 'My one trial. Not out. Ask anyone.' | 'मेरा इकलौता ट्रायल। नॉट आउट। किसी से भी पूछ लो।' | 'Mera iklauta trial. Not out. Kisi se bhi poochh lo.'
-- TO YOU, IN PASSING (his hello): 'Straight bat. Front foot.' | 'सीधा बैट। फ़्रंट फ़ुट।' | 'Seedha bat. Front foot.'
-- THE STORY'S FIXED ENDING (4.27, off panel, the same in every band; recast as a call): 'Over. Both lanes mended it.' | 'ओवर। दोनों गलियों ने मिलकर बनाई।' | 'Over. Dono galiyon ne milkar banayi.'
-- WRITERS' NOTE: any of these placed in chapter 4's strip is checked against the note words of the coming decision's cards (rule 36). 'Water', 'wall' and 'chalk' are already note words in chapter 4 (Hari, Agnes, Manju), so none of his spoken lines uses them.
+- HELLO, TO YOU, PASSING HIS DOOR (the line people quote back, kept word for word): EN 'Straight bat. Front foot.' | HINGLISH 'Seedha bat. Front foot.' | HINDI 'सीधा बैट। फ़्रंट फ़ुट।'
+- LOVE, TO YOU, HOME FOR THE CUP (plain; he has kept and regripped the bat you played with as a child; nothing is held out of the frame, rule 7; you are not the doer, rule 66 clear): EN 'Your old bat's still with me. / New grip on it.' | HINGLISH 'Tumhara purana bat hai mere paas. / Nayi grip ke saath.' | HINDI 'तुम्हारा पुराना बैट है मेरे पास। / नई ग्रिप के साथ।'
+- SETTING THE STAKES (4.03, kept; two fingers at the crack, the ball in the air): EN 'The losing lane mends this drain.' | HINGLISH 'Jo gali haare, wo ye naali banwaaye.' | HINDI 'जो गली हारे, वो ये नाली बनवाए।'
+- THE LEAD-IN (4.06, a marked number, the story's deadline; its twin 4.15 is 'Toss in ten minutes.' | 'Das minute mein toss.' | 'दस मिनट में टॉस।'): EN 'Toss in half an hour.' | HINGLISH 'Aadhe ghante mein toss.' | HINDI 'आधे घंटे में टॉस।'
+- AN ORDER (to a bowler over the line): EN 'No ball. Bowl from behind the line.' | HINGLISH 'No ball. Line ke peeche se daalo.' | HINDI 'नो बॉल। लाइन के पीछे से डालो।'
+- THE DEPOT (cup morning, regripping a lane bat, to the lane's players; an English verb with karo for a machine job): EN 'Change that grip. Wrap it in depot inner tube.' | HINGLISH 'Grip change karo. Depot ka tube lagao.' | HINDI 'ग्रिप बदलो। डिपो का ट्यूब लगाओ।'
+- WORRYING (looking at the sky, to the lane's players): EN 'Clouds over the depot end. Get the tarpaulin ready.' | HINGLISH 'Depot ki taraf baadal hain. Tirpal tayyar rakho.' | HINDI 'डिपो की तरफ़ बादल हैं। तिरपाल तैयार रखो।'
+- HIS FEAR (to Papa on the six o'clock walk, the one thing he says in half an hour; plain): EN 'The scooters keep coming, Bhai sahab. / After me, it's all parking.' | HINGLISH 'Scooter badh rahe hain, Bhai sahab. / Mere baad, ye parking.' | HINDI 'स्कूटर बढ़ रहे हैं, भाई साहब। / मेरे बाद, ये पार्किंग।'
+- TEASING PAPA (cup morning, Papa out at 8:55; his one marked figure of the year; kept): EN 'Nine means nine, Bhai sahab.' | HINGLISH 'Nau matlab nau, Bhai sahab.' | HINDI 'नौ मतलब नौ, भाई साहब।'
+- TEASING MAMA JI (the trophy promised again): EN 'Catch? Dropped the trophy as well?' | HINGLISH 'Catch? Trophy bhi chhoot gayi kya?' | HINDI 'कैच? ट्रॉफ़ी भी छूट गई क्या?'
+- TEASING TINKU (the old no-ball she scored against his lane): EN 'So, Scorer. Whose no-ball did you write up today?' | HINGLISH 'Achha, Scorer, aaj kiski no ball likhi?' | HINDI 'अच्छा, स्कोरर, आज किसकी नो बॉल लिखी?'
+- ARGUING WITH NANI (her old verdict on his trial, 'Pad first, bat after.'): EN 'Not out, Nani ji. It hit the bat.' | HINGLISH 'Not out, Nani ji. Bat laga tha.' | HINDI 'नॉट आउट, नानी जी। बैट लगा था।'
+- ARGUING WITH MASTERJI (across the drain, every monsoon; plain): EN 'Master, your tape measures cloth. Not drains.' | HINGLISH 'Master, aapka feeta kapda naapta hai. Naali nahin.' | HINDI 'मास्टर, आपका फ़ीता कपड़ा नापता है। नाली नहीं।'
+- IMPRESSED (a clean catch, quietly, to nobody): EN 'Arre waah. Clean catch.' | HINGLISH 'Arre waah. Clean catch.' | HINDI 'अरे वाह। साफ़ कैच।'
+- HIS HIGHEST PRAISE (once a year, then he looks away): EN 'Well played.' | HINGLISH 'Well played.' | HINDI 'बढ़िया पारी।'
+- THANKS AT THE GROUND (once a chapter; a lane player stops a ball before the drain): EN 'Well fielded, player.' | HINGLISH 'Well fielded, khiladi.' | HINDI 'अच्छा पकड़ा, खिलाड़ी।'
+- THANKS (to Mausa ji, after the floodlights are rewired for nothing; plain): EN 'Much obliged, Lineman sahab.' | HINGLISH 'Badi meherbani, Lineman sahab.' | HINDI 'बड़ी मेहरबानी, लाइनमैन साहब।'
+- THANKS WITH THE DEED (the full price going down on Mummy's glass counter, their two-rupee game turned round, and he walks off before she can argue): EN 'Full price, Bhabhi ji. No haggling today.' | HINGLISH 'Poore paise, Bhabhi ji. Aaj mol-bhaav nahin.' | HINDI 'पूरे पैसे, भाभी जी। आज मोल-भाव नहीं।'
+- SORRY AT THE GROUND (once a chapter; he gave a lane player out, then saw the ball had hit the bat, and takes it back at once in front of both lanes, as no one did for him): EN 'Not out. I slipped up, player.' | HINGLISH 'Not out. Mujhse chook hui, khiladi.' | HINDI 'नॉट आउट। मुझसे चूक हुई, खिलाड़ी।'
+- SORRY (to Mummy, who said the floodlight bulbs were fine and was right; plain): EN 'I slipped up, Bhabhi ji. The bulbs were fine.' | HINGLISH 'Mujhse chook ho gayi, Bhabhi ji. Bulb theek the.' | HINDI 'मुझसे चूक हो गई, भाभी जी। बल्ब ठीक थे।'
+- COMFORTING (Mummy, the morning after the flood; kept; his one coded comfort of the chapter): EN 'Next ball, Bhabhi ji. The shutter goes up tomorrow too.' | HINGLISH 'Next ball, Bhabhi ji. Shutter kal bhi uthega.' | HINDI 'अगली गेंद, भाभी जी। शटर कल भी उठेगा।'
+- COMFORTING A LANE PLAYER (out cheaply, walking back; plain): EN 'Never mind, player. The best of them get out.' | HINGLISH 'Koi baat nahin, khiladi. Achhe-achhe out hote hain.' | HINDI 'कोई बात नहीं, खिलाड़ी। अच्छे-अच्छे आउट होते हैं।'
+- LOSING HIS TEMPER (a scooter on the pitch; a whisper bubble, the finger up, then a second bubble after a long beat): EN 'Wait. Whose scooter is this? / Off my pitch.' | HINGLISH 'Ruko. Kiska scooter hai? / Meri pitch se hatao.' | HINDI 'रुको। किसका स्कूटर है? / मेरी पिच से हटाओ।'
+- A JOKE (about his knee; kept): EN 'Retired hurt. Just the knee.' | HINGLISH 'Retired hurt. Sirf ghutna.' | HINDI 'घुटना छुट्टी पर। मैं नहीं।'
+- A JOKE ABOUT HIS AGE (to Tinku, who asks why he no longer bowls; depot words): EN 'Old model, Scorer. No spare parts.' | HINGLISH 'Purana model hoon, Scorer. Parts nahin milte.' | HINDI 'पुराना मॉडल हूँ, स्कोरर। पार्ट्स नहीं मिलते।'
+- THE GRUDGE (any talk of umpires, luck or fairness): EN 'One trial. Not out. Ask anyone.' | HINGLISH 'Ek hi trial tha. Not out. Kisi se poochh lo.' | HINDI 'एक ही ट्रायल था। नॉट आउट। किसी से पूछ लो।'
+- ASKING AFTER NANI (to Papa, every morning on the walk from May; one word, and Papa answers with a time): EN 'Nani ji?' | HINGLISH 'Nani ji?' | HINDI 'नानी जी?'
+- HIS TURN (4.26, at dusk, on the page, to Tinku; kept word for word): EN 'That book. Show the district.' | HINGLISH 'Wo kitaab. Zile ko dikhao.' | HINDI 'वो किताब। ज़िले को दिखाओ।'
+- THE STORY'S FIXED ENDING (4.27, off panel, the same in every band; kept): EN 'Over. Both lanes mended it.' | HINGLISH 'Over. Dono galiyon ne milkar banayi.' | HINDI 'ओवर। दोनों गलियों ने मिलकर बनाई।'
 
 ## Typing
 
-- The phone: a plain phone in a plain dark case with a cracked top corner, kept in a trouser pocket (the knit shirt has no pocket). Painted with a blank screen; every message is live text on it, or a message card under the panel if the phone is small (rules 30 and 40). No app name, app look or 'forwarded' label (rule 3). No quirk about his eyes or the font size (comics review: six files had one; it is struck here).
-- Script: English in Latin letters only, never Devanagari and never a Hinglish sentence: times and places in English, as the realism notes have it ('English for times and places').
-- Length: telegram. Time first, then the place, then one instruction, 1 to 7 words.
-- Punctuation: none at all, not even a colon in a time ('8 30'). The phone capitalises the first letter, and that is his only capital. Never all capitals, which reads as shouting and is the 'WhatsApp uncle' trap (realism notes).
-- The one exception: once a year, in his own family group, he writes the cup's end in full sentences with full stops. That is the tell that it matters.
-- Emoji: one only, 🏏, on cup messages. No faces, no folded hands, no stickers, no good-morning flowers (Papa's), no forwards, ever.
-- Voice notes: never sends one. He listens to the first few seconds of anyone else's and replies with the time.
+- The phone: a plain phone in a plain dark case with a cracked top corner, kept in a trouser pocket. Painted with a blank screen; every message is live text on it, or a message card under the panel if the phone is small (rules 30 and 40). No app name, app look or 'forwarded' label (rule 3), and no quirk about his eyes or the font size.
+- Script: English in Latin letters only, never Devanagari and never a Hinglish sentence (realism notes 2.3). The messages are strings of nouns and calls, not English clauses, so this does not break his speech's no-clause rule.
+- Shape: a telegram in his speaking shape, the thing first, then the place, then one instruction, 1 to 7 words.
+- His typed yes is 'Not out', his not-yet 'Wait', his enough 'Over'; the lane knows a message is his by it. When he thanks, he types it plainly: 'thank you'.
+- Figures: none, except the cup's date and its nine o'clock, as digits and only in cup messages. Never a minute, never a score, never a price.
+- Punctuation: none at all, not even a question mark. The phone capitalises the first letter, and that is his only capital. Never all capitals, which reads as shouting and is the 'WhatsApp uncle' trap (realism notes 7).
+- The one exception: once a year, in his own family group (mentioned, never shown), he writes the cup's end in full sentences with full stops. That is the tell that it matters.
+- Emoji: one only, 🏏, on cup messages. Tinku's 🏏 to him copies his. No faces, no folded hands, no stickers, no good-morning flowers, no forwards, ever.
+- Voice notes: never sends one. He listens to the first few seconds of anyone else's and answers with the one fact asked, or a call.
 - He sends the same words one by one to every person rather than to a group: he trusts a message he has sent himself. The lane's group exists and is mentioned, never shown (owner, 23 Oct: no group chat).
-- Reads and answers twice a day, after the walk and before the toss, and within a minute about cricket or the drain; never after nine at night (he is asleep; he walks at six).
+- Reads and answers twice a day, after the walk and before the toss, and within a minute about cricket or the drain; never late at night (he walks at dawn).
 - One forefinger, slow and deliberate; no typos, because there are so few words.
 
 **Sample messages**
 
-- TO THE WHOLE LANE, one number at a time, the same words to each: 'Aug 15 9 am lane ground bring water 🏏'
-- TO MAUSI, after her two-minute voice note about the lane side's lunch: '9 am'
-- TO PAPA, the May morning Papa is on the night train: '6' (one character: he has walked the route for both of them)
-- TO TINKU, the night before the cup: 'Scorer 8 30 table 2 pencils'
+- TO THE WHOLE LANE, one number at a time, the same words to each (kept): 'Cup 15 aug ground 9 am 🏏' (the cup's date and its nine, his only typed figures)
+- TO MAUSI, after her two-minute voice note about when to send the lane side's lunch (kept from the cast map): '9 am'
+- TO PAPA, the May morning Papa is on the night train (he has walked their route alone): 'Route clear'
+- TO TINKU, the night before the cup (the chair in the shade is his tenderness): 'Scorer chair in shade bring book'
+- TO MUMMY, when she texts that the floodlight bulbs are put aside: 'Not out' (his typed yes; next morning the full price is on her counter)
+- TO MAUSA JI, the night the rewired floodlights first come on (plain thanks): 'Lights on thank you lineman sahab'
 - TO MASTERJI, the morning after the July flood: 'Drain cracked your side' (Masterji's reply, not his: 'aapki side')
-- TO YOU, on your birthday: 'Happy birthday front foot'
-- TO HIS OWN FAMILY GROUP (mentioned, never shown; his one message a year in full sentences; the same in every band): 'Cup done. Both lanes mended the drain together. 🏏'
-- TO MAMA JI, when the trophy is promised again: 'Catch first'
+- TO MAMA JI, when the trophy is promised again: 'Catch' (his greeting, typed with no question mark)
+- TO YOU, on your birthday (kept): 'Happy birthday front foot'
+- TO HIS OWN FAMILY GROUP (mentioned, never shown; his one message a year in full sentences; the same in every band): 'The cup is over. Both lanes mended the drain together. 🏏'
 
 ## Look
 
@@ -301,3 +326,18 @@ MASTER TEXT (word for word, used only to paint his master sheet and per-look ref
 - Touches the player, or holds anything out of the frame towards them (rule 7).
 - Lets anyone else play with his old ball.
 - Uses a god-word.
+
+## Twelve everyday moments (the voice test)
+
+- 1. The lights go out in the middle of dinner (to the table, Nani among them, so 'Rukiye', then to Mausa ji; no exclamation, since 'Arre waah' is only for good cricket; dry humour).: "Rukiye. Lineman sahab, aapki batting." | "रुकिए। लाइनमैन साहब, आपकी बैटिंग।" | "Hold on. Lineman sahab, you're in."
+- 2. Someone everyone was waiting for arrives two hours late (to Mama ji at the gate; a whisper bubble, the verdict finger up and kept up, no figure; plain Hindi, the old catch as the reason).: "Ab aaye? Catch bhi aise hi chhoota tha." | "अब आए? कैच भी ऐसे ही छूटा था।" | "Now? That's how the catch went too."
+- 3. A cousin phones to say they have got their first job (to the cousin on the phone; his once-a-year praise, then an infinitive command, so the cousin keeps no gender).: "Well played. Ab tik ke khelna." | "बढ़िया पारी। अब टिक के खेलना।" | "Well played. Now stay at the crease."
+- 4. The tea someone has just made has far too much sugar in it (to Masterji, who made it; a polite no, the reason from the depot).: "Zyada meethi hai, Master. Bilkul depot canteen wali." | "ज़्यादा मीठी है, मास्टर। बिल्कुल डिपो कैंटीन वाली।" | "Too sweet, Master. Like the depot canteen's."
+- 5. In front of the family, he is shown to have had a fact wrong (to Papa, who has shown that the station clock runs slow; his plain sorry, said at once).: "Mujhse chook ho gayi, Bhai sahab. Ghadi dheemi hai." | "मुझसे चूक हो गई, भाई साहब। घड़ी धीमी है।" | "I slipped up, Bhai sahab. The clock is slow."
+- 6. Someone he loves is leaving, goodbye on a railway platform (to you; his hello, then a command, rule 66 clear).: "Front foot. Cup pe zaroor aao." | "फ़्रंट फ़ुट। कप पे ज़रूर आओ।" | "Front foot. Be back for the cup."
+- 7. Someone thanks him for something he did (Tinku, for his chair in the shade every cup; 'Kis baat ka?' and the credit sent elsewhere, which keeps his 4.26 turn unspent).: "Kis baat ka, Scorer? Chhaon kitaab ke liye hai." | "किस बात का, स्कोरर? छाँव किताब के लिए है।" | "What for, Scorer? The shade's for the book."
+- 8. A neighbour passes on a rumour that the corner sweet shop is closing (to Mummy, who heard it at her counter; an appeal turned down with what he saw on his dawn walk; a habit of judging, never a character).: "Not out, Bhabhi ji. Subah bhatti jal rahi thi." | "नॉट आउट, भाभी जी। सुबह भट्टी जल रही थी।" | "Not out, Bhabhi ji. Their stove was lit at dawn."
+- 9. Heavy rain floods the lane outside the house (to the lane, you among them; worry as an order, then the depot; verbless order, rule 66 clear).: "Naali se door. Depot ka tirpal hai mere paas." | "नाली से दूर। डिपो का तिरपाल है मेरे पास।" | "Off the drain. I've got the depot tarpaulin."
+- 10. Someone asks him how he is (you ask; a plain answer, then his knee in depot words; no figure, no dodge).: "Theek hoon. Bas ghutna servicing mein." | "ठीक हूँ। बस घुटना सर्विसिंग में।" | "I'm fine. Just the knee, in for servicing."
+- 11. A child knocks a glass of water across the table (to the child, a grandchild at the table; plain comfort; 'khiladi' fits any child).: "Koi baat nahin, khiladi. Hota hai." | "कोई बात नहीं, खिलाड़ी। होता है।" | "Never mind, player. It happens."
+- 12. A phone call brings good news (to the caller; his exclamation, quiet).: "Arre waah. Bilkul bat ke beech se." | "अरे वाह। बिल्कुल बैट के बीच से।" | "Arre waah. Right off the middle of the bat."
