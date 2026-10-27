@@ -776,7 +776,7 @@ def help_sheet(world):
 # once in the one dialog. After it, one line; installed, how to take the icon off the home screen. Hindi: drafts.
 PRIVACY_DEFS = ((('On this phone', 'इस फ़ोन पर'), ('Your birth date, your answers, the language and sound.', 'आपकी जन्म तारीख़, आपके जवाब, भाषा और आवाज़।')),
                 (('Sent anywhere', 'कहीं भेजा गया'), ('Nothing leaves this phone.', 'इस फ़ोन से कुछ बाहर नहीं जाता।')),
-                (('Kept nowhere', 'कहीं नहीं रखा जाता'), ('How long you take, or what you type.', 'आप कितना समय लेते हैं, या क्या लिखते हैं।')))
+                (('Kept nowhere', 'कहीं नहीं रखा जाता'), ('How long you take.', 'आप कितना समय लेते हैं।')))
 DELETE_Q = ('Delete all your days and notes?', 'अपने सारे दिन और नोट मिटाएँ?')   # F-112's one wording
 
 
@@ -1563,7 +1563,7 @@ WEB = (
     + '<div class="pg-spec"><h4>Icon options (one icon for both worlds)</h4><p class="pg-rule">The icon cannot change weekly, so it carries both worlds. No Equal Lens logo: The Equal Lens stays a small credit in About.</p><div class="pg-row" style="gap:32px">'
     + f'<span class="iconopt">{icon_svg("ticket")}<span>A. The day\'s ticket<span class="rec">default</span></span></span><span class="iconopt">{icon_svg("roundel")}<span>B. The issue roundel</span></span><span class="iconopt">{icon_svg("split")}<span>C. Two worlds, one punch</span></span></div></div>'
     + '<div class="pg-two" style="margin-top:16px"><div class="pg-spec"><h4>The name under the icon</h4><p class="pg-rule">The game is called Retake. Six letters stay whole under the icon on every phone.</p><div class="pg-row" style="gap:24px">'
-    + homescreen('Retake') + '</div><p class="pg-note">The same name on the home screen, link previews, share cards and the store. In the stores the title is "Retake: a daily fairness puzzle".</p></div>'
+    + homescreen('Retake') + '</div><p class="pg-note">The same name on the home screen, link previews, share cards and the store. In the stores the title is "Retake: a daily fairness puzzle". Until the dailies ship, the web page, link preview and install card say "Retake: a fairness puzzle".</p></div>'
     + '<div class="pg-spec"><h4>Reminder notification (only if the player turns it on)</h4><p class="pg-rule">At most 8 words, names only the day\'s object. On iPhone, reminders work only once the app is installed.</p>'
     + f'<div class="notif">{icon_svg("ticket")}<span><b>Retake</b>Tonight: one seat left at the Tatkal counter</span></div></div></div>'
 )

@@ -154,7 +154,7 @@ function useCloseRequest(on: boolean, close: () => void) {
 const PRIVACY: [Bi, Bi][] = [
   [['On this phone', 'इस फ़ोन पर'], ['Your birth date, your answers, the language and sound.', 'आपकी जन्म तारीख़, आपके जवाब, भाषा और आवाज़।']],
   [['Sent anywhere', 'कहीं भेजा गया'], ['Nothing leaves this phone.', 'इस फ़ोन से कुछ बाहर नहीं जाता।']],
-  [['Kept nowhere', 'कहीं नहीं रखा जाता'], ['How long you take, or what you type.', 'आप कितना समय लेते हैं, या क्या लिखते हैं।']],
+  [['Kept nowhere', 'कहीं नहीं रखा जाता'], ['How long you take.', 'आप कितना समय लेते हैं।']],
 ]
 
 /** The "?" sheet (owner, 23 Oct 2026, option C): one line of how to play, the languages, then sound; and one link,

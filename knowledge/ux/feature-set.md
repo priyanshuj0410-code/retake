@@ -5,6 +5,7 @@ description: Every feature of Retake (217 rows), drawn from the journeys' raw li
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-15/
   - https://app.plane.so/the-equal-lens/browse/EVAL-18/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-22/
 ---
 
 # Retake: feature set
@@ -233,7 +234,7 @@ A daily puzzle that shows you your two ways: open a link, play a short puzzle at
 |---|---|---|---|---|---|---|
 | F-123 | The install offer: one sheet, once, after the third day; Android installs in one tap, iPhone shows the two taps; "Not now" as plain as Install, never asked again | Sheet over the cover | P1, P2, P3, P4, P5 | V1 | S7, S14; DESIGN Web and installed app, over DG-37's day 2; W4; M4 (UNVERIFIED): check on a real iPhone before V1 whether the installed app starts with the days played in Safari; if it does not, a player with the email login gets the days back by the code (F-172), and for everyone else the iPhone install steps must carry the days across (for example, the installed app opens a one-time link made in Safari) or the offer must come earlier, a choice brought to the owner then; record the result under F-123, M4 and F-172 | Decided |
 | F-124 | One app icon for every world (default: the day's ticket), with no logo and nothing about the topic, tried with players who share a phone before launch | Home screen | All, P3 | V1 | S7, S15; DESIGN icon choice A, R-A11Y-21; P3 S7 | Decided |
-| F-125 | Home-screen name "Retake", the game's name, short enough not to be cut; the same name on link previews, share cards and the store, where the title is "Retake: a daily fairness puzzle" because several photo apps are already called Retake (trademark check before launch) | Home screen | All, P3 | V1 | S7; O13 | Decided |
+| F-125 | Home-screen name "Retake", the game's name, short enough not to be cut; the same name on link previews, share cards and the store, where the title is "Retake: a daily fairness puzzle" because several photo apps are already called Retake (trademark check before launch). Until the dailies ship, the web page, link preview and install card say "Retake: a fairness puzzle", so nothing promises a daily that is not built (owner, 27 Oct 2026, EVAL-22) | Home screen | All, P3 | V1 | S7; O13 | Decided |
 | F-126 | A launch screen of the ground colour and the icon; the installed window takes the week's world colour | Installed app | All | V1 | DESIGN Web and installed app, R-VIS-24 (the library's launch screen adds the name) | Decided |
 | F-127 | Reminders start off. On Android they are offered on the day-2 result; on iPhone, on the first result played from the installed app. The phone's prompt comes only after "Remind me"; offered again no sooner than 7 days, at most twice. After "Remind me", the notice sheet lists what a reminder needs (this phone's reminder address, the time picked, whether today is played) before the phone's own prompt. Reminders do not need the email login | Result, sheet | P1, P2, P5, P6 | V1 | S7; DG-36, DG-37, R-NUM-36; DESIGN; O11 Q1; D3 (default) | Decided (default, owner to confirm) |
 | F-128 | At most one reminder a day, at a time the player picks; none if already played | Reminder time picker | All, P5, P6 | V1 | S7; DG-38, R-NUM-36; O11 Q1 | Decided |

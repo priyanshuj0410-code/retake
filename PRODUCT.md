@@ -5,6 +5,7 @@ description: Durable product truth for Retake (users, purpose, positioning, oper
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-14/
   - https://app.plane.so/the-equal-lens/browse/EVAL-13/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-22/
 ---
 
 # Product
@@ -39,6 +40,8 @@ The game is designed against two anti-personas:
 Secondary stakeholders shape play without playing, for example HR or college leads who share the link.
 
 Children are out of scope for now. DPDP s.9 needs legal advice first. A minor on a shared parent's phone is a case the design must handle.
+
+The owner's rule (27 Oct 2026, EVAL-22): "We will design for students after the evaluation method passes. A strict no on testing not validated tools on kids." Validation runs with adults only. A student version is designed only once the reading has passed validation with adults, and no tool that is not validated is ever tried on anyone under 18.
 
 ## Product Purpose
 

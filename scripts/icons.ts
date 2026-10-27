@@ -31,7 +31,7 @@ svg { width: 300px; height: 300px; flex: none; border-radius: 48px; }
 h1 { margin: 0; font: 900 156px/1 'Sarpanch', sans-serif; letter-spacing: 1px; }
 p { margin: 20px 0 0; font: 500 44px/1.3 'Hind', sans-serif; }
 p span { font-size: 40px; opacity: .8; }
-</style></head><body>${svg('retake.svg')}<div><h1>Retake</h1><p>A daily fairness puzzle<br><span lang="hi">रीटेक</span></p></div></body></html>`
+</style></head><body>${svg('retake.svg')}<div><h1>Retake</h1><p>A fairness puzzle<br><span lang="hi">रीटेक</span></p></div></body></html>`
 
 const ICONS: [name: string, size: number, art: string][] = [
   ['icon-192.png', 192, 'retake.svg'],

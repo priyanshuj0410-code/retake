@@ -1,7 +1,7 @@
 {
   "name": "Retake",
   "short_name": "Retake",
-  "description": "Retake: a daily fairness puzzle. Made-up people, and everything you play stays on this phone.",
+  "description": "Retake: a fairness puzzle. Made-up people, and everything you play stays on this phone.",
   "id": "./",
   "start_url": "./",
   "scope": "./",
