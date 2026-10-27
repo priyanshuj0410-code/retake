@@ -10,5 +10,5 @@ head = page[:page.index('<body>') + len('<body>')]
 tail = page[page.index('<script>'):]
 head = head.replace('<title>MIT Solve 2027 Application Workbook</title>', '<title>MIT Solve 2027 Economic Prosperity Workbook</title>')
 head = head.replace('MIT Solve 2027 application workbook', 'MIT Solve 2027 · Economic Prosperity workbook')
-(HERE / 'solve-2027-econ-workbook.html').write_text(head + '\n' + (HERE / 'econ-body.html').read_text(encoding='utf-8') + '\n' + tail, encoding='utf-8')
+(HERE / 'solve-2027-econ-workbook.html').write_text(head + '\n<main>\n' + (HERE / 'econ-body.html').read_text(encoding='utf-8') + '\n</main>\n' + tail, encoding='utf-8')
 print('solve-2027-econ-workbook.html')

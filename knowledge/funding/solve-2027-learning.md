@@ -4,9 +4,12 @@ title: MIT Solve 2027 Global Learning Challenge, raw material for each answer
 description: The owner's entry of Retake to Solve's 2027 Global Learning Challenge, under "improve assessment of what learners truly know and can do". For each question on the form, the limit, the choice to make or the facts and framing to write from, and the claims to keep honest. The owner writes the answers in their own words (Solve advises against AI-written answers); this file is the raw material, not the answers.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-18/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-21/
 ---
 
 # MIT Solve 2027 Global Learning Challenge: raw material
+
+**Superseded where they differ (27 October 2026).** The two PDF workbooks in this folder, built from `workbook/`, were updated to the live app and re-checked against Solve on 27 October (EVAL-21). Use them, not this file, for figures, what is built and what is planned. Solve's corrected facts: the video is up to 2 minutes and must be public; question 19's answer is "0"; question 27 is 200 words.
 
 **Deadline:** Friday 6 November 2026, 12:00 pm Eastern (10:30 pm in India). Late applications are not accepted. Submitting by 2 November is the safe plan.
 

@@ -26,7 +26,7 @@
   .cover .foot { position:absolute; left:20mm; right:20mm; bottom:17mm; display:flex; justify-content:space-between; font-family:"Poppins"; font-size:8.4pt; color:#C9B8E6; border-top:1px solid #6A4E92; padding-top:7pt; }
   .cover .lensy { position:absolute; right:16mm; bottom:46mm; width:40mm; }
 
-  .eyebrow { font-family:"Poppins"; font-size:8.4pt; font-weight:600; letter-spacing:1.8px; text-transform:uppercase; color:#9277B4; margin:0 0 7pt; }
+  .eyebrow { font-family:"Poppins"; font-size:8.4pt; font-weight:600; letter-spacing:1.8px; text-transform:uppercase; color:#6C5296; margin:0 0 7pt; }
   h2 { font-family:"Poppins"; font-weight:700; font-size:16.5pt; line-height:1.18; color:#221436; margin:0 0 11pt; letter-spacing:-0.3px; }
   h2 .accent { color:#553286; }
   h3 { font-family:"Poppins"; font-size:10.8pt; color:#553286; margin:16pt 0 5pt; font-weight:700; }
@@ -59,7 +59,7 @@
   .q .qb { padding:9pt 15pt 11pt; }
   .q .row { display:flex; gap:12pt; margin:0 0 6pt; }
   .q .row:last-child { margin-bottom:0; }
-  .q .lab { flex:0 0 66pt; font-family:"Poppins"; font-size:7.2pt; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:#9277B4; padding-top:2pt; }
+  .q .lab { flex:0 0 66pt; font-family:"Poppins"; font-size:7.2pt; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:#6C5296; padding-top:2pt; }
   .q .val { flex:1; font-size:9pt; color:#2A2140; line-height:1.55; }
   .q .val ul { margin:0; padding-left:13pt; } .q .val li { margin-bottom:3pt; }
   .q .ans { font-weight:700; color:#0F6E56; }
@@ -69,18 +69,20 @@
   .lines i { display:block; height:19pt; border-bottom:1px solid #D9CCEC; }
   /* a written answer starts its own page, so its notes and its drafting space stay together */
   .q.long { break-before: page; margin-top:0; }
+  .q .row:has(> .lines) { break-inside: avoid; }   /* a draft block never splits across pages */
   .part > h2 + .q.long { break-before: auto; margin-top:11pt; }   /* a section opening on a written answer keeps its heading */
 
   .key { display:flex; gap:8pt; flex-wrap:wrap; margin:8pt 0 4pt; }
   .key span { font-size:8.4pt; }
   .pull { font-family:"Poppins"; font-size:11.5pt; font-weight:600; color:#553286; line-height:1.45; border-left:4px solid #FFC94D; padding-left:14pt; margin:14pt 0; }
   .refbox { border-top:1px solid #EAE3F4; padding-top:9pt; margin-top:14pt; }
-  .refbox .h { font-family:"Poppins"; font-size:8.5pt; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#9277B4; margin:0 0 6pt; }
+  .refbox .h { font-family:"Poppins"; font-size:8.5pt; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#6C5296; margin:0 0 6pt; }
   .refbox ol { margin:0; padding-left:15pt; } .refbox li { font-size:7.8pt; color:#3A2E4D; line-height:1.45; margin-bottom:4pt; break-inside: avoid; } .refbox li b { color:#553286; }
   .signoff { text-align:center; margin-top:14pt; } .signoff .motto { font-family:"Poppins"; font-size:12.5pt; font-weight:700; color:#553286; margin:4pt 0; } .signoff .mk { width:20mm; }
 </style>
 </head>
 <body>
+<main>
 
 <section class="cover">
   <div class="blob" style="width:130mm;height:130mm;top:-50mm;right:-50mm;opacity:.55;"></div>
@@ -91,15 +93,37 @@
   <h1>Every question, <span class="a">ready to answer.</span></h1>
   <div class="sub">Retake, entered under "improve assessment of what learners truly know and can do". Each question on the form, in order, with what to write, what we already have, and what we must not overclaim.</div>
   <img class="lensy" src="assets/lensy/lensy-think.svg" alt="">
-  <div class="cn"><strong style="color:#fff">Deadline: Friday 6 November 2026, 12:00 pm US Eastern (10:30 pm in India).</strong> Late applications are not accepted, even for technical problems. Aim to submit by Monday 2 November.</div>
-  <div class="foot"><span>Prepared 22 October 2026</span><span>For the team</span><span>theequallens.com</span></div>
+  <div class="cn"><strong style="color:#fff">Deadline: Friday 6 November 2026, 12:00 pm US Eastern (10:30 pm in India).</strong> Late applications are not accepted, even for technical problems. Our firm target is Monday 2 November, at the same time, because one page of Solve's question sheet gives that date.</div>
+  <div class="foot"><span>Updated 27 October 2026</span><span>For the team</span><span>theequallens.com</span></div>
+</section>
+
+<section>
+  <div class="callout">
+    <p class="lab">What changed since 22 October</p>
+    <p><b>New, and true today.</b></p>
+    <ul>
+      <li><b>Built and live.</b> The app was built on 24 October and is live at https://tel-retake.vercel.app. It installs on a phone and works offline.</li>
+      <li><b>What it plays</b> is the First take: one sitting of five chapters, 40 decisions, 13 painted cutscenes and a private reading at the end.</li>
+      <li><b>Safety and privacy.</b> The first visit asks for a birth date and keeps out anyone under 18. Privacy and Delete all, in the "?" sheet, are built. Nothing leaves the phone.</li>
+      <li><b>Tested.</b> 181 automated checks passed on 25 October on the build that is live, including the whole First take in all three languages and an accessibility check with no problems found. An internal audit that day found faults: most of the app's own were fixed that day, each with a new check (25 in all); four small ones are still open, among them the batting order's missing notes and large text on a real phone. Three faults in how the reading counts are still open.</li>
+    </ul>
+    <p><b>Corrected in this update.</b></p>
+    <ul>
+      <li>"A daily puzzle app" was wrong: the dailies, leaderboards and accounts are planned, not built (questions 6, 12, 31).</li>
+      <li>The student version, the class view and the workplace version are now marked as ideas, not built or designed (questions 13, 32, 35, 37).</li>
+      <li>The figures: 40 decisions, not 28; eight kinds of decision, not five; 58 painted faces (questions 12 and 18).</li>
+      <li>The tests: the old results came from an earlier build, now retired (questions 18 and 33).</li>
+      <li>Safety for students was written as if it existed. It does not; today the app keeps out under-18s (question 13).</li>
+      <li>Solve's facts, re-checked on 27 October: the 2 November target, the Orientation dates, entering both challenges, two quotes put right, the video's 2-minute limit and public setting, question 27's 200-word limit, "0" as question 19's answer, and the three agreements' wording and order (questions 1 to 3, 10, 14, 17, 19, 27, 28).</li>
+    </ul>
+  </div>
 </section>
 
 <section>
   <p class="eyebrow">Before you start</p>
   <h2>How to use this workbook. <span class="accent">Who fills what, and the rules.</span></h2>
 
-  <p>The form has five sections, covered here in the same order. Every question is a card. The chip on each card says what it needs:</p>
+  <p>Solve's question sheet has Instructions and four pages, covered here in the same order, with one change: the sheet puts the three agreements at the end of the Solution Profile page, after question 13, and this workbook puts them first so the team lead reads them before anything is written. The live form was not viewed: check the order there when signed in. Every question is a card. The chip on each card says what it needs:</p>
   <div class="key">
     <span><span class="chip ready">Ready</span>the answer is settled: copy it in.</span>
     <span><span class="chip team">Facts needed</span>only the team knows it: fill it in.</span>
@@ -112,17 +136,18 @@
     <p>Solve says: "We do not recommend using generative AI tools to write your application for you", because such answers read as generic and "can strongly disadvantage your application." Use the material on each card as notes, and write the answer yourself. AI tools may then be used, as Solve suggests, to shorten a draft or check the grammar.</p>
   </div>
 
-  <div class="pull">Gender and relationships education is judged by asking students what they think. Retake measures what they do. It works now with adults, and Solve's support would validate it and build the version for students.</div>
-  <p>That is the one idea every answer comes back to. Keep the answers consistent with it.</p>
+  <div class="pull">Gender and relationships education is judged by asking students what they think. Retake looks at what people do in decisions, not what they say. It runs now for adults; Solve's support would help us validate the reading and work towards a separate student version, still to be designed.</div>
+  <p>That is the one idea every answer comes back to. Keep the answers consistent with it. <b>The owner decides first</b> whether a student version stays the aim of this application: Retake's product rules today say adults only, never under-18 groups. If students stay the aim, use the line above. If not, rewrite it, and questions 10, 13, 21, 27 and 35 with it.</p>
 
   <div class="callout coral">
-    <p class="lab">Four claims we must not make</p>
+    <p class="lab">Five claims we must not make</p>
     <p>The form's Accuracy and Integrity Agreement says that exaggerating "may lead to the removal of my solution from the Challenge." So, in every answer:</p>
     <ul>
-      <li><b>No users yet.</b> The prototype has been played by the team and in walkthroughs only.</li>
-      <li><b>The student version does not exist.</b> What exists and works is the assessment with adult content.</li>
-      <li><b>The reading is not validated.</b> How many decisions a confident reading needs, and how they become one figure, is still being worked out.</li>
+      <li><b>No users yet.</b> Only the team has played it. The app collects nothing, so there is no usage count either.</li>
+      <li><b>The student version does not exist.</b> What exists and works is the First take, written for adults. Today the app keeps out anyone under 18, and Retake's own product rules say its players are adults. If an answer mentions one, call it "a separate student version, still to be designed", the words the Economic Prosperity book uses too.</li>
+      <li><b>The reading is not validated.</b> Its scoring is not set: today the reading shows counts of picks. How many decisions a confident reading needs, and how they become one figure, is still being worked out, and three faults in how it counts are still open.</li>
       <li><b>Retake shows choices inside the game.</b> It does not claim a change in behaviour outside it.</li>
+      <li><b>The daily game is planned.</b> What runs today is the First take, one sitting of 40 decisions. Three dailies a day, the streak, leaderboards and accounts are designed but not built. A workplace version is not designed at all: call it an idea. The live page's own description says "a daily fairness puzzle": do not repeat it.</li>
     </ul>
   </div>
 
@@ -130,7 +155,9 @@
     <p class="lab">Good to know</p>
     <ul>
       <li><b>Public answers.</b> The Solution Profile becomes public on Solve's site if we reach the semi-finals.</li>
-      <li><b>The team lead travels.</b> If we are selected as Finalists, the team lead pitches and interviews with judges over Zoom in February. If we are selected as Solvers, the team lead must attend Solver Orientation in Cambridge, MA in April 2027 (Solve gives travel assistance) and the Solve Challenge Finals in New York in September. Start on the US visa early.</li>
+      <li><b>The team lead travels.</b> If we are selected as Finalists, the team lead pitches and interviews with judges over Zoom in February. If we are selected as Solvers, the team lead must attend Solver Orientation in Cambridge, MA on 14 to 15 April 2027 (Solve gives travel assistance for it; the challenge page says "four days" in April, so keep that week free) and the Solve Challenge Finals in New York in September (Solve does not say whether travel help covers it). Pitching and the programme are in English. Start on the US visa early.</li>
+      <li><b>Both challenges.</b> We are entering the same solution in the Global Economic Prosperity Challenge too. Solve allows this when the solution fits both; if we advance past the first judging rounds in both, Solve asks us to pick one. Keep every fact identical across the two forms.</li>
+      <li><b>Submit by 2 November.</b> The deadline is 6 November, but one page of Solve's question sheet says "November 2, 2026, at 12pm (noon) Eastern Time"; the challenge page and the rest of the sheet say 6 November. It looks like a leftover, but only help@solve.mit.edu can say, and they ask for 3 to 5 working days to reply. Submitting by Monday 2 November, 12:00 pm US Eastern (10:30 pm in India), settles it.</li>
       <li><b>Saving.</b> The form saves as you go, and you can skip between sections. Nothing counts until someone clicks Submit Solution.</li>
       <li><b>English only.</b> Every answer and uploaded file must be in English.</li>
     </ul>
@@ -140,15 +167,16 @@
 <section class="part">
   <p class="eyebrow">Section 1 · Instructions</p>
   <h2>Three agreements. <span class="accent">The team lead reads and ticks them.</span></h2>
+  <p>On Solve's question sheet these three tick-boxes sit at the end of the Solution Profile page, after question 13, in this order: Terms of Service, the AI processing consent, then Accuracy and Integrity (our 1, 3 and 2). They come first here so they are read before any answer is written.</p>
 
   <div class="q"><div class="qh"><span class="qn">1</span><span class="qt">Terms of Service Agreement<span class="meta"><span class="chip req">Required</span><span class="chip lead">Team lead</span></span></span></div>
     <div class="qb"><div class="row"><span class="lab">What it says</span><span class="val">"I agree to MIT Solve's Terms of Service, the MIT Solve Media Release and License, and the MIT Solve Privacy Policy." Read all three before ticking. The media release covers how Solve may use our name, video and materials.</span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">2</span><span class="qt">Accuracy and Integrity Agreement<span class="meta"><span class="chip req">Required</span><span class="chip lead">Team lead</span></span></span></div>
-    <div class="qb"><div class="row"><span class="lab">What it says</span><span class="val">Fabricating, exaggerating or misrepresenting anything "may lead to the removal of my solution". If AI tools were used in writing, we confirm we have checked that every answer is accurate. This is why the four claims on page 2 matter.</span></div></div></div>
+    <div class="qb"><div class="row"><span class="lab">What it says</span><span class="val">Fabricating, exaggerating or misrepresenting anything "may lead to the removal of my solution". If AI tools were used in writing, we confirm we have checked that every answer is accurate. This is why the five claims in "Before you start" matter.</span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">3</span><span class="qt">GenAI Data Processing Consent<span class="meta"><span class="chip req">Required</span><span class="chip lead">Team lead</span></span></span></div>
-    <div class="qb"><div class="row"><span class="lab">What it says</span><span class="val">Solve may use AI tools to help process and review applications, with steps to keep personal data out of them. Read it, then tick.</span></div></div></div>
+    <div class="qb"><div class="row"><span class="lab">What it says</span><span class="val">Solve may use AI tools to help process and review applications, with steps to avoid processing personal data from the fields marked for Solve use only. Keep personal details out of the public answers. Read it, then tick.</span></div></div></div>
 </section>
 
 <section class="part">
@@ -160,11 +188,11 @@
 
   <div class="q"><div class="qh"><span class="qn">5</span><span class="qt">What is the name of your solution?<span class="meta"><span class="chip req">Required</span><span class="chip lim">30 characters</span><span class="chip ready">Ready</span></span></span></div>
     <div class="qb"><div class="row"><span class="lab">Answer</span><span class="val ans">Retake</span></div>
-      <div class="row"><span class="lab">Why</span><span class="val">It is the name the app already uses. Solve suggests 1 to 4 words and treats the organisation name and the solution name separately.</span></div></div></div>
+      <div class="row"><span class="lab">Why</span><span class="val">It is the name the app already uses. No trademark check on the name yet (several photo apps share it); it is planned before launch. Solve suggests 1 to 4 words and treats the organisation name and the solution name separately.</span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">6</span><span class="qt">Provide a one-line summary or tagline for your solution.<span class="meta"><span class="chip req">Required</span><span class="chip lim">10 to 20 words, 150 characters</span><span class="chip write">Write</span></span></span></div>
     <div class="qb">
-      <div class="row"><span class="lab">Include</span><span class="val"><ul><li>a daily puzzle game;</li><li>learners choose between equally qualified people;</li><li>their choices show where gender sways a decision;</li><li>an assessment of what learners do, not what they say.</li></ul></span></div>
+      <div class="row"><span class="lab">Include</span><span class="val"><ul><li>a puzzle game on the phone (do not say "daily": the dailies are planned, not built);</li><li>learners choose between equally qualified people;</li><li>their choices are built to show whether gender sways a decision;</li><li>an assessment of what learners do, not what they say.</li></ul></span></div>
       <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:2"></span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">7</span><span class="qt">In what city, town, or region is your solution team headquartered?<span class="meta"><span class="chip req">Required</span><span class="chip team">Facts needed</span></span></span></div>
@@ -179,11 +207,12 @@
       <div class="row"><span class="lab">How to choose</span><span class="val">If The Equal Lens is registered as a trust, society or Section 8 company, choose <b>Nonprofit</b>. If it is not registered yet, choose <b>Not registered as any organization</b>.</span></div>
       <div class="row"><span class="lab">Answer</span><span class="lines" style="--n:1"></span></div></div></div>
 
-  <div class="q"><div class="qh"><span class="qn">10</span><span class="qt">Film your elevator pitch.<span class="meta"><span class="chip lim">Optional · up to 3 minutes</span><span class="chip team">Do it</span></span></span></div>
+  <div class="q"><div class="qh"><span class="qn">10</span><span class="qt">Film your elevator pitch.<span class="meta"><span class="chip lim">Optional · up to 2 minutes</span><span class="chip team">Do it</span></span></span></div>
     <div class="qb">
       <div class="row"><span class="lab">Why do it</span><span class="val">Not required, but Solve says a video helps reviewers understand the solution, and suggests showing a demo if there is a product. We have one.</span></div>
-      <div class="row"><span class="lab">How</span><span class="val">Record a phone playing the demo and talk over it. About <b>20 seconds</b> on the problem; <b>60 seconds</b> playing one decision; then its twin decision and what the pair shows. Close on why students next. A phone camera is enough.</span></div>
-      <div class="row"><span class="lab">Settings</span><span class="val">Upload to YouTube or Vimeo as <b>public or unlisted</b>, then paste the link.</span></div></div></div>
+      <div class="row"><span class="lab">How</span><span class="val">Record a phone playing the app at https://tel-retake.vercel.app (not /demo/, the older team demo with no birth date) and talk over it. About <b>15 seconds</b> on the problem; about <b>50 seconds</b> playing one decision; about <b>40 seconds</b> on its twin and what the pair shows; a <b>10-second</b> close on what Solve's support would let us do next (students, if the owner keeps them as the aim). Solve's limit is 2 minutes. A phone camera is enough.</span></div>
+      <div class="row"><span class="lab">Which twin</span><span class="val">Use one that works for every player, such as the two truck rankings in chapter 2, decisions 1 and 5 ("Rank them for the 3 trucks in the night convoy" and "on the cash run", where a family worry switches sides). Ramesh is on both screens, so a sharp viewer may spot the twin; if that matters, use chapter 3, decisions 4 and 8 ("Rank them for the 2 keys to the ticket tin" and "to the cash box"), which also works for every player and shares no one. Use the same pair in both challenges' videos. Avoid the two crew picks in chapter 1: a player who goes by the numbers never has to choose between the hidden pair there.</span></div>
+      <div class="row"><span class="lab">Settings</span><span class="val">Upload to YouTube or Vimeo as <b>public</b> (Solve asks for public), then paste the link.</span></div></div></div>
 
   <div class="q long"><div class="qh"><span class="qn">11</span><span class="qt">What specific problem are you solving?<span class="meta"><span class="chip req">Required</span><span class="chip lim">200 words</span><span class="chip write">Write</span></span></span></div>
     <div class="qb">
@@ -191,21 +220,23 @@
       <div class="row"><span class="lab">Material</span><span class="val"><ul>
         <li><b>Bias is near universal.</b> UNDP's 2023 Gender Social Norms Index: nearly 9 in 10 people worldwide hold at least one bias against women. For India the index reports 99.2%, from 2010 to 2014 survey data. <i>Both found in secondary reports: confirm them in the UNDP report before citing.</i></li>
         <li><b>It shows in decisions, not in what people say.</b> When science faculty rated identical applications from "John" and "Jennifer", John was judged more competent and hireable and offered a higher salary (Moss-Racusin and colleagues, 2012).</li>
-        <li><b>The gap is in assessment.</b> Gender and relationships education, including our own programmes, is judged by surveys before and after: what learners say they believe. Students soon learn the right answer to give. Teachers cannot see whether a learner can make a fair decision, or where a class still leans, so they have nothing to act on.</li>
+        <li><b>The gap is in assessment.</b> Gender and relationships education, including our own programmes, is judged by surveys before and after: what learners say they believe. Students can learn the right answer to give <i>(Team: an example from our sessions, if there is one)</i>. Teachers cannot see whether a learner can make a fair decision, or where a class still leans, so they have nothing to act on.</li>
         <li><b>Our scale:</b> how many students our school programmes reach, and where. <i>Team: add the real numbers.</i></li>
       </ul></span></div>
       <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:9"></span></div></div></div>
 
   <div class="q long"><div class="qh"><span class="qn">12</span><span class="qt">What is your solution?<span class="meta"><span class="chip req">Required</span><span class="chip lim">200 words</span><span class="chip write">Write</span></span></span></div>
     <div class="qb">
-      <div class="row"><span class="lab">Solve asks</span><span class="val">What it is, what it does, how it works and what technology it uses, in simple terms. About the solution, not the problem. A demo link if relevant.</span></div>
+      <div class="row"><span class="lab">Solve asks</span><span class="val">What it is, what it does, how it works and what technology it uses, in simple terms. About the solution, not the problem. A link to a video of a product demo, if relevant.</span></div>
       <div class="row"><span class="lab">Material</span><span class="val"><ul>
-        <li><b>A daily puzzle app</b> set in five illustrated Indian worlds: a railway station, a truck depot, a travelling magic show, a cricket club and a family home.</li>
-        <li><b>Each decision</b> shows 3 to 5 people with their records and asks one question: who drives the night train, who captains, who does the chores.</li>
-        <li><b>Two of them have identical records</b>, one woman and one man. One detail differs, such as a word the speaker uses about one of them. Later, a twin decision puts that detail on the other side, with different people.</li>
+        <li><b>A phone game of fair decisions</b> set in five illustrated Indian worlds: a railway junction, trucks on a ghat road, a travelling magic show, a cricket ground and a family home.</li>
+        <li><b>Each decision</b> shows 3 to 5 people with their records and asks one question: who drives the ghat section tonight, whose story do you believe, who captains the first XI, who does what on Sunday.</li>
+        <li><b>Two of them have identical records</b>, one woman and one man. One detail differs, such as a word on one person's card or a worry about their family. Later, a twin decision puts that detail on the other side, with a different equal pair.</li>
         <li><b>The reading comes from the pair.</b> The man both times is a lean towards men; the woman both times is a lean towards women; following the detail both times is no lean. In some twins the detail really matters, such as who holds the licence, so "always pick the woman" does not look fair.</li>
-        <li><b>Players</b> never see the words bias or test and never know which two match. They get a private reading and a "look again" at the pair.</li>
-        <li><b>What runs today:</b> a 20-minute starter of five chapters, in Hinglish, Hindi and English, installable on a phone and working offline.</li>
+        <li><b>Players</b> never see the words bias, test or gender, and the pair is never marked. The aim is that they cannot tell which two match. Still to fix, for the research check: the notes that pass on gossip ("..., Mohan says") appear on 23 of the 83 other people's cards and on none of the hidden pair's 80, so they can point at the pair.</li>
+        <li><b>At the end, a private reading</b> of five cards, worked out on the phone: how often they picked the woman or the man when the two had the same numbers; one twin side by side; the part of life that leaned most; a tip; and a last card saying it is a first reading from one sitting. Hard-topic twins are not used for the twin and part-of-life cards.</li>
+        <li><b>What runs today:</b> the First take, live at https://tel-retake.vercel.app: 5 chapters, 40 decisions of eight kinds, 13 painted cutscenes and the reading; in Hinglish, Hindi (a draft) and English; installs on a phone and works offline; asks for a birth date first and keeps out anyone under 18; nothing leaves the phone. Each chapter card says "About 4 minutes", so about 20 in all: an estimate, never timed. Link the pitch video from question 10 here. The app link goes in question 20.</li>
+        <li><b>Planned, not built:</b> three dailies a day (Easy, Medium and Hard), a streak, leaderboards and accounts. If you mention them, say they are planned.</li>
       </ul></span></div>
       <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:9"></span></div></div></div>
 
@@ -213,16 +244,18 @@
     <div class="qb">
       <div class="row"><span class="lab">Solve asks</span><span class="val">The people whose lives we aim to improve, how they are underserved now, and how the solution meets their needs.</span></div>
       <div class="row"><span class="lab">Material</span><span class="val"><ul>
-        <li><b>Now, adults.</b> We prove the assessment with adults first: testing an unvalidated measure on children would be wrong, and adults can consent to hard topics and to the use of their data.</li>
-        <li><b>Next, the aim of this application:</b> students aged 13 to 18 in Indian schools, through our Teen Compass (13 to 15) and Relay (16 to 18) programmes, and the teachers and facilitators who run them. Also learners in Hindi-medium and mixed-language classrooms, poorly served by English-only tools.</li>
-        <li><b>What changes for them.</b> Each learner gets a private reading and practice on cases they have not seen. The facilitator sees where a class leans and which situations sway it, and targets the next session there.</li>
-        <li><b>Built safe for children</b>, as the Challenge asks: the adult hard topics stay out; no public leaderboards for minors; each student's reading stays private; parental consent follows India's rules for children's data.</li>
+        <li><b>Now, adults.</b> We will test and validate the assessment with adults first: trying an unvalidated measure on children would be wrong, and adults can consent to hard topics and, in a research study, to the use of their answers. Today the first screen asks for a birth date, and anyone who gives one under 18 is kept out (the date is self-declared, as on most apps).</li>
+        <li><b>Next, if the owner keeps it as the aim of this application:</b> students aged 13 to 18 in Indian schools, through our Teen Compass (13 to 15) and Relay (16 to 18) programmes, and the teachers and facilitators who run them, in a separate student version, still to be designed. Also learners in Hindi-medium and mixed-language classrooms, poorly served by English-only tools.</li>
+        <li><b>What would change for them (not designed yet).</b> Each learner would get a private reading and practice on cases they have not seen. The facilitator would see where a class leans and which situations sway it, and target the next session there. No class view exists yet.</li>
+        <li><b>Safety built in today, for adults:</b> the birth date comes first and under-18s are kept out; Privacy, in the "?" sheet, says the birth date, the answers, the language and sound stay on the phone. In full, the phone keeps one entry: the answers, the language, the sound switch, the place in the take and an adult's birth date (for someone under 18, only the day the game opens and whether "Wrong date?" was used); Delete all empties it at once; nothing is sent anywhere; nothing is timed. The hard chapters (bullying, being followed, harassment, violence at home, parents who separate, a dowry demand) have no help lines yet, because the numbers are still to be checked against official sources.</li>
+        <li><b>What a student version would need, before any student plays</b> (not designed yet): the adult hard topics left out; no public leaderboards for minors; each student's reading private; parental consent under India's rules for children's data.</li>
       </ul></span></div>
+      <div class="row"><span class="lab honest">Say plainly</span><span class="val honest">No student version exists. Retake's own product rules say its players are adults, so a separate student version, still to be designed, is the owner's call.</span></div>
       <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:9"></span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">14</span><span class="qt">Would you like to save these answers to a Solution Profile?<span class="meta"><span class="chip ready">Ready</span></span></span></div>
     <div class="qb"><div class="row"><span class="lab">Answer</span><span class="val ans">Save as a New Solution Profile</span></div>
-      <div class="row"><span class="lab">Why</span><span class="val">It lets us reuse these answers in later Solve applications, such as a workplace version for the Economic Prosperity Challenge.</span></div></div></div>
+      <div class="row"><span class="lab">Why</span><span class="val">Save this one as its own profile. The problem, solution and who-it-serves answers are written differently for the Economic Prosperity form, so do not reuse them there as they are. We are entering the same solution in the Economic Prosperity Challenge in this cycle, which Solve allows when a solution fits both; if both entries advance past the first judging rounds, Solve asks us to pick one. Keep every fact identical across the two forms.</span></div></div></div>
 </section>
 
 <section class="part">
@@ -238,25 +271,28 @@
 
   <div class="q"><div class="qh"><span class="qn">17</span><span class="qt">What is your solution's stage of development?<span class="meta"><span class="chip req">Required</span><span class="chip ready">Ready</span></span></span></div>
     <div class="qb"><div class="row"><span class="lab">Answer</span><span class="val ans">Prototype</span></div>
-      <div class="row"><span class="lab">Why</span><span class="val">Solve: "an initial working version of a solution that may be in the process of getting initial feedback or testing with users… (Often 0 users)". Concept would not be reviewed at all, and Pilot needs a launch in at least one community. Solve warns that "exaggerating your progress can affect your chances of selection."</span></div></div></div>
+      <div class="row"><span class="lab">Why</span><span class="val">Solve: "An initial working version of a solution that may be in the process of getting initial feedback or testing with users (i.e. running a pilot)", "(Often 0 users/direct beneficiaries)". Concept would not be reviewed at all, and Pilot needs a launch in at least one community. A public link is not a launch: no one outside the team has played it. Solve warns that "exaggerating your progress can affect your chances of selection."</span></div></div></div>
 
   <div class="q long"><div class="qh"><span class="qn">18</span><span class="qt">Please share details about why you selected the stage above.<span class="meta"><span class="chip req">Required</span><span class="chip lim">200 words</span><span class="chip write">Write</span></span></span></div>
     <div class="qb">
       <div class="row"><span class="lab">Solve asks</span><span class="val">What we have built and tested so far. Only what is done, not plans.</span></div>
       <div class="row"><span class="lab">Built</span><span class="val"><ul>
-        <li>A playable 20-minute starter with 28 decisions across five chapters.</li>
-        <li>Five kinds of puzzle playable today (pick one, believe, pick a team, a batting order, and sharing out chores), and six more designed.</li>
-        <li>Five illustrated worlds and more than 50 painted characters from across India.</li>
-        <li>Three languages: Hinglish, Hindi and English.</li>
-        <li>A design system covering every screen.</li>
+        <li>The First take, live at https://tel-retake.vercel.app (built 24 October, last updated 25 October): one sitting of five chapters, 40 decisions, 13 painted cutscenes and a private five-card reading. Each chapter card says "About 4 minutes": an estimate, never timed.</li>
+        <li>Eight kinds of decision playable today: pick one, believe, captain, spend checks, rank, pick a team, a batting order, and sharing out chores.</li>
+        <li>20 twins, each a pair of decisions: in 9 the detail should not matter, in 5 it really does, and 6 are on a hard topic.</li>
+        <li>Five illustrated worlds: 58 painted faces in the First take (345 portraits in the art library), 46 painted cutscene panels and 15 scene paintings.</li>
+        <li>Three languages: Hinglish, Hindi and English. The Hindi is a draft, not yet read by a native reader.</li>
+        <li>An app that installs on a phone, works offline and reopens on the same decision; the birth date first, with under-18s kept out; Privacy and Delete all; layouts from phones to desktops.</li>
+        <li>A design system the app's styles come from.</li>
       </ul></span></div>
       <div class="row"><span class="lab">Tested</span><span class="val"><ul>
-        <li>Played through on phones in all three languages with no errors.</li>
-        <li>An earlier build passed automated accessibility checks with zero issues across 141 screen visits at six screen sizes. A manual screen-reader check is still to do.</li>
-        <li>A check that every hidden pair matches exactly on every number.</li>
+        <li>181 automated checks passed on 25 October, on the build that is live: the whole First take played in all three languages at phone and laptop sizes (54 checks); the birth date and under-18 screens (10); Privacy and Delete all, by every way out of it (14); the back button, focus and kept answers (28); install, offline and updates (23); accessibility (4); 2 checks that each of the 40 decisions is laid out like the team's approved demo; and 46 checks of the code that run without opening the app (4 of privacy, 4 of the built app, and 38 of the older daily content and its scoring code, kept for the planned dailies and not used by the live app).</li>
+        <li>Accessibility: an automated accessibility check against the international web standard (WCAG 2.2, levels A and AA) on every kind of screen, at phone and laptop size, in Hinglish and Hindi: no problems found (text over the paintings is checked separately, not by this tool). The hidden pairs, counted on 27 October: in all 40 decisions the two are one woman and one man with the same numbers, and no one else has them; each twin uses different hidden people and moves the detail to the other side.</li>
+        <li>An internal audit of the build on 25 October: "The build is real and solid." Most of the app faults it found were fixed that day, each with a new check (25 in all); four small ones are still open, among them the batting order's missing notes and large text on a real phone. Three faults in how the reading counts are left open for the research work. <i>Team: say who ran it before citing it.</i></li>
+        <li>The browser checks run in a desktop browser (Chromium) at phone and laptop sizes, not on a real phone. The owner has played it on their phone.</li>
       </ul></span></div>
-      <div class="row"><span class="lab honest">Say plainly</span><span class="val honest">No one outside the team has played it yet. That is why this is a Prototype.</span></div>
-      <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:9"></span></div></div></div>
+      <div class="row"><span class="lab honest">Say plainly</span><span class="val honest">No one outside the team has played it yet, and the app collects nothing, so there are no usage figures. That is why this is a Prototype, even with a public link. Not done yet: a screen-reader check by a person, a native Hindi read, tests on real phones, and an automatic check that the live decisions keep the pair rules (the tool for it still reads the 22 October draft).</span></div>
+      <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:1"></span></div></div></div>
 </section>
 
 <section class="part">
@@ -264,16 +300,18 @@
   <h2>Reach, team and contacts. <span class="accent">Mostly facts only the team has.</span></h2>
 
   <div class="q"><div class="qh"><span class="qn">19</span><span class="qt">How many beneficiaries or customers does your solution currently serve?<span class="meta"><span class="chip req">Required</span><span class="chip ready">Ready</span></span></span></div>
-    <div class="qb"><div class="row"><span class="lab">Answer</span><span class="val ans">None</span></div>
-      <div class="row"><span class="lab">Why</span><span class="val">Solve: "The option you select here will not change your chances of being selected… Be honest – exaggerating your progress can affect your chances of selection." Count only people reached by Retake itself, not by our other programmes.</span></div></div></div>
+    <div class="qb"><div class="row"><span class="lab">Answer</span><span class="val ans">0</span></div>
+      <div class="row"><span class="lab">Why</span><span class="val">Solve: "The option you select here will not change your chances of being selected." It also says "Be honest", because "exaggerating your progress can affect your chances of selection." Count only people reached by Retake itself, not by our other programmes. Only the team has played it, and the app counts no one.</span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">20</span><span class="qt">Does your solution have a website, app, or social media handle?<span class="meta"><span class="chip req">Required</span><span class="chip team">Facts needed</span></span></span></div>
-    <div class="qb"><div class="row"><span class="lab">To decide</span><span class="val">Yes, if we list The Equal Lens website or the demo link. The demo link is open to anyone who has it, so decide first whether to share it.</span></div>
+    <div class="qb"><div class="row"><span class="lab">Recommend</span><span class="val">Yes. List The Equal Lens website and the app link, https://tel-retake.vercel.app, and only that link for Retake.</span></div>
+      <div class="row"><span class="lab">Why</span><span class="val">There are two links, both open to anyone who has them and hidden from search engines. <b>The app</b> asks for a birth date first and keeps out anyone under 18. <b>The team demo at /demo/</b> is the older demo: no birth date, and it plays all 12 hard-topic decisions (bullying, being followed, harassment backstage, violence at home, parents who separate, a dowry demand). Neither has help lines in "?" yet, because the numbers are still to be checked against official sources, so the app's hard chapters also play with no help line.</span></div>
+      <div class="row"><span class="lab">To decide</span><span class="val">The app's page description, its link-preview title and its install card all say "a daily fairness puzzle" (the planned store title), and the link-preview text says "Made-up people, one puzzle a day.", so judges see it when the link is pasted; but the dailies are planned. The owner may want them changed before judges open the link. Also, Privacy says "what you type" is kept nowhere, yet the birth date the player types is kept on the phone; the owner may want that line fixed first too.</span></div>
       <div class="row"><span class="lab">Links</span><span class="lines" style="--n:2"></span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">21</span><span class="qt">Which dimension of the Challenge does your solution most closely address?<span class="meta"><span class="chip req">Required</span><span class="chip ready">Ready</span></span></span></div>
     <div class="qb"><div class="row"><span class="lab">Answer</span><span class="val ans">Improve assessment of what learners truly know and can do, including formative assessment, diagnostics, or early screening that flag when a learner is off-track so a teacher can intervene.</span></div>
-      <div class="row"><span class="lab">Why</span><span class="val">This is our case: a measure of what learners do, used regularly, that shows a facilitator where to step in. Mention the multilingual and offline points in the written answers, not here.</span></div></div></div>
+      <div class="row"><span class="lab">Why</span><span class="val">This is our case: a measure of what learners do that, once validated and built for classes, would show a facilitator where to step in. Today it is one sitting, for adults, with no class view. Mention the multilingual and offline points in the written answers, not here.</span></div></div></div>
 
   <div class="q long"><div class="qh"><span class="qn">22</span><span class="qt">How are you and your team well-positioned to deliver this solution?<span class="meta"><span class="chip req">Required</span><span class="chip lim">300 words</span><span class="chip write">Write</span><span class="chip team">Facts needed</span></span></span></div>
     <div class="qb">
@@ -281,9 +319,9 @@
       <div class="row"><span class="lab">Material</span><span class="val"><ul>
         <li>The Equal Lens's work in schools: the three programmes and their ages (Discovery 5 to 12, Teen Compass 13 to 15, Relay 16 to 18), free to delivery partners.</li>
         <li>Sessions run so far: how many, where, how many students and facilitators. <i>Team: real numbers.</i></li>
-        <li>What learners and facilitators changed in our work, and how that fed into Retake.</li>
+        <li>What learners and facilitators changed in our work, and how that fed into Retake. <i>Team: real examples only. Learners shaped our programmes; for Retake itself the only feedback so far is the team's. Say so rather than stretch it.</i></li>
         <li>The team's background in design, research and facilitation. <i>Team: fill in.</i></li>
-        <li>The content is written for India: Indian settings, a cast from across the country and its faiths, three languages.</li>
+        <li>The content is written for India: Indian settings, a cast from across the country and its faiths, three languages (the Hindi still a draft).</li>
       </ul></span></div>
       <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:12"></span></div></div></div>
 
@@ -298,22 +336,22 @@
       <div class="row"><span class="lab">Answer</span><span class="lines" style="--n:3"></span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">26</span><span class="qt">How long have you been working on your solution?<span class="meta"><span class="chip req">Required</span><span class="chip lim">100 words</span><span class="chip team">Facts needed</span></span></span></div>
-    <div class="qb"><div class="row"><span class="lab">Give</span><span class="val">The years The Equal Lens has worked on gender and relationships education, and that Retake itself has been in development since 2026. <i>Team: the founding year and the month Retake started.</i></span></div>
+    <div class="qb"><div class="row"><span class="lab">Give</span><span class="val">The years The Equal Lens has worked on gender and relationships education, and Retake itself since October 2026 (work began on 19 October with an earlier prototype; the app now live was built on 24 October). <i>Team: the founding year, and any earlier design work on Retake, honestly dated. Confirm one phrase for the organisation's work and use it on both forms: this book says "gender and relationships education", the Economic Prosperity one "gender norms".</i></span></div>
       <div class="row"><span class="lab">Answer</span><span class="lines" style="--n:3"></span></div></div></div>
 
-  <div class="q long"><div class="qh"><span class="qn">27</span><span class="qt">Why are you applying to Solve?<span class="meta"><span class="chip req">Required</span><span class="chip lim">300 words</span><span class="chip write">Write</span></span></span></div>
+  <div class="q long"><div class="qh"><span class="qn">27</span><span class="qt">Why are you applying to Solve?<span class="meta"><span class="chip req">Required</span><span class="chip lim">200 words</span><span class="chip write">Write</span></span></span></div>
     <div class="qb">
       <div class="row"><span class="lab">Solve asks</span><span class="val">The financial, technical, legal, cultural or market barriers Solve can help with, and how. Solve warns: "If your only goal in applying to Solve is to raise funds, Solve is not the right program for you!"</span></div>
       <div class="row"><span class="lab">Material</span><span class="val"><ul>
         <li><b>Technical: validation.</b> Turn the reading into a sound assessment: how consistent it is, how many decisions a confident reading needs, and evidence that it tracks fair decisions. We need assessment and research partners for this.</li>
-        <li><b>Legal: children's safety and data.</b> Privacy by design and consent that meets India's rules for minors' data, before any student plays.</li>
+        <li><b>Legal: data and children's safety.</b> Privacy is built in today: nothing leaves the phone, Delete all empties it, and the first screen asks for a birth date, and anyone who gives one under 18 is kept out (the date is self-declared, as on most apps). But we have had no lawyer's advice on India's data protection law (the DPDP Act 2023), there is no contact for data questions yet, and the help lines for the hard topics are still to be checked. A student version would need consent that meets India's rules for children's data before any student plays.</li>
         <li><b>Market: the route into schools.</b> Partnerships with state education departments and school networks, to go beyond our own programmes.</li>
-        <li><b>Cultural: content at scale.</b> Puzzles adapted and checked for 13 to 18 year olds, in more Indian languages.</li>
+        <li><b>Cultural: content at scale.</b> Puzzles adapted and checked for 13 to 18 year olds (if the owner keeps students as the aim), a native read of the Hindi, and more Indian languages.</li>
       </ul></span></div>
-      <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:12"></span></div></div></div>
+      <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:9"></span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">28</span><span class="qt">Who is the Team Lead for your solution?<span class="meta"><span class="chip req">Required</span><span class="chip team">Facts needed</span></span></span></div>
-    <div class="qb"><div class="row"><span class="lab">Who</span><span class="val">The head of the organisation, responsible for Retake's direction. Name only. This person pitches to judges over Zoom in February if we are Finalists, and travels to Cambridge, MA in April and New York in September if we are selected.</span></div>
+    <div class="qb"><div class="row"><span class="lab">Who</span><span class="val">The head of the organisation, responsible for Retake's direction. Name only. This person pitches to judges over Zoom in February if we are Finalists, and travels to Cambridge, MA on 14 to 15 April 2027 and to New York in September if we are selected.</span></div>
       <div class="row"><span class="lab">Name</span><span class="lines" style="--n:1"></span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">29</span><span class="qt">Contacts for Solve only (not seen by judges)<span class="meta"><span class="chip req">Required</span><span class="chip team">Facts needed</span></span></span></div>
@@ -323,7 +361,7 @@
     <div class="qb"><div class="row"><span class="lab">The questions</span><span class="val"><ul>
         <li>Is the Team Lead a resident of the United States? <span class="ans">No</span>, unless that changes.</li>
         <li>What is the Team Lead's gender? Is the Team Lead transgender? <i>The team lead answers, or chooses "prefer not to answer".</i> Solve asks for reporting only; judges never see it.</li>
-        <li>Has anyone from our organisation been selected as a Solver before? <span class="ans">No</span>, unless someone has.</li>
+        <li>Has anyone from our organisation been selected as a Solver before? <span class="ans">No</span>, unless someone has. Only if yes, a further question (200 words) asks what makes this solution different from the earlier one.</li>
         <li>Is the solution part of another entrepreneurship network (incubator, accelerator, fellowship)? <i>Team: check.</i></li>
         <li>Did you take the MITx course "Business and Impact Planning for Social Enterprises"? Answer truthfully; it does not affect selection.</li>
         <li>Did you hear about Solve through a network or mailing list? <i>Team: check.</i></li>
@@ -340,10 +378,10 @@
       <div class="row"><span class="lab">Material</span><span class="val"><ul>
         <li><b>Surveys can be answered to please.</b> Implicit tests, which time how fast people react, have a weak link to what people do: a 2019 review by Forscher and colleagues found that changing those scores did not change behaviour.</li>
         <li><b>Retake measures the decision itself,</b> using the logic of the identical-CV studies, inside a game.</li>
-        <li><b>The paired design reads a lean either way,</b> towards men or towards women, and separates being swayed by a word from being swayed by gender.</li>
-        <li><b>A daily habit,</b> so the reading repeats over time: an assessment a teacher can use as it goes, not a one-off test.</li>
-        <li><b>Made for India:</b> Indian places, names and languages, from Hinglish to Hindi.</li>
-        <li><b>For the field:</b> a way to evaluate gender and relationships education by what learners do, which programmes like ours have never had.</li>
+        <li><b>The paired design is built to read a lean either way,</b> towards men or towards women, and to tell being swayed by a word apart from being swayed by gender; three known faults in how the reading counts still need fixing before it does that everywhere.</li>
+        <li><b>Planned: a daily habit,</b> so the reading would repeat over time: an assessment a teacher could use as it goes, not a one-off test. Not built yet: today the First take is one sitting.</li>
+        <li><b>Made for India:</b> Indian places, names and languages, from Hinglish to Hindi (the Hindi still a draft).</li>
+        <li><b>For the field:</b> a way to evaluate gender and relationships education by what learners do, which, as far as we know, programmes like ours do not have.</li>
       </ul></span></div>
       <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:12"></span></div></div></div>
 
@@ -351,11 +389,11 @@
     <div class="qb">
       <div class="row"><span class="lab">Solve asks</span><span class="val">Our theory of change: how activities lead to outputs and to short- and long-term outcomes, with evidence for each link (research, interviews, our own data).</span></div>
       <div class="row"><span class="lab">Material</span><span class="val"><ul>
-        <li><b>Activities:</b> learners play short sets of paired decisions in class or at home; each gets a private reading and a "look again" at the pair they treated differently; the facilitator sees the class pattern.</li>
-        <li><b>Outputs:</b> a reading per learner; a class map of which situations sway decisions.</li>
-        <li><b>Short-term outcomes:</b> learners notice when a word or detail is doing the work; facilitators target the sessions where a class leans.</li>
-        <li><b>Long-term outcomes:</b> fairer decisions on cases learners have never practised, which is the gain the assessment can show; fairer choices in school and later at work.</li>
-        <li><b>Evidence for the links:</b> identical-application studies show that bias acts in decisions (Moss-Racusin 2012); a study of breaking prejudiced habits showed that noticing and practice can reduce bias (Devine and colleagues, 2012). <i>Team: add anything from our own sessions.</i></li>
+        <li><b>Activities (for a student version, not designed yet):</b> learners would play short sets of paired decisions in class or at home; each would get a private reading and a "look again" at the pair they treated differently; the facilitator would see the class pattern. Today the First take runs in one sitting, for adults, and ends in a private five-card reading with one twin side by side. Only the team has played it so far.</li>
+        <li><b>Outputs:</b> a reading per learner (built, as counts of picks); a class map of which situations sway decisions (an idea, not designed yet).</li>
+        <li><b>Short-term outcomes we expect:</b> learners notice when a word or detail is doing the work; facilitators target the sessions where a class leans.</li>
+        <li><b>Long-term outcomes we expect, still to be shown:</b> fairer decisions on cases learners have never practised, which is what the assessment is being designed to detect; and, if the pilot shows it carries over, fairer choices in school and later at work.</li>
+        <li><b>Evidence for the links:</b> identical-application studies show that bias acts in decisions (Moss-Racusin 2012); a 12-week habit-breaking study reduced implicit race bias scores (Devine and colleagues, 2012); whether such change reaches decisions is the open question Retake is built to test. <i>Team: add anything from our own sessions.</i></li>
         <li class="honest"><b>The honest gap:</b> whether a change inside the game carries into real life is what the pilot will test.</li>
       </ul></span></div>
       <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:12"></span></div></div></div>
@@ -364,13 +402,14 @@
     <div class="qb">
       <div class="row"><span class="lab">Solve asks</span><span class="val">The technology, and proof that it works. For new technology, a paper or other public evidence.</span></div>
       <div class="row"><span class="lab">Material</span><span class="val"><ul>
-        <li><b>The app:</b> a web app that installs on a phone and works offline (a Progressive Web App), built in React and TypeScript. The puzzles are data, so new content needs no new code. Three languages switch on every screen.</li>
-        <li><b>The reading:</b> every decision has a twin built to the same rules. An automated check refuses any set where the pair's numbers differ, where a person repeats, or where a hard fact is said of a name that marks a community.</li>
-        <li><b>The art:</b> illustrations are made with an open image model run on our own computer, then reviewed and corrected by hand. Learners never interact with AI, and AI plays no part in the reading.</li>
-        <li><b>How we know it works:</b> the playable demo (the video shows it), automated accessibility and layout checks, and written content rules that every puzzle must pass.</li>
-        <li class="honest"><b>Not yet proven:</b> that the reading is a valid measure. Say so, and that it is the first thing the funding pays for.</li>
+        <li><b>The app:</b> a web app that installs on a phone and works offline (a Progressive Web App), built with Vite, React and TypeScript; React is its only runtime library. Hosted on Vercel at https://tel-retake.vercel.app. The puzzles are data, so new content needs no new code. Three languages switch on every screen. The app's script is about 110 KB compressed, under its own 130 KB limit; the offline copy, with pictures, fonts and sound, is about 3.8 MB. Splitting it by chapter for weak signals is planned.</li>
+        <li><b>Privacy:</b> nothing leaves the phone. The app makes no network calls of its own, has no analytics and loads nothing from other sites, and its security policy lets it connect only to its own address. One entry on the phone holds the answers, the language, the sound switch, the place in the take and an adult's birth date (for someone under 18, only the day the game opens), with no times; Delete all removes it.</li>
+        <li><b>The reading:</b> plain arithmetic on the phone, five cards from the player's own answers; the numbers are counts of picks until the research sets the scoring. Every decision has a twin built to the same rules, and counted on 27 October the hidden pairs hold in all 40 decisions. The tool that builds the content refuses a set where a note's length could point at the hidden pair, or a Hindi line or a picture is missing. The checker for the full pair rules still reads the 22 October set, not the live content, and 4 twins share one other person across their halves, which its rules forbid.</li>
+        <li><b>The art:</b> illustrations are made with an open image model (FLUX.2 klein) run on our own computer, then checked and edited (cropped, colour-corrected, small marks painted out). Learners never interact with AI, and AI plays no part in the reading.</li>
+        <li><b>How we know it works:</b> the app plays at its public link (the video shows it); 181 automated checks passed on 25 October on the build that is live (see question 18), including a play-through in three languages, install and offline checks, and accessibility with no problems found; and an internal audit of the build the same day: most of the app faults it found were fixed that day, each with a new check (25 in all), and four small ones are still open.</li>
+        <li class="honest"><b>Not yet proven:</b> that the reading is a valid measure. Say so, and that it is the first thing the funding pays for. Also not done: tests on a real phone, a screen-reader check by a person, an automatic check that the live decisions keep the pair rules, and an automated check that the reading's counts are right (there is none yet); and three known faults in how the reading counts (two twins that do not force the choice, the chores twin, and the batting order's missing note) are left for the research work.</li>
       </ul></span></div>
-      <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:12"></span></div></div></div>
+      <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:7"></span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">34</span><span class="qt">Please select the technologies currently used in your solution.<span class="meta"><span class="chip ready">Ready</span></span></span></div>
     <div class="qb"><div class="row"><span class="lab">Answer</span><span class="val ans">Software and Mobile Applications · Behavioral Technology</span></div>
@@ -380,23 +419,23 @@
     <div class="qb">
       <div class="row"><span class="lab">Solve asks</span><span class="val">How we create value for the people we serve: key customers and beneficiaries, what we give them, how, and why they want it.</span></div>
       <div class="row"><span class="lab">Material</span><span class="val"><ul>
-        <li><b>Learners and schools use it free,</b> as with our programmes, which are free to delivery partners.</li>
-        <li><b>Beneficiaries:</b> students; their teachers and facilitators, who get a class picture they can act on.</li>
+        <li><b>Learners and schools would use it free,</b> as with our programmes, which are free to delivery partners. Today the First take is free at a public link, for adults.</li>
+        <li><b>Beneficiaries (if the owner keeps students as the aim; not designed yet):</b> students; their teachers and facilitators, who would get a class picture they can act on. Neither the student version nor the class view exists yet.</li>
         <li><b>Customers and funders:</b> NGOs and school networks running gender and relationships education; later, state education departments that want to know whether such teaching works.</li>
-        <li><b>Why they want it:</b> evaluation by what learners do, which funders increasingly ask for and surveys cannot give.</li>
+        <li><b>Why they want it:</b> evaluation by what learners do, which funders are starting to ask for <i>(Team: name one funder or call that asked, or cut this)</i> and which surveys of what learners say do not show.</li>
       </ul></span></div>
       <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:12"></span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">36</span><span class="qt">Do you primarily provide products or services directly to individuals, to other organizations, or to the government?<span class="meta"><span class="chip ready">Ready</span></span></span></div>
     <div class="qb"><div class="row"><span class="lab">Answer</span><span class="val ans">Organizations (B2B)</span></div>
-      <div class="row"><span class="lab">Why</span><span class="val">Schools and NGOs now; government (B2G) is the aim, and the written answers can say so.</span></div></div></div>
+      <div class="row"><span class="lab">Why</span><span class="val">Schools and NGOs first; government (B2G) is the aim, and the written answers can say so. None is a customer yet.</span></div></div></div>
 
   <div class="q long"><div class="qh"><span class="qn">37</span><span class="qt">What is your plan for becoming financially sustainable, and what evidence can you provide that this plan has been successful?<span class="meta"><span class="chip lim">300 words</span><span class="chip write">Write</span><span class="chip team">Facts needed</span></span></span></div>
     <div class="qb">
       <div class="row"><span class="lab">Solve asks</span><span class="val">How money comes in (grants, donations, sales, government contracts, investment) and evidence it has worked so far: grants received, revenue, funder names and amounts where they can be shared.</span></div>
       <div class="row"><span class="lab">Material</span><span class="val"><ul>
-        <li><b>Grants and CSR funds.</b> India's Companies Act requires large companies to spend 2% of their profits on social causes, and education is an eligible area.</li>
-        <li><b>A paid workplace version.</b> Retake for adults, as gender-fair decision training for companies, can be sold to fund the free school version.</li>
+        <li><b>Grants and CSR funds.</b> Under India's Companies Act 2013 (section 135), companies above set net-worth, turnover or profit thresholds must spend at least 2% of their average net profit of the last three years on corporate social responsibility (CSR), and education is an eligible area. <i>Check the Act's wording before citing.</i></li>
+        <li><b>An idea, not yet designed: a paid workplace kit,</b> outside the app, for companies (the product plan lists a workplace kit for later). Workplace income would keep play free for adults, as the First take is today, and could fund a separate student version, still to be designed. No workplace version or paying customer exists yet; the Economic Prosperity entry describes the idea, so keep the two consistent.</li>
         <li><b>Later, state education departments</b> paying for the assessment as part of their programmes.</li>
         <li><b>Evidence to date.</b> <i>Team: grants received, partner schools, CSR conversations, with names and amounts if they can be shared. If there are none yet, say what is in progress, honestly.</i></li>
       </ul></span></div>
@@ -410,23 +449,27 @@
     <thead><tr><th>Check</th><th>Done</th></tr></thead>
     <tbody>
       <tr><td>Every required question answered, in English, within its limit</td><td></td></tr>
-      <tr><td>The four claims on page 2 hold in every answer: no users, no student version yet, reading not validated, no behaviour claim</td><td></td></tr>
-      <tr><td>The UNDP figures confirmed in the original report, or removed</td><td></td></tr>
+      <tr><td>The five claims in "Before you start" hold in every answer: no users, no student version, reading not validated, no behaviour claim, the daily game planned</td><td></td></tr>
+      <tr><td>Every fact matches the Economic Prosperity form (figures, stage, tests, what is planned)</td><td></td></tr>
+      <tr><td>The UNDP figures and the Companies Act CSR rule confirmed in their originals, or removed</td><td></td></tr>
       <tr><td>Our own numbers (students reached, sessions, team, funding) checked by the person who knows them</td><td></td></tr>
-      <tr><td>The video is public or unlisted, and the link opens when signed out</td><td></td></tr>
-      <tr><td>The demo link shared only if the team agreed</td><td></td></tr>
-      <tr><td>Submit Solution clicked by Monday 2 November; the final deadline is Friday 6 November, 12:00 pm US Eastern</td><td></td></tr>
+      <tr><td>The video is public, and the link opens when signed out</td><td></td></tr>
+      <tr><td>Only the app link (https://tel-retake.vercel.app) listed, not /demo/, and only if the team agreed</td><td></td></tr>
+      <tr><td>Submit Solution clicked by Monday 2 November, 12:00 pm US Eastern (10:30 pm in India); the final deadline is Friday 6 November, at the same time</td><td></td></tr>
     </tbody>
   </table>
 
   <div class="refbox">
-    <p class="h">Sources · checked 22 October 2026</p>
+    <p class="h">Sources · Solve re-checked 27 October 2026 · research checked 22 October 2026</p>
     <ol>
-      <li><b>MIT Solve, 2027 Global Learning Challenge</b> (solve.mit.edu/challenges/2027-global-learning-challenge): the questions, dimensions, stage definitions and deadline used here.</li>
+      <li><b>MIT Solve, 2027 Global Learning Challenge</b> (solve.mit.edu/challenges/2027-global-learning-challenge): the questions, dimensions, stage definitions, deadline, and the FAQ on entering more than one challenge used here. Re-checked 27 October 2026.</li>
+      <li><b>MIT Solve, 2027 Global Challenges: Application Questions</b> (PDF linked from both challenge pages: 5593819.fs1.hubspotusercontent-na1.net/hubfs/5593819/2027%20Global%20Challenges_%20Application%20Questions.pdf): the stage question and the Concept rule, the 2 November line, the Orientation dates, the Finalist confirmation window, pitching in English, the video's 2-minute limit and public setting, the 200-word limit of question 27, the options for question 19, and the wording and order of the three agreements. Solve calls it for reference only; the live form was not viewed. Re-checked 27 October 2026.</li>
+      <li><b>Retake's own records</b> (the equal-lens-trainer repository and the live app, counted 27 October 2026): the First take's content file, the build plan of 24 October, the audit of 25 October, and the check run of 25 October.</li>
       <li><b>UNDP, 2023 Gender Social Norms Index:</b> nearly 9 in 10 people hold at least one bias against women; India 99.2% (2010 to 2014 data). Found in secondary summaries; confirm in the UNDP report before citing.</li>
       <li><b>Moss-Racusin and colleagues (2012),</b> "Science faculty's subtle gender biases favor male students", PNAS: identical applications, the male name rated more competent and offered a higher salary.</li>
       <li><b>Forscher and colleagues (2019),</b> "A meta-analysis of procedures to change implicit measures", Journal of Personality and Social Psychology: changes in implicit scores did not carry into behaviour.</li>
       <li><b>Devine and colleagues (2012),</b> "Long-term reduction in implicit race bias: a prejudice habit-breaking intervention", Journal of Experimental Social Psychology.</li>
+      <li><b>The Companies Act, 2013, section 135</b> (corporate social responsibility): companies above set net-worth, turnover or profit thresholds spend at least 2% of their average net profit of the three preceding years. Check the wording in the Act, and that education is among its eligible areas, before citing.</li>
     </ol>
     <div class="signoff">
       <p class="motto">Unlearn. Relearn. Grow.</p>
@@ -435,6 +478,7 @@
   </div>
 </section>
 
+</main>
 <script>
   document.querySelectorAll('.lines').forEach(l => { l.innerHTML = '<i></i>'.repeat(+getComputedStyle(l).getPropertyValue('--n') || 1); });
 </script>
