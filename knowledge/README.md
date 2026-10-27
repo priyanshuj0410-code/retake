@@ -66,6 +66,7 @@ repo implements them.
   colliding boxes on every phone screen) and `design-system/tools/fonts.py` (writes `fonts.css`, the re-balanced Hind and Khand).
 - `reference/`:
   - [acceptance-tests.md](reference/acceptance-tests.md): each requirement of EVAL-13 mapped to its check.
+  - [help-lines-2026-10-27.md](reference/help-lines-2026-10-27.md): the three national help lines for the First take's hard chapters, checked against official sources (EVAL-22).
 - `reviews/`:
   - [trainer-content-2026-10-20.md](reviews/trainer-content-2026-10-20.md): the fortnight's content
     for the owner's review, and the decisions to confirm.

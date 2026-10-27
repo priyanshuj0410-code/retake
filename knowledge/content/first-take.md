@@ -2,7 +2,7 @@
 type: content-draft
 title: First take, the 20-minute starter (draft for the owner)
 description: Every decision of Retake's First take, five chapters of about 4 minutes in the fixed order Station, Lugdi, Jadugar, Cricket, Rukavat, written out in English and Hindi with the people (each world's regulars plus fourteen new people, two women and two men in Jadugar and in Cricket, one woman and one man in each other world), their numbers, the hidden matching two in each decision, a hard topic in every chapter (two in Rukavat: custody and dowry) and what each twin looks at both ways; then the five private result cards as templates with sample text, and how a fresh Next take is built each month. Draft for the owner's review; Hindi is a first draft for a native speaker.
-plane_issues: [https://app.plane.so/the-equal-lens/browse/EVAL-17/, https://app.plane.so/the-equal-lens/browse/EVAL-18/]
+plane_issues: [https://app.plane.so/the-equal-lens/browse/EVAL-17/, https://app.plane.so/the-equal-lens/browse/EVAL-18/, https://app.plane.so/the-equal-lens/browse/EVAL-22/]
 ---
 
 # First take: the 20-minute starter
@@ -1127,7 +1127,7 @@ The four questions of the second round are answered and moved above (8 to 11). O
 
 ## Notes for the coordinator
 
-- **The help line in each chapter's "?".** Each serves women and men alike, because every hard twin has a man's half: Station, Tele-MANAS (the national mental-health line); Lugdi, Jadugar and Cricket, the national emergency line (ERSS); Rukavat, NALSA's national legal aid line. Check each name and number against the official source before launch. F-41 and F-47 should name these per chapter in place of "the one national help line"; this file does not change them.
+- **The help line in each chapter's "?".** Each serves women and men alike, because every hard twin has a man's half: Station, Tele-MANAS (the national mental-health line); Lugdi, Jadugar and Cricket, the national emergency line (ERSS); Rukavat, NALSA's national legal aid line. Check each name and number against the official source before launch: checked on 27 Oct 2026 in [help-lines-2026-10-27.md](../reference/help-lines-2026-10-27.md) (all three numbers confirmed; Station and the after-the-fact reports in Jadugar and Cricket need careful wording, and NALSA's Hindi and English still need a test call). F-41 and F-47 should name these per chapter in place of "the one national help line"; this file does not change them.
 - **No silhouette ships.** A chapter goes live only when all its new portraits (two, or four in Jadugar and Cricket) are painted and pass the art check in [cast.md](cast.md).
 - **The side lives in two places on the results.** Card 1's picture and the change card's picture carry it on screen, and their accessible names say it in words, in English and in Hindi; check both with TalkBack in each language before launch. F-203 already says the side moves there; the word counts above are for what is on screen only.
 - **Two Believe decisions ask a different question.** Jadugar 1 and 5 ask "Whose statement goes in the report?" | "रिपोर्ट में किसका बयान लिखें?" with the button "Use {name}'s statement" | "{name} का बयान लिखें". The kind, its numbers and its reading are unchanged.
