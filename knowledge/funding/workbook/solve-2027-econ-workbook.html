@@ -72,7 +72,7 @@
   .q .row:has(> .lines) { break-inside: avoid; }   /* a draft block never splits across pages */
   .part > h2 + .q.long { break-before: auto; margin-top:11pt; }   /* a section opening on a written answer keeps its heading */
 
-  .key { display:flex; gap:8pt; flex-wrap:wrap; margin:8pt 0 4pt; }
+  .key { display:flex; gap:8pt; flex-wrap:wrap; margin:8pt 0 4pt; break-inside: avoid; break-before: avoid; }
   .key span { font-size:8.4pt; }
   .pull { font-family:"Poppins"; font-size:11.5pt; font-weight:600; color:#553286; line-height:1.45; border-left:4px solid #FFC94D; padding-left:14pt; margin:14pt 0; }
   .refbox { border-top:1px solid #EAE3F4; padding-top:9pt; margin-top:14pt; }
@@ -113,6 +113,15 @@
       <li>The video's example decision is not in the app; it now uses a live one.</li>
       <li>Solve's own FAQ on entering two challenges replaces a third-party listing, and the April dates and Solve's question sheet are added.</li>
       <li>Solve's limits, from its question sheet: the video is up to 2 minutes and must be public; question 27 is 200 words; question 19's answer is "0".</li>
+    </ul>
+    <p style="margin-top:8pt"><b>Decided on 27 October.</b></p>
+    <ul>
+      <li><b>Students.</b> Validation runs with adults; a student version is designed only after the reading passes it, and no tool that is not validated is tried on anyone under 18 (Good to know, question 35).</li>
+      <li><b>Only the app link</b> is listed for Retake, never /demo/ (question 20, last checks).</li>
+      <li><b>Two app lines changed</b> in the app's code: the title drops "daily", and Privacy's "Kept nowhere" line says only "How long you take." They go live with the owner's next deploy (question 20, last checks).</li>
+      <li><b>Different applications.</b> Each describes our work in its own words; facts, dates and numbers stay the same in both (questions 26 and 35).</li>
+      <li><b>Generative AI is ticked,</b> for the illustrations (question 34).</li>
+      <li><b>Help lines checked.</b> Three national help lines for the hard chapters were checked against official sources; they are not yet in the app (questions 13 and 20).</li>
     </ul>
   </div>
 </section>
@@ -167,7 +176,7 @@
   <div class="callout sun">
     <p class="lab">Good to know, from Solve's instructions</p>
     <ul>
-      <li><b>Both challenges.</b> We are entering the same solution in the Global Learning Challenge too. Solve's own FAQ allows it: one team may enter more than one Global Challenge with the same solution if it fits each. If it gets past the first judging rounds in both, we must pick one. Keep every fact identical across both. Here Retake is put forward for workplaces; there, for learning. There is no student version, and the product's rules today say adults only, so wherever either book mentions one, call it "a separate student version, still to be designed".</li>
+      <li><b>Both challenges.</b> We are entering the same solution in the Global Learning Challenge too. Solve's own FAQ allows it: one team may enter more than one Global Challenge with the same solution if it fits each. If it gets past the first judging rounds in both, we must pick one. Keep every fact identical across both. Here Retake is put forward for workplaces; there, for learning. There is no student version, and the product's rules today say adults only, so wherever either book mentions one, call it "a separate student version, still to be designed". The rule, decided on 27 October: validation runs with adults; a student version is designed only after the reading passes it; no tool that is not validated is ever tried on anyone under 18, and schools are not test sites before then.</li>
       <li><b>Why 2 November.</b> One page of Solve's question sheet gives "November 2, 2026, at 12pm (noon) Eastern Time"; the challenge page and the rest of the sheet say 6 November. It looks like a leftover, but only help@solve.mit.edu can say, and they ask for 3 to 5 working days to reply. So submit by 2 November, 12:00 pm US Eastern (10:30 pm in India).</li>
       <li><b>Public answers.</b> The Solution Profile becomes public on Solve's site if we reach the semi-finals.</li>
       <li><b>The team lead travels.</b> If we are selected as Finalists, the team lead pitches and interviews with judges over Zoom in February. If we are selected as Solvers, the team lead must attend Solver Orientation in Cambridge, MA on 14 to 15 April 2027 (Solve gives travel assistance for it; the challenge page speaks of four days, so keep the week free) and the Solve Challenge Finals in New York in September (Solve does not say whether travel help covers this). Start on the US visa early.</li>
@@ -243,9 +252,9 @@
         <li><b>The people decided about:</b> women at entry level and on the frontline, whose shifts, routes, training and promotions depend on a supervisor's call. Men too: the reading counts a lean either way.</li>
         <li><b>How they are underserved:</b> training rarely touches the decision itself and is rarely measured, so a fair worker can be passed over without anyone noticing a pattern.</li>
         <li><b>What we aim to change:</b> decision-makers notice when a word such as "her family worries" is doing the work; once a workplace version exists, an organisation sees where its decisions lean and can add clear criteria there.</li>
-        <li><b>Private, built in today:</b> one entry on the player's phone keeps the answers, the language, the sound switch, the place in the take and an adult's birth date (for someone under 18, only the day the game opens), and nothing is sent anywhere: the app makes no network calls of its own, has no analytics, and records no times or keystrokes. Delete all, under Privacy in the "?" sheet, wipes it at once. Adults only: the birth date comes first, and under 18 the game stays shut (the date is self-declared).</li>
+        <li><b>Private, built in today:</b> one entry on the player's phone keeps the answers, the language, the sound switch, the place in the take and an adult's birth date (for someone under 18, only the day the game opens and whether "Wrong date?" was used), and nothing is sent anywhere: the app makes no network calls of its own, has no analytics, and records no times. Delete all, under Privacy in the "?" sheet, wipes it at once. Adults only: the birth date comes first, and under 18 the game stays shut (the date is self-declared).</li>
         <li><b>For the workplace version (an idea, not yet designed):</b> each person's reading would stay private and an employer would see only anonymous totals, so no one is judged or penalised by their reading.</li>
-        <li class="honest"><b>Not yet:</b> help lines for the hard-topic chapters (bullying, being followed, harassment, violence at home, parents who separate, a dowry demand) are not added or checked against official sources. Today Retake is made for adults on their own phones; only the team has played it, and no workplace uses it.</li>
+        <li class="honest"><b>Not yet:</b> help lines in the app. Three national help lines for the hard-topic chapters were checked against official sources on 27 October: Tele-MANAS 14416 for bullying at work; the national emergency number 112 for being followed, harassment and violence at home; NALSA's legal aid line 15100 for parents who separate and a dowry demand. They are not yet in the app, which still plays those chapters without them. Today Retake is made for adults on their own phones; only the team has played it, and no workplace uses it.</li>
       </ul></span></div>
       <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:9"></span></div></div></div>
 
@@ -302,12 +311,12 @@
       <div class="row"><span class="lab">Why</span><span class="val">Solve: "The option you select here will not change your chances of being selected", and it asks us to "Be honest", since "exaggerating your progress can affect your chances of selection." Count only people reached by Retake itself, not by our other programmes. The only players so far are the team, and the app collects nothing, so there is no usage count to quote.</span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">20</span><span class="qt">Does your solution have a website, app, or social media handle?<span class="meta"><span class="chip req">Required</span><span class="chip team">Facts needed</span></span></span></div>
-    <div class="qb"><div class="row"><span class="lab">Recommend</span><span class="val">Yes. List The Equal Lens website and the app link, https://tel-retake.vercel.app, and only that link for Retake.</span></div>
+    <div class="qb"><div class="row"><span class="lab">Answer</span><span class="val">Yes. List The Equal Lens website and the app link, https://tel-retake.vercel.app, and only that link for Retake (decided 27 October).</span></div>
       <div class="row"><span class="lab">Why</span><span class="val">There are two Retake links, both open to anyone who has them and hidden from search engines:<ul>
         <li><b>The app,</b> https://tel-retake.vercel.app. It asks for a birth date before anything else and keeps under-18s out.</li>
         <li><b>The team demo,</b> https://tel-retake.vercel.app/demo/. The older demo: no birth date, and it plays all 12 hard-topic decisions (bullying, being followed, harassment backstage, violence at home, parents who separate, a dowry demand).</li>
-      </ul>Never list /demo/. Neither link has help lines yet: the hard-topic help lines are not added or checked against official sources. If a judge opens /demo/, they play those chapters with no age check and no help line.</span></div>
-      <div class="row"><span class="lab">Before sharing</span><span class="val">The live page description, its link-preview title and the install description say "Retake: a daily fairness puzzle" (the planned store title the owner chose to tell Retake apart from photo apps), and the link-preview text says "one puzzle a day"; the daily is not built yet. Ask the owner whether to change them before submitting, or say in the answers that the daily is planned. Also, Privacy says "what you type" is kept nowhere, yet the birth date the player types is kept on the phone; the owner may want that line fixed first too.</span></div>
+      </ul>Never list /demo/. Neither link has help lines yet: the three national lines checked against official sources on 27 October (question 13) are not yet in the app or the demo. If a judge opens /demo/, they play those chapters with no age check and no help line.</span></div>
+      <div class="row"><span class="lab">Before sharing</span><span class="val">Changed in the app's code on 27 October, and live with the owner's next deploy: the page title, link-preview title and install card now say "Retake: a fairness puzzle" (no "daily"); the link-preview text says "Made-up people. Everything you play stays on your phone."; and Privacy's "Kept nowhere" line says only "How long you take." Open the link before submitting and check the title and Privacy show the new words.</span></div>
       <div class="row"><span class="lab">Links</span><span class="lines" style="--n:2"></span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">21</span><span class="qt">Which dimension of the Challenge does your solution most closely address?<span class="meta"><span class="chip req">Required</span><span class="chip ready">Ready</span></span></span></div>
@@ -337,7 +346,7 @@
       <div class="row"><span class="lab">Answer</span><span class="lines" style="--n:3"></span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">26</span><span class="qt">How long have you been working on your solution?<span class="meta"><span class="chip req">Required</span><span class="chip lim">100 words</span><span class="chip team">Facts needed</span></span></span></div>
-    <div class="qb"><div class="row"><span class="lab">Give</span><span class="val">The years The Equal Lens has worked on gender norms, and Retake itself since October 2026 (the first build record is 19 October). <i>Team: the founding year, and any earlier design work on Retake, honestly dated. Confirm the phrase for our work (this book says "gender norms", the Learning book "gender and relationships education") and use the same one in both books.</i></span></div>
+    <div class="qb"><div class="row"><span class="lab">Give</span><span class="val">The years The Equal Lens has worked on gender norms, and Retake itself since October 2026 (the first build record is 19 October). <i>Team: the founding year, and any earlier design work on Retake, honestly dated. The two applications are separate, so each describes our work in its own words: this one says "gender norms". Dates and numbers stay the same in both.</i></span></div>
       <div class="row"><span class="lab">Answer</span><span class="lines" style="--n:3"></span></div></div></div>
 
   <div class="q long"><div class="qh"><span class="qn">27</span><span class="qt">Why are you applying to Solve?<span class="meta"><span class="chip req">Required</span><span class="chip lim">200 words</span><span class="chip write">Write</span></span></span></div>
@@ -405,7 +414,7 @@
       <div class="row"><span class="lab">Solve asks</span><span class="val">The technology, and proof that it works. For new technology, a paper or other public evidence.</span></div>
       <div class="row"><span class="lab">Material</span><span class="val"><ul>
         <li><b>The app:</b> a web app that installs on a phone and works offline (a Progressive Web App), built with Vite, React and TypeScript; React is its only runtime library. Hosted on Vercel at https://tel-retake.vercel.app. The puzzles are data, so new content needs no new code. Three languages switch on every screen.</li>
-        <li><b>Nothing leaves the phone:</b> the app makes no network calls of its own and has no analytics or outside code, and its security policy lets it connect only to its own address. One entry on the phone keeps the answers, the language, the sound switch, the place in the take and an adult's birth date (for someone under 18, only the day the game opens), with no times; Delete all removes it. Offline, 145 files (3.8 MB) are kept on the phone, and the code is about 110 KB compressed.</li>
+        <li><b>Nothing leaves the phone:</b> the app makes no network calls of its own and has no analytics or outside code, and its security policy lets it connect only to its own address. One entry on the phone keeps the answers, the language, the sound switch, the place in the take and an adult's birth date (for someone under 18, only the day the game opens and whether "Wrong date?" was used), with no times; Delete all removes it. Offline, 145 files (3.8 MB) are kept on the phone, and the code is about 110 KB compressed.</li>
         <li><b>The reading:</b> every decision has a twin built to the same rules, and the reading is plain arithmetic on the phone. Counted on 27 October, every hidden pair in the live set matches on every number. The checker that refuses a set where the pair's numbers differ, where a person repeats, or where a hard fact is said of a name that marks a community still reads the 22 October draft, so adapting it to the live set is owed, and the live set breaks one of its rules today: 4 twins put the same other person in both halves (Mohan, Ramesh, Rani and Vikram). The content export already refuses a set where a note's length could give away the pair, or a Hindi line or a picture is missing.</li>
         <li><b>The art:</b> illustrations are made with an open image model (FLUX.2 klein) run on our own computer, then checked and edited (crops, colour, small marks painted out). Players never interact with AI, and AI plays no part in the reading.</li>
         <li><b>How we know it works:</b> the live app (the video shows it). The last full run of the automated checks, 25 October, on the code now live, passed all 181: 46 static checks (4 of privacy, 4 of the built app, and 38 of the older daily content and its scoring code, kept for the planned dailies and not used by the live app), 106 play-through checks in a desktop browser at phone and laptop size (the whole First take in all three languages, the first visit, Back, Delete all, focus), 23 install, offline and update checks, 4 accessibility checks (axe-core, WCAG 2.2 A and AA, no violations) and 2 checks that each of the 40 decisions has the same markup structure as the signed-off demo. An internal audit on 25 October: most of the app faults it found were fixed the same day, with 25 new checks; four are still open, one of them (the batting order never shows the note its twin depends on) also among the three faults in how the reading counts.</li>
@@ -414,8 +423,8 @@
       <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:12"></span></div></div></div>
 
   <div class="q"><div class="qh"><span class="qn">34</span><span class="qt">Please select the technologies currently used in your solution.<span class="meta"><span class="chip ready">Ready</span></span></span></div>
-    <div class="qb"><div class="row"><span class="lab">Answer</span><span class="val ans">Software and Mobile Applications · Behavioral Technology</span></div>
-      <div class="row"><span class="lab">To decide</span><span class="val">Generative AI makes the illustrations only. Tick it only if the team wants to declare that; either way, say it in question 33. Answer the same way as in the Learning application.</span></div></div></div>
+    <div class="qb"><div class="row"><span class="lab">Answer</span><span class="val ans">Software and Mobile Applications · Behavioral Technology · Generative AI</span></div>
+      <div class="row"><span class="lab">Why</span><span class="val">The illustrations are made with an open image model run on our own computer, then checked and edited (question 33 says so); players never interact with AI, and AI plays no part in the reading. Answer the same way as in the Learning application.</span></div></div></div>
 
   <div class="q long"><div class="qh"><span class="qn">35</span><span class="qt">What is your business model?<span class="meta"><span class="chip lim">300 words</span><span class="chip write">Write</span></span></span></div>
     <div class="qb">
@@ -425,7 +434,7 @@
         <li><b>What they would get (planned):</b> gender-fair decision practice their people come back to (the dailies, not built yet), and an anonymous picture of where their decisions lean (an idea, not yet designed), which a one-off session cannot give.</li>
         <li><b>Beneficiaries:</b> the women and men whose hiring, shifts and promotions depend on those decisions.</li>
         <li><b>Access (an idea, for a workplace version still to be designed):</b> a subscription per employee for companies; free for NGOs and small employers through CSR sponsorship. The product plan lists only a workplace kit, outside the app, for later; the subscription is an idea built on it.</li>
-        <li><b>Mission link:</b> income from workplaces would keep the game free for adults on their own phones, as the First take is today, and could later fund a separate student version, still to be designed. <i>The Learning book's question 37 carries this same line; keep the two the same. Never describe a student version as existing: none exists, and the product's rules today say adults only.</i></li>
+        <li><b>Mission link:</b> income from workplaces would keep the game free for adults on their own phones, as the First take is today, and could later fund a separate student version, still to be designed. <i>Never describe a student version as existing: none exists, and the product's rules today say adults only. A student version is designed only after the reading passes validation with adults, and no tool that is not validated is ever tried on anyone under 18.</i></li>
       </ul></span></div>
       <div class="row"><span class="lab">Draft</span><span class="lines" style="--n:8"></span></div></div></div>
 
@@ -453,7 +462,8 @@
     <tbody>
       <tr><td>Every required question answered, in English, within its limit</td><td></td></tr>
       <tr><td>The five claims under "Before you start" hold in every answer: no users, no paying customers, reading not validated, no claim about real hiring or promotion, nothing planned described as built</td><td></td></tr>
-      <tr><td>Only the app link (https://tel-retake.vercel.app) listed, not /demo/, and only if the team agreed</td><td></td></tr>
+      <tr><td>Only the app link (https://tel-retake.vercel.app) listed, not /demo/</td><td></td></tr>
+      <tr><td>The live app shows "Retake: a fairness puzzle" and Privacy's new line (the owner's deploy)</td><td></td></tr>
       <tr><td>Every shared fact matches the Learning application</td><td></td></tr>
       <tr><td>The UNDP figure, the POSH Act wording and the Companies Act CSR rule confirmed in their originals, or removed</td><td></td></tr>
       <tr><td>Our own numbers (team, sessions, funding, company conversations) checked by the person who knows them</td><td></td></tr>
