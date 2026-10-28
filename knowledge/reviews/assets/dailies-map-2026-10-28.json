@@ -1,0 +1,929 @@
+{
+ "maps": [
+  {
+   "reader": "code",
+   "map": {
+    "summary": "The live app plays only the First take. None of the engine code built for the dailies runs in it. In the live app, the one import from src/engine is `daysBetween, indiaToday` from engine/calendar.ts, used by the birth-date gate (src/take/Gate.tsx:2, 51, 137, 157). main.tsx:9 renders only <Take/>.\n\nThe engine modules (calendar, streak, score, results, answers, board, handles, rng) and the old store (src/store/index.ts, key 'elt:v1') come from the build the owner turned down on 20 Oct. They read that build's content format: content/days/*.json, 14 days in two skins (Lugdi and Station), one puzzle a day in 1 or 2 steps, eight old step kinds. They are tested only by scripts/scoring-check.ts and content-check.ts. I ran those two and privacy-check without a build: 42 of 42 pass.\n\nThe First take is built differently:\n- **Content:** design-system/tools/app_content.py exports content/take/first-take.json, which src/take/data.ts imports, so it rides inside the JS bundle.\n- **Store:** src/take/store.ts (key 'retake.take'), which checks each kept answer against its decision's content signature (SIG/fits).\n- **Step kinds:** six kinds with their own answer shapes.\n- **Reading:** a private five-card reading (reading.ts, Results.tsx).\n\nThe two systems do not join up:\n- two Answer shapes, two Lang types, two content formats;\n- the engine has no scorer for the app's order and split kinds, and its checks and team work differently from the app's;\n- the calendar rotates two skins by week, not five worlds;\n- a day ends at midnight, not at 4 am;\n- streak and results assume the 14-day Lugdi/Station fortnight.\n\nFor M3, these parts carry over as they are: the step components, the store's signature check, the two-window sync, the gate, the update toast and the service worker's offline cache. Still to build:\n- the app shell (cover as the root, tab bar, level switch);\n- a daily store keyed by date and level;\n- an exporter for daily content;\n- daily scoring for the app's kinds;\n- the result, Week, Sunday, Past puzzles and notes screens;\n- the daily content itself, in the five-world format.",
+    "exists": [
+     {
+      "item": "engine/calendar.ts: dates as YYYY-MM-DD, ISO week and weekKey, mondayOf, skinOf (odd ISO weeks Lugdi, even Station), contentDayOf (1 to 14, repeats every fortnight), anchorDate (anchor 2026-10-19), indiaToday (device clock + 5.5 h), and a ?day=1..14 / ?date= override held in sessionStorage 'elt:date'",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/calendar.ts:1-79 (two-skin rotation at 36-40; indiaToday at 46; override at 51-71)",
+      "state": "built; only daysBetween and indiaToday are used, by Gate.tsx:2,51,137,157. skinOf, contentDayOf, isoWeek, weekKey and the override have no app user and no direct test (grep over src and scripts). The skin rotation is stale (two skins, not five worlds)"
+     },
+     {
+      "item": "engine/streak.ts: streak(played dates, today) counts days played, forgives one missed day per ISO week (only if play continued before it), and today never breaks it; marks() labels each day of the fortnight played, forgiven, missed, today or future; fortnightOf() pairs an odd (Lugdi) week with the even week after it",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/streak.ts:10-43 (fortnightOf at 28-33)",
+      "state": "built but unused. Tested in scripts/scoring-check.ts:109-119 (passes). fortnightOf is stale for five worlds"
+     },
+     {
+      "item": "engine/score.ts: for each step, signed lean units (positive when the woman's side came out better) and consistency parts (rules, matching, checks, words); scorePair for twins (pick, checks, team); leanSize with shrinkage K=2; consistency = mean of parts plus evenness; PRACTICE_PER_STEP=10, PRACTICE_SUNDAY=10",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/score.ts:39-42, 260-285, 292-354, 357-385",
+      "state": "built but unused. Scores the 8 old kinds (assign, pick, checks with budget, team with voice and response, rank with rules, words, swipe, crowd). There is no scorer for the app's 'order' or 'split', and the app's checks and team answers have other shapes. Tested in scoring-check.ts:48-107 (passes)"
+     },
+     {
+      "item": "engine/results.ts: dayResult (played, transfer, practice, consistency, score, comps, deferred), weekSummary (practice, puzzles, consistency, lean, score), totalPractice, puzzlesSolved; read the old store's Saved.days and content DAYS",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/results.ts:20 (TWINS hard-coded T1-T3), 27-31, 106-124, 140-155",
+      "state": "built but unused; tested in scoring-check.ts:97-105. Tied to the old content format and old store"
+     },
+     {
+      "item": "engine/answers.ts: answer shapes, emptyAnswer and isComplete for the 8 old kinds",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/answers.ts:19-139",
+      "state": "built but unused. The app uses its own Answer type ({pick}|{set}|{order}|{chores,given} plus s) in src/take/steps/common.tsx:10-15"
+     },
+     {
+      "item": "engine/board.ts: a made-up sample board (content/sample.json, fixed seed); rankOf, topOfBoard, findPlayers",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/board.ts:1-67",
+      "state": "built but unused, and stale: content-check.ts:164 says M4's Board shows real players only. M4 territory"
+     },
+     {
+      "item": "engine/handles.ts: generated road names (content/handles.json), offers of three per round",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/handles.ts:1-53",
+      "state": "built but unused; tested in scoring-check.ts:127-137. M4 territory"
+     },
+     {
+      "item": "engine/rng.ts: seeded sfc32 via splitmix32, FNV-1a hash, seededBy, freshSeed",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/rng.ts:44-73",
+      "state": "built; used only inside the engine, the old store and the checks. The app shuffles cards with Math.random (src/take/steps/common.tsx:35-45). store.ts:27-31 has its own copy of the same hash"
+     },
+     {
+      "item": "Old store: localStorage 'elt:v1' with lang, seed, handle, friends, days by date ({n, answers, at, done}), private Sunday notes by ISO week, a synchronous Backend interface for a future server, useSaved, playedDates",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/store/index.ts:14-39, 102-109",
+      "state": "built but unused. Only engine/results.ts:6 and scoring-check.ts:18 import its type. It has no level field and no content signature"
+     },
+     {
+      "item": "Old daily content: 14 days (Lugdi Mon-Sun, Station Mon-Sun), one level per day climbing Mon to Sat, a transfer day (09-station-tue), twins T1-T3 returning in week 2, Sundays with a reflection and no puzzle; plus cast.json, handles.json, sample.json, i18n en/hi",
+      "where": "/Users/priyanshu/equal-lens-trainer/content/days/*.json; typed by src/content/types.ts:157-206 and src/content/index.ts:5-23. My python summary of the files: e.g. 03-lugdi-wed ['pick'] T1, 09-station-tue transfer, 08-station-mon ['rank','crowd']",
+      "state": "stale (the build audit calls them 'retired dailies', knowledge/reviews/app-build-audit-2026-10-25.md:102). Not in the live bundle (nothing in src/take imports src/content). Checked by content-check.ts (19/19 pass)"
+     },
+     {
+      "item": "The First take's flow: one `at` index over TAKE.flow (cut, cover, step, results); Back shows a read-only revisit; commit adds the answer with SIG[id]; two-window sync on the 'storage' event; Delete all; phone-back history handling; offline caching ahead by chapter; KINDS map",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/take/Take.tsx:24-292 (commit 186-189, Results 272, KINDS 294; backFrom 114-120 returns null on a chapter's first card and leaves 'the cover or the Week tab' to M3)",
+      "state": "built and used"
+     },
+     {
+      "item": "First take store: 'retake.take' = {v, at, answers, lang, sound, birth?|opens?, retried?}; SIG = per-decision content hash (kind, need, seats, max, chores, people with numbers and English notes); fits() checks shape per kind and names; load() drops only the bad answer; adopt/freshElsewhere for two windows; save() skips writing an unchanged state; canKeep; forget",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/take/store.ts:7-140 (SIG 36-38, fits 41-72)",
+      "state": "built and used. The pattern can be reused for dailies, but it is keyed to TAKE.flow's step ids only (store.ts:26)"
+     },
+     {
+      "item": "Step kinds: Pick (pick one, Believe via s.teller, spend checks via s.max), Team (pick s.need, a tap past the number refused in place), Rank (s.seats, cut line), Order (Cricket batting order), Split (Rukavat chores, with the TV counted against whoever gets it), all inside Frame (top bar, Progress, main button, revisit lock)",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/take/steps/Pick.tsx:9-93, Team.tsx:7-47, Rank.tsx:13-79, Order.tsx:9-98, Split.tsx:9-101 (TV rule hard-coded at line 23), common.tsx:54-94",
+      "state": "built and used. A daily can reuse them if its content uses the same Step shape (src/take/data.ts:26-53). Progress hard-codes 5 chapters (src/take/parts.tsx:413-425)"
+     },
+     {
+      "item": "Private reading: favoured(id, answer) picks which of the hidden pair an answer favoured; Results shows five cards (how often the equal two went one way, a twin, the part of life it leaned most, what to try, one sitting), with no score and no time",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/take/reading.ts:7-25; src/take/Results.tsx:10-13, 44-133",
+      "state": "built and used. favoured() can be reused if daily decisions carry {pair, sex, nudged, faces, hi} like TAKE.results.decisions (data.ts:75-83); Results.tsx is specific to the First take ('40 choices', 5 cards)"
+     },
+     {
+      "item": "Birth-date gate and under-18 screen; isOpen()",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/take/Gate.tsx:30-43, 45, 135, 157",
+      "state": "built and used; it must stay in front of the dailies"
+     },
+     {
+      "item": "Service worker: the shell for '/' and '/index.html' only; precaches every built file (the JS, so its bundled content too) except cutscene panels and -l/-w paintings, which go in 'retake-pics' when first shown or ahead (CACHE_PICS); a revision hash on every file; Update only on tap",
+      "where": "/Users/priyanshu/equal-lens-trainer/scripts/pwa/sw.js:19-145 (navigation 124-127); scripts/pwa/plugin.ts:31-45; src/pwa.ts:26-31 (cacheAhead), 33-79",
+      "state": "built and used. Reusable as is for daily pictures through cacheAhead; no rule yet for daily content files or past days"
+     },
+     {
+      "item": "Content export design-system/tools/app_content.py: build() reads story_take.parse() and panels(), refuses on note-length faults or missing Hindi, writes content/take/first-take.json and copies the CSS, fonts, pictures and sound to public/take/",
+      "where": "/Users/priyanshu/equal-lens-trainer/design-system/tools/app_content.py:29, 100-123 (step), 143-195 (build); src/take/data.ts:1-3, 85-102",
+      "state": "built and used, for the First take only; it has no daily export. Icons are only those the First take uses (my python listing: no 'share', no 'pencil')"
+     },
+     {
+      "item": "Library drawings of daily screens: cover (Play/Continue/See your score, still 'Level 3 of 6'), result, Sunday week, Sunday look again, tabbar",
+      "where": "/Users/priyanshu/equal-lens-trainer/design-system/library.py:201 (tabbar), 444-460 (cover; 'Level 3 of 6' at 450), 658 (result), 679 (sunday_week), 687 (sunday_look)",
+      "state": "drawn only, with stale level wording. ia-and-flows.md marks SC-95 Level switch (line 119), SC-21 Week weekdays (73), SC-27 Past puzzles (79), SC-28 Your notes (80) and SC-10 new kind (64) as 'Not drawn'"
+     },
+     {
+      "item": "Checks: content-check (old days only), scoring-check (engine), privacy-check (clock only in engine/calendar.ts, no setTimeout, no time-like field names in four named store/answer files, no onKey listeners), bundle-check (no third party, script under 130 KB gzipped); e2e, markup, a11y and pwa cover the First take only",
+      "where": "/Users/priyanshu/equal-lens-trainer/scripts/check-all.ts:9; scripts/privacy-check.ts:19-27; scripts/bundle-check.ts:15,30,33-34; scripts/e2e.ts:1-17,140-141; scripts/markup-check.ts:1-7",
+      "state": "built and used. My run of content + scoring + privacy (tsx, no build) printed 42/42 passed"
+     },
+     {
+      "item": "Playbook for run and test",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/playbooks/run-and-test.md (section 1 store keys; section 3 says check-all covers 'the turned-down build's daily content, kept for M3')",
+      "state": "written only for the First take"
+     }
+    ],
+    "missing": [
+     "An app shell above <Take/>: today's cover (SC-01) as the root after the gate, with the First take as the quieter 'First take' offer under Play (F-201), plus a tab bar or rail with Today, Week and (later) Board (SC-00; library.py:201 tabbar is drawn but nothing in src uses it). main.tsx:9 renders only <Take/>. There is no router, and the service worker and serve.ts answer only '/' (sw.js:124-127), so tabs must be in-app state or query strings.",
+     "Exits from the First take: Back or Later on the first chapter card to the cover (Take.tsx:114-120 returns null now), and Done on the reading to the cover (Results onNext only moves to the trunk cutscene, then rests on the reading, Take.tsx:19,109).",
+     "Level switch on the cover (SC-95: Easy, Medium, Hard, remembered, a tick per level played, 'Suggested' once after the starter): not drawn (ia-and-flows.md:119), not in code (grep for levelswitch, Easy or Medium in src: nothing).",
+     "Daily store: records keyed by date and level ({content id, answers with SIG, at, done}); each level keeps its own progress (F-12); the remembered level; whether the suggestion was shown; Sunday look-again answers and private notes by ISO week; month recap seen; whether a puzzle was played on its own day or later as a past puzzle (F-92, needed by M4 boards). The old src/store/index.ts has days by date but no level, no SIG and the stale key 'elt:v1'.",
+     "Delete all and the two-window sync for the daily data: forget() removes only 'retake.take' (store.ts:133-140) and the storage listener ignores other keys (Take.tsx:51).",
+     "A day boundary at 4 am India time (F-09, feature-set.md:40): indiaToday() rolls over at midnight (calendar.ts:46).",
+     "Rotation of the five worlds, one a week: calendar.ts:36-40 alternates two skins and contentDayOf maps to 14 days.",
+     "A daily content format and exporter: app_content.py writes first-take.json only (app_content.py:29,143-195). Daily content in the First take's Step shape (world, art, plate, people with faces and vals, decisions with pair and sex) does not exist; content/days/*.json is the old format with kinds that have no app screen (assign, words, swipe, crowd).",
+     "Two weeks of daily content across the five worlds at three levels: not found (content/ holds only take/first-take.json, the old days/ and drafts/saal-bhar-2026-10-26; grep for daily content in knowledge found none).",
+     "Daily scoring for the app's six kinds: lean and consistency for pick, checks (set up to max), team (set of need), rank (order with seats), order and split; twins across days and levels; transfer days. score.ts scores only the old kinds; there is no scorer for order or split.",
+     "Result screen (SC-11): score, figures, this week's marks, one line, Share. The formula waits on the owner and RSE-164 (Results.tsx:12-13; build plan line 30).",
+     "Week screens SC-20 and SC-21 (week strip with forgiven days), Sunday SC-22 'Your week', SC-23 'Look again' with the twin pair and 'What was different?', SC-24 note sheet, SC-25 month strip, SC-28 'Your notes' (not drawn).",
+     "Past puzzles SC-27 (not drawn): the list, opening a past day's first or left-off step, and the content behind it.",
+     "Streak display (the cover's 'Tuesday off. Streak kept.' line, library.py:449) wired to engine/streak.ts. Also a week-strip view to replace fortnightOf, which assumes the Lugdi/Station pairing.",
+     "Transfer days (a new kind, never named in tomorrow's tease, F-50) and the 'new kind' intro screen SC-10 (not drawn).",
+     "A daily Frame or Progress: Progress hard-codes 5 chapters (parts.tsx:413-425); Frame's label uses chapter wording (common.tsx:67).",
+     "Icons for daily screens (share, pencil): not in TAKE.icons (python listing of first-take.json icons).",
+     "A seeded card shuffle if the same puzzle must look alike for everyone or pairs must not sit in fixed places: useShuffled uses Math.random (common.tsx:35-45).",
+     "Copy updates: Privacy 'On this phone' lists birth date, answers, language and sound only (parts.tsx:154-158); the how-to line is the First take's (parts.tsx:10); the live title, description and manifest say 'a fairness puzzle' (index.html:10,25; public/manifest.webmanifest:4) and are to become 'a daily fairness puzzle' when the dailies ship (library.py:1566).",
+     "Checks for the dailies: privacy-check must read the new store files (it lists four files at privacy-check.ts:24); content-check must read the new daily content (it hard-codes 14 days and two skins, content-check.ts:51-52, and runs its copy rules only on old content per audit line 102); e2e must cover a new kept-keys list (e2e.ts:140-141 asserts exactly six keys) and play the dailies; markup-check needs library or demo versions of the daily screens; scoring-check must move to the new content and kinds; calendar tests (4 am, world rotation, ISO year edges).",
+     "Background loading of the other two levels (F-210: the remembered level loads first, the other two in the background, sharing one painting): content is bundled into the JS today (data.ts:3), and the bundle budget is 130 KB gzipped (bundle-check.ts:15)."
+    ],
+    "conflicts": [
+     "World rotation: calendar.ts:2-6,36-40 alternates two skins (Lugdi odd weeks, Station even weeks) and content-check.ts:51-52 requires that, while M3 asks for 'the five worlds a week each' (app-build-plan-2026-10-24.md:30).",
+     "Day boundary: indiaToday rolls at midnight India time (calendar.ts:46); F-08 and F-09 say a day starts and ends at 4 am India time (feature-set.md:39-40; ia-and-flows.md:373).",
+     "One puzzle a day versus three: the old content and its check have one level per day climbing Monday to Saturday (content-check.ts:57-61), while F-210 calls for three dailies a day (Easy, Medium, Hard), each its own puzzle (feature-set.md:49), with F-37 still making each weekday harder.",
+     "Scoring authority: score.ts:2 and scoring-check.ts:2 cite knowledge/design.md section 7, but that section sits under 'SUPERSEDED: the rejected EVAL-13 system (history only, not authority)' (design.md:27-31). The build plan keeps the engine for M3 (app-build-plan line 100), and F-50a says the formula is set by RSE-164 (feature-set.md:111).",
+     "Lean on the result: F-52 wants a lean number on every result and Sunday (feature-set.md:113); the First take's Results.tsx:12-13 shows no score because the lean waits on RSE-164; M3 waits on 'the scoring shown on the result'.",
+     "Transfer day: the engine gives no consistency and no parts on a transfer day (results.ts:118-120; scoring-check.ts:103), while F-53 says every result has a reading and no 'No score today' (feature-set.md:114).",
+     "Board: engine/board.ts builds a made-up sample board of players, while content-check.ts:164 records that M4's Board shows real players only.",
+     "Kept keys: e2e.ts:140-141 asserts that 'retake.take' holds exactly answers, at, birth, lang, sound and v. Daily fields added to that key break it; a new key escapes Delete all (store.ts:133-140) and the sync (Take.tsx:51) unless both are changed.",
+     "Two of everything: Answer types (engine/answers.ts:58-66 versus take/steps/common.tsx:10-15), Lang types ('en'|'hi' in content/types.ts:7 versus 'mix'|'hi'|'en' in take/data.ts:7), text shapes (Text {en,hi} versus Bi [en,hi]), and content formats (content/days versus content/take). The checks still run on the old ones.",
+     "Level wording: the library cover still prints 'Level 3 of 6' (library.py:450), while D15 says the cover no longer says it, since 'level' now means Easy, Medium or Hard (feature-set.md:410).",
+     "Delete-all wording: the library's cover dialog says 'Delete all your answers and notes?' (library.py:456); the build plan quotes F-112 as 'Delete all your days and notes?' (app-build-plan, M2 Privacy section).",
+     "Card order: the engine's rng header says option order is seeded per player and step so the same twin is not always on the left (rng.ts:1-4); the app shuffles with Math.random on every load (common.tsx:34-45).",
+     "Clock tampering: F-09 says no one opens tomorrow early by changing the phone's clock, but indiaToday reads the device clock (calendar.ts:45-46) and there is no server until M4."
+    ],
+    "owner_questions": [
+     "Which world plays which week, and what happens after the first two weeks? For example: week 1 Lugdi, week 2 Station; in week 3, do Jadugar's puzzles appear, or do Lugdi's puzzles from week 1 come back?",
+     "Are Easy, Medium and Hard three different puzzles on the same day, in the same world and setting? For example, on Tuesday in the Station week, does Easy have 3 people to pick from and Hard 6, or is each level a different story moment?",
+     "How many decisions is one daily at each level? The First take has 40 in one sitting; is Easy 3 decisions and Hard 8, for example?",
+     "Should the dailies use only the six kinds the app already has (pick one, Believe, spend checks, rank for seats, pick a team, batting order, split chores), or also the old kinds with no screen yet (fill in two notes from a word bank, keep or cut quick-fire lines, guess the crowd's share)?",
+     "What number shows on a daily result? For example: one big score (consistency plus practice) with 'Lean 12 of 100' under it, or cards like the First take's reading with no number. This waits on the research line.",
+     "Does the day change at 4 am or at midnight? For example, Ravi plays at 12:20 am: should that count for Monday (4 am rule) or Tuesday?",
+     "After the birth date, where does a new player land? Today's cover with 'First take' as a quiet link under Play, or straight into the First take as now? And players who are halfway through the First take today: should they land on the cover or keep going?",
+     "Until the Board arrives with accounts, should the tab bar show only Today and Week, or show Board as well?",
+     "How far back can Past puzzles go? Only days since the player's first visit, or every day ever published, including days before they joined?",
+     "How often do transfer days come, and what does their result say? For example, one surprise kind every second week, with a reading but no lean?",
+     "Does Sunday have its own look again and note at every level, or one for the whole week? For example, does the twin pair come from the level the player played most?",
+     "Should the streak forgive one missed day per Monday-to-Sunday week, and does the Sunday look-again count as playing that day?"
+    ],
+    "risks": [
+     "Bundle size: the First take's content alone is 30,032 bytes gzipped (`gzip -c content/take/first-take.json | wc -c`), and it rides in the JS (data.ts:3) against a 130 KB gzipped budget (bundle-check.ts:15). Two weeks at three levels bundled the same way may break the budget, and F-210 asks for the other levels to load in the background. Daily content probably has to be separate files, which the service worker plugin would then precache whole unless they match a picture rule (plugin.ts:31-41).",
+     "Stale data on testers' phones: the turned-down build stored 'elt:v1'. Reusing src/store/index.ts as it is (KEY at line 39) would read old days whose `n` points at retired content. It has no content signature, unlike store.ts SIG.",
+     "The privacy check reads only four named files for time-like fields (privacy-check.ts:24). A new daily store file would escape it unless it is added. The clock may be read only in engine/calendar.ts (privacy-check.ts:19-20), so 'Next puzzle in 3 h' (F-03) and the 4 am rollover must be computed there. No setTimeout anywhere (line 22-23), no onKey listeners (26-27), so the note box must use onChange only, and the result reveal (F-55, at most 1.2 s) must be CSS animation, not timers.",
+     "The engine's scoring cannot score the app's step shapes. Reusing it means an adapter or a rewrite, and the two-way tests (favouring women costs what favouring men costs; overcorrection shows a lean; shrinkage) in scoring-check.ts:48-82 must be carried over, not dropped.",
+     "Step ids must be unique across the First take, the days and the levels. SIG and answers are keyed by step id (store.ts:26,36), and First take ids such as 'station-1' come from world plus number (app_content.py:104).",
+     "Back handling in Take.tsx:134-184 keeps a single history entry for one linear flow; tabs, past puzzles and a cover root will need it reworked without breaking the e2e Back and Delete-all paths.",
+     "The date override (?day=, ?date=, calendar.ts:51-71) is handy for testing but would let anyone play any date. That is harmless offline, but it must not feed M4 boards.",
+     "Hard-coded First take assumptions that a daily would trip over: Split's TV rule (Split.tsx:23), Progress showing 5 chapters (parts.tsx:413-425), the how-to line (parts.tsx:10), results.ts TWINS T1-T3 (line 20), content-check's 14 days in two skins (51-52).",
+     "Offline and the 2 GB phone: past days need signal unless their pictures are cached (FL-19, ia-and-flows.md:1019), and five worlds' art adds storage (FL-26). Only cutscene panels and -l/-w paintings are lazily cached (plugin.ts:31); every other picture in take/assets is precached on every phone.",
+     "Room M3 must leave for M4: the store should keep, per date and level, whether a puzzle was played on its day or later (F-92: past puzzles count for All time only). The old Backend interface is synchronous (store/index.ts:34-37) while a server is not. The CSP allows connect-src 'self' only (vercel.json, '/' headers), which fits the planned same-origin proxy. bundle-check forbids Firebase strings in the build (bundle-check.ts:30) although the repo holds firebase.json and database.rules.json. Road names (handles.ts) are ready; board.ts's sample must go."
+    ],
+    "notes": "Commands run:\n- I ran content-check, scoring-check and privacy-check (no vite build, no browser) with a small runner, /private/tmp/claude-501/-Users-priyanshu-Sex-Ed/f50ea7ee-0855-46a2-8572-0aa08df5b855/scratchpad/run-light-checks.mts, via node_modules/.bin/tsx --tsconfig tsconfig.app.json. It printed 'PASS C content and copy (19/19)', 'PASS S scoring, streak, board and road names (19/19)', 'PASS P privacy (4/4)', '42/42'. I did not run bundle-check, e2e, pwa, a11y or markup.\n- Import map: grep over src/take shows the only engine import is Gate.tsx:2 (calendar: daysBetween, indiaToday). Nothing in src imports src/store, src/content or the other engine modules except the engine itself.\n- dist/ is stale (dated 20 Oct, from the turned-down build), so I did not measure the current bundle size.\n\nWhat the store would need, concretely:\n- a new key (or a versioned extension of 'retake.take'), wired into Delete all and the two-window storage sync;\n- days: {date: {level: {id, answers (each with SIG), at, done, playedOn date}}};\n- the remembered level and whether the suggestion was shown;\n- Sunday answers and private notes by ISO week (never read by scoring; scoring-check.ts:104-107 already guards the engine);\n- monthRecapSeen;\n- a played-date set derived for the streak, where any level counts (F-210).\n\nDates only, no times; the field name `at` is allowed by the privacy regex, but at[A-Z]* names are not (privacy-check.ts:25).\n\nReusable as is:\n- the six step components and Frame (with a daily Progress);\n- favoured() if daily decisions carry pair, sex and nudged;\n- the SIG/fits pattern, if given a step map;\n- load, adopt, save, canKeep;\n- the Gate;\n- the sound per world;\n- lang.tsx's three modes;\n- Drawn for exported library markup;\n- the service worker with cacheAhead for each day's pictures;\n- the update toast;\n- streak.ts's core algorithm (with a week strip in place of fortnightOf);\n- calendar helpers (addDays, weekday, isoWeek, weekKey, mondayOf) once the 4 am rollover and the five-world rotation are added."
+   }
+  },
+  {
+   "reader": "content",
+   "map": {
+    "summary": "The dailies' content today is the \"fortnight\" written on 20 Oct for the trainer build the owner turned down (git 33a6c4a, 2026-10-20). It is 14 hand-written JSON days (content/days/01 to 14): one week of Lugdi and one of Station, each with 6 played days and a Sunday. Jadugar, Cricket and Rukavat have 0 days. There are no Easy, Medium or Hard levels anywhere. Each played day holds exactly one puzzle, except Station Monday, which has a rank and a crowd guess, so there are 13 puzzles in all. The day's \"level\" field is an old idea ladder (2, 3, 4, 6, 7, 10; src/content/types.ts line 192, e.g. content/days/06-lugdi-sat.json line 7), not Easy/Medium/Hard. The schema only allows the skins 'lugdi' and 'station' (types.ts line 10). The live app does not load any of it: src/main.tsx imports only ./take/Take, and only src/engine (score, results) and scripts/content-check.ts read the days.\n\nSchema of a day (types.ts lines 182 to 206): id, n (1 to 14), skin, ground, weekday, level (number or null), levelName, area, object, masthead (series, no, title, blurb, plus a Lugdi cover painting or a Station board, city and regional script line), steps[], optional transfer, sunday, reflect {twin, prompt} and _review. There are 8 step kinds: assign (lock a rule, then fill slots), pick, checks (spend a budget of checks), team (with a voice and a response), rank, words (fill two notes from a word bank), swipe (keep or cut mirrored lines) and crowd (guess a share of players). Twins are {id T1 to T3, half a or b}. Notes are pick quotes, checks findings, rank records and swipe lines. There is no hard-topic tag and no help-line field.\n\nAgainst today's rules (checked by a python pass over every day file, not by running pnpm check):\n- **Twin numbers:** identical inside every twin (T1 Kamla and Raju 14/0/61; T2 Anita and Vikram 9/2; T3 ties at 34). Station Monday's pair is not identical: Anita has queue 2 and token 3, Vikram queue 1 and token 4.\n- **Note lengths:** the first-take length check (story_take.length_faults) is never run on days. By hand: the pick quotes match in English words (6 and 6) but run 6 and 7 words in Hindi. Swipe pair p2 runs 8 against 11 words. The pair's notes are word-for-word identical in Friday's checks (\"Every book balanced.\") and Station Monday's rank (\"Child in hospital.\"), which the new rule 19 forbids.\n- **Help line:** no day is a dowry or custody day, and no day carries a help line. Whether the two \"Night Match\" safety-framing Saturdays count as safety days is unsettled.\n- **Hindi:** every string has a Hindi draft, but hi.json is marked \"draft\" (line 2) and two _review notes are stale.\n- **Community names:** nothing checks the days for this rule. Salim, a Muslim-marked name, is the voice asking to keep the women home \"for their safety\" (06-lugdi-sat.json lines 84 to 90), and in Station Saturday he is in the tied pair that the \"keep the boys off\" nudge falls on.\n\nAgainst the owner's 25 to 26 Oct rules, none of the 14 days survives as written:\n- All 14 use the eight old names the owner replaced on 22 Oct (\"go pan india and be more secular\", knowledge/content/cast.md line 22).\n- Their portrait files are now First take people: enamel-kamla.webp is byte-identical to enamel-mumtaz.webp, and enamel-pammi.webp to enamel-kiran.webp (md5).\n- The worst days are trade and against-type ones, the exact \"female truck driver\" cop-out of answer 9 (ground-rules-draft line 22): two drivers on the night ghat, depot drivers, station masters, a gossip-magazine editor and a cloakroom clerk.\n\nOnly four ideas carry over, each needing a new setting, new cast and three levels: assigning jobs for a family event, who keeps the committee's cash box under a marriage or family worry (T2), picking a team while a \"protective\" voice speaks (T3), and ranking people for one seat. To be rewritten from scratch: Lugdi Tue, Wed and Thu; Station Tue, Wed and Thu (the T1 twin and the transfer day).\n\nArt: the Lugdi covers exist in design-system/assets (pulp-s-diwali, -ghat, -money, -cricket). Station days name no painting. Nothing is exported for days: public/art, which types.ts lines 27 and 173 point to, does not exist. Most other scene paintings are past-era.",
+    "exists": [
+     {
+      "item": "14 daily content files (Lugdi week 1 to 7, Station week 8 to 14), one puzzle per day, 13 steps across 12 played days, 2 Sundays",
+      "where": "/Users/priyanshu/equal-lens-trainer/content/days/01-lugdi-mon.json to 14-station-sun.json; loaded in /Users/priyanshu/equal-lens-trainer/src/content/index.ts lines 5-21; written in git 33a6c4a (2026-10-20, the turned-down trainer build)",
+      "state": "built but unused (the live app's src/main.tsx imports only ./take/Take; only src/engine/score.ts, src/engine/results.ts and scripts/content-check.ts read the days); stale against the 25-26 Oct rules"
+     },
+     {
+      "item": "Day schema: skin limited to 'lugdi'|'station'; level is a number or null (old idea ladder 2,3,4,6,7,10), not Easy/Medium/Hard; levelName; area; masthead; steps[]; transfer; sunday; reflect; _review. No hard-topic tag, no help-line field, no Easy/Medium/Hard variants, Text has en and hi only (no 'eng' for English-only mode)",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/content/types.ts lines 7-8 (Text), 10 (Skin), 182-206 (Day)",
+      "state": "built and used by the engine, but its shape cannot hold three levels a day or five worlds"
+     },
+     {
+      "item": "Eight step kinds: assign, pick, checks, team, rank, words, swipe, crowd",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/content/types.ts lines 52-160",
+      "state": "built; the crowd kind uses made-up figures (content/days/08-station-mon.json lines 149-150: sample 71, players 41302)"
+     },
+     {
+      "item": "Three twins: T1 L-wed/S-thu (night-ghat pick, words swapped), T2 L-fri/S-fri (cash-box checks, voice moved from Anita to Vikram), T3 L-sat/S-sat (team of 6 of 8, protective voice on women then men). Numbers are identical inside each pair",
+      "where": "content/days/03-lugdi-wed.json line 95, 11-station-thu.json line 99, 05-lugdi-fri.json line 96, 12-station-fri.json line 100, 06-lugdi-sat.json line 122, 13-station-sat.json line 126",
+      "state": "built; T1 and T2 reuse the same pair in both halves, T3 shares Anita; T1 changes weekday (Wed to Thu)"
+     },
+     {
+      "item": "One transfer day (cloak room, no level, no score)",
+      "where": "/Users/priyanshu/equal-lens-trainer/content/days/09-station-tue.json lines 7, 17, 19-22 (series 'Transfer day'), levelName 'A new kind of puzzle'",
+      "state": "built but unused; it names itself on screen, which rule 60 forbids"
+     },
+     {
+      "item": "Two Sunday days (no puzzle, 'What was different?' on T1)",
+      "where": "content/days/07-lugdi-sun.json lines 34-36, 14-station-sun.json lines 35-36",
+      "state": "built but unused; Lugdi Sunday reflects T1 before its second half exists (day 11)"
+     },
+     {
+      "item": "Cast: 10 people, the 8 old regulars (Kamla, Pammi, Anita, Meena, Raju, Salim, Vikram, Arjun) plus Farida and Joseph, gender for scoring only, no community tags",
+      "where": "/Users/priyanshu/equal-lens-trainer/content/cast.json",
+      "state": "stale: the owner replaced these eight names on 22 Oct (knowledge/content/cast.md line 22)"
+     },
+     {
+      "item": "Road-name words (handles)",
+      "where": "/Users/priyanshu/equal-lens-trainer/content/handles.json; used by src/engine/handles.ts lines 6-32",
+      "state": "built and used by the engine (an M4 identity concern; Sunday titles need {handle})"
+     },
+     {
+      "item": "Sample board numbers",
+      "where": "/Users/priyanshu/equal-lens-trainer/content/sample.json; read by src/engine/board.ts lines 7, 21",
+      "state": "built but unused by any screen; scripts/content-check.ts line 164 says the sample board went with the retired UI"
+     },
+     {
+      "item": "Interface strings en and hi (108 keys each; hi has _status 'draft'); no Easy/Medium/Hard, past-puzzle or help-line strings; app.name 'Equal Lens Daily'; result.matching 'Matching cases alike'",
+      "where": "/Users/priyanshu/equal-lens-trainer/content/i18n/en.json lines 3, 18, 58; hi.json",
+      "state": "written only: no src file reads content/i18n (grep), only scripts/content-check.ts lines 146-151; stale"
+     },
+     {
+      "item": "Content check for the days: 14 days in Lugdi-then-Station order, one transfer day, twins for pick/checks/team only, mirrors, word limits, Hindi present, dashes, British spelling, timers, handle words",
+      "where": "/Users/priyanshu/equal-lens-trainer/scripts/content-check.ts lines 51-52, 66, 72-80, 81-97, 105-131, 133-163; run by scripts/check-all.ts line 9",
+      "state": "built and used in pnpm check (not run here, by instruction); hard-codes the old fortnight's shape; no note-length, help-line, community-name, level-tag or shared-person checks"
+     },
+     {
+      "item": "Note-length rule (notes within 2 words, the pair the same length, longest note on the pair in at most half the decisions)",
+      "where": "/Users/priyanshu/equal-lens-trainer/design-system/story_take.py lines 140-160; called by design-system/tools/app_content.py build() and design-system/demo.py line 444",
+      "state": "built and used for the First take only; never applied to content/days"
+     },
+     {
+      "item": "First take rule checker (hidden pair, twins share no person, hard fact never on a community-marked name, no such name in a hard twin's voice line)",
+      "where": "/Users/priyanshu/equal-lens-trainer/design-system/tools/check_first_take.py lines 1-24, 199-241",
+      "state": "built, reads First take markdown only; not applied to days"
+     },
+     {
+      "item": "App content export (writes content/take/first-take.json and copies its pictures to public/take/)",
+      "where": "/Users/priyanshu/equal-lens-trainer/design-system/tools/app_content.py lines 170-215",
+      "state": "built and used for the First take only; no export for days"
+     },
+     {
+      "item": "demo.py and first_take.py builders",
+      "where": "/Users/priyanshu/equal-lens-trainer/design-system/demo.py lines 1-15; design-system/first_take.py lines 1-8",
+      "state": "built and used for the First take only; nothing for dailies"
+     },
+     {
+      "item": "Lugdi cover paintings named by days: pulp-s-diwali (L-mon), pulp-s-ghat (L-wed, with -l and -w), pulp-s-money (L-fri), pulp-s-cricket (L-sat). L-tue, L-thu and all Station days name no painting",
+      "where": "/Users/priyanshu/equal-lens-trainer/design-system/assets/pulp-s-*.webp; the days reference them at 01-lugdi-mon.json line 31, 03 line 31, 05 line 31, 06 line 31",
+      "state": "drawn only for days: public/art (where types.ts lines 27 and 173 say they live) does not exist; pulp-s-ghat, -money and -cricket sit in public/take/assets only because the First take uses them"
+     },
+     {
+      "item": "Scene paintings for the other worlds: Station station-s-counter and -platform; Jadugar jadugar-s-booth, cot, rickshaw, rope, trunk; Cricket cricket-s-board, dressing, nets, scoreboard, stumps; Rukavat sunday-s-roof, room, sofa, tv; Lugdi also pulp-s-night and pulp-s-court",
+      "where": "/Users/priyanshu/equal-lens-trainer/design-system/assets (prompts in the .webp.json files)",
+      "state": "drawn for the First take's old-era moments; mostly past-era (sunday-s-room is 'A 1980s Indian living room', the Jadugar ones are kerosene-lit magic-show tents); referenced by no day"
+     },
+     {
+      "item": "Portraits of the 8 old regulars in all five styles (pulp, enamel, jadugar, cricket-face, sunday); Farida and Joseph have none",
+      "where": "/Users/priyanshu/equal-lens-trainer/design-system/assets; md5 shows enamel-kamla.webp = enamel-mumtaz.webp and enamel-pammi.webp = enamel-kiran.webp",
+      "state": "drawn, but the faces now belong to First take people"
+     },
+     {
+      "item": "Checked help lines (ERSS 112, NALSA 15100, Tele-MANAS 14416)",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/reference/help-lines-2026-10-27.md lines 1-25",
+      "state": "written for the First take chapters; no day can carry one yet"
+     },
+     {
+      "item": "Dailies ground rules 53-61 (three levels sharing one painting, Easy/Medium/Hard defined, twins a week apart at the same weekday and level, 18 puzzles a week from a standing pool of faces, four weeks ahead)",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/story/ground-rules-draft-2026-10-25.md lines 116-126",
+      "state": "written only; a draft 'for your yes', with questions 4, 10, 11 and 15 open (lines 141, 147, 148, 152)"
+     },
+     {
+      "item": "Review of the old fortnight for the owner",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/reviews/trainer-content-2026-10-20.md",
+      "state": "stale"
+     },
+     {
+      "item": "Calendar rotation: odd ISO weeks Lugdi, even weeks Station, the fortnight repeating",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/calendar.ts lines 1-8",
+      "state": "built and used by the engine; conflicts with F-214's five-world turn counted from launch Monday"
+     }
+    ],
+    "missing": [
+     "Easy, Medium and Hard: no puzzle at any level, no level variants in the Day schema (src/content/types.ts lines 182-206), no level tag a script can check (rule 55, ground-rules-draft line 120), and no Easy/Medium/Hard strings in content/i18n/en.json (grep returned nothing).",
+     "Jadugar, Cricket and Rukavat days: 0 of each. The Skin type allows only 'lugdi'|'station' (types.ts line 10), and content-check.ts lines 51-52 fail any other order.",
+     "M3's volume. Two weeks at 6 days x 3 levels is 36 puzzles plus 2 Sundays (rule 61 says 18 a week). Today there are 13 puzzles and none is usable as written.",
+     "A hard-topic tag and a help-line field on a day, so dowry, custody and safety days carry the one line in '?' (F-47, knowledge/ux/feature-set.md line 91). Today there is neither, and no dowry or custody day exists.",
+     "A daily content checker for the newer rules: note lengths (story_take.length_faults covers the First take only), twin halves that share no person, 3 to 5 cards, a second tie besides the equal two, decoys of the nudge's kind, no hard fact on a community-marked name, level tags, a situation that never repeats (rule 6).",
+     "Community tags in content/cast.json for a checker to read (rule 21, ground-rules-draft line 71). Today cast.json holds only name, gender, art and recurring.",
+     "A standing pool of daily faces, each with one name and one role (rule 61), separate from the First take's people.",
+     "A day export (like design-system/tools/app_content.py) that copies each day's painting and portraits into public/. public/art does not exist.",
+     "One present-day painting per day shared by its three levels (rule 53), for every world. No day of the Station week names any painting.",
+     "An English-only ('eng') variant in day text. The First take carries en, hi and eng (app build plan line 21); days carry en and hi only.",
+     "A native Hindi read of every day string, and of the regional script lines (Gujarati, Telugu, Bengali, Tamil, Marathi) on the Station mastheads.",
+     "Strings for the level switch, past puzzles, the forgiven day's explanation and the help line.",
+     "The owner's review of any new daily content, which M3 itself waits on (knowledge/reviews/app-build-plan-2026-10-24.md line 30).",
+     "Real crowd figures for the crowd guess: rule 57 (ground-rules-draft line 122) says it waits for real players, which means M4's server."
+    ],
+    "conflicts": [
+     "Cast: all 14 days use Kamla, Pammi, Anita, Meena, Raju, Salim, Vikram and Arjun (content/cast.json). The owner replaced these eight names on 22 Oct ('go pan india and be more secular', knowledge/content/cast.md line 22), and their portraits now belong to Mumtaz, Kiran and others (enamel-kamla.webp has the same md5 as enamel-mumtaz.webp).",
+     "Jobs: owner answer 9, 26 Oct (ground-rules-draft line 22): 'If we ask for a male nurse or a female truck driver, everyone gets a cop out.' The days do exactly that: 'Who drives the night ghat?' with Kamla against Raju (03-lugdi-wed.json, 11-station-thu.json), 'Kamla drives a truck' (02-lugdi-tue.json line 108), depot drivers and a 'short load' (04-lugdi-thu.json), and station masters (10-station-wed.json).",
+     "Trades and roles nobody lives: rule 1 says crewing a ghat train 'should pass for none', rule 2 bans trade words, and rule 5 asks the player only what someone in their place would really be asked (ground-rules-draft lines 44-49). The days use a ghat night shift, a booking clerk ranking strangers at Tatkal (08), a cloakroom attendant (09) and a gossip-magazine editor (02).",
+     "Festivals: rule 3 bans ritual and religious symbols, and rule 59 keeps festivals out until question 10 is answered (lines 47, 124). Against that: 'Diwali Ki Raat' (01-lugdi-mon.json line 24) and its painting pulp-s-diwali ('clay oil lamps... a rangoli'), and 'Both ran the Diwali rush' (10-station-wed.json line 107). The pulp-s-ghat prompt also paints 'a roadside shrine with an oil lamp'.",
+     "Cities: rule 59 names cities only if the owner says yes to question 10. Every Station day names one: Ahmedabad, Jaipur, Hyderabad, Nashik, Kolkata and Madurai (08 to 13, the masthead city at line 27 or 28).",
+     "Level naming: F-211 and D15 use 'level' to mean Easy, Medium or Hard (feature-set.md line 50). The days use 'level' for an idea ladder from 2 to 10 with a shown levelName, and i18n shows 'Level {n}' (en.json line 18). Rule 56 says the week's climb is 'never shown as a number or a name' (ground-rules-draft line 121).",
+     "Transfer day: rule 60 (line 125) says days of brand-new situations 'look and score like any other and are never named'. Station Tuesday shows the series 'Transfer day', the levelName 'A new kind of puzzle' and the blurb 'No jobs, no teams today.' (09-station-tue.json), and i18n says 'No score today.' (en.json line 64).",
+     "Twins: rule 16 (line 66) wants a different equal two with no shared person and never a near-copy ('no her-to-his swap'), and check_first_take.py line 17 enforces the same for the First take. In the days, T1 and T2 use the same pair in both halves, T1 only swaps the two quotes, and T3 shares Anita.",
+     "Twin spacing: rule 58 (line 123) brings the second half back on the same weekday. T1 runs from a Wednesday (03, weekday 3) to a Thursday (11, weekday 4).",
+     "Card count: F-23 (feature-set line 64) and rule 13 (line 63) want 3 to 5 people, and team days at most 5. The picks show 2 people (03, 09, 11), the words days 2, and the team days 8 (06, 13).",
+     "Never the only tie: rules 54 and 55 (lines 119-120). In every day with numbers, the equal two are the only tie (Lugdi Monday Anita and Arjun 3/3; both Saturdays at 34; Station Monday urgency 3; the 2-card picks).",
+     "Crowd guess: rule 57 says it waits for real players, and content-check.ts line 164 says the sample crowd figure went with the old UI. Yet 08-station-mon.json lines 149-150 keep sample 71 and players 41302, and content-check.ts line 66 still requires the crowd kind.",
+     "Rotation: F-214 (feature-set line 51) gives five worlds a week each, counted from launch Monday. src/engine/calendar.ts lines 1-5 alternate Lugdi and Station by ISO week parity, and content-check.ts lines 51-52 lock that order in.",
+     "M3 asks for 'two weeks of content across the five worlds' (app build plan line 30). At one world a week (F-214), two weeks reach only two worlds, and rule 61 asks for four weeks ready ahead, reviewed by the owner and in Hindi (ground-rules-draft line 126).",
+     "Research words on screen: rule 64 (line 132) bans 'matching cases', but i18n has 'Matching cases alike' (en.json line 58). The app is also still named 'Equal Lens Daily' (en.json line 3), not Retake.",
+     "Notes: rule 19 (line 69) says the pair's notes never share an opening word or a word-for-word fact. The days give the pair identical findings ('Every book balanced.', 05 and 12), identical records ('Child in hospital.', 08), and quotes that both open with 'Drives' (03, 11). Swipe mirror p2 runs 8 against 11 words (02).",
+     "Judging notes: rule 22 (line 72) says a named person with a portrait says them. The ghat quotes ('Drives very fast on the ghat.') have no speaker (03, 11).",
+     "Children: rule 29 (line 82) forbids danger to a child. Station Monday's equal two both carry 'Child in hospital.' (08-station-mon.json).",
+     "Overlap with the new First take: rule 6 (line 50) says First take situations stay out of the dailies for a year. The Saturday lane-cricket team pick overlaps Saal Bhar chapter 4 'The lane cup', and the one-seat rank overlaps chapter 1 'Fourteen people, ten berths' (content/drafts/saal-bhar-2026-10-26/chapter-1.json and chapter-4.json). Saal Bhar is still draft 1.",
+     "Stale review notes: 04-lugdi-thu.json line 107 asks for a check of 'मुश्किल', which is not in the word bank, and 10-station-wed.json line 113 explains 'soft', which is not in the bank either (the bank has 'cold')."
+    ],
+    "owner_questions": [
+     "Do we throw out the old fortnight and write new dailies, or keep it as stand-in content only so the screens can be built while new puzzles are written? For example, the level switch and result could be built on 'Diwali Ki Raat' with a 'not final' mark, then the words swapped later.",
+     "Is this what you mean by Easy, Medium and Hard (ground rules question 4)? Take 'who keeps the colony committee's cash box'. Easy: one person has a leaning remark and the numbers are clear. Medium: someone else also has a leaning remark, or one of the two 'already has the bank key'. Hard: the two sit in the middle of the numbers and each has a leaning remark.",
+     "How many weeks must be ready before the dailies go live, and which worlds come first? The build plan says two weeks, which covers only Lugdi and Station at one world a week. The ground rules ask for four weeks ready ahead, which covers four of the five worlds.",
+     "May a daily name a festival or a city (question 10)? For example 'the Diwali stall' or 'the Kolkata committee'. Until you say yes, the old Monday and every Station day have to change.",
+     "Are the 'Night Match' days a safety day that needs the help line in '?'? On those days a relative says 'Keep the girls home tonight. It's for their safety.' If yes, the team pick moves to a hard-topic day: at most one a week and never on a Monday.",
+     "How long may a whole day take (question 15)? Someone who plays Easy on the bus and Medium and Hard after dinner. Should all three together fit 5 to 7 minutes, or can each take 5 to 7?",
+     "Do you still want a surprise 'new kind of day' (the old cloak-room Tuesday)? If yes, should it look and score like any other day, as the draft says, rather than say 'No score today'?",
+     "May a daily ever show only two people, like the old two-driver choice, or always 3 to 5?",
+     "May the First take's household ask a daily's question (question 11)? For example, Bua asking who keeps the cash box in her own world's week."
+    ],
+    "risks": [
+     "The critical path for M3 is content, not code. At least 36 new puzzles plus 2 Sundays are needed, each to be reviewed by the owner and read in Hindi. The rulebook they must follow (ground rules 53-61) is still a draft waiting for the owner's yes.",
+     "Building M3's screens on the old Day shape (one puzzle a day, src/content/types.ts lines 182-206) would have to be undone. Three levels a day changes the day's shape, the scoring per level, the result, past puzzles and the streak. scripts/content-check.ts lines 51-80 would also fail any five-world or three-level content.",
+     "Community names: Salim, marked as Muslim, is the voice asking to keep the women home 'for their safety' (06-lugdi-sat.json lines 84-90). In Station Saturday he is one of the tied pair at 34 whom the 'keep the boys off the night bus' nudge falls on (13-station-sat.json). Farida and Joseph appear once each as extras. cast.json has no community tags, so no script can catch this.",
+     "Faces: if the old days ship, a daily 'Kamla' wears the same portrait as the First take's Mumtaz (same md5), breaking 'one person, one world, one role'.",
+     "Hindi is all draft. The ghat prompt 'रात का घाट कौन चलाएगा?' uses the masculine future in a woman-against-man choice (03-lugdi-wed.json). 'Is she even a lady?' became 'लड़की है भी?', which says 'girl' (02-lugdi-tue.json). 'धक्का-मुक्की वाले' is a known placeholder (10-station-wed.json line 113). The regional script lines have never been checked.",
+     "Art: no present-day shared painting exists for any new daily scene, and most existing scene paintings are past-era. Painting about 12 or more scenes in each world means FLUX runs, which must go one at a time through ~/.claude/heavy-queue on this 24 GB Mac.",
+     "Room for M4: Sunday titles need {handle} (07-lugdi-sun.json, 14-station-sun.json), and road names are made on the phone today (src/engine/handles.ts). The crowd guess and sample.json need real players. M4 adds three boards per level (app build plan line 31), and F-49a fetches a past puzzle when it is opened. So each puzzle needs a stable id per date and level, and day content should be fetchable rather than bundled.",
+     "The Lugdi Sunday asks 'What was different?' about T1 before its second half has been played (07-lugdi-sun.json line 35, while T1 half b is day 11). Rule 58 needs a plain twin that is finished by each Sunday.",
+     "Stale _review notes (04-lugdi-thu.json line 107, 10-station-wed.json line 113) would send reviewers checking words that are not on screen."
+    ],
+    "notes": "Method: I read all 14 day files in full, plus cast.json, handles.json, sample.json, both i18n files (keys compared), content-check.ts, story_take.py and app_content.py in full, and the relevant parts of first_take.py, check_first_take.py, demo.py, src/content/types.ts and index.ts, calendar.ts, the three owner-rule documents and the app build plan. One python pass over the day files counted cards, ties, note word and letter lengths in English and Hindi, and missing Hindi. No string lacks Hindi. Across the checks and rank decisions, the longest note falls on the pair in 1 of 3. As instructed I did not run pnpm check or content-check.ts, so whether the content check passes today is not verified. Art existence was checked with ls and md5 on design-system/assets and public/; there is no public/art.\n\nPer-day verdict:\n- **Can be reworked from an idea** (new cast, setting, cards and three levels):\n  - 01 Lugdi Mon: assign jobs for a family event, without Diwali.\n  - 05 Lugdi Fri and 12 Station Fri: T2, who keeps the cash under a marriage or family worry. Recast as a colony or society committee with a new pair in half b and a decoy family-worry note. The chit fund and ₹6 lakh go, since rule 4 wants money as a share of pay.\n  - 06 Lugdi Sat and 13 Station Sat: T3, a team pick while a protective voice speaks. At most 5 cards, a new pair, and the voice not on a community-marked name. It may be a safety day needing the help line.\n  - 08 Station Mon: rank for one seat, recast as a family train journey with the pair identical on every number, no child at risk and no crowd step. It may clash with Saal Bhar chapter 1.\n  - 07 and 14, the Sundays: the structure stays, reflecting a twin that has finished.\n- **Rewrite from scratch:**\n  - 02 Lugdi Tue: a plain spot-the-sexist gossip page built on against-type jobs.\n  - 03 Lugdi Wed and 11 Station Thu: T1, the night-ghat truck drivers. A trade setting, the female-truck-driver cop-out, 2 cards, the same pair and unattributed quotes.\n  - 04 Lugdi Thu: depot drivers. The words kind itself can stay.\n  - 10 Station Wed: station masters and the Diwali rush.\n  - 09 Station Tue: the cloakroom clerk role, a day that names itself, 2 cards.\n\nKind fit: the dailies' own kinds in rule 57 (assign, loaded-words pick, checks, protective-voice team, rank, words, quick sort) match the engine's step kinds, except that crowd waits for M4. Believe, the batting order and Split exist only in the First take (src/take/steps) and join the dailies later, one new kind a week (rule 57)."
+   }
+  },
+  {
+   "reader": "design",
+   "map": {
+    "summary": "Mapped from the files only. I did not render anything or run frames.cjs. The library (design-system/library.py, built into index.html on 27 Oct with all five worlds) has pictures for four daily screens: the cover, the result, Sunday's week and Sunday's look again. Each is drawn in all five worlds and carries both languages. But pictures exist only for an older one-puzzle-a-day game. No picture shows the Easy/Medium/Hard switch, Past puzzles, the Week tab on weekdays, the Sunday cover, Your notes, or the note and month-strip sheets as screens. The words \"Past puzzles\", \"Easy\", \"Medium\", \"Suggested\", \"See your week\" and \"Next puzzle in\" appear 0 times in library.py, the world modules and library.css. Every drawn cover still prints \"Level 3 of 6\" (library.py:450 and 1623), and DESIGN.md:495 says that goes. The pictures that track the report over time (the Day 1 Week tab, the first and second Sunday, the month recap, the change cards) and every wide-screen layout exist only in Lugdi and Station. DESIGN.md and ia-and-flows.md were last committed on 25 and 24 Oct. They predate the owner's 25 and 26 Oct answers (\"just the look\"; the First take becomes the story mode with no time cap). They also disagree with the \"?\" sheet's option C, which is what the app built. The app itself has no tab bar, cover, result or week (src/main.tsx mounts only Take). The engine and content the dailies would use are left over from the two-world, one-puzzle-a-day build. By the owner's rule (pictured parts approved before any build), M3 needs a library pass and the owner's approval before any daily screen is coded.",
+    "exists": [
+     {
+      "item": "Cover (SC-01): play, continue, done ('after today'), first visit, hard day, forgiven day, loading, the delete dialog",
+      "where": "design-system/library.py cover() 444-469; COVERS list 1414-1424; the world hook cover_top() in library.py 332 and each world module (jadugar.py 210, cricket.py 232, rukavat.py 224). index.html captions: 'Lugdi cover' to 'Rukavat cover', and '<world>, after today/first visit/a hard day/a forgiven day/loading' for all five. 'Hindi, <world> cover' and '200%, <world> cover' frames exist for all five. 360 x 640 covers exist for Lugdi, Jadugar, Cricket and Rukavat, not Station.",
+      "state": "drawn only; stale: prints 'Level 3 of 6' and 'Level 4 of 6' (library.py:450, wide version 1623), which D15 and DESIGN.md:495 remove. The done line is each world's next_line ('Next issue tomorrow', library.py:271; 'Next train tomorrow' 1110; jadugar.py:150; cricket.py:190; rukavat.py:174), not F-03's 'Next puzzle in 3 h'. No level switch, no Past puzzles, no Sunday state, no First take offer."
+     },
+     {
+      "item": "Level switch on the cover (SC-95)",
+      "where": "Written in DESIGN.md:494-500 ('Not yet drawn in the library') and ia-and-flows.md:119 (states), 1110 (to draw). library.css:645 .seg is a two-column grid (grid-template-columns: 1fr 1fr) used only for Friends/Everyone.",
+      "state": "written only"
+     },
+     {
+      "item": "Result (SC-11): the score, three figures, the week marks, the tomorrow line, Share",
+      "where": "library.py result() 658-667, result_parts() hook 378 plus one per world. Captions: Lugdi, Station, Jadugar (reveal, still), Cricket (decision pending, plain, reduced motion), Rukavat (the cut, still, plain). 200% for all five. 360 x 640 for Station, Jadugar, Cricket and Rukavat. 'Day 1 result' only in Lugdi (REPORT 1570; aria-label 'Lugdi result, day 1').",
+      "state": "drawn only. Not drawn: the level named on the result, a second level played the same day, a past day's result, the milestone stamp shown on the result, the Remind me line, the first result's road-name and email line, the offline 'Saved' line."
+     },
+     {
+      "item": "Streak with one forgiven day",
+      "where": "daycount() library.py:182 (top-bar 'Day 6', read aloud as 'Streak 6 days'); spines() 634-642 (week marks, forgiven day shown as 'off'); the cover's forgiven-day line 449; toast specimen 904; month strip plus 'Best: 12 days' specimen 885-891; milestone stamp specimen 928. Every one is drawn in each world through each(spec_*).",
+      "state": "drawn only, as specimens and inside the cover, result and Sunday frames"
+     },
+     {
+      "item": "Week tab before the first Sunday (SC-20)",
+      "where": "library.py week_day1() 1434-1442; caption 'Day 1, the Week tab'; aria-label 'Lugdi Week tab, day 1'",
+      "state": "drawn only, in Lugdi only. Not drawn: the 'no days yet' state, the First take block."
+     },
+     {
+      "item": "Sunday: your week (SC-22)",
+      "where": "library.py sunday_week() 679-685, dayobjs() 671-677, world hook week_obj()/dayobj(). Captions '<world> Sunday, the week' for all five, plus 200% for all five. sunday_report() 1444-1457: first Sunday in Lugdi, 'with week by week' in Station.",
+      "state": "drawn only. The report versions exist only in Lugdi and Station."
+     },
+     {
+      "item": "Sunday: look again (SC-23)",
+      "where": "library.py sunday_look() 687-701; captions '<world> Sunday, look again' for all five",
+      "state": "stale: the main button still reads 'Save answer' (library.py:699, wide version 1653), which ia-and-flows.md:1139 asks to replace (F-69)"
+     },
+     {
+      "item": "Note sheet (SC-24) and month strip (SC-25)",
+      "where": "Note field specimen in spec_overlays() library.py:903-916 ('Stays on this phone, never sent'); month strip in spec_info() 890",
+      "state": "drawn only, as part specimens; neither is drawn as a screen"
+     },
+     {
+      "item": "Month recap (SC-26), 3 cards",
+      "where": "library.py month_card() 1464-1485; storytop() 1459-1462",
+      "state": "stale and drawn only in Station. It closes with Close (1462), not Back. Its first card says 'Lower for 2 weeks. A change needs 3.' (1470) before the research line has set that rule. It counts days as '24 of 28' (1473). ia-and-flows.md:1140 asks for all three to change."
+     },
+     {
+      "item": "Change cards (the report over time)",
+      "where": "library.py change_card() 1487-1522: four cards in Lugdi (lean lower), two in Station (lean higher)",
+      "state": "stale: prints 'Level 4 of 16' (1504), against D15"
+     },
+     {
+      "item": "Tab bar (Today, Board, Week) and the side rail",
+      "where": "library.py tabbar() 201-207 in every tab frame in all five worlds. The rail comes from app() 1581-1585, used only in the wide frames of Lugdi and Station (index.html: 8 rail elements).",
+      "state": "drawn only; the app has no tab bar (grep for tabbar in src finds nothing)"
+     },
+     {
+      "item": "Wide-screen daily tab screens",
+      "where": "library.py app_cover 1622, app_result 1628, app_sunday 1637, app_board 1656. index.html has Lugdi cover x2, result x2, Sunday x1, and Station cover, result and board. Jadugar, Cricket and Rukavat have none.",
+      "state": "drawn only in two worlds. app_cover also prints 'Level 3 of 6' (1623)."
+     },
+     {
+      "item": "Board, Friends and Everyone (M4, not M3)",
+      "where": "library.py board() 727-745, seg() 720-725; drawn for all five worlds plus 200%",
+      "state": "drawn only. There is no period switch and no level switch. The row menu still says 'Add as a friend' (741); ia-and-flows.md asks for Remove."
+     },
+     {
+      "item": "\"?\" sheet: how to play, languages, sound (option C), Your numbers, Settings",
+      "where": "help_sheet() library.py:763-770 (option C, hidden on screens). sheet_phone() 810-834: the first level adds Settings, Your numbers and About links; Settings holds Music, Sounds, Vibration and Reminders; Your numbers explains Consistency, Lean and Practice. privacy_phone() 783. The built sheet in src/take/parts.tsx:248-258 is option C plus Privacy.",
+      "state": "built and used (option C plus Privacy). The library's extra links and Settings view are drawn only and disagree with what was built."
+     },
+     {
+      "item": "Daily puzzle steps in all five worlds",
+      "where": "MECH in library.py:1410-1411 (twin, rule then jobs, checks, team, quick sort, words, crowd), SHOWS 1274-1291, step_twin 426-441",
+      "state": "drawn only. Each card carries a quoted line and numbers, while the First take moved to notes on cards."
+     },
+     {
+      "item": "DESIGN.md daily sections",
+      "where": "DESIGN.md Navigation 489-492, Levels 494-500, Report over time 533-539, First take and Next take 541-547, Sound 554-571, open choices 728-757; last commit 7130d1f on 2026-10-25",
+      "state": "written; partly stale (see conflicts)"
+     },
+     {
+      "item": "knowledge/design.md",
+      "where": "Lines 10-19 are an index pointing to DESIGN.md. Lines 27-31: 'SUPERSEDED: the rejected EVAL-13 system (history only, not authority)... Do not build from it.'",
+      "state": "stale (history only)"
+     },
+     {
+      "item": "ia-and-flows.md screen rows and flows for M3",
+      "where": "SC-01 line 55, SC-11 65, SC-20 to SC-28 72-80, SC-95 119; FL-02 473, FL-04 533, FL-05 546, FL-17 791, FL-18 801, FL-19 817, FL-25 946, FL-26 980; screens still to draw 1078-1150; last commit 35601f6 on 2026-10-24",
+      "state": "written. Its 'Drawn?' column refers to the 21 Oct frames s-001 to s-094 and is now out of date."
+     },
+     {
+      "item": "Engine and content the dailies would use",
+      "where": "src/engine/calendar.ts lines 1-6 ('The skin alternates by ISO week parity (odd weeks Lugdi, even weeks Station)'); src/engine/streak.ts lines 1-5 (one forgiven day in each ISO week); src/engine/results.ts:118-120 (transfer days: consistency null, score = practice only); content/days holds 14 files across 2 worlds, one puzzle a day, with level numbers 2 to 10 and levelName values such as 'Loaded words'; src/content/types.ts:195 has 'level: number | null'",
+      "state": "built but unused, and stale against O12 (three levels a day), D15 (no level number) and D16 (five worlds counted from launch Monday)"
+     }
+    ],
+    "missing": [
+     "Level switch on the cover, in every state (remembered level, a tick on each level played today, a level in progress, 'Suggested' once after a fresh reading, the ticks clearing when the day changes, Hindi on one line at 360 wide, stacked at 200%), on Play, Continue and done covers, in all five worlds (ia-and-flows.md:119, 1110). It also needs a three-segment variant of .seg in library.css; today's .seg has two columns (library.css:645).",
+     "Cover states for M3: done with Past puzzles as the second action; 'Next puzzle in 3 h'; the Sunday cover ('See your week' and Past puzzles); a first-visit Sunday, or a Sunday with nothing played that week (Monday's time, Past puzzles as the one action); the first-visit cover with the quieter 'First take' action under Play; after a restart; not loaded as a full cover; phone full (ia-and-flows.md:1120).",
+     "Past puzzles (SC-27): the list newest first, its heading naming the level, a hard-topic day's row, a Continue row, the line saying a day needs signal to open, launch week, 200%, rows dressed in other worlds (ia-and-flows.md:1092, 1124). Drawn nowhere (0 hits).",
+     "Week tab on weekdays (SC-21): this week so far, week-by-week stubs with a note's fold mark, best streak, 'Your notes', 'Your month', and the First take block or reading row (ia-and-flows.md:1089, 1125).",
+     "Your notes (SC-28) and the note sheet (SC-24) as phone frames, folded and open, this week and a past week; the month strip sheet (SC-25) as a frame.",
+     "Week tab before the first Sunday with no days yet, and the starter block on it (ia-and-flows.md:1125-1126).",
+     "Sunday states: days missed; no look-again pair (Share becomes the main button); a painting missing; one day played at more than one level (one day object, a mark per level) (ia-and-flows.md:74, 1127).",
+     "Look again with this week's note already written (folded), and its new main-button label (ia-and-flows.md:1128, 1139).",
+     "Result states: the level named on it; a later level the same day (no stamp, no Remind me); a past day's result; the milestone stamp on the result and its still version; the offline 'Saved' line; a pending part (ia-and-flows.md:1122).",
+     "A result for a transfer day, if the engine keeps scoring those days without the consistency number (src/engine/results.ts:118-120). Nothing is drawn for that state.",
+     "The report-over-time pictures (Day 1 result, Day 1 Week tab, first and second Sunday) in Jadugar, Cricket and Rukavat; the month recap in four worlds.",
+     "Wide-screen versions (side rail, right column) of every daily tab screen in Jadugar, Cricket and Rukavat, plus the Week tab and Past puzzles in all five worlds.",
+     "What the Board tab shows during M3, before accounts exist: SC-30 'Board, not joined' is not drawn (ia-and-flows.md:81, 1097).",
+     "Hindi versions of result, Sunday, look again and Week tab exist only through the page language toggle (library.js:125-127) and are drafts (library.py:1810). Only covers, and some step and chapter frames, have their own Hindi frames.",
+     "A 360 x 640 Station cover and a 360 x 640 Lugdi result (absent from the index.html captions).",
+     "The library page's 'Your choices' section has no A/B picture for the level switch or for the Sunday cover."
+    ],
+    "conflicts": [
+     "Level numbers. D15 and DESIGN.md:495, 'Don't' at 719, say no 'Level 3 of 6' and no sign the calendar gets harder. Yet library.py:450 and 1623 still print 'Level 3 of 6' and 'Level 4 of 6', change_card prints 'Level 4 of 16' (1504), consolidated rules OQ-13 (design-rules-consolidated.md:813) still says 'the cover shows only the weekday difficulty mark (1 to 6)', and content/days carries level 2 to 10.",
+     "The done cover's line. DESIGN.md:741 keeps 'Next issue tomorrow' as the applied default, and the library uses each world's next_line. ia-and-flows.md:1135 orders a redraw to 'Next puzzle in 3 h' (F-03).",
+     "Each world's own story. DESIGN.md:257 (O15) and design-rules-consolidated.md:81 give every world its own people, cover line and Board name, and the library's daily covers follow that (ghat road, Udti Khaat, Purana Maidan, the 1980s TV). On 25 Oct the owner answered 'Just the look' (knowledge/story/ground-rules-draft-2026-10-25.md:15, 'This changes your 22 Oct call'). Draft rule 2 there asks for present day, no props from a past era (line 46), and rule 61 has the week's world dress all 18 puzzles from one pool of faces (line 126). That answer was given for the First take's chapters; nothing yet says whether it also covers the daily covers.",
+     "The First take and the first visit. DESIGN.md:541-547 and ia-and-flows D10 (line 32) set five chapters of about 4 minutes, a quieter 'First take' under Play on the first-visit cover, and a Week tab block with five chapter marks. On 26 Oct the owner made the First take the story mode, with no time cap and play over several sittings (ground-rules-draft:20). The live app sends an adult from the birth date straight into the take (app-build-plan:108). O12 called the starter 'the way people start' (ia-and-flows.md:15).",
+     "The \"?\" sheet. The owner chose option C on 23 Oct (resume-note-2026-10-23.md:95), and it was built with a Privacy link (src/take/parts.tsx:248-258). DESIGN.md:483 and 556 still say Music and Sounds are two switches in a Settings view, 'the only place to change them'. The library's sheet_phone level 1 adds Settings, Your numbers and About (library.py:821). ia-and-flows.md asks for five links (Settings, Road name, Privacy, Your numbers, About). The dailies' result needs 'Your numbers' somewhere.",
+     "Transfer days. Consolidated OQ-12 (design-rules-consolidated.md:812) says 'they look and score like any day'. The engine shows no consistency number on them and scores practice only (src/engine/results.ts:118-120). The superseded knowledge/design.md:220 also said 'The transfer day shows no score'.",
+     "Milestone scope. M3 covers SC-20 to SC-28, which includes the month recap (SC-26), while M5 also names 'the month recap' (app-build-plan-2026-10-24.md:30, 32). The result and Sunday put Share first (R-RESULT-1 at design-rules-consolidated.md:475; library result() 666), but sharing is M5 (FL-07, SC-70). The forgiven-day toast SC-61 is used in FL-04 (M3) but listed under M5.",
+     "ia-and-flows.md:55 and 65 say the three newer worlds' covers and results are not drawn. index.html (built 27 Oct) draws all five worlds' covers, results, Sundays, look again and Boards.",
+     "DESIGN.md:267 and 456 say every component is drawn in every state in every world, at 200% and at 360 x 640, apart from the level switch and the First take. The report-over-time pictures, the month recap and all wide layouts exist only in Lugdi and Station (aria-labels in index.html; RESP and REPORT build them with WA and WB only).",
+     "World rotation. src/engine/calendar.ts:3-4 alternates Lugdi and Station by ISO week parity. D16 and FL-26 (ia-and-flows.md:982) run five worlds in turn, 'counted from launch Monday, never by the calendar's week numbers'.",
+     "Daily cards. The library's daily steps carry a quoted line plus numbers (step_twin 426-441). The draft rules give every card one short note in the setting's paperwork (ground-rules-draft:69, waiting on the owner), and the owner said on 26 Oct that cards should carry jobs most people can do (line 22).",
+     "Sunday look again across three levels. The draft rule 58 takes the pair 'from the level the player played most' (ground-rules-draft:123). DESIGN.md and SC-23 (ia-and-flows.md:75) say nothing about levels.",
+     "Live copy. Commit 53ce468 (27 Oct) removed 'daily' from the page title, link preview and install card ('Retake: a fairness puzzle') until the dailies ship. DESIGN.md:257 and 530 still give 'Retake: a daily fairness puzzle'."
+    ],
+    "owner_questions": [
+     "The level switch has no picture yet. May we draw it for you first, before any building? For example, on Wednesday's Station cover: three buttons, Easy, Medium and Hard, under the title, with Easy ticked once you have played it, in all five worlds and in Hindi.",
+     "When the dailies arrive, where should a brand-new player land after the birth date: on today's Easy puzzle with 'First take' as a smaller link under Play, or straight into the story as the app does now? For example, Ravi opens a friend's link on a Tuesday: does he see 'Play' first, or the story's opening?",
+     "Does 'just the look' also apply to the daily covers? For example, a Cricket week could keep 'Purana Maidan, one innings at the old ground', or become a present-day office or colony scene painted in the scoreboard's colours.",
+     "What should a cover say once you have finished a level: 'Next puzzle in 3 h' or 'Next issue tomorrow'? And if Easy is done but Medium and Hard are still open, should it say anything about tomorrow at all?",
+     "Until accounts exist, should the Board tab be hidden, or should it show one plain screen? For example, the bar could show only 'Today' and 'Week' for now, or keep 'Board' with a line saying you can join it soon.",
+     "Sharing arrives in a later stage. What should the result's main button be until then? For example, the result could end on 'Back to today' instead of 'Share'.",
+     "On a day that brings a new kind of puzzle, should the result show the same three numbers as any other day, or only practice? For example, Station's Tuesday: the rules say it should look like any day, but the scoring code leaves one number out.",
+     "On Sunday, if someone played Easy, Medium and Hard during the week, which pair should 'What was different?' show? For example, the level they played most, or always their remembered level.",
+     "The help sheet now holds how to play, languages, sound and Privacy. Where should 'Your numbers' (what Consistency, Lean and Practice mean) and the reminders switch go? For example, one more link under Privacy, or a line on the result itself.",
+     "Should the month recap come with the dailies, or wait for the later stage? Its first card currently says 'Lower for 2 weeks. A change needs 3.', and the research has not set that rule yet.",
+     "How long should a whole day take? For example, someone who plays all three levels: 5 to 7 minutes for all three together, or 5 to 7 minutes for each?",
+     "Should a daily card carry a short note in the setting's own paperwork, as the First take's cards do, or the quoted line and numbers the library now shows? For example, 'Late twice this month' in a register, against 'Drives the ghats with attitude' in quote marks.",
+     "The finished cover is close to its 20-word limit once the level switch, 'Past puzzles' and 'Next puzzle in 3 h' are added. Which would you cut first? For example, on Lugdi: the masthead 'Ghat Series, Wednesday', the cover line, or the tab labels."
+    ],
+    "risks": [
+     "Building before pictures. The level switch, Past puzzles, the weekday Week tab, the Sunday cover, Your notes and the note sheet have no pictures. Coding them now would break the owner's rule that approved, pictured parts come first (memory design-before-build). It would also repeat the 20 Oct failure that knowledge/design.md:27-31 records.",
+     "Word budget (my estimate, from parsing index.html as text, not frames.cjs in a browser). Today's done covers measure Lugdi 17, Station 16, Jadugar 16, Cricket 14, Rukavat 11. Removing 'Level 3 of 6' (-2), adding Easy/Medium/Hard (+3), 'Past puzzles' (+2) and 'Next puzzle in 3 h' instead of 'Next issue tomorrow' (+1) gives about Lugdi 21, Station 20, Jadugar 20 against the 20-word limit. Sunday frames already sit at 17 to 19 of 20. This must be re-measured with design-system/tools/frames.cjs, which opens a browser.",
+     "Library-in-sync load. Each new part has to land in library.css, the library page and DESIGN.md in the same turn, and the library has to be republished. With five worlds, Hindi, 200%, 360 x 640 and the wide layout, the drawing work is large before any code.",
+     "Following stale specs. A builder reading DESIGN.md or ia-and-flows.md as they stand would ship 'Save answer', a Close button on the month recap, a reading about change before the research allows it, the five-chapter starter block, and the old two-world rotation in calendar.ts.",
+     "Content gap. content/days has 14 days in 2 worlds, one puzzle a day. M3 asks for two weeks across five worlds at three levels. The draft rule 61 counts 18 puzzles a week (36 for two weeks), plus Sundays and the returning twins. All of it waits on the owner's review of daily content and of the scoring shown on the result.",
+     "Leaving room for M4. Scores and practice must be kept per level and per day, so that nine boards (Today, This week, All time for each level) can be built later. Past puzzles must add to All time only (D5, ia-and-flows.md:24). The Board tab must keep its place in the bar and the rail. The first result needs space for the road-name line and the email offer (SC-11, FL-20). The level switch's design must also work as the Board's third switch row (DESIGN.md:499, ia-and-flows.md:120), within the Board's 20 words.",
+     "Hindi strings are drafts (library.py:1810). Per the M2 condition in app-build-plan:29, a native read comes before players outside the team see daily screens.",
+     "When dailies ship, the 27 Oct copy ('Retake: a fairness puzzle') has to change back to the 'daily' wording in the title, link preview and install card (commit 53ce468)."
+    ],
+    "notes": "Evidence method: read-only greps and seds of DESIGN.md, knowledge/design.md, knowledge/ux/ia-and-flows.md, design-system/library.py, design-system/worlds/*.py, library.css, the built design-system/index.html (2,581,695 bytes, 27 Oct 18:56, 268 figure captions), knowledge/reviews/app-build-plan-2026-10-24.md, knowledge/story/ground-rules-draft-2026-10-25.md and the src/engine files. Every frame that uses tx() carries both English and Hindi (data-hi, library.py:43-47), so every library frame works in both languages through the page toggle. The word counts are a static approximation from a throwaway script (/private/tmp/claude-501/-Users-priyanshu-Sex-Ed/f50ea7ee-0855-46a2-8572-0aa08df5b855/scratchpad/wordcount.py). It skips the same .nm, .quote, .vh, aria-hidden and data-count=0 nodes and number tokens as tools/frames.cjs, but cannot see text that CSS hides, so treat the figures as estimates. I did not run frames.cjs, the browser checks, pnpm or Lazyweb, and I made no edits or Plane changes. DESIGN.md names the published library as https://claude.ai/artifact/FXXMLDh6d1XWccVEUzTBku; I did not check that it matches index.html. The consolidated rules record owner decisions only up to O17 (22 Oct). The 25 to 27 Oct answers live only in the ground-rules draft, in commit messages and in memory, so neither DESIGN.md nor ia-and-flows.md reflects them yet."
+   }
+  },
+  {
+   "reader": "rules",
+   "map": {
+    "summary": "The owner settled the shape of the dailies on 20 and 21 Oct 2026. There are three dailies a day (Easy, Medium, Hard), each the same for everyone at that level. The calendar also gets harder from Monday to Saturday for everyone. Sunday is the week plus one look-again pair (\"What was different?\") and an optional private note. The streak forgives one missed day a week. Five worlds take a week each (Lugdi, Station, Jadugar, Cricket, Rukavat). Each level has its own Today, This week and All time boards. Fairness is scored both ways, and the player sees only the size of the lean, never its side.\n\nThe 25 and 26 Oct decisions were mostly about the First take, but several of them reach the dailies:\n- The First take became a \"story mode\" with no time cap. The dailies are recorded as \"daily challenges\", but nobody has written down how that changes them.\n- Cards must carry jobs most people can do. This clashes with the \"women truck drivers as deliberate satire\" line in PRODUCT.md and F-43, and with the draft fortnight's content.\n- \"Just the look\" (worlds are only a look) is recorded for chapters only.\n- The player is now the 22 to 30-year-old of the house. That makes content/story.md's five-week arcs and week-change cutscenes out of date.\n\nThe dailies section of the ground-rules draft (rules 53 to 61) is new and waits for the owner's yes, including:\n- what Easy, Medium and Hard mean;\n- a returning pair coming back next week on the same weekday and level;\n- the lean moving only when a pair finishes;\n- whether 5 to 7 minutes covers one daily or all three.\n\nWhat exists for the dailies:\n- **Decisions on paper** (PRODUCT.md, feature-set.md, design-rules-consolidated.md). Several are out of date: PRODUCT.md still says one puzzle a day and two alternating worlds.\n- **The old build's engine** (score, streak, calendar, results, board). It is built but the live app does not use it. It also breaks several decisions: two worlds by ISO week parity, a midnight day end instead of 4 am, a date override, and every day bundled into the JS.\n- **An unreviewed one-level fortnight** in Lugdi and Station only.\n- **Some library drawings** for the result, Week and Sunday. The library cover still draws \"Level 3 of 6\", and no Easy/Medium/Hard switch is drawn anywhere.\n\nOn honest claims: the reading is not validated. No screen may say \"bias\", \"test\" or \"attitude\", or any research word. No result may label the player. Nothing may claim that a change happened until the research line sets the threshold. The store title gains \"daily\" only once the dailies ship (owner, 27 Oct).",
+    "exists": [
+     {
+      "item": "Owner decisions O1 to O17 (O5 lean size only, never direction; O7 two worlds; O11 Q2 day ends 4 am, Q8 six kinds in launch week, Q9 four weeks ready then four ahead, Q10 past puzzles, Q11 notes, Q12 calendar month; O12 three dailies a day, five-world rotation, boards per level, every daily must work for a player who knows how the reading is made)",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/reference/design-rules-consolidated.md:22-101 (O12 at 58-74; Difficulty at 64; Rotation at 67)",
+      "state": "written only"
+     },
+     {
+      "item": "Owner-confirmed product record, 21 Oct: one puzzle a day on one track, Mon to Sat harder, Sunday reflection, twins return days later, transfer days unannounced, streak forgives one missed day a week, board ranked by practice, Sunday note never analysed, scored both ways",
+      "where": "/Users/priyanshu/equal-lens-trainer/PRODUCT.md:52, 56, 68-72",
+      "state": "stale (the one-a-day line at 56 and the Lugdi/Station alternation at 100 predate O12)"
+     },
+     {
+      "item": "V1 feature rows for the dailies: F-08, F-09, F-210, F-211, F-214, F-36, F-36a, F-37, F-39, F-49a, F-49f, F-213, F-50 to F-56, F-62 to F-72, F-77a, F-77b, F-90, F-92, F-212",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/ux/feature-set.md:39-51, 77-104, 110-123, 141-159, 180-190",
+      "state": "written only (27 rows rest on defaults D1 to D18 still owner-to-confirm, line 454)"
+     },
+     {
+      "item": "Dailies-only ground rules 53 to 61 (one shared painting per day, a level is a different decision in that scene, what Easy/Medium/Hard mean, twin back next week same weekday same level, lean moves only on finished twins, one hard-topic day a week max, 18 puzzles a week from a standing face pool)",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/story/ground-rules-draft-2026-10-25.md:116-126; questions 2, 4, 10, 11, 12, 15 at 139-152; 'Nothing here is built. Tick, change or strike each line.' at 24",
+      "state": "written only (draft awaiting owner yes)"
+     },
+     {
+      "item": "Owner's 25 and 26 Oct answers (scroll strip, worlds 'just the look', player is the 22-30 grown-up child, story mode with no time cap, dailies are daily challenges, no cap on characters, ordinary jobs)",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/story/ground-rules-draft-2026-10-25.md:11-22; /Users/priyanshu/.claude/projects/-Users-priyanshu-Sex-Ed/memory/webtoon-presentation.md:20-32",
+      "state": "written only"
+     },
+     {
+      "item": "Five-week arcs (Station monsoon timetable, Lugdi onion season, etc.) and five week-change cutscenes on one Nashik road and rail line, player as unnamed decider",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/content/story.md:29, 85-131 (line 89 'To revise'); superseded per /Users/priyanshu/equal-lens-trainer/knowledge/story/README.md:26",
+      "state": "stale"
+     },
+     {
+      "item": "Kite week-change cutscene proof (Lugdi to Station), owner: 'an ok placeholder'",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/content/cutscenes.md:11-40",
+      "state": "drawn only (superseded as a story, line 38-40)"
+     },
+     {
+      "item": "Draft fortnight of daily puzzles: 14 files, one puzzle a day, Lugdi week then Station week, 'level' as a 2-10 ladder with trick names in levelName ('Loaded words', 'Safety framing', 'A new kind of puzzle'), truck/railway settings ('Kamla drives a truck...')",
+      "where": "/Users/priyanshu/equal-lens-trainer/content/days/01-lugdi-mon.json to 14-station-sun.json (python print of level/levelName fields); PRODUCT.md:112 'owner review pending and must not be presented as final'",
+      "state": "stale (pre-O12, pre-25/26 Oct; never owner-reviewed)"
+     },
+     {
+      "item": "Score engine: lean as signed units with shrinkage (SHRINK=2), consistency parts, headline = consistency plus practice, scored both ways",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/score.ts:1-17, 39-40, 360",
+      "state": "built but unused (no import outside src/engine; formula is a placeholder until RSE-164 per feature-set.md:111)"
+     },
+     {
+      "item": "Streak engine: one forgiven day per ISO week, marks named for Lugdi and Station",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/streak.ts:1-4, 28",
+      "state": "built but unused"
+     },
+     {
+      "item": "Calendar engine: two-world ISO-week-parity rotation, fortnight replays, day = midnight IST (now + 5.5 h), ?day=/?date= override",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/calendar.ts:1-6, 46, 49-71",
+      "state": "built and used only for indiaToday/daysBetween by src/take/Gate.tsx:2; rotation, 4 am rule and override are stale (override unused but present, F-122 Never)"
+     },
+     {
+      "item": "Week summary and practice (results.ts), sample board (board.ts, labelled made up)",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/results.ts:1-3, 126-141; /Users/priyanshu/equal-lens-trainer/src/engine/board.ts:1-6",
+      "state": "built but unused"
+     },
+     {
+      "item": "All 14 draft days imported into the JS bundle",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/content/index.ts:5-18 (grep -c content/days = 14)",
+      "state": "built but unused (would break F-173 'never save tomorrow's puzzle on the phone' if wired as is)"
+     },
+     {
+      "item": "Live app entry renders only the First take",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/main.tsx:4 (import { Take })",
+      "state": "built and used"
+     },
+     {
+      "item": "Library drawings for daily cover, result parts, week object, Sunday week, Sunday look-again, Sunday report, week day 1",
+      "where": "/Users/priyanshu/equal-lens-trainer/design-system/library.py:332, 378, 386, 679, 687, 1434, 1444, 1637",
+      "state": "drawn only (cover still draws 'Level 3 of 6' / 'Level 4 of 6' at line 450, against F-07 Never and D15)"
+     },
+     {
+      "item": "Title rule: until the dailies ship, page, preview and install card say 'Retake: a fairness puzzle' (owner, 27 Oct, EVAL-22)",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/ux/feature-set.md:237 (F-125)",
+      "state": "written only"
+     },
+     {
+      "item": "M3 milestone definition and its waits (owner review of daily content; the scoring shown on the result); week-change cutscenes placed in M5",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/reviews/app-build-plan-2026-10-24.md:30, 32",
+      "state": "written only"
+     }
+    ],
+    "missing": [
+     "The owner's yes on dailies rules 53 to 61 and answers to ground-rules questions 4 (what Easy/Medium/Hard feel like), 10 (festivals), 11 (household in dailies), 12 (where a new kind first appears) and 15 (time across three levels): /Users/priyanshu/equal-lens-trainer/knowledge/story/ground-rules-draft-2026-10-25.md:141-152 (no later answers found: grep for 26-28 Oct dates in knowledge/ found none on these questions)",
+     "Any daily content in the 25 and 26 Oct style (present-day everyday moments, ordinary jobs, three levels sharing one scene): the only content is the old one-level fortnight in content/days/ (14 files, all Lugdi/Station)",
+     "Daily content for Jadugar, Cricket and Rukavat: feature-set.md:82 (F-39) says they 'start from nothing'; ls content/days shows only lugdi and station files",
+     "Owner review of any daily content (M3 waits on it, app-build-plan-2026-10-24.md:30; PRODUCT.md:112 says owner review pending)",
+     "The score formula and the change threshold from the research line (RSE-164): feature-set.md:111 (F-50a placeholder), 120 (F-58 no reading about change), 415-418 (three items still owed)",
+     "An owner-approved parts sheet for the daily screens (memory design-before-build.md:11-18); the cover's Easy/Medium/Hard switch (SC-95, F-211) is not drawn: grep for 'Easy|Medium' across design-system/*.py, *.html, *.css returned nothing",
+     "Which six puzzle kinds make up launch week: ground-rules-draft-2026-10-25.md:122 (rule 57: 'which six is not yet written down')",
+     "A week-change story frame for the present-day household: content/story.md:89 ('To revise') and the frame it holds is superseded (story/README.md:26)",
+     "Help-line check for the dailies' dowry, custody and safety days: F-47 records the 27 Oct check for the First take's lines only (feature-set.md:91)",
+     "Hindi for daily content by a fluent writer plus the five-player read (F-137, feature-set.md:255): not found for any daily",
+     "A decided way to keep a future day's puzzle off the phone with no server (F-173 Never, feature-set.md:302; PRODUCT.md:79 'No backend yet'): not found",
+     "The standing pool of faces per world for the dailies (rule 61): not found as a file (not searched beyond the files read)"
+    ],
+    "conflicts": [
+     "One puzzle versus three: PRODUCT.md:23 ('one short daily puzzle') and PRODUCT.md:56 ('One puzzle a day... on one track') against O12's three dailies a day (design-rules-consolidated.md:64; feature-set.md:39 F-08 says O12 'replaces one puzzle a day'). PRODUCT.md was never updated.",
+     "Two worlds versus five: PRODUCT.md:100 and O7 (design-rules-consolidated.md:29) alternate Lugdi and Station; O12 (design-rules-consolidated.md:67) and F-214 (feature-set.md:51) rotate five worlds counted from launch Monday. The engine still alternates two by ISO week parity (src/engine/calendar.ts:3-5).",
+     "Day end: O11 Q2 says 4 am India time for everyone (design-rules-consolidated.md:44; F-09 feature-set.md:40), but src/engine/calendar.ts:46 cuts the day at midnight IST. PRODUCT.md:90 still lists the reset time as undecided.",
+     "Time per day: PRODUCT.md:23 and F-49b (feature-set.md:95) allow 5 to 7 minutes for a day. Ground rule 53 proposes 5 to 7 for each daily, about 21 minutes for all three (ground-rules-draft-2026-10-25.md:118, question 15 at 152). The owner's figure stands until answered.",
+     "Cast jobs: PRODUCT.md:74 and F-43 (feature-set.md:87) want 'women truck drivers... as deliberate satire'. The owner on 26 Oct: 'If we ask for a male nurse or a female truck driver, everyone gets a cop out by saying that's how world works' (ground-rules-draft-2026-10-25.md:22). The draft fortnight uses 'Kamla drives a truck' (content/days/02-lugdi-tue.json). Rule 11 applies the 26 Oct rule to First take circles; the dailies are not stated.",
+     "Worlds as stories versus looks: O15, 22 Oct, gives every world its own story (design-rules-consolidated.md:81). The 25 Oct answer 'Just the look' is recorded for 'each chapter' (ground-rules-draft-2026-10-25.md:15; rule 49 at 111 sits in 'The First take only'). Question 2's example is 'Cricket week' (line 139), so whether the dailies' weeks also become look-only is not recorded. Rule 61 ('The week's world dresses all 18 puzzles') is new.",
+     "The player and the story frame: content/story.md:29 and 148 (22 Oct, the player is an unnamed decider; five worlds as five places on one line) against the 25 Oct answer that the player is the 22 to 30-year-old of the house (ground-rules-draft-2026-10-25.md:13). The week-change cutscenes drafted in story.md:99-131 rest on the old frame. The owner's 22 Oct ask for week-change cutscenes (content/cutscenes.md:11) is not withdrawn; the build plan puts them in M5 (app-build-plan-2026-10-24.md:32), not M3.",
+     "What 'level' means: PRODUCT.md:67 ('Levels escalate: loaded words, assumptions about marriage...') and the draft days' level 2 to 10 with trick names in levelName, against D15 ('level' now means Easy, Medium or Hard) and F-07 Never (no ladder step or trick named; feature-set.md:38). The library cover still draws 'Level 3 of 6' (design-system/library.py:450). Rules R-WLD-18 and OQ-13 still carry the 1-to-6 mark (design-rules-consolidated.md:794, 813). Draft day 09's levelName 'A new kind of puzzle' is a banned phrase (R-COPY-16, design-rules-consolidated.md:542-543).",
+     "When pairs return: PRODUCT.md:68 and F-36 say 'days later' (feature-set.md:77). New rule 58 says next week, same weekday, same level, in the next world (ground-rules-draft-2026-10-25.md:123). The draft fortnight returns Lugdi Wed's pair on Station Thu, a different weekday (content/days/11-station-thu.json _review).",
+     "The lean on every result: O5 and F-52 put a lean number on every day's result (feature-set.md:113). Rule 58 narrows it: the number moves only when a pair finishes and shows a starting figure until then. Its starting figure for non-starters ('near zero') differs from F-56's 'numbers pulled towards zero' plus a one-time line (feature-set.md:118).",
+     "Content runway: M3 promises 'two weeks of content across the five worlds' (app-build-plan-2026-10-24.md:30), but with one world a week (F-214) two weeks covers only two worlds. O11 Q9 and F-39 want four weeks written, reviewed and in Hindi before launch, then always four ahead (design-rules-consolidated.md:52; feature-set.md:82), which is 18 puzzles a week (rule 61).",
+     "Starter length: F-202 and PRODUCT.md:98 describe a '20-minute starter' of 'about 4 minutes' a chapter (feature-set.md:130). The 26 Oct story mode has no time cap (ground-rules-draft-2026-10-25.md:20, rule 50 at 112). This touches the daily cover's First take offer (F-201) and F-211's level suggestion after the starter.",
+     "Languages: F-133 and F-134 (feature-set.md:251-252) set English and Hindi with an 'EN | हिं' chip in the cover's top bar (F-04 at 35). PRODUCT.md:80 (owner, 24 Oct) sets three modes chosen in '?', with Hinglish as default, and the app keeps the chips in the '?' sheet (app-build-plan-2026-10-24.md:106). F-139 still lists Hinglish as Later/Open (feature-set.md:257).",
+     "Board ranking (M4, but M3 must store the data): R-BOARD-1 ranks by practice (design-rules-consolidated.md:402), while F-90 and D5 have Today rank today's score at that level (feature-set.md:180, marked FLAG).",
+     "Month marks: R-NUM-35 and R-STREAK-1 say 28 marks for the month (design-rules-consolidated.md:41/145, 392), but O11 Q12 makes it the calendar month, 28 to 31 (F-71, feature-set.md:150).",
+     "Festivals: the product brief brings religion only at later levels. The 25 Oct research suggests naming festivals in the dailies (knowledge/reference/everyday-moments-2026-10-25.md:43, 346; line 4 says 'nothing here is decided'). Ground-rules question 10 is open, so festivals stay out (ground-rules-draft-2026-10-25.md:124, 147).",
+     "Household in the dailies: 23 Oct 'one person, one world, one role' (ground-rules-draft-2026-10-25.md:57) against rule 61's household voices in dailies; question 11 is open (line 148).",
+     "Draft data shipped ahead: F-173 Never (tomorrow's puzzle on the phone) and F-49a (a past puzzle fetched only when opened) against src/content/index.ts:5-18, which bundles all 14 days. PRODUCT.md:79 says there is no backend yet."
+    ],
+    "owner_questions": [
+     "Can we throw out the old two-week set of daily puzzles and write new ones in your everyday style? The old set is one puzzle a day, all at the truck depot and the railway, with lines like 'Kamla drives a truck. Which family will want her now?'. The new style would be like 'Who keeps the gift register at the cousin's wedding?', at Easy, Medium and Hard.",
+     "If someone plays all three levels, is 5 to 7 minutes the whole day (each puzzle about 2 minutes) or each puzzle (up to about 21 minutes)? Example: Ravi plays Easy on the train, then Medium and Hard after dinner.",
+     "Is this what you mean by harder? For 'Pick 2 to meet the guests' train': on Easy one note leans and the numbers are clear; on Medium one more card also has a leaning note, or one of the two holds a licence; on Hard the two sit in the middle of the numbers and each has a leaning note.",
+     "For the daily weeks, are the five worlds only a look, like the First take chapters? Example: in Cricket week, is it the colony match painted in the scoreboard style, or always a cricket club with selectors?",
+     "With one world a week, two weeks of puzzles only reaches Lugdi and Station. For the first daily release, do you want two full weeks (two worlds), five shorter weeks (all five worlds), or to wait for the four weeks you asked to have ready before players come in?",
+     "Should a daily look like a comic strip with speech bubbles, like the new First take, or stay one painting with the question and cards? Example: Bua says in a bubble 'The cook cancelled. Forty people at one!', then you pick two helpers.",
+     "Do you still want the short strip between weeks, now that the old 'one road from the ghat to Nashik' story is gone? Example: Saturday's Station week ends and a four-picture strip carries you into Lugdi week.",
+     "When a matched case comes back with the people swapped, should it come back the next week on the same weekday and level? Example: Tuesday's Easy 'who gets the night shift' returns next Tuesday's Easy in the next world, with new faces.",
+     "Should the lean number on a day's result stay put until the player has played both halves of a matched case, instead of moving every day? Example: on Monday Farida's lean stays at her First take figure until Tuesday's matching case is played.",
+     "The research team has not given us the final scoring formula. For the first daily release, should the result show the placeholder score, or wait? Example: Shruti sees 'Score 62', but the 62 may be worked out differently later.",
+     "Can we drop 'women truck drivers as deliberate satire' from the daily cast, in line with your 26 Oct rule on ordinary jobs? Example: a shop counter, a clerk, cooking for a crowd, not a female truck driver or a male nurse.",
+     "With no server yet, a curious player can find next week's puzzle in the app's files. Is that acceptable for the first daily release, or should the dailies wait for the server? Example: Ravi digs out Saturday's Hard puzzle on Wednesday and posts it in his family group.",
+     "Can people from the First take's family turn up in the dailies? Example: Bua asks the question in Rukavat week but is never one of the people you choose between.",
+     "May the dailies name festivals if they rotate through the year? Example: a Diwali-week daily in autumn, then Eid, Christmas, Onam and Lohri, with no choice that depends on knowing the custom.",
+     "Please confirm the defaults the dailies lean on: any one level played keeps the streak; new players start on Easy; the world order Lugdi, Station, Jadugar, Cricket, Rukavat; past puzzles open once today's is done and never count for the streak. Example: Ravi's quick Easy on a busy Tuesday keeps his streak."
+    ],
+    "risks": [
+     "Honest claims. The reading is not validated: the memory note no-unvalidated-tools-on-children.md:13 says 'Retake's reading is not yet validated', and PRODUCT.md:44 records the owner's 27 Oct rule. Rules for any daily screen:\n- Never use 'bias', 'test', 'attitude' or research words such as 'twin', 'lean size' or 'new kind of puzzle' (F-61, feature-set.md:123; R-COPY-16, design-rules-consolidated.md:542-546; ground rule 64 at 132).\n- Never label the player with 'fair', 'unfair', 'biased' or 'well done' (R-COPY-17, design-rules-consolidated.md:548-551).\n- Never name a change before the research line sets the bar (F-57 'Too early yet', F-58, F-59 Later; feature-set.md:119-121, 418).\n- Never show invented figures as real (R-COPY-31, design-rules-consolidated.md:591; PRODUCT.md:115).\n- The store and page title gains 'daily' only when the dailies ship (F-125, feature-set.md:237).\n- Claims stay inside the game ('no test outside the game', equal-lens-trainer-pivot.md:22).",
+     "The draft content shows the trick. levelName fields such as 'Loaded words', 'Marriage and family', 'Safety framing' and 'A new kind of puzzle' (content/days/*.json) would break F-07 and R-COPY-16 if any screen showed them.",
+     "Engine reuse. The build plan keeps the old engine for M3 (app-build-plan-2026-10-24.md:16, 100), but it still has:\n- two-world parity (calendar.ts:3);\n- a midnight day end (calendar.ts:46), not 4 am;\n- a date override (calendar.ts:52-71), which F-122 bans from the player build (feature-set.md:227);\n- all days bundled (src/content/index.ts), which F-173 bans;\n- a scoring formula that F-50a calls a placeholder (feature-set.md:111).",
+     "Content load. 18 puzzles a week (rule 61), four weeks ahead (F-39) is about 72 puzzles. Each needs owner review (F-40), fresh Hindi and a five-player read (F-137), equal note lengths (note-length-tell.md:15-17: notes within 2 words, the longest line on the pair in at most half the decisions) and a decoy of the nudge's kind (rule 20). The export's length check covers the take only (app-build-plan-2026-10-24.md:18).",
+     "Design before build. The memory note design-before-build.md:11-29 asks for an owner-approved pictured parts sheet for every screen before any build. The daily cover with the level switch is not drawn at all (no Easy/Medium in design-system/), and the drawn cover still says 'Level 3 of 6' (library.py:450). The library-in-sync memory requires every UI change to land in library.css and the library page in the same turn.",
+     "Word budgets. At most 15 words on a puzzle screen and 20 elsewhere, and a question of at most 10 words (minimal-text-ui.md:18-19; F-16). The result is the tightest: about 10 free words (R-COPY-18, design-rules-consolidated.md:552), which leaves little room for the M4 road-name line on the first result.",
+     "Children. A daily day must never be tried with under-18s or in schools before validation (no-unvalidated-tools-on-children.md:16-18). The birth-date gate (F-14a, F-14b) must stay in front of the dailies.",
+     "Hard-topic days. A help line is needed on dowry, custody and safety days (O11 Q7), but it has been checked only for the First take (F-47, feature-set.md:91). Ground rule 60's limit of one hard day a week is not yet approved."
+    ],
+    "notes": "Owner words and dates on each point the brief asked about:\n- **Three a day and levels.** O12, 21 Oct, recorded as: \"Three dailies a day (Easy, Medium, Hard), each with its own Today board, on top of a calendar that gets harder for everyone. Every daily must work for a player who already knows how the reading is made\" (design-rules-consolidated.md:64; memory equal-lens-trainer-pivot.md:16). The meaning of each level is not owner-decided: rule 55 is \"new; waits on question 4\" (ground-rules:120). The level is picked on the cover and remembered, and new players start on Easy (F-211, D14 default).\n- **Streak.** PRODUCT.md:70 (owner-confirmed 21 Oct): \"Streaks forgive one missed day a week\". R-NUM-35 makes it one per ISO week, and F-214 notes the ISO forgiven day is unaffected by the launch-Monday world count. D12 (default): any one level keeps the streak. The starter and past puzzles never count (F-205, F-49a). Never a countdown (F-76).\n- **Worlds.** O12, 21 Oct: \"The dailies rotate through all five worlds, one a week, so each world comes back every five weeks. This replaces O7's two-world alternation\" (rules:67). The order is D16, a default.\n- **Week-change cutscenes.** Owner, 22 Oct: \"from the last week to the current week ... so that its not abrupt or confusing and it feels like a single story\" (cutscenes.md:11), and \"we need a better continuous story stitching the puzzles and stories of the first take and the first five weeks\" (story.md:11). Never withdrawn. Placed in M5, and the drafted frame is stale.\n- **Sunday's look again.** PRODUCT.md:72: \"Reflection happens on Sunday ('What was different?'), with an optional private note that is never analysed\". Tap answers are never stored (F-77). Sunday's shape (OQ-2) is still open (rules:816).\n- **Boards scored both ways.** 20 Oct: \"scores how unbiased each solve was, both ways, so leaning to women costs points as well\" (pivot memory:11). 21 Oct core truth: \"Fairness is scored both ways, so favouring women costs as much as favouring men\" (PRODUCT.md:52). Boards by level were settled by the owner (D13, rules:74). No lean ever appears on a board (O5).\n- **Trainer, not a test.** Owner, 20 Oct: \"measurement is not the goal... measurement should lead to reflection and that should lead to real change\" (PRODUCT.md:48).\n- **Daily challenges.** The words \"work like daily challenges\" were not found: grep for 'work like daily' and 'like daily challenge' found nothing. The nearest record is ground-rules:20, \"The First take is the game's story mode, and the dailies are daily challenges\", where the quoted owner words are about the story. No record says what \"daily challenges\" changes for the dailies.\n- **Kids.** 27 Oct: \"We will design for students after the evaluation method passes. A strict no on testing not validated tools on kids\" (PRODUCT.md:44).\n\nWhere M3 must leave room for M4:\n- Keep a score and practice per level per day, so the per-level Today, This week and All time boards can be built. Past puzzles count to All time only (F-90, F-92, F-212, D5).\n- Keep the Board tab in the bar (F-11), with the one line \"Join the board\" while the player is off the server (F-96b).\n- Leave space on the first result for the road-name line with Change (R-RESULT-1, F-78) and the one-time \"Save your days with your email\" offer (F-78a).\n- Use one 4 am India day boundary (F-09) so phone and server agree.\n- Store only play-day dates, choices and notes on the phone, with no timings (PRODUCT.md:84; F-116). Streak and practice must be restorable by the email code, while picks and notes never leave the phone (O11 Q3, feature-set.md:367).\n- Send nothing off the phone before the notice sheet (F-113, F-114).\n- Mark the sample board as sample data (board.ts:2-3).\n\nScope of this read: I read the files listed, plus grep checks of src/engine, src/content, content/days and design-system/library.py, to say what exists. I did not run the app, the checks or a browser."
+   }
+  },
+  {
+   "reader": "scoring",
+   "map": {
+    "summary": "The daily result is meant to show one big score: consistency plus practice. Under it go three figures: consistency, practice, and the lean as a size only (\"Lean 12 of 100\"), never its direction (F-50, F-51, F-52 in knowledge/ux/feature-set.md lines 110-113; R-SCORE-1, R-LEAN-1 and R-LEAN-2 in knowledge/reference/design-rules-consolidated.md lines 382-385). \"Scored both ways\" means the consistency and lean scoring: favouring women costs as much as favouring men (brief-2026-10-20.md lines 32-36). It does not describe the board. The board ranks practice only (PRODUCT.md line 71; brief line 38; src/engine/board.ts lines 1-5).\n\nThe engine already computes all of this, but nothing in the app calls it. Only scripts/scoring-check.ts uses score.ts and results.ts; the app imports only calendar, and type definitions (grep output). What it computes:\n- lean = round(100 x |sum of signed units| / (count + 2)), in score.ts lines 357-361;\n- consistency = the mean of the parts present (rules kept, matching, checks, words), with evenness added over a week (lines 363-385);\n- the day's score = practice (10 a step) + consistency (results.ts lines 106-124).\nI ran the scoring check by itself: 19 of 19 pass. It printed: even player lean 13, random players lean 16.7 on average, one-sided player lean 68.\n\nThe research line has gated no scoring rule. `okf-pipeline status` prints generate GATED (on v5, 2026-10-20 20:23), validate pending, and enrich, refresh, plan and finalise blocked. v5 takes \"consistency scored both ways; practice ranking; lean size only\" as owner givens, not as formulas the research set (candidates-v5 lines 60-66). The validate draft got REVISE with four blocking items (critique-validate-gate-1.md lines 289 and 293), and no revision has been written: no file under Paper Analysis/Hypotheses has changed since 23 Oct (find printed nothing). The app's own documents call the formula a placeholder: content plan item 3, \"All three numbers are placeholders for the research line to set\" (reviews/trainer-content-2026-10-20.md lines 47-51), and F-50a.\n\nWhat the app can honestly show now, without presenting anything as a valid reading:\n- plain counts of the player's own choices, as the First take's cards do (Results.tsx line 12: \"No score: the lean out of 100 waits on the research line (RSE-164)\");\n- practice and puzzles solved, which are counts;\n- days played and the streak with its forgiven day, which use play-day dates, allowed under Profile C (brief lines 74-76);\n- a returning twin shown side by side with no verdict;\n- per-puzzle facts such as \"kept your rule in 3 of 4\" or \"treated 2 of 3 matching cases alike\".\n\nWhat it should not show as a measure:\n- a lean number or a consistency 0 to 100 presented as a reading;\n- any change over time, or any comparison between levels. The newest research text, v10 (not gated), says \"The daily numbers are not change measures, and levels are never compared\" (candidates-v10 line 1066).\n\nThe three faults in how the First take's reading counts are all still in the current code and content. I checked them with the audit's own read-only tools and the exported JSON (details under risks).",
+    "exists": [
+     {
+      "item": "Lean, consistency, twin-pair and parts scoring (leanSize, consistency, components, scorePair, scoreStep)",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/score.ts lines 39-45 (SHRINK 2, PRACTICE_PER_STEP 10), 260-285 (scorers for assign, rank, pick, checks, team, words, swipe, crowd only), 292-354 (twins), 357-385 (lean size, consistency)",
+      "state": "built but unused (grep of src/ outside src/engine: only Gate.tsx imports engine/calendar, and store/index.ts imports types from answers, handles and rng)"
+     },
+     {
+      "item": "Day result and week summary (dayResult: practice, consistency or null, score = practice + consistency, comps, deferred; weekSummary adds lean and evenness)",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/results.ts lines 95-155; TWINS hard-coded ['T1','T2','T3'] at line 20",
+      "state": "built but unused"
+     },
+     {
+      "item": "Old daily answer model (assign, pick, checks, team, rank, words, swipe, crowd)",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/answers.ts lines 19-66",
+      "state": "built but unused; it differs from the First take's answer model (pick, set, order, chores) in /Users/priyanshu/equal-lens-trainer/src/take/steps/common.tsx lines 10-14"
+     },
+     {
+      "item": "Streak with one forgiven day per ISO week",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/streak.ts lines 1-12",
+      "state": "built but unused (passes its scoring-check test: '3 1 2')"
+     },
+     {
+      "item": "Board ranked by practice, against a made-up sample of other players",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/board.ts lines 1-5",
+      "state": "built but unused (M4 territory)"
+     },
+     {
+      "item": "Daily store (one record per date: content day n, answers, at, done; private Sunday notes; a Backend interface for a server)",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/store/index.ts lines 14-39 (KEY 'elt:v1'); no level field",
+      "state": "built but unused by the take (the take uses its own key 'retake.take', src/take/store.ts line 18)"
+     },
+     {
+      "item": "Retired daily content: 14 days, two skins, one puzzle a day, old ladder levels (2, 3, 4, 6, 7, 10), transfer on day 9, Sundays 7 and 14",
+      "where": "/Users/priyanshu/equal-lens-trainer/content/days/01-lugdi-mon.json to 14-station-sun.json; src/content/index.ts line 22; Day.level in src/content/types.ts line 195",
+      "state": "stale (the plan's M3 needs three levels a day and five worlds)"
+     },
+     {
+      "item": "Calendar with Lugdi and Station alternating by week",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/engine/calendar.ts lines 36-43 (skinOf, contentDayOf, ANCHOR 2026-10-19)",
+      "state": "stale for five worlds (daysBetween and indiaToday are used by Gate.tsx)"
+     },
+     {
+      "item": "Scoring test (two-way lean, overcorrection, noise, shrinkage, size only, headline sum, twins, transfer day, notes never read, streak, board, road names)",
+      "where": "/Users/priyanshu/equal-lens-trainer/scripts/scoring-check.ts lines 39-138; run by scripts/check-all.ts line 9",
+      "state": "built and used. I ran it alone with tsx: 'PASS S scoring, streak, board and road names (19/19)'. Detail: 'even lean 13 consistency 97; women lean 68 consistency 26'; 'random mean 16.7, one-sided 68'"
+     },
+     {
+      "item": "The First take's private reading: five cards of counts, no score, direction shown privately",
+      "where": "/Users/priyanshu/equal-lens-trainer/src/take/reading.ts lines 7-25 (favoured); /Users/priyanshu/equal-lens-trainer/src/take/Results.tsx lines 10-13, 45-51 (counts m and w, twins with kind 'hard' left out), 56-133",
+      "state": "built and used"
+     },
+     {
+      "item": "Scoring spec as the player sees it (lean 0 to 100 shrunk by +2, consistency parts, headline = consistency + practice, transfer day shows no score)",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/design.md lines 204-223, which sit under 'SUPERSEDED ... history only, not authority' (lines 27-29); still cited by the score.ts header (line 2) and the scoring-check.ts header (line 2)",
+      "state": "stale"
+     },
+     {
+      "item": "Placeholder formula note: 'All three numbers are placeholders for the research line to set'",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/reviews/trainer-content-2026-10-20.md lines 47-51 (item 3); item 7, lines 57-58, the transfer day shows 'just no score'",
+      "state": "written only"
+     },
+     {
+      "item": "Result features and rules: F-50 (one screen, score, three figures), F-50a (the formula is set by RSE-164; item 3 is a placeholder), F-51, F-52 (Lean n of 100), F-53 (never 'No score today'), F-56, F-57, F-58 (no change reading until RSE-164), F-59 Later, F-60 and F-61 Never; R-SCORE-1, R-SCORE-2, R-LEAN-1 to R-LEAN-3",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/ux/feature-set.md lines 110-123; /Users/priyanshu/equal-lens-trainer/knowledge/reference/design-rules-consolidated.md lines 382-387",
+      "state": "written only"
+     },
+     {
+      "item": "Day result screen spec SC-11 (a level's result, its kicker naming Easy, Medium or Hard, the score ranked on that level's Today board, Day 1 pulled towards zero)",
+      "where": "/Users/priyanshu/equal-lens-trainer/knowledge/ux/ia-and-flows.md line 65",
+      "state": "written only (no daily screens exist in src/; src/ holds only content, engine, store and take)"
+     },
+     {
+      "item": "Research line pipeline state",
+      "where": "python3 okf-pipeline.py status: '[x] GATED generate ... (2026-10-20 20:23)', '[ ] pending validate', '[blocked] enrich, refresh, plan, finalise'; .okf-pipeline.json shows generate design candidates-v5-2026-10-20.md",
+      "state": "generate gated only"
+     },
+     {
+      "item": "Candidates v10: R1 (how many paired decisions a confident First take reading needs), the reveal-and-measurement section 0.3a, the estimand D (bias-corrected absolute lean per person, needing population-level nuisance and cell noise)",
+      "where": "/Users/priyanshu/Sex Ed/Paper Analysis/Hypotheses/daily-fairness-trainer/candidates-v10-2026-10-22.md lines 54-70, 141-167, 169-242, 648-685, 1061-1076",
+      "state": "written only (not gated; gate 9 ruled REVISE, critique-generate-gate-9.md lines 370 and 374)"
+     },
+     {
+      "item": "Validation and gap list v1: R1 UNDERDETERMINED, its area and direction readings BLOCKED (KG-1); every stance LOW and CONDITIONAL",
+      "where": "/Users/priyanshu/Sex Ed/Paper Analysis/Hypotheses/daily-fairness-trainer/validation-and-gaps-2026-10-22.md lines 4, 80, 86, 145, 151-152, 255",
+      "state": "written only (critic REVISE, BLOCKING B-1 to B-4: critique-validate-gate-1.md lines 289 and 293; revision steps in resume-note-2026-10-22.md lines 20-31, not yet done)"
+     },
+     {
+      "item": "Seedling scoring core (lean as shrunk mean of d_i, steadiness, one headline number)",
+      "where": "/Users/priyanshu/Sex Ed/Paper Analysis/Hypotheses/workplace-gender-training-v2/consistency-and-levels-2026-10-20.md lines 27-41; frontmatter line 7 'status: seedling options, no decisions locked'",
+      "state": "written only"
+     },
+     {
+      "item": "Audit tools for two of the reading's faults",
+      "where": "/Users/priyanshu/equal-lens-trainer/design-system/tools/forced_choice_2026_10_25.py and reading_chores_2026_10_25.py",
+      "state": "built but not a check (the audit asked for one: app-build-audit-2026-10-25.md line 63); I ran both, and both still show the faults"
+     }
+    ],
+    "missing": [
+     "A scoring rule the research line has gated. Validate is pending; plan, which would set a study design, is blocked; F-50a and content plan item 3 both say the formula waits on RSE-164.",
+     "A revision of the validate stage (validation-and-gaps v2, a change audit, the gate-2 critic). resume-note-2026-10-22.md lines 20-31 lists the steps. No file in Paper Analysis/Hypotheses has changed since 23 Oct.",
+     "Engine scorers for the decision kinds the dailies will use now: Believe, the batting order, Split, and pick-a-team as 'set'. score.ts lines 260-284 score only the retired kinds, and the engine's Answer union (answers.ts 58-66) does not match the take's (common.tsx 10-14).",
+     "A level dimension (Easy, Medium, Hard) in content, store and results. Day.level is the old ladder number (types.ts line 195), and DayRecord is keyed by date with no level (store/index.ts lines 14-21).",
+     "A five-world weekly calendar. calendar.ts lines 36-40 alternate Lugdi and Station only.",
+     "Two weeks of daily content across the five worlds, at three levels. Only the retired 14-day, one-puzzle fortnight exists.",
+     "Noise correction in the lean. leanSize is the plain absolute shrunk mean, while the research estimand subtracts noise (candidates-v10 lines 218-220, sqrt(max(0, b^2 - s^2))).",
+     "A marker for decisions where being chosen is a burden (a chore), so that being left out counts as the favour. grep for 'burden' in src/take and public/take finds nothing.",
+     "Any lean number in the First take that could seed the daily lean (F-206, D18). The reading is counts only (Results.tsx line 12).",
+     "A version tag for the scoring formula on each saved or sent score. F-116 sends the score but never the picks, so scores already on a server could not be recomputed once the formula changes.",
+     "Daily result, Week, Sunday and past-puzzle screens in src/ (SC-11, SC-20 to SC-28). None exist; src/ holds only content, engine, store and take."
+    ],
+    "conflicts": [
+     "What the board ranks by. SC-11 says a level's 'score ranks on that level's Today board' (ia-and-flows.md line 65), and F-212 and DESIGN.md line 499 say 'a level's score and practice count only on that level's boards'. Against that: the brief, line 38, 'ranked by practice'; PRODUCT.md line 71, 'ranked by practice'; superseded design.md line 218, 'the board ranks practice alone'; board.ts line 1.",
+     "Pending parts and transfer days. R-SCORE-2 says 'A pending part is never shown as zero, and there is never \"No score today\"' (design-rules-consolidated.md line 383; F-53). But results.ts line 119 adds a missing consistency as 0 into the headline (score = practice + (c ?? 0)). Superseded design.md line 220 and content plan item 7 say the transfer day 'shows no score'. v10 line 114 adds a research-build 'score-free rhythm' where one ordinary day in five carries no score.",
+     "Seeding the daily lean from the First take (F-206, D18, feature-set lines 134 and 413) against Results.tsx line 12, where the First take has no lean number to seed from. v10 0.3a item 8 (line 154) also warns that 'the first days after a reveal can fall fast for this reason alone'.",
+     "Weekly lean stubs and the month recap (F-57, F-58) against v10 0.3a items 8 and 10 (lines 154, 161). The daily lean trend is confounded with rising disguise, and the month recap 'should use fixed-difficulty disguised material or say nothing'. F-58 already holds back any reading about change, but F-57 still puts weekly lean values side by side.",
+     "Three levels against one lean. v10 0.3a item 9 (lines 155-160) says 'lean numbers across levels are not on one scale' and 'No reading compares levels'. weekSummary (results.ts lines 140-155) pools every unit of every date in the week, so three levels a day would be mixed into one lean.",
+     "Level suggestion. v10 line 159 says the game suggests a level 'from the First take's consistency', but the First take computes no consistency number (Results.tsx lines 10-13), and D14 (feature-set line 409) does not say how the level is suggested.",
+     "score.ts line 2 and scoring-check.ts line 2 cite 'knowledge/design.md, section 7' as their spec, but design.md lines 27-29 mark that section superseded, 'history only, not authority'.",
+     "Five worlds a week (v10 line 61; feature set) against the engine calendar's two-skin alternation (calendar.ts lines 36-40) and the content files, which are Lugdi and Station only.",
+     "The weekly score and the server rule. weekSummary's consistency includes evenness (1 - lean/100) (results.ts lines 145-146; score.ts line 383), so a week score sent to a server would partly encode the lean, which F-116 (feature-set line 221) says never leaves the phone. The daily score passes lean null (results.ts line 113), so this applies only to week totals."
+    ],
+    "owner_questions": [
+     "Until the research sets the score, should the daily result show plain counts only, or a 'Lean 18 of 100' number too? Example: after Tuesday's Medium puzzle the screen reads either 'You treated 2 of 3 matching pairs alike' or 'Lean 18 of 100'. Today's formula gives a player who taps at random about 17 and a player who is careful about 13, so the number barely tells them apart.",
+     "Should the big number keep adding consistency to practice? Example: a player who plays all three levels (30 practice) at consistency 60 shows 90. A player who plays only Easy (10 practice) at consistency 95 shows 105. Playing more raises the number about as much as being fair does. The other choice is to show consistency and practice side by side with no big sum.",
+     "What should the result say on a day when part of the score is not in yet? Example: on Wednesday the first half of a returning pair is played, and on Station's transfer day the puzzle gives no feedback. The rules say never 'No score today' and never show a missing part as zero, but the engine counts it as zero inside the sum.",
+     "With three levels, does each level get its own lean, or one combined lean for the day and the week? Example: a player plays Easy and Hard on Thursday. Easy pairs are easier to spot than Hard ones, so the research says the two numbers are not on the same ruler.",
+     "Should the First take's result set where the daily lean starts? Today the First take gives only counts, like 'You picked the man 9 times', not a number out of 100, so there is nothing to start the daily lean from without inventing a conversion.",
+     "Should the reading's three counting faults be fixed before the dailies reuse the same counting? Example: in a Rukavat daily, giving the loft-clearing chore to the woman is now counted as favouring her, and a player who gives every chore to the women can read 'Close to even'.",
+     "Does the leaderboard rank practice only, or the score? Example: two Hard players each play 3 puzzles this week, one at consistency 50 and one at 95. Should they tie, as PRODUCT.md and the brief say, or should the fairer player rank higher, as the result screen spec SC-11 suggests?"
+    ],
+    "risks": [
+     "Showing a placeholder number as a reading. F-50a and content plan item 3 call the formula a placeholder, and no stage after generate is gated. Any 'Lean n of 100' or consistency 0 to 100 shown in M3 would look like a measured result.",
+     "The engine's lean counts noise as lean. leanSize is |sum d| / (n + 2) with no noise correction (score.ts lines 357-361). The scoring check printed even play lean 13 and random play 16.7 on average, and its test only requires random to be under half the one-sided 68 (scoring-check.ts lines 63-70). This is the error class the research line's SR-06 names (_audit-log.md lines 51-56).",
+     "Opposite leans in different areas cancel. The lean sums every unit in a day or week before taking the size (score.ts lines 357-361), so favouring women at work and men at home can read as even. The research estimand takes each stratum's size before averaging (candidates-v10 lines 222-226).",
+     "The research estimand cannot run on one phone. v10's D needs population-level nuisance effects pooled over 'thousands of judgements' and per-cell noise estimated across players (candidates-v10 lines 173-196). A phone-only M3 can only approximate it, and a later server-side version would not match numbers already shown.",
+     "Reading fault 1 is still present: some decisions no longer force a choice between the hidden two. I ran forced_choice_2026_10_25.py: station 1 and 5 'pick a team, 2 of 4 ... numbers-read=0.00'; lugdi 3 and 7 'pick one ... numbers-read=0.00'. The kinds in content/take/first-take.json are station-1 'set' and lugdi-3 'pick'. Daily content built the same way would measure nothing for players who go by the numbers.",
+     "Reading fault 2 is still present: chores are counted in opposite directions. I ran reading_chores_2026_10_25.py on content/take/first-take.json: case A reads 'Same free hours, but the man gets the chores.' and case B reads 'Close to even in every part of life.' reading.ts line 13 counts being chosen in a set as the favour, and line 20 counts fewer chores as the favour.",
+     "Reading fault 3 is still open: the batting order never draws the note its twin depends on (app-build-plan line 161). The twin cricket-1/cricket-5 is kind 'plain', and Results.tsx line 51 drops only 'hard' twins, so cards 2 and 3 can still use it.",
+     "Card 1 states the number of clear choices as if it were the number of equal pairs (audit line 121; Results.tsx lines 47 and 71-73).",
+     "The First take's own precision is unproven. R1 is UNDERDETERMINED with its area and direction readings BLOCKED (validation-and-gaps line 80). Gate 9's simulation gives a parallel-form correlation of 0.48 at one wave's noise (line 145). Seeding the daily lean from it (D18) would carry that unproven precision into every daily number.",
+     "Daily trends invite change claims the research says they cannot carry: v10 line 1066, 'The daily numbers are not change measures, and levels are never compared'. Weekly lean stubs side by side (F-57) could be read as progress.",
+     "Two answer models. A daily that reuses the take's decision kinds cannot be scored by score.ts as it stands, and scoring-check.ts tests only the retired kinds. New scorers would ship with no two-way and noise tests unless the check is extended to them.",
+     "Board rank on a result. board.ts ranks against a made-up sample labelled as made up (lines 1-5). Showing a rank or a top percentage on the M3 result before M4's server exists would present an invented standing.",
+     "Score format lock-in for M4. F-116 sends 'each day's puzzle number and score (never the picks or the lean)', so once scores leave the phone a formula change cannot be applied to them unless each score carries a formula version."
+    ],
+    "notes": "Commands I ran, all read-only:\n1. `python3 okf-pipeline.py status` on daily-fairness-trainer: generate GATED (2026-10-20 20:23), validate pending, enrich, refresh, plan and finalise blocked; NEXT ACTION is the validate producer.\n2. `okf-pipeline status` on workplace-gender-training-v2: generate, validate, enrich and refresh GATED, plan pending. That line holds only the seedling scoring doc, marked 'no decisions locked'.\n3. The scoring check alone via `./node_modules/.bin/tsx -e` (not pnpm check): 19/19 PASS, with the detail lines quoted in the summary and risks.\n4. `python3 design-system/tools/forced_choice_2026_10_25.py .` and `python3 design-system/tools/reading_chores_2026_10_25.py content/take/first-take.json`. Both scripts only read files; the output is quoted in risks.\n5. `find Paper Analysis/Hypotheses -newermt 2026-10-23` printed nothing, so no research work has happened since the 22 Oct resume note. The note's relaunch steps for 25 Oct (resume-note-2026-10-22.md lines 33-40) are not done.\n\nWhere M3 must leave room for M4:\n- the store's Backend interface (src/store/index.ts lines 34-37) is the plug point for a server;\n- each puzzle scores once, on its own level's boards (F-92, F-212);\n- the server gets the score and practice but never the picks or the lean (F-116), so the M3 score should be per level, per puzzle, and carry a formula version;\n- the lean must never feed the board (R-LEAN-2), and week totals that include evenness would leak it (results.ts lines 145-146).\n\nOn 'leaderboards scored both ways': the brief (lines 32-39) separates the two. Scoring 'works in both directions', and the board is 'ranked by practice'. Nothing in the files says the board ranks a two-way score, except the wording in SC-11 and F-212, listed under conflicts.\n\nThe research text bearing on what results may say is v10 U0 (line 692): 'the cards never say that most people lean' and keep 'private, pattern-not-verdict wording'. v10 is not gated.\n\nI did not look at the live site, render anything, or open any Plane issue."
+   }
+  }
+ ],
+ "gaps": {
+  "summary": "I re-checked the four claims that most affect the plan, and all four hold:\n- **No daily engine module runs in the app.** The only import from it is calendar's daysBetween and indiaToday, in Gate.tsx:2.\n- **No content anywhere has three levels a day.**\n- **The cover is drawn in all five worlds.** But \"Level 3 of 6\" appears 56 times in design-system/index.html, and \"Past puzzles\" and \"Easy\" appear 0 times.\n- **The owner has already settled the streak rules.** One forgiven day per ISO week (F-62, R-NUM-35), and opening the week counts as Sunday's day (F-66). Two parts are defaults still to confirm: any one level keeps the streak (D12), and past puzzles never count (F-49a).\n\n**What the five maps got wrong or missed:**\n- **Questions the owner has already answered.** About a third of the owner questions are already decided in feature-set.md: the 4 am day, the streak, the \"Next puzzle in 3 h\" line, how far back past puzzles go, transfer-day scoring, where a new player lands, and board ranking (D5).\n- **Three daily kinds have no screen in the app.** Rule then jobs, word bank and quick sort (F-27, F-32, F-33) are V1. The library draws them, but src/take/steps has no component for them. The owner chose \"all six kinds in launch week\" (O11 Q8 A). So M3 must build new step screens, not just reuse the First take's.\n- **Five rules nobody mapped would break a straightforward build:**\n  - **Past puzzles and the streak.** A past puzzle saved under its own date would fill a gap in the streak (store/index.ts:104-109), against F-49a and FL-19.\n  - **A day started before 4 am** must finish as that day (F-12).\n  - **The other half of a pair** is held back from Past puzzles for 7 days after one half is played (F-49f).\n  - **A ghost demonstration** plays the first time a player meets a kind (F-25). It is not built or drawn anywhere.\n  - **Look-again taps are never stored** (F-69, F-77). The code map proposed storing them.\n- **The update button breaks a decided rule.** The live app shows \"New version ready\" with Update. F-173a (Decided) says updates arrive with no button. It also says every saved day carries over, but store.ts drops any answer whose content signature changed.\n- **The script budget is nearly used up.** The app's script was 110 KB of its 130 KB gzipped budget on 25 Oct. Nothing in src is split out, so the whole First take loads with the cover.\n- **The live First take is the old one.** It is the 1971 take, with \"About 4 minutes\" on its five title cards. Saal Bhar, the owner's 26 Oct story mode, is in no milestone.\n- **There is no server-side code at all.** That leaves F-09 (no early opening by changing the phone's clock), F-173 (tomorrow's puzzle never on the phone) and F-49a (a past puzzle fetched when opened) unmet on static hosting before M4.\n- **Help lines come too late.** Hard-topic days are on the M3 cover (F-06), but their help lines are placed in M5 (build plan:32).\n- **FL-01 is in no milestone.** That is the first visit from a shared link: the birth date, then Play or the First take.",
+  "exists": [
+   {
+    "item": "Check 1, daily engine unused: confirmed. The only engine import outside src/engine is calendar's daysBetween and indiaToday in Gate.tsx. store/index.ts imports only types and freshSeed, and nothing outside the engine imports the store. Only src/content/index.ts imports content/days. main.tsx renders only <Take/>",
+    "where": "grep for imports of engine, store and content outside src/engine printed only src/take/Gate.tsx:2, src/store/index.ts:9-12 and src/content/index.ts:2-18; src/main.tsx:4,9",
+    "state": "built but unused"
+   },
+   {
+    "item": "Check 2, three levels a day in any content: none. grep for Easy, Medium or Hard under content/ hits only prose in the Saal Bhar drafts (e.g. result.json:1208 'Medium risk', 2450 'Hard decisions'); none of them is a level",
+    "where": "grep -rln 'Easy|Medium|Hard' /Users/priyanshu/equal-lens-trainer/content; content/days/*.json still carry the old 2-to-10 ladder",
+    "state": "missing"
+   },
+   {
+    "item": "Check 3, the cover in five worlds: confirmed. Drawn in all five: the Play cover, a hard day, after today, first visit, a forgiven day, loading, Hindi and 200%. The 360 x 640 cover exists for Lugdi, Jadugar, Cricket and Rukavat (no Station). Result, Sunday week and look again exist in all five. 'Day 1 result', 'Day 1, the Week tab', 'Your month' and the change cards exist as single frames, not per world",
+    "where": "/Users/priyanshu/equal-lens-trainer/design-system/index.html (27 Oct 18:56, 340 figcaptions, python caption listing); in the same file 'Level 3 of 6' appears 56 times, 'Past puzzles' 0, 'Easy' 0",
+    "state": "drawn only, with stale level wording; no level switch, Past puzzles, weekday Week tab or Sunday cover"
+   },
+   {
+    "item": "Check 4, the streak rules: owner-decided. One forgiven missed day a week (F-62, Decided; PRODUCT.md:70 owner-confirmed 21 Oct), per ISO week (R-NUM-35). Opening the week counts as Sunday's day (F-66, Decided). Never a countdown (F-76, Never). Still defaults to confirm: any one level keeps the streak (D12) and past puzzles never count (F-49a, D5)",
+    "where": "knowledge/ux/feature-set.md:94, 141, 145, 156, 405 (D12), 382 (D5); knowledge/reference/design-rules-consolidated.md:145; ia-and-flows.md:829 (FL-19 step 4); src/engine/streak.ts:10-26 already does ISO-week forgiveness",
+    "state": "written only; the engine's core matches"
+   },
+   {
+    "item": "The library draws three V1 daily kinds that have no app component: rule then jobs (assign), quick sort and word bank, in every selected world",
+    "where": "design-system/library.py:547 step_rule, 567 step_jobs, 603 step_sort, 614 step_words, MECH at 1410-1411; app components (ls src/take/steps): Order, Pick, Rank, Row, Split, Team, common only; feature-set.md:68 (F-27), 73 (F-32), 74 (F-33), all V1 Decided",
+    "state": "drawn only"
+   },
+   {
+    "item": "The live First take is the old '1971' take, not Saal Bhar: five title cards say 'About 4 minutes'; Saal Bhar (the owner's 26 Oct story mode) is a draft of five chapter files",
+    "where": "python over content/take/first-take.json: '1971' True, 'About 4 minutes' x5, 'Saal' False; app-build-plan-2026-10-24.md:133; content/drafts/saal-bhar-2026-10-26/chapter-1..5.json; ground-rules-draft-2026-10-25.md:20",
+    "state": "old take built and used; story mode written only, and in no milestone"
+   },
+   {
+    "item": "Update toast with an Update button; a new version waits for a tap",
+    "where": "src/pwa.ts:38-46 (offer posts SKIP_WAITING when the player taps Update); app-build-plan-2026-10-24.md:60, 85",
+    "state": "built and used, against F-173a (feature-set.md:303, Decided: no Update button, banner or reload during play)"
+   },
+   {
+    "item": "Script budget almost used: 110 KB gzipped of 130 KB on 25 Oct. Nothing is split out: the First take is a static import, so every visit loads it",
+    "where": "app-build-plan-2026-10-24.md:175 ('M2 splits it by chapter', not done); app-build-audit-2026-10-25.md:49; scripts/bundle-check.ts:15; src/take/data.ts:3; grep for 'import(' in src printed nothing",
+    "state": "built and used; about 20 KB of headroom"
+   },
+   {
+    "item": "No server-side code of any kind: no functions, no middleware, no api folder",
+    "where": "/Users/priyanshu/equal-lens-trainer/vercel.json (redirects, rewrites and headers only); ls api and middleware.* found nothing; CSP connect-src 'self'",
+    "state": "missing"
+   },
+   {
+    "item": "The turned-down build's keys: 'elt:v1' (days and private Sunday notes) and sessionStorage 'elt:date'. Delete all removes only 'retake.take'",
+    "where": "src/store/index.ts:30, 39; src/engine/calendar.ts:49; src/take/store.ts:133-140; grep for 'elt:' finds no code that removes them (sw.js:82 clears only elt- caches)",
+    "state": "stale; anything a tester's phone kept from the 20 Oct build survives Delete all (plausible: depends on whether that build reached testers)"
+   },
+   {
+    "item": "Board ranking default D5: Today ranks today's score; This week and All time rank practice; past puzzles add to All time only. D13 (owner-settled): each level has its own three boards",
+    "where": "knowledge/ux/feature-set.md:382 (D5), 407 (D13), 190 (F-212)",
+    "state": "written only (D5 a default to confirm); answers the scoring map's board question"
+   }
+  ],
+  "missing": [
+   "**Past-puzzle plays kept out of the streak.**\n- F-49a and FL-19 step 4: a past day adds to All time only, never to Today, This week, the streak or Sunday's week.\n- The old store keys days by puzzle date (store/index.ts:14-31), and playedDates counts every done day (store/index.ts:104-109).\n- Failure case: Ravi misses Wednesday, plays Wednesday's past puzzle on Thursday, and his broken streak mends itself.\n- The daily record needs the puzzle's date, the level and the date it was played (playedOn), and the streak must count only days played on their own date. Without playedOn, F-05 ('Day 1' only on a day played on its own day) cannot work either.",
+   "**A day begun before 4 am finishes as that day** (F-12, feature-set.md:43). A puzzle in progress has to stay bound to its puzzle date across the rollover. No map lists this.",
+   "**Twin holdback in Past puzzles** (F-49f, D6, FL-19 step 2): once a player plays one half of a hidden pair, the other half's day is left out of her list for 7 days, with no mark. Daily content needs a twin id on every puzzle, and the Past puzzles list needs the play dates. No map lists this.",
+   "**Ghost demonstration** (F-25, Decided V1): one demonstration the first time a player meets a kind, skipped by a tap, never again on that phone.\n- grep for 'ghost' or 'demonstr' in src, design-system/library.py and first_take.py found nothing, so it is neither built nor drawn.\n- The store must keep 'the kinds of puzzle met' (F-116, feature-set.md:221), including the kinds met in the First take (FL-26 step 2).",
+   "**Step components for rule then jobs (F-27), word bank (F-32) and quick sort (F-33)**, with their answer shapes, scoring, markup and markup-check references.\n- O11 Q8 A (design-rules-consolidated.md:51, owner) puts all six kinds in launch week.\n- The app has only pick, checks, team and rank for the old daily kinds. Believe, batting order and Split join the dailies one a week, each first in its home world (F-49c, F-215 to F-217).",
+   "**A frozen-content rule for published days.**\n- store.ts drops a kept answer whose decision signature (people, numbers, English notes) changed (store.ts:36-72; build plan:154).\n- For the First take that is safe. For a daily, a typo fix after release would silently erase done days and their streak.\n- F-173a says a day in progress and every saved day carry over a new version.",
+   "**A way to serve daily content** that keeps tomorrow's puzzle off the phone (F-173), fetches a past puzzle only when it is opened (F-49a) and stops anyone opening tomorrow by changing the clock (F-09).\n- The service worker precaches every built file (plugin.ts:31-45), and there is no server-side code (vercel.json).\n- It needs a free server-side date check or a deploy each day, and that is a server choice ahead of M4 (build plan:38, 'no pro accounts').",
+   "**A launch-Monday constant** for F-214's world count ('counted from launch Monday'). The only anchor in code is the turned-down build's 2026-10-19 (calendar.ts, anchorDate), and nothing records a launch date.",
+   "**Each past day keeps the world it was published in** (FL-26 step 4), so content must carry its world. A 2 GB phone keeps only this week's and next week's world art (FL-26 step 6). No picture-cache eviction rule exists (sw.js keeps retake-pics across versions).",
+   "**Splitting the First take out of the main script**, so the cover (the new root) loads light (F-161: first page at most 600 KB, playable in 3 s) and the daily screens fit the 130 KB budget. Planned for M2 (build plan:175), not done.",
+   "**Reopening the reading from the Week tab** (SC-20 and SC-21 reading row, SC-93 read-only). Results.tsx is reached only as the last screen of TAKE.flow (Take.tsx:272), with no read-only entry.",
+   "**FL-01** (first visit from a shared link: the birth date, then Play or the First take) is in no milestone. M1 to M5 list FL-02 to FL-26 but not FL-01 (app-build-plan-2026-10-24.md:28-32), yet M3 changes where a first visit lands (F-14a).",
+   "**A milestone for the story-mode First take** (Saal Bhar draft 1, scroll strip with speech bubbles). The cover's 'First take' offer, the Week tab's starter block, the level suggestion after the starter (F-211) and D18's seed all depend on which First take ships."
+  ],
+  "conflicts": [
+   "**Updates.** F-173a (Decided, feature-set.md:303) says a new version takes over only when the game opens with no puzzle in progress, with no Update button. The app shows 'New version ready.' with Update on every screen (src/pwa.ts:38-46; build plan:60). The code map listed the toast as 'reusable as is'.",
+   "**Stored look-again taps.** The code map proposed storing 'Sunday look-again answers'. F-69 (feature-set.md:148) and F-77 (Never, feature-set.md:157) say Sunday's 'What was different?' taps are never stored, anywhere. Only the optional note is kept (F-70).",
+   "**Step components.** The code and content maps say the First take's step components carry the dailies, and that the dailies' kinds 'match the engine'. They match the engine (score.ts), not the app. Three V1 daily kinds (F-27, F-32, F-33) have no component, and launch week needs six kinds (O11 Q8 A).",
+   "**Hard-topic days and help lines.** The M3 cover includes the hard-topic day state (F-06; the library's '<world>, a hard day' frames). F-47 needs the help line in '?' on those days. The build plan places 'hard-day help lines' in M5 (app-build-plan-2026-10-24.md:32). So either M3 has no dowry, custody or safety days, or the help line moves into M3.",
+   "**Content signatures.** The signature-drop pattern the code map recommends reusing (store.ts SIG and fits) erases answers when content changes. That clashes with F-173a's 'every saved day carries over' for dailies.",
+   "**Transfer days are not an owner question.** F-35 (feature-set.md:76: 'look and score like any day'; the fortnight's no-score day 'overruled by R-SCORE-2') and F-53 are Decided. The engine still gives transfer days no consistency (results.ts:116-119). The engine is what has to change.",
+   "**Timing of the First take.** The live title cards say 'About 4 minutes' (first-take.json, five times). The owner's 26 Oct answer is story mode with no time cap (ground-rules-draft-2026-10-25.md:20). D10 and D17 (feature-set.md:403-410) still describe a 20-minute starter, which the M3 cover offer and Week tab block would inherit.",
+   "**The streak and past puzzles.** The engine's playedDates (store/index.ts:104-109) would count past-puzzle plays, against FL-19 step 4 and F-49a."
+  ],
+  "owner_questions": [
+   "Should the new story (Saal Bhar) replace today's First take before the dailies go live, or after? For example, on the first day of the dailies, a new player taps 'First take' under Play: does she get the old Manmad story, or the new household story?",
+   "Should the app keep showing 'New version ready' with an Update button? Your feature list says new versions should arrive quietly the next time the game opens. For example, Farida is halfway through Wednesday's Medium on the train: should a button appear, or should the new version wait until she next opens the game with nothing in progress?",
+   "Until the help lines arrive in a later stage, should the dailies have no dowry, custody or safety days at all, or should the help line come with the dailies? For example, a Saturday where a relative says 'Keep the girls home tonight, it's for their safety.'",
+   "For the first week of dailies, which six kinds of puzzle do you want? Three of them need new screens we do not have yet: lock a rule then give out jobs, fill a note from a word bank, and keep or cut a stack. For example, could the first week be pick one, spend checks, pick a team, rank for seats, the batting order and splitting chores, which all exist already?",
+   "If we find a mistake in a daily after people have played it, should the puzzle stay as it was, or be fixed? Fixing it could wipe the answers of everyone who played. For example, a wrong number on a card in Tuesday's Easy is spotted at noon, after 200 people have played.",
+   "With no server yet, we can stop people seeing next week's puzzles early only by putting each day online on its morning, using a small free check on our side. Is that acceptable, or should the dailies wait for the server? For example, without it Ravi could open Saturday's Hard puzzle on Wednesday and post it in his family group.",
+   "Until the Board can be joined, what should the Board tab show? Your earlier answer keeps the tab, but joining needs accounts, which come later. For example, the tab could say 'Board opens soon', or be left out of the bar until then."
+  ],
+  "risks": [
+   "**Asking the owner questions he has already answered.** This wastes his attention and breaks the plain-questions rule. Already decided, so do not ask:\n- the day changes at 4 am (F-08, F-09, O11 Q2);\n- one forgiven day per ISO week, and opening the week counts on Sunday (F-62, R-NUM-35, F-66);\n- the done cover says 'Next puzzle in 3 h' (F-03, feature-set.md:34);\n- new-kind days look and score like any day (F-35, F-53);\n- Past puzzles lists every unplayed past day, a Sunday newcomer included (F-49a, F-77a);\n- after the birth date, a new player lands on today's cover with First take under Play (F-14a, D10);\n- board ranking (D5);\n- all three levels are in the week's world and share one painting (F-210, F-214).\nD5, D10, D12, D14 and D16 are defaults to confirm in one line, not open questions.",
+   "**The streak can mend itself.** If past puzzles are stored like today's, the streak fills its own gaps. The scoring check would not catch it: its streak test feeds dates directly (scoring-check.ts:109-119).",
+   "**The script budget.** Daily screens, the shell, three new step kinds and the scoring are added on top of a 110 KB script with about 20 KB of headroom (build plan:175; bundle-check.ts:15). Bundling daily content as the First take is bundled would also break F-173.",
+   "**Silent loss of done days.** A content fix after release, with the signature-drop rule, would erase finished days and their streak with no message. F-168 says nothing fails silently.",
+   "**F-09 cannot be met on the phone alone.** indiaToday reads the device clock (calendar.ts:45-46). Without a date check on our side, setting the clock forward opens tomorrow's puzzle, if its content is reachable.",
+   "**Rebuilding twice.** M3 built around the old First take (5 chapter marks, 'About 4 minutes', a level suggestion from its counts) would have to be redone when the story-mode First take lands.",
+   "**Delete all leaves old data behind.** It does not remove 'elt:v1', where the turned-down build kept days and private Sunday notes. A tester who opened that build keeps them after 'Deleted.' (store.ts:133-140). The e2e checks run only on clean storage (e2e.ts:140-141 checks the 'retake.take' fields)."
+  ],
+  "notes": "**Commands I ran (all read-only):**\n- grep over src for imports of engine, store and content;\n- cat src/main.tsx;\n- grep -rln 'Easy|Medium|Hard' over content/;\n- python over design-system/index.html, listing its 340 figcaptions and counting 'Level 3 of 6' (56), 'Past puzzles' (0) and 'Easy' (0);\n- python over content/take/first-take.json for '1971' and 'About 4 minutes';\n- grep for 'import(' (none), for 'ghost' and 'demonstr' (none), and for 'elt:';\n- ls of src/take/steps, api and middleware;\n- sed reads of the app build plan (in full, two parts), feature-set rows F-01 to F-218 and D1 to D18, ia-and-flows SC-00 to SC-96, FL-19 and FL-26, streak.ts, calendar.ts, results.ts, store/index.ts, store.ts forget(), pwa.ts, bundle-check.ts, privacy-check.ts, vercel.json and e2e.ts:136-142.\n\nI ran no checks, builds, browsers or Plane calls, and made no edits.\n\n**Smaller corrections to the five maps:**\n- **Content map:** it says the dailies' kinds match the engine. True, but that is the retired engine, not the app's components.\n- **Scoring map:** its board-ranking conflict is resolved by default D5 (feature-set.md:382), which it did not cite.\n- **Design map:** its question about the done-cover line is answered by F-03, which is Decided.\n- **Code map:** three of its owner questions are already decided: the 4 am day, the streak, and how far back Past puzzles go.\n\n**Two notes on flows:**\n- **SC-95** puts the level switch on neither the first-visit cover (until a fresh starter reading) nor any Sunday cover (ia-and-flows.md:119). A first visit therefore plays Easy with no switch shown.\n- **FL-26 step 6** sets an art cache rule: a 2 GB phone keeps only this week's and next week's world. It belongs in the M3 service-worker work."
+ }
+}
