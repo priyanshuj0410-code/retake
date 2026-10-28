@@ -7,7 +7,8 @@ so a free-memory check alone passes in exactly this state.
 
 ready() asks the Mac-wide queue the question its own start gate asks (`heavyq ready`, CLAUD-27), so the two never
 disagree: no other FLUX job, pressure normal, compressed memory under the queue's limit (6 GB), 20 GB of disk free.
-It refuses with exit 4 and the reason. watch() runs beside the painter from before it loads and stops the job at once
+It also refuses when the script is not running inside the queue's running job. It refuses with exit 4 and the reason.
+watch() runs beside the painter from before it loads and stops the job at once
 (exit 3, resumable) if swap grows by SWAP_GROWTH_GB, the compressor by COMPRESSED_GROWTH_GB, or free memory stays
 under 5%.
 """
