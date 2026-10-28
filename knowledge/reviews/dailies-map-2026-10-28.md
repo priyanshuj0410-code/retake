@@ -51,6 +51,12 @@ The day changes at 4 am (F-08, F-09, O11 Q2). One forgiven day per week, and ope
 
 Counts of the player's own choices ("kept your rule in 3 of 4", "treated 2 of 3 matching pairs alike"), practice, puzzles solved, days played and the streak. Not a lean or consistency number presented as a reading, no change over time, no comparison between levels. The research line's latest draft says "levels are never compared", and with three levels a day the old engine would pool them into one lean.
 
+## The owner's answers, 28 Oct 2026
+
+1. Write new dailies ("new"). 2. Easy, Medium and Hard as proposed, and all three together take 5 to 7 minutes ("all three"). 3. Each daily is a short comic strip with 4 or 5 questions, and the worlds are only a look. 4. The result shows plain counts ("works"). 5. The phone may fetch each day's puzzle from our site ("yes"). 6. Two weeks written and reviewed before launch. 7. Hard-topic days stay, with the help line ("keep them"). 8. The Board tab is hidden until accounts ("ok"). Not objected to, so taken as agreed: the result ends on "Back to today" until sharing exists; today's First take stays until Saal Bhar is ready; no festivals or city names; the First take's family stays out of the dailies. Recorded in [ground-rules-draft-2026-10-25.md](../story/ground-rules-draft-2026-10-25.md) as answers 10 to 17.
+
+Answer 3 makes the dailies depend on the comic strip reader the story-mode First take also needs ([webtoon-bubble-spec-draft-2026-10-25.md](../architecture/webtoon-bubble-spec-draft-2026-10-25.md)), so the strip is designed once for both.
+
 ## The staged plan
 
 1. **Decisions:** the owner answers the open questions (content, time per day, look, score, serving, launch size, hard-topic days, the Board tab).

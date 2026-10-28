@@ -4,6 +4,7 @@ title: Retake ground rules, second draft
 description: One rulebook for the First take and the dailies, merged from the story round and the webtoon round, revised after the 25 Oct check. Every rule says whether the owner decided it, the team set it, or it is new, and says so plainly where it would change one of the owner's own calls.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-20/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-23/
 ---
 
 # Retake ground rules (second draft, for your yes)
@@ -20,6 +21,16 @@ plane_issues:
 7. The First take is the game's **story mode**, and the dailies are **daily challenges**. "If the story is good enough and experience fun enough people will play and they always have the option to do it in multiple sittings." No time cap: this replaces rule 50's "about 4 minutes" a chapter and its tap ceiling. Paint by scene, not by decision. "It should be entirely story driven. Right now, story is still our weakest aspect."
 8. "There's no cap on number of characters... just make them real and memorable." This replaces rule 11's 8 to 10 people a chapter and "no quirks", and lifts the earlier worry about too many names.
 9. "Bias is most visible in jobs that most can do. If we ask for a male nurse or a female truck driver, everyone gets a cop out by saying that's how world works." Cards carry jobs most people can do. This replaces rule 11's "against type at least as often as with it".
+
+**Your answers on the dailies, 28 Oct 2026** (EVAL-23; they override rules 53 to 61 where they differ):
+10. The old fortnight goes: "new". Every daily is written fresh in the everyday style of section 1.
+11. Easy, Medium and Hard as proposed (one shared scene; Easy one leaning note and clear numbers; Medium a second leaning note or a reason that matters; Hard the equal two in the middle of the numbers, each with a leaning note), and "all three" together take 5 to 7 minutes, so about 2 minutes a level (question 15).
+12. "Short comic strip with 4-5 questions, only look": a daily is a short comic strip, like the First take's, carrying 4 or 5 questions, and the five worlds are only its look, as for the chapters (question 2). This replaces rule 53's one painting a day.
+13. The result shows plain counts until the research line sets a score: "works".
+14. The phone may ask our site for each day's puzzle, so tomorrow's is never on the phone: "yes". Privacy's wording changes to say so.
+15. Two weeks written and reviewed before launch: "2 weeks" (Lugdi, then Station).
+16. Hard-topic days stay in the dailies, with the help line in "?": "keep them".
+17. The Board tab is hidden until accounts exist: "ok".
 
 One rule per line, in nine sections, then the questions only you can answer, then how the clashes were settled. Nothing here is built. Tick, change or strike each line.
 
