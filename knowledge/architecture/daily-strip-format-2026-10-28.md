@@ -1,14 +1,14 @@
 ---
 type: spec
 title: Retake daily, the strip format
-description: The format spec for the Retake dailies (M3), 28 October 2026. Each day is one present-day evening told in three parts (Easy 8 pm, Medium 9 pm, Hard 10 pm); each part is a two-minute comic strip with four questions, asked by the weekday's own character, with two lane neighbours who sign every remark on the cards. Covers how a level plays screen by screen with timings, how the strip and the cards fit, what the levels share, how the hidden pair stays hidden, word counts in English and Hindi, the paintings a day needs, the cover, result, Week, Sunday, Past puzzles and help line, a full sample day checked by script, the library parts to draw and the owner's open questions. A draft; nothing is built.
+description: The format spec for the Retake dailies (M3), 28 October 2026, with the owner's answers of the same day. Each day is one present-day evening told in three parts (Easy 8 pm, Medium 9 pm, Hard 10 pm); each part is a two-minute comic strip with four questions, asked by the weekday's own character, with two lane neighbours who sign every remark on the cards. Covers how a level plays screen by screen with timings, how the strip and the cards fit, what the levels share, how the hidden pair stays hidden, word counts in English and Hindi, the paintings a day needs, the cover, result, Week, Sunday, Past puzzles and help line, a full sample day checked by script, the library parts to draw and the owner's answers. Nothing is built.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-23/
 ---
 
 # Retake daily: the strip format
 
-A draft for the owner's yes. Nothing here is built, painted or decided. Sources: the owner's answers 1 to 17 and sections 1 to 9 of [ground-rules-draft-2026-10-25.md](../story/ground-rules-draft-2026-10-25.md), the bubble spec ([webtoon-bubble-spec-draft-2026-10-25.md](webtoon-bubble-spec-draft-2026-10-25.md)), Saal Bhar chapter 1 ([chapter-1.json](../../content/drafts/saal-bhar-2026-10-26/chapter-1.json)), the app's step screens (`src/take/steps/`), DESIGN.md (Layout, Components, Levels, Motion), the dailies map ([dailies-map-2026-10-28.md](../reviews/dailies-map-2026-10-28.md)), the three proposals ([proposals/](../../content/drafts/daily-strip-2026-10-28/proposals/)) and the three judges ([assets/daily-strip-format-2026-10-28.json](assets/daily-strip-format-2026-10-28.json)).
+The owner chose its three open questions on 28 Oct (section 12). Nothing here is built or painted yet. Sources: the owner's answers 1 to 17 and sections 1 to 9 of [ground-rules-draft-2026-10-25.md](../story/ground-rules-draft-2026-10-25.md), the bubble spec ([webtoon-bubble-spec-draft-2026-10-25.md](webtoon-bubble-spec-draft-2026-10-25.md)), Saal Bhar chapter 1 ([chapter-1.json](../../content/drafts/saal-bhar-2026-10-26/chapter-1.json)), the app's step screens (`src/take/steps/`), DESIGN.md (Layout, Components, Levels, Motion), the dailies map ([dailies-map-2026-10-28.md](../reviews/dailies-map-2026-10-28.md)), the three proposals ([proposals/](../../content/drafts/daily-strip-2026-10-28/proposals/)) and the three judges ([assets/daily-strip-format-2026-10-28.json](assets/daily-strip-format-2026-10-28.json)).
 
 ## In one paragraph
 
@@ -963,6 +963,9 @@ Per design-before-build, every part below is drawn in the library in all five wo
 ---
 
 ## 12. Questions for the owner
+
+**Answered 28 Oct 2026:** 1, one evening; 2, yes, the same eight people in every look (dailies only); 4, yes, "On time: 3 of 4 jobs" and the time on the outcome stamp. Taken as defaults, not objected to: 3, wide paintings cut in two; 5, every question keeps its pair; 6, the four app kinds from Monday and the two new ones midweek. Recorded as answers 18 to 20 in [ground-rules-draft-2026-10-25.md](../story/ground-rules-draft-2026-10-25.md).
+
 
 1. **Three parts of one evening, or three versions of one moment?** Example: Easy is 8 pm when the lights go, Medium 9 pm while the lineman is on his way, Hard 10 pm when the lights come back. Someone who plays all three gets the whole evening with nothing repeated. The other way, all three start at 8 pm with different jobs: cheaper to paint, but the second and third play reread the same strip.
 2. **May the dailies' characters appear in every world's look?** Example: Shobha Aunty asks every Monday, drawn as a pulp-cover character in Lugdi week and in railway-enamel style in Station week. Hari and Nusrat comment every day. You said "one person, one world" on 23 Oct, for the First take's family. Yes means both halves of a pair of questions are asked by the same person, and players get to know eight characters. No means about 30 characters, and the two halves asked by different people.

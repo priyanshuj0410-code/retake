@@ -31,6 +31,10 @@ plane_issues:
 15. Two weeks written and reviewed before launch: "2 weeks" (Lugdi, then Station).
 16. Hard-topic days stay in the dailies, with the help line in "?": "keep them".
 17. The Board tab is hidden until accounts exist: "ok".
+18. Easy, Medium and Hard are three hours of one evening (8, 9 and 10 pm), so playing all three tells the whole evening with nothing repeated: "One evening".
+19. The six weekday askers and the two neighbours who sign the card remarks (Hari Chacha, Nusrat) appear in every world's look, for the dailies only: "Yes, the same 8 people". The First take's "one person, one world" stands.
+20. A level's result may say how the evening went ("On time: 3 of 4 jobs", from the cards' numbers, never from fairness), and the outcome picture may show the time ("All set: 9:15"): chosen 28 Oct. This also answers open question 5 for the dailies.
+Taken as the default, not objected to on 28 Oct: one wide painting may be cut into two phone pictures; every question keeps its hidden pair; the four app question types run from launch Monday, the two new ones joining midweek if built; a level begun on its day counts for that day if finished by the end of the next play day; a past day reaches Past puzzles only after its hidden pairs have run. The format is in [daily-strip-format-2026-10-28.md](../architecture/daily-strip-format-2026-10-28.md).
 
 One rule per line, in nine sections, then the questions only you can answer, then how the clashes were settled. Nothing here is built. Tick, change or strike each line.
 
