@@ -1,17 +1,18 @@
 """The memory guard every FLUX script calls before it loads the painter (24 GB Mac; mac-memory-limit).
 
 28 Oct 2026: the dailies' sample paint was started while the Mac already held 13.5 GB of other programs' memory in the
-compressor and 5.3 GB in swap (a browser, Zoom and the Claude app, six days after a restart). Loading the painter's
-16 GB on top of that ran the Mac out of memory within a minute. Free memory read 80%, so a free-memory check alone
-passes in exactly this state; what counts is how much other memory is already squeezed or on disk.
+compressor (much of it swapped to disk) with 12 GB of disk free (a browser, Zoom and the Claude app, six days after a
+restart). Loading the painter's 16 GB on top of that ran the Mac out of memory within a minute. Free memory read 80%,
+so a free-memory check alone passes in exactly this state.
 
-ready() refuses to load (exit 4, saying why) while another FLUX job runs, or while compressed memory and swap together
-pass SQUEEZED_GB. watch() runs beside the painter from before it loads and stops the job at once (exit 3, resumable)
-if swap grows by SWAP_GROWTH_GB, the compressor by COMPRESSED_GROWTH_GB, or free memory stays under 5%.
+ready() asks the Mac-wide queue the question its own start gate asks (`heavyq ready`, CLAUD-27), so the two never
+disagree: no other FLUX job, pressure normal, compressed memory under the queue's limit (6 GB), 20 GB of disk free.
+It refuses with exit 4 and the reason. watch() runs beside the painter from before it loads and stops the job at once
+(exit 3, resumable) if swap grows by SWAP_GROWTH_GB, the compressor by COMPRESSED_GROWTH_GB, or free memory stays
+under 5%.
 """
 import os, re, subprocess, sys, threading, time
 
-SQUEEZED_GB = 6.0
 SWAP_GROWTH_GB = 1.0
 COMPRESSED_GROWTH_GB = 4.0
 GB = 2 ** 30
@@ -66,12 +67,15 @@ def biggest(n=5):
 
 
 def ready():
-    others, sq = other_flux(), compressed_gb() + swap_gb()
-    why = ('another FLUX job is running: ' + '; '.join(others) if others else
-           f'{sq:.1f} GB of other memory is already compressed or in swap (limit {SQUEEZED_GB:.0f} GB). Close the largest '
-           f'programs, or restart the Mac, then run it again. Largest now: {biggest()}' if sq > SQUEEZED_GB else '')
-    if why:
-        print('not painting: ' + why, file=sys.stderr, flush=True)
+    q = os.path.expanduser('~/.claude/heavy-queue/heavyq')
+    try:
+        r = subprocess.run(['python3', q, 'ready'], capture_output=True, text=True, timeout=60)
+        ok, why = r.returncode == 0, r.stderr.strip().removeprefix('not ready: ')
+    except Exception as e:
+        ok, why = False, f'the queue could not be asked ({e})'
+    if not ok:
+        print(f'not painting: {why}. Close the largest programs ({biggest()}) or restart the Mac, and free disk space '
+              f'if it is short, then run it again.', file=sys.stderr, flush=True)
         sys.exit(4)
 
 
@@ -94,6 +98,7 @@ def watch():
 
 
 if __name__ == '__main__':
-    print(f'compressed {compressed_gb():.1f} GB, swap {swap_gb():.1f} GB, free {free_pct()}%, other FLUX: {other_flux() or "none"}')
+    print(f'compressed {compressed_gb():.1f} GB (swapped pages included), swap {swap_gb():.1f} GB, free {free_pct()}%, '
+          f'other FLUX: {other_flux() or "none"}')
     print('largest:', biggest())
     ready(); print('ready to paint')

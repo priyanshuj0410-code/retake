@@ -12,7 +12,9 @@ no workflow. Two FLUX jobs at once crashed the Mac on 22 Oct.
 
 Paint (slow, local FLUX, resumable; through the Mac-wide heavy-job queue, CLAUD-26; reruns itself after a stop):
   ~/.claude/heavy-queue/heavyq run --label "Retake portraits" -- bash -c 'for t in $(seq 30); do
-    ~/.local/share/uv/tools/mflux/bin/python art/portraits.py paint && break; sleep 120; done'
+    ~/.local/share/uv/tools/mflux/bin/python art/portraits.py paint; rc=$?; [ $rc = 3 ] || exit $rc; sleep 120; done'
+  (it retries only after its own watcher's stop, exit 3; a refusal, exit 4, ends the job at once rather than holding
+  the queue's lock for an hour while memory stays squeezed)
 Process into assets:                  python3 art/portraits.py process
 Contact sheets for the art check:     python3 art/portraits.py sheets
 """
