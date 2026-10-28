@@ -1,9 +1,10 @@
 /**
  * Dates and the daily rotation. A day is a date in India (YYYY-MM-DD); the app never stores a
- * time. The skin alternates by ISO week parity (odd weeks Lugdi, even weeks Station), and the
- * content day is the skin's week (1 to 7 Lugdi, 8 to 14 Station) at that weekday, so the
- * fortnight of content in content/days repeats until more is written. The anchor fortnight,
- * 19 Oct to 1 Nov 2026 (ISO weeks 43 and 44), is the one the date override jumps through.
+ * time. The dailies' play day changes at 4 am India time for everyone (F-08, F-09); the gate's
+ * age check keeps the calendar date (indiaToday). Five worlds take a week each, in WORLDS order
+ * and then again, with weeks counted from launch Monday, never by ISO week number, so the turn
+ * never slips at New Year (F-214). Of the turned-down build's fortnight only its anchor stays,
+ * 19 Oct to 1 Nov 2026 (ISO weeks 43 and 44), for the date override and scoring-check.
  */
 export const ANCHOR = '2026-10-19'
 const DAY = 86_400_000
@@ -33,11 +34,25 @@ export const weekKey = (d: string) => {
 
 export const mondayOf = (d: string) => addDays(d, 1 - weekday(d))
 
-export const skinOf = (d: string): 'lugdi' | 'station' =>
-  isoWeek(d).week % 2 === 1 ? 'lugdi' : 'station'
+/** The five worlds in their turn, a week each (F-214). */
+export const WORLDS = ['lugdi', 'station', 'jadugar', 'cricket', 'rukavat'] as const
+export type World = (typeof WORLDS)[number]
 
-/** The content day (1 to 14) a date plays. */
-export const contentDayOf = (d: string) => (skinOf(d) === 'lugdi' ? 0 : 7) + weekday(d)
+/** Week 1 of the turn (F-214). A placeholder Monday: the owner sets the launch date. */
+export const LAUNCH_MONDAY = '2026-11-02'
+
+/** The week of the turn a date is in, counted from launch Monday (week 1). A date before launch is in week 1 too, so the
+ * owner's play-through before launch plays launch week, in Lugdi, never a week 0 or the end of the turn. */
+export const launchWeek = (d: string, launch = LAUNCH_MONDAY) =>
+  Math.max(1, Math.floor(daysBetween(launch, d) / 7) + 1)
+
+/** The Monday a date's own week starts on, counted in weeks from launch Monday, before launch too. */
+export const weekStart = (d: string, launch = LAUNCH_MONDAY) =>
+  addDays(launch, Math.floor(daysBetween(launch, d) / 7) * 7)
+
+/** The world all three of a date's dailies are in (F-214); Lugdi before launch. */
+export const worldOf = (d: string, launch = LAUNCH_MONDAY): World =>
+  WORLDS[(launchWeek(d, launch) - 1) % WORLDS.length]
 
 /** The date of content day n in the anchor fortnight. */
 export const anchorDate = (n: number) => addDays(ANCHOR, n - 1)
@@ -45,7 +60,14 @@ export const anchorDate = (n: number) => addDays(ANCHOR, n - 1)
 /** Today in India, from the device clock. */
 export const indiaToday = (now = Date.now()) => fromMs(now + 5.5 * 3_600_000)
 
+/** The dailies' day in India, from the device clock: it changes at 4 am, not midnight (F-09). */
+export const playDay = (now = Date.now()) => fromMs(now + (5.5 - 4) * 3_600_000)
+
 const VALID = /^\d{4}-\d{2}-\d{2}$/
+
+/** A real date in the YYYY-MM-DD form the stores keep. */
+export const isDate = (d: string) => VALID.test(d) && !Number.isNaN(toMs(d)) && fromMs(toMs(d)) === d
+
 const OVERRIDE_KEY = 'elt:date'
 
 /**

@@ -1,3 +1,4 @@
+import { forget as forgetDailies } from '../daily/store'
 import { TAKE, type Lang, type Step } from './data'
 import type { Answer } from './steps/common'
 
@@ -130,6 +131,7 @@ export function canKeep() {
   }
 }
 
+/** Delete all: the take, the dailies and the turned-down build's store (src/daily/store.ts forget). */
 export function forget() {
   last = null
   try {
@@ -137,4 +139,5 @@ export function forget() {
   } catch {
     // nothing kept to remove
   }
+  forgetDailies()
 }

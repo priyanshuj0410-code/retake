@@ -1,12 +1,13 @@
 /**
  * `pnpm check` (after tsc and oxlint, before the browser checks, pnpm e2e and pnpm pwa): the content, the scoring
- * engine kept for the dailies, privacy and the built bundle. The turned-down build's design check went with its UI.
- * The mapping from each requirement to its check is knowledge/reference/acceptance-tests.md.
+ * engine kept for the dailies, the dailies' calendar, streak and store, privacy and the built bundle. The turned-down
+ * build's design check went with its UI. The mapping from each requirement to its check is
+ * knowledge/reference/acceptance-tests.md.
  */
 import { results, summary } from './lib/check'
 
 const t0 = performance.now()
-const modules = ['./content-check', './scoring-check', './privacy-check', './bundle-check']
+const modules = ['./content-check', './scoring-check', './daily-check', './privacy-check', './bundle-check']
 for (const m of modules) {
   try {
     const mod = (await import(m)) as { run: () => Promise<void> }

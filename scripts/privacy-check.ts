@@ -21,8 +21,15 @@ export async function run() {
   // the turned-down build's one timeout was its hit-stop; the First take waits on nothing
   const timeouts = files.filter((f) => /setTimeout\(/.test(src[f]))
   record(T, 'nothing waits on a timer', timeouts.length === 0, timeouts.join(', '))
-  const types = src['store/index.ts'] + src['engine/answers.ts'] + src['take/store.ts'] + src['take/steps/common.tsx']
-  record(T, 'the stored shapes have no time, duration, stamp or keystroke field', !/\b(time|ms|duration|stamp|timestamp|at[A-Z]\w*|keys?|keystrokes?|elapsed|took)\??:\s/.test(types.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '')))
+  // every file that declares a stored shape; a moved or renamed one fails here instead of passing unread
+  const shapes = ['store/index.ts', 'engine/answers.ts', 'take/store.ts', 'take/steps/common.tsx', 'daily/store.ts']
+  const missing = shapes.filter((f) => !(f in src))
+  const types = shapes.map((f) => src[f] ?? '').join('\n').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '')
+  // whole words, and the camelCase endings (startedAt, finishTime, durationMs); the take's `at:` is its place and the
+  // board's `allTime:` a count, neither a time
+  const timed = /\b(time|ms|ts|duration|stamp|timestamp|seconds?|minutes?|hours?|at[A-Z]\w*|keys?|keystrokes?|elapsed|took)\??:\s/.test(types) ||
+    /(?<=[a-z])(?<!\ball)(At|Time|Ms|Stamp|Seconds?|Minutes?|Hours?)\??:\s/.test(types)
+  record(T, 'the stored shapes have no time, duration, stamp or keystroke field', !missing.length && !timed, missing.length ? `not found: ${missing.join(', ')}` : '')
   const keyEvents = files.filter((f) => /onKey(Down|Up|Press)/.test(src[f]))
   record(T, 'no key events are listened to (Escape on the "?" sheet is a window listener, never a measure)', keyEvents.length === 0, keyEvents.join(', '))
 }
