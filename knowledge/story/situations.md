@@ -4,6 +4,7 @@ title: Situations, places and eras
 description: The places, eras, events and art styles of Retake's story, and the recurring objects. Each memory is one event on one day, painted in the popular art of its year. Read before setting a scene or painting a panel.
 plane_issues:
   - https://app.plane.so/the-equal-lens/browse/EVAL-18/
+  - https://app.plane.so/the-equal-lens/browse/EVAL-23/
 ---
 
 # Situations, places and eras
@@ -130,8 +131,16 @@ Definitions describe what to paint, never what not to paint: naming the wrong th
 | garland | The garland is a string of orange marigolds. |
 | police post | The police post is a small one-room police outpost with a wooden desk and a lamp. |
 | statement | The statement is a single handwritten sheet of paper. |
+| steel torch, torch | The torch is a handheld steel electric torch, a flashlight with a round glass lens and a beam of white light, never a flame. |
+| red plastic chair, red chair | The red chair is a red moulded plastic chair with armrests, the kind kept outside Indian front doors. |
+| transistor radio | The transistor radio is a small old radio in a brown leatherette case with a silver dial and a telescopic aerial. |
+| steel tumbler, steel tumblers | A steel tumbler is a small plain steel cup without a handle, here holding milky tea. |
+| measuring tape | The measuring tape is a tailor's yellow cloth tape measure, worn loose around the neck. |
+| brown notebook | The brown notebook is a small pocket notebook with a brown card cover and no writing on it. |
+| lineman | The lineman is an electricity company worker in a plain blue shirt, a yellow helmet and a canvas tool belt. |
+| mosquito coil | The mosquito coil is a flat green spiral on a small metal stand, giving off a thin line of smoke. |
 
-**Words that need a definition:** trunk, room, floor, TV, engine, truck, sack, pass, novel, cover, stub, card, diary, watch, tempo, flat, platform, board, boards, shed, box, depot, wheel, cap, seat, fair, stage, stool, scoreboard, bench, padding, pads, stands, flask, pavilion, sheet, sheets, match, slide, post, statement, run, ground, pitch, bat.
+**Words that need a definition:** trunk, room, floor, TV, engine, truck, sack, pass, novel, cover, stub, card, diary, watch, tempo, flat, platform, board, boards, shed, box, depot, wheel, cap, seat, fair, stage, stool, scoreboard, bench, padding, pads, stands, flask, pavilion, sheet, sheets, match, slide, post, statement, run, ground, pitch, bat, torch.
 
 ## Things that stay true in every scene
 

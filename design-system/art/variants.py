@@ -36,6 +36,7 @@ def path(panel, label, seed):
 
 
 def paint():
+    import memguard; memguard.ready(); memguard.watch()
     import mlx.core as mx
     from mflux.models.common.config import ModelConfig
     from mflux.models.flux2.variants import Flux2Klein

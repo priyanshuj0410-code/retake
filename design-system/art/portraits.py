@@ -223,6 +223,7 @@ def paint():
             break
         print('waiting: ' + ('; '.join(others) or f'free memory {free}%, swap {swap:.1f} GB'), flush=True)
         time.sleep(60)
+    sys.path.insert(0, HERE); import memguard; memguard.ready()   # squeezed memory and swap (28 Oct), not only free memory
     import threading
     threading.Thread(target=watch, daemon=True).start()
     import mlx.core as mx

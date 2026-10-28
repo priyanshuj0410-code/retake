@@ -281,6 +281,7 @@ def ref_prompt(name):
 
 def paint_ref():
     """Three tries at each reference picture: raw/cut/ref-<thing>-<seed>.png."""
+    import memguard; memguard.ready(); memguard.watch()
     import mlx.core as mx
     from mflux.models.common.config import ModelConfig
     from mflux.models.flux2.variants import Flux2Klein
@@ -303,6 +304,7 @@ def pick_ref():
 
 def paint_refs():
     """The panels that name a referenced thing, painted by the edit model from its picture."""
+    import memguard; memguard.ready(); memguard.watch()
     import mlx.core as mx
     from mflux.models.common.config import ModelConfig
     from mflux.models.flux2.variants import Flux2KleinEdit
@@ -327,6 +329,7 @@ def paint_refs():
 
 
 def paint():
+    import memguard; memguard.ready(); memguard.watch()
     import mlx.core as mx
     from mflux.models.common.config import ModelConfig
     from mflux.models.flux2.variants import Flux2Klein
