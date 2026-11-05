@@ -1,0 +1,39 @@
+{
+  /* Retake's piece of the one ruleset of the-equal-lens (EVAL-24). It names this app's nodes, every one prefixed
+     retake-, and nothing else. The whole ruleset is built from every app's piece and deployed only from The Equal Lens
+     repo's firebase/ folder (knowledge/playbooks/firebase.md there); a rules deploy from this repo is refused
+     (scripts/deploy-guard.sh). Tested against the emulator only: pnpm rules.
+
+     The one thing the app ever sends: a rating out of 5 and one optional line, after the take, when the player taps
+     Send (src/take/rating.ts). The design:
+     - Nobody can read through these rules. The owner reads with the project's admin credentials (pnpm feedback, or the
+       Firebase console).
+     - No sign-in, so no account or anything else is made for a player.
+     - A record is created once, at a key the phone draws at random, and holds only stars, line and the day.
+     - Whoever holds a key can delete that record, so Delete all can reach it, and deleting one already gone is harmless.
+       The key is unguessable and cannot be listed, so nobody else can find it.
+     - The shared free plan has one store for every Equal Lens app, so writes are spaced. Each write must move the gate,
+       the gate names the one new record it admits, and it moves at most once in 2 seconds. So one request is one record,
+       about 20 MB a day at the very worst, and a player inside someone's 2 seconds is refused and taps Send again.
+       Someone could still hold the gate by sending records non-stop; those records would show, and without sign-in or a
+       server that cannot be closed altogether. */
+  "rules": {
+    "retake-feedback": {
+      "$id": {
+        ".write": "$id.matches(/^[A-Za-z0-9_-]{22}$/) && (!newData.exists() || (!data.exists() && newData.parent().parent().child('retake-feedback-gate/at').val() === now && newData.parent().parent().child('retake-feedback-gate/id').val() === $id))",
+        ".validate": "newData.hasChildren(['stars', 'sent']) && newData.getPriority() === null",
+        "stars": { ".validate": "newData.getPriority() === null && newData.isNumber() && (newData.val() === 1 || newData.val() === 2 || newData.val() === 3 || newData.val() === 4 || newData.val() === 5)" },
+        "line": { ".validate": "newData.getPriority() === null && newData.isString() && newData.val().length >= 1 && newData.val().length <= 140" },
+        "sent": { ".validate": "newData.getPriority() === null && newData.isString() && newData.val().matches(/^20[0-9][0-9]-[01][0-9]-[0-3][0-9]$/)" },
+        "$other": { ".validate": false }
+      }
+    },
+    "retake-feedback-gate": {
+      ".write": "newData.child('at').val() === now && (!data.exists() || data.child('at').val() <= now - 2000) && newData.parent().child('retake-feedback').child(newData.child('id').val()).exists() && !root.child('retake-feedback').child(newData.child('id').val()).exists()",
+      ".validate": "newData.hasChildren(['at', 'id']) && newData.getPriority() === null",
+      "at": { ".validate": "newData.getPriority() === null && newData.isNumber()" },
+      "id": { ".validate": "newData.getPriority() === null && newData.isString()" },
+      "$other": { ".validate": false }
+    }
+  }
+}
