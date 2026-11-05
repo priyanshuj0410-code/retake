@@ -27,7 +27,11 @@ export async function run() {
   const code = [...scripts, ...styles, readFileSync(join(out, 'index.html'), 'utf8'), readFileSync(join(out, 'sw.js'), 'utf8')].join('\n')
   const remote = [...code.matchAll(/(?:url\(|src=|href=|fetch\(|import\()\s*['"]?(https?:\/\/[^'")\s]+)/g)].map((m) => m[1])
   record(T, 'nothing is loaded from another origin (fonts, art, scripts)', remote.length === 0, remote.slice(0, 4).join(', '))
-  record(T, 'no Google Fonts, analytics or Firebase in the build', !/fonts\.googleapis|gstatic|google-analytics|gtag\(|firebaseio|firebase\.google/.test(code))
+  record(T, 'no Google Fonts, analytics or Firebase SDK in the build', !/fonts\.googleapis|gstatic|google-analytics|gtag\(|firebaseio|firebase\.google|identitytoolkit/.test(code))
+  // the rating (EVAL-24): the script names one other address, the page may reach only that one, and it is the same one
+  const hosts = [...new Set([...code.matchAll(/https:\/\/[a-z0-9.-]+\.firebasedatabase\.app/g)].map((m) => m[0]))]
+  const csp = [...new Set([...readFileSync(join(ROOT, 'vercel.json'), 'utf8').matchAll(/connect-src ([^;]+);/g)].map((m) => m[1]))]
+  record(T, "the page connects only to itself and the rating's one database", hosts.length === 1 && csp.length === 1 && csp[0] === `'self' ${hosts[0]}`, `script ${hosts.join(', ')}; policy ${csp.join(' | ')}`)
   const fontUrls = [...styles.join('\n').matchAll(/url\(([^)]+\.woff2)\)/g)].map((m) => m[1].replace(/['"]/g, ''))
   record(T, 'every font face is self hosted under /take/fonts/', fontUrls.length >= 20 && fontUrls.every((u) => u.startsWith('fonts/')), `${fontUrls.length} faces`)
   const gz = scripts.reduce((n, s) => n + gzipSync(s).length, 0)

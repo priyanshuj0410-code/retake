@@ -12,6 +12,11 @@ const DAY = 86_400_000
 const toMs = (d: string) => Date.parse(`${d}T00:00:00Z`)
 const fromMs = (ms: number) => new Date(ms).toISOString().slice(0, 10)
 
+/** The phone's own date, as a day (the rating's record holds this and no time). */
+export const dayOf = () => {
+  const d = new Date()
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
 export const addDays = (d: string, n: number) => fromMs(toMs(d) + n * DAY)
 export const daysBetween = (a: string, b: string) => Math.round((toMs(b) - toMs(a)) / DAY)
 

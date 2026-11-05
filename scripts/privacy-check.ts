@@ -30,6 +30,11 @@ export async function run() {
   const timed = /\b(time|ms|ts|duration|stamp|timestamp|seconds?|minutes?|hours?|at[A-Z]\w*|keys?|keystrokes?|elapsed|took)\??:\s/.test(types) ||
     /(?<=[a-z])(?<!\ball)(At|Time|Ms|Stamp|Seconds?|Minutes?|Hours?)\??:\s/.test(types)
   record(T, 'the stored shapes have no time, duration, stamp or keystroke field', !missing.length && !timed, missing.length ? `not found: ${missing.join(', ')}` : '')
+  // the rating (EVAL-24): one module holds the only network calls, and it reads nothing the player answered
+  const calls = files.filter((f) => /\bfetch\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource/.test(src[f]))
+  record(T, 'only take/rating.ts talks to the network', calls.length === 1 && calls[0].replace('\\', '/') === 'take/rating.ts', calls.join(', '))
+  const rating = (src['take/rating.ts'] ?? '').replace(/^\s*\/\/.*$/gm, '').replace(/\/\*\*[\s\S]*?\*\//g, '')
+  record(T, 'what it sends is built from the stars and the line alone: no store, answers or birth date', !/from '\.\/store'|answers|birth|retake\.take|navigator/.test(rating))
   const keyEvents = files.filter((f) => /onKey(Down|Up|Press)/.test(src[f]))
   record(T, 'no key events are listened to (Escape on the "?" sheet is a window listener, never a measure)', keyEvents.length === 0, keyEvents.join(', '))
 }

@@ -3,6 +3,7 @@ type: review
 title: Audit of the app build, 25 Oct 2026
 description: An independent audit of the 16 commits (fbdbfbb to f790b5c) that turned the signed-off First take demo into the Retake app. It covers what is done and works, what is wrong (ranked, with evidence), the owner's open decisions, and what the plan itself still lists. Five auditors each took one angle; each finding then went to a skeptic who tried to refute it.
 plane_issues:
+  - https://app.plane.so/the-equal-lens/browse/EVAL-24/
   - https://app.plane.so/the-equal-lens/browse/EVAL-18/
   - https://app.plane.so/the-equal-lens/browse/EVAL-19/
 ---
@@ -63,6 +64,8 @@ A player who goes by the numbers is the most common kind. For them, these four h
 `design-system/tools/forced_choice_2026_10_25.py` prints this for every decision. Fix: put the old kinds back for these four, or give one other card the best record in Station's crews and weaken the third card in Lugdi. Then put it to the research check before the next export, and make the tool a check.
 
 ### 2. Rukavat's chores are counted in opposite directions (from the demo)
+
+**Fixed 5 Nov 2026 (EVAL-24).** The loft and the storeroom are marked as chores, so being left out counts as the favour; both cases below are tests in `scripts/reading-check.ts`. Cards 1 and 2 no longer say "picked" where the favour was being spared.
 
 In the loft and storeroom decisions, the person given the chore counts as "favoured". In Split, the person spared the chore counts as favoured. As a result:
 

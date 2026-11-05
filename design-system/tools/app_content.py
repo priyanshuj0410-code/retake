@@ -160,10 +160,10 @@ def build():
     flow += [{'type': 'results'}] + cut(P, ['6.9'], 'rukavat', ('The trunk', 'संदूक'))
     data = {'version': 1, 'langs': [list(x) for x in L.LANGS], 'eng': [list(x) for x in L.ENG],
             'worlds': {w: {'cls': W.cls, 'title': list(W.name)} for w, W in L.WORLDS.items()},
-            'help': help_dress(), 'results': dict(FT.results_data(chapters, S.NUDGE), card=results_cards()),
+            'help': help_dress(), 'helpLines': {w: {'tel': n, 't': [en, hi]} for w, (n, en, hi) in L.HELP_LINES.items()}, 'results': dict(FT.results_data(chapters, S.NUDGE), card=results_cards()),
             # the first visit's birth-date card stands on the first chapter's cover painting (library.birth_phone)
             'gate': {'world': chapters[0]['world'], 'art': paint(L.WORLDS[chapters[0]['world']], 'cover', 'veil-low')},
-            'icons': {k: L.ic(k) for k in sorted({'tick', 'arrow', 'lock', 'help', 'back', 'close', 'language', 'speaker', 'down', 'alert'}
+            'icons': {k: L.ic(k) for k in sorted({'tick', 'arrow', 'lock', 'help', 'back', 'close', 'language', 'speaker', 'down', 'alert', 'star', 'star-fill', 'phone'}
                                                  | {x[0] for c in chapters for d in c['decisions'] for x in d['keys']})},
             'flow': flow}
     text = json.dumps(data, ensure_ascii=False, indent=1)

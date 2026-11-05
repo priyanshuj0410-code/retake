@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { TAKE, type Bi, type Lang, type Paint, type Step } from './data'
 import { T, say, useLabel, useLang } from './lang'
+import { withdraw } from './rating'
 import { Svg } from './Svg'
 import { useSound } from './sound'
 
@@ -138,7 +139,7 @@ export const closeWatched = !!Watch
 
 /** While `on`, the topmost of these closes on the phone's back or Escape. Each level opens on a tap, so each gets its
  * own press. */
-function useCloseRequest(on: boolean, close: () => void) {
+export function useCloseRequest(on: boolean, close: () => void) {
   const f = useRef(close)
   useEffect(() => {
     f.current = close
@@ -153,7 +154,7 @@ function useCloseRequest(on: boolean, close: () => void) {
 
 const PRIVACY: [Bi, Bi][] = [
   [['On this phone', 'इस फ़ोन पर'], ['Your birth date, your answers, the language and sound.', 'आपकी जन्म तारीख़, आपके जवाब, भाषा और आवाज़।']],
-  [['Sent anywhere', 'कहीं भेजा गया'], ['Nothing leaves this phone.', 'इस फ़ोन से कुछ बाहर नहीं जाता।']],
+  [['Sent, if you choose', 'भेजा गया, अगर आप चुनें'], ['Stars, a line and the date, to The Equal Lens. Delete all removes them.', 'स्टार, एक लाइन और तारीख़, द इक्वल लेंस को। सब मिटाएँ इन्हें भी हटा देता है।']],
   [['Kept nowhere', 'कहीं नहीं रखा जाता'], ['How long you take.', 'आप कितना समय लेते हैं।']],
 ]
 
@@ -167,6 +168,10 @@ function HelpSheet({ world, onClose }: { world: string; onClose: () => void }) {
   const { deleteAll, restart } = useContext(PrivacyContext)
   const [level, setLevel] = useState<'how' | 'privacy' | 'deleted'>('how')
   const [asking, setAsking] = useState(false)
+  // a sent rating Delete all could not reach for want of a signal: it goes at the next opening with one
+  const [left, setLeft] = useState(false)
+  // a cutscene names its world with the panel's class (w-station)
+  const line = TAKE.helpLines[world.replace(/^w-/, '')]
   const close = useRef<HTMLButtonElement>(null)
   const keep = useRef<HTMLButtonElement>(null)
   const sheet = useRef<HTMLDivElement>(null)
@@ -254,6 +259,12 @@ function HelpSheet({ world, onClose }: { world: string; onClose: () => void }) {
               </button>
             </div>
             <div className="sheetlinks">
+              {line ? (
+                <a className="helpline" href={`tel:${line.tel}`}>
+                  <T t={line.t} />
+                  <Svg name="phone" />
+                </a>
+              ) : null}
               <button type="button" onClick={() => setLevel('privacy')}>
                 <T t={['Privacy', 'प्राइवेसी']} />
                 <Svg name="arrow" />
@@ -285,6 +296,7 @@ function HelpSheet({ world, onClose }: { world: string; onClose: () => void }) {
         ) : (
           <>
             <T as="h2" t={['Deleted.', 'मिट गया।']} id="sheethead" />
+            {left ? <T as="p" className="letter" role="alert" t={['No signal: your rating goes when you next open Retake.', 'सिग्नल नहीं है: अगली बार रीटेक खोलने पर आपकी रेटिंग हट जाएगी।']} /> : null}
             {installed ? (
               <T as="p" className="letter" t={['To remove Retake from your home screen, press and hold its icon.', 'होम स्क्रीन से रीटेक हटाने के लिए, उसके आइकन को दबाकर रखें।']} />
             ) : null}
@@ -304,6 +316,7 @@ function HelpSheet({ world, onClose }: { world: string; onClose: () => void }) {
               className="textbtn on-paper is-danger"
               onClick={() => {
                 deleteAll()
+                void withdraw().then((gone) => setLeft(!gone))
                 setAsking(false)
                 setLevel('deleted')
               }}

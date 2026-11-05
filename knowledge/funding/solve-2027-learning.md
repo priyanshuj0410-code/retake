@@ -18,7 +18,8 @@ plane_issues:
 **One line to keep everything consistent.** Gender and relationships education is judged by asking students what they think. Retake measures what they do: decisions between equally qualified people, read both ways. It works now with adults, and Solve's support would let us validate it and build the version for students.
 
 **Claims to keep honest** (the form's Accuracy and Integrity Agreement says exaggeration can remove the application):
-- Retake has no users yet. The prototype has been played by the team and in walkthroughs only.
+- Retake has no users yet. The prototype has been played by the team and in walkthroughs only. (True until the owner shares the link with beta players; EVAL-24.)
+- "Nothing leaves the phone" stops being true when the rating (EVAL-24) goes live: a player's stars and optional line are sent if they tap Send. Say: the answers and the reading stay on the phone; only a rating the player chooses to send leaves it.
 - The student version does not exist. What exists and works is the assessment engine with adult content.
 - The reading is not validated. How many decisions a confident reading needs, and how they become one figure, is still open in the research line.
 - Retake shows choices inside the game. It does not claim a change in behaviour outside it.

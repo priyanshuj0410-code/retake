@@ -3,13 +3,33 @@ type: playbook
 title: The evaluator on the-equal-lens Firebase project
 description: How the Equal Lens Evaluator joins the shared Firebase project, the exact registration the owner applies in The Equal Lens repo, how its rules piece is tested, and what this repo never does.
 plane_issues:
+  - https://app.plane.so/the-equal-lens/browse/EVAL-24/
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
   - https://app.plane.so/the-equal-lens/browse/EVAL-13/
 ---
 
 # The evaluator on `the-equal-lens`
 
-> **Trainer branch (EVAL-13).** The trainer does not use Firebase. `database.rules.json`,
+> **Retake's rating (EVAL-24, 5 Nov 2026).** Retake has one small piece of its own, `firebase/retake.rules.json`, naming only
+> `retake-feedback` and `retake-feedback-gate`, registered in The Equal Lens repo's `firebase/apps.json`. `firebase.json` loads it
+> for `pnpm rules`, and the deploy guard still refuses a rules deploy from here. It goes live only by the owner's deploy from
+> `~/"The Equal Lens"/firebase`. The evaluator's piece below stays in `database.rules.json`, unregistered and unused.
+>
+> **Going live, in this order, or players' ratings are refused and lost (EVAL-24).**
+> 1. Renew the login: `firebase login:add`, choosing priyanshu.jain@theequallens.com (not `login --reauth`, which overwrites the
+>    global default).
+> 2. Commit only `firebase/retake.rules.json` on top of `retake/main` and push it, with no app code: a push of this branch would
+>    ship the app before its rules. The rules build reads each piece from GitHub `main`.
+> 3. In The Equal Lens repo, add to `firebase/apps.json`:
+>    `{ "name": "Retake", "repo": "priyanshuj0410-code/retake", "dir": "equal-lens-trainer", "rules": "firebase/retake.rules.json", "nodes": ["retake-feedback", "retake-feedback-gate"] }`,
+>    make `fetchPiece` in `build-rules.mjs` read `app.dir ?? ` the repo name for `--local` (the checkout is not `~/retake`), and add
+>    Retake's row to that playbook's section 2. Not before step 2: the build refuses to run while a registered piece is missing
+>    from `main`, for every app.
+> 4. The owner deploys: `cd ~/"The Equal Lens"/firebase && firebase deploy --only database --project the-equal-lens`.
+> 5. On the real database, send one `entry()` and delete it with curl, and check `pnpm feedback` reads.
+> 6. Only then push the app.
+>
+> **Trainer branch (EVAL-13).** Apart from that rating, the trainer does not use Firebase. `database.rules.json`,
 > `firebase.json`, `.firebaserc` and the deploy guard are kept unchanged; the evaluator's
 > emulator rules check (`pnpm rules`) was retired with the evaluator's code on this branch, so
 > the rules piece is tested only on the evaluator's branch. Nothing here changes rules.

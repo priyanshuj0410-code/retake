@@ -80,6 +80,7 @@ export interface Decision {
   nudged: string
   faces: Record<string, string>
   hi: Record<string, string>
+  burden?: boolean
 }
 
 export interface Take {
@@ -88,6 +89,7 @@ export interface Take {
   eng: [string, string][]
   worlds: Record<string, { cls: string; title: Bi }>
   help: Record<string, string>
+  helpLines: Record<string, { tel: string; t: Bi }>
   icons: Record<string, string>
   results: {
     decisions: Record<string, Decision>

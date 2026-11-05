@@ -45,7 +45,7 @@ NUDGE = {('station', 1): ('the words', 'शब्दों'), ('station', 2): ('
          ('lugdi', 1): ('the family worry', 'घर की फ़िक्र'), ('lugdi', 3): ('the words', 'शब्दों'), ('lugdi', 4): ('the licence', 'लाइसेंस'),
          ('jadugar', 2): ('the money talk', 'पैसों की बात'), ('jadugar', 3): ('who saw it', 'देखने वाले'), ('jadugar', 4): ('the rival troupe', 'दूसरी मंडली'),
          ('cricket', 1): ('the bad day', 'बुरे दिन'), ('cricket', 3): ('the rest', 'आराम'), ('cricket', 4): ('the keeper', 'कीपर'),
-         ('rukavat', 1): ('the match', 'मैच'), ('rukavat', 3): ('the dust', 'धूल')}
+         ('rukavat', 1): ('the TV', 'टीवी'), ('rukavat', 3): ('the dust', 'धूल')}
 
 
 def sexes():

@@ -3,6 +3,7 @@ type: design-system
 title: Equal Lens Daily design system index (EVAL-13 content superseded)
 description: Entry point to the Equal Lens Daily design system. The binding system is the root DESIGN.md, its rulebook and the component library. Below the index, this file keeps the rejected EVAL-13 system for history only; it is not authority.
 plane_issues:
+  - https://app.plane.so/the-equal-lens/browse/EVAL-24/
   - https://app.plane.so/the-equal-lens/browse/EVAL-14/
   - https://app.plane.so/the-equal-lens/browse/EVAL-13/
 ---

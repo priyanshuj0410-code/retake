@@ -3,6 +3,7 @@ type: architecture
 title: Data and privacy on the shared Firebase project
 description: How the evaluator stores records on the-equal-lens's Realtime Database, which of the registered storage protections the app enforces, and what Firebase cannot guarantee for the unlinked-record and mixing-pool design, stated plainly with what the app does about each.
 plane_issues:
+  - https://app.plane.so/the-equal-lens/browse/EVAL-24/
   - https://app.plane.so/the-equal-lens/browse/EVAL-1/
   - https://app.plane.so/the-equal-lens/browse/EVAL-13/
   - https://app.plane.so/the-equal-lens/browse/EVAL-4/
@@ -21,6 +22,30 @@ plane_issues:
 > (`scripts/privacy-check.ts`, and the saved state after real play in `scripts/e2e.ts`). A
 > real global board needs a server store; the `Backend` interface in the store is where it
 > plugs in, and it will need its own rules piece and a fresh privacy review.
+
+> **Retake's one exception (EVAL-24, 5 Nov 2026).** The owner asked that players' ratings come back to them. After the take, once,
+> a sheet asks for 1 to 5 stars and one optional line of up to 140 letters. Only if the player taps Send does anything leave
+> the phone: `src/take/rating.ts` writes `{ stars, line?, sent }` by plain REST to the node `retake-feedback` of the shared
+> database, with no SDK, no sign-in and no cookie. `sent` is the phone's day, with no time. The picks, the reading, the birth
+> date, the language and any time on screen are never sent; `scripts/privacy-check.ts` and `scripts/e2e.ts` hold that.
+> - **Who can read it:** nobody through the rules; the owner with the project's admin login (`pnpm feedback`, or the console).
+> - **Taking it back:** the phone keeps the record's random 128-bit key in `retake.rating`, and whoever holds a key can delete
+>   its record. Delete all, "Not you?", and closing the sheet after "Not sent" withdraw it. A key stays on the phone until the
+>   database confirms its record is gone, and each opening tries again, so no signal only delays it; Delete all says so when
+>   that happens. The node cannot be listed, so nobody else can find a key. A browser wiped by hand, or a private window,
+>   loses the key, and then only the owner can remove the record, which is why F-111's contact is owed.
+> - **Abuse:** each write must move a gate that names the one new record it admits, and the gate moves at most once in 2 seconds,
+>   so a flood cannot quickly fill the store the Equal Lens apps share (about 20 MB a day at worst, and it would show). A second
+>   player within those 2 seconds is told it was not sent, and taps Send again. Someone sending records non-stop could still
+>   keep players out; without sign-in or a server that cannot be closed altogether. The rules accept any characters in a line,
+>   so `pnpm feedback` prints each line quoted.
+> - **What the network sees:** Google, which runs the database, sees the phone's address and browser on those requests, as on
+>   any web request. The gate holds the last send's exact server time until the next send replaces it. A line can name someone,
+>   so the hint asks for no names. The record has no identity field, but a line someone typed may identify them.
+> - **Known and left:** on a browser with no CloseWatcher (Chrome before 120), the phone's back leaves the game from the sheet;
+>   the rating is simply asked again on return.
+> - **Still owed before any public launch:** a lawyer's reading against the DPDP Act and F-113, and F-111's contact for data
+>   questions. Rules and tests: `firebase/retake.rules.json`, `pnpm rules`.
 
 The registered design (candidates v12 3.0, 3.1, 3.8, 3.9; research plan v1, section 9) asks for
 person-level records under a withdrawal code, unlinked crosswise and demographic records

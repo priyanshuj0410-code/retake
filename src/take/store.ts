@@ -4,7 +4,8 @@ import type { Answer } from './steps/common'
 
 // What the First take keeps, on this phone only (feature-set D11, D17, F-116): where the player is, their picks, the
 // language and the sound switch; for an adult the birth date, and for someone under 18 only the day the game opens
-// (D1) and whether "Wrong date?" was used. No times, no keystrokes, nothing sent (PRODUCT.md, Privacy).
+// (D1) and whether "Wrong date?" was used; after the take, whether the rating was asked. No times, no keystrokes
+// (PRODUCT.md, Privacy). The one thing sent, and its key: src/take/rating.ts.
 export interface Saved {
   v: 1
   at: number
@@ -14,6 +15,7 @@ export interface Saved {
   birth?: string
   opens?: string
   retried?: boolean
+  rate?: 'ask' | 'done'
 }
 
 export const KEY = 'retake.take'

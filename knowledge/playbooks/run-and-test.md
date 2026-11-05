@@ -3,6 +3,7 @@ type: playbook
 title: Running and testing Retake
 description: How to run Retake (the First take) on the dev server, jump to any screen, where its content and look come from and how to change them, the checks, and how a change reaches production on Vercel. Rewritten on 24 Oct 2026 for the app build (EVAL-18); the turned-down trainer's version is in git history.
 plane_issues:
+  - https://app.plane.so/the-equal-lens/browse/EVAL-24/
   - https://app.plane.so/the-equal-lens/browse/EVAL-18/
   - https://app.plane.so/the-equal-lens/browse/EVAL-19/
 ---
@@ -20,10 +21,14 @@ pnpm build && pnpm preview        # the installable PWA, offline once loaded
 Node 22 or later. The browser checks drive Chromium through `playwright-core`: the installed Google Chrome, or the
 one at `CHROMIUM` (in the cloud sessions, `CHROMIUM=/opt/pw-browsers/chromium`).
 
-- **No backend yet:** the take is kept in the browser's localStorage under `retake.take` as
-  `{ v, at, answers, lang, sound, birth? | opens?, retried? }`: the screen it is on, each decision's answer, the
-  language and the sound switch; an adult's birth date, or for someone under 18 only the day the game opens and whether
-  "Wrong date?" was used. Nothing else, and no times.
+- **No backend, apart from the rating:** the take is kept in the browser's localStorage under `retake.take` as
+  `{ v, at, answers, lang, sound, birth? | opens?, retried?, rate? }`: the screen it is on, each decision's answer,
+  the language and the sound switch; an adult's birth date, or for someone under 18 only the day the game opens and whether
+  "Wrong date?" was used; whether the rating was asked. Nothing else, and no times. A sent rating's random key has its own
+  entry, `retake.rating`, which lasts until the record is confirmed gone.
+- **The rating** (EVAL-24): the one network call, `src/take/rating.ts`, after the take and only on Send
+  ([data and privacy](../architecture/data-and-privacy.md)). **To read the ratings:** `pnpm feedback` (the owner's Firebase
+  login), or the console's Realtime Database, node `retake-feedback`.
 - **Answers carry their decision's content hash** (`s`, `store.SIG`: the kind, its limits, the people, their numbers
   and English notes). On opening, an answer that no longer fits its decision (another hash, another shape, a name not in
   it) is dropped, so a new export never mixes old answers into the reading. Rewording a question or the Hindi keeps them.
@@ -50,7 +55,8 @@ The export refuses to write while a note's length could point at the hidden pair
 ```bash
 pnpm check        # all of it: about 8 minutes
 pnpm check:fast   # types, lint, content, scoring, privacy, bundle: seconds
-pnpm e2e          # the whole take in 3 languages on a phone and a laptop
+pnpm rules        # the rating's rules on the database emulator (needs Java)
+pnpm e2e          # the whole take in 3 languages on a phone and a laptop, the rating and the help lines
 pnpm pwa          # installable, offline, two real versions and the Update toast
 pnpm a11y         # axe-core, WCAG 2.2 AA, on every kind of screen, 2 languages, 2 sizes
 pnpm markup       # each of the 40 decisions has the signed-off demo's markup structure

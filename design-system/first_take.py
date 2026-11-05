@@ -332,7 +332,7 @@ NUDGE = {('station', 1): ('the words', 'शब्दों'), ('station', 3): ('
          ('lugdi', 1): ('the family worry', 'घर की फ़िक्र'), ('lugdi', 3): ('the words', 'शब्दों'), ('lugdi', 4): ('the licence', 'लाइसेंस'),
          ('jadugar', 2): ('the money talk', 'पैसों की बात'), ('jadugar', 3): ('who saw it', 'देखने वाले'), ('jadugar', 4): ('the rival troupe', 'दूसरी मंडली'),
          ('cricket', 1): ('the bad day', 'बुरे दिन'), ('cricket', 3): ('the rest', 'आराम'), ('cricket', 4): ('the keeper', 'कीपर'),
-         ('rukavat', 1): ('the film', 'फ़िल्म'), ('rukavat', 3): ('the dust', 'धूल')}
+         ('rukavat', 1): ('the TV', 'टीवी'), ('rukavat', 3): ('the dust', 'धूल')}
 # card 3, said for "the men picked more often"; the page swaps man and woman for the other side
 REAL = {'work': ('At work: same record, but the man is promoted.', 'काम पर: एक जैसा रिकॉर्ड, पर तरक्की आदमी को मिलती है।'),
         'safety and justice': ('On the road: same record, but the woman is kept off the night run.', 'सड़क पर: एक जैसा रिकॉर्ड, पर रात की ट्रिप से औरत को रोका जाता है।'),
@@ -348,6 +348,10 @@ def kindcode(d):
     if k.startswith(('pick a team', 'keep', 'spend checks')):
         return 'set'
     return 'order' if 'batting order' in k else 'rank' if k.startswith('rank') else 'split'
+
+
+# A decision whose choice is a chore: being left out is the favour, as in Split (audit of 25 Oct 2026, finding 2; EVAL-24).
+BURDEN = {('rukavat', 3), ('rukavat', 7)}
 
 
 def results_data(chapters, nudge=None):
@@ -369,6 +373,8 @@ def results_data(chapters, nudge=None):
                                    'nudged': woman if t['on_woman'] == n else next(p for p in d['pair'] if p != woman),
                                    'faces': {p['en']: p['face'] for p in d['people'] if p['en'] in d['pair']},
                                    'hi': {p['en']: p['hi'] for p in d['people'] if p['en'] in d['pair']}}
+                if (w, n) in BURDEN:
+                    dec[f'{w}-{n}']['burden'] = True
             if t['a'] in played and t['b'] in played:
                 twins.append({'a': f'{w}-{t["a"]}', 'b': f'{w}-{t["b"]}', 'world': w, 'kind': t['kind'],
                               'nudge': (nudge or NUDGE).get((w, t['a']), ('the nudge', 'बात'))})
@@ -385,7 +391,7 @@ def results_samples(chapters):
     halves = ''.join(f'<span class="half">{pp(D[k], next(p for p in D[k]["pair"] if D[k]["sex"][p] == "m"))}</span>' for k in ('station-1', 'station-5'))
     stacks = ''.join(f'<span class="resstack"><span class="bars">{"<i></i>" * n}</span>{L.tx("b", en, hi)}</span>' for n, en, hi in ((14, 'woman', 'औरत'), (26, 'man', 'आदमी')))
     W = L.WORLDS['station']
-    return [('stacks', stacks, '40 times, 2 people had the same numbers. You picked the man 26 times.', '40 बार, 2 लोगों के नंबर एक जैसे थे। आपने 26 बार आदमी को चुना।'),
+    return [('stacks', stacks, "40 times, 2 people had the same numbers. It went the man's way 26 times.", '40 बार, 2 लोगों के नंबर एक जैसे थे। 26 बार पलड़ा आदमी की तरफ़ झुका।'),
             ('twin', halves, 'Same numbers both times. The words swapped sides. You picked the man both times.', 'दोनों बार नंबर एक जैसे थे। बस शब्दों की जगह बदली। आपने दोनों बार आदमी को चुना।'),
             ('', f'<span class="scene" style="background-image:url({W.scene(W.moment("cover"))})"></span>', *REAL['work']),
             ('', f'<span class="trade"><i></i>{L.ic("arrow") * 2}<i></i></span>', 'Before you choose, swap the 2 people in your head. Would you still choose the same?', 'चुनने से पहले, मन में दोनों को आपस में बदल दें। क्या तब भी वही चुनाव होगा?'),

@@ -281,7 +281,7 @@ JS = '''
   const favoured = (ph, d) => {
     const [p, q] = d.pair, sel = s => [...ph.querySelectorAll(s)].map(x => x.dataset.en);
     if (d.kind === 'pick') { const s = sel('[role="radio"][aria-checked="true"]')[0]; return d.pair.includes(s) ? s : null; }
-    if (d.kind === 'set') { const s = sel('[aria-checked="true"]'), a = s.includes(p), b = s.includes(q); return a === b ? null : a ? p : q; }
+    if (d.kind === 'set') { const s = sel('[aria-checked="true"]'), a = s.includes(p), b = s.includes(q); return a === b ? null : a !== !!d.burden ? p : q; }   // a chore: being left out is the favour
     if (d.kind === 'split') { const c = JSON.parse(ph.dataset.chores || '{}'), a = c[p] || 0, b = c[q] || 0; return a === b ? null : a < b ? p : q; }
     const o = (ph.dataset.order || '').split('|'), i = o.indexOf(p), j = o.indexOf(q);   // order and rank: the higher place
     return i < 0 || j < 0 ? null : i < j ? p : q;
@@ -302,18 +302,21 @@ JS = '''
       pic.innerHTML = ['w', 'm'].map(s => `<span class="resstack"><span class="bars">${'<i></i>'.repeat(s === 'm' ? m : w)}</span><b data-hi="${SIDE[s][1]}">${SIDE[s][0]}</b></span>`).join('');
       pic.querySelectorAll('b').forEach(b => put(b, b.textContent, b.dataset.hi));
       if (!read.length) return put(txt, 'Your picks went outside the equal two every time.', 'आपने हर बार बराबर वाले दो से बाहर चुना।');
-      if (!more) return put(txt, `${read.length} times, 2 people had the same numbers. You picked each ${m} times.`, `${read.length} बार, 2 लोगों के नंबर एक जैसे थे। आपने दोनों को ${m}-${m} बार चुना।`);
-      return put(txt, `${read.length} times, 2 people had the same numbers. You picked the ${SIDE[more][0]} ${Math.max(m, w)} times.`,
-                 `${read.length} बार, 2 लोगों के नंबर एक जैसे थे। आपने ${Math.max(m, w)} बार ${SIDE[more][1]} को चुना।`);
+      if (!more) return put(txt, `${read.length} times, 2 people had the same numbers. It went each way ${m} times.`, `${read.length} बार, 2 लोगों के नंबर एक जैसे थे। ${m}-${m} बार पलड़ा दोनों तरफ़ झुका।`);
+      return put(txt, `${read.length} times, 2 people had the same numbers. It went the ${SIDE[more][0]}'s way ${Math.max(m, w)} times.`,
+                 `${read.length} बार, 2 लोगों के नंबर एक जैसे थे। ${Math.max(m, w)} बार पलड़ा ${SIDE[more][1]} की तरफ़ झुका।`);
     }
     if (n === 2) {
       const one = twins.filter(t => t.ga && t.ga === t.gb).sort((x, y) => (y.ga === more) - (x.ga === more) || (x.kind === 'matters') - (y.kind === 'matters'))[0];
       const both = one || twins.find(t => t.ga && t.gb);
       if (!both) return put(txt, 'Too few clear picks to show a pair.', 'दिखाने लायक़ जोड़ी नहीं बनी।');
       pic.classList.add('twin');
-      pic.innerHTML = [both.a, both.b].map(id => `<span class="half">${D[id].pair.map(p => `<span class="pp${picks[id] === p ? ' is-picked' : ''}"><i style="background-image:url(${D[id].faces[p]})"></i><b data-hi="${D[id].hi[p]}">${p}</b>${D[id].nudged === p ? `<em data-hi="${both.nudge[1]}">${both.nudge[0]}</em>` : ''}</span>`).join('')}</span>`).join('');
+      const chore = D[both.a].kind === 'split' || D[both.a].burden;   // the one marked got more of the chore; the favoured one was let off
+      pic.innerHTML = [both.a, both.b].map(id => `<span class="half">${D[id].pair.map(p => `<span class="pp${(chore ? picks[id] && picks[id] !== p : picks[id] === p) ? ' is-picked' : ''}"><i style="background-image:url(${D[id].faces[p]})"></i><b data-hi="${D[id].hi[p]}">${p}</b>${D[id].nudged === p ? `<em data-hi="${both.nudge[1]}">${both.nudge[0]}</em>` : ''}</span>`).join('')}</span>`).join('');
       pic.querySelectorAll('[data-hi]').forEach(e => put(e, e.textContent, e.dataset.hi));
       const cap = both.nudge[0][0].toUpperCase() + both.nudge[0].slice(1);
+      if (one && chore) { const g = SIDE[one.ga === 'm' ? 'w' : 'm']; return put(txt, `Same numbers both times. ${cap} swapped sides. You gave the ${g[0]} more both times.`,
+                          `दोनों बार नंबर एक जैसे थे। बस ${both.nudge[1]} की जगह बदली। आपने दोनों बार ${g[1]} को ज़्यादा काम दिया।`); }
       if (one) return put(txt, `Same numbers both times. ${cap} swapped sides. You picked the ${SIDE[one.ga][0]} both times.`,
                           `दोनों बार नंबर एक जैसे थे। बस ${both.nudge[1]} की जगह बदली। आपने दोनों बार ${SIDE[one.ga][1]} को चुना।`);
       return put(txt, `Same numbers both times. ${cap} swapped sides, and so did your pick.`, `दोनों बार नंबर एक जैसे थे। ${both.nudge[1]} की जगह बदली, और आपकी पसंद भी।`);

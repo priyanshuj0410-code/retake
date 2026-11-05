@@ -7,7 +7,7 @@
 import { results, summary } from './lib/check'
 
 const t0 = performance.now()
-const modules = ['./content-check', './scoring-check', './daily-check', './privacy-check', './bundle-check']
+const modules = ['./content-check', './scoring-check', './daily-check', './reading-check', './privacy-check', './bundle-check']
 for (const m of modules) {
   try {
     const mod = (await import(m)) as { run: () => Promise<void> }

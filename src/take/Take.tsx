@@ -4,6 +4,7 @@ import { LangContext } from './lang'
 import { cacheAhead, onUpdateReady } from '../pwa'
 import { PrivacyContext, SetLangContext, SheetBackContext, UpdateContext, closeWatched, focusScreen } from './parts'
 import { Cover, Cutscene } from './screens'
+import { flush, withdraw } from './rating'
 import { Sound, SoundContext } from './sound'
 import { BirthDate, NotYet, isOpen } from './Gate'
 import { Results } from './Results'
@@ -106,7 +107,8 @@ export function Take() {
     if (wiped.current) return restart()
     setHelp(false)
     setView(null)
-    setSaved((s) => ({ ...s, at: s.at + 1 >= flow.length ? END : s.at + 1 }))
+    // past the last screen the take is finished: the rating is asked, once, over the resting reading
+    setSaved((s) => (s.at + 1 >= flow.length ? { ...s, at: END, rate: s.rate ?? 'ask' } : { ...s, at: s.at + 1 }))
     scrollTo(0, 0)
   }, [flow.length, restart])
   // Back from a step: the step before it, read-only; from a chapter's first step, the chapter's title card; from a title
@@ -198,11 +200,20 @@ export function Take() {
     }),
     [restart],
   )
-  // "Not you? Remove this reading": the answers go, and the take starts again (a shared phone, F-203)
+  // "Not you? Remove this reading": the answers and any rating go, and the take starts again (a shared phone, F-203)
   const forget = useCallback(() => {
     setHelp(false)
     setView(null)
-    setSaved((s) => ({ ...s, at: 0, answers: {} }))
+    void withdraw()
+    setSaved((s) => ({ ...s, at: 0, answers: {}, rate: undefined }))
+  }, [])
+  const onAsked = useCallback(() => setSaved((s) => ({ ...s, rate: 'done' })), [])
+  // a rating still to be removed goes as soon as there is a signal
+  useEffect(() => {
+    const go = () => void flush()
+    go()
+    addEventListener('online', go)
+    return () => removeEventListener('online', go)
   }, [])
 
   // focus follows the take: a new screen's heading (a cutscene's frame) takes it, so a keyboard or a screen reader is
@@ -269,7 +280,7 @@ export function Take() {
         {...props}
       />
     )
-  } else body = <Results answers={saved.answers} onNext={next} onForget={forget} {...props} />
+  } else body = <Results answers={saved.answers} onNext={next} onForget={forget} ask={saved.rate === 'ask'} onAsked={onAsked} {...props} />
 
   // a screen is drawn fresh each time it comes up, so a step never opens with the last step's picks
   return (

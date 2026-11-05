@@ -760,22 +760,39 @@ def sound_row():
             f'{tx("span", "Sound", "आवाज़")}<span class="sw" aria-hidden="true">{ic("tick")}</span></button></div>')
 
 
+# ---------- The help line in each chapter's "?" (F-47; owner, 5 Nov 2026, EVAL-24) ----------
+# The numbers and their wording were checked on 27 Oct 2026: knowledge/reference/help-lines-2026-10-27.md, which also says
+# what never to print. The whole row calls the number. Hindi: drafts, owed the same native read as the rest of the Hindi.
+HELP_LINES = {
+    'station': ('14416', 'Upset by bullying at work? Talk to a counsellor, free: 14416.', 'काम पर परेशान किया जा रहा है? काउंसलर से मुफ़्त बात करें: 14416।'),
+    'lugdi': ('112', 'In danger right now? Call 112.', 'अभी ख़तरे में हैं? 112 पर कॉल करें।'),
+    'jadugar': ('112', 'In danger right now? Call 112.', 'अभी ख़तरे में हैं? 112 पर कॉल करें।'),
+    'cricket': ('112', 'In danger right now? Call 112.', 'अभी ख़तरे में हैं? 112 पर कॉल करें।'),
+    'rukavat': ('15100', 'Free legal advice: 15100.', 'मुफ़्त क़ानूनी सलाह: 15100।'),
+}
+
+
+def help_line(world):
+    num, en, hi = HELP_LINES[world]
+    return f'<a class="helpline" href="tel:{num}">{tx("span", en, hi)}{ic("phone")}</a>'
+
+
 def help_sheet(world):
-    """The "?" sheet as a screen carries it, hidden until "?" is tapped: one line of how to play, the languages, then
-    sound (owner, 23 Oct 2026: "I prefer C")."""
+    """The "?" sheet as a screen carries it, hidden until "?" is tapped: one line of how to play, the languages, sound,
+    then the chapter's help line (owner, 23 Oct 2026: "I prefer C"; the help line, 5 Nov 2026)."""
     hid = uid('sh')
     grab = (f'<div class="grab"><span class="spacer"></span><button class="handle" type="button"{al("Drag to close", "बंद करने के लिए खींचें")}><i></i></button>'
             f'<button class="close" type="button"{al("Close", "बंद करें")}>{ic("close")}</button></div>')
     return (f'<div class="scrim" aria-hidden="true" hidden></div><div class="sheet helpsheet" role="dialog" aria-modal="true" aria-labelledby="{hid}" hidden>'
-            f'{WORLDS[world].sheet_dress(1)}{grab}{howline(hid)}{lang_list()}{sound_row()}</div>')
+            f'{WORLDS[world].sheet_dress(1)}{grab}{howline(hid)}{lang_list()}{sound_row()}<div class="sheetlinks">{help_line(world)}</div></div>')
 
 
 # ---------- Privacy and Delete all in the "?" sheet (F-111, F-112; SC-44, SC-49), 24 Oct 2026 ----------
 # The sheet keeps option C (how to play, the languages, sound) and gains one link, Privacy. Its level says what stays
-# on this phone, what is sent (nothing, until the Board) and what is kept nowhere, and holds Delete all, which asks
+# on this phone, what is sent (the stars and line the player chooses to send, 5 Nov 2026) and what is kept nowhere, and holds Delete all, which asks
 # once in the one dialog. After it, one line; installed, how to take the icon off the home screen. Hindi: drafts.
 PRIVACY_DEFS = ((('On this phone', 'इस फ़ोन पर'), ('Your birth date, your answers, the language and sound.', 'आपकी जन्म तारीख़, आपके जवाब, भाषा और आवाज़।')),
-                (('Sent anywhere', 'कहीं भेजा गया'), ('Nothing leaves this phone.', 'इस फ़ोन से कुछ बाहर नहीं जाता।')),
+                (('Sent, if you choose', 'भेजा गया, अगर आप चुनें'), ('Stars, a line and the date, to The Equal Lens. Delete all removes them.', 'स्टार, एक लाइन और तारीख़, द इक्वल लेंस को। सब मिटाएँ इन्हें भी हटा देता है।')),
                 (('Kept nowhere', 'कहीं नहीं रखा जाता'), ('How long you take.', 'आप कितना समय लेते हैं।')))
 DELETE_Q = ('Delete all your days and notes?', 'अपने सारे दिन और नोट मिटाएँ?')   # F-112's one wording
 
@@ -788,9 +805,12 @@ def privacy_phone(world, level='link'):
     back = BACK.replace('ibtn', 'close')
     grab = lambda first: (f'<div class="grab">{"<span class=spacer></span>" if first else back}<button class="handle" type="button"{al("Drag to close", "बंद करने के लिए खींचें")}><i></i></button>'
                           f'<button class="close" type="button"{al("Close", "बंद करें")}>{ic("close")}</button></div>')
-    link = f'<div class="sheetlinks"><button type="button">{tx("span", "Privacy", "प्राइवेसी")}{ic("arrow")}</button></div>'
+    link = f'<div class="sheetlinks">{help_line(world)}<button type="button">{tx("span", "Privacy", "प्राइवेसी")}{ic("arrow")}</button></div>'
     if level == 'link':
         content = f'{grab(True)}{howline(hid)}{lang_list()}{sound_row()}{link}'
+    elif level == 'deleted-left':
+        content = (f'{grab(True)}{tx("h2", "Deleted.", "मिट गया।", "", f" id={hid}")}'
+                   f'{tx("p", "No signal: your rating goes when you next open Retake.", "सिग्नल नहीं है: अगली बार रीटेक खोलने पर आपकी रेटिंग हट जाएगी।", "letter")}')
     elif level == 'deleted':
         content = (f'{grab(True)}{tx("h2", "Deleted.", "मिट गया।", "", f" id={hid}")}'
                    f'{tx("p", "To remove Retake from your home screen, press and hold its icon.", "होम स्क्रीन से रीटेक हटाने के लिए, उसके आइकन को दबाकर रखें।", "letter")}')
@@ -805,6 +825,38 @@ def privacy_phone(world, level='link'):
                f'<div class="acts"><button type="button" class="textbtn on-paper">{tx("span", "Keep", "रखें")}</button>'
                f'<button type="button" class="textbtn on-paper is-danger">{ic("alert")}{tx("span", "Delete all", "सब मिटाएँ")}</button></div></div>')
     return under[:-6] + sh + under[-6:]
+
+
+# ---------- The rating, once, after the take (owner, 5 Nov 2026, EVAL-24) ----------
+# A sheet over the resting reading: five stars and one optional line. Send is the only thing that ever leaves the phone
+# (src/take/rating.ts), and closing it sends nothing. Hindi: drafts.
+def rate_sheet(world, state='empty'):
+    """'empty' (the button waits), 'filled' (stars and a line), 'failed' (no signal, everything kept), 'sent'."""
+    hid = uid('rt')
+    grab = (f'<div class="grab"><span class="spacer"></span><button class="handle" type="button"{al("Drag to close", "बंद करने के लिए खींचें")}><i></i></button>'
+            f'<button class="close" type="button"{al("Close", "बंद करें")}>{ic("close")}</button></div>')
+    if state == 'sent':
+        content = tx("h2", "Thank you.", "शुक्रिया।", "", f" id={hid}")
+    else:
+        on = 0 if state == 'empty' else 4
+        val = '' if state == 'empty' else ' value="Loved the cricket chapter."'
+        stars = ''.join(f'<label class="ratestar{" is-on" if n <= on else ""}"><input type="radio" name="{hid}s"{" checked" if n == on else ""}{al(f"{n} star" + ("s" if n > 1 else ""), f"{n} स्टार")}>{ic("star-fill" if n <= on else "star")}</label>'
+                        for n in range(1, 6))
+        err = (f'<p class="gatehint ratefail" role="alert">{ic("alert")}{tx("span", "Not sent. Try again.", "नहीं गया। फिर कोशिश करें।")}</p>'
+               if state == 'failed' else '')
+        btn = (f'<button class="main is-live" type="button">{tx("span", "Send", "भेजें")}</button>' if on
+               else f'<button class="main is-wait" type="button" aria-disabled="true">{tx("span", "Tap a star", "एक स्टार चुनें")}</button>')
+        content = (f'{tx("h2", "How was it?", "कैसा लगा?", "", f" id={hid}")}<div class="ratestars" role="radiogroup" aria-labelledby="{hid}">{stars}</div>'
+                   f'<div class="field"><label for="{hid}l">{tx("span", "One line, if you like", "एक लाइन, अगर चाहें")}</label><input id="{hid}l" type="text" maxlength="140" aria-describedby="{hid}h"{val}>'
+                   f'<small id="{hid}h">{tx("span", "Only this is sent. No names, please.", "सिर्फ़ यही भेजा जाता है। नाम न लिखें।")}</small></div>'
+                   f'{err}<div class="dock">{btn}</div>')
+    return (f'<div class="scrim" aria-hidden="true"></div><div class="sheet ratesheet" role="dialog" aria-modal="true" aria-labelledby="{hid}">'
+            f'{WORLDS[world].sheet_dress(1)}{grab}{content}</div>')
+
+
+def rate_phone(world, state='empty'):
+    under = step_twin(world)
+    return under[:-6] + rate_sheet(world, state) + under[-6:]
 
 
 def sheet_phone(world, layer=1):
@@ -1424,10 +1476,16 @@ for W in SEL:
                (chapter_card(w), f'{T}, First take chapter title card', "The chapter's place as five marks, the area, its setting and the year; Start.")]
 SHEETS = shown('sheet_help', 'sheet_info', 'sheet_settings')
 SHEETS += [(privacy_phone(SEL[0].id, lv), t, n) for lv, t, n in (
-    ('link', 'The "?" sheet with Privacy', 'Option C keeps its three parts and gains one link.'),
-    ('privacy', 'Privacy', 'What stays on this phone, what is sent (nothing yet) and what is kept nowhere; Delete all.'),
+    ('link', 'The "?" sheet with the help line and Privacy', "Option C keeps its three parts and gains the chapter's help line, which calls the number, and one link."),
+    ('privacy', 'Privacy', 'What stays on this phone, what is sent (only the stars and line the player sends) and what is kept nowhere; Delete all.'),
     ('dialog', 'Delete all, asked once', 'The one dialog, in F-112\'s words.'),
-    ('deleted', 'After Delete all', 'One line; installed, how to take the icon off the home screen. Then the birth date again.'))]
+    ('deleted', 'After Delete all', 'One line; installed, how to take the icon off the home screen. Then the birth date again.'),
+    ('deleted-left', 'After Delete all, a rating not yet removed', 'No signal: one more line, and the rating goes at the next opening with one.'))]
+SHEETS += [(rate_phone('rukavat', st), t, n) for st, t, n in (
+    ('empty', 'The rating, after the take', 'Once, over the resting reading: five stars and one optional line. Closing it sends nothing.'),
+    ('filled', 'The rating, ready to send', 'Filled stars differ in shape as well as colour. Only the stars, the line and the date leave the phone.'),
+    ('failed', 'The rating, not sent', 'Refused or no signal: one line says so, the stars and the line stay, and Send tries again.'),
+    ('sent', 'The rating, sent', 'One line, and the sheet closes back to the reading.'))]
 ACCESS = shown('hi_step', 'hi_cover', 'big_step', 'big_cover', 'big_result', 'big_sunday', 'big_board', 'small_step', 'small_more')
 
 # ---------- the report over time ----------

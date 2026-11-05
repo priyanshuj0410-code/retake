@@ -25,7 +25,8 @@ const browser = await chromium.launch(browserOpts())
 
 const flow = (JSON.parse(readFileSync(join(ROOT, 'content/take/first-take.json'), 'utf8')) as { flow: { type: string; kind?: string }[] }).flow
 const first = (f: (s: { type: string; kind?: string }) => boolean) => flow.findIndex(f)
-const SCREENS: [string, number | 'gate' | 'notyet', ((p: Page) => Promise<void>)?][] = [
+const READING = first((s) => s.type === 'results')
+const SCREENS: [string, number | 'gate' | 'notyet', ((p: Page) => Promise<void>)?, object?][] = [
   ['the birth date', 'gate'],
   ['not yet 18', 'notyet'],
   ['a cutscene', first((s) => s.type === 'cut')],
@@ -37,6 +38,11 @@ const SCREENS: [string, number | 'gate' | 'notyet', ((p: Page) => Promise<void>)
     await p.locator('[data-help]').first().click()
     await p.locator('.sheetlinks button').click()
   }],
+  ['the rating', READING, async (p) => void (await p.locator('.ratesheet').waitFor()), { rate: 'ask' }],
+  ['the rating, stars chosen and a line typed', READING, async (p) => {
+    await p.getByRole('radio').nth(3).check({ force: true })
+    await p.locator('.ratesheet input[type="text"]').fill('A line')
+  }, { rate: 'ask' }],
   ['the Delete all dialog', first((s) => s.kind === 'pick'), async (p) => {
     await p.locator('[data-help]').first().click()
     await p.locator('.sheetlinks button').click()
@@ -62,13 +68,13 @@ try {
   for (const [w, h] of [[412, 915], [1440, 900]]) {
     for (const lang of ['mix', 'hi'] as const) {
       const found: string[] = []
-      for (const [name, at, open] of SCREENS) {
+      for (const [name, at, open, extra] of SCREENS) {
         const page = await browser.newPage({ viewport: { width: w, height: h } })
         await page.goto(BASE)
         const saved =
           at === 'gate' ? null
           : at === 'notyet' ? { v: 1, at: 0, answers: {}, lang, sound: false, opens: '2099-01-01' }
-          : { v: 1, at, answers: {}, lang, sound: false, birth: '1990-08-14' }
+          : { v: 1, at, answers: {}, lang, sound: false, birth: '1990-08-14', ...extra }
         await page.evaluate((s) => (s ? localStorage.setItem('retake.take', JSON.stringify(s)) : localStorage.removeItem('retake.take')), saved)
         await page.reload()
         await page.locator('.take .app').waitFor()

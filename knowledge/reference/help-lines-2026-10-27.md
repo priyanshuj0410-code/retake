@@ -3,6 +3,7 @@ type: reference
 title: Help lines for the First take's hard chapters, checked against official sources
 description: The three national help lines planned for the "?" sheet of the First take's hard-topic chapters (Tele-MANAS, ERSS 112, NALSA 15100), each checked on 27 Oct 2026 against official raw text by one researcher and two independent checkers; the numbers, hours, cost, who each serves, languages, how well each fits its chapter, the wording each needs, and what is still open before they ship.
 plane_issues:
+  - https://app.plane.so/the-equal-lens/browse/EVAL-24/
   - https://app.plane.so/the-equal-lens/browse/EVAL-22/
 ---
 
@@ -63,6 +64,10 @@ These are word suggestions for when the help line is drawn; nothing is designed 
 - **Lugdi, Jadugar, Cricket:** danger now. For example "In danger right now? Call 112."
 - **Rukavat:** free legal advice. For example "Free legal advice: 15100." No hours, no "lawyer".
 - **Never print:** a call count (the official figures disagree), an income limit for legal aid (NALSA's own pages give three), SHOUT, "24x7" for NALSA, or the launch typo 1-800-91-4416.
+
+## Built on 5 Nov 2026 (EVAL-24)
+
+The owner asked for the help lines before the first outside players. Each chapter's "?" now holds its line in the wording above, with the whole row calling the number (`library.py HELP_LINES`; DESIGN.md, "The help line in \"?\""). Item 3 below is done; items 1, 2 and 4 are still open.
 
 ## Still open before the help lines ship
 

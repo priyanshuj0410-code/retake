@@ -76,7 +76,7 @@ The game is a trainer, not a test. Each day's puzzle quietly shows the player wh
 ## Capabilities and Constraints
 
 - **Stack:** Vite, React and TypeScript PWA in this repo, hosted on Vercel's equal-lens-daily project (owner, 24 Oct 2026). `vercel.json` builds the app and keeps the team's demo at `/demo/`; the owner deploys to production.
-- **No backend yet.** The board and the crowd figures are sample data until one exists.
+- **No backend yet, apart from the rating.** The board and the crowd figures are sample data until one exists. The one thing sent is a player's stars and optional line after the take, when they tap Send (owner, 5 Nov 2026, EVAL-24; `knowledge/architecture/data-and-privacy.md`).
 - **Languages:** three modes, chosen in "?": Hinglish (English words with Hindi on the signs, and the Hinglish names such as "Udti Khaat"; the default), Hindi in Devanagari, and English only. Hinglish stays a lasting mode (owner, 24 Oct 2026). The game shows only the chosen language, and other Indian languages come later as more chips in the same menu.
 - **Privacy:**
   - real identities never appear;
@@ -91,7 +91,7 @@ The game is a trainer, not a test. Each day's puzzle quietly shows the player wh
   - offline caching of future puzzles;
   - data recovery across phones;
   - whether reservations appear in scenarios;
-  - whether a help line shows on hard-topic days.
+  - nothing further on help lines: each First take chapter's "?" holds its checked line (F-47, EVAL-24).
 
 ## Brand Commitments
 

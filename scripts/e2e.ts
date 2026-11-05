@@ -137,8 +137,8 @@ async function play(lang: 'mix' | 'hi' | 'en', width: number, height: number) {
   record(T, `${tag}: the take reaches its end with all 40 answers kept`, answers.length === 40, `${answers.length} answers; kinds ${JSON.stringify(Object.fromEntries(kinds))}`)
   record(T, `${tag}: every kind was played`, ['pick', 'checks', 'rank', 'multi', 'order', 'split'].every((k) => kinds.has(k)))
   record(T, `${tag}: past the last screen the finished take rests on its reading, its answers kept`, ended && answers.length === 40)
-  record(T, `${tag}: the phone keeps the place, the answers, the language, the sound switch and the birth date, nothing else`,
-    JSON.stringify(Object.keys(take).sort()) === JSON.stringify(['answers', 'at', 'birth', 'lang', 'sound', 'v']))
+  record(T, `${tag}: the phone keeps the place, the answers, the language, the sound switch, the birth date and that the rating is asked, nothing else`,
+    JSON.stringify(Object.keys(take).sort()) === JSON.stringify(['answers', 'at', 'birth', 'lang', 'rate', 'sound', 'v']))
   record(T, `${tag}: every main button waited until its decision was complete`, waitedAll.length === 0, waitedAll.slice(0, 3).join('; '))
   record(T, `${tag}: the reading's five cards each say something${lang === 'hi' ? ', in Devanagari' : ''}`,
     cards.length === 5 && cards.every((c) => c.length > 10 && (lang === 'hi') === DEVA.test(c)), cards.map((c) => c.slice(0, 40)).join(' | '))
@@ -205,7 +205,7 @@ async function privacy() {
   await page.locator('[data-help]').click()
   await page.locator('.sheetlinks button').filter({ hasText: 'Privacy' }).click()
   const defs = await page.locator('.sheet .defs').innerText()
-  record(g, 'Privacy says what stays on this phone, what is sent and what is kept nowhere', /On this phone/.test(defs) && /Nothing leaves this phone/.test(defs) && /Kept nowhere/.test(defs))
+  record(g, 'Privacy says what stays on this phone, what is sent and what is kept nowhere', /On this phone/.test(defs) && /Sent, if you choose/.test(defs) && /Stars, a line and the date/.test(defs) && /Kept nowhere/.test(defs))
   await page.locator('.sheetlinks .is-danger').click()
   record(g, 'Delete all asks once, in the one dialog, with Keep focused', (await page.locator('.dialog[role="alertdialog"]').count()) === 1 && (await page.evaluate(() => document.activeElement?.textContent)) === 'Keep')
   await page.locator('.dialog .textbtn').filter({ hasText: 'Keep' }).click()
@@ -403,7 +403,216 @@ async function stale() {
   await page.close()
 }
 
+/** The rating (EVAL-24), the database stood in for by Playwright, with vercel.json's Content-Security-Policy in force:
+ * asked once, after the very last screen; the wait, the failure, the send; exactly what leaves the phone; every way of
+ * taking it back, with and without a signal. */
+async function rating() {
+  const g = 'E the rating after the take: asked once, and only what the player sends leaves'
+  const DB = 'https://the-equal-lens-default-rtdb.asia-southeast1.firebasedatabase.app'
+  const cors = { 'access-control-allow-origin': '*', 'access-control-allow-methods': 'PATCH, DELETE', 'access-control-allow-headers': '*' }
+  const open = async (size = { width: 412, height: 915 }) => {
+    const page = await browser.newPage({ viewport: size })
+    const net = { answer: 200, sent: [] as { method: string; url: string; body: string | null; cookie: boolean }[] }
+    await page.route(`${DB}/**`, async (route) => {
+      const r = route.request()
+      if (r.method() === 'OPTIONS') return route.fulfill({ status: 204, headers: cors })
+      net.sent.push({ method: r.method(), url: r.url(), body: r.postData(), cookie: 'cookie' in r.headers() })
+      return route.fulfill({ status: net.answer, headers: cors, body: '' })
+    })
+    return { page, net }
+  }
+  const keys = (p: Page) => p.evaluate(() => JSON.parse(localStorage.getItem('retake.rating') ?? 'null'))
+  const finished = { v: 1, at: LAST, answers: {}, lang: 'en', sound: false, birth: '1990-08-14' }
+  const set = (p: Page, s: object, k?: object) =>
+    p.evaluate(([s, k]) => {
+      localStorage.setItem('retake.take', JSON.stringify(s))
+      if (k) localStorage.setItem('retake.rating', JSON.stringify(k))
+    }, [s, k] as const)
+
+  const { page, net } = await open()
+  const errors: string[] = []
+  page.on('pageerror', (e) => errors.push(String(e)))
+  const others: string[] = []
+  page.on('request', (r) => {
+    if (!r.url().startsWith(BASE) && !r.url().startsWith(DB) && !r.url().startsWith('data:')) others.push(r.url())
+  })
+  const sheet = page.locator('.ratesheet')
+  await page.goto(BASE)
+  await set(page, { ...finished, at: READING })
+  await page.reload()
+  await page.locator('.restext').waitFor()
+  record(g, 'not on the reading before the last screen', (await sheet.count()) === 0)
+  await set(page, finished)
+  await page.reload()
+  await page.locator('.take .app').waitFor()
+  record(g, 'not on the last screen itself', (await sheet.count()) === 0)
+  for (let i = 0; i < 12 && !(await sheet.count()); i++) await tapMain(page)
+  await sheet.waitFor()
+  record(g, 'past the last screen it rises over the reading', (await page.locator('.restext').count()) === 1 && (await look(page)).cls.includes('js-res'))
+  const main = sheet.locator('.main')
+  record(g, 'the button waits and says what is missing', (await main.innerText()).trim() === 'Tap a star' && (await main.getAttribute('aria-disabled')) === 'true')
+  record(g, 'five stars, none on, each a named radio', (await sheet.locator('input[type="radio"]').count()) === 5 && (await sheet.locator('.ratestar.is-on').count()) === 0 && (await sheet.getByRole('radio', { name: '3 stars' }).count()) === 1)
+  record(g, 'the reading beneath takes no taps', await page.locator('.page-play > .dock').evaluate((e) => (e as HTMLElement).inert))
+  await main.click({ force: true })
+  record(g, 'pressed with no star, nothing is sent', net.sent.length === 0)
+  await sheet.getByRole('radio', { name: '4 stars' }).check({ force: true })
+  record(g, 'four stars fill four', (await sheet.locator('.ratestar.is-on').count()) === 4 && (await main.innerText()).trim() === 'Send')
+  await page.reload()
+  await sheet.waitFor()
+  record(g, 'a reload before answering asks again', (await sheet.count()) === 1)
+  await sheet.getByRole('radio', { name: '4 stars' }).check({ force: true })
+  const field = sheet.locator('input[type="text"]')
+  await field.fill('x'.repeat(300))
+  record(g, 'the line stops at 140', (await field.inputValue()).length === 140)
+  await field.fill('  The cricket chapter dragged.  ')
+  await field.press('Enter')
+  record(g, "the keyboard's own key puts it away and sends nothing", net.sent.length === 0 && (await page.evaluate(() => document.activeElement?.tagName !== 'INPUT')))
+  await page.mouse.click(200, 40)
+  record(g, 'a tap outside keeps the sheet, the stars and the line', (await sheet.count()) === 1 && (await sheet.locator('.ratestar.is-on').count()) === 4 && (await field.inputValue()).includes('cricket'))
+  net.answer = 401
+  await main.click()
+  await sheet.locator('.ratefail').waitFor()
+  record(g, 'refused: it says so, and the stars and the line stay', (await sheet.locator('.ratestar.is-on').count()) === 4 && (await field.inputValue()).includes('cricket'))
+  record(g, 'refused: still asked', (await kept(page)).rate === 'ask')
+  const firstTry = (await keys(page)).mine as string
+  net.answer = 200
+  await main.click()
+  await sheet.getByRole('heading', { name: 'Thank you.' }).waitFor()
+  await page.waitForFunction(() => JSON.parse(localStorage.getItem('retake.rating') ?? '{}').drop?.length === 0)
+  const patch = net.sent.filter((x) => x.method === 'PATCH')
+  const body = JSON.parse(patch.at(-1)?.body ?? '{}') as Record<string, Record<string, unknown>>
+  const key = Object.keys(body).find((k) => k.startsWith('retake-feedback/')) ?? ''
+  const id = key.split('/')[1] ?? ''
+  record(g, 'exactly two writes, the refused one and this', patch.length === 2)
+  record(g, 'the record: the stars, the trimmed line and the day, nothing else', JSON.stringify(body[key]) === JSON.stringify({ stars: 4, line: 'The cricket chapter dragged.', sent: new Date().toISOString().slice(0, 10) }) || /^\{"stars":4,"line":"The cricket chapter dragged\.","sent":"\d{4}-\d\d-\d\d"\}$/.test(JSON.stringify(body[key])), JSON.stringify(body[key]))
+  record(g, 'the write holds only the record and the gate that names it', JSON.stringify(Object.keys(body).sort()) === JSON.stringify([key, 'retake-feedback-gate'].sort()) && JSON.stringify(body['retake-feedback-gate']) === JSON.stringify({ at: { '.sv': 'timestamp' }, id }), JSON.stringify(body['retake-feedback-gate']))
+  record(g, 'no cookie goes with it', net.sent.every((x) => !x.cookie))
+  record(g, 'the refused try is taken back, in case it landed with its reply lost', net.sent.some((x) => x.method === 'DELETE' && x.url.includes(`/retake-feedback/${firstTry}.json`)))
+  record(g, 'the phone keeps only the key and that it was asked', (await keys(page)).mine === id && (await kept(page)).rate === 'done' && !('sent' in (await kept(page))) && /^[A-Za-z0-9_-]{22}$/.test(id))
+  await sheet.locator('.close').click()
+  record(g, 'closed, the reading rests under it, and takes the focus', (await sheet.count()) === 0 && (await page.locator('.restext').count()) === 1 && (await page.evaluate(() => document.activeElement?.tagName === 'H1')))
+  record(g, 'closing after Thank you takes nothing back', !net.sent.some((x) => x.method === 'DELETE' && x.url.includes(id)))
+  await page.reload()
+  await page.locator('.restext').waitFor()
+  record(g, 'never asked again', (await sheet.count()) === 0)
+  await page.locator('[data-help]').click()
+  await page.locator('.sheetlinks button').filter({ hasText: 'Privacy' }).click()
+  await page.locator('.sheetlinks .is-danger').click()
+  net.answer = 503
+  await page.locator('.dialog .is-danger').click()
+  await page.locator('.sheet .letter').filter({ hasText: 'No signal' }).waitFor()
+  record(g, 'Delete all with no signal says so, and the key waits', (await keys(page)).drop.includes(id) && !(await keys(page)).mine)
+  net.answer = 200
+  await page.reload()
+  await page.waitForFunction(() => localStorage.getItem('retake.rating') === null)
+  const dels = net.sent.filter((x) => x.method === 'DELETE' && x.url.includes(`/retake-feedback/${id}.json`))
+  record(g, 'the next opening with a signal removes it, by its key alone, and then nothing of it is left', dels.length === 2 && dels.every((x) => !x.body), `${dels.length} calls`)
+  record(g, 'nothing went anywhere else', others.length === 0, others.slice(0, 3).join(', '))
+  record(g, 'no page error', errors.length === 0, errors.slice(0, 2).join(' | '))
+  await page.close()
+
+  // closing it sends nothing
+  const a = await open()
+  await a.page.goto(BASE)
+  await set(a.page, { ...finished, at: READING, rate: 'ask' })
+  await a.page.reload()
+  await a.page.locator('.ratesheet').waitFor()
+  await a.page.locator('.ratesheet .close').click()
+  await a.page.waitForFunction(() => JSON.parse(localStorage.getItem('retake.take') ?? '{}').rate === 'done')
+  record(g, 'closed unanswered: nothing is sent, and it is not asked again', a.net.sent.length === 0)
+  await a.page.close()
+
+  // closed after "Not sent": that try may have landed, so it is taken back
+  const b = await open()
+  await b.page.goto(BASE)
+  await set(b.page, { ...finished, at: READING, rate: 'ask' })
+  await b.page.reload()
+  await b.page.getByRole('radio', { name: '2 stars' }).check({ force: true })
+  b.net.answer = 503
+  await b.page.locator('.ratesheet .main').click()
+  await b.page.locator('.ratefail').waitFor()
+  const tried = (await keys(b.page)).mine as string
+  b.net.answer = 200
+  await b.page.locator('.ratesheet .close').click()
+  await b.page.waitForFunction(() => localStorage.getItem('retake.rating') === null)
+  record(g, 'closed after "Not sent": that try is taken back', b.net.sent.some((x) => x.method === 'DELETE' && x.url.includes(tried)))
+  await b.page.close()
+
+  // "Not you?": with no signal the key waits, and the next player is asked
+  const c = await open()
+  await c.page.goto(BASE)
+  await set(c.page, { ...finished, at: READING, rate: 'done' }, { mine: 'A'.repeat(22), drop: [] })
+  c.net.answer = 503
+  await c.page.reload()
+  await c.page.locator('.restext').waitFor()
+  for (let i = 0; i < 4; i++) await tapMain(c.page)
+  await c.page.locator('.resforget').click()
+  await c.page.locator('.take .app').waitFor()
+  await c.page.waitForFunction(() => !JSON.parse(localStorage.getItem('retake.take') ?? '{}').rate)
+  record(g, '"Not you?" with no signal: the key waits, and the next player will be asked', ((await keys(c.page))?.drop ?? []).includes('A'.repeat(22)) && !(await kept(c.page)).rate)
+  c.net.answer = 200
+  await c.page.reload()
+  await c.page.waitForFunction(() => localStorage.getItem('retake.rating') === null)
+  record(g, '"Not you?": the next opening with a signal removes it', c.net.sent.filter((x) => x.method === 'DELETE' && x.url.includes('A'.repeat(22)) ).length >= 2)
+  await c.page.close()
+
+  // above a phone's keyboard, on the smallest phone
+  const d = await open({ width: 360, height: 640 })
+  await d.page.goto(BASE)
+  await set(d.page, { ...finished, at: READING, rate: 'ask' })
+  await d.page.reload()
+  const small = d.page.locator('.ratesheet')
+  await small.waitFor()
+  await small.evaluate((e) => (e as HTMLElement).style.setProperty('--kb', '300px'))
+  const box = await small.boundingBox()
+  record(g, 'with a 300 px keyboard on a 360 x 640 phone the sheet stays on screen and above it', !!box && box.y >= 0 && Math.round(box.y + box.height) <= 340, JSON.stringify(box))
+  await d.page.locator('.ratesheet .main').scrollIntoViewIfNeeded()
+  const mainBox = await d.page.locator('.ratesheet .main').boundingBox()
+  record(g, 'and it scrolls to Send', !!mainBox && mainBox.y + mainBox.height <= 345, JSON.stringify(mainBox))
+  await d.page.close()
+}
+
+/** Each chapter's "?" holds its checked help line, and the whole row calls the number (F-47). */
+async function helpLines() {
+  const g = 'E the help line in each chapter\'s "?"'
+  const want: Record<string, [string, string, string]> = {
+    station: ['14416', 'Upset by bullying at work? Talk to a counsellor, free: 14416.', 'काउंसलर'],
+    lugdi: ['112', 'In danger right now? Call 112.', '112 पर कॉल'],
+    jadugar: ['112', 'In danger right now? Call 112.', '112 पर कॉल'],
+    cricket: ['112', 'In danger right now? Call 112.', '112 पर कॉल'],
+    rukavat: ['15100', 'Free legal advice: 15100.', 'क़ानूनी सलाह'],
+  }
+  const screens = FLOW as unknown as { type: string; world?: string }[]
+  for (const [world, [tel, en, hi]] of Object.entries(want)) {
+    const page = await browser.newPage({ viewport: { width: 412, height: 915 } })
+    const at = screens.findIndex((s) => s.type === 'step' && s.world === world)
+    await page.goto(BASE)
+    await page.evaluate((at) => localStorage.setItem('retake.take', JSON.stringify({ v: 1, at, answers: {}, lang: 'en', sound: false, birth: '1990-08-14' })), at)
+    await page.reload()
+    await page.locator('[data-help]').click()
+    const a = page.locator('.sheet a.helpline')
+    record(g, `${world}: says the checked words and calls ${tel}`, (await a.getAttribute('href')) === `tel:${tel}` && (await a.innerText()).trim() === en, await a.innerText())
+    const box = await a.boundingBox()
+    record(g, `${world}: the whole row is at least 48 tall`, !!box && box.height >= 48)
+    await page.locator('.sheet .langchips [lang="hi"]').click()
+    record(g, `${world}: in Hindi too`, (await a.innerText()).includes(hi), await a.innerText())
+    await page.close()
+  }
+  const cuts = screens.flatMap((s, i) => (s.type === 'cut' ? [i] : []))
+  for (const [what, at, tel] of [["the opening's cutscene", cuts[0], '14416'], ['the last cutscene', cuts.at(-1)!, '15100']] as const) {
+    const page = await browser.newPage({ viewport: { width: 412, height: 915 } })
+    await page.goto(BASE)
+    await page.evaluate((at) => localStorage.setItem('retake.take', JSON.stringify({ v: 1, at, answers: {}, lang: 'en', sound: false, birth: '1990-08-14' })), at)
+    await page.reload()
+    await page.locator('[data-help]').click()
+    record(g, `${what}: "?" holds the line and calls ${tel}`, (await page.locator('.sheet a.helpline').getAttribute('href')) === `tel:${tel}`)
+    await page.close()
+  }
+}
+
 try {
+  await rating()
+  await helpLines()
   await gate()
   await privacy()
   await backward()
