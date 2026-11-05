@@ -1,0 +1,62 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>Retake first players</title><link rel="stylesheet" href="../../public/take/fonts.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarpanch:wght@900&display=swap"><style>
+@page { size: 1080px 1350px; margin: 0; }
+* { box-sizing: border-box; }
+:root { --g: #1B0B2E; --t: #FFF3DC; --soft: #D9CDEB; --p: #EFE7D4; --i: #17110F; --r: #E4002B; }
+html, body { margin: 0; background: var(--g); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.s { position: relative; width: 1080px; height: 1350px; overflow: hidden; break-after: page; background: var(--g); color: var(--t); font-family: 'Hind', sans-serif; }
+.s:last-child { break-after: auto; }
+h1 { margin: 0; font: 700 88px/1.08 'Hind', sans-serif; letter-spacing: -.01em; text-wrap: balance; }
+p { margin: 0; }
+.wide { display: block; width: 1080px; height: 810px; object-fit: cover; }
+.txt { padding: 56px 64px 0; }
+.next { position: absolute; right: 48px; bottom: 44px; width: 88px; height: 88px; border-radius: 50%; display: grid; place-items: center; background: var(--p); color: var(--i); }
+.next svg { width: 44px; height: 44px; }
+
+.cover .brand { display: flex; align-items: center; gap: 28px; margin-bottom: 30px; }
+.cover .ticket { width: 96px; height: 96px; display: block; flex: none; border-radius: 8px; overflow: hidden; box-shadow: inset 0 0 0 2px var(--p); }
+.cover .ticket svg { display: block; width: 100%; height: 100%; }
+.cover .brand b { font: 900 104px/1 'Sarpanch', 'Hind', sans-serif; color: var(--p); }
+.cover h1 { font-size: 80px; text-wrap: initial; }
+
+.story .txt { padding-top: 96px; padding-bottom: 72px; }
+.story h1 { font-size: 104px; }
+.story .wide { position: absolute; left: 0; bottom: 0; }
+.caption { position: absolute; left: 64px; right: 176px; bottom: 56px; padding: 26px 36px; background: var(--p); color: var(--i); font: 600 48px/1.25 'Hind', sans-serif; box-shadow: inset 0 0 0 3px var(--i); }
+
+.worlds .txt { padding-top: 64px; padding-bottom: 48px; }
+.worlds h1 { font-size: 76px; }
+.cols { position: absolute; left: 0; right: 0; bottom: 0; top: 276px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.cols figure { position: relative; margin: 0; overflow: hidden; }
+.cols img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cols figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 12px 170px; min-height: 340px; background: var(--g); font: 600 31px/1.2 'Hind', sans-serif; color: var(--t); }
+.cols b { display: block; font: 700 54px/1.1 'Hind', sans-serif; }
+.worlds .next { bottom: 40px; }
+
+.play .txt { padding-top: 64px; }
+.play h1 { font-size: 88px; }
+.play p { margin-top: 24px; max-width: 900px; font: 500 44px/1.28 'Hind', sans-serif; color: var(--soft); }
+.phone { position: absolute; left: 180px; top: 450px; width: 560px; border-radius: 48px; box-shadow: 0 0 0 10px #0B0612, 0 0 0 13px rgba(239,231,212,.45), 0 30px 60px rgba(0,0,0,.45); }
+
+.rate .txt { padding-top: 64px; }
+.rate h1 { font-size: 80px; text-wrap: initial; }
+.sheet { position: absolute; left: 150px; top: 356px; width: 780px; border-radius: 20px; box-shadow: 0 24px 50px rgba(0,0,0,.4); }
+.note { position: absolute; left: 64px; right: 176px; bottom: 56px; font: 600 42px/1.24 'Hind', sans-serif; color: var(--t); }
+
+.know { background: var(--p); color: var(--i); }
+.know .next { background: var(--g); color: var(--p); }
+.know h1 { font-size: 112px; }
+.know .txt { padding-top: 72px; }
+.know ul { list-style: none; margin: 52px 64px 0; padding: 0; display: grid; gap: 0; }
+.know li { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 30px; align-items: start; padding: 40px 0 44px; box-shadow: inset 0 3px 0 var(--i); }
+.know .i { width: 88px; height: 88px; display: grid; place-items: center; background: var(--g); color: var(--p); border-radius: 50%; }
+.know .i svg { width: 46px; height: 46px; }
+.know b { display: block; font: 700 54px/1.16 'Hind', sans-serif; }
+.know li span:not(.i) { display: block; margin-top: 6px; font: 500 44px/1.25 'Hind', sans-serif; text-wrap: balance; }
+
+.cta .txt { padding-top: 48px; }
+.cta h1 { font-size: 112px; }
+.url { display: inline-block; margin-top: 24px; padding: 14px 30px 10px; background: var(--p); color: var(--i); font: 700 66px/1.15 'Hind', sans-serif; box-shadow: inset 0 0 0 3px var(--i); }
+.small { margin-top: 24px; font: 500 38px/1.25 'Hind', sans-serif; color: var(--soft); }
+.credit { position: absolute; right: 64px; bottom: 44px; font: 500 30px/1.2 'Hind', sans-serif; color: var(--soft); }
+</style></head><body><section class="s cover"><img class="wide" src="art/st-0-5.jpg" alt=""><div class="txt"><div class="brand"><span class="ticket"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><rect width="96" height="96" fill="#1B0B2E"/><rect x="14" y="24" width="68" height="48" rx="4" fill="#E9DFC4"/><rect x="14" y="24" width="68" height="11" rx="2" fill="#13308F"/><circle cx="14" cy="54" r="6" fill="#1B0B2E"/><circle cx="82" cy="54" r="6" fill="#1B0B2E"/><g transform="rotate(-12 50 54)"><circle cx="50" cy="54" r="14" fill="none" stroke="#E4002B" stroke-width="3.5"/><rect x="42" y="47.5" width="16" height="4" fill="#E4002B"/><rect x="42" y="56.5" width="16" height="4" fill="#E4002B"/></g></svg>
+</span><b>Retake</b></div><h1>I made a game.<br>I need first players.</h1></div><span class="next"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></svg></span></section><section class="s story"><div class="txt"><h1>Dadi moves in with an old trunk.</h1></div><img class="wide" src="art/st-0-7.jpg" alt=""><p class="caption">Inside it: five memories, from 1971 to 1999.</p><span class="next"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></svg></span></section><section class="s worlds"><div class="txt"><h1>Each memory is painted in the art of its year.</h1></div><div class="cols"><figure><img src="../../public/take/assets/station-s-platform-l.webp" alt=""><figcaption><b>1971</b>A railway junction</figcaption></figure><figure><img src="../../public/take/assets/pulp-s-ghat-l.webp" alt=""><figcaption><b>1977</b>Trucks on the ghat</figcaption></figure><figure><img src="../../public/take/assets/jadugar-s-rope-l.webp" alt=""><figcaption><b>1984</b>A magic show</figcaption></figure><figure><img src="../../public/take/assets/cricket-s-nets-l.webp" alt=""><figcaption><b>1992</b>A cricket final</figcaption></figure><figure><img src="../../public/take/assets/sunday-s-room-l.webp" alt=""><figcaption><b>1999</b>A wedding at home</figcaption></figure></div><span class="next"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></svg></span></section><section class="s play"><div class="txt"><h1>You decide who gets the job.</h1><p>Pick someone. Send them. At the end, see what you chose.</p></div><img class="phone" src="art/screen-decision.png" alt="A decision in the game"><span class="next"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></svg></span></section><section class="s rate"><div class="txt"><h1>About 20 minutes.<br>Then 5 stars and<br>one honest line.</h1></div><img class="sheet" src="art/screen-rating.png" alt="The rating sheet"><p class="note">That is all that comes to me. Your answers stay on your phone.</p><span class="next"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></svg></span></section><section class="s know"><div class="txt"><h1>Before you play</h1></div><ul><li><span class="i"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"/></svg></span><div><b>Adults only, 18 and over.</b><span>Please don't pass it to anyone younger.</span></div></li><li><span class="i"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M231.88,175.08A56.26,56.26,0,0,1,176,224C96.6,224,32,159.4,32,80A56.26,56.26,0,0,1,80.92,24.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,117.39,96c-.18.27-.37.52-.57.77L96,121.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,231.88,175.08Z"/></svg></span><div><b>Just a link.</b><span>No sign-up and nothing to install.</span></div></li><li><span class="i"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm-8,56a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm8,104a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"/></svg></span><div><b>Some chapters touch hard topics.</b><span>Each has a help line in its “?”.</span></div></li><li><span class="i"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M232,96a72,72,0,0,1-100.94,66L79,222.22c-.12.14-.26.29-.39.42a32,32,0,0,1-45.26-45.26c.14-.13.28-.27.43-.39L94,124.94a72.07,72.07,0,0,1,83.54-98.78,8,8,0,0,1,3.93,13.19L144,80l5.66,26.35L176,112l40.65-37.52a8,8,0,0,1,13.19,3.93A72.6,72.6,0,0,1,232,96Z"/></svg></span><div><b>It is early.</b><span>Expect rough edges. The Hindi is a first draft.</span></div></li></ul><span class="next"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></svg></span></section><section class="s cta"><img class="wide" src="art/st-6-9.jpg" alt=""><div class="txt"><h1>Play it. Rate it.</h1><p class="url">tel-retake.vercel.app</p><p class="small">Link in the first comment. Best on a phone.</p><p class="credit">Retake, by The Equal Lens</p></div></section></body></html>
